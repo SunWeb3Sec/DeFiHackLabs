@@ -20,7 +20,7 @@ foundryup
 
 If everything goes well, you will now have two binaries at your disposal: `forge` and `cast`.
 
-Create an account on [moralis.io](https://moralis.io/) for the mainnet forking.
+Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://www.alchemy.com/) for the mainnet forking.
 
 ## Hacks Reproduce
 ### Debug transaction tools
@@ -45,6 +45,20 @@ https://twitter.com/peckshield/status/1534423219607719936
 https://twitter.com/1nf0s3cpt/status/1534464698069884929
 
 https://www.jinse.com/news/blockchain/1658455.html
+
+### 20220608 Optimism - Wintermute
+#### Lost: 20 million Optimism (OP) tokens returned 17 million of them
+
+Testing
+```sh
+forge test --contracts ./src/test/Optimism_exp.sol --fork-url https://opt-mainnet.g.alchemy.com/v2/[APIKEY]/ --fork-block-number 10607735 -vv
+```
+#### Link reference
+https://blockworks.co/20m-tokens-lost-as-market-maker-wintermute-takes-blame/
+
+https://optimistic.etherscan.io/tx/0x75a42f240d229518979199f56cd7c82e4fc1f1a20ad9a4864c635354b4a34261
+
+https://optimistic.etherscan.io/tx/0x00a3da68f0f6a69cb067f09c3f7e741a01636cbc27a84c603b468f65271d415b
 
 
 ### 20220430 Rari Capital/Fei Protocol
