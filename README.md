@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 > Reproduce Defi hack incidents via Foundry.
 > 
-> This repo only for the educational purpose.
+> This repo is only for the educational purpose.
 
 ## Getting Started
 This is the easiest option for Linux and macOS users.
@@ -20,11 +20,18 @@ foundryup
 
 If everything goes well, you will now have two binaries at your disposal: `forge` and `cast`.
 
-Clone this project
-```sh
-git clone https://github.com/foundry-rs/foundry
-```
+Create an account on [moralis.io](https://moralis.io/) for the mainnet forking.
+
 ## Hacks Reproduce
+### Debug transaction tools
+https://dashboard.tenderly.co/explorer
+
+https://ethtx.info/
+
+https://versatile.blocksecteam.com/tx
+
+https://github.com/dapphub/dapptools
+
 ### 20220608 GYMNetwork 
 #### Lost: $2.1 million
 
@@ -338,4 +345,4 @@ forge test --contracts ./src/test/flashloan_balancer.t.sol --fork-url https://sp
 ```
 
 
-#### Some codes refers to Rivaill and W2Ning repo and rewrite to foundry verion.
+#### Some codes refer to Rivaill and W2Ning repo and are rewrote to the foundry version.
