@@ -60,6 +60,22 @@ https://optimistic.etherscan.io/tx/0x75a42f240d229518979199f56cd7c82e4fc1f1a20ad
 
 https://optimistic.etherscan.io/tx/0x00a3da68f0f6a69cb067f09c3f7e741a01636cbc27a84c603b468f65271d415b
 
+### 20220606 Discover Flashloan 
+#### Lost: 49 BNB
+
+Testing
+```sh
+forge test --contracts ./src/test/Discover_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 18446845  -vv
+```
+#### Link reference
+https://www.twitter.com/BeosinAlert/status/1533734518623899648
+
+https://www.anquanke.com/post/id/274003
+
+https://bscscan.com/tx/0x8a33a1f8c7af372a9c81ede9e442114f0aabb537e5c3a22c0fd7231c4820f1e9
+
+https://bscscan.com/tx/0x1dd4989052f69cd388f4dfbeb1690a3f3a323ebb73df816e5ef2466dc98fa4a4
+
 
 ### 20220430 Rari Capital/Fei Protocol
 #### Lost: $80 million
