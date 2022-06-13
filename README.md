@@ -23,7 +23,7 @@ If everything goes well, you will now have two binaries at your disposal: `forge
 Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://www.alchemy.com/) for the mainnet forking.
 
 ## Hacks Reproduce
-### Debug transaction tools
+### Transaction debugging tools
 https://dashboard.tenderly.co/explorer
 
 https://ethtx.info/
@@ -334,6 +334,18 @@ https://medium.com/@Knownsec_Blockchain_Lab/knownsec-blockchain-lab-comprehensiv
 
 https://bscscan.com/tx/0x8c93d6e5d6b3ec7478b4195123a696dbc82a3441be090e048fe4b33a242ef09d
 
+### 20210308 DODO Flashloan
+#### Lost: $700,000
+Testing
+```sh
+forge test --contracts ./src/test/dodo_flashloan_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 12000000 -vv
+```
+#### Link reference
+https://blog.dodoex.io/dodo-pool-incident-postmortem-with-a-little-help-from-our-friends-327e66872d42
+
+https://halborn.com/explained-the-dodo-dex-hack-march-2021/
+
+https://etherscan.io/tx/0x395675b56370a9f5fe8b32badfa80043f5291443bd6c8273900476880fb5221e
 
 ### 20201229 Cover Protocol
 
@@ -356,6 +368,11 @@ forge test --contracts ./src/test/dodo_flashloan.sol --fork-url https://speedy-n
 Balancer FlashLoan Testing
 ```sh
 forge test --contracts ./src/test/flashloan_balancer.t.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14684822 -vv
+```
+
+Pancakeswap FlashSwap Testing
+```sh
+forge test --contracts ./src/test/flashswap_pancake.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 18646610 -v
 ```
 
 
