@@ -3722,3 +3722,35 @@ interface IvVISR {
 function balanceOf(address account) external view returns (uint256);
 function mint(address account, uint256 amount) external;
 }
+
+interface InotVerified {
+
+    function mint(uint256 value) external;
+
+
+    function redeem(uint256 value) external;
+
+}
+interface IRouter {
+
+    function swapExactTokensForTokensSupportingFeeOnTransferTokens(
+        uint amountIn,
+        uint amountOutMin,
+        address[] calldata path,
+        address to,
+        uint deadline
+    ) external;
+    function swapExactETHForTokensSupportingFeeOnTransferTokens(
+        uint amountOutMin,
+        address[] calldata path,
+        address to,
+        uint deadline
+    ) external payable;
+    function swapExactTokensForETHSupportingFeeOnTransferTokens(
+        uint amountIn,
+        uint amountOutMin,
+        address[] calldata path,
+        address to,
+        uint deadline
+    ) external;
+}
