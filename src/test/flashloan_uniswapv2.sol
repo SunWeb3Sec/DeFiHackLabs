@@ -8,12 +8,12 @@ import "./interface.sol";
 
 contract ContractTest is DSTest {
     WETH9 weth = WETH9(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    Uni_Pair_V2 uniSwapRouter02 = Uni_Pair_V2(0xd3d2E2692501A5c9Ca623199D38826e513033a17);
+    Uni_Pair_V2 UniswapV2Pair = Uni_Pair_V2(0xd3d2E2692501A5c9Ca623199D38826e513033a17);
 
     function testExploit() public {
 
         weth.deposit{value: 2 ether}();
-        Uni_Pair_V2(uniSwapRouter02).swap(0, 100*1e18, address(this), "0x00");
+        Uni_Pair_V2(UniswapV2Pair).swap(0, 100*1e18, address(this), "0x00");
 }
 
     function uniswapV2Call(address sender, uint amount0, uint amount1, bytes calldata data) external{
@@ -23,7 +23,7 @@ contract ContractTest is DSTest {
        uint fee = ((amount1 * 3) / 997) + 1;
        uint amountToRepay = amount1 + fee;
        emit log_named_uint("After flashswap, Amount to repay:", amountToRepay);
-       weth.transfer(address(uniSwapRouter02),amountToRepay);
+       weth.transfer(address(UniswapV2Pair),amountToRepay);
     }
   receive() external payable {}
 }
