@@ -392,9 +392,15 @@ Pancakeswap FlashSwap Testing
 ```sh
 forge test --contracts ./src/test/flashswap_pancake.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 18646610 -v
 ```
+
 Biswap FlashSwap Testing
 ```sh
 forge test --contracts ./src/test/flashloan_biswap.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 18671800 -vv
+```
+
+UniSwapV2 FlashSwap Testing
+```sh
+forge test --contracts ./src/test/flashloan_uniswapv2.sol  --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14971460 -vv
 ```
 
 #### Some codes refer to Rivaill and W2Ning repo and are rewrote to the foundry version.
