@@ -34,7 +34,7 @@ https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
 
-### 202206016 InverseFinance 
+### 202206016 InverseFinance - Flashloan & Price Oracle Manipulation
 #### Lost: 53.2445 WBTC and 99,976.29 USDT
 
 Testing
@@ -52,7 +52,7 @@ https://www.certik.com/resources/blog/6LbL57WA3iMNm8zd7q111R-inverse-finance-inc
 
 https://etherscan.io/tx/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c
 
-### 20220608 GYMNetwork 
+### 20220608 GYMNetwork - AccessControl
 #### Lost: $2.1 million
 
 Testing
@@ -80,7 +80,7 @@ https://optimistic.etherscan.io/tx/0x75a42f240d229518979199f56cd7c82e4fc1f1a20ad
 
 https://optimistic.etherscan.io/tx/0x00a3da68f0f6a69cb067f09c3f7e741a01636cbc27a84c603b468f65271d415b
 
-### 20220606 Discover Flashloan 
+### 20220606 Discover - Flashloan 
 #### Lost: 49 BNB
 
 Testing
@@ -97,7 +97,7 @@ https://bscscan.com/tx/0x8a33a1f8c7af372a9c81ede9e442114f0aabb537e5c3a22c0fd7231
 https://bscscan.com/tx/0x1dd4989052f69cd388f4dfbeb1690a3f3a323ebb73df816e5ef2466dc98fa4a4
 
 
-### 20220430 Rari Capital/Fei Protocol
+### 20220430 Rari Capital/Fei Protocol - Flashloan Attack + Reentrancy 
 #### Lost: $80 million
 
 Testing
@@ -112,7 +112,7 @@ https://twitter.com/peckshield/status/1520369315698016256
 https://etherscan.io/tx/0xab486012f21be741c9e674ffda227e30518e8a1e37a5f1d58d0b0d41f6e76530
 
 
-### 20220428 DEUS DAO
+### 20220428 DEUS DAO - Flashloan & Price Oracle Manipulation
 #### Lost: $13 million
 
 Testing
@@ -139,7 +139,7 @@ https://medium.com/@zeedcommunity/the-solution-for-the-yeed-lp-pool-attack-a120c
 
 https://bscscan.com/tx/0x0507476234193a9a5c7ae2c47e4c4b833a7c3923cefc6fd7667b72f3ca3fa83a
 
-### 20220415 Rikkei Finance
+### 20220415 Rikkei Finance - AccessControl & Price Oracle Manipulation
 #### Lost: $1.1 million (2671 BNB)
 
 Testing
@@ -155,7 +155,7 @@ https://rikkeifinance.medium.com/rikkei-finance-incident-investigation-report-b5
 
 https://bscscan.com/tx/0x93a9b022df260f1953420cd3e18789e7d1e095459e36fe2eb534918ed1687492
 
-### 20220412 ElephantMoney 
+### 20220412 ElephantMoney - Flashloan & Price Oracle Manipulation
 #### Lost: $11.2 million (27,416.46 BNB)
 
 Testing
@@ -341,7 +341,7 @@ https://polygonscan.com/tx/0x5a03b9c03eedcb9ec6e70c6841eaa4976a732d050a6218969e3
 
 https://etherscan.io/tx/0x9f14d093a2349de08f02fc0fb018dadb449351d0cdb7d0738ff69cc6fef5f299
 
-### 20210830 Cream Finance
+### 20210830 Cream Finance - Flashloan Attack + Reentrancy 
 #### Lost: $18 million
 
 Testing
@@ -356,7 +356,7 @@ https://etherscan.io/tx/0xa9a1b8ea288eb9ad315088f17f7c7386b9989c95b4d13c81b69d5d
 https://slowmist.medium.com/cream-hacked-analysis-us-130-million-hacked-95c9410320ca
 
 
-### 20210817 XSURGE
+### 20210817 XSURGE - Flashloan Attack + Reentrancy 
 #### Lost: $5 million
 
 Testing
@@ -370,7 +370,7 @@ https://medium.com/@Knownsec_Blockchain_Lab/knownsec-blockchain-lab-comprehensiv
 
 https://bscscan.com/tx/0x8c93d6e5d6b3ec7478b4195123a696dbc82a3441be090e048fe4b33a242ef09d
 
-### 20210308 DODO Flashloan
+### 20210308 DODO - Flashloan Attack 
 #### Lost: $700,000
 Testing
 ```sh
@@ -393,6 +393,22 @@ forge test --contracts ./src/test/Cover_exp.sol --fork-url https://speedy-nodes-
 https://mudit.blog/cover-protocol-hack-analysis-tokens-minted-exploit/
 
 https://slowmist.medium.com/a-brief-analysis-of-the-cover-protocol-hacked-event-700d747b309c
+
+### 20201026 Harvest Finance - Flashloan Attack 
+#### Lost: $33.8 million
+Testing
+```sh
+forge test --contracts ./src/test/HarvestFinance_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 11129513 -vv
+
+```
+#### Link reference
+[https://mudit.blog/cover-protocol-hack-analysis-tokens-minted-exploit/
+
+https://slowmist.medium.com/a-brief-analysis-of-the-cover-protocol-hacked-event-700d747b309c
+
+https://rekt.news/harvest-finance-rekt/
+
+https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877)
 
 ### FlashLoan Testing
 
