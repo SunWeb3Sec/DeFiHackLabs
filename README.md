@@ -46,6 +46,10 @@ https://twitter.com/peckshield/status/1537382891230883841
 
 https://twitter.com/SlowMist_Team/status/1537602909512376321
 
+https://blocksecteam.medium.com/price-oracle-manipulation-attack-on-inverse-finance-a5544218ea91
+
+https://www.certik.com/resources/blog/6LbL57WA3iMNm8zd7q111R-inverse-finance-incident-analysis
+
 https://etherscan.io/tx/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c
 
 ### 20220608 GYMNetwork 
