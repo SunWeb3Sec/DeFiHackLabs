@@ -34,6 +34,18 @@ https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
 
+### 202206016 InverseFinance 
+#### Lost: 53.2445 WBTC and 99,976.29 USDT
+
+Testing
+```sh
+forge test --contracts ./src/test/InverseFinance_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14972418 -vv
+```
+#### Link reference
+https://twitter.com/peckshield/status/1537382891230883841
+
+https://twitter.com/SlowMist_Team/status/1537602909512376321
+
 ### 20220608 GYMNetwork 
 #### Lost: $2.1 million
 
