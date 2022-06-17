@@ -80,7 +80,7 @@ https://optimistic.etherscan.io/tx/0x75a42f240d229518979199f56cd7c82e4fc1f1a20ad
 
 https://optimistic.etherscan.io/tx/0x00a3da68f0f6a69cb067f09c3f7e741a01636cbc27a84c603b468f65271d415b
 
-### 20220606 Discover - Flashloan 
+### 20220606 Discover - Flashloan & Price Oracle Manipulation
 #### Lost: 49 BNB
 
 Testing
@@ -185,7 +185,7 @@ https://medium.com/@Beosin_com/beosin-analysis-of-the-attack-on-gymdefi-e5a23bfd
 
 https://bscscan.com/tx/0xa5b0246f2f8d238bb56c0ddb500b04bbe0c30db650e06a41e00b6a0fff11a7e5
 
-### 20220327 Revest Finance
+### 20220327 Revest Finance - Reentrancy
 #### Lost: $11.2 million 
 
 Testing
@@ -219,7 +219,7 @@ forge test --contracts ./src/test/CompoundTusd_exp.sol --fork-url https://speedy
 #### Link reference
 https://blog.openzeppelin.com/compound-tusd-integration-issue-retrospective/
 
-### 20220321 OneRing Finance 
+### 20220321 OneRing Finance - Flashloan & Price Oracle Manipulation
 #### Lost: $1.45 million
 
 Testing
@@ -232,7 +232,7 @@ https://medium.com/oneringfinance/onering-finance-exploit-post-mortem-after-osha
 https://ftmscan.com/tx/0xca8dd33850e29cf138c8382e17a19e77d7331b57c7a8451648788bbb26a70145
 
 
-### 20220313 Paraluni 
+### 20220313 Paraluni - Flashloan & Reentrancy
 #### Lost: $1.7 million
 
 Testing
@@ -266,7 +266,7 @@ https://medium.com/quillhash/fantom-based-protocol-fantasm-suffers-2-6m-exploit-
 https://etherscan.io/tx/0xacfcaa8e1c482148f9f2d592c78ca7a27934c7333dab31978ed0aef333a28ab6
 
 
-### 20220305 Bacon Protocol 
+### 20220305 Bacon Protocol - Reentrancy  
 #### Lost: $1 million
 
 Testing
@@ -280,7 +280,7 @@ https://etherscan.io/tx/0xacfcaa8e1c482148f9f2d592c78ca7a27934c7333dab31978ed0ae
 
 https://etherscan.io/tx/0x7d2296bcb936aa5e2397ddf8ccba59f54a178c3901666b49291d880369dbcf31
 
-### 20220303 TreasureDAO 
+### 20220303 TreasureDAO - Zero Fee
 #### Lost: $1 million
 
 Testing
@@ -293,7 +293,7 @@ https://slowmist.medium.com/analysis-of-the-treasuredao-zero-fee-exploit-73791f4
 https://arbiscan.io/tx/0x82a5ff772c186fb3f62bf9a8461aeadd8ea0904025c3330a4d247822ff34bc02
 
 
-### 20220118 Multichain (Anyswap)
+### 20220118 Multichain (Anyswap) - Insufficient Token Validation
 #### Lost: $1.4 million
 
 Testing
@@ -308,7 +308,7 @@ https://twitter.com/PeckShieldAlert/status/1483363515411099651
 https://etherscan.io/tx/0xe50ed602bd916fc304d53c4fed236698b71691a95774ff0aeeb74b699c6227f7
 
 
-### 20211221 Visor Finance 
+### 20211221 Visor Finance - Reentrancy
 #### Lost:  $8.2 million
 
 Testing
@@ -323,7 +323,7 @@ https://twitter.com/GammaStrategies/status/1473306777131405314
 https://etherscan.io/tx/0x69272d8c84d67d1da2f6425b339192fa472898dce936f24818fda415c1c1ff3f
 
 
-### 20211130 MonoX Finance
+### 20211130 MonoX Finance - Price Manipulation
 #### Lost: $31 million
 
 Testing
