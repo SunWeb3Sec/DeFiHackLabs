@@ -401,6 +401,12 @@ DODO FlashLoan Testing
 forge test --contracts ./src/test/dodo_flashloan.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 12000000 -vv
 ```
 
+AAVE FlashLoan Testing
+```sh
+forge test --contracts ./src/test/flashloan_aave.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14972418 -vv
+
+```
+
 Balancer FlashLoan Testing
 ```sh
 forge test --contracts ./src/test/flashloan_balancer.t.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14684822 -vv
