@@ -1,9 +1,11 @@
 # DeFi Hacks Reproduce - Foundry
-> Reproduce Defi hack incidents via Foundry.
+**Reproduce Defi hack incidents using Foundry.**
 
-> 25 incidents included.
+25 incidents included.
 
-> This repo is only for the educational purpose.
+This repo is only for the educational purpose.
+
+Let's make Web3 secure!
 
 ## Getting Started
 This is the easiest option for Linux and macOS users.
@@ -402,13 +404,13 @@ forge test --contracts ./src/test/HarvestFinance_exp.sol --fork-url https://spee
 
 ```
 #### Link reference
-[https://mudit.blog/cover-protocol-hack-analysis-tokens-minted-exploit/
+https://mudit.blog/cover-protocol-hack-analysis-tokens-minted-exploit/
 
 https://slowmist.medium.com/a-brief-analysis-of-the-cover-protocol-hacked-event-700d747b309c
 
 https://rekt.news/harvest-finance-rekt/
 
-https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877)
+https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877
 
 ### FlashLoan Testing
 
@@ -443,4 +445,4 @@ UniSwapV2 FlashSwap Testing
 forge test --contracts ./src/test/flashloan_uniswapv2.sol  --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14971460 -vv
 ```
 
-#### Some codes refer to Rivaill and W2Ning repo and are rewrote to the foundry version.
+#### Some codes referred to Rivaill and W2Ning repo and rewrote to the foundry version.
