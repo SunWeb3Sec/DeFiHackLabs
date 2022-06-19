@@ -1,5 +1,5 @@
 # DeFi Hacks Reproduce - Foundry
-**Reproduce Defi hack incidents using Foundry.**
+**Reproduce DeFi hack incidents using Foundry.**
 
 25 incidents included.
 
