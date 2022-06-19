@@ -172,7 +172,7 @@ https://etherscan.io/tx/0xab486012f21be741c9e674ffda227e30518e8a1e37a5f1d58d0b0d
 
 Testing
 ```sh
-forge test --contracts ./src/test/deus_poc.t.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/fantom/mainnet/archive --fork-block-number 37093708 -vv
+forge test --contracts ./src/test/deus_poc.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/fantom/mainnet/archive --fork-block-number 37093708 -vv
 ```
 #### Link reference
 https://twitter.com/peckshield/status/1519531866109317121
