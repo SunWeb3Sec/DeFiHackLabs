@@ -1409,7 +1409,6 @@ interface Surge{
 interface USDT{
     function transfer(address to, uint value) external;
     function balanceOf(address account) external view returns (uint);
-    function approve (address spender, uint256 value) external ;
 }
 interface IMasterChef {
     event Deposit(address indexed user, uint256 indexed pid, uint256 amount);
@@ -3757,44 +3756,30 @@ interface IRouter {
 }
 
 
-interface ILendingPool {
-
-  function flashLoan(
-    address receiverAddress,
-    address[] calldata assets,
-    uint256[] calldata amounts,
-    uint256[] calldata modes,
-    address onBehalfOf,
-    bytes calldata params,
-    uint16 referralCode
-  ) external;
-
+interface IUSDT {
+    function approve(address _spender, uint256 _value) external;
+    function balanceOf(address owner) external view returns (uint);
+    function transfer(address _to, uint256 _value) external;
 }
-interface IAToken{
-    function mintToTreasury(uint256 amount, uint256 index) external;
+
+interface IcurveYSwap {
+    function exchange_underlying(
+        int128 i,
+        int128 j,
+        uint256 dx,
+        uint256 min_dy
+    ) external;
+    // dx is in, dy is out.
+    // 0 is yDAI
+    // 1 is yUSDC
+    // 2 is yUSDT
+    // 3 is yTUSD
+}
+
+interface IHarvestUsdcVault {
+    function deposit(uint256 amountWei) external;
+
+    function withdraw(uint256 numberOfShares) external;
+
     function balanceOf(address account) external view returns (uint256);
-     function approve (address spender, uint256 value) external ;
-}
-interface VyperContract {
-
-    function add_liquidity(uint256[3] calldata amounts, uint256 min_mint_amount) external;
-    function balanceOf(address account) external view returns (uint256);
-    function mint (address account, uint256 value) external ;
-    function approve (address spender, uint256 value) external ;
-    function transferUnderlyingTo(address target, uint256 amount) external returns (uint256);
-    function deposit (uint amounts, address recipient) external returns (uint256);
-    function exchange(address _pool, address _from, address _to, uint256 _amount, uint256 _expected, address _receiver ) external returns (uint256);
-    function remove_liquidity_one_coin(uint256 _token_amount, int128 i, uint256 min_amount) external;
-
-}
-
-
-interface IAggregator {
-    function latestAnswer() external view returns (int256 answer);
-}
-interface CErc20Interface {
-
-   function mint(uint mintAmount) external returns (uint);
-   function balanceOf(address account) external view returns (uint256);
-   function borrow(uint borrowAmount) external returns (uint);
 }
