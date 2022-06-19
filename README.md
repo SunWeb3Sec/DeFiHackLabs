@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-25 incidents included.
+26 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -26,7 +26,60 @@ If everything goes well, you will now have two binaries at your disposal: `forge
 
 Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://www.alchemy.com/) for the mainnet forking.
 
-## Hacks Reproduce
+## List of DeFi Hacks & Exploits
+
+[20220616 InverseFinance](#20220616-inversefinance---flashloan--price-oracle-manipulation)
+
+[20220608 GYMNetwork](#20220608-gymnetwork---accesscontrol)
+
+[20220608 Optimism - Wintermute](#20220608-optimism---wintermute)
+
+[20220606 Discover](#20220606-discover---flashloan--price-oracle-manipulation)
+
+[20220430 Rari Capital/Fei Protocol](#20220430-rari-capitalfei-protocol---flashloan-attack--reentrancy)
+
+[20220428 DEUS DAO](#20220428-deus-dao---flashloan--price-oracle-manipulation)
+
+[20220421 Zeed Finance](#20220421-zeed-finance)
+
+[20220415 Rikkei Finance](#20220415-rikkei-finance---accesscontrol--price-oracle-manipulation)
+
+[20220412 ElephantMoney](#20220412-elephantmoney---flashloan--price-oracle-manipulation)
+
+[20220409 GYMNetwork](#20220409-gymnetwork)
+
+[20220327 Revest Finance](#20220327-revest-finance---reentrancy)
+
+[20220326 Auctus](#20220326-auctus)
+
+[20220322 CompoundTUSDSweepTokenBypass](#20220322-compoundtusdsweeptokenbypass)
+
+[20220321 OneRing Finance](#20220321-onering-finance---flashloan--price-oracle-manipulation)
+
+[20220313 Paraluni](#20220313-paraluni---flashloan--reentrancy)
+
+[20220309 Fantasm Finance](#20220309-fantasm-finance)
+
+[20220305 Bacon Protocol](#20220305-bacon-protocol---reentrancy)
+
+[20220303 TreasureDAO](#20220303-treasuredao---zero-fee)
+
+[20220118 Multichain (Anyswap)](#20220118-multichain-anyswap---insufficient-token-validation)
+
+[20211221 Visor Finance](#20211221-visor-finance---reentrancy)
+
+[20211130 MonoX Finance](#20211130-monox-finance---price-manipulation)
+
+[20210830 Cream Finance](#20210830-cream-finance---flashloan-attack--reentrancy)
+
+[20210817 XSURGE](#20210817-xsurge---flashloan-attack--reentrancy)
+
+[20210308 DODO](#20210308-dodo---flashloan-attack)
+
+[20201229 Cover Protocol](#20201229-cover-protocol)
+
+[20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
+
 ### Transaction debugging tools
 https://dashboard.tenderly.co/explorer
 
@@ -36,7 +89,7 @@ https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
 
-### 202206016 InverseFinance - Flashloan & Price Oracle Manipulation
+### 20220616 InverseFinance - Flashloan & Price Oracle Manipulation
 #### Lost: 53.2445 WBTC and 99,976.29 USDT
 
 Testing
