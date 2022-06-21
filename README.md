@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-26 incidents included.
+27 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -41,6 +41,8 @@ Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://
 [20220428 DEUS DAO](#20220428-deus-dao---flashloan--price-oracle-manipulation)
 
 [20220421 Zeed Finance](#20220421-zeed-finance)
+
+[20220416 BeanstalkFarms - DAO + Flashloan](#20220416-beanstalkfarms---dao--flashloan)
 
 [20220415 Rikkei Finance](#20220415-rikkei-finance---accesscontrol--price-oracle-manipulation)
 
@@ -193,6 +195,22 @@ https://www.cryptotimes.io/hacker-leaves-1m-to-self-destruct-after-zeed-protocol
 https://medium.com/@zeedcommunity/the-solution-for-the-yeed-lp-pool-attack-a120c53948cd
 
 https://bscscan.com/tx/0x0507476234193a9a5c7ae2c47e4c4b833a7c3923cefc6fd7667b72f3ca3fa83a
+
+### 20220416 BeanstalkFarms - DAO + Flashloan
+#### Lost: $182 million
+
+Testing
+```sh
+forge test --contracts ./src/test/Beanstalk_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive  --fork-block-number 14595905 -vv
+```
+#### Link reference
+https://medium.com/uno-re/beanstalk-farms-hacked-total-damage-is-182-million-b699dd3e5c8
+
+https://twitter.com/peckshield/status/1515680335769456640
+
+https://etherscan.io/tx/0x68cdec0ac76454c3b0f7af0b8a3895db00adf6daaf3b50a99716858c4fa54c6f
+
+https://etherscan.io/tx/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7
 
 ### 20220415 Rikkei Finance - AccessControl & Price Oracle Manipulation
 #### Lost: $1.1 million (2671 BNB)
