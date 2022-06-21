@@ -40,6 +40,8 @@ Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://
 
 [20220428 DEUS DAO](#20220428-deus-dao---flashloan--price-oracle-manipulation)
 
+[20220424 Wiener DOGE - Flashloan](#20220424-wiener-doge---flashloan)
+
 [20220421 Zeed Finance](#20220421-zeed-finance)
 
 [20220416 BeanstalkFarms - DAO + Flashloan](#20220416-beanstalkfarms---dao--flashloan)
@@ -168,6 +170,21 @@ https://twitter.com/peckshield/status/1520369315698016256
 
 https://etherscan.io/tx/0xab486012f21be741c9e674ffda227e30518e8a1e37a5f1d58d0b0d41f6e76530
 
+
+### 20220424 Wiener DOGE - Flashloan
+#### Lost: 78 BNB
+
+Testing
+```sh
+forge test --contracts ./src/test/Wdoge_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number  17248705 -vvv
+
+```
+#### Link reference
+https://coinyuppie.com/four-combinations-of-hackers-analysis-of-attacks-on-wiener-doge-last-kilometer-medamon-and-pidao-projects/
+
+https://twitter.com/solid_group_1/status/1519034573354676224
+
+https://bscscan.com/tx/0x4f2005e3815c15d1a9abd8588dd1464769a00414a6b7adcbfd75a5331d378e1d
 
 ### 20220428 DEUS DAO - Flashloan & Price Oracle Manipulation
 #### Lost: $13 million
