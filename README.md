@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-30 incidents included.
+31 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -27,6 +27,8 @@ If everything goes well, you will now have two binaries at your disposal: `forge
 Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://www.alchemy.com/) for the mainnet forking.
 
 ## List of DeFi Hacks & Exploits
+
+[20220618 SNOOD](#20220618-SNOOD---Miscalculation-on-_spendAllowance)
 
 [20220616 InverseFinance](#20220616-inversefinance---flashloan--price-oracle-manipulation)
 
@@ -96,6 +98,22 @@ https://ethtx.info/
 https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
+
+### 20220618 SNOOD - Miscalculation on _spendAllowance
+
+#### Lost: 104 ETH
+
+On `_spendAllowance` function they use `_getStandardAmount` and should be `_getReflectedAmount`
+
+Testing
+```sh
+forge test --contracts ./src/test/Snood_poc.t.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14983660 -vv
+```
+
+#### Link reference
+https://ethereum.stackexchange.com/questions/130472/attack-on-erc-777-smart-contract-and-uniswapv2pair-resulting-in-104-eth-liquidit
+https://etherscan.io/tx/0x9a6227ef97d7ce75732645bd604ef128bb5dfbc1bfbe0966ad1cd2870d45a20e
+https://ethtx.info/mainnet/0x9a6227ef97d7ce75732645bd604ef128bb5dfbc1bfbe0966ad1cd2870d45a20e/
 
 ### 20220616 InverseFinance - Flashloan & Price Oracle Manipulation
 #### Lost: 53.2445 WBTC and 99,976.29 USDT
