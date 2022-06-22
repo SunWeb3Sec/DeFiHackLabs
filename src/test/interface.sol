@@ -4191,3 +4191,15 @@ interface INOVO {
     function balanceOf(address account) external view returns (uint);
     function transferFrom(address from, address to, uint value) external returns (bool);
 }
+
+interface IBuildFinance {
+    function propose(address _target, uint _value, bytes memory _data)external returns (uint) ;
+    function vote(uint _proposalId, bool _support)  external;
+    function execute(uint _proposalId, address _target, uint _value, bytes memory _data)
+    external
+    payable
+    returns (bytes memory);
+    function mint(address account, uint amount) external;
+    function proposalCount() external returns (int);
+    function state(uint proposalId)  external  returns (uint);
+}
