@@ -36,7 +36,7 @@ Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://
 
 [20220606 Discover](#20220606-discover---flashloan--price-oracle-manipulation)
 
-[20220529 NOVO Protocol](#20220529-NOVO-Protocol---flashloan--price-oracle-manipulation)
+[20220529 NOVO Protocol](#20220529-novo-protocol---flashloan--price-oracle-manipulation)
 
 [20220430 Rari Capital/Fei Protocol](#20220430-rari-capitalfei-protocol---flashloan-attack--reentrancy)
 
@@ -69,6 +69,8 @@ Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://
 [20220305 Bacon Protocol](#20220305-bacon-protocol---reentrancy)
 
 [20220303 TreasureDAO](#20220303-treasuredao---zero-fee)
+
+[20220214 BuildFinance - DAO](#20220214-buildfinance---dao)
 
 [20220118 Multichain (Anyswap)](#20220118-multichain-anyswap---insufficient-token-validation)
 
@@ -399,6 +401,19 @@ https://slowmist.medium.com/analysis-of-the-treasuredao-zero-fee-exploit-73791f4
 
 https://arbiscan.io/tx/0x82a5ff772c186fb3f62bf9a8461aeadd8ea0904025c3330a4d247822ff34bc02
 
+### 20220214 BuildFinance - DAO
+#### Lost: $470k
+
+Testing
+```sh
+forge test --contracts ./src/test/BuildF_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[AKPKEY]/eth/mainnet/archive  --fork-block-number 14235712 -vv
+```
+#### Link reference
+https://twitter.com/finance_build/status/1493223190071554049
+
+https://www.cryptotimes.io/build-finance-suffered-hostile-governance-takeover-lost-470k/
+
+https://etherscan.io/tx/0x544e5849b71b98393f41d641683586d0b519c46a2eeac9bcb351917f40258a85
 
 ### 20220118 Multichain (Anyswap) - Insufficient Token Validation
 #### Lost: $1.4 million
