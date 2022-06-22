@@ -4185,3 +4185,9 @@ library TransferHelper {
         require(success, 'TransferHelper::safeTransferETH: ETH transfer failed');
     }
 }
+
+interface INOVO {
+    function approve(address spender, uint value) external returns (bool);
+    function balanceOf(address account) external view returns (uint);
+    function transferFrom(address from, address to, uint value) external returns (bool);
+}

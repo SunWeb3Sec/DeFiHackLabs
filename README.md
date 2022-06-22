@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-28 incidents included.
+29 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -35,6 +35,8 @@ Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://
 [20220608 Optimism - Wintermute](#20220608-optimism---wintermute)
 
 [20220606 Discover](#20220606-discover---flashloan--price-oracle-manipulation)
+
+[20220529 NOVO Protocol](#20220529-NOVO-Protocol---flashloan--price-oracle-manipulation)
 
 [20220430 Rari Capital/Fei Protocol](#20220430-rari-capitalfei-protocol---flashloan-attack--reentrancy)
 
@@ -154,6 +156,21 @@ https://www.anquanke.com/post/id/274003
 https://bscscan.com/tx/0x8a33a1f8c7af372a9c81ede9e442114f0aabb537e5c3a22c0fd7231c4820f1e9
 
 https://bscscan.com/tx/0x1dd4989052f69cd388f4dfbeb1690a3f3a323ebb73df816e5ef2466dc98fa4a4
+
+
+### 20220529 NOVO Protocol - Flashloan & Price Oracle Manipulation
+#### Lost: 279 BNB
+
+Testing
+```sh
+forge test --contracts ./src/test/Novo_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 18225002 -vvv
+```
+#### Link reference
+https://www.panewslab.com/zh_hk/articledetails/f40t9xb4.html
+
+https://bscscan.com/tx/0xc346adf14e5082e6df5aeae650f3d7f606d7e08247c2b856510766b4dfcdc57f
+
+https://bscscan.com/address/0xa0787daad6062349f63b7c228cbfd5d8a3db08f1#code
 
 
 ### 20220430 Rari Capital/Fei Protocol - Flashloan Attack + Reentrancy 
