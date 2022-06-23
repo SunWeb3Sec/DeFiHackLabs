@@ -28,7 +28,7 @@ Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://
 
 ## List of DeFi Hacks & Exploits
 
-[20220618 SNOOD](#20220618-SNOOD---Miscalculation-on-_spendAllowance)
+[20220618 SNOOD](#20220618-snood---miscalculation-on-_spendallowance)
 
 [20220616 InverseFinance](#20220616-inversefinance---flashloan--price-oracle-manipulation)
 
@@ -112,7 +112,9 @@ forge test --contracts ./src/test/Snood_poc.t.sol --fork-url https://speedy-node
 
 #### Link reference
 https://ethereum.stackexchange.com/questions/130472/attack-on-erc-777-smart-contract-and-uniswapv2pair-resulting-in-104-eth-liquidit
+
 https://etherscan.io/tx/0x9a6227ef97d7ce75732645bd604ef128bb5dfbc1bfbe0966ad1cd2870d45a20e
+
 https://ethtx.info/mainnet/0x9a6227ef97d7ce75732645bd604ef128bb5dfbc1bfbe0966ad1cd2870d45a20e/
 
 ### 20220616 InverseFinance - Flashloan & Price Oracle Manipulation
