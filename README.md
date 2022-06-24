@@ -552,6 +552,18 @@ https://rekt.news/harvest-finance-rekt/
 
 https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877
 
+### Bug Reproduce
+### 20220623 Sense Finance - Access Control
+
+Missing access control in onSwap()
+#### Bounty: $50,000
+Testing
+```sh
+forge test --contracts ./src/test/SenseFinance_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive  --fork-block-number 15017009 -vv 
+```
+#### Link reference
+https://medium.com/immunefi/sense-finance-access-control-issue-bugfix-review-32e0c806b1a0
+
 ### FlashLoan Testing
 
 DODO FlashLoan Testing
