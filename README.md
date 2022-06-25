@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-31 incidents included.
+32 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -79,6 +79,8 @@ Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
 [20211130 MonoX Finance](#20211130-monox-finance---price-manipulation)
+
+[20210916 SushiSwap Miso](#20210916-sushiswap-miso)
 
 [20210830 Cream Finance](#20210830-cream-finance---flashloan-attack--reentrancy)
 
@@ -482,6 +484,19 @@ https://www.tuoniaox.com/news/p-521076.html
 https://polygonscan.com/tx/0x5a03b9c03eedcb9ec6e70c6841eaa4976a732d050a6218969e39483bb3004d5d
 
 https://etherscan.io/tx/0x9f14d093a2349de08f02fc0fb018dadb449351d0cdb7d0738ff69cc6fef5f299
+
+### 20210916 SushiSwap Miso
+#### Lost: All funds returned
+
+Testing
+```sh
+forge test --contracts ./src/test/sushimiso_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 13038771 -vv
+```
+#### Link reference
+https://www.paradigm.xyz/2021/08/two-rights-might-make-a-wrong
+
+https://etherscan.io/tx/0x78d6355703507f88f2090eb780d245b0ab26bf470eabdb004761cedf3b1cda44
+
 
 ### 20210830 Cream Finance - Flashloan Attack + Reentrancy 
 #### Lost: $18 million
