@@ -490,7 +490,7 @@ https://etherscan.io/tx/0x9f14d093a2349de08f02fc0fb018dadb449351d0cdb7d0738ff69c
 
 Testing
 ```sh
-forge test --contracts ./src/test/sushimiso_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 13038771 -vv
+forge test --contracts ./src/test/Sushimiso_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 13038771 -vv
 ```
 #### Link reference
 https://www.paradigm.xyz/2021/08/two-rights-might-make-a-wrong
