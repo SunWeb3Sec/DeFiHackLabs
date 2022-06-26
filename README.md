@@ -8,23 +8,9 @@ This repo is only for the educational purpose.
 Let's make Web3 secure!
 
 ## Getting Started
-This is the easiest option for Linux and macOS users.
 
-Open your terminal and type in the following command:
-
-```sh
-curl -L https://foundry.paradigm.xyz | bash
-```
-
-This will download `foundryup`. Then install Foundry by running:
-
-```sh
-foundryup
-```
-
-If everything goes well, you will now have two binaries at your disposal: `forge` and `cast`.
-
-Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://www.alchemy.com/) for the mainnet forking.
+* Follow the [instructions](https://book.getfoundry.sh/getting-started/installation.html) to install [Foundry](https://github.com/foundry-rs/foundry).
+* Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://www.alchemy.com/) for the mainnet forking.
 
 ## List of DeFi Hacks & Exploits
 
