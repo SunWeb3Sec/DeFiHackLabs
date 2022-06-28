@@ -4204,3 +4204,17 @@ interface IBuildFinance {
     function proposalCount() external returns (int);
     function state(uint proposalId)  external  returns (uint);
 }
+
+interface MultiSig {
+    function confirmTransaction(uint256 transactionId) external;
+    function submitTransaction(
+        address destination,
+        uint256 value,
+        bytes memory data
+    ) external returns (uint256 transactionId);
+    function getConfirmations(uint256 transactionId)
+        external
+        view
+        returns (address[] memory _confirmations);
+    function required() external view returns (uint256);
+}
