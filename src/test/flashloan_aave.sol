@@ -9,7 +9,6 @@ contract ContractTest is DSTest {
 
     IERC20 WBTC = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599);
     USDT usdt = USDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
-    IAToken awbtc = IAToken(0x9ff58f4fFB29fA2266Ab25e75e2A8b3503311656);
 
     ILendingPool  aaveLendingPool   = ILendingPool(0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9);
 
