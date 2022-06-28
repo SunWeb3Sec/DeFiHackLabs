@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-34 incidents included.
+35 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -15,6 +15,8 @@ Let's make Web3 secure!
 ## List of DeFi Hacks & Exploits
 
 [20220626 XCarnival](#20220626-xcarnival---infinite-number-of-loans)
+
+[20220624 Harmony's Horizon Bridge](#20220624-harmonys-horizon-bridge)
 
 [20220618 SNOOD](#20220618-snood---miscalculation-on-_spendallowance)
 
@@ -104,6 +106,21 @@ https://twitter.com/XCarnival_Lab/status/1541226298399653888
 https://twitter.com/peckshield/status/1541047171453034501
 
 https://twitter.com/BlockSecTeam/status/1541070850505723905
+
+### 20220624 Harmony's Horizon Bridge
+#### Lost: $100 million
+Private key compromised case of Multisig wallet
+
+Testing
+```sh
+forge test --contracts ./src/test/Harmony_multisig.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive  --fork-block-number 15012670 -vvvv
+```
+#### Link reference
+https://twitter.com/harmonyprotocol/status/1540110924400324608
+
+https://twitter.com/0xIvo/status/1540165571681128448
+
+https://twitter.com/1nf0s3cpt/status/1540139812715261952
 
 ### 20220618 SNOOD - Miscalculation on _spendAllowance
 
