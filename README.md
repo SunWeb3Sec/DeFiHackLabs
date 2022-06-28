@@ -80,7 +80,7 @@ Let's make Web3 secure!
 
 [20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
 
-[20171106 Parity kill hack](#20171106-parity-kill-hack)
+[20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
 
 ### Transaction debugging tools
 https://dashboard.tenderly.co/explorer
@@ -571,7 +571,7 @@ https://rekt.news/harvest-finance-rekt/
 
 https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877
 
-### 20171106 Parity kill hack
+### 20171106 Parity - 'Accidentally Killed It'
 #### Lost: 514k ETH
 Testing
 ```sh
