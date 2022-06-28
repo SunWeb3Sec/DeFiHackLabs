@@ -80,6 +80,8 @@ Let's make Web3 secure!
 
 [20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
 
+[20171106 Parity kill hack](#20171106-parity-kill-hack)
+
 ### Transaction debugging tools
 https://dashboard.tenderly.co/explorer
 
@@ -568,6 +570,19 @@ https://slowmist.medium.com/a-brief-analysis-of-the-cover-protocol-hacked-event-
 https://rekt.news/harvest-finance-rekt/
 
 https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877
+
+### 20171106 Parity kill hack
+#### Lost: 514k ETH
+Testing
+```sh
+forge test --contracts ./src/test/Parity_kill.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive  --fork-block-number 4501735 -vvvv
+```
+#### Link reference
+https://elementus.io/blog/which-icos-are-affected-by-the-parity-wallet-bug/
+
+https://etherscan.io/tx/0x05f71e1b2cb4f03e547739db15d080fd30c989eda04d37ce6264c5686e0722c9
+
+https://etherscan.io/tx/0x47f7cff7a5e671884629c93b368cb18f58a993f4b19c2a53a8662e3f1482f690
 
 ### Bug Reproduce
 ### 20220623 Sense Finance - Access Control
