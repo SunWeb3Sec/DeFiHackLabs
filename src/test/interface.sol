@@ -9,6 +9,7 @@ interface CheatCodes {
     function prank(address) external;
     function warp(uint256) external;
     function startPrank(address) external;
+    function startPrank(address msgsender, address txorigin) external;
     function stopPrank() external;
     function deal(address who, uint256 newBalance) external;
     function roll(uint256) external;
