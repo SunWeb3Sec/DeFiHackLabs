@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-32 incidents included.
+33 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -13,6 +13,8 @@ Let's make Web3 secure!
 * Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://www.alchemy.com/) for the mainnet forking.
 
 ## List of DeFi Hacks & Exploits
+
+[20220626 XCarnival](#20220626-xcarnival---infinite-number-of-loans)
 
 [20220618 SNOOD](#20220618-snood---miscalculation-on-_spendallowance)
 
@@ -86,6 +88,20 @@ https://ethtx.info/
 https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
+
+### 20220626 XCarnival - Infinite Number of Loans
+#### Lost: 3087 ETH (~$3.87M)
+
+Testing
+```sh
+forge test --contracts ./src/test/XCarnival.exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 15028846 -vv
+```
+#### Link reference
+https://twitter.com/XCarnival_Lab/status/1541226298399653888
+
+https://twitter.com/peckshield/status/1541047171453034501
+
+https://twitter.com/BlockSecTeam/status/1541070850505723905
 
 ### 20220618 SNOOD - Miscalculation on _spendAllowance
 
