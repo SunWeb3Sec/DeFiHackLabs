@@ -180,7 +180,7 @@ Testing
 forge test --contracts ./src/test/Optimism_exp.sol --fork-url https://opt-mainnet.g.alchemy.com/v2/[APIKEY]/ --fork-block-number 10607735 -vv
 ```
 #### Link reference
-https://blockworks.co/20m-tokens-lost-as-market-maker-wintermute-takes-blame/
+https://inspexco.medium.com/how-20-million-op-was-stolen-from-the-multisig-wallet-not-yet-owned-by-wintermute-3f6c75db740a
 
 https://optimistic.etherscan.io/tx/0x75a42f240d229518979199f56cd7c82e4fc1f1a20ad9a4864c635354b4a34261
 
