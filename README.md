@@ -96,7 +96,9 @@ https://versatile.blocksecteam.com/tx
 https://github.com/dapphub/dapptools
 
 ### 20220701 Quixotic - Optimism NFT Marketplace
-#### Lost: $100 K
+#### Lost: $100K
+fillSellOrder function only check seller signature.
+
 Testing
 ```sh
 forge test --contracts ./src/test/Quixotic_exp.sol --fork-url https://opt-mainnet.g.alchemy.com/v2/[APIKEY]/  --fork-block-number 13591383 -vv
