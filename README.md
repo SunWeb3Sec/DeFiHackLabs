@@ -14,6 +14,8 @@ Let's make Web3 secure!
 
 ## List of DeFi Hacks & Exploits
 
+[20220701 Quixotic - Optimism NFT Marketplace](20220701-quixotic---optimism-nft-marketplace)
+
 [20220626 XCarnival](#20220626-xcarnival---infinite-number-of-loans)
 
 [20220624 Harmony's Horizon Bridge](#20220624-harmonys-horizon-bridge)
@@ -92,6 +94,18 @@ https://ethtx.info/
 https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
+
+### 20220701 Quixotic - Optimism NFT Marketplace
+#### Lost: $100 K
+
+Testing
+```sh
+forge test --contracts ./src/test/Quixotic_exp.sol --fork-url https://opt-mainnet.g.alchemy.com/v2/[APIKEY]/  --fork-block-number 13591383 -vv
+```
+#### Link reference
+https://twitter.com/1nf0s3cpt/status/1542808565349777408
+
+https://twitter.com/SlowMist_Team/status/1542795627603857409
 
 ### 20220626 XCarnival - Infinite Number of Loans
 #### Lost: 3087 ETH (~$3.87M)
