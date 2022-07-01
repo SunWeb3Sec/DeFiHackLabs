@@ -14,7 +14,7 @@ Let's make Web3 secure!
 
 ## List of DeFi Hacks & Exploits
 
-[20220701 Quixotic - Optimism NFT Marketplace](20220701-quixotic---optimism-nft-marketplace)
+[20220701 Quixotic - Optimism NFT Marketplace](#20220701-quixotic---optimism-nft-marketplace)
 
 [20220626 XCarnival](#20220626-xcarnival---infinite-number-of-loans)
 
