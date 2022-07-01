@@ -97,7 +97,6 @@ https://github.com/dapphub/dapptools
 
 ### 20220701 Quixotic - Optimism NFT Marketplace
 #### Lost: $100 K
-
 Testing
 ```sh
 forge test --contracts ./src/test/Quixotic_exp.sol --fork-url https://opt-mainnet.g.alchemy.com/v2/[APIKEY]/  --fork-block-number 13591383 -vv
@@ -106,6 +105,8 @@ forge test --contracts ./src/test/Quixotic_exp.sol --fork-url https://opt-mainne
 https://twitter.com/1nf0s3cpt/status/1542808565349777408
 
 https://twitter.com/SlowMist_Team/status/1542795627603857409
+
+https://optimistic.etherscan.io/tx/0x5dc519726e1236eb846271f6699e03cdd1a8fd593a2900c71cd2aabbdb7c92e6
 
 ### 20220626 XCarnival - Infinite Number of Loans
 #### Lost: 3087 ETH (~$3.87M)
