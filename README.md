@@ -97,7 +97,9 @@ https://github.com/dapphub/dapptools
 
 ### 20220701 Quixotic - Optimism NFT Marketplace
 #### Lost: $100K
-fillSellOrder function only check seller signature.
+fillSellOrder function only check seller signature. 
+
+ECDSA signature combined with v r s, if recoveredAddress == sellOrder.seller; sellorder execute.
 
 Testing
 ```sh
