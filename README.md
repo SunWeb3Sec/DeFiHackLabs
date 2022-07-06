@@ -14,6 +14,8 @@ Let's make Web3 secure!
 
 ## List of DeFi Hacks & Exploits
 
+[20220706 FlippazOne NFT](#20220706-flippazone-nft----accesscontrol)
+
 [20220701 Quixotic - Optimism NFT Marketplace](#20220701-quixotic---optimism-nft-marketplace)
 
 [20220626 XCarnival](#20220626-xcarnival---infinite-number-of-loans)
@@ -95,6 +97,18 @@ https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
 
+### 20220706 FlippazOne NFT -  AccessControl
+
+The ownerWithdrawAllTo() without onlyOwner can call it.
+
+Testing
+```sh
+forge test --contracts ./src/test/FlippazOne.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 15083765 -vvvv
+```
+#### Link reference
+https://twitter.com/bertcmiller/status/1544496577338826752
+
+https://etherscan.io/tx/0x8bded20c1db5a1d5f595b15e682a95ce11d3c895d6031147fa49c4ffa5729a30
 ### 20220701 Quixotic - Optimism NFT Marketplace
 #### Lost: $100K
 fillSellOrder function only check seller signature. 
