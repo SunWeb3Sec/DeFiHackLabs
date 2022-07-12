@@ -10,7 +10,6 @@ Let's make Web3 secure!
 ## Getting Started
 
 * Follow the [instructions](https://book.getfoundry.sh/getting-started/installation.html) to install [Foundry](https://github.com/foundry-rs/foundry).
-* Create an account on [moralis.io](https://moralis.io/) or [alchemy.com](https://www.alchemy.com/) for the mainnet forking.
 
 ## List of DeFi Hacks & Exploits
 
@@ -103,7 +102,7 @@ The ownerWithdrawAllTo() without onlyOwner can call it.
 
 Testing
 ```sh
-forge test --contracts ./src/test/FlippazOne.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 15083765 -vvvv
+forge test --contracts ./src/test/FlippazOne.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 15083765 -vvvv
 ```
 #### Link reference
 https://twitter.com/bertcmiller/status/1544496577338826752
@@ -117,7 +116,7 @@ ECDSA signature combined with v r s, if recoveredAddress == sellOrder.seller; se
 
 Testing
 ```sh
-forge test --contracts ./src/test/Quixotic_exp.sol --fork-url https://opt-mainnet.g.alchemy.com/v2/[APIKEY]/  --fork-block-number 13591383 -vv
+forge test --contracts ./src/test/Quixotic_exp.sol --fork-url https://rpc.ankr.com/optimism  --fork-block-number 13591383 -vv
 ```
 #### Link reference
 https://twitter.com/1nf0s3cpt/status/1542808565349777408
@@ -131,7 +130,7 @@ https://optimistic.etherscan.io/tx/0x5dc519726e1236eb846271f6699e03cdd1a8fd593a2
 
 Testing
 ```sh
-forge test --contracts ./src/test/XCarnival.exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 15028846 -vv
+forge test --contracts ./src/test/XCarnival.exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 15028846 -vv
 ```
 #### Link reference
 https://twitter.com/XCarnival_Lab/status/1541226298399653888
@@ -146,7 +145,7 @@ Private key compromised case of Multisig wallet
 
 Testing
 ```sh
-forge test --contracts ./src/test/Harmony_multisig.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive  --fork-block-number 15012670 -vvvv
+forge test --contracts ./src/test/Harmony_multisig.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 15012670 -vvvv
 ```
 #### Link reference
 https://twitter.com/harmonyprotocol/status/1540110924400324608
@@ -163,7 +162,7 @@ On `_spendAllowance` function they use `_getStandardAmount` and should be `_getR
 
 Testing
 ```sh
-forge test --contracts ./src/test/Snood_poc.t.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14983660 -vv
+forge test --contracts ./src/test/Snood_poc.t.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 14983660 -vv
 ```
 
 #### Link reference
@@ -178,7 +177,7 @@ https://ethtx.info/mainnet/0x9a6227ef97d7ce75732645bd604ef128bb5dfbc1bfbe0966ad1
 
 Testing
 ```sh
-forge test --contracts ./src/test/InverseFinance_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14972418 -vv
+forge test --contracts ./src/test/InverseFinance_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 14972418 -vv
 ```
 #### Link reference
 https://twitter.com/peckshield/status/1537382891230883841
@@ -196,7 +195,7 @@ https://etherscan.io/tx/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255
 
 Testing
 ```sh
-forge test --contracts ./src/test/Gym_2_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 18501049 -vv
+forge test --contracts ./src/test/Gym_2_exp.sol --fork-url https://rpc.ankr.com/bsc --fork-block-number 18501049 -vv
 ```
 #### Link reference
 https://twitter.com/peckshield/status/1534423219607719936
@@ -210,7 +209,7 @@ https://www.jinse.com/news/blockchain/1658455.html
 
 Testing
 ```sh
-forge test --contracts ./src/test/Optimism_exp.sol --fork-url https://opt-mainnet.g.alchemy.com/v2/[APIKEY]/ --fork-block-number 10607735 -vv
+forge test --contracts ./src/test/Optimism_exp.sol --fork-url https://rpc.ankr.com/optimism --fork-block-number 10607735 -vv
 ```
 #### Link reference
 https://inspexco.medium.com/how-20-million-op-was-stolen-from-the-multisig-wallet-not-yet-owned-by-wintermute-3f6c75db740a
@@ -224,7 +223,7 @@ https://optimistic.etherscan.io/tx/0x00a3da68f0f6a69cb067f09c3f7e741a01636cbc27a
 
 Testing
 ```sh
-forge test --contracts ./src/test/Discover_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 18446845  -vv
+forge test --contracts ./src/test/Discover_exp.sol --fork-url https://rpc.ankr.com/bsc --fork-block-number 18446845  -vv
 ```
 #### Link reference
 https://www.twitter.com/BeosinAlert/status/1533734518623899648
@@ -241,7 +240,7 @@ https://bscscan.com/tx/0x1dd4989052f69cd388f4dfbeb1690a3f3a323ebb73df816e5ef2466
 
 Testing
 ```sh
-forge test --contracts ./src/test/Novo_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 18225002 -vvv
+forge test --contracts ./src/test/Novo_exp.sol --fork-url https://rpc.ankr.com/bsc --fork-block-number 18225002 -vvv
 ```
 #### Link reference
 https://www.panewslab.com/zh_hk/articledetails/f40t9xb4.html
@@ -256,7 +255,7 @@ https://bscscan.com/address/0xa0787daad6062349f63b7c228cbfd5d8a3db08f1#code
 
 Testing
 ```sh
-forge test --contracts ./src/test/Rari_exp.t.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14684813 -vv
+forge test --contracts ./src/test/Rari_exp.t.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 14684813 -vv
 ```
 #### Link reference
 https://certik.medium.com/fei-protocol-incident-analysis-8527440696cc
@@ -271,7 +270,7 @@ https://etherscan.io/tx/0xab486012f21be741c9e674ffda227e30518e8a1e37a5f1d58d0b0d
 
 Testing
 ```sh
-forge test --contracts ./src/test/Wdoge_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number  17248705 -vvv
+forge test --contracts ./src/test/Wdoge_exp.sol --fork-url https://rpc.ankr.com/bsc --fork-block-number  17248705 -vvv
 
 ```
 #### Link reference
@@ -286,7 +285,7 @@ https://bscscan.com/tx/0x4f2005e3815c15d1a9abd8588dd1464769a00414a6b7adcbfd75a53
 
 Testing
 ```sh
-forge test --contracts ./src/test/deus_poc.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/fantom/mainnet/archive --fork-block-number 37093708 -vv
+forge test --contracts ./src/test/deus_poc.sol --fork-url https://rpc.ankr.com/fantom --fork-block-number 37093708 -vv
 ```
 #### Link reference
 https://twitter.com/peckshield/status/1519531866109317121
@@ -299,7 +298,7 @@ https://ftmscan.com/tx/0xe374495036fac18aa5b1a497a17e70f256c4d3d416dd1408c026f3f
 
 Testing
 ```sh
-forge test --contracts ./src/test/Zeed_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 17132514 -vv
+forge test --contracts ./src/test/Zeed_exp.sol --fork-url https://rpc.ankr.com/bsc --fork-block-number 17132514 -vv
 ```
 #### Link reference
 https://www.cryptotimes.io/hacker-leaves-1m-to-self-destruct-after-zeed-protocol-exploit/
@@ -313,7 +312,7 @@ https://bscscan.com/tx/0x0507476234193a9a5c7ae2c47e4c4b833a7c3923cefc6fd7667b72f
 
 Testing
 ```sh
-forge test --contracts ./src/test/Beanstalk_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive  --fork-block-number 14595905 -vv
+forge test --contracts ./src/test/Beanstalk_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 14595905 -vv
 ```
 #### Link reference
 https://medium.com/uno-re/beanstalk-farms-hacked-total-damage-is-182-million-b699dd3e5c8
@@ -329,7 +328,7 @@ https://etherscan.io/tx/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa731
 
 Testing
 ```sh
-forge test --contracts ./src/test/Rikkei_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 16956474 -vv
+forge test --contracts ./src/test/Rikkei_exp.sol --fork-url https://rpc.ankr.com/bsc --fork-block-number 16956474 -vv
 ```
 #### Link reference
 https://blockmagnates.com/rikkei-finance-hack/
@@ -345,7 +344,7 @@ https://bscscan.com/tx/0x93a9b022df260f1953420cd3e18789e7d1e095459e36fe2eb534918
 
 Testing
 ```sh
-forge test --contracts ./src/test/Elephant_Money_poc.t.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 16886438 -vv
+forge test --contracts ./src/test/Elephant_Money_poc.t.sol --fork-url https://rpc.ankr.com/bsc --fork-block-number 16886438 -vv
 ```
 #### Link reference
 https://medium.com/elephant-money/reserve-exploit-52fd36ccc7e8
@@ -361,7 +360,7 @@ https://bscscan.com/tx/0xec317deb2f3efdc1dbf7ed5d3902cdf2c33ae512151646383a8cf8c
 
 Testing
 ```sh
-forge test --contracts ./src/test/Gym_1_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 16798806 -vv
+forge test --contracts ./src/test/Gym_1_exp.sol --fork-url https://rpc.ankr.com/bsc --fork-block-number 16798806 -vv
 ```
 #### Link reference
 https://twitter.com/BlockSecTeam/status/1512832398643265537
@@ -375,7 +374,7 @@ https://bscscan.com/tx/0xa5b0246f2f8d238bb56c0ddb500b04bbe0c30db650e06a41e00b6a0
 
 Testing
 ```sh
-forge test --contracts ./src/test/Revest_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14465356 -vv
+forge test --contracts ./src/test/Revest_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 14465356 -vv
 ```
 #### Link reference
 https://blocksecteam.medium.com/revest-finance-vulnerabilities-more-than-re-entrancy-1609957b742f
@@ -387,7 +386,7 @@ https://etherscan.io/tx/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846
 
 Testing
 ```sh
-forge test --contracts ./src/test/Auctus_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14460635 -vv
+forge test --contracts ./src/test/Auctus_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 14460635 -vv
 ```
 #### Link reference
 https://twitter.com/AuctusOptions/status/1508647849663291398?cxt=HHwWjICzpbzO5e8pAAAA
@@ -399,7 +398,7 @@ https://etherscan.io/tx/0x2e7d7e7a6eb157b98974c8687fbd848d0158d37edc1302ea08ee5d
 
 Testing
 ```sh
-forge test --contracts ./src/test/CompoundTusd_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14266479 -vv
+forge test --contracts ./src/test/CompoundTusd_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 14266479 -vv
 ```
 #### Link reference
 https://blog.openzeppelin.com/compound-tusd-integration-issue-retrospective/
@@ -409,7 +408,7 @@ https://blog.openzeppelin.com/compound-tusd-integration-issue-retrospective/
 
 Testing
 ```sh
-forge test --contracts ./src/test/OneRing_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/fantom/mainnet/archive --fork-block-number 34041499 -vv
+forge test --contracts ./src/test/OneRing_exp.sol --fork-url https://rpc.ankr.com/fantom --fork-block-number 34041499 -vv
 ```
 #### Link reference
 https://medium.com/oneringfinance/onering-finance-exploit-post-mortem-after-oshare-hack-602a529db99b
@@ -422,7 +421,7 @@ https://ftmscan.com/tx/0xca8dd33850e29cf138c8382e17a19e77d7331b57c7a8451648788bb
 
 Testing
 ```sh
-forge test --contracts ./src/test/Paraluni_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 16008280 -vv
+forge test --contracts ./src/test/Paraluni_exp.sol --fork-url https://rpc.ankr.com/bsc --fork-block-number 16008280 -vv
 ```
 #### Link reference
 https://halborn.com/explained-the-paraluni-hack-march-2022/
@@ -456,7 +455,7 @@ https://etherscan.io/tx/0xacfcaa8e1c482148f9f2d592c78ca7a27934c7333dab31978ed0ae
 
 Testing
 ```sh
-forge test --contracts ./src/test/Bacon_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14326931 -vv
+forge test --contracts ./src/test/Bacon_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 14326931 -vv
 ```
 #### Link reference
 https://twitter.com/peckshield/status/1500105933128495108
@@ -470,7 +469,7 @@ https://etherscan.io/tx/0x7d2296bcb936aa5e2397ddf8ccba59f54a178c3901666b49291d88
 
 Testing
 ```sh
-forge test --contracts ./src/test/TreasureDAO_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/arbitrum/mainnet --fork-block-number 7322694 -vv
+forge test --contracts ./src/test/TreasureDAO_exp.sol --fork-url https://rpc.ankr.com/arbitrum --fork-block-number 7322694 -vv
 ```
 #### Link reference
 https://slowmist.medium.com/analysis-of-the-treasuredao-zero-fee-exploit-73791f4b9c14
@@ -482,7 +481,7 @@ https://arbiscan.io/tx/0x82a5ff772c186fb3f62bf9a8461aeadd8ea0904025c3330a4d24782
 
 Testing
 ```sh
-forge test --contracts ./src/test/BuildF_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[AKPKEY]/eth/mainnet/archive  --fork-block-number 14235712 -vv
+forge test --contracts ./src/test/BuildF_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 14235712 -vv
 ```
 #### Link reference
 https://twitter.com/finance_build/status/1493223190071554049
@@ -496,7 +495,7 @@ https://etherscan.io/tx/0x544e5849b71b98393f41d641683586d0b519c46a2eeac9bcb35191
 
 Testing
 ```sh
-forge test --contracts ./src/test/Anyswap_poc.t.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14037236 -vv
+forge test --contracts ./src/test/Anyswap_poc.t.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 14037236 -vv
 ```
 #### Link reference
 https://medium.com/zengo/without-permit-multichains-exploit-explained-8417e8c1639b
@@ -511,7 +510,7 @@ https://etherscan.io/tx/0xe50ed602bd916fc304d53c4fed236698b71691a95774ff0aeeb74b
 
 Testing
 ```sh
-forge test --contracts ./src/test/Visor_exp.t.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 13849006 -vv
+forge test --contracts ./src/test/Visor_exp.t.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 13849006 -vv
 ```
 #### Link reference
 https://beosin.medium.com/two-vulnerabilities-in-one-function-the-analysis-of-visor-finance-exploit-a15735e2492
@@ -526,7 +525,7 @@ https://etherscan.io/tx/0x69272d8c84d67d1da2f6425b339192fa472898dce936f24818fda4
 
 Testing
 ```sh
-forge test --contracts ./src/test/Mono_exp.t.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 13715025 -vv
+forge test --contracts ./src/test/Mono_exp.t.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 13715025 -vv
 ```
 #### Link reference
 https://slowmist.medium.com/detailed-analysis-of-the-31-million-monox-protocol-hack-574d8c44a9c8
@@ -544,7 +543,7 @@ https://etherscan.io/tx/0x9f14d093a2349de08f02fc0fb018dadb449351d0cdb7d0738ff69c
 
 Testing
 ```sh
-forge test --contracts ./src/test/Sushimiso_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 13038771 -vv
+forge test --contracts ./src/test/Sushimiso_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 13038771 -vv
 ```
 #### Link reference
 https://www.paradigm.xyz/2021/08/two-rights-might-make-a-wrong
@@ -557,7 +556,7 @@ https://etherscan.io/tx/0x78d6355703507f88f2090eb780d245b0ab26bf470eabdb004761ce
 
 Testing
 ```sh
-forge test --contracts ./src/test/Cream_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 13125070 -vv
+forge test --contracts ./src/test/Cream_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 13125070 -vv
 ```
 #### Link reference
 https://twitter.com/peckshield/status/1432249600002478081
@@ -572,7 +571,7 @@ https://slowmist.medium.com/cream-hacked-analysis-us-130-million-hacked-95c94103
 
 Testing
 ```sh
-forge test --contracts ./src/test/XSURGE_exp.t.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 10087723 -vv
+forge test --contracts ./src/test/XSURGE_exp.t.sol --fork-url https://rpc.ankr.com/bsc --fork-block-number 10087723 -vv
 ```
 #### Link reference
 https://beosin.medium.com/a-sweet-blow-fb0a5e08657d
@@ -585,7 +584,7 @@ https://bscscan.com/tx/0x8c93d6e5d6b3ec7478b4195123a696dbc82a3441be090e048fe4b33
 #### Lost: $700,000
 Testing
 ```sh
-forge test --contracts ./src/test/dodo_flashloan_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 12000000 -vv
+forge test --contracts ./src/test/dodo_flashloan_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 12000000 -vv
 ```
 #### Link reference
 https://blog.dodoex.io/dodo-pool-incident-postmortem-with-a-little-help-from-our-friends-327e66872d42
@@ -598,7 +597,7 @@ https://etherscan.io/tx/0x395675b56370a9f5fe8b32badfa80043f5291443bd6c8273900476
 
 Testing
 ```sh
-forge test --contracts ./src/test/Cover_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 11542309 -vv
+forge test --contracts ./src/test/Cover_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 11542309 -vv
 ```
 #### Link reference
 https://mudit.blog/cover-protocol-hack-analysis-tokens-minted-exploit/
@@ -609,7 +608,7 @@ https://slowmist.medium.com/a-brief-analysis-of-the-cover-protocol-hacked-event-
 #### Lost: $33.8 million
 Testing
 ```sh
-forge test --contracts ./src/test/HarvestFinance_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 11129473 -vv
+forge test --contracts ./src/test/HarvestFinance_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 11129473 -vv
 
 ```
 #### Link reference
@@ -625,7 +624,7 @@ https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d026
 #### Lost: 514k ETH
 Testing
 ```sh
-forge test --contracts ./src/test/Parity_kill.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive  --fork-block-number 4501735 -vvvv
+forge test --contracts ./src/test/Parity_kill.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 4501735 -vvvv
 ```
 #### Link reference
 https://elementus.io/blog/which-icos-are-affected-by-the-parity-wallet-bug/
@@ -641,7 +640,7 @@ Missing access control in onSwap()
 #### Bounty: $50,000
 Testing
 ```sh
-forge test --contracts ./src/test/SenseFinance_exp.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive  --fork-block-number 15017009 -vv 
+forge test --contracts ./src/test/SenseFinance_exp.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 15017009 -vv 
 ```
 #### Link reference
 https://medium.com/immunefi/sense-finance-access-control-issue-bugfix-review-32e0c806b1a0
@@ -650,33 +649,33 @@ https://medium.com/immunefi/sense-finance-access-control-issue-bugfix-review-32e
 
 DODO FlashLoan Testing
 ```sh
-forge test --contracts ./src/test/dodo_flashloan.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 12000000 -vv
+forge test --contracts ./src/test/dodo_flashloan.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 12000000 -vv
 ```
 
 AAVE FlashLoan Testing
 ```sh
-forge test --contracts ./src/test/flashloan_aave.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14972418 -vv
+forge test --contracts ./src/test/flashloan_aave.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 14972418 -vv
 
 ```
 
 Balancer FlashLoan Testing
 ```sh
-forge test --contracts ./src/test/flashloan_balancer.t.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14684822 -vv
+forge test --contracts ./src/test/flashloan_balancer.t.sol --fork-url https://rpc.ankr.com/eth --fork-block-number 14684822 -vv
 ```
 
 Pancakeswap FlashSwap Testing
 ```sh
-forge test --contracts ./src/test/flashswap_pancake.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 18646610 -v
+forge test --contracts ./src/test/flashswap_pancake.sol --fork-url https://rpc.ankr.com/bsc --fork-block-number 18646610 -v
 ```
 
 Biswap FlashSwap Testing
 ```sh
-forge test --contracts ./src/test/flashloan_biswap.sol --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/bsc/mainnet/archive --fork-block-number 18671800 -vv
+forge test --contracts ./src/test/flashloan_biswap.sol --fork-url https://rpc.ankr.com/bsc --fork-block-number 18671800 -vv
 ```
 
 UniSwapV2 FlashSwap Testing
 ```sh
-forge test --contracts ./src/test/flashloan_uniswapv2.sol  --fork-url https://speedy-nodes-nyc.moralis.io/[APIKEY]/eth/mainnet/archive --fork-block-number 14971460 -vv
+forge test --contracts ./src/test/flashloan_uniswapv2.sol  --fork-url https://rpc.ankr.com/eth --fork-block-number 14971460 -vv
 ```
 
 #### Some codes referred to Rivaill and W2Ning repo and rewrote to the foundry version.
