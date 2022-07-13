@@ -9,8 +9,13 @@ contract ContractTest is DSTest {
     CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IBuildFinance BuildGovernance = IBuildFinance(0x5A6eBeB61A80B2a2a5e0B4D893D731358d888583);
     IERC20 build = IERC20(0x6e36556B3ee5Aa28Def2a8EC3DAe30eC2B208739);
-
+    uint256 mainnetFork;
     
+    function setUp() public {
+        mainnetFork = cheat.createFork("https://rpc.ankr.com/eth", 14235712); // fork mainnet at block 14235712
+        cheat.selectFork(mainnetFork);
+    }
+
     function test() public{
         cheat.prank(0x562680a4dC50ed2f14d75BF31f494cfE0b8D10a1);
         build.transfer(address(this),101529401443281484977);

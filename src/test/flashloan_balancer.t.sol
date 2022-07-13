@@ -3,34 +3,21 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "ds-test/test.sol";
+import "./interface.sol";
 
-interface IERC20 {
-    function totalSupply() external view returns (uint256);
-
-    function balanceOf(address account) external view returns (uint256);
-
-    function approve(address spender, uint256 amount) external returns (bool);
-
-    function transfer(address to, uint256 value) external returns (bool);
-}
-
-interface IBalancerVault {
-
-    function flashLoan(
-        address recipient,
-        address[] memory tokens,
-        uint256[] memory amounts,
-        bytes memory userData
-    ) external;
-
-}
 
 contract ContractTest is DSTest {
 
     IERC20 usdc = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
 
     IBalancerVault  vault   = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
-
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 14684822);
+        cheats.selectFork(mainnetFork);
+    }
     function testFlashloan() public{
 
         address[] memory tokens = new address[](1);

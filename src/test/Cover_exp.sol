@@ -20,6 +20,12 @@ contract ContractTest is DSTest {
     IERC20 public bpt = IERC20(0x59686E01Aa841f622a43688153062C2f24F8fDed);
 
     IERC20 public Cover = IERC20(0x5D8d9F5b96f4438195BE9b99eee6118Ed4304286);
+    uint256 mainnetFork;
+
+    function setUp() public {
+        mainnetFork = cheat.createFork("https://rpc.ankr.com/eth", 11542309); // fork mainnet at block 11542309
+        cheat.selectFork(mainnetFork);
+    }
 
     function test() public{
 

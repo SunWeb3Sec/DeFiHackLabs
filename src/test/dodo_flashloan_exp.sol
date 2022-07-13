@@ -23,8 +23,12 @@ contract ContractTest is DSTest {
     bool isOpenTWAP = false;
     address token1 = 0x7f4E7fB900E0EC043718d05caEe549805CaB22C8;
     address token2 = 0xf2dF8794f8F99f1Ba4D8aDc468EbfF2e47Cd7010;
-    
-
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork; 
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 12000000); // fork mainnet block number 12000000 
+        cheats.selectFork(mainnetFork);
+    }
 
     function testExploit() public{
         address me = address(this);

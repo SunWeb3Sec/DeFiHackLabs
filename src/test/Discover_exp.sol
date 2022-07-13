@@ -14,8 +14,11 @@ contract ContractTest is DSTest {
     IERC20 busd = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 discover = IERC20(0x5908E4650bA07a9cf9ef9FD55854D4e1b700A267);
     ETHpledge ethpledge = ETHpledge (0xe732a7bD6706CBD6834B300D7c56a8D2096723A7);
-
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
     constructor(){
+        mainnetFork = cheats.createFork("https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/", 18446845); // fork bsc at block 18446845
+        cheats.selectFork(mainnetFork);
         busd.approve(address(ethpledge),type(uint256).max);
         discover.approve(address(ethpledge),type(uint256).max);
     }

@@ -97,8 +97,12 @@ contract mainAttackContract is DSTest {
     address attacker = 0xb7CBB4d43F1e08327A90B32A8417688C9D0B800a;
     IBAYC BAYC = IBAYC(0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D);
     CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+
 
     function setUp() public {
+        mainnetFork = cheat.createFork("https://rpc.ankr.com/eth", 15028846); // fork mainnet at block 15028846
+        cheat.selectFork(mainnetFork);
         cheat.deal(address(this), 0);
         emit log_named_decimal_uint("[*] Attacker Contract ETH Balance", address(this).balance, 18);
 

@@ -3,41 +3,12 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "ds-test/test.sol";
-
-interface DVM{
-    
-    function flashLoan(
-        uint256 baseAmount,
-        uint256 quoteAmount,
-        address assetTo,
-        bytes calldata data
-    ) external;
-    
-    function init(
-        address maintainer,
-        address baseTokenAddress,
-        address quoteTokenAddress,
-        uint256 lpFeeRate,
-        address mtFeeRateModel,
-        uint256 i,
-        uint256 k,
-        bool isOpenTWAP
-    ) external;        
-    
-}
-
+import "./interface.sol";
 
 interface Token {
     function balanceOf(address account) external view returns (uint);
     function transfer(address recipient, uint amount) external returns (bool);
 }
-
-
-interface USDT{
-    function transfer(address to, uint value) external;
-    function balanceOf(address account) external view returns (uint);
-}
-
 
 contract ContractTest is DSTest {
     uint256 wCRES_amount =  130000000000000000000000;
@@ -48,8 +19,12 @@ contract ContractTest is DSTest {
     
     USDT usdt_token = USDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
     DVM dvm =  DVM(0x051EBD717311350f1684f89335bed4ABd083a2b6);
-
-
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 12000000);
+        cheats.selectFork(mainnetFork);
+    }
     function test() public{
         address me = address(this);
         dvm.flashLoan(wCRES_amount,usdt_amount,me,"whatever");

@@ -27,8 +27,11 @@ contract ContractTest is DSTest {
         IBeanStalk(0xC1E088fC1323b20BCBee9bd1B9fC9546db5624C5);
     address maliciousProposal = 0xE5eCF73603D98A0128F05ed30506ac7A663dBb69;
     uint32 bip = 18;
-
+    uint256 mainnetFork;
     constructor() {
+        mainnetFork = cheat.createFork("https://rpc.ankr.com/eth", 14595905); // fork mainnet at block 14595905
+        cheat.selectFork(mainnetFork);
+
         dai.approve(address(aavelendingPool), type(uint256).max);
         usdc.approve(address(aavelendingPool), type(uint256).max);
         TransferHelper.safeApprove(

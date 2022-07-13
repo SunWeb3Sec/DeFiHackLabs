@@ -20,6 +20,10 @@ interface CheatCodes {
   function roll(uint256) external;
 
   function addr(uint256 privateKey) external returns (address);
+  function mockCall(address where, bytes calldata data, bytes calldata retdata) external;
+  function createFork(string calldata,uint256) external returns(uint256);
+  function createFork(string calldata) external returns(uint256);
+  function selectFork(uint256) external;
 }
 
 interface IERC20 {

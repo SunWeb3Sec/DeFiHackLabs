@@ -9,6 +9,12 @@ import "./interface.sol";
 contract ContractTest is DSTest {
   CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
   Flippaz FlippazOne = Flippaz(0xE85A08Cf316F695eBE7c13736C8Cc38a7Cc3e944);
+  uint256 mainnetFork;
+    
+  function setUp() public {
+      mainnetFork = cheat.createFork("https://rpc.ankr.com/eth", 15083765); // fork mainnet at block 15083765
+      cheat.selectFork(mainnetFork);
+    }
 
   function testExploit() public {
     address alice = cheat.addr(1);

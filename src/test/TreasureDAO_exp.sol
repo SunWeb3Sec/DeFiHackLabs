@@ -10,6 +10,13 @@ contract ContractTest is DSTest {
     IERC721 iSmolBrain = IERC721(0x6325439389E0797Ab35752B4F43a14C004f22A9c);
     uint  tokenId = 3557;
     address nftOwner;
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/arbitrum", 7322694); //fork arbitrum at block 7322694
+        cheats.selectFork(mainnetFork);
+    }
 
     function testExploit() public {
        nftOwner = iSmolBrain.ownerOf(tokenId);

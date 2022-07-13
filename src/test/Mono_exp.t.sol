@@ -26,8 +26,16 @@ contract ContractTest is DSTest {
     uint256 public Amount_Of_USDC_On_XPool;
     
     uint256 public Amoount_Of_Mono_On_This; 
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 13715025); //fork mainnet at block 13715025
+        cheats.selectFork(mainnetFork);
+    }
 
-    function test() public{
+
+    function testExploit() public{
 
         mono.approve(Monoswap_address,type(uint256).max);
 

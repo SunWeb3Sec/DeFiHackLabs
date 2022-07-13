@@ -4,8 +4,6 @@ pragma solidity 0.8.10;
 import "ds-test/test.sol";
 import "./interface.sol";
 
-
-
 contract ContractTest is DSTest {
     CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IPancakeRouter pancakeRouter = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
@@ -16,8 +14,11 @@ contract ContractTest is DSTest {
     IWBNB wbnb = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     IERC20 gym = IERC20(0xE98D920370d87617eb11476B41BF4BE4C556F3f8);
     IERC20 gymnet = IERC20(0x3a0d9d7764FAE860A659eb96A500F1323b411e68);
-    
+    uint256 mainnetFork;
     constructor(){
+        mainnetFork = cheat.createFork("https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/", 16798806); //fork bsc at block 16798806
+        cheat.selectFork(mainnetFork);
+    
         wbnb.approve(address(pancakeRouter),type(uint256).max);
         gym.approve(address(pancakeRouter),type(uint256).max);
         gymnet.approve(address(pancakeRouter),type(uint256).max);

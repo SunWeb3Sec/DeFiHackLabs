@@ -17,6 +17,13 @@ contract ContractTest is DSTest {
     IUnitroller rari_Comptroller = IUnitroller(0x3f2D1BC6D02522dbcdb216b2e75eDDdAFE04B16F);
 
     IBalancerVault  vault   = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 14684813); //fork mainnet at 14684813
+        cheats.selectFork(mainnetFork);
+    }
 
     function testExploit() public{
 

@@ -53,7 +53,14 @@ contract ContractTest is DSTest {
     IMasterChef masterchef = IMasterChef(0x633Fa755a83B015cCcDc451F82C57EA0Bd32b4B4);
     EvilToken token0;
     EvilToken token1;
- 
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/", 16008280); //fork bsc at block 16008280
+        cheats.selectFork(mainnetFork);
+    }
+
 
     function testExploit() public{
         token0 = new EvilToken(IMasterChef(address(0)));

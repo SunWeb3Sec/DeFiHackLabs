@@ -35,10 +35,12 @@ contract ContractTest is DSTest {
     IRouter router = IRouter(0x10ED43C718714eb63d5aA57B78B54704E256024E);
 
     InotVerified not_verified  = InotVerified(0xD520a3B47E42a1063617A9b6273B206a07bDf834);
-
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
 
     constructor(){
-
+        mainnetFork = cheats.createFork("https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/", 12886438); // fork bsc block number 16886438
+        cheats.selectFork(mainnetFork);
         elephant.approve(address(router), type(uint256).max);
 
         Trunk.approve(address(router), type(uint256).max);

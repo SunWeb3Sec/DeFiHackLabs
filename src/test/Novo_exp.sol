@@ -24,6 +24,13 @@ contract ContractTest is DSTest {
     IWBNB wbnb = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     INOVO novo = INOVO(0x6Fb2020C236BBD5a7DDEb07E14c9298642253333);
     INOVOLP novoLP = INOVOLP(0x128cd0Ae1a0aE7e67419111714155E1B1c6B2D8D);
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    uint256 mainnetFork;
+    
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/", 18225002); //fork bsc at block number 18225002
+        cheats.selectFork(mainnetFork);
+    }
 
     function testExploit() public {
         wbnb.deposit{value: 10*1e18}();

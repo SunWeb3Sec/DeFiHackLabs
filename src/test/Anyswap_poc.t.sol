@@ -6,11 +6,16 @@ import "./interface.sol";
 
 contract ContractTest is DSTest {
     address WETH_Address = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
-
-    //CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     AnyswapV4Router any  = AnyswapV4Router(0x6b7a87899490EcE95443e979cA9485CBE7E71522);
     AnyswapV1ERC20 any20 =AnyswapV1ERC20(0x6b7a87899490EcE95443e979cA9485CBE7E71522);
     WETH  weth = WETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    uint256 mainnetFork;
+
+    function setUp() public {
+        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 14037236); // fork mainnet block number 14037236
+        cheats.selectFork(mainnetFork);
+    }
 
     function testExample() public {
        //https://etherscan.io/tx/0xe50ed602bd916fc304d53c4fed236698b71691a95774ff0aeeb74b699c6227f7

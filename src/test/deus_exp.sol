@@ -23,16 +23,17 @@ contract ContractTest is DSTest{
 
     IERC20  DepositToken  = IERC20(0xD82001B651F7fb67Db99C679133F384244e20E79);
 
-
-
     address owner_of_usdc = 0xC564EE9f21Ed8A2d8E7e76c085740d5e4c5FaFbE;
-
 
     ILpDepositor LpDepositor = ILpDepositor(0x26E1A0d851CF28E697870e1b7F053B605C8b060F);
 
     IOracle  oracle = IOracle(0x8129026c585bCfA530445a6267f9389057761A00);
 
-
+    uint256 mainnetFork;
+    function setUp() public {
+        mainnetFork = cheat.createFork("https://rpc.ankr.com/fantom", 37093708); // fork fantom at block 37093708
+        cheat.selectFork(mainnetFork);
+    }
 
     function testExample() public {
 
