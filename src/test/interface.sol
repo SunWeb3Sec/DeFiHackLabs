@@ -202,6 +202,7 @@ interface IERC20 {
     address to,
     uint256 value
   ) external returns (bool);
+  function withdraw(uint256 wad) external;
 }
 
 interface ICErc20Delegate {
@@ -4744,4 +4745,98 @@ interface Flippaz {
   function bid() external payable;
 
   function ownerWithdrawAllTo(address toAddress) external;
+}
+interface IDOODLENFTXVault{
+
+    function flashLoan(
+        address receiver,
+        address token,
+        uint256 amount,
+        bytes memory data
+    ) external returns (bool);
+    function redeem(uint256 amount, uint256[] calldata specificIds)
+        external
+        returns (uint256[] calldata);
+    function balanceOf(address account) external view returns (uint256);
+    function mint(
+        uint256[] calldata tokenIds,
+        uint256[] calldata amounts /* ignored for ERC721 vaults */
+    ) external returns (uint256);
+
+}
+interface ISushiSwap{
+
+    function swapTokensForExactTokens(
+        uint256 amountOut,
+        uint256 amountInMax,
+        address[] memory path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+    function swap(
+        uint256 amount0Out,
+        uint256 amount1Out,
+        address to,
+        bytes memory data
+    ) external;
+}
+interface IOmni{
+
+    function supplyERC721(
+        address asset,
+        DataTypes.ERC721SupplyParams[] memory tokenData,
+        address onBehalfOf,
+        uint16 referralCode
+    ) external;
+
+    function withdrawERC721(
+        address asset,
+        uint256[] memory tokenIds,
+        address to
+    ) external returns (uint256);
+   function liquidationERC721(
+        address collateralAsset,
+        address liquidationAsset,
+        address user,
+        uint256 collateralTokenId,
+        uint256 liquidationAmount,
+        bool receiveNToken
+    ) external;
+
+    struct ERC721SupplyParams {
+        uint256 tokenId;
+        bool useAsCollateral;
+    }
+    function borrow(
+        address asset,
+        uint256 amount,
+        uint256 interestRateMode,
+        uint16 referralCode,
+        address onBehalfOf
+    ) external;
+
+    function getUserAccountData(address user)
+        external
+        view
+        returns (
+            uint256 totalCollateralBase,
+            uint256 totalDebtBase,
+            uint256 availableBorrowsBase,
+            uint256 currentLiquidationThreshold,
+            uint256 ltv,
+            uint256 healthFactor,
+            uint256 erc721HealthFactor
+        );
+
+}
+interface DataTypes {
+    struct ERC721SupplyParams {
+        uint256 tokenId;
+        bool useAsCollateral;
+    }
+}
+interface ILib {
+    function attack() external returns (bool);
+
+    function withdrawAll() external returns (bool);
 }
