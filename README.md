@@ -13,6 +13,8 @@ Let's make Web3 secure!
 
 ## List of DeFi Hacks & Exploits
 
+[20220710 Omni NFT](#20220710-omni-nft---reentrancy)
+
 [20220706 FlippazOne NFT](#20220706-flippazone-nft----accesscontrol)
 
 [20220701 Quixotic - Optimism NFT Marketplace](#20220701-quixotic---optimism-nft-marketplace)
@@ -95,6 +97,20 @@ https://ethtx.info/
 https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
+
+### 20220710 Omni NFT - Reentrancy
+#### Lost: $1.4M
+
+Testing
+```sh
+forge test --contracts ./src/test/Omni_exp.sol -vv
+```
+#### Link reference
+https://twitter.com/peckshield/status/1546084680138498049
+
+https://twitter.com/SlowMist_Team/status/1546379086792388609
+
+https://etherscan.io/tx/0x05d65e0adddc5d9ccfe6cd65be4a7899ebcb6e5ec7a39787971bcc3d6ba73996
 
 ### 20220706 FlippazOne NFT -  AccessControl
 
