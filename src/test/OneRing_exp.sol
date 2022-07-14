@@ -9,11 +9,11 @@ contract ContractTest is DSTest {
     IERC20 usdc = IERC20(0x04068DA6C83AFCFA0e13ba15A6696662335D5B75);
     IOneRingVault vault = IOneRingVault(0x4e332D616b5bA1eDFd87c899E534D996c336a2FC);
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-    uint256 mainnetFork;
+    
     
     function setUp() public {
-        mainnetFork = cheats.createFork("https://rpc.ankr.com/fantom", 34041499);//fork fantom at block 34041499
-        cheats.selectFork(mainnetFork);
+        cheats.createSelectFork("fantom", 34041499);//fork fantom at block 34041499
+        
     }
 
     function testExploit() public {

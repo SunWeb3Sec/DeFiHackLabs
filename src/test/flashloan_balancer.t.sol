@@ -5,59 +5,46 @@ pragma solidity >=0.7.0 <0.9.0;
 import "ds-test/test.sol";
 import "./interface.sol";
 
-
 contract ContractTest is DSTest {
+  IERC20 usdc = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
 
-    IERC20 usdc = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+  IBalancerVault vault =
+    IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
+  CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
-    IBalancerVault  vault   = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
-    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-    uint256 mainnetFork;
-    
-    function setUp() public {
-        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 14684822);
-        cheats.selectFork(mainnetFork);
-    }
-    function testFlashloan() public{
+  function setUp() public {
+    cheats.createSelectFork("mainnet", 14684822);
+  }
 
-        address[] memory tokens = new address[](1);
+  function testFlashloan() public {
+    address[] memory tokens = new address[](1);
 
-        tokens[0] = address(usdc);
+    tokens[0] = address(usdc);
 
-        uint[] memory amounts = new uint[](1);
+    uint256[] memory amounts = new uint256[](1);
 
-        amounts[0] =  150000000*10**6;
+    amounts[0] = 150000000 * 10**6;
 
-        vault.flashLoan(address(this), tokens, amounts, '');
+    vault.flashLoan(address(this), tokens, amounts, "");
+  }
 
-    }
+  function receiveFlashLoan(
+    IERC20[] memory tokens,
+    uint256[] memory amounts,
+    uint256[] memory feeAmounts,
+    bytes memory userData
+  ) external {
+    tokens;
+    amounts;
+    feeAmounts;
+    userData;
 
-    function receiveFlashLoan(
-        IERC20[] memory tokens,
-        uint256[] memory amounts,
-        uint256[] memory feeAmounts,
-        bytes memory userData
-    )
-        external
-    {
+    uint256 usdc_balance = usdc.balanceOf(address(this));
+    emit log_named_uint("Borrow USDC from balancer", usdc_balance);
+    usdc.transfer(address(vault), usdc_balance);
 
-        tokens;
-        amounts;
-        feeAmounts;
-        userData;
- 
-        uint usdc_balance = usdc.balanceOf(address(this));
-        emit log_named_uint("Borrow USDC from balancer",usdc_balance);
-        usdc.transfer(address(vault), usdc_balance);
+    usdc_balance = usdc.balanceOf(address(this));
 
-        usdc_balance = usdc.balanceOf(address(this));
-
-        emit log_named_uint("USDC balance after repayying",usdc_balance);
-    }
-
-
-
-
-
-
+    emit log_named_uint("USDC balance after repayying", usdc_balance);
+  }
 }

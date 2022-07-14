@@ -10,11 +10,9 @@ contract ContractTest is DSTest {
     AnyswapV4Router any  = AnyswapV4Router(0x6b7a87899490EcE95443e979cA9485CBE7E71522);
     AnyswapV1ERC20 any20 =AnyswapV1ERC20(0x6b7a87899490EcE95443e979cA9485CBE7E71522);
     WETH  weth = WETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    uint256 mainnetFork;
 
     function setUp() public {
-        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 14037236); // fork mainnet block number 14037236
-        cheats.selectFork(mainnetFork);
+        cheats.createSelectFork("mainnet", 14037236); // fork mainnet block number 14037236
     }
 
     function testExample() public {

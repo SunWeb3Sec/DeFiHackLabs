@@ -11,10 +11,10 @@ contract ContractTest is DSTest {
     Pool pool = Pool(payable(0x880672AB1d46D987E5d663Fc7476CD8df3C9f937));
     address attacker = 0x9362e8cF30635de48Bdf8DA52139EEd8f1e5d400;
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-    uint256 mainnetFork;
+    
     function setUp() public {
-        mainnetFork = cheats.createFork("https://rpc.ankr.com/fantom", 32971742); //fork fantom block number 32971742
-        cheats.selectFork(mainnetFork);
+        cheats.createSelectFork("fantom", 32971742); //fork fantom block number 32971742
+        
     }
     function testExploit() public {
 

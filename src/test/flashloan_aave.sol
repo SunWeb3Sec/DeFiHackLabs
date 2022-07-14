@@ -6,27 +6,36 @@ import "ds-test/test.sol";
 import "./interface.sol";
 
 contract ContractTest is DSTest {
+  IERC20 WBTC = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599);
+  USDT usdt = USDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
 
-    IERC20 WBTC = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599);
-    USDT usdt = USDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
+  ILendingPool aaveLendingPool =
+    ILendingPool(0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9);
 
-    ILendingPool  aaveLendingPool   = ILendingPool(0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9);
+  address[] assets = [0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599];
+  uint256[] amounts = [2700000000000];
+  uint256[] modes = [0];
+  CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
-    address[] assets = [0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599];
-    uint256[] amounts = [2700000000000];
-    uint256[] modes = [0];
-    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-    uint256 mainnetFork;
-    
-    function setUp() public {
-        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 14972418);
-        cheats.selectFork(mainnetFork);
-    }
+  function setUp() public {
+    cheats.createSelectFork("mainnet", 14972418);
+  }
 
-    function testExploit() public{         
-        aaveLendingPool.flashLoan(address(this),assets,amounts,modes,address(this),"0x",0);
-        emit log_named_uint("After flashloan repaid, profit in WBTC of attacker:", WBTC.balanceOf(address(this))); 
-    }
+  function testExploit() public {
+    aaveLendingPool.flashLoan(
+      address(this),
+      assets,
+      amounts,
+      modes,
+      address(this),
+      "0x",
+      0
+    );
+    emit log_named_uint(
+      "After flashloan repaid, profit in WBTC of attacker:",
+      WBTC.balanceOf(address(this))
+    );
+  }
 
   function executeOperation(
     address[] memory assets,
@@ -34,21 +43,17 @@ contract ContractTest is DSTest {
     uint256[] memory premiums,
     address initiator,
     bytes memory params
-  ) public  returns (bool) {
+  ) public returns (bool) {
     assets;
     amounts;
     premiums;
     params;
-    initiator; 
+    initiator;
 
-  WBTC.approve(address(aaveLendingPool),2702430000000);
-  //If don't have insufficient balance, will trigger Reason: SafeERC20: low-level call failed.
-  return true;
+    WBTC.approve(address(aaveLendingPool), 2702430000000);
+    //If don't have insufficient balance, will trigger Reason: SafeERC20: low-level call failed.
+    return true;
   }
-    receive() payable external{}
+
+  receive() external payable {}
 }
-
-
-
-
-

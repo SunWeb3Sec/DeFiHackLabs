@@ -24,7 +24,14 @@ interface CheatCodes {
   function createFork(string calldata,uint256) external returns(uint256);
   function createFork(string calldata) external returns(uint256);
   function selectFork(uint256) external;
-}
+  function createSelectFork(string calldata,uint256) external returns(uint256);
+  function createSelectFork(string calldata) external returns(uint256);
+  function snapshot() external returns(uint256);
+  function revertTo(uint256) external returns(bool);
+  function activeFork() external returns(uint256);
+  function rollFork(uint256) external;
+  function rollFork(uint256 forkId, uint256 blockNumber) external;
+  }
 
 interface IERC20 {
   event Approval(address indexed owner, address indexed spender, uint256 value);

