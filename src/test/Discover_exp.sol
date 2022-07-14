@@ -9,6 +9,8 @@ interface ETHpledge {
     external
     returns (bool);
 }
+// Expected error. [FAIL. Reason: Pancake: INSUFFICIENT_INPUT_AMOUNT] 
+// Because we don't repay funds to pancake.
 
 contract ContractTest is DSTest {
   IPancakePair PancakePair =
