@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "ds-test/test.sol";
+import "forge-std/Test.sol";
 import "./interface.sol";
 
 // Exploit Alert ref: https://www.panewslab.com/zh_hk/articledetails/f40t9xb4.html
