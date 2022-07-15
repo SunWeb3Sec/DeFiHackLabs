@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-37 incidents included.
+38 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -10,6 +10,8 @@ Let's make Web3 secure!
 ## Getting Started
 
 * Follow the [instructions](https://book.getfoundry.sh/getting-started/installation.html) to install [Foundry](https://github.com/foundry-rs/foundry).
+
+* Clone and run command:```git submodule update --init --recursive ## initialize submodule dependencies```
 
 ## List of DeFi Hacks & Exploits
 
@@ -34,6 +36,8 @@ Let's make Web3 secure!
 [20220606 Discover](#20220606-discover---flashloan--price-oracle-manipulation)
 
 [20220529 NOVO Protocol](#20220529-novo-protocol---flashloan--price-oracle-manipulation)
+
+[20220508 Fortress Loans](#20220508-fortress-loans---malicious-proposal--price-oracle-manipulation)
 
 [20220430 Rari Capital/Fei Protocol](#20220430-rari-capitalfei-protocol---flashloan-attack--reentrancy)
 
@@ -264,6 +268,23 @@ https://www.panewslab.com/zh_hk/articledetails/f40t9xb4.html
 https://bscscan.com/tx/0xc346adf14e5082e6df5aeae650f3d7f606d7e08247c2b856510766b4dfcdc57f
 
 https://bscscan.com/address/0xa0787daad6062349f63b7c228cbfd5d8a3db08f1#code
+
+
+### 20220508 Fortress Loans - Malicious Proposal & Price Oracle Manipulation
+#### Lost: 1,048.1 ETH + 400,000 DAI (~$3.00M)
+
+Testing
+```sh
+forge test --contracts ./src/test/FortressLoans.exp.sol -vvv
+```
+#### Link reference
+https://twitter.com/Fortressloans/status/1523495202115051520
+
+https://twitter.com/PeckShieldAlert/status/1523489670323404800
+
+https://twitter.com/BlockSecTeam/status/1523530484877209600
+
+https://www.certik.com/resources/blog/k6eZOpnK5Kdde7RfHBZgw-fortress-loans-exploit
 
 
 ### 20220430 Rari Capital/Fei Protocol - Flashloan Attack + Reentrancy 
