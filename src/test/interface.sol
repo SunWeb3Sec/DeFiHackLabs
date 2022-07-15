@@ -203,6 +203,7 @@ interface IERC20 {
     uint256 value
   ) external returns (bool);
   function withdraw(uint256 wad) external;
+  function deposit(uint256 wad) external returns (bool);
 }
 
 interface ICErc20Delegate {
@@ -3452,6 +3453,7 @@ interface IUnitroller {
     );
 
   function borrowCaps(address) external view returns (uint256);
+  function getAllMarkets() external view returns (address[] memory);
 }
 
 interface IBalancerVault {
@@ -3824,6 +3826,8 @@ interface IPriceFeed {
       uint256 updatedAt,
       uint80 answeredInRound
     );
+
+    function fetchPrice() external returns (uint256);
 }
 
 interface IRToken {
@@ -4839,4 +4843,68 @@ interface ILib {
     function attack() external returns (bool);
 
     function withdrawAll() external returns (bool);
+}
+
+interface FToken {}
+
+interface IGovernorAlpha {
+    function propose(address[] memory targets, uint[] memory values, string[] memory signatures, bytes[] memory calldatas, string memory description) external returns (uint);
+    function castVote(uint proposalId, bool support) external;
+    function queue(uint proposalId) external;
+    function execute(uint proposalId) external payable;
+    function state(uint proposalId) external view;
+}
+
+interface IChain {
+    function submit (
+        uint32 _dataTimestamp,
+        bytes32 _root,
+        bytes32[] memory _keys,
+        uint256[] memory _values,
+        uint8[] memory _v,
+        bytes32[] memory _r,
+        bytes32[] memory _s
+    ) external;
+}
+
+interface IFortressPriceOracle {
+    function getUnderlyingPrice(FToken fToken) external view returns (uint);
+}
+
+interface IFTS {
+    function approve(address spender, uint rawAmount) external returns (bool);
+    function balanceOf(address account) external view returns (uint);
+}
+
+interface IfFTS {
+    function mint(uint mintAmount) external returns (uint);
+    function balanceOf(address owner) external view returns (uint256);
+}
+
+interface IFBep20Delegator {
+    function getCash() external view returns (uint);
+    function borrow(uint borrowAmount) external returns (uint);
+    function underlying() external returns (address);
+}
+
+interface IBorrowerOperations {
+    function openTrove(
+        uint256 _maxFee,
+        uint256 _LUSDAmount,
+        uint256 _ETHAmount,
+        address _upperHint,
+        address _lowerHint,
+        address _frontEndTag
+    ) external;
+}
+
+interface IARTH is IERC20 {}
+
+interface IARTHUSD {
+    function balanceOf(address) external returns (uint256);
+    function approve(address, uint256) external returns (bool);
+}
+
+interface IVyper {
+    function exchange_underlying(int128, int128, uint256, uint256, address) external returns (uint256);
 }
