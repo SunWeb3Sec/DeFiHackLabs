@@ -4,6 +4,6 @@ out = 'out'
 libs = ['lib']
 remappings = ['ds-test/=lib/ds-test/src/']
 
-rpc_endpoints = { mainnet = "https://rpc.ankr.com/eth", optimism = "https://rpc.ankr.com/optimism" , fantom = "https://rpc.ankr.com/fantom", arbitrum = "https://rpc.ankr.com/arbitrum" , arbitrum = "https://rpc.ankr.com/arbitrum" , bsc = "https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/" }
+rpc_endpoints = { mainnet = "https://rpc.ankr.com/eth", optimism = "https://rpc.ankr.com/optimism" , fantom = "https://rpc.ankr.com/fantom", arbitrum = "https://rpc.ankr.com/arbitrum" , bsc = "https://divine-black-wind.bsc.discover.quiknode.pro/64ab050694137dfcbf4c20daec2e94dc515c1d60/" }
 
 # See more config options https://github.com/gakonst/foundry/tree/master/config
