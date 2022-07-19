@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-38 incidents included.
+39 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure!
 * Clone and run command:```git submodule update --init --recursive ## initialize submodule dependencies```
 
 ## List of DeFi Hacks & Exploits
+
+[20220713 SpaceGodzilla](#20220713-spacegodzilla---flashloans--price-manipulation)
 
 [20220710 Omni NFT](#20220710-omni-nft---reentrancy)
 
@@ -101,6 +103,24 @@ https://ethtx.info/
 https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
+
+### 20220713 SpaceGodzilla - Flashloans & Price Manipulation
+#### Lost: 25,378 BUSD
+
+Testing
+```sh
+forge test --contracts ./src/test/SpaceGodzilla.exp.sol -vvv 
+```
+#### Link reference
+https://mobile.twitter.com/BlockSecTeam/status/1547456591900749824
+
+https://www.panewslab.com/zh_hk/articledetails/u25j5p3kdvu9.html
+
+https://medium.com/numen-cyber-labs/spacegodzilla-attack-event-analysis-d29a061b17e1
+
+https://learnblockchain.cn/article/4396
+
+https://learnblockchain.cn/article/4395
 
 ### 20220710 Omni NFT - Reentrancy
 #### Lost: $1.4M
