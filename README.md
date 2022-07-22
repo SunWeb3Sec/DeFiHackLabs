@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-39 incidents included.
+40 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -86,6 +86,8 @@ Let's make Web3 secure!
 [20210830 Cream Finance](#20210830-cream-finance---flashloan-attack--reentrancy)
 
 [20210817 XSURGE](#20210817-xsurge---flashloan-attack--reentrancy)
+
+[20210607 88mph NFT](#20210607-88mph-nft---access-control)
 
 [20210308 DODO](#20210308-dodo---flashloan-attack)
 
@@ -636,6 +638,14 @@ https://beosin.medium.com/a-sweet-blow-fb0a5e08657d
 https://medium.com/@Knownsec_Blockchain_Lab/knownsec-blockchain-lab-comprehensive-analysis-of-xsurge-attacks-c83d238fbc55
 
 https://bscscan.com/tx/0x8c93d6e5d6b3ec7478b4195123a696dbc82a3441be090e048fe4b33a242ef09d
+
+### 20210607 88mph NFT - Access control
+Testing
+```sh
+forge test --contracts ./src/test/88mph_exp.sol -vv
+```
+#### Link reference
+https://medium.com/immunefi/88mph-function-initialization-bug-fix-postmortem-c3a2282894d3
 
 ### 20210308 DODO - Flashloan Attack 
 #### Lost: $700,000
