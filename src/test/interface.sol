@@ -4908,3 +4908,15 @@ interface IARTHUSD {
 interface IVyper {
     function exchange_underlying(int128, int128, uint256, uint256, address) external returns (uint256);
 }
+
+interface I88mph {
+    function init(
+        address newOwner,
+        string memory tokenName,
+        string memory tokenSymbol
+    ) external;
+    function mint(address to, uint256 tokenId) external;
+    function burn(uint256 tokenId) external;
+    function owner() external view returns (address);
+    function ownerOf(uint256 tokenId) external view returns (address);
+}
