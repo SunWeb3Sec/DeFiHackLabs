@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-40 incidents included.
+41 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure!
 * Clone and run command:```git submodule update --init --recursive ## initialize submodule dependencies```
 
 ## List of DeFi Hacks & Exploits
+
+[20220723 Audius](#20220723-audius---storage-collision--malicious-proposal)
 
 [20220713 SpaceGodzilla](#20220713-spacegodzilla---flashloans--price-manipulation)
 
@@ -105,6 +107,20 @@ https://ethtx.info/
 https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
+
+### 20220713 Audius - Storage collision & Malicious proposal
+#### Lost: 704 ETH (~1.08M US$)
+
+Testing
+```sh
+forge test --contracts ./src/test/audius.exp.sol -vvv 
+```
+#### Link reference
+https://twitter.com/AudiusProject/status/1551000725169180672
+
+https://twitter.com/1nf0s3cpt/status/1551050841146400768
+
+https://blog.audius.co/article/audius-governance-takeover-post-mortem-7-23-22
 
 ### 20220713 SpaceGodzilla - Flashloans & Price Manipulation
 #### Lost: 25,378 BUSD
