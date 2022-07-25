@@ -15,7 +15,7 @@ Let's make Web3 secure!
 
 ## List of DeFi Hacks & Exploits
 
-[20220723 Audius](#20220723-Audius---Storage-Collision---Malicious-Proposal)
+[20220713 Audius](#20220723-audius---storage-collision--malicious-proposal)
 
 [20220713 SpaceGodzilla](#20220713-spacegodzilla---flashloans--price-manipulation)
 
