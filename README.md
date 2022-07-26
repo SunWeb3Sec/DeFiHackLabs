@@ -169,7 +169,7 @@ https://twitter.com/SlowMist_Team/status/1546379086792388609
 
 https://etherscan.io/tx/0x05d65e0adddc5d9ccfe6cd65be4a7899ebcb6e5ec7a39787971bcc3d6ba73996
 
-### 20220706 FlippazOne NFT -  AccessControl
+### 20220706 FlippazOne NFT -  Access control
 
 The ownerWithdrawAllTo() without onlyOwner can call it.
 
@@ -212,7 +212,7 @@ https://twitter.com/peckshield/status/1541047171453034501
 
 https://twitter.com/BlockSecTeam/status/1541070850505723905
 
-### 20220624 Harmony's Horizon Bridge
+### 20220624 Harmony's Horizon Bridge - P
 #### Lost: $100 million
 Private key compromised case of Multisig wallet
 
@@ -263,7 +263,7 @@ https://www.certik.com/resources/blog/6LbL57WA3iMNm8zd7q111R-inverse-finance-inc
 
 https://etherscan.io/tx/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c
 
-### 20220608 GYMNetwork - AccessControl
+### 20220608 GYMNetwork - Access control
 #### Lost: $2.1 million
 
 Testing
@@ -277,7 +277,7 @@ https://twitter.com/1nf0s3cpt/status/1534464698069884929
 
 https://www.jinse.com/news/blockchain/1658455.html
 
-### 20220608 Optimism - Wintermute
+### 20220608 Optimism - Wintermute - Signature replay
 #### Lost: 20 million Optimism (OP) tokens returned 17 million of them
 
 Testing
@@ -383,7 +383,7 @@ https://twitter.com/peckshield/status/1519531866109317121
 https://ftmscan.com/tx/0xe374495036fac18aa5b1a497a17e70f256c4d3d416dd1408c026f3f5c70a3a9c
 
 
-### 20220421 Zeed Finance
+### 20220421 Zeed Finance - Reward distribution flaw
 #### Lost: $1 million
 
 Testing
@@ -413,7 +413,7 @@ https://etherscan.io/tx/0x68cdec0ac76454c3b0f7af0b8a3895db00adf6daaf3b50a9971685
 
 https://etherscan.io/tx/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7
 
-### 20220415 Rikkei Finance - AccessControl & Price Oracle Manipulation
+### 20220415 Rikkei Finance - Access control & Price Oracle Manipulation
 #### Lost: $1.1 million (2671 BNB)
 
 Testing
@@ -445,7 +445,7 @@ https://twitter.com/BlockSecTeam/status/1513966074357698563
 
 https://bscscan.com/tx/0xec317deb2f3efdc1dbf7ed5d3902cdf2c33ae512151646383a8cf8cbcd3d4577
 
-### 20220409 GYMNetwork
+### 20220409 GYMNetwork - Flashloan + token migrate flaw
 #### Lost: 1,327 WBNB
 
 Testing
@@ -525,7 +525,7 @@ https://zhuanlan.zhihu.com/p/517535530
 https://bscscan.com/tx/0x70f367b9420ac2654a5223cc311c7f9c361736a39fd4e7dff9ed1b85bab7ad54
 
 
-### 20220309 Fantasm Finance 
+### 20220309 Fantasm Finance - Business logic in mint()
 #### Lost: $2.6 million
 
 Testing
@@ -732,7 +732,7 @@ https://etherscan.io/tx/0x05f71e1b2cb4f03e547739db15d080fd30c989eda04d37ce6264c5
 https://etherscan.io/tx/0x47f7cff7a5e671884629c93b368cb18f58a993f4b19c2a53a8662e3f1482f690
 
 ### Bug Reproduce
-### 20220623 Sense Finance - Access Control
+### 20220623 Sense Finance - Access control
 
 Missing access control in onSwap()
 #### Bounty: $50,000
