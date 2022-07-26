@@ -212,7 +212,7 @@ https://twitter.com/peckshield/status/1541047171453034501
 
 https://twitter.com/BlockSecTeam/status/1541070850505723905
 
-### 20220624 Harmony's Horizon Bridge - P
+### 20220624 Harmony's Horizon Bridge - Private key compromised
 #### Lost: $100 million
 Private key compromised case of Multisig wallet
 
