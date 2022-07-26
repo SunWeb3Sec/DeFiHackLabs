@@ -110,7 +110,7 @@ https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
 
-### 20220725 LPC - Business Logic Flaw: Lack of check insufficient balance
+### 20220725 LPC - Business Logic Flaw : Incorrect recipient balance check
 #### Lost: 178 BNB (~45,715 US$)
 
 Testing
