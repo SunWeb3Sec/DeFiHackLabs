@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-41 incidents included.
+42 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure!
 * Clone and run command:```git submodule update --init --recursive ## initialize submodule dependencies```
 
 ## List of DeFi Hacks & Exploits
+
+[20220725 LPC](#20220725-lpc---business-logic-flaw-lack-of-check-insufficient-balance)
 
 [20220713 Audius](#20220723-audius---storage-collision--malicious-proposal)
 
@@ -107,6 +109,19 @@ https://ethtx.info/
 https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
+
+### 20220725 LPC - Business Logic Flaw: Lack of check insufficient balance
+#### Lost: 178 BNB (~45,715 US$)
+
+Testing
+```sh
+forge test --contracts ./src/test/LPC.exp.sol -vvv 
+```
+#### Link reference
+
+https://www.panewslab.com/zh_hk/articledetails/uwv4sma2.html
+
+https://twitter.com/BeosinAlert/status/1551535854681718784
 
 ### 20220723 Audius - Storage Collision & Malicious Proposal
 #### Lost: 704 ETH (~1.08M US$)
