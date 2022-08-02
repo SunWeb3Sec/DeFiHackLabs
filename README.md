@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-42 incidents included.
+43 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -15,7 +15,9 @@ Let's make Web3 secure!
 
 ## List of DeFi Hacks & Exploits
 
-[20220725 LPC](#20220725-lpc---business-logic-flaw-lack-of-check-insufficient-balance)
+[20220802 Nomad Bridge](#20220802-nomad-bridge---business-logic-flaw-:-incorrect-acceptable-merkle-root-checks)
+
+[20220725 LPC](#20220725-lpc---business-logic-flaw-:-incorrect-recipient-balance-check)
 
 [20220713 Audius](#20220723-audius---storage-collision--malicious-proposal)
 
@@ -109,6 +111,19 @@ https://ethtx.info/
 https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
+
+### 20220802 Nomad Bridge - Business Logic Flaw : Incorrect acceptable merkle-root checks
+#### Lost: Multiple ERC-20 Tokens (~152M US$)
+
+Testing
+```sh
+forge test --contracts ./src/test/NomadBridge.exp.sol -vvv 
+```
+#### Link reference
+
+https://twitter.com/samczsun/status/1554252024723546112
+
+https://www.certik.com/resources/blog/28fMavD63CpZJOKOjb9DX3-nomad-bridge-exploit-incident-analysis
 
 ### 20220725 LPC - Business Logic Flaw : Incorrect recipient balance check
 #### Lost: 178 BNB (~45,715 US$)
