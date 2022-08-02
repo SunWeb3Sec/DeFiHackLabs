@@ -15,9 +15,9 @@ Let's make Web3 secure!
 
 ## List of DeFi Hacks & Exploits
 
-[20220802 Nomad Bridge](#20220802-nomad-bridge---business-logic-flaw-:-incorrect-acceptable-merkle-root-checks)
+[20220802 Nomad Bridge](#20220802-nomad-bridge---business-logic-flaw--incorrect-acceptable-merkle-root-checks)
 
-[20220725 LPC](#20220725-lpc---business-logic-flaw-:-incorrect-recipient-balance-check)
+[20220725 LPC](#20220725-lpc---business-logic-flaw--incorrect-recipient-balance-check)
 
 [20220713 Audius](#20220723-audius---storage-collision--malicious-proposal)
 
