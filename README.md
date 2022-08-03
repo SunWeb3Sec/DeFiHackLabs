@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-43 incidents included.
+44 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Let's make Web3 secure!
 ## List of DeFi Hacks & Exploits
 
 [20220802 Nomad Bridge](#20220802-nomad-bridge---business-logic-flaw--incorrect-acceptable-merkle-root-checks)
+
+[20220801 Reaper Farm](#20220801-reaper-farm---business-logic-flaw--lack-of-access-control-mechanism)
 
 [20220725 LPC](#20220725-lpc---business-logic-flaw--incorrect-recipient-balance-check)
 
@@ -124,6 +126,18 @@ forge test --contracts ./src/test/NomadBridge.exp.sol -vvv
 https://twitter.com/samczsun/status/1554252024723546112
 
 https://www.certik.com/resources/blog/28fMavD63CpZJOKOjb9DX3-nomad-bridge-exploit-incident-analysis
+
+### 20220801 Reaper Farm - Business Logic Flaw : Lack of access control mechanism
+#### Lost: Multiple ERC-20 Tokens (~1.7M US$)
+Testing
+```sh
+forge test --contracts ./src/test/ReaperFarm.exp.sol -vvv 
+```
+#### Link reference
+
+https://twitter.com/Reaper_Farm/status/1554500909740302337
+
+https://twitter.com/BeosinAlert/status/1554476940593340421
 
 ### 20220725 LPC - Business Logic Flaw : Incorrect recipient balance check
 #### Lost: 178 BNB (~45,715 US$)
