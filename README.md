@@ -404,7 +404,7 @@ https://bscscan.com/tx/0x4f2005e3815c15d1a9abd8588dd1464769a00414a6b7adcbfd75a53
 
 Testing
 ```sh
-forge test --contracts ./src/test/deus_poc.sol -vv
+forge test --contracts ./src/test/deus_exp.sol -vv
 ```
 #### Link reference
 https://twitter.com/peckshield/status/1519531866109317121
