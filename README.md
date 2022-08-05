@@ -11,7 +11,7 @@ Let's make Web3 secure!
 
 * Follow the [instructions](https://book.getfoundry.sh/getting-started/installation.html) to install [Foundry](https://github.com/foundry-rs/foundry).
 
-* Clone and run command:```git submodule update --init --recursive ## initialize submodule dependencies```
+* Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
 
