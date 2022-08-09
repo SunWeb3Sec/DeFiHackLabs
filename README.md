@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-44 incidents included.
+45 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure!
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20220807 EGD Finance](#20220807-egd-finance---flashloans--price-manipulation)
 
 [20220802 Nomad Bridge](#20220802-nomad-bridge---business-logic-flaw--incorrect-acceptable-merkle-root-checks)
 
@@ -113,6 +115,19 @@ https://ethtx.info/
 https://versatile.blocksecteam.com/tx
 
 https://github.com/dapphub/dapptools
+
+### 20220807 EGD Finance - Flashloans & Price Manipulation
+#### Lost: 36,044 USDT
+
+Testing
+```sh
+forge test --contracts ./src/test/EGD-Finance.exp.sol -vvv 
+```
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1556483435388350464
+
+https://twitter.com/PeckShieldAlert/status/1556486817406283776
 
 ### 20220802 Nomad Bridge - Business Logic Flaw : Incorrect acceptable merkle-root checks
 #### Lost: Multiple ERC-20 Tokens (~152M US$)
