@@ -4920,3 +4920,30 @@ interface I88mph {
     function owner() external view returns (address);
     function ownerOf(uint256 tokenId) external view returns (address);
 }
+
+interface IBAYCi {
+    function setApprovalForAll(address operator, bool approved) external;
+    function transferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) external;
+}
+interface INFTXVault {
+    function redeem(uint256 amount, uint256[] memory specificIds)
+        external
+        returns (uint256[] memory);
+    function flashLoan(
+        address receiver,
+        address token,
+        uint256 amount,
+        bytes memory data
+    ) external returns (bool);
+    function approve(address spender, uint256 amount) external returns (bool);
+    function mint(uint256[] memory tokenIds, uint256[] memory amounts)
+        external
+        returns (uint256);
+}
+interface IAirdrop {
+    function claimTokens() external;
+}
