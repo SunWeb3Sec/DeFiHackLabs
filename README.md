@@ -144,6 +144,8 @@ https://twitter.com/samczsun/status/1554252024723546112
 
 https://www.certik.com/resources/blog/28fMavD63CpZJOKOjb9DX3-nomad-bridge-exploit-incident-analysis
 
+https://blog.coinbase.com/nomad-bridge-incident-analysis-899b425b0f34
+
 ### 20220801 Reaper Farm - Business Logic Flaw : Lack of access control mechanism
 #### Lost: Multiple ERC-20 Tokens (~1.7M US$)
 Testing
