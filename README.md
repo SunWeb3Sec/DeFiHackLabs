@@ -57,11 +57,11 @@ Let's make Web3 secure!
 
 [20220428 DEUS DAO](#20220428-deus-dao---flashloan--price-oracle-manipulation)
 
-[20220424 Wiener DOGE - Flashloan](#20220424-wiener-doge---flashloan)
+[20220424 Wiener DOGE](#20220424-wiener-doge---flashloan)
 
 [20220421 Zeed Finance](#20220421-zeed-finance)
 
-[20220416 BeanstalkFarms - DAO + Flashloan](#20220416-beanstalkfarms---dao--flashloan)
+[20220416 BeanstalkFarms](#20220416-beanstalkfarms---dao--flashloan)
 
 [20220415 Rikkei Finance](#20220415-rikkei-finance---accesscontrol--price-oracle-manipulation)
 
