@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-45 incidents included.
+46 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -48,6 +48,8 @@ Let's make Web3 secure!
 [20220606 Discover](#20220606-discover---flashloan--price-oracle-manipulation)
 
 [20220529 NOVO Protocol](#20220529-novo-protocol---flashloan--price-oracle-manipulation)
+
+[20220517 ApeCoin](#20220517-apecoin-ape---flashloan)
 
 [20220508 Fortress Loans](#20220508-fortress-loans---malicious-proposal--price-oracle-manipulation)
 
@@ -141,6 +143,8 @@ forge test --contracts ./src/test/NomadBridge.exp.sol -vvv
 https://twitter.com/samczsun/status/1554252024723546112
 
 https://www.certik.com/resources/blog/28fMavD63CpZJOKOjb9DX3-nomad-bridge-exploit-incident-analysis
+
+https://blog.coinbase.com/nomad-bridge-incident-analysis-899b425b0f34
 
 ### 20220801 Reaper Farm - Business Logic Flaw : Lack of access control mechanism
 #### Lost: Multiple ERC-20 Tokens (~1.7M US$)
@@ -366,6 +370,17 @@ https://bscscan.com/tx/0xc346adf14e5082e6df5aeae650f3d7f606d7e08247c2b856510766b
 
 https://bscscan.com/address/0xa0787daad6062349f63b7c228cbfd5d8a3db08f1#code
 
+### 20220517 ApeCoin (APE) - Flashloan
+#### Lost: $1.1 million
+buys vault token -> redeems NFTs -> claims airdrop of 60k APE -> re-supply's the pool
+Testing
+```sh
+forge test --contracts ./src/test/Bayc_apecoin_exp -vvv
+```
+#### Link reference
+https://etherscan.io/tx/0xeb8c3bebed11e2e4fcd30cbfc2fb3c55c4ca166003c7f7d319e78eaab9747098
+
+https://news.coincu.com/73892-the-flashloan-attack-on-the-ape-airdrop-to-claim-1-1-million-of-ape-tokens/
 
 ### 20220508 Fortress Loans - Malicious Proposal & Price Oracle Manipulation
 #### Lost: 1,048.1 ETH + 400,000 DAI (~$3.00M)
