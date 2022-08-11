@@ -176,7 +176,7 @@ https://twitter.com/BeosinAlert/status/1551535854681718784
 
 Testing
 ```sh
-forge test --contracts ./src/test/audius.exp.sol -vvv 
+forge test --contracts ./src/test/Audius.exp.sol -vvv 
 ```
 #### Link reference
 https://twitter.com/AudiusProject/status/1551000725169180672
