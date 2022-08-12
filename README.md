@@ -814,36 +814,6 @@ forge test --contracts ./src/test/SenseFinance_exp.sol -vv
 https://medium.com/immunefi/sense-finance-access-control-issue-bugfix-review-32e0c806b1a0
 
 ### FlashLoan Testing
-
-DODO FlashLoan Testing
-```sh
-forge test --contracts ./src/test/dodo_flashloan.sol -vv
-```
-
-AAVE FlashLoan Testing
-```sh
-forge test --contracts ./src/test/flashloan_aave.sol -vv
-
-```
-
-Balancer FlashLoan Testing
-```sh
-forge test --contracts ./src/test/flashloan_balancer.t.sol -vv
-```
-
-Pancakeswap FlashSwap Testing
-```sh
-forge test --contracts ./src/test/flashswap_pancake.sol -vv
-```
-
-Biswap FlashSwap Testing
-```sh
-forge test --contracts ./src/test/flashloan_biswap.sol -vv
-```
-
-UniSwapV2 FlashSwap Testing
-```sh
-forge test --contracts ./src/test/flashloan_uniswapv2.sol -vv
-```
+Moved to [DeFiLabs](https://github.com/SunWeb3Sec/DeFiLabs)
 
 #### Some codes referred to Rivaill and W2Ning repo and rewrote to the foundry version.
