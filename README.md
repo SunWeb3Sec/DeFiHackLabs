@@ -802,16 +802,7 @@ https://etherscan.io/tx/0x05f71e1b2cb4f03e547739db15d080fd30c989eda04d37ce6264c5
 https://etherscan.io/tx/0x47f7cff7a5e671884629c93b368cb18f58a993f4b19c2a53a8662e3f1482f690
 
 ### Bug Reproduce
-### 20220623 Sense Finance - Access control
-
-Missing access control in onSwap()
-#### Bounty: $50,000
-Testing
-```sh
-forge test --contracts ./src/test/SenseFinance_exp.sol -vv 
-```
-#### Link reference
-https://medium.com/immunefi/sense-finance-access-control-issue-bugfix-review-32e0c806b1a0
+Moved to [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs)
 
 ### FlashLoan Testing
 Moved to [DeFiLabs](https://github.com/SunWeb3Sec/DeFiLabs)
