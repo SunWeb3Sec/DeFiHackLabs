@@ -40,7 +40,7 @@ contract Attacker is Test {
     }
 
     function testExploit() public {
-        console.log("Attackers can copying the original user's transaction calldata and replacing the receive address with a personal one.");
+        console.log("Attackers can copy the original user's transaction calldata and replacing the receive address with a personal one.");
         console.log("We mock how attackers/whitehats replay the calldata at block 15259100\n");    // Txhash : 0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460
 
         emit log_named_decimal_uint("Attacker WBTC Balance", WBTC.balanceOf(address(this)), 8);
