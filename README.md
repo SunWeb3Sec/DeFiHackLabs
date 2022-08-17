@@ -801,6 +801,31 @@ https://etherscan.io/tx/0x05f71e1b2cb4f03e547739db15d080fd30c989eda04d37ce6264c5
 
 https://etherscan.io/tx/0x47f7cff7a5e671884629c93b368cb18f58a993f4b19c2a53a8662e3f1482f690
 
+### View Gas Reports 
+
+Foundry also has the ability to [report](https://book.getfoundry.sh/forge/gas-reports) the `gas` used per function call which mimics the behavior of [hardhad-gas-reporter](https://github.com/cgewecke/hardhat-gas-reporter). Generally speaking if gas costs per function call is very high, then the likelihood of its success is reduced. Gas optimization is an important activity done by smart contract developers.
+
+Every poc in this repository can produce a gas report like this:
+
+```bash
+forge test --gas-report --contracts <contract> -vvv
+```
+
+For Example: 
+Let us find out the gas used in the [Audius poc](#20220723-audius---storage-collision--malicious-proposal)
+
+**Execution**
+```bash 
+forge test --gas-report --contracts ./src/test/Audius.exp.sol -vvv 
+```
+
+*Demo*
+
+![](./AudiusPocGasReport.gif)
+
+
+
+
 ### Bug Reproduce
 Moved to [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs)
 
