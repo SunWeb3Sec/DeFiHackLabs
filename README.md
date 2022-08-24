@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-47 incidents included.
+49 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -92,6 +92,8 @@ Let's make Web3 secure!
 [20220118 Multichain (Anyswap)](#20220118-multichain-anyswap---insufficient-token-validation)
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
+
+[20211218 Grim Finance](#20211218-grim-finance---flashloan--reentrancy)
 
 [20211130 MonoX Finance](#20211130-monox-finance---price-manipulation)
 
@@ -231,7 +233,7 @@ https://twitter.com/bertcmiller/status/1544496577338826752
 https://etherscan.io/tx/0x8bded20c1db5a1d5f595b15e682a95ce11d3c895d6031147fa49c4ffa5729a30
 ### 20220701 Quixotic - Optimism NFT Marketplace
 #### Lost: $100K
-fillSellOrder function only check seller signature. 
+fillSellOrder function only check seller signature.
 
 ECDSA signature combined with v r s, if recoveredAddress == sellOrder.seller; sellorder execute.
 
@@ -399,7 +401,7 @@ https://twitter.com/BlockSecTeam/status/1523530484877209600
 https://www.certik.com/resources/blog/k6eZOpnK5Kdde7RfHBZgw-fortress-loans-exploit
 
 
-### 20220430 Rari Capital/Fei Protocol - Flashloan Attack + Reentrancy 
+### 20220430 Rari Capital/Fei Protocol - Flashloan Attack + Reentrancy
 #### Lost: $80 million
 
 Testing
@@ -519,7 +521,7 @@ https://medium.com/@Beosin_com/beosin-analysis-of-the-attack-on-gymdefi-e5a23bfd
 https://bscscan.com/tx/0xa5b0246f2f8d238bb56c0ddb500b04bbe0c30db650e06a41e00b6a0fff11a7e5
 
 ### 20220327 Revest Finance - Reentrancy
-#### Lost: $11.2 million 
+#### Lost: $11.2 million
 
 Testing
 ```sh
@@ -530,8 +532,8 @@ https://blocksecteam.medium.com/revest-finance-vulnerabilities-more-than-re-entr
 
 https://etherscan.io/tx/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428
 
-### 20220326 Auctus 
-#### Lost: $726 k 
+### 20220326 Auctus
+#### Lost: $726 k
 
 Testing
 ```sh
@@ -599,7 +601,7 @@ https://medium.com/quillhash/fantom-based-protocol-fantasm-suffers-2-6m-exploit-
 https://etherscan.io/tx/0xacfcaa8e1c482148f9f2d592c78ca7a27934c7333dab31978ed0aef333a28ab6
 
 
-### 20220305 Bacon Protocol - Reentrancy  
+### 20220305 Bacon Protocol - Reentrancy
 #### Lost: $1 million
 
 Testing
@@ -680,6 +682,20 @@ https://twitter.com/GammaStrategies/status/1473306777131405314
 https://etherscan.io/tx/0x69272d8c84d67d1da2f6425b339192fa472898dce936f24818fda415c1c1ff3f
 
 
+### 20211218 Grim Finance - Flashloan & Reentrancy
+#### Lost:  $30 million
+
+Testing
+```sh
+forge test --contracts ./src/test/Grim_exp.sol -vv
+```
+#### Link reference
+https://cointelegraph.com/news/defi-protocol-grim-finance-lost-30m-in-5x-reentrancy-hack
+
+https://rekt.news/grim-finance-rekt/
+
+https://ftmscan.com/tx/0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6
+
 ### 20211130 MonoX Finance - Price Manipulation
 #### Lost: $31 million
 
@@ -711,7 +727,7 @@ https://www.paradigm.xyz/2021/08/two-rights-might-make-a-wrong
 https://etherscan.io/tx/0x78d6355703507f88f2090eb780d245b0ab26bf470eabdb004761cedf3b1cda44
 
 
-### 20210830 Cream Finance - Flashloan Attack + Reentrancy 
+### 20210830 Cream Finance - Flashloan Attack + Reentrancy
 #### Lost: $18 million
 
 Testing
@@ -726,7 +742,7 @@ https://etherscan.io/tx/0xa9a1b8ea288eb9ad315088f17f7c7386b9989c95b4d13c81b69d5d
 https://slowmist.medium.com/cream-hacked-analysis-us-130-million-hacked-95c9410320ca
 
 
-### 20210817 XSURGE - Flashloan Attack + Reentrancy 
+### 20210817 XSURGE - Flashloan Attack + Reentrancy
 #### Lost: $5 million
 
 Testing
@@ -748,7 +764,7 @@ forge test --contracts ./src/test/88mph_exp.sol -vv
 #### Link reference
 https://medium.com/immunefi/88mph-function-initialization-bug-fix-postmortem-c3a2282894d3
 
-### 20210308 DODO - Flashloan Attack 
+### 20210308 DODO - Flashloan Attack
 #### Lost: $700,000
 Testing
 ```sh
@@ -772,7 +788,7 @@ https://mudit.blog/cover-protocol-hack-analysis-tokens-minted-exploit/
 
 https://slowmist.medium.com/a-brief-analysis-of-the-cover-protocol-hacked-event-700d747b309c
 
-### 20201026 Harvest Finance - Flashloan Attack 
+### 20201026 Harvest Finance - Flashloan Attack
 #### Lost: $33.8 million
 Testing
 ```sh
@@ -801,7 +817,7 @@ https://etherscan.io/tx/0x05f71e1b2cb4f03e547739db15d080fd30c989eda04d37ce6264c5
 
 https://etherscan.io/tx/0x47f7cff7a5e671884629c93b368cb18f58a993f4b19c2a53a8662e3f1482f690
 
-### View Gas Reports 
+### View Gas Reports
 
 Foundry also has the ability to [report](https://book.getfoundry.sh/forge/gas-reports) the `gas` used per function call which mimics the behavior of [hardhat-gas-reporter](https://github.com/cgewecke/hardhat-gas-reporter). Generally speaking if gas costs per function call is very high, then the likelihood of its success is reduced. Gas optimization is an important activity done by smart contract developers.
 
@@ -811,7 +827,7 @@ Every poc in this repository can produce a gas report like this:
 forge test --gas-report --contracts <contract> -vvv
 ```
 
-For Example: 
+For Example:
 Let us find out the gas used in the [Audius poc](#20220723-audius---storage-collision--malicious-proposal)
 
 **Execution**

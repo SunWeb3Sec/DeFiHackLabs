@@ -5,174 +5,174 @@ pragma solidity >=0.7.0 <0.9.0;
 import "forge-std/Test.sol";
 
 interface CheatCodes {
-    // This allows us to getRecordedLogs()
-    struct Log {bytes32[] topics; bytes data;}
-    // Set block.timestamp (newTimestamp)
-    function warp(uint256) external;
-    // Set block.height (newHeight)
-    function roll(uint256) external;
-    // Set block.basefee (newBasefee)
-    function fee(uint256) external;
-    // Set block.coinbase (who)
-    function coinbase(address) external;
-    // Loads a storage slot from an address (who, slot)
-    function load(address,bytes32) external returns (bytes32);
-    // Stores a value to an address' storage slot, (who, slot, value)
-    function store(address,bytes32,bytes32) external;
-    // Signs data, (privateKey, digest) => (v, r, s)
-    function sign(uint256,bytes32) external returns (uint8,bytes32,bytes32);
-    // Gets address for a given private key, (privateKey) => (address)
-    function addr(uint256) external returns (address);
-    // Derive a private key from a provided mnenomic string (or mnenomic file path) at the derivation path m/44'/60'/0'/0/{index}
-    function deriveKey(string calldata, uint32) external returns (uint256);
-    // Derive a private key from a provided mnenomic string (or mnenomic file path) at the derivation path {path}{index}
-    function deriveKey(string calldata, string calldata, uint32) external returns (uint256);
-    // Performs a foreign function call via terminal, (stringInputs) => (result)
-    function ffi(string[] calldata) external returns (bytes memory);
-    // Set environment variables, (name, value)
-    function setEnv(string calldata, string calldata) external;
-    // Read environment variables, (name) => (value)
-    function envBool(string calldata) external returns (bool);
-    function envUint(string calldata) external returns (uint256);
-    function envInt(string calldata) external returns (int256);
-    function envAddress(string calldata) external returns (address);
-    function envBytes32(string calldata) external returns (bytes32);
-    function envString(string calldata) external returns (string memory);
-    function envBytes(string calldata) external returns (bytes memory);
-    // Read environment variables as arrays, (name, delim) => (value[])
-    function envBool(string calldata, string calldata) external returns (bool[] memory);
-    function envUint(string calldata, string calldata) external returns (uint256[] memory);
-    function envInt(string calldata, string calldata) external returns (int256[] memory);
-    function envAddress(string calldata, string calldata) external returns (address[] memory);
-    function envBytes32(string calldata, string calldata) external returns (bytes32[] memory);
-    function envString(string calldata, string calldata) external returns (string[] memory);
-    function envBytes(string calldata, string calldata) external returns (bytes[] memory);
-    // Sets the *next* call's msg.sender to be the input address
-    function prank(address) external;
-    // Sets all subsequent calls' msg.sender to be the input address until `stopPrank` is called
-    function startPrank(address) external;
-    // Sets the *next* call's msg.sender to be the input address, and the tx.origin to be the second input
-    function prank(address,address) external;
-    // Sets all subsequent calls' msg.sender to be the input address until `stopPrank` is called, and the tx.origin to be the second input
-    function startPrank(address,address) external;
-    // Resets subsequent calls' msg.sender to be `address(this)`
-    function stopPrank() external;
-    // Sets an address' balance, (who, newBalance)
-    function deal(address, uint256) external;
-    // Sets an address' code, (who, newCode)
-    function etch(address, bytes calldata) external;
-    // Expects an error on next call
-    function expectRevert() external;
-    function expectRevert(bytes calldata) external;
-    function expectRevert(bytes4) external;
-    // Record all storage reads and writes
-    function record() external;
-    // Gets all accessed reads and write slot from a recording session, for a given address
-    function accesses(address) external returns (bytes32[] memory reads, bytes32[] memory writes);
-    // Record all the transaction logs
-    function recordLogs() external;
-    // Gets all the recorded logs
-    function getRecordedLogs() external returns (Log[] memory);
-    // Prepare an expected log with (bool checkTopic1, bool checkTopic2, bool checkTopic3, bool checkData).
-    // Call this function, then emit an event, then call a function. Internally after the call, we check if
-    // logs were emitted in the expected order with the expected topics and data (as specified by the booleans).
-    // Second form also checks supplied address against emitting contract.
-    function expectEmit(bool,bool,bool,bool) external;
-    function expectEmit(bool,bool,bool,bool,address) external;
-    // Mocks a call to an address, returning specified data.
-    // Calldata can either be strict or a partial match, e.g. if you only
-    // pass a Solidity selector to the expected calldata, then the entire Solidity
-    // function will be mocked.
-    function mockCall(address,bytes calldata,bytes calldata) external;
-    // Mocks a call to an address with a specific msg.value, returning specified data.
-    // Calldata match takes precedence over msg.value in case of ambiguity.
-    function mockCall(address,uint256,bytes calldata,bytes calldata) external;
-    // Clears all mocked calls
-    function clearMockedCalls() external;
-    // Expect a call to an address with the specified calldata.
-    // Calldata can either be strict or a partial match
-    function expectCall(address,bytes calldata) external;
-    // Expect a call to an address with the specified msg.value and calldata
-    function expectCall(address,uint256,bytes calldata) external;
-    // Gets the code from an artifact file. Takes in the relative path to the json file
-    function getCode(string calldata) external returns (bytes memory);
-    // Labels an address in call traces
-    function label(address, string calldata) external;
-    // If the condition is false, discard this run's fuzz inputs and generate new ones
-    function assume(bool) external;
-    // Set nonce for an account
-    function setNonce(address,uint64) external;
-    // Get nonce for an account
-    function getNonce(address) external returns(uint64);
-    // Set block.chainid (newChainId)
-    function chainId(uint256) external;
-    // Using the address that calls the test contract, has the next call (at this call depth only) create a transaction that can later be signed and sent onchain
-    function broadcast() external;
-    // Has the next call (at this call depth only) create a transaction with the address provided as the sender that can later be signed and sent onchain
-    function broadcast(address) external;
-    // Using the address that calls the test contract, has the all subsequent calls (at this call depth only) create transactions that can later be signed and sent onchain
-    function startBroadcast() external;
-    // Has the all subsequent calls (at this call depth only) create transactions that can later be signed and sent onchain
-    function startBroadcast(address) external;
-    // Stops collecting onchain transactions
-    function stopBroadcast() external;
-    // Reads the entire content of file to string. Path is relative to the project root. (path) => (data)
-    function readFile(string calldata) external returns (string memory);
-    // Reads next line of file to string, (path) => (line)
-    function readLine(string calldata) external returns (string memory);
-    // Writes data to file, creating a file if it does not exist, and entirely replacing its contents if it does.
-    // Path is relative to the project root. (path, data) => ()
-    function writeFile(string calldata, string calldata) external;
-    // Writes line to file, creating a file if it does not exist.
-    // Path is relative to the project root. (path, data) => ()
-    function writeLine(string calldata, string calldata) external;
-    // Closes file for reading, resetting the offset and allowing to read it from beginning with readLine.
-    // Path is relative to the project root. (path) => ()
-    function closeFile(string calldata) external;
-    // Removes file. This cheatcode will revert in the following situations, but is not limited to just these cases:
-    // - Path points to a directory.
-    // - The file doesn't exist.
-    // - The user lacks permissions to remove the file.
-    // Path is relative to the project root. (path) => ()
-    function removeFile(string calldata) external;
+  // This allows us to getRecordedLogs()
+  struct Log {bytes32[] topics; bytes data;}
+  // Set block.timestamp (newTimestamp)
+  function warp(uint256) external;
+  // Set block.height (newHeight)
+  function roll(uint256) external;
+  // Set block.basefee (newBasefee)
+  function fee(uint256) external;
+  // Set block.coinbase (who)
+  function coinbase(address) external;
+  // Loads a storage slot from an address (who, slot)
+  function load(address,bytes32) external returns (bytes32);
+  // Stores a value to an address' storage slot, (who, slot, value)
+  function store(address,bytes32,bytes32) external;
+  // Signs data, (privateKey, digest) => (v, r, s)
+  function sign(uint256,bytes32) external returns (uint8,bytes32,bytes32);
+  // Gets address for a given private key, (privateKey) => (address)
+  function addr(uint256) external returns (address);
+  // Derive a private key from a provided mnenomic string (or mnenomic file path) at the derivation path m/44'/60'/0'/0/{index}
+  function deriveKey(string calldata, uint32) external returns (uint256);
+  // Derive a private key from a provided mnenomic string (or mnenomic file path) at the derivation path {path}{index}
+  function deriveKey(string calldata, string calldata, uint32) external returns (uint256);
+  // Performs a foreign function call via terminal, (stringInputs) => (result)
+  function ffi(string[] calldata) external returns (bytes memory);
+  // Set environment variables, (name, value)
+  function setEnv(string calldata, string calldata) external;
+  // Read environment variables, (name) => (value)
+  function envBool(string calldata) external returns (bool);
+  function envUint(string calldata) external returns (uint256);
+  function envInt(string calldata) external returns (int256);
+  function envAddress(string calldata) external returns (address);
+  function envBytes32(string calldata) external returns (bytes32);
+  function envString(string calldata) external returns (string memory);
+  function envBytes(string calldata) external returns (bytes memory);
+  // Read environment variables as arrays, (name, delim) => (value[])
+  function envBool(string calldata, string calldata) external returns (bool[] memory);
+  function envUint(string calldata, string calldata) external returns (uint256[] memory);
+  function envInt(string calldata, string calldata) external returns (int256[] memory);
+  function envAddress(string calldata, string calldata) external returns (address[] memory);
+  function envBytes32(string calldata, string calldata) external returns (bytes32[] memory);
+  function envString(string calldata, string calldata) external returns (string[] memory);
+  function envBytes(string calldata, string calldata) external returns (bytes[] memory);
+  // Sets the *next* call's msg.sender to be the input address
+  function prank(address) external;
+  // Sets all subsequent calls' msg.sender to be the input address until `stopPrank` is called
+  function startPrank(address) external;
+  // Sets the *next* call's msg.sender to be the input address, and the tx.origin to be the second input
+  function prank(address,address) external;
+  // Sets all subsequent calls' msg.sender to be the input address until `stopPrank` is called, and the tx.origin to be the second input
+  function startPrank(address,address) external;
+  // Resets subsequent calls' msg.sender to be `address(this)`
+  function stopPrank() external;
+  // Sets an address' balance, (who, newBalance)
+  function deal(address, uint256) external;
+  // Sets an address' code, (who, newCode)
+  function etch(address, bytes calldata) external;
+  // Expects an error on next call
+  function expectRevert() external;
+  function expectRevert(bytes calldata) external;
+  function expectRevert(bytes4) external;
+  // Record all storage reads and writes
+  function record() external;
+  // Gets all accessed reads and write slot from a recording session, for a given address
+  function accesses(address) external returns (bytes32[] memory reads, bytes32[] memory writes);
+  // Record all the transaction logs
+  function recordLogs() external;
+  // Gets all the recorded logs
+  function getRecordedLogs() external returns (Log[] memory);
+  // Prepare an expected log with (bool checkTopic1, bool checkTopic2, bool checkTopic3, bool checkData).
+  // Call this function, then emit an event, then call a function. Internally after the call, we check if
+  // logs were emitted in the expected order with the expected topics and data (as specified by the booleans).
+  // Second form also checks supplied address against emitting contract.
+  function expectEmit(bool,bool,bool,bool) external;
+  function expectEmit(bool,bool,bool,bool,address) external;
+  // Mocks a call to an address, returning specified data.
+  // Calldata can either be strict or a partial match, e.g. if you only
+  // pass a Solidity selector to the expected calldata, then the entire Solidity
+  // function will be mocked.
+  function mockCall(address,bytes calldata,bytes calldata) external;
+  // Mocks a call to an address with a specific msg.value, returning specified data.
+  // Calldata match takes precedence over msg.value in case of ambiguity.
+  function mockCall(address,uint256,bytes calldata,bytes calldata) external;
+  // Clears all mocked calls
+  function clearMockedCalls() external;
+  // Expect a call to an address with the specified calldata.
+  // Calldata can either be strict or a partial match
+  function expectCall(address,bytes calldata) external;
+  // Expect a call to an address with the specified msg.value and calldata
+  function expectCall(address,uint256,bytes calldata) external;
+  // Gets the code from an artifact file. Takes in the relative path to the json file
+  function getCode(string calldata) external returns (bytes memory);
+  // Labels an address in call traces
+  function label(address, string calldata) external;
+  // If the condition is false, discard this run's fuzz inputs and generate new ones
+  function assume(bool) external;
+  // Set nonce for an account
+  function setNonce(address,uint64) external;
+  // Get nonce for an account
+  function getNonce(address) external returns(uint64);
+  // Set block.chainid (newChainId)
+  function chainId(uint256) external;
+  // Using the address that calls the test contract, has the next call (at this call depth only) create a transaction that can later be signed and sent onchain
+  function broadcast() external;
+  // Has the next call (at this call depth only) create a transaction with the address provided as the sender that can later be signed and sent onchain
+  function broadcast(address) external;
+  // Using the address that calls the test contract, has the all subsequent calls (at this call depth only) create transactions that can later be signed and sent onchain
+  function startBroadcast() external;
+  // Has the all subsequent calls (at this call depth only) create transactions that can later be signed and sent onchain
+  function startBroadcast(address) external;
+  // Stops collecting onchain transactions
+  function stopBroadcast() external;
+  // Reads the entire content of file to string. Path is relative to the project root. (path) => (data)
+  function readFile(string calldata) external returns (string memory);
+  // Reads next line of file to string, (path) => (line)
+  function readLine(string calldata) external returns (string memory);
+  // Writes data to file, creating a file if it does not exist, and entirely replacing its contents if it does.
+  // Path is relative to the project root. (path, data) => ()
+  function writeFile(string calldata, string calldata) external;
+  // Writes line to file, creating a file if it does not exist.
+  // Path is relative to the project root. (path, data) => ()
+  function writeLine(string calldata, string calldata) external;
+  // Closes file for reading, resetting the offset and allowing to read it from beginning with readLine.
+  // Path is relative to the project root. (path) => ()
+  function closeFile(string calldata) external;
+  // Removes file. This cheatcode will revert in the following situations, but is not limited to just these cases:
+  // - Path points to a directory.
+  // - The file doesn't exist.
+  // - The user lacks permissions to remove the file.
+  // Path is relative to the project root. (path) => ()
+  function removeFile(string calldata) external;
 
-    function toString(address)        external returns(string memory);
-    function toString(bytes calldata) external returns(string memory);
-    function toString(bytes32)        external returns(string memory);
-    function toString(bool)           external returns(string memory);
-    function toString(uint256)        external returns(string memory);
-    function toString(int256)         external returns(string memory);
-    // Snapshot the current state of the evm.
-    // Returns the id of the snapshot that was created.
-    // To revert a snapshot use `revertTo`
-    function snapshot() external returns(uint256);
-    // Revert the state of the evm to a previous snapshot
-    // Takes the snapshot id to revert to.
-    // This deletes the snapshot and all snapshots taken after the given snapshot id.
-    function revertTo(uint256) external returns(bool);
-    // Creates a new fork with the given endpoint and block and returns the identifier of the fork
-    function createFork(string calldata,uint256) external returns(uint256);
-    // Creates a new fork with the given endpoint and the _latest_ block and returns the identifier of the fork
-    function createFork(string calldata) external returns(uint256);
-    // Creates _and_ also selects a new fork with the given endpoint and block and returns the identifier of the fork
-    function createSelectFork(string calldata,uint256) external returns(uint256);
-    // Creates _and_ also selects a new fork with the given endpoint and the latest block and returns the identifier of the fork
-    function createSelectFork(string calldata) external returns(uint256);
-    // Takes a fork identifier created by `createFork` and sets the corresponding forked state as active.
-    function selectFork(uint256) external;
-    /// Returns the currently active fork
-    /// Reverts if no fork is currently active
-    function activeFork() external returns(uint256);
-    // Updates the currently active fork to given block number
-    // This is similar to `roll` but for the currently active fork
-    function rollFork(uint256) external;
-    // Updates the given fork to given block number
-    function rollFork(uint256 forkId, uint256 blockNumber) external;
-    /// Returns the RPC url for the given alias
-    function rpcUrl(string calldata) external returns(string memory);
-    /// Returns all rpc urls and their aliases `[alias, url][]`
-    function rpcUrls() external returns(string[2][] memory);
-  }
+  function toString(address)        external returns(string memory);
+  function toString(bytes calldata) external returns(string memory);
+  function toString(bytes32)        external returns(string memory);
+  function toString(bool)           external returns(string memory);
+  function toString(uint256)        external returns(string memory);
+  function toString(int256)         external returns(string memory);
+  // Snapshot the current state of the evm.
+  // Returns the id of the snapshot that was created.
+  // To revert a snapshot use `revertTo`
+  function snapshot() external returns(uint256);
+  // Revert the state of the evm to a previous snapshot
+  // Takes the snapshot id to revert to.
+  // This deletes the snapshot and all snapshots taken after the given snapshot id.
+  function revertTo(uint256) external returns(bool);
+  // Creates a new fork with the given endpoint and block and returns the identifier of the fork
+  function createFork(string calldata,uint256) external returns(uint256);
+  // Creates a new fork with the given endpoint and the _latest_ block and returns the identifier of the fork
+  function createFork(string calldata) external returns(uint256);
+  // Creates _and_ also selects a new fork with the given endpoint and block and returns the identifier of the fork
+  function createSelectFork(string calldata,uint256) external returns(uint256);
+  // Creates _and_ also selects a new fork with the given endpoint and the latest block and returns the identifier of the fork
+  function createSelectFork(string calldata) external returns(uint256);
+  // Takes a fork identifier created by `createFork` and sets the corresponding forked state as active.
+  function selectFork(uint256) external;
+  /// Returns the currently active fork
+  /// Reverts if no fork is currently active
+  function activeFork() external returns(uint256);
+  // Updates the currently active fork to given block number
+  // This is similar to `roll` but for the currently active fork
+  function rollFork(uint256) external;
+  // Updates the given fork to given block number
+  function rollFork(uint256 forkId, uint256 blockNumber) external;
+  /// Returns the RPC url for the given alias
+  function rpcUrl(string calldata) external returns(string memory);
+  /// Returns all rpc urls and their aliases `[alias, url][]`
+  function rpcUrls() external returns(string[2][] memory);
+}
 
 interface IERC20 {
   event Approval(address indexed owner, address indexed spender, uint256 value);
@@ -189,9 +189,9 @@ interface IERC20 {
   function balanceOf(address owner) external view returns (uint256);
 
   function allowance(address owner, address spender)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function approve(address spender, uint256 value) external returns (bool);
 
@@ -279,14 +279,14 @@ interface ICErc20Delegate {
   function _setComptroller(address newComptroller) external returns (uint256);
 
   function _setInterestRateModel(address newInterestRateModel)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function _setPendingAdmin(address newPendingAdmin) external returns (uint256);
 
   function _setReserveFactor(uint256 newReserveFactorMantissa)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function accrualBlockNumber() external view returns (uint256);
 
@@ -295,9 +295,9 @@ interface ICErc20Delegate {
   function admin() external view returns (address);
 
   function allowance(address owner, address spender)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function approve(address spender, uint256 amount) external returns (bool);
 
@@ -324,14 +324,14 @@ interface ICErc20Delegate {
   function exchangeRateStored() external view returns (uint256);
 
   function getAccountSnapshot(address account)
-    external
-    view
-    returns (
-      uint256,
-      uint256,
-      uint256,
-      uint256
-    );
+  external
+  view
+  returns (
+    uint256,
+    uint256,
+    uint256,
+    uint256
+  );
 
   function getCash() external view returns (uint256);
 
@@ -381,8 +381,8 @@ interface ICErc20Delegate {
   function repayBorrow(uint256 repayAmount) external returns (uint256);
 
   function repayBorrowBehalf(address borrower, uint256 repayAmount)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function reserveFactorMantissa() external view returns (uint256);
 
@@ -553,8 +553,8 @@ interface IRevest {
   function erc20Fee() external view returns (uint256);
 
   function extendFNFTMaturity(uint256 fnftId, uint256 endTime)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function flatWeiFee() external view returns (uint256);
 
@@ -567,9 +567,9 @@ interface IRevest {
   function getRoleAdmin(bytes32 role) external view returns (bytes32);
 
   function getRoleMember(bytes32 role, uint256 index)
-    external
-    view
-    returns (address);
+  external
+  view
+  returns (address);
 
   function getRoleMemberCount(bytes32 role) external view returns (uint256);
 
@@ -686,16 +686,16 @@ interface IERC1820Registry {
   function setManager(address _addr, address _newManager) external;
 
   function interfaceHash(string memory _interfaceName)
-    external
-    pure
-    returns (bytes32);
+  external
+  pure
+  returns (bytes32);
 
   function updateERC165Cache(address _contract, bytes4 _interfaceId) external;
 
   function getInterfaceImplementer(address _addr, bytes32 _interfaceHash)
-    external
-    view
-    returns (address);
+  external
+  view
+  returns (address);
 
   function implementsERC165InterfaceNoCache(
     address _contract,
@@ -703,9 +703,9 @@ interface IERC1820Registry {
   ) external view returns (bool);
 
   function implementsERC165Interface(address _contract, bytes4 _interfaceId)
-    external
-    view
-    returns (bool);
+  external
+  view
+  returns (bool);
 
   event InterfaceImplementerSet(
     address indexed addr,
@@ -735,9 +735,9 @@ interface IERC777 {
   function burn(uint256 amount, bytes calldata data) external;
 
   function isOperatorFor(address operator, address tokenHolder)
-    external
-    view
-    returns (bool);
+  external
+  view
+  returns (bool);
 
   function authorizeOperator(address operator) external;
 
@@ -832,13 +832,13 @@ interface Uni_Pair_V2 {
   function factory() external view returns (address);
 
   function getReserves()
-    external
-    view
-    returns (
-      uint112 _reserve0,
-      uint112 _reserve1,
-      uint32 _blockTimestampLast
-    );
+  external
+  view
+  returns (
+    uint112 _reserve0,
+    uint112 _reserve1,
+    uint32 _blockTimestampLast
+  );
 
   function initialize(address _token0, address _token1) external;
 
@@ -905,12 +905,12 @@ interface Uni_Router_V2 {
     address to,
     uint256 deadline
   )
-    external
-    returns (
-      uint256 amountA,
-      uint256 amountB,
-      uint256 liquidity
-    );
+  external
+  returns (
+    uint256 amountA,
+    uint256 amountB,
+    uint256 liquidity
+  );
 
   function addLiquidityETH(
     address token,
@@ -920,13 +920,13 @@ interface Uni_Router_V2 {
     address to,
     uint256 deadline
   )
-    external
-    payable
-    returns (
-      uint256 amountToken,
-      uint256 amountETH,
-      uint256 liquidity
-    );
+  external
+  payable
+  returns (
+    uint256 amountToken,
+    uint256 amountETH,
+    uint256 liquidity
+  );
 
   function factory() external view returns (address);
 
@@ -943,14 +943,14 @@ interface Uni_Router_V2 {
   ) external pure returns (uint256 amountOut);
 
   function getAmountsIn(uint256 amountOut, address[] memory path)
-    external
-    view
-    returns (uint256[] memory amounts);
+  external
+  view
+  returns (uint256[] memory amounts);
 
   function getAmountsOut(uint256 amountIn, address[] memory path)
-    external
-    view
-    returns (uint256[] memory amounts);
+  external
+  view
+  returns (uint256[] memory amounts);
 
   function quote(
     uint256 amountA,
@@ -1195,14 +1195,14 @@ interface crETH {
   function _setComptroller(address newComptroller) external returns (uint256);
 
   function _setInterestRateModel(address newInterestRateModel)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function _setPendingAdmin(address newPendingAdmin) external returns (uint256);
 
   function _setReserveFactor(uint256 newReserveFactorMantissa)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function accrualBlockNumber() external view returns (uint256);
 
@@ -1211,9 +1211,9 @@ interface crETH {
   function admin() external view returns (address);
 
   function allowance(address owner, address spender)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function approve(address spender, uint256 amount) external returns (bool);
 
@@ -1240,14 +1240,14 @@ interface crETH {
   function exchangeRateStored() external view returns (uint256);
 
   function getAccountSnapshot(address account)
-    external
-    view
-    returns (
-      uint256,
-      uint256,
-      uint256,
-      uint256
-    );
+  external
+  view
+  returns (
+    uint256,
+    uint256,
+    uint256,
+    uint256
+  );
 
   function getCash() external view returns (uint256);
 
@@ -1265,8 +1265,8 @@ interface crETH {
   function isCToken() external view returns (bool);
 
   function liquidateBorrow(address borrower, address cTokenCollateral)
-    external
-    payable;
+  external
+  payable;
 
   function mint() external payable;
 
@@ -1385,14 +1385,14 @@ interface crAMP {
   ) external;
 
   function _setInterestRateModel(address newInterestRateModel)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function _setPendingAdmin(address newPendingAdmin) external returns (uint256);
 
   function _setReserveFactor(uint256 newReserveFactorMantissa)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function accrualBlockNumber() external view returns (uint256);
 
@@ -1401,9 +1401,9 @@ interface crAMP {
   function admin() external view returns (address);
 
   function allowance(address owner, address spender)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function approve(address spender, uint256 amount) external returns (bool);
 
@@ -1426,27 +1426,27 @@ interface crAMP {
   function decimals() external view returns (uint8);
 
   function delegateToImplementation(bytes memory data)
-    external
-    returns (bytes memory);
+  external
+  returns (bytes memory);
 
   function delegateToViewImplementation(bytes memory data)
-    external
-    view
-    returns (bytes memory);
+  external
+  view
+  returns (bytes memory);
 
   function exchangeRateCurrent() external returns (uint256);
 
   function exchangeRateStored() external view returns (uint256);
 
   function getAccountSnapshot(address account)
-    external
-    view
-    returns (
-      uint256,
-      uint256,
-      uint256,
-      uint256
-    );
+  external
+  view
+  returns (
+    uint256,
+    uint256,
+    uint256,
+    uint256
+  );
 
   function getCash() external view returns (uint256);
 
@@ -1475,8 +1475,8 @@ interface crAMP {
   function repayBorrow(uint256 repayAmount) external returns (uint256);
 
   function repayBorrowBehalf(address borrower, uint256 repayAmount)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function reserveFactorMantissa() external view returns (uint256);
 
@@ -1564,9 +1564,9 @@ interface AMP {
   );
 
   function allowance(address _owner, address _spender)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function allowanceByPartition(
     bytes32 _partition,
@@ -1587,7 +1587,7 @@ interface AMP {
   function authorizeOperator(address _operator) external;
 
   function authorizeOperatorByPartition(bytes32 _partition, address _operator)
-    external;
+  external;
 
   function authorizeOwnershipTransfer(address _authorizedAddress) external;
 
@@ -1596,22 +1596,22 @@ interface AMP {
   function balanceOf(address _tokenHolder) external view returns (uint256);
 
   function balanceOfByPartition(bytes32 _partition, address _tokenHolder)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function canImplementInterfaceForAddress(bytes32 _interfaceHash, address)
-    external
-    view
-    returns (bytes32);
+  external
+  view
+  returns (bytes32);
 
   function collateralManagers(uint256) external view returns (address);
 
   function decimals() external pure returns (uint8);
 
   function decreaseAllowance(address _spender, uint256 _subtractedValue)
-    external
-    returns (bool);
+  external
+  returns (bool);
 
   function decreaseAllowanceByPartition(
     bytes32 _partition,
@@ -1624,8 +1624,8 @@ interface AMP {
   function granularity() external pure returns (uint256);
 
   function increaseAllowance(address _spender, uint256 _addedValue)
-    external
-    returns (bool);
+  external
+  returns (bool);
 
   function increaseAllowanceByPartition(
     bytes32 _partition,
@@ -1634,14 +1634,14 @@ interface AMP {
   ) external returns (bool);
 
   function isCollateralManager(address _collateralManager)
-    external
-    view
-    returns (bool);
+  external
+  view
+  returns (bool);
 
   function isOperator(address _operator, address _tokenHolder)
-    external
-    view
-    returns (bool);
+  external
+  view
+  returns (bool);
 
   function isOperatorForCollateralManager(
     bytes32 _partition,
@@ -1664,19 +1664,19 @@ interface AMP {
   function partitionStrategies(uint256) external view returns (bytes4);
 
   function partitionsOf(address _tokenHolder)
-    external
-    view
-    returns (bytes32[] memory);
+  external
+  view
+  returns (bytes32[] memory);
 
   function registerCollateralManager() external;
 
   function revokeOperator(address _operator) external;
 
   function revokeOperatorByPartition(bytes32 _partition, address _operator)
-    external;
+  external;
 
   function setPartitionStrategy(bytes4 _prefix, address _implementation)
-    external;
+  external;
 
   function swap(address _from) external;
 
@@ -1736,12 +1736,12 @@ interface IBaseV1Router01 {
     address to,
     uint256 deadline
   )
-    external
-    returns (
-      uint256 amountA,
-      uint256 amountB,
-      uint256 liquidity
-    );
+  external
+  returns (
+    uint256 amountA,
+    uint256 amountB,
+    uint256 liquidity
+  );
 
   function swapExactTokensForTokensSimple(
     uint256 amountIn,
@@ -1766,11 +1766,11 @@ interface IDeiLenderSolidex {
     SchnorrSign[] memory sigs
   ) external returns (uint256 debt);
 }
-struct SchnorrSign {
-  uint256 signature;
-  address owner;
-  address nonce;
-}
+  struct SchnorrSign {
+    uint256 signature;
+    address owner;
+    address nonce;
+  }
 
 interface ISSPv4 {
   function buyDei(uint256 amountIn) external;
@@ -1914,9 +1914,9 @@ interface IMasterChef {
   function feeDistributor() external view returns (address);
 
   function getMultiplier(uint256 _from, uint256 _to)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function implementation() external view returns (address);
 
@@ -1950,21 +1950,21 @@ interface IMasterChef {
   function pendingImplementation() external view returns (address);
 
   function pendingT42(uint256 _pid, address _user)
-    external
-    view
-    returns (uint256 pending, uint256 fee);
+  external
+  view
+  returns (uint256 pending, uint256 fee);
 
   function poolInfo(uint256)
-    external
-    view
-    returns (
-      address lpToken,
-      uint256 allocPoint,
-      uint256 lastRewardBlock,
-      uint256 accT42PerShare,
-      address ticket,
-      uint256 pooltype
-    );
+  external
+  view
+  returns (
+    address lpToken,
+    uint256 allocPoint,
+    uint256 lastRewardBlock,
+    uint256 accT42PerShare,
+    address ticket,
+    uint256 pooltype
+  );
 
   function poolLength() external view returns (uint256);
 
@@ -2001,14 +2001,14 @@ interface IMasterChef {
   function t42PerBlock(uint8 index) external view returns (uint256);
 
   function ticket_staked_array(address who, address ticket)
-    external
-    view
-    returns (uint256[] memory);
+  external
+  view
+  returns (uint256[] memory);
 
   function ticket_staked_count(address who, address ticket)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function ticket_stakes(
     address,
@@ -2031,9 +2031,9 @@ interface IMasterChef {
   function userChange(address, address) external view returns (uint256);
 
   function userInfo(uint256, address)
-    external
-    view
-    returns (uint256 amount, uint256 rewardDebt);
+  external
+  view
+  returns (uint256 amount, uint256 rewardDebt);
 
   function withdraw(uint256 _pid, uint256 _amount) external;
 
@@ -2072,9 +2072,9 @@ interface IPancakePair {
   function balanceOf(address owner) external view returns (uint256);
 
   function allowance(address owner, address spender)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function approve(address spender, uint256 value) external returns (bool);
 
@@ -2128,13 +2128,13 @@ interface IPancakePair {
   function token1() external view returns (address);
 
   function getReserves()
-    external
-    view
-    returns (
-      uint112 reserve0,
-      uint112 reserve1,
-      uint32 blockTimestampLast
-    );
+  external
+  view
+  returns (
+    uint112 reserve0,
+    uint112 reserve1,
+    uint32 blockTimestampLast
+  );
 
   function price0CumulativeLast() external view returns (uint256);
 
@@ -2173,12 +2173,12 @@ interface IPancakeRouter {
     address to,
     uint256 deadline
   )
-    external
-    returns (
-      uint256 amountA,
-      uint256 amountB,
-      uint256 liquidity
-    );
+  external
+  returns (
+    uint256 amountA,
+    uint256 amountB,
+    uint256 liquidity
+  );
 
   function addLiquidityETH(
     address token,
@@ -2188,13 +2188,13 @@ interface IPancakeRouter {
     address to,
     uint256 deadline
   )
-    external
-    payable
-    returns (
-      uint256 amountToken,
-      uint256 amountETH,
-      uint256 liquidity
-    );
+  external
+  payable
+  returns (
+    uint256 amountToken,
+    uint256 amountETH,
+    uint256 liquidity
+  );
 
   function factory() external view returns (address);
 
@@ -2211,14 +2211,14 @@ interface IPancakeRouter {
   ) external pure returns (uint256 amountOut);
 
   function getAmountsIn(uint256 amountOut, address[] memory path)
-    external
-    view
-    returns (uint256[] memory amounts);
+  external
+  view
+  returns (uint256[] memory amounts);
 
   function getAmountsOut(uint256 amountIn, address[] memory path)
-    external
-    view
-    returns (uint256[] memory amounts);
+  external
+  view
+  returns (uint256[] memory amounts);
 
   function quote(
     uint256 amountA,
@@ -2383,9 +2383,9 @@ interface GymToken {
   function balanceOf(address owner) external view returns (uint256);
 
   function allowance(address owner, address spender)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 }
 
 interface ILiquidityMigrationV2 {
@@ -2511,39 +2511,39 @@ interface Pool {
   function REDEMPTION_FEE_MAX() external view returns (uint256);
 
   function calcExcessFtmBalance()
-    external
-    view
-    returns (uint256 _delta, bool _exceeded);
+  external
+  view
+  returns (uint256 _delta, bool _exceeded);
 
   function calcMint(uint256 _ftmIn, uint256 _fantasmIn)
-    external
-    view
-    returns (
-      uint256 _xftmOut,
-      uint256 _minFtmIn,
-      uint256 _minFantasmIn,
-      uint256 _fee
-    );
+  external
+  view
+  returns (
+    uint256 _xftmOut,
+    uint256 _minFtmIn,
+    uint256 _minFantasmIn,
+    uint256 _fee
+  );
 
   function calcRedeem(uint256 _xftmIn)
-    external
-    view
-    returns (
-      uint256 _ftmOut,
-      uint256 _fantasmOut,
-      uint256 _ftmFee,
-      uint256 _requiredFtmBalance
-    );
+  external
+  view
+  returns (
+    uint256 _ftmOut,
+    uint256 _fantasmOut,
+    uint256 _ftmFee,
+    uint256 _requiredFtmBalance
+  );
 
   function calcZapMint(uint256 _ftmIn)
-    external
-    view
-    returns (
-      uint256 _xftmOut,
-      uint256 _fantasmOut,
-      uint256 _ftmFee,
-      uint256 _ftmSwapIn
-    );
+  external
+  view
+  returns (
+    uint256 _xftmOut,
+    uint256 _fantasmOut,
+    uint256 _ftmFee,
+    uint256 _ftmSwapIn
+  );
 
   function collateralRatio() external view returns (uint256);
 
@@ -2562,18 +2562,18 @@ interface Pool {
   function feeReserve() external view returns (address);
 
   function info()
-    external
-    view
-    returns (
-      uint256 _collateralRatio,
-      uint256 _lastRefreshCrTimestamp,
-      uint256 _mintingFee,
-      uint256 _redemptionFee,
-      bool _mintingPaused,
-      bool _redemptionPaused,
-      uint256 _collateralBalance,
-      uint256 _maxXftmSupply
-    );
+  external
+  view
+  returns (
+    uint256 _collateralRatio,
+    uint256 _lastRefreshCrTimestamp,
+    uint256 _mintingFee,
+    uint256 _redemptionFee,
+    bool _mintingPaused,
+    bool _redemptionPaused,
+    uint256 _collateralBalance,
+    uint256 _maxXftmSupply
+  );
 
   function lastRefreshCrTimestamp() external view returns (uint256);
 
@@ -2659,14 +2659,14 @@ interface Pool {
   function usableFtmBalance() external view returns (uint256);
 
   function userInfo(address)
-    external
-    view
-    returns (
-      uint256 xftmBalance,
-      uint256 fantasmBalance,
-      uint256 ftmBalance,
-      uint256 lastAction
-    );
+  external
+  view
+  returns (
+    uint256 xftmBalance,
+    uint256 fantasmBalance,
+    uint256 ftmBalance,
+    uint256 lastAction
+  );
 
   function xftm() external view returns (address);
 
@@ -2715,14 +2715,14 @@ interface Monoswap {
     uint256 liquidity,
     address to
   )
-    external
-    view
-    returns (
-      uint256 poolValue,
-      uint256 liquidityIn,
-      uint256 vcashOut,
-      uint256 tokenOut
-    );
+  external
+  view
+  returns (
+    uint256 poolValue,
+    uint256 liquidityIn,
+    uint256 vcashOut,
+    uint256 tokenOut
+  );
 
   function addLiquidity(
     address _token,
@@ -2731,9 +2731,9 @@ interface Monoswap {
   ) external returns (uint256 liquidity);
 
   function addLiquidityETH(address to)
-    external
-    payable
-    returns (uint256 liquidity);
+  external
+  payable
+  returns (uint256 liquidity);
 
   function addLiquidityPair(
     address _token,
@@ -2753,49 +2753,49 @@ interface Monoswap {
     address tokenOut,
     uint256 amountOut
   )
-    external
-    view
-    returns (
-      uint256 tokenInPrice,
-      uint256 tokenOutPrice,
-      uint256 amountIn,
-      uint256 tradeVcashValue
-    );
+  external
+  view
+  returns (
+    uint256 tokenInPrice,
+    uint256 tokenOutPrice,
+    uint256 amountIn,
+    uint256 tradeVcashValue
+  );
 
   function getAmountOut(
     address tokenIn,
     address tokenOut,
     uint256 amountIn
   )
-    external
-    view
-    returns (
-      uint256 tokenInPrice,
-      uint256 tokenOutPrice,
-      uint256 amountOut,
-      uint256 tradeVcashValue
-    );
+  external
+  view
+  returns (
+    uint256 tokenInPrice,
+    uint256 tokenOutPrice,
+    uint256 amountOut,
+    uint256 tradeVcashValue
+  );
 
   function getConfig()
-    external
-    view
-    returns (
-      address _vCash,
-      address _weth,
-      address _feeTo,
-      uint16 _fees,
-      uint16 _devFee
-    );
+  external
+  view
+  returns (
+    address _vCash,
+    address _weth,
+    address _feeTo,
+    uint16 _fees,
+    uint16 _devFee
+  );
 
   function getPool(address _token)
-    external
-    view
-    returns (
-      uint256 poolValue,
-      uint256 tokenBalanceVcashValue,
-      uint256 vcashCredit,
-      uint256 vcashDebt
-    );
+  external
+  view
+  returns (
+    uint256 poolValue,
+    uint256 tokenBalanceVcashValue,
+    uint256 vcashCredit,
+    uint256 vcashDebt
+  );
 
   function initialize(address _monoXPool, address _vcash) external;
 
@@ -2818,19 +2818,19 @@ interface Monoswap {
   function poolSizeMinLimit() external view returns (uint256);
 
   function pools(address)
-    external
-    view
-    returns (
-      uint256 pid,
-      uint256 lastPoolValue,
-      address token,
-      uint8 status,
-      uint112 vcashDebt,
-      uint112 vcashCredit,
-      uint112 tokenBalance,
-      uint256 price,
-      uint256 createdAt
-    );
+  external
+  view
+  returns (
+    uint256 pid,
+    uint256 lastPoolValue,
+    address token,
+    uint8 status,
+    uint112 vcashDebt,
+    uint112 vcashCredit,
+    uint112 tokenBalance,
+    uint256 price,
+    uint256 createdAt
+  );
 
   function priceAdjusterRole(address) external view returns (bool);
 
@@ -2960,14 +2960,14 @@ interface MonoXPool {
   function admin() external view returns (address);
 
   function balanceOf(address account, uint256 id)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function balanceOfBatch(address[] memory accounts, uint256[] memory ids)
-    external
-    view
-    returns (uint256[] memory);
+  external
+  view
+  returns (uint256[] memory);
 
   function burn(
     address account,
@@ -2982,16 +2982,16 @@ interface MonoXPool {
   function initialize(address _WETH) external;
 
   function isApprovedForAll(address account, address operator)
-    external
-    view
-    returns (bool);
+  external
+  view
+  returns (bool);
 
   function isUnofficial(uint256) external view returns (bool);
 
   function liquidityLastAddedOf(uint256 pid, address account)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function mint(
     address account,
@@ -3088,26 +3088,26 @@ interface USDC {
   function PERMIT_TYPEHASH() external view returns (bytes32);
 
   function RECEIVE_WITH_AUTHORIZATION_TYPEHASH()
-    external
-    view
-    returns (bytes32);
+  external
+  view
+  returns (bytes32);
 
   function TRANSFER_WITH_AUTHORIZATION_TYPEHASH()
-    external
-    view
-    returns (bytes32);
+  external
+  view
+  returns (bytes32);
 
   function allowance(address owner, address spender)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function approve(address spender, uint256 value) external returns (bool);
 
   function authorizationState(address authorizer, bytes32 nonce)
-    external
-    view
-    returns (bool);
+  external
+  view
+  returns (bool);
 
   function balanceOf(address account) external view returns (uint256);
 
@@ -3126,20 +3126,20 @@ interface USDC {
   ) external;
 
   function configureMinter(address minter, uint256 minterAllowedAmount)
-    external
-    returns (bool);
+  external
+  returns (bool);
 
   function currency() external view returns (string memory);
 
   function decimals() external view returns (uint8);
 
   function decreaseAllowance(address spender, uint256 decrement)
-    external
-    returns (bool);
+  external
+  returns (bool);
 
   function increaseAllowance(address spender, uint256 increment)
-    external
-    returns (bool);
+  external
+  returns (bool);
 
   function initialize(
     string memory tokenName,
@@ -3294,33 +3294,33 @@ interface MonoToken {
   function MINTER_ROLE() external view returns (bytes32);
 
   function allowance(address owner, address spender)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function approve(address spender, uint256 amount) external returns (bool);
 
   function balanceOf(address account) external view returns (uint256);
 
   function balanceOfAt(address account, uint256 snapshotId)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function cap() external view returns (uint256);
 
   function checkpoints(address, uint32)
-    external
-    view
-    returns (uint32 fromBlock, uint256 votes);
+  external
+  view
+  returns (uint32 fromBlock, uint256 votes);
 
   function childChainManagerProxy() external view returns (address);
 
   function decimals() external view returns (uint8);
 
   function decreaseAllowance(address spender, uint256 subtractedValue)
-    external
-    returns (bool);
+  external
+  returns (bool);
 
   function delegate(address delegatee) external;
 
@@ -3340,16 +3340,16 @@ interface MonoToken {
   function getCurrentVotes(address account) external view returns (uint256);
 
   function getPriorVotes(address account, uint256 blockNumber)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function getRoleAdmin(bytes32 role) external view returns (bytes32);
 
   function getRoleMember(bytes32 role, uint256 index)
-    external
-    view
-    returns (address);
+  external
+  view
+  returns (address);
 
   function getRoleMemberCount(bytes32 role) external view returns (uint256);
 
@@ -3358,8 +3358,8 @@ interface MonoToken {
   function hasRole(bytes32 role, address account) external view returns (bool);
 
   function increaseAllowance(address spender, uint256 addedValue)
-    external
-    returns (bool);
+  external
+  returns (bool);
 
   function mint(address _to, uint256 _amount) external;
 
@@ -3436,21 +3436,21 @@ interface ICEtherDelegate {
 
 interface IUnitroller {
   function enterMarkets(address[] memory cTokens)
-    external
-    returns (uint256[] memory);
+  external
+  returns (uint256[] memory);
 
   function exitMarket(address cTokenAddress) external returns (uint256);
 
   function cTokensByUnderlying(address) external view returns (address);
 
   function getAccountLiquidity(address account)
-    external
-    view
-    returns (
-      uint256,
-      uint256,
-      uint256
-    );
+  external
+  view
+  returns (
+    uint256,
+    uint256,
+    uint256
+  );
 
   function borrowCaps(address) external view returns (uint256);
   function getAllMarkets() external view returns (address[] memory);
@@ -3524,8 +3524,8 @@ interface ICointroller {
   function _setBorrowPaused(address rToken, bool state) external returns (bool);
 
   function _setCloseFactor(uint256 newCloseFactorMantissa)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function _setCollateralFactor(
     address rToken,
@@ -3533,11 +3533,11 @@ interface ICointroller {
   ) external returns (uint256);
 
   function _setContributorRifiSpeed(address contributor, uint256 rifiSpeed)
-    external;
+  external;
 
   function _setLiquidationIncentive(uint256 newLiquidationIncentiveMantissa)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function _setMarketBorrowCaps(
     address[] memory rTokens,
@@ -3547,8 +3547,8 @@ interface ICointroller {
   function _setMintPaused(address rToken, bool state) external returns (bool);
 
   function _setPauseGuardian(address newPauseGuardian)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function _setPriceOracle(address newOracle) external returns (uint256);
 
@@ -3585,9 +3585,9 @@ interface ICointroller {
   ) external;
 
   function checkMembership(address account, address rToken)
-    external
-    view
-    returns (bool);
+  external
+  view
+  returns (bool);
 
   function claimRifi(
     address[] memory holders,
@@ -3605,26 +3605,26 @@ interface ICointroller {
   function cointrollerImplementation() external view returns (address);
 
   function enterMarkets(address[] memory rTokens)
-    external
-    returns (uint256[] memory);
+  external
+  returns (uint256[] memory);
 
   function exitMarket(address rTokenAddress) external returns (uint256);
 
   function getAccountLiquidity(address account)
-    external
-    view
-    returns (
-      uint256,
-      uint256,
-      uint256
-    );
+  external
+  view
+  returns (
+    uint256,
+    uint256,
+    uint256
+  );
 
   function getAllMarkets() external view returns (address[] memory);
 
   function getAssetsIn(address account)
-    external
-    view
-    returns (address[] memory);
+  external
+  view
+  returns (address[] memory);
 
   function getBlockNumber() external view returns (uint256);
 
@@ -3634,13 +3634,13 @@ interface ICointroller {
     uint256 redeemTokens,
     uint256 borrowAmount
   )
-    external
-    view
-    returns (
-      uint256,
-      uint256,
-      uint256
-    );
+  external
+  view
+  returns (
+    uint256,
+    uint256,
+    uint256
+  );
 
   function getRifiAddress() external view returns (address);
 
@@ -3676,13 +3676,13 @@ interface ICointroller {
   function liquidationIncentiveMantissa() external view returns (uint256);
 
   function markets(address)
-    external
-    view
-    returns (
-      bool isListed,
-      uint256 collateralFactorMantissa,
-      bool isRified
-    );
+  external
+  view
+  returns (
+    bool isListed,
+    uint256 collateralFactorMantissa,
+    bool isRified
+  );
 
   function maxAssets() external view returns (uint256);
 
@@ -3740,9 +3740,9 @@ interface ICointroller {
   function rifiAccrued(address) external view returns (uint256);
 
   function rifiBorrowState(address)
-    external
-    view
-    returns (uint224 index, uint32 block);
+  external
+  view
+  returns (uint224 index, uint32 block);
 
   function rifiBorrowerIndex(address, address) external view returns (uint256);
 
@@ -3757,9 +3757,9 @@ interface ICointroller {
   function rifiSupplierIndex(address, address) external view returns (uint256);
 
   function rifiSupplyState(address)
-    external
-    view
-    returns (uint224 index, uint32 block);
+  external
+  view
+  returns (uint224 index, uint32 block);
 
   function seizeAllowed(
     address rTokenCollateral,
@@ -3806,28 +3806,28 @@ interface IPriceFeed {
   function version() external view returns (uint256);
 
   function getRoundData(uint80 _roundId)
-    external
-    view
-    returns (
-      uint80 roundId,
-      int256 answer,
-      uint256 startedAt,
-      uint256 updatedAt,
-      uint80 answeredInRound
-    );
+  external
+  view
+  returns (
+    uint80 roundId,
+    int256 answer,
+    uint256 startedAt,
+    uint256 updatedAt,
+    uint80 answeredInRound
+  );
 
   function latestRoundData()
-    external
-    view
-    returns (
-      uint80 roundId,
-      int256 answer,
-      uint256 startedAt,
-      uint256 updatedAt,
-      uint80 answeredInRound
-    );
+  external
+  view
+  returns (
+    uint80 roundId,
+    int256 answer,
+    uint256 startedAt,
+    uint256 updatedAt,
+    uint80 answeredInRound
+  );
 
-    function fetchPrice() external returns (uint256);
+  function fetchPrice() external returns (uint256);
 }
 
 interface IRToken {
@@ -3901,14 +3901,14 @@ interface IRToken {
   function _setCointroller(address newCointroller) external returns (uint256);
 
   function _setInterestRateModel(address newInterestRateModel)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function _setPendingAdmin(address newPendingAdmin) external returns (uint256);
 
   function _setReserveFactor(uint256 newReserveFactorMantissa)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function accrualBlockNumber() external view returns (uint256);
 
@@ -3917,9 +3917,9 @@ interface IRToken {
   function admin() external view returns (address);
 
   function allowance(address owner, address spender)
-    external
-    view
-    returns (uint256);
+  external
+  view
+  returns (uint256);
 
   function approve(address spender, uint256 amount) external returns (bool);
 
@@ -3946,14 +3946,14 @@ interface IRToken {
   function exchangeRateStored() external view returns (uint256);
 
   function getAccountSnapshot(address account)
-    external
-    view
-    returns (
-      uint256,
-      uint256,
-      uint256,
-      uint256
-    );
+  external
+  view
+  returns (
+    uint256,
+    uint256,
+    uint256,
+    uint256
+  );
 
   function getCash() external view returns (uint256);
 
@@ -4003,8 +4003,8 @@ interface IRToken {
   function repayBorrow(uint256 repayAmount) external returns (uint256);
 
   function repayBorrowBehalf(address borrower, uint256 repayAmount)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function reserveFactorMantissa() external view returns (uint256);
 
@@ -4137,16 +4137,16 @@ interface IERC721 {
   function approve(address to, uint256 tokenId) external;
 
   function getApproved(uint256 tokenId)
-    external
-    view
-    returns (address operator);
+  external
+  view
+  returns (address operator);
 
   function setApprovalForAll(address operator, bool _approved) external;
 
   function isApprovedForAll(address owner, address operator)
-    external
-    view
-    returns (bool);
+  external
+  view
+  returns (bool);
 
   function safeTransferFrom(
     address from,
@@ -4233,7 +4233,7 @@ interface ILendingPool {
 
 interface VyperContract {
   function add_liquidity(uint256[3] calldata amounts, uint256 min_mint_amount)
-    external;
+  external;
 
   function balanceOf(address account) external view returns (uint256);
 
@@ -4242,12 +4242,12 @@ interface VyperContract {
   function approve(address spender, uint256 value) external;
 
   function transferUnderlyingTo(address target, uint256 amount)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function deposit(uint256 amounts, address recipient)
-    external
-    returns (uint256);
+  external
+  returns (uint256);
 
   function exchange(
     address _pool,
@@ -4315,12 +4315,12 @@ interface IUniswapV2Router {
     address to,
     uint256 deadline
   )
-    external
-    returns (
-      uint256 amountA,
-      uint256 amountB,
-      uint256 liquidity
-    );
+  external
+  returns (
+    uint256 amountA,
+    uint256 amountB,
+    uint256 liquidity
+  );
 
   function addLiquidityETH(
     address token,
@@ -4330,13 +4330,13 @@ interface IUniswapV2Router {
     address to,
     uint256 deadline
   )
-    external
-    payable
-    returns (
-      uint256 amountToken,
-      uint256 amountETH,
-      uint256 liquidity
-    );
+  external
+  payable
+  returns (
+    uint256 amountToken,
+    uint256 amountETH,
+    uint256 liquidity
+  );
 
   function factory() external view returns (address);
 
@@ -4353,14 +4353,14 @@ interface IUniswapV2Router {
   ) external pure returns (uint256 amountOut);
 
   function getAmountsIn(uint256 amountOut, address[] memory path)
-    external
-    view
-    returns (uint256[] memory amounts);
+  external
+  view
+  returns (uint256[] memory amounts);
 
   function getAmountsOut(uint256 amountIn, address[] memory path)
-    external
-    view
-    returns (uint256[] memory amounts);
+  external
+  view
+  returns (uint256[] memory amounts);
 
   function quote(
     uint256 amountA,
@@ -4512,22 +4512,22 @@ interface ICurvePool {
   function A() external view returns (uint256 out);
 
   function add_liquidity(uint256[2] memory amounts, uint256 min_mint_amount)
-    external;
+  external;
 
   function add_liquidity(uint256[3] memory amounts, uint256 min_mint_amount)
-    external;
+  external;
 
   function add_liquidity(uint256[4] memory amounts, uint256 min_mint_amount)
-    external;
+  external;
 
   function admin_fee() external view returns (uint256 out);
 
   function balances(uint256 arg0) external view returns (uint256 out);
 
   function calc_token_amount(uint256[] memory amounts, bool is_deposit)
-    external
-    view
-    returns (uint256 lp_tokens);
+  external
+  view
+  returns (uint256 lp_tokens);
 
   /// @dev vyper upgrade changed this on us
   function coins(int128 arg0) external view returns (address out);
@@ -4587,8 +4587,8 @@ interface ICurvePool {
   function get_virtual_price() external view returns (uint256 out);
 
   function remove_liquidity(uint256 token_amount, uint256[3] memory min_amounts)
-    external
-    returns (uint256[3] memory);
+  external
+  returns (uint256[3] memory);
 
   function remove_liquidity_imbalance(
     uint256[3] memory amounts,
@@ -4612,18 +4612,18 @@ interface IBeanStalk {
   function vote(uint32 bip) external;
 
   function bip(uint32 bipId)
-    external
-    view
-    returns (
-      address,
-      uint32,
-      uint32,
-      bool,
-      int256,
-      uint128,
-      uint256,
-      uint256
-    );
+  external
+  view
+  returns (
+    address,
+    uint32,
+    uint32,
+    bool,
+    int256,
+    uint128,
+    uint256,
+    uint256
+  );
 
   struct FacetCut {
     address facetAddress;
@@ -4739,9 +4739,9 @@ interface MultiSig {
   ) external returns (uint256 transactionId);
 
   function getConfirmations(uint256 transactionId)
-    external
-    view
-    returns (address[] memory _confirmations);
+  external
+  view
+  returns (address[] memory _confirmations);
 
   function required() external view returns (uint256);
 }
@@ -4752,207 +4752,249 @@ interface Flippaz {
 }
 interface IDOODLENFTXVault{
 
-    function flashLoan(
-        address receiver,
-        address token,
-        uint256 amount,
-        bytes memory data
-    ) external returns (bool);
-    function redeem(uint256 amount, uint256[] calldata specificIds)
-        external
-        returns (uint256[] calldata);
-    function balanceOf(address account) external view returns (uint256);
-    function mint(
-        uint256[] calldata tokenIds,
-        uint256[] calldata amounts /* ignored for ERC721 vaults */
-    ) external returns (uint256);
+  function flashLoan(
+    address receiver,
+    address token,
+    uint256 amount,
+    bytes memory data
+  ) external returns (bool);
+  function redeem(uint256 amount, uint256[] calldata specificIds)
+  external
+  returns (uint256[] calldata);
+  function balanceOf(address account) external view returns (uint256);
+  function mint(
+    uint256[] calldata tokenIds,
+    uint256[] calldata amounts /* ignored for ERC721 vaults */
+  ) external returns (uint256);
 
 }
 interface ISushiSwap{
 
-    function swapTokensForExactTokens(
-        uint256 amountOut,
-        uint256 amountInMax,
-        address[] memory path,
-        address to,
-        uint256 deadline
-    ) external returns (uint256[] memory amounts);
-    function swap(
-        uint256 amount0Out,
-        uint256 amount1Out,
-        address to,
-        bytes memory data
-    ) external;
+  function swapTokensForExactTokens(
+    uint256 amountOut,
+    uint256 amountInMax,
+    address[] memory path,
+    address to,
+    uint256 deadline
+  ) external returns (uint256[] memory amounts);
+  function swap(
+    uint256 amount0Out,
+    uint256 amount1Out,
+    address to,
+    bytes memory data
+  ) external;
 }
 interface IOmni{
 
-    function supplyERC721(
-        address asset,
-        DataTypes.ERC721SupplyParams[] memory tokenData,
-        address onBehalfOf,
-        uint16 referralCode
-    ) external;
+  function supplyERC721(
+    address asset,
+    DataTypes.ERC721SupplyParams[] memory tokenData,
+    address onBehalfOf,
+    uint16 referralCode
+  ) external;
 
-    function withdrawERC721(
-        address asset,
-        uint256[] memory tokenIds,
-        address to
-    ) external returns (uint256);
-   function liquidationERC721(
-        address collateralAsset,
-        address liquidationAsset,
-        address user,
-        uint256 collateralTokenId,
-        uint256 liquidationAmount,
-        bool receiveNToken
-    ) external;
+  function withdrawERC721(
+    address asset,
+    uint256[] memory tokenIds,
+    address to
+  ) external returns (uint256);
+  function liquidationERC721(
+    address collateralAsset,
+    address liquidationAsset,
+    address user,
+    uint256 collateralTokenId,
+    uint256 liquidationAmount,
+    bool receiveNToken
+  ) external;
 
-    struct ERC721SupplyParams {
-        uint256 tokenId;
-        bool useAsCollateral;
-    }
-    function borrow(
-        address asset,
-        uint256 amount,
-        uint256 interestRateMode,
-        uint16 referralCode,
-        address onBehalfOf
-    ) external;
+  struct ERC721SupplyParams {
+    uint256 tokenId;
+    bool useAsCollateral;
+  }
+  function borrow(
+    address asset,
+    uint256 amount,
+    uint256 interestRateMode,
+    uint16 referralCode,
+    address onBehalfOf
+  ) external;
 
-    function getUserAccountData(address user)
-        external
-        view
-        returns (
-            uint256 totalCollateralBase,
-            uint256 totalDebtBase,
-            uint256 availableBorrowsBase,
-            uint256 currentLiquidationThreshold,
-            uint256 ltv,
-            uint256 healthFactor,
-            uint256 erc721HealthFactor
-        );
+  function getUserAccountData(address user)
+  external
+  view
+  returns (
+    uint256 totalCollateralBase,
+    uint256 totalDebtBase,
+    uint256 availableBorrowsBase,
+    uint256 currentLiquidationThreshold,
+    uint256 ltv,
+    uint256 healthFactor,
+    uint256 erc721HealthFactor
+  );
 
 }
 interface DataTypes {
-    struct ERC721SupplyParams {
-        uint256 tokenId;
-        bool useAsCollateral;
-    }
+  struct ERC721SupplyParams {
+    uint256 tokenId;
+    bool useAsCollateral;
+  }
 }
 interface ILib {
-    function attack() external returns (bool);
+  function attack() external returns (bool);
 
-    function withdrawAll() external returns (bool);
+  function withdrawAll() external returns (bool);
 }
 
 interface FToken {}
 
 interface IGovernorAlpha {
-    function propose(address[] memory targets, uint[] memory values, string[] memory signatures, bytes[] memory calldatas, string memory description) external returns (uint);
-    function castVote(uint proposalId, bool support) external;
-    function queue(uint proposalId) external;
-    function execute(uint proposalId) external payable;
-    function state(uint proposalId) external view;
+  function propose(address[] memory targets, uint[] memory values, string[] memory signatures, bytes[] memory calldatas, string memory description) external returns (uint);
+  function castVote(uint proposalId, bool support) external;
+  function queue(uint proposalId) external;
+  function execute(uint proposalId) external payable;
+  function state(uint proposalId) external view;
 }
 
 interface IChain {
-    function submit (
-        uint32 _dataTimestamp,
-        bytes32 _root,
-        bytes32[] memory _keys,
-        uint256[] memory _values,
-        uint8[] memory _v,
-        bytes32[] memory _r,
-        bytes32[] memory _s
-    ) external;
+  function submit (
+    uint32 _dataTimestamp,
+    bytes32 _root,
+    bytes32[] memory _keys,
+    uint256[] memory _values,
+    uint8[] memory _v,
+    bytes32[] memory _r,
+    bytes32[] memory _s
+  ) external;
 }
 
 interface IFortressPriceOracle {
-    function getUnderlyingPrice(FToken fToken) external view returns (uint);
+  function getUnderlyingPrice(FToken fToken) external view returns (uint);
 }
 
 interface IFTS {
-    function approve(address spender, uint rawAmount) external returns (bool);
-    function balanceOf(address account) external view returns (uint);
+  function approve(address spender, uint rawAmount) external returns (bool);
+  function balanceOf(address account) external view returns (uint);
 }
 
 interface IfFTS {
-    function mint(uint mintAmount) external returns (uint);
-    function balanceOf(address owner) external view returns (uint256);
+  function mint(uint mintAmount) external returns (uint);
+  function balanceOf(address owner) external view returns (uint256);
 }
 
 interface IFBep20Delegator {
-    function getCash() external view returns (uint);
-    function borrow(uint borrowAmount) external returns (uint);
-    function underlying() external returns (address);
+  function getCash() external view returns (uint);
+  function borrow(uint borrowAmount) external returns (uint);
+  function underlying() external returns (address);
 }
 
 interface IBorrowerOperations {
-    function openTrove(
-        uint256 _maxFee,
-        uint256 _LUSDAmount,
-        uint256 _ETHAmount,
-        address _upperHint,
-        address _lowerHint,
-        address _frontEndTag
-    ) external;
+  function openTrove(
+    uint256 _maxFee,
+    uint256 _LUSDAmount,
+    uint256 _ETHAmount,
+    address _upperHint,
+    address _lowerHint,
+    address _frontEndTag
+  ) external;
 }
 
 interface IARTH is IERC20 {}
 
 interface IARTHUSD {
-    function balanceOf(address) external returns (uint256);
-    function approve(address, uint256) external returns (bool);
+  function balanceOf(address) external returns (uint256);
+  function approve(address, uint256) external returns (bool);
 }
 
 interface IVyper {
-    function exchange_underlying(int128, int128, uint256, uint256, address) external returns (uint256);
+  function exchange_underlying(int128, int128, uint256, uint256, address) external returns (uint256);
 }
 
 interface I88mph {
-    function init(
-        address newOwner,
-        string memory tokenName,
-        string memory tokenSymbol
-    ) external;
-    function mint(address to, uint256 tokenId) external;
-    function burn(uint256 tokenId) external;
-    function owner() external view returns (address);
-    function ownerOf(uint256 tokenId) external view returns (address);
+  function init(
+    address newOwner,
+    string memory tokenName,
+    string memory tokenSymbol
+  ) external;
+  function mint(address to, uint256 tokenId) external;
+  function burn(uint256 tokenId) external;
+  function owner() external view returns (address);
+  function ownerOf(uint256 tokenId) external view returns (address);
 }
 
 interface IBAYCi {
-    function setApprovalForAll(address operator, bool approved) external;
-    function transferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) external;
+  function setApprovalForAll(address operator, bool approved) external;
+  function transferFrom(
+    address from,
+    address to,
+    uint256 tokenId
+  ) external;
 }
 interface INFTXVault {
-    function redeem(uint256 amount, uint256[] memory specificIds)
-        external
-        returns (uint256[] memory);
-    function flashLoan(
-        address receiver,
-        address token,
-        uint256 amount,
-        bytes memory data
-    ) external returns (bool);
-    function approve(address spender, uint256 amount) external returns (bool);
-    function mint(uint256[] memory tokenIds, uint256[] memory amounts)
-        external
-        returns (uint256);
+  function redeem(uint256 amount, uint256[] memory specificIds)
+  external
+  returns (uint256[] memory);
+  function flashLoan(
+    address receiver,
+    address token,
+    uint256 amount,
+    bytes memory data
+  ) external returns (bool);
+  function approve(address spender, uint256 amount) external returns (bool);
+  function mint(uint256[] memory tokenIds, uint256[] memory amounts)
+  external
+  returns (uint256);
 }
 interface IAirdrop {
-    function claimTokens() external;
+  function claimTokens() external;
 }
 
 interface ILand {
-    function _burn(
-        address from,
-        address owner,
-        uint256 id
-    ) external;
-    function _numNFTPerAddress(address) external view returns (uint256); 
+  function _burn(
+    address from,
+    address owner,
+    uint256 id
+  ) external;
+  function _numNFTPerAddress(address) external view returns (uint256);
+}
+
+interface IERC20Metadata is IERC20 {
+  function name() external view returns (string memory);
+  function symbol() external view returns (string memory);
+  function decimals() external view returns (uint8);
+}
+interface IWFTM is IERC20Metadata {
+  event Deposit(address indexed dst, uint wad);
+  event Withdrawal(address indexed src, uint wad);
+  receive() external payable;
+  fallback () external payable;
+  function deposit() external payable;
+  function withdraw(uint wad) external;
+}
+interface IGrimBoostVault {
+  event NewStratCandidate(address implementation);
+  event UpgradeStrat(address implementation);
+  function want() external view returns (IERC20);
+  function balance() external view returns (uint);
+  function available() external view returns (uint256);
+  function getPricePerFullShare() external view returns (uint256);
+  function depositAll() external;
+  function deposit(uint _amount) external;
+  function earn() external;
+  function withdrawAll() external;
+  function withdraw(uint256 _shares) external;
+  function proposeStrat(address _implementation) external;
+  function upgradeStrat() external;
+  function inCaseTokensGetStuck(address _token) external;
+  function depositFor(address token, uint _amount,address user ) external;
+}
+interface IFlashLoanRecipient {
+  function receiveFlashLoan(
+    IERC20[] memory tokens,
+    uint256[] memory amounts,
+    uint256[] memory feeAmounts,
+    bytes memory userData
+  ) external;
+}
+interface IBeethovenVault {
+  function flashLoan(IFlashLoanRecipient recipient, IERC20[] memory tokens, uint256[] memory amounts, bytes memory userData) external;
 }
