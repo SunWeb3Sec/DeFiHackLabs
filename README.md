@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-49 incidents included.
+50 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -76,6 +76,8 @@ Let's make Web3 secure!
 [20220322 CompoundTUSDSweepTokenBypass](#20220322-compoundtusdsweeptokenbypass)
 
 [20220321 OneRing Finance](#20220321-onering-finance---flashloan--price-oracle-manipulation)
+
+[20220320 LI.FI](#20220320-Li.Fi---bridges)
 
 [20220313 Paraluni](#20220313-paraluni---flashloan--reentrancy)
 
@@ -160,7 +162,7 @@ https://twitter.com/Reaper_Farm/status/1554500909740302337
 
 https://twitter.com/BeosinAlert/status/1554476940593340421
 
-### 20220725 LPC - Business Logic Flaw : Incorrect recipient balance check
+### 20220725 LPC - Business Logic Flaw : Incorrect recipient balance check, did not check sender!=recipient in transfer
 #### Lost: 178 BNB (~45,715 US$)
 
 Testing
@@ -173,7 +175,7 @@ https://www.panewslab.com/zh_hk/articledetails/uwv4sma2.html
 
 https://twitter.com/BeosinAlert/status/1551535854681718784
 
-### 20220723 Audius - Storage Collision & Malicious Proposal
+### 20220723 Audius - Storage Collision & Malicious Proposal, storage collision of proxy and implementation contracts
 #### Lost: 704 ETH (~1.08M US$)
 
 Testing
@@ -203,7 +205,7 @@ https://medium.com/numen-cyber-labs/spacegodzilla-attack-event-analysis-d29a061b
 
 https://learnblockchain.cn/article/4396
 
-https://learnblockchain.cn/article/4395
+https://learnblockchain.cn/article/4395  *** math behind such attack
 
 ### 20220710 Omni NFT - Reentrancy
 #### Lost: $1.4M
@@ -231,6 +233,22 @@ forge test --contracts ./src/test/FlippazOne.sol -vvvv
 https://twitter.com/bertcmiller/status/1544496577338826752
 
 https://etherscan.io/tx/0x8bded20c1db5a1d5f595b15e682a95ce11d3c895d6031147fa49c4ffa5729a30
+
+
+### 20220703 CREMA FINANCE faulty owner validation (solana)
+#### Lost: $8.8M
+The attack was made possible due to faulty owner validation on one of the protocol’s accounts storing price tick data. These data are used by Crema to calculate LP fees.
+
+<!-- Testing
+```sh
+forge test --contracts ./src/test/Quixotic_exp.sol -vv
+``` -->
+#### Link reference
+https://rekt.news/crema-finance-rekt/
+
+https://twitter.com/Crema_Finance/status/1543638844410499073
+
+
 ### 20220701 Quixotic - Optimism NFT Marketplace
 #### Lost: $100K
 fillSellOrder function only check seller signature.
@@ -466,6 +484,8 @@ Testing
 forge test --contracts ./src/test/Beanstalk_exp.sol -vv
 ```
 #### Link reference
+https://rekt.news/beanstalk-rekt/
+
 https://medium.com/uno-re/beanstalk-farms-hacked-total-damage-is-182-million-b699dd3e5c8
 
 https://twitter.com/peckshield/status/1515680335769456640
@@ -566,6 +586,19 @@ https://medium.com/oneringfinance/onering-finance-exploit-post-mortem-after-osha
 
 https://ftmscan.com/tx/0xca8dd33850e29cf138c8382e17a19e77d7331b57c7a8451648788bbb26a70145
 
+### 20220320 Li.Fi - Bridges
+#### Lost: $570K
+
+Testing
+```sh
+forge test --contracts ./src/test/LiFi_exp.sol -vvvv
+```
+#### Link reference
+https://blog.li.fi/20th-march-the-exploit-e9e1c5c03eb9
+
+https://twitter.com/lifiprotocol/status/1505738407938387971
+
+https://etherscan.io/tx/0x4b4143cbe7f5475029cf23d6dcbb56856366d91794426f2e33819b9b1aac4e96
 
 ### 20220313 Paraluni - Flashloan & Reentrancy
 #### Lost: $1.7 million
