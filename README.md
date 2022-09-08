@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-50 incidents included.
+51 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -91,7 +91,7 @@ Let's make Web3 secure!
 
 [20220208 Sandbox LAND](#20220208-sandbox-land---access-control)
 
-[20220118 Multichain (Anyswap)](#20220118-multichain-anyswap---insufficient-token-validation)
+[20220118 Multichain (Anyswap)](#20220118-multichain-anyswap---bridge, insufficient-token-validation)
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
@@ -102,6 +102,8 @@ Let's make Web3 secure!
 [20210916 SushiSwap Miso](#20210916-sushiswap-miso)
 
 [20210830 Cream Finance](#20210830-cream-finance---flashloan-attack--reentrancy)
+
+[20210811 Poly Network](#20210811-poly-network---bridge)
 
 [20210817 XSURGE](#20210817-xsurge---flashloan-attack--reentrancy)
 
@@ -600,6 +602,9 @@ https://twitter.com/lifiprotocol/status/1505738407938387971
 
 https://etherscan.io/tx/0x4b4143cbe7f5475029cf23d6dcbb56856366d91794426f2e33819b9b1aac4e96
 
+#### Fix
+implemented a whitelist to only allow calls to approved DEXs. 
+
 ### 20220313 Paraluni - Flashloan & Reentrancy
 #### Lost: $1.7 million
 
@@ -774,6 +779,21 @@ https://etherscan.io/tx/0xa9a1b8ea288eb9ad315088f17f7c7386b9989c95b4d13c81b69d5d
 
 https://slowmist.medium.com/cream-hacked-analysis-us-130-million-hacked-95c9410320ca
 
+### 20210811 Poly Network - Bridge
+#### Lost: $611 million
+
+Testing
+```sh
+forge test --contracts ./src/test/PolyNetwork/PolyNetwork_exp.sol -vv
+```
+#### Link reference
+https://rekt.news/polynetwork-rekt/
+
+https://medium.com/breadcrumbsapp/the-600m-poly-network-hack-the-biggest-hack-in-defi-history-e2efe56cf3a8
+
+https://etherscan.io/tx/0xb1f70464bd95b774c6ce60fc706eb5f9e35cb5f06e6cfe7c17dcda46ffd59581/advanced
+
+https://github.com/polynetwork/eth-contracts/tree/d16252b2b857eecf8e558bd3e1f3bb14cff30e9b
 
 ### 20210817 XSURGE - Flashloan Attack + Reentrancy
 #### Lost: $5 million
