@@ -137,7 +137,7 @@ https://versatile.blocksecteam.com/tx
 
 Testing
 ```sh
-forge test --contracts ./src/test/ZooFinance_exp.sol -vvv 
+forge test --contracts ./src/test/ZoomproFinance_exp.sol -vvv 
 ```
 #### Link reference
 
