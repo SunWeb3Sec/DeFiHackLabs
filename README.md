@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-51 incidents included.
+53 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -69,6 +69,8 @@ Let's make Web3 secure!
 
 [20220409 GYMNetwork](#20220409-gymnetwork)
 
+[20220329 Ronin Network](#20220329-ronin-network---Bridge)
+
 [20220327 Revest Finance](#20220327-revest-finance---reentrancy)
 
 [20220326 Auctus](#20220326-auctus)
@@ -91,6 +93,10 @@ Let's make Web3 secure!
 
 [20220208 Sandbox LAND](#20220208-sandbox-land---access-control)
 
+[20220203 Wormhole](#20220208-sandbox-land---access-control)
+
+[20220128 Qubit Finance](#20220128-qubit-finance---bridge)
+
 [20220118 Multichain (Anyswap)](#20220118-multichain-anyswap---bridge, insufficient-token-validation)
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
@@ -103,7 +109,7 @@ Let's make Web3 secure!
 
 [20210830 Cream Finance](#20210830-cream-finance---flashloan-attack--reentrancy)
 
-[20210811 Poly Network](#20210811-poly-network---bridge)
+[20210811 Poly Network](#20210811-poly-network---bridge, getting around modifier through cross-chain message)
 
 [20210817 XSURGE](#20210817-xsurge---flashloan-attack--reentrancy)
 
@@ -257,7 +263,7 @@ fillSellOrder function only check seller signature.
 
 ECDSA signature combined with v r s, if recoveredAddress == sellOrder.seller; sellorder execute.
 
-Testing
+Testing 
 ```sh
 forge test --contracts ./src/test/Quixotic_exp.sol -vv
 ```
@@ -542,6 +548,20 @@ https://medium.com/@Beosin_com/beosin-analysis-of-the-attack-on-gymdefi-e5a23bfd
 
 https://bscscan.com/tx/0xa5b0246f2f8d238bb56c0ddb500b04bbe0c30db650e06a41e00b6a0fff11a7e5
 
+### 20220329 Ronin Network - Bridge
+#### Lost: $624 million
+
+Testing
+```sh
+forge test --contracts ./src/test/Ronin_exp.sol -vv
+```
+#### Link reference
+https://rekt.news/ronin-rekt/
+
+https://etherscan.io/tx/0xc28fad5e8d5e0ce6a2eaf67b6687be5d58113e16be590824d6cfa1a94467d0b7
+
+https://etherscan.io/tx/0xed2c72ef1a552ddaec6dd1f5cddf0b59a8f37f82bdda5257d9c7c37db7bb9b08
+
 ### 20220327 Revest Finance - Reentrancy
 #### Lost: $11.2 million
 
@@ -690,6 +710,36 @@ https://slowmist.medium.com/the-vulnerability-behind-the-sandbox-land-migration-
 
 https://etherscan.io/tx/0x34516ee081c221d8576939f68aee71e002dd5557180d45194209d6692241f7b1
 
+
+### 20220118 Wormhole - Bridge
+#### Lost: $326 million
+
+Testing
+```sh
+Solana TBD
+# forge test --contracts ./src/test/wormhole_exp.sol -vv
+```
+#### Link reference
+https://twitter.com/samczsun/status/1489044939732406275
+
+https://rekt.news/wormhole-rekt/
+
+### 20220128 Qubit Finance - Bridge address(0).safeTransferFrom() does not fail
+#### Lost: $80 million
+
+Testing
+```sh
+forge test --contracts ./src/test/qubit_exp.sol -vv
+```
+#### Link reference
+https://rekt.news/qubit-rekt/
+
+https://medium.com/@QubitFin/protocol-exploit-report-305c34540fa3
+
+https://etherscan.io/address/0xd01ae1a708614948b2b5e0b7ab5be6afa01325c7
+https://etherscan.io/tx/0xac7292e7d0ec8ebe1c94203d190874b2aab30592327b6cc875d00f18de6f3133
+https://bscscan.com/tx/0x50946e3e4ccb7d39f3512b7ecb75df66e6868b9af0eee8a7e4b61ef8a459518e
+
 ### 20220118 Multichain (Anyswap) - Insufficient Token Validation
 #### Lost: $1.4 million
 
@@ -779,7 +829,7 @@ https://etherscan.io/tx/0xa9a1b8ea288eb9ad315088f17f7c7386b9989c95b4d13c81b69d5d
 
 https://slowmist.medium.com/cream-hacked-analysis-us-130-million-hacked-95c9410320ca
 
-### 20210811 Poly Network - Bridge
+### 20210811 Poly Network - Bridge, getting around modifier through cross-chain message
 #### Lost: $611 million
 
 Testing
@@ -794,6 +844,11 @@ https://medium.com/breadcrumbsapp/the-600m-poly-network-hack-the-biggest-hack-in
 https://etherscan.io/tx/0xb1f70464bd95b774c6ce60fc706eb5f9e35cb5f06e6cfe7c17dcda46ffd59581/advanced
 
 https://github.com/polynetwork/eth-contracts/tree/d16252b2b857eecf8e558bd3e1f3bb14cff30e9b
+
+https://www.breadcrumbs.app/reports/671
+
+#### FIX
+One of the biggest design lessons that people need to take away from this is: if you have cross-chain relay contracts like this, MAKE SURE THAT THEY CAN'T BE USED TO CALL SPECIAL CONTRACTS. The EthCrossDomainManager shouldn't have owned the EthCrossDomainData contract.
 
 ### 20210817 XSURGE - Flashloan Attack + Reentrancy
 #### Lost: $5 million

