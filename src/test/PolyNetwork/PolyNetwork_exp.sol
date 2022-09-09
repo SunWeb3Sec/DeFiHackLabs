@@ -68,6 +68,16 @@ contract ContractTest is DSTest {
     }
 
     function testExploit() public {
+        // "Poly has a contract called the "EthCrossChainManager". It's a privileged contract that has the right to trigger messages from another chain. It's a standard thing for cross-chain projects.
+
+        // It has a function named verifyHeaderAndExecuteTx that anyone can call to execute a cross-chain transaction.
+
+        // It (1) verifies that the block header is correct by checking signatures (seems the other chain was a poa sidechain or) and then (2) checks that the transaction was included within that block with a Merkle proof. Here's the code.
+
+        // One of the last things the function does is call executeCrossChainTx, which makes the call to the target contract. This is where the critical flaw sits. Poly checks that the target is a contract, but they forgot to prevent users from calling a very important target... the EthCrossChainData contract
+
+        // By sending this cross-chain message, the user could trick the EthCrossChainManager into calling the EthCrossChainData contract, passing the onlyOwner check. Now the user just had to craft the right data to be able to trigger the function that changes the public keys…
+        
         // https://etherscan.io/tx/0xb1f70464bd95b774c6ce60fc706eb5f9e35cb5f06e6cfe7c17dcda46ffd59581/advanced
         cheats.startPrank(exploiter); 
         emit log_named_bytes("existing CurEpochConPubKeyBytes", IEthCrossChainData(EthCrossChainData).getCurEpochConPubKeyBytes());
