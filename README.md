@@ -97,7 +97,7 @@ Let's make Web3 secure!
 
 [20220128 Qubit Finance](#20220128-qubit-finance---bridge)
 
-[20220118 Multichain (Anyswap)](#20220118-multichain-anyswap---bridge, insufficient-token-validation)
+[20220118 Multichain (Anyswap)](#20220118-multichain-anyswap---insufficient-token-validation)
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
@@ -109,7 +109,7 @@ Let's make Web3 secure!
 
 [20210830 Cream Finance](#20210830-cream-finance---flashloan-attack--reentrancy)
 
-[20210811 Poly Network](#20210811-poly-network---bridge, getting around modifier through cross-chain message)
+[20210811 Poly Network](#20210811-poly-network---bridge-getting-around-modifier-through-cross-chain-message)
 
 [20210817 XSURGE](#20210817-xsurge---flashloan-attack--reentrancy)
 
