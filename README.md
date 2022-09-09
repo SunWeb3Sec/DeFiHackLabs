@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-53 incidents included.
+54 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure!
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20220905 ZoomproFinance](#20220905-zoomprofinance---flashloans--price-manipulation)
 
 [20220807 EGD Finance](#20220807-egd-finance---flashloans--price-manipulation)
 
@@ -129,6 +131,17 @@ https://dashboard.tenderly.co/explorer
 https://ethtx.info/
 
 https://versatile.blocksecteam.com/tx
+
+### 20220905 ZoomproFinance - Flashloans & Price Manipulation
+#### Lost: 61,160 USDT
+
+Testing
+```sh
+forge test --contracts ./src/test/ZooFinance_exp.sol -vvv 
+```
+#### Link reference
+
+https://twitter.com/blocksecteam/status/1567027459207606273
 
 ### 20220807 EGD Finance - Flashloans & Price Manipulation
 #### Lost: 36,044 USDT
