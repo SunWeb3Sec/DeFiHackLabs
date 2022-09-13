@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-54 incidents included.
+55 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure!
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20220909 YYDS](#20220909-yyds)
 
 [20220905 ZoomproFinance](#20220905-zoomprofinance---flashloans--price-manipulation)
 
@@ -131,6 +133,20 @@ https://dashboard.tenderly.co/explorer
 https://ethtx.info/
 
 https://versatile.blocksecteam.com/tx
+
+### 20220909 YYDS 
+#### Lost: 742,286.27 BUSD
+
+Testing
+```sh
+forge test --contracts ./src/test/Yyds_exp.sol -vvv 
+```
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1567928377432051713
+
+https://bscscan.com/tx/0x04a1f0d1694242515ecb14faa71053901f11a1286cd21c27fe5542f9eeb62356
+
 
 ### 20220905 ZoomproFinance - Flashloans & Price Manipulation
 #### Lost: 61,160 USDT
