@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-57 incidents included.
+58 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -17,6 +17,8 @@ Let's make Web3 secure!
 ## List of DeFi Hacks & Exploits
 
 [20220909 YYDS](#20220909-yyds---flashloans--price-manipulation)
+
+[20220908 NewFreeDAO](#20220908-newfreedao---flashloans-attack)
 
 [20220905 ZoomproFinance](#20220905-zoomprofinance---flashloans--price-manipulation)
 
@@ -154,6 +156,19 @@ https://twitter.com/BlockSecTeam/status/1567928377432051713
 
 https://bscscan.com/tx/0x04a1f0d1694242515ecb14faa71053901f11a1286cd21c27fe5542f9eeb62356
 
+### 20220908 NewFreeDAO - Flashloans Attack
+#### Lost: 4,481 BNB (~125M US$)
+
+Testing
+```sh
+forge test --contracts ./src/test/NewFreeDAO_exp.sol -vvv 
+```
+#### Link reference
+
+https://twitter.com/peckshield/status/1567710274244825088
+https://twitter.com/BeosinAlert/status/1567757251024396288
+https://twitter.com/BlockSecTeam/status/1567706201277988866
+https://twitter.com/SlowMist_Team/status/1567854876633309186
 
 ### 20220905 ZoomproFinance - Flashloans & Price Manipulation
 #### Lost: 61,160 USDT
