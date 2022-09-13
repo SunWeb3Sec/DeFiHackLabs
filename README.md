@@ -16,7 +16,7 @@ Let's make Web3 secure!
 
 ## List of DeFi Hacks & Exploits
 
-[20220909 YYDS](#20220909-yyds---flashloans--price-manipulation)
+[20220909 YYDS](#20220909-yyds)
 
 [20220908 NewFreeDAO](#20220908-newfreedao---flashloans-attack)
 
