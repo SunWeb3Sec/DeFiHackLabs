@@ -189,6 +189,8 @@ https://twitter.com/blocksecteam/status/1567027459207606273
 ### 20220902 ShadowFi - Access Control
 #### Lost: 1,078 BNB
 
+Anyone can burn $SDF
+
 Testing
 ```sh
 forge test --contracts ./src/test/Shadowfi_exp.sol -vvv 
