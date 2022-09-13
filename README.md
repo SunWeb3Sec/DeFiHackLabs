@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-58 incidents included.
+59 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -21,6 +21,8 @@ Let's make Web3 secure!
 [20220908 NewFreeDAO](#20220908-newfreedao---flashloans-attack)
 
 [20220905 ZoomproFinance](#20220905-zoomprofinance---flashloans--price-manipulation)
+
+[20220902 ShadowFi](#20220902-shadowfi---access-control)
 
 [20220807 EGD Finance](#20220807-egd-finance---flashloans--price-manipulation)
 
@@ -183,6 +185,17 @@ forge test --contracts ./src/test/ZoomproFinance_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/blocksecteam/status/1567027459207606273
+
+### 20220902 ShadowFi - Access Control
+#### Lost: 1,078 BNB
+
+Testing
+```sh
+forge test --contracts ./src/test/Shadowfi_exp.sol -vvv 
+```
+#### Link reference
+
+https://twitter.com/PeckShieldAlert/status/1565549688509861888
 
 ### 20220807 EGD Finance - Flashloans & Price Manipulation
 #### Lost: 36,044 USDT
