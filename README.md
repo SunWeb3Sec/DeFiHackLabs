@@ -16,8 +16,6 @@ Let's make Web3 secure!
 
 ## List of DeFi Hacks & Exploits
 
-https://cryptosec.info/defi-hacks/
-
 [20220909 YYDS](#20220909-yyds---flashloans--price-manipulation)
 
 [20220905 ZoomproFinance](#20220905-zoomprofinance---flashloans--price-manipulation)
@@ -122,9 +120,9 @@ https://cryptosec.info/defi-hacks/
 
 [20210817 XSURGE](#20210817-xsurge---flashloan-attack--reentrancy)
 
-[20210710 Chainswap](#20210611-Chainswap---bridge, logic flaw)
+[20210710 Chainswap](#20210710-chainswap---bridge-logic-flaw)
 
-[20210702 Chainswap](#20210611-Chainswap---bridge, logic flaw)
+[20210702 Chainswap](#20210702-chainswap---bridge-logic-flaw)
 
 [20210607 88mph NFT](#20210607-88mph-nft---access-control)
 
@@ -902,7 +900,7 @@ https://medium.com/@Knownsec_Blockchain_Lab/knownsec-blockchain-lab-comprehensiv
 
 https://bscscan.com/tx/0x8c93d6e5d6b3ec7478b4195123a696dbc82a3441be090e048fe4b33a242ef09d
 
-### 20210710 Chainswap - Bridge
+### 20210710 Chainswap - Bridge, logic flaw
 #### Lost: $4.4 million
 
 Testing
@@ -916,7 +914,7 @@ https://rekt.news/chainswap-rekt/
 
 https://chain-swap.medium.com/chainswap-exploit-11-july-2021-post-mortem-6e4e346e5a32
 
-### 20210702 Chainswap - Bridge
+### 20210702 Chainswap - Bridge, logic flaw
 #### Lost: $.8 million
 
 Testing
