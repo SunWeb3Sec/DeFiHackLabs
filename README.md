@@ -13,9 +13,12 @@ Let's make Web3 secure!
 
 * Clone and install dependencies:```git submodule update --init --recursive```
 
+
 ## List of DeFi Hacks & Exploits
 
-[20220909 YYDS](#20220909-yyds)
+https://cryptosec.info/defi-hacks/
+
+[20220909 YYDS](#20220909-yyds---flashloans--price-manipulation)
 
 [20220905 ZoomproFinance](#20220905-zoomprofinance---flashloans--price-manipulation)
 
@@ -97,7 +100,9 @@ Let's make Web3 secure!
 
 [20220208 Sandbox LAND](#20220208-sandbox-land---access-control)
 
-[20220203 Wormhole](#20220208-sandbox-land---access-control)
+[20220206 Meter](#20220206-Meter---bridge)
+
+[20220203 Wormhole](#20220203-Wormhole)
 
 [20220128 Qubit Finance](#20220128-qubit-finance---bridge)
 
@@ -116,6 +121,10 @@ Let's make Web3 secure!
 [20210811 Poly Network](#20210811-poly-network---bridge-getting-around-modifier-through-cross-chain-message)
 
 [20210817 XSURGE](#20210817-xsurge---flashloan-attack--reentrancy)
+
+[20210710 Chainswap](#20210611-Chainswap---bridge, logic flaw)
+
+[20210702 Chainswap](#20210611-Chainswap---bridge, logic flaw)
 
 [20210607 88mph NFT](#20210607-88mph-nft---access-control)
 
@@ -753,7 +762,7 @@ https://twitter.com/samczsun/status/1489044939732406275
 
 https://rekt.news/wormhole-rekt/
 
-### 20220128 Qubit Finance - Bridge address(0).safeTransferFrom() does not fail
+### 20220128 Qubit Finance - Bridge address(0).safeTransferFrom() does not revert
 #### Lost: $80 million
 
 Testing
@@ -892,6 +901,30 @@ https://beosin.medium.com/a-sweet-blow-fb0a5e08657d
 https://medium.com/@Knownsec_Blockchain_Lab/knownsec-blockchain-lab-comprehensive-analysis-of-xsurge-attacks-c83d238fbc55
 
 https://bscscan.com/tx/0x8c93d6e5d6b3ec7478b4195123a696dbc82a3441be090e048fe4b33a242ef09d
+
+### 20210710 Chainswap - Bridge
+#### Lost: $4.4 million
+
+Testing
+```sh
+forge test --contracts ./src/test/Chainswap_exp2.sol -vv
+```
+#### Link reference
+https://twitter.com/real_n3o/status/1414071223940571139
+
+https://rekt.news/chainswap-rekt/
+
+https://chain-swap.medium.com/chainswap-exploit-11-july-2021-post-mortem-6e4e346e5a32
+
+### 20210702 Chainswap - Bridge
+#### Lost: $.8 million
+
+Testing
+```sh
+forge test --contracts ./src/test/Chainswap_exp1.t.sol -vv
+```
+#### Link reference
+https://chain-swap.medium.com/chainswap-post-mortem-and-compensation-plan-90cad50898ab
 
 ### 20210607 88mph NFT - Access control
 Testing
