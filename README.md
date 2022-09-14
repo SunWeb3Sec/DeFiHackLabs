@@ -16,8 +16,6 @@ Let's make Web3 secure!
 
 ## List of DeFi Hacks & Exploits
 
-https://cryptosec.info/defi-hacks/
-
 [20220909 YYDS](#20220909-yyds)
 
 [20220908 NewFreeDAO](#20220908-newfreedao---flashloans-attack)
