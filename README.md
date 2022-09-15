@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-63 incidents included.
+64 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure!
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20220910 DPC](#20220910-dpc)
 
 [20220909 YYDS](#20220909-yyds)
 
@@ -145,6 +147,17 @@ https://dashboard.tenderly.co/explorer
 https://ethtx.info/
 
 https://versatile.blocksecteam.com/tx
+
+### 20220910 DPC 
+#### Lost: $103,755
+
+Testing
+```sh
+forge test --contracts ./src/test/DPC_exp.sol -vvv 
+```
+#### Link reference
+
+https://twitter.com/BeosinAlert/status/1568429355919089664
 
 ### 20220909 YYDS 
 #### Lost: 742,286.27 BUSD
