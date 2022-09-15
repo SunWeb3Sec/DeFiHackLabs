@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-62 incidents included.
+63 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -13,12 +13,13 @@ Let's make Web3 secure!
 
 * Clone and install dependencies:```git submodule update --init --recursive```
 
-
 ## List of DeFi Hacks & Exploits
 
 [20220909 YYDS](#20220909-yyds)
 
 [20220908 NewFreeDAO](#20220908-newfreedao---flashloans-attack)
+
+[20220908 Ragnarok Online Invasion](#20220908-ragnarok-online-invasion---broken-access-control)
 
 [20220905 ZoomproFinance](#20220905-zoomprofinance---flashloans--price-manipulation)
 
@@ -157,6 +158,23 @@ forge test --contracts ./src/test/Yyds_exp.sol -vvv
 https://twitter.com/BlockSecTeam/status/1567928377432051713
 
 https://bscscan.com/tx/0x04a1f0d1694242515ecb14faa71053901f11a1286cd21c27fe5542f9eeb62356
+
+### 20220908 Ragnarok Online Invasion - Broken Access Control
+#### Lost: 157.98 BNB (~44,000 US$)
+
+Testing
+```sh
+forge test --contracts ./src/test/ROI_exp.sol -vvv 
+```
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1567746825616236544
+
+https://twitter.com/CertiKAlert/status/1567754904663429123
+
+https://www.panewslab.com/zh_hk/articledetails/mbzalpdi.html
+
+https://medium.com/quillhash/decoding-ragnarok-online-invasion-44k-exploit-quillaudits-261b7e23b55
 
 ### 20220908 NewFreeDAO - Flashloans Attack
 #### Lost: 4,481 BNB (~125M US$)
