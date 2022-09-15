@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-58 incidents included.
+62 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -21,6 +21,8 @@ Let's make Web3 secure!
 [20220908 NewFreeDAO](#20220908-newfreedao---flashloans-attack)
 
 [20220905 ZoomproFinance](#20220905-zoomprofinance---flashloans--price-manipulation)
+
+[20220902 ShadowFi](#20220902-shadowfi---access-control)
 
 [20220807 EGD Finance](#20220807-egd-finance---flashloans--price-manipulation)
 
@@ -183,6 +185,19 @@ forge test --contracts ./src/test/ZoomproFinance_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/blocksecteam/status/1567027459207606273
+
+### 20220902 ShadowFi - Access Control
+#### Lost: 1,078 BNB
+
+Anyone can burn $SDF
+
+Testing
+```sh
+forge test --contracts ./src/test/Shadowfi_exp.sol -vvv 
+```
+#### Link reference
+
+https://twitter.com/PeckShieldAlert/status/1565549688509861888
 
 ### 20220807 EGD Finance - Flashloans & Price Manipulation
 #### Lost: 36,044 USDT
@@ -765,7 +780,24 @@ https://slowmist.medium.com/the-vulnerability-behind-the-sandbox-land-migration-
 https://etherscan.io/tx/0x34516ee081c221d8576939f68aee71e002dd5557180d45194209d6692241f7b1
 
 
-### 20220118 Wormhole - Bridge
+### 20220206 Meter - Bridge
+#### Lost: $4.3 million
+
+Testing
+```sh
+Solana TBD
+forge test --contracts ./src/test/meter_exp.sol -vv
+```
+#### Link reference
+
+https://twitter.com/ishwinder/status/1490227406824685569
+
+https://blog.chainsafe.io/breaking-down-the-meter-io-hack-a46a389e7ae4
+
+this does not seem to be the correct transaction though: 
+https://moonriver.moonscan.io/tx/0x5a87c24d0665c8f67958099d1ad22e39a03aa08d47d00b7276b8d42294ee0591
+
+### 20220203 Wormhole - Bridge
 #### Lost: $326 million
 
 Testing
@@ -893,7 +925,7 @@ forge test --contracts ./src/test/PolyNetwork/PolyNetwork_exp.sol -vv
 #### Link reference
 https://rekt.news/polynetwork-rekt/
 
-https://medium.com/breadcrumbsapp/the-600m-poly-network-hack-the-biggest-hack-in-defi-history-e2efe56cf3a8
+https://slowmist.medium.com/the-root-cause-of-poly-network-being-hacked-ec2ee1b0c68f
 
 https://etherscan.io/tx/0xb1f70464bd95b774c6ce60fc706eb5f9e35cb5f06e6cfe7c17dcda46ffd59581/advanced
 
