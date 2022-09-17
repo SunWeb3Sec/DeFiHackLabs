@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-64 incidents included.
+65 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -82,6 +82,8 @@ Let's make Web3 secure!
 [20220409 GYMNetwork](#20220409-gymnetwork)
 
 [20220329 Ronin Network](#20220329-ronin-network---Bridge)
+
+[20220329 Redacted Cartel](#20220329-redacted-cartel---custom-approval-logic)
 
 [20220327 Revest Finance](#20220327-revest-finance---reentrancy)
 
@@ -665,6 +667,15 @@ https://rekt.news/ronin-rekt/
 https://etherscan.io/tx/0xc28fad5e8d5e0ce6a2eaf67b6687be5d58113e16be590824d6cfa1a94467d0b7
 
 https://etherscan.io/tx/0xed2c72ef1a552ddaec6dd1f5cddf0b59a8f37f82bdda5257d9c7c37db7bb9b08
+
+### 20220329 Redacted Cartel - Custom Approval Logic
+
+Testing
+```sh
+forge test --contracts ./src/test/RedactedCartel_exp.sol -vv
+```
+#### Link reference
+https://medium.com/immunefi/redacted-cartel-custom-approval-logic-bugfix-review-9b2d039ca2c5
 
 ### 20220327 Revest Finance - Reentrancy
 #### Lost: $11.2 million

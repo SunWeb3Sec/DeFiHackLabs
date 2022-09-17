@@ -4998,3 +4998,11 @@ interface IFlashLoanRecipient {
 interface IBeethovenVault {
   function flashLoan(IFlashLoanRecipient recipient, IERC20[] memory tokens, uint256[] memory amounts, bytes memory userData) external;
 }
+
+interface IRedactedCartelSafeERC20 {
+  function unFreezeToken () external;
+  function balanceOf(address account) external view returns (uint256);
+  function approve(address spender, uint256 amount) external returns (bool);
+  function allowance(address owner, address spender) external view returns (uint256);
+  function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
+}
