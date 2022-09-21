@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-65 incidents included.
+66 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -26,6 +26,8 @@ Let's make Web3 secure!
 [20220905 ZoomproFinance](#20220905-zoomprofinance---flashloans--price-manipulation)
 
 [20220902 ShadowFi](#20220902-shadowfi---access-control)
+
+[20220902 Bad Guys by RPF](#20220902-bad-guys-by-rpf---business-logic-flaw--missing-check-for-number-of-nft-to-mint)
 
 [20220807 EGD Finance](#20220807-egd-finance---flashloans--price-manipulation)
 
@@ -235,6 +237,19 @@ forge test --contracts ./src/test/Shadowfi_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/PeckShieldAlert/status/1565549688509861888
+
+### 20220902 Bad Guys by RPF - Business Logic Flaw : Missing Check For Number of NFT to Mint
+#### Lost: Bad Guys by RPF(400 NFTs)
+
+Testing
+```sh
+forge test --contracts ./src/test/BadGuysbyRPF_exp.sol -vvv
+```
+#### Link reference
+
+https://twitter.com/RugDoctorApe/status/1565739119606890498
+
+https://etherscan.io/tx/0x27e64a8215ae1528245c912bcca09883fdd7cce69249bd5d5d1c0eecf5297b96
 
 ### 20220807 EGD Finance - Flashloans & Price Manipulation
 #### Lost: 36,044 USDT

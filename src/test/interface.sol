@@ -5006,3 +5006,11 @@ interface IRedactedCartelSafeERC20 {
   function allowance(address owner, address spender) external view returns (uint256);
   function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 }
+
+interface IBadGuysRPFERC721{
+  function WhiteListMint(bytes32[] calldata _merkleProof, uint256 chosenAmount) external;
+
+  function balanceOf(address owner) external view returns (uint256 balance);
+
+  function flipPauseMinting() external;
+}
