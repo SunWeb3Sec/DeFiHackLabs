@@ -38,6 +38,7 @@ contract ContractTest is DSTest {
     address from = address(0x00c6f2bde06967e04caaf4bf4e43717c3342680d76);
     address lifi = address(0x005a9fd7c39a6c488e715437d7b1f3c823d5596ed1);
     address exploiter = address(0x00878099f08131a18fab6bb0b4cfc6b6dae54b177e);  
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D); 
     
     function setUp() public {
         cheats.createSelectFork("mainnet", 14420686);//fork mainnet at block 14420686

@@ -42,3 +42,4 @@ contract ContractTest is DSTest {
     // gasless transaction: 
     // https://medium.com/coinmonks/how-to-implement-gas-less-transactions-on-ethereum-9f9273d2f059  }
 }
+}
