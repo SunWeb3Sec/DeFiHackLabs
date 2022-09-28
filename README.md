@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-66 incidents included.
+67 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -124,6 +124,8 @@ Let's make Web3 secure!
 [20211130 MonoX Finance](#20211130-monox-finance---price-manipulation)
 
 [20210916 SushiSwap Miso](#20210916-sushiswap-miso)
+
+[20210915 Nimbus Platform](#20210915-nimbus-platform)
 
 [20210830 Cream Finance](#20210830-cream-finance---flashloan-attack--reentrancy)
 
@@ -1185,6 +1187,19 @@ https://www.paradigm.xyz/2021/08/two-rights-might-make-a-wrong
 
 https://etherscan.io/tx/0x78d6355703507f88f2090eb780d245b0ab26bf470eabdb004761cedf3b1cda44
 
+### 20210915 Nimbus Platform
+#### Lost: 1.45 ETH
+
+Testing
+```sh
+forge test --contracts ./src/test/Nimbus_exp.sol -vv
+```
+#### Contract
+
+[Nimbus_exp.sol](src/test/Nimbus_exp.sol)
+
+#### Link reference
+https://twitter.com/BlockSecTeam/status/1438100688215560192
 
 ### 20210830 Cream Finance - Flashloan Attack + Reentrancy
 #### Lost: $18 million
