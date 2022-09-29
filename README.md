@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-69 incidents included.
+70 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -98,6 +98,8 @@ Let's make Web3 secure!
 [20220321 OneRing Finance](#20220321-onering-finance---flashloan--price-oracle-manipulation)
 
 [20220320 LI.FI](#20220320-Li.Fi---bridges)
+
+[20220320 Umbrella Network](#20220320-umbrella-network---underflow)
 
 [20220313 Paraluni](#20220313-paraluni---flashloan--reentrancy)
 
@@ -946,6 +948,21 @@ https://etherscan.io/tx/0x4b4143cbe7f5475029cf23d6dcbb56856366d91794426f2e33819b
 
 #### Fix
 implemented a whitelist to only allow calls to approved DEXs. 
+
+### 20220320 Umbrella Network - Underflow
+
+Testing
+```sh
+forge test --contracts ./src/test/Umbrella_exp.sol -vv
+```
+#### Contract
+
+[Umbrella_exp.sol](src/test/Umbrella_exp.sol)
+
+#### Link reference
+https://medium.com/uno-re/umbrella-network-hacked-700k-lost-97285b69e8c7
+
+https://etherscan.io/tx/0x33479bcfbc792aa0f8103ab0d7a3784788b5b0e1467c81ffbed1b7682660b4fa
 
 ### 20220313 Paraluni - Flashloan & Reentrancy
 #### Lost: $1.7 million
