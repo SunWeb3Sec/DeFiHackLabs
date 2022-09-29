@@ -145,6 +145,8 @@ Let's make Web3 secure!
 
 [20201229 Cover Protocol](#20201229-cover-protocol)
 
+[20201121 Pickle Finance](#20201121-pickle-finance)
+
 [20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
 
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
@@ -1357,6 +1359,21 @@ forge test --contracts ./src/test/Cover_exp.sol -vv
 https://mudit.blog/cover-protocol-hack-analysis-tokens-minted-exploit/
 
 https://slowmist.medium.com/a-brief-analysis-of-the-cover-protocol-hacked-event-700d747b309c
+
+### 20201121 Pickle Finance
+#### Lost: $20 million
+Testing
+```sh
+forge test --contracts ./src/test/Pickle_exp.sol -vv
+```
+#### Contract
+
+[Pickle_exp.sol](src/test/Pickle_exp.sol)
+
+#### Link reference
+https://github.com/banteg/evil-jar
+
+https://etherscan.io/tx/0xe72d4e7ba9b5af0cf2a8cfb1e30fd9f388df0ab3da79790be842bfbed11087b0
 
 ### 20201026 Harvest Finance - Flashloan Attack
 #### Lost: $33.8 million
