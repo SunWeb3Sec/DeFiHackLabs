@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-67 incidents included.
+68 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure!
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20220929 BXH](#20220928-bxh---flashloan--price-oracle-manipulation)
 
 [20220910 DPC](#20220910-dpc)
 
@@ -153,6 +155,24 @@ https://dashboard.tenderly.co/explorer
 https://ethtx.info/
 
 https://versatile.blocksecteam.com/tx
+
+
+### 20220928 BXH - Flashloan & Price Oracle Manipulation
+### Lost: $40,305
+
+Testing
+```sh
+forge test --contracts src/test/BXH_exp.sol -vv
+```
+
+#### Contract
+
+[BXH_exp.sol](src/test/BXH_exp.sol)
+
+#### Link reference
+
+https://www.jinse.com/lives/319392.html
+https://bscscan.com/tx/0xa13c8c7a0c97093dba3096c88044273c29cebeee109e23622cd412dcca8f50f4
 
 ### 20220910 DPC 
 #### Lost: $103,755
@@ -1407,3 +1427,4 @@ Moved to [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs)
 Moved to [DeFiLabs](https://github.com/SunWeb3Sec/DeFiLabs)
 
 #### Some codes referred to Rivaill and W2Ning repo and rewrote to the foundry version.
+
