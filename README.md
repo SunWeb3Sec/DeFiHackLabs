@@ -151,6 +151,8 @@ Let's make Web3 secure!
 
 [20210607 88mph NFT](#20210607-88mph-nft---access-control)
 
+[20210603 PancakeHunny](#20210603-pancakehunny---incorrect-calculation)
+
 [20210308 DODO](#20210308-dodo---flashloan-attack)
 
 [20201229 Cover Protocol](#20201229-cover-protocol)
@@ -1425,6 +1427,20 @@ forge test --contracts ./src/test/88mph_exp.sol -vv
 
 #### Link reference
 https://medium.com/immunefi/88mph-function-initialization-bug-fix-postmortem-c3a2282894d3
+
+### 20210603 PancakeHunny - Incorrect calculation
+Testing
+```sh
+forge test --contracts ./src/test/PancakeHunny_exp.sol -vv
+```
+#### Contract
+
+[PancakeHunny_exp.sol](src/test/PancakeHunny_exp.sol)
+
+#### Link reference
+https://medium.com/hunnyfinance/pancakehunny-post-mortem-analysis-de78967401d8
+
+https://bscscan.com/tx/0x765de8357994a206bb90af57dcf427f48a2021f2f28ca81f2c00bc3b9842be8e
 
 ### 20210308 DODO - Flashloan Attack
 #### Lost: $700,000
