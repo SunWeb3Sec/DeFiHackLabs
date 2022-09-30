@@ -162,6 +162,8 @@ https://ethtx.info/
 
 https://versatile.blocksecteam.com/tx
 
+https://phalcon.blocksec.com/
+
 
 ### 20220928 BXH - Flashloan & Price Oracle Manipulation
 ### Lost: $40,305
