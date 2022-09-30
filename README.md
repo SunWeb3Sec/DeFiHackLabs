@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-74 incidents included.
+73 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -79,6 +79,11 @@ Let's make Web3 secure!
 
 [20220424 Wiener DOGE](#20220424-wiener-doge---flashloan)
 
+<<<<<<< HEAD
+[20220423 Akutar NFT](#20220423-akutar-nft---denial-of-service)
+
+=======
+>>>>>>> parent of 836e6f3... Akutar NFT PoC
 [20220421 Zeed Finance](#20220421-zeed-finance)
 
 [20220416 BeanstalkFarms](#20220416-beanstalkfarms---dao--flashloan)
