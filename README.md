@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-73 incidents included.
+74 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -79,11 +79,8 @@ Let's make Web3 secure!
 
 [20220424 Wiener DOGE](#20220424-wiener-doge---flashloan)
 
-<<<<<<< HEAD
 [20220423 Akutar NFT](#20220423-akutar-nft---denial-of-service)
 
-=======
->>>>>>> parent of 836e6f3... Akutar NFT PoC
 [20220421 Zeed Finance](#20220421-zeed-finance)
 
 [20220416 BeanstalkFarms](#20220416-beanstalkfarms---dao--flashloan)
@@ -791,6 +788,21 @@ https://twitter.com/peckshield/status/1519531866109317121
 
 https://ftmscan.com/tx/0xe374495036fac18aa5b1a497a17e70f256c4d3d416dd1408c026f3f5c70a3a9c
 
+### 20220423 Akutar NFT - Denial of Service
+#### Lost: 34M USD
+
+Testing
+```sh
+forge test --contracts ./src/test/AkutarNFT_exp.sol -vv  
+```
+#### Contract
+
+[AkutarNFT_exp.sol](src/test/AkutarNFT_exp.sol)
+
+#### Link reference
+https://blocksecteam.medium.com/how-akutar-nft-loses-34m-usd-60d6cb053dff
+
+https://etherscan.io/address/0xf42c318dbfbaab0eee040279c6a2588fa01a961d#code
 
 ### 20220421 Zeed Finance - Reward distribution flaw
 #### Lost: $1 million
