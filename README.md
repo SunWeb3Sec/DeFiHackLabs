@@ -79,7 +79,7 @@ Let's make Web3 secure!
 
 [20220424 Wiener DOGE](#20220424-wiener-doge---flashloan)
 
-[20220423 Akutar NFT](#20220424-akutar-nft---denial-of-service)
+[20220423 Akutar NFT](#20220423-akutar-nft---denial-of-service)
 
 [20220421 Zeed Finance](#20220421-zeed-finance)
 
