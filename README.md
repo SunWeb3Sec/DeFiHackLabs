@@ -183,8 +183,6 @@ forge test --contracts src/test/BXH_exp.sol -vv
 
 https://www.jinse.com/lives/319392.html
 
-https://halborn.com/explained-the-boy-x-highspeed-bxh-rug-pull-september-2022/
-
 https://bscscan.com/tx/0xa13c8c7a0c97093dba3096c88044273c29cebeee109e23622cd412dcca8f50f4
 
 ### 20220910 DPC 
