@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-71 incidents included.
+72 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -132,6 +132,8 @@ Let's make Web3 secure!
 [20210916 SushiSwap Miso](#20210916-sushiswap-miso)
 
 [20210915 Nimbus Platform](#20210915-nimbus-platform)
+
+[20210915 NowSwap Platform](#20210915-nowswap-platform)
 
 [20210830 Cream Finance](#20210830-cream-finance---flashloan-attack--reentrancy)
 
@@ -1262,6 +1264,20 @@ forge test --contracts ./src/test/Nimbus_exp.sol -vv
 #### Contract
 
 [Nimbus_exp.sol](src/test/Nimbus_exp.sol)
+
+#### Link reference
+https://twitter.com/BlockSecTeam/status/1438100688215560192
+
+### 20210915 NowSwap Platform
+#### Lost: 158.28 WETH and 535,706 USDT
+
+Testing
+```sh
+forge test --contracts ./src/test/NowSwap_exp.sol -vv
+```
+#### Contract
+
+[Nimbus_exp.sol](src/test/NowSwap_exp.sol)
 
 #### Link reference
 https://twitter.com/BlockSecTeam/status/1438100688215560192
