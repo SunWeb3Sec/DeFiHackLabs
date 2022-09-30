@@ -19,7 +19,7 @@ Let's make Web3 secure!
 
 [20220928 MEVBOT Badc0de](#20220928-MEVBOT---Badc0de)
 
-[20220923 RADT-DAO](#20220913-mevbot-private-tx)
+[20220923 RADT-DAO](#20220923-radt-dao)
 
 [20220913 MevBot private tx](#20220913-mevbot-private-tx)
 
