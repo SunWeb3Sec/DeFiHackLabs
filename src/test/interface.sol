@@ -5014,13 +5014,3 @@ interface IBadGuysRPFERC721{
 
   function flipPauseMinting() external;
 }
-
-interface IAkutarNFT{
-
-  function processRefunds() external;
-
-  function bid(uint8 amount) external payable;
-
-  function claimProjectFunds() external;
-
-}
