@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-70 incidents included.
+71 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Let's make Web3 secure!
 ## List of DeFi Hacks & Exploits
 
 [20220929 BXH](#20220928-bxh---flashloan--price-oracle-manipulation)
+
+[20220928 MEVBOT Badc0de](#20220928-MEVBOT---Badc0de)
 
 [20220910 DPC](#20220910-dpc)
 
@@ -196,6 +198,28 @@ https://twitter.com/BeosinAlert/status/1568429355919089664
 https://bscscan.com/address/0x2109bbecB0a563e204985524Dd3DB2F6254AB419
 
 https://learnblockchain.cn/article/4733
+
+
+### 20220928 MEVBOT - Badc0de
+
+### Lost: $1,469,700
+
+
+An anonymous attacker noticed a flaw in the bots arbitrage contract code, and stole not only the recently acquired 800 ETH, but the entire 1,101 ETH in 0xbad’s wallet.
+
+Testing
+```sh
+forge test --contracts ./src/test/MEVbadc0de_exp.sol -vvv 
+```
+
+#### Contract
+
+[MEVbadc0de_exp.sol](src/test/MEVbadc0de_exp.sol)
+
+#### Link reference
+
+https://rekt.news/ripmevbot/
+https://etherscan.io/tx/0x59ddcf5ee5c687af2cbf291c3ac63bf28316a8ecbb621d9f62d07fa8a5b8ef4e
 
 ### 20220909 YYDS 
 #### Lost: 742,286.27 BUSD
