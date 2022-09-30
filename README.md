@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-73 incidents included.
+74 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -78,6 +78,8 @@ Let's make Web3 secure!
 [20220428 DEUS DAO](#20220428-deus-dao---flashloan--price-oracle-manipulation)
 
 [20220424 Wiener DOGE](#20220424-wiener-doge---flashloan)
+
+[20220423 Akutar NFT](#20220424-akutar-nft---denial-of-service)
 
 [20220421 Zeed Finance](#20220421-zeed-finance)
 
@@ -767,6 +769,23 @@ https://coinyuppie.com/four-combinations-of-hackers-analysis-of-attacks-on-wiene
 https://twitter.com/solid_group_1/status/1519034573354676224
 
 https://bscscan.com/tx/0x4f2005e3815c15d1a9abd8588dd1464769a00414a6b7adcbfd75a5331d378e1d
+
+### 20220423 Akutar NFT - Denial of Service
+#### Lost: 34M USD
+
+Testing
+```sh
+forge test --contracts ./src/test/AkutarNFT_exp.sol -vv  
+
+```
+#### Contract
+
+[AkutarNFT_exp.sol](src/test/AkutarNFT_exp.sol)
+
+#### Link reference
+https://blocksecteam.medium.com/how-akutar-nft-loses-34m-usd-60d6cb053dff
+
+https://etherscan.io/address/0xf42c318dbfbaab0eee040279c6a2588fa01a961d#code
 
 ### 20220428 DEUS DAO - Flashloan & Price Oracle Manipulation
 #### Lost: $13 million
