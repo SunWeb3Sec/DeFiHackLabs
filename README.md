@@ -5,7 +5,7 @@
 
 This repo is only for the educational purpose.
 
-Let's make Web3 secure!
+Let's make Web3 secure! Join our [Discord](https://discord.com/invite/y8yA2bzZ)!
 
 ## Getting Started
 
