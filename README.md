@@ -385,7 +385,7 @@ forge script script/LuckyTiger_s_exp.sol:luckyHack --fork-url http://127.0.0.1:8
 ```
 #### Contract
 
-[LuckyTiger_exp.sol](src/test/LuckyTiger_exp.sol) | [LuckyTiger_s_exp.sol](src/script/LuckyTiger_s_exp.sol)
+[LuckyTiger_exp.sol](src/test/LuckyTiger_exp.sol) | [LuckyTiger_s_exp.sol](/script/LuckyTiger_s_exp.sol)
 
 #### Link reference
 
