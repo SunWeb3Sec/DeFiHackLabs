@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-76 incidents included.
+77 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure!
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221001 Thunder Brawl](#20221001-thunder-brawl---reentrancy)
 
 [20220929 BXH](#20220928-bxh---flashloan--price-oracle-manipulation)
 
@@ -176,6 +178,20 @@ https://versatile.blocksecteam.com/tx
 
 https://phalcon.blocksec.com/
 
+### 20221001 Thunder Brawl - Reentrancy
+
+Testing
+```sh
+forge test --contracts src/test/THB_exp.sol -vv
+```
+
+#### Contract
+
+[THB_exp.sol](src/test/THB_exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1575890733373849601
 
 ### 20220928 BXH - Flashloan & Price Oracle Manipulation
 ### Lost: $40,305
