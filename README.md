@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-75 incidents included.
+76 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -21,7 +21,7 @@ Let's make Web3 secure!
 
 [20220923 RADT-DAO](#20220923-radt-dao)
 
-[20220913 MevBot private tx](#20220913-mevbot-private-tx)
+[20220913 MevBot Private TX](#20220913-mevbot-private-tx)
 
 [20220910 DPC](#20220910-dpc)
 
@@ -36,6 +36,8 @@ Let's make Web3 secure!
 [20220902 ShadowFi](#20220902-shadowfi---access-control)
 
 [20220902 Bad Guys by RPF](#20220902-bad-guys-by-rpf---business-logic-flaw--missing-check-for-number-of-nft-to-mint)
+
+[20220824 LuckeyTiger NFT](#20220824-luckeytiger-nft---predicting-random-numbers)
 
 [20220807 EGD Finance](#20220807-egd-finance---flashloans--price-manipulation)
 
@@ -373,6 +375,21 @@ forge test --contracts ./src/test/BadGuysbyRPF_exp.sol -vvv
 https://twitter.com/RugDoctorApe/status/1565739119606890498
 
 https://etherscan.io/tx/0x27e64a8215ae1528245c912bcca09883fdd7cce69249bd5d5d1c0eecf5297b96
+
+### 20220824 LuckeyTiger NFT - Predicting Random Numbers
+
+Testing
+```sh
+forge test --contracts ./src/test/LuckyTiger_exp -vvv 
+forge script script/LuckyTiger_s_exp.sol:luckyHack --fork-url http://127.0.0.1:8545 --private-key $PRIVATE_KEY --broadcast
+```
+#### Contract
+
+[LuckyTiger_exp.sol](src/test/LuckyTiger_exp.sol) | [LuckyTiger_s_exp.sol](src/script/LuckyTiger_s_exp.sol)
+
+#### Link reference
+
+https://etherscan.io/tx/0x804ff3801542bff435a5d733f4d8a93a535d73d0de0f843fd979756a7eab26af
 
 ### 20220807 EGD Finance - Flashloans & Price Manipulation
 #### Lost: 36,044 USDT
