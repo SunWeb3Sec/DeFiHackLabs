@@ -15,7 +15,7 @@ Let's make Web3 secure!
 
 ## List of DeFi Hacks & Exploits
 
-[20221002 Transit Swap](#20221001-thunder-brawl---reentrancy)
+[20221002 Transit Swap](#20221002-transit-swap---incorrect-owner-address-validation)
 
 [20221001 Thunder Brawl](#20221001-thunder-brawl---reentrancy)
 
