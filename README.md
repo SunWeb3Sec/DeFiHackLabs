@@ -172,12 +172,14 @@ Let's make Web3 secure!
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
 
 ### Transaction debugging tools
-https://dashboard.tenderly.co/explorer
+[Phalcon](https://phalcon.blocksec.com/) | [Ethtx](https://ethtx.info/) |  [Tenderly](https://dashboard.tenderly.co/explorer)
 
-https://ethtx.info/
+### Ethereum Signature Database
+[4byte](https://www.4byte.directory/) | [sig.eth](https://sig.eth.samczsun.com/) | [etherface](https://www.etherface.io/hash)
 
-https://phalcon.blocksec.com/
-
+### Useful tools
+[ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+ 
 ### 20221001 Thunder Brawl - Reentrancy
 
 Testing
