@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-79 incidents included.
+78 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -128,8 +128,6 @@ Let's make Web3 secure!
 [20220208 Sandbox LAND](#20220208-sandbox-land---access-control)
 
 [20220206 Meter](#20220206-Meter---bridge)
-
-[20220203 Wormhole](#20220203-wormhole---bridge)
 
 [20220128 Qubit Finance](#20220128-qubit-finance---bridge)
 
@@ -1233,23 +1231,6 @@ https://blog.chainsafe.io/breaking-down-the-meter-io-hack-a46a389e7ae4
 
 this does not seem to be the correct transaction though: 
 https://moonriver.moonscan.io/tx/0x5a87c24d0665c8f67958099d1ad22e39a03aa08d47d00b7276b8d42294ee0591
-
-### 20220203 Wormhole - Bridge
-#### Lost: $326 million
-
-Testing
-```sh
-Solana TBD
-# forge test --contracts ./src/test/wormhole_exp.sol -vv
-```
-#### Contract
-
-[wormhole_exp.sol](src/test/wormhole_exp.sol)
-
-#### Link reference
-https://twitter.com/samczsun/status/1489044939732406275
-
-https://rekt.news/wormhole-rekt/
 
 ### 20220128 Qubit Finance - Bridge address(0).safeTransferFrom() does not revert
 #### Lost: $80 million
