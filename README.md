@@ -15,6 +15,8 @@ Let's make Web3 secure!
 
 ## List of DeFi Hacks & Exploits
 
+[20221002 Transit Swap](#20221001-thunder-brawl---reentrancy)
+
 [20221001 Thunder Brawl](#20221001-thunder-brawl---reentrancy)
 
 [20220929 BXH](#20220928-bxh---flashloan--price-oracle-manipulation)
@@ -127,7 +129,7 @@ Let's make Web3 secure!
 
 [20220206 Meter](#20220206-Meter---bridge)
 
-[20220203 Wormhole](#20220203-Wormhole)
+[20220203 Wormhole](#20220203-wormhole---bridge)
 
 [20220128 Qubit Finance](#20220128-qubit-finance---bridge)
 
@@ -179,7 +181,25 @@ Let's make Web3 secure!
 
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
- 
+
+### 20221002 Transit Swap - Incorrect owner address validation
+
+Testing
+```sh
+forge test --contracts src/test/TransitSwap_exp.sol -vv
+```
+
+#### Contract
+
+[TransitSwap_exp.sol](src/test/TransitSwap_exp.sol)
+
+#### Link reference
+
+https://twitter.com/TransitFinance/status/1576463550557483008
+
+https://bscscan.com/tx/0x181a7882aac0eab1036eedba25bc95a16e10f61b5df2e99d240a16c334b9b189
+
+
 ### 20221001 Thunder Brawl - Reentrancy
 
 Testing
