@@ -11,12 +11,12 @@ import "./interface.sol";
     Attack eventlog: https://bscscan.com/tx/0x181a7882aac0eab1036eedba25bc95a16e10f61b5df2e99d240a16c334b9b189#eventlog
     Debug transaction: https://phalcon.blocksec.com/tx/bsc/0x181a7882aac0eab1036eedba25bc95a16e10f61b5df2e99d240a16c334b9b189
     
-    Attack steps: it's a easy way but you need to study past transaction to know how to combine the call data.
-    1.Incorrect owner address validation, you can input any innocent user who granted apprvals to "0xed1afc8c4604958c2f38a3408fa63b32e737c428" before.
-    in this case 0x1aae0303f795b6fcb185ea9526aa0549963319fc is a innocent user who has BUSD.
+    Attack steps: it's an easy way but you need to study past transaction to know how to combine the call data.
+    1.Incorrect owner address validation, you can input any innocent user who granted approvals to "0xed1afc8c4604958c2f38a3408fa63b32e737c428" before.
+    in this case 0x1aae0303f795b6fcb185ea9526aa0549963319fc is a innocent user who has BUSD and granted approvals.
     
     2.
-    Contract "0xed1afc8c4604958c2f38a3408fa63b32e737c428" perform transferFrom to transfer amount of innocent user to attacker.
+    Contract "0xed1afc8c4604958c2f38a3408fa63b32e737c428" will perform transferFrom to transfer amount of innocent user to attacker.
     That's it.
 
     Root cause: Incorrect owner address validation. 
