@@ -17,6 +17,8 @@ Let's make Web3 secure!
 
 [20221002 Transit Swap](#20221002-transit-swap---incorrect-owner-address-validation)
 
+[20221001 RL](#20221001-RL-Token---Incorrect-Reward-calculation)
+
 [20221001 Thunder Brawl](#20221001-thunder-brawl---reentrancy)
 
 [20220929 BXH](#20220928-bxh---flashloan--price-oracle-manipulation)
@@ -196,6 +198,21 @@ forge test --contracts src/test/TransitSwap_exp.sol -vv
 https://twitter.com/TransitFinance/status/1576463550557483008
 
 https://bscscan.com/tx/0x181a7882aac0eab1036eedba25bc95a16e10f61b5df2e99d240a16c334b9b189
+
+### 20221001 RL Token - Incorrect Reward calculation
+
+Testing
+```sh
+forge test --contracts src/test/RL_exp.sol -vv
+```
+
+#### Contract
+
+[RL_exp.sol](src/test/RL_exp.sol)
+
+#### Link reference
+
+https://twitter.com/CertiKAlert/status/1576195971003858944
 
 
 ### 20221001 Thunder Brawl - Reentrancy
