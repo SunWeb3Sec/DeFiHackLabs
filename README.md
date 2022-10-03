@@ -165,6 +165,8 @@ Let's make Web3 secure!
 
 [20210603 PancakeHunny](#20210603-pancakehunny---incorrect-calculation)
 
+[20210519 PancakeBunny](#20210519-pancakebunny---price-oracle-manipulation)
+
 [20210308 DODO](#20210308-dodo---flashloan-attack)
 
 [20201229 Cover Protocol](#20201229-cover-protocol)
@@ -1543,6 +1545,21 @@ forge test --contracts ./src/test/PancakeHunny_exp.sol -vv
 https://medium.com/hunnyfinance/pancakehunny-post-mortem-analysis-de78967401d8
 
 https://bscscan.com/tx/0x765de8357994a206bb90af57dcf427f48a2021f2f28ca81f2c00bc3b9842be8e
+
+### 20210519 PancakeBunny - Price Oracle Manipulation
+Testing
+```sh
+forge test --contracts ./src/test/PancakeBunny_exp.sol --fork-url <BSC-RPC-URL> --fork-block-number 7556330 -vv
+```
+
+#### Contract
+
+[PancakeBunny_exp.sol](src/test/PancakeBunny_exp.sol)
+
+#### Link reference
+https://rekt.news/pancakebunny-rekt/
+
+https://bscscan.com/tx/0x897c2de73dd55d7701e1b69ffb3a17b0f4801ced88b0c75fe1551c5fcce6a979
 
 ### 20210308 DODO - Flashloan Attack
 #### Lost: $700,000
