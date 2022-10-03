@@ -25,13 +25,13 @@ Let's make Web3 secure!
 
 [20220928 MEVBOT Badc0de](#20220928-MEVBOT---Badc0de)
 
-[20220923 RADT-DAO](#20220923-radt-dao---pair-manipulate)
+[20220923 RADT-DAO](#20220923-RADT-DAO---pair-manipulate)
 
 [20220913 MevBot Private TX](#20220913-mevbot-private-tx)
 
 [20220910 DPC](#20220910-dpc---Incorrect-Reward-calculation)
 
-[20220909 YYDS](#20220909-yyds---pair-manipulate)
+[20220909 YYDS](#20220909-YYDS---pair-manipulate)
 
 [20220908 NewFreeDAO](#20220908-newfreedao---flashloans-attack)
 
@@ -250,7 +250,7 @@ https://www.jinse.com/lives/319392.html
 
 https://bscscan.com/tx/0xa13c8c7a0c97093dba3096c88044273c29cebeee109e23622cd412dcca8f50f4
 
-### 20220910 DPC 
+### 20220910 DPC - Incorrect Reward calculation
 #### Lost: $103,755
 
 Testing
@@ -291,7 +291,7 @@ https://rekt.news/ripmevbot/
 
 https://etherscan.io/tx/0x59ddcf5ee5c687af2cbf291c3ac63bf28316a8ecbb621d9f62d07fa8a5b8ef4e
 
-### 20220923 RADT-DAO pair manipulate
+### 20220923 RADT-DAO - pair manipulate
 
 Testing
 ```sh
@@ -323,7 +323,7 @@ https://blocksecteam.medium.com/the-two-sides-of-the-private-tx-service-on-binan
 https://bscscan.com/tx/0xd48758ef48d113b78a09f7b8c7cd663ad79e9965852e872fdfc92234c3e598d2
 
 
-### 20220909 YYDS pair manipulate
+### 20220909 YYDS - pair manipulate
 #### Lost: 742,286.27 BUSD
 
 Testing
