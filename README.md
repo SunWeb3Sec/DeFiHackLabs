@@ -958,11 +958,11 @@ https://bscscan.com/tx/0x93a9b022df260f1953420cd3e18789e7d1e095459e36fe2eb534918
 
 Testing
 ```sh
-forge test --contracts ./src/test/Elephant_Money_poc.t.sol -vv
+forge test --contracts ./src/test/Elephant_Money_poc.sol -vv
 ```
 #### Contract
 
-[Elephant_Money_poc.t.sol](src/test/Elephant_Money_poc.t.sol)
+[Elephant_Money_poc.sol](src/test/Elephant_Money_poc.sol)
 
 #### Link reference
 https://medium.com/elephant-money/reserve-exploit-52fd36ccc7e8
