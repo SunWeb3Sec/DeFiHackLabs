@@ -117,6 +117,8 @@ Let's make Web3 secure!
 
 [20220320 Umbrella Network](#20220320-umbrella-network---underflow)
 
+[20220315 Hundred Finance](#20220313-hundred-finance---erc667-reentrancy)
+
 [20220313 Paraluni](#20220313-paraluni---flashloan--reentrancy)
 
 [20220309 Fantasm Finance](#20220309-fantasm-finance)
@@ -1117,6 +1119,22 @@ forge test --contracts ./src/test/Umbrella_exp.sol -vv
 https://medium.com/uno-re/umbrella-network-hacked-700k-lost-97285b69e8c7
 
 https://etherscan.io/tx/0x33479bcfbc792aa0f8103ab0d7a3784788b5b0e1467c81ffbed1b7682660b4fa
+
+### 20220313 Hundred Finance - ERC667 Reentrancy
+#### Lost: $1.7 million
+
+Testing
+```sh
+forge test --contracts ./src/test/HundredFinance_exp.sol -vv
+```
+#### Contract
+
+[HundredFinance_exp.sol](src/test/HundredFinance_exp.sol)
+
+#### Link reference
+https://medium.com/immunefi/a-poc-of-the-hundred-finance-heist-4121f23a098
+
+https://gnosisscan.io/tx/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098
 
 ### 20220313 Paraluni - Flashloan & Reentrancy
 #### Lost: $1.7 million
