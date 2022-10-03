@@ -21,7 +21,7 @@ Let's make Web3 secure!
 
 [20221001 Thunder Brawl](#20221001-thunder-brawl---reentrancy)
 
-[20220929 BXH](#20220928-bxh---flashloan--price-oracle-manipulation)
+[20220929 BXH](#20220928-bxh---flashloan--price-oracle-mnipulation)
 
 [20220928 MEVBOT Badc0de](#20220928-MEVBOT---Badc0de)
 
@@ -65,7 +65,7 @@ Let's make Web3 secure!
 
 [20220626 XCarnival](#20220626-xcarnival---infinite-number-of-loans)
 
-[20220624 Harmony's Horizon Bridge](#20220624-harmonys-horizon-bridge)
+[20220624 Harmony's Horizon Bridge](#20220624-harmonys-horizon-bridge---private-key-compromised)
 
 [20220618 SNOOD](#20220618-snood---miscalculation-on-_spendallowance)
 
