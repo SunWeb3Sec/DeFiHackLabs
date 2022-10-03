@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-79 incidents included.
+80 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -1649,9 +1649,6 @@ forge test --gas-report --contracts ./src/test/Audius.exp.sol -vvv
 *Demo*
 
 ![](./AudiusPocGasReport.gif)
-
-
-
 
 ### Bug Reproduce
 Moved to [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs)
