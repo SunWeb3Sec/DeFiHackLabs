@@ -5043,3 +5043,23 @@ interface IAkutarNFT{
   function claimProjectFunds() external;
 
 }
+interface IFortubeBank {
+    function flashloan( address receiver, address token, uint256 amount, bytes memory params) external;
+    function repay(address token, uint256 repayAmount) external payable returns (uint256);
+    function controller() external returns(address);
+}
+
+interface IVaultFlipToFlip {
+    function deposit(uint _amount) external;
+    function earned(address account) external view returns (uint);
+    function balanceOf(address account) external view returns (uint);
+    function principalOf(address account) external view returns (uint);
+    function harvest() external returns (uint bounty);
+    function pid() external returns (uint);
+    function getReward() external;
+}
+
+interface IBunnyZap {
+    function zapIn(address _to) external payable;
+    function zapInToken(address _from, uint amount, address _to) external;
+}
