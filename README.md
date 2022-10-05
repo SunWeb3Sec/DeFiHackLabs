@@ -1630,7 +1630,7 @@ https://rekt.news/harvest-finance-rekt/
 
 https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877
 
-### 20200616 Bancor Protocol - Access Control
+### 20200618 Bancor Protocol - Access Control
 Testing
 ```sh
 forge test --contracts ./src/test/Bancor_exp.sol -vv
