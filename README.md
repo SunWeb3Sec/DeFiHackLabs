@@ -178,7 +178,7 @@ Let's make Web3 secure! [Join Discord.](https://discord.gg/Fjyngakf3h)
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
 
 ### Transaction debugging tools
-[Phalcon](https://phalcon.blocksec.com/) | [Ethtx](https://ethtx.info/) |  [Tenderly](https://dashboard.tenderly.co/explorer)
+[Phalcon](https://phalcon.blocksec.com/) | [Tx.viewer](https://tx.eth.samczsun.com/) | [Ethtx](https://ethtx.info/) |  [Tenderly](https://dashboard.tenderly.co/explorer)
 
 ### Ethereum Signature Database
 [4byte](https://www.4byte.directory/) | [sig.eth](https://sig.eth.samczsun.com/) | [etherface](https://www.etherface.io/hash)
