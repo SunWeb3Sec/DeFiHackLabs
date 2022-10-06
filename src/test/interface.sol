@@ -5063,3 +5063,9 @@ interface IBunnyZap {
     function zapIn(address _to) external payable;
     function zapInToken(address _from, uint amount, address _to) external;
 }
+
+interface IElevenNeverSellVault {
+    function depositAll() external;
+    function emergencyBurn() external;
+    function withdrawAll() external;
+}
