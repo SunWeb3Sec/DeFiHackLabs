@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-81 incidents included.
+82 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -148,6 +148,8 @@ Let's make Web3 secure! [Join Discord.](https://discord.gg/Fjyngakf3h)
 [20210915 Nimbus Platform](#20210915-nimbus-platform)
 
 [20210915 NowSwap Platform](#20210915-nowswap-platform)
+
+[20210912 ZABU Finance](#20210912-ZABU-Finance---Deflationary-token-uncompatible)
 
 [20210903 DAO Maker](#20210903-dao-maker---bad-access-controal)
 
@@ -1410,6 +1412,20 @@ forge test --contracts ./src/test/NowSwap_exp.sol -vv
 
 #### Link reference
 https://twitter.com/BlockSecTeam/status/1438100688215560192
+
+### 20210912 ZABU Finance - Deflationary token uncompatible
+
+Testing
+```sh
+forge test --contracts src/test/ZABU_exp.sol -vvv
+```
+#### Contract
+
+[ZABU_exp.sol](src/test/ZABU_exp.sol)
+
+### Link reference
+
+https://slowmist.medium.com/brief-analysis-of-zabu-finance-being-hacked-44243919ea29
 
 ### 20210903 DAO Maker - Bad Access Controal
 #### Lost: $4 million
