@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-83 incidents included.
+84 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -44,6 +44,8 @@ Let's make Web3 secure! [Join Discord.](https://discord.gg/Fjyngakf3h)
 [20220902 Bad Guys by RPF](#20220902-bad-guys-by-rpf---business-logic-flaw--missing-check-for-number-of-nft-to-mint)
 
 [20220824 LuckeyTiger NFT](#20220824-luckeytiger-nft---predicting-random-numbers)
+
+[20220810 XSTABLE Protocol](#20220810-xstable-protocol---incorrect-logic-check)
 
 [20220807 EGD Finance](#20220807-egd-finance---flashloans--price-manipulation)
 
@@ -449,6 +451,19 @@ forge script script/LuckyTiger_s_exp.sol:luckyHack --fork-url http://127.0.0.1:8
 #### Link reference
 
 https://etherscan.io/tx/0x804ff3801542bff435a5d733f4d8a93a535d73d0de0f843fd979756a7eab26af
+
+### 20220810 XSTABLE Protocol - Incorrect Logic Check
+Testing
+```sh
+forge test --contracts ./src/test/XST.exp.sol -vvv 
+```
+#### Contract
+
+[XST.exp.sol](src/test/XST.exp.sol)
+
+#### Link reference
+
+https://mobile.twitter.com/BlockSecTeam/status/1557195012042936320
 
 ### 20220807 EGD Finance - Flashloans & Price Manipulation
 #### Lost: 36,044 USDT
