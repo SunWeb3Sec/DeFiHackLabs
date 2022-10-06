@@ -45,7 +45,7 @@ Let's make Web3 secure! [Join Discord.](https://discord.gg/Fjyngakf3h)
 
 [20220824 LuckeyTiger NFT](#20220824-luckeytiger-nft---predicting-random-numbers)
 
-[20220810 XSTABLE Protocol](#20220810-xst-protocol---logic-problem--incorrect-supported-pool-checks)
+[20220810 XSTABLE Protocol](#20220810-xstable-protocol---incorrect-logic-check)
 
 [20220807 EGD Finance](#20220807-egd-finance---flashloans--price-manipulation)
 
@@ -452,7 +452,7 @@ forge script script/LuckyTiger_s_exp.sol:luckyHack --fork-url http://127.0.0.1:8
 
 https://etherscan.io/tx/0x804ff3801542bff435a5d733f4d8a93a535d73d0de0f843fd979756a7eab26af
 
-### 20220810 XSTABLE Protocol - Incorrect Logic Judgement
+### 20220810 XSTABLE Protocol - Incorrect Logic Check
 Testing
 ```sh
 forge test --contracts ./src/test/XST.exp.sol -vvv 
