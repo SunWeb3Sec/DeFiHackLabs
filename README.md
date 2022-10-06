@@ -149,6 +149,8 @@ Let's make Web3 secure! [Join Discord.](https://discord.gg/Fjyngakf3h)
 
 [20210915 NowSwap Platform](#20210915-nowswap-platform)
 
+[20210912 ZABU Finance](#20210912-ZABU-Finance---Deflationary-token-uncompatible)
+
 [20210903 DAO Maker](#20210903-dao-maker---bad-access-controal)
 
 [20210830 Cream Finance](#20210830-cream-finance---flashloan-attack--reentrancy)
@@ -174,8 +176,6 @@ Let's make Web3 secure! [Join Discord.](https://discord.gg/Fjyngakf3h)
 [20201121 Pickle Finance](#20201121-pickle-finance)
 
 [20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
-
-[20200618 Bancor Protocol](#20200618-bancor-protocol---accesscontrol)
 
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
 
@@ -1413,6 +1413,20 @@ forge test --contracts ./src/test/NowSwap_exp.sol -vv
 #### Link reference
 https://twitter.com/BlockSecTeam/status/1438100688215560192
 
+### 20210912 ZABU Finance - Deflationary token uncompatible
+
+Testing
+```sh
+forge test --contracts src/test/ZABU_exp.sol -vvv
+```
+#### Contract
+
+[ZABU_exp.sol](src/test/ZABU_exp.sol)
+
+### Link reference
+
+https://slowmist.medium.com/brief-analysis-of-zabu-finance-being-hacked-44243919ea29
+
 ### 20210903 DAO Maker - Bad Access Controal
 #### Lost: $4 million
 
@@ -1522,6 +1536,20 @@ forge test --contracts ./src/test/Chainswap_exp1.t.sol -vv
 #### Link reference
 https://chain-swap.medium.com/chainswap-post-mortem-and-compensation-plan-90cad50898ab
 
+## 20200618 Bancor Protocol - Access Control
+Testing
+```sh
+forge test --contracts ./src/test/Bancor_exp.sol -vv
+```
+#### Contract
+
+[Bancor_exp.sol](src/test/Bancor_exp.sol)
+
+#### Link reference
+https://blog.bancor.network/bancors-response-to-today-s-smart-contract-vulnerability-dc888c589fe4
+
+https://etherscan.io/address/0x5f58058c0ec971492166763c8c22632b583f667f
+
 ### 20210607 88mph NFT - Access control
 Testing
 ```sh
@@ -1629,21 +1657,6 @@ https://slowmist.medium.com/a-brief-analysis-of-the-cover-protocol-hacked-event-
 https://rekt.news/harvest-finance-rekt/
 
 https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877
-
-### 20200618 Bancor Protocol - Access Control
-Testing
-```sh
-forge test --contracts ./src/test/Bancor_exp.sol -vv
-
-```
-#### Contract
-
-[Bancor_exp.sol](src/test/Bancor_exp.sol)
-
-#### Link reference
-https://blog.bancor.network/bancors-response-to-today-s-smart-contract-vulnerability-dc888c589fe4
-
-https://etherscan.io/address/0x5f58058c0ec971492166763c8c22632b583f667f
 
 ### 20171106 Parity - 'Accidentally Killed It'
 #### Lost: 514k ETH
