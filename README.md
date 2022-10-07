@@ -464,6 +464,7 @@ forge test --contracts ./src/test/XST.exp.sol -vvv
 #### Contract
 
 [XST.exp.sol](src/test/XST.exp.sol)
+[XST02_exp.sol](src/test/XST02_exp.sol)
 
 #### Link reference
 
