@@ -1,11 +1,11 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-85 incidents included.
+86 incidents included.
 
 This repo is only for the educational purpose.
 
-Let's make Web3 secure! [Join Discord.](https://discord.gg/Fjyngakf3h)
+Let's make Web3 secure!
 
 ## Getting Started
 
@@ -165,7 +165,9 @@ Let's make Web3 secure! [Join Discord.](https://discord.gg/Fjyngakf3h)
 
 [20210702 Chainswap](#20210702-chainswap---bridge-logic-flaw)
 
-[20210628 SafeDollar](#20210628-SafeDollar---Deflationary-token-uncompatible)
+[20210628 SafeDollar](#20210628-safedollar---deflationary-token-uncompatible)
+
+[20210622 Eleven Finance](#20210622-eleven-finance---doesnt-burn-shares)
 
 [20210607 88mph NFT](#20210607-88mph-nft---access-control)
 
@@ -1566,6 +1568,20 @@ forge test --contracts src/test/SafeDollar_exp.sol -vvv
 
 #### Link reference
 https://twitter.com/peckshield/status/1409443556251430918
+
+### 20210622 Eleven Finance - Doesn’t burn shares
+Testing
+```sh
+forge test --contracts ./src/test/Eleven.sol -vv
+```
+#### Contract
+
+[Eleven.sol](src/test/Eleven.sol)
+
+#### Link reference
+https://peckshield.medium.com/eleven-finance-incident-root-cause-analysis-123b5675fa76
+
+https://bscscan.com/tx/0xeaaa8f4d33b1035a790f0d7c4eb6e38db7d6d3b580e0bbc9ba39a9d6b80dd250
 
 ## 20200618 Bancor Protocol - Access Control
 Testing
