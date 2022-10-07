@@ -61,6 +61,7 @@ contract depositToken{
         path[1] = address(USDC);
         USDC.approve(address(Router), type(uint).max);
         SDO.approve(address(Router), type(uint).max);
+        // require(SDO.balanceOf(address(this)) < type(uint112).max, "overflow");
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
             // SDO.balanceOf(address(this)),
             20_000_000_000_000 * 1e18,
