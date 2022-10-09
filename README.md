@@ -1659,6 +1659,7 @@ https://rekt.news/pancakebunny-rekt/
 https://bscscan.com/tx/0x897c2de73dd55d7701e1b69ffb3a17b0f4801ced88b0c75fe1551c5fcce6a979
 
 ### 20210428 Uranium - Miscalculation
+#### Lost: $50 million
 Testing
 ```sh
 forge test --contracts ./src/test/Uranium_exp.sol -vv
