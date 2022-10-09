@@ -204,6 +204,7 @@ interface IERC20 {
   ) external returns (bool);
   function withdraw(uint256 wad) external;
   function deposit(uint256 wad) external returns (bool);
+  function owner() external view virtual returns (address);
 }
 
 interface ICErc20Delegate {
