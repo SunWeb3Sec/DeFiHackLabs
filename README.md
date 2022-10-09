@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-87 incidents included.
+88 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -184,6 +184,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 [20201121 Pickle Finance](#20201121-pickle-finance)
 
 [20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
+
+[20180422 Beauty Chain](#20180422-beauty-chain---integer-overflow)
 
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
 
@@ -1722,6 +1724,28 @@ https://slowmist.medium.com/a-brief-analysis-of-the-cover-protocol-hacked-event-
 https://rekt.news/harvest-finance-rekt/
 
 https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877
+
+
+[20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
+
+[20180422 BeautyChain(BEC)](#20180422-beauty-chain---integer-overflow)
+
+
+### 20180422 Beauty Chain - Integer Overflow
+#### Lost: $900 million
+Testing
+```sh
+forge test --contracts ./src/test/BEC_exp.sol -vv
+
+```
+#### Contract
+
+[BEC_exp.sol](src/test/BEC_exp.sol)
+
+#### Link reference
+https://etherscan.io/tx/0xad89ff16fd1ebe3a0a7cf4ed282302c06626c1af33221ebe0d3a470aba4a660f
+
+https://etherscan.io/address/0xc5d105e63711398af9bbff092d4b6769c82f793d#code
 
 ### 20171106 Parity - 'Accidentally Killed It'
 #### Lost: 514k ETH
