@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-86 incidents included.
+87 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -36,6 +36,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 [20220908 NewFreeDAO](#20220908-newfreedao---flashloans-attack)
 
 [20220908 Ragnarok Online Invasion](#20220908-ragnarok-online-invasion---broken-access-control)
+
+[20220906 NXUSD](#20220906-NXUSD---flashloan-price-oracle-manipulation)
 
 [20220905 ZoomproFinance](#20220905-zoomprofinance---flashloans--price-manipulation)
 
@@ -391,6 +393,21 @@ https://twitter.com/BeosinAlert/status/1567757251024396288
 https://twitter.com/BlockSecTeam/status/1567706201277988866
 
 https://twitter.com/SlowMist_Team/status/1567854876633309186
+
+### 20220906 NXUSD - flashloan price oracle manipulation
+#### Lost 50,000 USD
+
+Testing
+```sh
+forge test --contracts ./src/test/NXUSD_exp.sol -vvv 
+```
+#### Contract
+
+[NXUSD_exp.sol](src/test/NXUSD_exp.sol)
+
+#### Link reference
+
+https://medium.com/nereus-protocol/post-mortem-flash-loan-exploit-in-single-nxusd-market-343fa32f0c6
 
 ### 20220905 ZoomproFinance - Flashloans & Price Manipulation
 #### Lost: 61,160 USDT

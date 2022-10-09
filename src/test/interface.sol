@@ -4583,6 +4583,14 @@ interface ICurvePool {
     uint256 min_dy
   ) external;
 
+  function exchange_underlying(
+      address pool,
+      int128 i,
+      int128 j,
+      uint256 dx,
+      uint256 min_dy
+  ) external;
+
   function fee() external view returns (uint256 out);
 
   function future_A() external view returns (uint256 out);
