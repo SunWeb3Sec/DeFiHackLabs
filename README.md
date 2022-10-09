@@ -15,7 +15,7 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 ## List of DeFi Hacks & Exploits
 
-[20221009 Xave Finance](#20221009-xave-finance---malicious-proposal-mint-transferownership)
+[20221009 Xave Finance](#20221009-xave-finance---malicious-proposal-mint--transfer-ownership)
 
 [20221002 Transit Swap](#20221002-transit-swap---incorrect-owner-address-validation)
 
