@@ -1725,12 +1725,6 @@ https://rekt.news/harvest-finance-rekt/
 
 https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877
 
-
-[20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
-
-[20180422 BeautyChain(BEC)](#20180422-beauty-chain---integer-overflow)
-
-
 ### 20180422 Beauty Chain - Integer Overflow
 #### Lost: $900 million
 Testing
