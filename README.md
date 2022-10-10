@@ -139,7 +139,7 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 [20220206 Meter](#20220206-Meter---bridge)
 
-[20220128 Qubit Finance](#20220128-qubit-finance---bridge)
+[20220128 Qubit Finance](#20220128-qubit-finance---bridge-address0safetransferfrom-does-not-revert)
 
 [20220118 Multichain (Anyswap)](#20220118-multichain-anyswap---insufficient-token-validation)
 
@@ -1826,6 +1826,3 @@ Moved to [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs)
 
 ### FlashLoan Testing
 Moved to [DeFiLabs](https://github.com/SunWeb3Sec/DeFiLabs)
-
-#### Some codes referred to Rivaill and W2Ning repo and rewrote to the foundry version.
-
