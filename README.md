@@ -179,7 +179,7 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 [20210519 PancakeBunny](#20210519-pancakebunny---price-oracle-manipulation)
 
-[20210428 Uranium](20210428-uranium---miscalculation)
+[20210428 Uranium](#20210428-uranium---miscalculation)
 
 [20210308 DODO](#20210308-dodo---flashloan-attack)
 
