@@ -233,6 +233,8 @@ forge test --contracts src/test/TransitSwap_exp.sol -vv
 
 https://twitter.com/TransitFinance/status/1576463550557483008
 
+https://twitter.com/1nf0s3cpt/status/1576511552592543745
+
 https://bscscan.com/tx/0x181a7882aac0eab1036eedba25bc95a16e10f61b5df2e99d240a16c334b9b189
 
 ### 20221001 RL Token - Incorrect Reward calculation
@@ -353,6 +355,8 @@ forge test --contracts ./src/test/BNB48MEVBot_exp.sol -vvv
 #### Link reference
 
 https://blocksecteam.medium.com/the-two-sides-of-the-private-tx-service-on-binance-smart-chain-a76917c3ce51
+
+https://twitter.com/1nf0s3cpt/status/1577594615104172033
 
 https://bscscan.com/tx/0xd48758ef48d113b78a09f7b8c7cd663ad79e9965852e872fdfc92234c3e598d2
 
@@ -492,6 +496,8 @@ forge script script/LuckyTiger_s_exp.sol:luckyHack --fork-url http://127.0.0.1:8
 [LuckyTiger_exp.sol](src/test/LuckyTiger_exp.sol) | [LuckyTiger_s_exp.sol](/script/LuckyTiger_s_exp.sol)
 
 #### Link reference
+
+https://twitter.com/1nf0s3cpt/status/1576117129589317633
 
 https://etherscan.io/tx/0x804ff3801542bff435a5d733f4d8a93a535d73d0de0f843fd979756a7eab26af
 
