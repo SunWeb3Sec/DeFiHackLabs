@@ -17,6 +17,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 [20221009 Xave Finance](#20221009-xave-finance---malicious-proposal-mint--transfer-ownership)
 
+[20221006 RES-Token](#20221006-RES-Token---pair-manipulate)
+
 [20221002 Transit Swap](#20221002-transit-swap---incorrect-owner-address-validation)
 
 [20221001 RL](#20221001-RL-Token---Incorrect-Reward-calculation)
@@ -217,6 +219,23 @@ forge test --contracts src/test/XaveFinance_exp.sol -vv
 https://twitter.com/BeosinAlert/status/1579040051853303808
 
 https://etherscan.io/tx/0xc18ec2eb7d41638d9982281e766945d0428aaeda6211b4ccb6626ea7cff31f4a
+
+
+### 20221006 RES-Token - pair manipulate
+Testing
+```sh
+forge test --contracts src/test/RES_exp.sol -vv
+```
+
+#### Contract
+
+[RES_exp.sol](src/test/RES_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1579514418731560961
+
+https://bscscan.com/tx/0xe59fa48212c4ee716c03e648e04f0ca390f4a4fc921a890fded0e01afa4ba96d
 
 ### 20221002 Transit Swap - Incorrect owner address validation
 
