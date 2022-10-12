@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-91 incidents included.
+93 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -53,6 +53,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 [20220810 XSTABLE Protocol](#20220810-xstable-protocol---incorrect-logic-check)
 
+[20220809 ANCH](#20220809-anch---skim-token-balance)
+
 [20220807 EGD Finance](#20220807-egd-finance---flashloans--price-manipulation)
 
 [20220802 Nomad Bridge](#20220802-nomad-bridge---business-logic-flaw--incorrect-acceptable-merkle-root-checks)
@@ -86,6 +88,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 [20220606 Discover](#20220606-discover---flashloan--price-oracle-manipulation)
 
 [20220529 NOVO Protocol](#20220529-novo-protocol---flashloan--price-oracle-manipulation)
+
+[20220524 HackDao](#20220524-HackDao---Skim-token-balance)
 
 [20220517 ApeCoin](#20220517-apecoin-ape---flashloan)
 
@@ -535,6 +539,21 @@ forge test --contracts ./src/test/XST.exp.sol -vvv
 
 https://mobile.twitter.com/BlockSecTeam/status/1557195012042936320
 
+### 20220809 ANCH - Skim token balance
+
+Testing
+```sh
+forge test --contracts ./src/test/ANCH_exp.sol -vvv
+```
+
+#### Contract
+
+[ANCH_exp.sol](src/test/ANCH_exp.sol)
+
+#### Link reference
+
+https://twitter.com/AnciliaInc/status/1557527183966408706
+
 ### 20220807 EGD Finance - Flashloans & Price Manipulation
 #### Lost: 36,044 USDT
 
@@ -874,6 +893,19 @@ https://www.panewslab.com/zh_hk/articledetails/f40t9xb4.html
 https://bscscan.com/tx/0xc346adf14e5082e6df5aeae650f3d7f606d7e08247c2b856510766b4dfcdc57f
 
 https://bscscan.com/address/0xa0787daad6062349f63b7c228cbfd5d8a3db08f1#code
+
+### 20220524 HackDao - Skim token balance
+
+Testing
+```sh
+forge test --contracts ./src/test/HackDao_exp.sol -vvv
+```
+#### Contract
+
+[HackDao_exp.sol](src/test/HackDao_exp.sol)
+
+### Link reference
+https://twitter.com/BlockSecTeam/status/1529084919976034304
 
 ### 20220517 ApeCoin (APE) - Flashloan
 #### Lost: $1.1 million
