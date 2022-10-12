@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-94 incidents included.
+95 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 ## List of DeFi Hacks & Exploits
 
 [20221011 Templedao](#20221011-templedao---insufficient-access-control)
+
+[20221010 Carrot](#20221010-carrot---public-functioncall)
 
 [20221009 Xave Finance](#20221009-xave-finance---malicious-proposal-mint--transfer-ownership)
 
@@ -226,6 +228,22 @@ forge test --contracts src/test/Templedao_exp.sol -vv
 https://twitter.com/BlockSecTeam/status/1579843881893769222
 
 https://etherscan.io/tx/0x8c3f442fc6d640a6ff3ea0b12be64f1d4609ea94edd2966f42c01cd9bdcf04b5
+
+### 20221010 Carrot - Public functionCall
+Testing
+```sh
+forge test --contracts src/test/Carrot_exp.sol -vv
+```
+
+#### Contract
+
+[Carrot_exp.sol](src/test/Carrot_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1579908411235237888
+
+https://bscscan.com/tx/0xa624660c29ee97f3f4ebd36232d8199e7c97533c9db711fa4027994aa11e01b9
 
 ### 20221009 Xave Finance - Malicious Proposal Mint & Transfer Ownership
 Testing
