@@ -15,6 +15,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 ## List of DeFi Hacks & Exploits
 
+[20221011 Templedao](#20221011-templedao---insufficient-access-control)
+
 [20221009 Xave Finance](#20221009-xave-finance---malicious-proposal-mint--transfer-ownership)
 
 [20221006 RES-Token](#20221006-RES-Token---pair-manipulate)
@@ -207,6 +209,23 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+
+### 20221011 Templedao - Insufficient access control 
+### Lost: $2.3 million
+Testing
+```sh
+forge test --contracts src/test/Templedao_exp.sol -vv
+```
+
+#### Contract
+
+[Templedao_exp.sol](src/test/Templedao_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1579843881893769222
+
+https://etherscan.io/tx/0x8c3f442fc6d640a6ff3ea0b12be64f1d4609ea94edd2966f42c01cd9bdcf04b5
 
 ### 20221009 Xave Finance - Malicious Proposal Mint & Transfer Ownership
 Testing
