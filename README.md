@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-96 incidents included.
+97 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 ## List of DeFi Hacks & Exploits
 
 [20221012 ATK](#20221012-atk---flashloan-manipulate-price)
+
+[20221011 Rabby Wallet SwapRouter](#20221011-rabby-wallet-swaprouter---arbitrary-external-call-vulnerability)
 
 [20221011 Templedao](#20221011-templedao---insufficient-access-control)
 
@@ -228,6 +230,25 @@ forge test --contracts ./src/test/ATK_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/BlockSecTeam/status/1580095325200474112
+
+### 20221011 Rabby Wallet SwapRouter - Arbitrary External Call Vulnerability
+### Lost: ~200,000 US$
+Testing
+```sh
+forge test --contracts src/test/RabbyWallet_SwapRouter.exp.sol -vv
+```
+
+#### Contract
+
+[RabbyWallet_SwapRouter.exp.sol](src/test/RabbyWallet_SwapRouter.exp.sol)
+
+#### Link reference
+
+https://twitter.com/Supremacy_CA/status/1579813933669486592
+
+https://twitter.com/SlowMist_Team/status/1579839744128978945
+
+https://twitter.com/BeosinAlert/status/1579856733178331139
 
 ### 20221011 Templedao - Insufficient access control 
 ### Lost: $2.3 million
