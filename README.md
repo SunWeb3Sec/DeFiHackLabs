@@ -367,6 +367,8 @@ forge test --contracts src/test/THB_exp.sol -vv
 
 https://twitter.com/peckshield/status/1575890733373849601
 
+https://bscscan.com/tx/0x57aa9c85e03eb25ac5d94f15f22b3ba3ab2ef60b603b97ae76f855072ea9e3a0
+
 ### 20220928 BXH - Flashloan & Price Oracle Manipulation
 ### Lost: $40,305
 
