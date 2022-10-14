@@ -554,6 +554,8 @@ forge test --contracts ./src/test/NXUSD_exp.sol -vvv
 
 https://medium.com/nereus-protocol/post-mortem-flash-loan-exploit-in-single-nxusd-market-343fa32f0c6
 
+https://snowtrace.io/tx/0x0ab12913f9232b27b0664cd2d50e482ad6aa896aeb811b53081712f42d54c026
+
 ### 20220905 ZoomproFinance - Flashloans & Price Manipulation
 #### Lost: 61,160 USDT
 
@@ -568,6 +570,8 @@ forge test --contracts ./src/test/ZoomproFinance_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/blocksecteam/status/1567027459207606273
+
+https://bscscan.com/tx/0xe176bd9cfefd40dc03508e91d856bd1fe72ffc1e9260cd63502db68962b4de1a
 
 ### 20220902 ShadowFi - Access Control
 #### Lost: 1,078 BNB
@@ -585,6 +589,8 @@ forge test --contracts ./src/test/Shadowfi_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/PeckShieldAlert/status/1565549688509861888
+
+https://bscscan.com/tx/0xe30dc75253eecec3377e03c532aa41bae1c26909bc8618f21fb83d4330a01018
 
 ### 20220902 Bad Guys by RPF - Business Logic Flaw : Missing Check For Number of NFT to Mint
 #### Lost: Bad Guys by RPF(400 NFTs)
