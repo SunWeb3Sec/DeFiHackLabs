@@ -26,7 +26,7 @@ contract ContractTest is DSTest{
     uint256 reserve1;
 
     function setUp() public {
-        cheats.createSelectFork("https://rpc.ankr.com/bsc", 21157028);
+        cheats.createSelectFork("bsc", 21157025);
     }
 
     function testExploit() public {
