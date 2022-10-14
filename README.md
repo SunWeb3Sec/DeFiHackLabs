@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-97 incidents included.
+98 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221014 MEVBOT a47b](#20221014-mevbota47b---mevbot-a47b)
 
 [20221012 ATK](#20221012-atk---flashloan-manipulate-price)
 
@@ -216,6 +218,22 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
 
+### 20221014 MEVBOTa47b - MEVBOT a47b
+### Lost: $241 k
+Testing
+```sh
+forge test --contracts ./src/test/MEVa47b_exp.sol -vvv  
+```
+
+### Contract
+
+[MEVa47b_exp.sol](src/test/MEVa47b_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1580779311862190080
+https://twitter.com/AnciliaInc/status/1580705036400611328
+
 ### 20221012 ATK - FlashLoan manipulate price
 ### Lost: $127 k
 Testing
@@ -223,7 +241,7 @@ Testing
 forge test --contracts ./src/test/ATK_exp.sol -vvv
 ```
 
-### Contract 
+#### Contract 
 
 [ATK_exp.sol](src/test/ATK_exp.sol)
 
