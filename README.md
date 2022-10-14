@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-98 incidents included.
+99 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -177,9 +177,11 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 [20210830 Cream Finance](#20210830-cream-finance---flashloan-attack--reentrancy)
 
+[20210817 XSURGE](#20210817-xsurge---flashloan-attack--reentrancy)
+
 [20210811 Poly Network](#20210811-poly-network---bridge-getting-around-modifier-through-cross-chain-message)
 
-[20210817 XSURGE](#20210817-xsurge---flashloan-attack--reentrancy)
+[20210804 WaultFinance](#20210804-waultfinace---flashloan-price-manipulation)
 
 [20210710 Chainswap](#20210710-chainswap---bridge-logic-flaw)
 
@@ -1679,6 +1681,24 @@ https://etherscan.io/tx/0xa9a1b8ea288eb9ad315088f17f7c7386b9989c95b4d13c81b69d5d
 
 https://slowmist.medium.com/cream-hacked-analysis-us-130-million-hacked-95c9410320ca
 
+### 20210817 XSURGE - Flashloan Attack + Reentrancy
+#### Lost: $5 million
+
+Testing
+```sh
+forge test --contracts ./src/test/XSURGE_exp.t.sol -vv
+```
+#### Contract
+
+[XSURGE_exp.t.sol](src/test/XSURGE_exp.t.sol)
+
+#### Link reference
+https://beosin.medium.com/a-sweet-blow-fb0a5e08657d
+
+https://medium.com/@Knownsec_Blockchain_Lab/knownsec-blockchain-lab-comprehensive-analysis-of-xsurge-attacks-c83d238fbc55
+
+https://bscscan.com/tx/0x8c93d6e5d6b3ec7478b4195123a696dbc82a3441be090e048fe4b33a242ef09d
+
 ### 20210811 Poly Network - Bridge, getting around modifier through cross-chain message
 #### Lost: $611 million
 
@@ -1704,23 +1724,22 @@ https://www.breadcrumbs.app/reports/671
 #### FIX
 One of the biggest design lessons that people need to take away from this is: if you have cross-chain relay contracts like this, MAKE SURE THAT THEY CAN'T BE USED TO CALL SPECIAL CONTRACTS. The EthCrossDomainManager shouldn't have owned the EthCrossDomainData contract.
 
-### 20210817 XSURGE - Flashloan Attack + Reentrancy
-#### Lost: $5 million
+### 20210804 WaultFinace - FlashLoan price manipulation
+#### Lost: 390 ETH
 
 Testing
 ```sh
-forge test --contracts ./src/test/XSURGE_exp.t.sol -vv
+forge test --contracts ./src/test/WaultFinance_exp.sol -vvv
 ```
+
 #### Contract
 
-[XSURGE_exp.t.sol](src/test/XSURGE_exp.t.sol)
+[WaultFinance_exp.sol](src/test/WaultFinance_exp.sol)
 
 #### Link reference
-https://beosin.medium.com/a-sweet-blow-fb0a5e08657d
+https://medium.com/@Knownsec_Blockchain_Lab/wault-finance-flash-loan-security-incident-analysis-368a2e1ebb5b
 
-https://medium.com/@Knownsec_Blockchain_Lab/knownsec-blockchain-lab-comprehensive-analysis-of-xsurge-attacks-c83d238fbc55
-
-https://bscscan.com/tx/0x8c93d6e5d6b3ec7478b4195123a696dbc82a3441be090e048fe4b33a242ef09d
+https://inspexco.medium.com/wault-finance-incident-analysis-wex-price-manipulation-using-wusdmaster-contract-c344be3ed376
 
 ### 20210710 Chainswap - Bridge, logic flaw
 #### Lost: $4.4 million
