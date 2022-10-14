@@ -34,7 +34,7 @@ contract ContractTest is DSTest {
   address private  zoom = 0x9CE084C378B3E65A164aeba12015ef3881E0F853;
   address private batch = 0x47391071824569F29381DFEaf2f1b47A4004933B; //Batch Token
   address private fUSDT = 0x62D51AACb079e882b1cb7877438de485Cba0dD3f; // Fake USDT
-  address private pp = 0x1c7ecBfc48eD0B34AAd4a9F338050685E66235C5; // FakeUSFT/Zoom pair
+  address private pp = 0x1c7ecBfc48eD0B34AAd4a9F338050685E66235C5; // FakeUSDT/Zoom pair
   IERC20 Zoom = IERC20(zoom);
   CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
