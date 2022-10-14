@@ -535,13 +535,9 @@ forge test --contracts ./src/test/NewFreeDAO_exp.sol -vvv
 
 #### Link reference
 
-https://twitter.com/peckshield/status/1567710274244825088
-
-https://twitter.com/BeosinAlert/status/1567757251024396288
-
-https://twitter.com/BlockSecTeam/status/1567706201277988866
-
 https://twitter.com/SlowMist_Team/status/1567854876633309186
+
+https://bscscan.com/tx/0x1fea385acf7ff046d928d4041db017e1d7ead66727ce7aacb3296b9d485d4a26
 
 ### 20220906 NXUSD - flashloan price oracle manipulation
 #### Lost 50,000 USD
