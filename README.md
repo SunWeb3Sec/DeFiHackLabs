@@ -232,7 +232,10 @@ forge test --contracts ./src/test/MEVa47b_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/BlockSecTeam/status/1580779311862190080
+
 https://twitter.com/AnciliaInc/status/1580705036400611328
+
+https://etherscan.io/tx/0x35ecf595864400696853c53edf3e3d60096639b6071cadea6076c9c6ceb921c1
 
 ### 20221012 ATK - FlashLoan manipulate price
 ### Lost: $127 k
