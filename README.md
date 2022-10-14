@@ -450,6 +450,7 @@ https://rekt.news/ripmevbot/
 https://etherscan.io/tx/0x59ddcf5ee5c687af2cbf291c3ac63bf28316a8ecbb621d9f62d07fa8a5b8ef4e
 
 ### 20220923 RADT-DAO - pair manipulate
+#### Lost: 94,304 USDT
 
 Testing
 ```sh
