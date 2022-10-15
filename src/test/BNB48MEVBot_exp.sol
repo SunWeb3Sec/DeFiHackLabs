@@ -15,10 +15,10 @@ contract ContractTest is DSTest{
     IERC20 BUSD = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
     IERC20 USDC = IERC20(0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d);
     MEVBot Bot = MEVBot(0x64dD59D6C7f09dc05B472ce5CB961b6E10106E1d);
-     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("https://rpc.ankr.com/bsc", 21297409);
+        cheats.createSelectFork("bsc", 21297409);
     }
 
     function testExploit() public{

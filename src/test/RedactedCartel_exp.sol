@@ -24,7 +24,7 @@ contract RedactedCartelExploit is DSTest {
     address owner = 0x20B92862dcb9976E0AA11fAE766343B7317aB349; //owner of wxBTRFLY token
 
     function setUp() public {
-        cheats.createSelectFork("https://rpc.ankr.com/eth", 13908185); //13908185 
+        cheats.createSelectFork("mainnet", 13908185); //13908185 
 
 
         // cheat.label(address(Alice), "Alice");
