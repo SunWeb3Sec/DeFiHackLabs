@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-99 incidents included.
+100 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221014 EFLeverVault](#20221014-eflevervault---verify-flashloan-callback)
 
 [20221014 MEVBOT a47b](#20221014-mevbota47b---mevbot-a47b)
 
@@ -219,6 +221,26 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+
+### 20221014 EFLeverVault - Verify flashLoan Callback
+### Lost: 750 ETH
+
+Testing
+```sh
+ forge test --contracts ./src/test/EFLeverVault_exp.sol -vvv
+```
+
+#### Contract
+
+[EFLeverVault_exp.sol](src/test/EFLeverVault_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Supremacy_CA/status/1581012823701786624
+
+https://twitter.com/MevRefund/status/1580917351217627136
+
+https://twitter.com/danielvf/status/1580936010556661761
 
 ### 20221014 MEVBOTa47b - MEVBOT a47b
 ### Lost: $241 k
