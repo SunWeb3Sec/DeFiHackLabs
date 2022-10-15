@@ -1950,10 +1950,6 @@ forge test --contracts ./src/test/HarvestFinance_exp.sol -vv
 [HarvestFinance_exp.sol](src/test/HarvestFinance_exp.sol)
 
 #### Link reference
-https://mudit.blog/cover-protocol-hack-analysis-tokens-minted-exploit/
-
-https://slowmist.medium.com/a-brief-analysis-of-the-cover-protocol-hacked-event-700d747b309c
-
 https://rekt.news/harvest-finance-rekt/
 
 https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877
