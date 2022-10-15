@@ -80,7 +80,7 @@ contract ContractTest is DSTest {
   ) external {
     if (msg.sender == address(usdcPair)) {
       emit log_named_uint(
-        "Flashloan, Amount of USDC received:",
+        "Flashloan, Amount of USDT received:",
         usdc.balanceOf(address(this)) / 1e6
       );
       usdtPair.swap(0, usdtLoan, address(this), "0x");
