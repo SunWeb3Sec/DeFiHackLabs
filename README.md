@@ -1727,7 +1727,7 @@ forge test --contracts ./src/test/PolyNetwork/PolyNetwork_exp.sol -vv
 ```
 #### Contract
 
-[PolyNetwork_exp.sol](src/test/PolyNetwork_exp.sol)
+[PolyNetwork_exp.sol](src/test/PolyNetwork/PolyNetwork_exp.sol)
 
 #### Link reference
 https://rekt.news/polynetwork-rekt/
