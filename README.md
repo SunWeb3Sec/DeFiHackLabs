@@ -748,7 +748,7 @@ https://www.panewslab.com/zh_hk/articledetails/uwv4sma2.html
 
 https://twitter.com/BeosinAlert/status/1551535854681718784
 
-### 20220723 Audius - Storage Collision & Malicious Proposal, storage collision of proxy and implementation contracts
+### 20220723 Audius - Storage Collision & Malicious Proposal
 #### Lost: 704 ETH (~1.08M US$)
 
 Testing
