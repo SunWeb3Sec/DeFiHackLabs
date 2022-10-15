@@ -780,8 +780,6 @@ forge test --contracts ./src/test/SpaceGodzilla.exp.sol -vvv
 #### Link reference
 https://mobile.twitter.com/BlockSecTeam/status/1547456591900749824
 
-https://www.panewslab.com/zh_hk/articledetails/u25j5p3kdvu9.html
-
 https://medium.com/numen-cyber-labs/spacegodzilla-attack-event-analysis-d29a061b17e1
 
 https://learnblockchain.cn/article/4396
@@ -800,7 +798,6 @@ forge test --contracts ./src/test/Omni_exp.sol -vv
 [Omni_exp.sol](src/test/Omni_exp.sol)
 
 #### Link reference
-https://twitter.com/peckshield/status/1546084680138498049
 
 https://twitter.com/SlowMist_Team/status/1546379086792388609
 
