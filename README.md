@@ -820,25 +820,6 @@ https://twitter.com/bertcmiller/status/1544496577338826752
 
 https://etherscan.io/tx/0x8bded20c1db5a1d5f595b15e682a95ce11d3c895d6031147fa49c4ffa5729a30
 
-
-### 20220703 CREMA FINANCE faulty owner validation (solana)
-#### Lost: $8.8M
-The attack was made possible due to faulty owner validation on one of the protocol’s accounts storing price tick data. These data are used by Crema to calculate LP fees.
-
-<!-- Testing
-```sh
-forge test --contracts ./src/test/Quixotic_exp.sol -vv
-``` -->
-#### Contract
-
-[Quixotic_exp.sol](src/test/Quixotic_exp.sol)
-
-#### Link reference
-https://rekt.news/crema-finance-rekt/
-
-https://twitter.com/Crema_Finance/status/1543638844410499073
-
-
 ### 20220701 Quixotic - Optimism NFT Marketplace
 #### Lost: $100K
 fillSellOrder function only check seller signature.
