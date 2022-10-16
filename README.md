@@ -1055,9 +1055,6 @@ forge test --contracts ./src/test/FortressLoans.exp.sol -vvv
 [FortressLoans.exp.sol](src/test/FortressLoans.exp.sol)
 
 #### Link reference
-https://twitter.com/Fortressloans/status/1523495202115051520
-
-https://twitter.com/PeckShieldAlert/status/1523489670323404800
 
 https://twitter.com/BlockSecTeam/status/1523530484877209600
 
