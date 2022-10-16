@@ -75,7 +75,7 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 [20220801 Reaper Farm](#20220801-reaper-farm---business-logic-flaw--lack-of-access-control-mechanism)
 
-[20220725 LPC](#20220725-lpc---business-logic-flaw--incorrect-recipient-balance-check)
+[20220725 LPC](#20220725-lpc---business-logic-flaw--incorrect-recipient-balance-check-did-not-check-senderrecipient-in-transfer)
 
 [20220713 Audius](#20220723-audius---storage-collision--malicious-proposal)
 
