@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-100 incidents included.
+101 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -32,6 +32,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 [20221006 RES-Token](#20221006-RES-Token---pair-manipulate)
 
 [20221002 Transit Swap](#20221002-transit-swap---incorrect-owner-address-validation)
+
+[20221001 BabySwap](#20221001-babyswap---parameter-access-control)
 
 [20221001 RL](#20221001-RL-Token---Incorrect-Reward-calculation)
 
@@ -380,6 +382,21 @@ https://twitter.com/TransitFinance/status/1576463550557483008
 https://twitter.com/1nf0s3cpt/status/1576511552592543745
 
 https://bscscan.com/tx/0x181a7882aac0eab1036eedba25bc95a16e10f61b5df2e99d240a16c334b9b189
+
+### 20221001 BabySwap - Parameter Access Control
+
+Testing
+```sh
+forge test --contracts ./src/test/BabySwap_exp.sol -vvv
+```
+
+#### Contract
+[BabySwap_exp.sol](src/test/BabySwap_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1576441612812836865
+
 
 ### 20221001 RL Token - Incorrect Reward calculation
 
