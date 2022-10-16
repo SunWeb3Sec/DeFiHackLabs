@@ -1861,7 +1861,7 @@ https://bscscan.com/tx/0x765de8357994a206bb90af57dcf427f48a2021f2f28ca81f2c00bc3
 ### 20210519 PancakeBunny - Price Oracle Manipulation
 Testing
 ```sh
-forge test --contracts ./src/test/PancakeBunny_exp.sol --fork-url <BSC-RPC-URL> --fork-block-number 7556330 -vv
+forge test --contracts ./src/test/PancakeBunny_exp.sol -vv
 ```
 
 #### Contract

