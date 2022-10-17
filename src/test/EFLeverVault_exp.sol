@@ -40,14 +40,14 @@ contract ContractTest is DSTest{
         bytes memory userData = "0x2";
 
         emit log_named_decimal_uint(
-            "[Start] Before flashloan, ETH balance",
+            "[Start] Before flashloan, ETH balance in EFLeverVault",
             address(Vault).balance,
             18
         );
         balancer.flashLoan(address(Vault), tokens, amounts, userData);
 
         emit log_named_decimal_uint(
-            "[Start] After flashloan, ETH balance",
+            "[Start] After flashloan, ETH balance in EFLeverVault",
             address(Vault).balance,
             18
         );
