@@ -189,7 +189,7 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 [20210804 WaultFinance](#20210804-waultfinace---flashloan-price-manipulation)
 
-[20210728 Levyathan](#20210728-levyathan)
+[20210728 Levyathan Finance](#20210728-levyathan-finance---i-lost-keys-and-minting-ii-vulnerable-emergencywithdraw)
 
 [20210710 Chainswap](#20210710-chainswap---bridge-logic-flaw)
 
@@ -1777,7 +1777,7 @@ https://medium.com/@Knownsec_Blockchain_Lab/wault-finance-flash-loan-security-in
 
 https://inspexco.medium.com/wault-finance-incident-analysis-wex-price-manipulation-using-wusdmaster-contract-c344be3ed376
 
-### 20210728 Levyathan
+### 20210728 Levyathan Finance - (I) Lost keys and minting (II) Vulnerable emergencyWithdraw
 #### Lost: $1.5 million
 
 Testing
