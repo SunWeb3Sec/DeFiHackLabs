@@ -211,6 +211,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 [20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
 
+[20200618 Bancor Protocol](#20200618-bancor-protocol---access-control)
+
 [20180422 Beauty Chain](#20180422-beauty-chain---integer-overflow)
 
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
@@ -1815,20 +1817,6 @@ https://peckshield.medium.com/eleven-finance-incident-root-cause-analysis-123b56
 
 https://bscscan.com/tx/0xeaaa8f4d33b1035a790f0d7c4eb6e38db7d6d3b580e0bbc9ba39a9d6b80dd250
 
-## 20200618 Bancor Protocol - Access Control
-Testing
-```sh
-forge test --contracts ./src/test/Bancor_exp.sol -vv
-```
-#### Contract
-
-[Bancor_exp.sol](src/test/Bancor_exp.sol)
-
-#### Link reference
-https://blog.bancor.network/bancors-response-to-today-s-smart-contract-vulnerability-dc888c589fe4
-
-https://etherscan.io/address/0x5f58058c0ec971492166763c8c22632b583f667f
-
 ### 20210607 88mph NFT - Access control
 Testing
 ```sh
@@ -1948,6 +1936,20 @@ forge test --contracts ./src/test/HarvestFinance_exp.sol -vv
 https://rekt.news/harvest-finance-rekt/
 
 https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877
+
+## 20200618 Bancor Protocol - Access Control
+Testing
+```sh
+forge test --contracts ./src/test/Bancor_exp.sol -vv
+```
+#### Contract
+
+[Bancor_exp.sol](src/test/Bancor_exp.sol)
+
+#### Link reference
+https://blog.bancor.network/bancors-response-to-today-s-smart-contract-vulnerability-dc888c589fe4
+
+https://etherscan.io/address/0x5f58058c0ec971492166763c8c22632b583f667f
 
 ### 20180422 Beauty Chain - Integer Overflow
 #### Lost: $900 million
