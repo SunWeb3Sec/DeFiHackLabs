@@ -189,6 +189,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 [20210804 WaultFinance](#20210804-waultfinace---flashloan-price-manipulation)
 
+[20210728 Levyathan](#20210728-levyathan)
+
 [20210710 Chainswap](#20210710-chainswap---bridge-logic-flaw)
 
 [20210702 Chainswap](#20210702-chainswap---bridge-logic-flaw)
@@ -1774,6 +1776,20 @@ forge test --contracts ./src/test/WaultFinance_exp.sol -vvv
 https://medium.com/@Knownsec_Blockchain_Lab/wault-finance-flash-loan-security-incident-analysis-368a2e1ebb5b
 
 https://inspexco.medium.com/wault-finance-incident-analysis-wex-price-manipulation-using-wusdmaster-contract-c344be3ed376
+
+### 20210728 Levyathan
+#### Lost: $1.5 million
+
+Testing
+```sh
+forge test --contracts ./src/test/Levyathan_poc.sol -vv
+```
+#### Contract
+
+[Levyathan_poc.sol](src/test/Levyathan_poc.sol)
+
+#### Link reference
+https://levyathan-index.medium.com/post-mortem-levyathan-c3ff7f9a6f65
 
 ### 20210710 Chainswap - Bridge, logic flaw
 #### Lost: $4.4 million
