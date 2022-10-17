@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-101 incidents included.
+102 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221017 Uerii Token](#20221017-uerii-token---access-control)
 
 [20221014 EFLeverVault](#20221014-eflevervault---verify-flashloan-callback)
 
@@ -225,6 +227,22 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+
+### 20221017 Uerii Token - Access Control
+### Lost: $2.4 k
+
+Testing
+```sh
+forge test --contracts ./src/test/Uerii_exp.sol -vvv
+```
+
+#### Contract
+
+[Uerii_exp.sol](src/test/Uerii_exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1581988895142526976
 
 ### 20221014 EFLeverVault - Verify flashLoan Callback
 ### Lost: 750 ETH
