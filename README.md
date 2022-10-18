@@ -1702,7 +1702,7 @@ forge test --contracts ./src/test/NowSwap_exp.sol -vv
 ```
 #### Contract
 
-[Nimbus_exp.sol](src/test/NowSwap_exp.sol)
+[NowSwap_exp.sol](src/test/NowSwap_exp.sol)
 
 #### Link reference
 https://twitter.com/BlockSecTeam/status/1438100688215560192
@@ -1852,11 +1852,11 @@ https://chain-swap.medium.com/chainswap-exploit-11-july-2021-post-mortem-6e4e346
 
 Testing
 ```sh
-forge test --contracts ./src/test/Chainswap_exp1.t.sol -vv
+forge test --contracts ./src/test/Chainswap_exp1.sol -vv
 ```
 #### Contract
 
-[Chainswap_exp1.t.sol](src/test/Chainswap_exp1.t.sol)
+[Chainswap_exp1.sol](src/test/Chainswap_exp1.sol)
 
 #### Link reference
 https://chain-swap.medium.com/chainswap-post-mortem-and-compensation-plan-90cad50898ab
