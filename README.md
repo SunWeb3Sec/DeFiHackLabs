@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-103 incidents included.
+104 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221018 HPAY](#20221018-hpay---access-control)
 
 [20221018 PLTD Token](#20221018-pltd---transfer-logic-flaw)
 
@@ -231,6 +233,23 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+
+### 20221018 HPAY - Access Control
+### Lost: 115 BNB
+
+Testing
+```sh
+forge test --contracts ./src/test/HPAY_exp.sol -vvv
+```
+
+#### Contract
+
+[HPAY_exp.sol](src/test/HPAY_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Supremacy_CA/status/1582345448190140417
+
 
 ### 20221018 PLTD - Transfer Logic Flaw
 ### Lost: $ 24k
