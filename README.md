@@ -547,6 +547,7 @@ https://twitter.com/BlockSecTeam/status/1573252869322846209
 https://bscscan.com/tx/0xd692f71de2768017390395db815d34033013136c378177c05d0d46ef3b6f0897
 
 ### 20220913 MevBot private tx 
+### Lost: $140 K
 
 Testing
 ```sh
