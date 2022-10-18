@@ -9,7 +9,7 @@ Attacker: 0xd11a93a8db5f8d3fb03b88b4b24c3ed01b8a411c
 
 Attacker contract: 0x5575406ef6b15eec1986c412b9fbe144522c45ae
 
-Vulnerable contract: 0xd2869042e12a3506100af1d192b5b04d65137941
+Vulnerable contract: 0xcFF086EaD392CcB39C49eCda8C974ad5238452aC
 Pool address: 0x6863b549bf730863157318df4496ed111adfa64f
 Attack tx: https://bscscan.com/tx/0xa624660c29ee97f3f4ebd36232d8199e7c97533c9db711fa4027994aa11e01b9
 
