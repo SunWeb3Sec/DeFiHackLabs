@@ -1574,7 +1574,7 @@ forge test --contracts ./src/test/Qubit_exp.sol -vv
 ```
 #### Contract
 
-[qubit_exp.sol](src/test/qubit_exp.sol)
+[Qubit_exp.sol](src/test/Qubit_exp.sol)
 
 #### Link reference
 https://rekt.news/qubit-rekt/
