@@ -1751,9 +1751,9 @@ forge test --contracts ./src/test/Cream_exp.sol -vv
 #### Link reference
 https://twitter.com/peckshield/status/1432249600002478081
 
-https://etherscan.io/tx/0xa9a1b8ea288eb9ad315088f17f7c7386b9989c95b4d13c81b69d5ddad7ffe61e
+https://twitter.com/creamdotfinance/status/1432249773575208964
 
-https://slowmist.medium.com/cream-hacked-analysis-us-130-million-hacked-95c9410320ca
+https://etherscan.io/tx/0xa9a1b8ea288eb9ad315088f17f7c7386b9989c95b4d13c81b69d5ddad7ffe61e
 
 ### 20210817 XSURGE - Flashloan Attack + Reentrancy
 #### Lost: $5 million
