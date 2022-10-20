@@ -15,7 +15,7 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 ## List of DeFi Hacks & Exploits
 
-[20221020 BEGO Token]
+[20221020 BEGO Token](#20221020-bego---incorrect-signature-verification)
 
 [20221018 HPAY](#20221018-hpay---access-control)
 
