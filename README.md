@@ -5,7 +5,9 @@
 
 This repo is only for the educational purpose.
 
-Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
+Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h) 
+
+Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34df3855ea9f3ca40f53b?v=22e5e2c506ef4caeb40b4f78e23517ee)
 
 ## Getting Started
 
