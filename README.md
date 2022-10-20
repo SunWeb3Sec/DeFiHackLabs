@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-105 incidents included.
+106 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221020 HEALTH Token](#20221020-health---transfer-logic-flaw)
 
 [20221020 BEGO Token](#20221020-bego---incorrect-signature-verification)
 
@@ -238,6 +240,23 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
 
+### 20221020 HEALTH - Transfer Logic Flaw
+### Lost 16 BNB
+
+Testing
+```sh
+ forge test --contracts ./src/test/HEALTH_exp.sol -vvv
+```
+
+#### Contract
+
+[HEALTH_exp.sol](src/test/HEALTH_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1583073442433495040
+
+
 ### 20221020 BEGO - Incorrect signature verification
 ### Lost 12 BNB
 
@@ -255,6 +274,7 @@ forge test --contracts ./src/test/BEGO_exp.sol -vvv
 https://twitter.com/AnciliaInc/status/1582828751250784256
 
 https://twitter.com/peckshield/status/1582892058800685058
+
 
 ### 20221018 HPAY - Access Control
 ### Lost: 115 BNB
