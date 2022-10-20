@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-104 incidents included.
+105 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -14,6 +14,8 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221020 BEGO Token]
 
 [20221018 HPAY](#20221018-hpay---access-control)
 
@@ -233,6 +235,24 @@ Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+
+### 20221020 BEGO - Incorrect signature verification
+### Lost 12 BNB
+
+Testing
+```sh
+forge test --contracts ./src/test/BEGO_exp.sol -vvv
+```
+
+#### Contract
+
+[BEGO_exp.sol](src/test/BEGO_exp.sol)
+
+#### Link reference
+
+https://twitter.com/AnciliaInc/status/1582828751250784256
+
+https://twitter.com/peckshield/status/1582892058800685058
 
 ### 20221018 HPAY - Access Control
 ### Lost: 115 BNB
