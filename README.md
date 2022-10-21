@@ -17,7 +17,7 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 
 ## List of DeFi Hacks & Exploits
 
-[20221020 OlypusDao](#20221021-olympusdao---no-input-validation)
+[20221021 OlypusDao](#20221021-olympusdao---no-input-validation)
 
 [20221020 HEALTH Token](#20221020-health---transfer-logic-flaw)
 
