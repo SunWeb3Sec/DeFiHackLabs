@@ -17,7 +17,7 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 
 ## List of DeFi Hacks & Exploits
 
-[20221021 OlypusDao](#20221021-olympusdao---no-input-validation)
+[20221021 Bond protocol](#20221021-olympusdao---no-input-validation)
 
 [20221020 HEALTH Token](#20221020-health---transfer-logic-flaw)
 
@@ -242,18 +242,18 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
 
-### 20221021 OlympusDao - No input validation
+### 20221021 Bond protocol - No input validation
 
 ### Lost ~$292K (30500 OHM)
 
 Testing
 ```sh
- forge test --contracts ./src/test/OlympusDao.exp.sol -vvv
+ forge test --contracts ./src/test/Bond.exp.sol -vvv
 ```
 
 #### Contract
 
-[OlympusDao.exp.sol](src/test/OlympusDao.exp.sol)
+[Bond.exp.sol](src/test/Bond.exp.sol)
 
 #### Link reference
 
