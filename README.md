@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-106 incidents included.
+107 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221021 OlympusDAO](#20221021-olympusdao---arbitrary-external-call-vulnerability)
 
 [20221020 HEALTH Token](#20221020-health---transfer-logic-flaw)
 
@@ -239,6 +241,27 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+
+### 20221021 OlympusDAO - Arbitrary External Call Vulnerability
+### Lost 30437 OHM Token
+
+Testing
+```sh
+forge test --contracts ./src/test/OlympusDAO_exp.sol -vvv
+```
+
+#### Contract
+
+[OlympusDAO_exp.sol](src/test/OlympusDAO_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xPoor4ever/status/1583408336770170880
+
+https://twitter.com/peckshield/status/1583416829237526528
+
+https://twitter.com/Supremacy_CA/status/1583425026094641153
+
 
 ### 20221020 HEALTH - Transfer Logic Flaw
 ### Lost 16 BNB
