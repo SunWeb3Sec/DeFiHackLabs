@@ -17,6 +17,8 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 
 ## List of DeFi Hacks & Exploits
 
+[20221020 OlypusDao](#20221021-olympusdao---no-input-validation)
+
 [20221020 HEALTH Token](#20221020-health---transfer-logic-flaw)
 
 [20221020 BEGO Token](#20221020-bego---incorrect-signature-verification)
@@ -239,6 +241,25 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+
+### 20221021 OlympusDao - No input validation
+
+### Lost ~$292K (30500 OHM)
+
+Testing
+```sh
+ forge test --contracts ./src/test/OlympusDao.exp.sol -vvv
+```
+
+#### Contract
+
+[OlympusDao.exp.sol](src/test/OlympusDao.exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1583416829237526528
+
+
 
 ### 20221020 HEALTH - Transfer Logic Flaw
 ### Lost 16 BNB
