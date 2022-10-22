@@ -248,12 +248,12 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 
 Testing
 ```sh
- forge test --contracts ./src/test/Bond.exp.sol -vvv
+forge test --contracts ./src/test/OlympusDao.exp.sol -vvv
 ```
 
 #### Contract
 
-[Bond.exp.sol](src/test/Bond.exp.sol)
+[OlympusDao.exp.sol](src/test/OlympusDao.exp.sol)
 
 #### Link reference
 
@@ -266,7 +266,7 @@ https://twitter.com/peckshield/status/1583416829237526528
 
 Testing
 ```sh
- forge test --contracts ./src/test/HEALTH_exp.sol -vvv
+forge test --contracts ./src/test/HEALTH_exp.sol -vvv
 ```
 
 #### Contract
