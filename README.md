@@ -1536,8 +1536,7 @@ https://twitter.com/fantasm_finance/status/1501569232881995785
 
 https://medium.com/quillhash/fantom-based-protocol-fantasm-suffers-2-6m-exploit-32de8191ccd4
 
-https://etherscan.io/tx/0xacfcaa8e1c482148f9f2d592c78ca7a27934c7333dab31978ed0aef333a28ab6
-
+https://www.certik.com/resources/blog/5p92144WQ44Ytm1AL4Jt9X-fantasm-finance
 
 ### 20220305 Bacon Protocol - Reentrancy
 #### Lost: $1 million

