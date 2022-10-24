@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-107 incidents included.
+108 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221024 MulticallWithoutCheck](#20221024-multicallwithoutcheck---arbitrary-external-call-vulnerability)
 
 [20221021 OlympusDAO](#20221021-olympusdao---no-input-validation)
 
@@ -241,6 +243,20 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+
+### 20221024 MulticallWithoutCheck - Arbitrary External Call Vulnerability
+
+### Lost $600
+
+Testing
+```sh
+forge test --contracts ./src/test/MulticallWithoutCheck_exp.sol -vvv
+```
+
+#### Contract
+
+[MulticallWithoutCheck_exp.sol](src/test/MulticallWithoutCheck_exp.sol)
+
 
 ### 20221021 OlympusDAO - No input validation
 
