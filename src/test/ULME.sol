@@ -7,7 +7,7 @@ import "./interface.sol";
 // @KeyInfo - Total Lost : ~200k US$ which resulted in ~50k profit
 // Attacker : 0x056c20ab7e25e4dd7e49568f964d98e415da63d3
 // Attack Contract : 0x8523c7661850d0da4d86587ce9674da23369ff26
-// Vulnerable Contract : 0x34bd6dba456bc31c2b3393e499fa10bed32a9370 (Proxy)
+// Vulnerable Contract : 0xAE975a25646E6eB859615d0A147B909c13D31FEd (ULME Token)
 // Attack Tx : https://phalcon.blocksec.com/tx/bsc/0xdb9a13bc970b97824e082782e838bdff0b76b30d268f1d66aac507f1d43ff4ed
 
 // @Analysis
