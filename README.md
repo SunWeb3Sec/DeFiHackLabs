@@ -1,11 +1,11 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-109 incidents included.
+108 incidents included.
 
 This repo is only for the educational purpose.
 
-Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
+Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h) 
 
 Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34df3855ea9f3ca40f53b?v=22e5e2c506ef4caeb40b4f78e23517ee)
 
@@ -16,8 +16,6 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
-
-[20221026 ULME](#20221026-ulme---access-control)
 
 [20221024 MulticallWithoutCheck](#20221024-multicallwithoutcheck---arbitrary-external-call-vulnerability)
 
@@ -246,24 +244,6 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
 
-### 20221026 ULME - Access Control
-
-### Lost ~200k US$ which resulted in ~50k profit
-
-Testing
-```sh
-forge test --contracts ./src/test/ULME.sol -vvv
-```
-
-#### Contract
-
-[ULME.sol](src/test/ULME.sol)
-
-#### Link reference
-
-https://twitter.com/BlockSecTeam/status/1584839309781135361
-https://twitter.com/BeosinAlert/status/1584888021299916801
-
 ### 20221024 MulticallWithoutCheck - Arbitrary External Call Vulnerability
 
 ### Lost $600
@@ -406,7 +386,7 @@ https://twitter.com/danielvf/status/1580936010556661761
 ### Lost: $241 k
 Testing
 ```sh
-forge test --contracts ./src/test/MEVa47b_exp.sol -vvv
+forge test --contracts ./src/test/MEVa47b_exp.sol -vvv  
 ```
 
 ### Contract
@@ -428,7 +408,7 @@ Testing
 forge test --contracts ./src/test/ATK_exp.sol -vvv
 ```
 
-#### Contract
+#### Contract 
 
 [ATK_exp.sol](src/test/ATK_exp.sol)
 
@@ -455,7 +435,7 @@ https://twitter.com/SlowMist_Team/status/1579839744128978945
 
 https://twitter.com/BeosinAlert/status/1579856733178331139
 
-### 20221011 Templedao - Insufficient access control
+### 20221011 Templedao - Insufficient access control 
 ### Lost: $2.3 million
 Testing
 ```sh
@@ -612,7 +592,7 @@ https://bscscan.com/tx/0xa13c8c7a0c97093dba3096c88044273c29cebeee109e23622cd412d
 
 Testing
 ```sh
-forge test --contracts ./src/test/DPC_exp.sol -vvv
+forge test --contracts ./src/test/DPC_exp.sol -vvv 
 ```
 #### Contract
 
@@ -635,7 +615,7 @@ An anonymous attacker noticed a flaw in the bots arbitrage contract code, and st
 
 Testing
 ```sh
-forge test --contracts ./src/test/MEVbadc0de_exp.sol -vvv
+forge test --contracts ./src/test/MEVbadc0de_exp.sol -vvv 
 ```
 
 #### Contract
@@ -653,7 +633,7 @@ https://etherscan.io/tx/0x59ddcf5ee5c687af2cbf291c3ac63bf28316a8ecbb621d9f62d07f
 
 Testing
 ```sh
-forge test --contracts ./src/test/RADT_exp.sol -vvv
+forge test --contracts ./src/test/RADT_exp.sol -vvv 
 ```
 #### Contract
 
@@ -664,12 +644,12 @@ https://twitter.com/BlockSecTeam/status/1573252869322846209
 
 https://bscscan.com/tx/0xd692f71de2768017390395db815d34033013136c378177c05d0d46ef3b6f0897
 
-### 20220913 MevBot private tx
+### 20220913 MevBot private tx 
 ### Lost: $140 K
 
 Testing
 ```sh
-forge test --contracts ./src/test/BNB48MEVBot_exp.sol -vvv
+forge test --contracts ./src/test/BNB48MEVBot_exp.sol -vvv 
 ```
 #### Contract
 
@@ -689,7 +669,7 @@ https://bscscan.com/tx/0xd48758ef48d113b78a09f7b8c7cd663ad79e9965852e872fdfc9223
 
 Testing
 ```sh
-forge test --contracts ./src/test/Yyds_exp.sol -vvv
+forge test --contracts ./src/test/Yyds_exp.sol -vvv 
 ```
 #### Contract
 
@@ -706,7 +686,7 @@ https://bscscan.com/tx/0x04a1f0d1694242515ecb14faa71053901f11a1286cd21c27fe5542f
 
 Testing
 ```sh
-forge test --contracts ./src/test/ROI_exp.sol -vvv
+forge test --contracts ./src/test/ROI_exp.sol -vvv 
 ```
 #### Contract
 
@@ -727,7 +707,7 @@ https://medium.com/quillhash/decoding-ragnarok-online-invasion-44k-exploit-quill
 
 Testing
 ```sh
-forge test --contracts ./src/test/NewFreeDAO_exp.sol -vvv
+forge test --contracts ./src/test/NewFreeDAO_exp.sol -vvv 
 ```
 #### Contract
 
@@ -744,7 +724,7 @@ https://bscscan.com/tx/0x1fea385acf7ff046d928d4041db017e1d7ead66727ce7aacb3296b9
 
 Testing
 ```sh
-forge test --contracts ./src/test/NXUSD_exp.sol -vvv
+forge test --contracts ./src/test/NXUSD_exp.sol -vvv 
 ```
 #### Contract
 
@@ -761,7 +741,7 @@ https://snowtrace.io/tx/0x0ab12913f9232b27b0664cd2d50e482ad6aa896aeb811b53081712
 
 Testing
 ```sh
-forge test --contracts ./src/test/ZoomproFinance_exp.sol -vvv
+forge test --contracts ./src/test/ZoomproFinance_exp.sol -vvv 
 ```
 #### Contract
 
@@ -780,7 +760,7 @@ Anyone can burn $SDF
 
 Testing
 ```sh
-forge test --contracts ./src/test/Shadowfi_exp.sol -vvv
+forge test --contracts ./src/test/Shadowfi_exp.sol -vvv 
 ```
 #### Contract
 
@@ -813,7 +793,7 @@ https://etherscan.io/tx/0x27e64a8215ae1528245c912bcca09883fdd7cce69249bd5d5d1c0e
 
 Testing
 ```sh
-forge test --contracts ./src/test/LuckyTiger_exp -vvv
+forge test --contracts ./src/test/LuckyTiger_exp -vvv 
 forge script script/LuckyTiger_s_exp.sol:luckyHack --fork-url http://127.0.0.1:8545 --private-key $PRIVATE_KEY --broadcast
 ```
 #### Contract
@@ -829,7 +809,7 @@ https://etherscan.io/tx/0x804ff3801542bff435a5d733f4d8a93a535d73d0de0f843fd97975
 ### 20220810 XSTABLE Protocol - Incorrect Logic Check
 Testing
 ```sh
-forge test --contracts ./src/test/XST.exp.sol -vvv
+forge test --contracts ./src/test/XST.exp.sol -vvv 
 ```
 #### Contract
 
@@ -860,7 +840,7 @@ https://twitter.com/AnciliaInc/status/1557527183966408706
 
 Testing
 ```sh
-forge test --contracts ./src/test/EGD-Finance.exp.sol -vvv
+forge test --contracts ./src/test/EGD-Finance.exp.sol -vvv 
 ```
 #### Contract
 
@@ -877,7 +857,7 @@ https://twitter.com/PeckShieldAlert/status/1556486817406283776
 
 Testing
 ```sh
-forge test --contracts ./src/test/NomadBridge.exp.sol -vvv
+forge test --contracts ./src/test/NomadBridge.exp.sol -vvv 
 ```
 #### Contract
 
@@ -895,7 +875,7 @@ https://blog.coinbase.com/nomad-bridge-incident-analysis-899b425b0f34
 #### Lost: Multiple ERC-20 Tokens (~1.7M US$)
 Testing
 ```sh
-forge test --contracts ./src/test/ReaperFarm.exp.sol -vvv
+forge test --contracts ./src/test/ReaperFarm.exp.sol -vvv 
 ```
 #### Contract
 
@@ -912,7 +892,7 @@ https://twitter.com/BeosinAlert/status/1554476940593340421
 
 Testing
 ```sh
-forge test --contracts ./src/test/LPC.exp.sol -vvv
+forge test --contracts ./src/test/LPC.exp.sol -vvv 
 ```
 #### Contract
 
@@ -929,7 +909,7 @@ https://twitter.com/BeosinAlert/status/1551535854681718784
 
 Testing
 ```sh
-forge test --contracts ./src/test/Audius.exp.sol -vvv
+forge test --contracts ./src/test/Audius.exp.sol -vvv 
 ```
 #### Contract
 
@@ -947,7 +927,7 @@ https://blog.audius.co/article/audius-governance-takeover-post-mortem-7-23-22
 
 Testing
 ```sh
-forge test --contracts ./src/test/SpaceGodzilla.exp.sol -vvv
+forge test --contracts ./src/test/SpaceGodzilla.exp.sol -vvv 
 ```
 #### Contract
 
@@ -1002,7 +982,7 @@ fillSellOrder function only check seller signature.
 
 ECDSA signature combined with v r s, if recoveredAddress == sellOrder.seller; sellorder execute.
 
-Testing
+Testing 
 ```sh
 forge test --contracts ./src/test/Quixotic_exp.sol -vv
 ```
@@ -1279,7 +1259,7 @@ https://ftmscan.com/tx/0xe374495036fac18aa5b1a497a17e70f256c4d3d416dd1408c026f3f
 
 Testing
 ```sh
-forge test --contracts ./src/test/AkutarNFT_exp.sol -vv
+forge test --contracts ./src/test/AkutarNFT_exp.sol -vv  
 ```
 #### Contract
 
@@ -1500,7 +1480,7 @@ https://twitter.com/lifiprotocol/status/1505738407938387971
 https://etherscan.io/tx/0x4b4143cbe7f5475029cf23d6dcbb56856366d91794426f2e33819b9b1aac4e96
 
 #### Fix
-implemented a whitelist to only allow calls to approved DEXs.
+implemented a whitelist to only allow calls to approved DEXs. 
 
 ### 20220320 Umbrella Network - Underflow
 
@@ -1660,7 +1640,7 @@ https://twitter.com/ishwinder/status/1490227406824685569
 
 https://blog.chainsafe.io/breaking-down-the-meter-io-hack-a46a389e7ae4
 
-this does not seem to be the correct transaction though:
+this does not seem to be the correct transaction though: 
 https://moonriver.moonscan.io/tx/0x5a87c24d0665c8f67958099d1ad22e39a03aa08d47d00b7276b8d42294ee0591
 
 ### 20220128 Qubit Finance - Bridge address(0).safeTransferFrom() does not revert
@@ -2167,8 +2147,8 @@ For Example:
 Let us find out the gas used in the [Audius poc](#20220723-audius---storage-collision--malicious-proposal)
 
 **Execution**
-```bash
-forge test --gas-report --contracts ./src/test/Audius.exp.sol -vvv
+```bash 
+forge test --gas-report --contracts ./src/test/Audius.exp.sol -vvv 
 ```
 
 *Demo*
