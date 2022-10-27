@@ -4614,9 +4614,9 @@ interface ICurvePool {
 
   function get_virtual_price() external view returns (uint256 out);
 
-  function remove_liquidity(uint256 token_amount, uint256[3] memory min_amounts)
+  function remove_liquidity(uint256 token_amount, uint256[2] memory min_amounts)
   external
-  returns (uint256[3] memory);
+  returns (uint256[2] memory);
 
   function remove_liquidity_imbalance(
     uint256[3] memory amounts,
