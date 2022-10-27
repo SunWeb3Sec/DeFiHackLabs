@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-109 incidents included.
+110 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221026 N00d Token](#20221026-n00d-token---reentrancy)
 
 [20221026 ULME](#20221026-ulme---access-control)
 
@@ -245,6 +247,25 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+
+### 20221026 N00d Token - Reentrancy
+
+### Lost $29k
+
+Testing
+```sh
+forge test --contracts src/test/N00d_exp.sol -vvv
+```
+
+#### Contract
+
+[N00d_exp.sol](src/test/N00d_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1584959295829180416
+
+https://twitter.com/AnciliaInc/status/1584955717877784576
 
 
 ### 20221026 ULME - Access Control
