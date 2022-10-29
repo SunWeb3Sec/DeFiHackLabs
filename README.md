@@ -159,7 +159,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 [20220321 OneRing Finance](#20220321-onering-finance---flashloan--price-oracle-manipulation)
 
-[20220320 LI.FI](#20220320-Li.Fi---bridges)
+[20220320 LI.FI](#20220320-LiFi---bridges)
 
 [20220320 Umbrella Network](#20220320-umbrella-network---underflow)
 
