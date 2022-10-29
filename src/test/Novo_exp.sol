@@ -61,13 +61,13 @@ contract ContractTest is DSTest {
   ) public {
     // 攻擊者先買入 NOVO Token
     // 透過 NOVO Token 的 transferFrom 未過濾 `from`
-    // `from` 指定為 NOVO/WBNB 的 LP pool, 即可操縱 PancakeSwap NOVO/WBMB 的價格
+    // `from` 指定為 NOVO/WBNB 的 LP pool, 即可操縱 PancakeSwap NOVO/WBNB 的價格
     // 攻擊者再賣出 flashswap 借來的 NOVO Token 即可獲利
 
     address[] memory path = new address[](2);
 
     emit log_named_decimal_uint(
-      "[*] Attacker flashswap Borrow WBMB",
+      "[*] Attacker flashswap Borrow WBNB",
       amount1,
       18
     );
