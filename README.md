@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-110 incidents included.
+111 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221027 Team Finance](#20221027-team-finance---liquidity-migration-exploit)
 
 [20221026 N00d Token](#20221026-n00d-token---reentrancy)
 
@@ -247,6 +249,29 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+
+### 20221027 Team Finance - Liquidity Migration Exploit
+
+### Lost: Multiple Tokens ~$15.8M US$
+
+Testing
+```sh
+forge test --contracts ./src/test/TeamFinance.exp.sol -vvv
+```
+
+#### Contract
+
+[TeamFinance.exp.sol](src/test/TeamFinance.exp.sol)
+
+#### Link reference
+
+https://twitter.com/TeamFinance_/status/1585770918873542656
+
+https://twitter.com/peckshield/status/1585587858978623491
+
+https://twitter.com/solid_group_1/status/1585643249305518083
+
+https://twitter.com/BeosinAlert/status/1585578499125178369
 
 ---
 ### 20221026 N00d Token - Reentrancy

@@ -4,7 +4,7 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-// @KeyInfo - Total Lost : Multiple LP Token ~$15.8M US$
+// @KeyInfo - Total Lost : Multiple Tokens ~$15.8M US$
 // Root Cause : Lack of check function parameter legitimate
 // Attacker : 0x161cebb807ac181d5303a4ccec2fc580cc5899fd
 // Attack Contract : 0xcff07c4e6aa9e2fec04daaf5f41d1b10f3adadf4
@@ -17,14 +17,11 @@ import "./interface.sol";
 //       id 15325: https://etherscan.io/tx/0xec75bb553f50af37f8dd8f4b1e2bfe4703b27f586187741b91db770ad9b230cb
 //       id 15326: https://etherscan.io/tx/0x79ec728612867b3d82c0e7401e6ee1c533b240720c749b3968dea1464e59b2c4
 //       id 15327: https://etherscan.io/tx/0x51185fb580892706500d3b6eebb8698c27d900618021fb9b1797f4a774fffb04
-
-// @Info
-// Vulnerable Contract Code : https://etherscan.io/address/0xdeadbeef#code
-
+//
 // @Analysis
+// Team Finance Official : https://twitter.com/TeamFinance_/status/1585770918873542656
 // PeckShield : https://twitter.com/peckshield/status/1585587858978623491
 // Solid Group : https://twitter.com/solid_group_1/status/1585643249305518083
-// Team Finance Official : https://twitter.com/TeamFinance_/status/1585770918873542656
 // Beiosin Alert : https://twitter.com/BeosinAlert/status/1585578499125178369
 
 
