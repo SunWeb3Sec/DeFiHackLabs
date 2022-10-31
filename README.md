@@ -250,7 +250,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
 
 ### Hacks Dashboard
-[Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+[Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Cryptosec](https://cryptosec.info/defi-hacks/) | [Rekt](https://rekt.news/)
 
 ---
 ### 20221026 N00d Token - Reentrancy
