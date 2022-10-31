@@ -239,6 +239,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
 
+---
 ### Transaction debugging tools
 [Phalcon](https://phalcon.blocksec.com/) | [Tx.viewer](https://tx.eth.samczsun.com/) | [Cruise](https://cruise.supremacy.team/) |[Ethtx](https://ethtx.info/) |  [Tenderly](https://dashboard.tenderly.co/explorer)
 
@@ -247,6 +248,9 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Useful tools
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+
+### Hacks Dashboard
+[Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Cryptosec](https://cryptosec.info/defi-hacks/)
 
 ---
 ### 20221026 N00d Token - Reentrancy
