@@ -257,7 +257,6 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
 
 ---
-
 ### 20221027 VTF Token - Incorrect Reward calculation
 
 ### Lost: $50k 
@@ -279,6 +278,7 @@ https://twitter.com/peckshield/status/1585572694241988609
 
 https://twitter.com/BeosinAlert/status/1585587030981218305
 
+---
 ### 20221027 Team Finance - Liquidity Migration Exploit
 
 ### Lost: Multiple Tokens ~$15.8M US$
@@ -302,6 +302,7 @@ https://twitter.com/solid_group_1/status/1585643249305518083
 
 https://twitter.com/BeosinAlert/status/1585578499125178369
 
+---
 ### 20221026 N00d Token - Reentrancy
 
 ### Lost $29k
