@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity 0.8.10;
+pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
 import "./interface.sol";
@@ -34,7 +34,7 @@ contract ContractTest is DSTest{
     Uni_Router_V2 Router = Uni_Router_V2(0x7529740ECa172707D8edBCcdD2Cba3d140ACBd85);
     address [] contractList;
 
-    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D;
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
         cheats.createSelectFork("bsc", 22471982);
