@@ -1320,7 +1320,7 @@ https://twitter.com/BlockSecTeam/status/1529084919976034304
 buys vault token -> redeems NFTs -> claims airdrop of 60k APE -> re-supply's the pool
 Testing
 ```sh
-forge test --contracts ./src/test/Bayc_apecoin_exp -vvv
+forge test --contracts ./src/test/Bayc_apecoin_exp.sol -vvv
 ```
 #### Contract
 
