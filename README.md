@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-112 incidents included.
+113 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -38,6 +38,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [20221018 PLTD Token](#20221018-pltd---transfer-logic-flaw)
 
 [20221017 Uerii Token](#20221017-uerii-token---access-control)
+
+[20221014 INUKO Token](#20221014-inuko---flashloan-price-manipulation)
 
 [20221014 EFLeverVault](#20221014-eflevervault---verify-flashloan-callback)
 
@@ -464,6 +466,23 @@ forge test --contracts ./src/test/Uerii_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/peckshield/status/1581988895142526976
+
+---
+### 20221014 INUKO - FlashLoan price manipulation
+### Lost: $50k
+
+Testing
+```sh
+forge test --contracts ./src/test/INUKO_exp.sol -vvv
+```
+
+#### Contract
+
+[INUKO_exp.sol](src/test/INUKO_exp.sol)
+
+#### Link reference
+
+https://twitter.com/AnciliaInc/status/1587848874076430336
 
 ---
 ### 20221014 EFLeverVault - Verify flashLoan Callback
