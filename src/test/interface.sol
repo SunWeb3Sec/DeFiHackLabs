@@ -1826,6 +1826,9 @@ interface DVM {
     uint256 k,
     bool isOpenTWAP
   ) external;
+
+  function _BASE_TOKEN_() external returns(address);
+  function _QUOTE_TOKEN_() external returns(address);
 }
 
 interface Surge {
