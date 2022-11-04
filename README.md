@@ -39,7 +39,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 [20221017 Uerii Token](#20221017-uerii-token---access-control)
 
-[20221014 INUKO Token](#20221014-inuko---flashloan-manipulate-price)
+[20221014 INUKO Token](#20221014-inuko---flashloan-price-manipulation)
 
 [20221014 EFLeverVault](#20221014-eflevervault---verify-flashloan-callback)
 
@@ -468,7 +468,7 @@ forge test --contracts ./src/test/Uerii_exp.sol -vvv
 https://twitter.com/peckshield/status/1581988895142526976
 
 ---
-### 20221014 INUKO - FlashLoan manipulate price
+### 20221014 INUKO - FlashLoan price manipulation
 ### Lost: $50k
 
 Testing
