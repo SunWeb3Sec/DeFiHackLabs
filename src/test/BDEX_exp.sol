@@ -30,7 +30,7 @@ contract ContractTest is DSTest{
 
     function setUp() public {
         // the ankr rpc maybe dont work , please use QuickNode
-        cheats.createSelectFork("https://quaint-dark-tree.bsc.discover.quiknode.pro/5a0f7d015de8dbc92337c1a73711e6e34b44fe22/", 22629431);
+        cheats.createSelectFork("bsc", 22629431);
     }
 
     function testExploit() public{
