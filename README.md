@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-113 incidents included.
+114 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221105 BDEX](#20221105-bdex---business-logic-flaw)
 
 [20221027 VTF](#20221027-vtf-token---incorrect-reward-calculation)
 
@@ -257,6 +259,23 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221105 BDEX - Business Logic Flaw
+### Lost: 16WBNB
+
+Testing
+```sh
+forge test --contracts ./src/test/BDEX_exp.sol -vvv
+```
+
+#### Contract
+
+[BDEX_exp.sol](src/test/BDEX_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BeosinAlert/status/1588579143830343683
 
 ---
 ### 20221027 VTF Token - Incorrect Reward calculation
