@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-114 incidents included.
+115 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221107 MooCAKECTX](#20221107-moocakectx---flashloan-attack)
 
 [20221105 BDEX](#20221105-bdex---business-logic-flaw)
 
@@ -259,6 +261,25 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221107 MooCAKECTX - FlashLoan Attack
+### Lost: $140k
+
+Testing
+```sh
+forge test --contracts ./src/test/MooCAKECTX_exp.sol -vvv
+```
+
+#### Contract 
+
+[MooCAKECTX_exp.sol](src/test/MooCAKECTX_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BeosinAlert/status/1589501207181393920
+
+https://twitter.com/CertiKAlert/status/1589428153591615488
 
 ---
 ### 20221105 BDEX - Business Logic Flaw
