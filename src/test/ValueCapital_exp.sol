@@ -32,7 +32,7 @@ contract ContractTest is DSTest {
     
     cheats.startPrank(0xCB36b1ee0Af68Dce5578a487fF2Da81282512233, 0xCB36b1ee0Af68Dce5578a487fF2Da81282512233);
     wbnb.approve(address(vault), 1 ether);
-    vault.work{value: 100000000}(0, 
+    vault.work{value: 1 ether}(0, 
               0x7Af938f0EFDD98Dc513109F6A7E85106D26E16c4, 
               1000000000000000000, 
               393652744565353082751500, 
