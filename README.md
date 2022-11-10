@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-115 incidents included.
+116 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221109 brahTOPG](#20221109-brachtopg--arbitrary-external-call-vulnerability)
 
 [20221107 MooCAKECTX](#20221107-moocakectx---flashloan-attack)
 
@@ -261,6 +263,23 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221109 BrachTOPG -Arbitrary External Call Vulnerability
+### Lost: $89k
+
+Testing
+```sh
+ forge test --contracts ./src/test/BrahTOPG_exp.sol -vvv
+```
+
+#### Contract
+
+[BrahTOPG_exp.sol](src/test/BrahTOPG_exp.sol)
+
+#### Link reference
+
+https://twitter.com/SlowMist_Team/status/1590685173477101570
 
 ---
 ### 20221107 MooCAKECTX - FlashLoan Attack
