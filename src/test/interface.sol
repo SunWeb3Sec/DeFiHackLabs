@@ -916,6 +916,23 @@ interface Uni_Pair_V2 {
   ) external returns (bool);
 }
 
+interface Uni_Router_V3 {
+    struct ExactInputSingleParams {
+        address tokenIn;
+        address tokenOut;
+        uint24 fee;
+        address recipient;
+        uint256 deadline;
+        uint256 amountIn;
+        uint256 amountOutMinimum;
+        uint160 sqrtPriceLimitX96;
+    }
+
+    function exactInputSingle(
+        ExactInputSingleParams memory params
+    ) external returns (uint256 amountOut);
+
+}
 interface Uni_Router_V2 {
   function WETH() external view returns (address);
 
