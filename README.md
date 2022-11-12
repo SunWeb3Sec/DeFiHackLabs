@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-116 incidents included.
+117 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -17,7 +17,9 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ## List of DeFi Hacks & Exploits
 
-[20221109 brahTOPG](#20221109-brachtopg--arbitrary-external-call-vulnerability)
+[20221110 DFXFinance](#20221110---dfxfinance---reentrancy)
+
+[20221109 brahTOPG](#20221109-brachtopg---arbitrary-external-call-vulnerability)
 
 [20221107 MooCAKECTX](#20221107-moocakectx---flashloan-attack)
 
@@ -265,7 +267,32 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
 
 ---
-### 20221109 BrachTOPG -Arbitrary External Call Vulnerability
+### 20221110 - DFXFinance - Reentrancy
+
+### Lost: $4000k
+
+Testing
+```sh
+forge test --contracts ./src/test/DFX_exp.sol -vvv
+```
+
+#### Contract
+
+[DFX_exp.sol](src/test/DFX_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1590960299246780417
+
+https://twitter.com/BeosinAlert/status/1591012525914861570
+
+https://twitter.com/AnciliaInc/status/1590839104731684865
+
+https://twitter.com/peckshield/status/1590831589004816384
+
+---
+### 20221109 BrachTOPG - Arbitrary External Call Vulnerability
+
 ### Lost: $89k
 
 Testing
@@ -283,6 +310,7 @@ https://twitter.com/SlowMist_Team/status/1590685173477101570
 
 ---
 ### 20221107 MooCAKECTX - FlashLoan Attack
+
 ### Lost: $140k
 
 Testing
@@ -302,6 +330,7 @@ https://twitter.com/CertiKAlert/status/1589428153591615488
 
 ---
 ### 20221105 BDEX - Business Logic Flaw
+
 ### Lost: 16WBNB
 
 Testing
