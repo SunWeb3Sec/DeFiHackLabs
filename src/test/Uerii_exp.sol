@@ -13,30 +13,12 @@ interface UER20 is IERC20{
     function mint() external;
 }
 
-interface Uniswap_Router_V3 {
-    struct ExactInputSingleParams {
-        address tokenIn;
-        address tokenOut;
-        uint24 fee;
-        address recipient;
-        uint256 deadline;
-        uint256 amountIn;
-        uint256 amountOutMinimum;
-        uint160 sqrtPriceLimitX96;
-    }
-
-    function exactInputSingle(
-        ExactInputSingleParams memory params
-    ) external returns (uint256 amountOut);
-
-}
-
 contract ContractTest is DSTest{
 
     UER20 UER = UER20(0x418C24191aE947A78C99fDc0e45a1f96Afb254BE);
     IERC20 USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    Uniswap_Router_V3 Router = Uniswap_Router_V3(0xE592427A0AEce92De3Edee1F18E0157C05861564);
+    Uni_Router_V3 Router = Uni_Router_V3(0xE592427A0AEce92De3Edee1F18E0157C05861564);
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
