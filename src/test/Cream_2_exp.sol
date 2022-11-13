@@ -190,7 +190,7 @@ contract ContractTest is DSTest{
 
         console.log("[3. deposit DAI to YearnVault get yDAI]");
         DAI.approve(curveDepositor, type(uint).max);
-        // error
+        // Impersonate the attacker's function call revert the unknown error, instead of another trace
         // yDAI.deposit(DAI.balanceOf(address(this)));
         // console.log("The yDAI amount in contract: ", yDAI.balanceOf(address(this))  / 1e18);
 
