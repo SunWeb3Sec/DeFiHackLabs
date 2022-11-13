@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-117 incidents included.
+118 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -202,6 +202,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [20211218 Grim Finance](#20211218-grim-finance---flashloan--reentrancy)
 
 [20211130 MonoX Finance](#20211130-monox-finance---price-manipulation)
+
+[20211027 Cream Finance](#20211027-creamfinance---price-manipulation)
 
 [20210916 SushiSwap Miso](#20210916-sushiswap-miso)
 
@@ -2027,6 +2029,24 @@ https://www.tuoniaox.com/news/p-521076.html
 https://polygonscan.com/tx/0x5a03b9c03eedcb9ec6e70c6841eaa4976a732d050a6218969e39483bb3004d5d
 
 https://etherscan.io/tx/0x9f14d093a2349de08f02fc0fb018dadb449351d0cdb7d0738ff69cc6fef5f299
+
+---
+### 20211027 CreamFinance - Price Manipulation  
+
+#### Lost: $130M
+
+Testing
+```sh
+ forge test --contracts ./src/test/Cream_2_exp.sol -vvv
+```
+
+#### Contract
+
+[Cream_2_exp.sol](src/test/Cream_2_exp.sol)
+
+#### Link reference
+
+https://medium.com/immunefi/hack-analysis-cream-finance-oct-2021-fc222d913fc5
 
 ---
 ### 20210916 SushiSwap Miso
