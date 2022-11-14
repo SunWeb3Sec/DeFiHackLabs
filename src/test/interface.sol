@@ -928,9 +928,24 @@ interface Uni_Router_V3 {
         uint160 sqrtPriceLimitX96;
     }
 
+    struct ExactOutputSingleParams {
+        address tokenIn;
+        address tokenOut;
+        uint24 fee;
+        address recipient;
+        uint256 deadline;
+        uint256 amountOut;
+        uint256 amountInMaximum;
+        uint160 sqrtPriceLimitX96;
+    }
+
     function exactInputSingle(
         ExactInputSingleParams memory params
-    ) external returns (uint256 amountOut);
+    ) external payable returns (uint256 amountOut);
+
+    function exactOutputSingle(
+        ExactOutputSingleParams calldata params
+        ) external payable returns (uint256 amountIn);
 
 }
 interface Uni_Router_V2 {
@@ -4327,6 +4342,27 @@ interface IUSDT {
   function balanceOf(address owner) external view returns (uint256);
 
   function transfer(address _to, uint256 _value) external;
+}
+
+interface IDaiFlashloan {
+    function flashLoan(
+        address receiver,
+        address token,
+        uint256 amount,
+        bytes calldata data
+    ) external returns (bool);
+}
+
+interface IAaveFlashloan {
+    function flashLoan(
+        address receiverAddress,
+        address[] calldata assets,
+        uint256[] calldata amounts,
+        uint256[] calldata modes,
+        address onBehalfOf,
+        bytes calldata params,
+        uint16 referralCode
+    ) external;
 }
 
 interface IcurveYSwap {
