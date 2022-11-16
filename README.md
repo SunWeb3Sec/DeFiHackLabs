@@ -288,6 +288,8 @@ forge test --contracts ./src/test/SheepFram_exp.sol -vvv
 
 https://twitter.com/AnciliaInc/status/1592658104394473472
 
+https://twitter.com/BlockSecTeam/status/1592734292727455744
+
 ---
 ### 20221110 - DFXFinance - Reentrancy
 
