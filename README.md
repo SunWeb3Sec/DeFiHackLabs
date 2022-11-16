@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-118 incidents included.
+119 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221116 SheepFram](#20221116---sheepfram---no-input-validation)
 
 [20221110 DFXFinance](#20221110---dfxfinance---reentrancy)
 
@@ -267,6 +269,24 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221116 - SheepFram - No input validation
+
+### Lost: ~1BNB
+
+Testing
+```sh
+forge test --contracts ./src/test/SheepFram_exp.sol -vvv
+```
+
+#### Contract
+
+[SheepFram_exp.sol](src/test/SheepFram_exp.sol)
+
+### Link reference
+
+https://twitter.com/AnciliaInc/status/1592658104394473472
 
 ---
 ### 20221110 - DFXFinance - Reentrancy
