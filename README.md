@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-119 incidents included.
+120 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221117 UEarnPool](#20221117---uearnpool---flashloan-attack)
 
 [20221116 SheepFram](#20221116---sheepfram---no-input-validation)
 
@@ -271,6 +273,24 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
 
 ---
+### 20221117 - UEarnPool - FlashLoan Attack
+
+### Lost: $24k
+
+Testing
+```sh
+forge test --contracts ./src/test/UEarnPool_exp.sol -vvv
+```
+
+#### Contract
+
+[UEranPool_exp.sol](src/test/UEarnPool_exp.sol)
+
+#### Link reference
+
+https://twitter.com/CertiKAlert/status/1593094922160128000
+
+---
 ### 20221116 - SheepFram - No input validation
 
 ### Lost: ~1BNB
@@ -284,7 +304,7 @@ forge test --contracts ./src/test/SheepFram_exp.sol -vvv
 
 [SheepFram_exp.sol](src/test/SheepFram_exp.sol)
 
-### Link reference
+#### Link reference
 
 https://twitter.com/AnciliaInc/status/1592658104394473472
 
