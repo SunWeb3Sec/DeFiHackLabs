@@ -26,7 +26,7 @@ contract ContractTest is DSTest{
     BvaultsStrategy vaultsStrategy = BvaultsStrategy(0xB2B1DC3204ee8899d6575F419e72B53E370F6B20);
     BPair Pair = BPair(0x5587ba40B8B1cE090d1a61b293640a7D86Fc4c2D);
 
-     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
         // the ankr rpc maybe dont work , please use QuickNode
