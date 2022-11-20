@@ -4,7 +4,7 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-// @Anaylysis
+// @Analysis
 // https://twitter.com/AnciliaInc/status/1593690338526273536
 // @TX
 // https://bscscan.com/tx/0x3757d177482171dcfad7066c5e88d6f0f0fe74b28f32e41dd77137cad859c777
