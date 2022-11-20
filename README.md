@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-120 incidents included.
+121 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221119 AnnexFinance](#20221119---annexfinance---verify-flashloan-callback)
 
 [20221117 UEarnPool](#20221117---uearnpool---flashloan-attack)
 
@@ -271,6 +273,23 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221119 - AnnexFinance - Verify flashLoan Callback
+### Lost: $3k
+
+Testing
+```sh
+forge test --contracts ./src/test/Annex_exp.sol -vvv
+```
+
+#### Contract
+
+[Annex_exp.sol](src/test/Annex_exp.sol)
+
+#### Link reference
+
+https://twitter.com/AnciliaInc/status/1593690338526273536
 
 ---
 ### 20221117 - UEarnPool - FlashLoan Attack
