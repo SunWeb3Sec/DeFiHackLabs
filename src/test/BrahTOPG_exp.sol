@@ -5,6 +5,7 @@ import "forge-std/Test.sol";
 import "./interface.sol";
 
 // attacker tx: https://etherscan.io/tx/0xeaef2831d4d6bca04e4e9035613be637ae3b0034977673c1c2f10903926f29c0
+// offcial post-mortem: https://medium.com/neptune-mutual/decoding-brahma-brahtopg-smart-contract-vulnerability-7b7c364b79d8
 
 interface Zapper {
     struct ZapData {
