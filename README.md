@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-121 incidents included.
+122 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221121 SDAO](#20221121---sdao---business-logic-flaw)
 
 [20221119 AnnexFinance](#20221119---annexfinance---verify-flashloan-callback)
 
@@ -273,6 +275,23 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221121 - sDAO - Business Logic Flaw
+### Lost: $13k
+
+Testing
+```sh
+forge test --contracts ./src/test/SDAO_exp.sol -vvv
+```
+
+#### Contract
+
+[SDAO_exp.sol](src/test/SDAO_exp.sol)
+
+#### Link reference
+
+https://twitter.com/8olidity/status/1594693686398316544
 
 ---
 ### 20221119 - AnnexFinance - Verify flashLoan Callback
