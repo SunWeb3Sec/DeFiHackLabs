@@ -279,7 +279,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
 
 ---
-### 20221122 - AUR - Business Logic Flaw
+### 20221122 - AUR -  Lack of Permission Check
 ### Lost: $13k
 
 Testing
