@@ -6,6 +6,7 @@ import "./interface.sol";
 
 // @Analysis
 // https://twitter.com/8olidity/status/1594693686398316544
+// https://twitter.com/CertiKAlert/status/1594615286556393478
 // @TX
 // https://bscscan.com/tx/0xb3ac111d294ea9dedfd99349304a9606df0b572d05da8cedf47ba169d10791ed
 

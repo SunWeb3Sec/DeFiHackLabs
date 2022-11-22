@@ -293,6 +293,8 @@ forge test --contracts ./src/test/SDAO_exp.sol -vvv
 
 https://twitter.com/8olidity/status/1594693686398316544
 
+https://twitter.com/CertiKAlert/status/1594615286556393478
+
 ---
 ### 20221119 - AnnexFinance - Verify flashLoan Callback
 ### Lost: $3k
