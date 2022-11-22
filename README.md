@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-122 incidents included.
+123 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221122 AUR](#20221122---aur---business-logic-flaw)
 
 [20221121 SDAO](#20221121---sdao---business-logic-flaw)
 
@@ -275,6 +277,25 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221122 - AUR - Business Logic Flaw
+### Lost: $13k
+
+Testing
+```sh
+forge test --contracts ./src/test/AUR_exp.sol -vvv
+```
+
+#### Contract
+
+[SDAO_exp.sol](src/test/AUR_exp.sol)
+
+#### Link reference
+
+https://twitter.com/AnciliaInc/status/1595142246570958848
+
+---
 
 ---
 ### 20221121 - sDAO - Business Logic Flaw
