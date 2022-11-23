@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-123 incidents included.
+124 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221123 NUM](#20221123---num---protocol-token-incompatible)
 
 [20221122 AUR](#20221122---aur---business-logic-flaw)
 
@@ -279,6 +281,23 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
 
 ---
+### 20221123 - NUM - Protocol Token incompatible
+### Lost $13k
+
+Testing
+```sh
+forge test --contracts ./src/test/NUM_exp.sol -vvv
+```
+
+#### Contract
+
+[NUM_exp.sol](src/test/NUM_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1595346020237352960
+
+---
 ### 20221122 - AUR -  Lack of Permission Check
 ### Lost: $13k
 
@@ -289,7 +308,7 @@ forge test --contracts ./src/test/AUR_exp.sol -vvv
 
 #### Contract
 
-[SDAO_exp.sol](src/test/AUR_exp.sol)
+[AUR_exp.sol](src/test/AUR_exp.sol)
 
 #### Link reference
 

@@ -939,6 +939,13 @@ interface Uni_Router_V3 {
         uint160 sqrtPriceLimitX96;
     }
 
+    function swapExactTokensForTokens(
+        uint256 amountIn,
+        uint256 amountOutMin,
+        address[] calldata path,
+        address to
+    ) external payable returns (uint256 amountOut);
+
     function exactInputSingle(
         ExactInputSingleParams memory params
     ) external payable returns (uint256 amountOut);
