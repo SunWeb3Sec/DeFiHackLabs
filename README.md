@@ -17,6 +17,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ## List of DeFi Hacks & Exploits
 
+[20221125 FantasticWeslie](#20221125---metadata---public-before-mint)
+
 [20221123 NUM](#20221123---num---protocol-token-incompatible)
 
 [20221122 AUR](#20221122---aur---business-logic-flaw)
@@ -279,6 +281,24 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221125 - FantasticWeslie - Metadata Public Before Mint
+
+Testing
+```sh
+forge test --contracts ./src/test/FantasticWeslieNFT_exp.sol -vv
+```
+
+#### Contract
+
+[FantasticWeslieNFT_exp.sol](src/test/FantasticWeslieNFT_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Supremacy_CA/status/1596176732729769985
+
+https://twitter.com/OpenGateNFT/status/1596135445343375362
 
 ---
 ### 20221123 - NUM - Protocol Token incompatible

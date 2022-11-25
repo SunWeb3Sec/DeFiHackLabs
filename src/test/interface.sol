@@ -5145,3 +5145,10 @@ interface IElevenNeverSellVault {
     function emergencyBurn() external;
     function withdrawAll() external;
 }
+
+interface IFantasticWeslie is IERC721 {
+  
+  function totalSupply() external view returns (uint256);
+
+  function mint(bytes32[] memory merkleProof) external payable;
+}
