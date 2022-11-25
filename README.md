@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-124 incidents included.
+125 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -17,7 +17,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ## List of DeFi Hacks & Exploits
 
-[20221125 FantasticWeslie](#20221125---metadata---public-before-mint)
+[20221125 FantasticWeslie](#20221125---fantasticweslie---metadata-public-before-mint)
 
 [20221123 NUM](#20221123---num---protocol-token-incompatible)
 
