@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-124 incidents included.
+125 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221129 SEAMAN](#20221129---seaman---business-logic-flaw)
 
 [20221123 NUM](#20221123---num---protocol-token-incompatible)
 
@@ -279,6 +281,27 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221129 - SEAMAN - Business Logic Flaw
+### Lost $7k
+
+Testing
+```sh
+forge test --contracts ./src/test/SEAMAN_exp.sol -vvv
+```
+
+#### Contract 
+
+[SEAMAN_exp.sol](src/test/SEAMAN_exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1597493955939405825
+
+https://twitter.com/CertiKAlert/status/1597513374841044993
+
+https://twitter.com/BeosinAlert/status/1597535796621631489
 
 ---
 ### 20221123 - NUM - Protocol Token incompatible
