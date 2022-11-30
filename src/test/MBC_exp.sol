@@ -84,7 +84,6 @@ contract ContractTest is DSTest {
         MBC.transfer(address(Pair), MBC.balanceOf(address(this)));
         (uint MBCReserve, uint USDTReserve, ) = Pair.getReserves();
         uint amountIn = MBC.balanceOf(address(Pair)) - MBCReserve;
-        uint amountOut = amountIn * 9975 * USDTReserve / (MBCReserve * 10000 + amountIn * 9975);
         path[0] = address(MBC);
         path[1] = address(USDT); 
         values = Router.getAmountsOut(amountIn, path);
