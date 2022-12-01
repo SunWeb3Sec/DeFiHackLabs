@@ -8,8 +8,7 @@ import "./interface.sol";
 // https://twitter.com/AnciliaInc/status/1597742575623888896
 // https://twitter.com/CertiKAlert/status/1597639717096460288
 // @TX
-// https://bscscan.com/tx/0xbcaecea2044101c80f186ce5327bec796cd9e054f0c240ddce93e2aead337370 first attack
-// https://bscscan.com/tx/0xf2d4559aeb945fb8e4304da5320ce6a2a96415aa70286715c9fcaf5dbd9d7ed2 second attack
+// https://phalcon.blocksec.com/tx/bsc/0xdc53a6b5bf8e2962cf0e0eada6451f10956f4c0845a3ce134ddb050365f15c86
 
 
 interface IMBC is IERC20 {

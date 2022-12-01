@@ -7,7 +7,8 @@ import "./interface.sol";
 // @Analysis
 // https://twitter.com/BlockSecTeam/status/1598268895877828612
 // @TX
-// https://bscscan.com/tx/0xf2d4559aeb945fb8e4304da5320ce6a2a96415aa70286715c9fcaf5dbd9d7ed2
+// https://bscscan.com/tx/0xbcaecea2044101c80f186ce5327bec796cd9e054f0c240ddce93e2aead337370
+// https://bscscan.com/tx/0xf2d4559aeb945fb8e4304da5320ce6a2a96415aa70286715c9fcaf5dbd9d7ed2 second attack
 
 interface TransparentUpgradeableProxy{
     function swap(address a1, address a2, uint256 amount) external;
