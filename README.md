@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-126 incidents included.
+127 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,9 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221201 APC](#20221201---apc---flashloan--price-manipulation)
+
 [20221129 MBC](#20221129---mbc---business-logic-flaw--access-control)
 
 [20221129 SEAMAN](#20221129---seaman---business-logic-flaw)
@@ -284,6 +287,23 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
 
 ---
+### 20221201 - APC - FlashLoan & price manipulation
+### Lost: $6k
+
+Testing
+```sh
+forge test --contracts ./src/test/APC_exp.sol -vvv
+```
+
+#### Contract
+
+[APC_exp.sol](src/test/APC_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1529084919976034304
+
+---
 ### 20221129 - MBC - Business Logic Flaw & Access Control
 ### Lost $5.6k
 
@@ -301,8 +321,6 @@ forge test --contracts ./src/test/MBC_exp.sol -vvv
 https://twitter.com/AnciliaInc/status/1597742575623888896
 
 https://twitter.com/CertiKAlert/status/1597639717096460288
-
----
 
 ---
 ### 20221129 - SEAMAN - Business Logic Flaw
@@ -358,8 +376,6 @@ forge test --contracts ./src/test/AUR_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/AnciliaInc/status/1595142246570958848
-
----
 
 ---
 ### 20221121 - sDAO - Business Logic Flaw
