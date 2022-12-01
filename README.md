@@ -301,7 +301,7 @@ forge test --contracts ./src/test/APC_exp.sol -vvv
 
 #### Link reference
 
-https://twitter.com/BlockSecTeam/status/1529084919976034304
+https://twitter.com/BlockSecTeam/status/1598262002010378241
 
 ---
 ### 20221129 - MBC - Business Logic Flaw & Access Control

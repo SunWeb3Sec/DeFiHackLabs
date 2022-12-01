@@ -5,7 +5,7 @@ import "forge-std/Test.sol";
 import "./interface.sol";
 
 // @Analysis
-// https://twitter.com/BlockSecTeam/status/1598268895877828612
+// https://twitter.com/BlockSecTeam/status/1598262002010378241
 // @TX
 // https://bscscan.com/tx/0xbcaecea2044101c80f186ce5327bec796cd9e054f0c240ddce93e2aead337370 first attack
 // https://bscscan.com/tx/0xf2d4559aeb945fb8e4304da5320ce6a2a96415aa70286715c9fcaf5dbd9d7ed2 second attack
