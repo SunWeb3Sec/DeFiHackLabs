@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-128 incidents included.
+129 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221205 BBOX](#20221205---bbox---flashloan-price-manipulation)
 
 [20221202 OverNight](#20221202---overnight---flashloan-attack)
 
@@ -287,6 +289,23 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221205 - BBOX - FlashLoan price manipulation
+### Lost: 12k
+
+Testing
+```sh
+forge test --contracts ./src/test/BBOX_exp.sol -vvv
+```
+
+#### Contract
+
+[BBOX_exp.sol](src/test/BBOX_exp.sol)
+
+#### Link reference
+
+https://twitter.com/AnciliaInc/status/1599599614490877952
 
 ---
 ### 20221202 - OverNight - FlashLoan Attack
