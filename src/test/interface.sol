@@ -5145,3 +5145,18 @@ interface IElevenNeverSellVault {
     function emergencyBurn() external;
     function withdrawAll() external;
 }
+
+interface IOpyn{
+    function addERC20CollateralOption(
+      uint256 amtToCreate,
+      uint256 amtCollateral,
+      address receiver
+    ) external;
+
+    function exercise(
+      uint256 oTokensToExercise,
+      address payable[] memory vaultsToExerciseFrom
+    ) external payable;
+
+    function removeUnderlying() external;
+}
