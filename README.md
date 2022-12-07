@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-129 incidents included.
+130 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -270,6 +270,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [20201121 Pickle Finance](#20201121-pickle-finance)
 
 [20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
+
+[20200804 Opyn Protocol](#20200804-opyn-protocol---msgValue-in-loop)
 
 [20200618 Bancor Protocol](#20200618-bancor-protocol---access-control)
 
@@ -2636,6 +2638,21 @@ forge test --contracts ./src/test/HarvestFinance_exp.sol -vv
 https://rekt.news/harvest-finance-rekt/
 
 https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877
+
+### 20200804 Opyn Protocol - msgValue in loop
+Testing
+```sh
+forge test --contracts ./src/test/Opyn.exp.sol -vv
+```
+#### Contract
+
+[Opyn.exp.sol](src/test/Opyn.exp.sol)
+
+#### Link reference
+https://medium.com/opyn/opyn-eth-put-exploit-post-mortem-1a009e3347a8
+
+https://etherscan.io/tx/0x56de6c4bd906ee0c067a332e64966db8b1e866c7965c044163a503de6ee6552a
+
 ---
 ### 20200618 Bancor Protocol - Access Control
 Testing
