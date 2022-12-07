@@ -27,7 +27,7 @@ contract ContractTest is DSTest {
   CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
   function setUp() public {
-    cheats.createSelectFork("bsc", 7223029); //fork bsc at block 7223263 
+    cheats.createSelectFork("bsc", 7223029); //fork bsc at block 7223029 
   }
 
   function testExploit() public {
