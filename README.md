@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-130 incidents included.
+132 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -260,6 +260,10 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [20210603 PancakeHunny](#20210603-pancakehunny---incorrect-calculation)
 
 [20210519 PancakeBunny](#20210519-pancakebunny---price-oracle-manipulation)
+
+[20210508 Rari Capital](#20210509-raricapital---cross-contract-reentrancy)
+
+[20210508 Value Defi](#20210508-value-defi---cross-contract-reentrancy)
 
 [20210428 Uranium](#20210428-uranium---miscalculation)
 
@@ -2554,6 +2558,38 @@ forge test --contracts ./src/test/PancakeBunny_exp.sol -vv
 https://rekt.news/pancakebunny-rekt/
 
 https://bscscan.com/tx/0x897c2de73dd55d7701e1b69ffb3a17b0f4801ced88b0c75fe1551c5fcce6a979
+
+---
+### 20210509 RariCapital - Cross Contract Reentrancy
+Testing
+```sh
+forge test --contracts ./src/test/RariCapital_exp.sol -vv
+```
+
+#### Contract
+
+[RariCapital_exp.sol](src/test/RariCapital_exp.sol)
+
+#### Link reference
+https://rekt.news/rari-capital-rekt/
+
+https://etherscan.com/tx/0x171072422efb5cd461546bfe986017d9b5aa427ff1c07ebe8acc064b13a7b7be
+
+---
+### 20210508 Value Defi - Cross Contract Reentrancy
+Testing
+```sh
+forge test --contracts ./src/test/ValueDefi_exp.sol -vv 
+```
+
+#### Contract
+
+[ValueDefi_exp.sol](src/test/ValueDefi_exp.sol)
+
+#### Link reference
+https://rekt.news/rari-capital-rekt/
+
+https://bscscan.com/tx/0xa00def91954ba9f1a1320ef582420d41ca886d417d996362bf3ac3fe2bfb9006
 
 ---
 ### 20210428 Uranium - Miscalculation
