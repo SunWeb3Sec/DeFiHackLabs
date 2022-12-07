@@ -7,7 +7,6 @@ import "./interface.sol";
 // @Analysis
 // https://twitter.com/BlockSecTeam/status/1600442137811689473
 // https://twitter.com/peckshield/status/1600418002163625984
-// 
 // @TX
 // https://bscscan.com/tx/0xca4d0d24aa448329b7d4eb81be653224a59e7b081fc7a1c9aad59c5a38d0ae19
 
@@ -20,7 +19,6 @@ contract ContractTest is DSTest{
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     Uni_Pair_V2 Pair = Uni_Pair_V2(0x40eD17221b3B2D8455F4F1a05CAc6b77c5f707e3);
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
-    uint flashLoanAmount;
     address dodo = 0x9ad32e3054268B849b84a8dBcC7c8f7c52E4e69A;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
