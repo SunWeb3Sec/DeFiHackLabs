@@ -17,7 +17,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ## List of DeFi Hacks & Exploits
 
-[20221209 NOVAToken](#20221209---NovaToken----malicious-unlimited-minting)
+[20221209 NOVAToken](#20221209---novatoken---malicious-unlimted-minting)
 
 [20221207 AES](#20221207---aes---business-logic-flaw--flashloan-price-manipulation)
 
