@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-133 incidents included.
+134 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221209 NOVAToken](#20221209---NovaToken----malicious-unlimited-minting)
 
 [20221207 AES](#20221207---aes---business-logic-flaw--flashloan-price-manipulation)
 
@@ -297,6 +299,22 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221209 - NOVAToken - Malicious Unlimted Minting
+### Lost: 330 $BNB
+
+Testing
+sh
+ forge test --contracts ./src/test/NovoExchange_exp.sol -vvv
+
+#### Contract
+
+[NovoExchange_exp.sol](src/test/NovoExchange_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BeosinAlert/status/1601168659585454081
 
 ---
 ### 20221207 - AES - Business Logic Flaw & FlashLoan price manipulation
