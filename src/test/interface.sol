@@ -666,7 +666,7 @@ interface AnyswapV4Router {
   ) external;
 }
 
-interface IWETH {
+interface WETH {
   function approve(address guy, uint256 wad) external returns (bool);
 
   function withdraw(uint256 wad) external;
@@ -2486,6 +2486,15 @@ interface ILiquidityMigrationV2 {
   receive() external payable;
 }
 
+interface WBNB {
+  function deposit() external payable;
+
+  function withdraw(uint256 wad) external;
+
+  function balanceOf(address account) external view returns (uint256);
+
+  function transfer(address recipient, uint256 amount) external returns (bool);
+}
 
 interface IWBNB {
   function name() external view returns (string memory);
