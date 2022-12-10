@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-134 incidents included.
+136 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,10 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221210 MUMUG](#20221210---mumug---flashloan-price-manipulation)
+
+[20221210 TIFIToken](#20221210---tifitoken---flashloan-price-manipulation)
 
 [20221209 NOVAToken](#20221209---novatoken---malicious-unlimted-minting)
 
@@ -301,12 +305,47 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
 
 ---
+### 20221210 - MU&MUG - FlashLoan price manipulation
+### Lost: 57k
+
+Testing
+```sh
+forge test --contracts ./src/test/MUMUG_exp.sol -vvv
+```
+
+#### Contract
+
+[MUMUG_exp.sol](src/test/MUMUG_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BeosinAlert/status/1601422462012469248
+
+---
+### 20221210 - TIFIToken - FlashLoan price manipulation
+### Lost: 87 WBNB
+
+Testing
+```sh
+forge test --contracts ./src/test/TIFI_exp.sol -vvv
+```
+
+#### Contract
+
+[TIFI_exp.sol](src/test/TIFI_exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1601492605535399936
+
+---
 ### 20221209 - NOVAToken - Malicious Unlimted Minting
 ### Lost: 330 $BNB
 
 Testing
-sh
- forge test --contracts ./src/test/NovoExchange_exp.sol -vvv
+```sh
+forge test --contracts ./src/test/NovoExchange_exp.sol -vvv
+```
 
 #### Contract
 
@@ -321,8 +360,9 @@ https://twitter.com/BeosinAlert/status/1601168659585454081
 ### Lost: $60k
 
 Testing
-sh
- forge test --contracts ./src/test/AES_exp.sol -vvv
+```sh
+forge test --contracts ./src/test/AES_exp.sol -vvv
+```
 
 #### Contract
 
