@@ -17,6 +17,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ## List of DeFi Hacks & Exploits
 
+[20221212 BGLD](#20221212---bgld---flashloan-price-manipulation)
+
 [20221210 MUMUG](#20221210---mumug---flashloan-price-manipulation)
 
 [20221210 TIFIToken](#20221210---tifitoken---flashloan-price-manipulation)
