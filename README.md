@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-136 incidents included.
+139 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -25,6 +25,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 [20221207 AES](#20221207---aes---business-logic-flaw--flashloan-price-manipulation)
 
+[20221205 RFB](#20221205---rfb---predicting-random-numbers)
+
 [20221205 BBOX](#20221205---bbox---flashloan-price-manipulation)
 
 [20221202 OverNight](#20221202---overnight---flashloan-attack)
@@ -37,7 +39,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 [20221123 NUM](#20221123---num---protocol-token-incompatible)
 
-[20221122 AUR](#20221122---aur---business-logic-flaw)
+[20221122 AUR](#20221122---aur---lack-of-permission-check)
 
 [20221121 SDAO](#20221121---sdao---business-logic-flaw)
 
@@ -50,6 +52,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [20221110 DFXFinance](#20221110---dfxfinance---reentrancy)
 
 [20221109 brahTOPG](#20221109-brachtopg---arbitrary-external-call-vulnerability)
+
+[20221208 Abracadabra](#20221108-abracadabra---price-caching-design-defect)
 
 [20221107 MooCAKECTX](#20221107-moocakectx---flashloan-attack)
 
@@ -305,8 +309,25 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
 
 ---
+### 20221212 - BGLD - FlashLoan price manipulation
+### Lost: $18k
+
+Testing
+```sh
+forge test --contracts ./src/test/BGLD_exp.sol -vvv
+```
+
+#### Contract
+
+[BGLD_exp.sol](src/test/BGLD_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1602335214356660225
+
+---
 ### 20221210 - MU&MUG - FlashLoan price manipulation
-### Lost: 57k
+### Lost: $57k
 
 Testing
 ```sh
@@ -373,6 +394,23 @@ forge test --contracts ./src/test/AES_exp.sol -vvv
 https://twitter.com/BlockSecTeam/status/1600442137811689473
 
 https://twitter.com/peckshield/status/1600418002163625984
+
+---
+### 20221205 - RFB - Predicting Random Numbers
+### Lost: 12BNB
+
+Testing
+```sh
+forge test --contracts ./src/test/RFB_exp.sol -vvv
+```
+
+#### Contract
+
+[RFB_exp.sol](src/test/RFB_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1599991294947778560
 
 ---
 ### 20221205 - BBOX - FlashLoan price manipulation
@@ -614,6 +652,23 @@ Testing
 #### Link reference
 
 https://twitter.com/SlowMist_Team/status/1590685173477101570
+
+---
+### 20221108 Abracadabra - Price-caching Design Defect 
+### Lost: $110k
+
+Testing
+```sh
+forge test --contracts ./src/test/Abracadabra_exp.sol -vvv
+```
+
+#### Contract
+
+[Abracadabra_exp.sol](src/test/Abracadabra_exp.sol)
+
+#### Link reference
+
+https://eigenphi.substack.com/p/casting-a-magic-spell-on-abracadabra
 
 ---
 ### 20221107 MooCAKECTX - FlashLoan Attack
