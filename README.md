@@ -55,7 +55,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 [20221109 brahTOPG](#20221109-brachtopg---arbitrary-external-call-vulnerability)
 
-[20221208 Abracadabra](#20221108-abracadabra---price-caching-design-defect)
+[20221108 Kashi](#20221108-kashi---price-caching-design-defect)
 
 [20221107 MooCAKECTX](#20221107-moocakectx---flashloan-attack)
 
@@ -656,21 +656,23 @@ Testing
 https://twitter.com/SlowMist_Team/status/1590685173477101570
 
 ---
-### 20221108 Abracadabra - Price-caching Design Defect 
+### 20221108 Kashi - Price-caching Design Defect 
 ### Lost: $110k
 
 Testing
 ```sh
-forge test --contracts ./src/test/Abracadabra_exp.sol -vvv
+forge test --contracts ./src/test/Kashi_exp.sol -vvv
 ```
 
 #### Contract
 
-[Abracadabra_exp.sol](src/test/Abracadabra_exp.sol)
+[Kashi_exp.sol](src/test/Kashi_exp.sol)
 
 #### Link reference
 
 https://eigenphi.substack.com/p/casting-a-magic-spell-on-abracadabra
+
+https://twitter.com/BlockSecTeam/status/1603633067876155393
 
 ---
 ### 20221107 MooCAKECTX - FlashLoan Attack

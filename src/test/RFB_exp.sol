@@ -52,7 +52,7 @@ contract ContractTest is DSTest{
         uint BNBBalance = address(this).balance;
         BNBToRFB(amount);
         RFBToBNB();
-        require(address(this).balance - BNBBalance < 18 * 1e18);
+        require(address(this).balance - BNBBalance > 0);
     }
 
     function BNBToRFB(uint amount) public payable{
