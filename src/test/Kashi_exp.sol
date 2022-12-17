@@ -6,6 +6,7 @@ import "./interface.sol";
 
 // @Analysis
 // https://eigenphi.substack.com/p/casting-a-magic-spell-on-abracadabra
+// https://twitter.com/BlockSecTeam/status/1603633067876155393
 // @TX
 // https://etherscan.io/tx/0x3d163bfbec5686d428a6d43e45e2626a220cc4fcfac7620c620b82c1f2537c78
 
