@@ -802,7 +802,7 @@ https://twitter.com/BeosinAlert/status/1584888021299916801
 ---
 ### 20221024 Market - Read-only Reentrancy
 
-### Lost: $180k
+### Lost: $220k
 
 Testing
 ```sh
