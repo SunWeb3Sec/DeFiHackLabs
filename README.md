@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-139 incidents included.
+140 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -68,6 +68,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [20221026 N00d Token](#20221026-n00d-token---reentrancy)
 
 [20221026 ULME](#20221026-ulme---access-control)
+
+[20221024 Market](#20221024-market---read-only-reentrancy) 
 
 [20221024 MulticallWithoutCheck](#20221024-multicallwithoutcheck---arbitrary-external-call-vulnerability)
 
@@ -796,6 +798,24 @@ forge test --contracts ./src/test/ULME.sol -vvv
 
 https://twitter.com/BlockSecTeam/status/1584839309781135361
 https://twitter.com/BeosinAlert/status/1584888021299916801
+
+---
+### 20221024 Market - Read-only Reentrancy
+
+### Lost: $180k
+
+Testing
+```sh
+forge test --contracts ./src/test/Market_exp.t.sol -vv
+```
+
+#### Contract
+
+[Market_exp.t.sol](src/test/Market_exp.t.sol)
+
+#### Link reference
+
+https://quillaudits.medium.com/decoding-220k-read-only-reentrancy-exploit-quillaudits-30871d728ad5
 
 ---
 ### 20221024 MulticallWithoutCheck - Arbitrary External Call Vulnerability
