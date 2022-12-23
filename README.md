@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-140 incidents included.
+141 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221223 Defrost](#20221223---defrost---reentrancy)
 
 [20221212 BGLD](#20221212---bgld---flashloan-price-manipulation)
 
@@ -311,6 +313,23 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221223 - Defrost - Reentrancy
+### Lost: $170k
+
+Testing
+```sh
+forge test --contracts ./src/test/Defrost_exp.sol -vvv
+```
+
+#### Contract
+
+[Defrost_exp.sol](src/test/Defrost_exp.sol)
+
+#### Link reference
+
+https://twitter.com/PeckShieldAlert/status/1606276020276891650
 
 ---
 ### 20221212 - BGLD - FlashLoan price manipulation
@@ -618,7 +637,7 @@ https://twitter.com/BlockSecTeam/status/1592734292727455744
 ---
 ### 20221110 - DFXFinance - Reentrancy
 
-### Lost: $4000k
+### Lost: $4M
 
 Testing
 ```sh

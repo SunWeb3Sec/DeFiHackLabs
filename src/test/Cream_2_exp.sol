@@ -12,7 +12,7 @@ import "./interface.sol";
 // https://github.com/Hephyrius/Immuni-4-CREAM/tree/main/contracts/CREAM
 
 // @Summary
-// FirstContarct: MakerDao FlashLoan 500M DAI -> Convert to yUSD -> yUSD mint crYUSD in CreamFinance,crYUSD as collateral, velue: $500M -> secondContract: ->Aave FlashLoan 524_000 ETH -> send 6000 ETH to FirstContarct, other mint crETH in CreamFinance, crETH as collateral, value: $2B ->twice borrow about $5M yUSD to mint crYUSD, send to FirstContarct,now the FirstContarct collateral value: $1.5B -> borrow 5M yUSD send to FirstContarct -> FirstContarct: withdraw yUSD to 4-Curve token double the price crYUSD collateral ->now the FirstContarct collateral value: $3B, borrow fund -> $2B repay Aave FlashLoan, $500M repay MakerDao FlashLoan -> theoretically, there a 5M profit margin
+// FirstContarct: MakerDao FlashLoan 500M DAI -> Convert to yUSD -> yUSD mint crYUSD in CreamFinance,crYUSD as collateral, velue: $500M -> secondContract: ->Aave FlashLoan 524_000 ETH -> send 6000 ETH to FirstContarct, other mint crETH in CreamFinance, crETH as collateral, value: $2B ->twice borrow about $500M yUSD to mint crYUSD, send to FirstContarct,now the FirstContarct collateral value: $1.5B -> borrow 500M yUSD send to FirstContarct -> FirstContarct: withdraw yUSD to 4-Curve token double the price crYUSD collateral ->now the FirstContarct collateral value: $3B, borrow fund -> $2B repay Aave FlashLoan, $500M repay MakerDao FlashLoan -> theoretically, there a 500M profit margin
 
 interface YDAI is IERC20{}
 interface YVaultPeakProxy{
