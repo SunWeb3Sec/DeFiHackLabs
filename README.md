@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-141 incidents included.
+142 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -16,6 +16,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 * Clone and install dependencies:```git submodule update --init --recursive```
 
 ## List of DeFi Hacks & Exploits
+
+[20221225 Rubic_exp](#20221225---rubic---arbitrary-external-call-vulnerability)
 
 [20221223 Defrost](#20221223---defrost---reentrancy)
 
@@ -313,6 +315,25 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221225 - Rubic - Arbitrary External Call Vulnerability
+### Lost: $1.5M
+
+Testing
+```sh
+forge test --contracts ./src/test/Rubic_exp.sol -vvv
+```
+
+#### Contract
+
+[Rubic_exp.sol](src/test/Rubic_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1606993118901198849
+
+https://twitter.com/peckshield/status/1606937055761952770
 
 ---
 ### 20221223 - Defrost - Reentrancy
