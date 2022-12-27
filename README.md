@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-142 incidents included.
+143 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -17,11 +17,13 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ## List of DeFi Hacks & Exploits
 
-[20221225 Rubic_exp](#20221225---rubic---arbitrary-external-call-vulnerability)
+[20221225 Rubic](#20221225---rubic---arbitrary-external-call-vulnerability)
 
 [20221223 Defrost](#20221223---defrost---reentrancy)
 
 [20221212 BGLD](#20221212---bgld---flashloan-price-manipulation)
+
+[20221211 Lodestar](#20221211---lodestar---flashloan-price-manipulation)
 
 [20221210 MUMUG](#20221210---mumug---flashloan-price-manipulation)
 
@@ -368,6 +370,25 @@ forge test --contracts ./src/test/BGLD_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/BlockSecTeam/status/1602335214356660225
+
+---
+### 20221211 - Lodestar - FlashLoan price manipulation
+### Lost: $4M
+
+Testing
+```sh
+forge test --contracts ./src/test/Lodestar_exp.sol -vvv
+```
+
+#### Contract
+
+[Lodestar_exp.sol](src/test/Lodestar_exp.sol)
+
+#### Link reference
+
+https://twitter.com/SolidityFinance/status/1601684150456438784
+
+https://blog.lodestarfinance.io/post-mortem-summary-13f5fe0bb336
 
 ---
 ### 20221210 - MU&MUG - FlashLoan price manipulation

