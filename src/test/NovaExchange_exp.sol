@@ -8,7 +8,7 @@ import "./interface.sol";
 // https://twitter.com/BeosinAlert/status/1601168659585454081
 // @TX
 // https://bscscan.com/tx/0xf743dba906255cf6f75f8243ef8192f2a211aacf03df99322584686b5c445c23
-// forge test --contracts ./src/test/NovoExchange_exp.sol -vv
+// forge test --contracts ./src/test/NovaExchange_exp.sol -vv
 
 interface INovaExchange {
     function rewardHolders(uint256 amount) external;
