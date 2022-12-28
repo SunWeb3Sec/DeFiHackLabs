@@ -29,7 +29,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 [20221210 TIFIToken](#20221210---tifitoken---flashloan-price-manipulation)
 
-[20221209 NOVAToken](#20221209---novatoken---malicious-unlimted-minting)
+[20221209 NOVAToken](#20221209---novatoken---malicious-unlimted-minting-rugged)
 
 [20221207 AES](#20221207---aes---business-logic-flaw--flashloan-price-manipulation)
 
@@ -425,17 +425,17 @@ forge test --contracts ./src/test/TIFI_exp.sol -vvv
 https://twitter.com/peckshield/status/1601492605535399936
 
 ---
-### 20221209 - NOVAToken - Malicious Unlimted Minting
+### 20221209 - NOVAToken - Malicious Unlimted Minting (Rugged)
 ### Lost: 330 $BNB
 
 Testing
 ```sh
-forge test --contracts ./src/test/NovoExchange_exp.sol -vvv
+forge test --contracts ./src/test/NovaExchange_exp.sol -vvv
 ```
 
 #### Contract
 
-[NovoExchange_exp.sol](src/test/NovoExchange_exp.sol)
+[NovaExchange_exp.sol](src/test/NovaExchange_exp.sol)
 
 #### Link reference
 
