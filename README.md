@@ -31,7 +31,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 [20221209 NOVAToken](#20221209---novatoken---malicious-unlimted-minting-rugged)
 
-[20221207 AES](#20221207---aes---business-logic-flaw--flashloan-price-manipulation)
+[20221207 AES](#20221207---aes-deflationary-token----business-logic-flaw--flashloan-price-manipulation)
 
 [20221205 RFB](#20221205---rfb---predicting-random-numbers)
 
@@ -442,7 +442,7 @@ forge test --contracts ./src/test/NovaExchange_exp.sol -vvv
 https://twitter.com/BeosinAlert/status/1601168659585454081
 
 ---
-### 20221207 - AES - Business Logic Flaw & FlashLoan price manipulation
+### 20221207 - AES (Deflationary token)  - Business Logic Flaw & FlashLoan price manipulation
 ### Lost: $60k
 
 Testing
