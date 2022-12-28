@@ -21,7 +21,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 [20221223 Defrost](#20221223---defrost---reentrancy)
 
-[20221212 BGLD](#20221212---bgld---flashloan-price-manipulation)
+[20221212 BGLD](#20221212---bgld-deflationary-token---flashloan-price-manipulation)
 
 [20221211 Lodestar](#20221211---lodestar---flashloan-price-manipulation)
 
