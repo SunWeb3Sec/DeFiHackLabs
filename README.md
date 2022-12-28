@@ -355,7 +355,7 @@ forge test --contracts ./src/test/Defrost_exp.sol -vvv
 https://twitter.com/PeckShieldAlert/status/1606276020276891650
 
 ---
-### 20221212 - BGLD - FlashLoan price manipulation
+### 20221212 - BGLD (Deflationary token) - FlashLoan price manipulation
 ### Lost: $18k
 
 Testing
