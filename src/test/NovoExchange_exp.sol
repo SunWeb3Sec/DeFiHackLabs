@@ -4,7 +4,11 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-//forge test --contracts ./src/test/NovoExchange_exp.sol -vv
+// @Analysis
+// https://twitter.com/BeosinAlert/status/1601168659585454081
+// @TX
+// https://bscscan.com/tx/0xf743dba906255cf6f75f8243ef8192f2a211aacf03df99322584686b5c445c23
+// forge test --contracts ./src/test/NovoExchange_exp.sol -vv
 
 interface INovaExchange {
     function rewardHolders(uint256 amount) external;
