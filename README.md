@@ -17,7 +17,7 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ## List of DeFi Hacks & Exploits
 
-20221229 JAY - ongoing
+[20221229 JAY](#20221229---jay---insufficient-validation--reentrancy)
 
 [20221225 Rubic](#20221225---rubic---arbitrary-external-call-vulnerability)
 
@@ -319,6 +319,23 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ### Hacks Dashboard
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+### 20221229 - JAY - Insufficient validation + Reentrancy
+### Lost: $15.32 ETH
+
+Testing
+```sh
+forge test --contracts ./src/test/JAY_exp.sol -vvv
+```
+
+#### Contract
+
+[JAY_exp.sol](src/test/JAY_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1608372475225866240
 
 ---
 ### 20221225 - Rubic - Arbitrary External Call Vulnerability
