@@ -17,6 +17,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 
 ## List of DeFi Hacks & Exploits
 
+20221229 JAY - ongoing
+
 [20221225 Rubic](#20221225---rubic---arbitrary-external-call-vulnerability)
 
 [20221223 Defrost](#20221223---defrost---reentrancy)
