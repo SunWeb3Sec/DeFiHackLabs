@@ -4,12 +4,11 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-// @KeyInfo - Total Lost : 704 ETH (~ 1,080,000 US$)
-// https://etherscan.io/tx/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6
-
-
-// @NewsTrack
+// @Analysis
 // https://twitter.com/BlockSecTeam/status/1608372475225866240
+
+// @TX
+// https://etherscan.io/tx/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6
 
 interface IJay {
     function buyJay(
