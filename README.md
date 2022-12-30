@@ -1,7 +1,7 @@
 # DeFi Hacks Reproduce - Foundry
 **Reproduce DeFi hack incidents using Foundry.**
 
-144 incidents included.
+145 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -292,6 +292,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [20210428 Uranium](#20210428-uranium---miscalculation)
 
 [20210308 DODO](#20210308-dodo---flashloan-attack)
+
+[20210305 Paid Network](#20210305-paid-network---private-key-compromised)
 
 [20201229 Cover Protocol](#20201229-cover-protocol)
 
@@ -2862,6 +2864,22 @@ https://blog.dodoex.io/dodo-pool-incident-postmortem-with-a-little-help-from-our
 https://halborn.com/explained-the-dodo-dex-hack-march-2021/
 
 https://etherscan.io/tx/0x395675b56370a9f5fe8b32badfa80043f5291443bd6c8273900476880fb5221e
+
+---
+### 20210305 Paid Network - Private key compromised
+#### Lost: $3 million
+Testing
+```sh
+forge test --contracts ./src/test/PAID_exp.sol -vv
+```
+#### Contract
+
+[PAID_exp.sol](src/test/PAID_exp.sol)
+
+#### Link reference
+https://slowmist.medium.com/brief-analysis-of-zabu-finance-being-hacked-44243919ea29
+
+https://etherscan.io/tx/0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0
 
 ---
 ### 20201229 Cover Protocol
