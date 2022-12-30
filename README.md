@@ -3434,7 +3434,7 @@ forge test --contracts ./src/test/PAID_exp.sol -vv
 
 #### Link reference
 
-https://slowmist.medium.com/brief-analysis-of-zabu-finance-being-hacked-44243919ea29
+https://paidnetwork.medium.com/paid-network-attack-postmortem-march-7-2021-9e4c0fef0e07
 
 https://etherscan.io/tx/0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0
 
