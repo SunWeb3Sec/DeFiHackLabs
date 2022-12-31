@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-146 incidents included.
+147 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -23,6 +23,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [20221225 Rubic](#20221225---rubic---arbitrary-external-call-vulnerability)
 
 [20221223 Defrost](#20221223---defrost---reentrancy)
+
+[20221213 ElasticSwap](#20221213---elasticswap---business-logic-flaw)
 
 [20221212 BGLD](#20221212---bgld-deflationary-token---flashloan-price-manipulation)
 
@@ -391,6 +393,26 @@ forge test --contracts ./src/test/Defrost_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/PeckShieldAlert/status/1606276020276891650
+
+---
+
+### 20221213 - ElasticSwap - Business Logic Flaw
+
+### Lost: $845k
+
+Testing
+
+```sh
+forge test --contracts ./src/test/ElasticSwap_exp.sol -vvv
+```
+
+#### Contract
+
+[ElasticSwap_exp.sol](src/test/ElasticSwap_exp.sol)
+
+#### Link reference
+
+https://quillaudits.medium.com/decoding-elastic-swaps-850k-exploit-quillaudits-9ceb7fcd8d1a
 
 ---
 
