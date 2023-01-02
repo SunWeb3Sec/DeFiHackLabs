@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-147 incidents included.
+148 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -23,6 +23,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [20221225 Rubic](#20221225---rubic---arbitrary-external-call-vulnerability)
 
 [20221223 Defrost](#20221223---defrost---reentrancy)
+
+[20221214 Nmbplatform](#20221214---nmbplatform---flashloan-price-manipulation)
 
 [20221213 ElasticSwap](#20221213---elasticswap---business-logic-flaw)
 
@@ -393,6 +395,24 @@ forge test --contracts ./src/test/Defrost_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/PeckShieldAlert/status/1606276020276891650
+
+---
+
+### 20221214 - Nmbplatform - FlashLoan price manipulation
+### Lost: 76k
+
+Testing
+```sh
+forge test --contracts ./src/test/Nmbplatform_exp.sol -vvv
+```
+
+#### Contract
+
+[Nmbplatform_exp.sol](src/test/Nmbplatform_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1602877048124735489
 
 ---
 
