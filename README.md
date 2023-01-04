@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-148 incidents included.
+149 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -17,6 +17,8 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 - Clone and install dependencies:`git submodule update --init --recursive`
 
 ## List of DeFi Hacks & Exploits
+
+[20230103](#20230103---gds---business-logic-flaw)
 
 [20221229 JAY](#20221229---jay---insufficient-validation--reentrancy)
 
@@ -333,6 +335,28 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 ### Hacks Dashboard
 
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+
+### 20230103 - GDS - Business Logic Flaw
+
+### Lost: 180k
+
+Testing
+
+```sh
+forge test --contracts ./src/test/GDS_exp.sol -vvv
+```
+
+#### Contract
+
+[GDS_exp.sol](src/test/GDS_exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1610095490368180224
+
+https://twitter.com/BlockSecTeam/status/1610167174978760704
 
 ---
 
