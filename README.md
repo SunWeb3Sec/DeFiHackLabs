@@ -20,7 +20,7 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 ## List of DeFi Hacks & Exploits
 
-[20230103](#20230103---gds---business-logic-flaw)
+[20230103 GDS](#20230103---gds---business-logic-flaw)
 
 [20221229 JAY](#20221229---jay---insufficient-validation--reentrancy)
 
