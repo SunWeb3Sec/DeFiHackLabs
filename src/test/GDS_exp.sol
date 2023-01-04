@@ -8,6 +8,7 @@ import "./interface.sol";
 // https://twitter.com/peckshield/status/1610095490368180224
 // https://twitter.com/BlockSecTeam/status/1610167174978760704
 // @TX
+// https://bscscan.com/tx/0xf9b6cc083f6e0e41ce5e5dd65b294abf577ef47c7056d86315e5e53aa662251e
 // https://bscscan.com/tx/0x2bb704e0d158594f7373ec6e53dc9da6c6639f269207da8dab883fc3b5bf6694
 
 interface GDSToken is IERC20{
