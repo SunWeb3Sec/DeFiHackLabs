@@ -8,7 +8,9 @@ This repo is only for the educational purpose.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
-Notion: [root cause analysis](https://web3sec.xrex.io/)
+Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.xrex.io/)
+
+[Transaction debugging tools](https://github.com/SunWeb3Sec/DeFiHackLabs/#transaction-debugging-tools)
 
 ## Getting Started
 
@@ -319,7 +321,6 @@ Notion: [root cause analysis](https://web3sec.xrex.io/)
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
 
 ---
-
 ### Transaction debugging tools
 
 [Phalcon](https://phalcon.blocksec.com/) | [Tx.viewer](https://tx.eth.samczsun.com/) | [Cruise](https://cruise.supremacy.team/) |[Ethtx](https://ethtx.info/) | [Tenderly](https://dashboard.tenderly.co/explorer)
