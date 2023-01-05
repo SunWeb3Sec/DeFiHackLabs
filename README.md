@@ -12,14 +12,19 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 [Transaction debugging tools](https://github.com/SunWeb3Sec/DeFiHackLabs/#transaction-debugging-tools)
 
-#### Web3 Security Tutorials
-- OnChain transaction debugging (on-going)
-
 ## Getting Started
 
 - Follow the [instructions](https://book.getfoundry.sh/getting-started/installation.html) to install [Foundry](https://github.com/foundry-rs/foundry).
 
 - Clone and install dependencies:`git submodule update --init --recursive`
+
+## Web3 Security Tutorials
+### OnChain transaction debugging (on-going)
+- Lesson 1: Tools ( English | 中文 ) 
+- Lesson 2: Warm up ( English | 中文 )
+- Lesson 3: Writing p0c step by step (Real case1) ( English | 中文 )
+- Lesson 4: Writing p0c step by step (Real case2) ( English | 中文 )
+- Lesson 5: Writing p0c step by step (Real case3) ( English | 中文 )
 
 ## List of DeFi Hacks & Exploits
 
