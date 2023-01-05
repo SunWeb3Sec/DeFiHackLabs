@@ -12,6 +12,9 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 [Transaction debugging tools](https://github.com/SunWeb3Sec/DeFiHackLabs/#transaction-debugging-tools)
 
+#### Web3 Security Tutorials
+- OnChain transaction debugging (on-going)
+
 ## Getting Started
 
 - Follow the [instructions](https://book.getfoundry.sh/getting-started/installation.html) to install [Foundry](https://github.com/foundry-rs/foundry).
@@ -323,7 +326,7 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 ---
 ### Transaction debugging tools
 
-[Phalcon](https://phalcon.blocksec.com/) | [Tx.viewer](https://tx.eth.samczsun.com/) | [Cruise](https://cruise.supremacy.team/) |[Ethtx](https://ethtx.info/) | [Tenderly](https://dashboard.tenderly.co/explorer)
+[Phalcon](https://phalcon.blocksec.com/) | [Tx.viewer](https://tx.eth.samczsun.com/) | [Cruise](https://cruise.supremacy.team/) | [Ethtx](https://ethtx.info/) | [Tenderly](https://dashboard.tenderly.co/explorer)
 
 ### Ethereum Signature Database
 
@@ -331,7 +334,7 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 ### Useful tools
 
-[ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/)
+[ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/) | [ETHCMD - Guess ABI](https://www.ethcmd.com/tools/decode-calldata/)
 
 ### Hacks Dashboard
 
