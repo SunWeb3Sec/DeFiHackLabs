@@ -18,7 +18,7 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 - Clone and install dependencies:`git submodule update --init --recursive`
 
-## Web3 Security [Tutorials](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/tutorials/tutorials)
+## Web3 Security [Tutorials](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/tutorials)
 ### OnChain transaction debugging (Ongoing)
 - Lesson 1: Tools ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/tutorials/onchain_debug/01_tools/en) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/tutorials/onchain_debug/01_tools) ) 
 - Lesson 2: Warm up ( English | 中文 )
