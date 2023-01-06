@@ -25,7 +25,7 @@ ERC-20 Tokens Transferred: 從用戶A 錢包轉 651.13 USDT 到用戶 B
 
 Input Data: 呼叫了 transfer function
 
-透過 [phalcon](https://phalcon.blocksec.com/tx/eth/0x836ef3d01a52c4b9304c3d683f6ff2b296c7331b6fee86e3b116732ce1d5d124) 來看: 從調用流程來看就只有一個 Call USDT.transafer...，要注意的是 Value. 因為 EVM 不支持浮點數的運算，所以使用精度代表，每個 Token 都要注意它的精度大小，以 USDT 為例，精度是 6 所以 Value 帶入的值為 651130000，精度處理不當就容易造成問題。
+透過 [phalcon](https://phalcon.blocksec.com/tx/eth/0x836ef3d01a52c4b9304c3d683f6ff2b296c7331b6fee86e3b116732ce1d5d124) 來看: 從調用流程來看就只有一個 Call USDT.transafer...，要注意的是 Value. 因為 EVM 不支持浮點數的運算，所以使用精度代表，每個 Token 都要注意它的精度大小，以 USDT 為例，精度是 6 所以 Value 帶入的值為 651130000，精度處理不當容易造成問題。
 
 ![圖片](https://user-images.githubusercontent.com/52526645/211022964-f819b35c-d442-488c-9645-7733af219d1c.png)
 
