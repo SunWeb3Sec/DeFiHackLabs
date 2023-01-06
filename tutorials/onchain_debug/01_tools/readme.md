@@ -4,7 +4,7 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 
 社群 [Discord](https://discord.gg/3y3d9DMQ)
 
-同步發表: XREX | WTF Academy 
+同步發表: XREX | [WTF Academy](https://github.com/AmazingAng/WTF-Solidity#%E9%93%BE%E4%B8%8A%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90)
 
 當初我在學習鏈上交易分析時，很少相關教學文章，只能自己慢慢地收集資料從中挖掘如何分析到測試。 我們將推出一系列 Web3 安全的教學文章, 幫助更多人加入 Web3 安全，共創安全網路。
 
