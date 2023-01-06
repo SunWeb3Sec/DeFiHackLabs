@@ -4,7 +4,7 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 
 Community [Discord](https://discord.gg/3y3d9DMQ)
 
-This article is published on XREX and WTF Academy
+This article is published on XREX and [WTF Academy](https://github.com/AmazingAng/WTF-Solidity#%E9%93%BE%E4%B8%8A%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90)
 
 Online resources were scarce when I started learning on-chain transaction analysis. Although slowly, l was able to piece together bits and pieces of information to perform tests and analysis.
 
