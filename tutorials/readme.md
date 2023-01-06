@@ -1,5 +1,5 @@
 
-## Web3 Security Tutorials
+## Web3 Cybersecurity Academy
 ### OnChain transaction debugging (Ongoing)
 - Lesson 1: Tools ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/tutorials/onchain_debug/01_tools/en) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/tutorials/onchain_debug/01_tools) ) 
 - Lesson 2: Warm up ( English | 中文 )
