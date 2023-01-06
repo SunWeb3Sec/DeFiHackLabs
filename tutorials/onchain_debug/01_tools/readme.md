@@ -1,6 +1,6 @@
 # OnChain Transaction Debugging: 1. Tools
 
-Author: [SunSec](https://twitter.com/1nf0s3cpt)
+Author: [Sun](https://twitter.com/1nf0s3cpt)
 
 社群 [Discord](https://discord.gg/3y3d9DMQ)
 
