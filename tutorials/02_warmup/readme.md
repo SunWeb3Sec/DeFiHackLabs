@@ -88,7 +88,7 @@ ERC-20 Tokens Transferred: 用戶 A 轉入 3,524,968.44 USDT 到 Curve 3 pool，
 ```sh
 forge test --contracts ./src/test/Uniswapv2_flashswap.sol -vv
 ```
-以這個例子透過 Uniswap UNI/WETH 交易兌上進行閃電貸借出 100 顆 WETH，在還回去給 Uniswap. 注意還款時要付 0.3% 手續費.
+以這個例子透過 Uniswap UNI/WETH 交易兌上進行閃電貸借出 100 顆 WETH，再還回去給 Uniswap. 注意還款時要付 0.3% 手續費.
 
 從下圖調用流程可以看出，呼叫 swap 進行 flashswap 然後透過 callback uniswapV2Call 來還款.
 ![圖片](https://user-images.githubusercontent.com/52526645/211038895-a1bc681a-41cd-4900-a745-3d3ddd0237d4.png)
