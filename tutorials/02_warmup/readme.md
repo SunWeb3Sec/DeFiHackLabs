@@ -116,7 +116,7 @@ Foundry 的 cheatcodes 在我們做鏈上分析必須使用到的，這邊我介
     -  設定 ETH 餘額 `deal(address(this), 3 ether);`
     -  設定 Token 餘額 `deal(address(USDC), address(this), 1 * 1e18);`
 - prank: 模擬指定錢包身份，只有在下一個呼叫有效，下一個 msg.sender 是會所指定的錢包，例如使用巨鯨錢包轉帳
-- startPrank: 模擬指定錢包身份，在沒有執行`stopPrank()`之前，所有 msg.sender 都會是指定的錢包
+- startPrank: 模擬指定錢包身份，在沒有執行`stopPrank()`之前，所有 msg.sender 都會是指定的錢包地址
 - label: 將錢包地址標籤化，方便在使用 Foundry debug 時提高可讀性
 - roll: 調整區塊高度
 - warp: 調整 block.timestamp
