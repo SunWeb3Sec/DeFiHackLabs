@@ -6,12 +6,13 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 
 同步發表: XREX | [WTF Academy](https://github.com/AmazingAng/WTF-Solidity#%E9%93%BE%E4%B8%8A%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90)
 
-鏈上交易數據包含從簡單轉帳、單的 DeFi 交互、多個 DeFi 交互、搭配閃電貸套利、治理提案、跨鏈交易等等，這一節我們先來熱身一下，先從簡單的開始。我將介紹通常使用區塊練瀏覽器 Etherscan 哪些訊息是我們所在意的，再來我們會使用交易分析工具 [Phalcon](https://phalcon.blocksec.com/) 看一下簡單的交易、UniSWAP上 Swap、Curve 3pool 增加流動性、Compound 治理提案、閃電貸的差異。
+鏈上交易數據包含從簡單的單筆交易轉帳、1 個 DeFi 合約交互、多個 DeFi 合約交互、閃電貸套利、治理提案、跨鏈交易等等，這一節我們先來熱身一下，先從簡單的開始。我將介紹通常使用區塊練瀏覽器 Etherscan 哪些訊息是我們所在意的，再來我們會使用交易分析工具 [Phalcon](https://phalcon.blocksec.com/) 看一下這些交易從簡單的轉帳、UniSWAP上 Swap、Curve 3pool 增加流動性、Compound 治理提案、閃電貸的調用差異。
 
 ## 開始進入熱身篇
 - 首先環境上需要先安裝 [Foundry](https://github.com/foundry-rs/foundry)，安裝方法請參考 [instructions](https://book.getfoundry.sh/getting-started/installation.html).
 - 每條鏈上都有專屬的區塊鏈瀏覽器，這節我們都會使用 Ethereum 主網來當案例所以可以透過 Etherscan 來分析.
 - 通常我會特別想看的欄位包含: Transaction Action、From、Interacted With (To)、ERC-20 Tokens Transferred、Input Data.
+- 如果還不知道常用工具有哪些可以回顧第一課交易分析[工具篇](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/tutorials/onchain_debug/01_tools)
 
 ## 鏈上轉帳
 ![圖片](https://user-images.githubusercontent.com/52526645/211021954-6c5828be-7293-452b-8ef6-a268db54b932.png)
@@ -25,7 +26,9 @@ ERC-20 Tokens Transferred: 從用戶A 錢包轉 651.13 USDT 到用戶 B
 
 Input Data: 呼叫了 transfer function
 
-透過 [phalcon](https://phalcon.blocksec.com/tx/eth/0x836ef3d01a52c4b9304c3d683f6ff2b296c7331b6fee86e3b116732ce1d5d124) 來看: 從調用流程來看就只有一個 Call USDT.transafer...，要注意的是 Value. 因為 EVM 不支持浮點數的運算，所以使用精度代表，每個 Token 都要注意它的精度大小，以 USDT 為例，精度是 6 所以 Value 帶入的值為 651130000，精度處理不當容易造成問題。
+透過 [phalcon](https://phalcon.blocksec.com/tx/eth/0x836ef3d01a52c4b9304c3d683f6ff2b296c7331b6fee86e3b116732ce1d5d124) 來看: 從調用流程來看就只有一個 Call USDT.transafer...，要注意的是 Value. 因為 EVM 不支持浮點數的運算，所以使用精度代表，每個 Token 都要注意它的精度大小，標準 ERC-20 代幣精度為 18，但也有特例，如 USDT 為例，精度是 6 所以 Value 帶入的值為 651130000，如果精度處理不當就容易造成問題。精度的查詢方式可以到 [Etherscan](https://etherscan.io/token/0xdac17f958d2ee523a2206206994597c13d831ec7) 代幣合約上看到。
+
+![圖片](https://user-images.githubusercontent.com/52526645/211123692-d7224ced-bc0b-47a1-a876-2af086e2fce9.png)
 
 ![圖片](https://user-images.githubusercontent.com/52526645/211022964-f819b35c-d442-488c-9645-7733af219d1c.png)
 
@@ -90,9 +93,11 @@ forge test --contracts ./src/test/Uniswapv2_flashswap.sol -vv
 ```
 以這個例子透過 Uniswap UNI/WETH 交易兌上進行閃電貸借出 100 顆 WETH，再還回去給 Uniswap. 注意還款時要付 0.3% 手續費.
 
-從下圖調用流程可以看出，呼叫 swap 進行 flashswap 然後透過 callback uniswapV2Call 來還款.
+從下圖調用流程可以看出，呼叫 swap 進行 flashswap 然後透過 callback uniswapV2Call 來還款. 
 
 ![圖片](https://user-images.githubusercontent.com/52526645/211038895-a1bc681a-41cd-4900-a745-3d3ddd0237d4.png)
+
+簡單區分一下 Flashloan 和 Flashswap 的差異，兩種都是無需抵押資產就可以借出 Token，且需要在同一個區塊內還回去不然交易就會失敗，假如透過 token0/token1 進行 Flashloan 借出 token0 就要還 token0回去，Flashswap 借出 token0 可以還 token0 或 token1 回去，比較彈性.
 
 更多 DeFi 基本操作可以參考 [DeFiLabs](https://github.com/SunWeb3Sec/DeFiLabs)
 
@@ -101,3 +106,5 @@ forge test --contracts ./src/test/Uniswapv2_flashswap.sol -vv
 [Foundry book](https://book.getfoundry.sh/)
 
 [Awesome-foundry](https://github.com/crisgarner/awesome-foundry)
+
+[Flashloan vs Flashswap](https://blog.infura.io/post/build-a-flash-loan-arbitrage-bot-on-infura-part-i)
