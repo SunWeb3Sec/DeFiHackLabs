@@ -52,7 +52,7 @@ Interacted With (To): 這個例子是一個 MEV Bot 合約呼叫 Uniswap 合約�
 
 ERC-20 Tokens Transferred: Token 交換的過程
 
-透過 [phalcon](https://phalcon.blocksec.com/tx/eth/0x1cd5ceda7e2b2d8c66f8c5657f27ef6f35f9e557c8d1532aa88665a37130da84) 來看: MEV Bot 呼叫 Uniswap V2 USDT/UNDEAD 交易對合約呼叫 swap 函示來進行代幣兌換。
+透過 [phalcon](https://phalcon.blocksec.com/tx/eth/0x1cd5ceda7e2b2d8c66f8c5657f27ef6f35f9e557c8d1532aa88665a37130da84) 來看: MEV Bot 呼叫 Uniswap V2 USDT/UNDEAD 交易對合約呼叫 [swap](https://docs.uniswap.org/contracts/v2/reference/smart-contracts/pair#swap-1) 函示來進行代幣兌換。
 
 ![圖片](https://user-images.githubusercontent.com/52526645/211029737-4a606d32-2c96-41e9-aef7-82fe1fb4b21d.png)
 
