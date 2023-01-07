@@ -86,7 +86,7 @@ ERC-20 Tokens Transferred: 用戶 A 轉入 3,524,968.44 USDT 到 Curve 3 pool，
 
 [範例程式碼](https://github.com/SunWeb3Sec/DeFiLabs/blob/main/src/test/Uniswapv2_flashswap.sol)參考
 
-![圖片](https://user-images.githubusercontent.com/52526645/211038380-4d7be02f-04b2-486e-956a-9a48d9463209.png)
+![圖片](https://user-images.githubusercontent.com/52526645/211125357-695c3fd0-4a56-4a70-9c98-80bac65586b8.png)
 
 ```sh
 forge test --contracts ./src/test/Uniswapv2_flashswap.sol -vv
@@ -95,7 +95,7 @@ forge test --contracts ./src/test/Uniswapv2_flashswap.sol -vv
 
 從下圖調用流程可以看出，呼叫 swap 進行 flashswap 然後透過 callback uniswapV2Call 來還款。
 
-![圖片](https://user-images.githubusercontent.com/52526645/211125357-695c3fd0-4a56-4a70-9c98-80bac65586b8.png)
+![圖片](https://user-images.githubusercontent.com/52526645/211038895-a1bc681a-41cd-4900-a745-3d3ddd0237d4.png)
 
 簡單區分一下 Flashloan 和 Flashswap 的差異，兩種都是無需抵押資產就可以借出 Token，且需要在同一個區塊內還回去不然交易就會失敗，假如透過 token0/token1 進行 Flashloan 借出 token0 就要還 token0回去，Flashswap 借出 token0 可以還 token0 或 token1 回去，比較彈性。
 
