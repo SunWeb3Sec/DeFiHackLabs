@@ -6,7 +6,7 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 
 同步發表: XREX | [WTF Academy](https://github.com/AmazingAng/WTF-Solidity#%E9%93%BE%E4%B8%8A%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90)
 
-鏈上交易數據包含從簡單的單筆交易轉帳、1 個 DeFi 合約交互、多個 DeFi 合約交互、閃電貸套利、治理提案、跨鏈交易等等，這一節我們先來熱身一下，先從簡單的開始。我將介紹通常使用區塊練瀏覽器 Etherscan 哪些訊息是我們所在意的，再來我們會使用交易分析工具 [Phalcon](https://phalcon.blocksec.com/) 看一下這些交易從簡單的轉帳、UniSWAP上 Swap、Curve 3pool 增加流動性、Compound 治理提案、閃電貸的調用差異。
+鏈上交易數據包含從簡單的單筆交易轉帳、1 個 DeFi 合約交互、多個 DeFi 合約交互、閃電貸套利、治理提案、跨鏈交易等等，這一節我們先來熱身一下，先從簡單的開始。我將介紹通常使用區塊鏈瀏覽器 Etherscan 哪些訊息是我們所在意的，再來我們會使用交易分析工具 [Phalcon](https://phalcon.blocksec.com/) 看一下這些交易從簡單的轉帳、UniSWAP上 Swap、Curve 3pool 增加流動性、Compound 治理提案、閃電貸的調用差異。
 
 ## 開始進入熱身篇
 - 首先環境上需要先安裝 [Foundry](https://github.com/foundry-rs/foundry)，安裝方法請參考 [instructions](https://book.getfoundry.sh/getting-started/installation.html).
