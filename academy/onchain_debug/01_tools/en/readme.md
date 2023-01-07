@@ -72,7 +72,7 @@ In the Raw Input data, the first 4 bytes are Function Signatures. Sometimes if E
 
 The following example assumes that we do not know what Function `0xac9650d8` is
 
-![圖片](https://user-images.githubusercontent.com/52526645/210582149-61a6d973-b458-432f-b586-250c94c3ae24.png)
+![image](https://user-images.githubusercontent.com/107249780/211152650-bfe5ca56-971c-4f38-8407-8ca795fd5b73.png)
 
 Through a sig.eth query, we find that the 4 bytes signature is `multicall(bytes[])` 
 
