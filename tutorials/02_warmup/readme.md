@@ -12,7 +12,7 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 - 首先環境上需要先安裝 [Foundry](https://github.com/foundry-rs/foundry)，安裝方法請參考 [instructions](https://book.getfoundry.sh/getting-started/installation.html).
 - 每條鏈上都有專屬的區塊鏈瀏覽器，這節我們都會使用 Ethereum 主網來當案例所以可以透過 Etherscan 來分析.
 - 通常我會特別想看的欄位包含: Transaction Action、From、Interacted With (To)、ERC-20 Tokens Transferred、Input Data.
-- 如果還不知道常用工具有哪些可以回顧第一課交易分析[工具篇](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/tutorials/onchain_debug/01_tools)
+- 如果還不知道常用工具有哪些可以回顧第一課交易分析[工具篇](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools)
 
 ## 鏈上轉帳
 ![圖片](https://user-images.githubusercontent.com/52526645/211021954-6c5828be-7293-452b-8ef6-a268db54b932.png)
