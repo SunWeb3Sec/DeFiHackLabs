@@ -11,7 +11,12 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 ## 開始進入熱身篇
 - 首先環境上需要先安裝 [Foundry](https://github.com/foundry-rs/foundry)，安裝方法請參考 [instructions](https://book.getfoundry.sh/getting-started/installation.html).
 - 每條鏈上都有專屬的區塊鏈瀏覽器，這節我們都會使用 Ethereum 主網來當案例所以可以透過 Etherscan 來分析.
-- 通常我會特別想看的欄位包含: Transaction Action、From、Interacted With (To)、ERC-20 Tokens Transferred、Input Data.
+- 通常我會特別想看的欄位包含:
+    -  Transaction Action: 列出關鍵行為，因為複雜的交易中 ERC-20 Tokens Transferred 會很複雜，可讀性不好
+    -  From: msg.sender 執行這筆交易的來源錢包地址
+    -  Interacted With (To): 跟哪個合約交互
+    -  ERC-20 Tokens Transferred: 代幣轉移流程
+    -  Input Data: 交易的原始 Input 資料，可以看到呼叫什麼 Function 和帶入什麼 Value
 - 如果還不知道常用工具有哪些可以回顧第一課交易分析[工具篇](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools)
 
 ## 鏈上轉帳
@@ -20,7 +25,7 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 
 From: 發送這筆交易的來源錢包地址
 
-Interacted With (To): 跟哪個合約交互，這個例子 Tether USD (USDT) 
+Interacted With (To): Tether USD (USDT) 合約
 
 ERC-20 Tokens Transferred: 從用戶A 錢包轉 651.13 USDT 到用戶 B
 
