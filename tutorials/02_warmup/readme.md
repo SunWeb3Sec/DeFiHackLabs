@@ -82,7 +82,7 @@ ERC-20 Tokens Transferred: 用戶 A 轉入 3,524,968.44 USDT 到 Curve 3 pool，
 
 ## Uniswap Flashswap
 
-這裡我們來操作看看如何在 Uniswap 上使用閃電貸，[官方Flash swap介紹](https://docs.uniswap.org/contracts/v2/guides/smart-contract-integration/using-flash-swaps)
+這裡我們使用 Foundry 來模擬操作看看如何在 Uniswap 上使用閃電貸，[官方Flash swap介紹](https://docs.uniswap.org/contracts/v2/guides/smart-contract-integration/using-flash-swaps)
 
 [範例程式碼](https://github.com/SunWeb3Sec/DeFiLabs/blob/main/src/test/Uniswapv2_flashswap.sol)參考
 
