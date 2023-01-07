@@ -1,4 +1,4 @@
-# OnChain Transaction Debugging: 2. Write Your Own PoC
+# OnChain Transaction Debugging: 3. Write Your Own PoC
 
 Author: [▓▓▓▓▓▓](https://twitter.com/h0wsO1)
 
@@ -17,15 +17,15 @@ Author: [▓▓▓▓▓▓](https://twitter.com/h0wsO1)
 DeFiHackLabs 期望更多人可以關注 Web3 安全，當攻擊事件發生時，有更多人可以一起分析事件原因，為安全網路做出貢獻。
 
 1. 作為甲方，鍛鍊事件響應 (incident response) 的能力。
-2. 作為乙方，鍛鍊 Bug bounty 寫 PoC 的技能，獲得更有競爭力的賞金報酬。
+2. 作為乙方，鍛鍊威脅研究分析能力以及 Bug bounty 寫 PoC 的技能，獲得更有競爭力的賞金報酬。
 3. 幫助藍隊更好的調校機器學習模型，例如 [Forta Network](https://forta.org/blog/how-fortas-predictive-ml-models-detect-attacks-before-exploitation/)。
 4. 比起閱讀安全機構的驗屍報告，自己撰寫 Reproduce 更能深刻理解駭客的攻擊思路。
-5. 尚無產品開發靈感，也有題材可以鍛鍊 Solidity 編程熟悉度，區塊鏈本質上就是個龐大的資料庫。
+5. 鍛鍊 Solidity 編程熟悉度，區塊鏈本質上就是個龐大的公開資料庫。
 
-## 在學習撰寫 Reproduce PoC 之前，你需要的先備知識
+## 在學習撰寫 Reproduce PoC 之前，會需要具備的知識
 
 1. 暸解常見智能合約漏洞樣態，可以參考 [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs) 進行練習。
-2. 暸解 DeFi 基礎建設如何運作，以及智能合約如何和它們互動。
+2. 暸解 DeFi 基礎建設如何運作，以及智能合約與智能合約之間如何互動。
 
 ## 價格預言機原理簡介
 
@@ -96,7 +96,7 @@ uint256 ETH_Price = UniV2_USDC_Reserve / UniV2_ETH_Reserve;
 
 > Tips: 加入 DeFiHackLabs Discord security-alert 頻道，即時收到各路 DeFi 安全大佬們的消息！
 
-攻擊事件剛發生時，肯定是一群混亂，先找個文件整理你所發現到的資訊吧！
+攻擊事件剛發生時，肯定是各種混亂，先找個文件整理你所發現到的資訊吧！
 
 1. Transaction ID
 2. Attacker Address(EOA)
@@ -377,15 +377,15 @@ contract Exploit is Test{ // 攻擊合約
 
 ![ClaimRewardCode.png](ClaimRewardCode.png)
 
-我們可以發現到，使用者的領取的 Staking Reward 數量，取決於獎勵因子 `quota` (代表用戶 Staking 多少代幣、Staking 多久時間) 乘上 `getEGDPrice()` 目前 EGD Token 的價格。
+我們可以發現到，使用者領取的 Staking Reward 數量，取決於獎勵因子 `quota` (代表用戶 Staking 多少代幣、Staking 多久時間) 乘上 `getEGDPrice()` 目前 EGD Token 的價格。
 
-也就是說，合約給出的 EGD Staking Reward 會按照目前的 EGD Token 市價給予更多或更少的 Token 數量，當 EGD Token 價格越高，則給予的 EGD Token 數量越少，當 EGD Token 價格越低，則給予的 EGD Token 數量越多。
+也就是說，合約給出的 EGD Staking Reward 會按照目前的 EGD Token 市價給予更多或更少的 Token 數量，**當 EGD Token 價格越高，則給予的 EGD Token 數量越少，當 EGD Token 價格越低，則給予的 EGD Token 數量越多**。
 
 我們跟進 `getEGDPrice()` 函數，分析喂價機制：
 
 ![getEGDPrice.png](getEGDPrice.png)
 
-可以看到喂價機制是採用 `x * y = k` 的公式，就如同我們在 *價格預言機原理簡介* 描述的一樣。
+可以看到喂價機制是採用 `x * y = k` 的公式，就如同我們在 ***價格預言機原理簡介*** 描述的一樣。
 
 `pair` 地址即是 `0xa361-Cake-LP`，這也就能和我們在 Tx View 中看到的兩組 STATICCALL 配對起來了。
 
@@ -399,7 +399,7 @@ contract Exploit is Test{ // 攻擊合約
 
 ![PriceManipulationGraph.png](PriceManipulationGraph.png)
 
-總結：攻擊者透過閃電貸，抽走價格預言機的流動性，使 `ClaimReward()` 獲取到不正確的價格參考，進而使攻擊者可以領取到異常大量的 EGD Token。
+**總結：攻擊者透過閃電貸，抽走價格預言機的流動性，使 `ClaimReward()` 獲取到不正確的價格參考，進而使攻擊者可以領取到異常大量的 EGD Token。**
 
 攻擊者利用漏洞取得大量 EGD Token 後，將 EGD Token 透過 Pancakeswap 換回 USDT，獲利了結。
 
@@ -573,12 +573,10 @@ Logs:
 Test result: ok. 1 passed; 0 failed; finished in 1.66s
 ```
 
-> 註: DeFiHackLabs 提供的 EGD-Finance.exp.sol 有 Reproduce 攻擊者的前置 Stacking 作業，本教程未涵蓋到，你可以自己嘗試看看！
+> 註: DeFiHackLabs 提供的 EGD-Finance.exp.sol 有 Reproduce 攻擊者的前置 Stacking 作業。
+>
+> 本教程未涵蓋到前置動作，你可以自己練習看看！
 > Attacker Stack Tx: 0x4a66d01a017158ff38d6a88db98ba78435c606be57ca6df36033db4d9514f9f8
-
----
-
-
 
 第三課分享就先到這邊，想學更多可以參考以下學習資源。
 ---
