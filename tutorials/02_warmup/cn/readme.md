@@ -27,7 +27,7 @@ ERC-20 Tokens Transferred: 从用户A 钱包转 651.13 USDT 到用户 B
 
 Input Data: 呼叫了 transfer function
 
-透过 [phalcon](https://phalcon.blocksec.com/tx/eth/0x836ef3d01a52c4b9304c3d683f6ff2b296c7331b6fee86e3b116732ce1d5d124) 来看: 从调用流程来看就只有一个 `Call USDT.transafer`，要注意的是 Value. 因为 EVM 不支持浮点数的运算，所以使用精度代表，每个 Token 都要注意它的精度大小，标准 ERC-20 代币精度为 18，但也有特例，如 USDT 为例，精度是 6 所以 Value 带入的值为 651130000，如果精度处理不当就容易造成问题。精度的查询方式可以到 [Etherscan](https://etherscan.io/token/0xdac17f958d2ee523a2206206994597c13d831ec7) 代币合约上看到。
+透过 [phalcon](https://phalcon.blocksec.com/tx/eth/0x836ef3d01a52c4b9304c3d683f6ff2b296c7331b6fee86e3b116732ce1d5d124) 来看: 从调用流程来看就只有一个 `Call USDT.transfer`，要注意的是 Value. 因为 EVM 不支持浮点数的运算，所以使用精度代表，每个 Token 都要注意它的精度大小，标准 ERC-20 代币精度为 18，但也有特例，如 USDT 为例，精度是 6 所以 Value 带入的值为 651130000，如果精度处理不当就容易造成问题。精度的查询方式可以到 [Etherscan](https://etherscan.io/token/0xdac17f958d2ee523a2206206994597c13d831ec7) 代币合约上看到。
 
 ![图片](https://user-images.githubusercontent.com/52526645/211123692-d7224ced-bc0b-47a1-a876-2af086e2fce9.png)
 
