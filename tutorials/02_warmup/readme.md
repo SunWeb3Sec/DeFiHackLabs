@@ -65,7 +65,6 @@ forge test --contracts ./src/test/Uniswapv2.sol -vvvv
 
 ![圖片](https://user-images.githubusercontent.com/52526645/211143644-6ed295f0-e0d8-458b-a6a7-71b2da8a5baa.png)
 
-
 ## Curve 3pool - DAI/USDC/USDT
 
 ![圖片](https://user-images.githubusercontent.com/52526645/211030934-14fccba9-5239-480c-b431-21de393a6308.png)
@@ -138,6 +137,8 @@ Foundry 的 cheatcodes 在我們做鏈上分析必須使用到的，這邊我介
 
 [Awesome-foundry](https://github.com/crisgarner/awesome-foundry)
 
-[Foundry@EthCC Slides](https://docs.google.com/presentation/d/1AuQojnFMkozOiR8kDu5LlWT7vv1EfPytmVEeq1XMtM0/edit#slide=id.g13d8bd167cb_0_0)
+[Foundry @EthCC](https://www.youtube.com/watch?v=wJnywGB33O4) | [Slides](https://docs.google.com/presentation/d/1AuQojnFMkozOiR8kDu5LlWT7vv1EfPytmVEeq1XMtM0/edit#slide=id.g13d8bd167cb_0_0)
+
+[WTF Solidity - Foundry](https://github.com/AmazingAng/WTF-Solidity/blob/main/Topics/Tools/TOOL07_Foundry/readme.md)
 
 [Flashloan vs Flashswap](https://blog.infura.io/post/build-a-flash-loan-arbitrage-bot-on-infura-part-i)
