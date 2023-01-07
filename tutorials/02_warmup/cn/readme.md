@@ -2,7 +2,7 @@
 
 Author: [Sun](https://twitter.com/1nf0s3cpt)
 
-链上交易数据包含从简单的单笔交易转帐、1 个 DeFi 合约交互、多个 DeFi 合约交互、闪电贷套利、治理提案、跨链交易等等，这一节我们先来热身一下，先从简单的开始。我将介绍通常使用区块练浏览器 Etherscan 哪些讯息是我们所在意的，再来我们会使用交易分析工具 [Phalcon](https://phalcon.blocksec.com/) 看一下这些交易从简单的转帐、UniSWAP上 Swap、Curve 3pool 增加流动性、Compound 治理提案、闪电贷的调用差异。
+链上交易数据包含从简单的单笔交易转帐、1 个 DeFi 合约交互、多个 DeFi 合约交互、闪电贷套利、治理提案、跨链交易等等，这一节我们先来热身一下，先从简单的开始。我将介绍通常使用区块链浏览器 Etherscan 哪些讯息是我们所在意的，再来我们会使用交易分析工具 [Phalcon](https://phalcon.blocksec.com/) 看一下这些交易从简单的转帐、UniSWAP上 Swap、Curve 3pool 增加流动性、Compound 治理提案、闪电贷的调用差异。
 
 ## 开始进入热身篇
 - 首先环境上需要先安装 [Foundry](https://github.com/foundry-rs/foundry)，安装方法请参考 [instructions](https://book.getfoundry.sh/getting-started/installation.html).
