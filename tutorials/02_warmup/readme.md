@@ -102,6 +102,22 @@ forge test --contracts ./src/test/Uniswapv2_flashswap.sol -vv
 更多 DeFi 基本操作可以參考 [DeFiLabs](https://github.com/SunWeb3Sec/DeFiLabs)
 
 
+## Foundry cheatcodes
+
+Foundry 的 cheatcodes 在我們做鏈上分析必須使用到的，這邊我介紹一下常用到的函式，更多介紹可以參考[Cheatcodes Reference](https://book.getfoundry.sh/cheatcodes/)
+
+- createSelectFork: 指定這次測試要複製哪個網路和區塊高度，注意每條鏈的 RPC 要寫在 [foundry.toml](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/foundry.toml)
+- deal: 設定測試錢包餘額 
+    -  設定 ETH 餘額 `deal(address(this), 3 ether);`
+    -  設定 Token 餘額 `deal(address(USDC), address(this), 1 * 1e18);`
+- prank: 模擬指定錢包身份，只有在下一個呼叫有效，下一個 msg.sender 是會所指定的錢包，例如使用巨鯨錢包轉帳
+- startPrank: 模擬指定錢包身份，在沒有執行`stopPrank()`之前，所有 msg.sender 都會是指定的錢包
+- label: 將錢包地址標籤化，方便在使用 Foundry debug 時提高可讀性
+- roll: 調整區塊高度
+- warp: 調整 block.timestamp
+
+謝謝收看，我們準備進入下一課
+
 ## Resources
 [Foundry book](https://book.getfoundry.sh/)
 
