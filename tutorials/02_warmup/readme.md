@@ -10,6 +10,7 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 
 ## 開始進入熱身篇
 - 首先環境上需要先安裝 [Foundry](https://github.com/foundry-rs/foundry)，安裝方法請參考 [instructions](https://book.getfoundry.sh/getting-started/installation.html).
+    - 測試主要會用到 [Forge test](https://book.getfoundry.sh/reference/forge/forge-test)，如果第一次使用 Foundry，可以參考 [Foundry book](https://book.getfoundry.sh/)、[Foundry @EthCC](https://www.youtube.com/watch?v=wJnywGB33O4)、[WTF Solidity - Foundry](https://github.com/AmazingAng/WTF-Solidity/blob/main/Topics/Tools/TOOL07_Foundry/readme.md)
 - 每條鏈上都有專屬的區塊鏈瀏覽器，這節我們都會使用 Ethereum 主網來當案例所以可以透過 Etherscan 來分析.
 - 通常我會特別想看的欄位包含:
     -  Transaction Action: 因為複雜的交易中 ERC-20 Tokens Transferred 會很複雜，可讀性不好，所以可以透過 Transaction Action 看一下關鍵行為但不一定每筆交易都有
@@ -55,6 +56,16 @@ ERC-20 Tokens Transferred: Token 交換的過程
 
 ![圖片](https://user-images.githubusercontent.com/52526645/211029737-4a606d32-2c96-41e9-aef7-82fe1fb4b21d.png)
 
+我們使用 Foundry 來模擬操作使用 1BTC 在 Uniswap 換成 DAI，[範例程式碼](https://github.com/SunWeb3Sec/DeFiLabs/blob/main/src/test/Uniswapv2.sol)參考，執行以下指令
+```sh
+forge test --contracts ./src/test/Uniswapv2.sol -vvvv
+```
+
+如下圖所示我們透過呼叫 Uniswap_v2_router.[swapExactTokensForTokens](https://docs.uniswap.org/contracts/v2/reference/smart-contracts/router-02#swapexacttokensfortokens) 函式，將 1BTC 換到 16,788 DAI.
+
+![圖片](https://user-images.githubusercontent.com/52526645/211143644-6ed295f0-e0d8-458b-a6a7-71b2da8a5baa.png)
+
+
 ## Curve 3pool - DAI/USDC/USDT
 
 ![圖片](https://user-images.githubusercontent.com/52526645/211030934-14fccba9-5239-480c-b431-21de393a6308.png)
@@ -87,15 +98,14 @@ ERC-20 Tokens Transferred: 用戶 A 轉入 3,524,968.44 USDT 到 Curve 3 pool，
 
 ## Uniswap Flashswap
 
-這裡我們使用 Foundry 來模擬操作看看如何在 Uniswap 上使用閃電貸，[官方Flash swap介紹](https://docs.uniswap.org/contracts/v2/guides/smart-contract-integration/using-flash-swaps)
+我們使用 Foundry 來模擬操作看看如何在 Uniswap 上使用閃電貸，[官方Flash swap介紹](https://docs.uniswap.org/contracts/v2/guides/smart-contract-integration/using-flash-swaps)
 
-[範例程式碼](https://github.com/SunWeb3Sec/DeFiLabs/blob/main/src/test/Uniswapv2_flashswap.sol)參考
-
-![圖片](https://user-images.githubusercontent.com/52526645/211125357-695c3fd0-4a56-4a70-9c98-80bac65586b8.png)
-
+[範例程式碼](https://github.com/SunWeb3Sec/DeFiLabs/blob/main/src/test/Uniswapv2_flashswap.sol)參考，執行以下指令
 ```sh
 forge test --contracts ./src/test/Uniswapv2_flashswap.sol -vv
 ```
+![圖片](https://user-images.githubusercontent.com/52526645/211125357-695c3fd0-4a56-4a70-9c98-80bac65586b8.png)
+
 以這個例子透過 Uniswap UNI/WETH 交易兌上進行閃電貸借出 100 顆 WETH，再還回去給 Uniswap. 注意還款時要付 0.3% 手續費。
 
 從下圖調用流程可以看出，呼叫 swap 進行 flashswap 然後透過 callback uniswapV2Call 來還款。
@@ -127,5 +137,7 @@ Foundry 的 cheatcodes 在我們做鏈上分析必須使用到的，這邊我介
 [Foundry book](https://book.getfoundry.sh/)
 
 [Awesome-foundry](https://github.com/crisgarner/awesome-foundry)
+
+[Foundry@EthCC Slides](https://docs.google.com/presentation/d/1AuQojnFMkozOiR8kDu5LlWT7vv1EfPytmVEeq1XMtM0/edit#slide=id.g13d8bd167cb_0_0)
 
 [Flashloan vs Flashswap](https://blog.infura.io/post/build-a-flash-loan-arbitrage-bot-on-infura-part-i)
