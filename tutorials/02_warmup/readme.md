@@ -12,7 +12,7 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 - 首先環境上需要先安裝 [Foundry](https://github.com/foundry-rs/foundry)，安裝方法請參考 [instructions](https://book.getfoundry.sh/getting-started/installation.html).
 - 每條鏈上都有專屬的區塊鏈瀏覽器，這節我們都會使用 Ethereum 主網來當案例所以可以透過 Etherscan 來分析.
 - 通常我會特別想看的欄位包含:
-    -  Transaction Action: 列出關鍵行為，因為複雜的交易中 ERC-20 Tokens Transferred 會很複雜，可讀性不好
+    -  Transaction Action: 因為複雜的交易中 ERC-20 Tokens Transferred 會很複雜，可讀性不好，所以可以透過 Transaction Action 看一下關鍵行為但不一定每筆交易都有
     -  From: msg.sender 執行這筆交易的來源錢包地址
     -  Interacted With (To): 跟哪個合約交互
     -  ERC-20 Tokens Transferred: 代幣轉移流程
