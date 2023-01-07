@@ -6,6 +6,7 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 
 ## 开始进入热身篇
 - 首先环境上需要先安装 [Foundry](https://github.com/foundry-rs/foundry)，安装方法请参考 [instructions](https://book.getfoundry.sh/getting-started/installation.html).
+    - 测试主要会用到 [Forge test](https://book.getfoundry.sh/reference/forge/forge-test)，如果第一次使用 Foundry，可以参考 [Foundry book](https://book.getfoundry.sh/)、[Foundry @EthCC](https://www.youtube.com/watch?v=wJnywGB33O4)、[WTF Solidity - Foundry](https://github.com/AmazingAng/WTF-Solidity/blob/main/Topics/Tools/TOOL07_Foundry/readme.md)
 - 每条链上都有专属的区块链浏览器，这节我们都会使用 Ethereum 主网来当案例所以可以透过 Etherscan 来分析.
 - 通常我会特别想看的栏位包含:
     -  Transaction Action: 因为复杂的交易中 ERC-20 Tokens Transferred 会很复杂，可读性不好，所以可以透过 Transaction Action 看一下关键行为但不一定每笔交易都有
@@ -50,6 +51,15 @@ ERC-20 Tokens Transferred: Token 交换的过程
 透过 [phalcon](https://phalcon.blocksec.com/tx/eth/0x1cd5ceda7e2b2d8c66f8c5657f27ef6f35f9e557c8d1532aa88665a37130da84) 来看: MEV Bot 呼叫 Uniswap V2 USDT/UNDEAD 交易对合约呼叫 swap 函示来进行代币兑换。
 
 ![图片](https://user-images.githubusercontent.com/52526645/211029737-4a606d32-2c96-41e9-aef7-82fe1fb4b21d.png)
+
+我们使用 Foundry 来模拟操作使用 1BTC 在 Uniswap 换成 DAI，[范例程式码](https://github.com/SunWeb3Sec/DeFiLabs/blob/main/src/test/Uniswapv2.sol)参考，执行以下指令
+```sh
+forge test --contracts ./src/test/Uniswapv2.sol -vvvv
+```
+
+如下图所示我们透过呼叫 Uniswap_v2_router.[swapExactTokensForTokens](https://docs.uniswap.org/contracts/v2/reference/smart-contracts/router-02#swapexacttokensfortokens) 函式，将 1BTC 换到 16,788 DAI.
+
+![圖片](https://user-images.githubusercontent.com/52526645/211143644-6ed295f0-e0d8-458b-a6a7-71b2da8a5baa.png)
 
 ## Curve 3pool - DAI/USDC/USDT
 
@@ -123,5 +133,9 @@ Foundry 的 cheatcodes 在我们做链上分析必须使用到的，这边我介
 [Foundry book](https://book.getfoundry.sh/)
 
 [Awesome-foundry](https://github.com/crisgarner/awesome-foundry)
+
+[Foundry @EthCC](https://www.youtube.com/watch?v=wJnywGB33O4) | [Slides](https://docs.google.com/presentation/d/1AuQojnFMkozOiR8kDu5LlWT7vv1EfPytmVEeq1XMtM0/edit#slide=id.g13d8bd167cb_0_0)
+
+[WTF Solidity - Foundry](https://github.com/AmazingAng/WTF-Solidity/blob/main/Topics/Tools/TOOL07_Foundry/readme.md)
 
 [Flashloan vs Flashswap](https://blog.infura.io/post/build-a-flash-loan-arbitrage-bot-on-infura-part-i)
