@@ -18,18 +18,19 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 - Clone and install dependencies:`git submodule update --init --recursive`
 
-## Web3 Security Tutorials
-### OnChain transaction debugging (on-going)
-- Lesson 1: Tools ( English | 中文 ) 
-- Lesson 2: Warm up ( English | 中文 )
+## [Web3 Cybersecurity Academy](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy)
+### OnChain transaction debugging (Ongoing)
+- Lesson 1: Tools ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/en) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools) ) 
+- Lesson 2: Warm up ( English | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/) )
 - Lesson 3: Writing p0c step by step (Real case1) ( English | 中文 )
 - Lesson 4: Writing p0c step by step (Real case2) ( English | 中文 )
-- Lesson 5: Writing p0c step by step (Real case3) ( English | 中文 )
 
-## List of DeFi Hacks & Exploits
+## List of Past DeFi Incidents
 
-[20230103 GDS](#20230103---gds---business-logic-flaw)
+ [20230103 GDS](#20230103---gds---business-logic-flaw)
 
+<details> <summary> 2022 </summary>
+ 
 [20221229 JAY](#20221229---jay---insufficient-validation--reentrancy)
 
 [20221225 Rubic](#20221225---rubic---arbitrary-external-call-vulnerability)
@@ -262,6 +263,9 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 [20220118 Multichain (Anyswap)](#20220118-multichain-anyswap---insufficient-token-validation)
 
+</details>
+<details> <summary> 2021 </summary>
+ 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
 [20211218 Grim Finance](#20211218-grim-finance---flashloan--reentrancy)
@@ -304,6 +308,9 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 [20210519 PancakeBunny](#20210519-pancakebunny---price-oracle-manipulation)
 
+</details>
+<details> <summary> Before 2020 </summary>
+ 
 [20210508 Rari Capital](#20210509-raricapital---cross-contract-reentrancy)
 
 [20210508 Value Defi](#20210508-value-defi---cross-contract-reentrancy)
@@ -328,6 +335,8 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
 
+</details>
+ 
 ---
 ### Transaction debugging tools
 
@@ -346,6 +355,8 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [Defiyield](https://defiyield.app/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
 
 ---
+
+### List of DeFi Hacks & POCs
 
 ### 20230103 - GDS - Business Logic Flaw
 
@@ -369,6 +380,8 @@ https://twitter.com/BlockSecTeam/status/1610167174978760704
 
 ---
 
+<details> <summary> 2022 </summary>
+ 
 ### 20221229 - JAY - Insufficient validation + Reentrancy
 
 ### Lost: $15.32 ETH
@@ -2945,6 +2958,9 @@ https://etherscan.io/tx/0xe50ed602bd916fc304d53c4fed236698b71691a95774ff0aeeb74b
 
 ---
 
+</details>
+<details> <summary> 2021 </summary>
+
 ### 20211221 Visor Finance - Reentrancy
 
 #### Lost: $8.2 million
@@ -3514,6 +3530,8 @@ https://paidnetwork.medium.com/paid-network-attack-postmortem-march-7-2021-9e4c0
 https://etherscan.io/tx/0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0
 
 ---
+</details>
+<details> <summary> Before 2020 </summary>
 
 ### 20201229 Cover Protocol
 
@@ -3661,6 +3679,8 @@ https://elementus.io/blog/which-icos-are-affected-by-the-parity-wallet-bug/
 https://etherscan.io/tx/0x05f71e1b2cb4f03e547739db15d080fd30c989eda04d37ce6264c5686e0722c9
 
 https://etherscan.io/tx/0x47f7cff7a5e671884629c93b368cb18f58a993f4b19c2a53a8662e3f1482f690
+
+</details>
 
 ### View Gas Reports
 
