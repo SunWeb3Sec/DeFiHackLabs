@@ -155,4 +155,4 @@ Thanks for following along! Time to jump into the next lesson.
 
 [Awesome-foundry](https://github.com/crisgarner/awesome-foundry)
 
-[Flashloan vs](https://blog.infura.io/post/build-a-flash-loan-arbitrage-bot-on-infura-part-i)[Flashswap](https://blog.infura.io/post/build-a-flash-loan-arbitrage-bot-on-infura-part-i)
+[Flashloan vs Flashswap](https://blog.infura.io/post/build-a-flash-loan-arbitrage-bot-on-infura-part-i)
