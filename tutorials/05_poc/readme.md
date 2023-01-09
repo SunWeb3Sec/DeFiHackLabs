@@ -1,4 +1,4 @@
-# OnChain Transaction Debugging: 5. Write your own POC - MevBot
+# OnChain Transaction Debugging: 5. Write your own POC - MEV Bot
 
 Author: [Sun](https://twitter.com/1nf0s3cpt)
 
@@ -6,7 +6,7 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 
 同步發表: XREX | [WTF Academy](https://github.com/AmazingAng/WTF-Solidity#%E9%93%BE%E4%B8%8A%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90)
 
-## 手把手撰寫 PoC - 以 Mev Bot - BNB48 為例
+## 手把手撰寫 PoC - 以 MEV Bot (BNB48) 為例
 - 前情提要
     - 20220913 有一個 MevBot 被攻擊者發現漏洞進而將合約上的資產都轉走，共損失約 $140K.
     - 攻擊者透過 BNB48 驗證節點發送隱私交易，類似於 Flashbot 不把交易放入 mempool 而直接打包避免被搶跑攻擊.
