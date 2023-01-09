@@ -1,5 +1,3 @@
-OnChain Transaction Debugging: 2. Warm up (en)
-
 # OnChain Transaction Debugging: 2. Warm up
 
 Author: [Sun](https://twitter.com/1nf0s3cpt)
