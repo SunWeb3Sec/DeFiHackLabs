@@ -99,7 +99,7 @@ To help identify attacks and scams, XREX compiled nine Web3 attack methods. We w
 
 ### Web3 attack methods - Part 1
 
-### 1. **Credential Phishing
+### 1. Credential Phishing
 
 Credential phishing starts with fake websites, such as phony exchange logins or airdrop unlock pages. Without being aware of these fake websites, a user may enter their real account information and passwords, resulting in stolen credentials.
 
@@ -142,25 +142,18 @@ Sometimes search-engine-optimization (SEO) ranks their site higher than official
 
 In the picture below, we queried STEPN, the recently popular "Move-to-earn" app, as an example. Search STEPN on Google, and the top four results are all fake sites.
 
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211229744-f713a89d-8b8b-4483-b62e-3903578394d4.png" alt="Cover" width="80%"/>
+</div>
+<p align="center"">Figure 2.1 / Searching for STEPN on Google reveals Google ads full of phishing scams.</p>
 
-
-<p id="gdcalert9" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image9.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert10">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image9.png "image_tooltip")
-
-
-Figure 2.1 / Searching for STEPN on Google reveals Google ads full of phishing scams.
-
-**How to prevent ad-hijacking? XREX recommends:**
-
-
-
+### How to prevent ad-hijacking? XREX recommends:
 * Pay extra attention to suspicious domains when searching for keyword clicks.
 * Add frequently used websites to Your Favorites or Bookmarks Bar to avoid phishing sites.
 * Install anti**-**phishing plugins like [Netcraft Extension](https://chrome.google.com/webstore/detail/netcraft-extension/bmejphbfclcpmpohkggcjeibfilpamia?hl=en), [PeckShieldAlert](https://chrome.google.com/webstore/detail/peckshieldalert/dakkielolpafjbgnjnakddabmbbkcioe), [Scam Sniffer](https://chrome.google.com/webstore/detail/scam-sniffer/mnkbccinkbalkmmnmbcicdobcmgggmfc), [Wallet Guard](https://chrome.google.com/webstore/detail/wallet-guard/pdgbckgdncnhihllonhnjbdoighgpimk), or [MetaShield](https://chrome.google.com/webstore/detail/metashield/dibeogjcfnjbocgdjnehncoagplahokb?hl=zh-TW&authuser=4) in your browser to automatically detect phishing sites.
 * If you find a suspicious website, please report it immediately.
-3. **Fake Customer Service**
+
+### 3. Fake Customer Service
 
 Hackers pretend to be official employees of defi projects on social media. They trick users into filling out forms such as airdrop registration and service satisfaction surveys.
 
@@ -168,62 +161,35 @@ If a user takes the bait, the hacker will ask further questions to get a victim'
 
 For example:
 
- 
-
 "The threshold for real-name verification does not match, and the wallet address needs to be verified."
 
 "Need to transfer cryptocurrency to a specified wallet address to unlock the password."
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211229845-3e2b0b5d-0119-482d-b5f7-ffd8cdbf2c3a.png" alt="Cover" width="80%"/>
+</div>
 
+<p align="center""> Figure 3.1 / The hacker changed the self-introduction to the official customer service username in order to trick people. </p>
 
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211229868-6dffd02a-e904-44de-920e-d121423f5c4c.png" alt="Cover" width="60%"/>
+</div>
+<p align="center"">Figure 3.2 / Fake customer service staff asking users to send 0.01 BTC to a specific wallet address to unlock.</p>
 
-<p id="gdcalert10" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image10.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert11">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211229912-896ad74a-f1fd-4f1d-9829-db7511e4843e.png" alt="Cover" width="80%"/>
+</div>
+<p align="center"">Figure 3.3 / Hackers pretend to be a real project giveaway event, claiming to send free airdrops to users.</p>
 
-
-![alt_text](images/image10.png "image_tooltip")
-
-
-Figure 3.1 / The hacker changed the self-introduction to the official customer service username in order to trick people.
-
-
-
-<p id="gdcalert11" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image11.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert12">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image11.png "image_tooltip")
-
-
-Figure 3.2 / Fake customer service staff asking users to send 0.01 BTC to a specific wallet address to unlock.
-
-
-
-<p id="gdcalert12" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image12.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert13">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image12.png "image_tooltip")
-
-
-Figure 3.3 / Hackers pretend to be a real project giveaway event, claiming to send free airdrops to users.
-
-**How to prevent Fake Customer Service? XREX recommends:**
-
-
-
+### How to prevent Fake Customer Service? XREX recommends:
 * Don't trust unsolicited private messages from Telegram or other social platforms. Official projects will never suddenly send personal messages to users and ask for account information.
 * If you have concerns on divulging sensitive information, such as deposit and withdrawal, real-name authentication, or account security, please contact the official website channel for assistance.
 * Strengthen the privacy settings on Telegram. Set "Only my contacts can add me." Please refer to the following steps to complete the settings:
 
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211229998-9af973c9-b8ad-45e9-86c6-095f7197192b.png" alt="Cover" width="80%"/>
+</div>
+<p align="center""> Figure 3.4 / Telegram "Only my contacts can add me to groups" setup. </p>
 
 
-<p id="gdcalert13" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image13.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert14">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 
-![alt_text](images/image13.png "image_tooltip")
-
-
-Figure 3.4 / Telegram "Only my contacts can add me to groups" setup.
-
-At this point, we have discussed the definition of Web3, damages/losses in Web3 security incidents, the intentions and goals of hackers, and three attack methods with prevention recommendations. 
-
-In the next article,we will continue to analyze more Web3 attacks and scams. To continue reading, click "Nine Common Web3 Hacking and Scams."
-
-Co-editors：[Sun Huang](http://twitter.com/1nf0s3cpt) / [Wolf Chan](http://www.linkedin.com/in/wolfsec-j3ba397110) / [Seal Cao ](https://www.linkedin.com/in/howpwn/)/ [Yoyo Yu](https://www.linkedin.com/in/yoyoyu2020/) / [Helen Lai](https://www.linkedin.com/in/helen-l-25b7a41a8/) / [Simon Liu](https://www.linkedin.com/in/tysliu)
