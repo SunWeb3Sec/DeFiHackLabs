@@ -257,3 +257,97 @@ The name Ponzi scheme originated from Charles Ponzi, who duped investors with po
 * Do verify the registration and reputation of any adviser and/or trading platform with the appropriate sources or governing bodies before investing with them.
 * Avoid FOMO (fear of missing out) and check if the rate of return makes any sense.
 
+### 6. Rug pulls
+Rug pulls are crypto scams where a team pumps the value of its token before disappearing with investors' funds_. _A rug pull occurs when fraudsters create a new crypto token, pump up its price, then abandon it as soon as it is about to collapse.
+
+* ase sharing - Squid Game (SQUID)
+
+Squid Game (SQUID), the cryptocurrency token inspired by the Netflix hit, rose to hundreds of thousands In just one week. Yet it collapsed immediately. Investors lost everything and had nowhere to ask for compensation.
+
+Rug pulls can also occur in un-audited smart contracts through pre-programmed contract backdoors, allowing the fraudsters to control the supply of tokens after fundraising.
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211230424-27cf4410-5afb-4fd2-96c4-4e32626721f5.png" alt="Cover" width="60%"/>
+</div>
+<p align="center">Figure 6.1 / Squid Coin, with no official links to Netflix or the "Squid Game" team, the token price surged from $0.01 to $2861 within seven days and then collapsed to $0.0008 instantly. </p>
+
+### How to prevent rug pulls? XREX recommends:
+* When choosing a project, you can first understand the project team's background by searching on LinkedIn. Also search for the research project's white paper, and other relevant information. Typically, the white paper must contain long-term goals, problems solved, technical descriptions, and the team's authenticity.
+* To raise funds, most projects will use a centralized or decentralized exchange. 
+* By analyzing on-chain data, one can observe the transaction volume of tokens, liquidity, and whether the project tokens are certified by top decentralized exchanges.
+* Verify that multiple information security companies have reviewed the smart contract and that the audit report is open-sourced.
+* See if there are hype social bots on social media regarding the project. Fake hype is typically done with social bots and paid followers, which attempts to engage consumers to be excited and believe in a product that is in high demand and low supply.
+
+### 7. Seed phrase phishing
+
+A seed phrase is a master key that unlocks access to all your crypto assets, typically in the mnemonic form. A mnemonic is usually a 12 to 24 word phrase that cryptography represents your private key, making it slightly easier to remember and recover. A person with access to the mnemonic is equivalent to having access to the encrypted assets,
+
+similar to your bank account username and password. Some phishing scams trick users into divulging their seed phrase, resulting in lost funds stored in crypto wallets.
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211230520-fd21d858-41f0-44f4-ab4e-7035891d86cd.png" alt="Cover" width="80%"/>
+</div>
+<p align="center"> 
+Figure 7.1 / A fake OpeaSea NFT marketplace with a price significantly lower than the market price, requiring users to enter a mnemonic during transactions.  </p>
+
+### How to prevent seed phrase phishing? XREX recommends:
+* Never leak the mnemonic phrase. Other than restoring the wallet access, the mnemonic phrase has no other purpose except staying in a safe place.
+* Please store the mnemonic properly. Apps that require you to enter the mnemonic are _always_ scams.
+* Upon encountering suspicious websites, report it immediately! Keep the DeFi ecosystem safe.
+
+## 8. Malicious wallets and plugins
+
+Malicious wallets or wallet plug-ins will imitate the UI of genuine wallets, tricking users into thinking it is a project's official wallet. However, a backdoor has already been set up in the backend, and is able to steal the wallet mnemonic and assets.
+
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211230556-fcc7e217-4c6d-43c4-9900-b52261f145f2.png" alt="Cover" width="80%"/>
+</div>
+
+<p align="center"> Figure 8.1 / Malicious MetaMask browser plugin. Image credit / [Objective-See](https://objective-see.org/blog/blog_0x6F.html)  </p>
+
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211230566-532e4abe-628f-4b37-b6a3-a7a70bd751ed.png" alt="Cover" width="80%"/>
+</div>
+
+<p align="center"> Figure 8.2 / A fake AppStore requires users to download a file, once installed, you can download MetaMask with a backdoor from an untrusted source.  </p>
+
+### How to avoid fraudulent wallets and plugins? XREX recommends:
+* Never use crypto assets on jailbroken or rooted devices.
+* Be sure to download mobile apps from official sources such as the Apple AppStore or Google Play Store.
+* This one is for Apple iOS only: Do not install or trust profiles from unknown sources, as this may allow you to inadvertently install malicious programs.
+
+
+## 9. Approval scam
+
+Unlike a traditional fraud, an approval scammer attempts to gain your right of transfer to certain addresses. This is a built-in mechanism in the ERC20 token standard. ERC20 Approve function allows smart contracts to have the right to transfer user crypto assets.
+
+For example, if a user grants approval permissions to an arbitrage contract, it could execute multiple trades to automatically carry out arbitrage on the decentralized exchange. 
+
+However, the ERC20 Approve function has inevitably become a tool for hackers. Through phishing, hackers trick users into granting approval permission to hackers, then transfer the victim's assets to their wallets through the transferFrom function of the ERC20 Token contract.
+
+### The most well-known recent cases:
+* [The theft of NFT from Jay Chou](https://medium.com/sentinel-protocol/%E5%93%A5%E8%A2%AB%E5%81%B7%E4%BA%86-brother-got-robbed-jay-chous-ape-not-the-only-one-ca0a90d4dab4), a famous Taiwanese singer.
+* Fraudsters used the NFT platform [OpenSea](https://opensea.io/blog/announcements/our-efforts-to-curb-fraud-and-plagiarism-and-whats-next/) to launch a new type of fraud by first randomly airdropping users then raising NFT prices on the OpenSea to lure victims into a phishing website.
+
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211230654-97a22421-c6a0-425c-96dc-8c0117e2065d.png" alt="Cover" width="60%"/>
+</div>
+<p align="center"> Figure 9.1 / Scammers post QRCodes at seminars claiming to access free NFTs, directing users to phishing sites.</p>
+
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211230665-c28bc5dc-a714-4071-a241-84f5b534735c.png" alt="Cover" width="60%"/>
+</div>
+<p align="center"> Figure 9.2 / Upon clicking on the link claiming to send free NFT, an approval window pops up asking for permission to transfer assets instead. In this case it’s setApprovalForAll, meaning anyone can transfer your assets.</p>
+
+### How to avoid approval scams? XREX recommends:
+* If you accidentally authorized an unknown address, revoke the authorization immediately to avoid losses.
+* Confirm the transaction content before executing the transaction in order to avoid performing unexpected operations.
+* Report suspicious websites.
+* Regularly check the authorization status of wallet addresses and revoke permissions for unknown addresses. The following are three common tools:
+    -[Ethereum Token Approval](https://etherscan.io/tokenapprovalchecker)
+    -[Revoke.cash](https://revoke.cash)
+    -[Approved.zone](https://approved.zone/)
+
+### Let's sum it up
+
+This blog is an overview of the common Web3 crypto hacks – from phishing to rug pull – to help us better understand Web3 and avoid becoming victims.
+
+The XREX  information security team reminds you to keep an eye out on information security and to stay vigilant. As Web3 applications develop rapidly, hackers and criminals are also improving their tactics.
