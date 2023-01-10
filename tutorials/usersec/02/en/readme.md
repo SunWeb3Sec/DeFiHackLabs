@@ -62,31 +62,19 @@ According to [data](https://hacked.slowmist.io/statistics/?c=all&d=all) from Slo
 According to [The Federal Trade Commission (FTC)](https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2022/06/reports-show-scammers-cashing-crypto-craze), since 2021 more than 46,000 people have reported losing over **$1 billion** in crypto scams.
 
 It is worth noting that this does not count global data and only records the data of reported cases, which means that many victims are still not on record. It is difficult for us to know the number of victims and the number of losses.
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211229526-4d70241a-3995-43af-8a90-128f96cda250.png" alt="Cover" width="80%"/>
+</div>
+<p align="center"">Image source /  The Federal Trade Commission (FTC)</p>
+
+##What do hackers want?
 
 
-
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image3.png "image_tooltip")
-
-
-Image source /  The Federal Trade Commission (FTC)
-
-**What do hackers want?**
-
-
-# 
-
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image4.png "image_tooltip")
-
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211229545-7f6987e1-01ec-42e3-b47d-73aeb766806f.png" alt="Cover" width="80%"/>
+</div>
 
 Based on the figure above, hackers can be classified into four categories based on their purpose:
-
-
 
 * Crypto assets
 * Wallet layer
@@ -94,8 +82,6 @@ Based on the figure above, hackers can be classified into four categories based 
 * Web 2.0 Credentials
 
 To obtain illicit profits, hackers use various methods to get the following information:
-
-
 
 * Use strong cryptocurrencies like Bitcoin and Ethereum, or high-priced NFTs, to obtain hard currency. The "give $1, and I will return $10" scheme is a classic investment gift scam.
 * Find out private keys, tokens, or passwords of cryptocurrency wallets.
@@ -106,17 +92,13 @@ We know what hackers want; so what can we do to protect our data and assets?
 
 “You should always keep your friends close and your enemies closer.”
 
-
-
 * Understanding common threats and attack methods can prevent one from being deceived and becoming a victim.
 * Be alert at all times and keep up on modern information security awareness and habits.
 * Lastly, before you confirm anything, question yourself if you have any doubt or uncertainty.
 
 To help identify attacks and scams, XREX compiled nine Web3 attack methods. We will showcase three of them below.
 
-**Web3 attack methods - Part 1**
-
-
+## Web3 attack methods - Part 1
 
 1. **Credential Phishing**
 
