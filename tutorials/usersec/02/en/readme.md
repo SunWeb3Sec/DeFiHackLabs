@@ -5,9 +5,10 @@ Author: [XREX Security Team](http://xrex.io/)
 Community: [Discord](https://discord.gg/3y3d9DMQ)
 
 Published on: [XREX](https://blog.xrex.io/web-3-0-information-security-guide-what-you-need-to-know-about-blockchain-threats-f4016545d17c)
+
+<div align=center>
 ![1_Ygad9BmiOLcNltL8C2MNag](https://user-images.githubusercontent.com/107821372/211479362-f42793c2-ccf6-4641-8d49-b199a244bcf6.png)
-
-
+</div>
 
 There‘s plenty of buzz around Web 3.0 and innovations in blockchain and cryptocurrencies, but few understand the hidden risks with this technology.
 
@@ -15,7 +16,7 @@ As it is still emerging, widespread misuse raises concerns about fraud, money la
 
 In this article, the XREX information security team will introduce information security in the Web3 world. We will learn simple to advanced security concepts, analyze hacking methods, and give you practical advice on protecting your personal information and digital assets.
 
-**What is Web 3.0 and why is it important? **
+###What is Web 3.0 and why is it important?
 
 Looking back at Web 3.0 predecessors, Web 1.0 and 2.0, will allow us to know why it is an important milestone.
 
