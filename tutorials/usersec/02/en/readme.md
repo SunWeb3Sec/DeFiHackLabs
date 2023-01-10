@@ -239,7 +239,7 @@ In Ponzi schemes, funds are collected from new investors and used to pay existin
 The name Ponzi scheme originated from Charles Ponzi, who duped investors with postage stamp speculation schemes in the 1920s.
 
 * How to identify a Ponzi scheme?
-An ambiguous economic model is a common characteristic of a Ponzi scheme. Thus, the project can promise investors an unreasonable high rate of return even though it is challenging to operate. An example is shown in the screenshots below:
+   An ambiguous economic model is a common characteristic of a Ponzi scheme. Thus, the project can promise investors an unreasonable high rate of return even though it is challenging to operate. An example is shown in the screenshots below:
 <div align=center>
 <img src="https://user-images.githubusercontent.com/52526645/211230305-0e6c25ac-0535-4757-83e9-8257d1797a7e.png" alt="Cover" width="80%"/>
 </div>
