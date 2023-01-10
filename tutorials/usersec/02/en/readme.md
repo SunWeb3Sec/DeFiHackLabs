@@ -50,14 +50,14 @@ Yet as technology evolves, so do abuses. A common stereotype on cryptocurrencies
 
 Blockchain is decentralized, which means users are responsible for protecting assets and identities. No institution or entity can alter or restore transactions on the blockchain. As a result,  many criminal groups can execute scams and use defi vulnerabilities anonymously.
 
-### Damages/losses in Web3 security incidents**
+### Damages/losses in Web3 security incidents
 
 According to [data](https://hacked.slowmist.io/statistics/?c=all&d=all) from SlowMist, a well-known blockchain security company, from 2012 to June 2022, there were at least 787 hacking incidents in the entire blockchain ecosystem, with losses exceeding $26.7 billion.
 
 <div align=center>
  <img src="https://user-images.githubusercontent.com/107821372/211483565-57468dad-d30a-4b48-a5da-ef7e30dc52c6.png" alt="Cover" width="80%"/>
 </div>
-Image source / Slow Mist Technology
+<p align="center""> Image source / Slow Mist Technology </p>
 
 According to [The Federal Trade Commission (FTC)](https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2022/06/reports-show-scammers-cashing-crypto-craze), since 2021 more than 46,000 people have reported losing over **$1 billion** in crypto scams.
 
