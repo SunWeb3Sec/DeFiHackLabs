@@ -20,8 +20,6 @@ In this article, the XREX information security team will introduce information s
 
 Looking back at Web 3.0 predecessors, Web 1.0 and 2.0, will allow us to know why it is an important milestone.
 
-
-
 * Web 1.0 & Web2.0
 
 Since the 1990s, the internet has affected all aspects of our lives. From simple everyday tasks to politics, to economy, education and communication, the list is long.
@@ -38,8 +36,6 @@ Moreover, what we read from the internet may contain intentionally incomplete da
 
 Although Web1.0 and Web2.0 introduced these problems, they also contributed to the birth of Web 3.0, or Web3
 
-
-
 * Web3
 
 Web3 technology is considered the best solution for Web 1.0 and 2.0.
@@ -54,18 +50,13 @@ Yet as technology evolves, so do abuses. A common stereotype on cryptocurrencies
 
 Blockchain is decentralized, which means users are responsible for protecting assets and identities. No institution or entity can alter or restore transactions on the blockchain. As a result,  many criminal groups can execute scams and use defi vulnerabilities anonymously.
 
-**Damages/losses in Web3 security incidents**
+### Damages/losses in Web3 security incidents**
 
 According to [data](https://hacked.slowmist.io/statistics/?c=all&d=all) from SlowMist, a well-known blockchain security company, from 2012 to June 2022, there were at least 787 hacking incidents in the entire blockchain ecosystem, with losses exceeding $26.7 billion.
 
-
-
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image2.png "image_tooltip")
-
-
+<div align=center>
+ <img src="https://user-images.githubusercontent.com/107821372/211483565-57468dad-d30a-4b48-a5da-ef7e30dc52c6.png" alt="Cover" width="80%"/>
+</div>
 Image source / Slow Mist Technology
 
 According to [The Federal Trade Commission (FTC)](https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2022/06/reports-show-scammers-cashing-crypto-craze), since 2021 more than 46,000 people have reported losing over **$1 billion** in crypto scams.
