@@ -26,12 +26,21 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
     ![圖片](https://user-images.githubusercontent.com/52526645/211202573-b4a4847d-a617-42c8-84d0-0f2dbd38a632.png)
    - `0x10a` 函示邏輯如下圖，可以看到關鍵看到紅色框起來的地方，先讀取攻擊者合約上的 token0 是什麼代幣然後帶入轉帳函式 `transfer`，在函式中第一個參數接收者地址 `address(MEM[varg0.data])` 是在 `pancakeCall` 的 `varg3 (_data)` 可被控制的，所以關鍵漏洞問題就在這邊.
    
-        ![圖片](https://user-images.githubusercontent.com/52526645/211204177-fbebe377-23b0-4b0c-bb3e-dcb64dba2afc.png)
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211204177-fbebe377-23b0-4b0c-bb3e-dcb64dba2afc.png" alt="Cover" width="80%"/>
+</div>
+
    - 再來回頭看看攻擊者呼叫 `pancakeCall`的 payload，`_data` 帶入的前 32 bytes 就是收款方的錢包地址.
-![截圖 2023-01-10 上午11 10 37](https://user-images.githubusercontent.com/52526645/211453390-502db65b-cf82-4805-a463-04fc5c7e0dce.png)
+
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211453390-502db65b-cf82-4805-a463-04fc5c7e0dce.png" alt="Cover" width="80%"/>
+</div>
 
 - 開發 POC
     - 通過以上分析攻擊流程後，開發 POC 的合約的邏輯就是呼叫 MEV bot 合約的 `pancakeCall` 然後帶入對應的參數，關鍵是 `_data` 指定收款錢包地址，再來是合約中要有 token0，token1 函式來滿足合約邏輯. 自己可以動手寫寫看. 
     - 解答: [POC](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/BNB48MEVBot_exp.sol) 參考.
     
-         ![圖片](https://user-images.githubusercontent.com/52526645/211204852-4fa65835-17f7-4c91-80ab-79f5b46125df.png)
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211204852-4fa65835-17f7-4c91-80ab-79f5b46125df.png" alt="Cover" width="80%"/>
+</div>
+
