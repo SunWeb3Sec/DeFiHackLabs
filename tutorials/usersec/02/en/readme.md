@@ -70,7 +70,7 @@ It is worth noting that this does not count global data and only records the dat
 ### What do hackers want?
 
 <div align=center>
-<img src="https://user-images.githubusercontent.com/52526645/211229545-7f6987e1-01ec-42e3-b47d-73aeb766806f.png" alt="Cover" width="80%"/>
+<img src="https://user-images.githubusercontent.com/107821372/211486583-6fcca218-06dc-4e1e-b3d2-1db5e4389a23.png" alt="Cover" width="80%"/>
 </div>
 
 Based on the figure above, hackers can be classified into four categories based on their purpose:
@@ -107,46 +107,24 @@ Using tools such as Social-Engineer Toolkit (SET) and Goclone, hackers can copy 
 
 In addition, fake communication messages can be a source of attack. These include email, social media, mobile text messages, phony customer service on Telegram, etc.
 
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211229629-cb4ddbeb-9c4d-4b5d-b8d7-247497cf2de0.png" alt="Cover" width="80%"/>
+</div>
+<p align="center"">Figure 1. 1 / A hacker sends fake Coinbase “account locked” notification to the user through email.</p>
 
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211229665-32e2122f-1815-48d4-9888-217796ae9c70.png" alt="Cover" width="80%"/>
+</div>
+<p align="center"">Figure 1.2 / By clicking View Accounts, the user will be directed to the phishing domain coinbaseclouds.link.</p>
 
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image5.png "image_tooltip")
-
-
-Figure 1. 1 / A hacker sends fake Coinbase “account locked” notification to the user through email.
-
-
-
-<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image6.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image6.png "image_tooltip")
-
-
-Figure 1.2 / By clicking View Accounts, the user will be directed to the phishing domain coinbaseclouds.link.
-
-
-
-<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image7.jpg). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image7.jpg "image_tooltip")
-
-
-<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image8.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image8.png "image_tooltip")
-
-
-Figure 1.3 / Attacker sends phishing link via SMS, redirecting the victim to the mobile phishing site.
+<div align=center>
+<img src="https://user-images.githubusercontent.com/107821372/211494798-2bc71cee-c31a-4ee3-8c19-15e06cb88a2a.jpeg" alt="Cover" width="80%"/>
+</div>
+<p align="center"">Figure 1.3 / Attacker sends phishing link via SMS, redirecting the victim to the mobile phishing site.</p>
 
 Credential phishing attacks are a low-cost and high-paying method for hackers because it costs only a few dollars to send 100,000 phishing messages. However, if just one or two people fall into these traps, the hack may be profitable, sometimes they even make extremely high illegal profits.
 
-**How to prevent Credential Phishing? XREX recommends:**
-
+### How to prevent Credential Phishing? XREX recommends:**
 
 
 * Add frequently used websites to your Favorites or Bookmarks Bar to avoid phishing sites.
@@ -155,7 +133,8 @@ Credential phishing attacks are a low-cost and high-paying method for hackers be
 * Never use the same password for more than one account to prevent multiple accounts from being stolen by using one password.
 * Set complex passwords. We recommend passwords have a minimum of 10 characters, including at least one uppercase letter, one lowercase letter, numbers, and one special symbol.
 * If you find a suspicious website, please report it immediately. This is one way to protect the security of the decentralized ecosystem.
-2. **Ad-hijacking**
+
+### 2. **Ad-hijacking**
 
 Ad-hijacking (also known as brand poaching, direct linking, URL jacking) is similar to credential phishing, except that ad-hijackers uses a fake domain, copy the text of target brands ads, then uses a higher cost-per-click (CPC). 
 
