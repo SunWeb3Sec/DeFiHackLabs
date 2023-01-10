@@ -63,7 +63,7 @@ According to [The Federal Trade Commission (FTC)](https://www.ftc.gov/news-event
 
 It is worth noting that this does not count global data and only records the data of reported cases, which means that many victims are still not on record. It is difficult for us to know the number of victims and the number of losses.
 <div align=center>
-<img src="https://user-images.githubusercontent.com/107821372/211486108-798e3432-3f6d-4304-a82d-b0b25d3e7cbb.png)" alt="Cover" width="80%"/>
+<img src="https://user-images.githubusercontent.com/52526645/211229526-4d70241a-3995-43af-8a90-128f96cda250.png" alt="Cover" width="80%"/>
 </div>
 <p align="center"">Image source /  The Federal Trade Commission (FTC)</p>
 
@@ -124,7 +124,7 @@ In addition, fake communication messages can be a source of attack. These includ
 
 Credential phishing attacks are a low-cost and high-paying method for hackers because it costs only a few dollars to send 100,000 phishing messages. However, if just one or two people fall into these traps, the hack may be profitable, sometimes they even make extremely high illegal profits.
 
-### How to prevent Credential Phishing? XREX recommends:**
+### How to prevent Credential Phishing? XREX recommends:
 
 
 * Add frequently used websites to your Favorites or Bookmarks Bar to avoid phishing sites.
@@ -134,7 +134,7 @@ Credential phishing attacks are a low-cost and high-paying method for hackers be
 * Set complex passwords. We recommend passwords have a minimum of 10 characters, including at least one uppercase letter, one lowercase letter, numbers, and one special symbol.
 * If you find a suspicious website, please report it immediately. This is one way to protect the security of the decentralized ecosystem.
 
-### 2. **Ad-hijacking**
+### 2. Ad-hijacking
 
 Ad-hijacking (also known as brand poaching, direct linking, URL jacking) is similar to credential phishing, except that ad-hijackers uses a fake domain, copy the text of target brands ads, then uses a higher cost-per-click (CPC). 
 
