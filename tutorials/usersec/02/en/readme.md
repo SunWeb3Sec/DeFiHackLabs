@@ -16,7 +16,7 @@ As it is still emerging, widespread misuse raises concerns about fraud, money la
 
 In this article, the XREX information security team will introduce information security in the Web3 world. We will learn simple to advanced security concepts, analyze hacking methods, and give you practical advice on protecting your personal information and digital assets.
 
-###What is Web 3.0 and why is it important?
+### What is Web 3.0 and why is it important?
 
 Looking back at Web 3.0 predecessors, Web 1.0 and 2.0, will allow us to know why it is an important milestone.
 
