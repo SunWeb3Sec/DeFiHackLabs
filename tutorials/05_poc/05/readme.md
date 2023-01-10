@@ -29,7 +29,14 @@ This article is published on XREX and [WTF Academy](https://github.com/AmazingAn
 <div align=center>
 <img src="https://user-images.githubusercontent.com/52526645/211204177-fbebe377-23b0-4b0c-bb3e-dcb64dba2afc.png" alt="Cover" width="80%"/>
 </div>
-           
+
+        ![圖片](https://user-images.githubusercontent.com/52526645/211204177-fbebe377-23b0-4b0c-bb3e-dcb64dba2afc.png)
+   - Looking back at the payload of the attacker calling `pancakeCall`, the first 32 bytes of the input value in `_data` is the wallet address of the payee.
+
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211453390-502db65b-cf82-4805-a463-04fc5c7e0dce.png" alt="Cover" width="80%"/>
+</div>
+
 - Writing POC
     -After analyzing the attack process above, the logic of writing the POC is to call the `pancakeCall` of the MEV bot contract and then bring in the corresponding parameters. The key is `_data` to specify the receiving wallet address, and then the contract must have token0, token1 Function to satisfy the contract logic. You can try to write it yourself.
     - Answer: [POC](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/BNB48MEVBot_exp.sol).
