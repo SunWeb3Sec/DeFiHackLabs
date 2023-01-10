@@ -4,7 +4,7 @@ Author: [XREX Security Team](http://xrex.io/)
 
 社群 [Discord](https://discord.gg/3y3d9DMQ)
 
-同步發表: [XREX-part1](https://blog.xrex.io/web-3-0-information-security-guide-what-you-need-to-know-about-blockchain-threats-f4016545d17c)、[XREX-part2](https://blog.xrex.io/nine-common-web3-hacks-and-scams-bcdc68ec0f0)
+同步發表: [XREX-part1](https://tw.xrex.io/web3-%E8%B3%87%E5%AE%89%E6%95%99%E6%88%B0%E6%89%8B%E5%86%8A-%E4%BD%A0%E4%B8%8D%E5%8F%AF%E4%B8%8D%E7%9F%A5%E7%9A%84%E5%8D%80%E5%A1%8A%E9%8F%88%E5%A8%81%E8%84%85%E6%89%8B%E6%B3%95%E8%88%87%E8%A9%B1%E8%A1%93-544253a90edb)、[XREX-part2](https://tw.xrex.io/%E4%B9%9D%E7%A8%AE%E5%B8%B8%E8%A6%8B%E7%9A%84-web3-%E9%A7%AD%E5%AE%A2%E6%94%BB%E6%93%8A%E8%88%87%E8%A9%90%E9%A8%99%E6%89%8B%E6%B3%95-9cf0c19a3c97)
 
 
 <div align=center>
