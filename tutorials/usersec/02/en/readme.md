@@ -4,7 +4,7 @@ Author: [XREX Security Team](http://xrex.io/)
 
 Community: [Discord](https://discord.gg/3y3d9DMQ)
 
-Published on: [XREX-part1](https://blog.xrex.io/web-3-0-information-security-guide-what-you-need-to-know-about-blockchain-threats-f4016545d17c)、[XREX-part2](https://blog.xrex.io/web-3-0-information-security-guide-what-you-need-to-know-about-blockchain-threats-f4016545d17c](https://blog.xrex.io/nine-common-web3-hacks-and-scams-bcdc68ec0f0)
+Published on: [XREX-part1](https://blog.xrex.io/web-3-0-information-security-guide-what-you-need-to-know-about-blockchain-threats-f4016545d17c)、[XREX-part1](https://blog.xrex.io/web-3-0-information-security-guide-what-you-need-to-know-about-blockchain-threats-f4016545d17c)
 
 <div align=center>
 <img src="https://user-images.githubusercontent.com/107821372/211479362-f42793c2-ccf6-4641-8d49-b199a244bcf6.png" alt="Cover" width="80%"/>
