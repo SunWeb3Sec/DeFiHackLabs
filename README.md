@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-149 incidents included.
+150 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -21,10 +21,13 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 ## [Web3 Cybersecurity Academy](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy)
 ### OnChain transaction debugging (Ongoing)
 - Lesson 1: Tools ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/en) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools) ) 
-- Lesson 2: Warm up ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/) )
-- Lesson 3: Write Your Own PoC (Price Oracle Manipulation) ( English | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/03_write_your_own_poc/) )
-- Lesson 4: Write Your Own PoC ( English | 中文 )
+- Lesson 2: Warm up ( English | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/) )
+- Lesson 3: Writing p0c step by step (Real case1) ( English | 中文 )
+- Lesson 4: Writing p0c step by step (Real case2) ( English | 中文 )
+
 ## List of Past DeFi Incidents
+
+ [20230110 BRA](#20230110---bra---business-logic-flaw)
 
  [20230103 GDS](#20230103---gds---business-logic-flaw)
 
@@ -356,6 +359,28 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230110 - BRA - Business Logic Flaw
+
+### Lost: 819 BNB (~224k$)
+
+Testing
+
+```sh
+forge test --contracts ./src/test/BRA.exp.sol -vvv
+```
+
+#### Contract
+
+[BRA.exp.sol](src/test/BRA.exp.sol)
+
+#### Link reference
+
+https://twitter.com/CertiKAlert/status/1612674916070858753
+
+https://twitter.com/BlockSecTeam/status/1612701106982862849
+
+---
 
 ### 20230103 - GDS - Business Logic Flaw
 
