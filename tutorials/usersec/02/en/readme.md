@@ -231,3 +231,27 @@ Scammers may ask victims to pay an upfront fee – after the victim has already 
 * Consider twice before sending coins from a promise to get more. If it’s too good to be true, it is usually too good to be true.
 * Beware pop-ups from wallet apps related to transfers or authorizations.
 * Keep in mind, transactions in decentralized finance cannot be reversed.
+                  
+### 5. Ponzi schemes
+
+In Ponzi schemes, funds are collected from new investors and used to pay existing investors. It is common for Ponzi scheme organizers to promise **high returns with small or no risk**. However, Ponzi schemes are by definition not sustainable.
+
+The name Ponzi scheme originated from Charles Ponzi, who duped investors with postage stamp speculation schemes in the 1920s.
+
+* How to identify a Ponzi scheme?
+An ambiguous economic model is a common characteristic of a Ponzi scheme. Thus, the project can promise investors an unreasonable high rate of return even though it is challenging to operate. An example is shown in the screenshots below:
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211230305-0e6c25ac-0535-4757-83e9-8257d1797a7e.png" alt="Cover" width="80%"/>
+</div>
+<p align="center"">Figure 5.1 / A platform provides wealth management products with a daily rate of return of 2.72%, equivalent to an annualized rate of return of 1,000%. Which is, as one would say, too good to be true.  </p>
+
+<div align=center>
+<img src="https://user-images.githubusercontent.com/107821372/211504652-b4d2e70f-5cf6-4ff5-b8fc-a6c5b6367c5a.png" alt="Cover" width="80%"/>
+</div>
+<p align="center"">Figure 5.2 / Another platform claims to offer arbitrage opportunities, predictive indicators, market analysis, and insider information to entice users into investing.</p>
+
+### How to a avoid Ponzi scheme? XREX recommends:
+* Be sure to choose an exchange that is licensed, compliant with the law, and has a transparent team. XREX has obtained relevant regulatory licenses and permits such as anti-money laundering compliance and others in the following countries: United States, Canada, Lithuania, Estonia, and Taiwan. XREX is currently applying for licenses in Singapore and Dubai.
+* Do verify the registration and reputation of any adviser and/or trading platform with the appropriate sources or governing bodies before investing with them.
+* Avoid FOMO (fear of missing out) and check if the rate of return makes any sense.
+
