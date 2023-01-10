@@ -260,7 +260,7 @@ The name Ponzi scheme originated from Charles Ponzi, who duped investors with po
 ### 6. Rug pulls
 Rug pulls are crypto scams where a team pumps the value of its token before disappearing with investors' funds_. _A rug pull occurs when fraudsters create a new crypto token, pump up its price, then abandon it as soon as it is about to collapse.
 
-* ase sharing - Squid Game (SQUID)
+* Case sharing - Squid Game (SQUID)
 
 Squid Game (SQUID), the cryptocurrency token inspired by the Netflix hit, rose to hundreds of thousands In just one week. Yet it collapsed immediately. Investors lost everything and had nowhere to ask for compensation.
 
