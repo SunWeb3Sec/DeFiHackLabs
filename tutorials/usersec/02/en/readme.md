@@ -63,12 +63,11 @@ According to [The Federal Trade Commission (FTC)](https://www.ftc.gov/news-event
 
 It is worth noting that this does not count global data and only records the data of reported cases, which means that many victims are still not on record. It is difficult for us to know the number of victims and the number of losses.
 <div align=center>
-<img src="https://user-images.githubusercontent.com/52526645/211229526-4d70241a-3995-43af-8a90-128f96cda250.png" alt="Cover" width="80%"/>
+<img src="https://user-images.githubusercontent.com/107821372/211486108-798e3432-3f6d-4304-a82d-b0b25d3e7cbb.png)" alt="Cover" width="80%"/>
 </div>
 <p align="center"">Image source /  The Federal Trade Commission (FTC)</p>
 
-##What do hackers want?
-
+### What do hackers want?
 
 <div align=center>
 <img src="https://user-images.githubusercontent.com/52526645/211229545-7f6987e1-01ec-42e3-b47d-73aeb766806f.png" alt="Cover" width="80%"/>
@@ -98,9 +97,9 @@ We know what hackers want; so what can we do to protect our data and assets?
 
 To help identify attacks and scams, XREX compiled nine Web3 attack methods. We will showcase three of them below.
 
-## Web3 attack methods - Part 1
+### Web3 attack methods - Part 1
 
-1. **Credential Phishing**
+### 1. **Credential Phishing
 
 Credential phishing starts with fake websites, such as phony exchange logins or airdrop unlock pages. Without being aware of these fake websites, a user may enter their real account information and passwords, resulting in stolen credentials.
 
