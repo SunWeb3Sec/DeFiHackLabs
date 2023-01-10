@@ -2,7 +2,7 @@
 
 Author: [Sun](https://twitter.com/1nf0s3cpt)
 
-社群 [Discord](https://discord.gg/3y3d9DMQ)
+社群 [Discord](https://discord.gg/Fjyngakf3h)
 
 同步發表: XREX | [WTF Academy](https://github.com/AmazingAng/WTF-Solidity#%E9%93%BE%E4%B8%8A%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90)
 

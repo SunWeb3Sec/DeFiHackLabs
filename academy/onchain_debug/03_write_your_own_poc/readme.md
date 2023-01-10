@@ -2,7 +2,7 @@
 
 Author: [▓▓▓▓▓▓](https://twitter.com/h0wsO1)
 
-社群 [Discord](https://discord.gg/3y3d9DMQ)
+社群 [Discord](https://discord.gg/Fjyngakf3h)
 
 同步發表: XREX | WTF Academy 
 
@@ -94,7 +94,7 @@ uint256 ETH_Price = UniV2_USDC_Reserve / UniV2_ETH_Reserve;
 
 當攻擊發生時，通常 Twitter 會是安全分析師的主戰場，會有各路大佬在 Twitter 上發布自己對於攻擊事件的最新發現。
 
-> Tips: 加入 [DeFiHackLabs Discord](https://discord.gg/vG4FePvr) security-alert 頻道，即時收到各路 DeFi 安全大佬們的消息！
+> Tips: 加入 [DeFiHackLabs Discord](https://discord.gg/Fjyngakf3h) security-alert 頻道，即時收到各路 DeFi 安全大佬們的消息！
 
 攻擊事件剛發生時，肯定是各種混亂，先找個文件整理你所發現到的資訊吧！
 
