@@ -30,7 +30,6 @@ This article is published on XREX and [WTF Academy](https://github.com/AmazingAn
 <img src="https://user-images.githubusercontent.com/52526645/211204177-fbebe377-23b0-4b0c-bb3e-dcb64dba2afc.png" alt="Cover" width="80%"/>
 </div>
 
-        ![圖片](https://user-images.githubusercontent.com/52526645/211204177-fbebe377-23b0-4b0c-bb3e-dcb64dba2afc.png)
    - Looking back at the payload of the attacker calling `pancakeCall`, the first 32 bytes of the input value in `_data` is the wallet address of the payee.
 
 <div align=center>
