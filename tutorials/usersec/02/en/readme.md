@@ -4,7 +4,7 @@ Author: [XREX Security Team](http://xrex.io/)
 
 Community: [Discord](https://discord.gg/3y3d9DMQ)
 
-Published on: [XREX](https://blog.xrex.io/web-3-0-information-security-guide-what-you-need-to-know-about-blockchain-threats-f4016545d17c)
+Published on: [XREX-part1](https://blog.xrex.io/web-3-0-information-security-guide-what-you-need-to-know-about-blockchain-threats-f4016545d17c)、[XREX-part2]([https://blog.xrex.io/web-3-0-information-security-guide-what-you-need-to-know-about-blockchain-threats-f4016545d17c](https://blog.xrex.io/nine-common-web3-hacks-and-scams-bcdc68ec0f0)
 
 <div align=center>
 <img src="https://user-images.githubusercontent.com/107821372/211479362-f42793c2-ccf6-4641-8d49-b199a244bcf6.png" alt="Cover" width="80%"/>
@@ -190,6 +190,44 @@ For example:
 </div>
 <p align="center""> Figure 3.4 / Telegram "Only my contacts can add me to groups" setup. </p>
 
+### 4. Fake social media giveaway
 
+Social media is a gold mine for scammers, said Federal Trade Commission (FTC) officials.
 
+Many people rely on social media - it's part of their lives. However,[ FTC reports](https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2022/01/social-media-gold-mine-scammers-2021) indicate scammers are increasingly using social media to con people. 
 
+Hacker hotspots include Facebook, Instagram, Twitter, and other popular social media platforms. To lure readers into taking their bait, hackers create bogus official accounts or use well-known accounts to post messages claiming to give away cryptocurrency, such as “give me $1, and I will return you $10”
+
+* Case Sharing - Indian PM Modi's Twitter account was hacked with bitcoin tweets.
+
+* It was [reported](https://finance.yahoo.com/news/indian-pm-narendra-modis-hacked-035907977.html) that Narendra Modi's personal Twitter account, which has more than 73 million followers, was hacked last year.
+
+* Using the account @narendramodi, a hacker tweeted, "India has adopted Bitcoin as legal tender and distributed bitcoins to its citizens." A scam link was included with the tweet to lure readers.
+
+Modi’s office quickly deleted the tweet and declared the safe recovery of the Twitter account, but information security concerns still remain.
+
+Through social media, scammers trick people into clicking fraudulent links or sending cryptocurrency to the scammer's address. As a victim, this is just the beginning.  
+
+Scammers may ask victims to pay an upfront fee – after the victim has already been scammed. This could be money, stock, or warrants for the deal to go through. Of course, it never will.
+
+<div align=center>
+<img src="https://user-images.githubusercontent.com/107821372/211503551-d2be309c-8418-4317-8639-502bc6e4ea4f.png" alt="Cover" width="50%"/>
+</div>
+<p align="center"">Figure 4.1 / Hackers using a bogus fan page to share photos from other accounts to attract the attention of account owners. </p>
+
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211230190-a41ddceb-534e-4ded-b3c9-72c7d7abfd4f.png" alt="Cover" width="60%"/>
+</div>
+<p align="center"">Figure 4.2 / A fraudulent account leaving a message under an original tweet then use multiple other bogus accounts to comment and like. </p>
+
+<div align=center>
+<img src="https://user-images.githubusercontent.com/52526645/211230198-fd4340e7-af43-4aa4-bc91-932c97715303.png" alt="Cover" width="60%"/>
+</div>
+<p align="center"">Figure 4.3 / Hackers use compromised official accounts to deceive others. </p>
+
+### How to avoid social media giveaway scams? XREX recommends:
+
+* Verify information validity from multiple sources and ignore any free advertising.
+* Consider twice before sending coins from a promise to get more. If it’s too good to be true, it is usually too good to be true.
+* Beware pop-ups from wallet apps related to transfers or authorizations.
+* Keep in mind, transactions in decentralized finance cannot be reversed.
