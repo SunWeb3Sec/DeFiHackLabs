@@ -44,3 +44,5 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 <img src="https://user-images.githubusercontent.com/52526645/211204852-4fa65835-17f7-4c91-80ab-79f5b46125df.png" alt="Cover" width="80%"/>
 </div>
 
+## 延伸學習
+### Foundry trace & debug
