@@ -97,7 +97,7 @@ We know what hackers want; so what can we do to protect our data and assets?
 
 To help identify attacks and scams, XREX compiled nine Web3 attack methods. We will showcase three of them below.
 
-### Web3 attack methods - Part 1
+### Web3 attack methods 
 
 ### 1. Credential Phishing
 
