@@ -7,7 +7,7 @@ Community: [Discord](https://discord.gg/3y3d9DMQ)
 Published on: [XREX](https://blog.xrex.io/web-3-0-information-security-guide-what-you-need-to-know-about-blockchain-threats-f4016545d17c)
 
 <div align=center>
-![1_Ygad9BmiOLcNltL8C2MNag](https://user-images.githubusercontent.com/107821372/211479362-f42793c2-ccf6-4641-8d49-b199a244bcf6.png)
+<img src="https://user-images.githubusercontent.com/107821372/211479362-f42793c2-ccf6-4641-8d49-b199a244bcf6.png" alt="Cover" width="80%"/>
 </div>
 
 There‘s plenty of buzz around Web 3.0 and innovations in blockchain and cryptocurrencies, but few understand the hidden risks with this technology.
