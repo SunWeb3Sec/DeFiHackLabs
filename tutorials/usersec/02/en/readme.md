@@ -346,7 +346,7 @@ However, the ERC20 Approve function has inevitably become a tool for hackers. Th
     -[Revoke.cash](https://revoke.cash)
     -[Approved.zone](https://approved.zone/)
 
-### Let's sum it up
+## Let's sum it up
 
 This blog is an overview of the common Web3 crypto hacks – from phishing to rug pull – to help us better understand Web3 and avoid becoming victims.
 
