@@ -27,19 +27,19 @@ Web3 技術被視為解決 Web1.0 與 Web2.0 產生的最佳解答。Web3 的基
 XREX 資安團隊撰寫本文，整理多個 Web3 世界中常見的攻擊手法與慣用話術，讓我們認識不肖份子和駭客的攻擊手法與慣用話術，在區塊鏈建構的 Web3 世界中，學習保護自己的資料與加密貨幣資產。
 
 ### Web 3 安全事件損失數據
-根據知名區塊鏈安全公司慢霧科技 (SlowMist) 監測數據顯示，從 2012 年到 2022 年 6 月，整個區塊鏈生態系存在至少 787 起被駭事件，損失金額超過 267 億美元。
+根據知名區塊鏈安全公司慢霧科技 (SlowMist) 監測[數據](https://hacked.slowmist.io/statistics/?c=all&d=all)顯示，從 2012 年到 2022 年 6 月，整個區塊鏈生態系存在至少 787 起被駭事件，損失金額超過 267 億美元。
 
 <div align=center>
 <img src="https://user-images.githubusercontent.com/52526645/211229334-b29c3d1e-cbb3-4bc7-9a0e-ca9eecb19f8a.png" alt="Cover" width="80%"/>
 </div>
-<p align="center"">圖片來源 / 慢霧科技</p>
+<p align="center">圖片來源 / 慢霧科技</p>
 
-根據美國聯邦貿易委員會 (Federal Trade Commission, FTC) 的研究，2021 年至 2022 年第一季，美國就有 46,000 人回報遭到加密貨幣金融欺詐，損失價值超過 10 億美元的加密貨幣。值得注意的是，這項數據並未統計全球數據，也只紀錄了有報案的數據，這也代表還有很多不在檯面上的案件，是我們難以確知的受害人數與損失金額。
+根據美國聯邦貿易委員會 [The Federal Trade Commission (FTC)](https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2022/06/reports-show-scammers-cashing-crypto-craze) 的研究，2021 年至 2022 年第一季，美國就有 46,000 人回報遭到加密貨幣金融欺詐，損失價值超過 10 億美元的加密貨幣。值得注意的是，這項數據並未統計全球數據，也只紀錄了有報案的數據，這也代表還有很多不在檯面上的案件，是我們難以確知的受害人數與損失金額。
 
 <div align=center>
 <img src="https://user-images.githubusercontent.com/52526645/211229526-4d70241a-3995-43af-8a90-128f96cda250.png" alt="Cover" width="80%"/>
 </div>
-<p align="center"">圖片來源 / 美國聯邦貿易委員會</p>
+<p align="center">圖片來源 / 美國聯邦貿易委員會</p>
 
 ### 駭客想要的是什麼？
 <div align=center>
