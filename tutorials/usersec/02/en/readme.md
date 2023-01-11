@@ -2,7 +2,7 @@
 
 Author: [XREX Security Team](http://xrex.io/)
 
-Community: [Discord](https://discord.gg/3y3d9DMQ)
+Community: [Discord](https://discord.gg/Fjyngakf3h)
 
 Published on: [XREX-part1](https://blog.xrex.io/web-3-0-information-security-guide-what-you-need-to-know-about-blockchain-threats-f4016545d17c)、[XREX-part2](https://blog.xrex.io/nine-common-web3-hacks-and-scams-bcdc68ec0f0)
 
