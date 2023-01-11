@@ -123,21 +123,19 @@ Google 廣告釣魚詐騙與憑證釣魚攻擊類似，駭客偽造虛假的交�
 <img src="https://user-images.githubusercontent.com/52526645/211229845-3e2b0b5d-0119-482d-b5f7-ffd8cdbf2c3a.png" alt="Cover" width="80%"/>
 </div>
 
-<p align="center""> 圖 3.1 / 駭客假冒項目方的客服帳號，將自我介紹改為官方客服的用戶名稱，藉此混淆視聽。 </p>
+<p align="center"> 圖 3.1 / 駭客假冒項目方的客服帳號，將自我介紹改為官方客服的用戶名稱，藉此混淆視聽。 </p>
 
 <div align=center>
 <img src="https://user-images.githubusercontent.com/52526645/211229868-6dffd02a-e904-44de-920e-d121423f5c4c.png" alt="Cover" width="60%"/>
 </div>
-<p align="center"">圖 3.2 / 假冒的客服人員，要求用戶發送 0.01 BTC 到特定錢包地址才能解鎖</p>
+<p align="center">圖 3.2 / 假冒的客服人員，要求用戶發送 0.01 BTC 到特定錢包地址才能解鎖</p>
 
 <div align=center>
 <img src="https://user-images.githubusercontent.com/52526645/211229912-896ad74a-f1fd-4f1d-9829-db7511e4843e.png" alt="Cover" width="80%"/>
 </div>
-<p align="center"">圖 3.3 / 駭客假冒為項目方，宣稱要向使用者發送免費空投</p>
+<p align="center">圖 3.3 / 駭客假冒為項目方，宣稱要向使用者發送免費空投</p>
 
-
-如何防範假客服釣魚攻擊呢？XREX 建議您：
-
+### 如何防範假客服釣魚攻擊呢？XREX 建議您：
 
 1. 請勿相信 Telegram 或其他社群平台的陌生私訊，官方人員絕對不會突然私訊使用者，更也不會要求以訊息發送帳密資訊。
 2. 涉及機敏資訊的協助需求，如: 存提款、實名驗證、帳號安全等等，請透過官方網站列出的支援管道聯繫。
@@ -146,9 +144,7 @@ Google 廣告釣魚詐騙與憑證釣魚攻擊類似，駭客偽造虛假的交�
 <div align=center>
 <img src="https://user-images.githubusercontent.com/52526645/211229998-9af973c9-b8ad-45e9-86c6-095f7197192b.png" alt="Cover" width="80%"/>
 </div>
-<p align="center""> 圖 3.4 / Telegram 「僅我的聯絡人可將我加入群組」的設置方式 </p>
-
-談到這裡，我們已經討論了 Web3 的定義、國際統計的駭客入侵事件總數與 Web 3 安全事件損失數據、駭客的意圖及目標，以及三種攻擊手法和防範建議。接下來，我們還將繼續解析更多 Web3 攻擊與詐騙方式。繼續閱讀文章
+<p align="center"> 圖 3.4 / Telegram 「僅我的聯絡人可將我加入群組」的設置方式 </p>
 
 ## 四、社群媒體免費贈送詐騙
 
