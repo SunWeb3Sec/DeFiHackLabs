@@ -25,7 +25,7 @@ import "./interface.sol";
 //  The BRA Token contract implements a tax logic in the _transfer() function.
 //  When the sender/recipient is LP Pair, it will charge a double tax fee to LP Pair, but without called sync() functions.
 //  That allows attackers to call the skim() function to collect all imbalanced amounts.
-// Potential mitigations: Implements skim() function in _transfer()
+// Potential mitigations: Implements sync() function in _transfer()
 
 contract Attacker is Test {
     WBNB constant wbnb = WBNB(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
