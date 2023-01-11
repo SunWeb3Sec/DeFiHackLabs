@@ -4,7 +4,7 @@ Author: [▓▓▓▓▓▓](https://twitter.com/h0wsO1)
 
 社群 [Discord](https://discord.gg/Fjyngakf3h)
 
-同步發表: XREX | WTF Academy 
+同步發表: XREX | [WTF Academy](https://github.com/AmazingAng/WTF-Solidity#%E9%93%BE%E4%B8%8A%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90)
 
 在 [01_Tools](/academy/onchain_debug/01_tools/readme.md) 教學中，我們學到了如何使用 Debug Tools 來觀察一筆交易和智能合約互動的過程。
 
