@@ -29,7 +29,7 @@ At DeFiHackLabs we intend to promote Web3 security. We hope that when attacks ha
 2. Understanding of basic DeFi mechanisms including how smart contracts interact with each other.
 
 
-## DeFi Oracle Introduction
+### DeFi Oracle Introduction
 
 Currently, smart contract values such as pricing and configurations cannot update themselves. To perform its contract logic, sometimes it requires external data during execution. This is typically done with the following methods.
 
@@ -71,7 +71,7 @@ uint256 ETH_Price = UniV2_USDC_Reserve / UniV2_ETH_Reserve;
 * To understand more about oracle manipulation, you may check [WTFSolidity](https://github.com/WTFAcademy/WTF-Solidity/blob/main/S15_OracleManipulation/readme.md).
 
 
-### Oracle Price Manipulation Attack Modes
+#### Oracle Price Manipulation Attack Modes
 
 Most common attack modes:
 
