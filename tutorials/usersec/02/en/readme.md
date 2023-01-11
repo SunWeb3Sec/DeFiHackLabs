@@ -99,7 +99,7 @@ To help identify attacks and scams, XREX compiled nine Web3 attack methods. We w
 
 ### Web3 attack methods 
 
-### 1. Credential Phishing
+## 1. Credential Phishing
 
 Credential phishing starts with fake websites, such as phony exchange logins or airdrop unlock pages. Without being aware of these fake websites, a user may enter their real account information and passwords, resulting in stolen credentials.
 
@@ -120,7 +120,7 @@ In addition, fake communication messages can be a source of attack. These includ
 <div align=center>
 <img src="https://user-images.githubusercontent.com/107821372/211494798-2bc71cee-c31a-4ee3-8c19-15e06cb88a2a.jpeg" alt="Cover" width="80%"/>
 </div>
-<p align="center"">Figure 1.3 / Attacker sends phishing link via SMS, redirecting the victim to the mobile phishing site.</p>
+<p align="center">Figure 1.3 / Attacker sends phishing link via SMS, redirecting the victim to the mobile phishing site.</p>
 
 Credential phishing attacks are a low-cost and high-paying method for hackers because it costs only a few dollars to send 100,000 phishing messages. However, if just one or two people fall into these traps, the hack may be profitable, sometimes they even make extremely high illegal profits.
 
@@ -134,7 +134,7 @@ Credential phishing attacks are a low-cost and high-paying method for hackers be
 * Set complex passwords. We recommend passwords have a minimum of 10 characters, including at least one uppercase letter, one lowercase letter, numbers, and one special symbol.
 * If you find a suspicious website, please report it immediately. This is one way to protect the security of the decentralized ecosystem.
 
-### 2. Ad-hijacking
+## 2. Ad-hijacking
 
 Ad-hijacking (also known as brand poaching, direct linking, URL jacking) is similar to credential phishing, except that ad-hijackers uses a fake domain, copy the text of target brands ads, then uses a higher cost-per-click (CPC). 
 
@@ -145,7 +145,7 @@ In the picture below, we queried STEPN, the recently popular "Move-to-earn" app,
 <div align=center>
 <img src="https://user-images.githubusercontent.com/52526645/211229744-f713a89d-8b8b-4483-b62e-3903578394d4.png" alt="Cover" width="80%"/>
 </div>
-<p align="center"">Figure 2.1 / Searching for STEPN on Google reveals Google ads full of phishing scams.</p>
+<p align="center">Figure 2.1 / Searching for STEPN on Google reveals Google ads full of phishing scams.</p>
 
 ### How to prevent ad-hijacking? XREX recommends:
 * Pay extra attention to suspicious domains when searching for keyword clicks.
@@ -153,7 +153,7 @@ In the picture below, we queried STEPN, the recently popular "Move-to-earn" app,
 * Install anti**-**phishing plugins like [Netcraft Extension](https://chrome.google.com/webstore/detail/netcraft-extension/bmejphbfclcpmpohkggcjeibfilpamia?hl=en), [PeckShieldAlert](https://chrome.google.com/webstore/detail/peckshieldalert/dakkielolpafjbgnjnakddabmbbkcioe), [Scam Sniffer](https://chrome.google.com/webstore/detail/scam-sniffer/mnkbccinkbalkmmnmbcicdobcmgggmfc), [Wallet Guard](https://chrome.google.com/webstore/detail/wallet-guard/pdgbckgdncnhihllonhnjbdoighgpimk), or [MetaShield](https://chrome.google.com/webstore/detail/metashield/dibeogjcfnjbocgdjnehncoagplahokb?hl=zh-TW&authuser=4) in your browser to automatically detect phishing sites.
 * If you find a suspicious website, please report it immediately.
 
-### 3. Fake Customer Service
+## 3. Fake Customer Service
 
 Hackers pretend to be official employees of defi projects on social media. They trick users into filling out forms such as airdrop registration and service satisfaction surveys.
 
@@ -173,7 +173,7 @@ For example:
 <div align=center>
 <img src="https://user-images.githubusercontent.com/52526645/211229868-6dffd02a-e904-44de-920e-d121423f5c4c.png" alt="Cover" width="60%"/>
 </div>
-<p align="center"">Figure 3.2 / Fake customer service staff asking users to send 0.01 BTC to a specific wallet address to unlock.</p>
+<p align="center">Figure 3.2 / Fake customer service staff asking users to send 0.01 BTC to a specific wallet address to unlock.</p>
 
 <div align=center>
 <img src="https://user-images.githubusercontent.com/52526645/211229912-896ad74a-f1fd-4f1d-9829-db7511e4843e.png" alt="Cover" width="80%"/>
@@ -188,9 +188,9 @@ For example:
 <div align=center>
 <img src="https://user-images.githubusercontent.com/52526645/211229998-9af973c9-b8ad-45e9-86c6-095f7197192b.png" alt="Cover" width="80%"/>
 </div>
-<p align="center""> Figure 3.4 / Telegram "Only my contacts can add me to groups" setup. </p>
+<p align="center"> Figure 3.4 / Telegram "Only my contacts can add me to groups" setup. </p>
 
-### 4. Fake social media giveaway
+###4. Fake social media giveaway
 
 Social media is a gold mine for scammers, said Federal Trade Commission (FTC) officials.
 
@@ -232,7 +232,7 @@ Scammers may ask victims to pay an upfront fee – after the victim has already 
 * Beware pop-ups from wallet apps related to transfers or authorizations.
 * Keep in mind, transactions in decentralized finance cannot be reversed.
                   
-### 5. Ponzi schemes
+## 5. Ponzi schemes
 
 In Ponzi schemes, funds are collected from new investors and used to pay existing investors. It is common for Ponzi scheme organizers to promise **high returns with small or no risk**. However, Ponzi schemes are by definition not sustainable.
 
@@ -257,7 +257,7 @@ The name Ponzi scheme originated from Charles Ponzi, who duped investors with po
 * Do verify the registration and reputation of any adviser and/or trading platform with the appropriate sources or governing bodies before investing with them.
 * Avoid FOMO (fear of missing out) and check if the rate of return makes any sense.
 
-### 6. Rug pulls
+## 6. Rug pulls
 Rug pulls are crypto scams where a team pumps the value of its token before disappearing with investors' funds_. _A rug pull occurs when fraudsters create a new crypto token, pump up its price, then abandon it as soon as it is about to collapse.
 
 * Case sharing - Squid Game (SQUID)
@@ -277,7 +277,7 @@ Rug pulls can also occur in un-audited smart contracts through pre-programmed co
 * Verify that multiple information security companies have reviewed the smart contract and that the audit report is open-sourced.
 * See if there are hype social bots on social media regarding the project. Fake hype is typically done with social bots and paid followers, which attempts to engage consumers to be excited and believe in a product that is in high demand and low supply.
 
-### 7. Seed phrase phishing
+## 7. Seed phrase phishing
 
 A seed phrase is a master key that unlocks access to all your crypto assets, typically in the mnemonic form. A mnemonic is usually a 12 to 24 word phrase that cryptography represents your private key, making it slightly easier to remember and recover. A person with access to the mnemonic is equivalent to having access to the encrypted assets,
 
