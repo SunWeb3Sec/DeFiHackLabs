@@ -4,7 +4,7 @@ Author: [▓▓▓▓▓▓](https://twitter.com/h0wsO1)
 
 Translation: [Simon](https://www.linkedin.com/in/tysliu/) ＆ [Helen](https://www.linkedin.com/in/helen-l-25b7a41a8/) 
 
-Community: [Discord](https://discord.gg/3y3d9DMQ)
+Community: [Discord](https://discord.gg/Fjyngakf3h)
 
 Published on: XREX | [WTF Academy](https://github.com/AmazingAng/WTF-Solidity#%E9%93%BE%E4%B8%8A%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90)
 
