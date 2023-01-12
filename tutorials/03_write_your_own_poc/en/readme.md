@@ -2,7 +2,7 @@
 
 Author: [▓▓▓▓▓▓](https://twitter.com/h0wsO1)
 
-Translation: Simon ＆ Helen 
+Translation: [Simon](https://www.linkedin.com/in/tysliu/) ＆ [Helen](https://www.linkedin.com/in/helen-l-25b7a41a8/) 
 
 Community: [Discord](https://discord.gg/3y3d9DMQ)
 
