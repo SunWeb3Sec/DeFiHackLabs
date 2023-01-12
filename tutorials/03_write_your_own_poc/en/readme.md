@@ -12,7 +12,7 @@ In [01_Tools](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/oncha
 
 In  [02_Warm](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/academy/onchain_debug/02_warmup/en/readme.md), we analyzed a transaction on a decentralized exchange using Foundry.
 
-For this publication, we will analyze an hattack incident utilizing an oracle exploit. We’ll take you step-by-step through key function calls and then we’ll reproduce the attack together using the Foundry framework.
+For this publication, we will analyze a hacker incident utilizing an oracle exploit. We’ll take you step-by-step through key function calls and then we’ll reproduce the attack together using the Foundry framework.
 
 
 ## Why is Reproducing Attacks Helpful?
@@ -35,7 +35,7 @@ At DeFiHackLabs we intend to promote Web3 security. We hope that when attacks ha
 Currently, smart contract values such as pricing and configuration cannot update themselves. To execute its contract logic, external data is sometimes required during execution. This is typically done with the following methods.
 
 1. Through externally owned accounts. We can calculate the price based on the reserves of these accounts.
-2. Use an oracle, whitch is maintained by someone or even yourself. With external data updated periodically. ie., price, interest rate, anything really. In Uniswap V2, they provide the current price of the asset, which is used to determine the relative value of the asset being traded and thus execute the trade.
+2. Use an oracle, which is maintained by someone or even yourself. With external data updated periodically. ie., price, interest rate, anything. In Uniswap V2, they provide the current price of the asset, which is used to determine the relative value of the asset being traded and thus execute the trade.
 
 * For example, there is a lending contract, it requires the current ETH price to determine if the borrower’s position is to be liquidated.
 
@@ -55,7 +55,7 @@ Currently, smart contract values such as pricing and configuration cannot update
 
      `42,346,768.252804 / 33,906.6145928 = 1248.9235`
 
-  * Solidity Pseudocode:For the lending contract to fetch the current ETH price,the pseudocode can be as the following:
+  * Solidity Pseudocode: For the lending contract to fetch the current ETH price, the pseudocode can be as the following:
 
 ```solidity=
 uint256 UniV2_ETH_Reserve = WETH.balanceOf(0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc);
@@ -65,11 +65,11 @@ uint256 ETH_Price = UniV2_USDC_Reserve / UniV2_ETH_Reserve;
    > #### Please note this method of obtaining price is easily manipulated. Please do not use it in the production code.
 
 *  #### Skim()
-   Uniswap V2 is a decentralized exchange(DEX) that uses a liquidity pool to trade assets. It has a `skim()`[^1]function as a safety measure to protect   against potential issues from customized token implementations that may change the balance of the pair contract.However, `skim()`can also be used in conjunction with price manipulation.
+   Uniswap V2 is a decentralized exchange(DEX) that uses a liquidity pool to trade assets. It has a `skim()`[^1]function as a safety measure to protect against potential issues from customized token implementations that may change the balance of the pair contract. However, `skim()`can also be used in conjunction with price manipulation.
 
-[^1]:Please see the figure for a full explanation of Skim().![截圖 2023-01-11 下午5 08 07](https://user-images.githubusercontent.com/107821372/211970534-67370756-d99e-4411-9a49-f8476a84bef1.png)Image source / [Uniswap V2 Core whitepaper](https://uniswap.org/whitepaper.pdf)
+[^1]: Please see the figure for a full explanation of Skim().![截圖 2023-01-11 下午5 08 07](https://user-images.githubusercontent.com/107821372/211970534-67370756-d99e-4411-9a49-f8476a84bef1.png)Image source / [Uniswap V2 Core whitepaper](https://uniswap.org/whitepaper.pdf)
 
-* For more information, you could following bellow resources
+* For more information, you could following bellow the resources
   * Uniswap V2 AMM mechanisms: [Smart Contract Programmer](https://www.youtube.com/watch?v=Ar4Ik7Bov0U).
   * Oracle manipulation: [WTFSolidity](https://github.com/WTFAcademy/WTF-Solidity/blob/main/S15_OracleManipulation/readme.md).
 
@@ -127,16 +127,16 @@ Based on experience, 12 hours after the attack, 90% of the attack autopsy will h
   3. DelegateCall: `msg.sender`  will remain the same, typically used in proxying calls. Please see [WTF Solidity](https://github.com/WTFAcademy/WTF-Solidity/tree/main/23_Delegatecall) for more details.
 
 > Please note, internal function calls[^2] are not visible in Ethereum EVM.
-[^2]:Internal function calls are invisible to the blockchain, since they don't create any new transactions or blocks. In this way, they cannot be read by other smart contracts or show up in the blockchain transaction history.
-* Futher Information - Attackers Flash loan attack mode
+[^2]: Internal function calls are invisible to the blockchain since they don't create any new transactions or blocks. In this way, they cannot be read by other smart contracts or show up in the blockchain transaction history.
+* Further Information - Attackers Flash loan attack mode
   1. Check if the attack will be profitable. First, ensure loans can be obtained, then ensure the target has enough balance.
      - This means you will see some 'static calls' in the beginning.
-  2. Use DEX or Lending Protocols to obtain a flash loan,look for the following key function calls
+  2. Use DEX or Lending Protocols to obtain a flash loan, look for the following key function calls
      - UniswapV2, Pancakeswap: `.swap()`
      - Balancer: `flashLoan()`
      - DODO: `.flashloan()`
      - AAVE: `.flashLoan()`
-  3. Callbacks from flash loan protocol to attacker’s contract,look for the following key function calls
+  3. Callbacks from flash loan protocol to attacker’s contract, look for the following key function calls
         - UniswapV2: `.uniswapV2Call()`
         - Pancakeswap: `.Pancakeswap()`
         - Balancer: `.receiveFlashLoan()`
@@ -147,7 +147,7 @@ Based on experience, 12 hours after the attack, 90% of the attack autopsy will h
 
 ### Practice: 
 
-Identify various stages of the EGD Finance Exploit attack on [Phalcon](https://phalcon.blocksec.com/tx/bsc/0x50da0b1b6e34bce59769157df769eb45fa11efc7d0e292900d6b0a86ae66a2b3) . More specifically ‘flashloan‘, ’callback‘, ’weakness‘, and ’profit’.
+Identify various stages of the EGD Finance Exploit attack on [Phalcon](https://phalcon.blocksec.com/tx/bsc/0x50da0b1b6e34bce59769157df769eb45fa11efc7d0e292900d6b0a86ae66a2b3). More specifically ‘flashloan‘, ’callback‘, ’weakness‘, and ’profit’.
 
 `Expand Level: 3`
 <img width="1898" alt="TryToDecodeFromYourEyes" src="https://user-images.githubusercontent.com/26408530/211231441-b5cd2cd8-a438-4344-b014-6b8e92ab2532.png">
@@ -161,7 +161,7 @@ Identify various stages of the EGD Finance Exploit attack on [Phalcon](https://p
 
 
 ### Step 3: Reproduce code
-After analysis the attack transaction function calls,Let’s now try to reproduce some code:
+After analysis of the attack transaction function calls, let’s now try to reproduce some code:
 
 #### Step A. Complete fixtures.
 
@@ -239,7 +239,7 @@ contract Attacker is Test { // simulated attacker(EOA)
     }
  
     function testExploit() public { // To be executed by Foundry testcases, it must be named "test" at the start.
-        // In order to observe the changes in the balance, print out the balance first, before attacking.
+        //To observe the changes in the balance, print out the balance first, before attacking.
         emit log_named_decimal_uint("[Start] Attacker USDT Balance", IERC20(usdt).balanceOf(address(this)), 18);
         emit log_named_decimal_uint("[INFO] EGD/USDT Price before price manipulation", IEGD_Finance(EGD_Finance).getEGDPrice(), 18);
         emit log_named_decimal_uint("[INFO] Current earned reward (EGD token)", IEGD_Finance(EGD_Finance).calculateAll(address(exploit)), 18);
@@ -326,7 +326,7 @@ During the second callback, the attacker only called `claimAllReward()` from EGD
 
 ![CallClaimReward](https://user-images.githubusercontent.com/26408530/211231522-a54ef929-63e3-4b9c-8f0c-e609c2055b2c.png)
 
-Futher expanding the `claimAllReward()` call stack. You’ll find EGD Finance performed a read on `0xa361-Cake-LP` for the balance of EGD Token and USDT, then transferred a large amount of EGD Token to the attacker’s contract.
+Further expanding the `claimAllReward()` call stack. You’ll find EGD Finance performed a read on `0xa361-Cake-LP` for the balance of EGD Token and USDT, then transferred a large amount of EGD Token to the attacker’s contract.
 
 ![ClaimRewardDetail](https://user-images.githubusercontent.com/26408530/211231532-d9b0e7ce-ee65-48fb-a2eb-6fccbb799234.png)
 
@@ -334,7 +334,7 @@ Futher expanding the `claimAllReward()` call stack. You’ll find EGD Finance pe
 
 Using Etherscan, we can see what trading pair `0xa361-Cake-LP` corresponds to.
 
-Method 1(fast)：View the first two largest reserve tokens of the contract in [Etherscan](https://bscscan.com/address/0xa361433e409adac1f87cdf133127585f8a93c67d) 
+Method 1(fast)： View the first two largest reserve tokens of the contract in [Etherscan](https://bscscan.com/address/0xa361433e409adac1f87cdf133127585f8a93c67d) 
 
 ![Etherscan-Top2](https://user-images.githubusercontent.com/26408530/211231654-613672c0-400d-4e53-891c-4c309d8ce84c.png)
 Method 2(accurate)：[Read Contract](https://bscscan.com/address/0xa361433e409adac1f87cdf133127585f8a93c67d#readContract) Check the address of token0 and token1.
@@ -548,9 +548,9 @@ Note: EGD-Finance.exp.sol from DeFiHackLabs includes a preemptive step which is 
 This write-up does not include this step, feel free to try it yourself! Attacker Stack Tx: 0x4a66d01a017158ff38d6a88db98ba78435c606be57ca6df36033db4d9514f9f8
 
 
-### The third sharing will conclude here, if you wish to learn more, check out the links below.
+#### The third sharing will conclude here, if you wish to learn more, check out the links below.
 
-
+---
 ### Learning materials
 
 [samczsun's eth txn explorer and vscode extension](https://www.youtube.com/watch?v=HXgu239mPBc)
@@ -562,5 +562,6 @@ This write-up does not include this step, feel free to try it yourself! Attacker
 [Reversing The EVM: Raw Calldata](https://degatchi.com/articles/reading-raw-evm-calldata)
 
 [https://web3sec.xrex.io/](https://web3sec.xrex.io/)
+---
+### Appendix
 
-### Apendis
