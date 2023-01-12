@@ -562,6 +562,7 @@ This write-up does not include this step, feel free to try it yourself! Attacker
 [Reversing The EVM: Raw Calldata](https://degatchi.com/articles/reading-raw-evm-calldata)
 
 [https://web3sec.xrex.io/](https://web3sec.xrex.io/)
+
 ---
 ### Appendix
 
