@@ -10,7 +10,7 @@ In [01_Tools](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/oncha
 
 In  [02_Warm](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/academy/onchain_debug/02_warmup/en/readme.md), we analyzed a transaction on a decentralized exchange using Foundry.
 
-For this publication, we will analyze an attack incident utilizing an oracle exploit. We’ll take you step-by-step through key function calls and then we’ll reproduce the attack together using the Foundry framework.
+For this publication, we will analyze an hattack incident utilizing an oracle exploit. We’ll take you step-by-step through key function calls and then we’ll reproduce the attack together using the Foundry framework.
 
 
 ## Why is Reproducing Attacks Helpful?
@@ -24,17 +24,17 @@ At DeFiHackLabs we intend to promote Web3 security. We hope that when attacks ha
 5. Improve your overall Solidity ”Kung Fu“.
 
 ## Some Need-to-knows Before Reproducing Transactions
-
-1. Understanding of common attack modes. Which we have curated in [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs).
-2. Understanding of basic DeFi mechanisms including how smart contracts interact with each other.
+Understanding of 
+1. common attack modes. Which we have curated in [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs).
+2. basic DeFi mechanisms including how smart contracts interact with each other.
 
 
 ### DeFi Oracle Introduction
 
-Currently, smart contract values such as pricing and configurations cannot update themselves. To perform its contract logic, sometimes it requires external data during execution. This is typically done with the following methods.
+Currently, smart contract values such as pricing and configuration cannot update themselves. To execute its contract logic, external data is sometimes required during execution. This is typically done with the following methods.
 
 1. Through externally owned accounts. We can calculate the price based on the reserves of these accounts.
-2. Use an oracle. An oracle is a contract that is maintained by someone or even yourself. With external data updated periodically. ie., price, interest rate, anything. 
+2. Use an oracle, whitch is maintained by someone or even yourself. With external data updated periodically. ie., price, interest rate, anything really. In Uniswap V2, they provide the current price of the asset, which is used to determine the relative value of the asset being traded and thus execute the trade.
 
 * For example, there is a lending contract, it requires the current ETH price to determine if the borrower’s position is to be liquidated.
 
@@ -63,18 +63,14 @@ uint256 ETH_Price = UniV2_USDC_Reserve / UniV2_ETH_Reserve;
 ```
    > #### Please note this method of obtaining price is easily manipulated. Please do not use it in the production code.
 
-### Skim()
-In Uniswap V2, skim() is one of the bail-out functions.
+#### Skim()
+Uniswap V2 is a decentralized exchange(DEX) that uses a liquidity pool to trade assets. It has a `skim()`[^1]function as a safety measure to protect against potential issues from customized token implementations that may change the balance of the pair contract.However, `skim()`can also be used in conjunction with price manipulation.
 
-During a trade, it is possible to overfill uint112 storage slots for reserves if enough tokens are sent to a pair, which would otherwise cause the trade to fail. Using skim(), a user can withdraw the difference between the pair's current balance and that of the caller if the difference exceeds zero.
-
-This function, however, can also be used with Price Actions.
+[^1]:Please see the figure for a full explanation of Skim().![截圖 2023-01-11 下午5 08 07](https://user-images.githubusercontent.com/107821372/211970534-67370756-d99e-4411-9a49-f8476a84bef1.png)Image source / [Uniswap V2 Core whitepaper](https://uniswap.org/whitepaper.pdf)
 
 * For more information, you could following bellow resources
   * Uniswap V2 AMM mechanisms: [Smart Contract Programmer](https://www.youtube.com/watch?v=Ar4Ik7Bov0U).
   * Oracle manipulation: [WTFSolidity](https://github.com/WTFAcademy/WTF-Solidity/blob/main/S15_OracleManipulation/readme.md).
-  * [Uniswap V2 Core whitepaper](https://uniswap.org/whitepaper.pdf).
-
 
 ### Oracle Price Manipulation Attack Modes
 
@@ -129,49 +125,35 @@ Based on experience, 12 hours after the attack, 90% of the attack autopsy will h
   2. StaticCall: Will not change the receiver’s storage, used for fetching state and variables.
   3. DelegateCall: `msg.sender`  will remain the same, typically used in proxying calls. Please see [WTF Solidity](https://github.com/WTFAcademy/WTF-Solidity/tree/main/23_Delegatecall) for more details.
 
-> Please note, internal function calls[^1] are not visible in Ethereum EVM.
-[^1]:nternal function calls are invisible to the blockchain, since they don't create any new transactions or blocks. In this way, they cannot be read by other smart contracts or show up in the blockchain transaction history.
+> Please note, internal function calls[^2] are not visible in Ethereum EVM.
+[^2]:internal function calls are invisible to the blockchain, since they don't create any new transactions or blocks. In this way, they cannot be read by other smart contracts or show up in the blockchain transaction history.
 ---
 
-Flash loan attack mode: 
-
-
+### Flash loan attack mode: 
 
 1. Check if the attack will be profitable. First, ensure loans can be obtained, then ensure the target has enough balance.
-    * This means you will see some static calls in the beginning.
-2. Use DEX or Lending Protocols to obtain a flash loan
-    * Look for the following key function calls
-    * UniswapV2, Pancakeswap: .swap()
-    * Balancer: flashLoan()
-    * DODO: .flashloan()
-    * AAVE: .flashLoan()
-3. Callbacks from flash loan protocol to attacker’s contract
-    * Look for the following key function calls
-    * UniswapV2: .uniswapV2Call()
-    * Pancakeswap: .Pancakeswap()
-    * Balancer: .receiveFlashLoan()
-    * DODO: .DXXFlashLoanCall()
-    * AAVE: .executeOperation()
+    * This means you will see some 'static calls' in the beginning.
+2. Use DEX or Lending Protocols to obtain a flash loan,look for the following key function calls
+    - UniswapV2, Pancakeswap: `.swap()`
+    - Balancer: `flashLoan()`
+    - DODO: `.flashloan()`
+    - AAVE: `.flashLoan()`
+3. Callbacks from flash loan protocol to attacker’s contract,look for the following key function calls
+    - UniswapV2: `.uniswapV2Call()`
+    - Pancakeswap: `.Pancakeswap()`
+    - Balancer: `.receiveFlashLoan()`
+    - DODO: `.DXXFlashLoanCall()`
+    - AAVE: `.executeOperation()`
 4. Execute the attack to profit from contract weakness.
 5. Return the flash loan
-    * Set approval allowing loan platforms to use transferFrom() and return the loan.
+    * Set approval allowing loan platforms return the loan by`transferFrom()`.
 
-Practice: Identify various stages of the EGD Finance Exploit attack. More specifically flashloan, callback, weakness, and profit.
+### [Practice](https://phalcon.blocksec.com/tx/bsc/0x50da0b1b6e34bce59769157df769eb45fa11efc7d0e292900d6b0a86ae66a2b3): 
+Identify various stages of the EGD Finance Exploit attack. More specifically flashloan, callback, weakness, and profit.
 
-Expand Level: 3
-
-[https://phalcon.blocksec.com/tx/bsc/0x50da0b1b6e34bce59769157df769eb45fa11efc7d0e292900d6b0a86ae66a2b3](https://phalcon.blocksec.com/tx/bsc/0x50da0b1b6e34bce59769157df769eb45fa11efc7d0e292900d6b0a86ae66a2b3)
-
-
-
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store the image on your image server and adjust the path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image3.png "image_tooltip")
-
-
-Protip: If you are unable to understand the logic of individual function calls. Try tracing through the entire call stack sequentially, take notes, and pay special attention to the money trail. You’ll have a much better understanding after doing this a few times.
-
+`Expand Level: 3`
+<img width="1898" alt="TryToDecodeFromYourEyes" src="https://user-images.githubusercontent.com/26408530/211231441-b5cd2cd8-a438-4344-b014-6b8e92ab2532.png">
+>Protip: If you are unable to understand the logic of individual function calls. Try tracing through the entire call stack sequentially, take notes, and pay special attention to the money trail. You’ll have a much better understanding after doing this a few times.
 
 ---
 
@@ -196,12 +178,6 @@ Let's continue with analyzing the exploit…
 
 We see here the attacker called Pancakeswap.swap() function to take advantage of the exploit, looks like there is a second flash loan call in the call stack.
 
-
-
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store the image on your image server and adjust the path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image4.png "image_tooltip")
 
 
 Pancakeswap uses the .pancakeCall() interface to perform a callback on the attacker’s contract. You might be wondering how the attacker is executing different codes during each of the two callbacks.
