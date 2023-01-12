@@ -2,6 +2,8 @@
 
 Author: [▓▓▓▓▓▓](https://twitter.com/h0wsO1)
 
+Translation: Simon ＆ Helen 
+
 Community: [Discord](https://discord.gg/3y3d9DMQ)
 
 Published on: XREX | [WTF Academy](https://github.com/AmazingAng/WTF-Solidity#%E9%93%BE%E4%B8%8A%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90)
