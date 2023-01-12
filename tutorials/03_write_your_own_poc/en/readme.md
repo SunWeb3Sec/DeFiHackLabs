@@ -73,7 +73,7 @@ This function, however, can also be used with Price Actions.
 * For more information, you could following bellow resources
   * Uniswap V2 AMM mechanisms: [Smart Contract Programmer](https://www.youtube.com/watch?v=Ar4Ik7Bov0U).
   * Oracle manipulation: [WTFSolidity](https://github.com/WTFAcademy/WTF-Solidity/blob/main/S15_OracleManipulation/readme.md).
-  * (Uniswap V2 Core whitepaper](https://uniswap.org/whitepaper.pdf).
+  * [Uniswap V2 Core whitepaper](https://uniswap.org/whitepaper.pdf).
 
 
 ### Oracle Price Manipulation Attack Modes
