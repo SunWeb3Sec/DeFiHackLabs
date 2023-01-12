@@ -82,7 +82,7 @@ Through a sig.eth query, we find that the 4 bytes signature is `multicall(bytes[
 
 [ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/) | [ETHCMD - Guess ABI](https://www.ethcmd.com/)
 
-ABI to interface: When developing POC, you need to call other contracts but you need an interface. We can use this tool to help you quickly generate the interfaces. Go to Etherscan to copy the ABI, and paste it on the tool to see the generated Interface. [Example](https://etherscan.io/address/0xb3da8d6da3ede239ccbf576ca0eaa74d86f0e9d3#code).
+ABI to interface: When developing a POC, it's necessary to have interfaces to call other contracts. We can use this tool to help you quickly generate the interfaces. Go to Etherscan to copy the ABI, and paste it on the tool to see the generated Interface. [Example](https://etherscan.io/address/0xb3da8d6da3ede239ccbf576ca0eaa74d86f0e9d3#code).
 
 ![圖片](https://user-images.githubusercontent.com/52526645/210587442-e7853d8b-0613-426e-8a27-d70c80e2a42d.png)
 ![圖片](https://user-images.githubusercontent.com/52526645/210587682-5fb07a01-2b21-41fa-9ed5-e7f45baa0b3e.png)
