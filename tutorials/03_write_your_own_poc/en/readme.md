@@ -54,7 +54,8 @@ Currently, smart contract values such as pricing and configuration cannot update
   * Formula: Applying the `x * y = k` formula will yield the price for each ETH:
 
      `42,346,768.252804 / 33,906.6145928 = 1248.9235`
-     (Market prices may differ from the calculated price by a few cents. In most cases, this refers to a trading fee or a new transaction that affects the pool. This variance can be skimmed with `skim()`.)
+     
+   (Market prices may differ from the calculated price by a few cents. In most cases, this refers to a trading fee or a new transaction that affects the pool. This variance can be skimmed with `skim()`.)
 
   * Solidity Pseudocode: For the lending contract to fetch the current ETH price, the pseudocode can be as the following:
 
