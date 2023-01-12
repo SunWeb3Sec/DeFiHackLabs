@@ -1,4 +1,4 @@
-# Move security: 1. Move 语言安全性解析 - 智能合约语言的 Game Changer 
+# Move Security: 1. Move 语言安全性解析 - 智能合约语言的 Game Changer 
 
 Author: [Numen](https://twitter.com/numencyber)
 
