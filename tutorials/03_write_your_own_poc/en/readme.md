@@ -36,7 +36,7 @@ Currently, smart contract values such as pricing and configurations cannot updat
 1. Through externally owned accounts. We can calculate the price based on the reserves of these accounts.
 2. Use an oracle. An oracle is a contract that is maintained by someone or even yourself. With external data updated periodically. ie., price, interest rate, anything. 
 
-* For example There is a lending contract, it requires the current ETH price to determine if the borrower’s position is to be liquidated.
+* For example, there is a lending contract, it requires the current ETH price to determine if the borrower’s position is to be liquidated.
 
   * In this case, ETH price is the external data. One possible solution is to obtain it from Uniswap V2.
 
@@ -54,10 +54,7 @@ Currently, smart contract values such as pricing and configurations cannot updat
 
      `42,346,768.252804 / 33,906.6145928 = 1248.9235`
 
-    (存在細微差距，通常代表交易手續費收入或是有人意外轉入代幣，可被 `skim()` 取走)
-    (The calculated price often yields minute discrepancies from the market price. This usually means a trading fee or new transaction affecting the pool, this variance can be skimmed using the skim() function.)
-
-  * Solidity Pseudocode: Therefore, for the lending contract to fetch the current ETH price. The pseudocode can be summarized as the following:
+  * Solidity Pseudocode:For the lending contract to fetch the current ETH price,the pseudocode can be as the following:
 
 ```solidity=
 uint256 UniV2_ETH_Reserve = WETH.balanceOf(0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc);
@@ -66,12 +63,16 @@ uint256 ETH_Price = UniV2_USDC_Reserve / UniV2_ETH_Reserve;
 ```
    > #### Please note this method of obtaining price is easily manipulated. Please do not use it in the production code.
 
+### Skim()
+
+
+
 * To understand Uniswap V2 AMM mechanisms, you may check [Smart Contract Programmer](https://www.youtube.com/watch?v=Ar4Ik7Bov0U).
 
 * To understand more about oracle manipulation, you may check [WTFSolidity](https://github.com/WTFAcademy/WTF-Solidity/blob/main/S15_OracleManipulation/readme.md).
 
 
-#### Oracle Price Manipulation Attack Modes
+### Oracle Price Manipulation Attack Modes
 
 Most common attack modes:
 
@@ -106,42 +107,26 @@ Most common attack modes:
 
 > Protip: Use the [Exploit-Template.sol](/script/Exploit-template.sol) template from DeFiHackLabs.
 ---
-
-
 ### Step2: Transaction Debugging
 
 Based on experience, 12 hours after the attack, 90% of the attack autopsy will have been completed. It’s usually not too difficult to analyze the attack at this point.
 
-The reason we used EGD Finance as an example:
+* We will use a real case of EGD Finance as an example, to help you understand :
+  1. the risk in oracle manipulation.
+  2. how to profit from oracle manipulation.
+  3. flash loans transaction.
+  4. how attackers use only 1 transaction to accomplish the attack. This will be easier to reproduce.
 
+* Let's use Phalcon from Blocksec to analyze the EGD Finance incident, [link to analysis](https://phalcon.blocksec.com/tx/bsc/0x50da0b1b6e34bce59769157df769eb45fa11efc7d0e292900d6b0a86ae66a2b3).
+<img width="1644" alt="Screenshot 2023-01-11 at 4 59 15 PM" src="https://user-images.githubusercontent.com/107821372/211762771-d2c54800-4595-4630-9392-30431094bfca.png">
 
+* In Ethereum EVM, you will see 3 call types to trigger remote functions:
+  1. Call: Typical cross-contract function call, will often change the receiver’s storage.
+  2. StaticCall: Will not change the receiver’s storage, used for fetching state and variables.
+  3. DelegateCall: `msg.sender`  will remain the same, typically used in proxying calls. Please see [WTF Solidity](https://github.com/WTFAcademy/WTF-Solidity/tree/main/23_Delegatecall) for more details.
 
-1. To understand the risk in oracle manipulation from a real case.
-2. To understand how to profit from oracle manipulation.
-3. To understand flash loans.
-4. Attacker used only 1 transaction to accomplish the attack without due diligence. This will be easier to reproduce.
-
-Let's use Phalcon from Blocksec to analyze the EGD Finance incident, [link to analysis](https://phalcon.blocksec.com/tx/bsc/0x50da0b1b6e34bce59769157df769eb45fa11efc7d0e292900d6b0a86ae66a2b3).
-
-
-
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store the image on your image server and adjust the path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image2.png "image_tooltip")
-
-
-In Ethereum EVM, you will see 3 call types to trigger remote functions:
-
-
-
-1. Call: Typical cross-contract function call, will often change the receiver’s storage.
-2. StaticCall: Will not change the receiver’s storage, used for fetching state and variables.
-3. DelegateCall: msg.sender will remain the same, typically used in proxying calls. Please see [WTFSolidity](https://github.com/WTFAcademy/WTF-Solidity/tree/main/23_Delegatecall) for more details.
-
-Please note, internal function calls are not visible.
-
-
+> Please note, internal function calls[^1] are not visible in Ethereum EVM.
+[^1]:nternal function calls are invisible to the blockchain, since they don't create any new transactions or blocks. In this way, they cannot be read by other smart contracts or show up in the blockchain transaction history.
 ---
 
 Flash loan attack mode: 
