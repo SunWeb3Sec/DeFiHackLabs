@@ -70,10 +70,10 @@ During a trade, it is possible to overfill uint112 storage slots for reserves if
 
 This function, however, can also be used with Price Actions.
 
-
-* To understand Uniswap V2 AMM mechanisms, you may check [Smart Contract Programmer](https://www.youtube.com/watch?v=Ar4Ik7Bov0U).
-
-* To understand more about oracle manipulation, you may check [WTFSolidity](https://github.com/WTFAcademy/WTF-Solidity/blob/main/S15_OracleManipulation/readme.md).
+* For more information, you could following bellow resources
+  * Uniswap V2 AMM mechanisms: [Smart Contract Programmer](https://www.youtube.com/watch?v=Ar4Ik7Bov0U).
+  * Oracle manipulation: [WTFSolidity](https://github.com/WTFAcademy/WTF-Solidity/blob/main/S15_OracleManipulation/readme.md).
+  * (Uniswap V2 Core whitepaper](https://uniswap.org/whitepaper.pdf).
 
 
 ### Oracle Price Manipulation Attack Modes
