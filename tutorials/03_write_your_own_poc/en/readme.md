@@ -23,11 +23,10 @@ At DeFiHackLabs we intend to promote Web3 security. We hope that when attacks ha
 4. You’ll learn much more from reproducing the attack compared to reading post-mortems.
 5. Improve your overall Solidity ”Kung Fu“.
 
-## Some Need-to-knows Before Reproducing Transactions
-Understanding of 
-1. common attack modes. Which we have curated in [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs).
-2. basic DeFi mechanisms including how smart contracts interact with each other.
+### Some Need-to-knows Before Reproducing Transactions
 
+1. Understanding of common attack modes. Which we have curated in [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs).
+2. Understanding of basic DeFi mechanisms including how smart contracts interact with each other.
 
 ### DeFi Oracle Introduction
 
@@ -63,7 +62,7 @@ uint256 ETH_Price = UniV2_USDC_Reserve / UniV2_ETH_Reserve;
 ```
    > #### Please note this method of obtaining price is easily manipulated. Please do not use it in the production code.
 
-#### Skim()
+### Skim()
 Uniswap V2 is a decentralized exchange(DEX) that uses a liquidity pool to trade assets. It has a `skim()`[^1]function as a safety measure to protect against potential issues from customized token implementations that may change the balance of the pair contract.However, `skim()`can also be used in conjunction with price manipulation.
 
 [^1]:Please see the figure for a full explanation of Skim().![截圖 2023-01-11 下午5 08 07](https://user-images.githubusercontent.com/107821372/211970534-67370756-d99e-4411-9a49-f8476a84bef1.png)Image source / [Uniswap V2 Core whitepaper](https://uniswap.org/whitepaper.pdf)
@@ -149,12 +148,17 @@ Based on experience, 12 hours after the attack, 90% of the attack autopsy will h
     * Set approval allowing loan platforms return the loan by`transferFrom()`.
 
 ### [Practice](https://phalcon.blocksec.com/tx/bsc/0x50da0b1b6e34bce59769157df769eb45fa11efc7d0e292900d6b0a86ae66a2b3): 
-Identify various stages of the EGD Finance Exploit attack. More specifically flashloan, callback, weakness, and profit.
+Identify various stages of the EGD Finance Exploit attack. More specifically ‘flashloan‘, ’callback‘, ’weakness‘, and ’profit’.
 
 `Expand Level: 3`
 <img width="1898" alt="TryToDecodeFromYourEyes" src="https://user-images.githubusercontent.com/26408530/211231441-b5cd2cd8-a438-4344-b014-6b8e92ab2532.png">
->Protip: If you are unable to understand the logic of individual function calls. Try tracing through the entire call stack sequentially, take notes, and pay special attention to the money trail. You’ll have a much better understanding after doing this a few times.
 
+>Protip: If you are unable to understand the logic of individual function calls. Try tracing through the entire call stack sequentially, take notes, and pay special attention to the money trail. You’ll have a much better understanding after doing this a few times.
+<details><summary>The Answer</summary>
+
+<img width="1589" alt="Screenshot 2023-01-12 at 1 58 02 PM" src="https://user-images.githubusercontent.com/107821372/211996295-063f4c64-957a-4896-8736-c4dbbc082272.png">
+
+</details>
 ---
 
 At this point, we have a much better understanding of an attack transaction. Let’s now try to reproduce some code:
