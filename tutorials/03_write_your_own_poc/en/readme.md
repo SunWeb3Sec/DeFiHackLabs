@@ -55,7 +55,7 @@ Currently, smart contract values such as pricing and configuration cannot update
 
      `42,346,768.252804 / 33,906.6145928 = 1248.9235`
      
-   (Market prices may differ from the calculated price by a few cents. In most cases, this refers to a trading fee or a new transaction that affects the pool. This variance can be skimmed with `skim()`.)
+   (Market prices may differ from the calculated price by a few cents. In most cases, this refers to a trading fee or a new transaction that affects the pool. This variance can be skimmed with `skim()`[^1].)
 
   * Solidity Pseudocode: For the lending contract to fetch the current ETH price, the pseudocode can be as the following:
 
@@ -66,10 +66,9 @@ uint256 ETH_Price = UniV2_USDC_Reserve / UniV2_ETH_Reserve;
 ```
    > #### Please note this method of obtaining price is easily manipulated. Please do not use it in the production code.
 
-*  #### Skim()
-   Uniswap V2 is a decentralized exchange(DEX) that uses a liquidity pool to trade assets. It has a `skim()`[^1]function as a safety measure to protect against potential issues from customized token implementations that may change the balance of the pair contract. However, `skim()`can also be used in conjunction with price manipulation.
-
-[^1]: Please see the figure for a full explanation of Skim().
+[^1]: Skim() :
+Uniswap V2 is a decentralized exchange(DEX) that uses a liquidity pool to trade assets. It has a `skim()`function as a safety measure to protect against potential issues from customized token implementations that may change the balance of the pair contract. However, `skim()`can also be used in conjunction with price manipulation.
+Please see the figure for a full explanation of Skim().
 ![截圖 2023-01-11 下午5 08 07](https://user-images.githubusercontent.com/107821372/211970534-67370756-d99e-4411-9a49-f8476a84bef1.png)
 Image source / [Uniswap V2 Core whitepaper](https://uniswap.org/whitepaper.pdf)
 
