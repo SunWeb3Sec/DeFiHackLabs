@@ -1,4 +1,4 @@
-# OnChain Transaction Debugging: 3. Write Your Own PoC
+# OnChain Transaction Debugging: 3. Write Your Own PoC (Price Oracle Manipulation)
 
 Author: [▓▓▓▓▓▓](https://twitter.com/h0wsO1)
 
