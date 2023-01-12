@@ -127,7 +127,7 @@ Based on experience, 12 hours after the attack, 90% of the attack autopsy will h
   3. DelegateCall: `msg.sender`  will remain the same, typically used in proxying calls. Please see [WTF Solidity](https://github.com/WTFAcademy/WTF-Solidity/tree/main/23_Delegatecall) for more details.
 
 > Please note, internal function calls[^2] are not visible in Ethereum EVM.
-[^2]:internal function calls are invisible to the blockchain, since they don't create any new transactions or blocks. In this way, they cannot be read by other smart contracts or show up in the blockchain transaction history.
+[^2]:Internal function calls are invisible to the blockchain, since they don't create any new transactions or blocks. In this way, they cannot be read by other smart contracts or show up in the blockchain transaction history.
 * Futher Information - Attackers Flash loan attack mode
   1. Check if the attack will be profitable. First, ensure loans can be obtained, then ensure the target has enough balance.
      - This means you will see some 'static calls' in the beginning.
@@ -563,4 +563,4 @@ This write-up does not include this step, feel free to try it yourself! Attacker
 
 [https://web3sec.xrex.io/](https://web3sec.xrex.io/)
 
-
+### Apendis
