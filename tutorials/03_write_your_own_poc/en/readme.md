@@ -89,7 +89,7 @@ Most common attack modes:
 ---
 ## Step-by-step PoC - An Example from EGD Finance
 
-### Step1: Information gathering
+### Step 1: Information gathering
 
 * Upon discovery of an attack. Twitter will often be the front line of the aftermath. Top DeFi analysts will continuously publish their new findings there.
 
@@ -108,7 +108,7 @@ Most common attack modes:
 
 > Protip: Use the [Exploit-Template.sol](/script/Exploit-template.sol) template from DeFiHackLabs.
 ---
-### Step2: Transaction Debugging
+### Step 2: Transaction Debugging
 
 Based on experience, 12 hours after the attack, 90% of the attack autopsy will have been completed. It’s usually not too difficult to analyze the attack at this point.
 
