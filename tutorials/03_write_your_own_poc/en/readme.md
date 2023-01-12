@@ -64,7 +64,11 @@ uint256 ETH_Price = UniV2_USDC_Reserve / UniV2_ETH_Reserve;
    > #### Please note this method of obtaining price is easily manipulated. Please do not use it in the production code.
 
 ### Skim()
+In Uniswap V2, skim() is one of the bail-out functions.
 
+During a trade, it is possible to overfill uint112 storage slots for reserves if enough tokens are sent to a pair, which would otherwise cause the trade to fail. Using skim(), a user can withdraw the difference between the pair's current balance and that of the caller if the difference exceeds zero.
+
+This function, however, can also be used with Price Actions.
 
 
 * To understand Uniswap V2 AMM mechanisms, you may check [Smart Contract Programmer](https://www.youtube.com/watch?v=Ar4Ik7Bov0U).
