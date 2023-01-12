@@ -35,11 +35,11 @@ At DeFiHackLabs we intend to promote Web3 security. We hope that when attacks ha
 Currently, smart contract values such as pricing and configuration cannot update themselves. To execute its contract logic, external data is sometimes required during execution. This is typically done with the following methods.
 
 1. Through externally owned accounts. We can calculate the price based on the reserves of these accounts.
-2. Use an oracle, which is maintained by someone or even yourself. With external data updated periodically. ie., price, interest rate, anything. In Uniswap V2, they provide the current price of the asset, which is used to determine the relative value of the asset being traded and thus execute the trade.
+2. Use an oracle, which is maintained by someone or even yourself. With external data updated periodically. ie., price, interest rate, anything. 
 
-* For example, there is a lending contract, it requires the current ETH price to determine if the borrower’s position is to be liquidated.
+* For example, in Uniswap V2, they provide the current price of the asset, which is used to determine the relative value of the asset being traded and thus execute the trade.
 
-  * In this case, ETH price is the external data. One possible solution is to obtain it from Uniswap V2.
+  * Following the figure, ETH price is the external data. The smart contract obtains it from Uniswap V2.
 
     We know the formula  `x * y = k` in a typical AMM. `x` ( ETH price in this case) =  `k / y`.
 
