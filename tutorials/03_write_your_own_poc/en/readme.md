@@ -67,7 +67,9 @@ uint256 ETH_Price = UniV2_USDC_Reserve / UniV2_ETH_Reserve;
 *  #### Skim()
    Uniswap V2 is a decentralized exchange(DEX) that uses a liquidity pool to trade assets. It has a `skim()`[^1]function as a safety measure to protect against potential issues from customized token implementations that may change the balance of the pair contract. However, `skim()`can also be used in conjunction with price manipulation.
 
-[^1]: Please see the figure for a full explanation of Skim().![截圖 2023-01-11 下午5 08 07](https://user-images.githubusercontent.com/107821372/211970534-67370756-d99e-4411-9a49-f8476a84bef1.png)Image source / [Uniswap V2 Core whitepaper](https://uniswap.org/whitepaper.pdf)
+[^1]: Please see the figure for a full explanation of Skim().
+![截圖 2023-01-11 下午5 08 07](https://user-images.githubusercontent.com/107821372/211970534-67370756-d99e-4411-9a49-f8476a84bef1.png)
+Image source / [Uniswap V2 Core whitepaper](https://uniswap.org/whitepaper.pdf)
 
 * For more information, you could following bellow the resources
   * Uniswap V2 AMM mechanisms: [Smart Contract Programmer](https://www.youtube.com/watch?v=Ar4Ik7Bov0U).
