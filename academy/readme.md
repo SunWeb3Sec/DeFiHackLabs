@@ -11,5 +11,6 @@ The Web3 Cybersecurity Academy plans the following series of topics:
 ### Solidity smart contract security and auditing techniques
 
 ### Move programming language secure development
+- Lesson 1: Analysis of Move Language Security - Game Changer ( English | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/01_move_sec_intro) ) 
 
 ### Enhancing user asset security & preventing phishing, scam
