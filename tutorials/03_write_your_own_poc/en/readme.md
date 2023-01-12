@@ -333,18 +333,18 @@ Further expanding the `claimAllReward()` call stack. You’ll find EGD Finance p
 
 ![ClaimRewardDetail](https://user-images.githubusercontent.com/26408530/211231532-d9b0e7ce-ee65-48fb-a2eb-6fccbb799234.png)
 
-<details><summary>What is the `0xa361-Cake-LP` contract?</summary>
+<details><summary>What is the '0xa361-Cake-LP' contract?</summary>
 
 Using Etherscan, we can see what trading pair `0xa361-Cake-LP` corresponds to.
 
-Method 1(fast)： View the first two largest reserve tokens of the contract in [Etherscan](https://bscscan.com/address/0xa361433e409adac1f87cdf133127585f8a93c67d) 
+* Option 1(faster)： View the first two largest reserve tokens of the contract in [Etherscan](https://bscscan.com/address/0xa361433e409adac1f87cdf133127585f8a93c67d) 
 
 ![Etherscan-Top2](https://user-images.githubusercontent.com/26408530/211231654-613672c0-400d-4e53-891c-4c309d8ce84c.png)
-Method 2(accurate)：[Read Contract](https://bscscan.com/address/0xa361433e409adac1f87cdf133127585f8a93c67d#readContract) Check the address of token0 and token1.
+* Option 2(accurate)：[Read Contract](https://bscscan.com/address/0xa361433e409adac1f87cdf133127585f8a93c67d#readContract) Check the address of token0 and token1.
 
 <img width="404" alt="Etherscan-ReadContract" src="https://user-images.githubusercontent.com/26408530/211231545-43777f4e-6433-4dba-b2dc-ab54cd7aaeed.png">
 
-This indicates that 0xa361-Cake-LP is the EGD/USDT trading pair contract。
+This indicates that `0xa361-Cake-LP` is the EGD/USDT trading pair contract。
 
 </details>
 <br>
