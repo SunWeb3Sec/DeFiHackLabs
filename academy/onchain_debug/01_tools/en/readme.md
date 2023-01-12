@@ -30,7 +30,7 @@ Cruise： `Ethereum、BSC 、Polygon、Arbitrum、Fantom、Optimism、Avalanche�
 
 Ethtx： `Ethereum、Goerli testnet`
 
-Tendery： `Ethereum、Polygon、BSC、Sepolia、Goerli、Gnosis、POA、RSK、Avalanche C-Chain、Arbitrum、Optimism
+Tenderly： `Ethereum、Polygon、BSC、Sepolia、Goerli、Gnosis、POA、RSK、Avalanche C-Chain、Arbitrum、Optimism
 、Fantom、Moonbeam、Moonriver`
 
 #### Lab
@@ -56,11 +56,11 @@ Click Call on the left to decode the raw Input data.
 
 ![圖片](https://user-images.githubusercontent.com/52526645/210575619-89c8e8de-e2f9-4243-9646-0661b9483913.png)
 
-Let's now switch to Tendery to analyze the same [TXID](https://dashboard.tenderly.co/tx/mainnet/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6), you can see the basic information like other tools. But using the Debug feature, it is not visualized and needs to be analyzed step by step. However, the advantage is that you can view the code and the conversion process of Input data while Debugging.
+Let's now switch to Tenderly to analyze the same [TXID](https://dashboard.tenderly.co/tx/mainnet/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6), you can see the basic information like other tools. But using the Debug feature, it is not visualized and needs to be analyzed step by step. However, the advantage is that you can view the code and the conversion process of Input data while Debugging.
 
 ![圖片](https://user-images.githubusercontent.com/52526645/210577802-c455545c-80d7-4f35-974a-dadbe59c626e.png)
 
-This can help us clarify all the things this transaction did. Before writing the POC, can we run a replay attack? Yes! Both Tendery or Phalcon support simulated transactions, you can find a button Re-Simulate in the upper right corner in the figure above. The tool will automatically fill the parameter values from the transaction for you as shown in the figure below. Parameters can be changed arbitrarily according to simulation needs, such as changing block number, From, Gas, Input data, etc.
+This can help us clarify all the things this transaction did. Before writing the POC, can we run a replay attack? Yes! Both Tenderly or Phalcon support simulated transactions, you can find a button Re-Simulate in the upper right corner in the figure above. The tool will automatically fill the parameter values from the transaction for you as shown in the figure below. Parameters can be changed arbitrarily according to simulation needs, such as changing block number, From, Gas, Input data, etc.
 
 ![圖片](https://user-images.githubusercontent.com/52526645/210580340-f2abf864-e540-4881-8482-f28030e5e35b.png)
 
