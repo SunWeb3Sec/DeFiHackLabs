@@ -6,7 +6,7 @@ Community: [Discord](https://discord.gg/Fjyngakf3h)
 
 Published on: [Slowmist](https://github.com/slowmist/Blockchain-dark-forest-selfguard-handbook)
 
-# Blackboard
+## Blackboard
 
 Blockchain is a great invention that brings about a change in production relations and solves the problem of trust to some degree. Specifically, blockchain creates many "trust" scenarios without the need for centralization and third parties, such as immutability, execution as agreed, and prevention of repudiation. However, the reality is cruel. There are many misunderstandings about blockchain, and the bad guys will use these misunderstandings to exploit a loophole and steal money from people, causing a lot of financial losses. Today, the crypto world has already become a dark forest.
 
@@ -26,14 +26,14 @@ We chose the GitHub platform as the primary release location for this handbook b
 
 Ok, the introductory reading begins…
 
-# A Diagram
+## A Diagram
 No matter who you are - if you are a cryptocurrency holder or you want to jump into the crypto world in the future, this handbook will help you a lot. You should read this handbook closely and apply its teachings in real life. Additionally, understanding this handbook completely requires some background knowledge. However, please do not worry. As for beginners, do not be afraid of the knowledge barriers which can be overcome. 
 
 Please remember the following two security rules to survive the blockchain dark forest.
 1. Zero Trust: To make it simple, stay skeptical, and always stay so.
 2. Continuous Security Validation: To trust something, you have to validate what you doubt, and make validating a habit.
 
-# Key Contents
+## Key Contents
 <div align=center>
 <img src="https://user-images.githubusercontent.com/107821372/212235985-906c9e23-e69d-4a8a-9be0-ff2d2de66ee7.png" alt="Cover" width="80%"/>
 </div>
@@ -154,7 +154,7 @@ Please remember the following two security rules to survive the blockchain dark 
 2. "Official" phishing
 3. Web3 Privacy Issues
 
-## What to do When You get hacked
+### What to do When You get hacked
   1. Stop Loss First
   2. Protect The Scene
   3. Root Cause Analysis
@@ -162,7 +162,7 @@ Please remember the following two security rules to survive the blockchain dark 
 5. Conclusion of Cases
 
 
-# Summary
+## Summary
 
 When you have finished reading this handbook, you must practice, become proficient and draw inferences. When you have your discovery or experience afterward, I hope you will contribute. If you feel there is sensitive information you can mask them out, or anonymize the information.
 
