@@ -10,7 +10,7 @@ This article is published on XREX and [WTF Academy](https://github.com/AmazingAn
 
 - Recap
     - On 20220913 A MEV Bot was exploited by an attacker and all the assets on the contract were transferred away, with a total loss of about $140K.
-    - The attacker sends a private transaction through the BNB48 validator node, similar to Flashbot not putting the transaction into the mempool but directly packaging it to avoid being Front-running.
+    - The attacker sends a private transaction through the BNB48 validator node, similar to Flashbot not putting the transaction into the public mempool to avoid being Front-running.
 - Analysis
     - Attacker's [TXID](https://bscscan.com/tx/0xd48758ef48d113b78a09f7b8c7cd663ad79e9965852e872fdfc92234c3e598d2)，We can see that the MEV Bot contract was unverify which was not open source，How did the attacker exploit it?
     - Using [phalcon](https://phalcon.blocksec.com/tx/bsc/0xd48758ef48d113b78a09f7b8c7cd663ad79e9965852e872fdfc92234c3e598d2) to check，from the part of funs flow within this transaction, MEV bot transferred 6 kinds of assets to the attacker’s wallet, How did the attacker exploit it?
