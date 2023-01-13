@@ -9,6 +9,7 @@ Author: [Sun](https://twitter.com/1nf0s3cpt)
 ## 手把手撰寫 PoC - 以 MEV Bot (BNB48) 為例
 - 前情提要
     - 20220913 有一個 MEV Bot 被攻擊者發現漏洞進而將合約上的資產都轉走，共損失約 $140K.
+
     - 攻擊者透過 BNB48 驗證節點發送隱私交易，類似於 Flashbot 不把交易放入公開 mempool 避免被搶跑攻擊.
     
 - 分析
