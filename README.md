@@ -35,7 +35,7 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 [20230103 GDS](#20230103---gds---business-logic-flaw)
 
 <details> <summary> 2022 </summary>
- 
+[20221230 DFS](#20221230---dfs---insufficient-validation--flashloan)
 [20221229 JAY](#20221229---jay---insufficient-validation--reentrancy)
 
 [20221225 Rubic](#20221225---rubic---arbitrary-external-call-vulnerability)
@@ -448,7 +448,26 @@ https://twitter.com/BlockSecTeam/status/1610167174978760704
 ---
 
 <details> <summary> 2022 </summary>
- 
+
+### 20221230 - DFS - Insufficient validation + flashloan
+
+### Lost: $1450
+
+Testing
+
+```sh
+forge test --contracts ./src/test/DFS_exp.sol -vvv
+```
+
+#### Contract
+
+[DFS_exp.sol](src/test/DFS_exp.sol)
+
+#### Link reference
+
+https://twitter.com/CertiKAlert/status/1608788290785665024
+
+---
 ### 20221229 - JAY - Insufficient validation + Reentrancy
 
 ### Lost: $15.32 ETH
