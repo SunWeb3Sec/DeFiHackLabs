@@ -35,7 +35,9 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 [20230103 GDS](#20230103---gds---business-logic-flaw)
 
 <details> <summary> 2022 </summary>
+
 [20221230 DFS](#20221230---dfs---insufficient-validation--flashloan)
+
 [20221229 JAY](#20221229---jay---insufficient-validation--reentrancy)
 
 [20221225 Rubic](#20221225---rubic---arbitrary-external-call-vulnerability)
