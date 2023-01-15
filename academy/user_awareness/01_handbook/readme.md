@@ -6,7 +6,7 @@ Author: [SlowMist](https://twitter.com/SlowMist_Team)
 
 区块链是个伟大的发明，它带来了某些生产关系的变革，让「信任」这种宝贵的东西得以部分解决。但，现实是残酷的，人们对区块链的理解会存在许多误区。这些误区导致了坏人轻易钻了空子，频繁将黑手伸进了人们的钱包，造成了大量的资金损失。这早已是黑暗森林。
 
-基于此，慢雾科技创始人余弦倾力输出—— **区块链黑暗森林自救手册**。
+基于此，慢雾科技创始人[余弦](https://twitter.com/evilcos)倾力输出—— **区块链黑暗森林自救手册**。
 
 <div align=center>
 <img src="https://user-images.githubusercontent.com/107821372/212235792-09f72df1-2bcd-41c7-80a0-1500fd8d50a3.png" alt="Cover" width="80%"/>
