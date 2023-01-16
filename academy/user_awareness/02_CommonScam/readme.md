@@ -26,10 +26,10 @@ Web3 技術被視為解決 Web1.0 與 Web2.0 產生的最佳解答。Web3 的基
 XREX 資安團隊撰寫本文，整理多個 Web3 世界中常見的攻擊手法與慣用話術，讓我們認識不肖份子和駭客的攻擊手法與慣用話術，在區塊鏈建構的 Web3 世界中，學習保護自己的資料與加密貨幣資產。
 
 ### Web 3 安全事件損失數據
-根據知名區塊鏈安全公司慢霧科技 (SlowMist) 監測[數據](https://hacked.slowmist.io/statistics/?c=all&d=all)顯示，從 2012 年到 2022 年 6 月，整個區塊鏈生態系存在至少 787 起被駭事件，損失金額超過 267 億美元。
+根據知名區塊鏈安全公司慢霧科技 (SlowMist) 監測[數據](https://hacked.slowmist.io/statistics/?c=all&d=all)顯示，從 2012 年到 2023 年 1 月，整個區塊鏈生態系存在至少 909 起被駭事件，損失金額超過 289 億美元。
 
 <div align=center>
-<img src="https://user-images.githubusercontent.com/52526645/211229334-b29c3d1e-cbb3-4bc7-9a0e-ca9eecb19f8a.png" alt="Cover" width="80%"/>
+<img src="https://user-images.githubusercontent.com/107249780/212626125-a2e71e77-2f2e-47a0-9481-d4c4396fa38b.png" alt="Cover" width="80%"/>
 </div>
 <p align="center">圖片來源 / 慢霧科技</p>
 
