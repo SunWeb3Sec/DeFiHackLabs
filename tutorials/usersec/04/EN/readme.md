@@ -129,7 +129,9 @@ So far we have step by step went through how the scammers are combining social e
 ## Summary
 Web3 is a dark forest.
 Blockchain is natively transparent, malicious groups can easily target the victims based on their assets. Web3 scams are highly contextual and relevant, it is extremely difficult to distinguish the legitimate airdrops from the malicious ones.
+
 However, we are also confident that, with the further growth of the Web3 security ecosystem and increased safety awareness of users, we can improve the status quo and be ready for the next billion users.
+
 Don't trust, Verify! Stay safe!
 
 
