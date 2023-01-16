@@ -52,12 +52,12 @@ Blockchain is decentralized, which means users are responsible for protecting as
 
 ### Damages/losses in Web3 security incidents
 
-According to [data](https://hacked.slowmist.io/statistics/?c=all&d=all) from SlowMist, a well-known blockchain security company, from 2012 to June 2022, there were at least 787 hacking incidents in the entire blockchain ecosystem, with losses exceeding $26.7 billion.
+According to [data](https://hacked.slowmist.io/statistics/?c=all&d=all) from SlowMist, a well-known blockchain security company, from 2012 to Jan 2023, there were at least 909 hacking incidents in the entire blockchain ecosystem, with losses exceeding $28.9 billion.
 
 <div align=center>
- <img src="https://user-images.githubusercontent.com/107821372/211483565-57468dad-d30a-4b48-a5da-ef7e30dc52c6.png" alt="Cover" width="80%"/>
+<img src="https://user-images.githubusercontent.com/107249780/212626125-a2e71e77-2f2e-47a0-9481-d4c4396fa38b.png" alt="Cover" width="80%"/>
 </div>
-<p align="center""> Image source / Slow Mist Technology </p>
+<p align="center""> Image source / SlowMist Technology </p>
 
 According to [The Federal Trade Commission (FTC)](https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2022/06/reports-show-scammers-cashing-crypto-craze), since 2021 more than 46,000 people have reported losing over **$1 billion** in crypto scams.
 
