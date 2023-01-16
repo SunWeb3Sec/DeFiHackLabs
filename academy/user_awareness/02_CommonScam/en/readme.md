@@ -1,4 +1,4 @@
-# Lesson 2:Web 3.0 Information Security Guide - What You Need to Know about Blockchain Threats
+# Lesson 2: Nine Common Web3 Hacks and Scams
 
 Author: [XREX Security Team](https://twitter.com/xrexinc)
 
