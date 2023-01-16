@@ -104,7 +104,8 @@ We have flagged hundreds of RTFKT related websites in [Scam Sniffer database](ht
 <img src="https://user-images.githubusercontent.com/52526645/212598744-61409da7-f04d-4e95-930b-a4f01b4ef776.png" alt="Cover" width="70%"/>
 </div>
 
-<p align="center">Some sites still work</p>
+**<p align="center">Some sites still work**</p>
+
 On 7th Dec. 2021, there was an airdrop announcement from RTFKT official twitter.
 Apparently they are front runed by the scammers.
 
