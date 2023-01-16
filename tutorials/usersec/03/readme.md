@@ -51,8 +51,8 @@ GoPlus 的数据显示，2022 年加密市场的貔貅代币总量大幅增长�
 #### 以下我们将从代码层面解读该代币的部署详情：
 
   1. 对代币持有的地址设置卖出额度的上限条件
-      * 在 `492` 行，该合约对卖单设置了限制条件`to == uniswapV2Pair` ，说明有卖出行为发生，此时，通过 `_accSeAmount[from] > 0` 这个条件对这个转出地址设置了交易上限，并会对该地址的转出代币数量进行累计，存储到`_accSeAmount[from]`变量中，
-      * 接下来`495`行，对交易的执行设置了条件，只有当`1000万 x 最大总转出（含卖出）限制>= from地址`的累积转出量该执行才会被执行，一旦不满足该条件，交易就会失败，即意味着「地址的累积转出量超过了最大额度的1000万，交易无法执行，用户无法卖出」。
+    * 在 `492` 行，该合约对卖单设置了限制条件`to == uniswapV2Pair` ，说明有卖出行为发生，此时，通过 `_accSeAmount[from] > 0` 这个条件对这个转出地址设置了交易上限，并会对该地址的转出代币数量进行累计，存储到`_accSeAmount[from]`变量中，
+    * 接下来`495`行，对交易的执行设置了条件，只有当`1000万 x 最大总转出（含卖出）限制>= from地址`的累积转出量该执行才会被执行，一旦不满足该条件，交易就会失败，即意味着「地址的累积转出量超过了最大额度的1000万，交易无法执行，用户无法卖出」。
 
 <div align=center>
 <img src="https://user-images.githubusercontent.com/107821372/212649168-4a08b1a9-1a16-4591-b0ef-3a6553730826.png" alt="Cover" width="60%"/>
@@ -60,19 +60,20 @@ GoPlus 的数据显示，2022 年加密市场的貔貅代币总量大幅增长�
 
 
 2. `setAccSeMaxAmount` 方法设置最大转出限额
-    ＊ 看区块浏览器，发现合约所有权已经转给dead了，这意味着合约创建者已经销毁了对合约的所有控制权限。那么，这个 `_accSeMaxAmount[from]`  是在哪设置的呢？
+    - 看区块浏览器，发现合约所有权已经转给dead `0x000000000000000000000000000000000000dead`了，这意味着合约创建者已经销毁了对合约的所有控制权限。那么，这个 `_accSeMaxAmount[from]`  是在哪设置的呢？
+      
+    <div align=center>
+    <img src="https://user-images.githubusercontent.com/107821372/212655600-ae0ca5c8-8925-4270-990f-65fc483e0e68.png" alt="Cover" width="60%"/>
+    </div>
+      
+    - 仔细查看合约代码，我们发现，该合约中还构造了一个 `setAccSeMaxAmount` 方法，该方法可用来对某地址设置最大转出限额`_accSeMaxAmount`，且该方法只有一个唯一的执行者`contractSender1`，此变量在合约部署时赋值为了合约创建者 。
 
-<div align=center>
-<img src="https://user-images.githubusercontent.com/107821372/212655600-ae0ca5c8-8925-4270-990f-65fc483e0e68.png" alt="Cover" width="60%"/>
-</div>
+    <div align=center>
+    <img src="https://user-images.githubusercontent.com/107821372/212652980-c9451d73-6be7-457a-9b14-fed54f915425.png" alt="Cover" width="60%"/>
+    </div>
+    
+    - 此时我们确定，该合约表面上看起来似乎已`disable`了所有合约创建者的方法权限，实际上则在合约中定义了一个仅可由`contractSender1`调用的函数`setAccSeMaxAmount` ，通过该函数项目方保留了特定权限——设置特定地址最大卖出限额的权限，且可随意更改。
 
 
-仔细查看合约代码，我们发现，该合约中还构造了一个 `setAccSeMaxAmount` 方法，该方法可用来对某地址设置最大转出限额`_accSeMaxAmount`，且该方法只有一个唯一的执行者`contractSender1`，此变量在合约部署时赋值为了合约创建者 。
-
-
-<div align=center>
-<img src="https://user-images.githubusercontent.com/107821372/212652980-c9451d73-6be7-457a-9b14-fed54f915425.png" alt="Cover" width="60%"/>
-
-此时我们确定，该合约表面上看起来似乎已`disable`了所有合约创建者的方法权限，实际上则在合约中定义了一个仅可由`contractSender1`调用的函数`setAccSeMaxAmount` ，通过该函数项目方保留了特定权限——设置特定地址最大卖出限额的权限，且可随意更改。
 
 
