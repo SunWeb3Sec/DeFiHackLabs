@@ -15,8 +15,10 @@ It all started from Dec.3 , our Scam Sniffer Alert Bot detected there was a phis
 </div>
 
 After discussed with [Cos(余弦)](https://twitter.com/evilcos) in a white hat group chat, we successfully identified the [initial malicious Tx](https://etherscan.io/tx/0xbf2542540ce22abe7a1822e15d67a50b73a7ba18e036bb305103e51606122b69), which happened on 8th Dec. After that, the stolen NFT assets were transferred to a flagged phishing address `0xa0b2ebf28b621fd925a2f809378a3dbc066c28f6` in ScamSniffer database and then sold in the market gradually. 
+
 First, let’s look into the malicious Tx in detail.
 
+## Case Analysis
 ### Malicious Tx
 
 <div align=center>
