@@ -26,6 +26,9 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 - Lesson 4: Write Your Own PoC (MEV Bot) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/) )
 
 ## List of Past DeFi Incidents
+
+[20230117 OmniEstate](#20230117---OmniEstate---no-input-parameter-check)
+
 [20230112 UFDao](#20230112---ufdao---incorrect-parameter-setting)
 
 [20230112 ROE](#20230112---roefinance---flashloan-price-manipulation)
@@ -364,6 +367,26 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230117 - OmniEstate - No Input Parameter Check
+
+### Lost: $70k(236 BNB)
+
+Testing
+
+```sh
+forge test --contracts ./src/test/OmniEstate_exp.sol -vvv 
+```
+
+#### Contract
+
+[OmniEstate_exp.sol](src/test/OmniEstate_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1615232012834705408
+
+---
 
 ### 20230112 - UFDao - Incorrect Parameter Setting
 
