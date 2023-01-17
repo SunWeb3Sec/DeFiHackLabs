@@ -38,7 +38,7 @@ A sharp growth in numbers of honeypot scams beyond, the scam takes on the form o
 
    To entice more investors, the hackers could make it more like a real project with decent data showing a number flowing in and out on the market, instead of a scam .This could be done by sending airdrops to multiple addresses and faking a large number of trading volumes.
 
-   While the crypto attacks becomes more and more innovative and complicated,Goplus will be kicking off a new security risks series debuted from this piece, which as below takes a deep dive into the code on looking at how a new way of honeypot token's malicious logic could work.
+While the crypto attacks becomes more and more innovative and complicated,Goplus will be kicking off a new security risks series debuted from this piece, which as below takes a deep dive into the code on looking at how a new way of honeypot token's malicious logic could work.
 
 ---
 ### Case Analysis
