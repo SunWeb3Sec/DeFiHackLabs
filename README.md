@@ -1744,7 +1744,7 @@ https://medium.com/quillhash/decoding-ragnarok-online-invasion-44k-exploit-quill
 
 ### 20220908 NewFreeDAO - Flashloans Attack
 
-#### Lost: 4,481 BNB (~125M US$)
+#### Lost: 1M US$
 
 Testing
 
