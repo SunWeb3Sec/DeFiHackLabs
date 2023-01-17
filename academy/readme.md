@@ -16,3 +16,4 @@ The Web3 Cybersecurity Academy plans the following series of topics:
 ### Enhancing user asset security & preventing phishing, scam
 - Lesson 1: Blockchain Dark Forest Selfguard Handbook ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/01_handbook/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/01_handbook/) )
 - Lesson 2: Nine Common Web3 Hacks and Scams ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/02_CommonScam/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/02_CommonScam/) )
+- Lesson 3: Learn Security Risks with a New Honeypot Scam ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/03_HoneyPot/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/03_HoneyPot/) )
