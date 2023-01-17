@@ -24,21 +24,21 @@ A sharp growth in numbers of honeypot scams beyond, the scam takes on the form o
 
 1. Make code less readable and hide the malicious logic
 
-  It makes it more difficult for a security detector like GoPlus to identify the associated risks around a token by making the code less readable, including adding unnecessary code logic or calling relations within a piece of code. That would make more noise for the token contract and help hide the real logic which would deliver malicious behavior on a honeypot token.
+   It makes it more difficult for a security detector like GoPlus to identify the associated risks around a token by making the code less readable, including adding unnecessary code logic or calling relations within a piece of code. That would make more noise for the token contract and help hide the real logic which would deliver malicious behavior on a honeypot token.
 
 2. Disguising its contract as an established project
 
-The attacker tries to get away from the security engine's detection by disguising its contract as some else including creating an exactly same contract name and contract implementation process as a well-known crypto project
+   The attacker tries to get away from the security engine's detection by disguising its contract as some else including creating an exactly same contract name and contract implementation process as a well-known crypto project
 
 3. Initiate the attack in a more intangible way
 
-The malicious code snippet tries to initiate the attack in a more intangible way, like making the action of trading tokens by the victims themself as a condition to initiate an attack. By doing so, the attacker needs to deal with the code in a more complex way. In practice, it works like this, only after multiple layers of nested conditionals past which are deliberately fabricated by hackers, the malicious behaviors could be executed, like some address couldn't be able to trade and transfer tokens, and more tokens are minted by privileged accounts. By doing all those things, a contract status could be modified and the asset could be stolen.
+   The malicious code snippet tries to initiate the attack in a more intangible way, like making the action of trading tokens by the victims themself as a condition to initiate an attack. By doing so, the attacker needs to deal with the code in a more complex way. In practice, it works like this, only after multiple layers of nested conditionals past which are deliberately fabricated by hackers, the malicious behaviors could be executed, like some address couldn't be able to trade and transfer tokens, and more tokens are minted by privileged accounts. By doing all those things, a contract status could be modified and the asset could be stolen.
 
 4. Faking trading volume.
 
-To entice more investors, the hackers could make it more like a real project with decent data showing a number flowing in and out on the market, instead of a scam .This could be done by sending airdrops to multiple addresses and faking a large number of trading volumes.
+   To entice more investors, the hackers could make it more like a real project with decent data showing a number flowing in and out on the market, instead of a scam .This could be done by sending airdrops to multiple addresses and faking a large number of trading volumes.
 
-While the crypto attacks becomes more and more innovative and complicated,Goplus will be kicking off a new security risks series debuted from this piece, which as below takes a deep dive into the code on looking at how a new way of honeypot token's malicious logic could work.
+   While the crypto attacks becomes more and more innovative and complicated,Goplus will be kicking off a new security risks series debuted from this piece, which as below takes a deep dive into the code on looking at how a new way of honeypot token's malicious logic could work.
 
 ---
 ### Case Analysis
