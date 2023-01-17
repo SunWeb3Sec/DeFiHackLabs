@@ -2,6 +2,11 @@
 
 Author: [Numen](https://twitter.com/numencyber)
 
+<div align=center>
+<img src="https://user-images.githubusercontent.com/107249780/212913385-71dc35c3-869f-41b9-9c9f-197688ba19b0.png" alt="Cover" width="70%"/>
+</div>
+
+
 <h2>Preface</h2>
 
 <p>Move language is a smart contract language that can be compiled to run in a blockchain environment which implements MoveVM. It was born with deep blockchain and smart contract security consideration in mind, and refer to some security design of RUST languages. How secure is it as a new generation of smart contract language with the main feature of security? Is it possible to avoid the security threats commonly found in other contract virtual machines such as EVM or WASM at the language level or related mechanisms? Are there any security issues specific to the language itself?</p>
@@ -32,7 +37,6 @@ Author: [Numen](https://twitter.com/numencyber)
 
 
 <p>First, they usually have features in their languages that cannot use static analysis tools, such as dynamic dispatch, shared mutability, and nonlinear logic such as reflection, which violate security rules and thus give hackers a broad attack surface. </p>
-
 
 
 <p>Second, they provide too much fixability that makes it hard to realize the third-party security tools. Therefore, most programming languages cannot be easily extended with security-related static tools or expressive specification languages. Although both types of extensions are essential and can be predefined.</p>
