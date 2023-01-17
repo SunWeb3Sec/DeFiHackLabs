@@ -1,7 +1,7 @@
 # 온체인 트랜잭션 디버깅: 1. 도구
 
-저자: [Sun](https://twitter.com/1nf0s3cpt)
-번역: [uj](https://twitter.com/uj_uuverse)
+저자: [Sun](https://twitter.com/1nf0s3cpt)  
+한국어 번역: [uj](https://twitter.com/uj_uuverse)
 
 커뮤니티 [디스코드](https://discord.gg/Fjyngakf3h)
 
