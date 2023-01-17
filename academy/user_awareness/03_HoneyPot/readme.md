@@ -3,7 +3,7 @@
 
 ***深挖代币的代碼，做一个有安全意识和安全素养的 Web3 人。***
 
-Author: [GoPlus](https://twitter.com/GoplusSecurity)
+Author: [GoPlus Security](https://twitter.com/GoplusSecurity)
 
 ## 前言
 如果你是去中心化的常规用户，那么不会对**貔貅诈骗（ Honeypot scam）** 行为感到陌生。即便你没听说过这个词，也一定遇到过这种诈骗行为。
