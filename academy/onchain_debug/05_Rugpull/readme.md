@@ -1,6 +1,6 @@
 # OnChain Transaction Debugging: 5. Analysis for CirculateBUSD Project Rugpull, Loss of $2.27 Million!
 
-Author: [Numen Cyber Labs](https://twitter.com/numencyber?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)
+Author: [Numen](https://twitter.com/numencyber)
 
 ## 前言
 根据NUMEN链上监控显示，新加坡时间2023年1月12日下午 14:22:39 ，CirculateBUSD项目跑路，损失金额227万美金。该项目资金转移主要是管理员调用`CirculateBUSD.startTrading`，并且在startTrading里面的主要判断参数是由管理员设置的未开源合约`SwapHelper.TradingInfo`返回的数值，之后调用`SwapHelper.swaptoToken`转走资金。
