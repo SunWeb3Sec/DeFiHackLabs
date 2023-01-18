@@ -1,4 +1,4 @@
-# Lesson 4: NFT airdrop phishing case study_ how the victims are targeted and scam is conducted
+# Lesson 4: NFT airdrop phishing case study how the victims are targeted and scam is conducted
 
 Author: [Scam Sniffer](https://twitter.com/scamsniffer_)
 
