@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-152 incidents included.
+153 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -26,6 +26,8 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 - Lesson 4: Write Your Own PoC (MEV Bot) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/) )
 
 ## List of Past DeFi Incidents
+[20230116 MidasCapital](#20230116---midascapital---read-only-reentrancy)
+
 [20230112 UFDao](#20230112---ufdao---incorrect-parameter-setting)
 
 [20230112 ROE](#20230112---roefinance---flashloan-price-manipulation)
@@ -364,6 +366,28 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230116 - MidasCapital - Read-only Reentrancy
+
+### Lost: $650k
+
+Testing
+
+```sh
+forge test --contracts ./src/test/Midas_exp.sol -vvv
+```
+
+#### Contract
+
+[Midas_exp.sol](src/test/Midas_exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1614774855999844352
+
+https://twitter.com/BlockSecTeam/status/1614864084956254209
+
+---
 
 ### 20230112 - UFDao - Incorrect Parameter Setting
 
