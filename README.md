@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-152 incidents included.
+154 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -28,6 +28,8 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 ## List of Past DeFi Incidents
 
 [20230117 OmniEstate](#20230117---OmniEstate---no-input-parameter-check)
+
+[20230116 MidasCapital](#20230116---midascapital---read-only-reentrancy)
 
 [20230112 UFDao](#20230112---ufdao---incorrect-parameter-setting)
 
@@ -385,6 +387,28 @@ forge test --contracts ./src/test/OmniEstate_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/BlockSecTeam/status/1615232012834705408
+
+---
+
+### 20230116 - MidasCapital - Read-only Reentrancy
+
+### Lost: $650k
+
+Testing
+
+```sh
+forge test --contracts ./src/test/Midas_exp.sol -vvv
+```
+
+#### Contract
+
+[Midas_exp.sol](src/test/Midas_exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1614774855999844352
+
+https://twitter.com/BlockSecTeam/status/1614864084956254209
 
 ---
 
