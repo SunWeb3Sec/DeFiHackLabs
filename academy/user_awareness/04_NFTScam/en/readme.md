@@ -2,10 +2,6 @@
 
 Author: [Scam Sniffer](https://twitter.com/scamsniffer_)
 
-Community: [Discord](https://discord.gg/Fjyngakf3h)
-
-Published on: [Scam Sniffer](https://twitter.com/scamsniffer_/status/1601779473036316674)
-
 ## Blackboard
 There have been lots of airdrop phishing scams targeting specific NFT holder groups lately, let’s have a deep dive case study and see how the scam is conducted.
 It all started from Dec.3 , our Scam Sniffer Alert Bot detected there was a phishing incident that ended up with 21 CloneX being stolen, totally worth 168 ETH.
