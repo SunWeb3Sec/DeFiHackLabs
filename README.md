@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-154 incidents included.
+155 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -26,6 +26,8 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 - Lesson 4: Write Your Own PoC (MEV Bot) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/) )
 
 ## List of Past DeFi Incidents
+
+[20230118 UPS Token](#20230117---UPSToken---business-logic-flaw)
 
 [20230117 OmniEstate](#20230117---OmniEstate---no-input-parameter-check)
 
@@ -369,6 +371,26 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230117 - UPSToken - business logic flaw
+
+### Lost: ~22 ETH
+
+Testing
+
+```sh
+forge test --contracts ./src/test/Upswing_exp.sol -vvv
+```
+
+#### Contract
+
+[Upswing_exp.sol](src/test/Upswing_exp.sol)
+
+#### Link reference
+
+https://etherscan.io/tx/0x4b3df6e9c68ae482c71a02832f7f599ff58ff877ec05fed0abd95b31d2d7d912
+https://twitter.com/QuillAudits/status/1615634917802807297
+
 
 ### 20230117 - OmniEstate - No Input Parameter Check
 
