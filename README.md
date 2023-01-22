@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-156 incidents included.
+155 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -287,8 +287,6 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 [20211130 MonoX Finance](#20211130-monox-finance---price-manipulation)
 
 [20211027 Cream Finance](#20211027-creamfinance---price-manipulation)
-
-[20211015 Indexed Finance](#20211015-indexed-finance---price-manipulation)
 
 [20210916 SushiSwap Miso](#20210916-sushiswap-miso)
 
@@ -3213,26 +3211,6 @@ Testing
 #### Link reference
 
 https://medium.com/immunefi/hack-analysis-cream-finance-oct-2021-fc222d913fc5
-
----
-
-### 20211015 Indexed Finance - Price Manipulation
-
-#### Lost: $16M
-
-Testing
-
-```sh
-forge test --contracts src/test/IndexedFinance_exp.t.sol -vv
-```
-
-#### Contract
-
-[IndexedFinance_exp.t.sol](src/test/IndexedFinance_exp.t.sol)
-
-#### Link reference
-
-https://blocksecteam.medium.com/the-analysis-of-indexed-finance-security-incident-8a62b9799836
 
 ---
 
