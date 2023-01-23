@@ -114,6 +114,10 @@ contract ContractTest is DSTest {
       new bytes(0),
       0
     );
+    emit log_named_uint(
+      "After Flashloan repay, usdc balance of attacker:",
+      usdc.balanceOf(address(this))
+    );
     usdc.transfer(msg.sender, usdc.balanceOf(address(this)));
   }
 
