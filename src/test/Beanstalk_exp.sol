@@ -142,7 +142,7 @@ contract ContractTest is DSTest {
       crvbean.balanceOf(address(this))
     );
     emit log_named_uint(
-      "After  , Curvebean3Crv_f balance of attacker:",
+      "After Curvebean3Crv_f balance of attacker:",
       IERC20(address(bean3Crv_f)).balanceOf(address(this))
     ); //@note logging balance for same token ?
     siloV2Facet.deposit(
