@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-152 incidents included.
+156 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -26,6 +26,15 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 - Lesson 4: Write Your Own PoC (MEV Bot) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/) )
 
 ## List of Past DeFi Incidents
+
+[20230118 QTN Token](#20230118---qtntoken---business-logic-flaw)
+
+[20230118 UPS Token](#20230118---upstoken---business-logic-flaw)
+
+[20230117 OmniEstate](#20230117---OmniEstate---no-input-parameter-check)
+
+[20230116 MidasCapital](#20230116---midascapital---read-only-reentrancy)
+
 [20230112 UFDao](#20230112---ufdao---incorrect-parameter-setting)
 
 [20230112 ROE](#20230112---roefinance---flashloan-price-manipulation)
@@ -364,6 +373,88 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230118 - QTNToken - business logic flaw
+
+### Lost: ~2ETH
+
+Testing
+```sh
+forge test --contracts ./src/test/QTN_exp.sol -vvv
+```
+
+#### Contract
+
+[QTN_exp.sol](src/test/QTN_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1615625901739511809
+
+---
+
+### 20230118 - UPSToken - business logic flaw
+
+### Lost: ~22 ETH
+
+Testing
+
+```sh
+forge test --contracts ./src/test/Upswing_exp.sol -vvv
+```
+
+#### Contract
+
+[Upswing_exp.sol](src/test/Upswing_exp.sol)
+
+#### Link reference
+
+https://etherscan.io/tx/0x4b3df6e9c68ae482c71a02832f7f599ff58ff877ec05fed0abd95b31d2d7d912
+https://twitter.com/QuillAudits/status/1615634917802807297
+
+---
+
+### 20230117 - OmniEstate - No Input Parameter Check
+
+### Lost: $70k(236 BNB)
+
+Testing
+
+```sh
+forge test --contracts ./src/test/OmniEstate_exp.sol -vvv 
+```
+
+#### Contract
+
+[OmniEstate_exp.sol](src/test/OmniEstate_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1615232012834705408
+
+---
+
+### 20230116 - MidasCapital - Read-only Reentrancy
+
+### Lost: $650k
+
+Testing
+
+```sh
+forge test --contracts ./src/test/Midas_exp.sol -vvv
+```
+
+#### Contract
+
+[Midas_exp.sol](src/test/Midas_exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1614774855999844352
+
+https://twitter.com/BlockSecTeam/status/1614864084956254209
+
+---
 
 ### 20230112 - UFDao - Incorrect Parameter Setting
 

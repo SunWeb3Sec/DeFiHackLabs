@@ -442,11 +442,12 @@ interface IUniswapV2Factory {
 }
 interface IUniswapV2Pair {
     function swap(
-    uint256 amount0Out,
-    uint256 amount1Out,
-    address to,
-    bytes calldata data
-  ) external;
+      uint256 amount0Out,
+      uint256 amount1Out,
+      address to,
+      bytes calldata data
+    ) external;
+    function skim(address to) external;
     function token0() external view returns (address);
     function token1() external view returns (address);
     function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
@@ -2995,6 +2996,72 @@ interface Monoswap {
   function updatePriceAdjuster(address account, bool _status) external;
 }
 
+interface IDMMExchangeRouter {
+    function swapExactTokensForTokens(
+        uint256 amountIn,
+        uint256 amountOutMin,
+        address[] calldata poolsPath,
+        IERC20[] calldata path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+
+    function swapTokensForExactTokens(
+        uint256 amountOut,
+        uint256 amountInMax,
+        address[] calldata poolsPath,
+        IERC20[] calldata path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+
+    function swapExactETHForTokens(
+        uint256 amountOutMin,
+        address[] calldata poolsPath,
+        IERC20[] calldata path,
+        address to,
+        uint256 deadline
+    ) external payable returns (uint256[] memory amounts);
+
+    function swapTokensForExactETH(
+        uint256 amountOut,
+        uint256 amountInMax,
+        address[] calldata poolsPath,
+        IERC20[] calldata path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+
+    function swapExactTokensForETH(
+        uint256 amountIn,
+        uint256 amountOutMin,
+        address[] calldata poolsPath,
+        IERC20[] calldata path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+
+    function swapETHForExactTokens(
+        uint256 amountOut,
+        address[] calldata poolsPath,
+        IERC20[] calldata path,
+        address to,
+        uint256 deadline
+    ) external payable returns (uint256[] memory amounts);
+
+    function getAmountsOut(
+        uint256 amountIn,
+        address[] calldata poolsPath,
+        IERC20[] calldata path
+    ) external view returns (uint256[] memory amounts);
+
+    function getAmountsIn(
+        uint256 amountOut,
+        address[] calldata poolsPath,
+        IERC20[] calldata path
+    ) external view returns (uint256[] memory amounts);
+}
+
 interface MonoXPool {
   event ApprovalForAll(
     address indexed account,
@@ -4599,13 +4666,13 @@ interface ICurvePool {
   function A() external view returns (uint256 out);
 
   function add_liquidity(uint256[2] memory amounts, uint256 min_mint_amount)
-  external;
+  external returns(uint256);
 
   function add_liquidity(uint256[3] memory amounts, uint256 min_mint_amount)
-  external;
+  external returns(uint256);
 
   function add_liquidity(uint256[4] memory amounts, uint256 min_mint_amount)
-  external;
+  external returns(uint256);
 
   function admin_fee() external view returns (uint256 out);
 
