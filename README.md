@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-156 incidents included.
+157 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -26,6 +26,9 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 - Lesson 4: Write Your Own PoC (MEV Bot) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/) )
 
 ## List of Past DeFi Incidents
+
+
+[20230119 ThoreumFinance](#20230119---ThoreumFinance---business-logic-flaw)
 
 [20230118 QTN Token](#20230118---qtntoken---business-logic-flaw)
 
@@ -392,6 +395,25 @@ forge test --contracts ./src/test/QTN_exp.sol -vvv
 https://twitter.com/BlockSecTeam/status/1615625901739511809
 
 ---
+
+### 20230119 - ThoreumFinance-business logic flaw
+
+### Lost: ~2000 BNB
+
+Testing
+
+```sh
+forge test --contracts ./src/test/ThoreumFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[ThoreumFinance_exp.sol](src/test/ThoreumFinance_exp.sol)
+
+#### Link reference
+
+https://bscscan.com/tx/0x3fe3a1883f0ae263a260f7d3e9b462468f4f83c2c88bb89d1dee5d7d24262b51
+https://twitter.com/AnciliaInc/status/1615944396134043648
 
 ### 20230118 - UPSToken - business logic flaw
 
