@@ -6,3 +6,17 @@ libs = ['lib']
 rpc_endpoints = { mainnet = "https://rpc.ankr.com/eth", optimism = "https://rpc.ankr.com/optimism", fantom = "https://rpc.ankr.com/fantom", arbitrum = "https://rpc.ankr.com/arbitrum", bsc = "https://rpc.ankr.com/bsc", moonriver = "https://moonriver.public.blastapi.io", gnosis = "https://rpc.ankr.com/gnosis", Avalanche = "https://rpc.ankr.com/avalanche", polygon = "https://rpc.ankr.com/polygon", celo = "https://rpc.ankr.com/celo" }
 
 # See more config options https://github.com/gakonst/foundry/tree/master/config
+
+[fmt]
+line_length = 120
+tab_width = 4
+bracket_spacing=false
+int_types = "long"
+func_attrs_with_params_multiline = false
+quote_style = "double"
+number_underscore = "thousands"
+multiline_func_header = "params_first"
+single_line_statement_blocks = 'preserve'
+variable_override_spacing = true
+wrap_comments = false
+ignore = []
