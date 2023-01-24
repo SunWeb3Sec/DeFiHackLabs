@@ -143,8 +143,8 @@ Foundry's cheatcodes are essential for conducting chain analysis. Here, I will i
 - deal: Sets the balance of a test wallet.
   - Set ETH balance:  `deal(address(this), 3 ether);`
   - Set Token balance: `deal(address(USDC), address(this), 1 * 1e18);`
-- prank: Simulate the identity of a specified wallet. It is only effective for the next call and will set the msg.sender to the specified wallet address. Such as simulating a transfer from a whale wallet.
-- startPrank: Simulate the identity of a specified wallet. It will set the msg.sender to the specified wallet address for all calls until `stopPrank()` is executed.
+- prank: Specify the wallet address to simulate. It is only effective for the next call and will set the msg.sender to the specified wallet address. Such as simulating a transfer from a whale wallet.
+- startPrank: Specify the wallet address to simulate. It will set the msg.sender to the specified wallet address for all calls until `stopPrank()` is executed.
 - label: Labels a wallet address for improved readability when using Foundry debug.
 - roll: Adjusts the block height.
 - warp: Adjusts the block timestamp.

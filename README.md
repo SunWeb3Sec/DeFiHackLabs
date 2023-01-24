@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-154 incidents included.
+158 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -26,6 +26,13 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 - Lesson 4: Write Your Own PoC (MEV Bot) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/) )
 
 ## List of Past DeFi Incidents
+
+
+[20230119 ThoreumFinance](#20230119---ThoreumFinance---business-logic-flaw)
+
+[20230118 QTN Token](#20230118---qtntoken---business-logic-flaw)
+
+[20230118 UPS Token](#20230118---upstoken---business-logic-flaw)
 
 [20230117 OmniEstate](#20230117---OmniEstate---no-input-parameter-check)
 
@@ -286,6 +293,8 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 [20211027 Cream Finance](#20211027-creamfinance---price-manipulation)
 
+[20211015 Indexed Finance](#20211015-indexed-finance---price-manipulation)
+
 [20210916 SushiSwap Miso](#20210916-sushiswap-miso)
 
 [20210915 Nimbus Platform](#20210915-nimbus-platform)
@@ -369,6 +378,65 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230118 - QTNToken - business logic flaw
+
+### Lost: ~2ETH
+
+Testing
+```sh
+forge test --contracts ./src/test/QTN_exp.sol -vvv
+```
+
+#### Contract
+
+[QTN_exp.sol](src/test/QTN_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1615625901739511809
+
+---
+
+### 20230119 - ThoreumFinance-business logic flaw
+
+### Lost: ~2000 BNB
+
+Testing
+
+```sh
+forge test --contracts ./src/test/ThoreumFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[ThoreumFinance_exp.sol](src/test/ThoreumFinance_exp.sol)
+
+#### Link reference
+
+https://bscscan.com/tx/0x3fe3a1883f0ae263a260f7d3e9b462468f4f83c2c88bb89d1dee5d7d24262b51
+https://twitter.com/AnciliaInc/status/1615944396134043648
+
+### 20230118 - UPSToken - business logic flaw
+
+### Lost: ~22 ETH
+
+Testing
+
+```sh
+forge test --contracts ./src/test/Upswing_exp.sol -vvv
+```
+
+#### Contract
+
+[Upswing_exp.sol](src/test/Upswing_exp.sol)
+
+#### Link reference
+
+https://etherscan.io/tx/0x4b3df6e9c68ae482c71a02832f7f599ff58ff877ec05fed0abd95b31d2d7d912
+https://twitter.com/QuillAudits/status/1615634917802807297
+
+---
 
 ### 20230117 - OmniEstate - No Input Parameter Check
 
@@ -3189,6 +3257,26 @@ Testing
 #### Link reference
 
 https://medium.com/immunefi/hack-analysis-cream-finance-oct-2021-fc222d913fc5
+
+---
+
+### 20211015 Indexed Finance - Price Manipulation
+
+#### Lost: $16M
+
+Testing
+
+```sh
+forge test --contracts src/test/IndexedFinance_exp.t.sol -vv
+```
+
+#### Contract
+
+[IndexedFinance_exp.t.sol](src/test/IndexedFinance_exp.t.sol)
+
+#### Link reference
+
+https://blocksecteam.medium.com/the-analysis-of-indexed-finance-security-incident-8a62b9799836
 
 ---
 
