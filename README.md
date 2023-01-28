@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-158 incidents included.
+159 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -28,6 +28,7 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 ## List of Past DeFi Incidents
 
+[20230126 TomInu Token](#20230126---tinu---reflection-token)
 
 [20230119 ThoreumFinance](#20230119---thoreumfinance-business-logic-flaw)
 
@@ -379,6 +380,25 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230126 - TINU - Reflection token
+
+### Lost: 22 ETH
+
+Testing
+```sh
+forge test --contracts ./src/test/TINU_exp.t.sol -vv
+```
+
+#### Contract
+
+[TINU_exp.t.sol](src/test/TINU_exp.t.sol)
+
+#### Link reference
+
+https://twitter.com/libevm/status/1618718156343873536
+
+---
 
 ### 20230118 - QTNToken - business logic flaw
 
