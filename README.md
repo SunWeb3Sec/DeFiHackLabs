@@ -29,7 +29,7 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 ## List of Past DeFi Incidents
 
 
-[20230119 ThoreumFinance](#20230119---ThoreumFinance---business-logic-flaw)
+[20230119 ThoreumFinance](#20230119---thoreumfinance-business-logic-flaw)
 
 [20230118 QTN Token](#20230118---qtntoken---business-logic-flaw)
 
