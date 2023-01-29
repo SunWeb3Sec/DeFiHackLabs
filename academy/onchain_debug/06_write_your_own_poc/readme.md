@@ -54,11 +54,13 @@ Author: [gbaleeee](https://twitter.com/gbaleeeee)
   ![image](https://user-images.githubusercontent.com/53768199/215321213-7ead5043-1410-4ab6-b247-1e710d931fe8.png)
   根据图中的信息，被标记为exploiter的地址先在1，2步操作中从被攻击的合约中借出大量USDC，XIDR代币，随后在3，4步操作中将USDC,XIDR代币发送回给被攻击合约，随后，名为dfx-xidr-v2的代币从0地址被铸造给攻击者，标记为DFX Finance的多签钱包地址也收到了USDC,XIDR代币。最后dfx-xidr-v2代币又发送给0地址销毁。  
   可以总结出攻击过程中的代币流向是  
+  
   1.从被攻击合约中取出代币USDC,XIDR  
   2.将USDC,XIDR代币发送给被攻击合约  
   3.攻击者铸造名为dfx-xidr-v2的代币  
   4.多签钱包地址收到代币USDC,XIDR  
   5.攻击者销毁名为dfx-xidr-v2的代币  
+  
   这些信息可以在接下来的Call Trace分析环节中进行分析与验证  
   
 - Trace分析  
@@ -140,7 +142,7 @@ Author: [gbaleeee](https://twitter.com/gbaleeeee)
   值得注意的是，为了满足flash函数中对于手续费收取的相关要求，攻击者存入的USDC,XIDR代币数量略高于之前从flash函数中闪电贷所得，多出的这一部分代币将在flash函数中的后续执行操作中，发送给DFX Finance的多签钱包。攻击者在发起这次攻击之前准备了一些USDC,XIDR代币作为flash手续费，通过deposit函数发送给被攻击合约的数量为flash闪电贷出的代币加上手续费代币之和，这样在完成deposit操作的同时也能够完成flash函数中的检查。
   如此，攻击者通过在闪电贷的回调函数中对被攻击合约的deposit操作，满足了闪电贷的检查条件，同时还在被攻击合约中记录为deposit后的状态，可以在后一步操作中进行withdraw操作取出代币。  
  
-  对整个攻击流程进行梳理，它的步骤为：
+  对整个攻击流程进行梳理，它的步骤为  
   1.提前准备一些USDC,XIDR代币
   2.调用viewDeposit函数，获取后续deposit操作所需要的代币数量   
   3.根据上一步获取的数值，调用被攻击合约的flash函数获取USDC,XIDR代币  
