@@ -47,7 +47,7 @@ Author: [gbaleeee](https://twitter.com/gbaleeeee)
   
   ![image](https://user-images.githubusercontent.com/53768199/215320922-72207a7f-cfac-457d-b69e-3fddc043206b.png)  
   
-  通过对Balance Changes中的资金变化可以知道，这次攻击交易是攻击者对DFX Finance的dfx-xidr-v2合约进行了攻击，窃取了USDC,XIDR代币。多签钱包地址在攻击的过程中也收到了代币这一变化，根据经验分析，这往往是合约功能交互过程中收取手续费所造成的。  
+  通过对Balance Changes中的资金变化可以知道，这次攻击交易是攻击者对DFX Finance的dfx-xidr-v2合约进行了攻击，窃取了USDC,XIDR代币。对于多签钱包地址在攻击的过程中也收到了部分USDC,XIDR代币这一变化，根据经验分析，这往往是合约功能交互过程中收取手续费所造成的。  
   
 - 资金流向  
   在对攻击交易的进一步分析之前，我们可以通过BlockSec Team的另一个工具 [metasleuth](https://metasleuth.io/result/eth/0x6bfd9e286e37061ed279e4f139fbc03c8bd707a2cdd15f7260549052cbba79b7)来分析这笔攻击交易中的资金流动，帮助我们观察其中的代币转移情况。
@@ -128,7 +128,7 @@ Author: [gbaleeee](https://twitter.com/gbaleeeee)
   
   ![image](https://user-images.githubusercontent.com/53768199/215330695-1b1fa612-4f01-4c6a-a5be-7324f464ecb1.png)
   
-  可以看见，攻击者正是在这一步调用了被攻击合约中的deposit函数，分析其代码及注释，可以看出它完成了一个发送铸造稳定币所需资产代币后获取curves的操作，结合上图中USDC，XIDR的transferFrom函数调用，可知是将USDC，XIDR代币发送给了被攻击合约。  
+  可以看见，攻击者正是在这一步调用了被攻击合约中的deposit函数，分析其代码及注释，可以看出它完成了一个发送铸造稳定币所需资产代币给合约后获取curves代币的操作，结合上图中USDC，XIDR的transferFrom函数调用，可知是将USDC，XIDR代币发送给了被攻击合约。  
   
   ![image](https://user-images.githubusercontent.com/53768199/215330576-d15642f7-5819-4e83-a8c8-1d3a48ad8c6d.png)
   
