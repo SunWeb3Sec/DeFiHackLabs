@@ -97,11 +97,11 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 [20221117 UEarnPool](#20221117---uearnpool---flashloan-attack)
 
-[20221116 SheepFram](#20221116---sheepfram---no-input-validation)
+[20221116 SheepFarm](#20221116---sheepfarm---no-input-validation)
 
 [20221110 DFXFinance](#20221110---dfxfinance---reentrancy)
 
-[20221109 brahTOPG](#20221109-brachtopg---arbitrary-external-call-vulnerability)
+[20221109 brahTOPG](#20221109-brahtopg---arbitrary-external-call-vulnerability)
 
 [20221108 Kashi](#20221108-kashi---price-caching-design-defect)
 
@@ -183,7 +183,7 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 [20220902 Bad Guys by RPF](#20220902-bad-guys-by-rpf---business-logic-flaw--missing-check-for-number-of-nft-to-mint)
 
-[20220824 LuckeyTiger NFT](#20220824-luckeytiger-nft---predicting-random-numbers)
+[20220824 LuckyTiger NFT](#20220824-luckytiger-nft---predicting-random-numbers)
 
 [20220810 XSTABLE Protocol](#20220810-xstable-protocol---incorrect-logic-check)
 
@@ -1059,7 +1059,7 @@ https://twitter.com/CertiKAlert/status/1593094922160128000
 
 ---
 
-### 20221116 - SheepFram - No input validation
+### 20221116 - SheepFarm - No input validation
 
 ### Lost: ~1BNB
 
@@ -1071,7 +1071,7 @@ forge test --contracts ./src/test/SheepFram_exp.sol -vvv
 
 #### Contract
 
-[SheepFram_exp.sol](src/test/SheepFram_exp.sol)
+[SheepFarm_exp.sol](src/test/SheepFram_exp.sol)
 
 #### Link reference
 
@@ -1107,7 +1107,7 @@ https://twitter.com/peckshield/status/1590831589004816384
 
 ---
 
-### 20221109 BrachTOPG - Arbitrary External Call Vulnerability
+### 20221109 BrahTOPG - Arbitrary External Call Vulnerability
 
 ### Lost: $89k
 
@@ -1991,7 +1991,7 @@ https://etherscan.io/tx/0x27e64a8215ae1528245c912bcca09883fdd7cce69249bd5d5d1c0e
 
 ---
 
-### 20220824 LuckeyTiger NFT - Predicting Random Numbers
+### 20220824 LuckyTiger NFT - Predicting Random Numbers
 
 Testing
 
