@@ -34,7 +34,14 @@ The attacker’s address (TX…..dWfKz) and the user’s address (TW…..dWfKz) 
     
 The same thing happened to our second victim. The attacker’s address (TK…. .Qw5oH) and the user’s address ( (TW…. .Qw5oH) both end in Qw5oH. The victim mistakenly sent 345,940 USDT to the wrong address, and the attacker continues to airdrop 0.01 USDT to the victim address using a new addresses that also end in Qw5oH.
 
-![](https://miro.medium.com/max/700/1*0SDtcCXO6ACupCsNcnMTuw.png)![](https://miro.medium.com/max/700/1*g6LPcUbeRRU_YzrLKha9lw.png)
+<div align=center>
+<img src="https://miro.medium.com/max/700/1*0SDtcCXO6ACupCsNcnMTuw.png" alt="Cover" width="80%"/>
+</div>
+
+
+<div align=center>
+<img src="https://miro.medium.com/max/700/1*g6LPcUbeRRU_YzrLKha9lw.png" alt="Cover" width="80%"/>
+</div>
 
 Next, we’ll examine attacker address 1 using our AML platform [MistTrack](https://dashboard.misttrack.io/) (tx.. .dWfKz). As shown in the figure below, attacker address 1 airdrops 0.01 USDT and 0.02 USDT to various target addresses, all of which have interacted with the address that ends in dWfKz.
 
