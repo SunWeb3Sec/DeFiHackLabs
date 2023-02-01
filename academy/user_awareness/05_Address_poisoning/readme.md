@@ -76,7 +76,7 @@ Author: [SlowMist](https://twitter.com/SlowMist_Team)
    
  3. 我们再来看看**攻击者地址 2** `TK...Qw5oH`的情况：空投 0.01 USDT 到多个地址，且初始资金来自地址 `TD...psxmk` 转入的 0.6 USDT。
     <div align=center>
-    <img src="https://mmbiz.qpic.cn/mmbiz_png/qsQ2ibEw5pLZL55l1mOR8pMaTfnZMFLvAD7d57ZXbsw7DCm7O38Yeevb95ia6nxOwWpaQQOQQndViba7tSD2l2F8Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="Cover" width="60%"/>
+    <img src="https://mmbiz.qpic.cn/mmbiz_png/qsQ2ibEw5pLZL55l1mOR8pMaTfnZMFLvAwmAU7JwpwhH1uEx9Lpx6KNFFekPMd1RsPxEFBpr6oFoTeyTHzfYiclg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="Cover" width="80%"/>
     </div> 
    
      * 这次往下追踪，**攻击者地址 2** 将 0.06 USDT 转到地址 `TD...kXbFq`，而地址 `TD...kXbFq` 也曾与尾号为 `Qw5oH` 的 FTX 用户充币地址有过交互。
