@@ -8,7 +8,7 @@ Many of the victims’ addresses were constantly airdropped with tiny amounts of
 
 <img src="https://miro.medium.com/max/700/1*9jTHmgC086JmnEEgwhaLTQ.png" alt="Cover" width="80%"/>
 </div>
-<p align="center">(https://twitter.com/TokenPocket_TP)</p>
+<p align="center">(Image from https://twitter.com/TokenPocket_TP)</p>
 
 **Related Information**
 
