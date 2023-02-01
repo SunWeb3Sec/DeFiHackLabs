@@ -83,6 +83,7 @@ Once again, we’ll choose two addresses at random and test our theory. (for exa
 </div>
 
 
+
 <div align=center>
 <img src="https://miro.medium.com/max/700/1*3LZYzgnVN2tEh5OyMl9E7A.png" alt="Cover" width="80%"/>
 </div>
