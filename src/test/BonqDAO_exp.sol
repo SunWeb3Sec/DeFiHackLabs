@@ -17,8 +17,8 @@ import "./interface.sol";
 //   So the attacker manipulates the wALBT price to extremely high to borrow massive amount of BEUR in Tx1
 //   Then, the attacker manipulates the wALBT price to extremely low to liquidates other users wALBT CDP in Tx2.
 // Potential mitigations:
-//   1. Use TWAP or VWAP based Price Oracle.
-//   2. Need to calls `TellorFlex.updateStakeAmount()` after a `TellorFlex.submitValue()` called, to update requiring collateral amount.
+//   1. Use VWAP-based Price Oracle or TWAP-based Price Oracle.
+//   2. Use `getDataBefore()` to get a wALBT price that passed a sufficient dispute window
 
 // @Info
 // Attack Txs:
