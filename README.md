@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-160 incidents included.
+161 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -29,6 +29,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 6: Write Your Own PoC (Reentrancy) ( English | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/) )
 
 ## List of Past DeFi Incidents
+
+[20230203 Orion Protocol](#20230203---orion-protocol---reentrancy)
 
 [20230202 BonqDAO](#20230202---BonqDAO---price-oracle-manipulation)
 
@@ -384,6 +386,29 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230203 - Orion Protocol - Reentrancy
+
+### Lost: $3M
+
+Testing
+```
+forge test --contracts ./src/test/Orion_exp.sol -vvv
+```
+
+#### Contract
+
+[Orion_exp.sol](src/test/Orion_exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1621337925228306433
+
+https://twitter.com/BlockSecTeam/status/1621263393054420992
+
+https://www.numencyber.com/analysis-of-orionprotocol-reentrancy-attack-with-poc/
+
+---
 
 ### 20230202 - BonqDAO - Price Oracle Manipulation
 
