@@ -2,6 +2,8 @@
 
 Author: [gbaleeee](https://twitter.com/gbaleeeee)
 
+Translation: [Spark](https://twitter.com/SparkToday00)
+
 Community [Discord](https://discord.gg/Fjyngakf3h)
 
 This work was also published in XREX | [WTF Academy](https://github.com/AmazingAng/WTF-Solidity#%E9%93%BE%E4%B8%8A%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90)
