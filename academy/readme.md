@@ -24,4 +24,5 @@ The Web3 Cybersecurity Academy plans the following series of topics:
 - Lesson 3: Learn Security Risks with a New Honeypot Scam ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/03_HoneyPot/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/03_HoneyPot/) )
 - Lesson 4: NFT Airdrop Phishing over OpenSea ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/04_NFTScam/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/04_NFTScam/) )
 - Lesson 5: Address poisoning scam ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/05_Address_poisoning/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/05_Address_poisoning/) )
+- Lesson 6: Report stolen ( English | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/06_Report_stolen/) )
 
