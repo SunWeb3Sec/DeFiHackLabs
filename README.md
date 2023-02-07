@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-162 incidents included.
+163 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -29,6 +29,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 6: Write Your Own PoC (Reentrancy) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/) )
 
 ## List of Past DeFi Incidents
+
+[20230207 CowSwap](#20230207---cowswap---arbitrary-external-call-vulnerability)
 
 [20230203 Orion Protocol](#20230203---orion-protocol---reentrancy)
 
@@ -388,6 +390,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230207 - CowSwap - Arbitrary External Call Vulnerability
+
+### Lost: ~$120k
+
+Testing
+```
+forge test --contracts ./src/test/CowSwap_exp.sol -vvv
+```
+
+#### Contract
+
+[CowSwap_exp.sol](src/test/CowSwap_exp.sol)
+
+#### Link reference
+
+https://twitter.com/MevRefund/status/1622793836291407873
+
+https://twitter.com/peckshield/status/1622801412727148544
+
+---
 
 ### 20230203 - Orion Protocol - Reentrancy
 
@@ -1190,7 +1213,7 @@ forge test --contracts src/test/MEV_0ad8.t.sol -vvvv
 
 #### Contract
 
-[MEV_0ad8.t.sol](src/test/MEV_0ad8.t.sol.sol)
+[MEV_0ad8.t.sol](src/test/MEV_0ad8.t.sol)
 
 #### Link reference
 
