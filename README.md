@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-161 incidents included.
+162 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -107,6 +107,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20221110 DFXFinance](#20221110---dfxfinance---reentrancy)
 
 [20221109 brahTOPG](#20221109-brahtopg---arbitrary-external-call-vulnerability)
+
+[20221108 MEV_0ad8](#20221108-mev_0ad8---arbitrary-call)
 
 [20221108 Kashi](#20221108-kashi---price-caching-design-defect)
 
@@ -1173,6 +1175,26 @@ Testing
 #### Link reference
 
 https://twitter.com/SlowMist_Team/status/1590685173477101570
+
+---
+
+### 20221108 MEV_0ad8 - Arbitrary call
+
+### Lost: $282k
+
+Testing
+
+```sh
+forge test --contracts src/test/MEV_0ad8.t.sol -vvvv
+```
+
+#### Contract
+
+[MEV_0ad8.t.sol](src/test/MEV_0ad8.t.sol.sol)
+
+#### Link reference
+
+https://twitter.com/Supremacy_CA/status/1590337718755954690
 
 ---
 
