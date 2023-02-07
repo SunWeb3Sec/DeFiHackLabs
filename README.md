@@ -1213,7 +1213,7 @@ forge test --contracts src/test/MEV_0ad8.t.sol -vvvv
 
 #### Contract
 
-[MEV_0ad8.t.sol](src/test/MEV_0ad8.t.sol.sol)
+[MEV_0ad8.t.sol](src/test/MEV_0ad8.t.sol)
 
 #### Link reference
 
