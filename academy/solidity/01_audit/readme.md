@@ -23,11 +23,13 @@ Translation: [SunSec](https://twitter.com/1nf0s3cpt)
 
 ***一些工具可以幫助你協助完成這個過程：***
 
-**[Solidity Metrics:](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-metrics)**該插件將為用[solidity](https://solidity.readthedocs.io/)編寫的項目生成程式碼量測、複雜性、調用圖和風險概況報告。它將幫助你初步了解智能合約的概況。
+**[Solidity Metrics:](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-metrics)**
+
+該插件將為用[solidity](https://solidity.readthedocs.io/)編寫的項目生成程式碼量測、複雜性、調用圖和風險概況報告。它將幫助你初步了解智能合約的概況。
 
 ![https://user-images.githubusercontent.com/2865694/78451004-0252de00-7683-11ea-93d7-4c5dc436a14b.gif](https://user-images.githubusercontent.com/2865694/78451004-0252de00-7683-11ea-93d7-4c5dc436a14b.gif)
 
-**[Solidity Visual Developer](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor)**。這個插件主要是**以安全為中心的**語法和語義高亮，一個詳細的 Class 概要，可視圖，圖表，進階 Solidity 程式碼分析，以及對 Visual Studio Code 的優化。你可以用它來自動生成智能合約調用圖和UML圖。
+**[Solidity Visual Developer](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor)**：這個插件主要是特別強調**以安全為中心的**語法和語義，例如：詳細的 Class 概要、可視圖，圖表，進階 Solidity 程式碼分析，以及對 Visual Studio Code 的優化。你可以用它來自動生成智能合約調用圖和UML圖。
 
 ![https://user-images.githubusercontent.com/2865694/57710279-e27e8a00-766c-11e9-9ca9-8cde50aa31fc.gif](https://user-images.githubusercontent.com/2865694/57710279-e27e8a00-766c-11e9-9ca9-8cde50aa31fc.gif)
 
@@ -44,7 +46,7 @@ Translation: [SunSec](https://twitter.com/1nf0s3cpt)
 模糊測試涉及向智能合約提供大量隨機輸入並觀察其反應。模糊測試的目的是找到邊緣情況和意外行為，這可能發現安全漏洞或錯誤。 
 我們可以使用[Echidna](https://github.com/crytic/echidna)、[Foundry Fuzz](https://book.getfoundry.sh/forge/fuzz-testing)或其他一些工具進行模糊處理。
 
-*需要注意的是，雖然這些工具可以提供有價值的發現並識別許多潛在的問題，但它們不能替代徹底的人工審查，這是我們的下一步。
+需要注意的是，雖然這些工具可以提供有價值的發現並識別許多潛在的問題，但它們不能替代徹底的人工審查，這是我們的下一步。
 
 ---
 
@@ -65,7 +67,7 @@ Translation: [SunSec](https://twitter.com/1nf0s3cpt)
 
 **程式註解：**
 
-當審計一個複雜或龐大的函式庫時，重要的是需要筆記下任何看起來有問題的東西。利用一些筆記軟件，如 notepad, notion, 或 Evernote。
+當審計一個複雜或龐大的函式庫時，重要的是需要記錄任何看起來有問題的東西。利用一些筆記軟件，如 notepad, notion, 或 Evernote。
 
 VScode插件[Inline Bookmarks](https://marketplace.visualstudio.com/items?itemName=tintinweb.vscode-inline-bookmarks)也可以幫助你完成這個過程。在閱讀程式碼時，我們可以在發現bug或懷疑有漏洞的地方添加審計標籤。我們可以稍後輕鬆透過快捷找到它。
 
@@ -73,10 +75,10 @@ VScode插件[Inline Bookmarks](https://marketplace.visualstudio.com/items?itemNa
 
 ## **第4步：撰寫 POC**。
 
-POC 是對一個想法的可行性證明，在智能合約審計中，它的作用是驗證該漏洞是否有效。現在我們發現了一些漏洞，我們可以使用foundry、hardhat或brownie等框架編寫一些PoC測試。下面是為我們的發現寫PoC的幾種方法。
+POC 是對一個想法的可行性證明，在智能合約審計中，它的作用是驗證該漏洞是否有效。現在我們發現了一些漏洞，我們可以使用foundry、hardhat或brownie等框架編寫一些PoC測試。下面是我們整理出寫PoC的幾種方法。
 
 1. **單元測試**
-2. 2.**在分叉上進行開發**。
+2. **在分叉上進行開發**。
 3. **模擬**
 
 在每個 PoC 中提供足夠的註解說明是非常重要的，這既是為了我們自己快速回憶，也是為了讓其他人的了解在做什麼。
@@ -85,23 +87,23 @@ POC 是對一個想法的可行性證明，在智能合約審計中，它的作�
 
 一份好的報告應該包含。
 
-1. **漏洞的摘要**。對漏洞的清晰和簡明的描述。
-2. 2. **影響**。這一部分是審計人員提供協議可能遭受的損失或損害的詳細情況。
-3. 3.**分配嚴重程度：**嚴重程度可根據影響、可能性和其他風險因素分為高、中、低或信息性。
-4. **概念證明：**。一個有效的PoC可能是Hardhat/Foundry測試文件中可以觸發漏洞的攻擊腳本，或任何設法以某種方式利用項目的漏洞的代碼。
-5. 5.**緩解步驟**。在這一節中，審計師應提供關於如何緩解漏洞的建議。這將對項目有利，使其更容易解決這個問題。
-6. 6. **參考資料[可選]**。任何與該漏洞有關的外部參考鏈接。
+1. **漏洞的摘要**：對漏洞的清晰和簡明的描述。
+2. **影響**：這一部分是審計人員提供協議可能遭受的損失或損害的詳細情況。
+3. **分配嚴重程度**：嚴重程度可根據影響、可能性和其他風險因素分為高、中、低或信息性。
+4. **概念證明** ：一個有效的PoC可能是Hardhat/Foundry測試文件中可以觸發漏洞的攻擊腳本，或任何設法以某種方式利用項目的漏洞的代碼。
+5. **緩解步驟**：在這一節中，審計師應提供關於如何緩解漏洞的建議。這將對項目有利，使其更容易解決這個問題。
+6. **參考資料[可選]**：任何與該漏洞有關的外部參考鏈接。
 
-## ＃＃彩蛋。如何提升審計能力？
+## 彩蛋。如何提升審計能力？
 
-1. 閱讀審計報告，特別是Code4rena和Sherlock的報告。深入了解他們的內容，以進一步加深你的知識。
-2. 不僅要閱讀和了解智能合約的漏洞，還要嘗試使用Foundry/Hardhat重現該漏洞。 [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs)可以作為使用Foundry重現該漏洞的有用資源。
-3. 解決各種智能合約的CTF，以獲得安全研究的寶貴知識。 解出CTFs題目比其他形式的學習更有效。CTF: [Ethernaut](https://ethernaut.openzeppelin.com/)、[Damn Vulnerable DeFi Application](https://www.damnvulnerabledefi.xyz/)、[CTF Protocol](https://www.ctfprotocol.com/)、[QuillCTF](https://quillctf.super.site/)、[Paradigm CTF](https://github.com/paradigmxyz/paradigm-ctf-2021)。
-4. 閱讀Immunefi的BugFix報告和最近的黑客分析。嘗試在本地重現該漏洞。 [DeFiHackLabs](https://github.com/SunWeb3Sec/DeFiHackLabs)可以作為使用Foundry複製DeFi黑客事件的有用資源。
-5. 學習時做筆記是一個需要培養的重要習慣。它可以幫助你更好地保留信息，使你更容易回憶起重要的概念。在學習任何東西時都要做自己的筆記。就我個人而言，我使用Notion來記錄我的日常學習內容。
-6. 通過參與社區活動保持信息暢通。一些頂級的Discord服務器可以保持更新，如[Spearbit](https://discord.com/invite/spearbit23), [DeFiHackLabs](https://discord.gg/HtqdYn2ECa), [Secureum](https://discord.com/invite/vGebCTSfNx), [Immunefi](https://discord.com/invite/immunefi), [Blockchain Pentesting](https://discord.com/invite/5JZERC5Vxs) 等。
-7. 理解金融和數學概念。一些漏洞往往需要對金融或複雜的數學計算有深刻的理解。掌握這些技能將使你在競爭中獲得優勢。
-8. 最後，需要充分的睡眠時間。審計工作需要高度的注意力和精神敏銳度。如果沒有充足的睡眠和營養，你將無法完成一份出色的審計報告。
+1. 閱讀審計報告：特別是Code4rena和Sherlock的報告。深入了解他們的內容，以進一步加深你的知識。
+2. 不僅要閱讀和了解智能合約的漏洞：還要嘗試使用Foundry/Hardhat重現該漏洞。 [DeFiVulnLabs](https://github.com/SunWeb3Sec/DeFiVulnLabs)可以作為使用Foundry重現該漏洞的有用資源。
+3. 解決各種智能合約的CTF，以獲得安全研究的寶貴知識： 解出CTFs題目比其他形式的學習更有效。CTF: [Ethernaut](https://ethernaut.openzeppelin.com/)、[Damn Vulnerable DeFi Application](https://www.damnvulnerabledefi.xyz/)、[CTF Protocol](https://www.ctfprotocol.com/)、[QuillCTF](https://quillctf.super.site/)、[Paradigm CTF](https://github.com/paradigmxyz/paradigm-ctf-2021)。
+4. 閱讀Immunefi的BugFix報告和最近的黑客分析：嘗試在本地重現該漏洞。 [DeFiHackLabs](https://github.com/SunWeb3Sec/DeFiHackLabs)可以作為使用Foundry複製DeFi黑客事件的有用資源。
+5. 學習時做筆記是一個需要培養的重要習慣：它可以幫助你更好地保留信息，使你更容易回憶起重要的概念。在學習任何東西時都要做自己的筆記。就我個人而言，我使用Notion來記錄我的日常學習內容。
+6. 通過參與社區活動保持信息暢通：一些頂級的Discord服務器可以密切注意其更新內容，如[Spearbit](https://discord.com/invite/spearbit23), [DeFiHackLabs](https://discord.gg/HtqdYn2ECa), [Secureum](https://discord.com/invite/vGebCTSfNx), [Immunefi](https://discord.com/invite/immunefi), [Blockchain Pentesting](https://discord.com/invite/5JZERC5Vxs) 等。
+7. 理解金融和數學概念：一些漏洞往往需要對金融或複雜的數學計算有深刻的理解。掌握這些技能將使你在競爭中獲得優勢。
+8. 最後，需要充分的睡眠時間：審計工作需要高度的注意力和精神敏銳度。如果沒有充足的睡眠和營養，你將無法完成一份出色的審計報告。
 
 ### **學習資源**
 ****[Guardian - Solidity Lab](https://lab.guardianaudits.com/)****
