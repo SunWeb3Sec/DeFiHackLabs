@@ -39,7 +39,7 @@ Translation: [SunSec](https://twitter.com/1nf0s3cpt)
 
 在這一步，我們將運行一些靜態分析工具。靜態分析工具是用來分析智能合約的常見安全漏洞和容易發生的錯誤問題。靜態分析工具將大大減少你的漏報率，並幫助你偵測到人工分析不容易發現的問題。
 
-我們可以使用[Mythx](https://mythx.io/), [Slither](https://github.com/crytic/slither), [Mythril,](https://github.com/ConsenSys/mythril) [4naly3er](https://github.com/Picodes/4naly3er), 以及其他很多工具來做。
+我們可以使用[Mythx](https://mythx.io/), [Slither](https://github.com/crytic/slither), [Mythril,](https://github.com/ConsenSys/mythril) [4naly3er](https://github.com/Picodes/4naly3er), 以及其他很多工具來做掃描。
 
 **模糊測試工具：** 
 
@@ -67,7 +67,7 @@ Translation: [SunSec](https://twitter.com/1nf0s3cpt)
 
 **程式註解：**
 
-當審計一個複雜或龐大的函式庫時，重要的是需要記錄任何看起來有問題的東西。利用一些筆記軟件，如 notepad, notion, 或 Evernote。
+當審計一個複雜或龐大的函式庫時，重要的是需要記錄任何看起來有問題的東西。可以透過一些筆記軟件，如 notepad, notion, 或 Evernote。
 
 VScode插件[Inline Bookmarks](https://marketplace.visualstudio.com/items?itemName=tintinweb.vscode-inline-bookmarks)也可以幫助你完成這個過程。在閱讀程式碼時，我們可以在發現bug或懷疑有漏洞的地方添加審計標籤。我們可以稍後輕鬆透過快捷找到它。
 
@@ -81,7 +81,7 @@ POC 是對一個想法的可行性證明，在智能合約審計中，它的作�
 2. **在分叉上進行開發**。
 3. **模擬**
 
-在每個 PoC 中提供足夠的註解說明是非常重要的，這既是為了我們自己快速回憶，也是為了讓其他人的了解在做什麼。
+在每個 PoC 中提供足夠的註解說明是非常重要的，這既是為了我們自己快速回憶，也是為了讓其他人了解在做什麼。
 
 ## **步驟5：撰寫報告**。
 
