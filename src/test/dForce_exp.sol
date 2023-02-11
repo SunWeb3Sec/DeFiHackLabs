@@ -154,7 +154,7 @@ contract ContractTest is Test {
 
     function aaveV3Flashloan() internal {
         aaveV3FlashloanAmount = WETH.balanceOf(aArbWETH);
-        emit log_named_decimal_uint("1.balancer Flashloan WETH amount", aaveV3FlashloanAmount, WETH.decimals());
+        emit log_named_decimal_uint("2.aave Flashloan WETH amount", aaveV3FlashloanAmount, WETH.decimals());
         address[] memory assets = new address[](1);
         assets[0] = address(WETH);
         uint256[] memory amounts = new uint256[](1);
