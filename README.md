@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-164 incidents included.
+165 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -29,6 +29,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 6: Write Your Own PoC (Reentrancy) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/) )
 
 ## List of Past DeFi Incidents
+
+[20230210 dForce](#20230210---dforce---read-only-reentrancy)
 
 [20230207 CowSwap](#20230207---cowswap---arbitrary-external-call-vulnerability)
 
@@ -392,6 +394,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230210 - dForce - Read-Only-Reentrancy
+
+### Lost: ~$3.65M
+
+Testing
+```
+forge test --contracts ./src/test/dForce_exp.sol -vvv
+```
+#### Contract
+
+[dForce_exp.sol](src/test/dForce_exp.sol)
+
+#### Link reference
+
+https://twitter.com/SlowMist_Team/status/1623956763598000129
+
+https://twitter.com/BlockSecTeam/status/1623901011680333824
+
+https://twitter.com/peckshield/status/1623910257033617408
+
+---
 
 ### 20230207 - CowSwap - Arbitrary External Call Vulnerability
 
