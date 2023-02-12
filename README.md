@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-165 incidents included.
+166 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -344,6 +344,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20210603 PancakeHunny](#20210603-pancakehunny---incorrect-calculation)
 
 [20210519 PancakeBunny](#20210519-pancakebunny---price-oracle-manipulation)
+
+[20210125 Sushi Badger Digg](#20210125-sushi-badger-digg---sandwich-attack)
 
 </details>
 <details> <summary> Before 2020 </summary>
@@ -3912,6 +3914,26 @@ forge test --contracts ./src/test/PAID_exp.sol -vv
 https://paidnetwork.medium.com/paid-network-attack-postmortem-march-7-2021-9e4c0fef0e07
 
 https://etherscan.io/tx/0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0
+
+---
+
+### 20210125 Sushi Badger Digg - Sandwich attack
+
+#### Lost: 81.68 ETH
+
+Testing
+
+```sh
+forge test --contracts src/test/Sushi-Badger_Digg.exp.sol -vvvv
+```
+
+#### Contract
+
+[Sushi-Badger_Digg.exp.sol](src/test/Sushi-Badger_Digg.exp.sol)
+
+#### Link reference
+
+https://cmichel.io/replaying-ethereum-hacks-sushiswap-badger-dao-digg/
 
 ---
 </details>
