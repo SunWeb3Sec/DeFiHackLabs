@@ -1,4 +1,4 @@
-# Lesson 6: Lesson 6 How to handle or report the theft of crypto?
+# Lesson 6: How to handle or report the theft of crypto?
 
 Author: [Beosin](https://twitter.com/Beosin_com)
 
