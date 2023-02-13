@@ -1,4 +1,4 @@
-# Lesson 7-1: Offline signatures can drain your wallet (Part 1/2)
+# Lesson 7: Offline signatures can drain your wallet (Part 1/2)
 
 Author: [ZenGo](https://twitter.com/zengo)
 
