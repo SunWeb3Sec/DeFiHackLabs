@@ -1,6 +1,6 @@
 # Lesson 7: Offline signatures can drain your wallet (Part 2/2)
 
-Author: [ZenGo](https://zengo.com/)
+Author: [ZenGo Wallet](https://zengo.com/)
 
 This is part 2/2 in our series on one of the most exploited issues in Web3: Offline signatures.
 
