@@ -1,10 +1,6 @@
 # OnChain Transaction Debugging: 7. Hack Analysis: Nomad Bridge, August 2022
 
-### Author: [Immunefi](https://twitter.com/immunefi?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)
-
-<div align=center>
-<img src="https://user-images.githubusercontent.com/107821372/217751563-9be6528b-ced5-4759-ae57-93bd8c1843a4.png" alt="Cover" width="80%"/>
-</div>
+### Author: [gmhacker.eth](https://twitter.com/realgmhacker)
 
 ## Introduction
 The Nomad bridge was hacked on August 1st, 2022, and $190m of locked funds were drained. After one attacker first managed to exploit the vulnerability and struck gold, other dark forest travelers jumped to replay the exploit in what eventually became a colossal, “crowdsourced” hack.
