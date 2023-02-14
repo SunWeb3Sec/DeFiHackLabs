@@ -1,4 +1,4 @@
-# OnChain Transaction Debugging: 7. Hack Analysis: Nomad Bridge, August 2022
+# OnChain Transaction Debugging: 7. Hack Analysis: Nomad Bridge (2022/08)
 
 ### Author: [gmhacker.eth](https://twitter.com/realgmhacker)
 
