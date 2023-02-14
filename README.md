@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-160 incidents included.
+166 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -29,6 +29,14 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 6: Write Your Own PoC (Reentrancy) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/) )
 
 ## List of Past DeFi Incidents
+
+[20230210 dForce](#20230210---dforce---read-only-reentrancy)
+
+[20230207 CowSwap](#20230207---cowswap---arbitrary-external-call-vulnerability)
+
+[20230207 FDP Token](#20230207---fdp---reflection-token)
+
+[20230203 Orion Protocol](#20230203---orion-protocol---reentrancy)
 
 [20230202 BonqDAO](#20230202---BonqDAO---price-oracle-manipulation)
 
@@ -105,6 +113,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20221110 DFXFinance](#20221110---dfxfinance---reentrancy)
 
 [20221109 brahTOPG](#20221109-brahtopg---arbitrary-external-call-vulnerability)
+
+[20221108 MEV_0ad8](#20221108-mev_0ad8---arbitrary-call)
 
 [20221108 Kashi](#20221108-kashi---price-caching-design-defect)
 
@@ -335,6 +345,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20210519 PancakeBunny](#20210519-pancakebunny---price-oracle-manipulation)
 
+[20210125 Sushi Badger Digg](#20210125-sushi-badger-digg---sandwich-attack)
+
 </details>
 <details> <summary> Before 2020 </summary>
  
@@ -384,6 +396,91 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230210 - dForce - Read-Only-Reentrancy
+
+### Lost: ~$3.65M
+
+Testing
+```
+forge test --contracts ./src/test/dForce_exp.sol -vvv
+```
+#### Contract
+
+[dForce_exp.sol](src/test/dForce_exp.sol)
+
+#### Link reference
+
+https://twitter.com/SlowMist_Team/status/1623956763598000129
+
+https://twitter.com/BlockSecTeam/status/1623901011680333824
+
+https://twitter.com/peckshield/status/1623910257033617408
+
+---
+
+### 20230207 - CowSwap - Arbitrary External Call Vulnerability
+
+### Lost: ~$120k
+
+Testing
+```
+forge test --contracts ./src/test/CowSwap_exp.sol -vvv
+```
+
+#### Contract
+
+[CowSwap_exp.sol](src/test/CowSwap_exp.sol)
+
+#### Link reference
+
+https://twitter.com/MevRefund/status/1622793836291407873
+
+https://twitter.com/peckshield/status/1622801412727148544
+
+---
+
+### 20230207 - FDP - Reflection token
+
+### Lost: ~16 WBNB
+
+Testing
+```
+forge test --contracts src/test/FDP_exp.t.sol -vv
+```
+
+#### Contract
+
+[FDP_exp.t.sol](src/test/FDP_exp.t.sol)
+
+#### Link reference
+
+https://twitter.com/BeosinAlert/status/1622806011269771266
+
+---
+
+### 20230203 - Orion Protocol - Reentrancy
+
+### Lost: $3M
+
+Testing
+```
+forge test --contracts ./src/test/Orion_exp.sol -vvv
+```
+
+#### Contract
+
+[Orion_exp.sol](src/test/Orion_exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1621337925228306433
+
+https://twitter.com/BlockSecTeam/status/1621263393054420992
+
+https://www.numencyber.com/analysis-of-orionprotocol-reentrancy-attack-with-poc/
+
+---
 
 ### 20230202 - BonqDAO - Price Oracle Manipulation
 
@@ -1148,6 +1245,26 @@ Testing
 #### Link reference
 
 https://twitter.com/SlowMist_Team/status/1590685173477101570
+
+---
+
+### 20221108 MEV_0ad8 - Arbitrary call
+
+### Lost: $282k
+
+Testing
+
+```sh
+forge test --contracts src/test/MEV_0ad8.t.sol -vvvv
+```
+
+#### Contract
+
+[MEV_0ad8.t.sol](src/test/MEV_0ad8.t.sol)
+
+#### Link reference
+
+https://twitter.com/Supremacy_CA/status/1590337718755954690
 
 ---
 
@@ -3797,6 +3914,26 @@ forge test --contracts ./src/test/PAID_exp.sol -vv
 https://paidnetwork.medium.com/paid-network-attack-postmortem-march-7-2021-9e4c0fef0e07
 
 https://etherscan.io/tx/0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0
+
+---
+
+### 20210125 Sushi Badger Digg - Sandwich attack
+
+#### Lost: 81.68 ETH
+
+Testing
+
+```sh
+forge test --contracts src/test/Sushi-Badger_Digg.exp.sol -vvvv
+```
+
+#### Contract
+
+[Sushi-Badger_Digg.exp.sol](src/test/Sushi-Badger_Digg.exp.sol)
+
+#### Link reference
+
+https://cmichel.io/replaying-ethereum-hacks-sushiswap-badger-dao-digg/
 
 ---
 </details>

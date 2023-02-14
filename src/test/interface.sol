@@ -3804,7 +3804,7 @@ interface ICointroller {
     address rTokenBorrowed,
     address rTokenCollateral,
     uint256 actualRepayAmount
-  ) external view returns (uint256, uint256);
+  ) external view returns (uint256);
 
   function liquidationIncentiveMantissa() external view returns (uint256);
 
@@ -4666,7 +4666,7 @@ interface ICurvePool {
   function A() external view returns (uint256 out);
 
   function add_liquidity(uint256[2] memory amounts, uint256 min_mint_amount)
-  external returns(uint256);
+  external payable returns(uint256);
 
   function add_liquidity(uint256[3] memory amounts, uint256 min_mint_amount)
   external returns(uint256);

