@@ -1,8 +1,8 @@
-# 黑客事件分析: Nomad Bridge， 2022年8月
+# OnChain Transaction Debugging: 7. Nomad Bridge 跨鏈橋事件分析
 
-原文链接：[Hack Analysis: Nomad Bridge, August 2022](https://medium.com/immunefi/hack-analysis-nomad-bridge-august-2022-5aa63d53814a)
+作者：[gmhacker.eth](https://twitter.com/realgmhacker)
 
-原作者：[gmhacker.eth](https://twitter.com/realgmhacker) 与 [Immunefi](https://immunefi.com/)
+翻譯： [Spark](https://twitter.com/SparkToday00)
 
 ## 事件概览（Introduction）
   2022年8月1日，Nomad Bridge 遭到黑客攻击。1.9亿美元的锁定资产在此次事件中被盗。在第一名黑客成功攻击之后，引来里许多来自黑暗森林的旅客的模仿攻击，最终导致了一个严重的，攻击源众多的安全事件。
