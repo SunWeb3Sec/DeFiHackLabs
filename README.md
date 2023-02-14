@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-166 incidents included.
+167 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -29,6 +29,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 6: Write Your Own PoC (Reentrancy) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/) )
 
 ## List of Past DeFi Incidents
+
+[20230210 Sheep Token](#20230210---sheep---reflection-token)
 
 [20230210 dForce](#20230210---dforce---read-only-reentrancy)
 
@@ -379,7 +381,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 ### Transaction debugging tools
 
-[Phalcon](https://phalcon.blocksec.com/) | [Tx.viewer](https://tx.eth.samczsun.com/) | [Cruise](https://cruise.supremacy.team/) | [Ethtx](https://ethtx.info/) | [Tenderly](https://dashboard.tenderly.co/explorer)
+[Phalcon](https://phalcon.blocksec.com/) | [Tx.viewer](https://tx.eth.samczsun.com/) | [Cruise](https://cruise.supremacy.team/) | [Ethtx](https://ethtx.info/) | [Tenderly](https://dashboard.tenderly.co/explorer) | [eigenphi](https://tx.eigenphi.io/analyseTransaction)
 
 ### Ethereum Signature Database
 
@@ -396,6 +398,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230210 - Sheep - Reflection token
+
+### Lost: ~$3K
+
+Testing
+```
+forge test --contracts src/test/Sheep_exp.sol -vvv
+```
+#### Contract
+
+[Sheep_exp.sol](src/test/Sheep_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1623999717482045440
+
+https://twitter.com/BlockSecTeam/status/1624077078852210691
+
+---
 
 ### 20230210 - dForce - Read-Only-Reentrancy
 
