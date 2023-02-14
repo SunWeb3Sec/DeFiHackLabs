@@ -1,4 +1,4 @@
-# OnChain Transaction Debugging: 7. Nomad Bridge 跨鏈橋事件分析
+# OnChain Transaction Debugging: 7. Nomad Bridge 跨鏈橋事件分析 (2022/08)
 
 作者：[gmhacker.eth](https://twitter.com/realgmhacker)
 
