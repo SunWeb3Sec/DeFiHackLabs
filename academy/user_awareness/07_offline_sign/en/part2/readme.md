@@ -1,12 +1,12 @@
 # Lesson 7: Offline signatures can drain your wallet (Part 2/2)
 
-Author: [ZenGo](https://twitter.com/zengo)
+Author: [ZenGo Wallet](https://zengo.com/)
 
 This is part 2/2 in our series on one of the most exploited issues in Web3: Offline signatures.
 
 In [part 1/2](https://github.com/Yumistar/DeFiHackLabs/blob/main/tutorials/usersec/07/readme.md), we investigated the use of different standards of offline signatures in Web3 Dapps, and revisited one of the biggest hacks in this domain: The OpenSea-related offline signature phishing attack earlier this year that resulted in the theft of NFTs valued at millions of USD and demonstrated how it is still relevant.
 
-***Soon after, ZenGo discovered an additional layer of vulnerabilities that had remained overlooked: ERC-20 tokens are vulnerable to hackers as well.***
+***Soon after, the ZenGo wallet's security research team discovered an additional layer of vulnerabilities that had remained overlooked: ERC-20 tokens are vulnerable to hackers as well.***
 
 In this second technical blogpost we will explore some recently-discovered attack vectors taking advantage of OpenSea’s newest smart contracts, to steal ERC-20 tokens as well and not just NFTs. Since our discovery, we responsibly disclosed our findings to OpenSea and later found evidence for actual use of such exploits as speculated by our research, in the wild against actual OpenSea users. We will conclude with some practical recommendations for users.
 

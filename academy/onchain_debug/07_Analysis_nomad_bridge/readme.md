@@ -1,123 +1,111 @@
-# OnChain Transaction Debugging: 7. Hack Analysis: Nomad Bridge, August 2022
+# OnChain Transaction Debugging: 7. Nomad Bridge 跨鏈橋事件分析 (2022/08)
 
-### Author: [gmhacker.eth](https://twitter.com/realgmhacker)
+作者：[gmhacker.eth](https://twitter.com/realgmhacker)
 
-## Introduction
-The Nomad bridge was hacked on August 1st, 2022, and $190m of locked funds were drained. After one attacker first managed to exploit the vulnerability and struck gold, other dark forest travelers jumped to replay the exploit in what eventually became a colossal, “crowdsourced” hack.
+翻譯： [Spark](https://twitter.com/SparkToday00)
 
-A routine upgrade on the implementation of one of Nomad’s proxy contracts marked a zero hash value as a trusted root, which allowed messages to get automatically proved. The hacker leveraged this vulnerability to spoof the bridge contract and trick it to unlock funds.
+## 事件概览（Introduction）
+  2022年8月1日，Nomad Bridge 遭到黑客攻击。1.9亿美元的锁定资产在此次事件中被盗。在第一名黑客成功攻击之后，引来里许多来自黑暗森林的旅客的模仿攻击，最终导致了一个严重的，攻击源众多的安全事件。
+  
+  根本原因是在Nomad的一个代理合约的例行升级中，将零哈希值标记为可信根，这使得任意消息都可以自动得到证明。黑客利用这个漏洞来欺骗桥合约，并解锁资金。第一个[攻击交易](https://dashboard.tenderly.co/tx/mainnet/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460) 从桥合约获利100 WBTC，约合230万美元。
+  
+  此次攻击中，攻击者无需进行闪电贷款或与其他DeFi协议进行其他复杂的交互。攻击的过程仅仅调用了合约上的一个函数，并以正确的消息输入进而向协议的流动性发动攻击。攻击交易的简单和可重放性导致其他人也收集了部分非法利润让整个事件变得更糟。
+  
+  正如[Rekt News](https://rekt.news/nomad-rekt/)提到的，“诚如DeFi的游戏规则，这次黑客攻击几乎是无门槛的，任何人都可以加入进来。”
 
-That first successful transaction alone, which can be seen [here](https://dashboard.tenderly.co/tx/mainnet/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460), drained 100 WBTC from the bridge–around $2.3m at the time. There was no need for a flashloan or other complex interaction with another DeFi protocol. The attack simply called a function on the contract with the right message input, and the attacker continued throwing blows at the protocol’s liquidity.
+## 背景知识（Background）
+Nomad是一个跨链交互应用，允许在以太坊、Moonbeam和其他链之间进行代币操作。发送到Nomad合约的消息经过验证后，通过离线代理机制传输到其他链上，遵循乐观验证（optimistic verification）机制。
 
-Unfortunately, the simple and replayable nature of the transaction led others to collect some of the illicit profit. As [Rekt News](https://rekt.news/nomad-rekt/) put it, “Staying true to DeFi Principles, this hack was permissionless — anyone could join in.”
+正如大多数跨链桥接协议一样，Nomad的代币跨链是通过在一侧锁定代币，另一侧铸造代币，以完成在不同的链上转移价值。因为这些代表代币最终可以被烧毁以解锁原始资金（即跨链回到代币的原生链），它们起到借据的作用，具有与原始ERC-20代币相同的经济价值。正因如此，跨链项目在复杂的智能合约内积累了大量资金，使得黑客们垂涎三尺。
 
-In this article, we will be analyzing the exploited vulnerability in the Nomad bridge’s Replica contract, and then we’ll create our own version of the attack to drain all the liquidity in one transaction, testing it against a local fork. You can check the full PoC [here](https://github.com/immunefi-team/hack-analysis-pocs/tree/main/src/nomad-august-2022).
+![](https://miro.medium.com/v2/resize:fit:1400/0*-reF-Ys6qVUWwnfJ)
+跨链代币锁定与铸造流程，参考：[MakerDAO 博客](https://blog.makerdao.com/what-are-blockchain-bridges-and-why-are-they-important-for-defi/)
 
-This article was written by [gmhacker.eth](https://twitter.com/realgmhacker), an Immunefi Smart Contract Triager.
+在Nomad项目中，利用叫做**Replica**的合约验证Merkle树结构中的消息， 这个合约在各个链上都有部署。项目中的其他合约都依靠这个合约验证输入的消息。一旦消息被验证，它就会被存储在Merkle树中，并生成一个新的承诺树根，并在随后确认、处理。
 
-## Background
+## 根本原因（Root Cause）
+在Nomad桥有了大致了解之后，我们可以深入到实际的智能合约代码中，探索导致2022年8月黑客攻击的根本原因。要做到这一点，我们需要详细了解**Replica**合约。
 
-Nomad is a cross-chain communication protocol allowing, among other things, bridging of tokens between Ethereum, Moonbeam and other chains. Messages sent to Nomad contracts are verified and transported to other chains through off-chain agents, following an optimistic verification mechanism.
+*Replica.sol 中 `process` 函数[代码片段](https://gist.github.com/gists-immunefi/f8ef00be9e1c5dd4d879a418966191e0/raw/8fb8fd808b59eca9ca51df98aef65d7ce4c805e6/Nomad%20Hack%20Analysis%201.sol)*
 
-Like most cross-chain bridging protocols, Nomad’s token bridge is able to transfer value through different chains by a process of locking tokens on one side and minting representatives on the other. Because those representative tokens can eventually be burned to unlock the original funds (i.e. bridging back to the token’s native chain), they function as IOUs and have the same economic value as the original ERC-20s. That aspect of bridges in general leads to a big accumulation of funds inside a complex smart contract, rendering it a much-desired target for hackers.
-
-<div align=center>
-<img src="https://user-images.githubusercontent.com/107821372/217752487-9580592c-98ed-4690-b330-d211d795d276.png" alt="Cover" width="80%"/>
-</div>
-
-Locking & minting process, src: [MakerDAO’s blog](https://blog.makerdao.com/what-are-blockchain-bridges-and-why-are-they-important-for-defi/)
-
-In Nomad’s case, a contract called `Replica`, which is deployed on all supported chains, is responsible for validating messages in a Merkle tree structure. Other contracts in the protocol rely on this for authentication of inbound messages. Once a message is validated, it is stored in the Merkle tree, generating a new committed tree root which gets confirmed to be processed.
-
-## Root Cause
-
-Having a rough understanding of what the Nomad bridge is, we can dive into the actual smart contract code to explore the root cause vulnerability that was leveraged in the various transactions of the August 2022 hack. To do that, we need to go deeper into the `Replica` contract.
-
+```solidity=
+function process(bytes memory _message) public returns (bool _success) {
+    // ensure message was meant for this domain
+    bytes29 _m = _message.ref(0);
+    require(_m.destination() == localDomain, "!destination");
+    // ensure message has been proven
+    bytes32 _messageHash = _m.keccak();
+    require(acceptableRoot(messages[_messageHash]), "!proven");
+    // check re-entrancy guard
+    require(entered == 1, "!reentrant");
+    entered = 0;
+    // update message status as processed
+    messages[_messageHash] = LEGACY_STATUS_PROCESSED;
+    // call handle function
+    IMessageRecipient(_m.recipientAddress()).handle(
+        _m.origin(),
+        _m.nonce(),
+        _m.sender(),
+        _m.body().clone()
+    );
+    // emit process results
+    emit Process(_messageHash, true, "");
+    // reset re-entrancy guard
+    entered = 1;
+    // return true
+    return true;
+}
 ```
-   function process(bytes memory _message) public returns (bool _success) {
-       // ensure message was meant for this domain
-       bytes29 _m = _message.ref(0);
-       require(_m.destination() == localDomain, "!destination");
-       // ensure message has been proven
-       bytes32 _messageHash = _m.keccak();
-       require(acceptableRoot(messages[_messageHash]), "!proven");
-       // check re-entrancy guard
-       require(entered == 1, "!reentrant");
-       entered = 0;
-       // update message status as processed
-       messages[_messageHash] = LEGACY_STATUS_PROCESSED;
-       // call handle function
-       IMessageRecipient(_m.recipientAddress()).handle(
-           _m.origin(),
-           _m.nonce(),
-           _m.sender(),
-           _m.body().clone()
-       );
-       // emit process results
-       emit Process(_messageHash, true, "");
-       // reset re-entrancy guard
-       entered = 1;
-       // return true
-       return true;
-   }
+
+
+Replica合约中的`process`函数负责将消息发送到最终接收方。只有当输入消息被验证的情况下函数才会成功执行，这意味着传入的消息在调用`process`之前已经被添加到Merkle树中，并拥有了可被接受和可信赖的根（root）。这个验证（第36行）利用`acceptableRoot` view 函数在已验证根的映射（`mapping`）中查询传入消息的哈希值从而判断消息是否合法。
+
+*Replica.sol 中 `initialize` 函数[代码片段](https://gist.github.com/gists-immunefi/4792c4bb10d3f73648b4b0f86e564ac9/raw/1f70cc5490bf2383d42eeec3fa06a74d7be1a66c/Nomad%20Hack%20Analysis%202.sol)*
+```solidity=
+function initialize(
+    uint32 _remoteDomain,
+    address _updater,
+    bytes32 _committedRoot,
+    uint256 _optimisticSeconds
+) public initializer {
+    __NomadBase_initialize(_updater);
+    // set storage variables
+    entered = 1;
+    remoteDomain = _remoteDomain;
+    committedRoot = _committedRoot;
+    // pre-approve the committed root.
+    confirmAt[_committedRoot] = 1;
+    _setOptimisticTimeout(_optimisticSeconds);
+}
 ```
-<div align=center>
 
-Snippet 1: `process` function on Replica.sol, view [raw](https://gist.github.com/gists-immunefi/f8ef00be9e1c5dd4d879a418966191e0#file-nomad-hack-analysis-1-sol).
 
-</div>
 
-The `process` [function](https://etherscan.io/address/0xb92336759618f55bd0f8313bd843604592e27bd8#code%23F1%23L179) in the `Replica` contract is responsible for dispatching a message to its final recipient. This will only be successful if the input message has already been proven, which means that the message has already been added to the Merkle tree, leading to an accepted and trustworthy root. That check is done against the message hash, using the `acceptableRoot` view function, which will read from the confirmed roots mapping.
+当升级代理合约的实现合约时发，可能会执行一次性的初始化函数。该函数将设置一些初始状态值。在[4月21日Nomad例行升级](https://tx.eth.samczsun.com/ethereum/0x99662dacfb4b963479b159fc43c2b4d048562104fe154a4d0c2519ada72e50bf)，0x00被设置为预批准的根，被存储在`confirmAt`映射中，这也是本次事件的开端。
 
-```
-   function initialize(
-       uint32 _remoteDomain,
-       address _updater,
-       bytes32 _committedRoot,
-       uint256 _optimisticSeconds
-   ) public initializer {
-       __NomadBase_initialize(_updater);
-       // set storage variables
-       entered = 1;
-       remoteDomain = _remoteDomain;
-       committedRoot = _committedRoot;
-       // pre-approve the committed root.
-       confirmAt[_committedRoot] = 1;
-       _setOptimisticTimeout(_optimisticSeconds);
-   }
-```
-<div align=center>
+回到`process`函数，我们可以看到，验证过程依赖于检查消息映射上的消息哈希值，并将该消息标记为已处理，这样攻击者就不能重复使用同一消息。
 
-Snippet 2: `initialize` function in Replica.sol, view [raw](https://gist.github.com/gists-immunefi/4792c4bb10d3f73648b4b0f86e564ac9#file-nomad-hack-analysis-2-sol).
+值得一提的是，在EVM智能合约存储中，所有位置（`slot`）初始值为0，也就是说当我们读取一个未使用的存储位置时EVM总会返回零值（0x00）而非异常。同理对于映射（`mapping`）, 当查询不存在的消息哈希值时就会返回零值，这个值将被传给`acceptableRoot`函数，由于在4月21日的升级中0x00被设置成了可信的根，该函数就会返回true。接着这个消息被标记为已处理，但是任何人都可以通过简单更改消息内容产生新的消息并进行模仿攻击。
 
-</div>
+输入的消息往往根据各种不同的参数类型进行编码。对于从桥上解锁资金的消息，其中之一便是收件人地址。因此，在第一个攻击者执行了一个[成功的交易后](https://dashboard.tenderly.co/tx/mainnet/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460)，任何了解解码消息的人都可以简单地更改收件人地址并进行重复攻击交易，因为是使用不同的消息，所以新的攻击不会受到先前攻击的影响从而让新地址获利。
 
-When an upgrade happens on the implementation of a given proxy contract, the upgrading logic may execute a one-time-call initialization function. This function will set some initial state values. In particular, a routine [April 21st upgrade](https://openchain.xyz/trace/ethereum/0x99662dacfb4b963479b159fc43c2b4d048562104fe154a4d0c2519ada72e50bf) was made, and the value 0x00 was passed as the pre-approved committed root, which gets stored into the confirmAt mapping. This is where the vulnerability appeared.
+## 攻击复现（Proof of Concept）
+现在我们理解了为什么Nomad会被攻击，是时候尝试复现本次攻击了。我们将根据不同的代币去创建相应的攻击消息（message），然后通过 `Replica`合约中的`process`函数盗取相应资产。
 
-Going back to the `process()` function, we see that we rely on checking for a message hash on the `messages` mapping. That mapping is responsible for marking messages as processed, so that attackers cannot replay the same message.
+在这里我们选用带有存档功能的RPC服务， 例如[Ankr的免费服务](https://www.ankr.com/rpc/eth/)，拷贝15259100 block时的状态（攻击发生前一个block）。
 
-A particular aspect of an EVM smart contract storage is that all slots are virtually initialized as zero values, which means that if one reads an unused slot in storage, it won’t raise an exception but rather it will return 0x00. A corollary to this is that every unused key on a Solidity mapping will return 0x00. Following that logic, whenever the message hash is not present on the `messages` mapping, 0x00 will be returned, and that will be passed to the `acceptableRoot` function, which in turn will return true given that 0x00 has been set as a trusted root. The message will then be marked as processed, but anybody can simply change the message to create a new unused one and resubmit it.
+我们的复现攻击将根据以下步骤：
+1. 选择一个给定的ERC-20代币，并检查Nomad ERC-20桥梁合约的余额。
+2. 生成一个带有正确参数的消息来解锁资金，并将攻击者地址作为接收者，全额代币余额作为要解锁的资金量。
+3. 调用`process`函数以获取代币。
+4. 针对不同代币重复以上步骤盗取资金。
 
-The input message encodes various different parameters in a given format. Among those, for a message to unlock funds from the bridge, there’s the recipient address. So after the first attacker executed a [successful transaction](https://dashboard.tenderly.co/tx/mainnet/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460), anyone that knew how to decode the message format could simply change the recipient address and replay the attack transaction, this time with a different message that would give profit to the new address.
+余下的篇幅，我们将使用Foundry分步完成攻击复现.
 
-## Proof of Concept
+## 攻击（The Attack）
 
-Now that we understand the vulnerability that compromised the Nomad protocol, we can formulate our own proof of concept (PoC). We will craft specific messages to call the `process` function in `Replica` function once for each specific token we want to drain, leading to protocol insolvency in just one single transaction.
-
-We’ll start by selecting an RPC provider with archive access. For this demonstration, we will be using [the free public RPC aggregator](https://www.ankr.com/rpc/eth/) provided by Ankr. We select the block number 15259100 as our fork block, 1 block before the first hack transaction.
-
-Our PoC needs to run through a number of steps on a single transaction to be successful. Here is a high-level overview of what we will be implementing in our attack PoC:
-
-1. Select a given ERC-20 token and check the balance of the Nomad ERC-20 bridge contract.
-2. Generate a message payload with the right parameters to unlock funds, among which our attacker address as the recipient and the full token balance as the amount of funds to be unlocked.
-3. Call the vulnerable process function, which will lead to a transfer of tokens to the recipient address.
-4. Loop through various ERC-20 tokens with a relevant presence on the bridge’s balance to drain those funds in the same fashion.
-
-Let’s code one step at a time, and eventually look at how the entire PoC looks. We will be using Foundry.
-
-## The Attack
-
-```
+*[初始的攻击合约](https://gist.githubusercontent.com/gists-immunefi/4305df38623ddcaa11812a9c186c73ac/raw/e960b16512343fb3d6f3d8821486e7fb1452952c/Nomad%20Hack%20Analysis%203.sol)*
+```solidity
 pragma solidity ^0.8.13;
  
 import "@openzeppelin/token/ERC20/ERC20.sol";
@@ -159,18 +147,13 @@ contract Attacker {
    ) internal pure returns (bytes memory) {}
 }
 ```
-<div align=center>
 
-Snippet 3: The start of our attack contract, view [raw](https://gist.github.com/gists-immunefi/4305df38623ddcaa11812a9c186c73ac#file-nomad-hack-analysis-3-sol).
+攻击合约的入口是`attack`函数， 它包含一个简单的循环来循环查询代币桥地址（ERC20_BRIDGE）的不同代币余额。`ERC20_BRIDGE`指代Nomad ERC20 桥合约，也就是所有锁定资产的存放地址。
 
-</div>
+在这之后我们根据余额来创建用来攻击的消息，并作为输入传给`IReplica(REPLICA).process`函数。这个函数将会把我们伪造的信息传递给相应的后端合约，进而触发解锁和转移资产的请求，最终将桥玩弄于鼓掌之间。
 
-Let’s begin by creating our Attacker contract. The entry point to our contract will be the `attack` function, which is as simple as a for loop going through various different token addresses. We check `ERC20_BRIDGE`’s balance of the specific token that we’re dealing with. This is the address of the Nomad ERC-20 bridge contract, which holds the locked funds on Ethereum.
-
-After that, the malicious message payload is generated. The parameters that will change in each loop iteration are the token address and the amount of funds to be transferred. The generated message will be the input to the `IReplica.process` function. As we already established, this function will forward the encoded message to the right end contract on the Nomad protocol to bring the unlock and transferring request to fruition, effectively tricking the bridge logic.
-
-```
-
+*产生符合条件的消息*
+```solidity=
 contract Attacker {
    address constant BRIDGE_ROUTER = 0xD3dfD3eDe74E0DCEBC1AA685e151332857efCe2d;
   
@@ -208,37 +191,31 @@ contract Attacker {
    }
 }
 ```
-<div align=center>
 
-Snippet 4: Generate the malicious message with the right format and parameters, view [raw](https://gist.github.com/gists-immunefi/2a5fbe2e6034dd30534bdd4433b52a29#file-nomad-hack-analysis-4-sol).
+在生成消息的工程中要注意不同参数的编码以确保Nomad的协议可以正确解码。值得一提的是我们需要制定消息的转发路径-桥路由合约和ERC20桥地址。同时我们需要用`0x3`作为类型来表示代币转移。
 
-</div>
+最后，我们要确定可以带给我们利润的参数-代币地址，转移金额和接收者。正如我们之前所提到的，这将创建对于`Replica`合约全新的信息。
 
-The generated message needs to be encoded with various different parameters, so that it gets properly unpacked by the protocol. Importantly, we need to specify the forwarding path of the message — the bridge router and the ERC-20 bridge addresses. We must flag the message as a token transfer, hence the `0x3` value as the type.
+不可思议的是，就算加上一些和Foundry相关的日志信息，整个PoC的代码也只有87行。通过运行以上复现代码，我们可以获得以下资金：
 
-Finally, we have to specify the parameters that will bring the profit to us–the right token address, the amount to be transferred, and the recipient of that transfer. As we’ve seen already, this will surely create a brand new original message that will never have been processed by the `Replica` contract, which means that it will actually be seen as valid, according to our previous explanation.
+- 1,028 WBTC
+- 22,876 WETH
+- 87,459,362 USDC
+- 8,625,217 USDT
+- 4,533,633 DAI
+- 119,088 FXS
+- 113,403,733 CQT
 
-Quite impressively, this completes the entire exploit logic. If we had some Foundry logs, our PoC still amounts to only 87 lines of code.
+## 总结（Conclusion）
 
-If we run this PoC against the forked block number, we will get the following profits:
+Nomad Bridge攻击可以说是2022年最大的黑客攻击之一。这次攻击再次向我们强调了协议安全的重要性。在这个特殊的案例中，我们已经了解到一个常规的合约升级是如何产生一个可怕的漏洞并危及所有锁定的资金。此外，在开发过程中，人们需要注意存储槽（slot）的默认值为0，特别是在涉及映射（mapping）的逻辑中。对于这种可能导致漏洞的常见值，z最好设置一些单元测试以避免潜在的危险。
 
-* 1,028 WBTC
-* 22,876 WETH
-* 87,459,362 USDC
-* 8,625,217 USDT
-* 4,533,633 DAI
-* 119,088 FXS
-113,403,733 CQT
+值得一提的是，一些参与模仿攻击的账户将资金返还给了Nomad项目，项目方也在计划[重新上线](https://medium.com/nomad-xyz-blog/nomad-bridge-relaunch-guide-3a4ef6624f90)并将资产返还给受到影响的用户。如果您持有Nomad在攻击中丢失的资产，请将它返还给[Nomad recovery 钱包](https://etherscan.io/address/0x94a84433101a10aeda762968f6995c574d1bf154)。
 
-## Conclusion
+正如之前提到的，这次攻击远比看起来更加简单，而且很有可能在一个交易里盗取所有资金，以下是完整的PoC代码（包括一些Foundry日志）：
 
-The Nomad Bridge exploit was one of the biggest hacks of 2022. The attack stresses the importance of security throughout the entire protocol. In this particular case, we’ve learned how a single routine upgrade on a proxy implementation can cause a critical vulnerability and compromise all locked funds. Furthermore, during development one needs to be careful regarding the 0x00 default values on storage slots, specially in logic involving mappings. It’s also good to have some unit testing setup for such common values that might lead to vulnerabilities.
-
-It should be noted that some scavenger accounts that drained portions of the funds returned them to the protocol. There are [plans to relaunch the bridge](https://medium.com/nomad-xyz-blog/nomad-bridge-relaunch-guide-3a4ef6624f90), and the returned assets will be distributed to users through pro-rata shares of those recovered funds. Any stolen funds can be returned to Nomad’s [recovery wallet](https://etherscan.io/address/0x94a84433101a10aeda762968f6995c574d1bf154).
-
-As previously pointed out, this PoC actually enhances the hack and drains all TVL in one transaction. It is a simpler attack than what actually took place in reality. This is what our entire PoC looks like, with the addition of some helpful Foundry logs:
-
-```
+*[完整的PoC代码](https://gist.githubusercontent.com/gists-immunefi/2bdffe6f9683c9b3ab810e1fb7fe4aff/raw/df16e8103c6c3b38d412e0320cda37da9a5a9e7c/Nomad%20Hack%20Analysis%205.sol)*
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
  
@@ -327,8 +304,4 @@ contract Attacker {
    }
 }
 ```
-<div align=center>
 
-Snippet 5: all code, view [raw](https://gist.github.com/gists-immunefi/2bdffe6f9683c9b3ab810e1fb7fe4aff#file-nomad-hack-analysis-5-sol).
-
-</div>

@@ -1,6 +1,6 @@
 # Lesson 7: Offline signatures can drain your wallet (Part 1/2)
 
-Author: [ZenGo](https://twitter.com/zengo)
+Author: [ZenGo Wallet](https://zengo.com/)
 
 As part of our ongoing Blockchain and Web3 security research, we investigated the use of different standards of offline signatures in Web3 dapps, and revisited one of the biggest hacks in this domain: The OpenSea-related offline signature phishing attack earlier this year that resulted in the theft of NFTs valued at millions of USD.
 
