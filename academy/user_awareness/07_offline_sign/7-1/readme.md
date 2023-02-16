@@ -44,26 +44,23 @@ _**本文章第二部分將會介紹SeaPort智能合約未知的潛在攻擊向�
 
 ### [](#step-2)第二步
 
-NFT賣家會被要求簽署一條「離線訊息」
-### [](#step-2)第二步
+NFT賣家完成第一步「授權」後，為了在OpenSea應用程序UI「上架」其NFT列表參數（例如價格），會被要求「簽署」一份代表這些參數的「離線訊息」（此訊息會包含「賣家的以太坊私鑰」，以驗證賣家對 NFT 的所有權。）
 
-Next, the seller is asked to sign an offline message that represents the listing parameters (e.g. price) that they submitted on the OpenSea application UI.
-
-Once the seller signs that message, OpenSea updates the NFT’s status application as available for buying.
+一旦完成簽署，OpenSea會更新NFT狀態為「可購買狀態」。
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/217187985-a72b2b88-6700-418c-8c0a-018a79cdbc25.png" alt="Cover" width="60%"/>
    </div>
 
-### [](#step-3)Step 3
+### [](#step-3)第三步
 
-When a buyer makes a purchase, they send the listing parameters to the contract along with the listing signature as stored on OS DB. The smart contract then compares the purchase parameters against the seller’s listing parameters and if they are met, the purchase event will go through successfully and the OS contract will move the NFT to the buyer and ETH (or any other token) to the seller.
+當買方完成購買，系統會將「購買」的列表參數及儲存於資料庫的列表簽名回傳給智能合約驗證。當確認參與交易的各方的真實性，以及所交換數據的完整性後，合約將繼續將NFT轉移給買方，賣方則收到ETH（或其他任何代幣）。
 
-Since the signature is a derivative of the selling parameters and the seller’s private key, a potential hacker cannot fake a valid signature and by that steal an NFT using the OS contract.
+由於簽名是銷售參數和「賣家私鑰」的衍生品，只有賣家知道正確的私鑰，潛浮的駭客無法偽造有效簽名冒充，並使用操作系統合約竊取 NFT。
 
-To overcome this obstacle, Scammers need to trick the victim to sign on a listing message, with parameters that the scammers chose, most likely selling the victim’s precious NFT for a very low price, or even zero.
+為了克服此困難，詐騙者會使用極低的價格或0元標價NFT，誘騙受害者在列表訊息上簽名。
 
-To do so, scammers may apply various phishing techniques, leveraging the fact that these message parameters are unclear for most users. When the original phishing scam against OpenSea users took place, it asked the victims to sign a malicious listing message abusing the fact that it’s impossible for the victims to understand what they actually sign:
+利用大部分的使用者不知道訊息參數的機制，詐遍者會使用各種釣魚手法，在OpenSea用戶不知情的情況下，騙取OpenSea用戶簽署惡意列表訊息，以獲得真正的私鑰。
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/217188687-4c25a904-b458-4576-a650-dd0dfd243846.png" alt="Cover" width="40%"/>
@@ -184,5 +181,6 @@ Once the scammer has the signature he can send a transaction with the user signa
 It’s live! Read it [here](https://github.com/Yumistar/DeFiHackLabs/blob/main/tutorials/usersec/07-2/readme.md).
 
 Give feedback
+
 
 
