@@ -172,7 +172,7 @@ _**[這裡](https://support.opensea.io/hc/en-us/articles/4449355421075-What-does
 
 [這裡](https://github.com/Yumistar/DeFiHackLabs/blob/main/tutorials/usersec/07-2/readme.md).
 
-給予反饋
+請給予反饋
 
 
 
