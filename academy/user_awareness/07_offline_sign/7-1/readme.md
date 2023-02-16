@@ -44,7 +44,7 @@ _**本文章第二部分將會介紹SeaPort智能合約未知的潛在攻擊向�
 
 ### [](#step-2)第二步
 
-NFT賣家完成第一步「授權」後，為了在OpenSea應用程序UI「上架」其NFT列表參數（例如價格），會被要求「簽署」一份代表這些參數的「離線訊息」（此訊息會包含「賣家的以太坊私鑰」，以驗證賣家對 NFT 的所有權。）
+NFT賣家完成第一步「授權」後，為了在OpenSea應用程序UI上架参数（ listing parameters ）（比如價格），賣家會被要求「簽署」一份代表這些參數的「離線消息」（ offline message ）（此訊息會包含「賣家的以太坊私鑰」，以驗證賣家對 NFT 的所有權。）
 
 一旦完成簽署，OpenSea會更新NFT狀態為「可購買狀態」。
 
@@ -101,7 +101,7 @@ SeaPort和WyvernV2都支持 EIP-712 簽名。 儘管 SeaPort 的簽名更清晰�
 
 ### [](#step-1-1)第一步
 
-上市價值由一個名為考慮的數組決定。 該數組的每個單元格都是購買交易的另一個接收者。 如果選擇常規上市（而非拍賣），startAmount 和 endAmount 將相同並以 wei 計算（在 ETH 上市的情況下，如示例中）
+上架價值由一個名為consideration的數組表示。 該數組的每個元素代表購買交易的另一個接收者。 如果選擇常規上架（非拍賣模式），startAmount 和 endAmount 則默認為相等的數值，並以 wei 計算（如果上架幣種設置為ETH，如示例中）
 
 ### [](#step-2-1)第二步
 
@@ -157,14 +157,14 @@ _**[這裡](https://support.opensea.io/hc/en-us/articles/4449355421075-What-does
    </a>
    </div>
 
-[](#recommendations)建議
+[](#recommendations)給用戶的安全建議
 -----------------------------------
 
-*   用戶應該準確理解他們簽署的內容——在該示例中，了解「對價」代表銷售價值很重要。 但是，在大多數情況下，我們不能僅僅期望用戶理解該簽名結構。
+*   用戶應該準確了解自己正在簽署的內容——在本文案例中，了解“consideration”代表出售價格至關重要。但是，在大多數情況下，我們不能期望用戶理解這種顯示的簽名結構。
     
-*   **要格外小心**如果您要簽署包含 EIP712 簽名的合約**要格外小心**。
+*   用戶在簽署可用於合約的 EIP712 簽名時需格外謹慎。
     
-*   錢包應該讓用戶更好地理解簽名內容，並提醒他們注意惡意簽名——就像 ZenGo 的 ClearSign 所做的那樣。
+*   針對簽名內容，錢包須為用戶提供更加直觀且易於理解的信息，並且在其他情況下警告用戶防範惡意簽名——就像 ZenGo 的 ClearSign 技術一樣。
     
 
 [](#want-to-learn-about-part-2)想了解第 2 部分？
@@ -172,7 +172,7 @@ _**[這裡](https://support.opensea.io/hc/en-us/articles/4449355421075-What-does
 
 [這裡](https://github.com/Yumistar/DeFiHackLabs/blob/main/tutorials/usersec/07-2/readme.md).
 
-請給予反饋
+
 
 
 
