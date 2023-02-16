@@ -33,14 +33,19 @@ _**本文章第二部分將會介紹SeaPort智能合約未知的潛在攻擊向�
 *   此「授權」的功能是設計於「NFT 集合」合約中，引用EIP-721 & EIP-1155標準函數值`SetApprovalForAll`；這意味著每個 ERC721 和 ERC1155 合約（NFT）都應該在其合約代碼中包含此函數。
     
 *   此函數須設定兩種參數:
-    *   合約地址 (that can access your token from that specific collection) 、
-    *   Boolean (which represents the state – true if we want to grant permissions)
+    *   NFT 所有者批准管理的NFT之「地址」或「合約」。
+    *   布林（原文：Boolean）值，指定 NFT 所有者是「授予」還是「撤銷」對指定地址或合約的批准。（若其狀態設定為`true`表「授予批准」）
+  
+    以下是用戶在平台上setApprovalForAll操作畫面：
     
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/217187568-146cb7f2-3df2-4c9e-af11-eb436bd12b90.png" alt="Cover" width="60%"/>
    </div>
 
-### [](#step-2)Step 2
+### [](#step-2)第二步
+
+NFT賣家會被要求簽署一條「離線訊息」
+### [](#step-2)第二步
 
 Next, the seller is asked to sign an offline message that represents the listing parameters (e.g. price) that they submitted on the OpenSea application UI.
 
