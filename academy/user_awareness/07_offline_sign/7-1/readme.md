@@ -56,70 +56,62 @@ NFT賣家完成第一步「授權」後，為了在OpenSea應用程序UI「上�
 
 當買方完成購買，系統會將「購買」的列表參數及儲存於資料庫的列表簽名回傳給智能合約驗證。當確認參與交易的各方的真實性，以及所交換數據的完整性後，合約將繼續將NFT轉移給買方，賣方則收到ETH（或其他任何代幣）。
 
-由於簽名是銷售參數和「賣家私鑰」的衍生品，只有賣家知道正確的私鑰，潛浮的駭客無法偽造有效簽名冒充，並使用操作系統合約竊取 NFT。
+由於簽名是銷售參數和「賣家私鑰」的衍生品，潛浮的駭客無法偽造有效簽名透過操作系統合約竊取 NFT。
 
-為了克服此困難，詐騙者會使用極低的價格或0元標價NFT，誘騙受害者在列表訊息上簽名。
-
-利用大部分的使用者不知道訊息參數的機制，詐遍者會使用各種釣魚手法，在OpenSea用戶不知情的情況下，騙取OpenSea用戶簽署惡意列表訊息，以獲得真正的私鑰。
+為了克服此困難，詐騙者會使用極低的價格或0元出售受害者珍貴的NFT，誘騙他們在列表訊息上簽名。其利用大部分的使用者不知道訊息參數的機制，詐騙者會使用各種釣魚手法，在OpenSea用戶不知情的情況下，騙取OpenSea用戶簽署惡意列表訊息，以獲得真正的私鑰。
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/217188687-4c25a904-b458-4576-a650-dd0dfd243846.png" alt="Cover" width="40%"/>
    </div>
 
-And that’s what happened in the February scam: the scammers managed to accumulate malicious listing signatures from victims by tricking them into unknowingly listing their precious NFTs for the price of $0. This allowed the scammers to later “buy” all these NFTs at once (for the price of 0), right before the migration to a new contract.
+這就是2月騙局發生的事情經過：詐騙者誘騙受害者在不知不覺中以 0 美元的價格上架他們珍貴的 NFT，從而設法積累了受害者的惡意上架簽名。 這使得詐騙者可以在遷移到新合約之前立即「購買」所有這些 NFT（價格為 0）。
 
-More info can be found [here](https://twitter.com/TalBeerySec/status/1495331621351968769).
+[這裡](https://twitter.com/TalBeerySec/status/1495331621351968769)可以獲得更多相關資訊．
 
-[](#the-first-migration-wyvernv2)The first migration: WyvernV2
+[](#the-first-migration-wyvernv2)第一次遷移：WyvernV2
 --------------------------------------------------------------
 
-OpenSea’s Migration to WyvernV2 in February 2022 was planned before the attack and was probably expedited as a mitigation.The purpose of this migration was to support the EIP-712 signatures standard. EIP-712 allows users a better understanding of the message since the parameters are shown, and users no longer need to sign off on inscrutable hexadecimal strings.
+OpenSea早在2022年2月攻擊發生前，便計畫搬遷至 WyvernV2，此計劃有機會作為EIP-712加快簽名的緩解措施。EIP-712 允許用戶更好地理解「訊息」，因為顯示了參數，用戶不再需要在難以理解的十六進製字符串上簽名。
 
-However, while the parameters are indeed visible it is still barely possible for the non expert user to understand their actual meaning.
-
+然而，雖然參數確實可見，但非專家用戶仍然幾乎難以理解它們的實際含義。
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/217191194-43d27361-16a7-4b21-bd78-985d5c0c4013.png" alt="Cover" width="40%"/>
    </div>
 
-[](#the-latest-migration--seaport)The latest migration – (SeaPort)
+[](#the-latest-migration--seaport)最新遷移 ：SeaPort
 ------------------------------------------------------------------
 
-In June 2022, OpenSea migrated from the aforementioned WyvernV2 contract to its current SeaPort contract, which is also the latest implementation.
+2022 年 6 月，OpenSea 從上述 WyvernV2 合約遷移到其當前最新的 SeaPort 合約。遷移的主要目的是改善交易體驗並允許額外的功能，例如：集合報價、更高級的交換選項，以及通過使用更有效的實施機制來節省Gas。
 
-The main purpose of the migration was to improve the trading experience & allow extra features like: collection offers, more advanced exchange options, and saving gas by using more efficient implementation mechanisms.
+[這裡](https://twitter.com/atareh/status/1528126971846066176)、 [這裡](https://twitter.com/opensea/status/1536756396158599168)可以找到有關 SeaPort 的更多信息 。
 
-More info on SeaPort can be found [here](https://twitter.com/atareh/status/1528126971846066176) and [here](https://twitter.com/opensea/status/1536756396158599168).
+與 WyvernV2 一樣，SeaPort 也支持 EIP-712 簽名作為其簽名方法。 儘管就簽名清晰度而言，SeaPort 並沒有讓非專家用戶更容易弄清楚發生了什麼。 它使用一些複雜的結構來表示上市價格，而收集費用是該結構的一部分。
 
-Like WyvernV2, SeaPort also supports EIP-712 signatures as its signing method. Although in terms of signature clarity, SeaPort doesn’t make it easier for a non-expert user to figure out what’s going on. It uses some complex structs in order to represent the listing price and collection fees are part of that structure.
-
-[](#are-we-saved-no-heres-how-we-reproduced-the-attack-on-openseas-newest-smart-contract-seaport)Are we saved? No: Here’s how we reproduced the attack on OpenSea’s newest Smart Contract (SeaPort)
+[](#are-we-saved-no-heres-how-we-reproduced-the-attack-on-openseas-newest-smart-contract-seaport)我們得救了嗎？ 否：以下是我們如何重現對 OpenSea 最新智能合約 (SeaPort) 的攻擊
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-SeaPort’s complex signature struct allows a potential scammer to make an inexperienced user sign a malicious listing through a phishing website, which emphasizes the need of making signatures (and transactions) more transparent for users.
+SeaPort 複雜的簽名結構允許潛浮的騙子通過釣魚網站讓沒有經驗的用戶簽署惡意列表，這也凸顯了簽名（和交易）資訊對用戶更加透明的必要性。
 
-We wanted to see if the attack is still feasible on OpenSea’s latest version. To do so we had to take a dive into OpenSea’s current SeaPort contract
-
-Overall In terms of the listing & buying it’s similar process as described above, but the signature structure was completely changed:
-
+讓我們測試這種攻擊在 OpenSea 的最新版本上是否仍然可行。 在此之前，我們必須深入研究 OpenSea 當前的 SeaPort 智能合約。經過研究後，簡單說明結果，SeaPort 智能合約中上架和購買與上面描述的過程類似，但是簽名結構完全改變了：
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/217193339-77b3ad8f-09b2-4af2-9dfe-72fc20cf0638.png" alt="Cover" width="80%"/>
    </div>
 
-Let’s dig in the critical signature parameters in 3 steps:
+### ***讓我們分 3 個步驟深入研究關鍵簽名參數：***
 
-### [](#step-1-1)Step 1
+### [](#step-1-1)第一步
 
-The listing value is determined by an array called consideration. Each cell of that array is another recipient for the buying transaction. If choosing a regular listing (not an auction), startAmount and endAmount will be the same and are calculated in wei (in a case of ETH listing like in the example)
+上市價值由一個名為考慮的數組決定。 該數組的每個單元格都是購買交易的另一個接收者。 如果選擇常規上市（而非拍賣），startAmount 和 endAmount 將相同並以 wei 計算（在 ETH 上市的情況下，如示例中）
 
-### [](#step-2-1)Step 2
+### [](#step-2-1)第二步
 
-If for example I chose to list my NFT for 1 ETH
+例如，如果我選擇以 1 ETH 的價格列出我的 NFT
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/217193691-890743e7-2d6d-4bbb-b57f-d41c66927a4e.png" alt="Cover" width="80%"/>
    </div>
 
-OS will automatically calculate all the consideration values in wei then the signature request will display:
+系統會自動計算 wei 中的所有對價值，然後簽名請求將顯示：
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/217193898-12261641-a31b-4bb9-81c1-93c5ae68066c.png" alt="Cover" width="40%"/>
@@ -129,35 +121,35 @@ OS will automatically calculate all the consideration values in wei then the sig
    <img src="https://user-images.githubusercontent.com/107821372/217193954-997e99ab-0c70-4667-a61e-4d3109fff736.png" alt="Cover" width="40%"/>
    </div>
 
-In this example, the first consideration cell represents the value to be transferred to the seller address (the signer), the second cell represents the value to be transferred to OS (which is being generated automatically by OS frontend), and it represents 2.5% of the value.
+在這個例子中，第一個考慮單元格代表要轉移到賣方地址（簽名者）的價值，第二個單元格代表要轉移到操作系統的價值（由操作系統前端自動生成），它代表 2.5% 的價值。
 
-Since the collection royalties are 0% there are only 2 cells.
+由於收集版稅為 0%，因此只有 2 個單元格。
 
-### [](#step-3-1)Step 3
+### [](#step-3-1)第三步
 
-When the NFT is purchased and the recovered parameters match the DB parameters:
+當購買 NFT 且恢復的參數與 DB 參數匹配時：
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/217194213-b8f51f6f-53d6-4e49-8110-68ea0f54686c.png" alt="Cover" width="60%"/>
    </div>
 
-The order will be fulfilled and the SeaPort contract will move the NFT (since it was approved) from the seller’s wallet to its new owner – the buyer.
+訂單將完成，SeaPort 合約會將 NFT（因為它被批准）從賣方的錢包轉移到它的新所有者——買方。
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/217194395-d06081b0-e910-433e-bc9b-1dfc0f70c1f9.png" alt="Cover" width="60%"/>
    </div>
 
-These are the Order parameters as being represented on the contract:
+這些是在合約中表示的訂單參數：
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/217194563-7b488c46-9de5-44a7-8f12-d69f28972713.png" alt="Cover" width="60%"/>
    </div>
 
-_**More info about the parameters can be found [here](https://support.opensea.io/hc/en-us/articles/4449355421075-What-does-a-typed-signature-request-look-like-).**_
+_**[這裡](https://support.opensea.io/hc/en-us/articles/4449355421075-What-does-a-typed-signature-request-look-like-)可以找到更多關於參數的資訊**_
 
-As you can see, consideration is the only input in the signature that determines the listing value. If a scammer makes the seller sign a fraudulent listing (where the consideration has no value) he would be able to take the NFT for free – assuming the SeaPort contract is approved as an operator for transfer for that collection.
+如您所見，「對價」是簽名中確定上市價值的唯一輸入。 如果詐騙者讓賣家簽署一份欺詐性清單（其中「對價」沒有價值），他將能夠免費拿走 NFT——假設 SeaPort 合同被批准為該集合的轉移運營商。
 
-Once the scammer has the signature he can send a transaction with the user signature (using for example the ethers.js library).
+一旦騙子有了簽名，他就可以發送帶有用戶簽名的交易（例如使用 ethers.js 庫）。
 
    <div align=center>
    <a href="https://www.youtube.com/watch?v=PPdyUl5Qie4">
@@ -165,22 +157,22 @@ Once the scammer has the signature he can send a transaction with the user signa
    </a>
    </div>
 
-[](#recommendations)Recommendations
+[](#recommendations)建議
 -----------------------------------
 
-*   Users should understand exactly what they sign – in that example it’s important to understand that ‘consideration’ represents the selling value. In most cases, though, we cannot just expect users to understand that signature structure.
+*   用戶應該準確理解他們簽署的內容——在該示例中，了解「對價」代表銷售價值很重要。 但是，在大多數情況下，我們不能僅僅期望用戶理解該簽名結構。
     
-*   **Be extra cautious** when signing EIP712 signatures that can be used in contracts.
+*   **要格外小心**如果您要簽署包含 EIP712 簽名的合約**要格外小心**。
     
-*   Wallets should give a better understanding for the signature content, and in other cases warn users against malicious signatures – as with ZenGo’s ClearSign technology.
+*   錢包應該讓用戶更好地理解簽名內容，並提醒他們注意惡意簽名——就像 ZenGo 的 ClearSign 所做的那樣。
     
 
-[](#want-to-learn-about-part-2)Want to learn about Part 2?
+[](#want-to-learn-about-part-2)想了解第 2 部分？
 ----------------------------------------------------------
 
-It’s live! Read it [here](https://github.com/Yumistar/DeFiHackLabs/blob/main/tutorials/usersec/07-2/readme.md).
+[這裡](https://github.com/Yumistar/DeFiHackLabs/blob/main/tutorials/usersec/07-2/readme.md).
 
-Give feedback
+給予反饋
 
 
 
