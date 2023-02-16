@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-167 incidents included.
+168 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -40,6 +40,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230207 FDP Token](#20230207---fdp---reflection-token)
 
 [20230203 Orion Protocol](#20230203---orion-protocol---reentrancy)
+
+[20230203 Spherax USDs](#20230203---spherax-usds---balance-recalculation-bug)
 
 [20230202 BonqDAO](#20230202---BonqDAO---price-oracle-manipulation)
 
@@ -479,6 +481,27 @@ forge test --contracts src/test/FDP_exp.t.sol -vv
 #### Link reference
 
 https://twitter.com/BeosinAlert/status/1622806011269771266
+
+---
+
+### 20230203 - Spherax USDs - Balance Recalculation Bug
+
+### Lost: ~309k USDs (Stablecoin)
+
+Testing
+```
+forge test --contracts ./src/test/USDs_exp.sol -vv
+```
+
+#### Contract
+
+[USDs_exp.sol](src/test/USDs_exp.sol)
+
+#### Link reference
+
+https://twitter.com/danielvf/status/1621965412832350208
+
+https://medium.com/sperax/usds-feb-3-exploit-report-from-engineering-team-9f0fd3cef00c
 
 ---
 
