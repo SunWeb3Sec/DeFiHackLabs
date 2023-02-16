@@ -170,7 +170,7 @@ _**[這裡](https://support.opensea.io/hc/en-us/articles/4449355421075-What-does
 [](#want-to-learn-about-part-2)想了解第 2 部分？
 ----------------------------------------------------------
 
-[這裡](https://github.com/Yumistar/DeFiHackLabs/blob/main/tutorials/usersec/07-2/readme.md).
+[這裡](https://github.com/Yumistar/DeFiHackLabs-Draft2/tree/main/academy/user_awareness/07_offline_sign/7-2)
 
 
 
