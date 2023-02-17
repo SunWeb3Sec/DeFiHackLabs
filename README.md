@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-168 incidents included.
+169 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -30,6 +30,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230217 Platypusdefi](#20230217---platypusdefi---business-logic-flaw)
 
 [20230210 Sheep Token](#20230210---sheep---reflection-token)
 
@@ -401,6 +403,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230217 - Platypusdefi - Business Logic Flaw
+
+### Lost: ~$8.5M
+
+Testing
+```
+forge test --contracts src/test/Platypus_exp.sol -vvv
+```
+
+#### Contract 
+
+[Platypus_exp.sol](src/test/Platypus_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1626367531480125440
+
+https://twitter.com/spreekaway/status/1626319585040338953
+
+---
 
 ### 20230210 - Sheep - Reflection token
 
