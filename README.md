@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-169 incidents included.
+170 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -403,6 +403,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230217 - Dexible - Arbitrary External Call Vulnerability
+
+### Lost: ~$1.5M
+
+Testing
+```
+forge test --contracts src/test/Dexible_exp.sol -vvv
+```
+
+#### Contract
+
+[Dexible_exp.sol](src/test/Dexible_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1626493024879673344
+
+https://twitter.com/MevRefund/status/1626450002254958592
+
+---
 
 ### 20230217 - Platypusdefi - Business Logic Flaw
 
