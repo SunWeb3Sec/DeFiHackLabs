@@ -31,6 +31,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230217 Dexible](#20230217---Dexible---Arbitrary-External-Call-Vulnerability)
+
 [20230217 Platypusdefi](#20230217---platypusdefi---business-logic-flaw)
 
 [20230210 Sheep Token](#20230210---sheep---reflection-token)
