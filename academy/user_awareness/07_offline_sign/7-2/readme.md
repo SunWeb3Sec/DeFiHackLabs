@@ -30,7 +30,7 @@ Author: [ZenGo Wallet](https://zengo.com/)
    
    <div align=center>
    
-   ***Rource :https://twitter.com/atareh/status/1528126971846066176***
+   ***Source :https://twitter.com/atareh/status/1528126971846066176***
    
    </div>
    
@@ -42,7 +42,7 @@ Author: [ZenGo Wallet](https://zengo.com/)
    
    <div align=center>
    
-   ***Rource :https://twitter.com/opensea/status/1536756396158599168***
+   ***Source :https://twitter.com/opensea/status/1536756396158599168***
    
    </div>
    
@@ -190,7 +190,7 @@ OpenSea 团队回应表示，虽然他们知道这种攻击的存在，但因为
    
    <div align=center>
 
-   ***Rource :https://twitter.com/0xVazi/status/1577937631781986305***
+   ***Source :https://twitter.com/0xVazi/status/1577937631781986305***
    
    </div>
    
@@ -204,7 +204,7 @@ OpenSea 团队回应表示，虽然他们知道这种攻击的存在，但因为
 
    <div align=center>
 
-   ***Rource :https://twitter.com/0xQuit/status/1577803719508258817***
+   ***Source :https://twitter.com/0xQuit/status/1577803719508258817***
    
    </div>
 
