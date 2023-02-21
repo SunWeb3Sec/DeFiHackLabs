@@ -2,6 +2,8 @@
 
 Author: [ZenGo Wallet](https://zengo.com/)
 
+翻譯: [GoPlus Security](https://twitter.com/GoplusSecurity)
+
 这是 zengo 此前发布的「Web3 中最常见的漏洞利用」系列之第 2部分：离线签名。
 
 在[第1部分](https://github.com/Yumistar/DeFiHackLabs-Draft2/tree/main/academy/user_awareness/07_offline_sign/7-1)，我们调研了 Web3 Dapp 中关于离线签名的不同标准的使用，并重新审视了该领域最大的黑客攻击之一：今年早些时候 OpenSea的一次网络钓鱼攻击事件导致价值数百万美元的 NFT 被盗，而此次黑客事件证明了与离线签名漏洞利用具有相关性。
