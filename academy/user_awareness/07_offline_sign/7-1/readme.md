@@ -1,4 +1,4 @@
-# Lesson 7: 離線簽名會耗盡你的錢包 (Part 1/2)
+# Lesson 7: 離線簽名會掏空你的錢包 (Part 1/2)
 
 作者: [ZenGo Wallet](https://zengo.com/)
 
