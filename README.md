@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-167 incidents included.
+171 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -31,6 +31,12 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230217 Starlink](#20230217---starlink---business-logic-flaw)
+
+[20230217 Dexible](#20230217---dexible---arbitrary-external-call-vulnerability)
+
+[20230217 Platypusdefi](#20230217---platypusdefi---business-logic-flaw)
+
 [20230210 Sheep Token](#20230210---sheep---reflection-token)
 
 [20230210 dForce](#20230210---dforce---read-only-reentrancy)
@@ -40,6 +46,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230207 FDP Token](#20230207---fdp---reflection-token)
 
 [20230203 Orion Protocol](#20230203---orion-protocol---reentrancy)
+
+[20230203 Spherax USDs](#20230203---spherax-usds---balance-recalculation-bug)
 
 [20230202 BonqDAO](#20230202---BonqDAO---price-oracle-manipulation)
 
@@ -382,15 +390,15 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 ### Transaction debugging tools
 
-[Phalcon](https://phalcon.blocksec.com/) | [Tx.viewer](https://tx.eth.samczsun.com/) | [Cruise](https://cruise.supremacy.team/) | [Ethtx](https://ethtx.info/) | [Tenderly](https://dashboard.tenderly.co/explorer) | [eigenphi](https://tx.eigenphi.io/analyseTransaction)
+[Phalcon](https://phalcon.blocksec.com/) | [Tx tracer](https://openchain.xyz/trace) | [Cruise](https://cruise.supremacy.team/) | [Ethtx](https://ethtx.info/) | [Tenderly](https://dashboard.tenderly.co/explorer) | [eigenphi](https://tx.eigenphi.io/analyseTransaction)
 
 ### Ethereum Signature Database
 
-[4byte](https://www.4byte.directory/) | [sig.eth](https://sig.eth.samczsun.com/) | [etherface](https://www.etherface.io/hash)
+[4byte](https://www.4byte.directory/) | [sig db](https://openchain.xyz/signatures) | [etherface](https://www.etherface.io/hash)
 
 ### Useful tools
 
-[ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/) | [ETHCMD - Guess ABI](https://www.ethcmd.com/tools/decode-calldata/)
+[ABI to interface](https://gnidan.github.io/abi-to-sol/) | [Get ABI for unverified contracts](https://abi.w1nt3r.xyz/) | [ETH Calldata Decoder](https://apoorvlathey.com/eth-calldata-decoder/) | [ETHCMD - Guess ABI](https://www.ethcmd.com/tools/decode-calldata/) | [Abi tools](https://openchain.xyz/tools/abi)
 
 ### Hacks Dashboard
 
@@ -399,6 +407,69 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230217 - Starlink - Business Logic Flaw
+
+### Lost: ~$12k
+
+Testing
+```
+forge test --contracts ./src/test/Starlink_exp.sol -vvv
+```
+
+#### Contract
+
+[Starlink_exp.sol](src/test/Starlink_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/NumenAlert/status/1626447469361102850
+
+https://twitter.com/bbbb/status/1626392605264351235
+
+---
+
+### 20230217 - Dexible - Arbitrary External Call Vulnerability
+
+### Lost: ~$1.5M
+
+Testing
+```
+forge test --contracts src/test/Dexible_exp.sol -vvv
+```
+
+#### Contract
+
+[Dexible_exp.sol](src/test/Dexible_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1626493024879673344
+
+https://twitter.com/MevRefund/status/1626450002254958592
+
+---
+
+### 20230217 - Platypusdefi - Business Logic Flaw
+
+### Lost: ~$8.5M
+
+Testing
+```
+forge test --contracts src/test/Platypus_exp.sol -vvv
+```
+
+#### Contract 
+
+[Platypus_exp.sol](src/test/Platypus_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1626367531480125440
+
+https://twitter.com/spreekaway/status/1626319585040338953
+
+---
 
 ### 20230210 - Sheep - Reflection token
 
@@ -479,6 +550,27 @@ forge test --contracts src/test/FDP_exp.t.sol -vv
 #### Link reference
 
 https://twitter.com/BeosinAlert/status/1622806011269771266
+
+---
+
+### 20230203 - Spherax USDs - Balance Recalculation Bug
+
+### Lost: ~309k USDs (Stablecoin)
+
+Testing
+```
+forge test --contracts ./src/test/USDs_exp.sol -vv
+```
+
+#### Contract
+
+[USDs_exp.sol](src/test/USDs_exp.sol)
+
+#### Link reference
+
+https://twitter.com/danielvf/status/1621965412832350208
+
+https://medium.com/sperax/usds-feb-3-exploit-report-from-engineering-team-9f0fd3cef00c
 
 ---
 

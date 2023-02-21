@@ -2,6 +2,8 @@
 
 Author：[Akshay Srivastav](https://twitter.com/akshaysrivastv)
 
+**Note: Compound has been addressed this issue, this article is written for educational purposes only.**
+
 The Compound Finance V2 is a decentralized money market protocol built on top of Ethereum blockchain. The protocol facilitates lending and borrowing of crypto assets in a decentralized and trustless way. The simplicity and robustness of compound protocol has attracted billions of dollars as its TVL, more than $10 Billions at its peak.
 
 Recently a potential vulnerability was discovered in the CompoundV2 smart contracts which allows an Attacker to steal funds of the initial lenders of a Compound market.
