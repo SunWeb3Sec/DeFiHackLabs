@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-171 incidents included.
+172 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -30,6 +30,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230222 DYNA](#20230222---dyna---business-logic-flaw)
 
 [20230217 Starlink](#20230217---starlink---business-logic-flaw)
 
@@ -407,6 +409,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230222 - DYNA - Business Logic Flaw
+
+### Lost: ~$21k
+
+Testing
+```
+forge test --contracts ./src/test/DYNA_exp.sol -vvv
+```
+
+#### Contract
+
+[DYNA_exp.sol](src/test/DYNA_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1628319536117153794
+
+https://twitter.com/BeosinAlert/status/1628301635834486784
+
+---
 
 ### 20230217 - Starlink - Business Logic Flaw
 
