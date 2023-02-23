@@ -96,4 +96,28 @@
   
   我們建議審計人員檢查項目官方技術件，將規格與程式碼進行比對，檢查費用和代幣經濟模型驗證。除此之外，我們還建議進行一些額外的檢查，例如對 Array 進行迴圈，Struct 指定為 memory或 storage，以及搶跑交易等場景。這些指南將對審計流動性質押協議有所幫助，並有助於發現潛在的問題。
 
+## 延伸閱讀:
 
+[DeFi Risk 101- An insecure fork of Masterchef](https://www.google.com/url?q=https://inspexco.medium.com/defi-risks-101-1-an-insecure-fork-of-masterchef-b44ca01b4e5e&sa=D&source=docs&ust=1677132410175689&usg=AOvVaw180xhoJbIov48c7otX-LlK)
+
+[Polygon Yield Farm Exploit](https://www.google.com/url?q=https://cryptobriefing.com/polygon-yield-farm-crashes-zero-after-exploit/&sa=D&source=docs&ust=1677132417868263&usg=AOvVaw3h-b8eV6YHprUvDCb5DGor)
+
+[SCSVS V2- Liquid Staking](https://www.google.com/url?q=https://github.com/ComposableSecurity/SCSVS/blob/master/2.0/0x200-Components/0x207-C7-Liquid-staking.md&sa=D&source=docs&ust=1677132424183933&usg=AOvVaw1KnZ5FOjTnpl1ay_CkeOQq)
+
+[Security Risks of Staking Providers](https://www.google.com/url?q=https://runtimeverification.com/blog/security-risks-for-staking-providers/&sa=D&source=docs&ust=1677132434840543&usg=AOvVaw0ZUTVBM3VcTiX60hPvCxBM)
+
+[Liquid Staking](https://www.google.com/url?q=https://www.finoa.io/blog/guide-liquid-staking/&sa=D&source=docs&ust=1677132447838820&usg=AOvVaw2RvZflu_I4ZGsWCIF3FTyW)
+
+[Smart contract Auditing Heuristics](https://www.google.com/url?q=https://github.com/OpenCoreCH/smart-contract-auditing-heuristics&sa=D&source=docs&ust=1677132459011494&usg=AOvVaw2PFAeuRVmqqltA3XLrHDYJ)
+
+## 審計報告樣本:
+
+[Euler Staking](https://github.com/Quillhash/QuillAudit_Reports/blob/master/Euler%20Staking%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf)
+
+[BollyStake](https://www.google.com/url?q=https://github.com/Quillhash/QuillAudit_Reports/blob/master/BollyStake%2520Smart%2520Contract%2520Audit%2520Report(new)%2520-%2520QuillAudits.pdf&sa=D&source=docs&ust=1677132477727119&usg=AOvVaw1NkvRag04h1SouBSPxsK4u)
+
+[Stakehouse](https://code4rena.com/reports/2022-11-stakehouse/)
+
+[PolyNuts Masterchef](https://github.com/Quillhash/QuillAudit_Reports/blob/master/PolyNuts%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf)
+
+[Pancakeswap Masterchef](https://certik-public-assets.s3.amazonaws.com/REP-PancakeSwap-16_10_2020.pdf)
