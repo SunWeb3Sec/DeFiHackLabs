@@ -80,7 +80,7 @@
 
    * Loops：如果合約邏輯涉及循環迴圈，則必須確保沒有超過塊燃料限制。當 Array 大小非常大時，可能會發生 out of gas 錯誤，因此您應該檢查可能增加 Array 大小的函數以及是否有任何用戶可以利用它來引發DoS攻擊.請查看此[報告](https://www.google.com/url?q=https://github.com/code-423n4/2022-06-putty-findings/issues/227&sa=D&source=docs&ust=1677128054454294&usg=AOvVaw3gM91sQvOggH5Uok1ldQHK)。
    
-   * Structs：Staking 合約使用結構體類型來存儲用戶或流動池的數據。在函數中聲明或訪問結構體時，重要的是要指定使用“memory”或“storage”。這可能有助於節省一些Gas。有關更多信息，請參閱[本文](https://medium.com/coinmonks/ethereum-solidity-memory-vs-storage-which-to-use-in-local-functions-72b593c3703a)。
+   * Structs：Staking 合約使用結構體類型來存儲用戶或流動池的數據。在函數中聲明或訪問結構體時，重要的是要指定使用“memory”或“storage”。這可能有助於節省一些Gas，但會造成計算不準確。有關更多信息，請參閱[本文](https://medium.com/coinmonks/ethereum-solidity-memory-vs-storage-which-to-use-in-local-functions-72b593c3703a)。
    
    * 搶跑交易 (Front-Running)：攻擊者可能利用的搶跑交易。
    
