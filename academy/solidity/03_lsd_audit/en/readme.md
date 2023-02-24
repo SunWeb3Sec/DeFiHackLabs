@@ -74,7 +74,7 @@ Check that the specifications match the code. Begin with fees and tokenomics, fo
 
 8. Some Additional Checks:
 
-   * **Loops**: If the contract logic involves looping over arrays, it's important to ensure that the block gas limit is not exceeded. This can occur when the array size is very large, so you should investigate what functions could increase the size of the array and whether any user could exploit it to cause a DoS attack. Check out this [report](https://www.google.com/url?q=https://github.com/code-423n4/2022-06-putty-findings/issues/227&sa=D&source=docs&ust=1677128054454294&usg=AOvVaw3gM91sQvOggH5Uok1ldQHK).
+   * **Loops**: If the contract logic involves looping over arrays, it's important to ensure that the block gas limit is not exceeded. This can occur when the array size is very large, so you should investigate what functions could increase the size of the array and whether any user could exploit it to cause a DoS attack. Check out this [report](https://github.com/code-423n4/2022-06-putty-findings/issues/227).
    
    * **Structs**：Staking contracts use the struct type to store user or pool data. When declaring or accessing a struct within a function, it's important to specify whether to use “memory” or “storage.” It might help us save some gas. For more information, please refer to this [article](https://medium.com/coinmonks/ethereum-solidity-memory-vs-storage-which-to-use-in-local-functions-72b593c3703a).
    
