@@ -1,4 +1,4 @@
-# First Deposit Bug in CompoundV2 and its forks
+# Lesson 2: First Deposit Bug in CompoundV2 and its forks
 
 作者: [Akshay Srivastav](https://twitter.com/akshaysrivastv)
 

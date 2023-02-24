@@ -17,6 +17,7 @@ The Web3 Cybersecurity Academy plans the following series of topics:
 ### Solidity smart contract security and auditing techniques
 - Lesson 1: Smart Contract Audit Methodology & Tips ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/solidity/01_audit/en)  | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/solidity/01_audit) ) 
 - Lesson 2: First Deposit Bug in CompoundV2 and its forks ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/solidity/02_first_deposit/en)  | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/solidity/02_first_deposit) ) 
+- Lesson 3: Guidelines for Auditing Staking Protocols ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/solidity/03_lsd_audit/en)  | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/solidity/03_lsd_audit) ) 
 
 ### Move programming language secure development
 - Lesson 1: Security Analysis of the Move Language – Game Changer of Smart Contracts ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/01_move_sec_intro/en)  | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/01_move_sec_intro) ) 
