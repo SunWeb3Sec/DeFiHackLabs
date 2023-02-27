@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-172 incidents included.
+174 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -31,7 +31,11 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230227 SwapX](#20230227---swapx---access-control)
+
 [20230222 DYNA](#20230222---dyna---business-logic-flaw)
+
+[20230218 RevertFinance](#20230218---revertfinance---arbitrary-external-call-vulnerability)
 
 [20230217 Starlink](#20230217---starlink---business-logic-flaw)
 
@@ -410,6 +414,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230227 - swapX - Access Control 
+
+### Lost: ~$330k
+
+Testing
+```
+forge test --contracts ./src/test/swapX_exp.sol -vvv 
+```
+
+#### Contract 
+
+[SwapX_exp.sol](src/test/SwapX_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1630111965942018049
+
+https://twitter.com/peckshield/status/1630100506319413250
+
+---
+
 ### 20230222 - DYNA - Business Logic Flaw
 
 ### Lost: ~$21k
@@ -428,6 +453,25 @@ forge test --contracts ./src/test/DYNA_exp.sol -vvv
 https://twitter.com/BlockSecTeam/status/1628319536117153794
 
 https://twitter.com/BeosinAlert/status/1628301635834486784
+
+---
+
+### 20230218 - RevertFinance - Arbitrary External Call Vulnerability
+
+### Lost: ~$30k
+
+Testing
+```
+forge test --contracts ./src/test/RevertFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[RevertFinance_exp.sol](src/test/RevertFinance_exp.sol)
+
+#### Link Reference
+
+https://mirror.xyz/revertfinance.eth/3sdpQ3v9vEKiOjaHXUi3TdEfhleAXXlAEWeODrRHJtU
 
 ---
 
