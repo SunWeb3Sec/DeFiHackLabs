@@ -418,7 +418,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### 20230227 - swapX - Access Control 
 
-### Lost: ~$330k
+### Lost: ~$1M
 
 Testing
 ```
@@ -434,6 +434,8 @@ forge test --contracts ./src/test/swapX_exp.sol -vvv
 https://twitter.com/BlockSecTeam/status/1630111965942018049
 
 https://twitter.com/peckshield/status/1630100506319413250
+
+https://twitter.com/CertiKAlert/status/1630241903839985666
 
 ---
 
