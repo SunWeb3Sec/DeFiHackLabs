@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-174 incidents included.
+175 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -32,6 +32,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20230227 SwapX](#20230227---swapx---access-control)
+
+[20230224 EFVault](#20230224---efvault---storage-collision)
 
 [20230222 DYNA](#20230222---dyna---business-logic-flaw)
 
@@ -434,6 +436,29 @@ https://twitter.com/BlockSecTeam/status/1630111965942018049
 https://twitter.com/peckshield/status/1630100506319413250
 
 https://twitter.com/CertiKAlert/status/1630241903839985666
+
+---
+
+### 20230224 - EFVault - Storage Collision
+
+### Lost: ~5.1M
+
+Testing
+```
+forge test --contracts ./src/test/EFVault_exp.sol -vvv 
+```
+
+#### Contract 
+
+[EFVault_exp.sol](src/test/EFVault_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1630490333716029440
+
+https://twitter.com/drdr_zz/status/1630500170373685248
+
+https://twitter.com/gbaleeeee/status/1630587522698080257
 
 ---
 
