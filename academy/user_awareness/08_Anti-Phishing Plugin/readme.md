@@ -218,14 +218,184 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
 ### 3. Basic Content Operation Layer Test
 
    **(1). PeckShieldAlert (Aegis)**
+   
+   Upon installation, users must manually enter a Token Contract to initiate detection. This approach fails to satisfy NFT users’ pressing demand for immediate identification of phishing sites. It is akin to an online malevolent contract scanning plug-in.
+   
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222040803-eab7f854-d39a-4e13-857c-1e5613c397df.png" alt="Cover" width="40%"/>
+  
+**personal_sign blind sign test**: No prompt.
+
+   </div>
+
+   
    **(2). Pocket Universe**
+   
+   Once installed, the plug-in commences detection only when the user initiates a transaction. As a result, it is unable to instantly notify users when they initially access an NFT phishing website. Let’s move on to the second step:
+                
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222040568-2a7b0305-2de4-419a-9e3d-1ce648993853.png" alt="Cover" width="80%"/>
+   </div> 
+   
+   **personal_sign blind sign test**: The plug-in warns users when a high-risk address is identified based on the chain address and advises against signing, which is commendable and aligns with security plug-in expectations.
+   
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222040510-715662c3-70b2-4c4e-9efa-d920470f9560.png" alt="Cover" width="80%"/>
+   </div>
+
+   
    **(3). Revoke.cash**  
+   
+   In the first step, the NFT phishing website remains unmarked. However, in the second step, when the user visits the phishing website, the risky address is identified based on the chain address, and a warning is issued against signing. This corresponds with security plug-in expectations.
+                
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222040236-0330f62c-d8dd-4e4c-9085-2ede7c8599cd.png" alt="Cover" width="80%"/>
+   <img src="https://user-images.githubusercontent.com/107821372/222040141-66c221d2-05a2-473b-9777-b2e3374e3ff5.png" alt="Cover" width="80%"/>
+   </div>
+
    **(4). Fire**
+   
+   In the first step, the NFT phishing website is not labeled. In the second step, when the user accesses the phishing website, the high-risk address is not identified based on the chain address, and there is no warning concerning signing risk. Nonetheless, Fire can present the legibility of the signature pre-execution content, which is quite beneficial.
+               
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222039945-30dca7b8-48be-4b70-b74f-f4314ed5f777.png" alt="Cover" width="80%"/>
+
+**personal_sign blind sign test**: No prompt.
+
+   </div>
+   
    **(5). Scam Sniffer**
+   
+   Upon installation, when users access an NFT phishing website, they are instantly alerted with a warning, and entry to the site is prohibited. This conforms to security plug-in standards.
+                   
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222039502-41437111-c00d-451c-af10-e15acf285803.png" alt="Cover" width="80%"/>
+  
+**personal_sign blind sign test**: Alerted with a warning.
+
+   </div>
+   
    **(6). Wallet Guard**
+   
+   Once installed, the plug-in initiates detection only when the user triggers a transaction. Consequently, it is unable to promptly alert the user when they first open an NFT phishing website. Let’s proceed to the second step:
+               
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222039196-16093e19-b165-4ca5-aa08-15c131093f9a.png" alt="Cover" width="80%"/>
+   </div> 
+
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222039049-d2760dd0-3d76-443b-bb74-028474923ec3.png" alt="Cover" width="80%"/>
+   </div>
+
+**personal_sign blind sign test**: The plug-in prompts the user that the phishing website is marked (as identified by Wallet Guard’s malicious address library of Scam Sniffer), warns them against the risks, and advises against signing. This is still commendable and consistent with security plug-in standards.
+   
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222038829-39102d34-2de0-47fb-b84f-40301ba77dd9.png" alt="Cover" width="80%"/>
+   </div> 
+   
    **(7). MetaDock**
+   
+   Once installed, the plug-in fails to provide any prompts or warnings about the risk when users connect to a phishing website. It appears to function more as a plug-in that necessitates active submission of a scan, rather than an anti-phishing plug-in, which doesn’t satisfy security plug-in standards. It’s probable that MetaDock is not an anti-phishing plug-in, and users who are interested can verify this with the project team.
+   
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222037796-1054b244-6c79-480c-8b50-953dc06852a2.png" alt="Cover" width="80%"/>
+   </div>    
+
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222037910-91d1f009-dbab-47a5-a30a-487e02dc70f8.png" alt="Cover" width="80%"/>
+   </div> 
+
+   <div align=center>
+   
+**personal_sign blind sign test**: No prompt.
+
+   </div>
+      
    **(8). Metashield**
+   
+   Like “MetaDock” and “PeckShieldAlert”, these plugins do not provide immediate prompts or warnings when users connect to a phishing website and are tricked into signing. Instead, users need to actively submit a scan for the plugin to detect any potential risks. This approach may not meet the expectations of a security plugin.
+                   
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222037359-570ce7e1-51a6-469e-81f5-3211b065a8e3.png" alt="Cover" width="80%"/>
+   </div> 
+
+   <div align=center>
+   
+**personal_sign blind sign test**: No prompt.
+
+   </div>
+   
    **(9). Stelo**
    
+   Once installed, the plugin fails to provide any warnings or prompts to the user when they connect to a phishing website and are tricked into signing.
+
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222036989-c8a25c21-5a3c-4141-b10b-2e03d4d03a61.png" alt="Cover" width="80%"/>
+   </div> 
    
- 
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222036888-e867d472-21e2-4547-9dfe-7e40a8789377.png" alt="Cover" width="80%"/>
+   </div> 
+
+   **personal_sign blind sign test**: The malicious information prompt provided by the plugin is low risk, which doesn’t meet the expectations of a security plugin.
+
+      
+   And that concludes our comparison.
+   
+---
+   
+### Comparison Results
+
+The comparison results are presented in the following image:
+
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222034634-8e5ccf6d-b3a6-488f-9458-c9fe05e4c789.png" alt="Cover" width="80%"/>
+   </div> 
+   
+   After conducting the comparison, it was found that most of the security plugins did not perform well in the first step of the recognition process, which involves recognizing the phishing website when the user first opens it. Only Scam Sniffer managed to recognize the latest NFT phishing website with a time difference of 3 hours. However, in the second step, when the user connects to the phishing website and performs dangerous operations such as eth_sign and personal_sign, Pocket Universe, Revoke.cash, and Wallet Guard provide security risk alerts.
+
+   However, this is only a basic comparison, and there may be further refinements and updates in the future.
+   
+   The accompanying image includes the list of tested security plugins and their respective version numbers.
+   
+   <div align=center>
+   <img src="https://user-images.githubusercontent.com/107821372/222034772-444af843-0511-49c7-ae93-84b0b0790f4f.png" alt="Cover" width="80%"/>
+   </div> 
+   
+   We want to extend our appreciation to Wu Shuo Blockchain for initiating this comparison, and to the outstanding project teams of the security plugins that underwent testing. Although their product positioning and comparison results may vary, there is always room for improvement, and their efforts have undoubtedly elevated the standards of blockchain security.
+   The recommended combinations are presented for reference purposes only and should not be considered as advice. These combinations may potentially offer improved security for users based on the current comparison results:
+   1. Rabby wallet + Scam Sniffer
+   2. Rabby wallet + Pocket Universe
+   3. MetaMask + Pocket Universe
+   4. MetaMask + Revoke.cash
+   
+## After Thoughts
+
+In the blockchain industry, the main risks for individual users in phishing attacks are related to domain names and signatures. Approximately 90% of NFT phishing scams are associated with fraudulent domain names. Therefore, it is crucial for users to check the risk level of their target addresses before engaging in any on-chain transactions. 
+
+If browser security plugins or wallets can provide immediate alerts to users when they encounter a phishing page, then the risk can be blocked at the very first step, preventing any further harm to the user. Similarly, in the Web 2.0 era, a 360 antivirus solution could solve the problem of viruses attacking inexperienced users, but it couldn’t solve all malware problems, such as virus elimination and bypassing. The effectiveness of antivirus software is determined by how much it can reduce the time gap, increase the number of samples, and improve its accuracy. The recommended combinations provided are for reference only and should not be construed as advice.
+
+The ability of an anti-phishing security plugin to quickly identify and alert users of the real-time situation of phishing sites at the very first step, as well as to provide fast feedback and identification of phishing websites, will determine its effectiveness in the blockchain and NFT industries. Failure to recognize these phishing domains due to time lag significantly increases the risk of users losing their assets.
+
+Moving on to the second step, when the user interacts with the authorization link and signature process, the browser security plugin or wallet with phishing signature recognition should be able to identify and display the detailed information that the user is authorizing, such as the authorized cryptocurrency, amount, recipient, and other user-readable data. For example, Rabby Wallet can prompt the user of the risk to a certain extent and help avoid the situation of financial losses.
+
+To enhance the security of wallet projects, project teams should start by conducting a comprehensive security audit, with a focus on improving the security of user interactions, strengthening the “What you see is what you sign” mechanism, and reducing the risk of phishing attacks for users.
+
+***Here are some examples of measures that project teams can take to enhance security:***
+
+* **Phishing Website Warning**: One measure that can be taken is implementing a phishing website warning system that leverages the power of the blockchain community to identify and collect all types of phishing websites. This way, users can be provided with prominent reminders and alerts whenever they interact with these sites to reduce the risk of falling victim to phishing attacks.
+
+* **Signature Identification and Alerts**: It is important to implement signature identification and alerts for requests such as eth_sign, personal_sign, and signTypedData to notify users and draw their attention to the risks of blind signing with eth_sign.
+* What You See Is What You Sign: To avoid phishing approvals, it is important to perform a detailed analysis of contract calls in wallets and provide users with specific details of DApp transaction construction.
+
+* **Pre-execution Mechanism**: A pre-execution mechanism is useful in helping users understand the potential effects of a transaction before it is broadcast and executed. This allows users to make informed decisions and judgments about whether or not to proceed with the transaction, thereby enhancing their overall security.
+
+* **Fraud Alerts for Identical Ending Digits**: A mechanism can be set up to display addresses with an alert, reminding users to check the complete target address to avoid fraud problems with identical ending digits. Additionally, a whitelist address mechanism can be implemented for users to add commonly used addresses to the whitelist, which can prevent similar attacks with identical ending digits.
+
+* **AML Compliance**: Using AML mechanisms, users can be reminded whether the target address will trigger AML rules when making transfers
+
+SlowMist, a prominent blockchain security company, has been deeply involved in security audits for many years. Security audits not only provide users with peace of mind but also serve as one of the means to reduce the occurrence of attacks. Moreover, different institutions face difficulty in identifying and associating money laundering groups across different organizations, presenting a significant challenge to anti-money laundering efforts.
+
+For project teams, blocking and preventing the transfer of funds to malicious addresses in a timely manner is also crucial. The MistTrack anti-money laundering tracking system has accumulated over 200 million address labels, which can identify various wallet addresses of major global trading platforms, including over 1,000 address entities, more than 100,000 threat intelligence data, and over 90 million risk addresses. Interested parties can contact SlowMist to access the API. 
+
+In conclusion, SlowMist hopes that all parties will collaborate to make the blockchain ecosystem more secure.
