@@ -1,5 +1,6 @@
 # Lesson 8 : How to Choose an Anti-Phishing Plugin
- SlowMist
+
+Author: [SlowMist](https://twitter.com/SlowMist_Team)
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/221153552-4b68e805-5dcb-4a1a-9d51-8a0b11ac409c.png" alt="Cover" width="60%"/>
