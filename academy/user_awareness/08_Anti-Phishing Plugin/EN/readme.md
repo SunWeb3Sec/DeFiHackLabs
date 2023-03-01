@@ -369,7 +369,8 @@ The comparison results are presented in the following image:
    <img src="https://user-images.githubusercontent.com/107821372/222034772-444af843-0511-49c7-ae93-84b0b0790f4f.png" alt="Cover" width="80%"/>
    </div> 
    
-   We want to extend our appreciation to Wu Shuo Blockchain for initiating this comparison, and to the outstanding project teams of the security plugins that underwent testing. Although their product positioning and comparison results may vary, there is always room for improvement, and their efforts have undoubtedly elevated the standards of blockchain security.
+   ***We want to extend our appreciation to Wu Shuo Blockchain for initiating this comparison, and to the outstanding project teams of the security plugins that underwent testing. Although their product positioning and comparison results may vary, there is always room for improvement, and their efforts have undoubtedly elevated the standards of blockchain security.***
+   
    The recommended combinations are presented for reference purposes only and should not be considered as advice. These combinations may potentially offer improved security for users based on the current comparison results:
    1. Rabby wallet + Scam Sniffer
    2. Rabby wallet + Pocket Universe
