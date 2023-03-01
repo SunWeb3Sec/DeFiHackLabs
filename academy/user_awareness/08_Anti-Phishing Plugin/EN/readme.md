@@ -20,6 +20,8 @@ The QuadrigaCX saga, however, is just one example of the many issues faced by th
 
 * On February 21, 2021, a phishing attack of the personal_sign type was perpetrated against an OpenSea user. As a result, 32 users signed a harmful transaction from the attacker, leading to the loss of various NFTs, including BAYC, Azuki, and close to a hundred others, with a value of $4.2 million at the time.
 
+* On December 31, 2021, Kramer, a user of Twitter, claimed that he fell victim to a phishing attack. He clicked on a link that seemed to belong to a legitimate NFT DApp, but in reality, it was a scam. The result was the loss of 16 of his NFTs, consisting of 8 Bored Apes, 7 Mutant Apes, and 1 Clonex, with a total worth of $1.9 million.
+
 * On April 29, 2022, a Bored Ape NFT belonging to Jay Chou was stolen, with a value of 3.2 million RMB.
 
 * On May 25, 2022, A Twitter user with the handle @0xLosingMoney reported that a user named @Dvincent_ had stolen 29 Moonbird NFTs, valued at over $700,000, by means of a phishing website named p2peers[.]io.
@@ -27,8 +29,6 @@ The QuadrigaCX saga, however, is just one example of the many issues faced by th
 * On June 28, 2022, Nickydooodles.eth, the creator of the Web3 initiative Metabergs, disclosed that his wallet had been hacked through a phishing attempt. The attacker made off with 17 ETH, which was approximately worth $21,077 at the time, as well as all of his NFT collections, including Goblintown NFT, Doodles NFT, Sandbox Land, and many others.
 
 * On November 1, 2022, the Discord channel of the KUMALEON initiative was breached, and nearly 111 NFTs belonging to the community were taken, which included BAYC #5313, ENS, ALIENFRENS, Art Blocks, and various other assets.
-
-* On December 31, 2021, Kramer, a user of Twitter, claimed that he fell victim to a phishing attack. He clicked on a link that seemed to belong to a legitimate NFT DApp, but in reality, it was a scam. The result was the loss of 16 of his NFTs, consisting of 8 Bored Apes, 7 Mutant Apes, and 1 Clonex, with a total worth of $1.9 million.
 
 * On January 15, 2023, the famous blogger @NFT_GOD suffered a severe loss when all of his accounts, cryptocurrencies, and NFTs were stolen. The theft occurred after he clicked on a phishing ad link on Google. The compromised accounts included Substack, Twitter, and various other platforms.
 
