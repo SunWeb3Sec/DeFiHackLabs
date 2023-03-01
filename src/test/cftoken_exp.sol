@@ -6,7 +6,7 @@ import "./interface.sol";
 
 // source
 // https://mp.weixin.qq.com/s/_7vIlVBI9g9IgGpS9OwPIQ
-
+// attack tx: 0xc7647406542f8f2473a06fea142d223022370aa5722c044c2b7ea030b8965dd0
 // test result
 
 // > forge test --contracts ./src/cftoken_exp.sol -vv
