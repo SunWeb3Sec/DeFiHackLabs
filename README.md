@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-174 incidents included.
+176 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -276,6 +276,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20220415 Rikkei Finance](#20220415-rikkei-finance---accesscontrol--price-oracle-manipulation)
 
 [20220412 ElephantMoney](#20220412-elephantmoney---flashloan--price-oracle-manipulation)
+
+[20220411 Creat Future](#20220411-creat-future)
 
 [20220409 GYMNetwork](#20220409-gymnetwork)
 
@@ -3042,30 +3044,46 @@ https://bscscan.com/tx/0x93a9b022df260f1953420cd3e18789e7d1e095459e36fe2eb534918
 
 ---
 
-### 20220412 ElephantMoney - Flashloan & Price Oracle Manipulation
+### 20220411 Creat Future
 
-#### Lost: $11.2 million (27,416.46 BNB)
+#### Lost: $1.9 million
 
 Testing
 
 ```sh
-forge test --contracts ./src/test/Elephant_Money_poc.sol -vv
+forge test --contracts ./src/test/cftoken_exp.sol
+ -vv
 ```
 
 #### Contract
 
-[Elephant_Money_poc.sol](src/test/Elephant_Money_poc.sol)
+[cftoken_exp.sol](src/test/cftoken_exp.sol)
 
 #### Link reference
 
-https://medium.com/elephant-money/reserve-exploit-52fd36ccc7e8
+https://twitter.com/BlockSecTeam/status/1556497016016228358
 
-https://twitter.com/peckshield/status/1514023036596330496
+https://bscscan.com/tx/0xc7647406542f8f2473a06fea142d223022370aa5722c044c2b7ea030b8965dd0
 
-https://twitter.com/BlockSecTeam/status/1513966074357698563
+---
 
-https://bscscan.com/tx/0xec317deb2f3efdc1dbf7ed5d3902cdf2c33ae512151646383a8cf8cbcd3d4577
+### 20220430 Saddle Finance - Swap Metapool Attack
 
+### Lost: $10 million
+
+Testing
+
+```sh
+forge test --contracts ./src/test/Saddle_exp.sol -vvv
+```
+
+#### Contract
+
+[Saddle_exp.sol](src/test/Saddle_exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1520330006710616064
 ---
 
 ### 20220409 GYMNetwork - Flashloan + token migrate flaw
