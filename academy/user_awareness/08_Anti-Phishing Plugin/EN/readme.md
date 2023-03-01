@@ -252,6 +252,11 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
                 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222040236-0330f62c-d8dd-4e4c-9085-2ede7c8599cd.png" alt="Cover" width="80%"/>
+   </div>
+   
+   **personal_sign blind sign test**
+   
+   <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222040141-66c221d2-05a2-473b-9777-b2e3374e3ff5.png" alt="Cover" width="80%"/>
    </div>
 
