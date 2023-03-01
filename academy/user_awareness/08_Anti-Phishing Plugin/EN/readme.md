@@ -401,9 +401,3 @@ To enhance the security of wallet projects, project teams should start by conduc
 * **Fraud Alerts for Identical Ending Digits**: A mechanism can be set up to display addresses with an alert, reminding users to check the complete target address to avoid fraud problems with identical ending digits. Additionally, a whitelist address mechanism can be implemented for users to add commonly used addresses to the whitelist, which can prevent similar attacks with identical ending digits.
 
 * **AML Compliance**: Using AML mechanisms, users can be reminded whether the target address will trigger AML rules when making transfers
-
-SlowMist, a prominent blockchain security company, has been deeply involved in security audits for many years. Security audits not only provide users with peace of mind but also serve as one of the means to reduce the occurrence of attacks. Moreover, different institutions face difficulty in identifying and associating money laundering groups across different organizations, presenting a significant challenge to anti-money laundering efforts.
-
-For project teams, blocking and preventing the transfer of funds to malicious addresses in a timely manner is also crucial. The MistTrack anti-money laundering tracking system has accumulated over 200 million address labels, which can identify various wallet addresses of major global trading platforms, including over 1,000 address entities, more than 100,000 threat intelligence data, and over 90 million risk addresses. Interested parties can contact SlowMist to access the API. 
-
-In conclusion, SlowMist hopes that all parties will collaborate to make the blockchain ecosystem more secure.
