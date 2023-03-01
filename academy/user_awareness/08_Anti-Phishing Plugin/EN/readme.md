@@ -38,7 +38,7 @@ The QuadrigaCX saga, however, is just one example of the many issues faced by th
 
 * On February 8, 2023, a victim lost more than $1.2 million in USDC to a long-running NFT phishing scam that was linked to a fraudulent address.
 
- __
+---
  
  In response to the frequent and significant consequences of NFT theft, SlowMist Technology has released two specialized tracking analyses to address NFT phishing groups.
 
