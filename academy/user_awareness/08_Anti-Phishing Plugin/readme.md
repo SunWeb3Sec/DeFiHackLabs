@@ -298,7 +298,7 @@ No！现在我们安全防御一直推行人防+技防的手段，即人员安�
    
    安装后用户连接钓鱼网站，钓鱼网站骗取用户签名时，插件依旧没什么提示，无任何风险提示。
    
-    **personal_sign 测试**：恶意信息提示为低风险。不符合安全插件预期。
+   **personal_sign 测试**：恶意信息提示为低风险。不符合安全插件预期。
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222036989-c8a25c21-5a3c-4141-b10b-2e03d4d03a61.png" alt="Cover" width="80%"/>
