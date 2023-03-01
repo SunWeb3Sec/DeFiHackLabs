@@ -39,9 +39,9 @@
  
 鉴于 NFT 被盗的频发和影响严重性，慢雾科技针对 NFT 钓鱼团伙发布两次针对性追踪分析：
 
-2022 年 12 月 24 日，慢雾科技首次全球披露[《朝鲜 APT 大规模 NFT 钓鱼分析》](https://mp.weixin.qq.com/s?__biz=MzU4ODQ3NTM2OA==&mid=2247496811&idx=1&sn=d8b7abf891ebd1b8ceec7b8a105ccb2d&chksm=fdde8aeccaa903fa0749587788e932abbc63a5150f6fe6e802e882fc6b4edff4ae8dfbe19ee7&scene=21#wechat_redirect)， APT 团伙针对加密生态的 NFT 用户进行大规模钓鱼活动，相关地址已被 MistTrack 标记为高风险钓鱼地址，交易数也非常多，APT 团伙共收到 1055 个 NFT，售出后获利近 300 枚 ETH。 
+* 2022 年 12 月 24 日，慢雾科技首次全球披露[《朝鲜 APT 大规模 NFT 钓鱼分析》](https://mp.weixin.qq.com/s?__biz=MzU4ODQ3NTM2OA==&mid=2247496811&idx=1&sn=d8b7abf891ebd1b8ceec7b8a105ccb2d&chksm=fdde8aeccaa903fa0749587788e932abbc63a5150f6fe6e802e882fc6b4edff4ae8dfbe19ee7&scene=21#wechat_redirect)， APT 团伙针对加密生态的 NFT 用户进行大规模钓鱼活动，相关地址已被 MistTrack 标记为高风险钓鱼地址，交易数也非常多，APT 团伙共收到 1055 个 NFT，售出后获利近 300 枚 ETH。 
 
-2023 年 2 月 10 日，慢雾科技再次发布 [《数千万美金大盗团伙 Monkey Drainer 的神秘面纱》](https://mp.weixin.qq.com/s?__biz=MzU4ODQ3NTM2OA==&mid=2247496989&idx=1&sn=b1129d682fb132b08aa44e380c741c66&chksm=fdde8b9acaa9028c6d506e974a2a038b28834cf26d036aab0ac1d96342a1b64dbbe0a3844212&scene=21#wechat_redirect)”，据 MistTrack 相关数据统计，Monkey Drainer 团伙通过钓鱼的方式共计获利约 1297.2 万美元，其中钓鱼 NFT 数量 7,059 个，获利 4,695.91 ETH，约合 761 万美元，占所获资金比例 58.66%；ERC20 Token 获利约 536.2 万美元，占所获资金比例 41.34%，其中主要获利 ERC20 Token 类型为 USDC, USDT, LINK, ENS, stETH。
+* 2023 年 2 月 10 日，慢雾科技再次发布 [《数千万美金大盗团伙 Monkey Drainer 的神秘面纱》](https://mp.weixin.qq.com/s?__biz=MzU4ODQ3NTM2OA==&mid=2247496989&idx=1&sn=b1129d682fb132b08aa44e380c741c66&chksm=fdde8b9acaa9028c6d506e974a2a038b28834cf26d036aab0ac1d96342a1b64dbbe0a3844212&scene=21#wechat_redirect)”，据 MistTrack 相关数据统计，Monkey Drainer 团伙通过钓鱼的方式共计获利约 1297.2 万美元，其中钓鱼 NFT 数量 7,059 个，获利 4,695.91 ETH，约合 761 万美元，占所获资金比例 58.66%；ERC20 Token 获利约 536.2 万美元，占所获资金比例 41.34%，其中主要获利 ERC20 Token 类型为 USDC, USDT, LINK, ENS, stETH。
 
 除此之外，据慢雾区块链被黑事件档案库（Hacked.slowmist.io）和 Elliptic 的数据统计，截止 2023 年 1 月，NFT 被盗的知名安全事件有几百起，攻击者偷走了价值近 2 亿美元的 NFT。
 
