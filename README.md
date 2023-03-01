@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230227 SwapX](#20230227---swapx---access-control)
 
+[20230224 EFVault](#20230224---efvault---storage-collision)
+
 [20230222 DYNA](#20230222---dyna---business-logic-flaw)
 
 [20230218 RevertFinance](#20230218---revertfinance---arbitrary-external-call-vulnerability)
@@ -418,7 +420,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### 20230227 - swapX - Access Control 
 
-### Lost: ~$330k
+### Lost: ~$1M
 
 Testing
 ```
@@ -434,6 +436,31 @@ forge test --contracts ./src/test/swapX_exp.sol -vvv
 https://twitter.com/BlockSecTeam/status/1630111965942018049
 
 https://twitter.com/peckshield/status/1630100506319413250
+
+https://twitter.com/CertiKAlert/status/1630241903839985666
+
+---
+
+### 20230224 - EFVault - Storage Collision
+
+### Lost: ~5.1M
+
+Testing
+```
+forge test --contracts ./src/test/EFVault_exp.sol -vvv 
+```
+
+#### Contract 
+
+[EFVault_exp.sol](src/test/EFVault_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1630490333716029440
+
+https://twitter.com/drdr_zz/status/1630500170373685248
+
+https://twitter.com/gbaleeeee/status/1630587522698080257
 
 ---
 
@@ -3044,6 +3071,32 @@ https://bscscan.com/tx/0x93a9b022df260f1953420cd3e18789e7d1e095459e36fe2eb534918
 
 ---
 
+### 20220412 ElephantMoney - Flashloan & Price Oracle Manipulation
+
+#### Lost: $11.2 million (27,416.46 BNB)
+
+Testing
+
+```sh
+forge test --contracts ./src/test/Elephant_Money_poc.sol -vv
+```
+
+#### Contract
+
+[Elephant_Money_poc.sol](src/test/Elephant_Money_poc.sol)
+
+#### Link reference
+
+https://medium.com/elephant-money/reserve-exploit-52fd36ccc7e8
+
+https://twitter.com/peckshield/status/1514023036596330496
+
+https://twitter.com/BlockSecTeam/status/1513966074357698563
+
+https://bscscan.com/tx/0xec317deb2f3efdc1dbf7ed5d3902cdf2c33ae512151646383a8cf8cbcd3d4577
+
+---
+
 ### 20220411 Creat Future
 
 #### Lost: $1.9 million
@@ -3051,8 +3104,7 @@ https://bscscan.com/tx/0x93a9b022df260f1953420cd3e18789e7d1e095459e36fe2eb534918
 Testing
 
 ```sh
-forge test --contracts ./src/test/cftoken_exp.sol
- -vv
+forge test --contracts ./src/test/cftoken_exp.sol -vv
 ```
 
 #### Contract
@@ -3065,25 +3117,6 @@ https://twitter.com/BlockSecTeam/status/1556497016016228358
 
 https://bscscan.com/tx/0xc7647406542f8f2473a06fea142d223022370aa5722c044c2b7ea030b8965dd0
 
----
-
-### 20220430 Saddle Finance - Swap Metapool Attack
-
-### Lost: $10 million
-
-Testing
-
-```sh
-forge test --contracts ./src/test/Saddle_exp.sol -vvv
-```
-
-#### Contract
-
-[Saddle_exp.sol](src/test/Saddle_exp.sol)
-
-#### Link reference
-
-https://twitter.com/peckshield/status/1520330006710616064
 ---
 
 ### 20220409 GYMNetwork - Flashloan + token migrate flaw
