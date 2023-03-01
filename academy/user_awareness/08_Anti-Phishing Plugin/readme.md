@@ -1,50 +1,49 @@
 # Lesson 8 : NFT 防钓鱼指北：如何选择一款防钓鱼插件
 
-   <div align=center>
-   <img src="https://user-images.githubusercontent.com/107821372/221153552-4b68e805-5dcb-4a1a-9d51-8a0b11ac409c.png" alt="Cover" width="60%"/>
-   </div>
+***“我不需要知道 Jerry 是谁，在网络上做生意，你相信的就是网络上的小面板，剥掉面板，你就知道这玩意实际上有多脆弱，而事实上在那网站后面操作的真人，他们才是你需要信任的人。“
+——《别相信任何人：虚拟货币悬案》***
    
-## Background
+## NFT 背景
 
-The idea of Bitcoin was first presented by Satoshi Nakamoto in November 2008, and it was officially launched in January 2009. As the global digital economy gained momentum, the notion of encrypted assets, such as NFTs, began to gain traction. Colored Coin, a token similar to NFTs, was developed in 2012 using small denominations of Bitcoin, with the minimum unit being one satoshi. With the continued advancement of technology, NFTs gained immense popularity in 2021 and gradually became one of the most popular investment trends in the market.
+2008 年 11 月 1 日，中本聪提出比特币（Bitcoin）的概念，2009 年 1 月 3 日，比特币正式诞生，而后随着全球数字经济加速发展，加密资产等概念爆热，2012 年第一个类似 NFT 的通证 Colored Coin（彩色币）诞生。彩色币由小面额的比特币组成，最小单位为一聪（比特币的最小单位）。随着技术的持续发展，时间一转来到 2021 年，NFT 迎来了爆发性增长，逐步成为市场最热的投资风向标之一。
 
-NFTs are currently fetching exorbitant prices, with examples such as “Everydays: The First 5000 Days” by Beeple selling for $69,346,250 on Christie’s official website and a virtual plot of land on the Sandbox virtual gaming platform selling for $4.3 million. As the craze persists, a wave of costly projects is keeping people on edge. However, this steep valuation has also attracted the notice of criminals, resulting in a rise in phishing and theft aimed at NFTs.
+艺术家 Beeple 的 NFT 作品《Everydays:The First 5000 Days》在佳士得官网上以 69,346,250 美元成交，虚拟游戏平台 Sandbox 上的一块虚拟土地以 430 万美元售出……随着水涨船高，层出不穷的高价项目持续刺激着人们的神经。然后在高价光环之下，NFT 也渐渐进入了犯罪分子的视野，从此开启了针对 NFT 的疯狂钓鱼、盗窃等行动。
 
-## The Current State of NFTs
+## NFT 现状
 
-The opening narration of the Netflix documentary “Trust No One: The Hunt for the Crypto King” recounts the tale of the CEO of QuadrigaCX, the biggest cryptocurrency exchange in Canada, who passed away under puzzling circumstances, leaving behind $250 million in customer funds. Many of the concerned investors reject the official explanation, suspecting that the CEO’s alleged demise may have been part of a “Phoenix Scam,” in which he faked his death and ran away with their money.
+引言这段话出自 Netflix 的自制纪录片《别相信任何人：虚拟货币悬案》，故事讲述加拿大最大加密货币交易所 QuadrigaCX 首席执行官格里·科滕离奇死亡后，他将 2.5 亿美元客户资金密码也带进了坟墓。大量惊恐的投资者拒绝接受官方的说法，他们认为格里的“死亡”具有“金蝉脱壳”的所有特征：他还活着，已经带着投资者的钱跑路了！
 
-The QuadrigaCX saga, however, is just one example of the many issues faced by the Web3 community. Theft is almost a routine occurrence in the NFT world that we are discussing today, and there are numerous high-profile cases to illustrate this fact:
+其实 QuadrigaCX 的故事只是 Web3 世界的冰山一角，而我们今天要聊的 NFT 世界里，被盗几乎每天都在上演，列举几个知名案例：
 
-* On February 21, 2021, a phishing attack of the personal_sign type was perpetrated against an OpenSea user. As a result, 32 users signed a harmful transaction from the attacker, leading to the loss of various NFTs, including BAYC, Azuki, and close to a hundred others, with a value of $4.2 million at the time.
+* 2021 年 2 月 21 日，OpenSea 用户遭到 personal_sign 类型网络钓鱼攻击，有 32 位用户签署了来自攻击者的恶意交易，导致用户部分 NFT 被盗，包括 BAYC、Azuki 等近百个 NFT，按当时价格计算，黑客获利 420 万美元；
 
-* On April 29, 2022, a Bored Ape NFT belonging to Jay Chou was stolen, with a value of 3.2 million RMB.
+* 2021 年 12 月 31 日，推特用户 Kramer 在推特称其点击了一个看起来像真的 NFT DApp 链接，结果这是一次网络钓鱼攻击，他的 16 个 NFT 被盗，包括 8 个 Bored Apes、7 个 Mutant Apes 和 1 个 Clonex，价值 190 万美元；
 
-* On May 25, 2022, A Twitter user with the handle @0xLosingMoney reported that a user named @Dvincent_ had stolen 29 Moonbird NFTs, valued at over $700,000, by means of a phishing website named p2peers[.]io.
+* 2022 年 4 月 29 日，周杰伦持有价值 320 万元的无聊猿 NFT 被盗；
 
-* On June 28, 2022, Nickydooodles.eth, the creator of the Web3 initiative Metabergs, disclosed that his wallet had been hacked through a phishing attempt. The attacker made off with 17 ETH, which was approximately worth $21,077 at the time, as well as all of his NFT collections, including Goblintown NFT, Doodles NFT, Sandbox Land, and many others.
+* 2022 年 5 月 25 日，推特用户 @0xLosingMoney 称监测到 ID 为 @Dvincent_ 的用户通过发布钓鱼网站 p2peers[.]io 盗走了 29 枚 Moonbirds 系列 NFT，价值超 70 万美元；
 
-* On November 1, 2022, the Discord channel of the KUMALEON initiative was breached, and nearly 111 NFTs belonging to the community were taken, which included BAYC #5313, ENS, ALIENFRENS, Art Blocks, and various other assets.
+* 2022 年 6 月 28 日，Web3 项目 Metabergs 创作者 Nickydooodles.eth 发推称，黑客使用钓鱼手段攻击了他的钱包，损失了 17 枚 ETH（约合 21,077 美元）和全部 NFT 藏品，包括 Goblintown NFT、Doodles NFT、Sandbox Land 等；
 
-* On December 31, 2021, Kramer, a user of Twitter, claimed that he fell victim to a phishing attack. He clicked on a link that seemed to belong to a legitimate NFT DApp, but in reality, it was a scam. The result was the loss of 16 of his NFTs, consisting of 8 Bored Apes, 7 Mutant Apes, and 1 Clonex, with a total worth of $1.9 million.
+* 2022 年 11 月 1 日，KUMALEON 项目的 Discord 遭黑客入侵，攻击者通过发布钓鱼链接的方式实施攻击，导致社区用户大约 111 枚 NFT 被盗，包括 BAYC #5313 、ENS、ALIENFRENS 和 Art Blocks 等；
 
-* On January 15, 2023, the famous blogger @NFT_GOD suffered a severe loss when all of his accounts, cryptocurrencies, and NFTs were stolen. The theft occurred after he clicked on a phishing ad link on Google. The compromised accounts included Substack, Twitter, and various other platforms.
+* 2023 年 1 月 15 日，知名博主 @NFT_GOD 因点击谷歌上的钓鱼广告链接，导致所有账户（substack、twitter 等）、加密货币以及 NFT 被盗；
 
-* On January 26, 2023, Kevin Rose, the creator of the renowned NFT initiative Moonbirds, suffered a hacking incident that led to the loss of over 40 NFTs, which had a value of over $2 million.
+* 2023 年 1 月 26 日，NFT 知名项目 Moonbirds 创始人 Kevin Rose 的钱包被盗，丢失约 40 枚 NFT，损失超过 200 万美元；
 
-* On January 28, 2023, the official Twitter account of the famed NFT venture Azuki was compromised. As a result, its followers were directed to phishing links, which led to the theft of over 122 NFTs, valued at over $780,000.
+* 2023 年 1 月 28 日，NFT 知名项目 Azuki 官方 Twitter 账号被黑，导致其粉丝连接到钓鱼链接，超 122 枚 NFT 被盗，损失超过 78 万美元；
 
-* On February 8, 2023, a victim lost more than $1.2 million in USDC to a long-running NFT phishing scam that was linked to a fraudulent address.
+* 2023 年 2 月 8 日，一名受害者因一个存在已久的 NFT 钓鱼骗局，连接到钓鱼地址，损失超过 1,200,000 美元的 USDC；
 
- __
+---
  
- In response to the frequent and significant consequences of NFT theft, SlowMist Technology has released two specialized tracking analyses to address NFT phishing groups.
+鉴于 NFT 被盗的频发和影响严重性，慢雾科技针对 NFT 钓鱼团伙发布两次针对性追踪分析：
 
-In light of the frequency and severity of NFT theft, SlowMist Technologies has published two targeted tracking analyses to combat NFT phishing groups. On December 24, 2022, SlowMist Technologies released the “[Investigation of North Korean APT’s Large-Scale Phishing Attack on NFT Users](https://slowmist.medium.com/slowmist-our-in-depth-investigation-of-north-korean-apts-large-scale-phishing-attack-on-nft-users-362117600519)” worldwide. An APT group carried out widespread phishing attacks against NFT users within the encrypted ecosystem. The involved addresses have been flagged as high-risk phishing addresses by MistTrack, and the APT group managed to obtain 1,055 NFTs, resulting in a profit of almost 300 ETH.
+2022 年 12 月 24 日，慢雾科技首次全球披露[《朝鲜 APT 大规模 NFT 钓鱼分析》](https://mp.weixin.qq.com/s?__biz=MzU4ODQ3NTM2OA==&mid=2247496811&idx=1&sn=d8b7abf891ebd1b8ceec7b8a105ccb2d&chksm=fdde8aeccaa903fa0749587788e932abbc63a5150f6fe6e802e882fc6b4edff4ae8dfbe19ee7&scene=21#wechat_redirect)， APT 团伙针对加密生态的 NFT 用户进行大规模钓鱼活动，相关地址已被 MistTrack 标记为高风险钓鱼地址，交易数也非常多，APT 团伙共收到 1055 个 NFT，售出后获利近 300 枚 ETH。 
 
-According to MistTrack-related data statistics, SlowMist Technologies released “ [Analysis of Monkey Drainer NFT Phishing Group](https://slowmist.medium.com/slowmist-analysis-of-monkey-drainer-nft-phishing-group-e4e269634854)” on February 10, 2023. The Monkey Drainer group made roughly $12.97 million through phishing, obtaining 7,059 NFTs and 4,695.91 ETH, which equated to $7.61 million and constituted 58.66% of the stolen funds. The profit from ERC20 tokens amounted to around $5.362 million, representing 41.34% of the stolen funds. The primary ERC20 token types included USDC, USDT, LINK, ENS, and stETH.
+2023 年 2 月 10 日，慢雾科技再次发布 [《数千万美金大盗团伙 Monkey Drainer 的神秘面纱》](https://mp.weixin.qq.com/s?__biz=MzU4ODQ3NTM2OA==&mid=2247496989&idx=1&sn=b1129d682fb132b08aa44e380c741c66&chksm=fdde8b9acaa9028c6d506e974a2a038b28834cf26d036aab0ac1d96342a1b64dbbe0a3844212&scene=21#wechat_redirect)”，据 MistTrack 相关数据统计，Monkey Drainer 团伙通过钓鱼的方式共计获利约 1297.2 万美元，其中钓鱼 NFT 数量 7,059 个，获利 4,695.91 ETH，约合 761 万美元，占所获资金比例 58.66%；ERC20 Token 获利约 536.2 万美元，占所获资金比例 41.34%，其中主要获利 ERC20 Token 类型为 USDC, USDT, LINK, ENS, stETH。
 
-As of January 2023, hundreds of high-profile security breaches have resulted in the loss of almost $200 million worth of NFTs, according to data from SlowMist’s blockchain hacking event database (hacked.slowmist.io) and Elliptic.
+除此之外，据慢雾区块链被黑事件档案库（Hacked.slowmist.io）和 Elliptic 的数据统计，截止 2023 年 1 月，NFT 被盗的知名安全事件有几百起，攻击者偷走了价值近 2 亿美元的 NFT。
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/221155326-b51cacf8-2a5c-4383-8ff0-6ad2d7098381.png" alt="Cover" width="80%"/>
@@ -52,7 +51,7 @@ As of January 2023, hundreds of high-profile security breaches have resulted in 
 
 <div align=center>
 
- **Resource :[https://hacked.slowmist.io/](https://hacked.slowmist.io/)**
+ **資料來源 :[https://hacked.slowmist.io/](https://hacked.slowmist.io/)**
 
 </div>
 
@@ -60,49 +59,46 @@ As of January 2023, hundreds of high-profile security breaches have resulted in 
    <img src="https://user-images.githubusercontent.com/107821372/221155882-d9e8ebc6-c28e-44ca-b1e8-378de79784d5.png" alt="Cover" width="80%"/>
    </div>
 
-SlowMist’s findings indicate that in 2022, NFT theft incidents were primarily centered around the Ethereum network and social media channels. Attackers employed a variety of techniques, including counterfeit domains, fake domain names that resembled project parties, malicious trojans, and phishing attacks through false links distributed via Discord intrusions. The average loss per phishing attack was around $100,000. It appears that hackers are the only ones benefiting, irrespective of whether the market is bullish or bearish.
+据 SlowMist 数据显示，2022 年 NFT 盗窃案主要集中在 Ethererum 链，发生在社交媒体平台上，通过虚假域名、项目方相似域名、恶意木马、Discord 入侵发布虚假链接钓鱼等手法进行攻击，诈骗者平均每次盗窃 10 万美元。似乎不论牛市还是熊市，只有黑客在 “0 元购” 赚的盆满钵满。
 
-Given the hostile environment of phishing and fraud, in which both regular users and project creators are frequent targets, what measures can NFT users take to protect themselves? Are users merely regarded as defenseless prey in these scenarios?
+那么问题来了：不管是普通用户还是项目方创始人都屡遭钓鱼攻击，面对如此恶劣的 NFT 钓鱼、欺诈环境，NFT 用户是不是就毫无办法？用户就是待宰的羔羊吗？
 
-Absolutely not! We have been promoting a blend of human prevention and technical prevention measures, encompassing personal security awareness defense and technical defense tactics. Personal security awareness defense pertains to an individual’s security consciousness. We suggest that cryptocurrency users take a cue from the Blockchain Dark Forest Self-Defense Manual.
+No！现在我们安全防御一直推行人防+技防的手段，即人员安全意识防御+技术手段防御。人员安全意识防御即个人安全意识，建议加密货币从业者可以学习下区块链黑暗森林自救手册：https://github.com/slowmist/Blockchain-dark-forest-selfguard-handbook/。
 
-Given that humans are intricate, advanced beings, we will not delve into personal security awareness defense in-depth today. Instead, we strongly encourage everyone to carefully peruse the Blockchain Dark Forest Self-Defense Manual.
+鉴于人是个复杂的高等动物，所以人员安全意识防御我们今天不展开讲，大家区块链黑暗森林自救手册好好读一下。
 
-What do technical defense measures entail? In essence, it involves utilizing security measures such as software, hardware, and browser plug-ins to safeguard assets. Within the NFT user community, the most frequently used operational technique is browser interaction, accounting for 90%, and it is also the most susceptible environment. Currently, numerous anti-phishing browser plug-ins are available on the market. In the following section, we will scrutinize and contrast these plug-ins, with the hope of offering some security guidance to NFT users.
+而技术防御手段又是什么？简单讲就是通过软硬件、浏览器插件等安全方式来保证资产等安全，而在 NFT 用户群体，浏览器交互是 90% 的 NFT 用户最常用的操作方式，也是最容易出现问题的环境，现在市场上已经有多款防钓鱼浏览器插件，下面我们来盘点与对比下，希望能给 NFT 用户一些安全指引。
 
-## Security Plugin Comparison
+## 安全插件对比
 
-***Disclaimer: The ensuing evaluation of various browser security plug-ins is solely grounded on fundamental information, live phishing detection for NFTs, and basic operational comparisons. SlowMist is simply an impartial third party and does not accept any liability or legal responsibility.***
+***免责提示：以下对比的几款浏览器安全插件仅从基本信息层、NFT 实时钓鱼检测层、基本操作层进行对比，慢雾仅作为中立第三方，不承担任何义务和法律责任***
 
-Let us now compare multiple well-known anti-phishing browser plug-ins from various perspectives and examine their respective features.
+下面我们来从几个角度评比下几款我们熟悉的防钓鱼浏览器插件，看看他们各自都有哪些特点：
 
-### 1. This will encompass parameters such as open-source availability, download counts, supported networks, and primary descriptions:
+### 1. 是否开源、安装次数、支持链、主要功能描述：
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/221156506-8ccf1f89-0605-441c-9b9b-3b1860587a70.Png" alt="Cover" width="80%"/>
    </div>
 
-### 2. Real-time testing of NFT phishing websites and blacklists:
+### 2. NFT 钓鱼网站、实时黑名单真实测试：
 
-   We looked for the most prevalent characteristics of North Korean APT NFT phishing and Monkey Drainer NFT phishing, conducted real-time feature scans, and detected the newest phishing websites of these groups, which were discovered roughly three hours apart. Let’s examine the responses provided by each anti-phishing plug-in:
+   我们找最常见的朝鲜 APT NFT 钓鱼特征和 Monkey Drainer NFT 钓鱼特征，进行实时特征扫描，找到团伙最新的钓鱼网站，发现时差 3 小时左右，来看下各个防钓鱼插件的反馈情况：
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/221156838-6bd8d891-7946-4be2-a543-1e0d35c7587d.png" alt="Cover" width="80%"/>
    </div>
     
-  The latest malicious NFT phishing website: https://blur.do (discovered on February 19, 2020, at 17:32:12 Beijing time)
+  最新恶意 NFT 钓鱼站点：https://blur.do (发现时间为北京时间 2020-02-19 17:32:12）
     
-  The testing content is presented below:
+  ### 下面为测试内容：
 
    **(1). PeckShieldAlert (Aegis)**
    
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222028232-6c1f91e0-cba0-487d-ae2e-67c6d3bec452.png" alt="Cover" width="80%"/>
-   </div>
    
-   <div align=center>
-   
-**Outcome**: No alerts. The phishing website opens without issue.
+**结果**：无任何提示，仍正常打开钓鱼网站。
 
    </div>
 
@@ -110,11 +106,8 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
    
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222028709-a33c4694-a81e-4b5a-910e-f5de92186eec.png" alt="Cover" width="80%"/>
-   </div> 
    
-   <div align=center>
-   
-**Outcome**: No alerts. The phishing website opens without issue.
+**结果**：无任何提示，仍正常打开钓鱼网站。
 
    </div>
    
@@ -122,11 +115,8 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
    
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222028948-e721b975-d723-4d87-a3d1-1add5c6c3838.png" alt="Cover" width="80%"/>
-   </div> 
-
-   <div align=center>
    
-**Outcome**: No alerts. The phishing website opens without issue.
+**结果**：无任何提示，仍正常打开钓鱼网站。
 
    </div>
    
@@ -134,11 +124,8 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
     
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222029425-ad6670cd-ef6f-4835-92ee-f873dda6baf9.png" alt="Cover" width="80%"/>
-   </div> 
-
-   <div align=center>
    
-**Outcome**: No alerts. The phishing website opens without issue.
+**结果**：无任何提示，仍正常打开钓鱼网站。
 
    </div>
    
@@ -150,7 +137,7 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
    
    <div align=center>
    
-**Outcome**: The phishing website was identified, and access to the site was blocked with a warning.
+**结果**：提醒钓鱼网站并阻止访问钓鱼网站。
 
    </div>
    
@@ -158,15 +145,9 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
     
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222030210-2f5d9dc4-2b37-4a7a-a55b-8d163b493947.png" alt="Cover" width="80%"/>
-   </div> 
-    
-   <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222030327-bf3525bc-b778-4d89-b6a9-15e7662cf45f.png" alt="Cover" width="80%"/>
-   </div> 
    
-   <div align=center>
-   
-**Outcome**: No alerts. The phishing website opens without issue.
+**结果**：无任何提示，仍正常打开钓鱼网站。
 
    </div>
    
@@ -174,12 +155,8 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
        
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222030561-5039e211-b460-486b-a729-54f48a71b03f.png" alt="Cover" width="80%"/>
-   </div> 
-
    
-   <div align=center>
-   
-**Outcome**: No alerts. The phishing website opens without issue.
+**结果**：无任何提示，仍正常打开钓鱼网站。
 
    </div>
    
@@ -187,11 +164,8 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
           
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222030710-ab4496ce-6c51-4432-94e1-e710529ef81f.png" alt="Cover" width="80%"/>
-   </div> 
    
-   <div align=center>
-   
-**Outcome**: No alerts. The phishing website opens without issue.
+**结果**：无任何提示，仍正常打开钓鱼网站。
 
    </div>
    
@@ -199,85 +173,83 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
              
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222030965-3a05b869-dd27-408e-b5e0-9cbf678b83a6.png" alt="Cover" width="80%"/>
-   </div> 
-
-   <div align=center>
    
-**Outcome**: No alerts. The phishing website opens without issue.
+**结果**：无任何提示，仍正常打开钓鱼网站。
 
    </div>
    
-   To verify the real-time nature and authenticity of NFT phishing sites, the findings from nine installed plug-ins with a 3-hour time discrepancy are displayed below. (Please note that Wallet Guard has already been featured in the installed plug-ins.)
+  为了测试 NFT 站点钓鱼的实时性、真实性，9 个安装的插件展示如下：（Ps：Wallet Guard 已展示出我所安装的插件。）
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222031182-febc0825-b129-49fd-b58e-f82f0b4e69b0.png" alt="Cover" width="80%"/>
    </div> 
    
-   The aforementioned outcomes are actual and current NFT phishing site findings, taken around three hours apart.
+   以上是以 3 小时时差级别的真实 NFT 钓鱼网站结果。 
    
-### 3. Basic Content Operation Layer Test
+### 3. 基本操作层测试内容
 
    **(1). PeckShieldAlert (Aegis)**
    
-   Upon installation, users must manually enter a Token Contract to initiate detection. This approach fails to satisfy NFT users’ pressing demand for immediate identification of phishing sites. It is akin to an online malevolent contract scanning plug-in.
+   安装后是让用户自己输入一个 Token Contract 来检测，这种方式不符合目前 NFT 用户急于第一时间知道站点是否是钓鱼网站的需求。它更像一个在线恶意合约扫描器插件。
    
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222040803-eab7f854-d39a-4e13-857c-1e5613c397df.png" alt="Cover" width="40%"/>
   
-**personal_sign blind sign test**: No prompt.
+**personal_sign 测试**：无提示。
 
    </div>
-
    
    **(2). Pocket Universe**
    
-   Once installed, the plug-in commences detection only when the user initiates a transaction. As a result, it is unable to instantly notify users when they initially access an NFT phishing website. Let’s move on to the second step:
+   安装后可以知道逻辑用户触发交易时开始检测，所以在第一步用户打开 NFT 钓鱼网站时，是不能第一时间提醒用户的。我们来看下第二步：
                 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222040568-2a7b0305-2de4-419a-9e3d-1ce648993853.png" alt="Cover" width="80%"/>
-   </div> 
    
-   **personal_sign blind sign test**: The plug-in warns users when a high-risk address is identified based on the chain address and advises against signing, which is commendable and aligns with security plug-in expectations.
+   **personal_sign 测试**：提醒用户已经根据链上地址识别出风险地址，让用户不要签名，还是不错的，符合安全插件预期。
    
-   <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222040510-715662c3-70b2-4c4e-9efa-d920470f9560.png" alt="Cover" width="80%"/>
    </div>
-
    
    **(3). Revoke.cash**  
    
-   In the first step, the NFT phishing website remains unmarked. However, in the second step, when the user visits the phishing website, the risky address is identified based on the chain address, and a warning is issued against signing. This corresponds with security plug-in expectations.
+   第一步没有标示出 NFT 钓鱼网站，在第二步用户连接钓鱼网站后，根据链上地址识别出风险地址，提醒用户不要签名。符合安全插件预期。
                 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222040236-0330f62c-d8dd-4e4c-9085-2ede7c8599cd.png" alt="Cover" width="80%"/>
+   </div>
+   
+   **personal_sign 测试**：
+   
+   <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222040141-66c221d2-05a2-473b-9777-b2e3374e3ff5.png" alt="Cover" width="80%"/>
    </div>
 
    **(4). Fire**
    
-   In the first step, the NFT phishing website is not labeled. In the second step, when the user accesses the phishing website, the high-risk address is not identified based on the chain address, and there is no warning concerning signing risk. Nonetheless, Fire can present the legibility of the signature pre-execution content, which is quite beneficial.
+   第一步没有标示出 NFT 钓鱼网站，在第二步用户连接钓鱼网站后，根据链上地址没有识别出风险地址，也没有提示签名风险。但是 Fire 可以把签名预执行内容可读性显示出来，这点比较不错。
                
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222039945-30dca7b8-48be-4b70-b74f-f4314ed5f777.png" alt="Cover" width="80%"/>
 
-**personal_sign blind sign test**: No prompt.
+**personal_sign 测试**：无提示。
 
    </div>
    
    **(5). Scam Sniffer**
    
-   Upon installation, when users access an NFT phishing website, they are instantly alerted with a warning, and entry to the site is prohibited. This conforms to security plug-in standards.
+   安装后用户访问 NFT 钓鱼网站时，直接提示风险并阻断了访问钓鱼网站。符合安全插件预期。
                    
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222039502-41437111-c00d-451c-af10-e15acf285803.png" alt="Cover" width="80%"/>
   
-**personal_sign blind sign test**: Alerted with a warning.
+**personal_sign 测试**：有提示。
 
    </div>
    
    **(6). Wallet Guard**
    
-   Once installed, the plug-in initiates detection only when the user triggers a transaction. Consequently, it is unable to promptly alert the user when they first open an NFT phishing website. Let’s proceed to the second step:
+   安装后是在用户触发交易时开始检测，所以在第一步用户打开 NFT 钓鱼网站 时，不能第一时间提醒用户，我们来看下第二步：
                
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222039196-16093e19-b165-4ca5-aa08-15c131093f9a.png" alt="Cover" width="80%"/>
@@ -287,7 +259,7 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
    <img src="https://user-images.githubusercontent.com/107821372/222039049-d2760dd0-3d76-443b-bb74-028474923ec3.png" alt="Cover" width="80%"/>
    </div>
 
-**personal_sign blind sign test**: The plug-in prompts the user that the phishing website is marked (as identified by Wallet Guard’s malicious address library of Scam Sniffer), warns them against the risks, and advises against signing. This is still commendable and consistent with security plug-in standards.
+**personal_sign 测试**: 提醒用户现在已经标记到这个钓鱼网站（发现 Wallet Guard 有使用 Scam Sniffer 的恶意地址库），提醒有风险，不要签名，还是不错的。符合安全插件预期。
    
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222038829-39102d34-2de0-47fb-b84f-40301ba77dd9.png" alt="Cover" width="80%"/>
@@ -295,7 +267,7 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
    
    **(7). MetaDock**
    
-   Once installed, the plug-in fails to provide any prompts or warnings about the risk when users connect to a phishing website. It appears to function more as a plug-in that necessitates active submission of a scan, rather than an anti-phishing plug-in, which doesn’t satisfy security plug-in standards. It’s probable that MetaDock is not an anti-phishing plug-in, and users who are interested can verify this with the project team.
+   安装后用户连接钓鱼网站，钓鱼网站骗取用户签名时，插件依旧没什么提示，无任何风险提示。更像是需要用户主动去提交扫描的方式，不符合安全插件预期。可能 MetaDock 不是一个防钓鱼插件？有兴趣的小伙伴可以找项目方确认下。
    
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222037796-1054b244-6c79-480c-8b50-953dc06852a2.png" alt="Cover" width="80%"/>
@@ -307,27 +279,26 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
 
    <div align=center>
    
-**personal_sign blind sign test**: No prompt.
+**personal_sign 测试**：无提示。
 
    </div>
       
    **(8). Metashield**
    
-   Like “MetaDock” and “PeckShieldAlert”, these plugins do not provide immediate prompts or warnings when users connect to a phishing website and are tricked into signing. Instead, users need to actively submit a scan for the plugin to detect any potential risks. This approach may not meet the expectations of a security plugin.
+   安装后与 “MetaDock”、 “PeckShieldAlert” 类似，用户连接钓鱼网站，钓鱼网站骗取用户签名时，插件依旧没什么提示，无任何风险提示。需要用户主动去提交扫描的方式，不符合安全插件预期。
                    
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222037359-570ce7e1-51a6-469e-81f5-3211b065a8e3.png" alt="Cover" width="80%"/>
-   </div> 
-
-   <div align=center>
    
-**personal_sign blind sign test**: No prompt.
+**personal_sign 测试**：无提示。
 
    </div>
    
    **(9). Stelo**
    
-   Once installed, the plugin fails to provide any warnings or prompts to the user when they connect to a phishing website and are tricked into signing.
+   安装后用户连接钓鱼网站，钓鱼网站骗取用户签名时，插件依旧没什么提示，无任何风险提示。
+   
+    **personal_sign 测试**：恶意信息提示为低风险。不符合安全插件预期。
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222036989-c8a25c21-5a3c-4141-b10b-2e03d4d03a61.png" alt="Cover" width="80%"/>
@@ -337,65 +308,54 @@ Let us now compare multiple well-known anti-phishing browser plug-ins from vario
    <img src="https://user-images.githubusercontent.com/107821372/222036888-e867d472-21e2-4547-9dfe-7e40a8789377.png" alt="Cover" width="80%"/>
    </div> 
 
-   **personal_sign blind sign test**: The malicious information prompt provided by the plugin is low risk, which doesn’t meet the expectations of a security plugin.
-
-      
-   And that concludes our comparison.
+   
+   至此，对比结束。
    
 ---
    
-### Comparison Results
+### 最终对比结果
 
-The comparison results are presented in the following image:
+下图为最终对比结果：
 
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222034634-8e5ccf6d-b3a6-488f-9458-c9fe05e4c789.png" alt="Cover" width="80%"/>
    </div> 
    
-   After conducting the comparison, it was found that most of the security plugins did not perform well in the first step of the recognition process, which involves recognizing the phishing website when the user first opens it. Only Scam Sniffer managed to recognize the latest NFT phishing website with a time difference of 3 hours. However, in the second step, when the user connects to the phishing website and performs dangerous operations such as eth_sign and personal_sign, Pocket Universe, Revoke.cash, and Wallet Guard provide security risk alerts.
-
-   However, this is only a basic comparison, and there may be further refinements and updates in the future.
+   在对比后，我们发现在第一步（用户打开钓鱼网站）的识别上多数安全插件都做得不够好，只有 Scam Sniffer 识别到了这个 3 小时时差的最新 NFT 钓鱼网站，在第二步（用户连接钓鱼网站）开始 eth_sign、personal_sign 签名等危险操作时，Pocket Universe、Revoke.cash、Wallet Guard  均做出了安全风险识别等提醒。
    
-   The accompanying image includes the list of tested security plugins and their respective version numbers.
+   但这只是目前的基础对比项，未来可能会进一步细化。
+   
+   测试的安全插件名称及版本号如下图：
    
    <div align=center>
    <img src="https://user-images.githubusercontent.com/107821372/222034772-444af843-0511-49c7-ae93-84b0b0790f4f.png" alt="Cover" width="80%"/>
    </div> 
    
-   We want to extend our appreciation to Wu Shuo Blockchain for initiating this comparison, and to the outstanding project teams of the security plugins that underwent testing. Although their product positioning and comparison results may vary, there is always room for improvement, and their efforts have undoubtedly elevated the standards of blockchain security.
-   The recommended combinations are presented for reference purposes only and should not be considered as advice. These combinations may potentially offer improved security for users based on the current comparison results:
+   ***在此感谢吴说区块链的抛砖引玉；感谢以上优秀的插件项目方，虽然产品定位、对比结果各不相同，不少仍有改进的空间，但是他们的努力让区块链安全更进一步！***
+   
+   除此之外，推荐一个使用组合 （不构成任何建议）：
+   
    1. Rabby wallet + Scam Sniffer
    2. Rabby wallet + Pocket Universe
    3. MetaMask + Pocket Universe
    4. MetaMask + Revoke.cash
    
-## After Thoughts
+## 写在最后
 
-In the blockchain industry, the main risks for individual users in phishing attacks are related to domain names and signatures. Approximately 90% of NFT phishing scams are associated with fraudulent domain names. Therefore, it is crucial for users to check the risk level of their target addresses before engaging in any on-chain transactions. 
+纵观区块链行业的钓鱼攻击，对个人用户来说，***风险主要在 “域名、签名” 两个核心点***，其中 90% 的 NFT 钓鱼都跟虚假域名有关。对用户来说，在进行链上操作前，提前了解目标地址的风险情况是十分必要的，如果用户在打开一个钓鱼页面时，相关的浏览器安全插件或钱包就能直接提示风险，这样就可以把风险阻断在第一步，直接阻断了用户后面的风险。就像 Web2 世界中 360 时代，直接解决了当时小白用户被病毒攻击的困扰，但它也并非解决了所有木马病毒问题，因为病毒的查杀和病毒的免杀（一种专业的躲避杀毒软件查杀技术，可以自行 Google 了解）永远存在时间差，如何做到时间差更小、样本数更快、识别更精准就决定了杀毒软件的厉害程度。
 
-If browser security plugins or wallets can provide immediate alerts to users when they encounter a phishing page, then the risk can be blocked at the very first step, preventing any further harm to the user. Similarly, in the Web 2.0 era, a 360 antivirus solution could solve the problem of viruses attacking inexperienced users, but it couldn’t solve all malware problems, such as virus elimination and bypassing. The effectiveness of antivirus software is determined by how much it can reduce the time gap, increase the number of samples, and improve its accuracy. The recommended combinations provided are for reference only and should not be construed as advice.
+同样，在区块链、NFT 行业，如何能***第一步识别、提醒到钓鱼站点的实时情况***，在用户端快速反馈、识别出钓鱼网站，就决定了一款防钓鱼安全插件的能力；而如果相关产品因为时间差的问题没有在第一步识别到这些钓鱼域名，用户丢币的风险就大大增加；那么接下来到***第二步，用户交互时授权链接、签名步骤，如果浏览器安全插件或钱包有骗签识别，能够识别、友好的展示出用户要签名的详细信息，如授权什么币种、授权多少、授权给谁等人类可读数据***，比如 Rabby Wallet，在一定程度上也可以提示风险，一定程度上可以避免陷入资金损失的境地。
 
-The ability of an anti-phishing security plugin to quickly identify and alert users of the real-time situation of phishing sites at the very first step, as well as to provide fast feedback and identification of phishing websites, will determine its effectiveness in the blockchain and NFT industries. Failure to recognize these phishing domains due to time lag significantly increases the risk of users losing their assets.
+对钱包项目方来说，首先是需要进行全面的安全审计，重点提升用户交互安全部分，加强所见即所签机制，减少用户被钓鱼风险，如：
 
-Moving on to the second step, when the user interacts with the authorization link and signature process, the browser security plugin or wallet with phishing signature recognition should be able to identify and display the detailed information that the user is authorizing, such as the authorized cryptocurrency, amount, recipient, and other user-readable data. For example, Rabby Wallet can prompt the user of the risk to a certain extent and help avoid the situation of financial losses.
+* **钓鱼网站提醒**：通过生态或者社区的力量汇聚各类钓鱼网站，并在用户与这些钓鱼网站交互的时候对风险进行醒目地提醒和告警。
 
-To enhance the security of wallet projects, project teams should start by conducting a comprehensive security audit, with a focus on improving the security of user interactions, strengthening the “What you see is what you sign” mechanism, and reducing the risk of phishing attacks for users.
+* **签名的识别和提醒**: 识别并提醒 eth_sign、personal_sign、signTypedData 这类签名的请求，并重点提醒 eth_sign 盲签的风险。
 
-***Here are some examples of measures that project teams can take to enhance security:***
+* **所见即所签**: 钱包中可以对合约调用进行详尽解析机制，避免 Approve 钓鱼，让用户知道 DApp 交易构造时的详细内容。
 
-* **Phishing Website Warning**: One measure that can be taken is implementing a phishing website warning system that leverages the power of the blockchain community to identify and collect all types of phishing websites. This way, users can be provided with prominent reminders and alerts whenever they interact with these sites to reduce the risk of falling victim to phishing attacks.
+* **预执行机制**: 通过交易预执行机制可以帮助用户了解到交易广播执行后的效果，有助于用户对交易执行进行预判。
 
-* **Signature Identification and Alerts**: It is important to implement signature identification and alerts for requests such as eth_sign, personal_sign, and signTypedData to notify users and draw their attention to the risks of blind signing with eth_sign.
-* What You See Is What You Sign: To avoid phishing approvals, it is important to perform a detailed analysis of contract calls in wallets and provide users with specific details of DApp transaction construction.
+* **尾号相同的诈骗提醒**: 在展示地址的时候醒目的提醒用户检查完整的目标地址，避免尾号相同的诈骗问题。设置白名单地址机制，用户可以将常用的地址加入到白名单中，避免类似尾号相同的攻击。
 
-* **Pre-execution Mechanism**: A pre-execution mechanism is useful in helping users understand the potential effects of a transaction before it is broadcast and executed. This allows users to make informed decisions and judgments about whether or not to proceed with the transaction, thereby enhancing their overall security.
-
-* **Fraud Alerts for Identical Ending Digits**: A mechanism can be set up to display addresses with an alert, reminding users to check the complete target address to avoid fraud problems with identical ending digits. Additionally, a whitelist address mechanism can be implemented for users to add commonly used addresses to the whitelist, which can prevent similar attacks with identical ending digits.
-
-* **AML Compliance**: Using AML mechanisms, users can be reminded whether the target address will trigger AML rules when making transfers
-
-SlowMist, a prominent blockchain security company, has been deeply involved in security audits for many years. Security audits not only provide users with peace of mind but also serve as one of the means to reduce the occurrence of attacks. Moreover, different institutions face difficulty in identifying and associating money laundering groups across different organizations, presenting a significant challenge to anti-money laundering efforts.
-
-For project teams, blocking and preventing the transfer of funds to malicious addresses in a timely manner is also crucial. The MistTrack anti-money laundering tracking system has accumulated over 200 million address labels, which can identify various wallet addresses of major global trading platforms, including over 1,000 address entities, more than 100,000 threat intelligence data, and over 90 million risk addresses. Interested parties can contact SlowMist to access the API. 
-
-In conclusion, SlowMist hopes that all parties will collaborate to make the blockchain ecosystem more secure.
+* **AML 合规提醒**：在转账的时候通过 AML 机制提醒用户转账的目标地址是否会触发 AML 的规则。
