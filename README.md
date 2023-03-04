@@ -435,7 +435,7 @@ forge test  --contracts src/test/LaunchZone_exp.sol -vvv
 
 #### Contract
 
-[LuanchZone_exp.sol](src/test/LaunchZone_Exp.sol)
+[LuanchZone_exp.sol](src/test/LaunchZone_exp.sol)
 
 ### Link Refrence
 
