@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-172 incidents included.
+177 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -19,8 +19,11 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 - Clone and install dependencies:`git submodule update --init --recursive`
 
 ## [Web3 Cybersecurity Academy](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy)
+
 All articles are also published on [Substack](https://defihacklabs.substack.com/).
+
 ### OnChain transaction debugging (Ongoing)
+
 - Lesson 1: Tools ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/en) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools) | [Vietnamese](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/vi) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/ko) )
 - Lesson 2: Warm up ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/ko) )
 - Lesson 3: Write Your Own PoC (Price Oracle Manipulation) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/03_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/03_write_your_own_poc/) )
@@ -31,7 +34,15 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230227 LaunchZone](#20230227---launchzone---access-control)
+
+[20230227 SwapX](#20230227---swapx---access-control)
+
+[20230224 EFVault](#20230224---efvault---storage-collision)
+
 [20230222 DYNA](#20230222---dyna---business-logic-flaw)
+
+[20230218 RevertFinance](#20230218---revertfinance---arbitrary-external-call-vulnerability)
 
 [20230217 Starlink](#20230217---starlink---business-logic-flaw)
 
@@ -273,6 +284,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220412 ElephantMoney](#20220412-elephantmoney---flashloan--price-oracle-manipulation)
 
+[20220411 Creat Future](#20220411-creat-future)
+
 [20220409 GYMNetwork](#20220409-gymnetwork)
 
 [20220329 Ronin Network](#20220329-ronin-network---Bridge)
@@ -410,11 +423,82 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230227 - LaunchZone - Access Control
+
+### Lost: ~$320,000
+
+Testing
+
+```
+forge test  --contracts src/test/LaunchZone_exp.sol -vvv
+```
+
+#### Contract
+
+[LuanchZone_exp.sol](src/test/LaunchZone_exp.sol)
+
+### Link Refrence
+
+https://twitter.com/immunefi/status/1630210901360951296
+
+https://twitter.com/launchzoneann/status/1631538253424918528
+
+---
+
+### 20230227 - swapX - Access Control
+
+### Lost: ~$1M
+
+Testing
+
+```
+forge test --contracts ./src/test/swapX_exp.sol -vvv
+```
+
+#### Contract
+
+[SwapX_exp.sol](src/test/SwapX_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1630111965942018049
+
+https://twitter.com/peckshield/status/1630100506319413250
+
+https://twitter.com/CertiKAlert/status/1630241903839985666
+
+---
+
+### 20230224 - EFVault - Storage Collision
+
+### Lost: ~5.1M
+
+Testing
+
+```
+forge test --contracts ./src/test/EFVault_exp.sol -vvv
+```
+
+#### Contract
+
+[EFVault_exp.sol](src/test/EFVault_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1630490333716029440
+
+https://twitter.com/drdr_zz/status/1630500170373685248
+
+https://twitter.com/gbaleeeee/status/1630587522698080257
+
+---
+
 ### 20230222 - DYNA - Business Logic Flaw
 
 ### Lost: ~$21k
 
 Testing
+
 ```
 forge test --contracts ./src/test/DYNA_exp.sol -vvv
 ```
@@ -431,11 +515,32 @@ https://twitter.com/BeosinAlert/status/1628301635834486784
 
 ---
 
+### 20230218 - RevertFinance - Arbitrary External Call Vulnerability
+
+### Lost: ~$30k
+
+Testing
+
+```
+forge test --contracts ./src/test/RevertFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[RevertFinance_exp.sol](src/test/RevertFinance_exp.sol)
+
+#### Link Reference
+
+https://mirror.xyz/revertfinance.eth/3sdpQ3v9vEKiOjaHXUi3TdEfhleAXXlAEWeODrRHJtU
+
+---
+
 ### 20230217 - Starlink - Business Logic Flaw
 
 ### Lost: ~$12k
 
 Testing
+
 ```
 forge test --contracts ./src/test/Starlink_exp.sol -vvv
 ```
@@ -457,6 +562,7 @@ https://twitter.com/bbbb/status/1626392605264351235
 ### Lost: ~$1.5M
 
 Testing
+
 ```
 forge test --contracts src/test/Dexible_exp.sol -vvv
 ```
@@ -478,11 +584,12 @@ https://twitter.com/MevRefund/status/1626450002254958592
 ### Lost: ~$8.5M
 
 Testing
+
 ```
 forge test --contracts src/test/Platypus_exp.sol -vvv
 ```
 
-#### Contract 
+#### Contract
 
 [Platypus_exp.sol](src/test/Platypus_exp.sol)
 
@@ -499,9 +606,11 @@ https://twitter.com/spreekaway/status/1626319585040338953
 ### Lost: ~$3K
 
 Testing
+
 ```
 forge test --contracts src/test/Sheep_exp.sol -vvv
 ```
+
 #### Contract
 
 [Sheep_exp.sol](src/test/Sheep_exp.sol)
@@ -519,9 +628,11 @@ https://twitter.com/BlockSecTeam/status/1624077078852210691
 ### Lost: ~$3.65M
 
 Testing
+
 ```
 forge test --contracts ./src/test/dForce_exp.sol -vvv
 ```
+
 #### Contract
 
 [dForce_exp.sol](src/test/dForce_exp.sol)
@@ -541,6 +652,7 @@ https://twitter.com/peckshield/status/1623910257033617408
 ### Lost: ~$120k
 
 Testing
+
 ```
 forge test --contracts ./src/test/CowSwap_exp.sol -vvv
 ```
@@ -562,6 +674,7 @@ https://twitter.com/peckshield/status/1622801412727148544
 ### Lost: ~16 WBNB
 
 Testing
+
 ```
 forge test --contracts src/test/FDP_exp.t.sol -vv
 ```
@@ -581,6 +694,7 @@ https://twitter.com/BeosinAlert/status/1622806011269771266
 ### Lost: ~309k USDs (Stablecoin)
 
 Testing
+
 ```
 forge test --contracts ./src/test/USDs_exp.sol -vv
 ```
@@ -602,6 +716,7 @@ https://medium.com/sperax/usds-feb-3-exploit-report-from-engineering-team-9f0fd3
 ### Lost: $3M
 
 Testing
+
 ```
 forge test --contracts ./src/test/Orion_exp.sol -vvv
 ```
@@ -625,6 +740,7 @@ https://www.numencyber.com/analysis-of-orionprotocol-reentrancy-attack-with-poc/
 ### Lost: BEUR stablecoin and ALBT Token (~88M US$)
 
 Testing
+
 ```
 forge test --contracts ./src/test/BonqDAO_exp.sol -vv
 ```
@@ -646,6 +762,7 @@ https://twitter.com/SlowMist_Team/status/1621087651158966274
 ### Lost: 22 ETH
 
 Testing
+
 ```sh
 forge test --contracts ./src/test/TINU_exp.t.sol -vv
 ```
@@ -665,6 +782,7 @@ https://twitter.com/libevm/status/1618718156343873536
 ### Lost: ~2ETH
 
 Testing
+
 ```sh
 forge test --contracts ./src/test/QTN_exp.sol -vvv
 ```
@@ -726,7 +844,7 @@ https://twitter.com/QuillAudits/status/1615634917802807297
 Testing
 
 ```sh
-forge test --contracts ./src/test/OmniEstate_exp.sol -vvv 
+forge test --contracts ./src/test/OmniEstate_exp.sol -vvv
 ```
 
 #### Contract
@@ -768,7 +886,7 @@ https://twitter.com/BlockSecTeam/status/1614864084956254209
 Testing
 
 ```sh
-forge test --contracts ./src/test/UFDao_exp.sol -vvv 
+forge test --contracts ./src/test/UFDao_exp.sol -vvv
 ```
 
 #### Contract
@@ -866,6 +984,7 @@ forge test --contracts ./src/test/DFS_exp.sol -vvv
 https://twitter.com/CertiKAlert/status/1608788290785665024
 
 ---
+
 ### 20221229 - JAY - Insufficient validation + Reentrancy
 
 ### Lost: $15.32 ETH
@@ -929,9 +1048,11 @@ https://twitter.com/PeckShieldAlert/status/1606276020276891650
 ---
 
 ### 20221214 - Nmbplatform - FlashLoan price manipulation
+
 ### Lost: 76k
 
 Testing
+
 ```sh
 forge test --contracts ./src/test/Nmbplatform_exp.sol -vvv
 ```
@@ -3024,6 +3145,28 @@ https://bscscan.com/tx/0xec317deb2f3efdc1dbf7ed5d3902cdf2c33ae512151646383a8cf8c
 
 ---
 
+### 20220411 Creat Future
+
+#### Lost: $1.9 million
+
+Testing
+
+```sh
+forge test --contracts ./src/test/cftoken_exp.sol -vv
+```
+
+#### Contract
+
+[cftoken_exp.sol](src/test/cftoken_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1556497016016228358
+
+https://bscscan.com/tx/0xc7647406542f8f2473a06fea142d223022370aa5722c044c2b7ea030b8965dd0
+
+---
+
 ### 20220409 GYMNetwork - Flashloan + token migrate flaw
 
 #### Lost: 1,327 WBNB
@@ -4074,6 +4217,7 @@ forge test --contracts src/test/Sushi-Badger_Digg.exp.sol -vvvv
 https://cmichel.io/replaying-ethereum-hacks-sushiswap-badger-dao-digg/
 
 ---
+
 </details>
 <details> <summary> Before 2020 </summary>
 
