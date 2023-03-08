@@ -12,7 +12,7 @@ import "./interface.sol";
 // @Summary
 // There is an exchange method in the 0x89257 closed source contract for users to swap USDT for DKP tokens,
 // but the price Oracle used is the ratio of the balance of the two tokens in the USDT-DKP pair,
-// and the attacker manipulates this price through lightning credits, swapping a very small amount of USDT for a large amount of DKP and selling it for a profit
+// and the attacker manipulates this price through flashLoan, swapping a very small amount of USDT for a large amount of DKP and selling it for a profit
 
 interface IDKPExchange {
     function exchange(uint256 amount) external;
