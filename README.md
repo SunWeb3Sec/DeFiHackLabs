@@ -429,7 +429,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### 20230308 - DKP - FlashLoan price manipulation
 
-### Lost: ~80K
+### Lost: ~$80K
 
 Testing
 
