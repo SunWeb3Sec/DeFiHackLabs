@@ -11,7 +11,7 @@ import "./interface.sol";
 // https://bscscan.com/tx/0x2d31e45dce58572a99c51357164dc5283ff0c02d609250df1e6f4248bd62ee01
 // @Summary
 // There is an exchange method in the 0x89257 closed source contract for users to swap USDT for DKP tokens,
-// but the price prediction machine used is the ratio of the balance of the two tokens in the USDT-DKP pair,
+// but the price Oracle used is the ratio of the balance of the two tokens in the USDT-DKP pair,
 // and the attacker manipulates this price through lightning credits, swapping a very small amount of USDT for a large amount of DKP and selling it for a profit
 
 interface IDKPExchange {
