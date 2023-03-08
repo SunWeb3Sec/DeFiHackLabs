@@ -425,7 +425,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20230307 - Phoenix - Access Control && Arbitrary External Call
+### 20230307 - Phoenix - Access Control & Arbitrary External Call
 
 ### Lost: ~$100k
 
