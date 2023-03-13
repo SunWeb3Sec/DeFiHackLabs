@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-179 incidents included.
+180 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230313 EulerFinance](#20230313---eulerfinance---business-logic-flaw)
 
 [20230308 DKP](#20230308---dkp---flashloan-price-manipulation)
 
@@ -426,6 +428,32 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230313 - EulerFinance - Business Logic Flaw
+
+### Lost: ~$200M
+
+Testing 
+
+```
+forge test --contracts ./src/test/Euler_exp.sol -vvv
+```
+
+#### Contract
+
+[Euler_exp.sol](src/test/Euler_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/FrankResearcher/status/1635241475989721089
+
+https://twitter.com/nomorebear/status/1635230621856600064
+
+https://twitter.com/peckshield/status/1635229594596036608
+
+https://twitter.com/BlockSecTeam/status/1635262150624305153
+
+---
 
 ### 20230308 - DKP - FlashLoan price manipulation
 
