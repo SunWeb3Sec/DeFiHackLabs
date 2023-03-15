@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230315 Poolz](#2023031---poolz---integer-overflow)
+
 [20230313 EulerFinance](#20230313---eulerfinance---business-logic-flaw)
 
 [20230308 DKP](#20230308---dkp---flashloan-price-manipulation)
@@ -428,6 +430,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+### 20230315 - poolz - integer overflow
+
+### Lost: ~$390K
+
+Testing
+
+```
+forge test --contracts ./src/test/poolz_exp.sol -vvv
+```
+
+#### Contract
+
+[poolz_exp.sol](src/test/poolz_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1635860470359015425
+
+---
 
 ### 20230313 - EulerFinance - Business Logic Flaw
 
