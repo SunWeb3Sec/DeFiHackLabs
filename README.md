@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20230315 Poolz](#2023031---poolz---integer-overflow)
+[20230315 Poolz](#20230315---poolz---integer-overflow)
 
 [20230313 EulerFinance](#20230313---eulerfinance---business-logic-flaw)
 
@@ -432,7 +432,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### List of DeFi Hacks & POCs
 
 
-### 20230315 - poolz - integer overflow
+### 20230315 - Poolz - integer overflow
 
 ### Lost: ~$390K
 
