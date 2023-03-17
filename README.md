@@ -445,7 +445,7 @@ forge test --contracts ./src/test/paraspace_exp.sol -vvv
 
 #### Contract
 
-[paraspace_exp.sol](src/test/paraspace_exp.soll)
+[paraspace_exp.sol](src/test/paraspace_exp.sol)
 
 #### Link Reference
 
