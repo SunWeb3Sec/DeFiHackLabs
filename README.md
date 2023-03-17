@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230317 ParaSpace NFT](#20230317---paraspace-nft---flashloan--scaledbalanceof-manipulation)
+
 [20230315 Poolz](#20230315---poolz---integer-overflow)
 
 [20230313 EulerFinance](#20230313---eulerfinance---business-logic-flaw)
@@ -431,6 +433,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230317 - ParaSpace NFT - Flashloan + scaledBalanceOf Manipulation
+
+### Lost: ~2,906 ETH
+
+Testing
+
+```
+forge test --contracts ./src/test/paraspace_exp.sol -vvv
+```
+
+#### Contract
+
+[paraspace_exp.sol](src/test/paraspace_exp.soll)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1636650252844294144
+
+---
 
 ### 20230315 - Poolz - integer overflow
 
