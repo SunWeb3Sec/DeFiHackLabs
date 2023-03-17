@@ -435,7 +435,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### 20230317 - ParaSpace NFT - Flashloan + scaledBalanceOf Manipulation
 
-### Lost: ~2,906 ETH
+### Rescued: ~2,909 ETH
 
 Testing
 
