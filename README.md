@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-181 incidents included.
+182 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230322 BIGFI](#20230322---bigfi---reflection-token)
 
 [20230317 ParaSpace NFT](#20230317---paraspace-nft---flashloan--scaledbalanceof-manipulation)
 
@@ -433,6 +435,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230322 - BIGFI - Reflection token
+
+### Lost: $30k
+
+Testing
+```
+forge test --contracts ./src/test/BIGFI_exp.sol -vvv
+```
+
+#### Contract
+
+[BIGFI_exp.sol](src/test/BIGFI_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/HypernativeLabs/status/1638522680654675970
+
+---
+
 ### 20230317 - ParaSpace NFT - Flashloan + scaledBalanceOf Manipulation
 
 ### Rescued: ~2,909 ETH
@@ -445,7 +466,8 @@ forge test --contracts ./src/test/paraspace_exp.sol -vvv
 
 #### Contract
 
-[paraspace_exp.sol](src/test/paraspace_exp.sol)
+[paraspace_exp.sol](src/test/paraspace_exp.sol)  
+[Paraspace_exp_2.sol](src/test/Paraspace_exp_2.sol)
 
 #### Link Reference
 
