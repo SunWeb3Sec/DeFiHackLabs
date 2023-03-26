@@ -18,11 +18,7 @@ import "./interface.sol";
 
 interface IDBW is IERC20 {
     function pledge_lp(uint256 count) external;
-    function staticIncome(address userAddress) external;
-    function getAllBalance(address useraddr_) external returns (uint256);
-    function getUserType(uint256 allBalance) external;
     function getStaticIncome() external;
-    function _staticsTime(address) external;
     function redemption_lp(uint256 count) external;
 }
 
