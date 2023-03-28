@@ -448,6 +448,16 @@ Testing
 forge test --contracts ./src/test/Thena_exp.sol -vvv
 ```
 
+#### Contract
+
+[Thena_exp.sol](src/test/Thena_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/LTV888/status/1640563457094451214?t=OBHfonYm9yYKvMros6Uw_g&s=19
+
+---
+
 ### 20230325 - DWB- Business Logic Flaw
 
 ### Lost: $24k
