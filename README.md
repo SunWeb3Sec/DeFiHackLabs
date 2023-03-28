@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230328 THENA](#20230328---thena---yield-protocol-flaw)
+
 [20230325 DWB](#20230325---dwb--business-logic-flaw)
 
 [20230322 BIGFI](#20230322---bigfi---reflection-token)
@@ -436,6 +438,15 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230328 - Thena - Yield Protocol Flaw
+
+### Lost: $10k
+
+Testing
+```
+forge test --contracts ./src/test/Thena_exp.sol -vvv
+```
 
 ### 20230325 - DWB- Business Logic Flaw
 
