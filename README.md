@@ -445,7 +445,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### 20230328 SafeMoon Hack
 
-#### Lost: $8.9M
+### Lost: $8.9M
 Testing
 ```
 forge test --contracts ./src/test/safeMoon_exp.sol -vvv
