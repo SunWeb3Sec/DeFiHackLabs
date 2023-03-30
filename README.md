@@ -238,6 +238,7 @@ Notion: [root cause analysis](https://wooded-meter-1d8.notion.site/0e85e02c5ed34
 [20180422 Beauty Chain](#20180422-beauty-chain---integer-overflow)
 
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
+[20220328 SafeMoon Hack ](#20230328-safemoon-hack)
 
 ### Transaction debugging tools
 [Phalcon](https://phalcon.blocksec.com/) | [Tx.viewer](https://tx.eth.samczsun.com/) | [Ethtx](https://ethtx.info/) |  [Tenderly](https://dashboard.tenderly.co/explorer)
@@ -2175,6 +2176,20 @@ https://elementus.io/blog/which-icos-are-affected-by-the-parity-wallet-bug/
 https://etherscan.io/tx/0x05f71e1b2cb4f03e547739db15d080fd30c989eda04d37ce6264c5686e0722c9
 
 https://etherscan.io/tx/0x47f7cff7a5e671884629c93b368cb18f58a993f4b19c2a53a8662e3f1482f690
+
+### 20230328 SafeMoon Hack
+#### Lost: $8.9M
+Testing
+```sh
+forge test --contracts ./src/test/safeMoon_exp.sol -vvvv
+```
+#### Contract
+
+[safeMoon_exp.sol](src/test/safeMoon_exp.sol)
+
+#### Link reference
+https://twitter.com/zokyo_io/status/1641014520041840640
+
 
 ### View Gas Reports
 
