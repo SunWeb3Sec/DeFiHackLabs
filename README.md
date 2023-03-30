@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-183 incidents included.
+184 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -307,6 +307,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20220329 Ronin Network](#20220329-ronin-network---Bridge)
 
 [20220329 Redacted Cartel](#20220329-redacted-cartel---custom-approval-logic)
+
+[20220328 SafeMoon Hack](#20230328-safemoon-hack)
 
 [20220327 Revest Finance](#20220327-revest-finance---reentrancy)
 
@@ -3413,6 +3415,21 @@ forge test --contracts ./src/test/RedactedCartel_exp.sol -vv
 #### Link reference
 
 https://medium.com/immunefi/redacted-cartel-custom-approval-logic-bugfix-review-9b2d039ca2c5
+
+---
+
+### 20230328 SafeMoon Hack
+#### Lost: $8.9M
+Testing
+```sh
+forge test --contracts ./src/test/safeMoon_exp.sol -vvvv
+```
+#### Contract
+
+[safeMoon_exp.sol](src/test/safeMoon_exp.sol)
+
+#### Link reference
+https://twitter.com/zokyo_io/status/1641014520041840640
 
 ---
 
