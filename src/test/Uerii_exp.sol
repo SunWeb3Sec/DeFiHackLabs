@@ -13,24 +13,6 @@ interface UER20 is IERC20{
     function mint() external;
 }
 
-interface Uni_Router_V3 {
-    struct ExactInputSingleParams {
-        address tokenIn;
-        address tokenOut;
-        uint24 fee;
-        address recipient;
-        uint256 deadline;
-        uint256 amountIn;
-        uint256 amountOutMinimum;
-        uint160 sqrtPriceLimitX96;
-    }
-
-    function exactInputSingle(
-        ExactInputSingleParams memory params
-    ) external returns (uint256 amountOut);
-
-}
-
 contract ContractTest is DSTest{
 
     UER20 UER = UER20(0x418C24191aE947A78C99fDc0e45a1f96Afb254BE);

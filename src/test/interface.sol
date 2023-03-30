@@ -442,11 +442,12 @@ interface IUniswapV2Factory {
 }
 interface IUniswapV2Pair {
     function swap(
-    uint256 amount0Out,
-    uint256 amount1Out,
-    address to,
-    bytes calldata data
-  ) external;
+      uint256 amount0Out,
+      uint256 amount1Out,
+      address to,
+      bytes calldata data
+    ) external;
+    function skim(address to) external;
     function token0() external view returns (address);
     function token1() external view returns (address);
     function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
@@ -916,6 +917,45 @@ interface Uni_Pair_V2 {
   ) external returns (bool);
 }
 
+interface Uni_Router_V3 {
+    struct ExactInputSingleParams {
+        address tokenIn;
+        address tokenOut;
+        uint24 fee;
+        address recipient;
+        uint256 deadline;
+        uint256 amountIn;
+        uint256 amountOutMinimum;
+        uint160 sqrtPriceLimitX96;
+    }
+
+    struct ExactOutputSingleParams {
+        address tokenIn;
+        address tokenOut;
+        uint24 fee;
+        address recipient;
+        uint256 deadline;
+        uint256 amountOut;
+        uint256 amountInMaximum;
+        uint160 sqrtPriceLimitX96;
+    }
+
+    function swapExactTokensForTokens(
+        uint256 amountIn,
+        uint256 amountOutMin,
+        address[] calldata path,
+        address to
+    ) external payable returns (uint256 amountOut);
+
+    function exactInputSingle(
+        ExactInputSingleParams memory params
+    ) external payable returns (uint256 amountOut);
+
+    function exactOutputSingle(
+        ExactOutputSingleParams calldata params
+        ) external payable returns (uint256 amountIn);
+
+}
 interface Uni_Router_V2 {
   function WETH() external view returns (address);
 
@@ -1826,6 +1866,9 @@ interface DVM {
     uint256 k,
     bool isOpenTWAP
   ) external;
+
+  function _BASE_TOKEN_() external returns(address);
+  function _QUOTE_TOKEN_() external returns(address);
 }
 
 interface Surge {
@@ -2953,6 +2996,72 @@ interface Monoswap {
   function updatePriceAdjuster(address account, bool _status) external;
 }
 
+interface IDMMExchangeRouter {
+    function swapExactTokensForTokens(
+        uint256 amountIn,
+        uint256 amountOutMin,
+        address[] calldata poolsPath,
+        IERC20[] calldata path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+
+    function swapTokensForExactTokens(
+        uint256 amountOut,
+        uint256 amountInMax,
+        address[] calldata poolsPath,
+        IERC20[] calldata path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+
+    function swapExactETHForTokens(
+        uint256 amountOutMin,
+        address[] calldata poolsPath,
+        IERC20[] calldata path,
+        address to,
+        uint256 deadline
+    ) external payable returns (uint256[] memory amounts);
+
+    function swapTokensForExactETH(
+        uint256 amountOut,
+        uint256 amountInMax,
+        address[] calldata poolsPath,
+        IERC20[] calldata path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+
+    function swapExactTokensForETH(
+        uint256 amountIn,
+        uint256 amountOutMin,
+        address[] calldata poolsPath,
+        IERC20[] calldata path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+
+    function swapETHForExactTokens(
+        uint256 amountOut,
+        address[] calldata poolsPath,
+        IERC20[] calldata path,
+        address to,
+        uint256 deadline
+    ) external payable returns (uint256[] memory amounts);
+
+    function getAmountsOut(
+        uint256 amountIn,
+        address[] calldata poolsPath,
+        IERC20[] calldata path
+    ) external view returns (uint256[] memory amounts);
+
+    function getAmountsIn(
+        uint256 amountOut,
+        address[] calldata poolsPath,
+        IERC20[] calldata path
+    ) external view returns (uint256[] memory amounts);
+}
+
 interface MonoXPool {
   event ApprovalForAll(
     address indexed account,
@@ -3695,7 +3804,7 @@ interface ICointroller {
     address rTokenBorrowed,
     address rTokenCollateral,
     uint256 actualRepayAmount
-  ) external view returns (uint256, uint256);
+  ) external view returns (uint256);
 
   function liquidationIncentiveMantissa() external view returns (uint256);
 
@@ -4309,6 +4418,34 @@ interface IUSDT {
   function transfer(address _to, uint256 _value) external;
 }
 
+interface IDaiFlashloan {
+    function flashLoan(
+        address receiver,
+        address token,
+        uint256 amount,
+        bytes calldata data
+    ) external returns (bool);
+}
+
+interface IAaveFlashloan {
+    function flashLoan(
+        address receiverAddress,
+        address[] calldata assets,
+        uint256[] calldata amounts,
+        uint256[] calldata modes,
+        address onBehalfOf,
+        bytes calldata params,
+        uint16 referralCode
+    ) external;
+     function flashLoanSimple(
+    address receiverAddress,
+    address asset,
+    uint256 amount,
+    bytes calldata params,
+    uint16 referralCode
+  ) external;
+}
+
 interface IcurveYSwap {
   function exchange_underlying(
     int128 i,
@@ -4536,13 +4673,13 @@ interface ICurvePool {
   function A() external view returns (uint256 out);
 
   function add_liquidity(uint256[2] memory amounts, uint256 min_mint_amount)
-  external;
+  external payable returns(uint256);
 
   function add_liquidity(uint256[3] memory amounts, uint256 min_mint_amount)
-  external;
+  external returns(uint256);
 
   function add_liquidity(uint256[4] memory amounts, uint256 min_mint_amount)
-  external;
+  external returns(uint256);
 
   function admin_fee() external view returns (uint256 out);
 
@@ -4724,6 +4861,77 @@ library TransferHelper {
     (bool success, ) = to.call{ value: value }(new bytes(0));
     require(success, "TransferHelper::safeTransferETH: ETH transfer failed");
   }
+}
+
+library Clones {
+    /**
+     * @dev Deploys and returns the address of a clone that mimics the behaviour of `implementation`.
+     *
+     * This function uses the create opcode, which should never revert.
+     */
+    function clone(address implementation) internal returns (address instance) {
+        /// @solidity memory-safe-assembly
+        assembly {
+            // Cleans the upper 96 bits of the `implementation` word, then packs the first 3 bytes
+            // of the `implementation` address with the bytecode before the address.
+            mstore(0x00, or(shr(0xe8, shl(0x60, implementation)), 0x3d602d80600a3d3981f3363d3d373d3d3d363d73000000))
+            // Packs the remaining 17 bytes of `implementation` with the bytecode after the address.
+            mstore(0x20, or(shl(0x78, implementation), 0x5af43d82803e903d91602b57fd5bf3))
+            instance := create(0, 0x09, 0x37)
+        }
+        require(instance != address(0), "ERC1167: create failed");
+    }
+
+    /**
+     * @dev Deploys and returns the address of a clone that mimics the behaviour of `implementation`.
+     *
+     * This function uses the create2 opcode and a `salt` to deterministically deploy
+     * the clone. Using the same `implementation` and `salt` multiple time will revert, since
+     * the clones cannot be deployed twice at the same address.
+     */
+    function cloneDeterministic(address implementation, bytes32 salt) internal returns (address instance) {
+        /// @solidity memory-safe-assembly
+        assembly {
+            // Cleans the upper 96 bits of the `implementation` word, then packs the first 3 bytes
+            // of the `implementation` address with the bytecode before the address.
+            mstore(0x00, or(shr(0xe8, shl(0x60, implementation)), 0x3d602d80600a3d3981f3363d3d373d3d3d363d73000000))
+            // Packs the remaining 17 bytes of `implementation` with the bytecode after the address.
+            mstore(0x20, or(shl(0x78, implementation), 0x5af43d82803e903d91602b57fd5bf3))
+            instance := create2(0, 0x09, 0x37, salt)
+        }
+        require(instance != address(0), "ERC1167: create2 failed");
+    }
+
+    /**
+     * @dev Computes the address of a clone deployed using {Clones-cloneDeterministic}.
+     */
+    function predictDeterministicAddress(
+        address implementation,
+        bytes32 salt,
+        address deployer
+    ) internal pure returns (address predicted) {
+        /// @solidity memory-safe-assembly
+        assembly {
+            let ptr := mload(0x40)
+            mstore(add(ptr, 0x38), deployer)
+            mstore(add(ptr, 0x24), 0x5af43d82803e903d91602b57fd5bf3ff)
+            mstore(add(ptr, 0x14), implementation)
+            mstore(ptr, 0x3d602d80600a3d3981f3363d3d373d3d3d363d73)
+            mstore(add(ptr, 0x58), salt)
+            mstore(add(ptr, 0x78), keccak256(add(ptr, 0x0c), 0x37))
+            predicted := keccak256(add(ptr, 0x43), 0x55)
+        }
+    }
+
+    /**
+     * @dev Computes the address of a clone deployed using {Clones-cloneDeterministic}.
+     */
+    function predictDeterministicAddress(
+        address implementation,
+        bytes32 salt
+    ) internal view returns (address predicted) {
+        return predictDeterministicAddress(implementation, salt, address(this));
+    }
 }
 
 interface INOVO {
@@ -5081,4 +5289,32 @@ interface IElevenNeverSellVault {
     function depositAll() external;
     function emergencyBurn() external;
     function withdrawAll() external;
+}
+
+interface IOpyn{
+    function addERC20CollateralOption(
+      uint256 amtToCreate,
+      uint256 amtCollateral,
+      address receiver
+    ) external;
+
+    function exercise(
+      uint256 oTokensToExercise,
+      address payable[] memory vaultsToExerciseFrom
+    ) external payable;
+
+    function removeUnderlying() external;
+}
+
+interface ICFToken {
+    function _transfer(
+        address from,
+        address to,
+        uint256 amount
+    ) external;
+    function balanceOf(address account) external view returns (uint256);
+    function transfer(address recipient, uint256 amount)
+        external
+        returns (bool);
+
 }

