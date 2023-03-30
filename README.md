@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-183 incidents included.
+184 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -307,6 +307,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20220329 Ronin Network](#20220329-ronin-network---Bridge)
 
 [20220329 Redacted Cartel](#20220329-redacted-cartel---custom-approval-logic)
+
+[20220328 SafeMoon Hack](#20230328-safemoon-hack)
 
 [20220327 Revest Finance](#20220327-revest-finance---reentrancy)
 
@@ -1816,12 +1818,7 @@ forge test --contracts ./src/test/TeamFinance.exp.sol -vvv
 
 https://twitter.com/TeamFinance_/status/1585770918873542656
 
-
-[20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
-[20220328 SafeMoon Hack ](#20230328-safemoon-hack)
-
 https://twitter.com/peckshield/status/1585587858978623491
-
 
 https://twitter.com/solid_group_1/status/1585643249305518083
 
@@ -3421,6 +3418,21 @@ https://medium.com/immunefi/redacted-cartel-custom-approval-logic-bugfix-review-
 
 ---
 
+### 20230328 SafeMoon Hack
+#### Lost: $8.9M
+Testing
+```sh
+forge test --contracts ./src/test/safeMoon_exp.sol -vvvv
+```
+#### Contract
+
+[safeMoon_exp.sol](src/test/safeMoon_exp.sol)
+
+#### Link reference
+https://twitter.com/zokyo_io/status/1641014520041840640
+
+---
+
 ### 20220327 Revest Finance - Reentrancy
 
 #### Lost: $11.2 million
@@ -4556,24 +4568,7 @@ https://etherscan.io/tx/0x05f71e1b2cb4f03e547739db15d080fd30c989eda04d37ce6264c5
 
 https://etherscan.io/tx/0x47f7cff7a5e671884629c93b368cb18f58a993f4b19c2a53a8662e3f1482f690
 
-
-
-
-### 20230328 SafeMoon Hack
-#### Lost: $8.9M
-Testing
-```sh
-forge test --contracts ./src/test/safeMoon_exp.sol -vvvv
-```
-#### Contract
-
-[safeMoon_exp.sol](src/test/safeMoon_exp.sol)
-
-#### Link reference
-https://twitter.com/zokyo_io/status/1641014520041840640
-
-
-
+</details>
 
 ### View Gas Reports
 
