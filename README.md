@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20220328 SafeMoon Hack](#20230328-safemoon-hack)
+[20230328 SafeMoon Hack](#20230328-safemoon-hack)
 
 [20230328 THENA](#20230328---thena---yield-protocol-flaw)
 
