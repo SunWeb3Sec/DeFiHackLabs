@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230328 SafeMoon Hack](#20230328-safemoon-hack)
+
 [20230328 THENA](#20230328---thena---yield-protocol-flaw)
 
 [20230325 DWB](#20230325---dwb--business-logic-flaw)
@@ -440,6 +442,22 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230328 SafeMoon Hack
+
+### Lost: $8.9M
+Testing
+```
+forge test --contracts ./src/test/safeMoon_exp.sol -vvv
+```
+#### Contract
+
+[safeMoon_exp.sol](src/test/safeMoon_exp.sol)
+
+#### Link reference
+https://twitter.com/zokyo_io/status/1641014520041840640
+
+---
 
 ### 20230328 - Thena - Yield Protocol Flaw
 

@@ -208,8 +208,6 @@
 
 [20220329 Redacted Cartel](#20220329-redacted-cartel---custom-approval-logic)
 
-[20220328 SafeMoon Hack](#20230328-safemoon-hack)
-
 [20220327 Revest Finance](#20220327-revest-finance---reentrancy)
 
 [20220326 Auctus](#20220326-auctus)
@@ -2508,21 +2506,6 @@ forge test --contracts ./src/test/RedactedCartel_exp.sol -vv
 #### Link reference
 
 https://medium.com/immunefi/redacted-cartel-custom-approval-logic-bugfix-review-9b2d039ca2c5
-
----
-
-### 20230328 SafeMoon Hack
-#### Lost: $8.9M
-Testing
-```sh
-forge test --contracts ./src/test/safeMoon_exp.sol -vvvv
-```
-#### Contract
-
-[safeMoon_exp.sol](src/test/safeMoon_exp.sol)
-
-#### Link reference
-https://twitter.com/zokyo_io/status/1641014520041840640
 
 ---
 
