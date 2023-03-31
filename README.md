@@ -478,18 +478,18 @@ https://twitter.com/LTV888/status/1640563457094451214?t=OBHfonYm9yYKvMros6Uw_g&s
 
 ---
 
-### 20230325 - DWB- Business Logic Flaw
+### 20230325 - DBW- Business Logic Flaw
 
 ### Lost: $24k
 
 Testing 
 ```
-forge test --contracts ./src/test/DWB_exp.sol -vvv
+forge test --contracts ./src/test/DBW_exp.sol -vvv
 ```
 
 #### Contract
 
-[DWB_exp.sol](src/test/DWB_exp.sol)
+[DBW_exp.sol](src/test/DBW_exp.sol)
 
 #### Link Reference
 
