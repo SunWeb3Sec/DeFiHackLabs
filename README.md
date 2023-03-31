@@ -38,7 +38,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230328 THENA](#20230328---thena---yield-protocol-flaw)
 
-[20230325 DWB](#20230325---dwb--business-logic-flaw)
+[20230325 DBW](#20230325---dbw--business-logic-flaw)
 
 [20230322 BIGFI](#20230322---bigfi---reflection-token)
 
