@@ -10,7 +10,7 @@ import "./interface.sol";
 // @TX
 // https://bscscan.com/tx/0x7ff1364c3b3b296b411965339ed956da5d17058f3164425ce800d64f1aef8210
 // @Summary
-//
+// https://twitter.com/gbaleeeee/status/1642520517788966915
 
 interface IBridgeSwap {
     function swap(uint256 amount, bytes32 token, bytes32 receiveToken, address recipient) external;
