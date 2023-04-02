@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20230402 AllBridge](#20230402---AllBridge---flashloan-price-manipulation)
+[20230402 Allbridge](#20230402-allbridge---flashloan-price-manipulation)
 
 [20230328 SafeMoon Hack](#20230328-safemoon-hack)
 
@@ -445,18 +445,23 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20230402 AllBridge
+### 20230402 Allbridge - FlashLoan price manipulation
 
-### Lost: $549,874 BUSD
+### Lost: $550k
+
 Testing
 ```
-forge test --contracts ./src/test/AllBridge_exp.sol -vvv
+forge test --contracts ./src/test/Allbridge_exp.sol -vvv
 ```
+
 #### Contract
 
-[AllBridge_exp.sol](src/test/AllBridge_exp.sol)
+[Allbrideg_exp.sol](src/test/Allbridge_exp.sol) | [Allbrideg_exp2.sol](src/test/Allbridge_exp2.sol)
 
-#### Link reference
+#### Link Reference 
+
+https://twitter.com/peckshield/status/1642356701100916736
+
 https://twitter.com/BeosinAlert/status/1642372700726505473
 
 ---
