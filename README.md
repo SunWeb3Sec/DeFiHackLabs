@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-184 incidents included.
+185 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230402 AllBridge](#20230402---AllBridge---flashloan-price-manipulation)
 
 [20230328 SafeMoon Hack](#20230328-safemoon-hack)
 
@@ -442,6 +444,22 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230402 AllBridge
+
+### Lost: $549,874 BUSD
+Testing
+```
+forge test --contracts ./src/test/AllBridge_exp.sol -vvv
+```
+#### Contract
+
+[AllBridge_exp.sol](src/test/AllBridge_exp.sol)
+
+#### Link reference
+https://twitter.com/BeosinAlert/status/1642372700726505473
+
+---
 
 ### 20230328 SafeMoon Hack
 
