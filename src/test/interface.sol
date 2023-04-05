@@ -3589,7 +3589,36 @@ interface IUnitroller {
   function getAllMarkets() external view returns (address[] memory);
 }
 
+
 interface IBalancerVault {
+  struct JoinPoolRequest {
+        address[] asset;
+        uint256[] maxAmountsIn;
+        bytes userData;
+        bool fromInternalBalance;
+    }
+
+  struct ExitPoolRequest {
+        address[] asset;
+        uint256[] minAmountsOut;
+        bytes userData;
+        bool toInternalBalance;
+    }
+
+  function joinPool(
+        bytes32 poolId,
+        address sender,
+        address recipient,
+        JoinPoolRequest memory request
+    ) external payable;
+  
+  function exitPool(
+        bytes32 poolId,
+        address sender,
+        address payable recipient,
+        ExitPoolRequest memory request
+    ) external payable;
+
   function flashLoan(
     address recipient,
     address[] memory tokens,
