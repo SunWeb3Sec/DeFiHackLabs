@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-185 incidents included.
+186 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230405 Sentiment](#20230405-sentiment---read-only-reentrancy)
 
 [20230402 Allbridge](#20230402-allbridge---flashloan-price-manipulation)
 
@@ -444,6 +446,29 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230405 Sentiment - Read-Only-Reentrancy
+
+### Lost: $1M
+
+Testing
+```
+forge test --contracts ./src/test/Sentiment_exp.sol -vvv
+```
+
+#### Contract
+
+[Sentiment_exp.sol](src/test/Sentiment_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1643417467879059456
+
+https://twitter.com/spreekaway/status/1643313471180644360
+
+https://medium.com/coinmonks/theoretical-practical-balancer-and-read-only-reentrancy-part-1-d6a21792066c
+
+---
 
 ### 20230402 Allbridge - FlashLoan price manipulation
 
