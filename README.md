@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230409 SushiSwap](#20230409-SushiSwap---Unchecked-User-Input)
+
 [20230405 Sentiment](#20230405-sentiment---read-only-reentrancy)
 
 [20230402 Allbridge](#20230402-allbridge---flashloan-price-manipulation)
@@ -446,6 +448,22 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230409 SushiSwap - Unchecked User Input
+
+### Lost: >$3.3M
+
+Testing
+```
+forge test --contracts ./src/test/Sushi_Router_exp.sol -vvv
+```
+
+#### Link Reference 
+
+https://twitter.com/peckshield/status/1644907207530774530
+
+https://twitter.com/SlowMist_Team/status/1644936375924584449
+
 
 ### 20230405 Sentiment - Read-Only-Reentrancy
 
