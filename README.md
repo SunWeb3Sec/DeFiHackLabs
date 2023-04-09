@@ -464,6 +464,8 @@ https://twitter.com/peckshield/status/1644907207530774530
 
 https://twitter.com/SlowMist_Team/status/1644936375924584449
 
+https://twitter.com/AnciliaInc/status/1644925421006520320
+
 
 ### 20230405 Sentiment - Read-Only-Reentrancy
 
