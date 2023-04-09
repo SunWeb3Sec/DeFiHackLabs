@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-186 incidents included.
+187 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230409 SushiSwap](#20230409-SushiSwap---Unchecked-User-Input)
 
 [20230405 Sentiment](#20230405-sentiment---read-only-reentrancy)
 
@@ -446,6 +448,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230409 SushiSwap - Unchecked User Input
+
+### Lost: >$3.3M
+
+Testing
+```
+forge test --contracts ./src/test/Sushi_Router_exp.sol -vvv
+```
+
+#### Link Reference 
+
+https://twitter.com/peckshield/status/1644907207530774530
+
+https://twitter.com/SlowMist_Team/status/1644936375924584449
+
+https://twitter.com/AnciliaInc/status/1644925421006520320
+
 
 ### 20230405 Sentiment - Read-Only-Reentrancy
 
