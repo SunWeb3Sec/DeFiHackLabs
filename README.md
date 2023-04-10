@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-187 incidents included.
+188 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -394,6 +394,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20210607 88mph NFT](#20210607-88mph-nft---access-control)
 
 [20210603 PancakeHunny](#20210603-pancakehunny---incorrect-calculation)
+
+[20210527 BurgerSwap](#20210527-burgerswap---mathematical-flaw--reentrancy)
 
 [20210519 PancakeBunny](#20210519-pancakebunny---price-oracle-manipulation)
 
@@ -4357,6 +4359,23 @@ forge test --contracts ./src/test/PancakeHunny_exp.sol -vv
 https://medium.com/hunnyfinance/pancakehunny-post-mortem-analysis-de78967401d8
 
 https://bscscan.com/tx/0x765de8357994a206bb90af57dcf427f48a2021f2f28ca81f2c00bc3b9842be8e
+
+---
+
+### 20210527 BurgerSwap - Mathematical flaw + Reentrancy
+
+Testing
+
+```sh
+forge test --contracts src/test/BurgerSwap_exp.sol -vv
+```
+
+#### Contract
+
+[BurgerSwap_exp.sol](src/test/BurgerSwap_exp.sol)
+
+#### Link reference
+https://twitter.com/Mudit__Gupta/status/1398156036574306304
 
 ---
 
