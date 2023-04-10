@@ -37,6 +37,7 @@ import "./interface.sol";
 // CertiK: https://twitter.com/CertiKAlert/status/1621008399772024833
 // Slowmist: https://twitter.com/SlowMist_Team/status/1621087651158966274
 // Slowmist(Chinese): https://foresightnews.pro/news/detail/16843
+// Omniscia: https://medium.com/@omniscia.io/bonq-protocol-incident-post-mortem-4fd79fe5c932
 
 // @Positive-reputation
 // https://explorer.forta.network/alert/0x6338aaa7df91e7136c9f494dfea2c5309dae7c1575815f015f1e9e94be6759d5

