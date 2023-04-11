@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-188 incidents included.
+189 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230411 Paribus](#20230411-paribus---reentrancy)
 
 [20230409 SushiSwap](#20230409-SushiSwap---Unchecked-User-Input)
 
@@ -450,6 +452,29 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230411 Paribus - Reentrancy 
+
+### Lost: $100k
+
+Testing
+```
+forge test --contracts ./src/test/Paribus_exp.sol -vvv
+```
+
+#### Contract
+
+[Paribus_exp.sol](src/test/Paribus_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1645742620897955842
+
+https://twitter.com/BlockSecTeam/status/1645744655357575170
+
+https://twitter.com/peckshield/status/1645742296904929280
+
+---
 
 ### 20230409 SushiSwap - Unchecked User Input
 
