@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230412 MetaPoint](#20230412-metapoint---Unrestricted-Approval)
+
 [20230411 Paribus](#20230411-paribus---reentrancy)
 
 [20230409 SushiSwap](#20230409-SushiSwap---Unchecked-User-Input)
@@ -453,6 +455,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230412 MetaPoint - Unrestricted Approval
+
+### Lost: $820k(2500BNB)
+
+Testing
+```
+forge test --contracts ./src/test/MetaPoint_exp.sol -vvv
+```
+
+#### Contract
+
+[MetaPoint_exp.sol](src/test/MetaPoint_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/PeckShieldAlert/status/1645980197987192833
+
+https://twitter.com/Phalcon_xyz/status/1645963327502204929
+
+---
 ### 20230411 Paribus - Reentrancy 
 
 ### Lost: $100k
