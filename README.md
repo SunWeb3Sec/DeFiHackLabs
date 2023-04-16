@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-189 incidents included.
+190 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230415 HundredFinance](#20230415-hundredfinance---flashloan-exchangerate-manipulation--erc4626-inflation-attack)
 
 [20230411 Paribus](#20230411-paribus---reentrancy)
 
@@ -452,6 +454,29 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230415 HundredFinance - FlashLoan ExchangeRate Manipulation & ERC4626 Inflation Attack
+
+### Lost: $7M
+
+Testing
+```
+forge test --contracts ./src/test/HundredFinance_2_exp.sol -vvv
+```
+
+#### Contract
+
+[HundredFinance_2_exp.sol](src/test/HundredFinance_2_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1647307128267476992
+
+https://twitter.com/danielvf/status/1647329491788677121
+
+https://twitter.com/hexagate_/status/1647334970258608131
+
+---
 
 ### 20230411 Paribus - Reentrancy 
 
