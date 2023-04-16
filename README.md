@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-191 incidents included.
+192 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20230415 HundredFinance](#20230415-hundredfinance---flashloan-exchangerate-manipulation--erc4626-inflation-attack)
+
+[20230413 yearnFinance](#20230413-yearnFinance---misconfiguration)
 
 [20230412 MetaPoint](#20230412-metapoint---Unrestricted-Approval)
 
@@ -358,7 +360,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 </details>
 <details> <summary> 2021 </summary>
- 
+
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
 [20211218 Grim Finance](#20211218-grim-finance---flashloan--reentrancy)
@@ -409,7 +411,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 </details>
 <details> <summary> Before 2020 </summary>
- 
+
 [20210508 Rari Capital](#20210509-raricapital---cross-contract-reentrancy)
 
 [20210508 Value Defi](#20210508-value-defi---cross-contract-reentrancy)
@@ -435,7 +437,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
 
 </details>
- 
+
 ---
 ### Transaction debugging tools
 
@@ -477,6 +479,25 @@ https://twitter.com/peckshield/status/1647307128267476992
 https://twitter.com/danielvf/status/1647329491788677121
 
 https://twitter.com/hexagate_/status/1647334970258608131
+
+---
+
+### 20230413 yearnFinance - Misconfiguration
+
+Testing
+
+```
+forge test --contracts ./src/test/YearnFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[YearnFinance_exp](/src/test/YearnFinance_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/cmichelio/status/1646422861219807233
+https://twitter.com/BeosinAlert/status/1646481687445114881
 
 ---
 

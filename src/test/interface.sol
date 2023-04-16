@@ -4391,6 +4391,8 @@ interface ILendingPool {
     bytes calldata params,
     uint16 referralCode
   ) external;
+
+  function repay(address _reserve, uint256 _amount, address _onBehalfOf) external payable;
 }
 
 interface VyperContract {
@@ -4476,6 +4478,8 @@ interface IAaveFlashloan {
 }
 
 interface IcurveYSwap {
+  function exchange(int128 i, int128 j, uint256 dx, uint256 min_dy) external;
+
   function exchange_underlying(
     int128 i,
     int128 j,
