@@ -484,6 +484,8 @@ https://twitter.com/hexagate_/status/1647334970258608131
 
 ### 20230413 yearnFinance - Misconfiguration
 
+### Lost: $11.6M
+
 Testing
 
 ```
@@ -497,6 +499,7 @@ forge test --contracts ./src/test/YearnFinance_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/cmichelio/status/1646422861219807233
+
 https://twitter.com/BeosinAlert/status/1646481687445114881
 
 ---
