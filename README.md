@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-190 incidents included.
+191 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20230415 HundredFinance](#20230415-hundredfinance---flashloan-exchangerate-manipulation--erc4626-inflation-attack)
+
+[20230412 MetaPoint](#20230412-metapoint---Unrestricted-Approval)
 
 [20230411 Paribus](#20230411-paribus---reentrancy)
 
@@ -475,6 +477,27 @@ https://twitter.com/peckshield/status/1647307128267476992
 https://twitter.com/danielvf/status/1647329491788677121
 
 https://twitter.com/hexagate_/status/1647334970258608131
+
+---
+
+### 20230412 MetaPoint - Unrestricted Approval
+
+### Lost: $820k(2500BNB)
+
+Testing
+```
+forge test --contracts ./src/test/MetaPoint_exp.sol -vvv
+```
+
+#### Contract
+
+[MetaPoint_exp.sol](src/test/MetaPoint_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/PeckShieldAlert/status/1645980197987192833
+
+https://twitter.com/Phalcon_xyz/status/1645963327502204929
 
 ---
 
