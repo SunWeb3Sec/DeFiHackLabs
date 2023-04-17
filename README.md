@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-192 incidents included.
+193 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20230416 Swapos V2](#20230416-swapos-v2----error-k-value-attack)
 
 [20230415 HundredFinance](#20230415-hundredfinance---flashloan-exchangerate-manipulation--erc4626-inflation-attack)
 
@@ -458,6 +459,30 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+---
+
+### List of DeFi Hacks & POCs
+
+### 20230416 Swapos V2  - error k value Attack
+
+### Lost: ~$468k 
+
+Testing
+```
+forge test --contracts ./src/test/Swapos_exp.sol -vvv
+```
+
+#### Contract
+
+[Swapos_exp.sol](src/test/Swapos_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/CertiKAlert/status/1647530789947469825
+
+https://twitter.com/BeosinAlert/status/1647552192243728385
+
+---
 
 ### 20230415 HundredFinance - FlashLoan ExchangeRate Manipulation & ERC4626 Inflation Attack
 
