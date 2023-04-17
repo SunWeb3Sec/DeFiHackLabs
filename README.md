@@ -34,6 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 [20230416 Swapos V2](#20230416-swapos-v2----error-k-value-attack)
+
 [20230415 HundredFinance](#20230415-hundredfinance---flashloan-exchangerate-manipulation--erc4626-inflation-attack)
 
 [20230413 yearnFinance](#20230413-yearnFinance---misconfiguration)
