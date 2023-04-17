@@ -33,8 +33,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
-
-[20230416] Swapos V2(### 20230416 Swapos V2  - error k-value Attack)
+[20230416 Swapos V2](# 20230416 Swapos V2  - error k-value Attack)
 [20230415 HundredFinance](#20230415-hundredfinance---flashloan-exchangerate-manipulation--erc4626-inflation-attack)
 
 [20230413 yearnFinance](#20230413-yearnFinance---misconfiguration)
