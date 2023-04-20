@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20230419 OLIFE](#20230419-OLIFE----Reflection token)
+
 [20230416 Swapos V2](#20230416-swapos-v2----error-k-value-attack)
 
 [20230415 HundredFinance](#20230415-hundredfinance---flashloan-exchangerate-manipulation--erc4626-inflation-attack)
@@ -462,6 +464,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230419 OLIFE  - Reflection token
+
+### Lost: ~32 WBNB
+
+Testing
+```
+forge test --contracts ./src/test/OLIFE_exp.sol -vvv
+```
+
+#### Contract
+
+[OLIFE_exp.sol](src/test/OLIFE_exp.sol)
+
+#### Link Referencex
+
+https://twitter.com/BeosinAlert/status/1648520494516420608
+
+---
 
 ### 20230416 Swapos V2  - error k value Attack
 
