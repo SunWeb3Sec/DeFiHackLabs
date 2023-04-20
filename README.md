@@ -33,7 +33,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
-[20230419 OLIFE](#20230419-OLIFE----Reflection token)
+[20230419 OLIFE](#20230419-OLIFE----Reflection-token)
 
 [20230416 Swapos V2](#20230416-swapos-v2----error-k-value-attack)
 
