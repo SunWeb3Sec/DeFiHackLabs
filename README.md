@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-221 incidents included.
+222 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -83,6 +83,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230502 Level](#20230502-level---business-logic-flaw)
 
 [20230428 0vix](#20230428-0vix---flashloan-price-manipulation)
+
+[20230427 SiloFinance](#20230427-Silo-finance---Business-Logic-Flaw)
 
 [20230424 Axioma](#20230424-Axioma---business-logic-flaw)
 
@@ -1031,6 +1033,26 @@ https://twitter.com/BlockSecTeam/status/1651932529874853888
 https://twitter.com/peckshield/status/1651923235603361793
 
 https://twitter.com/Mudit__Gupta/status/1651958883634536448
+
+---
+
+### 20230427 Silo finance - Business Logic Flaw
+
+### Lost: None
+
+Testing
+
+```
+forge test --contracts ./src/test/silo_finance.t.sol -vvv
+```
+
+#### Contract
+
+[silo_finance.t.sol](src/test/silo_finance.t.sol)
+
+#### Link Reference
+
+https://medium.com/immunefi/silo-finance-logic-error-bugfix-review-35de29bd934a
 
 ---
 
