@@ -1871,7 +1871,7 @@ forge test --contracts ./src/test/SheepFram_exp.sol -vvv
 
 #### Contract
 
-[SheepFarm_exp.sol](src/test/SheepFram_exp.sol)
+[SheepFarm_exp.sol](src/test/SheepFarm_exp.sol) | [SheepFarm2_exp.sol](src/test/SheepFarm2_exp.sol)
 
 #### Link reference
 
