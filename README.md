@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-194 incidents included.
+195 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20230424 Axioma](#20230424-Axioma---business-logic-flaw)
+
 [20230419 OLIFE](#20230419-OLIFE----Reflection-token)
 
 [20230416 Swapos V2](#20230416-swapos-v2----error-k-value-attack)
@@ -465,6 +467,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230424 Axioma - Business Logic Flaw
+
+### Lost: ~21 WBNB
+
+Testing
+```
+forge test --contracts ./src/test/Axioma_exp.sol -vvv
+```
+
+#### Contract
+
+[Axioma_exp.sol](src/test/Axioma_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/HypernativeLabs/status/1650382589847302145
+
+---
+
 ### 20230419 OLIFE  - Reflection token
 
 ### Lost: ~32 WBNB
@@ -478,7 +499,7 @@ forge test --contracts ./src/test/OLIFE_exp.sol -vvv
 
 [OLIFE_exp.sol](src/test/OLIFE_exp.sol)
 
-#### Link Referencex
+#### Link Reference
 
 https://twitter.com/BeosinAlert/status/1648520494516420608
 
