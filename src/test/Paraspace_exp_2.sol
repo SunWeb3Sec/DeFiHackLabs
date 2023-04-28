@@ -9,6 +9,7 @@ import "./interface.sol";
 // @TX
 // https://etherscan.io/tx/0xe3f0d14cfb6076cabdc9057001c3fafe28767a192e88005bc37bd7d385a1116a
 // @Update
+// https://docs.para.space/para-space/protocol-security-and-external-audits/withdrawal-and-borrow-timelock
 // https://twitter.com/ParaSpace_NFT/status/1639593663469875205
 // code: https://github.com/para-space/paraspace-core/pull/368/files
 
