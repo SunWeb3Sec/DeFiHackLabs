@@ -35,10 +35,7 @@ contract contractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork(
-            "optimism",
-            90_760_765
-        );
+        cheats.createSelectFork("optimism", 90_760_765);
         cheats.label(address(WBTC), "WBTC");
         cheats.label(address(USDC), "USDC");
         cheats.label(address(SNX), "SNX");

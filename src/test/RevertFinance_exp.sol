@@ -63,7 +63,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-            );
+        );
     }
 
     function transferFrom(address from, address to, uint256 value) external returns (bool) {

