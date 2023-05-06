@@ -36,7 +36,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230506 Melo](#20230506-melo---access-control)
 
-[20230505 DEI](#20230503-DEI---wrong-implemention)
+[20230505 DEI](#20230505-dei---wrong-implemention)
 
 [20230503 NeverFall](#20230503-NeverFall---price-manipulation)
 
@@ -495,7 +495,7 @@ https://twitter.com/peckshield/status/1654667621139349505
 
 ---
 
-### #20230505 DEI - wrong implemention
+### 20230505 DEI - wrong implemention
 
 #### Lost: ~5.4M USDC
 
