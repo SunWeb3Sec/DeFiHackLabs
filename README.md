@@ -33,6 +33,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
 [20230506 Melo](#20230506-melo---access-control)
 
 [20230505 DEI](#20230503-DEI---wrong-implemention)
@@ -495,12 +496,14 @@ https://twitter.com/peckshield/status/1654667621139349505
 ---
 
 ### #20230505 DEI - wrong implemention
+
 #### Lost: ~5.4M USDC
 
 Testing
 ```
 forge test --mc DEIPocTest -vvv
 ```
+
 #### Contract
 
 [DEI_exp.sol](src/test/DEI_exp.sol)
