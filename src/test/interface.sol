@@ -818,6 +818,24 @@ interface IERC777 {
   event RevokedOperator(address indexed operator, address indexed tokenHolder);
 }
 
+interface Uni_Pair_V3 {
+  function token0() external view returns (address);
+  function token1() external view returns (address);
+  function swap(
+        address recipient,
+        bool zeroForOne,
+        int256 amountSpecified,
+        uint160 sqrtPriceLimitX96,
+        bytes calldata data
+    ) external returns (int256 amount0, int256 amount1);
+  function flash(
+        address recipient,
+        uint256 amount0,
+        uint256 amount1,
+        bytes calldata data
+    ) external;
+}
+
 interface Uni_Pair_V2 {
   event Approval(address indexed owner, address indexed spender, uint256 value);
   event Burn(
@@ -3591,6 +3609,30 @@ interface IUnitroller {
 
 
 interface IBalancerVault {
+  enum SwapKind { GIVEN_IN, GIVEN_OUT }
+  struct SingleSwap {
+        bytes32 poolId;
+        SwapKind kind;
+        address assetIn;
+        address assetOut;
+        uint256 amount;
+        bytes userData;
+    }
+  struct FundManagement {
+        address sender;
+        bool fromInternalBalance;
+        address payable recipient;
+        bool toInternalBalance;
+    }
+  function swap(
+        SingleSwap memory singleSwap,
+        FundManagement memory funds,
+        uint256 limit,
+        uint256 deadline
+    )
+        external
+        payable
+        returns(uint256 amountCalculated);
   struct JoinPoolRequest {
         address[] asset;
         uint256[] maxAmountsIn;
