@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-197 incidents included.
+198 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,7 +33,11 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20230506 Melo](#20230506-melo---access-control)
+
 [20230503 NeverFall](#20230503-NeverFall---price-manipulation)
+
+[20230428 0vix](#20230428-0vix---flashloan-price-manipulation)
 
 [20230424 Axioma](#20230424-Axioma---business-logic-flaw)
 
@@ -469,6 +473,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230506 Melo - Access Control
+
+### Lost: ~$90k
+
+Testing
+```
+forge test --contracts ./src/test/Melo_exp.sol -vvv
+```
+
+#### Contract
+
+[Melo_exp.sol](src/test/Melo_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1654667621139349505
+
+---
+
 ### 20230503 NeverFall - Price Manipulation
 
 ### Lost: ~74K
@@ -496,6 +519,10 @@ Testing
 ```
 forge test --contracts ./src/test/0vix_exp.sol -vvv
 ```
+
+#### Contract
+
+[0vix_exp.sol](src/test/0vix_exp.sol)
 
 #### Link Reference
 
