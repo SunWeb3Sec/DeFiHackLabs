@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20230505 DEI](#20230503-DEI---wrong-implemention)
+
 [20230503 NeverFall](#20230503-NeverFall---price-manipulation)
 
 [20230424 Axioma](#20230424-Axioma---business-logic-flaw)
@@ -468,6 +470,17 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### #20230503 DEI - wrong implemention
+
+
+
+#### Lost: ~5.4M USDC
+
+Testing
+```
+forge test --mc DEIPocTest -vvv
+```
 
 ### 20230503 NeverFall - Price Manipulation
 
