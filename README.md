@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-196 incidents included.
+197 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -485,6 +485,25 @@ forge test --contracts ./src/test/NeverFall_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/BeosinAlert/status/1653619782317662211
+
+---
+
+### 20230428 0vix - FlashLoan Price Manipulation
+
+### Lost: ~2M
+
+Testing
+```
+forge test --contracts ./src/test/0vix_exp.sol -vvv
+```
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1651932529874853888
+
+https://twitter.com/peckshield/status/1651923235603361793
+
+https://twitter.com/Mudit__Gupta/status/1651958883634536448
 
 ---
 
