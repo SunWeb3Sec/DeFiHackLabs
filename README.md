@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230510 SNK](#20230510-snk---reward-calculation-error)
+
 [20230506 Melo](#20230506-melo---access-control)
 
 [20230505 DEI](#20230505-dei---wrong-implemention)
@@ -477,6 +479,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230510 SNK - Reward Calculation Error
+
+### Lost: ~$197k
+
+Testing
+```
+forge test --contracts ./src/test/SNK_exp.sol -vvv
+```
+
+#### Contract
+
+[SNK_exp.sol](src/test/SNK_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1656176776425644032
+
+---
 
 ### 20230506 Melo - Access Control
 
