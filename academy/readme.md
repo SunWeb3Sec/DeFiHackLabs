@@ -21,7 +21,7 @@ The Web3 Cybersecurity Academy plans the following series of topics:
 - Lesson 4: Web3 Project Security Practice Requirements ( [English](https://github.com/slowmist/Web3-Project-Security-Practice-Requirements)  | [中文](https://github.com/slowmist/Web3-Project-Security-Practice-Requirements/blob/main/README_zh_CN.md) ) 
 - Lesson 5: Lending/Borrowing DeFi Attacks ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-5-lendingborrowing))
 - Lesson 6: DeFi Slippage Attacks ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-6-defi-slippage))
-- 
+
 ### Move programming language secure development
 - Lesson 1: Security Analysis of the Move Language – Game Changer of Smart Contracts ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/01_move_sec_intro/en)  | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/01_move_sec_intro) ) 
 - Lesson 2: Verify Smart Contracts in Aptos with the Move Prover ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/02_move_power/en)  | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/02_move_power) ) 
