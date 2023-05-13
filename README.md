@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-201 incidents included.
+202 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230513 SellToken](#20230513-selltoken---price-manipulation)
 
 [20230510 SNK](#20230510-snk---reward-calculation-error)
 
@@ -476,9 +478,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
 ---
 
-### List of DeFi Hacks & POCs
+### 20230513 SellToken - Price Manipulation
+
+### Lost: ~$197k
+
+Testing
+```
+forge test --contracts ./src/test/SellToken_exp.sol -vvv
+```
+
+#### Contract
+
+[SellToken_exp.sol](src/test/SellToken_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1657324561577435136
+
+---
 
 ### 20230510 SNK - Reward Calculation Error
 
