@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-202 incidents included.
+203 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230513 Bitpaidio](#20230513-bitpaidio---business-logic-flaw)
 
 [20230513 SellToken](#20230513-selltoken---price-manipulation)
 
@@ -478,6 +480,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230513 Bitpaidio - Business Logic Flaw
+
+### Lost: ~$30K
+
+Testing
+```
+forge test --contracts ./src/test/Bitpaidio_exp.sol -vvv  
+```
+
+#### Contract
+
+[Bitpaidio_exp.sol](src/test/Bitpaidio_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1657411284076478465
 
 ---
 
