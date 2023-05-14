@@ -41,7 +41,7 @@ contract ContractTest is Test {
 
         Pair.swap(flashAmount, 0, address(this), new bytes(1));
 
-        emit log_named_decimal_uint("[End] Attacker BTP balance after exploit", BTP.balanceOf(address(this)), 18);
+        emit log_named_decimal_uint("Attacker BTP balance after exploit", BTP.balanceOf(address(this)), BTP.decimals());
     }
 
     function firstLock() internal {
