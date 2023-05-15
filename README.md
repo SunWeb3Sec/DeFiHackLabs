@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230514 landNFT](#20230514-landNFT---lack-of-permission-control)
+
 [20230514 SellToken03](#20230514-selltoken03---unchecked-user-input)
 
 [20230513 Bitpaidio](#20230513-bitpaidio---business-logic-flaw)
@@ -467,6 +469,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 </details>
 
 ---
+
 ### Transaction debugging tools
 
 [Phalcon](https://explorer.phalcon.xyz/) | [Tx tracer](https://openchain.xyz/trace) | [Cruise](https://cruise.supremacy.team/) | [Ethtx](https://ethtx.info/) | [Tenderly](https://dashboard.tenderly.co/explorer) | [eigenphi](https://tx.eigenphi.io/analyseTransaction)
@@ -489,11 +492,33 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ---
 
+### 20230514 landNFT - Lack of permission control
+
+### Lost: 149,616 $BUSD
+
+Testing
+
+```
+forge test --contracts ./src/test/landNFT_exp.sol -vvv
+```
+
+#### Contract
+
+[landNFT_exp.sol](src/test/landNFT_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BeosinAlert/status/1658000784943124480?cxt=HHwWgMDU_b27s4IuAAAA
+https://twitter.com/BeosinAlert/status/1658002030953365505?cxt=HHwWgoDQvYGEtIIuAAAA
+
+---
+
 ### 20230514 SellToken03 - Unchecked User Input
 
 ### Lost: Unclear
 
 Testing
+
 ```
 forge fmt -- --contracts ./src/test/SELLC02_exp.sol -vvv
 ```
@@ -513,8 +538,9 @@ https://twitter.com/BlockSecTeam/status/1657715018908180480
 ### Lost: ~$30K
 
 Testing
+
 ```
-forge test --contracts ./src/test/Bitpaidio_exp.sol -vvv  
+forge test --contracts ./src/test/Bitpaidio_exp.sol -vvv
 ```
 
 #### Contract
@@ -532,6 +558,7 @@ https://twitter.com/BlockSecTeam/status/1657411284076478465
 ### Lost: ~$50k
 
 Testing
+
 ```
 forge test --contracts ./src/test/LW_exp.sol -vvv
 ```
@@ -553,6 +580,7 @@ https://twitter.com/hexagate_/status/1657051084131639296
 ### Lost: ~$197k
 
 Testing
+
 ```
 forge test --contracts ./src/test/SellToken_exp.sol -vvv
 ```
@@ -572,8 +600,9 @@ https://twitter.com/BlockSecTeam/status/1657324561577435136
 ### Lost: ~$95k
 
 Testing
+
 ```
-forge test --contracts ./src/test/SELLC_exp.sol -vvv 
+forge test --contracts ./src/test/SELLC_exp.sol -vvv
 ```
 
 #### Contract
@@ -593,6 +622,7 @@ https://twitter.com/AnciliaInc/status/1656341587054702598
 ### Lost: ~$197k
 
 Testing
+
 ```
 forge test --contracts ./src/test/SNK_exp.sol -vvv
 ```
@@ -612,6 +642,7 @@ https://twitter.com/Phalcon_xyz/status/1656176776425644032
 ### Lost: ~$90k
 
 Testing
+
 ```
 forge test --contracts ./src/test/Melo_exp.sol -vvv
 ```
@@ -631,6 +662,7 @@ https://twitter.com/peckshield/status/1654667621139349505
 #### Lost: ~5.4M USDC
 
 Testing
+
 ```
 forge test --mc DEIPocTest -vvv
 ```
@@ -650,6 +682,7 @@ https://twitter.com/eugenioclrc/status/1654576296507088906
 ### Lost: ~74K
 
 Testing
+
 ```
 forge test --contracts ./src/test/NeverFall_exp.sol -vvv
 ```
@@ -669,6 +702,7 @@ https://twitter.com/BeosinAlert/status/1653619782317662211
 ### Lost: ~$1M
 
 Testing
+
 ```
 forge test --contracts ./src/test/Level_exp.sol -vvv
 ```
@@ -690,6 +724,7 @@ https://twitter.com/BlockSecTeam/status/1653267431127920641
 ### Lost: ~$2M
 
 Testing
+
 ```
 forge test --contracts ./src/test/0vix_exp.sol -vvv
 ```
@@ -713,6 +748,7 @@ https://twitter.com/Mudit__Gupta/status/1651958883634536448
 ### Lost: ~21 WBNB
 
 Testing
+
 ```
 forge test --contracts ./src/test/Axioma_exp.sol -vvv
 ```
@@ -727,11 +763,12 @@ https://twitter.com/HypernativeLabs/status/1650382589847302145
 
 ---
 
-### 20230419 OLIFE  - Reflection token
+### 20230419 OLIFE - Reflection token
 
 ### Lost: ~32 WBNB
 
 Testing
+
 ```
 forge test --contracts ./src/test/OLIFE_exp.sol -vvv
 ```
@@ -746,11 +783,12 @@ https://twitter.com/BeosinAlert/status/1648520494516420608
 
 ---
 
-### 20230416 Swapos V2  - error k value Attack
+### 20230416 Swapos V2 - error k value Attack
 
-### Lost: ~$468k 
+### Lost: ~$468k
 
 Testing
+
 ```
 forge test --contracts ./src/test/Swapos_exp.sol -vvv
 ```
@@ -772,6 +810,7 @@ https://twitter.com/BeosinAlert/status/1647552192243728385
 ### Lost: $7M
 
 Testing
+
 ```
 forge test --contracts ./src/test/HundredFinance_2_exp.sol -vvv
 ```
@@ -817,6 +856,7 @@ https://twitter.com/BeosinAlert/status/1646481687445114881
 ### Lost: $820k(2500BNB)
 
 Testing
+
 ```
 forge test --contracts ./src/test/MetaPoint_exp.sol -vvv
 ```
@@ -833,11 +873,12 @@ https://twitter.com/Phalcon_xyz/status/1645963327502204929
 
 ---
 
-### 20230411 Paribus - Reentrancy 
+### 20230411 Paribus - Reentrancy
 
 ### Lost: $100k
 
 Testing
+
 ```
 forge test --contracts ./src/test/Paribus_exp.sol -vvv
 ```
@@ -861,6 +902,7 @@ https://twitter.com/peckshield/status/1645742296904929280
 ### Lost: >$3.3M
 
 Testing
+
 ```
 forge test --contracts ./src/test/Sushi_Router_exp.sol -vvv
 ```
@@ -869,7 +911,7 @@ forge test --contracts ./src/test/Sushi_Router_exp.sol -vvv
 
 [Sushi_Router_exp.sol](src/test/Sushi_Router_exp.sol)
 
-#### Link Reference 
+#### Link Reference
 
 https://twitter.com/peckshield/status/1644907207530774530
 
@@ -877,12 +919,12 @@ https://twitter.com/SlowMist_Team/status/1644936375924584449
 
 https://twitter.com/AnciliaInc/status/1644925421006520320
 
-
 ### 20230405 Sentiment - Read-Only-Reentrancy
 
 ### Lost: $1M
 
 Testing
+
 ```
 forge test --contracts ./src/test/Sentiment_exp.sol -vvv
 ```
@@ -906,6 +948,7 @@ https://medium.com/coinmonks/theoretical-practical-balancer-and-read-only-reentr
 ### Lost: $550k
 
 Testing
+
 ```
 forge test --contracts ./src/test/Allbridge_exp.sol -vvv
 ```
@@ -914,7 +957,7 @@ forge test --contracts ./src/test/Allbridge_exp.sol -vvv
 
 [Allbrideg_exp.sol](src/test/Allbridge_exp.sol) | [Allbrideg_exp2.sol](src/test/Allbridge_exp2.sol)
 
-#### Link Reference 
+#### Link Reference
 
 https://twitter.com/peckshield/status/1642356701100916736
 
@@ -925,15 +968,19 @@ https://twitter.com/BeosinAlert/status/1642372700726505473
 ### 20230328 SafeMoon Hack
 
 ### Lost: $8.9M
+
 Testing
+
 ```
 forge test --contracts ./src/test/safeMoon_exp.sol -vvv
 ```
+
 #### Contract
 
 [safeMoon_exp.sol](src/test/safeMoon_exp.sol)
 
 #### Link reference
+
 https://twitter.com/zokyo_io/status/1641014520041840640
 
 ---
@@ -943,6 +990,7 @@ https://twitter.com/zokyo_io/status/1641014520041840640
 ### Lost: $10k
 
 Testing
+
 ```
 forge test --contracts ./src/test/Thena_exp.sol -vvv
 ```
@@ -961,7 +1009,8 @@ https://twitter.com/LTV888/status/1640563457094451214?t=OBHfonYm9yYKvMros6Uw_g&s
 
 ### Lost: $24k
 
-Testing 
+Testing
+
 ```
 forge test --contracts ./src/test/DBW_exp.sol -vvv
 ```
@@ -983,6 +1032,7 @@ https://twitter.com/AnciliaInc/status/1639289686937210880
 ### Lost: $30k
 
 Testing
+
 ```
 forge test --contracts ./src/test/BIGFI_exp.sol -vvv
 ```
@@ -1009,7 +1059,7 @@ forge test --contracts ./src/test/paraspace_exp.sol -vvv
 
 #### Contract
 
-[paraspace_exp.sol](src/test/paraspace_exp.sol)  
+[paraspace_exp.sol](src/test/paraspace_exp.sol)
 
 [Paraspace_exp_2.sol](src/test/Paraspace_exp_2.sol)
 
@@ -1043,7 +1093,7 @@ https://twitter.com/peckshield/status/1635860470359015425
 
 ### Lost: ~$200M
 
-Testing 
+Testing
 
 ```
 forge test --contracts ./src/test/Euler_exp.sol -vvv
@@ -3916,16 +3966,21 @@ https://medium.com/immunefi/redacted-cartel-custom-approval-logic-bugfix-review-
 ---
 
 ### 20230328 SafeMoon Hack
+
 #### Lost: $8.9M
+
 Testing
+
 ```sh
 forge test --contracts ./src/test/safeMoon_exp.sol -vvvv
 ```
+
 #### Contract
 
 [safeMoon_exp.sol](src/test/safeMoon_exp.sol)
 
 #### Link reference
+
 https://twitter.com/zokyo_io/status/1641014520041840640
 
 ---
@@ -4780,6 +4835,7 @@ forge test --contracts src/test/BurgerSwap_exp.sol -vv
 [BurgerSwap_exp.sol](src/test/BurgerSwap_exp.sol)
 
 #### Link reference
+
 https://twitter.com/Mudit__Gupta/status/1398156036574306304
 
 ---
