@@ -508,7 +508,7 @@ forge test --contracts ./src/test/landNFT_exp.sol -vvv
 
 #### Link Reference
 
-https://twitter.com/BeosinAlert/status/1658000784943124480?cxt=HHwWgMDU_b27s4IuAAAA
+https://twitter.com/BeosinAlert/status/1658000784943124480
 
 ---
 
