@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-206 incidents included.
+207 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -509,7 +509,6 @@ forge test --contracts ./src/test/landNFT_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/BeosinAlert/status/1658000784943124480?cxt=HHwWgMDU_b27s4IuAAAA
-https://twitter.com/BeosinAlert/status/1658002030953365505?cxt=HHwWgoDQvYGEtIIuAAAA
 
 ---
 
