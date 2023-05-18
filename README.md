@@ -519,7 +519,7 @@ https://twitter.com/BeosinAlert/status/1658000784943124480
 Testing
 
 ```
-forge fmt -- --contracts ./src/test/SELLC02_exp.sol -vvv
+forge test --contracts ./src/test/SELLC02_exp.sol -vvv
 ```
 
 #### Contract
