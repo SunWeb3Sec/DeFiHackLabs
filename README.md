@@ -4407,6 +4407,26 @@ https://ftmscan.com/tx/0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb2
 
 ---
 
+### 20211214 Nerve Bridge - Swap Metapool Attack
+
+#### Lost: 900 BNB
+
+Testing
+
+```sh
+forge test --contracts ./src/test/NerveBridge.t.sol -vv
+```
+
+#### Contract
+
+[NerveBridge.t.sol](src/test/NerveBridge.t.sol)
+
+#### Link reference
+
+https://blocksecteam.medium.com/the-analysis-of-nerve-bridge-security-incident-ead361a21025
+
+---
+
 ### 20211130 MonoX Finance - Price Manipulation
 
 #### Lost: $31 million
