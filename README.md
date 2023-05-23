@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-208 incidents included.
+209 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230523 LFI](#20230523-lfi-token---business-logic-flaw)
 
 [20230514 landNFT](#20230514-landNFT---lack-of-permission-control)
 
@@ -491,6 +493,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230523 LFI Token - Business Logic Flaw
+
+### Lost: ~36K USD
+
+Testing
+```
+forge test --contracts ./src/test/LFI_exp.sol -vvv
+```
+
+#### Contract
+
+[LFI_exp.sol](src/test/LFI_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/AnciliaInc/status/1660767088699666433
 
 ---
 
