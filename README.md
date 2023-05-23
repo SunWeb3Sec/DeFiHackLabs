@@ -390,11 +390,13 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 </details>
 <details> <summary> 2021 </summary>
-
+  
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
 [20211218 Grim Finance](#20211218-grim-finance---flashloan--reentrancy)
 
+[20211214 Nerve Bridge](#20211214-nerve-bridge---swap-metapool-attack)
+ 
 [20211130 MonoX Finance](#20211130-monox-finance---price-manipulation)
 
 [20211027 Cream Finance](#20211027-creamfinance---price-manipulation)
