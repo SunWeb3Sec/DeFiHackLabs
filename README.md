@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-209 incidents included.
+210 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230524 CS](#20230524-cs-token---outdated-global-variable)
 
 [20230523 LFI](#20230523-lfi-token---business-logic-flaw)
 
@@ -493,6 +495,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+---
+
+### 20230524 CS Token - Outdated Global Variable
+
+### Lost: ~714K USD
+
+Testing
+```
+forge test --contracts ./src/test/CS_exp.sol -vvv
+```
+
+#### Contract
+
+[CS_exp.sol](src/test/CS_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1661098394130198528
+https://twitter.com/numencyber/status/1661207123102167041
 
 ---
 
