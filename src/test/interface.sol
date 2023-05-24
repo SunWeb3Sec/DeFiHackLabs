@@ -2142,6 +2142,11 @@ interface IMasterChef {
   function withdraw_tickets(uint256 _pid, uint256 tokenId) external;
 }
 
+interface IPancakeCallee {
+  function pancakeCall(address sender, uint amount0, uint amount1, bytes calldata data) external;
+}
+
+
 interface IPancakePair {
   event Approval(address indexed owner, address indexed spender, uint256 value);
   event Transfer(address indexed from, address indexed to, uint256 value);
