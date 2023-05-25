@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-210 incidents included.
+211 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230524 LocalTrade](#20230524-local-trade-lct---inproper-access-control-of-close-source-contract)
 
 [20230524 CS](#20230524-cs-token---outdated-global-variable)
 
@@ -496,6 +498,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+---
+
+### 20230524 Local Trade LCT - Inproper Access Control of Close-source contract
+
+### Lost: ~384 BNB
+
+Testing
+```
+forge test --contracts ./src/test/LocalTrader_exp.sol -vvv
+```
+
+#### Contract
+
+[LocalTrader_exp.sol](src/test/LocalTrader_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/numencyber/status/1661213691893944320
 
 ---
 
