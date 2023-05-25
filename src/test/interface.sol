@@ -5399,6 +5399,16 @@ interface ICFToken {
 
 }
 
+interface IDPPOracle {
+    function flashLoan(
+        uint256 baseAmount,
+        uint256 quoteAmount,
+        address _assetTo,
+        bytes calldata data
+    ) external;
+}
+
+
 interface IDODOCallee {
     // function DVMSellShareCall(
     //     address sender,
