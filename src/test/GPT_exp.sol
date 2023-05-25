@@ -9,7 +9,7 @@ import "./interface.sol";
 // @TX
 // https://explorer.phalcon.xyz/tx/bsc/0xb77cb34cd01204bdad930d8c172af12462eef58dea16199185b77147d6533391
 // @Summary
-// Outdated global variable `sellAmount` for calculating `burnAmount`
+// Token fee machenism broken
 
 
 
@@ -81,7 +81,7 @@ contract CSExp is Test, IDODOCallee {
                 0,
                 path,
                 address(this),
-                bytes("")
+                block.timestamp + 100
             );
 
             GPT.approve(address(this), type(uint).max);

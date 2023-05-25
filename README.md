@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-211 incidents included.
+212 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230525 GPT](#20230525-gpt-token---fee-machenism-exploitation)
 
 [20230524 LocalTrade](#20230524-local-trade-lct---inproper-access-control-of-close-source-contract)
 
@@ -497,6 +499,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230525 GPT Token - Fee Machenism Exploitation
+
+### Lost: ~$42k
+
+Testing
+```
+forge test --contracts ./src/test/GPT_exp.sol -vvv
+```
+
+#### Contract
+
+[GPT_exp.sol](src/test/GPT_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1661424685320634368
 
 ---
 
