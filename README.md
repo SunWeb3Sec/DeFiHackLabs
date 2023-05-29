@@ -532,7 +532,7 @@ forge test --contracts ./src/test/LocalTrader_exp.sol -vvv
 
 #### Contract
 
-[LocalTrader_exp.sol](src/test/LocalTrader_exp.sol)
+[LocalTrader_exp.sol](src/test/LocalTrader_exp.sol) | [LocalTrader2_exp.sol](src/test/LocalTrader2_exp.sol)
 
 #### Link Reference
 
