@@ -186,7 +186,7 @@ Author: [gbaleeee](https://twitter.com/gbaleeeee)
   withdraw函数执行过程中最后发出的事件对应之前dfx-xidr-v2代币发送给0地址销毁
   
 - 总结  
-  DFX Finance的重入攻击事件是一起典型的cross-function重入攻击，攻击者通过在falsh函数的回调操作中调用deposit函数完成了重入。值得一提的是，这次攻击的手法，正好对应了CTF damnvulnerabledefi中的第四题 [Side Entrance](https://www.damnvulnerabledefi.xyz/challenges/side-entrance/)，如果项目的开发人员之前有认真做过，或许这次攻击事件就不会发生🤣。在同年的12月中，[Deforst](https://github.com/SunWeb3Sec/DeFiHackLabs#20221223---defrost---reentrancy) 项目也被同样的手法所攻击。
+  DFX Finance的重入攻击事件是一起典型的cross-function重入攻击，攻击者通过在flash函数的回调操作中调用deposit函数完成了重入。值得一提的是，这次攻击的手法，正好对应了CTF damnvulnerabledefi中的第四题 [Side Entrance](https://www.damnvulnerabledefi.xyz/challenges/side-entrance/)，如果项目的开发人员之前有认真做过，或许这次攻击事件就不会发生🤣。在同年的12月中，[Deforst](https://github.com/SunWeb3Sec/DeFiHackLabs#20221223---defrost---reentrancy) 项目也被同样的手法所攻击。
   
 ## 学习资源  
 [Reentrancy Attacks on Smart Contracts Distilled](https://blog.pessimistic.io/reentrancy-attacks-on-smart-contracts-distilled-7fed3b04f4b6)  

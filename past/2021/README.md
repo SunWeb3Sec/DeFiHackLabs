@@ -6,6 +6,8 @@
 
 [20211218 Grim Finance](#20211218-grim-finance---flashloan--reentrancy)
 
+[20211214 Nerve Bridge](#20211214-nerve-bridge---swap-metapool-attack)
+
 [20211130 MonoX Finance](#20211130-monox-finance---price-manipulation)
 
 [20211027 Cream Finance](#20211027-creamfinance---price-manipulation)
@@ -119,6 +121,26 @@ https://cointelegraph.com/news/defi-protocol-grim-finance-lost-30m-in-5x-reentra
 https://rekt.news/grim-finance-rekt/
 
 https://ftmscan.com/tx/0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6
+
+---
+
+### 20211214 Nerve Bridge - Swap Metapool Attack
+
+#### Lost: 900 BNB
+
+Testing
+
+```sh
+forge test --contracts ./src/test/NerveBridge.t.sol -vv
+```
+
+#### Contract
+
+[NerveBridge.t.sol](src/test/NerveBridge.t.sol)
+
+#### Link reference
+
+https://blocksecteam.medium.com/the-analysis-of-nerve-bridge-security-incident-ead361a21025
 
 ---
 
