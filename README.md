@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230529 BabyDogeCoin](#20230529-babydogecoin---insufficient-input-validation)
+
 [20230525 GPT](#20230525-gpt-token---fee-machenism-exploitation)
 
 [20230524 LocalTrade](#20230524-local-trade-lct---inproper-access-control-of-close-source-contract)
