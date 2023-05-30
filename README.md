@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-212 incidents included.
+213 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -499,6 +499,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230529 BabyDogeCoin - Insufficient Input Validation
+
+### Lost: ~$135k
+
+Testing
+```
+forge test --contracts ./src/test/BabyDogeCoin_exp.sol -vvv
+```
+
+#### Contract
+
+[BabyDogeCoin_exp.sol](src/test/BabyDogeCoin_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1662744426475831298
 
 ---
 
