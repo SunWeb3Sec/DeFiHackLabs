@@ -42,6 +42,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230529 FAPEN](#20230529-fapen---wrong-balance-check)
 
+[20230529 NOON_NO](#20230529-noon-no---wrong-visibility-in-function)
+
 [20230525 GPT](#20230525-gpt-token---fee-machenism-exploitation)
 
 [20230524 LocalTrade](#20230524-local-trade-lct---inproper-access-control-of-close-source-contract)
@@ -589,6 +591,26 @@ forge test --contracts ./src/test/FAPEN_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/hexagate_/status/1663501550600302601
+
+---
+
+### 20230529 NOON (NO) - Wrong visibility in function
+
+### Lost: ~$2K
+
+Testing
+
+```
+forge test --contracts ./src/test/NOON_exp.sol -vvv
+```
+
+#### Contract
+
+[NOON_exp.sol](src/test/NOON_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/hexagate_/status/1663501545105702912
 
 ---
 
