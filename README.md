@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-214 incidents included.
+215 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230531 ERC20TokenBank](#20230531-erc20tokenbank---price-manipulation)
+
 [20230529 Jimbo](#20230529-jimbo---protocol-specific-price-manipulation)
 
 [20230529 BabyDogeCoin](#20230529-babydogecoin---insufficient-input-validation)
@@ -505,6 +508,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ---
 
+### 20230531 ERC20TokenBank - Price Manipulation 
+
+### Lost: ~$111k
+
+Testing
+```
+forge test --contracts ./src/test/ERC20TokenBank_exp.sol -vvv
+```
+
+#### Contract 
+
+[ERC20TokenBank.sol](src/test/ERC20TokenBank_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1663810037788311561
+
+---
+
 ### 20230529 Jimbo - Protocol Specific Price Manipulation
 
 ### Lost: ~$8M
@@ -521,6 +543,8 @@ forge test --contracts ./src/test/Jimbo_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/cryptofishx/status/1662888991446941697
+
+https://twitter.com/yicunhui2/status/1663793958781353985
 
 ---
 
@@ -597,6 +621,7 @@ forge test --contracts ./src/test/CS_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/BlockSecTeam/status/1661098394130198528
+
 https://twitter.com/numencyber/status/1661207123102167041
 
 ---

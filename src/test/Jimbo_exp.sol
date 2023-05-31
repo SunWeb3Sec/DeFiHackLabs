@@ -7,6 +7,7 @@ import "./interface.sol";
 // @Analysis
 // https://twitter.com/cryptofishx/status/1662888991446941697
 // https://docs.jimbosprotocol.xyz/protocol/liquidity-rebalancing-scenarios
+// https://twitter.com/yicunhui2/status/1663793958781353985
 // @TX
 // https://arbiscan.io/tx/0xf9baf8cee8973cf9700ae1b1f41c625d7a2abdbcbc222582d24a8f2f790d0b5a
 // https://arbiscan.io/tx/0xfda5464e97043a2d0093cbed6d0a64f6a86049f5e9608c014396a7390188670e
@@ -125,25 +126,13 @@ interface ILBRouter {
     ) external returns (uint256[] memory amountsIn);
 }
 
-interface IPool {
-    function flashLoan(
-    address receiverAddress,
-    address[] calldata assets,
-    uint256[] calldata amounts,
-    uint256[] calldata interestRateModes,
-    address onBehalfOf,
-    bytes calldata params,
-    uint16 referralCode
-  ) external ;
-}
-
 contract JimboExp is Test {
     
     IJimboController controller = IJimboController(0x271944d9D8CA831F7c0dBCb20C4ee482376d6DE7);
     ILBPair pair = ILBPair(0x16a5D28b20A3FddEcdcaf02DF4b3935734df1A1f);
     ILBRouter router = ILBRouter(0xb4315e873dBcf96Ffd0acd8EA43f689D8c20fB30);
 
-    IPool pool = IPool(0x794a61358D6845594F94dc1DB02A252b5b4814aD);
+    IAaveFlashloan pool = IAaveFlashloan(0x794a61358D6845594F94dc1DB02A252b5b4814aD);
 
     WETH9 weth = WETH9(0x82aF49447D8a07e3bd95BD0d56f35241523fBab1);
     IERC20 Jimbo = IERC20(0xC3813645Ad2Ea0AC9D4d72D77c3755ac3B819e38);
@@ -277,7 +266,7 @@ contract JimboExp is Test {
         
         // Step4: buy All normal Jimbo
        amountOut = 0;
-        for (uint24 j = 0; j <= 51; ++j) {
+        for (uint24 j = 0; j <= 50; ++j) {
             (uint128 binReserveX, uint128 binReserveY) = pair.getBin(j + activeId);
             amountOut += binReserveX;
             
@@ -327,7 +316,7 @@ contract JimboExp is Test {
         // Step7: buy to High again
         activeId = pair.getActiveId();
         amountOut = 0;
-        for (uint24 j = 0; j <= 51; ++j) {
+        for (uint24 j = 0; j <= 50; ++j) {
             (uint128 binReserveX, uint128 binReserveY) = pair.getBin(j + activeId);
             amountOut += binReserveX;
         }
