@@ -634,7 +634,7 @@ https://twitter.com/Phalcon_xyz/status/1661424685320634368
 
 ---
 
-### 20230524 Local Trade LCT - Inproper Access Control of Close-source contract
+### 20230524 Local Trade LCT - Improper Access Control of Close-source contract
 
 ### Lost: ~384 BNB
 
