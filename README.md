@@ -522,6 +522,8 @@ forge test --contracts ./src/test/Jimbo_exp.sol -vvv
 
 https://twitter.com/cryptofishx/status/1662888991446941697
 
+https://twitter.com/yicunhui2/status/1663793958781353985
+
 ---
 
 ### 20230529 BabyDogeCoin - Insufficient Input Validation
