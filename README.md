@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-213 incidents included.
+214 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20230529 Jimbo](#20230529-jimbo---protocol-specific-price-manipulation)
 
 [20230529 BabyDogeCoin](#20230529-babydogecoin---insufficient-input-validation)
 
@@ -501,6 +502,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230529 Jimbo - Protocol Specific Price Manipulation
+
+### Lost: ~$8M
+
+Testing
+```
+forge test --contracts ./src/test/Jimbo_exp.sol -vvv
+```
+
+#### Contract
+
+[Jimbo_exp.sol](src/test/Jimbo_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/cryptofishx/status/1662888991446941697
 
 ---
 
