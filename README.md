@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-215 incidents included.
+217 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -39,6 +39,10 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230529 Jimbo](#20230529-jimbo---protocol-specific-price-manipulation)
 
 [20230529 BabyDogeCoin](#20230529-babydogecoin---insufficient-input-validation)
+
+[20230529 FAPEN](#20230529-fapen---wrong-balance-check)
+
+[20230529 NOON_NO](#20230529-noon-no---wrong-visibility-in-function)
 
 [20230525 GPT](#20230525-gpt-token---fee-machenism-exploitation)
 
@@ -410,7 +414,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20211218 Grim Finance](#20211218-grim-finance---flashloan--reentrancy)
 
 [20211214 Nerve Bridge](#20211214-nerve-bridge---swap-metapool-attack)
- 
+
 [20211130 MonoX Finance](#20211130-monox-finance---price-manipulation)
 
 [20211027 Cream Finance](#20211027-creamfinance---price-manipulation)
@@ -508,16 +512,17 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ---
 
-### 20230531 ERC20TokenBank - Price Manipulation 
+### 20230531 ERC20TokenBank - Price Manipulation
 
 ### Lost: ~$111k
 
 Testing
+
 ```
 forge test --contracts ./src/test/ERC20TokenBank_exp.sol -vvv
 ```
 
-#### Contract 
+#### Contract
 
 [ERC20TokenBank.sol](src/test/ERC20TokenBank_exp.sol)
 
@@ -532,6 +537,7 @@ https://twitter.com/BlockSecTeam/status/1663810037788311561
 ### Lost: ~$8M
 
 Testing
+
 ```
 forge test --contracts ./src/test/Jimbo_exp.sol -vvv
 ```
@@ -553,6 +559,7 @@ https://twitter.com/yicunhui2/status/1663793958781353985
 ### Lost: ~$135k
 
 Testing
+
 ```
 forge test --contracts ./src/test/BabyDogeCoin_exp.sol -vvv
 ```
@@ -567,11 +574,52 @@ https://twitter.com/Phalcon_xyz/status/1662744426475831298
 
 ---
 
+### 20230529 FAPEN - Wrong balance check
+
+### Lost: ~$600
+
+Testing
+
+```
+forge test --contracts ./src/test/FAPEN_exp.sol -vvv
+```
+
+#### Contract
+
+[FAPEN_exp.sol](src/test/FAPEN_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/hexagate_/status/1663501550600302601
+
+---
+
+### 20230529 NOON (NO) - Wrong visibility in function
+
+### Lost: ~$2K
+
+Testing
+
+```
+forge test --contracts ./src/test/NOON_exp.sol -vvv
+```
+
+#### Contract
+
+[NOON_exp.sol](src/test/NOON_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/hexagate_/status/1663501545105702912
+
+---
+
 ### 20230525 GPT Token - Fee Machenism Exploitation
 
 ### Lost: ~$42k
 
 Testing
+
 ```
 forge test --contracts ./src/test/GPT_exp.sol -vvv
 ```
@@ -591,6 +639,7 @@ https://twitter.com/Phalcon_xyz/status/1661424685320634368
 ### Lost: ~384 BNB
 
 Testing
+
 ```
 forge test --contracts ./src/test/LocalTrader_exp.sol -vvv
 ```
@@ -610,6 +659,7 @@ https://twitter.com/numencyber/status/1661213691893944320
 ### Lost: ~714K USD
 
 Testing
+
 ```
 forge test --contracts ./src/test/CS_exp.sol -vvv
 ```
@@ -631,6 +681,7 @@ https://twitter.com/numencyber/status/1661207123102167041
 ### Lost: ~36K USD
 
 Testing
+
 ```
 forge test --contracts ./src/test/LFI_exp.sol -vvv
 ```
