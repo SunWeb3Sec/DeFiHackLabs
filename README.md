@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20230602 NST SimpleSwap](#20230602-nst-simple-swap---unverified-contract-wrong-approval)
+[20230602 NST SimpleSwap](#20230602--nst-simple-swap---unverified-contract-wrong-approval)
 
 [20230531 ERC20TokenBank](#20230531-erc20tokenbank---price-manipulation)
 
