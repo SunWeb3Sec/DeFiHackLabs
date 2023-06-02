@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230602 NST SimpleSwap](#20230602-nst-simple-swap---unverified-contract-wrong-approval)
+
 [20230531 ERC20TokenBank](#20230531-erc20tokenbank---price-manipulation)
 
 [20230529 Jimbo](#20230529-jimbo---protocol-specific-price-manipulation)
@@ -511,6 +513,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### List of DeFi Hacks & POCs
 
 ---
+
+### 20230602  NST Simple Swap - Unverified contract, wrong approval
+
+### Lost: $40k
+
+The hack was executed in a single transaction, resulting in the theft of $40,000 USD worth of USDT from the swap contract.
+
+```
+forge test --contracts ./src/test/NST_exp.sol -vvv
+```
+
+#### Contract
+
+[NST_exp.sol](src/test/NST_exp.sol)
+
+#### Link reference
+
+https://discord.com/channels/1100129537603407972/1100129538056396870/1114142216923926528
 
 ### 20230531 ERC20TokenBank - Price Manipulation
 
