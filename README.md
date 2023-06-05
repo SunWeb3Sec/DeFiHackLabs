@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-218 incidents included.
+219 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20230602 NST SimpleSwap](#20230602--nst-simple-swap---unverified-contract-wrong-approval)
+
+[20230601 Cellframenet](#20230601-cellframenet---calculation-issues-during-liquidity-migration)
 
 [20230531 ERC20TokenBank](#20230531-erc20tokenbank---price-manipulation)
 
@@ -514,7 +516,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ---
 
-### 20230602  NST Simple Swap - Unverified contract, wrong approval
+### 20230602 NST Simple Swap - Unverified contract, wrong approval
 
 ### Lost: $40k
 
@@ -531,6 +533,28 @@ forge test --contracts ./src/test/NST_exp.sol -vvv
 #### Link reference
 
 https://discord.com/channels/1100129537603407972/1100129538056396870/1114142216923926528
+
+---
+
+### 20230601 Cellframenet - Calculation issues during liquidity migration
+
+### Lost: ~$76k
+
+Testing
+
+```
+forge test --contracts ./src/test/Cellframe_exp.sol -vvv
+```
+
+#### Contract
+
+[Cellframe_exp.sol](src/test/Cellframe_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/numencyber/status/1664132985883615235?cxt=HHwWhoDTqceImJguAAAA
+
+---
 
 ### 20230531 ERC20TokenBank - Price Manipulation
 
