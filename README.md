@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-219 incidents included.
+220 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230606 UN](#20230606--un---price-manipulation)
 
 [20230602 NST SimpleSwap](#20230602--nst-simple-swap---unverified-contract-wrong-approval)
 
@@ -513,6 +515,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+---
+
+### 20230606 Cellframenet - Calculation issues during liquidity migration
+
+### Lost: ~$26k
+
+Testing
+
+```
+forge test --contracts ./src/test/UN_exp.sol -vvv
+```
+
+#### Contract
+
+[UN_exp.sol](src/test/UN_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/MetaTrustAlert/status/1667041877428932608
 
 ---
 
