@@ -34,9 +34,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20230606 UN](#20230606--un---price-manipulation)
+[20230606 UN](#20230606-un---price-manipulation)
 
-[20230602 NST SimpleSwap](#20230602--nst-simple-swap---unverified-contract-wrong-approval)
+[20230602 NST SimpleSwap](#20230602-nst-simple-swap---unverified-contract-wrong-approval)
 
 [20230601 Cellframenet](#20230601-cellframenet---calculation-issues-during-liquidity-migration)
 
@@ -517,7 +517,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### List of DeFi Hacks & POCs
 ---
 
-### 20230606 Cellframenet - Calculation issues during liquidity migration
+### 20230606 UN - Price Manipulation
 
 ### Lost: ~$26k
 
