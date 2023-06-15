@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-220 incidents included.
+221 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230615 DEPUSDT_LEVUSDC](#20230615-depusdt_levusdc---wrong-access-controll)
 
 [20230606 UN](#20230606-un---price-manipulation)
 
@@ -515,6 +517,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230615 DEPUSDT_LEVUSDC - Wrong access controll
+
+### Lost: ~$105k
+
+Testing
+
+```
+forge test --contracts ./src/test/DEPUSDT_LEVUSDC_exp.sol -vvv
+```
+
+#### Contract
+
+[DEPUSDT_LEVUSDC_exp.sol](src/test/DEPUSDT_LEVUSDC_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/numencyber/status/1669278694744150016?cxt=HHwWgMDS9Z2IvKouAAAA
+
 ---
 
 ### 20230606 UN - Price Manipulation
