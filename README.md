@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230615 DEPUSDT_LEVUSDC](#20230615-depusdt_levusdc---wrong-access-controll)
+
 [20230606 UN](#20230606-un---price-manipulation)
 
 [20230602 NST SimpleSwap](#20230602-nst-simple-swap---unverified-contract-wrong-approval)
@@ -515,6 +517,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230615 DEPUSDT_LEVUSDC - Wrong access controll
+
+### Lost: ~$105k
+
+Testing
+
+```
+forge test --contracts ./src/test/DEPUSDT_LEVUSDC_exp.sol -vvv
+```
+
+#### Contract
+
+[DEPUSDT_LEVUSDC_exp.sol](src/test/DEPUSDT_LEVUSDC_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/numencyber/status/1669278694744150016?cxt=HHwWgMDS9Z2IvKouAAAA
+
 ---
 
 ### 20230606 UN - Price Manipulation
