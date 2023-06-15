@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230615 CFC](#20230615-cfc---uniswap-skim-token-balance-attack)
+
 [20230615 DEPUSDT_LEVUSDC](#20230615-depusdt_levusdc---wrong-access-controll)
 
 [20230606 UN](#20230606-un---price-manipulation)
@@ -517,6 +519,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230615 CFC - Uniswap Skim() token balance attack
+
+### Lost: ~$16k
+
+Testing
+
+```
+forge test --contracts ./src/test/CFC_exp.sol -vvv
+```
+
+#### Contract
+
+[CFC_exp.sol](src/test/CFC_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/hexagate_/status/1669280632738906113
 
 ---
 
