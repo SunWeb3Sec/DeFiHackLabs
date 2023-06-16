@@ -36,7 +36,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230615 CFC](#20230615-cfc---uniswap-skim-token-balance-attack)
 
-[20230615 DEPUSDT_LEVUSDC](#20230615-depusdt_levusdc---wrong-access-controll)
+[20230615 DEPUSDT_LEVUSDC](#20230615-depusdt_levusdc---incorrect-access-control)
 
 [20230606 UN](#20230606-un---price-manipulation)
 
@@ -544,7 +544,7 @@ https://twitter.com/hexagate_/status/1669280632738906113
 
 ---
 
-### 20230615 DEPUSDT_LEVUSDC - Wrong access controll
+### 20230615 DEPUSDT_LEVUSDC - Incorrect access control
 
 ### Lost: ~$105k
 
