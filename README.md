@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230618 ARA](#20230618-ara---incorrect-handling-of-permissions)
+
 [20230615 CFC](#20230615-cfc---uniswap-skim-token-balance-attack)
 
 [20230615 DEPUSDT_LEVUSDC](#20230615-depusdt_levusdc---incorrect-access-control)
@@ -521,6 +523,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230618 ARA - Incorrect handling of permissions
+
+### Lost: ~$125k
+
+Testing
+
+```
+forge test --contracts ./src/test/ARA_exp.sol -vvv
+```
+
+#### Contract
+
+[ARA_exp.sol](src/test/ARA_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BeosinAlert/status/1670638160550965248
 
 ---
 
