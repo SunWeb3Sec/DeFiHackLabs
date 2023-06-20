@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-223 incidents included.
+224 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230618 ARA](#20230618-ara---incorrect-handling-of-permissions)
 
 [20230615 CFC](#20230615-cfc---uniswap-skim-token-balance-attack)
 
@@ -521,6 +523,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230618 ARA - Incorrect handling of permissions
+
+### Lost: ~$125k
+
+Testing
+
+```
+forge test --contracts ./src/test/ARA_exp.sol -vvv
+```
+
+#### Contract
+
+[ARA_exp.sol](src/test/ARA_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BeosinAlert/status/1670638160550965248
 
 ---
 
