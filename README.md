@@ -1298,6 +1298,8 @@ https://twitter.com/SlowMist_Team/status/1644936375924584449
 
 https://twitter.com/AnciliaInc/status/1644925421006520320
 
+---
+
 ### 20230405 Sentiment - Read-Only-Reentrancy
 
 ### Lost: $1M
@@ -1926,6 +1928,8 @@ forge test --contracts ./src/test/ThoreumFinance_exp.sol -vvv
 
 https://bscscan.com/tx/0x3fe3a1883f0ae263a260f7d3e9b462468f4f83c2c88bb89d1dee5d7d24262b51
 https://twitter.com/AnciliaInc/status/1615944396134043648
+
+---
 
 ### 20230118 - UPSToken - business logic flaw
 
@@ -4059,6 +4063,8 @@ https://medium.com/immunefi/hack-analysis-saddle-finance-april-2022-f2bcb119f38
 
 https://github.com/Hephyrius/Immuni-Saddle-POC
 
+---
+
 ### 20220430 Rari Capital/Fei Protocol - Flashloan Attack + Reentrancy
 
 #### Lost: $80 million
@@ -5453,6 +5459,8 @@ https://rekt.news/harvest-finance-rekt/
 
 https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d02612277b0877
 
+---
+
 ### 20200804 Opyn Protocol - msgValue in loop
 
 Testing
@@ -5515,7 +5523,7 @@ https://etherscan.io/address/0xc5d105e63711398af9bbff092d4b6769c82f793d#code
 
 ---
 
-### 20171106 Parity - 'Accidentally Killed It'
+### 20171106 Parity - Accidentally Killed It
 
 #### Lost: 514k ETH
 
