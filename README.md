@@ -40,6 +40,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230615 DEPUSDT_LEVUSDC](#20230615-depusdt_levusdc---incorrect-access-control)
 
+[20230607 CompounderFinance](#20230607-compounderfinance---manipulation-of-funds-through-fluctuations-in-the-amount-of-exchangeable-assets)
+
 [20230606 UN](#20230606-un---price-manipulation)
 
 [20230602 NST SimpleSwap](#20230602-nst-simple-swap---unverified-contract-wrong-approval)
@@ -583,6 +585,26 @@ forge test --contracts ./src/test/DEPUSDT_LEVUSDC_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/numencyber/status/1669278694744150016?cxt=HHwWgMDS9Z2IvKouAAAA
+
+---
+
+### 20230607 CompounderFinance - Manipulation of funds through fluctuations in the amount of exchangeable assets
+
+### Lost: ~$27,174k
+
+Testing
+
+```
+forge test --contracts ./src/test/CompounderFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[CompounderFinance_exp.sol](src/test/CompounderFinance_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/numencyber/status/1666346419702362112
 
 ---
 
