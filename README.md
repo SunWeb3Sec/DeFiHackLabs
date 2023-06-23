@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230620 MIM](#20230620-mimspell---arbitrary-external-call-vulnerability)
+
 [20230618 ARA](#20230618-ara---incorrect-handling-of-permissions)
 
 [20230615 CFC](#20230615-cfc---uniswap-skim-token-balance-attack)
@@ -525,6 +527,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230620 MIMSpell - Arbitrary External Call Vulnerability
+
+### Lost: ~$17k
+
+Testing
+
+```
+forge test --contracts ./src/test/MIMSpell_exp.sol -vvv
+```
+
+#### Contract
+
+[MIMSpell_exp.sol](src/test/MIMSpell_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/hexagate_/status/1671188024607100928?cxt=HHwWgMC--e2poLEuAAAA
 
 ---
 
