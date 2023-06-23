@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-226 incidents included.
+227 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20230621 BUNN](#20230621-bunn---reflection-tokens)
+
+[20230620 MIM](#20230620-mimspell---arbitrary-external-call-vulnerability)
 
 [20230618 ARA](#20230618-ara---incorrect-handling-of-permissions)
 
@@ -547,6 +549,26 @@ forge test --contracts ./src/test/BUNN_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/DecurityHQ/status/1671803688996806656
+
+---
+
+### 20230620 MIMSpell - Arbitrary External Call Vulnerability
+
+### Lost: ~$17k
+
+Testing
+
+```
+forge test --contracts ./src/test/MIMSpell_exp.sol -vvv
+```
+
+#### Contract
+
+[MIMSpell_exp.sol](src/test/MIMSpell_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/hexagate_/status/1671188024607100928?cxt=HHwWgMC--e2poLEuAAAA
 
 ---
 
