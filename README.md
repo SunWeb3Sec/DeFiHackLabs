@@ -44,6 +44,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230615 DEPUSDT_LEVUSDC](#20230615-depusdt_levusdc---incorrect-access-control)
 
+[20230611 SellToken04](#20230611-selltoken04---Price Manipulation)
+
 [20230607 CompounderFinance](#20230607-compounderfinance---manipulation-of-funds-through-fluctuations-in-the-amount-of-exchangeable-assets)
 
 [20230606 UN](#20230606-un---price-manipulation)
@@ -629,6 +631,25 @@ forge test --contracts ./src/test/DEPUSDT_LEVUSDC_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/numencyber/status/1669278694744150016?cxt=HHwWgMDS9Z2IvKouAAAA
+---
+
+### 20230611 SellToken04 - Price Manipulation
+
+### Lost: ~$109k
+
+Testing
+
+```
+forge test --contracts ./src/test/SELLC03_exp.sol -vvv
+```
+
+#### Contract
+
+[SELLC03_exp.sol](src/test/SELLC03_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/EoceneSecurity/status/1668468933723328513
 
 ---
 
