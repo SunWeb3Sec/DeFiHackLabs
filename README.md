@@ -44,7 +44,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230615 DEPUSDT_LEVUSDC](#20230615-depusdt_levusdc---incorrect-access-control)
 
-[20230611 SellToken04](#20230611-selltoken04---Price Manipulation)
+[20230611 SellToken04](#20230611-sellToken04---Price-Manipulationl)
 
 [20230607 CompounderFinance](#20230607-compounderfinance---manipulation-of-funds-through-fluctuations-in-the-amount-of-exchangeable-assets)
 
