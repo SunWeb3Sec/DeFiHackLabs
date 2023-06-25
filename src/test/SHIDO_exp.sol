@@ -24,7 +24,7 @@ interface IShidoLock {
     function claimTokens() external;
 }
 
-interface IBabyDogeRouter {
+interface IFeeFreeRouter {
     function addLiquidityETH(
         address token,
         uint256 amountTokenDesired,
@@ -40,7 +40,7 @@ contract ContractTest is Test {
     IERC20 SHIDOINU = IERC20(0x733Af324146DCfe743515D8D77DC25140a07F9e0);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
-    IBabyDogeRouter BabyDogeRouter = IBabyDogeRouter(0x9869674E80D632F93c338bd398408273D20a6C8e);
+    IFeeFreeRouter BabyDogeRouter = IFeeFreeRouter(0x9869674E80D632F93c338bd398408273D20a6C8e);
     IShidoLock ShidoLock = IShidoLock(0xaF0CA21363219C8f3D8050E7B61Bb5f04e02F8D4);
     address dodo = 0x81917eb96b397dFb1C6000d28A5bc08c0f05fC1d;
 
