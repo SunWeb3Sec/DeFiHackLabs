@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230623 ShidoGlobal](#20230623-shidoglobal---flashloan-attack)
+
 [20230621 BUNN](#20230621-bunn---reflection-tokens)
 
 [20230620 MIM](#20230620-mimspell---arbitrary-external-call-vulnerability)
@@ -531,6 +533,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230623 ShidoGlobal - Flashloan attack
+
+### Lost: ~977BNB
+
+Testing
+
+```
+forge test --contracts ./src/test/ShidoGlobal_exp.sol -vvv
+```
+
+#### Contract
+
+[ShidoGlobal_exp.sol](src/test/ShidoGlobal_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1672473343734480896
 
 ---
 
