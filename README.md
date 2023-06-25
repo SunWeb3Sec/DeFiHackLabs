@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-228 incidents included.
+229 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230624 SHIDO](#20230624-shido---business-loigc--arbitrage)
 
 [20230621 BUNN](#20230621-bunn---reflection-tokens)
 
@@ -531,6 +533,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230624 Shido - Business Loigc & Arbitrage
+
+### Lost: 997 WBNB
+
+Testing
+
+```
+forge test --contracts ./src/test/SHIDO_exp.sol -vvv
+```
+
+#### Contract
+
+[SHIDO_exp.sol](src/test/SHIDO_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1672473343734480896
+
+https://twitter.com/AnciliaInc/status/1672382613473083393
 
 ---
 
