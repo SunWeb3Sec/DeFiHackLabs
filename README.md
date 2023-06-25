@@ -50,6 +50,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230607 CompounderFinance](#20230607-compounderfinance---manipulation-of-funds-through-fluctuations-in-the-amount-of-exchangeable-assets)
 
+[20230606 VINU](#20230606-vinu---price-manipulation)
+
 [20230606 UN](#20230606-un---price-manipulation)
 
 [20230602 NST SimpleSwap](#20230602-nst-simple-swap---unverified-contract-wrong-approval)
@@ -693,6 +695,26 @@ forge test --contracts ./src/test/CompounderFinance_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/numencyber/status/1666346419702362112
+
+---
+
+### 20230606 VINU - Price Manipulation
+
+### Lost: ~$6k
+
+Testing
+
+```
+forge test --contracts ./src/test/VINU_exp.sol -vvv
+```
+
+#### Contract
+
+[VINU_exp.sol](src/test/VINU_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/hexagate_/status/1666051854386511873?cxt=HHwWgoC24bPVgJ8uAAAA
 
 ---
 
