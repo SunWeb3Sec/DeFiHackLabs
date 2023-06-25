@@ -83,6 +83,7 @@ contract ShidoTest is Test {
             39e18,
             address(AddRemoveLiquidityForFeeOnTransferTokens)
         );
+        WBNB.withdraw(10e15);
         swapWBNBToSHIDOInu(100e15, address(this));
 
         AddRemoveLiquidityForFeeOnTransferTokens.addLiquidityETH{
