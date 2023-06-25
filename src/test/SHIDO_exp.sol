@@ -40,7 +40,7 @@ contract ContractTest is Test {
     IERC20 SHIDOINU = IERC20(0x733Af324146DCfe743515D8D77DC25140a07F9e0);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
-    IFeeFreeRouter BabyDogeRouter = IFeeFreeRouter(0x9869674E80D632F93c338bd398408273D20a6C8e);
+    IFeeFreeRouter FeeFreeRouter = IFeeFreeRouter(0x9869674E80D632F93c338bd398408273D20a6C8e);
     IShidoLock ShidoLock = IShidoLock(0xaF0CA21363219C8f3D8050E7B61Bb5f04e02F8D4);
     address dodo = 0x81917eb96b397dFb1C6000d28A5bc08c0f05fC1d;
 
@@ -51,7 +51,7 @@ contract ContractTest is Test {
         vm.label(address(SHIDO), "SHIDO");
         vm.label(address(WBNB), "WBNB");
         vm.label(address(ShidoLock), "ShidoLock");
-        vm.label(address(BabyDogeRouter), "BabyDogeRouter");
+        vm.label(address(FeeFreeRouter), "FeeFreeRouter");
         vm.label(address(Router), "Router");
         vm.label(address(dodo), "dodo");
     }
@@ -78,12 +78,12 @@ contract ContractTest is Test {
         path[0] = address(WBNB);
         path[1] = address(SHIDOINU);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            39 * 1e18, 0, path, address(BabyDogeRouter), block.timestamp
+            39 * 1e18, 0, path, address(FeeFreeRouter), block.timestamp
         );
         WBNB.withdraw(10 * 1e15);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(10 * 1e15, 0, path, address(this), block.timestamp);
-        SHIDOINU.approve(address(BabyDogeRouter), 1e27);
-        BabyDogeRouter.addLiquidityETH{value: 0.01 ether}(
+        SHIDOINU.approve(address(FeeFreeRouter), 1e27);
+        FeeFreeRouter.addLiquidityETH{value: 0.01 ether}(
             address(SHIDOINU), 1e9, 1, 1, payable(address(this)), block.timestamp
         );
     }
