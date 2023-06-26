@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-229 incidents included.
+230 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -36,6 +36,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230624 SHIDO](#20230624-shido---business-loigc--arbitrage)
 
+[20230621 BabyDogeCoin02](#20230621-babydogecoin02---lack-slippage-protection)
+
 [20230621 BUNN](#20230621-bunn---reflection-tokens)
 
 [20230620 MIM](#20230620-mimspell---arbitrary-external-call-vulnerability)
@@ -60,7 +62,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230529 Jimbo](#20230529-jimbo---protocol-specific-price-manipulation)
 
-[20230529 BabyDogeCoin](#20230529-babydogecoin---insufficient-input-validation)
+[20230529 BabyDogeCoin](#20230529-babydogecoin---lack-slippage-protection)
 
 [20230529 FAPEN](#20230529-fapen---wrong-balance-check)
 
@@ -558,6 +560,25 @@ https://twitter.com/AnciliaInc/status/1672382613473083393
 
 ---
 
+### 20230621 BabyDogeCoin02 - Lack Slippage Protection
+
+### Lost: ~ 441 BNB
+
+Testing
+```
+forge test --contracts ./src/test/BabyDogeCoin02_exp.sol -vvv
+```
+
+#### Contract
+
+[BabyDogeCoin02_exp.sol](src/test/BabyDogeCoin02_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/hexagate_/status/1671517819840745475
+
+---
+
 ### 20230621 BUNN - Reflection tokens
 
 ### Lost: ~52BNB
@@ -800,7 +821,7 @@ https://twitter.com/yicunhui2/status/1663793958781353985
 
 ---
 
-### 20230529 BabyDogeCoin - Insufficient Input Validation
+### 20230529 BabyDogeCoin - Lack Slippage Protection
 
 ### Lost: ~$135k
 
