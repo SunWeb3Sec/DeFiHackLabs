@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-228 incidents included.
+232 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -34,7 +34,11 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230624 SHIDO](#20230624-shido---business-loigc--arbitrage)
+
 [20230623 ShidoGlobal](#20230623-shidoglobal---flashloan-attack)
+
+[20230621 BabyDogeCoin02](#20230621-babydogecoin02---lack-slippage-protection)
 
 [20230621 BUNN](#20230621-bunn---reflection-tokens)
 
@@ -62,7 +66,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230529 Jimbo](#20230529-jimbo---protocol-specific-price-manipulation)
 
-[20230529 BabyDogeCoin](#20230529-babydogecoin---insufficient-input-validation)
+[20230529 BabyDogeCoin](#20230529-babydogecoin---lack-slippage-protection)
 
 [20230529 FAPEN](#20230529-fapen---wrong-balance-check)
 
@@ -538,6 +542,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ---
 
+### 20230624 Shido - Business Loigc & Arbitrage
+
+### Lost: 997 WBNB
+
+Testing
+
+```
+forge test --contracts ./src/test/SHIDO_exp.sol -vvv
+```
+
+#### Contract
+
+[SHIDO_exp.sol](src/test/SHIDO_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1672473343734480896
+
+https://twitter.com/AnciliaInc/status/1672382613473083393
+
+---
+
 ### 20230623 ShidoGlobal - Flashloan attack
 
 ### Lost: ~977BNB
@@ -555,6 +581,25 @@ forge test --contracts ./src/test/ShidoGlobal_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/Phalcon_xyz/status/1672473343734480896
+
+---
+
+### 20230621 BabyDogeCoin02 - Lack Slippage Protection
+
+### Lost: ~ 441 BNB
+
+Testing
+```
+forge test --contracts ./src/test/BabyDogeCoin02_exp.sol -vvv
+```
+
+#### Contract
+
+[BabyDogeCoin02_exp.sol](src/test/BabyDogeCoin02_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/hexagate_/status/1671517819840745475
 
 ---
 
@@ -820,7 +865,7 @@ https://twitter.com/yicunhui2/status/1663793958781353985
 
 ---
 
-### 20230529 BabyDogeCoin - Insufficient Input Validation
+### 20230529 BabyDogeCoin - Lack Slippage Protection
 
 ### Lost: ~$135k
 
