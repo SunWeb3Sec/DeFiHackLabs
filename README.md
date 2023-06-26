@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-230 incidents included.
+232 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -36,6 +36,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230624 SHIDO](#20230624-shido---business-loigc--arbitrage)
 
+[20230623 ShidoGlobal](#20230623-shidoglobal---flashloan-attack)
+
 [20230621 BabyDogeCoin02](#20230621-babydogecoin02---lack-slippage-protection)
 
 [20230621 BUNN](#20230621-bunn---reflection-tokens)
@@ -51,6 +53,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230611 SellToken04](#20230611-sellToken04---Price-Manipulation)
 
 [20230607 CompounderFinance](#20230607-compounderfinance---manipulation-of-funds-through-fluctuations-in-the-amount-of-exchangeable-assets)
+
+[20230606 VINU](#20230606-vinu---price-manipulation)
 
 [20230606 UN](#20230606-un---price-manipulation)
 
@@ -560,6 +564,26 @@ https://twitter.com/AnciliaInc/status/1672382613473083393
 
 ---
 
+### 20230623 ShidoGlobal - Flashloan attack
+
+### Lost: ~977BNB
+
+Testing
+
+```
+forge test --contracts ./src/test/ShidoGlobal_exp.sol -vvv
+```
+
+#### Contract
+
+[ShidoGlobal_exp.sol](src/test/ShidoGlobal_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1672473343734480896
+
+---
+
 ### 20230621 BabyDogeCoin02 - Lack Slippage Protection
 
 ### Lost: ~ 441 BNB
@@ -716,6 +740,26 @@ forge test --contracts ./src/test/CompounderFinance_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/numencyber/status/1666346419702362112
+
+---
+
+### 20230606 VINU - Price Manipulation
+
+### Lost: ~$6k
+
+Testing
+
+```
+forge test --contracts ./src/test/VINU_exp.sol -vvv
+```
+
+#### Contract
+
+[VINU_exp.sol](src/test/VINU_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/hexagate_/status/1666051854386511873?cxt=HHwWgoC24bPVgJ8uAAAA
 
 ---
 
