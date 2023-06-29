@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230628 Themis](#20230628-themis---manipulation-of-prices-using-flashloan)
+
 [20230624 SHIDO](#20230624-shido---business-loigc--arbitrage)
 
 [20230623 ShidoGlobal](#20230623-shidoglobal---flashloan-attack)
@@ -542,6 +544,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ---
 
+### 20230628 Themis - Manipulation of prices using Flashloan
+
+### Lost: ~$370k
+
+Testing
+
+```
+forge test --contracts ./src/test/Themis_exp.sol -vvv
+```
+
+#### Contract
+
+[Themis_exp.sol](src/test/Themis_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BeosinAlert/status/1673930979348717570
+
+https://twitter.com/sharkteamorg/status/1674341800927191040
+
+---
+
 ### 20230624 Shido - Business Loigc & Arbitrage
 
 ### Lost: 997 WBNB
@@ -589,6 +613,7 @@ https://twitter.com/Phalcon_xyz/status/1672473343734480896
 ### Lost: ~ 441 BNB
 
 Testing
+
 ```
 forge test --contracts ./src/test/BabyDogeCoin02_exp.sol -vvv
 ```
