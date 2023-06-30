@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-232 incidents included.
+233 incidents included.
 
 This repo is only for the educational purpose.
 
