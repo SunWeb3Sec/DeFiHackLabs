@@ -13,7 +13,7 @@ import "./interface.sol";
 
 // @Analysis
 // https://twitter.com/BeosinAlert/status/1673930979348717570
-// Detailed attack steps: https://twitter.com/sharkteamorg/status/1674341800927191040
+// Detailed attack steps: https://twitter.com/BlockSecTeam/status/1673897088617426946
 
 interface IThemis {
     function supply(
