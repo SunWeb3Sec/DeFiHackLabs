@@ -544,7 +544,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### List of DeFi Hacks & POCs
 ---
 
-### 2023030 Biswap - V3Migrator Exploit
+### 20230630 Biswap - V3Migrator Exploit
 
 ### Lost: ~$72k
 
