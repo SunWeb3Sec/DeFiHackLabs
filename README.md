@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230704 BambooIA](#20230704-bambooia---price-manipulation-attack)
+
 [20230704 BaoCommunity](#20230704-baocommunity---donate-inflation-attack--round-error)
 
 [20230630 Biswap](#20230630-biswap---v3migrator-exploit)
@@ -545,6 +547,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+---
+
+### 20230704 BambooIA - Price manipulation attack
+
+### Lost: ~200BNB
+
+Testing
+```
+forge test --contracts .src/test/Bamboo_exp.sol -vvv
+```
+
+#### Contract
+
+[Bao_exp.sol](src/test/Bamboo_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1676220090142916611
+
+https://twitter.com/eugenioclrc
+
 ---
 
 ### 20230704 BaoCommunity - Donate Inflation Attack && Round Error
