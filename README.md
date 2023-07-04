@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-234 incidents included.
+235 incidents included.
 
 This repo is only for the educational purpose.
 
@@ -33,6 +33,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230704 BaoCommunity](#20230704-baocommunity---donate-inflation-attack--round-error)
+
 [20230630 Biswap](#20230630-biswap---v3migrator-exploit)
 
 [20230628 Themis](#20230628-themis---manipulation-of-prices-using-flashloan)
@@ -115,7 +118,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230416 Swapos V2](#20230416-swapos-v2----error-k-value-attack)
 
-[20230415 HundredFinance](#20230415-hundredfinance---flashloan-exchangerate-manipulation--erc4626-inflation-attack)
+[20230415 HundredFinance](#20230415-hundredfinance---donate-inflation-attack--round-error)
 
 [20230413 yearnFinance](#20230413-yearnFinance---misconfiguration)
 
@@ -542,6 +545,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+---
+
+### 20230704 BaoCommunity - Donate Inflation Attack && Round Error
+
+### Lost: ~$46k
+
+Testing
+```
+forge test --contracts ./src/test/bao_exp.sol -vvv
+```
+
+#### Contract
+
+[Bao_exp.sol](src/test/Bao_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/PeckShieldAlert/status/1676224397248454657
+
 ---
 
 ### 20230630 Biswap - V3Migrator Exploit
@@ -1384,7 +1406,7 @@ https://twitter.com/BeosinAlert/status/1647552192243728385
 
 ---
 
-### 20230415 HundredFinance - FlashLoan ExchangeRate Manipulation & ERC4626 Inflation Attack
+### 20230415 HundredFinance - Donate Inflation Attack && Round Error
 
 ### Lost: $7M
 
@@ -1405,6 +1427,8 @@ https://twitter.com/peckshield/status/1647307128267476992
 https://twitter.com/danielvf/status/1647329491788677121
 
 https://twitter.com/hexagate_/status/1647334970258608131
+
+https://blog.hundred.finance/15-04-23-hundred-finance-hack-post-mortem-d895b618cf33
 
 ---
 

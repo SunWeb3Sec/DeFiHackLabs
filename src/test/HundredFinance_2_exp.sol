@@ -11,7 +11,7 @@ import "./interface.sol";
 // @TX
 // https://optimistic.etherscan.io/tx/0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451
 // @Summary
-// check the log in the terminal
+// https://blog.hundred.finance/15-04-23-hundred-finance-hack-post-mortem-d895b618cf33
 
 contract contractTest is Test {
     IERC20 WBTC = IERC20(0x68f180fcCe6836688e9084f035309E29Bf0A2095);
