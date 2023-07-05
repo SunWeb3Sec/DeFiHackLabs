@@ -81,7 +81,7 @@ function initialize(
 
 
 
-当升级代理合约的实现合约时发，可能会执行一次性的初始化函数。该函数将设置一些初始状态值。在[4月21日Nomad例行升级](https://tx.eth.samczsun.com/ethereum/0x99662dacfb4b963479b159fc43c2b4d048562104fe154a4d0c2519ada72e50bf)，0x00被设置为预批准的根，被存储在`confirmAt`映射中，这也是本次事件的开端。
+当升级代理合约的实现合约时，实现合约会执行一次性的初始化函数，该函数将设置一些初始状态值。可以看到，在[6月21日Nomad部署新的实现合约](https://etherscan.io/tx/0xaf05a8c0b2d8c9e795329ab6e05044d016ee9a355d6eb49b082ce0789363f715)，并且在之后[调用initialize函数](https://etherscan.io/tx/0x53fd92771d2084a9bf39a6477015ef53b7f116c79d98a21be723d06d79024cad)初始化实现合约，最后对存储实现合约地址的合约进行[例行升级](https://etherscan.io/tx/0x7bccd64f4c4d5f6f545c2edf904857e6ddb460532fc0ac7eb5ac175cd21e56b1)，在调用initialize函数初始化合约时，0x00被设置为预批准的根，被存储在`confirmAt`映射中，这也是本次事件的开端。
 
 回到`process`函数，我们可以看到，验证过程依赖于检查消息映射上的消息哈希值，并将该消息标记为已处理，这样攻击者就不能重复使用同一消息。
 
