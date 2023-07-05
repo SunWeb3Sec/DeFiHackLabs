@@ -4,7 +4,9 @@
 
 236 incidents included.
 
-This repo is only for the educational purpose.
+**Disclaimer:**
+
+This is solely a proof of concept of past DeFi hacked incidents and is intended only for educational purposes.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
