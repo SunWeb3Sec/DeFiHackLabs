@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-236 incidents included.
+237 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -67,6 +67,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230606 UN](#20230606-un---price-manipulation)
 
 [20230602 NST SimpleSwap](#20230602-nst-simple-swap---unverified-contract-wrong-approval)
+
+[20230601 DDCoin](#20230601-ddcoin---flashloan-attack-and-smart-contract-vulnerability)
 
 [20230601 Cellframenet](#20230601-cellframenet---calculation-issues-during-liquidity-migration)
 
@@ -547,6 +549,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
 ---
 
 ### 20230704 BambooIA - Price manipulation attack
@@ -554,6 +557,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### Lost: ~200BNB
 
 Testing
+
 ```
 forge test --contracts .src/test/Bamboo_exp.sol -vvv
 ```
@@ -575,6 +579,7 @@ https://twitter.com/eugenioclrc
 ### Lost: ~$46k
 
 Testing
+
 ```
 forge test --contracts ./src/test/bao_exp.sol -vvv
 ```
@@ -890,6 +895,27 @@ forge test --contracts ./src/test/NST_exp.sol -vvv
 #### Link reference
 
 https://discord.com/channels/1100129537603407972/1100129538056396870/1114142216923926528
+
+---
+
+### 20230601 DDCoin - Flashloan attack and smart contract vulnerability
+
+### Lost: ~$300k
+
+Testing
+
+```
+forge test --contracts ./src/test/DDCoin_exp.sol -vvv
+```
+
+#### Contract
+
+[DDCoin_exp.sol](src/test/DDCoin_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/ImmuneBytes/status/1664239580210495489
+https://twitter.com/ChainAegis/status/1664192344726581255?cxt=HHwWjsDRldmHs5guAAAA
 
 ---
 
