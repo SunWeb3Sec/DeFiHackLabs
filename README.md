@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230708 Civfund](#20230708-civfund---lack-of-access-control)
+
 [20230704 BambooIA](#20230704-bambooia---price-manipulation-attack)
 
 [20230704 BaoCommunity](#20230704-baocommunity---donate-inflation-attack--round-error)
@@ -549,6 +551,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+---
+
+### 20230708 Civfund - Lack of access control
+
+### Lost: ~165k
+
+Testing
+
+```
+forge test --contracts .src/test/Civfund_exp.sol -vvv
+```
+
+#### Contract
+
+[Civfund_exp.sol](src/test/Civfund_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/HypernativeLabs/status/1677529544062803969
+
+https://twitter.com/BeosinAlert/status/1677548773269213184
 
 ---
 
