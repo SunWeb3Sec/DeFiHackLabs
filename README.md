@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-237 incidents included.
+238 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230707 LUSD](#20230707-LUSD---price-manipulation-attack)
 
 [20230704 BambooIA](#20230704-bambooia---price-manipulation-attack)
 
@@ -551,6 +553,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### List of DeFi Hacks & POCs
 
 ---
+### 20230707 LUSD - Price manipulation attack
+
+### Lost: ~9464USDT
+
+Testing
+
+```
+forge test --contracts ./src/test/LUSD_exp.sol -vvv
+```
+
+#### Contract
+
+[LUSD_exp.sol](/src/test/LUSD_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/AnciliaInc/status/1677391242878140417
+
+---
 
 ### 20230704 BambooIA - Price manipulation attack
 
@@ -559,7 +580,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 Testing
 
 ```
-forge test --contracts .src/test/Bamboo_exp.sol -vvv
+forge test --contracts ./src/test/Bamboo_exp.sol -vvv
 ```
 
 #### Contract
