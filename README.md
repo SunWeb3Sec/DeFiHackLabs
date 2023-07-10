@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-238 incidents included.
+239 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230708 Civfund](#20230708-civfund---lack-of-access-control)
 
 [20230707 LUSD](#20230707-LUSD---price-manipulation-attack)
 
@@ -553,6 +555,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### List of DeFi Hacks & POCs
 
 ---
+
+### 20230708 Civfund - Lack of access control
+
+### Lost: ~165k
+
+Testing
+
+```
+forge test --contracts .src/test/Civfund_exp.sol -vvv
+```
+
+#### Contract
+
+[Civfund_exp.sol](src/test/Civfund_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/HypernativeLabs/status/1677529544062803969
+
+https://twitter.com/BeosinAlert/status/1677548773269213184
+
+
 ### 20230707 LUSD - Price manipulation attack
 
 ### Lost: ~9464USDT
