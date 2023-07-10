@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-239 incidents included.
+240 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230710 ArcadiaFi](#20230710-arcadiafi---reentrancy)
 
 [20230708 Civfund](#20230708-civfund---lack-of-access-control)
 
@@ -554,9 +556,30 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230710 ArcadiaFi - Reentrancy
+
+### Lost: ~$400k
+
+Testing
+```
+forge test --contracts ./src/test/ArcadiaFi_exp.sol -vvv
+```
+
+#### Contract
+
+[ArcadiaFi_exp.so](src/test/ArcadiaFi_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1678250590709899264
+
+https://twitter.com/peckshield/status/1678265212770693121
+-
+---
+
 ### 20230708 Civfund - Lack of access control
 
-### Lost: ~165k
+### Lost: ~$165k
 
 Testing
 
