@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-240 incidents included.
+241 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230711 Libertify](#20230711-libertify---reentrancy)
 
 [20230710 ArcadiaFi](#20230710-arcadiafi---reentrancy)
 
@@ -555,6 +557,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230711 Libertify - Reentrancy
+
+### Lost: ~$452k
+
+Testing
+```
+forge test --contracts ./src/test/Libertify_exp.sol -vvv
+```
+
+#### Contract
+
+[Libertify_exp.sol](src/test/Libertify_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/peckshield/status/1678688731908411393
+
+https://twitter.com/Phalcon_xyz/status/1678694679767031809
+
+---
 
 ### 20230710 ArcadiaFi - Reentrancy
 
