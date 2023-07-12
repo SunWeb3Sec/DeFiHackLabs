@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20230711 RodeoFinance](#20230711-rodeofinance---flawed-price-oracle-dependency)
+[20230711 RodeoFinance](#20230711-rodeofinance---twap-oracle-manipulation)
 
 [20230711 Libertify](#20230711-libertify---reentrancy)
 
@@ -560,7 +560,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20230711 RodeoFinance - Flawed price oracle dependency
+### 20230711 RodeoFinance - TWAP Oracle Manipulation
 
 ### Lost: ~$888k
 
@@ -579,6 +579,8 @@ forge test --contracts ./src/test/RodeoFinance_exp.sol -vvv
 https://twitter.com/Phalcon_xyz/status/1678765773396008967
 
 https://twitter.com/peckshield/status/1678700465587130368
+
+https://medium.com/@Rodeo_Finance/rodeo-post-mortem-overview-f35635c14101
 
 ---
 
