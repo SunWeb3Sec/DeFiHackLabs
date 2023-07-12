@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-243 incidents included.
+244 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -69,6 +69,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230615 CFC](#20230615-cfc---uniswap-skim-token-balance-attack)
 
 [20230615 DEPUSDT_LEVUSDC](#20230615-depusdt_levusdc---incorrect-access-control)
+
+[20230612 Sturdy Finance](#20230612-sturdy-finance---read-only-reentrancy)
 
 [20230611 SellToken04](#20230611-sellToken04---Price-Manipulation)
 
@@ -934,6 +936,29 @@ forge test --contracts ./src/test/DEPUSDT_LEVUSDC_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/numencyber/status/1669278694744150016?cxt=HHwWgMDS9Z2IvKouAAAA
+
+---
+
+### 20230612 Sturdy Finance - Read-Only-Reentrancy
+
+### Lost: ~$800k
+
+Testing
+```
+forge test --contracts ./src/test/Sturdy_exp.sol -vvv
+```
+
+#### contract
+
+[Sturdy_exp.sol](src/test/Sturdy_exp.sol)
+
+#### Link Reference
+
+https://sturdyfinance.medium.com/exploit-post-mortem-49261493307a
+
+https://twitter.com/AnciliaInc/status/1668081008615325698
+
+https://twitter.com/BlockSecTeam/status/1668084629654638592
 
 ---
 
