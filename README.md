@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20230711 RodeoFinance](#20230711-rodeofinance---flawed-price-oracle-dependency)
+[20230711 RodeoFinance](#20230711-rodeofinance---twap-oracle-manipulation)
 
 [20230711 Libertify](#20230711-libertify---reentrancy)
 
