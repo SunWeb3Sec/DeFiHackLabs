@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230711 RodeoFinance](#20230711-rodeofinance---flawed-price-oracle-dependency)
+
 [20230711 Libertify](#20230711-libertify---reentrancy)
 
 [20230710 ArcadiaFi](#20230710-arcadiafi---reentrancy)
@@ -558,11 +560,34 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230711 RodeoFinance - Flawed price oracle dependency
+
+### Lost: ~$888k
+
+Testing
+
+```
+forge test --contracts ./src/test/RodeoFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[RodeoFinance_exp.sol](src/test/RodeoFinance_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1678765773396008967
+
+https://twitter.com/peckshield/status/1678700465587130368
+
+---
+
 ### 20230711 Libertify - Reentrancy
 
 ### Lost: ~$452k
 
 Testing
+
 ```
 forge test --contracts ./src/test/Libertify_exp.sol -vvv
 ```
@@ -584,6 +609,7 @@ https://twitter.com/Phalcon_xyz/status/1678694679767031809
 ### Lost: ~$400k
 
 Testing
+
 ```
 forge test --contracts ./src/test/ArcadiaFi_exp.sol -vvv
 ```
