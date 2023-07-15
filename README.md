@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-244 incidents included.
+245 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -49,6 +49,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230704 BambooIA](#20230704-bambooia---price-manipulation-attack)
 
 [20230704 BaoCommunity](#20230704-baocommunity---donate-inflation-attack--round-error)
+
+[20230703 AzukiDAO](#20230703-azukidao---invalid-signature-verification)
 
 [20230630 Biswap](#20230630-biswap---v3migrator-exploit)
 
@@ -569,6 +571,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### Lost: ~$51K
 
 Testing
+
 ```
 forge test --contracts ./src/test/Platypus02_exp.sol -vvv
 ```
@@ -732,6 +735,26 @@ forge test --contracts ./src/test/bao_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/PeckShieldAlert/status/1676224397248454657
+
+---
+
+### 20230703 AzukiDAO - Invalid signature verification
+
+### Lost: ~$69k
+
+Testing
+
+```
+forge test --contracts ./src/test/AzukiDAO_exp.sol -vvv
+```
+
+#### Contract
+
+[AzukiDAO_exp.sol](src/test/AzukiDAO_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/sharkteamorg/status/1676892088930271232
 
 ---
 
@@ -944,6 +967,7 @@ https://twitter.com/numencyber/status/1669278694744150016?cxt=HHwWgMDS9Z2IvKouAA
 ### Lost: ~$800k
 
 Testing
+
 ```
 forge test --contracts ./src/test/Sturdy_exp.sol -vvv
 ```
