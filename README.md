@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230718 BNO](#20230718-bno---invalid-emergency-withdraw-mechanism)
+
 [20230712 Platypus](#20230712-platypus---bussiness-logic-flaw)
 
 [20230711 RodeoFinance](#20230711-rodeofinance---twap-oracle-manipulation)
@@ -565,6 +567,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230718 BNO - Invalid emergency withdraw mechanism
+
+### Lost: ~$505K
+
+Testing
+
+```
+forge test --contracts ./src/test/BNO_exp.sol -vvv
+```
+
+#### Contract
+
+[BNO_exp.sol](src/test/BNO_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BeosinAlert/status/1681116206663876610
+
+---
 
 ### 20230712 Platypus - Bussiness Logic Flaw
 
