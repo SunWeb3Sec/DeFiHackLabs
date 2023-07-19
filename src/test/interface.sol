@@ -960,6 +960,20 @@ interface Uni_Router_V3 {
         uint160 sqrtPriceLimitX96;
     }
 
+    struct ExactInputParams {
+        bytes path;
+        address recipient;
+        uint256 amountIn;
+        uint256 amountOutMinimum;
+    }
+
+    struct ExactOutputParams {
+        bytes path;
+        address recipient;
+        uint256 amountOut;
+        uint256 amountInMaximum;
+    }
+
     function swapExactTokensForTokens(
         uint256 amountIn,
         uint256 amountOutMin,
@@ -974,6 +988,10 @@ interface Uni_Router_V3 {
     function exactOutputSingle(
         ExactOutputSingleParams calldata params
         ) external payable returns (uint256 amountIn);
+
+    function exactInput(ExactInputParams memory params) external payable returns (uint256 amountOut);
+
+    function exactOutput(ExactOutputParams calldata params) external payable returns (uint256 amountIn);
 
 }
 interface Uni_Router_V2 {

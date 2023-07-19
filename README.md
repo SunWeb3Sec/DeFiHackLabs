@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-246 incidents included.
+247 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -36,6 +36,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230718 BNO](#20230718-bno---invalid-emergency-withdraw-mechanism)
 
+[20230717 NewFi](#20230717-newfi---lack-slippage-protection)
+
 [20230712 Platypus](#20230712-platypus---bussiness-logic-flaw)
 
 [20230711 RodeoFinance](#20230711-rodeofinance---twap-oracle-manipulation)
@@ -50,7 +52,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230704 BambooIA](#20230704-bambooia---price-manipulation-attack)
 
-[20230704 BaoCommunity](#20230704-baocommunity---donate-inflation-attack--round-error)
+[20230704 BaoCommunity](#20230704-baocommunity---donate-inflation-exchangerate--rounding-error)
 
 [20230703 AzukiDAO](#20230703-azukidao---invalid-signature-verification)
 
@@ -140,7 +142,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230416 Swapos V2](#20230416-swapos-v2----error-k-value-attack)
 
-[20230415 HundredFinance](#20230415-hundredfinance---donate-inflation-attack--round-error)
+[20230415 HundredFinance](#20230415-hundredfinance---donate-inflation-exchangerate--rounding-error)
 
 [20230413 yearnFinance](#20230413-yearnFinance---misconfiguration)
 
@@ -588,6 +590,26 @@ https://twitter.com/BeosinAlert/status/1681116206663876610
 
 ---
 
+### 20230717 NewFi - Lack Slippage Protection
+
+### Lost: ~$31K
+
+Testing
+
+```
+forge test --contracts ./src/test/NewFi_exp.sol -vvv
+```
+
+#### Contract
+
+[NewFi_exp.sol](src/test/NewFi_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1680961588323557376
+
+---
+
 ### 20230712 Platypus - Bussiness Logic Flaw
 
 ### Lost: ~$51K
@@ -740,7 +762,7 @@ https://twitter.com/eugenioclrc
 
 ---
 
-### 20230704 BaoCommunity - Donate Inflation Attack && Round Error
+### 20230704 BaoCommunity - Donate Inflation ExchangeRate && Rounding Error
 
 ### Lost: ~$46k
 
@@ -1665,7 +1687,7 @@ https://twitter.com/BeosinAlert/status/1647552192243728385
 
 ---
 
-### 20230415 HundredFinance - Donate Inflation Attack && Round Error
+### 20230415 HundredFinance - Donate Inflation ExchangeRate && Rounding Error
 
 ### Lost: $7M
 
