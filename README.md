@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230718 APEDAO](#20230718-apedao---business-logic-flaw)
+
 [20230718 BNO](#20230718-bno---invalid-emergency-withdraw-mechanism)
 
 [20230712 Platypus](#20230712-platypus---bussiness-logic-flaw)
@@ -567,6 +569,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230718 APEDAO - Business Logic Flaw
+
+### Lost: ~$7K
+
+Testing
+
+```
+forge test --contracts ./src/test/ApeDAO_exp.sol -vvv
+```
+
+#### Contract
+
+[ApeDAO_exp.sol](src/test/ApeDAO_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BeosinAlert/status/1681316257034035201
+
+---
 
 ### 20230718 BNO - Invalid emergency withdraw mechanism
 
