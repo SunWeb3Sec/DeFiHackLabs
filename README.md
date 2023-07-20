@@ -10,7 +10,7 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 [Transaction debugging tools](https://github.com/SunWeb3Sec/DeFiHackLabs/#transaction-debugging-tools)
 
-**Disclaimer:** This is solely a proof of concept of past DeFi hacked incidents and is intended only for educational purposes.
+**Disclaimer:** This content serves solely as a proof of concept showcasing past DeFi hacking incidents. It is strictly intended for educational purposes and should not be interpreted as encouraging or endorsing any form of illegal activities or actual hacking attempts. The provided information is for informational and learning purposes only, and any actions taken based on this content are solely the responsibility of the individual. The usage of this information should adhere to applicable laws, regulations, and ethical standards.
 
 ## Getting Started
 
