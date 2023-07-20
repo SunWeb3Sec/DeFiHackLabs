@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-246 incidents included.
+247 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230718 APEDAO](#20230718-apedao---business-logic-flaw)
 
 [20230718 BNO](#20230718-bno---invalid-emergency-withdraw-mechanism)
 
@@ -567,6 +569,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230718 APEDAO - Business Logic Flaw
+
+### Lost: ~$7K
+
+Testing
+
+```
+forge test --contracts ./src/test/ApeDAO_exp.sol -vvv
+```
+
+#### Contract
+
+[ApeDAO_exp.sol](src/test/ApeDAO_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BeosinAlert/status/1681316257034035201
+
+---
 
 ### 20230718 BNO - Invalid emergency withdraw mechanism
 
