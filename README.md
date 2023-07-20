@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-248 incidents included.
+249 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230720 FFIST](#20230720-ffist---business-logic-flaw)
 
 [20230718 APEDAO](#20230718-apedao---business-logic-flaw)
 
@@ -571,6 +573,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230720 FFIST - Business Logic Flaw
+
+### Lost: ~$110k
+
+Testing
+
+```
+forge test --contracts ./src/test/FFIST_exp.sol -vvv
+```
+
+#### Contract
+
+[FFIST_exp.sol](src/test/FFIST_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1681869807698984961
+
+https://twitter.com/AnciliaInc/status/1681901107940065280
+
+---
 
 ### 20230718 APEDAO - Business Logic Flaw
 
