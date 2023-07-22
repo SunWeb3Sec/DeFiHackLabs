@@ -4820,7 +4820,7 @@ interface ICurvePool {
     int128 j,
     uint256 dx,
     uint256 min_dy
-  ) external;
+  ) external payable;
 
   // newer pools have this improved version of exchange_underlying
   function exchange(
@@ -4867,6 +4867,10 @@ interface ICurvePool {
   ) external view returns (uint256);
 
   function get_virtual_price() external view returns (uint256 out);
+
+  function remove_liquidity(uint256 token_amount, uint256[2] memory min_amounts)
+  external
+  returns (uint256[2] memory);
 
   function remove_liquidity(uint256 token_amount, uint256[3] memory min_amounts)
   external
