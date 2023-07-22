@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20230721 ConicFinance](#20230721-conicfinance---price-manipulation-caused-by-the-read-only-reentrancy)
+[20230721 ConicFinance](#20230721-conic-finance---read-only-reentrancy)
 
 [20230720 FFIST](#20230720-ffist---business-logic-flaw)
 
@@ -576,23 +576,23 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20230721 ConicFinance - Price manipulation caused by the read-only reentrancy
+### 20230721 Conic Finance - Read-Only-Reentrancy
 
-### Lost: ~$3M
+### Lost: ~$3.25M
 
 Testing
 
 ```
-forge test --contracts ./src/test/ConicFinance_exp.sol -vvv
+forge test --contracts ./src/test/Conic_exp.sol -vvv
 ```
 
 #### Contract
 
-[ConicFinance_exp.sol](src/test/ConicFinance_exp.sol)
+[Conic_exp.sol](src/test/Conic_exp.sol)|[Conic_exp2.sol](src/test/Conic_exp2.sol)
 
 #### Link Reference
 
-https://twitter.com/BlockSecTeam/status/1682346827939717120
+https://twitter.com/BlockSecTeam/status/1682356244299010049
 
 ---
 
