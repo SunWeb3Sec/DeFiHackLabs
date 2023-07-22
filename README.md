@@ -588,7 +588,7 @@ forge test --contracts ./src/test/Conic_exp.sol -vvv
 
 #### Contract
 
-[Conic_exp.sol](src/test/Conic_exp.sol)
+[Conic_exp.sol](src/test/Conic_exp.sol)|[Conic_exp2.sol](src/test/Conic_exp2.sol)
 
 #### Link Reference
 
