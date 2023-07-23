@@ -4,7 +4,7 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-// @KeyInfo - Total Lost : ~110K USD$
+// @KeyInfo - Total Lost : ~3.25M USD$
 // Attacker : https://etherscan.io/address/0x8d67db0b205e32a5dd96145f022fa18aae7dc8aa
 // Attack Contract : https://etherscan.io/address/0x743599ba5cfa3ce8c59691af5ef279aaafa2e4eb
 // Vulnerable Contract : https://etherscan.io/address/0xbb787d6243a8d450659e09ea6fd82f1c859691e9
@@ -14,7 +14,7 @@ import "./interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0xbb787d6243a8d450659e09ea6fd82f1c859691e9#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
+// Post-mortem : https://medium.com/@ConicFinance/post-mortem-eth-and-crvusd-omnipool-exploits-c9c7fa213a3d
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1682356244299010049
 // Hacking God : https://www.google.com/
 

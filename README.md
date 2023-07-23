@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-250 incidents included.
+251 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,7 +34,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20230721 ConicFinance](#20230721-conic-finance---read-only-reentrancy)
+[20230722 ConicFinance02](#20230722-conic-finance-02---pirce-manipulation)
+
+[20230721 ConicFinance](#20230721-conic-finance---read-only-reentrancy--misconfiguration)
 
 [20230720 FFIST](#20230720-ffist---business-logic-flaw)
 
@@ -576,7 +578,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20230721 Conic Finance - Read-Only-Reentrancy
+### 20230722 Conic Finance 02 - Pirce Manipulation
+
+### Lost: ~$934K
+
+Test
+```
+forge test --contracts ./src/test/Conic02_exp.sol --evm-version 'shanghai' -vvv
+```
+
+#### Contract
+
+[Conic02_exp.sol](src/test/Conic02_exp.sol)
+
+#### Link Reference
+
+https://medium.com/@ConicFinance/post-mortem-eth-and-crvusd-omnipool-exploits-c9c7fa213a3d
+
+https://twitter.com/spreekaway/status/1682467603518726144
+
+---
+
+### 20230721 Conic Finance - Read-Only-Reentrancy && MisConfiguration
 
 ### Lost: ~$3.25M
 
@@ -591,6 +614,8 @@ forge test --contracts ./src/test/Conic_exp.sol -vvv
 [Conic_exp.sol](src/test/Conic_exp.sol)|[Conic_exp2.sol](src/test/Conic_exp2.sol)
 
 #### Link Reference
+
+https://medium.com/@ConicFinance/post-mortem-eth-and-crvusd-omnipool-exploits-c9c7fa213a3d
 
 https://twitter.com/BlockSecTeam/status/1682356244299010049
 
