@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20230722 ConicFinance02](#20230722-conic-finance-02---pirce-manipulation)
+[20230722 ConicFinance02](#20230722-conic-finance-02---price-manipulation)
 
 [20230721 ConicFinance](#20230721-conic-finance---read-only-reentrancy--misconfiguration)
 
@@ -578,7 +578,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20230722 Conic Finance 02 - Pirce Manipulation
+### 20230722 Conic Finance 02 - Price Manipulation
 
 ### Lost: ~$934K
 
