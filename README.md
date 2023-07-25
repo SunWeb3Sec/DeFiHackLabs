@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230724 Palmswap](#20230724-palmswap---business-logic-flaw)
+
 [20230722 ConicFinance02](#20230722-conic-finance-02---price-manipulation)
 
 [20230721 ConicFinance](#20230721-conic-finance---read-only-reentrancy--misconfiguration)
@@ -578,11 +580,32 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230724 Palmswap - Business Logic Flaw
+
+### Lost: ~$900K
+
+Test
+
+```
+forge test --contracts ./src/test/Palmswap_exp.sol -vvv
+```
+
+#### Contract
+
+[Palmswap_exp.sol](src/test/Palmswap_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BeosinAlert/status/1683658477619777536
+
+---
+
 ### 20230722 Conic Finance 02 - Price Manipulation
 
 ### Lost: ~$934K
 
 Test
+
 ```
 forge test --contracts ./src/test/Conic02_exp.sol --evm-version 'shanghai' -vvv
 ```
