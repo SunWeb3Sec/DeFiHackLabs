@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-251 incidents included.
+252 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230724 Palmswap](#20230724-palmswap---business-logic-flaw)
 
 [20230722 ConicFinance02](#20230722-conic-finance-02---price-manipulation)
 
@@ -578,11 +580,32 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230724 Palmswap - Business Logic Flaw
+
+### Lost: ~$900K
+
+Test
+
+```
+forge test --contracts ./src/test/Palmswap_exp.sol -vvv
+```
+
+#### Contract
+
+[Palmswap_exp.sol](src/test/Palmswap_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BeosinAlert/status/1683658477619777536
+
+---
+
 ### 20230722 Conic Finance 02 - Price Manipulation
 
 ### Lost: ~$934K
 
 Test
+
 ```
 forge test --contracts ./src/test/Conic02_exp.sol --evm-version 'shanghai' -vvv
 ```
