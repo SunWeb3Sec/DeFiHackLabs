@@ -1168,7 +1168,7 @@ https://twitter.com/EoceneSecurity/status/1668468933723328513
 
 ### 20230607 CompounderFinance - Manipulation of funds through fluctuations in the amount of exchangeable assets
 
-### Lost: ~$27,174k
+### Lost: ~$27,174
 
 Testing
 
