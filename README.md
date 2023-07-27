@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-252 incidents included.
+253 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240726 Carson](#20230726-carson---price-manipulation)
 
 [20230724 Palmswap](#20230724-palmswap---business-logic-flaw)
 
@@ -579,6 +581,30 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230726 Carson - Price manipulation
+
+### Lost: ~$150K
+
+Test
+
+```
+forge test --contracts ./src/test/Carson_exp.sol -vvv
+```
+
+#### Contract
+
+[Carson_exp.sol](src/test/Carson_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BeosinAlert/status/1684393202252402688
+
+https://twitter.com/Phalcon_xyz/status/1684503154023448583
+
+https://twitter.com/hexagate_/status/1684475526663004160
+
+---
 
 ### 20230724 Palmswap - Business Logic Flaw
 
