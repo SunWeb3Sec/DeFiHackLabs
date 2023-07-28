@@ -38,7 +38,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230724 Palmswap](#20230724-palmswap---business-logic-flaw)
 
-[20230723 MintoFinance](#20230723-mintoFinance---lack-of-access-control)
+[20230723 MintoFinance](#20230723-mintofinance---signature-replay)
 
 [20230722 ConicFinance02](#20230722-conic-finance-02---price-manipulation)
 
@@ -628,7 +628,7 @@ https://twitter.com/BlockSecTeam/status/1683680026766737408
 
 ---
 
-### 20230723 MintoFinance - Lack of access control
+### 20230723 MintoFinance - Signature Replay
 
 ### Lost: ~$9K
 
