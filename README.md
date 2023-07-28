@@ -38,6 +38,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230724 Palmswap](#20230724-palmswap---business-logic-flaw)
 
+[20230723 MintoFinance](#20230723-mintoFinance---lack-of-access-control)
+
 [20230722 ConicFinance02](#20230722-conic-finance-02---price-manipulation)
 
 [20230721 ConicFinance](#20230721-conic-finance---read-only-reentrancy--misconfiguration)
@@ -623,6 +625,26 @@ forge test --contracts ./src/test/Palmswap_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/BeosinAlert/status/1683658477619777536
+
+---
+
+### 20230723 MintoFinance - Lack of access control
+
+### Lost: ~$9K
+
+Test
+
+```
+forge test --contracts ./src/test/MintoFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[MintoFinance_exp.sol](src/test/MintoFinance_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/bbbb/status/1683180340548890631
 
 ---
 
