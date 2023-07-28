@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-253 incidents included.
+254 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -37,6 +37,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240726 Carson](#20230726-carson---price-manipulation)
 
 [20230724 Palmswap](#20230724-palmswap---business-logic-flaw)
+
+[20230723 MintoFinance](#20230723-mintoFinance---lack-of-access-control)
 
 [20230722 ConicFinance02](#20230722-conic-finance-02---price-manipulation)
 
@@ -623,6 +625,26 @@ forge test --contracts ./src/test/Palmswap_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/BlockSecTeam/status/1683680026766737408
+
+---
+
+### 20230723 MintoFinance - Lack of access control
+
+### Lost: ~$9K
+
+Test
+
+```
+forge test --contracts ./src/test/MintoFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[MintoFinance_exp.sol](src/test/MintoFinance_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/bbbb/status/1683180340548890631
 
 ---
 
