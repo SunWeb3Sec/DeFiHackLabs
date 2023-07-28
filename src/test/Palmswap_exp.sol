@@ -11,7 +11,7 @@ import "./interface.sol";
 // Attack Tx : https://bscscan.com/tx/0x62dba55054fa628845fecded658ff5b1ec1c5823f1a5e0118601aa455a30eac9
 
 // @Analysis
-// https://twitter.com/BeosinAlert/status/1683658477619777536
+// https://twitter.com/BlockSecTeam/status/1683680026766737408
 
 interface IVault {
     function buyUSDP(address _receiver) external returns (uint256);
