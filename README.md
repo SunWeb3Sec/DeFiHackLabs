@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-254 incidents included.
+255 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -43,6 +43,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230722 ConicFinance02](#20230722-conic-finance-02---price-manipulation)
 
 [20230721 ConicFinance](#20230721-conic-finance---read-only-reentrancy--misconfiguration)
+
+[20230720 Utopia](#20230720-utopia---business-logic-flaw)
 
 [20230720 FFIST](#20230720-ffist---business-logic-flaw)
 
@@ -689,6 +691,28 @@ forge test --contracts ./src/test/Conic_exp.sol -vvv
 https://medium.com/@ConicFinance/post-mortem-eth-and-crvusd-omnipool-exploits-c9c7fa213a3d
 
 https://twitter.com/BlockSecTeam/status/1682356244299010049
+
+---
+
+### 20230720 Utopia - Business Logic Flaw
+
+### Lost: ~$119k
+
+Testing
+
+```
+forge test --contracts ./src/test/Utopia_exp.sol -vvv
+```
+
+#### Contract
+
+[Utopia_exp.sol](src/test/Utopia_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/DeDotFiSecurity/status/1681923729645871104
+
+https://twitter.com/bulu4477/status/1682380542564769793
 
 ---
 
