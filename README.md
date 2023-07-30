@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20240726 Carson](#20230726-carson---price-manipulation)
+[20230726 Carson](#20230726-carson---price-manipulation)
 
 [20230724 Palmswap](#20230724-palmswap---business-logic-flaw)
 
