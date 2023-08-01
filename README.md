@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-255 incidents included.
+257 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,10 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230801 LeetSwap](#20230801-leetswap---access-control)
+
+[20230730 Curve](#20230730-curve---vyper-compiler-bug--reentrancy)
 
 [20230726 Carson](#20230726-carson---price-manipulation)
 
@@ -585,6 +589,48 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230801 LeetSwap - Access Control
+
+### Lost: ~$630K
+
+Test
+
+```
+forge test --contracts ./src/test/Leetswap_exp.sol -vvv
+```
+
+#### Contract
+
+[Leetswap_exp.sol](src/test/Leetswap_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1686217464051539968
+
+https://twitter.com/peckshield/status/1686209024587710464
+
+---
+
+### 20230730 Curve - Vyper Compiler Bug && Reentrancy
+
+### Lost: ~ $41M
+
+Test
+
+```
+forge test --contracts ./src/test/Curve_exp01.sol -vvv
+```
+
+#### Contract
+
+[Curve_exp01.sol](src/test/Curve_exp01.sol) | [Curve_exp02.sol](src/test/Curve_exp02.sol)
+
+#### Link Reference
+
+https://hackmd.io/@LlamaRisk/BJzSKHNjn
+
+---
 
 ### 20230726 Carson - Price manipulation
 
