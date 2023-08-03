@@ -8,7 +8,7 @@ import "./interface.sol";
 // Attacker : https://etherscan.io/address/0x6ec21d1868743a44318c3c259a6d4953f9978538
 // Attack Contract : https://etherscan.io/address/0x466b85b49ec0c5c1eb402d5ea3c4b88864ea0f04
 // Vulnerable Contract : https://etherscan.io/address/0x6326debbaa15bcfe603d831e7d75f4fc10d9b43e
-// Attack Tx : https://basescan.org/tx/0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec
+// Attack Tx : https://etherscan.io/tx/0xa84aa065ce61dbb1eb50ab6ae67fc31a9da50dd2c74eefd561661bfce2f1620c
 
 // @Info
 // Vulnerable Contract Code : https://etherscan.io/address/0x6326debbaa15bcfe603d831e7d75f4fc10d9b43e#code
