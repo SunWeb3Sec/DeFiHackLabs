@@ -5,13 +5,13 @@ import "forge-std/Test.sol";
 import "./interface.sol";
 
 // @KeyInfo - Total Lost : ~41M USD$
-// Attacker : https://etherscan.io/address/0x6ec21d1868743a44318c3c259a6d4953f9978538
-// Attack Contract : https://etherscan.io/address/0x466b85b49ec0c5c1eb402d5ea3c4b88864ea0f04
-// Vulnerable Contract : https://etherscan.io/address/0x6326debbaa15bcfe603d831e7d75f4fc10d9b43e
-// Attack Tx : https://basescan.org/tx/0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec
+// Attacker : https://etherscan.io/address/0xb752def3a1fded45d6c4b9f4a8f18e645b41b324
+// Attack Contract : https://etherscan.io/address/0x83e056ba00beae4d8aa83deb326a90a4e100d0c1
+// Vulnerable Contract : https://etherscan.io/address/0x8301ae4fc9c624d1d396cbdaa1ed877821d7c511
+// Attack Tx : https://etherscan.io/tx/0x2e7dc8b2fb7e25fd00ed9565dcc0ad4546363171d5e00f196d48103983ae477c
 
 // @Info
-// Vulnerable Contract Code : https://etherscan.io/address/0x6326debbaa15bcfe603d831e7d75f4fc10d9b43e#code
+// Vulnerable Contract Code : https://etherscan.io/address/0x8301ae4fc9c624d1d396cbdaa1ed877821d7c511#code
 
 // @Analysis
 // Post-mortem : https://hackmd.io/@LlamaRisk/BJzSKHNjn
