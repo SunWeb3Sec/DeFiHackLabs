@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-257 incidents included.
+258 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230802 Uwerx](#20230802-uwerx---fault-logic)
 
 [20230801 LeetSwap](#20230801-leetswap---access-control)
 
@@ -589,6 +591,31 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+### 20230802 Uwerx - Fault logic
+
+### Lost: ~$176ETH
+
+Test
+
+```
+forge test --contracts ./src/test/Uwerx_exp.sol -vvv
+```
+
+#### Contract
+
+[Uwerx_exp.sol](src/test/Uwerx_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/deeberiroz/status/1686683788795846657
+
+https://twitter.com/CertiKAlert/status/1686667720920625152
+
+https://etherscan.io/tx/0x3b19e152943f31fe0830b67315ddc89be9a066dc89174256e17bc8c2d35b5af8
+
+---
 
 ### 20230801 LeetSwap - Access Control
 
