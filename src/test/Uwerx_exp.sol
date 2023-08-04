@@ -25,8 +25,7 @@ contract ContractTest is Test {
     Uni_Pair_V2 pair = Uni_Pair_V2(0xa41529982BcCCDfA1105C6f08024DF787CA758C4);
     
     function setUp() public {
-        // vm.createSelectFork("https://eth.llamarpc.com", 17826202);
-        vm.createSelectFork("http://127.0.0.1:8545");
+        vm.createSelectFork("https://eth.llamarpc.com", 17826202);
         vm.label(address(WETH), "WETH");
         vm.label(address(WERX), "WERX");
         vm.label(address(Router), "Router");
