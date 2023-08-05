@@ -21,6 +21,8 @@ The Web3 Cybersecurity Academy plans the following series of topics:
 - Lesson 4: Web3 Project Security Practice Requirements ( [English](https://github.com/slowmist/Web3-Project-Security-Practice-Requirements)  | [中文](https://github.com/slowmist/Web3-Project-Security-Practice-Requirements/blob/main/README_zh_CN.md) ) 
 - Lesson 5: Lending/Borrowing DeFi Attacks ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-5-lendingborrowing))
 - Lesson 6: DeFi Slippage Attacks ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-6-defi-slippage))
+- Lesson 7: Automated brain process for smart contract auditing ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-7-automated))
+- Lesson 8: Exploiting Precision Loss via Fuzz Testing ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-8-exploiting))
 
 ### Move programming language secure development
 - Lesson 1: Security Analysis of the Move Language – Game Changer of Smart Contracts ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/01_move_sec_intro/en)  | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/01_move_sec_intro) ) 
@@ -36,3 +38,4 @@ The Web3 Cybersecurity Academy plans the following series of topics:
 - Lesson 6: Report stolen ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/06_Report_stolen/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/06_Report_stolen/) )
 - Lesson 7: Offline signatures can drain your wallet ( Part 1/2 [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/07_offline_sign/7-1/en) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/07_offline_sign/7-1/readme.md), Part 2/2 [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/07_offline_sign/7-2/en/readme.md) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/07_offline_sign//7-2/readme.md))
 - Lesson 8: Anti phishing plugin ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/08_Anti_phishing_plugin/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/user_awareness/08_Anti_phishing_plugin/) )
+- Lesson 9: The Intricate Shadow Transactions Attack Deciphered ([English](https://defihacklabs.substack.com/p/user-asset-security-lesson-9-the)) 
