@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-258 incidents included.
+259 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -49,6 +49,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230722 ConicFinance02](#20230722-conic-finance-02---price-manipulation)
 
 [20230721 ConicFinance](#20230721-conic-finance---read-only-reentrancy--misconfiguration)
+
+[20230721 SUT](#20230721-sut---business-logic-flaw)
 
 [20230720 Utopia](#20230720-utopia---business-logic-flaw)
 
@@ -592,7 +594,6 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-
 ### 20230802 Uwerx - Fault logic
 
 ### Lost: ~$176ETH
@@ -764,6 +765,26 @@ forge test --contracts ./src/test/Conic_exp.sol -vvv
 https://medium.com/@ConicFinance/post-mortem-eth-and-crvusd-omnipool-exploits-c9c7fa213a3d
 
 https://twitter.com/BlockSecTeam/status/1682356244299010049
+
+---
+
+### 20230721 SUT - Business Logic Flaw
+
+### Lost: ~$8k
+
+Testing
+
+```
+forge test --contracts ./src/test/SUT_exp.sol -vvv
+```
+
+#### Contract
+
+[SUT_exp.sol](src/test/SUT_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/bulu4477/status/1682983956080377857
 
 ---
 
