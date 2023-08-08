@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-259 incidents included.
+260 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20230802 Uwerx](#20230802-uwerx---fault-logic)
+
+[20230801 NeutraFinance](#20230801-neutrafinance---fault-logic)
 
 [20230801 LeetSwap](#20230801-leetswap---access-control)
 
@@ -615,6 +617,26 @@ https://twitter.com/deeberiroz/status/1686683788795846657
 https://twitter.com/CertiKAlert/status/1686667720920625152
 
 https://etherscan.io/tx/0x3b19e152943f31fe0830b67315ddc89be9a066dc89174256e17bc8c2d35b5af8
+
+---
+
+### 20230801 NeutraFinance - Fault logic
+
+### Lost: ~$23ETH
+
+Test
+
+```
+forge test --contracts ./src/test/NeutraFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[NeutraFinance_exp.sol](src/test/NeutraFinance_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/phalcon_xyz/status/1686654241111429120
 
 ---
 
