@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-260 incidents included.
+261 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -39,6 +39,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230801 NeutraFinance](#20230801-neutrafinance---fault-logic)
 
 [20230801 LeetSwap](#20230801-leetswap---access-control)
+
+[20230731 GYMNET](#20230731-gymnet---business-logic-flaw)
 
 [20230730 Curve](#20230730-curve---vyper-compiler-bug--reentrancy)
 
@@ -659,6 +661,26 @@ forge test --contracts ./src/test/Leetswap_exp.sol -vvv
 https://twitter.com/BlockSecTeam/status/1686217464051539968
 
 https://twitter.com/peckshield/status/1686209024587710464
+
+---
+
+### 20230731 GYMNET - Business Logic Flaw
+
+### Lost: Unclear
+
+Test
+
+```
+forge test --contracts ./src/test/GYMNET_exp.sol -vvv
+```
+
+#### Contract
+
+[GYMNET_exp.sol](src/test/GYMNET_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/AnciliaInc/status/1686605510655811584
 
 ---
 
