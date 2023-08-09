@@ -23,7 +23,7 @@ interface IENF_ETHLEV is IERC20 {
 
     function withdraw(uint256 assets, address receiver) external returns(uint256);
 
-    function convertToAssets(uint256 assets) external view returns(uint256);
+    function convertToAssets(uint256 shares) external view returns(uint256);
 
     function totalAssets() external view returns(uint256);
 }
