@@ -40,7 +40,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230801 LeetSwap](#20230801-leetswap---access-control)
 
-[20230731 GYMNET](#20230731-gymnet---business-logic-flaw)
+[20230731 GYMNET](#20230731-gymnet---insufficient-validation)
 
 [20230730 Curve](#20230730-curve---vyper-compiler-bug--reentrancy)
 
@@ -664,7 +664,7 @@ https://twitter.com/peckshield/status/1686209024587710464
 
 ---
 
-### 20230731 GYMNET - Business Logic Flaw
+### 20230731 GYMNET - Insufficient validation
 
 ### Lost: Unclear
 

