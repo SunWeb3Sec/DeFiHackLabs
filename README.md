@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-261 incidents included.
+262 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230809 EarningFram](#20230809-earningfram---reentrancy)
 
 [20230802 Uwerx](#20230802-uwerx---fault-logic)
 
@@ -597,6 +599,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230809 EarningFram - Reentrancy
+
+### Lost: ~$286k
+
+Test
+
+```
+forge test --contracts ./src/test/EarningFram_exp.sol -vvv
+```
+
+#### Contract
+
+[EarningFram_exp.sol](src/test/EarningFram_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1689182459269644288
+
+---
 
 ### 20230802 Uwerx - Fault logic
 
