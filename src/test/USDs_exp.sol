@@ -22,7 +22,7 @@ contract USDsTest is Test {
     address ATTACKER_CONTRACT = address(0xdeadbeef);
 
     function setUp() public {
-        vm.createSelectFork("arbitrum", 57803529);
+        vm.createSelectFork("arbitrum", 57_803_529);
 
         vm.label(address(usds), "USDs");
         vm.label(0x97A7E6Cf949114Fe4711018485D757b9c4962307, "USDsImpl");
@@ -43,9 +43,6 @@ contract USDsTest is Test {
         vm.prank(ATTACKER_CONTRACT);
         usds.transfer(address(this), 1);
 
-        console.log(
-            "Attacker Contract balance after: ",
-            usds.balanceOf(ATTACKER_CONTRACT)
-        );
+        console.log("Attacker Contract balance after: ", usds.balanceOf(ATTACKER_CONTRACT));
     }
 }

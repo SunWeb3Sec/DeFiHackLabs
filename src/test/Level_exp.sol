@@ -83,7 +83,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker LVL Token balance after exploit", LVL.balanceOf(address(this)), LVL.decimals()
-        );
+            );
     }
 
     function createReferral() internal {

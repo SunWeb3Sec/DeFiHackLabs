@@ -35,10 +35,7 @@ contract contractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork(
-            "optimism",
-            90_760_765
-        );
+        cheats.createSelectFork("optimism", 90_760_765);
         cheats.label(address(WBTC), "WBTC");
         cheats.label(address(USDC), "USDC");
         cheats.label(address(SNX), "SNX");
@@ -67,14 +64,14 @@ contract contractTest is Test {
         emit log_named_decimal_uint("Attacker ETH balance after exploit", address(this).balance, 18);
         emit log_named_decimal_uint(
             "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-        );
+            );
         emit log_named_decimal_uint("Attacker SNX balance after exploit", SNX.balanceOf(address(this)), SNX.decimals());
         emit log_named_decimal_uint(
             "Attacker sUSD balance after exploit", sUSD.balanceOf(address(this)), sUSD.decimals()
-        );
+            );
         emit log_named_decimal_uint(
             "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
-        );
+            );
         emit log_named_decimal_uint("Attacker DAI balance after exploit", DAI.balanceOf(address(this)), DAI.decimals());
     }
 

