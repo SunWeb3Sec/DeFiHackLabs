@@ -36,7 +36,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230802 Uwerx](#20230802-uwerx---fault-logic)
 
-[20230801 NeutraFinance](#20230801-neutrafinance---fault-logic)
+[20230801 NeutraFinance](#20230801-neutrafinance---price-manipulation)
 
 [20230801 LeetSwap](#20230801-leetswap---access-control)
 
@@ -620,7 +620,7 @@ https://etherscan.io/tx/0x3b19e152943f31fe0830b67315ddc89be9a066dc89174256e17bc8
 
 ---
 
-### 20230801 NeutraFinance - Fault logic
+### 20230801 NeutraFinance - Price Manipulation
 
 ### Lost: ~$23ETH
 
