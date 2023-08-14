@@ -90,7 +90,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker WBNB balance after exploit", WBNB.balanceOf(address(this)), WBNB.decimals()
-        );
+            );
     }
 
     function init() internal {

