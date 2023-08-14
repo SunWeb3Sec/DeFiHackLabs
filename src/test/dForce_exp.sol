@@ -24,7 +24,7 @@ interface IVWSTETHCRVGAUGE is IERC20 {
 }
 
 interface ICurvePools is ICurvePool {
-    function remove_liquidity(uint256 token_amount, uint256[2] memory min_amounts) external;
+    function remove_liquidity(uint256 token_amount, uint256[2] memory min_amounts) external returns (uint256[2] memory);
 }
 
 interface IDForce {
