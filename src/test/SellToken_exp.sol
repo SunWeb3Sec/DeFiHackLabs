@@ -11,10 +11,6 @@ import "./interface.sol";
 // @Summary
 // Just use `getAmountOut` as token price
 
-interface IDPPOracle {
-    function flashLoan(uint256 baseAmount, uint256 quoteAmount, address _assetTo, bytes calldata data) external;
-}
-
 interface ISellTokenRouter {
     function ShortStart(address coin, address addr, uint256 terrace) external payable;
     function withdraw(address token) external;
