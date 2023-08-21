@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-263 incidents included.
+264 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -37,6 +37,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230814 ZunamiProtocal](#20230814-zunamiprotocal---price-manipulation)
 
 [20230809 EarningFram](#20230809-earningfram---reentrancy)
+
+[20230802 CurveBurner](#20230802-curveburner---lack-slippage-protection)
 
 [20230802 Uwerx](#20230802-uwerx---fault-logic)
 
@@ -640,6 +642,26 @@ forge test --contracts ./src/test/EarningFram_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/Phalcon_xyz/status/1689182459269644288
+
+---
+
+### 20230802 CurveBurner - Lack Slippage Protection
+
+### Lost: ~$36K
+
+Test
+
+```
+forge test --contracts ./src/test/CurveBurner_exp.sol -vvv
+```
+
+#### Contract
+
+[CurveBurner_exp.sol](src/test/CurveBurner_exp.sol)
+
+#### Link Reference
+
+https://medium.com/@Hypernative/exotic-culinary-hypernative-systems-caught-a-unique-sandwich-attack-against-curve-finance-6d58c32e436b
 
 ---
 

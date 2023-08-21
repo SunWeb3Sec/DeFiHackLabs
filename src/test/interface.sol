@@ -3499,6 +3499,12 @@ interface IAaveFlashloan {
     ) external;
 
     function deposit(address asset, uint256 amount, address onBehalfOf, uint16 referralCode) external;
+    
+    function supply(address asset, uint256 amount, address onBehalfOf, uint16 referralCode) external;
+
+    function borrow(address asset, uint256 amount, uint256 interestRateMode, uint16 referralCode, address onBehalfOf) external;
+
+    function repay(address asset, uint256 amount, uint256 interestRateMode, address onBehalfOf) external returns (uint256);
 
     function withdraw(address asset, uint256 amount, address to) external returns (uint256);
 }
@@ -4139,6 +4145,16 @@ interface IERC20Metadata is IERC20 {
 }
 
 interface IWFTM is IERC20Metadata {
+    event Deposit(address indexed dst, uint256 wad);
+    event Withdrawal(address indexed src, uint256 wad);
+
+    receive() external payable;
+    fallback() external payable;
+    function deposit() external payable;
+    function withdraw(uint256 wad) external;
+}
+
+interface IWETH is IERC20Metadata {
     event Deposit(address indexed dst, uint256 wad);
     event Withdrawal(address indexed src, uint256 wad);
 
