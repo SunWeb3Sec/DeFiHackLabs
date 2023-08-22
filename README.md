@@ -36,7 +36,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230818 ExactlyProtocol](#20230818-exactlyprotocol---insufficient-validation)
 
-[20230814 ZunamiProtocal](#20230814-zunamiprotocol---price-manipulation)
+[20230814 ZunamiProtocol](#20230814-zunamiprotocol---price-manipulation)
 
 [20230809 EarningFram](#20230809-earningfram---reentrancy)
 
