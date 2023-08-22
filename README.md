@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-264 incidents included.
+265 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,7 +34,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20230814 ZunamiProtocal](#20230814-zunamiprotocal---price-manipulation)
+[20230818 ExactlyProtocol](#20230818-exactlyprotocol---insufficient-validation)
+
+[20230814 ZunamiProtocal](#20230814-zunamiprotocol---price-manipulation)
 
 [20230809 EarningFram](#20230809-earningfram---reentrancy)
 
@@ -604,7 +606,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20230814 ZunamiProtocal - Price Manipulation
+### 20230818 ExactlyProtocol - insufficient validation
+
+### Lost: ~$7M
+
+Test
+
+```
+forge test --contracts ./src/test/Exactly_exp.sol -vvv
+```
+
+#### Contract
+
+[Exactly_exp.sol](src/test/Exactly_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1692533280971936059
+
+---
+
+### 20230814 ZunamiProtocol - Price Manipulation
 
 ### Lost: ~$2M
 
