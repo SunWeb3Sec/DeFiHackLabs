@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-265 incidents included.
+266 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -81,6 +81,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230711 Libertify](#20230711-libertify---reentrancy)
 
 [20230710 ArcadiaFi](#20230710-arcadiafi---reentrancy)
+
+[20230708 CIVNFT](#20230708-civnft---lack-of-access-control)
 
 [20230708 Civfund](#20230708-civfund---lack-of-access-control)
 
@@ -635,6 +637,7 @@ Test
 ```
 forge test --contracts ./src/test/Zunami_exp.sol --evm-version 'shanghai' -vvv
 ```
+
 #### Contract
 
 [Zunami_exp.sol](src/test/Zunami_exp.sol)
@@ -1110,6 +1113,30 @@ forge test --contracts ./src/test/ArcadiaFi_exp.sol -vvv
 https://twitter.com/Phalcon_xyz/status/1678250590709899264
 
 https://twitter.com/peckshield/status/1678265212770693121
+
+---
+
+### 20230708 CIVNFT - Lack of access control
+
+### Lost: ~$180k
+
+Testing
+
+```
+forge test --contracts .src/test/CIVNFT_exp.sol -vvv
+```
+
+#### Contract
+
+[CIVNFT_exp.sol](src/test/CIVNFT_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1677722208893022210
+
+https://news.civfund.org/civtrade-hack-analysis-9a2398a6bc2e
+
+https://blog.solidityscan.com/civnft-hack-analysis-4ee79b8c33d1
 
 ---
 
