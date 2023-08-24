@@ -4843,7 +4843,7 @@ abstract contract Nonces {
      */
     error InvalidAccountNonce(address account, uint256 currentNonce);
 
-    mapping(address account => uint256) private _nonces;
+    mapping(address => uint256) private _nonces;
 
     /**
      * @dev Returns an the next unused nonce for an address.

@@ -42,9 +42,9 @@ interface ILIFI {
 }
 
 contract ContractTest is DSTest {
-    address from = address(0x00c6f2bde06967e04caaf4bf4e43717c3342680d76);
-    address lifi = address(0x005a9fd7c39a6c488e715437d7b1f3c823d5596ed1);
-    address exploiter = address(0x00878099f08131a18fab6bb0b4cfc6b6dae54b177e);
+    address from = address(0xC6f2bDE06967E04caAf4bF4E43717c3342680d76);
+    address lifi = address(0x5A9Fd7c39a6C488E715437D7b1f3C823d5596eD1);
+    address exploiter = address(0x878099F08131a18Fab6bB0b4Cfc6B6DAe54b177E);
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
