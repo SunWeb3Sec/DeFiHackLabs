@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-266 incidents included.
+267 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230824 GSS](#20230824-gss---skim-token-balance)
 
 [20230818 ExactlyProtocol](#20230818-exactlyprotocol---insufficient-validation)
 
@@ -607,6 +609,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230824 GSS - skim token balance
+
+### Lost: ~$25K
+
+Test
+
+```
+forge test --contracts ./src/test/GSS_exp.sol -vvv
+```
+
+#### Contract
+
+[GSS_exp.sol](src/test/GSS_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/bbbb/status/1694571228185723099
+
+---
 
 ### 20230818 ExactlyProtocol - insufficient validation
 
