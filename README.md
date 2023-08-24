@@ -1123,7 +1123,7 @@ https://twitter.com/peckshield/status/1678265212770693121
 Testing
 
 ```
-forge test --contracts .src/test/CIVNFT_exp.sol -vvv
+forge test --contracts ./src/test/CIVNFT_exp.sol -vvv
 ```
 
 #### Contract
@@ -1147,7 +1147,7 @@ https://blog.solidityscan.com/civnft-hack-analysis-4ee79b8c33d1
 Testing
 
 ```
-forge test --contracts .src/test/Civfund_exp.sol -vvv
+forge test --contracts ./src/test/Civfund_exp.sol -vvv
 ```
 
 #### Contract
