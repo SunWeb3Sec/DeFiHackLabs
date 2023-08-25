@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-267 incidents included.
+268 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -77,6 +77,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230717 NewFi](#20230717-newfi---lack-slippage-protection)
 
 [20230712 Platypus](#20230712-platypus---bussiness-logic-flaw)
+
+[20230712 WGPT](#20230712-wgpt---business-logic-flaw)
 
 [20230711 RodeoFinance](#20230711-rodeofinance---twap-oracle-manipulation)
 
@@ -1067,6 +1069,28 @@ forge test --contracts ./src/test/Platypus02_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/peckshield/status/1678800450303164431
+
+---
+
+### 20230712 WGPT - Business Logic Flaw
+
+### Lost: ~$80k
+
+Testing
+
+```
+forge test --contracts ./src/test/WGPT_exp.sol -vvv
+```
+
+#### Contract
+
+[WGPT_exp.sol](src/test/WGPT_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1679042549946933248
+
+https://twitter.com/BeosinAlert/status/1679028240982368261
 
 ---
 
