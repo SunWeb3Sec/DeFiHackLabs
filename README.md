@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-268 incidents included.
+269 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230826 SVT](#20230826-svt---flawed-price-calculation)
 
 [20230824 GSS](#20230824-gss---skim-token-balance)
 
@@ -611,6 +613,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230824 SVT - flawed price calculation
+
+### Lost: ~$400K
+
+Test
+
+```
+forge test --contracts ./src/test/SVT_exp.sol -vvv
+```
+
+#### Contract
+
+[SVT_exp.sol](src/test/SVT_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1695285435671392504?s=20
+
+---
 
 ### 20230824 GSS - skim token balance
 
