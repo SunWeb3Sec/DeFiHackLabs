@@ -614,7 +614,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20230824 SVT - flawed price calculation
+### 20230826 SVT - flawed price calculation
 
 ### Lost: ~$400K
 
