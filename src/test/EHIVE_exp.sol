@@ -13,6 +13,18 @@ import "./interface.sol";
 
 // @Analysis
 // https://twitter.com/bulu4477/status/1693636187485872583
+// In the EHIVE contract, the function stake() incorrectly updates the 'staked' value before calculating 'earned' 
+// As a result, an attacker only needs to initially stake 0 value of EHIVE, wait for a period of time, 
+// and then stake a certain amount of EHIVE to earn a large amount of EHIVE. Subsequently, they can unstake and sell it for profit
+// @Vulnerability code
+// //Check user is registered as staker
+//     if (isStaking(msg.sender, validator)) {
+//         _stakers[msg.sender][validator].staked += stakeAmount;
+//         _stakers[msg.sender][validator].earned += _userEarned(msg.sender, validator);
+//         _stakers[msg.sender][validator].start = block.timestamp;
+//     } else {
+//         _stakers[msg.sender][validator] = Staker(msg.sender, block.timestamp, stakeAmount, 0);
+//     }
 
 interface IEHIVE is IERC20 {
     function stake(uint256 stakeAmount, uint256 validator) external;
