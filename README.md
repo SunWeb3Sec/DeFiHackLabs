@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-270 incidents included.
+271 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -39,6 +39,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230826 SVT](#20230826-svt---flawed-price-calculation)
 
 [20230824 GSS](#20230824-gss---skim-token-balance)
+
+[20230821 EHIVE](#20230821-ehive---business-logic-flaw)
 
 [20230818 ExactlyProtocol](#20230818-exactlyprotocol---insufficient-validation)
 
@@ -673,6 +675,26 @@ forge test --contracts ./src/test/GSS_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/bbbb/status/1694571228185723099
+
+---
+
+### 20230821 EHIVE - Business Logic Flaw
+
+### Lost: ~$15K
+
+Test
+
+```
+forge test --contracts ./src/test/EHIVE_exp.sol -vvv
+```
+
+#### Contract
+
+[EHIVE_exp.sol](src/test/EHIVE_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/bulu4477/status/1693636187485872583
 
 ---
 
