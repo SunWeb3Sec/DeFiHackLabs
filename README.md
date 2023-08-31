@@ -628,7 +628,7 @@ forge test --contracts ./src/test/EAC_exp.sol -vvv
 
 #### Contract
 
-[SVT_exp.sol](src/test/EAC_exp.sol)
+[EAC_exp.sol](src/test/EAC_exp.sol)
 
 #### Link Reference
 
