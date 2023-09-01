@@ -4464,6 +4464,12 @@ interface IERC4626 is IERC20 {
 
 }
 
+interface IPresaleV4 {
+    function directTotalTokensSold() external view returns (uint256);
+    function maxTokensToSell() external view returns (uint256);
+    function buyWithEthDynamic(uint256 amount) payable external returns (bool);
+}
+
 /// @notice Arithmetic library with operations for fixed-point numbers.
 /// @author Solmate (https://github.com/transmissions11/solmate/blob/main/src/utils/FixedPointMathLib.sol)
 /// @author Inspired by USM (https://github.com/usmfum/USM/blob/master/contracts/WadMath.sol)

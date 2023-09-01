@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-271 incidents included.
+272 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -41,6 +41,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230824 GSS](#20230824-gss---skim-token-balance)
 
 [20230821 EHIVE](#20230821-ehive---business-logic-flaw)
+
+[20230819 BTC20](#20230819-btc20---price-manipulation)
 
 [20230818 ExactlyProtocol](#20230818-exactlyprotocol---insufficient-validation)
 
@@ -695,6 +697,26 @@ forge test --contracts ./src/test/EHIVE_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/bulu4477/status/1693636187485872583
+
+---
+
+### 20230819 BTC20 - Price Manipulation
+
+### Lost: ~$18ETH
+
+Test
+
+```
+forge test --contracts ./src/test/BTC20_exp.sol -vvv
+```
+
+#### Contract
+
+[BTC20_exp.sol](src/test/BTC20_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/DecurityHQ/status/1692924369662513472
 
 ---
 
