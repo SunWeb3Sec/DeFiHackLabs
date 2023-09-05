@@ -28,12 +28,9 @@ interface IConic {
     ) external returns (uint256);
 }
 
-interface IWETH is WETH {
-    function deposit() external payable;
-}
 
 contract ConicFinanceTest is Test {
-    IWETH WETH = IWETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    IWETH WETH = IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
     IERC20 rETH = IERC20(0xae78736Cd615f374D3085123A210448E74Fc6393);
     IERC20 stETH = IERC20(0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84);
     IERC20 cbETH = IERC20(0xBe9895146f7AF43049ca1c1AE358B0541Ea49704);
