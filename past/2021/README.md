@@ -2,6 +2,8 @@
 
 ## Before 2021 - List of Past DeFi Incidents
 
+37 incidents included.
+
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
 [20211218 Grim Finance](#20211218-grim-finance---flashloan--reentrancy)
@@ -50,8 +52,6 @@
 
 [20210519 PancakeBunny](#20210519-pancakebunny---price-oracle-manipulation)
 
-[20210125 Sushi Badger Digg](#20210125-sushi-badger-digg---sandwich-attack)
- 
 [20210508 Rari Capital](#20210509-raricapital---cross-contract-reentrancy)
 
 [20210508 Value Defi](#20210508-value-defi---cross-contract-reentrancy)
@@ -61,6 +61,8 @@
 [20210308 DODO](#20210308-dodo---flashloan-attack)
 
 [20210305 Paid Network](#20210305-paid-network---private-key-compromised)
+
+[20210125 Sushi Badger Digg](#20210125-sushi-badger-digg---sandwich-attack)
 
 [20201229 Cover Protocol](#20201229-cover-protocol)
 
