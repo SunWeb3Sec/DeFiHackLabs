@@ -2,7 +2,7 @@
 
 ## 2022 - List of Past DeFi Incidents
 
-118 incidents included.
+119 incidents included.
 
 [20221230 DFS](#20221230---dfs---insufficient-validation--flashloan)
 
