@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-272 incidents included.
+273 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -482,8 +482,6 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220329 Redacted Cartel](#20220329-redacted-cartel---custom-approval-logic)
 
-[20220328 SafeMoon Hack](#20230328-safemoon-hack)
-
 [20220327 Revest Finance](#20220327-revest-finance---reentrancy)
 
 [20220326 Auctus](#20220326-auctus)
@@ -567,11 +565,6 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20210519 PancakeBunny](#20210519-pancakebunny---price-oracle-manipulation)
 
-[20210125 Sushi Badger Digg](#20210125-sushi-badger-digg---sandwich-attack)
-
-</details>
-<details> <summary> Before 2020 </summary>
-
 [20210508 Rari Capital](#20210509-raricapital---cross-contract-reentrancy)
 
 [20210508 Value Defi](#20210508-value-defi---cross-contract-reentrancy)
@@ -581,6 +574,11 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20210308 DODO](#20210308-dodo---flashloan-attack)
 
 [20210305 Paid Network](#20210305-paid-network---private-key-compromised)
+
+[20210125 Sushi Badger Digg](#20210125-sushi-badger-digg---sandwich-attack)
+
+</details>
+<details> <summary> Before 2020 </summary>
 
 [20201229 Cover Protocol](#20201229-cover-protocol)
 
