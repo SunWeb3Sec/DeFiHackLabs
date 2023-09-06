@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-278 incidents included.
+279 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20230906 Flood](#20230906-flood---rebasing-logic-issue)
+
+[20230905 HeavensGate](#20230905-HeavensGate---rebasing-logic-issue)
 
 [20230902 DAppSocial](#20230902-dappsocial---business-logic-flaw)
 
@@ -641,6 +643,26 @@ forge test --contracts ./src/test/Flood_exp.sol -vvv
 https://twitter.com/PeckShieldAlert/status/1698962105058361392
 
 https://explorer.phalcon.xyz/tx/eth/0x1274b32d4dfacd2703ad032e8bd669a83f012dde9d27ed92e4e7da0387adafe4?line=1408
+
+---
+
+### 20230905 HeavensGate - Rebasing logic issue
+
+### Lost: ~$6ETH
+
+Test
+
+```
+forge test --contracts ./src/test/HeavensGate_exp.sol -vvv
+```
+
+#### Contract
+
+[HeavensGate_exp.sol](src/test/HeavensGate_exp.sol)
+
+#### Link Reference
+
+https://explorer.phalcon.xyz/tx/eth/0xe28ca1f43036f4768776805fb50906f8172f75eba3bf1d9866bcd64361fda834
 
 ---
 
