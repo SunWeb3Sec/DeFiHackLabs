@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-277 incidents included.
+278 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20230906 Flood](#20230906-flood---rebasing-logic-issue)
+
+[20230902 DAppSocial](#20230902-dappsocial---business-logic-flaw)
 
 [20230829 EAC](#20230829-eac---price-manipulation)
 
@@ -620,7 +622,6 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-
 ### 20230906 Flood - Rebasing logic issue
 
 ### Lost: ~$40ETH
@@ -638,7 +639,29 @@ forge test --contracts ./src/test/Flood_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/PeckShieldAlert/status/1698962105058361392
+
 https://explorer.phalcon.xyz/tx/eth/0x1274b32d4dfacd2703ad032e8bd669a83f012dde9d27ed92e4e7da0387adafe4?line=1408
+
+---
+
+### 20230902 DAppSocial - Business Logic Flaw
+
+### Lost: ~$16K
+
+Test
+
+```
+forge test --contracts ./src/test/DAppSocial_exp.sol -vvv
+```
+
+#### Contract
+
+[DAppSocial_exp.sol](src/test/DAppSocial_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/DecurityHQ/status/1698064511230464310
+
 ---
 
 ### 20230829 EAC - Price Manipulation
