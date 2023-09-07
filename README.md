@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-279 incidents included.
+280 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -127,6 +127,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230620 MIM](#20230620-mimspell---arbitrary-external-call-vulnerability)
 
 [20230618 ARA](#20230618-ara---incorrect-handling-of-permissions)
+
+[20230617 Pawnfi](#20230617-pawnfi---business-logic-flaw)
 
 [20230615 CFC](#20230615-cfc---uniswap-skim-token-balance-attack)
 
@@ -1605,6 +1607,26 @@ forge test --contracts ./src/test/ARA_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/BeosinAlert/status/1670638160550965248
+
+---
+
+### 20230617 Pawnfi - Business Logic Flaw
+
+### Lost: ~$820K
+
+Testing
+
+```
+forge test --contracts ./src/test/Pawnfi_exp.sol -vvv
+```
+
+#### Contract
+
+[Pawnfi_exp.sol](src/test/Pawnfi_exp.sol)
+
+#### Link Reference
+
+https://blog.solidityscan.com/pawnfi-hack-analysis-38ac9160cbb4
 
 ---
 
