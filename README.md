@@ -350,7 +350,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20221026 N00d Token](#20221026-n00d-token---reentrancy)
 
-[20221026 ULME](#20221026-ulme---access-control)
+[20221025 ULME](#20221025-ulme---access-control)
 
 [20221024 Market](#20221024-market---read-only-reentrancy)
 
@@ -3947,9 +3947,9 @@ https://twitter.com/AnciliaInc/status/1584955717877784576
 
 ---
 
-### 20221026 ULME - Access Control
+### 20221025 ULME - Access Control
 
-### Lost ~200k US$ which resulted in ~50k profit
+### Lost ~250k US$ which resulted in ~50k profit
 
 Testing
 
@@ -3959,12 +3959,15 @@ forge test --contracts ./src/test/ULME.sol -vvv
 
 #### Contract
 
-[ULME.sol](src/test/ULME.sol)
+[ULME.sol](src/test/ULME.sol) | [ULME_exp2.sol](src/test/ULME_exp2.sol)
 
 #### Link reference
 
 https://twitter.com/BlockSecTeam/status/1584839309781135361
+
 https://twitter.com/BeosinAlert/status/1584888021299916801
+
+https://medium.com/neptune-mutual/decoding-ulme-token-flash-loan-attack-56470d261787
 
 ---
 
