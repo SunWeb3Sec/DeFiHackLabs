@@ -3949,7 +3949,7 @@ https://twitter.com/AnciliaInc/status/1584955717877784576
 
 ### 20221025 ULME - Access Control
 
-### Lost ~200k US$ which resulted in ~50k profit
+### Lost ~250k US$ which resulted in ~50k profit
 
 Testing
 
