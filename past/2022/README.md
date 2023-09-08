@@ -70,7 +70,7 @@
 
 [20221026 N00d Token](#20221026-n00d-token---reentrancy)
 
-[20221026 ULME](#20221026-ulme---access-control)
+[20221025 ULME](#20221025-ulme---access-control)
 
 [20221024 Market](#20221024-market---read-only-reentrancy)
 
@@ -941,7 +941,7 @@ https://twitter.com/AnciliaInc/status/1584955717877784576
 
 ---
 
-### 20221026 ULME - Access Control
+### 20221025 ULME - Access Control
 
 ### Lost ~250k US$ which resulted in ~50k profit
 
