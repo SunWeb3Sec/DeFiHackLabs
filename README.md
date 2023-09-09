@@ -316,7 +316,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20221201 APC](#20221201---apc---flashloan--price-manipulation)
 
-[20221129 MBC](#20221129---mbc---business-logic-flaw--access-control)
+[20221129 MBC & ZZSH](#20221129---mbc--zzsh---business-logic-flaw--access-control)
 
 [20221129 SEAMAN](#20221129---seaman---business-logic-flaw)
 
@@ -3575,19 +3575,19 @@ https://twitter.com/BlockSecTeam/status/1598262002010378241
 
 ---
 
-### 20221129 - MBC - Business Logic Flaw & Access Control
+### 20221129 - MBC & ZZSH - Business Logic Flaw & Access Control
 
-### Lost $5.6k
+### Lost $5.9k
 
 Testing
 
 ```sh
-forge test --contracts ./src/test/MBC_exp.sol -vvv
+forge test --contracts ./src/test/MBC_ZZSH_exp.sol -vvv
 ```
 
 #### Contract
 
-[MBC_exp.sol](src/test/MBC_exp.sol)
+[MBC_ZZSH_exp.sol](../../src/test/MBC_ZZSH_exp.sol)
 
 #### Link reference
 
