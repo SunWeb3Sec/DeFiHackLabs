@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-280 incidents included.
+281 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -293,6 +293,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20221223 Defrost](#20221223---defrost---reentrancy)
 
 [20221214 Nmbplatform](#20221214---nmbplatform---flashloan-price-manipulation)
+
+[20221214 FPR](#20221214---fpr---access-control)
 
 [20221213 ElasticSwap](#20221213---elasticswap---business-logic-flaw)
 
@@ -3348,6 +3350,28 @@ forge test --contracts ./src/test/Nmbplatform_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/BlockSecTeam/status/1602877048124735489
+
+---
+
+### 20221214 - FPR - Access Control
+
+### Lost: $29k
+
+Testing
+
+```sh
+forge test --contracts ./src/test/FPR_exp.sol -vvv
+```
+
+#### Contract
+
+[FPR_exp.sol](../../src/test/FPR_exp.sol)
+
+#### Link reference
+
+https://twitter.com/peckshield/status/1603226968706936832
+
+https://twitter.com/chainlight_io/status/1603282848311480320
 
 ---
 
