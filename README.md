@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-281 incidents included.
+282 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230908 APIG](#20230908-apig---business-logic-flaw)
 
 [20230906 Flood](#20230906-flood---rebasing-logic-issue)
 
@@ -627,6 +629,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230908 APIG - Business Logic Flaw
+
+### Lost: ~$169K
+
+Test
+
+```
+forge test --contracts ./src/test/APIG_exp.sol -vvv
+```
+
+#### Contract
+
+[APIG_exp.sol](src/test/APIG_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/CertiKAlert/status/1700128158647734745
+
+---
 
 ### 20230906 Flood - Rebasing logic issue
 
