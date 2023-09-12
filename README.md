@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-283 incidents included.
+284 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -37,6 +37,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230909 BFCToken](#20230909-bfctoken---business-logic-flaw)
 
 [20230908 APIG](#20230908-apig---business-logic-flaw)
+
+[20230907 HCT](#20230907-hct---price-manipulation)
 
 [20230906 Flood](#20230906-flood---rebasing-logic-issue)
 
@@ -669,6 +671,26 @@ forge test --contracts ./src/test/APIG_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/CertiKAlert/status/1700128158647734745
+
+---
+
+### 20230907 HCT - Price Manipulation
+
+### Lost: ~$30.5BNB
+
+Test
+
+```
+forge test --contracts ./src/test/HCT_exp.sol -vvv
+```
+
+#### Contract
+
+[HCT_exp.sol](src/test/HCT_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/leovctech/status/1699775506785198499
 
 ---
 
