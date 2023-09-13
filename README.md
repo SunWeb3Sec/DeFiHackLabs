@@ -712,7 +712,7 @@ forge test --contracts ./src/test/FloorDAO_exp.sol -vvv
 
 https://twitter.com/PeckShieldAlert/status/1698962105058361392
 
-https://explorer.phalcon.xyz/tx/eth/0x1274b32d4dfacd2703ad032e8bd669a83f012dde9d27ed92e4e7da0387adafe4?line=1408
+https://publication.floor.xyz/floor-post-mortem-incident-summary-september-5-2023-e054a2d5afa4
 
 ---
 

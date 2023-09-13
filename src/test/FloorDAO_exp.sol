@@ -1,14 +1,17 @@
-
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-/* @KeyInfo -- Total Lost : 40 eth
-    Attacker Transaction : https://explorer.phalcon.xyz/tx/eth/0x1274b32d4dfacd2703ad032e8bd669a83f012dde9d27ed92e4e7da0387adafe4
-    Test: forge test --mc FloodStakingExploit -vv
-    */
+// @KeyInfo -- Total Lost : ~40 eth
+// Attacker : https://etherscan.io/address/0x4453aed57c23a50d887a42ad0cd14ff1b819c750
+// Attack Contract : https://etherscan.io/address/0x6ce5a85cff4c70591da82de5eb91c3fa38b40595
+// Attacker Transaction : https://explorer.phalcon.xyz/tx/eth/0x1274b32d4dfacd2703ad032e8bd669a83f012dde9d27ed92e4e7da0387adafe4
+
+// @Analysis
+// https://twitter.com/PeckShieldAlert/status/1698962105058361392
+// https://publication.floor.xyz/floor-post-mortem-incident-summary-september-5-2023-e054a2d5afa4
 
 
 interface IFloodStaking {
