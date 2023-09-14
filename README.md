@@ -40,7 +40,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230907 HCT](#20230907-hct---price-manipulation)
 
-[20230906 Flood](#20230906-flood---rebasing-logic-issue)
+[20230905 FloorDAO](#20230905-floordao---rebasing-logic-issue)
 
 [20230905 HeavensGate](#20230905-HeavensGate---rebasing-logic-issue)
 
@@ -694,25 +694,25 @@ https://twitter.com/leovctech/status/1699775506785198499
 
 ---
 
-### 20230906 Flood - Rebasing logic issue
+### 20230905 FloorDAO - Rebasing logic issue
 
 ### Lost: ~$40ETH
 
 Test
 
 ```
-forge test --contracts ./src/test/Flood_exp.sol -vvv
+forge test --contracts ./src/test/FloorDAO_exp.sol -vvv
 ```
 
 #### Contract
 
-[Flood_exp.sol](src/test/Flood_exp.sol)
+[FloorDAO_exp.sol](src/test/FloorDAO_exp.sol)
 
 #### Link Reference
 
 https://twitter.com/PeckShieldAlert/status/1698962105058361392
 
-https://explorer.phalcon.xyz/tx/eth/0x1274b32d4dfacd2703ad032e8bd669a83f012dde9d27ed92e4e7da0387adafe4?line=1408
+https://publication.floor.xyz/floor-post-mortem-incident-summary-september-5-2023-e054a2d5afa4
 
 ---
 
