@@ -734,7 +734,7 @@ forge test --contracts ./src/test/FloorDAO_exp.sol -vvv
 
 https://twitter.com/PeckShieldAlert/status/1698962105058361392
 
-https://publication.floor.xyz/floor-post-mortem-incident-summary-september-5-2023-e054a2d5afa4
+https://medium.com/floordao/floor-post-mortem-incident-summary-september-5-2023-e054a2d5afa4
 
 ---
 
