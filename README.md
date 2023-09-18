@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-284 incidents included.
+285 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230916 uniclyNFT](#20230916-uniclynft---reentrancy)
 
 [20230909 BFCToken](#20230909-bfctoken---business-logic-flaw)
 
@@ -633,6 +635,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230916 uniclyNFT - Reentrancy
+
+### Lost: 1 NFT
+
+Test
+
+```
+forge test --contracts ./src/test/uniclyNFT_exp.sol -vvv
+```
+
+#### Contract
+
+[uniclyNFT_exp.sol](src/test/uniclyNFT_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/DecurityHQ/status/1703096116047421863
+
+---
 
 ### 20230909 BFCToken - Business Logic Flaw
 
