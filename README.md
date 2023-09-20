@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-286 incidents included.
+287 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20230916 uniclyNFT](#20230916-uniclynft---reentrancy)
+
+[20230911 0x0DEX](#20230911-0x0dex---parameter-manipulation)
 
 [20230909 BFCToken](#20230909-bfctoken---business-logic-flaw)
 
@@ -655,6 +657,26 @@ forge test --contracts ./src/test/uniclyNFT_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/DecurityHQ/status/1703096116047421863
+
+---
+
+### 20230911 0x0DEX - Parameter manipulation
+
+### Lost: ~$61K
+
+Test
+
+```
+forge test --contracts ./src/test/0x0DEX_exp.sol -vvv
+```
+
+#### Contract
+
+[0x0DEX_exp.sol](src/test/0x0DEX_exp.sol)
+
+#### Link Reference
+
+https://0x0ai.notion.site/0x0ai/0x0-Privacy-DEX-Exploit-25373263928b4f18b31c438b2a040e33
 
 ---
 
