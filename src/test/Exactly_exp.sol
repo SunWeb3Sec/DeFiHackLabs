@@ -14,7 +14,7 @@ import "./interface.sol";
 // Vulnerable Contract Code : https://optimistic.etherscan.io/address/0x16748cb753a68329ca2117a7647aa590317ebf41#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
+// Post-mortem : https://medium.com/@exactly_protocol/exactly-protocol-incident-post-mortem-b4293d97e3ed
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1692533280971936059
 // Hacking God : https://www.google.com/
 

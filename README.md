@@ -52,6 +52,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230829 EAC](#20230829-eac---price-manipulation)
 
+[20230827 Balancer](#20230827-balancer---rounding-error--business-logic-flaw)
+
 [20230826 SVT](#20230826-svt---flawed-price-calculation)
 
 [20230824 GSS](#20230824-gss---skim-token-balance)
@@ -800,6 +802,27 @@ https://twitter.com/DecurityHQ/status/1698064511230464310
 
 ---
 
+### 20230827 Balancer - Rounding Error && Business Logic Flaw
+
+### Lost: ~$2M
+
+Test
+```
+forge test --contracts ./src/test/Balancer_exp.sol -vvv
+```
+
+#### Contract
+
+[Balancer_exp.sol](src/test/Balancer_exp.sol)
+
+#### Link Reference
+
+https://medium.com/balancer-protocol/rate-manipulation-in-balancer-boosted-pools-technical-postmortem-53db4b642492
+
+https://blocksecteam.medium.com/yet-another-risk-posed-by-precision-loss-an-in-depth-analysis-of-the-recent-balancer-incident-fad93a3c75d4
+
+---
+
 ### 20230829 EAC - Price Manipulation
 
 ### Lost: ~$29BNB
@@ -917,6 +940,8 @@ forge test --contracts ./src/test/Exactly_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/BlockSecTeam/status/1692533280971936059
+
+https://medium.com/@exactly_protocol/exactly-protocol-incident-post-mortem-b4293d97e3ed
 
 ---
 
