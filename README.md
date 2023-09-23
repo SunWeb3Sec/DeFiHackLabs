@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-287 incidents included.
+288 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230921 CEXISWAP](#20230921-cexiswap---incorrect-access-control)
 
 [20230916 uniclyNFT](#20230916-uniclynft---reentrancy)
 
@@ -640,6 +642,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230921 CEXISWAP - Incorrect Access Control
+
+### Lost: ~$30K
+
+Test
+
+```
+forge test --contracts ./src/test/CEXISWAP_exp.sol -vvv
+```
+
+#### Contract
+
+[CEXISWAP_exp.sol](src/test/CEXISWAP_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/DecurityHQ/status/1704759560614126030
+
+---
+
 ### 20230916 uniclyNFT - Reentrancy
 
 ### Lost: 1 NFT
@@ -807,6 +829,7 @@ https://twitter.com/DecurityHQ/status/1698064511230464310
 ### Lost: ~$2M
 
 Test
+
 ```
 forge test --contracts ./src/test/Balancer_exp.sol -vvv
 ```
