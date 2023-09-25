@@ -23,6 +23,7 @@ The Web3 Cybersecurity Academy plans the following series of topics:
 - Lesson 6: DeFi Slippage Attacks ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-6-defi-slippage))
 - Lesson 7: Automated brain process for smart contract auditing ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-7-automated))
 - Lesson 8: Exploiting Precision Loss via Fuzz Testing ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-8-exploiting))
+- Lesson 9: Comprehensive Guide to Contract Size Checks ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-9-comprehensive))
 
 ### Move programming language secure development
 - Lesson 1: Security Analysis of the Move Language – Game Changer of Smart Contracts ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/01_move_sec_intro/en)  | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/01_move_sec_intro) ) 
