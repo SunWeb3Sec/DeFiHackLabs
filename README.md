@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-291 incidents included.
+292 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230927 XSDWETHpool](#20230927-XSDWETHpool---price-manipulation)
 
 [20230921 CEXISWAP](#20230921-cexiswap---incorrect-access-control)
 
@@ -647,6 +649,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230927 XSDWETHpool - Price Manipulation
+
+### Lost: ~$56.9BNB
+
+Test
+
+```
+forge test --contracts ./src/test/XSDWETHpool_exp.sol -vvv
+```
+
+#### Contract
+
+[XSDWETHpool_exp.sol](src/test/XSDWETHpool_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/CertiKAlert/status/1706765042916450781
+
+---
 
 ### 20230921 CEXISWAP - Incorrect Access Control
 
