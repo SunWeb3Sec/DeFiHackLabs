@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-289 incidents included.
+290 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -45,6 +45,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230908 APIG](#20230908-apig---business-logic-flaw)
 
 [20230907 HCT](#20230907-hct---price-manipulation)
+
+[20230905 JumpFarm](#20230905-JumpFarm---rebasing-logic-issue)
 
 [20230905 FloorDAO](#20230905-floordao---rebasing-logic-issue)
 
@@ -761,6 +763,26 @@ forge test --contracts ./src/test/HCT_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/leovctech/status/1699775506785198499
+
+---
+
+### 20230905 JumpFarm - Rebasing logic issue
+
+### Lost: ~$2.4ETH
+
+Test
+
+```
+forge test --contracts ./src/test/JumpFarm_exp.sol -vvv
+```
+
+#### Contract
+
+[JumpFarm_exp.sol](src/test/JumpFarm_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/DecurityHQ/status/1699384904218202618
 
 ---
 
