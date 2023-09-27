@@ -58,6 +58,8 @@
 
 [20210508 Value Defi](#20210508-value-defi---cross-contract-reentrancy)
 
+[20210502 Spartan](#20210502-spartan---logic-flaw)
+
 [20210428 Uranium](#20210428-uranium---miscalculation)
 
 [20210308 DODO](#20210308-dodo---flashloan-attack)
