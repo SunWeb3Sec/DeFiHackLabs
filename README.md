@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-291 incidents included.
+292 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -598,6 +598,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20210508 Rari Capital](#20210509-raricapital---cross-contract-reentrancy)
 
 [20210508 Value Defi](#20210508-value-defi---cross-contract-reentrancy)
+
+[20210502 Spartan](#20210502-spartan---logic-flaw)
 
 [20210428 Uranium](#20210428-uranium---miscalculation)
 
@@ -6722,6 +6724,26 @@ forge test --contracts ./src/test/ValueDefi_exp.sol -vv
 https://rekt.news/rari-capital-rekt/
 
 https://bscscan.com/tx/0xa00def91954ba9f1a1320ef582420d41ca886d417d996362bf3ac3fe2bfb9006
+
+---
+
+### 20210502 Spartan - Logic Flaw
+
+#### Lost: $30.5M
+
+Testing
+
+```sh
+forge test --contracts src/test/Spartan_exp.t.sol -vv
+```
+
+#### Contract
+
+[Spartan_exp.t.sol](src/test/Spartan_exp.t.sol)
+
+#### Link reference
+
+https://rekt.news/spartan-rekt/
 
 ---
 
