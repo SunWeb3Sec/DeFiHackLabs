@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20230927 XSDWETHpool](#20230927-XSDWETHpool---price-manipulation)
+[20230927 XSDWETHpool](#20230927-XSDWETHpool---reentrancy)
 
 [20230921 CEXISWAP](#20230921-cexiswap---incorrect-access-control)
 
