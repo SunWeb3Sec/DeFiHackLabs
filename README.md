@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-288 incidents included.
+289 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -578,6 +578,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20210702 Chainswap](#20210702-chainswap---bridge-logic-flaw)
 
 [20210628 SafeDollar](#20210628-safedollar---deflationary-token-uncompatible)
+
+[20210625 xWin Finance](#20210625-xwin-finance---subscription-incentive-mechanism)
 
 [20210622 Eleven Finance](#20210622-eleven-finance---doesnt-burn-shares)
 
@@ -6520,6 +6522,26 @@ forge test --contracts src/test/SafeDollar_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/peckshield/status/1409443556251430918
+
+---
+
+### 20210625 xWin Finance - Subscription incentive mechanism
+
+### Lost: ~$300k
+
+Testing
+
+```sh
+forge test --contracts src/test/xWin_exp.sol -vvv
+```
+
+#### Contract
+
+[xWin_exp.sol](src/test/xWin_exp.sol)
+
+#### Link reference
+
+https://peckshield.medium.com/xwin-finance-incident-root-cause-analysis-71d0820e6bc1
 
 ---
 
