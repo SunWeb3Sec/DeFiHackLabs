@@ -661,6 +661,26 @@ https://bscscan.com/tx/0xa00def91954ba9f1a1320ef582420d41ca886d417d996362bf3ac3f
 
 ---
 
+### 20210502 Spartan - Logic Flaw
+
+#### Lost: $30.5M
+
+Testing
+
+```sh
+forge test --contracts src/test/Spartan_exp.t.sol -vv
+```
+
+#### Contract
+
+[Spartan_exp.t.sol](src/test/Spartan_exp.t.sol)
+
+#### Link reference
+
+https://rekt.news/spartan-rekt/
+
+---
+
 ### 20210428 Uranium - Miscalculation
 
 #### Lost: $50 million
