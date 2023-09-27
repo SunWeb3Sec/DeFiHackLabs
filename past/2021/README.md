@@ -2,7 +2,7 @@
 
 ## Before 2021 - List of Past DeFi Incidents
 
-38 incidents included.
+39 incidents included.
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
