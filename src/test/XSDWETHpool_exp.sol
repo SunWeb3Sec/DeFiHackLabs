@@ -7,13 +7,17 @@ import "./interface.sol";
 // @KeyInfo - Total Lost : ~ 56.9 BNB
 // Attacker : https://bscscan.com/address/0x506eebd8d6061202a8e8fc600bb3d5d41f475ee1
 // Attack Contract : https://bscscan.com/address/0x202e059a16d29a2f6ae0307ae3d574746b2b6305
+// Vulnerable Contract : https://bscscan.com/address/0xfadda925e10d07430f5d7461689fd90d3d81bb48
 // Attack Tx : https://bscscan.com/tx/0xbdf76f22c41fe212f07e24ca7266d436ef4517dc1395077fabf8125ebe304442
+
+// @Info
+// Vulnerable Contract Code : https://bscscan.com/address/0xfadda925e10d07430f5d7461689fd90d3d81bb48#code
 
 // @Analysis
 // Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/CertiKAlert/status/1706765042916450781
 // Hacking God : https://www.google.com/
-
+// invoke function burnpoolXSD() after executing TransferHelper.safeTransferETH();
 
 interface IXSD is IERC20 {
     function burnpoolXSD(uint _xsdamount) external;
