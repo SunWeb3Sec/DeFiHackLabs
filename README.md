@@ -650,7 +650,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20230927 XSDWETHpool - Price Manipulation
+### 20230927 XSDWETHpool - Reentrancy
 
 ### Lost: ~$56.9BNB
 
