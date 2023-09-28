@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-292 incidents included.
+293 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20230927 XSDWETHpool](#20230927-XSDWETHpool---reentrancy)
+
+[20230924 KubSplit](#20230924-kubsplit---pool-manipulation)
 
 [20230921 CEXISWAP](#20230921-cexiswap---incorrect-access-control)
 
@@ -667,6 +669,26 @@ forge test --contracts ./src/test/XSDWETHpool_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/CertiKAlert/status/1706765042916450781
+
+---
+
+### 20230924 KubSplit - Pool manipulation
+
+### Lost: ~$78K
+
+Test
+
+```
+forge test --contracts ./src/test/Kub_Split_exp.sol -vvv
+```
+
+#### Contract
+
+[Kub_Split_exp.sol](src/test/Kub_Split_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/CertiKAlert/status/1705966214319612092
 
 ---
 
