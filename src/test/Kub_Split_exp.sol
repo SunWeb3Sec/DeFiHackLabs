@@ -285,19 +285,8 @@ contract ContractTest is Test {
                     reserveBUSDT
                 );
 
-                if (KUB.balanceOf(address(this)) <= ((amountInKUB * 2) / 2)) {
-                    StakingRewards1.sell(
-                        address(KUB),
-                        address(BUSDT),
-                        amountInKUB
-                    );
-                } else {
-                    StakingRewards1.sell(
-                        address(KUB),
-                        address(BUSDT),
-                        (amountInKUB * 2) / 2
-                    );
-                }
+                StakingRewards1.sell(address(KUB), address(BUSDT), amountInKUB);
+
                 ++i;
             }
         }
