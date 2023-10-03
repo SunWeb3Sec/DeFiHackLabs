@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-293 incidents included.
+295 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20230930 FireBirdPair](#20230930-FireBirdPair---business-logic-flaw)
 
 [20230929 DEXRouter](#20230929-dexrouter---arbitrary-external-call)
 
@@ -653,6 +655,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230930 FireBirdPair - Business Logic Flaw
+
+### Lost: ~$3.2K MATIC
+
+Test
+
+```
+forge test --contracts ./src/test/FireBirdPair_exp.sol -vvv
+```
+
+#### Contract
+
+[FireBirdPair_exp.sol](src/test/FireBirdPair_exp.sol)
+
+#### Link Reference
+
+https://explorer.phalcon.xyz/tx/polygon/0x96d80c609f7a39b45f2bb581c6ba23402c20c2b6cd528317692c31b8d3948328
+
+---
 
 ### 20230929 DEXRouter - Arbitrary External Call
 
