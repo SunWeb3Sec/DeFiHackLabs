@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230929 DEXRouter](#20230929-dexrouter---arbitrary-external-call)
+
 [20230927 XSDWETHpool](#20230927-XSDWETHpool---reentrancy)
 
 [20230924 KubSplit](#20230924-kubsplit---pool-manipulation)
@@ -651,6 +653,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20230929 DEXRouter - Arbitrary External Call
+
+### Lost: ~$4K
+
+Test
+
+```
+forge test --contracts ./src/test/DEXRouter_exp.sol -vvv
+```
+
+#### Contract
+
+[DEXRouter_exp.sol](src/test/DEXRouter_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/DecurityHQ/status/1707851321909428688
+
+---
 
 ### 20230927 XSDWETHpool - Reentrancy
 
