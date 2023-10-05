@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20230930 FireBirdPair](#20230930-FireBirdPair---business-logic-flaw)
+[20230930 FireBirdPair](#20230930-FireBirdPair---lack-slippage-protection)
 
 [20230929 DEXRouter](#20230929-dexrouter---arbitrary-external-call)
 
@@ -656,7 +656,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20230930 FireBirdPair - Business Logic Flaw
+### 20230930 FireBirdPair - Lack Slippage Protection
 
 ### Lost: ~$3.2K MATIC
 
