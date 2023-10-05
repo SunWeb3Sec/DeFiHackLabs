@@ -108,18 +108,15 @@ contract ContractTest is Test {
 
     function WMATIC_HOPE_PairSwap() internal returns (uint){
         uint amountIn = 226_000_000_000_000_000_000_000;
-        uint secAmount = routerSwap(address(WMATIC), address(USDC), amount - amountIn, 1, address(ce2c_FBP), 1);
-        uint initAmount = routerSwap(address(WMATIC), address(HOPE), amountIn, 1, address(FLP), 1);
-        for (uint i=0; i<2; i++){
-            ReserveFund.collectFeeFromProtocol();
-            initAmount = routerSwap(address(HOPE), address(WMATIC), initAmount, 1, address(FLP), 1);
-            initAmount = routerSwap(address(WMATIC), address(HOPE), initAmount, 1, address(FLP), 1);
+        uint secAmount = routerSwap(address(WMATIC), address(USDC), amount - amountIn, 1, address(ce2c_FBP), 1); // swap WMATIC to USDC
+        for (uint i=0; i<3; i++){
+            amountIn = routerSwap(address(WMATIC), address(HOPE), amountIn, 1, address(FLP), 1); // swap WMATIC to HOPE, inflate WMATIC reserve in WMATIC-HOPE LP
+            ReserveFund.collectFeeFromProtocol();                                                // collect fee from protocol, burn WMATIC-HOPE LP, sent WMATIC to 'FirebirdReserveFund'
+            amountIn = routerSwap(address(HOPE), address(WMATIC), amountIn, 1, address(FLP), 1); // swap HOPE to WMATIC back
         }
-        ReserveFund.collectFeeFromProtocol();
-        routerSwap(address(HOPE), address(WMATIC), initAmount, 1, address(FLP), 1);
-        ReserveFund.sellTokensToUsdc();
-        routerSwap(address(USDC), address(WMATIC), secAmount, 1, address(ce2c_FBP), 1);
-        return initAmount;
+        ReserveFund.sellTokensToUsdc(); // 'FirebirdReserveFund' swap WMATIC to USDC without slippage protection
+        routerSwap(address(USDC), address(WMATIC), secAmount, 1, address(ce2c_FBP), 1); // swap USDC to WMATIC back
+        return amountIn;
     }
 
     function routerSwap(address tokenIn, address tokenOut, uint256 amountIn, uint256 amountOutMin, address path,
