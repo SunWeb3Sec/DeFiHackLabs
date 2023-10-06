@@ -384,6 +384,9 @@ interface IUniswapV2Pair {
     function price0CumulativeLast() external view returns (uint256);
     function price1CumulativeLast() external view returns (uint256);
     function balanceOf(address account) external view returns (uint256);
+    function approve(address spender, uint value) external returns (bool);
+    function transfer(address to, uint value) external returns (bool);
+    function transferFrom(address from, address to, uint value) external returns (bool);
 }
 
 interface IBacon {
