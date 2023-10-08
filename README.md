@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-296 incidents included.
+297 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20231007 StarsArena](#20231007-starsarena---reentrancy)
 
 [20231005 DePayRouter](#20231005-depayrouter---business-logic-flaw)
 
@@ -657,6 +659,30 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20231007 StarsArena - Reentrancy
+
+### Lost: ~$3M
+
+Test
+
+```
+forge test --contracts ./src/test/StarsArena_exp.sol -vvv
+```
+
+#### Contract
+
+[StarsArena_exp.sol](src/test/StarsArena_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1710556926986342911
+
+https://twitter.com/Phalcon_xyz/status/1710554341466395065
+
+https://twitter.com/peckshield/status/1710555944269292009
+
+---
 
 ### 20231005 DePayRouter - Business Logic Flaw
 
