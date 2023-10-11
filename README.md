@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-297 incidents included.
+298 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20231008 pSeudoEth](#20231008-pseudoeth---pool-manipulation)
 
 [20231007 StarsArena](#20231007-starsarena---reentrancy)
 
@@ -659,6 +661,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20231008 pSeudoEth - Pool manipulation
+
+### Lost: ~$2.3K
+
+Test
+
+```
+forge test --contracts ./src/test/pSeudoEth_exp.sol -vvv
+```
+
+#### Contract
+
+[pSeudoEth_exp.sol](src/test/pSeudoEth_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/CertiKAlert/status/1710979615164944729
+
+---
 
 ### 20231007 StarsArena - Reentrancy
 
