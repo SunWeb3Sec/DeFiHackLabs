@@ -107,7 +107,7 @@ contract ContractTest is Test {
     }
 
     function borrowAll(uint256 id) internal {
-        WiseLending.borrowExactAmount(id, address(wstETH), 33_538_664_799_002_267_467); // inflate share price in modifier , borrow all wstETH
+        WiseLending.borrowExactAmount(id, address(wstETH), 33_538_664_799_002_267_467); // inflate share price in _coreBorrowTokens() , borrow all wstETH
         WiseLending.borrowExactAmount(id, address(WETH), 339_996_372_423_526_589);
         WiseLending.borrowExactAmount(id, address(aEthWETH), 98_969_695_913_405_122_899);
         WiseLending.borrowExactAmount(id, address(DAI), 200_094_287_736_946_980_059);
