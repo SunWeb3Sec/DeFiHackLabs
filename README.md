@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20231013 BelugaDex](#20231013-belugadex---price-manipulation)
+
 [20231012 Platypus](#20231012-platypus---business-logic-flaw)
 
 [20231011 BH](#20231011-bh---price-manipulation)
@@ -665,6 +667,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20231013 BelugaDex - Price manipulation
+
+### Lost: ~$175K
+
+Test
+
+```
+forge test --contracts ./src/test/BelugaDex_exp.sol -vvv
+```
+
+#### Contract
+
+[BelugaDex_exp.sol](src/test/BelugaDex_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/AnciliaInc/status/1712676040471105870
+
+https://twitter.com/CertiKAlert/status/1712707006979613097
+
+---
 
 ### 20231012 Platypus - Business Logic Flaw
 
