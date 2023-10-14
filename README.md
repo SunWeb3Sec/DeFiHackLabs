@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-300 incidents included.
+302 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20231013 BelugaDex](#20231013-belugadex---price-manipulation)
+
+[20231013 WiseLending](#20231013-wiselending---donate-inflation-exchangerate--rounding-error)
 
 [20231012 Platypus](#20231012-platypus---business-logic-flaw)
 
@@ -687,6 +689,28 @@ forge test --contracts ./src/test/BelugaDex_exp.sol -vvv
 https://twitter.com/AnciliaInc/status/1712676040471105870
 
 https://twitter.com/CertiKAlert/status/1712707006979613097
+
+---
+
+### 20231013 WiseLending - Donate Inflation ExchangeRate && Rounding Error 
+
+### Lost: ~$260K
+
+Test
+
+```
+forge test --contracts ./src/test/WiseLending_exp.sol --evm-version 'shanghai' -vvv
+```
+
+#### Contract
+
+[WiseLending_exp.sol](src/test/WiseLending_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/bbbb/status/1712841315522638034
+
+https://twitter.com/BlockSecTeam/status/1712871304993689709
 
 ---
 
