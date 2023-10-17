@@ -135,7 +135,7 @@ contract PawnfiTest is Test {
         IApeStaking(0x5954aB967Bc958940b7EB73ee84797Dc8a2AFbb9);
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 17496619);
+        vm.createSelectFork(eth, 17496619);
         vm.label(address(UniV3Pool), "UniV3Pool");
         vm.label(address(APE), "APE");
         vm.label(address(sAPE), "sAPE");

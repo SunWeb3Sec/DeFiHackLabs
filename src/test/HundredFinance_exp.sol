@@ -54,7 +54,7 @@ contract ContractTest is Test {
     bool xdaiBorrowed = false;
 
     function setUp() public {
-        vm.createSelectFork("gnosis", 21_120_319); //fork gnosis at block number 21120319
+        vm.createSelectFork(gnosis, 21_120_319); //fork gnosis at block number 21120319
     }
 
     function testExploit() public {

@@ -29,7 +29,7 @@ contract VinuTest is Test {
 
     function setUp() public {
         deal(address(this), 0.5 ether);
-        cheats.createSelectFork("mainnet", 17_421_006);
+        cheats.createSelectFork(eth, 17_421_006);
         cheats.label(address(VINU), "VINU");
         cheats.label(address(WETH), "WETH");
         cheats.label(address(UniswapV2Router02), "UniswapV2Router02");

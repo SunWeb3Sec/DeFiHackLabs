@@ -22,7 +22,7 @@ contract AttackContract is Test {
     IERC20 constant uniLP = IERC20(0xB1BbeEa2dA2905E6B0A30203aEf55c399C53D042);
 
     function setUp() public {
-        cheat.createSelectFork("mainnet", 14421983);    // Fork mainnet at block 14421983
+        cheat.createSelectFork(eth, 14421983);    // Fork mainnet at block 14421983
     }
 
     function testExploit() public {

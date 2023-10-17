@@ -58,7 +58,7 @@ contract ContractTest is DSTest {
 
     function setUp() public {
         // the ankr rpc maybe dont work , please use QuickNode
-        cheats.createSelectFork("bsc", 22_832_427);
+        cheats.createSelectFork(bsc, 22_832_427);
     }
 
     function testExploit() public {

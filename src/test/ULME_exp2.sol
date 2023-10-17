@@ -46,7 +46,7 @@ contract ULMEAttacker is Test {
     IULME constant ulme = IULME(0xAE975a25646E6eB859615d0A147B909c13D31FEd);
 
     function setUp() public {
-        cheats.createSelectFork("bsc");
+        cheats.createSelectFork(bsc);
         cheats.label(address(usdt), "USDT");
         cheats.label(address(dodo1), "dodo1");
         cheats.label(address(dodo2), "dodo2");

@@ -52,7 +52,7 @@ contract AttackContract is Test {
     address SpaceGodzilla = 0x2287C04a15bb11ad1358BA5702C1C95E2D13a5E0;
 
     constructor() {
-        cheat.createSelectFork("bsc", 19_523_980); // Fork BSC mainnet at block 19523981
+        cheat.createSelectFork(bsc, 19_523_980); // Fork BSC mainnet at block 19523981
         cheat.label(address(this), "AttackContract");
         cheat.label(USDT, "USDT");
         cheat.label(CakeLP, "CakeLP");

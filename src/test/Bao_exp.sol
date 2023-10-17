@@ -51,7 +51,7 @@ contract ContractTest is Test {
     IAaveFlashloan AaveV2 = IAaveFlashloan(0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9);
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 17_620_870);
+        vm.createSelectFork(eth, 17_620_870);
         vm.label(address(USDC), "USDC");
         vm.label(address(DAI), "DAI");
         vm.label(address(aDAI), "aDAI");

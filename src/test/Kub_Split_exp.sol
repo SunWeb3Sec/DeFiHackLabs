@@ -72,7 +72,7 @@ contract ContractTest is Test {
         0x7Ccf451D3c48C8bb747f42F29A0CdE4209FF863e;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 32021100 - 1);
+        vm.createSelectFork(bsc, 32021100 - 1);
         vm.label(address(BUSDT_KUB_LP), "BUSDT_KUB_LP");
         vm.label(address(KUB_Split), "KUB_Split");
         vm.label(address(BUSDT), "BUSDT");

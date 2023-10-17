@@ -55,7 +55,7 @@ contract ContractTest is Test {
     address[] path = new address[](2);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 31562012 - 1);
+        vm.createSelectFork(bsc, 31562012 - 1);
         vm.label(address(aDaDPair), "0xadad_Pair");
         vm.label(address(EfBfPair), "0xefbf_Pair");
         vm.label(address(b920Pair), "0xb920_Pair");

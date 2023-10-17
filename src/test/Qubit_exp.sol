@@ -24,7 +24,7 @@ contract ContractTest is DSTest {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 14_090_169); //fork mainnet at block 14090169
+        cheats.createSelectFork(eth, 14_090_169); //fork mainnet at block 14090169
     }
 
     function testExploit() public {
@@ -52,7 +52,7 @@ contract ContractTest is DSTest {
 
         IQBridge(QBridge).deposit(1, resourceID, data);
 
-        // cheats.createSelectFork("bsc", 14742311); //fork mainnet at block 14742311
+        // cheats.createSelectFork(bsc, 14742311); //fork mainnet at block 14742311
     }
 
     receive() external payable {}

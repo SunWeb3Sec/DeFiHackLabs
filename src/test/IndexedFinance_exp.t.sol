@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
+import "./interface.sol";
 
 // @author: https://github.com/Crypto-Virus/indexed-finance-exploit-example/blob/master/contracts/IndexedAttack.sol
 
@@ -58,7 +59,7 @@ contract IndexedAttack is BNum, IUniswapV2Callee, Test {
     uint256 private constant borrowedSushiAmount = 220_000 * 1e18;
 
     function setUp() public {
-        vm.createSelectFork("https://eth.llamarpc.com", 13_417_948);
+        vm.createSelectFork(eth, 13_417_948);
     }
 
     function testHack() public {
@@ -302,12 +303,6 @@ contract IndexedAttack is BNum, IUniswapV2Callee, Test {
 }
 
 /* -------------------- Interface -------------------- */
-interface IERC20 {
-    function transfer(address to, uint256 amount) external returns (bool);
-    function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-}
 
 interface IIndexPool {
     function joinswapExternAmountIn(
@@ -338,16 +333,6 @@ interface IIndexPool {
 interface IMarketCapSqrtController {
     function updateMinimumBalance(IIndexPool pool, address tokenAddress) external;
     function reindexPool(address poolAddress) external;
-}
-
-interface IUniswapV2Pair {
-    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes memory data) external;
-    function token0() external view returns (address);
-    function token1() external view returns (address);
-}
-
-interface IUniswapV2Factory {
-    function getPair(address tokenA, address tokenB) external view returns (address pair);
 }
 
 interface IUniswapV2Router01 {

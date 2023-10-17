@@ -34,7 +34,7 @@ contract ContractTest is Test {
         IDEXRouter(0x1f7cF218B46e613D1BA54CaC11dC1b5368d94fb7);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 32161325);
+        vm.createSelectFork(bsc, 32161325);
         vm.label(address(DEXRouter), "DEXRouter");
     }
 

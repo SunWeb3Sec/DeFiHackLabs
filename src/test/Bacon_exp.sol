@@ -13,7 +13,7 @@ contract ContractTest is DSTest {
     uint256 count = 0;
 
     constructor() {
-        cheats.createSelectFork("mainnet", 14_326_931); // fork mainnet at block 14326931
+        cheats.createSelectFork(eth, 14_326_931); // fork mainnet at block 14326931
 
         ERC1820Registry(0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24).setInterfaceImplementer(
             address(this), bytes32(0xb281fc8c12954d22544db45de3159a39272895b169a852b314f9cc762e44c53b), address(this)

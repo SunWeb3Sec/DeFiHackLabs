@@ -63,7 +63,7 @@ contract ContractTest is Test {
     uint256 nonce;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 17_740_954);
+        vm.createSelectFork(eth, 17_740_954);
         vm.label(address(WETH), "WETH");
         vm.label(address(steCRV), "steCRV");
         vm.label(address(cbETH_ETH_LP), "cbETH_ETH_LP");

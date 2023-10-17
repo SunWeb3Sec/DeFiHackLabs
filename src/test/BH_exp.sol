@@ -49,7 +49,7 @@ contract ContractTest is Test {
         0x2371E4Ad771020CE3D8252f1db3e5559FbA8eeb5;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 32512073);
+        vm.createSelectFork(bsc, 32512073);
         vm.label(address(BUSDT), "BUSDT");
         vm.label(address(BH), "BH");
         vm.label(address(DPPOracle1), "DPPOracle1");

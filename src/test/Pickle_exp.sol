@@ -26,7 +26,7 @@ contract AttackContract is Test {
     address constant weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
     function setUp() public {
-        cheat.createSelectFork("mainnet", 11303122);    // Fork mainnet at block 11303122
+        cheat.createSelectFork(eth, 11303122);    // Fork mainnet at block 11303122
     }
 
     function testExploit() public {

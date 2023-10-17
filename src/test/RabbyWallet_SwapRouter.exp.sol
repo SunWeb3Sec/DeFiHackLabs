@@ -46,7 +46,7 @@ address constant usdc = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
 
 contract Attacker is Test {
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15_724_451);
+        cheat.createSelectFork(eth, 15_724_451);
         cheat.label(attacker, "attacker");
         cheat.label(RabbySwapRouter, "RabbySwapRouter");
         cheat.label(usdt, "USDT");

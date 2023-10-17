@@ -25,7 +25,7 @@ contract ContractTest is Test {
     IWBNB WBNB = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
 
     function setUp() public {
-        vm.createSelectFork("bsc", 24_850_696);
+        vm.createSelectFork(bsc, 24_850_696);
     }
 
     function testExploit() public {

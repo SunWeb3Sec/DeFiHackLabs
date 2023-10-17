@@ -24,7 +24,7 @@ contract ContractTest is DSTest {
     uint256 lpBalance;
 
     function setUp() public {
-        cheats.createSelectFork("fantom", 25_345_002); //fork fantom at block 25345002
+        cheats.createSelectFork(fantom, 25_345_002); //fork fantom at block 25345002
     }
 
     function testExploit() public {

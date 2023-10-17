@@ -20,7 +20,7 @@ contract ContractTest is DSTest {
     bytes32 private constant CALLBACK_SUCCESS = keccak256("ERC3156FlashBorrower.onFlashLoan");
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 14_403_948); // fork mainnet at block 14403948
+        cheats.createSelectFork(eth, 14_403_948); // fork mainnet at block 14403948
     }
 
     function test() public {

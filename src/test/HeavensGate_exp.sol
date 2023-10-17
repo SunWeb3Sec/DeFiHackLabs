@@ -41,7 +41,7 @@ contract ContractTest is Test {
     uint amount = 907_615_399_181_304;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18069528 - 1);
+        vm.createSelectFork(eth, 18069528 - 1);
         vm.label(address(HATE), "HATE");
         vm.label(address(WETH), "WETH");
         vm.label(address(HATE_ETH_Pair), "Uniswap HATE");

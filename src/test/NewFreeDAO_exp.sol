@@ -34,7 +34,7 @@ contract Attacker is Test {
     address constant nfd = 0x38C63A5D3f206314107A7a9FE8cBBa29D629D4F9;
 
     function setUp() public {
-        cheat.createSelectFork("bsc", 21_140_434);
+        cheat.createSelectFork(bsc, 21_140_434);
         console.log("---------- Reproduce Attack Tx1 ----------");
         cheat.label(address(PancakeRouter), "PancakeRouter");
         cheat.label(vulnContract, "vulnContractName");

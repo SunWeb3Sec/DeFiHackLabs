@@ -31,7 +31,7 @@ contract ContractTest is Test {
     address public constant flashbotsBuilder = 0xDAFEA492D9c6733ae3d56b7Ed1ADB60692c98Bc5;
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 17_366_979);
+        cheats.createSelectFork(eth, 17_366_979);
         cheats.label(address(NO), "NO");
         cheats.label(address(WETH), "WETH");
         cheats.label(address(Pair), "Pair");

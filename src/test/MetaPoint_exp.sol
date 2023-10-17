@@ -26,7 +26,7 @@ contract ContractTest is Test {
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 27_264_384 - 1);
+        vm.createSelectFork(bsc, 27_264_384 - 1);
     }
 
     function testExploit() public {

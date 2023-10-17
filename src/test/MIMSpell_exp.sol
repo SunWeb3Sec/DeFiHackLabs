@@ -60,7 +60,7 @@ contract MIMTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 17_521_638);
+        cheats.createSelectFork(eth, 17_521_638);
         deal(address(SUSDT), exploiter, 3e6);
         cheats.startPrank(exploiter);
         SUSDT.approve(address(this), type(uint256).max);

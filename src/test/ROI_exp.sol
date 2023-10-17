@@ -26,7 +26,7 @@ contract Attacker is Test {
     IPancakePair constant busdroiPair = IPancakePair(0x745D6Dd206906dd32b3f35E00533AD0963805124); // BUSD/ROI Pair
 
     function setUp() public {
-        cheat.createSelectFork("bsc", 21_143_795);
+        cheat.createSelectFork(bsc, 21_143_795);
         cheat.deal(address(this), 5 ether);
         cheat.label(address(ROI), "ROI");
         cheat.label(address(busd), "BUSD");

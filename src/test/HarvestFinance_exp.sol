@@ -39,7 +39,7 @@ contract ContractTest is DSTest {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 11_129_473); //fork mainnet at block 11129473
+        cheats.createSelectFork(eth, 11_129_473); //fork mainnet at block 11129473
     }
 
     function testExploit() public {

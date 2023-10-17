@@ -3,6 +3,7 @@ pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
+import "./interface.sol";
 
 // @Analysis
 // https://twitter.com/danielvf/status/1621965412832350208
@@ -22,7 +23,7 @@ contract USDsTest is Test {
     address ATTACKER_CONTRACT = address(0xdeadbeef);
 
     function setUp() public {
-        vm.createSelectFork("arbitrum", 57_803_529);
+        vm.createSelectFork(arbitrum, 57_803_529);
 
         vm.label(address(usds), "USDs");
         vm.label(0x97A7E6Cf949114Fe4711018485D757b9c4962307, "USDsImpl");

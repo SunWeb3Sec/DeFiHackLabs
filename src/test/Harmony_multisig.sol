@@ -12,7 +12,7 @@ contract ContractTest is DSTest {
     address[] public owner;
 
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15_012_645); //fork mainnet at block 15012645
+        cheat.createSelectFork(eth, 15_012_645); //fork mainnet at block 15012645
     }
 
     function testExploit() public {

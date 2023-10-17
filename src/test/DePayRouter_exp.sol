@@ -54,7 +54,7 @@ contract ContractTest is Test{
     }
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18281130 - 1);
+        vm.createSelectFork(eth, 18281130 - 1);
         vm.label(address(USDC), "USDC");
         vm.label(address(UNIV2), "UNIV2: USDC");
         vm.label(address(UniRouter), "UniRouter");

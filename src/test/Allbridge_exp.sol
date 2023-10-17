@@ -33,7 +33,7 @@ interface IBridge {
 
 contract ContractTest is Test {
     function setUp() external {
-        vm.createSelectFork("bsc", 26_982_067);
+        vm.createSelectFork(bsc, 26_982_067);
     }
 
     function test_exploit() external {

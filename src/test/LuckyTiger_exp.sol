@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.13;
 
-
 import "forge-std/Test.sol";
+import "./interface.sol";
 
 /*
     Attacker: 0x3392c91403f09ad3b7e7243dbd4441436c7f443c
@@ -23,7 +23,7 @@ contract luckyHack is Test {
    address nftAddress = 0x9c87A5726e98F2f404cdd8ac8968E9b2C80C0967;   
    
     function setUp() public {
-        vm.createSelectFork("mainnet", 15403430); // fork mainnet block number 15403430
+        vm.createSelectFork(eth, 15403430); // fork mainnet block number 15403430
         vm.deal(address(this), 3 ether);
         vm.deal(address(nftAddress), 5 ether);
     }

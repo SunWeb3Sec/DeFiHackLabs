@@ -68,7 +68,7 @@ contract ThemisTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("arbitrum", 105_524_523);
+        cheats.createSelectFork(arbitrum, 105_524_523);
         cheats.label(address(WETH), "WETH");
         cheats.label(address(AaveV3), "AaveV3");
         cheats.label(address(UniPool1), "UniPool1");

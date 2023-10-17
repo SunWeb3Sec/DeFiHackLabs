@@ -2,6 +2,7 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
+import "./interface.sol";
 
 // analysis
 // https://blog.verichains.io/p/analyzing-the-lz-token-hack
@@ -59,7 +60,7 @@ contract LaunchZoneExploit is Test {
 
     function setUp() public {
         // select and fork bsc at 26024420
-        vm.createSelectFork("bsc", 26_024_420 - 1); // previous block so still there is fund
+        vm.createSelectFork(bsc, 26_024_420 - 1); // previous block so still there is fund
         LZ = ERC20Like(0x3B78458981eB7260d1f781cb8be2CaAC7027DbE2);
         BUSD = ERC20Like(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
         BISWAPPair = ERC20Like(0xDb821BB482cfDae5D3B1A48EeaD8d2F74678D593);

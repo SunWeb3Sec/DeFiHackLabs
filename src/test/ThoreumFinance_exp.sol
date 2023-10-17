@@ -34,7 +34,7 @@ contract Attacker is Test {
         cheat.label(exploiter, "exploiter");
         cheat.label(wbnb_addr, "wbnb");
         cheat.label(wbnb_thoreum_lp_addr, "wbnb_thoreum_lp");
-        cheat.createSelectFork("bsc", 24_913_171);
+        cheat.createSelectFork(bsc, 24_913_171);
     }
 
     function testExploit() public {

@@ -49,7 +49,7 @@ contract ContractTest is Test {
     Recover recover;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18_342_120);
+        vm.createSelectFork(eth, 18_342_120);
         vm.label(address(WBTC), "WBTC");
         vm.label(address(wstETH), "wstETH");
         vm.label(address(WETH), "WETH");

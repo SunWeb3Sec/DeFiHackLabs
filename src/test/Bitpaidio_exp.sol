@@ -31,7 +31,7 @@ contract ContractTest is Test {
     uint256 flashAmount = 219_349 * 1e18;
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 28_176_675);
+        cheats.createSelectFork(bsc, 28_176_675);
     }
 
     function testExploit() public {

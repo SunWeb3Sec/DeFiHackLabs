@@ -44,7 +44,7 @@ contract FloorStakingExploit is Test {
 
 
     function setUp() public {
-        vm.createSelectFork("https://eth.llamarpc.com", 18068772);
+        vm.createSelectFork(eth, 18068772);
 
         vm.label(address(floor), "floor");
         vm.label(address(sFloor), "sFloor");

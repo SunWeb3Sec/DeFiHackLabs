@@ -38,7 +38,7 @@ contract Attacker is DSTest {
         cheat.label(address(USDT), "USDT");
         cheat.label(address(ULME), "ULME");
 
-        cheat.createSelectFork("bsc", 22476695);
+        cheat.createSelectFork(bsc, 22476695);
         console.log("-------------------------------- Start Attacker ----------------------------------");
     }
 

@@ -169,7 +169,7 @@ contract ContractTest is Test {
 
     function setUp() public {
         // fork bsc
-        uint256 forkId = vm.createFork("bsc", 29554461);
+        uint256 forkId = vm.createFork(bsc, 29554461);
         vm.selectFork(forkId);
     }
 

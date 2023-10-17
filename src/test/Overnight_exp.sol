@@ -134,7 +134,7 @@ contract ContractTest is DSTest{
 
 
     function setUp() public {
-        cheats.createSelectFork("Avalanche", 23097846); 
+        cheats.createSelectFork(avalanche, 23097846); 
     }
 
     function testExploit() public payable{

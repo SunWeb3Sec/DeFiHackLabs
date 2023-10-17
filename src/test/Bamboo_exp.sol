@@ -30,7 +30,7 @@ contract BambooTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 29_668_034);
+        cheats.createSelectFork(bsc, 29_668_034);
 
         vm.label(address(wbnb), "WBNB");
         vm.label(address(bamboo), "BAMBOO");

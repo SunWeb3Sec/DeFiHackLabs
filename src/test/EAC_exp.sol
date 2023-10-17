@@ -24,7 +24,7 @@ contract ContractTest is Test {
     address constant private eac = 0x64f291DE10eCd36D5f7b64aaEbC70943CFACE28E;
     
     function setUp() public {
-        vm.createSelectFork("bsc",31273019 - 1);
+        vm.createSelectFork(bsc,31273019 - 1);
         vm.label(usdt, "USDT");
         vm.label(eac, "EAC");
         vm.label(pancakeRouterV2, "PANCAKE_ROUTER_V2");

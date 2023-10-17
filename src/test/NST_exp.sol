@@ -34,7 +34,7 @@ contract NstExploitTest is Test {
     address swapper = 0x9D101E71064971165Cd801E39c6B07234B65aa88;
 
     function setUp() public {
-        cheats.createSelectFork("polygon", 43_430_814);
+        cheats.createSelectFork(polygon, 43_430_814);
         vm.label(address(usdt), "USDT");
         vm.label(address(nst), "NST");
         vm.label(swapper, "swapper");

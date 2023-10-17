@@ -27,7 +27,7 @@ contract Attacker is Test {
     RES constant restoken = RES(0xecCD8B08Ac3B587B7175D40Fb9C60a20990F8D21);
 
     function setUp() public {
-        cheat.createSelectFork("bsc", 21_948_016);
+        cheat.createSelectFork(bsc, 21_948_016);
     }
 
     function stringsEquals(bytes calldata s1, string memory s2) private returns (bool) {

@@ -44,7 +44,7 @@ contract LUSDTEST is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 29756866);
+        cheats.createSelectFork(bsc, 29756866);
         cheats.label(address(BEP20USDT), "BEP20USDT");
         cheats.label(address(DPPOracle1), "DPPOracle1");
         cheats.label(address(DPPOracle2), "DPPOracle2");

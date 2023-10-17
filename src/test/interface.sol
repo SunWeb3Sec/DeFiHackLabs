@@ -3,6 +3,7 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "forge-std/Test.sol";
+import "./rpc.sol";
 
 interface CheatCodes {
     // This allows us to getRecordedLogs()
@@ -387,6 +388,7 @@ interface IUniswapV2Pair {
     function approve(address spender, uint value) external returns (bool);
     function transfer(address to, uint value) external returns (bool);
     function transferFrom(address from, address to, uint value) external returns (bool);
+    function sync() external;
 }
 
 interface IBacon {
@@ -3440,6 +3442,14 @@ interface IRouter {
         address to,
         uint256 deadline
     ) external;
+    
+    function swapExactTokensForTokens(
+        uint256 amountIn,
+        uint256 amountOutMin,
+        address[] calldata path,
+        address to,
+        uint256 deadline
+    ) external;
 }
 
 interface ILendingPool {
@@ -3487,10 +3497,11 @@ interface IAggregator {
 
 interface CErc20Interface {
     function mint(uint256 mintAmount) external returns (uint256);
-
     function balanceOf(address account) external view returns (uint256);
-
     function borrow(uint256 borrowAmount) external returns (uint256);
+    function redeem(uint256 amount) external;
+    function withdrawAll() external;
+    function transfer(address to, uint256 amount) external returns (bool);
 }
 
 interface IUSDT {
@@ -3799,6 +3810,8 @@ interface ICurvePool {
         uint256 token_amount,
         uint256[3] memory min_amounts
     ) external returns (uint256[3] memory);
+
+    function remove_liquidity(uint256 _amount, uint256[2] calldata min_amounts, bool donate_dust) external;
 
     function remove_liquidity_imbalance(uint256[3] memory amounts, uint256 max_burn_amount) external;
 

@@ -25,7 +25,7 @@ contract BadGuysbyRPFExploit is DSTest {
     bytes32[] merkleTree;
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 15_460_093); //fork mainnet at 15460093
+        cheats.createSelectFork(eth, 15_460_093); //fork mainnet at 15460093
 
         // There should be an easier way to do this
         // I tried passing it as whole array but did not work

@@ -27,7 +27,7 @@ contract ContractTest is DSTest {
     }
 
     constructor() {
-        cheats.createSelectFork("mainnet", 15_114_361); // fork mainnet at block 15114361
+        cheats.createSelectFork(eth, 15_114_361); // fork mainnet at block 15114361
         owner = msg.sender; // Hacker
     }
 

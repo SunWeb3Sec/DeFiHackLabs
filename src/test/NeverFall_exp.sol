@@ -24,7 +24,7 @@ contract ContractTest is Test {
     address payable pancakeRouter = payable(0x10ED43C718714eb63d5aA57B78B54704E256024E);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 27_863_178 - 1);
+        vm.createSelectFork(bsc, 27_863_178 - 1);
     }
 
     function testExploit() public {

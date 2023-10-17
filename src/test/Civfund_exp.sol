@@ -102,7 +102,7 @@ contract ContractTest is Test {
     uint256 private counter = 0;
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 17_646_141);
+        cheats.createSelectFork(eth, 17_646_141);
         cheats.label(address(USDT), "USDT");
         cheats.label(address(BONE), "BONE");
         cheats.label(address(LEASH), "LEASH");

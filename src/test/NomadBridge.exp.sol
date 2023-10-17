@@ -34,7 +34,7 @@ IERC20 constant WBTC = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599);
 
 contract Attacker is Test {
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15_259_100);
+        cheat.createSelectFork(eth, 15_259_100);
         cheat.label(address(Replica), "Replica");
         cheat.label(address(WBTC), "WBTC");
     }

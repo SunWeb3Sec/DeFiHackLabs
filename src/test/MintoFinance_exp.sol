@@ -55,7 +55,7 @@ contract MintoFinance_exp is Test {
     IERC20 BTCMT;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 30_214_253);
+        vm.createSelectFork(bsc, 30_214_253);
         BTCMT = IERC20(0x410a56541bD912F9B60943fcB344f1E3D6F09567);
     }
 

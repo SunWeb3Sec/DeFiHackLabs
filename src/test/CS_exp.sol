@@ -23,7 +23,7 @@ contract CSExp is Test, IPancakeCallee {
     IERC20 CS = IERC20(0x8BC6Ce23E5e2c4f0A96429E3C9d482d74171215e);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 28466976);
+        cheats.createSelectFork(bsc, 28466976);
         
     }
 

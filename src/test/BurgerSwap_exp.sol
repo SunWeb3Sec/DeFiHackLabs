@@ -2,6 +2,7 @@
 pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
+import "./interface.sol";
 
 // Attacker: 0x6c9f2b95ca3432e5ec5bcd9c19de0636a23a4994
 // Attack Contract: 0xae0f538409063e66ff0e382113cb1a051fc069cd
@@ -25,7 +26,7 @@ contract Exploit is Test {
     FAKE_TOKEN FAKE;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 7_781_159);
+        vm.createSelectFork(bsc, 7_781_159);
     }
 
     function testExploit() public {
@@ -136,12 +137,6 @@ contract FAKE_TOKEN {
 }
 
 /* ---------------------- Interface ---------------------- */
-interface IERC20 {
-    function transfer(address to, uint256 amount) external returns (bool);
-    function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-}
 
 interface IDemaxPlatform {
     function swapExactTokensForTokens(
@@ -171,11 +166,4 @@ interface IDemaxDelegate {
         uint256 amountBMin,
         uint256 deadline
     ) external returns (uint256 amountA, uint256 amountB, uint256 liquidity);
-}
-
-interface IUniswapV2Pair {
-    function balanceOf(address) external view returns (uint256);
-    function skim(address to) external;
-    function sync() external;
-    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes memory data) external;
 }

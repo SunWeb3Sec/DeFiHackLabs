@@ -423,7 +423,7 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() external {
-        cheats.createSelectFork("mainnet", 17_036_774);
+        cheats.createSelectFork(eth, 17_036_774);
     }
 
     //tx:0x055cec4fa4614836e54ea2e5cd3d14247ff3d61b85aa2a41f8cc876d131e0328

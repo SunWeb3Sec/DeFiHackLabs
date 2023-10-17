@@ -24,7 +24,7 @@ contract ContractTest is Test {
     address wbnb_usdt_b = 0xFeAFe253802b77456B4627F8c2306a9CeBb5d681; // dodo wbnb-usdt pool
 
     function setUp() public {
-        vm.createSelectFork("bsc", 27_620_321 - 1);
+        vm.createSelectFork(bsc, 27_620_321 - 1);
     }
 
     function testExploit() public {

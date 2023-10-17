@@ -89,7 +89,7 @@ contract ContractTest is Test {
         exploiter = cheats.addr(31_337);
 
         // fork mainnet at block 15625424
-        cheats.createSelectFork("mainnet", 15_625_424);
+        cheats.createSelectFork(eth, 15_625_424);
     }
 
     function testExploit() public {

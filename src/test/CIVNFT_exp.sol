@@ -47,7 +47,7 @@ contract CIVNFTTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 17649875);
+        cheats.createSelectFork(eth, 17649875);
         cheats.label(address(CIV), "CIV");
         cheats.label(address(WETH), "WETH");
         cheats.label(CIVNFT, "CIVNFT");

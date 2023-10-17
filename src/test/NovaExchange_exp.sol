@@ -27,7 +27,7 @@ contract ContractTest is DSTest {
     IPancakeRouter wbnb_nova = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E)); // wbnb/nova Pair
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 23_749_678); //fork bsc at block number 23749678
+        cheats.createSelectFork(bsc, 23_749_678); //fork bsc at block number 23749678
 
         //novaContract.approve(address(wbnb_nova), type(uint256).max);
         //WBNB.approve(address(wbnb_nova), type(uint256).max);

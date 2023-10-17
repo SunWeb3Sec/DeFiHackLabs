@@ -34,7 +34,7 @@ contract ContractTest is DSTest {
     IERC20 hunny = IERC20(0x565b72163f17849832A692A3c5928cc502f46D69);
 
     constructor() {
-        cheat.createSelectFork("bsc", 7_962_338); //fork bsc at block 7962338
+        cheat.createSelectFork(bsc, 7_962_338); //fork bsc at block 7962338
 
         wbnb.approve(address(pancakeRouter), type(uint256).max);
         hunny.approve(address(pancakeRouter), type(uint256).max);

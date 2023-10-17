@@ -123,7 +123,7 @@ contract SNKExp is Test, IPancakeCallee {
     address[] public parents;
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 27784455);
+        cheats.createSelectFork(bsc, 27784455);
         deal(address(SNKToken), address(this), 1000 ether);
         for (uint i = 0; i < 10; ++ i) {
             HackerTemplate t1 = new HackerTemplate();

@@ -58,7 +58,7 @@ contract ContractTest is Test {
     uint256 nonce;
 
     function setUp() public {
-        vm.createSelectFork("polygon", 44_941_584);
+        vm.createSelectFork(polygon, 44_941_584);
         vm.label(address(USDT), "USDT");
         vm.label(address(WETH), "WETH");
         vm.label(address(aaveV2), "aaveV2");

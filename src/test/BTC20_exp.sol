@@ -31,7 +31,7 @@ contract ContractTest is Test {
     uint totalBorrowed = 300 ether;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 17_949_215 - 1);
+        vm.createSelectFork(eth, 17_949_215 - 1);
         vm.label(address(BTC20), "BTC20");
         vm.label(address(WETH), "WETH");
         vm.label(address(SDEX), "SDEX");

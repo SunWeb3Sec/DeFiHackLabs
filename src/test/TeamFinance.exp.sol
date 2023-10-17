@@ -52,7 +52,7 @@ contract Attacker is Test {
     // And here: https://www.geogebra.org/solver?i=79210883607084793911461085816%3Dsqrt(x)*2%5E(96)
 
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15_837_893);
+        cheat.createSelectFork(eth, 15_837_893);
         cheat.label(weth, "WETH");
         cheat.label(usdc, "USDC");
         cheat.label(dai, "DAI");

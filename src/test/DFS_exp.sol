@@ -33,7 +33,7 @@ contract Attacker is Test {
         cheat.label(usdt, "USDT");
         cheat.label(dfs, "dfs");
         cheat.label(ccds, "ccds");
-        cheat.createSelectFork("bsc", 24_349_821);
+        cheat.createSelectFork(bsc, 24_349_821);
     }
 
     function testExploit() public {

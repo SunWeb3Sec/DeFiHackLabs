@@ -3,7 +3,7 @@ pragma solidity ^0.8.10;
 
 import "forge-std/console.sol";
 import "forge-std/Test.sol";
-import "../test/interface.sol";
+import "./interface.sol";
 
 // @KeyInfo - Total Lost : ~2M
 // Attacker : https://etherscan.io/address/0xed187f37e5ad87d5b3b2624c01de56c5862b7a9b
@@ -39,7 +39,7 @@ contract ContractTest is Test {
     IERC20 bbaUSD = IERC20(0x7B50775383d3D6f0215A8F290f2C9e2eEBBEceb2);
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18_004_651);
+        vm.createSelectFork(eth, 18_004_651);
         vm.label(address(USDT), "USDT");
         vm.label(address(USDC), "USDC");
         vm.label(address(DAI), "DAI");

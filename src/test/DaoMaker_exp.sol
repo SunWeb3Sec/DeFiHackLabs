@@ -25,7 +25,7 @@ contract ContractTest is Test {
     IERC20 DERC = IERC20(0x9fa69536d1cda4A04cFB50688294de75B505a9aE);
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 13_155_320); // fork mainnet block number 13155320
+        vm.createSelectFork(eth, 13_155_320); // fork mainnet block number 13155320
     }
 
     function testExploit() public {

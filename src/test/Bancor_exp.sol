@@ -29,7 +29,7 @@ contract BancorExploit is DSTest {
     IBancor bancorContract = IBancor(bancorAddress);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 10_307_563); // fork mainnet at 10307563
+        cheats.createSelectFork(eth, 10_307_563); // fork mainnet at 10307563
     }
 
     function testsafeTransfer() public {

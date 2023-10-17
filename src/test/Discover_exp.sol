@@ -19,7 +19,7 @@ contract ContractTest is DSTest {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     constructor() {
-        cheats.createSelectFork("bsc", 18_446_845); // fork bsc at block 18446845
+        cheats.createSelectFork(bsc, 18_446_845); // fork bsc at block 18446845
 
         busd.approve(address(ethpledge), type(uint256).max);
         discover.approve(address(ethpledge), type(uint256).max);

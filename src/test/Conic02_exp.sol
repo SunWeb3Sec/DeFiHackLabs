@@ -43,7 +43,7 @@ contract ContractTest is Test {
     IBalancerVault Balancer = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 17_743_470);
+        vm.createSelectFork(eth, 17_743_470);
         vm.label(address(USDT), "USDT");
         vm.label(address(USDC), "USDC");
         vm.label(address(crvUSD), "crvUSD");

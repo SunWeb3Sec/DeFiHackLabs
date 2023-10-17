@@ -1,6 +1,7 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
+import "./interface.sol";
 
 interface IUniswapV2Router02 {
     function WETH() external pure returns (address);
@@ -43,35 +44,6 @@ interface ISafeSwapTradeRouter {
     ) external payable;
 }
 
-interface IWETH {
-    function approve(address, uint) external returns (bool);
-
-    function transfer(address, uint) external returns (bool);
-
-    function balanceOf(address) external view returns (uint);
-}
-
-interface IPancakePair {
-    function swap(
-        uint amount0Out,
-        uint amount1Out,
-        address to,
-        bytes calldata data
-    ) external;
-}
-
-interface IPancakeCallee {
-    function pancakeCall(
-        address sender,
-        uint amount0,
-        uint amount1,
-        bytes calldata data
-    ) external;
-}
-
-interface IUniswapV2Pair {
-    function sync() external;
-}
 
 contract SafemoonAttackerTest is Test, IPancakeCallee {
     ISafemoon public sfmoon;
@@ -79,11 +51,11 @@ contract SafemoonAttackerTest is Test, IPancakeCallee {
     IWETH public weth;
 
     function setUp() public {
-        vm.createSelectFork("https://rpc.ankr.com/bsc", 26854757);
+        vm.createSelectFork(bsc, 26854757);
 
         sfmoon = ISafemoon(0x42981d0bfbAf196529376EE702F2a9Eb9092fcB5);
         pancakePair = IPancakePair(0x1CEa83EC5E48D9157fCAe27a19807BeF79195Ce1);
-        weth = IWETH(sfmoon.uniswapV2Router().WETH());
+        weth = IWETH(payable(address(sfmoon.uniswapV2Router().WETH())));
     }
 
     function testMint() public {

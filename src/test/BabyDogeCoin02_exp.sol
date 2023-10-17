@@ -65,7 +65,7 @@ contract ContractTest is Test {
     uint256 BUSDFlashLoanAmount;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 29_295_010);
+        vm.createSelectFork(bsc, 29_295_010);
         vm.label(address(BUSD), "BUSD");
         vm.label(address(USDT), "USDT");
         vm.label(address(WBNB), "WBNB");

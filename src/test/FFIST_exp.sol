@@ -31,7 +31,7 @@ contract ContractTest is Test {
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 30_113_117);
+        vm.createSelectFork(bsc, 30_113_117);
         vm.label(address(WBNB), "WBNB");
         vm.label(address(FFIST), "FFIST");
         vm.label(address(USDT), "USDT");

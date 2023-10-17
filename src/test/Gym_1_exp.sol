@@ -22,7 +22,7 @@ contract ContractTest is DSTest {
 
   constructor() {
     cheat.createSelectFork(
-      "bsc",
+      bsc,
       16798806
     ); //fork bsc at block 16798806
 

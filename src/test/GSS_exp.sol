@@ -24,7 +24,7 @@ contract ContractTest is Test {
     address constant private dodo_pool = 0x9ad32e3054268B849b84a8dBcC7c8f7c52E4e69A;
 
     function setUp() public {
-        vm.createSelectFork("bsc",31108559 - 1);
+        vm.createSelectFork(bsc,31108559 - 1);
         vm.label(usdt, "USDT");
         vm.label(gss, "GSS");
         vm.label(gss_usdt_pool, "GSS_USDT_POOL");

@@ -14,7 +14,7 @@ contract ContractTest is DSTest {
 
   function setUp() public {
     cheat.createSelectFork(
-      "bsc",
+      bsc,
       18501049
     ); //fork bsc at block 18501049
   }

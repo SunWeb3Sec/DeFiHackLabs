@@ -61,7 +61,7 @@ contract ContractTest is DSTest{
         
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 21785004);
+        cheats.createSelectFork(bsc, 21785004);
     }
 
     function testExploit() public{

@@ -53,7 +53,7 @@ contract Attacker is Test {
 
     function testExploit() public {
         // Full simulation, run Tx1 and Tx2
-        vm.createSelectFork("polygon", 38792977);
+        vm.createSelectFork(polygon, 38792977);
         exploit = new Exploit();
 
         // Pre-works, check out: https://polygonscan.com/address/0xed596991ac5f1aa1858da66c67f7cfa76e54b5f1#tokentxns
@@ -74,7 +74,7 @@ contract Attacker is Test {
 
     function testAttackTx1() public {
         // Only run attack Tx1
-        vm.createSelectFork("polygon", 38792977);        
+        vm.createSelectFork(polygon, 38792977);        
         exploit = new Exploit();
 
         deal(address(TRB), address(exploit), 10e18);
@@ -88,7 +88,7 @@ contract Attacker is Test {
 
     function testAttackTx2() public {
         // Only run attack Tx2
-        vm.createSelectFork("polygon", 38793028);        
+        vm.createSelectFork(polygon, 38793028);        
         exploit = new Exploit();
 
         deal(address(TRB), address(exploit), 20e18);

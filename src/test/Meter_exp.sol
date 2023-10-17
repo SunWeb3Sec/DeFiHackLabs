@@ -22,7 +22,7 @@ contract ContractTest is DSTest {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("moonriver", 1_442_490); //fork moonriver at block 1442490
+        cheats.createSelectFork(moonriver, 1_442_490); //fork moonriver at block 1442490
             // https://moonriver.moonscan.io/tx/0x5a87c24d0665c8f67958099d1ad22e39a03aa08d47d00b7276b8d42294ee0591
     }
 

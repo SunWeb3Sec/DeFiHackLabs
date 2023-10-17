@@ -56,7 +56,7 @@ contract ContractTest is Test {
     address MIMCurveStakeDao = 0x9848EDb097Bee96459dFf7609fb582b80A8F8EfD;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 17_908_949);
+        vm.createSelectFork(eth, 17_908_949);
         vm.label(address(WETH), "WETH");
         vm.label(address(USDC), "USDC");
         vm.label(address(UZD), "UZD");

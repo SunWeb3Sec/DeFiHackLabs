@@ -32,7 +32,7 @@ interface IWrappedNative {
 
 contract Exploit is Test {
     function setUp() public {
-        cheat.createSelectFork("bsc", 6_920_000);
+        cheat.createSelectFork(bsc, 6_920_000);
     }
 
     function testExploit() public {

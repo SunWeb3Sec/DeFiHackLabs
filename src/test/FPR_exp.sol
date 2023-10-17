@@ -34,7 +34,7 @@ contract ContractTest is Test {
     
 
     function setUp() public {
-        vm.createSelectFork("bsc", 23904152);
+        vm.createSelectFork(bsc, 23904152);
         vm.label(address(FPR), "FPR token");
         vm.label(address(router), "Router");
         vm.label(address(pair), "Pair");

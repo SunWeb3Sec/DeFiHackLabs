@@ -38,7 +38,7 @@ contract Eleven is DSTest {
 
     function setUp() public {
         // fork bsc block number 8530973
-        cheats.createSelectFork("bsc", 8_530_973);
+        cheats.createSelectFork(bsc, 8_530_973);
 
         busd.approve(address(router), type(uint256).max);
 

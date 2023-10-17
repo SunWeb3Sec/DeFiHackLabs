@@ -29,7 +29,7 @@ contract ContractTest is DSTest {
   uint32 bip = 18;
 
   constructor() {
-    cheat.createSelectFork("mainnet", 14595905); // fork mainnet at block 14595905
+    cheat.createSelectFork(eth, 14595905); // fork mainnet at block 14595905
   }
 
   function testExploit() public {

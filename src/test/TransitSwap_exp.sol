@@ -29,7 +29,7 @@ contract ContractTest is Test {
     IERC20 busd = IERC20(0x55d398326f99059fF775485246999027B3197955);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 21_816_545); // fork mainnet block number 21816545
+        vm.createSelectFork(bsc, 21_816_545); // fork mainnet block number 21816545
     }
 
     function testExploit() public {

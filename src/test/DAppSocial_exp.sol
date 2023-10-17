@@ -41,7 +41,7 @@ contract DAppTest is Test {
     HelperExploitContract private helperExploitContract;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18048982);
+        vm.createSelectFork(eth, 18048982);
         vm.label(address(USDT), "USDT");
         vm.label(address(USDC), "USDC");
         vm.label(address(DAppSocial), "DAppSocial");

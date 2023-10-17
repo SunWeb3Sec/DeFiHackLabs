@@ -28,7 +28,7 @@ address constant egd = 0x202b233735bF743FA31abb8f71e641970161bF98;
 
 contract Attacker is Test {
     function setUp() public {
-        vm.createSelectFork("bsc", 20_245_522);
+        vm.createSelectFork(bsc, 20_245_522);
 
         vm.label(address(USDT_WBNB_LPPool), "USDT_WBNB_LPPool");
         vm.label(address(EGD_USDT_LPPool), "EGD_USDT_LPPool");

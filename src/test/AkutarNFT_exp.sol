@@ -21,7 +21,7 @@ contract AkutarNFTExploit is DSTest {
     IAkutarNFT akutarNft = IAkutarNFT(0xF42c318dbfBaab0EEE040279C6a2588Fa01a961d);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 14636844); // fork mainnet at 14636844 
+        cheats.createSelectFork(eth, 14636844); // fork mainnet at 14636844 
     }
 
     function testDOSAttack() public {

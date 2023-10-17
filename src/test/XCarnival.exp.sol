@@ -113,7 +113,7 @@ contract mainAttackContract is DSTest {
     CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15_028_846); // fork mainnet at block 15028846
+        cheat.createSelectFork(eth, 15_028_846); // fork mainnet at block 15028846
 
         cheat.deal(address(this), 0);
         emit log_named_decimal_uint("[*] Attacker Contract ETH Balance", address(this).balance, 18);

@@ -11,7 +11,7 @@ contract ContractTest is DSTest {
     IERC20 build = IERC20(0x6e36556B3ee5Aa28Def2a8EC3DAe30eC2B208739);
 
     function setUp() public {
-        cheat.createSelectFork("mainnet", 14_235_712); // fork mainnet at block 14235712
+        cheat.createSelectFork(eth, 14_235_712); // fork mainnet at block 14235712
     }
 
     function test() public {

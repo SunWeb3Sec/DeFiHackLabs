@@ -1,37 +1,11 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-//import "./interface.sol";
+import "./interface.sol";
 
-interface CheatCodes {
-    function createSelectFork(string calldata, uint256) external returns (uint256);
-}
-
-interface IERC20 {
-    function balanceOf(address owner) external view returns (uint256);
-    function approve(address spender, uint256 value) external returns (bool);
-    function transfer(address to, uint256 value) external returns (bool);
-}
 
 interface ITokenAFeeHandler is IERC20 {
     function handleDeductFee(uint8 actionType, uint256 feeAmount, address from, address user) external;
-}
-
-interface IRouter {
-    function swapExactTokensForTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external;
-    function swapExactTokensForTokensSupportingFeeOnTransferTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external;
 }
 
 interface IPair {
@@ -47,7 +21,7 @@ contract ContractTest is DSTest {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 20_840_079);
+        cheats.createSelectFork(bsc, 20_840_079);
     }
 
     function testExploit() external {

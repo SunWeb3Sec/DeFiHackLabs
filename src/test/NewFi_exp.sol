@@ -39,7 +39,7 @@ contract ContractTest is Test {
     IStakedV3 StakedV3 = IStakedV3(0xB8dC09Eec82CaB2E86C7EdC8DD5882dd92d22411);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 30_043_573);
+        vm.createSelectFork(bsc, 30_043_573);
         vm.label(address(BUSD), "BUSD");
         vm.label(address(USDT), "USDT");
         vm.label(address(Router), "Router");

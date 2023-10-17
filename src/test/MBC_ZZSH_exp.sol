@@ -34,7 +34,7 @@ contract ContractTest is DSTest {
     uint256 dodoFlahloanAmount;
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 23_474_460);
+        cheats.createSelectFork(bsc, 23_474_460);
     }
 
     function testExploit() public {

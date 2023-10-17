@@ -10,7 +10,7 @@ contract ContractTest is DSTest {
     Flippaz FlippazOne = Flippaz(0xE85A08Cf316F695eBE7c13736C8Cc38a7Cc3e944);
 
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15_083_765); // fork mainnet at block 15083765
+        cheat.createSelectFork(eth, 15_083_765); // fork mainnet at block 15083765
     }
 
     function testExploit() public {

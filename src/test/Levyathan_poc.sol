@@ -3,6 +3,7 @@ pragma solidity 0.8.10;
 
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
+import "./interface.sol";
 
 /*Key Information
 The Levyathan developers left the private keys to a wallet with minting capability available on Github. -rekt
@@ -36,7 +37,7 @@ contract ContractTest is Test {
 
     function setUp() public {
         		
-        vm.createSelectFork("bsc",9545966); //fork bsc at block 9545967
+        vm.createSelectFork(bsc,9545966); //fork bsc at block 9545967
 		
         vm.label(address(MasterChef), "MasterChef");
         vm.label(address(LEV), "LEV");
@@ -127,14 +128,5 @@ function isOperationDone(bytes32 id) external returns (bool done);
 }
 
 interface ILEV {
-function mint(address receiver, uint256 amount) external;
-
-}
-
-interface IMasterChef {
-function recoverLevOwnership() external;
-function leaveStaking(uint256 _amount) external;
-function withdraw(uint256 _pid, uint256 _amount) external;
-function emergencyWithdraw(uint256 _pid) external;
-
+	function mint(address receiver, uint256 amount) external;
 }

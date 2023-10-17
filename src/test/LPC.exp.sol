@@ -25,7 +25,7 @@ address constant pancakePair = 0x2ecD8Ce228D534D8740617673F31b7541f6A0099;
 
 contract Exploit is Test {
     function setUp() public {
-        cheat.createSelectFork("bsc", 19852596);
+        cheat.createSelectFork(bsc, 19852596);
         cheat.label(LPC, "LPC");
         cheat.label(pancakePair, "PancakeSwap LPC/USDT");
     }

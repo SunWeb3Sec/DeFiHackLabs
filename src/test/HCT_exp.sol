@@ -43,7 +43,7 @@ contract ContractTest is Test {
     uint baseAMount = 2_200_000_000_000_000_000_000;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 31528198 - 1);
+        vm.createSelectFork(bsc, 31528198 - 1);
         vm.label(address(PancakePair), "PancakePair");
         vm.label(address(router), "PancakeRouter");
         vm.label(address(WBNB), "WBNB");

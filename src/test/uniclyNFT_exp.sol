@@ -45,7 +45,7 @@ contract ContractTest is Test {
         IERC721(0x7AFe30cB3E53dba6801aa0EA647A0EcEA7cBe18d);
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18133171);
+        vm.createSelectFork(eth, 18133171);
         vm.label(address(WETH), "WETH");
         vm.label(address(uJENNY), "uJENNY");
         vm.label(address(uJENNY_WETH), "uJENNY_WETH");

@@ -36,7 +36,7 @@ contract FakeToken {
 
 contract AttackContract is Test {
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15_794_363);
+        cheat.createSelectFork(eth, 15_794_363);
         cheat.label(OHM, "OHM");
         cheat.label(BondFixedExpiryTeller, "BondFixedExpiryTeller");
     }

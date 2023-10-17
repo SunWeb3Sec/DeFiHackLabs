@@ -61,7 +61,7 @@ contract ContractTest is Test {
     MockThenaRewardPool mock;
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 26_834_149);
+        cheats.createSelectFork(bsc, 26_834_149);
         cheats.label(address(THENA), "THENA");
         cheats.label(address(USDC), "USDC");
         cheats.label(address(BUSD), "BUSD");

@@ -92,7 +92,7 @@ contract XWinExpTest is Test {
     address payable private repayAddr = payable(0xc78248D676DeBB4597e88071D3d889eCA70E5469);
 
     function setUp() public {
-        cheat.createSelectFork("bsc",8589725);
+        cheat.createSelectFork(bsc,8589725);
         deal(address(this), 0);
     }
     function testExploit() external {

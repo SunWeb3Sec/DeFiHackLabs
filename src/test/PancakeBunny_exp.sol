@@ -73,7 +73,7 @@ contract ContractTest is DSTest {
     address keeper = 0x793074D9799DC3c6039F8056F1Ba884a73462051;
 
     constructor() public {
-        cheat.createSelectFork("bsc", 7556330);
+        cheat.createSelectFork(bsc, 7556330);
 
         IERC20(WBNB).approve(address(zap), 1e18);
         IERC20(address(WBNBUSDTv2)).approve(address(flip), type(uint256).max);

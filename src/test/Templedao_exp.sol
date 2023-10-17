@@ -27,7 +27,7 @@ contract ContractTest is DSTest {
     IStaxLPStaking StaxLPStaking = IStaxLPStaking(0xd2869042E12a3506100af1D192b5b04D65137941);
 
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15_725_066); // fork mainnet at block 15725066
+        cheat.createSelectFork(eth, 15_725_066); // fork mainnet at block 15725066
     }
 
     function testExploit() public {

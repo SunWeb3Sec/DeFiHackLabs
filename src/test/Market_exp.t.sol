@@ -2,6 +2,7 @@
 pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
+import "./interface.sol";
 
 // Total Lost: $180k
 // Attacker: 0x4206d62305d2815494dcdb759c4e32fca1d181a0
@@ -54,7 +55,7 @@ contract MarketExploitTest is Test {
 
     IUnitroller private constant unitroller = IUnitroller(0x627742AaFe82EB5129DD33D237FF318eF5F76CBC);
     IRouter private constant router = IRouter(0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff);
-    Uni_Router_V3 private constant routerV3 = Uni_Router_V3(0xf5b509bB0909a69B1c207E495f687a596C168E12);
+    UniRouter_V3 private constant routerV3 = UniRouter_V3(0xf5b509bB0909a69B1c207E495f687a596C168E12);
 
     CErc20Interface private constant CErc20_mmooCurvestMATIC_MATIC_4 =
         CErc20Interface(0x570Bc2b7Ad1399237185A27e66AEA9CfFF5F3dB8);
@@ -64,7 +65,7 @@ contract MarketExploitTest is Test {
     IERC20 private constant USDC = IERC20(0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174);
 
     function setUp() public {
-        vm.createSelectFork("https://polygon.llamarpc.com", 34_716_800); // fork Polygon at block 34716800
+        vm.createSelectFork(polygon, 34_716_800); // fork Polygon at block 34716800
         vm.deal(address(this), 0); // set address(this).balance to 0
     }
 
@@ -188,7 +189,7 @@ contract MarketExploitTest is Test {
 
         // swap some WMATIC for stMATIC to repay Balancer
         WMATIC.approve(address(routerV3), type(uint256).max);
-        Uni_Router_V3.ExactInputSingleParams memory _Params = Uni_Router_V3.ExactInputSingleParams({
+        UniRouter_V3.ExactInputSingleParams memory _Params = UniRouter_V3.ExactInputSingleParams({
             tokenIn: address(WMATIC),
             tokenOut: address(stMATIC),
             deadline: type(uint256).max,
@@ -202,24 +203,6 @@ contract MarketExploitTest is Test {
 }
 
 /* -------------------- Interface -------------------- */
-interface CErc20Interface {
-    function mint(uint256 mintAmount) external returns (uint256);
-    function balanceOf(address account) external view returns (uint256);
-    function borrow(uint256 borrowAmount) external returns (uint256);
-    function redeem(uint256 amount) external;
-    function withdrawAll() external;
-    function transfer(address to, uint256 amount) external returns (bool);
-}
-
-interface ICErc20Delegate {
-    function liquidateBorrow(
-        address borrower,
-        uint256 repayAmount,
-        address cTokenCollateral
-    ) external returns (uint256);
-    function borrow(uint256 borrowAmount) external returns (uint256);
-}
-
 interface BeefyVault {
     function deposit(uint256 _amount) external;
     function withdraw(uint256 _amount) external;
@@ -231,65 +214,7 @@ interface BeefyVault {
     function transfer(address recipient, uint256 amount) external returns (bool);
 }
 
-interface IUnitroller {
-    function enterMarkets(address[] memory cTokens) external returns (uint256[] memory);
-    function exitMarket(address cTokenAddress) external returns (uint256);
-    function cTokensByUnderlying(address) external view returns (address);
-    function getAccountLiquidity(address account) external view returns (uint256, uint256, uint256);
-}
-
-interface IERC20 {
-    function transfer(address to, uint256 amount) external returns (bool);
-    function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-}
-
-interface WETH9 {
-    function deposit() external payable;
-    function transfer(address to, uint256 value) external returns (bool);
-    function approve(address guy, uint256 wad) external returns (bool);
-    function withdraw(uint256 wad) external;
-    function balanceOf(address) external view returns (uint256);
-}
-
-interface ILendingPool {
-    function flashLoan(
-        address receiverAddress,
-        address[] calldata assets,
-        uint256[] calldata amounts,
-        uint256[] calldata modes,
-        address onBehalfOf,
-        bytes calldata params,
-        uint16 referralCode
-    ) external;
-}
-
-interface IBalancerVault {
-    function flashLoan(
-        address recipient,
-        address[] memory tokens,
-        uint256[] memory amounts,
-        bytes memory userData
-    ) external;
-}
-
-interface ICurvePool {
-    function remove_liquidity(uint256 _amount, uint256[2] calldata min_amounts, bool donate_dust) external;
-    function add_liquidity(uint256[2] memory amounts, uint256 min_mint_amount) external returns (uint256);
-}
-
-interface IRouter {
-    function swapExactTokensForTokensSupportingFeeOnTransferTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external;
-}
-
-interface Uni_Router_V3 {
+interface UniRouter_V3 {
     struct ExactInputSingleParams {
         address tokenIn;
         address tokenOut;

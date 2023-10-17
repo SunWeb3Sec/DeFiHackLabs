@@ -37,7 +37,7 @@ contract CexiTest is Test {
     Exploiter private exploiter;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18182605);
+        vm.createSelectFork(eth, 18182605);
         vm.label(address(CEXISWAP), "CEXISWAP");
         vm.label(address(USDT), "USDT");
     }

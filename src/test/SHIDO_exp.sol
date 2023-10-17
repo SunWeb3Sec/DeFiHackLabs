@@ -46,7 +46,7 @@ contract ContractTest is Test {
 
     function setUp() public {
         deal(address(this), 0);
-        vm.createSelectFork("bsc", 29_365_171); // It is recommended to use the quicknode endpoint
+        vm.createSelectFork(bsc, 29_365_171); // It is recommended to use the quicknode endpoint
         vm.label(address(SHIDOINU), "SHIDOINU");
         vm.label(address(SHIDO), "SHIDO");
         vm.label(address(WBNB), "WBNB");

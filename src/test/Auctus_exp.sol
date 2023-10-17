@@ -37,7 +37,7 @@ contract ContractTest is DSTest, MockACOToken {
     IERC20 usdc = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 14_460_635); // fork mainnet at block 14460635
+        cheats.createSelectFork(eth, 14_460_635); // fork mainnet at block 14460635
     }
 
     function test() public {

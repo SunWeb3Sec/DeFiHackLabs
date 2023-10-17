@@ -12,7 +12,7 @@ contract ContractTest is DSTest {
     WETH weth = WETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 14_037_236); // fork mainnet block number 14037236
+        cheats.createSelectFork(eth, 14_037_236); // fork mainnet block number 14037236
     }
 
     function testExample() public {

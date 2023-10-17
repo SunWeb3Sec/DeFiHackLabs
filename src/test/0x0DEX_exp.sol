@@ -93,7 +93,7 @@ contract ContractTest is Test {
         0x30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000001;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18115707);
+        vm.createSelectFork(eth, 18115707);
         vm.label(address(OxODexPool), "OxODexPool");
         vm.label(address(WETH), "WETH");
         vm.label(address(USDC), "USDC");

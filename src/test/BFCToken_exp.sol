@@ -25,7 +25,7 @@ contract BFCTest is Test {
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 31599443);
+        vm.createSelectFork(bsc, 31599443);
         vm.label(address(BUSDT_WBNB), "BUSDT_WBNB");
         vm.label(address(BUSDT_BFC), "BUSDT_BFC");
         vm.label(address(Router), "Router");

@@ -2,6 +2,7 @@
 pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
+import "./interface.sol";
 
 // @KeyInfo - Total Lost: $30.5M
 // Attacker: 0x3b6e77722e2bbe97c1cfa337b42c0939aeb83671
@@ -14,7 +15,7 @@ import "forge-std/Test.sol";
 // https://rekt.news/spartan-rekt/
 
 contract Exploit is Test {
-    IWBNB private constant WBNB = IWBNB(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
+    IWBNB private constant WBNB = IWBNB(payable(address(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c)));
     IERC20 private constant SPARTA = IERC20(0xE4Ae305ebE1AbE663f261Bc00534067C80ad677C);
 
     IUniswapV2Pair private constant CAKE_WBNB = IUniswapV2Pair(0x0eD7e52944161450477ee417DE9Cd3a859b14fD0);
@@ -22,7 +23,7 @@ contract Exploit is Test {
     ISpartanPool private constant SPT1_WBNB = ISpartanPool(0x3de669c4F1f167a8aFBc9993E4753b84b576426f);  // SPARTAN<>WBNB
 
     function setUp() public {
-        vm.createSelectFork("https://binance.llamarpc.com", 7048832);
+        vm.createSelectFork(bsc, 7048832);
     }
 
     function testExploit() public {
@@ -86,31 +87,4 @@ interface ISpartanPool {
 
     function transfer(address to, uint256 amount) external returns (bool);
     function balanceOf(address account) external view returns (uint256);
-}
-
-interface IERC20 {
-    function transfer(address to, uint256 amount) external returns (bool);
-    function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-}
-
-interface IWBNB {
-    function deposit() external payable;
-    function transfer(address to, uint256 value) external returns (bool);
-    function approve(address guy, uint256 wad) external returns (bool);
-    function withdraw(uint256 wad) external;
-    function balanceOf(address) external view returns (uint256);
-}
-
-interface IUniswapV2Pair {
-    function balanceOf(address) external view returns (uint256);
-    function skim(address to) external;
-    function sync() external;
-    function swap(
-        uint256 amount0Out,
-        uint256 amount1Out,
-        address to,
-        bytes memory data
-    ) external;
 }

@@ -12,7 +12,7 @@ contract ContractTest is DSTest {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("arbitrum", 7_322_694); //fork arbitrum at block 7322694
+        cheats.createSelectFork(arbitrum, 7_322_694); //fork arbitrum at block 7322694
     }
 
     function testExploit() public {

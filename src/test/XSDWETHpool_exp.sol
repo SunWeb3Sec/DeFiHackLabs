@@ -71,7 +71,7 @@ contract ContractTest is Test {
     uint exploitAmount = 56_964_339_410_199_718_035;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 32086901 - 1);
+        vm.createSelectFork(bsc, 32086901 - 1);
         vm.label(address(WBNB), "WBNB");
         vm.label(address(DPPOracle), "DPPOracle");
         vm.label(address(DPPAdvance), "DPPAdvance");

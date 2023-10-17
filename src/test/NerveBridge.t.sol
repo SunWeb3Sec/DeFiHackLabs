@@ -45,7 +45,7 @@ contract ContractTest is Test {
     address nerve3pool = 0x1B3771a66ee31180906972580adE9b81AFc5fCDc;
 
     function setUp() public {
-        mainnetFork = vm.createFork("bsc", 12_653_565);
+        mainnetFork = vm.createFork(bsc, 12_653_565);
         vm.selectFork(mainnetFork);
         cheats.label(address(flashloanProvider), "flashloanProvider");
     }

@@ -31,7 +31,7 @@ contract Attacker is Test {
     WBNB constant wbnb = WBNB(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     Exploit immutable exploit;
     constructor() {
-        vm.createSelectFork("bsc", 24655771);
+        vm.createSelectFork(bsc, 24655771);
         exploit = new Exploit();
     }
 

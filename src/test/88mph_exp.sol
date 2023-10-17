@@ -9,7 +9,7 @@ contract ContractTest is DSTest {
     I88mph mphNFT = I88mph(0xF0b7DE03134857391d8D43Ed48e20EDF21461097);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 12_516_705); //fork mainnet at block 13715025
+        cheats.createSelectFork(eth, 12_516_705); //fork mainnet at block 13715025
     }
 
     function testExploit() public {

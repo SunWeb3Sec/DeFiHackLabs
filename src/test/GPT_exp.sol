@@ -26,7 +26,7 @@ contract CSExp is Test, IDODOCallee {
     IERC20 GPT = IERC20(0xa1679abEF5Cd376cC9A1C4c2868Acf52e08ec1B3);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 28_494_868);
+        cheats.createSelectFork(bsc, 28_494_868);
     }
 
     function doFlashLoan(IDPPOracle oracle) internal {

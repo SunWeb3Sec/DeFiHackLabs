@@ -21,7 +21,7 @@ contract ContractTest is Test {
     bool private reenter = true;
 
     function setUp() public {
-        vm.createSelectFork("Avalanche", 36136405);
+        vm.createSelectFork(avalanche, 36136405);
     }
 
     function testExploit() public {

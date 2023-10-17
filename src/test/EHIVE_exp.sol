@@ -51,7 +51,7 @@ contract EHIVETest is Test {
 
     function setUp() public {
         // Start from the block when exploit contracts were deployed
-        vm.createSelectFork("mainnet", 17690497);
+        vm.createSelectFork(eth, 17690497);
         vm.label(address(WETH), "WETH");
         vm.label(address(EHIVE), "EHIVE");
         vm.label(address(AaveFlashloan), "AaveFlashloan");

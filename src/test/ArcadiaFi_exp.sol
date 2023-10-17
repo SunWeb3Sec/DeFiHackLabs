@@ -69,7 +69,7 @@ contract ContractTest is Test {
     IVault Proxy2;
 
     function setUp() public {
-        vm.createSelectFork("optimism", 106_676_494);
+        vm.createSelectFork(optimism, 106_676_494);
         vm.label(address(USDC), "USDC");
         vm.label(address(WETH), "WETH");
         vm.label(address(aaveV3), "aaveV3");

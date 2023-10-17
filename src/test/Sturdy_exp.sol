@@ -101,7 +101,7 @@ contract ContractTest is Test {
     ISturdyOracle SturdyOracle = ISturdyOracle(0xe5d78eB340627B8D5bcFf63590Ebec1EF9118C89);
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 17_460_609);
+        vm.createSelectFork(eth, 17_460_609);
         vm.label(address(wstETH), "wstETH");
         vm.label(address(WETH), "WETH");
         vm.label(address(steCRV), "steCRV");

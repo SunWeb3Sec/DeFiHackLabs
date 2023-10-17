@@ -66,7 +66,7 @@ contract ContractTest is Test {
 
 
     function setUp() public {
-        vm.createSelectFork("polygon", 48_149_138 - 1);
+        vm.createSelectFork(polygon, 48_149_138 - 1);
         vm.label(address(Balancer), "Balancer");
         vm.label(address(WMATIC), "WMATIC");
         vm.label(address(USDC), "USDC");

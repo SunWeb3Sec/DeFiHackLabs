@@ -28,7 +28,7 @@ contract ContractTest is DSTest {
     IOracle oracle = IOracle(0x8129026c585bCfA530445a6267f9389057761A00);
 
     function setUp() public {
-        cheat.createSelectFork("fantom", 37_093_708); // fork fantom at block 37093708
+        cheat.createSelectFork(fantom, 37_093_708); // fork fantom at block 37093708
     }
 
     function testExample() public {

@@ -60,7 +60,7 @@ contract XaveFinanceExploit is DSTest {
     address attackerContract = 0xE167cdAAc8718b90c03Cf2CB75DC976E24EE86D3;
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 15_704_736); // fork mainnet at 15704736
+        cheats.createSelectFork(eth, 15_704_736); // fork mainnet at 15704736
     }
 
     function encodeWithSignature_mint(address to, uint256 amount) internal pure returns (bytes memory) {

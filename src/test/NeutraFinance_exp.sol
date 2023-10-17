@@ -327,7 +327,7 @@ contract CounterTest is Test {
         ICamelotPair(0x2ea3CA79413C2EC4C1893D5f8C34C16acB2288A4);
 
     function setUp() public {
-        vm.createSelectFork("arbitrum", 117189138);
+        vm.createSelectFork(arbitrum, 117189138);
         vm.label(address(WETH), "WETH");
         vm.label(address(NEU), "NEU");
     }

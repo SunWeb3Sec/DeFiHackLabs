@@ -27,7 +27,7 @@ contract UpswingExploit is Test {
     address weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 16_433_820); // Fork mainnet at block 16433820
+        vm.createSelectFork(eth, 16_433_820); // Fork mainnet at block 16433820
         vm.label(address(uniRouter), "uniRouterV2");
         vm.label(upsToken, "upsToken");
         vm.label(weth, "weth");

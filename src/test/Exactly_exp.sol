@@ -117,7 +117,7 @@ contract ContractTest is Test {
     ];
 
     function setUp() public {
-        vm.createSelectFork("optimism", 108_375_557);
+        vm.createSelectFork(optimism, 108_375_557);
         vm.label(address(WETH), "WETH");
         vm.label(address(USDC), "USDC");
         vm.label(address(exaUSDC), "exaUSDC");

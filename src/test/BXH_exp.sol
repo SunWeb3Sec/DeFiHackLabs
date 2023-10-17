@@ -27,7 +27,7 @@ contract Attacker is Test {
         TokenStakingPoolDelegate(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663);
 
     function setUp() public {
-        cheat.createSelectFork("bsc", 21_727_289);
+        cheat.createSelectFork(bsc, 21_727_289);
         cheat.label(address(BXH), "BXH");
         cheat.label(address(usdt), "USDT");
         cheat.label(address(wbnb), "WBNB");

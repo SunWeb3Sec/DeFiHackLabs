@@ -50,7 +50,7 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 28_708_273);
+        cheats.createSelectFork(bsc, 28_708_273);
         cheats.label(address(DPPOracle), "DPPOracle");
         cheats.label(address(PancakePool), "PancakePool");
         cheats.label(address(Router), "Router");
