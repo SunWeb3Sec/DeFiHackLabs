@@ -2,8 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-
-302 incidents included.
+303 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20231018 MicDao](#20231018-micdao---price-manipulation)
 
 [20231013 BelugaDex](#20231013-belugadex---price-manipulation)
 
@@ -671,6 +672,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20231018 MicDao - Price Manipulation
+
+### Lost: ~$13K
+
+Test
+
+```
+forge test --contracts ./src/test/MicDao_exp.sol -vvv
+```
+
+#### Contract
+
+[MicDao_exp.sol](src/test/MicDao_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/CertiKAlert/status/1714677875427684544
+
+https://twitter.com/ChainAegis/status/1714837519488205276
+
+---
+
 ### 20231013 BelugaDex - Price manipulation
 
 ### Lost: ~$175K
@@ -693,7 +716,7 @@ https://twitter.com/CertiKAlert/status/1712707006979613097
 
 ---
 
-### 20231013 WiseLending - Donate Inflation ExchangeRate && Rounding Error 
+### 20231013 WiseLending - Donate Inflation ExchangeRate && Rounding Error
 
 ### Lost: ~$260K
 
