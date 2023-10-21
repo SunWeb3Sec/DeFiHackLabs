@@ -1066,6 +1066,26 @@ https://twitter.com/DecurityHQ/status/1699384904218202618
 
 ---
 
+### 20230905 HeavensGate - Rebasing logic issue
+
+### Lost: ~$8ETH
+
+Test
+
+```
+forge test --contracts ./src/test/HeavensGate_exp.sol -vvv
+```
+
+#### Contract
+
+[HeavensGate_exp.sol](src/test/HeavensGate_exp.sol)
+
+#### Link Reference
+
+https://explorer.phalcon.xyz/tx/eth/0xe28ca1f43036f4768776805fb50906f8172f75eba3bf1d9866bcd64361fda834
+
+---
+
 ### 20230905 FloorDAO - Rebasing logic issue
 
 ### Lost: ~$40ETH
@@ -1085,26 +1105,6 @@ forge test --contracts ./src/test/FloorDAO_exp.sol -vvv
 https://twitter.com/PeckShieldAlert/status/1698962105058361392
 
 https://medium.com/floordao/floor-post-mortem-incident-summary-september-5-2023-e054a2d5afa4
-
----
-
-### 20230905 HeavensGate - Rebasing logic issue
-
-### Lost: ~$6ETH
-
-Test
-
-```
-forge test --contracts ./src/test/HeavensGate_exp.sol -vvv
-```
-
-#### Contract
-
-[HeavensGate_exp.sol](src/test/HeavensGate_exp.sol)
-
-#### Link Reference
-
-https://explorer.phalcon.xyz/tx/eth/0xe28ca1f43036f4768776805fb50906f8172f75eba3bf1d9866bcd64361fda834
 
 ---
 
