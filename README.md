@@ -74,9 +74,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230905 JumpFarm](#20230905-JumpFarm---rebasing-logic-issue)
 
-[20230905 FloorDAO](#20230905-floordao---rebasing-logic-issue)
-
 [20230905 HeavensGate](#20230905-HeavensGate---rebasing-logic-issue)
+
+[20230905 FloorDAO](#20230905-floordao---rebasing-logic-issue)
 
 [20230902 DAppSocial](#20230902-dappsocial---business-logic-flaw)
 
