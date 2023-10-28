@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-304 incidents included.
+305 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20231024 MaestroRouter2](#20231024-maestrorouter2---arbitrary-external-call)
+
+[20231019 kTAF](#20231019-ktaf---compoundv2-inflation-attack)
 
 [20231018 MicDao](#20231018-micdao---price-manipulation)
 
@@ -693,6 +695,26 @@ forge test --contracts .\src\test\MaestroRouter2_exp.sol --evm-version 'shanghai
 https://twitter.com/Phalcon_xyz/status/1717014871836098663
 
 https://twitter.com/BeosinAlert/status/1717013965203804457
+
+---
+
+### 20231019 kTAF - CompoundV2 Inflation Attack
+
+### Lost: ~$8K
+
+Test
+
+```
+forge test --contracts ./src/test/kTAF_exp.sol -vvv
+```
+
+#### Contract
+
+[kTAF_exp.sol](src/test/kTAF_exp.sol)
+
+#### Link Reference
+
+https://defimon.xyz/attack/mainnet/0x325999373f1aae98db2d89662ff1afbe0c842736f7564d16a7b52bf5c777d3a4
 
 ---
 
