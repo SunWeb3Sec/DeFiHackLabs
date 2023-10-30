@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-306 incidents included.
+307 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20231028 AstridProtocol](#20231028-AstridProtocol---business-logic-flaw)
 
 [20231024 MaestroRouter2](#20231024-maestrorouter2---arbitrary-external-call)
 
@@ -677,6 +679,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20231028 AstridProtocol - Business Logic Flaw
+
+### Lost: ~$127ETH
+
+Test
+
+```
+forge test --contracts .\src\test\Astrid_exp.sol --evm-version 'shanghai' -vvv
+```
+
+#### Contract
+
+[Astrid_exp.sol](src/test/Astrid_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1718454835966775325
+
+---
 
 ### 20231024 MaestroRouter2 - Arbitrary External Call
 
