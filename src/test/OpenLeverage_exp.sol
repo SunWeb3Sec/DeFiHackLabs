@@ -109,9 +109,9 @@ contract ContractTest is Test {
         address to
     ) internal {
         IERC20(token).approve(address(Router), type(uint256).max);
-        uint256 transferAmount = IERC20(token).balanceOf(from);
 
         if (from != address(0)) {
+            uint256 transferAmount = IERC20(token).balanceOf(from);
             uint256 allowance = IERC20(token).allowance(
                 from,
                 address(RewardVaultDelegator)
