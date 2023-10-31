@@ -107,7 +107,7 @@ contract ContractTest is Test{
         balances[address(this)] = 1e30 + 1;
     }
 
-    mapping(address account => uint256) public balances;
+    mapping(address => uint256) public balances;
     function balanceOf(address account) public view virtual returns (uint256) {
         return balances[account];
     }
