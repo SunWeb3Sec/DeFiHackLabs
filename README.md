@@ -708,7 +708,7 @@ https://twitter.com/DecurityHQ/status/1719657969925677161
 
 ---
 
-### 20231028 UniBotRouter - Arbitrary External Call
+### 20231031 UniBotRouter - Arbitrary External Call
 
 ### Lost: ~$83,944 USD$
 
