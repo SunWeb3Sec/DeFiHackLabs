@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-308 incidents included.
+309 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,7 +34,11 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+
+
 [20231101 OnyxProtocol](#20231101-onyxprotocol---precission-loss-vulnerability)
+
+[20231031 UniBotRouter](#20231031-UniBotRouter---arbitrary-external-call)
 
 [20231028 AstridProtocol](#20231028-AstridProtocol---business-logic-flaw)
 
@@ -701,6 +705,26 @@ forge test --contracts ./src/test/OnyxProtocol_exp.sol --evm-version 'shanghai' 
 https://twitter.com/Phalcon_xyz/status/1719697319824851051
 https://defimon.xyz/attack/mainnet/0xf7c21600452939a81b599017ee24ee0dfd92aaaccd0a55d02819a7658a6ef635
 https://twitter.com/DecurityHQ/status/1719657969925677161
+
+---
+
+### 20231031 UniBotRouter - Arbitrary External Call
+
+### Lost: ~$83,944 USD$
+
+Test
+
+```
+forge test --contracts .\src\test\UniBot_exp.sol --evm-version 'shanghai' -vvv
+```
+
+#### Contract
+
+[UniBot_exp.sol](src/test/UniBot_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/PeckShieldAlert/status/1719251390319796477
 
 ---
 
