@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-309 incidents included.
+310 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-
+[20231102 3913Token](#20231102-3913token---deflationary-token-attack)
 
 [20231101 OnyxProtocol](#20231101-onyxprotocol---precission-loss-vulnerability)
 
@@ -685,6 +685,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20231102 3913Token - Deflationary Token Attack
+
+### Lost: ~$31354 USD$
+
+Test
+
+```
+forge test --contracts ./src/test/3913_exp.sol --evm-version 'shanghai' -vvv
+```
+
+#### Contract
+
+[3913_exp.sol](src/test/3913_exp.sol)
+
+#### Link Reference
+
+https://defimon.xyz/attack/bsc/0x8163738d6610ca32f048ee9d30f4aa1ffdb3ca1eddf95c0eba086c3e936199ed
+
+---
 
 ### 20231101 OnyxProtocol - Precission Loss Vulnerability
 
