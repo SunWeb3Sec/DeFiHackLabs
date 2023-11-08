@@ -33,7 +33,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
-[20231107 bot](#20231106-bot---lack-of-access-control)
+[20231107 bot](#20231107-bot---lack-of-access-control)
 
 [20231106 TheStandard_io](#20231106-thestandard_io---lack-of-slippage-protection)
 
@@ -696,7 +696,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 Test
 
 ```
-forge test --contracts ./src/test/TheStandard_io_exp.sol -vvv
+forge test --contracts ./src/test/bot_exp.sol -vvv
 ```
 
 #### Contract
