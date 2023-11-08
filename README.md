@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-312 incidents included.
+313 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,7 +33,10 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
 [20231107 MEVbot](#20231107-mevbot---lack-of-access-control)
+
+[20231106 TrustPad](#20231106-trustpad---incorrect-input-validation)
 
 [20231106 TheStandard_io](#20231106-thestandard_io---lack-of-slippage-protection)
 
@@ -706,6 +709,26 @@ forge test --contracts ./src/test/bot_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/BlockSecTeam/status/1722101942061601052
+
+---
+
+### 20231106 TrustPad - Incorrect input validation
+
+### Lost: ~$155K
+
+Test
+
+```
+forge test --contracts ./src/test/TrustPad_exp.sol  -vvv
+```
+
+#### Contract
+
+[TrustPad_exp.sol](src/test/TrustPad_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BeosinAlert/status/1721800306101793188
 
 ---
 
