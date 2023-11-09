@@ -36,7 +36,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20231107 MEVbot](#20231107-mevbot---lack-of-access-control)
 
-[20231106 TrustPad](#20231106-trustpad---incorrect-input-validation)
+[20231106 TrustPad](#20231106-trustpad---lack-of-msgsender-address-verification)
 
 [20231106 TheStandard_io](#20231106-thestandard_io---lack-of-slippage-protection)
 
