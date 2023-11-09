@@ -712,7 +712,7 @@ https://twitter.com/BlockSecTeam/status/1722101942061601052
 
 ---
 
-### 20231106 TrustPad - Incorrect input validation
+### 20231106 TrustPad - Lack of msg.sender address verification
 
 ### Lost: ~$155K
 
