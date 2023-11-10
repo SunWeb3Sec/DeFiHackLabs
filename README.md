@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20231110 GrokToken](#20231110-grok---lack-of-slippage-protection)
+
 [20231107 MEVbot](#20231107-mevbot---lack-of-access-control)
 
 [20231106 TrustPad](#20231106-trustpad---lack-of-msgsender-address-verification)
@@ -687,6 +689,29 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### Hacks Dashboard
 
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [De.Fi](https://de.fi/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+
+### 20231110 grok - Lack of slippage protection
+
+### Lost: ~26 ETH
+
+
+Test
+
+```
+forge test --contracts ./src/test/grok_exp.sol -vvv
+```
+
+#### Contract
+
+[grok_exp.sol](src/test/TheStandard_io_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1722841076120130020
+
+---
 
 ---
 
