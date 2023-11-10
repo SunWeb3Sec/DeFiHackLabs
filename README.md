@@ -705,13 +705,11 @@ forge test --contracts ./src/test/grok_exp.sol -vvv
 
 #### Contract
 
-[grok_exp.sol](src/test/TheStandard_io_exp.sol)
+[grok_exp.sol](src/test/grok_exp.sol)
 
 #### Link Reference
 
 https://twitter.com/Phalcon_xyz/status/1722841076120130020
-
----
 
 ---
 
