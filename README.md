@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-313 incidents included.
+314 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20231112 MEV_0xa247](#20231112-mevbot_0xa247---incorrect-access-control)
 
 [20231110 GrokToken](#20231110-grok---lack-of-slippage-protection)
 
@@ -692,10 +694,29 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ---
 
+### 20231112 MEVBot_0xa247 - Incorrect Access Control
+
+### Lost: ~$150K
+
+Test
+
+```
+forge test --contracts ./src/test/MEV_0xa247_exp.sol -vvv
+```
+
+#### Contract
+
+[MEV_0xa247_exp.sol](src/test/MEV_0xa247_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1723591214262632562
+
+---
+
 ### 20231110 grok - Lack of slippage protection
 
 ### Lost: ~26 ETH
-
 
 Test
 
