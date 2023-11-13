@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-316 incidents included.
+317 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20231112 MEV_0x8c2d](#20231112-mevbot_0x8c2d---lack-of-access-control)
 
 [20231112 MEV_0xa247](#20231112-mevbot_0xa247---incorrect-access-control)
 
@@ -695,6 +697,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### Hacks Dashboard
 
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [De.Fi](https://de.fi/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/)
+
+---
+
+### 20231112 MEVBot_0x8c2d - Lack of Access Control
+
+### Lost: ~$365K
+
+Test
+
+```
+forge test --contracts ./src/test/MEV_0x8c2d_exp.sol -vvv
+```
+
+#### Contract
+
+[MEV_0x8c2d_exp.sol](src/test/MEV_0x8c2d_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1723897569661657553
 
 ---
 
