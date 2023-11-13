@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-314 incidents included.
+315 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -246,6 +246,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230510 SNK](#20230510-snk---reward-calculation-error)
 
+[20230509 MCC](#20230509-mcc---reflection-token)
+
 [20230506 Melo](#20230506-melo---access-control)
 
 [20230505 DEI](#20230505-dei---wrong-implemention)
@@ -260,7 +262,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230424 Axioma](#20230424-Axioma---business-logic-flaw)
 
-[20230419 OLIFE](#20230419-OLIFE----Reflection-token)
+[20230419 OLIFE](#20230419-OLIFE---Reflection-token)
 
 [20230416 Swapos V2](#20230416-swapos-v2----error-k-value-attack)
 
@@ -2894,6 +2896,26 @@ forge test --contracts ./src/test/SNK_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/Phalcon_xyz/status/1656176776425644032
+
+---
+
+### 20230509 MCC - Reflection token
+
+### Lost: ~$10 ETH
+
+Testing
+
+```
+forge test --contracts ./src/test/MultiChainCapital_exp.sol -vvv
+```
+
+#### Contract
+
+[MultiChainCapital_exp.sol](src/test/MultiChainCapital_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BeosinAlert/status/1655846558762692608
 
 ---
 
