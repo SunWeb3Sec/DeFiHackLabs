@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-315 incidents included.
+316 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -57,6 +57,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20231022 OpenLeverage](#20231022-openleverage---business-logic-flaw)
 
 [20231019 kTAF](#20231019-ktaf---compoundv2-inflation-attack)
+
+[20231018 HopeLend](#20231018-hopelend---div-precision-loss)
 
 [20231018 MicDao](#20231018-micdao---price-manipulation)
 
@@ -941,6 +943,28 @@ forge test --contracts ./src/test/kTAF_exp.sol -vvv
 #### Link Reference
 
 https://defimon.xyz/attack/mainnet/0x325999373f1aae98db2d89662ff1afbe0c842736f7564d16a7b52bf5c777d3a4
+
+---
+
+### 20231018 Hopelend - Div Precision Loss
+
+### Lost: ~$825K
+
+Test
+
+```
+forge test --contracts ./src/test/Hopelend_exp.sol --evm-version 'shanghai' -vvv
+```
+
+#### Contract
+
+[HopeLend_exp.sol](src/test/Hopelend_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/immunefi/status/1722810650387517715
+
+https://lunaray.medium.com/deep-dive-into-hopelend-hack-5962e8b55d3f
 
 ---
 
