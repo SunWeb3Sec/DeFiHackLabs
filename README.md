@@ -58,6 +58,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20231019 kTAF](#20231019-ktaf---compoundv2-inflation-attack)
 
+[20231018 HopeLend](#20231018-hopelend---div-precision-loss)
+
 [20231018 MicDao](#20231018-micdao---price-manipulation)
 
 [20231013 BelugaDex](#20231013-belugadex---price-manipulation)
@@ -944,7 +946,7 @@ https://defimon.xyz/attack/mainnet/0x325999373f1aae98db2d89662ff1afbe0c842736f75
 
 ---
 
-### 20231018 Hopelend - Price Manipulation
+### 20231018 Hopelend - Div Precision Loss
 
 ### Lost: ~$825K
 
