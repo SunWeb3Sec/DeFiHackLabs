@@ -676,7 +676,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20180422 Beauty Chain](past/2021/README.md#20180422-beauty-chain---integer-overflow)
 
-[20180422 UniSwapV1](past/2021/README.md#20180422-beauty-chain---integer-overflow)
+[2020418 UniSwapV1](past/2021/#20200418-uniswapv1---erc777-reentrancy)
 
 [20171106 Parity - 'Accidentally Killed It'](past/2021/README.md#20171106-parity---accidentally-killed-it)
 
