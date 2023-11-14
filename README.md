@@ -704,6 +704,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ---
 
+### List of DeFi Hacks & POCs
+
 ### 20231112 MEVBot_0x8c2d - Lack of Access Control
 
 ### Lost: ~$365K
@@ -763,8 +765,6 @@ forge test --contracts ./src/test/grok_exp.sol -vvv
 https://twitter.com/Phalcon_xyz/status/1722841076120130020
 
 ---
-
-### List of DeFi Hacks & POCs
 
 ### 20231107 MEVbot - Lack of access control
 
