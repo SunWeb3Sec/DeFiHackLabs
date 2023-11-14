@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-318 incidents included.
+319 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -251,6 +251,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230510 SNK](#20230510-snk---reward-calculation-error)
 
 [20230509 MCC](#20230509-mcc---reflection-token)
+
+[20230509 HODL](#20230509-hodl---reflection-token)
 
 [20230506 Melo](#20230506-melo---access-control)
 
@@ -2964,6 +2966,26 @@ forge test --contracts ./src/test/MultiChainCapital_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/BeosinAlert/status/1655846558762692608
+
+---
+
+### 20230509 HODL - Reflection token
+
+### Lost: ~$2.3 ETH
+
+Testing
+
+```
+forge test --contracts ./src/test/HODLCapital_exp.sol -vvv
+```
+
+#### Contract
+
+[HODLCapital_exp.sol](src/test/HODLCapital_exp.sol)
+
+#### Link Reference
+
+https://explorer.phalcon.xyz/tx/eth/0xedc214a62ff6fd764200ddaa8ceae54f842279eadab80900be5f29d0b75212df
 
 ---
 
