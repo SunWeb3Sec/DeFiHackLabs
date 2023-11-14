@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-317 incidents included.
+318 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -675,6 +675,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20200618 Bancor Protocol](past/2021/README.md#20200618-bancor-protocol---access-control)
 
 [20180422 Beauty Chain](past/2021/README.md#20180422-beauty-chain---integer-overflow)
+
+[20180422 UniSwapV1](past/2021/README.md#20180422-beauty-chain---integer-overflow)
 
 [20171106 Parity - 'Accidentally Killed It'](past/2021/README.md#20171106-parity---accidentally-killed-it)
 
