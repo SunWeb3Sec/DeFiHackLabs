@@ -80,6 +80,8 @@
 
 [20180422 Beauty Chain](#20180422-beauty-chain---integer-overflow)
 
+[2020418 UniSwapV1](#20200418-uniswapv1---erc777-reentrancy)
+
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
 
 ### 20211221 Visor Finance - Reentrancy
@@ -891,6 +893,26 @@ forge test --contracts ./src/test/BEC_exp.sol -vv
 https://etherscan.io/tx/0xad89ff16fd1ebe3a0a7cf4ed282302c06626c1af33221ebe0d3a470aba4a660f
 
 https://etherscan.io/address/0xc5d105e63711398af9bbff092d4b6769c82f793d#code
+
+---
+
+### 20200418 UniSwapV1 - ERC777 Reentrancy
+
+#### Lost: $220,000
+
+Testing
+
+```sh
+forge test --contracts ./src/test/uniswap-erc777.sol -vv
+```
+
+#### Contract
+
+[uniswap-erc777.sol](../../src/test/uniswap-erc777.sol)
+
+#### Link reference
+
+https://blog.blockmagnates.com/detailed-explanation-of-uniswaps-erc777-re-entry-risk-8fa5b3738e08
 
 ---
 
