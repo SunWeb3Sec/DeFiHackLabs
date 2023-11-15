@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-319 incidents included.
+320 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -37,6 +37,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20231112 MEV_0x8c2d](#20231112-mevbot_0x8c2d---lack-of-access-control)
 
 [20231112 MEV_0xa247](#20231112-mevbot_0xa247---incorrect-access-control)
+
+[2023111 Raft_fi](#20231111-raft_fi---donate-inflation-exchangerate--rounding-error)
 
 [20231110 GrokToken](#20231110-grok---lack-of-slippage-protection)
 
@@ -743,6 +745,25 @@ forge test --contracts ./src/test/MEV_0xa247_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/Phalcon_xyz/status/1723591214262632562
+
+---
+
+### 20231111 Raft_fi - Donate Inflation ExchangeRate & Rounding Error
+
+### Lost: ~3.2 M
+
+Test
+```
+forge test --contracts ./src/test/Raft_exp.sol -vvv
+```
+
+### Contract
+
+[Raft_exp.sol](src/test/Raft_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/BlockSecTeam/status/1723229393529835972
 
 ---
 
