@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-321 incidents included.
+322 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -709,6 +709,22 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20231117 ShibaToken - Business Logic Flaw
+
+### Lost: ~$31K
+
+Test
+
+```
+forge test --contracts ./src/test/ShibaToken_exp.sol -vvv
+```
+
+#### Contract
+
+[ShibaToken_exp.sol](src/test/ShibaToken_exp.sol)
+
+---
 
 ### 20231117 LinkDAO - Bad `K` Value Verification
 
