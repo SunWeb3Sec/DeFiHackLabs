@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-322 incidents included.
+323 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,10 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20231117 Token8633_9419](#20231117-token8633_9419---price-manipulation)
+
+[20231117 ShibaToken](#20231117-shibatoken---business-logic-flaw)
 
 [20231117 LinkDAO](#20231117-linkdao---bad-k-value-verification)
 
@@ -709,6 +713,22 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20231117 Token8633_9419 - Price Manipulation
+
+### Lost: ~$52K
+
+Test
+
+```
+forge test --contracts ./src/test/Token8633_9419_exp.sol -vvv
+```
+
+#### Contract
+
+[Token8633_9419_exp.sol](src/test/Token8633_9419_exp.sol)
+
+---
 
 ### 20231117 ShibaToken - Business Logic Flaw
 
