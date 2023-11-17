@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-320 incidents included.
+321 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20231117 LinkDAO](#20231117-linkdao---bad-k-value-verification)
 
 [20231112 MEV_0x8c2d](#20231112-mevbot_0x8c2d---lack-of-access-control)
 
@@ -600,7 +602,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 </details>
 <details> <summary> 2021 </summary>
-  
+
 [20211221 Visor Finance](past/2021/README.md#20211221-visor-finance---reentrancy)
 
 [20211218 Grim Finance](past/2021/README.md#20211218-grim-finance---flashloan--reentrancy)
@@ -708,6 +710,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20231117 LinkDAO - Bad `K` Value Verification
+
+### Lost: ~$30K
+
+Test
+
+```
+forge test --contracts ./src/test/LinkDao_exp.sol -vvv
+```
+
+#### Contract
+
+[LinkDao_exp.sol](src/test/LinkDao_exp.sol)
+
+#### Link Reference
+
+https://x.com/phalcon_xyz/status/1725058908144746992
+
+---
+
 ### 20231112 MEVBot_0x8c2d - Lack of Access Control
 
 ### Lost: ~$365K
@@ -753,6 +775,7 @@ https://twitter.com/Phalcon_xyz/status/1723591214262632562
 ### Lost: ~3.2 M
 
 Test
+
 ```
 forge test --contracts ./src/test/Raft_exp.sol -vvv
 ```
