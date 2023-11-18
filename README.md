@@ -44,7 +44,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20231112 MEV_0xa247](#20231112-mevbot_0xa247---incorrect-access-control)
 
-[2023111 Raft_fi](#20231111-raft_fi---donate-inflation-exchangerate--rounding-error)
+[20231110 Raft_fi](#20231110-raft_fi---donate-inflation-exchangerate--rounding-error)
 
 [20231110 GrokToken](#20231110-grok---lack-of-slippage-protection)
 
@@ -806,7 +806,7 @@ https://twitter.com/Phalcon_xyz/status/1723591214262632562
 
 ---
 
-### 20231111 Raft_fi - Donate Inflation ExchangeRate & Rounding Error
+### 20231110 Raft_fi - Donate Inflation ExchangeRate & Rounding Error
 
 ### Lost: ~3.2 M
 
