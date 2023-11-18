@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-323 incidents included.
+324 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -341,6 +341,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230203 Spherax USDs](#20230203---spherax-usds---balance-recalculation-bug)
 
 [20230202 BonqDAO](#20230202---BonqDAO---price-oracle-manipulation)
+
+[20230130 BEVO](#20230130---bevo---reflection-token)
 
 [20230126 TomInu Token](#20230126---tinu---reflection-token)
 
@@ -3942,6 +3944,26 @@ forge test --contracts ./src/test/BonqDAO_exp.sol -vv
 https://twitter.com/BlockSecTeam/status/1621043757390123008
 
 https://twitter.com/SlowMist_Team/status/1621087651158966274
+
+---
+
+### 20230130 - BEVO - Reflection token
+
+### Lost: 144 BNB
+
+Testing
+
+```sh
+forge test --contracts ./src/test/BEVO_exp.t.sol -vvv
+```
+
+#### Contract
+
+[BEVO_exp.sol](src/test/BEVO_exp.sol)
+
+#### Link reference
+
+https://twitter.com/QuillAudits/status/1620377951836708865
 
 ---
 
