@@ -100,7 +100,7 @@ contract ContractTest is Test {
     function recoverDonatedFund() internal {
         uint256 premiumPerFlashloan = uint256(1_160_272_591_443) * 5 / 10_000 + 1; // 0.05% flashlaon fee
         premiumPerFlashloan -= (premiumPerFlashloan * 4 / 10_000); // 0.04% protocol fee
-        uint256 nextLiquidityIndex = premiumPerFlashloan * 55 + 1; // 60 times flashloan
+        uint256 nextLiquidityIndex = premiumPerFlashloan * 55 + 1; // 55 times flashloan
         uint256 supplyAmount = nextLiquidityIndex / 2 + 1; // Use a rounding error greater than 0.5 for upward rounding and less than downward rounding
 
         console.log("premiumPerFlashloan", premiumPerFlashloan);
