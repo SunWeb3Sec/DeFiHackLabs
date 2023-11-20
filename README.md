@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-324 incidents included.
+325 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -43,6 +43,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20231112 MEV_0x8c2d](#20231112-mevbot_0x8c2d---lack-of-access-control)
 
 [20231112 MEV_0xa247](#20231112-mevbot_0xa247---incorrect-access-control)
+
+[20231111 Mahalend](#20231111-mahalend---donate-inflation-exchangerate--rounding-error)
 
 [20231110 Raft_fi](#20231110-raft_fi---donate-inflation-exchangerate--rounding-error)
 
@@ -808,9 +810,29 @@ https://twitter.com/Phalcon_xyz/status/1723591214262632562
 
 ---
 
+### 20231111 MahaLend - Donate Inflation ExchangeRate & Rounding Error
+
+### Lost: ~$20 K
+
+Test
+
+```
+forge test --contracts ./src/test/MahaLend_exp.sol -vvv
+```
+
+### Contract
+
+[MahaLend_exp.sol](src/test/MahaLend_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1723223766350832071
+
+---
+
 ### 20231110 Raft_fi - Donate Inflation ExchangeRate & Rounding Error
 
-### Lost: ~3.2 M
+### Lost: ~$3.2 M
 
 Test
 
