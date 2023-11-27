@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-325 incidents included.
+326 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20231125 TheNFTV2](#20231125-thenftv2---logic-flaw)
 
 [20231117 Token8633_9419](#20231117-token8633_9419---price-manipulation)
 
@@ -717,6 +718,16 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20231125 TheNFTV2 - logic flaw
+[20231125 TheNFTV2](#20231125-thenftv2---logic-flaw)
+### Lost: ~$19K
+
+Test
+
+```
+forge test --contracts ./src/test/TheNFTV2_exp.sol -vvv
+```
 
 ### 20231117 Token8633_9419 - Price Manipulation
 

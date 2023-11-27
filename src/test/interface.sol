@@ -3385,6 +3385,8 @@ interface IERC721 {
     function isApprovedForAll(address owner, address operator) external view returns (bool);
 
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
+
+    function burn(uint256 id) external;
 }
 
 interface IRewardsHypervisor {
