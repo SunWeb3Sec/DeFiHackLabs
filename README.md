@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-326 incidents included.
+327 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20231129 AIS](#20231129-ais---access-control)
+
 [20231125 TheNFTV2](#20231125-thenftv2---logic-flaw)
 
 [20231117 Token8633_9419](#20231117-token8633_9419---price-manipulation)
@@ -719,8 +721,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20231129 AIS - Access Control
+
+### Lost: ~$61k
+
+Testing
+
+```sh
+forge test --contracts ./src/test/AIS_exp.sol -vvv
+```
+
+#### Contract
+
+[AIS_exp.sol](src/test/AIS_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1729861048004391306
+
+---
+
 ### 20231125 TheNFTV2 - logic flaw
-[20231125 TheNFTV2](#20231125-thenftv2---logic-flaw)
+
 ### Lost: ~$19K
 
 Test
@@ -728,6 +750,16 @@ Test
 ```
 forge test --contracts ./src/test/TheNFTV2_exp.sol -vvv
 ```
+
+#### Contract
+
+[TheNFTV2_exp.sol](src/test/TheNFTV2_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaTrustAlert/status/1728616715825848377
+
+---
 
 ### 20231117 Token8633_9419 - Price Manipulation
 
