@@ -98,7 +98,7 @@ contract Attacker is Test {
         emit log_named_decimal_uint("[Before] Attack Contract CAW balance", IERC20(caw).balanceOf(address(this)), 18);
         emit log_named_decimal_uint(
             "[Before] Attack Contract TSUKA balance", IERC20(tsuka).balanceOf(address(this)), 18
-            );
+        );
 
         // The exploit code could be written like a for loop, but we keep it simple to let you could do some debugging here.
         // ==================== Migrate FEG_WETH_UniV2Pair to V3 ====================

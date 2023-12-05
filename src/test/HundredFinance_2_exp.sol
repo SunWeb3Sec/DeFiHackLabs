@@ -64,14 +64,14 @@ contract contractTest is Test {
         emit log_named_decimal_uint("Attacker ETH balance after exploit", address(this).balance, 18);
         emit log_named_decimal_uint(
             "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-            );
+        );
         emit log_named_decimal_uint("Attacker SNX balance after exploit", SNX.balanceOf(address(this)), SNX.decimals());
         emit log_named_decimal_uint(
             "Attacker sUSD balance after exploit", sUSD.balanceOf(address(this)), sUSD.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
-            );
+        );
         emit log_named_decimal_uint("Attacker DAI balance after exploit", DAI.balanceOf(address(this)), DAI.decimals());
     }
 

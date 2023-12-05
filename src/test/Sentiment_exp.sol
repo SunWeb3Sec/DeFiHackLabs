@@ -86,16 +86,16 @@ contract ContractTest is Test {
         console.log("\r");
         emit log_named_decimal_uint(
             "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker WBTC balance after exploit", WBTC.balanceOf(address(this)), WBTC.decimals()
-            );
+        );
     }
 
     function executeOperation(

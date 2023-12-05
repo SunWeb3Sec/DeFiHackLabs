@@ -69,7 +69,7 @@ contract ContractTest is Test {
         deal(address(WBNB), address(this), 0.1 ether);
         emit log_named_decimal_uint(
             "Attacker WBNB balance before attack", WBNB.balanceOf(address(this)), WBNB.decimals()
-            );
+        );
 
         // Preparation. Pre-attack transaction
         WBNB.approve(address(Router), type(uint256).max);
@@ -95,7 +95,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker WBNB balance after attack", WBNB.balanceOf(address(this)), WBNB.decimals()
-            );
+        );
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {

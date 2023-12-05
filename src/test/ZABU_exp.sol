@@ -104,7 +104,7 @@ contract ContractTest is DSTest {
 
         emit log_named_decimal_uint(
             "Attacker WAVAX profit after exploit", WAVAX.balanceOf(addressContract) - 2500 * 1e18, 18
-            );
+        );
     }
 
     function pangolinCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) public {

@@ -69,7 +69,7 @@ contract ContractTest is Test {
             "[INFO] OLIFE amount in pair before the currentRate reduction",
             OLIFE.balanceOf(address(OLIFE_WBNB_LPPool)),
             9
-            );
+        );
         loopTransfer(19);
 
         OLIFE.deliver(66_859_267_695_870_000);
@@ -78,7 +78,7 @@ contract ContractTest is Test {
             "[INFO] OLIFE amount in pair after the currentRate reduction",
             OLIFE.balanceOf(address(OLIFE_WBNB_LPPool)),
             9
-            );
+        );
 
         (uint256 oldOlifeReserve, uint256 bnbReserve,) = OLIFE_WBNB_LPPool.getReserves();
         uint256 newolifeReserve = OLIFE.balanceOf(address(OLIFE_WBNB_LPPool));

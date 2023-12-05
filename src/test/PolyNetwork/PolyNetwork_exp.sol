@@ -90,7 +90,7 @@ contract ContractTest is DSTest {
         cheats.startPrank(exploiter);
         emit log_named_bytes(
             "existing CurEpochConPubKeyBytes", IEthCrossChainData(EthCrossChainData).getCurEpochConPubKeyBytes()
-            );
+        );
         bytes memory rawHeader =
             hex"0000000000000000000000008446719cbe62cf6fb9e3fb95a6c12882c5a3d885ad1dd8f2785e48d617d12708d38136a7df909f371a9f835d3ad58637e0dbc2f3e0f4bb60228730a46f77839a773046bcc14f6079db9033d0ab6176f171384070729fbfd2086a418e7e057717f3e67f4b67c999d13c258e5657f4dc0b5553e1836d0d81d1bff05b621053834bc7471261843aa80030451454a4f4b560fd13017b226c6561646572223a332c227672665f76616c7565223a22424851706a716f325767494d616a7a5a5a6c4158507951506c7a3357456e4a534e7470682b35416346376f37654b784e48486742704156724e54666f674c73485264394c7a544a5666666171787036734a637570324d303d222c227672665f70726f6f66223a226655346f56364462526d543264744d5254397a326b366853314f6f42584963397a72544956784974576348652f4b56594f2b58384f5167746143494d676139682f59615548564d514e554941326141484f664d545a773d3d222c226c6173745f636f6e6669675f626c6f636b5f6e756d223a31303938303030302c226e65775f636861696e5f636f6e666967223a6e756c6c7d0000000000000000000000000000000000000000";
         // https://github.com/polynetwork/eth-contracts/blob/d16252b2b857eecf8e558bd3e1f3bb14cff30e9b/contracts/core/cross_chain_manager/libs/EthCrossChainUtils.sol
@@ -167,7 +167,7 @@ contract ContractTest is DSTest {
         // (success, returnData) = EthCrossChainData.call(abi.encodePacked(bytes4(keccak256(abi.encodePacked(toMerkleValue.makeTxParam.method, "(bytes,bytes,uint64)"))), abi.encode(toMerkleValue.makeTxParam.args, toMerkleValue.makeTxParam.fromContractAddr, toMerkleValue.makeTxParam.fromChainId)));
         emit log_named_bytes(
             "changed CurEpochConPubKeyBytes", IEthCrossChainData(EthCrossChainData).getCurEpochConPubKeyBytes()
-            );
+        );
 
         // token transfer: https://etherscan.io/tx/0xad7a2c70c958fcd3effbf374d0acf3774a9257577625ae4c838e24b0de17602a
         address AssetProxy = 0x250e76987d838a75310c34bf422ea9f1AC4Cc906;

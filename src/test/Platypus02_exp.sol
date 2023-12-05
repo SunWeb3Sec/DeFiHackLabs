@@ -65,7 +65,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-            );
+        );
     }
 
     function executeOperation(

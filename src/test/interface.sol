@@ -384,9 +384,9 @@ interface IUniswapV2Pair {
     function price0CumulativeLast() external view returns (uint256);
     function price1CumulativeLast() external view returns (uint256);
     function balanceOf(address account) external view returns (uint256);
-    function approve(address spender, uint value) external returns (bool);
-    function transfer(address to, uint value) external returns (bool);
-    function transferFrom(address from, address to, uint value) external returns (bool);
+    function approve(address spender, uint256 value) external returns (bool);
+    function transfer(address to, uint256 value) external returns (bool);
+    function transferFrom(address from, address to, uint256 value) external returns (bool);
 }
 
 interface IBacon {
@@ -3526,12 +3526,23 @@ interface IAaveFlashloan {
     ) external;
 
     function deposit(address asset, uint256 amount, address onBehalfOf, uint16 referralCode) external;
-    
+
     function supply(address asset, uint256 amount, address onBehalfOf, uint16 referralCode) external;
 
-    function borrow(address asset, uint256 amount, uint256 interestRateMode, uint16 referralCode, address onBehalfOf) external;
+    function borrow(
+        address asset,
+        uint256 amount,
+        uint256 interestRateMode,
+        uint16 referralCode,
+        address onBehalfOf
+    ) external;
 
-    function repay(address asset, uint256 amount, uint256 interestRateMode, address onBehalfOf) external returns (uint256);
+    function repay(
+        address asset,
+        uint256 amount,
+        uint256 interestRateMode,
+        address onBehalfOf
+    ) external returns (uint256);
 
     function withdraw(address asset, uint256 amount, address to) external returns (uint256);
 }
@@ -4342,8 +4353,14 @@ interface IDODOCallee {
     //   ) external;
 }
 
-interface IQuoter { 
-    function quoteExactInputSingle(address, address,uint24 fee,uint256 amountIn,uint160 sqrtPriceLimitX96) external returns (uint256);
+interface IQuoter {
+    function quoteExactInputSingle(
+        address,
+        address,
+        uint24 fee,
+        uint256 amountIn,
+        uint160 sqrtPriceLimitX96
+    ) external returns (uint256);
 }
 
 interface IPoolInitializer {
@@ -4355,8 +4372,7 @@ interface IPoolInitializer {
     ) external payable returns (address pool);
 }
 
-interface INonfungiblePositionManager is IPoolInitializer{
-
+interface INonfungiblePositionManager is IPoolInitializer {
     event IncreaseLiquidity(uint256 indexed tokenId, uint128 liquidity, uint256 amount0, uint256 amount1);
 
     event DecreaseLiquidity(uint256 indexed tokenId, uint128 liquidity, uint256 amount0, uint256 amount1);
@@ -4398,12 +4414,7 @@ interface INonfungiblePositionManager is IPoolInitializer{
     function mint(MintParams calldata params)
         external
         payable
-        returns (
-            uint256 tokenId,
-            uint128 liquidity,
-            uint256 amount0,
-            uint256 amount1
-        );
+        returns (uint256 tokenId, uint128 liquidity, uint256 amount0, uint256 amount1);
 
     struct IncreaseLiquidityParams {
         uint256 tokenId;
@@ -4417,11 +4428,7 @@ interface INonfungiblePositionManager is IPoolInitializer{
     function increaseLiquidity(IncreaseLiquidityParams calldata params)
         external
         payable
-        returns (
-            uint128 liquidity,
-            uint256 amount0,
-            uint256 amount1
-        );
+        returns (uint128 liquidity, uint256 amount0, uint256 amount1);
 
     struct DecreaseLiquidityParams {
         uint256 tokenId;
@@ -4443,29 +4450,19 @@ interface INonfungiblePositionManager is IPoolInitializer{
         uint128 amount1Max;
     }
 
-
     function collect(CollectParams calldata params) external payable returns (uint256 amount0, uint256 amount1);
 
     function burn(uint256 tokenId) external payable;
 }
 
 interface IERC4626 is IERC20 {
-
     function deposit(uint256 assets, address receiver) external returns (uint256 shares);
 
     function mint(uint256 shares, address receiver) external returns (uint256 assets);
 
-    function withdraw(
-        uint256 assets,
-        address receiver,
-        address owner
-    ) external returns (uint256 shares);
+    function withdraw(uint256 assets, address receiver, address owner) external returns (uint256 shares);
 
-    function redeem(
-        uint256 shares,
-        address receiver,
-        address owner
-    ) external returns (uint256 assets);
+    function redeem(uint256 shares, address receiver, address owner) external returns (uint256 assets);
 
     function totalAssets() external view returns (uint256);
 
@@ -4488,13 +4485,12 @@ interface IERC4626 is IERC20 {
     function maxWithdraw(address owner) external view returns (uint256);
 
     function maxRedeem(address owner) external view returns (uint256);
-
 }
 
 interface IPresaleV4 {
     function directTotalTokensSold() external view returns (uint256);
     function maxTokensToSell() external view returns (uint256);
-    function buyWithEthDynamic(uint256 amount) payable external returns (bool);
+    function buyWithEthDynamic(uint256 amount) external payable returns (bool);
 }
 
 /// @notice Arithmetic library with operations for fixed-point numbers.
@@ -4505,7 +4501,7 @@ library FixedPointMathLib {
                     SIMPLIFIED FIXED POINT OPERATIONS
     //////////////////////////////////////////////////////////////*/
 
-    uint256 internal constant MAX_UINT256 = 2**256 - 1;
+    uint256 internal constant MAX_UINT256 = 2 ** 256 - 1;
 
     uint256 internal constant WAD = 1e18; // The scalar of ETH and most ERC20s.
 
@@ -4529,34 +4525,22 @@ library FixedPointMathLib {
                     LOW LEVEL FIXED POINT OPERATIONS
     //////////////////////////////////////////////////////////////*/
 
-    function mulDivDown(
-        uint256 x,
-        uint256 y,
-        uint256 denominator
-    ) internal pure returns (uint256 z) {
+    function mulDivDown(uint256 x, uint256 y, uint256 denominator) internal pure returns (uint256 z) {
         /// @solidity memory-safe-assembly
         assembly {
             // Equivalent to require(denominator != 0 && (y == 0 || x <= type(uint256).max / y))
-            if iszero(mul(denominator, iszero(mul(y, gt(x, div(MAX_UINT256, y)))))) {
-                revert(0, 0)
-            }
+            if iszero(mul(denominator, iszero(mul(y, gt(x, div(MAX_UINT256, y)))))) { revert(0, 0) }
 
             // Divide x * y by the denominator.
             z := div(mul(x, y), denominator)
         }
     }
 
-    function mulDivUp(
-        uint256 x,
-        uint256 y,
-        uint256 denominator
-    ) internal pure returns (uint256 z) {
+    function mulDivUp(uint256 x, uint256 y, uint256 denominator) internal pure returns (uint256 z) {
         /// @solidity memory-safe-assembly
         assembly {
             // Equivalent to require(denominator != 0 && (y == 0 || x <= type(uint256).max / y))
-            if iszero(mul(denominator, iszero(mul(y, gt(x, div(MAX_UINT256, y)))))) {
-                revert(0, 0)
-            }
+            if iszero(mul(denominator, iszero(mul(y, gt(x, div(MAX_UINT256, y)))))) { revert(0, 0) }
 
             // If x * y modulo the denominator is strictly greater than 0,
             // 1 is added to round up the division of x * y by the denominator.
@@ -4564,11 +4548,7 @@ library FixedPointMathLib {
         }
     }
 
-    function rpow(
-        uint256 x,
-        uint256 n,
-        uint256 scalar
-    ) internal pure returns (uint256 z) {
+    function rpow(uint256 x, uint256 n, uint256 scalar) internal pure returns (uint256 z) {
         /// @solidity memory-safe-assembly
         assembly {
             switch x
@@ -4606,9 +4586,7 @@ library FixedPointMathLib {
                 } {
                     // Revert immediately if x ** 2 would overflow.
                     // Equivalent to iszero(eq(div(xx, x), x)) here.
-                    if shr(128, x) {
-                        revert(0, 0)
-                    }
+                    if shr(128, x) { revert(0, 0) }
 
                     // Store x squared.
                     let xx := mul(x, x)
@@ -4617,9 +4595,7 @@ library FixedPointMathLib {
                     let xxRound := add(xx, half)
 
                     // Revert if xx + half overflowed.
-                    if lt(xxRound, xx) {
-                        revert(0, 0)
-                    }
+                    if lt(xxRound, xx) { revert(0, 0) }
 
                     // Set x to scaled xxRound.
                     x := div(xxRound, scalar)
@@ -4632,18 +4608,14 @@ library FixedPointMathLib {
                         // If z * x overflowed:
                         if iszero(eq(div(zx, x), z)) {
                             // Revert if x is non-zero.
-                            if iszero(iszero(x)) {
-                                revert(0, 0)
-                            }
+                            if iszero(iszero(x)) { revert(0, 0) }
                         }
 
                         // Round to the nearest number.
                         let zxRound := add(zx, half)
 
                         // Revert if zx + half overflowed.
-                        if lt(zxRound, zx) {
-                            revert(0, 0)
-                        }
+                        if lt(zxRound, zx) { revert(0, 0) }
 
                         // Return properly scaled zxRound.
                         z := div(zxRound, scalar)
@@ -4771,12 +4743,7 @@ library SafeTransferLib {
                             ERC20 OPERATIONS
     //////////////////////////////////////////////////////////////*/
 
-    function safeTransferFrom(
-        IERC20 token,
-        address from,
-        address to,
-        uint256 amount
-    ) internal {
+    function safeTransferFrom(IERC20 token, address from, address to, uint256 amount) internal {
         bool success;
 
         /// @solidity memory-safe-assembly
@@ -4790,26 +4757,23 @@ library SafeTransferLib {
             mstore(add(freeMemoryPointer, 36), and(to, 0xffffffffffffffffffffffffffffffffffffffff)) // Append and mask the "to" argument.
             mstore(add(freeMemoryPointer, 68), amount) // Append the "amount" argument. Masking not required as it's a full 32 byte type.
 
-            success := and(
-                // Set success to whether the call reverted, if not we check it either
-                // returned exactly 1 (can't just be non-zero data), or had no return data.
-                or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
-                // We use 100 because the length of our calldata totals up like so: 4 + 32 * 3.
-                // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
-                // Counterintuitively, this call must be positioned second to the or() call in the
-                // surrounding and() call or else returndatasize() will be zero during the computation.
-                call(gas(), token, 0, freeMemoryPointer, 100, 0, 32)
-            )
+            success :=
+                and(
+                    // Set success to whether the call reverted, if not we check it either
+                    // returned exactly 1 (can't just be non-zero data), or had no return data.
+                    or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
+                    // We use 100 because the length of our calldata totals up like so: 4 + 32 * 3.
+                    // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
+                    // Counterintuitively, this call must be positioned second to the or() call in the
+                    // surrounding and() call or else returndatasize() will be zero during the computation.
+                    call(gas(), token, 0, freeMemoryPointer, 100, 0, 32)
+                )
         }
 
         require(success, "TRANSFER_FROM_FAILED");
     }
 
-    function safeTransfer(
-        IERC20 token,
-        address to,
-        uint256 amount
-    ) internal {
+    function safeTransfer(IERC20 token, address to, uint256 amount) internal {
         bool success;
 
         /// @solidity memory-safe-assembly
@@ -4822,26 +4786,23 @@ library SafeTransferLib {
             mstore(add(freeMemoryPointer, 4), and(to, 0xffffffffffffffffffffffffffffffffffffffff)) // Append and mask the "to" argument.
             mstore(add(freeMemoryPointer, 36), amount) // Append the "amount" argument. Masking not required as it's a full 32 byte type.
 
-            success := and(
-                // Set success to whether the call reverted, if not we check it either
-                // returned exactly 1 (can't just be non-zero data), or had no return data.
-                or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
-                // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
-                // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
-                // Counterintuitively, this call must be positioned second to the or() call in the
-                // surrounding and() call or else returndatasize() will be zero during the computation.
-                call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
-            )
+            success :=
+                and(
+                    // Set success to whether the call reverted, if not we check it either
+                    // returned exactly 1 (can't just be non-zero data), or had no return data.
+                    or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
+                    // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
+                    // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
+                    // Counterintuitively, this call must be positioned second to the or() call in the
+                    // surrounding and() call or else returndatasize() will be zero during the computation.
+                    call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
+                )
         }
 
         require(success, "TRANSFER_FAILED");
     }
 
-    function safeApprove(
-        IERC20 token,
-        address to,
-        uint256 amount
-    ) internal {
+    function safeApprove(IERC20 token, address to, uint256 amount) internal {
         bool success;
 
         /// @solidity memory-safe-assembly
@@ -4854,16 +4815,17 @@ library SafeTransferLib {
             mstore(add(freeMemoryPointer, 4), and(to, 0xffffffffffffffffffffffffffffffffffffffff)) // Append and mask the "to" argument.
             mstore(add(freeMemoryPointer, 36), amount) // Append the "amount" argument. Masking not required as it's a full 32 byte type.
 
-            success := and(
-                // Set success to whether the call reverted, if not we check it either
-                // returned exactly 1 (can't just be non-zero data), or had no return data.
-                or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
-                // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
-                // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
-                // Counterintuitively, this call must be positioned second to the or() call in the
-                // surrounding and() call or else returndatasize() will be zero during the computation.
-                call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
-            )
+            success :=
+                and(
+                    // Set success to whether the call reverted, if not we check it either
+                    // returned exactly 1 (can't just be non-zero data), or had no return data.
+                    or(and(eq(mload(0), 1), gt(returndatasize(), 31)), iszero(returndatasize())),
+                    // We use 68 because the length of our calldata totals up like so: 4 + 32 * 2.
+                    // We use 0 and 32 to copy up to 32 bytes of return data into the scratch space.
+                    // Counterintuitively, this call must be positioned second to the or() call in the
+                    // surrounding and() call or else returndatasize() will be zero during the computation.
+                    call(gas(), token, 0, freeMemoryPointer, 68, 0, 32)
+                )
         }
 
         require(success, "APPROVE_FAILED");

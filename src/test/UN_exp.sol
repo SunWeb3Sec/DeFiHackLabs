@@ -32,14 +32,14 @@ contract ContractTest is Test {
     function testExploit() public {
         emit log_named_decimal_uint(
             "Attacker BUSD balance before attack", BUSD.balanceOf(address(this)), BUSD.decimals()
-            );
+        );
 
         // End of preparation. Attack start
         DPPOracle.flashLoan(0, 29_100 * 1e18, address(this), new bytes(1));
 
         emit log_named_decimal_uint(
             "Attacker BUSD balance after attack", BUSD.balanceOf(address(this)), BUSD.decimals()
-            );
+        );
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {

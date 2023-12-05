@@ -55,6 +55,6 @@ contract ContractTest is DSTest {
 
         emit log_named_decimal_uint(
             "[End] Attacker vSafeWBNB balance after exploit", vSafeVaultWBNB.balanceOf(attacker), 18
-            );
+        );
     }
 }

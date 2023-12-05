@@ -35,7 +35,7 @@ contract BancorExploit is DSTest {
     function testsafeTransfer() public {
         emit log_named_uint(
             "Victim XBPToken Allowance to Bancor Contract : ", (XBPToken.allowance(victim, bancorAddress) / 1 ether)
-            );
+        );
         emit log_named_uint("[Before Attack]Victim XBPToken Balance : ", (XBPToken.balanceOf(victim)) / 1 ether);
         emit log_named_uint("[Before Attack]Attacker XBPToken Balance : ", (XBPToken.balanceOf(attacker)) / 1 ether);
 

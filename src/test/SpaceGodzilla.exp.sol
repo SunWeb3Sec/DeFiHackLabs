@@ -61,7 +61,7 @@ contract AttackContract is Test {
         emit log_string("This reproduce shows how attacker exploit SpaceGodzilla, cause 25,378 BUSD lost");
         emit log_string(
             "[Note] We skipped the part where the attacker made a flash loan with 16 pools to get the initial capital"
-            );
+        );
 
         // Attacker flashloan 16 pools, to borrow 2.95 millon USDT as initial capital
         stdstore.target(USDT).sig(IERC20(USDT).balanceOf.selector).with_key(address(this)).checked_write(

