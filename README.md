@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-327 incidents included.
+328 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20231201 UnverifiedContr_0x431abb](#20231201-unverifiedcontr_0x431abb---business-logic-flaw)
+
 [20231129 AIS](#20231129-ais---access-control)
 
 [20231125 TheNFTV2](#20231125-thenftv2---logic-flaw)
@@ -720,6 +723,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20231201 UnverifiedContr_0x431abb - Business Logic Flaw
+
+### Lost: ~$500k
+
+Test
+
+```
+forge test --contracts ./src/test/UnverifiedContr_0x431abb_exp.sol -vvv
+```
+
+#### Contract
+
+[UnverifiedContr_0x431abb_exp.sol](src/test/UnverifiedContr_0x431abb_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1730625352953901123
+
+---
 
 ### 20231129 AIS - Access Control
 
