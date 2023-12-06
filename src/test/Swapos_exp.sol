@@ -19,7 +19,6 @@ interface SWAPOS {
     function transfer(address to, uint256 value) external returns (bool);
 }
 
-
 contract ContractTest is Test {
     SWAPOS swpToken = SWAPOS(0x09176F68003c06F190ECdF40890E3324a9589557);
     IWETH private constant WETH = IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));

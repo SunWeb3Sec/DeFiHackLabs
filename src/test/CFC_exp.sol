@@ -42,13 +42,13 @@ contract CFCTest is Test {
         deal(address(BEP20USDT), address(this), 0);
         emit log_named_decimal_uint(
             "Attacker BEP20USDT balance before attack", BEP20USDT.balanceOf(address(this)), BEP20USDT.decimals()
-            );
+        );
 
         takeFlashloan(DPPOracle1);
 
         emit log_named_decimal_uint(
             "Attacker BEP20USDT balance after attack", BEP20USDT.balanceOf(address(this)), BEP20USDT.decimals()
-            );
+        );
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {

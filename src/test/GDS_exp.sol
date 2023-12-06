@@ -90,7 +90,7 @@ contract ContractTest is DSTest {
 
         emit log_named_decimal_uint(
             "Attacker USDT balance after exploit", USDT.balanceOf(address(this)) - 50 * 250 * 1e18, USDT.decimals()
-            );
+        );
     }
 
     function SwapFlashLoan() internal {

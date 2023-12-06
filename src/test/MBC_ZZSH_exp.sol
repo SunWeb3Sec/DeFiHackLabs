@@ -68,14 +68,13 @@ contract ContractTest is DSTest {
 
         USDT.transfer(address(MBCPair), 1001); // function() _isAddLiquidityV1()
         MBC.transfer(address(MBCPair), MBC.balanceOf(address(this)));
-        (uint256 MBCReserve, , ) = MBCPair.getReserves();
+        (uint256 MBCReserve,,) = MBCPair.getReserves();
         uint256 amountIn = MBC.balanceOf(address(MBCPair)) - MBCReserve;
         path[0] = address(MBC);
         path[1] = address(USDT);
         values = Router.getAmountsOut(amountIn, path);
 
         MBCPair.swap(0, values[1], address(this), "");
-
 
         path[0] = address(USDT);
         path[1] = address(ZZSH);
@@ -91,7 +90,7 @@ contract ContractTest is DSTest {
 
         USDT.transfer(address(ZZSHPair), 1001); // function() _isAddLiquidityV1()
         ZZSH.transfer(address(ZZSHPair), ZZSH.balanceOf(address(this)));
-        (, uint256 ZZSHReserve, ) = ZZSHPair.getReserves();
+        (, uint256 ZZSHReserve,) = ZZSHPair.getReserves();
         amountIn = ZZSH.balanceOf(address(ZZSHPair)) - ZZSHReserve;
         path[0] = address(ZZSH);
         path[1] = address(USDT);

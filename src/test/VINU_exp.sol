@@ -41,7 +41,7 @@ contract VinuTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker's contract WETH balance before attack", WETH.balanceOf(address(this)), WETH.decimals()
-            );
+        );
 
         address[] memory path = new address[](2);
         path[0] = address(WETH);
@@ -69,7 +69,7 @@ contract VinuTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker's contract WETH balance after attack", WETH.balanceOf(address(this)), WETH.decimals()
-            );
+        );
     }
 }
 

@@ -40,7 +40,7 @@ contract LocalTraders is Test {
 
         emit log_named_decimal_uint(
             "[1] Attacker amount of WBNB before attack", WBNB.balanceOf(address(this)), WBNB.decimals()
-            );
+        );
         address addrInSlot0Before = getValFromSlot0();
         emit log_named_address("[1] Address value in slot 0 before first call", addrInSlot0Before);
 
@@ -90,7 +90,7 @@ contract LocalTraders is Test {
         );
         emit log_named_decimal_uint(
             "[4] Attacker amount of WBNB after attack", WBNB.balanceOf(address(this)), WBNB.decimals()
-            );
+        );
     }
 
     function getValFromSlot0() internal returns (address) {

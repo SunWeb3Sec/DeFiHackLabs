@@ -32,6 +32,6 @@ contract ContractTest is DSTest {
         wbnb.transfer(BUSDT_WBNB_Pair, 2908 ether);
         emit log_named_uint(
             "After repaying flashswap, Profit: WBNB balance of attacker", wbnb.balanceOf(address(this)) / 1e18
-            );
+        );
     }
 }

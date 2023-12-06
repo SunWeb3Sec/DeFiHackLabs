@@ -48,14 +48,14 @@ contract ContractTest is DSTest {
         emit log_named_uint("Before exploit, _pcAPE balance of Exploit:", IERC20(_pcAPE).balanceOf(address(this)));
         emit log_named_uint(
             "Before exploit, _vDebtUSDC balance of Exploit:", IERC20(_vDebtUSDC).balanceOf(address(this))
-            );
+        );
         emit log_named_uint(
             "Before exploit, _vDebtWETH balance of Exploit:", IERC20(_vDebtWETH).balanceOf(address(this))
-            );
+        );
         emit log_named_uint("Before exploit, _cAPE balance of Exploit:", IERC20(_cAPE).balanceOf(address(this)));
         emit log_named_uint(
             "Before exploit, _vDebtwstETH balance of Exploit:", IERC20(_vDebtwstETH).balanceOf(address(this))
-            );
+        );
 
         // () -> ()
         _proxy.call(
@@ -69,14 +69,14 @@ contract ContractTest is DSTest {
         emit log_named_uint("After exploit, _pcAPE balance of Exploit:", IERC20(_pcAPE).balanceOf(address(this)));
         emit log_named_uint(
             "After exploit, _vDebtUSDC balance of Exploit:", IERC20(_vDebtUSDC).balanceOf(address(this))
-            );
+        );
         emit log_named_uint(
             "After exploit, _vDebtWETH balance of Exploit:", IERC20(_vDebtWETH).balanceOf(address(this))
-            );
+        );
         emit log_named_uint("After exploit, _cAPE balance of Exploit:", IERC20(_cAPE).balanceOf(address(this)));
         emit log_named_uint(
             "After exploit, _vDebtwstETH balance of Exploit:", IERC20(_vDebtwstETH).balanceOf(address(this))
-            );
+        );
     }
 
     struct ExactInputSingleParams {

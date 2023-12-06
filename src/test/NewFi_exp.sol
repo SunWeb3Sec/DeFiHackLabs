@@ -57,7 +57,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker BUSD balance after exploit", BUSD.balanceOf(address(this)), BUSD.decimals()
-            );
+        );
     }
 
     function pancakeV3FlashCallback(uint256 amount0, uint256 amount1, bytes calldata data) external {

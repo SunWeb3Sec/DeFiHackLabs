@@ -121,35 +121,35 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker BONE balance after exploit", BONE.balanceOf(address(this)), BONE.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker WOOF balance after exploit", WOOF.balanceOf(address(this)), WOOF.decimals()
-            );
+        );
 
         emit log_named_decimal_uint(
             "Attacker LEASH balance after exploit", LEASH.balanceOf(address(this)), LEASH.decimals()
-            );
+        );
 
         emit log_named_decimal_uint(
             "Attacker SANI balance after exploit", SANI.balanceOf(address(this)), SANI.decimals()
-            );
+        );
 
         emit log_named_decimal_uint("Attacker ONE balance after exploit", ONE.balanceOf(address(this)), ONE.decimals());
 
         emit log_named_decimal_uint(
             "Attacker CELL balance after exploit", CELL.balanceOf(address(this)), CELL.decimals()
-            );
+        );
 
         emit log_named_decimal_uint(
             "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-            );
+        );
 
         emit log_named_decimal_uint(
             "Attacker SHIB balance after exploit", SHIB.balanceOf(address(this)), SHIB.decimals()
-            );
+        );
     }
 
     // Step 2. This function will be called from vulnerable contract (after step 1).

@@ -91,13 +91,13 @@ contract ThemisTest is Test {
         uniswapV3Swap(WBTC_WETH, true, WBTC.balanceOf(address(this)), 21_845_559_093_545_742_410_589_827_953_560_948);
         emit log_named_decimal_uint(
             "Attacker's amount of WETH after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker's amount of USDC after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker's amount of USDT after exploit", USDT.balanceOf(address(this)), USDT.decimals()
-            );
+        );
     }
 
     function executeOperation(

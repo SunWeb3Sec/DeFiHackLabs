@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - 'main'
+      - "main"
 
 name: Build
 
@@ -18,6 +18,9 @@ jobs:
         uses: foundry-rs/foundry-toolchain@v1
         with:
           version: nightly
+
+      - name: Run lint
+        run: forge fmt
 
       - name: Run build
         run: forge build
