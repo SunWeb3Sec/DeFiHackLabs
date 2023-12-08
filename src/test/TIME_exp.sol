@@ -78,7 +78,7 @@ contract ContractTest is Test {
         datas[0] = abi.encodePacked(
             TIME.burn.selector,
             amountToBurn,
-            address(TIME_WETH) // This will be caller's address (extracted from the last 20 bytes of the calldata)
+            address(TIME_WETH)
         );
         bytes memory data = abi.encodeWithSelector(
             TIME.multicall.selector,
