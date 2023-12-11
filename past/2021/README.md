@@ -78,9 +78,9 @@
 
 [20200618 Bancor Protocol](#20200618-bancor-protocol---access-control)
 
-[20180422 Beauty Chain](#20180422-beauty-chain---integer-overflow)
+[20200418 UniSwapV1](#20200418-uniswapv1---erc777-reentrancy)
 
-[2020418 UniSwapV1](#20200418-uniswapv1---erc777-reentrancy)
+[20180422 Beauty Chain](#20180422-beauty-chain---integer-overflow)
 
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
 
@@ -144,7 +144,7 @@ forge test --contracts ./src/test/NerveBridge.t.sol -vv
 
 #### Contract
 
-[NerveBridge.t.sol](src/test/NerveBridge.t.sol)
+[NerveBridge.t.sol](../../src/test/NerveBridge.t.sol)
 
 #### Link reference
 
@@ -520,7 +520,7 @@ forge test --contracts src/test/xWin_exp.sol -vvv
 
 #### Contract
 
-[xWin_exp.sol](src/test/xWin_exp.sol)
+[xWin_exp.sol](../../src/test/xWin_exp.sol)
 
 #### Link reference
 
@@ -596,7 +596,7 @@ forge test --contracts src/test/BurgerSwap_exp.sol -vv
 
 #### Contract
 
-[BurgerSwap_exp.sol](src/test/BurgerSwap_exp.sol)
+[BurgerSwap_exp.sol](../../src/test/BurgerSwap_exp.sol)
 
 #### Link reference
 https://twitter.com/Mudit__Gupta/status/1398156036574306304
@@ -675,7 +675,7 @@ forge test --contracts src/test/Spartan_exp.t.sol -vv
 
 #### Contract
 
-[Spartan_exp.t.sol](src/test/Spartan_exp.t.sol)
+[Spartan_exp.t.sol](../../src/test/Spartan_exp.t.sol)
 
 #### Link reference
 
@@ -874,6 +874,26 @@ https://etherscan.io/address/0x5f58058c0ec971492166763c8c22632b583f667f
 
 ---
 
+### 20200418 UniSwapV1 - ERC777 Reentrancy
+
+#### Lost: $220,000
+
+Testing
+
+```sh
+forge test --contracts ./src/test/uniswap-erc777.sol -vv
+```
+
+#### Contract
+
+[uniswap-erc777.sol](../../src/test/uniswap-erc777.sol)
+
+#### Link reference
+
+https://blog.blockmagnates.com/detailed-explanation-of-uniswaps-erc777-re-entry-risk-8fa5b3738e08
+
+---
+
 ### 20180422 Beauty Chain - Integer Overflow
 
 #### Lost: $900 million
@@ -893,26 +913,6 @@ forge test --contracts ./src/test/BEC_exp.sol -vv
 https://etherscan.io/tx/0xad89ff16fd1ebe3a0a7cf4ed282302c06626c1af33221ebe0d3a470aba4a660f
 
 https://etherscan.io/address/0xc5d105e63711398af9bbff092d4b6769c82f793d#code
-
----
-
-### 20200418 UniSwapV1 - ERC777 Reentrancy
-
-#### Lost: $220,000
-
-Testing
-
-```sh
-forge test --contracts ./src/test/uniswap-erc777.sol -vv
-```
-
-#### Contract
-
-[uniswap-erc777.sol](../../src/test/uniswap-erc777.sol)
-
-#### Link reference
-
-https://blog.blockmagnates.com/detailed-explanation-of-uniswaps-erc777-re-entry-risk-8fa5b3738e08
 
 ---
 
