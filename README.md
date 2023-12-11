@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-331 incidents included.
+330 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -50,7 +50,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20231117 ShibaToken](#20231117-shibatoken---business-logic-flaw)
 
-[20231117 LinkDAO](#20231117-linkdao---bad-k-value-verification)
+[20231115 LinkDAO](#20231115-linkdao---bad-k-value-verification)
 
 [20231112 MEV_0x8c2d](#20231112-mevbot_0x8c2d---lack-of-access-control)
 
@@ -104,7 +104,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230929 DEXRouter](#20230929-dexrouter---arbitrary-external-call)
 
-[20230927 XSDWETHpool](#20230927-XSDWETHpool---reentrancy)
+[20230926 XSDWETHpool](#20230926-XSDWETHpool---reentrancy)
 
 [20230924 KubSplit](#20230924-kubsplit---pool-manipulation)
 
@@ -206,9 +206,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230628 Themis](#20230628-themis---manipulation-of-prices-using-flashloan)
 
-[20230624 SHIDO](#20230624-shido---business-loigc--arbitrage)
-
-[20230623 ShidoGlobal](#20230623-shidoglobal---flashloan-attack)
+[20230623 SHIDO](#20230623-shido---business-loigc)
 
 [20230621 BabyDogeCoin02](#20230621-babydogecoin02---lack-slippage-protection)
 
@@ -348,7 +346,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230207 CowSwap](#20230207---cowswap---arbitrary-external-call-vulnerability)
 
-[20230207 FDP Token](#20230207---fdp---reflection-token)
+[20230206 FDP Token](#20230206---fdp---reflection-token)
 
 [20230203 Orion Protocol](#20230203---orion-protocol---reentrancy)
 
@@ -370,9 +368,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230116 MidasCapital](#20230116---midascapital---read-only-reentrancy)
 
-[20230112 UFDao](#20230112---ufdao---incorrect-parameter-setting)
+[20230111 UFDao](#20230111---ufdao---incorrect-parameter-setting)
 
-[20230112 ROE](#20230112---roefinance---flashloan-price-manipulation)
+[20230111 ROE](#20230111---roefinance---flashloan-price-manipulation)
 
 [20230110 BRA](#20230110---bra---business-logic-flaw)
 
@@ -500,9 +498,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220913 MevBot Private TX](past/2022/README.md#20220913-mevbot-private-tx)
 
-[20220910 DPC](past/2022/README.md#20220910-dpc---Incorrect-Reward-calculation)
+[20220909 DPC](past/2022/README.md#20220909-dpc---Incorrect-Reward-calculation)
 
-[20220909 YYDS](past/2022/README.md#20220909-YYDS---pair-manipulate)
+[20220908 YYDS](past/2022/README.md#20220908-YYDS---pair-manipulate)
 
 [20220908 NewFreeDAO](past/2022/README.md#20220908-newfreedao---flashloans-attack)
 
@@ -530,7 +528,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220725 LPC](past/2022/README.md#20220725-lpc---business-logic-flaw--incorrect-recipient-balance-check-did-not-check-senderrecipient-in-transfer)
 
-[20220713 Audius](past/2022/README.md#20220723-audius---storage-collision--malicious-proposal)
+[20220723 Audius](past/2022/README.md#20220723-audius---storage-collision--malicious-proposal)
 
 [20220713 SpaceGodzilla](past/2022/README.md#20220713-spacegodzilla---flashloans--price-manipulation)
 
@@ -700,9 +698,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20200618 Bancor Protocol](past/2021/README.md#20200618-bancor-protocol---access-control)
 
-[20180422 Beauty Chain](past/2021/README.md#20180422-beauty-chain---integer-overflow)
+[20200418 UniSwapV1](past/2021/README.md#20200418-uniswapv1---erc777-reentrancy)
 
-[2020418 UniSwapV1](past/2021/#20200418-uniswapv1---erc777-reentrancy)
+[20180422 Beauty Chain](past/2021/README.md#20180422-beauty-chain---integer-overflow)
 
 [20171106 Parity - 'Accidentally Killed It'](past/2021/README.md#20171106-parity---accidentally-killed-it)
 
@@ -882,7 +880,7 @@ forge test --contracts ./src/test/ShibaToken_exp.sol -vvv
 
 ---
 
-### 20231117 LinkDAO - Bad `K` Value Verification
+### 20231115 LinkDAO - Bad `K` Value Verification
 
 ### Lost: ~$30K
 
@@ -1444,7 +1442,7 @@ https://twitter.com/DecurityHQ/status/1707851321909428688
 
 ---
 
-### 20230927 XSDWETHpool - Reentrancy
+### 20230926 XSDWETHpool - Reentrancy
 
 ### Lost: ~$56.9BNB
 
@@ -2510,9 +2508,9 @@ https://twitter.com/BlockSecTeam/status/1673897088617426946
 
 ---
 
-### 20230624 Shido - Business Loigc & Arbitrage
+### 20230623 SHIDO - Business Loigc
 
-### Lost: 997 WBNB
+### Lost: ~997 WBNB
 
 Testing
 
@@ -2522,33 +2520,13 @@ forge test --contracts ./src/test/SHIDO_exp.sol -vvv
 
 #### Contract
 
-[SHIDO_exp.sol](src/test/SHIDO_exp.sol)
+[SHIDO_exp.sol](src/test/SHIDO_exp.sol) | [SHIDO_exp2.sol](src/test/SHIDO_exp2.sol)
 
 #### Link Reference
 
 https://twitter.com/Phalcon_xyz/status/1672473343734480896
 
 https://twitter.com/AnciliaInc/status/1672382613473083393
-
----
-
-### 20230623 ShidoGlobal - Flashloan attack
-
-### Lost: ~977BNB
-
-Testing
-
-```
-forge test --contracts ./src/test/ShidoGlobal_exp.sol -vvv
-```
-
-#### Contract
-
-[ShidoGlobal_exp.sol](src/test/ShidoGlobal_exp.sol)
-
-#### Link Reference
-
-https://twitter.com/Phalcon_xyz/status/1672473343734480896
 
 ---
 
@@ -4013,7 +3991,7 @@ https://twitter.com/peckshield/status/1622801412727148544
 
 ---
 
-### 20230207 - FDP - Reflection token
+### 20230206 - FDP - Reflection token
 
 ### Lost: ~16 WBNB
 
@@ -4245,7 +4223,7 @@ https://twitter.com/BlockSecTeam/status/1614864084956254209
 
 ---
 
-### 20230112 - UFDao - Incorrect Parameter Setting
+### 20230111 - UFDao - Incorrect Parameter Setting
 
 ### Lost: $90k
 
@@ -4265,7 +4243,7 @@ https://twitter.com/BlockSecTeam/status/1613507804412940289
 
 ---
 
-### 20230112 - RoeFinance - FlashLoan price manipulation
+### 20230111 - RoeFinance - FlashLoan price manipulation
 
 ### Lost: $80k
 

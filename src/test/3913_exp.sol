@@ -6,7 +6,7 @@ import "./interface.sol";
 
 // @KeyInfo -- Total Lost : ~31,354 USD$
 // Attacker : https://bscscan.com/tx/0xb29f18b89e56cc0151c7c17de0625a21018d8ae7
-// Attack Contract : https://bscscan.com/tx/0x783fbea45b32eaaa596b44412041dd1208025e83
+// Attack Contract : https://bscscan.com/address/0x783fbea45b32eaaa596b44412041dd1208025e83
 // Attacker Transaction :
 // https://bscscan.com/tx/0x8163738d6610ca32f048ee9d30f4aa1ffdb3ca1eddf95c0eba086c3e936199ed
 
