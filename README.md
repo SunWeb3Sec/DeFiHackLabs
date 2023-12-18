@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-331 incidents included.
+332 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20231217 NFTTrader](#20231217-nfttrader---reentrancy)
 
 [20231213 HYPR](#20231213-hypr---business-logic-flaw)
 
@@ -729,6 +731,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20231217 NFTTrader - Reentrancy
+
+### Lost: ~$821k
+
+```
+forge test --contracts ./src/test/NFTTrader_exp.sol --evm-version 'shanghai' -vvv
+```
+
+#### Contract
+
+[NFTTrader_exp.sol](src/test/NFTTrader_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BeosinAlert/status/1736061227535847433
+
+https://twitter.com/hexagate_/status/1736034234513399980
+
+https://defimon.xyz/exploit/mainnet/0x7e5433f02f4bf07c4f2a2d341c450e07d7531428
+
+---
 
 ### 20231213 HYPR - Business Logic Flaw
 
