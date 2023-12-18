@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20231217 NFTTrader](#20231217-nfttrader---reentrancy)
+[20231217 FloorProtocol](#20231217-floorprotocol---business-logic-flaw)
 
 [20231213 HYPR](#20231213-hypr---business-logic-flaw)
 
@@ -732,23 +732,23 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20231217 NFTTrader - Reentrancy
+### 20231217 FloorProtocol - Business Logic Flaw
 
-### Lost: ~$821k
+### Lost: ~$1,6M
 
 ```
-forge test --contracts ./src/test/NFTTrader_exp.sol --evm-version 'shanghai' -vvv
+forge test --contracts ./src/test/FloorProtocol_exp.sol --evm-version 'shanghai' -vvv
 ```
 
 #### Contract
 
-[NFTTrader_exp.sol](src/test/NFTTrader_exp.sol)
+[FloorProtocol_exp.sol](src/test/FloorProtocol_exp.sol)
 
 #### Link reference
 
-https://twitter.com/BeosinAlert/status/1736061227535847433
+https://protos.com/floor-protocol-exploited-bored-apes-and-pudgy-penguins-gone/
 
-https://twitter.com/hexagate_/status/1736034234513399980
+https://twitter.com/0xfoobar/status/1736190355257627064
 
 https://defimon.xyz/exploit/mainnet/0x7e5433f02f4bf07c4f2a2d341c450e07d7531428
 
