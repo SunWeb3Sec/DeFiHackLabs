@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20231220 TransitFinance](#20231220-transitfinance---lack-of-validation-pool) 
+
 [20231217 FloorProtocol](#20231217-floorprotocol---business-logic-flaw)
 
 [20231213 HYPR](#20231213-hypr---business-logic-flaw)
@@ -731,6 +733,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20231220 TransitFinance - Lack of Validation Pool
+
+### Lost: ~110k
+
+```
+forge test --contracts ./src/test/TransitFinance_exp.sol -vvv
+
+```
+
+#### Contract
+
+[TransitFinance_exp.sol](src/test/TransitFinance_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1737355152779030570
+
+https://explorer.phalcon.xyz/tx/bsc/0x93ae5f0a121d5e1aadae052c36bc5ecf2d406d35222f4c6a5d63fef1d6de1081
 
 ### 20231217 FloorProtocol - Business Logic Flaw
 
