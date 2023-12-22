@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-332 incidents included.
+333 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -57,6 +57,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20231117 ShibaToken](#20231117-shibatoken---business-logic-flaw)
 
 [20231115 LinkDAO](#20231115-linkdao---bad-k-value-verification)
+
+[20231114 OKC Project](#20231114-OKC-Project---Instant-Rewards-Unlocked)
 
 [20231112 MEV_0x8c2d](#20231112-mevbot_0x8c2d---lack-of-access-control)
 
@@ -964,6 +966,27 @@ forge test --contracts ./src/test/LinkDao_exp.sol -vvv
 #### Link Reference
 
 https://x.com/phalcon_xyz/status/1725058908144746992
+
+---
+
+### 20231114 OKC Project - Instant Rewards, Unlocked
+
+### Lost: ~$6268
+
+Test
+
+```
+forge test --contracts ./src/test/OKC_exp.sol -vvv
+```
+
+#### Contract
+
+[OKC_exp.sol](src/test/OKC_exp.sol)
+
+#### Link Reference
+
+https://lunaray.medium.com/okc-project-hack-analysis-0907312f519b
+
 
 ---
 
