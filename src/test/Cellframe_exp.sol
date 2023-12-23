@@ -12,10 +12,6 @@ import "./interface.sol";
 
 // @Analysis - https://twitter.com/numencyber/status/1664132985883615235?cxt=HHwWhoDTqceImJguAAAA
 
-interface IPancakeV3Pool {
-    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
-}
-
 interface IPancakeRouterV3 {
     struct ExactInputSingleParams {
         address tokenIn;
