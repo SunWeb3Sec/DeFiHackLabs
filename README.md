@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-333 incidents included.
+334 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,9 +34,11 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20231220 TransitFinance](#20231220-transitfinance---lack-of-validation-pool) 
+[20231220 TransitFinance](#20231220-transitfinance---lack-of-validation-pool)
 
 [20231217 FloorProtocol](#20231217-floorprotocol---business-logic-flaw)
+
+[20231216 NFTTrader](#20231216-nfttrader---reentrancy)
 
 [20231213 HYPR](#20231213-hypr---business-logic-flaw)
 
@@ -777,6 +779,28 @@ https://defimon.xyz/exploit/mainnet/0x7e5433f02f4bf07c4f2a2d341c450e07d7531428
 
 ---
 
+### 20231216 NFTTrader - Reentrancy
+
+### Lost: ~$3M
+
+```
+forge test --contracts ./src/test/NFTTrader_exp.sol -vvv
+```
+
+#### Contract
+
+[NFTTrader_exp.sol](src/test/NFTTrader_exp.sol)
+
+#### Link reference
+
+https://twitter.com/AnciliaInc/status/1736263884217139333
+
+https://twitter.com/SlowMist_Team/status/1736005523550646535
+
+https://twitter.com/0xArhat/status/1736038250190651467
+
+---
+
 ### 20231213 HYPR - Business Logic Flaw
 
 ### Lost: ~$200k
@@ -986,7 +1010,6 @@ forge test --contracts ./src/test/2023-11/OKC_exp.sol -vvv
 #### Link Reference
 
 https://lunaray.medium.com/okc-project-hack-analysis-0907312f519b
-
 
 ---
 
