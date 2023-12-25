@@ -102,7 +102,6 @@ contract ContractTest is Test {
         0x23938954BC875bb8309AEF15e2Dead54884B73Db;
     address private constant tradeSquad =
         0x58874d2951524F7f851bbBE240f0C3cF0b992d79;
-    uint256 private positionId;
     uint256 private swapId;
 
     function setUp() public {
@@ -133,9 +132,9 @@ contract ContractTest is Test {
             deadline: block.timestamp
         });
 
-        (positionId, , , ) = UniV3PosNFT.mint{value: address(this).balance}(
-            params
-        );
+        (uint256 positionId, , , ) = UniV3PosNFT.mint{
+            value: address(this).balance
+        }(params);
 
         vm.roll(18799435);
         deal(address(this), 0.1 ether);
@@ -165,7 +164,6 @@ contract ContractTest is Test {
         victimsCloneXTokenIds[4] = 9_870;
 
         for (uint8 i; i < victimsCloneXTokenIds.length; ++i) {
-            uint256 _positionId = positionId;
             INFTTrader.swapIntent memory _swapIntent = INFTTrader.swapIntent({
                 id: 0,
                 addressOne: address(0),
@@ -183,7 +181,7 @@ contract ContractTest is Test {
             INFTTrader.swapStruct[]
                 memory _nftsTwo = new INFTTrader.swapStruct[](2);
             uint256[] memory _tokenId1 = new uint256[](1);
-            _tokenId1[0] = _positionId;
+            _tokenId1[0] = positionId;
             uint256[] memory _blc = new uint256[](0);
             _nftsTwo[0] = INFTTrader.swapStruct({
                 dapp: address(UniV3PosNFT),
