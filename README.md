@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20231222](#20231222-pineprotocol---business-logic-flaw)
+[20231222 PineProtocol](#20231222-pineprotocol---business-logic-flaw)
 
 [20231220 TransitFinance](#20231220-transitfinance---lack-of-validation-pool)
 
