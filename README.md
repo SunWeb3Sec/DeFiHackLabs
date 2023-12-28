@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-334 incidents included.
+335 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20231222 PineProtocol](#20231222-pineprotocol---business-logic-flaw)
 
 [20231220 TransitFinance](#20231220-transitfinance---lack-of-validation-pool)
 
@@ -737,6 +739,27 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20231222 PineProtocol - Business Logic Flaw
+
+### Lost: ~90k
+
+```
+forge test --contracts ./src/test/PineProtocol_exp.sol -vvv
+
+```
+
+#### Contract
+
+[PineProtocol_exp.sol](src/test/PineProtocol_exp.sol)
+
+#### Link reference
+
+https://medium.com/neptune-mutual/analysis-of-the-pine-protocol-exploit-e09dbcb80ca0
+
+https://twitter.com/MistTrack_io/status/1738131780459430338
+
+---
 
 ### 20231220 TransitFinance - Lack of Validation Pool
 
