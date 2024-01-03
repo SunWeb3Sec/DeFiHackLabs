@@ -202,7 +202,7 @@ interface IERC20 {
     function transferFrom(address from, address to, uint256 value) external returns (bool);
     function withdraw(uint256 wad) external;
     function deposit(uint256 wad) external returns (bool);
-    function owner() external view virtual returns (address);
+    function owner() external view returns (address);
 }
 
 interface ICErc20Delegate {
@@ -2032,6 +2032,8 @@ interface IWBNB {
     function allowance(address, address) external view returns (uint256);
 
     fallback() external payable;
+
+    receive() external payable;
 
     event Approval(address indexed src, address indexed guy, uint256 wad);
     event Transfer(address indexed src, address indexed dst, uint256 wad);
