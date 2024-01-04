@@ -752,6 +752,18 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 forge test --contracts ./src/test/Gamma_exp.sol -vvv
 ```
 
+#### Contract
+
+[Gamma_exp.sol](src/test/Gamma_exp.sol)
+
+#### Link reference
+
+https://twitter.com/officer_cia/status/1742772207997050899
+
+https://twitter.com/shoucccc/status/1742765618984829326
+
+---
+
 ### 20240101 OrbitChain - Incorrect input validation
 
 ### Lost: ~81M
