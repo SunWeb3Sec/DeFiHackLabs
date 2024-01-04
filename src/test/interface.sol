@@ -202,7 +202,7 @@ interface IERC20 {
     function transferFrom(address from, address to, uint256 value) external returns (bool);
     function withdraw(uint256 wad) external;
     function deposit(uint256 wad) external returns (bool);
-    function owner() external view virtual returns (address);
+    function owner() external view returns (address);
 }
 
 interface ICErc20Delegate {
@@ -2032,6 +2032,8 @@ interface IWBNB {
     function allowance(address, address) external view returns (uint256);
 
     fallback() external payable;
+
+    receive() external payable;
 
     event Approval(address indexed src, address indexed guy, uint256 wad);
     event Transfer(address indexed src, address indexed dst, uint256 wad);
@@ -4873,9 +4875,7 @@ abstract contract Nonces {
     }
 }
 
-
 interface IPancakeV3PoolActions {
-
     function initialize(uint160 sqrtPriceX96) external;
 
     function mint(
@@ -4900,7 +4900,6 @@ interface IPancakeV3PoolActions {
         uint128 amount
     ) external returns (uint256 amount0, uint256 amount1);
 
-
     function swap(
         address recipient,
         bool zeroForOne,
@@ -4909,43 +4908,29 @@ interface IPancakeV3PoolActions {
         bytes calldata data
     ) external returns (int256 amount0, int256 amount1);
 
-    function flash(
-        address recipient,
-        uint256 amount0,
-        uint256 amount1,
-        bytes calldata data
-    ) external;
+    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
 
     function increaseObservationCardinalityNext(uint16 observationCardinalityNext) external;
 }
 
-
 interface IPancakeV3PoolDerivedState {
-
     function observe(uint32[] calldata secondsAgos)
-    external
-    view
-    returns (int56[] memory tickCumulatives, uint160[] memory secondsPerLiquidityCumulativeX128s);
+        external
+        view
+        returns (int56[] memory tickCumulatives, uint160[] memory secondsPerLiquidityCumulativeX128s);
 
-    function snapshotCumulativesInside(int24 tickLower, int24 tickUpper)
-    external
-    view
-    returns (
-        int56 tickCumulativeInside,
-        uint160 secondsPerLiquidityInsideX128,
-        uint32 secondsInside
-    );
+    function snapshotCumulativesInside(
+        int24 tickLower,
+        int24 tickUpper
+    ) external view returns (int56 tickCumulativeInside, uint160 secondsPerLiquidityInsideX128, uint32 secondsInside);
 }
 
 interface IPancakeV3PoolImmutables {
-
     function factory() external view returns (address);
 
     function token0() external view returns (address);
 
-
     function token1() external view returns (address);
-
 
     function fee() external view returns (uint24);
 
@@ -4956,17 +4941,17 @@ interface IPancakeV3PoolImmutables {
 
 interface IPancakeV3PoolState {
     function slot0()
-    external
-    view
-    returns (
-        uint160 sqrtPriceX96,
-        int24 tick,
-        uint16 observationIndex,
-        uint16 observationCardinality,
-        uint16 observationCardinalityNext,
-        uint32 feeProtocol,
-        bool unlocked
-    );
+        external
+        view
+        returns (
+            uint160 sqrtPriceX96,
+            int24 tick,
+            uint16 observationIndex,
+            uint16 observationCardinality,
+            uint16 observationCardinalityNext,
+            uint32 feeProtocol,
+            bool unlocked
+        );
 
     function feeGrowthGlobal0X128() external view returns (uint256);
 
@@ -4977,47 +4962,44 @@ interface IPancakeV3PoolState {
     function liquidity() external view returns (uint128);
 
     function ticks(int24 tick)
-    external
-    view
-    returns (
-        uint128 liquidityGross,
-        int128 liquidityNet,
-        uint256 feeGrowthOutside0X128,
-        uint256 feeGrowthOutside1X128,
-        int56 tickCumulativeOutside,
-        uint160 secondsPerLiquidityOutsideX128,
-        uint32 secondsOutside,
-        bool initialized
-    );
+        external
+        view
+        returns (
+            uint128 liquidityGross,
+            int128 liquidityNet,
+            uint256 feeGrowthOutside0X128,
+            uint256 feeGrowthOutside1X128,
+            int56 tickCumulativeOutside,
+            uint160 secondsPerLiquidityOutsideX128,
+            uint32 secondsOutside,
+            bool initialized
+        );
 
     function tickBitmap(int16 wordPosition) external view returns (uint256);
 
-
     function positions(bytes32 key)
-    external
-    view
-    returns (
-        uint128 _liquidity,
-        uint256 feeGrowthInside0LastX128,
-        uint256 feeGrowthInside1LastX128,
-        uint128 tokensOwed0,
-        uint128 tokensOwed1
-    );
+        external
+        view
+        returns (
+            uint128 _liquidity,
+            uint256 feeGrowthInside0LastX128,
+            uint256 feeGrowthInside1LastX128,
+            uint128 tokensOwed0,
+            uint128 tokensOwed1
+        );
 
     function observations(uint256 index)
-    external
-    view
-    returns (
-        uint32 blockTimestamp,
-        int56 tickCumulative,
-        uint160 secondsPerLiquidityCumulativeX128,
-        bool initialized
-    );
+        external
+        view
+        returns (
+            uint32 blockTimestamp,
+            int56 tickCumulative,
+            uint160 secondsPerLiquidityCumulativeX128,
+            bool initialized
+        );
 }
 
-
 interface IPancakeV3PoolOwnerActions {
-
     function setFeeProtocol(uint32 feeProtocol0, uint32 feeProtocol1) external;
 
     function collectProtocol(
@@ -5030,11 +5012,9 @@ interface IPancakeV3PoolOwnerActions {
 }
 
 interface IPancakeV3Pool is
-IPancakeV3PoolImmutables,
-IPancakeV3PoolState,
-IPancakeV3PoolDerivedState,
-IPancakeV3PoolActions,
-IPancakeV3PoolOwnerActions
-{
-
-}
+    IPancakeV3PoolImmutables,
+    IPancakeV3PoolState,
+    IPancakeV3PoolDerivedState,
+    IPancakeV3PoolActions,
+    IPancakeV3PoolOwnerActions
+{}
