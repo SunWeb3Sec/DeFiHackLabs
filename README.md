@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-337 incidents included.
+338 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20240104 Gamma](#20240104-gamma---price-manipulation)
+
+[20240102 RadiantCapital](#20240102-radiantcapital---loss-of-precision)
 
 [20240101 OrbitChain](#20240101-orbitchain---incorrect-input-validation)
 
@@ -761,6 +763,26 @@ forge test --contracts ./src/test/Gamma_exp.sol -vvv
 https://twitter.com/officer_cia/status/1742772207997050899
 
 https://twitter.com/shoucccc/status/1742765618984829326
+
+---
+
+### 20240102 RadiantCapital - Loss of Precision
+
+### Lost: ~4,5M
+
+```
+forge test --contracts ./src/test/RadiantCapital_exp.sol -vvv
+```
+
+#### Contract
+
+[RadiantCapital_exp.sol](src/test/RadiantCapital_exp.sol)
+
+#### Link reference
+
+https://neptunemutual.com/blog/how-was-radiant-capital-exploited/
+
+https://twitter.com/BeosinAlert/status/1742389285926678784
 
 ---
 
