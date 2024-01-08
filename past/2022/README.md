@@ -267,7 +267,7 @@ https://twitter.com/CertiKAlert/status/1608788290785665024
 
 ### 20221229 - JAY - Insufficient validation + Reentrancy
 
-### Lost: $15.32 ETH
+### Lost: ~15.32 ETH
 
 Testing
 
