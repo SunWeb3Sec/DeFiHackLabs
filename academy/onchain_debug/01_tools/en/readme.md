@@ -34,7 +34,7 @@ Tenderly： `Ethereum、Polygon、BSC、Sepolia、Goerli、Gnosis、POA、RSK、
 、Fantom、Moonbeam、Moonriver`
 
 #### Lab
-We will look at JayPeggers - Insufficient validation + Reentrancy [Incident](https://github.com/SunWeb3Sec/DeFiHackLabs/#20221229---jay---insufficient-validation--reentrancy) as an example transaction [TXID](https://phalcon.blocksec.com/tx/eth/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6) to dissect.
+We will look at JayPeggers - Insufficient validation + Reentrancy [Incident](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/past/2022/README.md#20221229---jay---insufficient-validation--reentrancy) as an example transaction [TXID](https://phalcon.blocksec.com/tx/eth/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6) to dissect.
 
 First I use the Phalcon tool developed by Blocksec to illustrate. The basic information and balance changes of the transaction can be seen in the figure below. From the balance changes, we can quickly see how much profit the attacker has made. In this example, the attacker made a profit of 15.32 ETH.
 
