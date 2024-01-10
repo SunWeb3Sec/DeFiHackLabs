@@ -1193,7 +1193,7 @@ https://twitter.com/danielvf/status/1580936010556661761
 
 ### 20221014 MEVBOTa47b - MEVBOT a47b
 
-### Lost: $241 k
+### Lost: ~187.75 WETH
 
 Testing
 
