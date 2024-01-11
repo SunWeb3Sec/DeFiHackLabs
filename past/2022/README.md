@@ -1217,7 +1217,7 @@ https://etherscan.io/tx/0x35ecf595864400696853c53edf3e3d60096639b6071cadea6076c9
 
 ### 20221012 ATK - FlashLoan manipulate price
 
-### Lost: $127 k
+### Lost: ~127K BUSD
 
 Testing
 
