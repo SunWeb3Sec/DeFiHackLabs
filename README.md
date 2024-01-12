@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-338 incidents included.
+339 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -39,6 +39,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240102 RadiantCapital](#20240102-radiantcapital---loss-of-precision)
 
 [20240101 OrbitChain](#20240101-orbitchain---incorrect-input-validation)
+
+[20231225 Telcoin](#20231225-telcoin---storage-collision)
 
 [20231222 PineProtocol](#20231222-pineprotocol---business-logic-flaw)
 
@@ -801,6 +803,26 @@ forge test --contracts ./src/test/OrbitChain_exp.sol -vvv
 #### Link reference
 
 https://blog.solidityscan.com/orbit-chain-hack-analysis-b71c36a54a69
+
+---
+
+### 20231225 Telcoin - Storage Collision
+
+### Lost: ~1,24M
+
+```
+forge test --contracts ./src/test/Telcoin_exp.sol -vvv
+```
+
+#### Contract
+
+[Telcoin_exp.sol](src/test/Telcoin_exp.sol)
+
+#### Link reference
+
+https://blocksec.com/phalcon/blog/telcoin-security-incident-in-depth-analysis
+
+https://hacked.slowmist.io/?c=&page=2
 
 ---
 
