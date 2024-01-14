@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-338 incidents included.
+340 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,11 +34,15 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20240112 WiseLending](#20240112-wiselending---loss-of-precision)
+
 [20240104 Gamma](#20240104-gamma---price-manipulation)
 
 [20240102 RadiantCapital](#20240102-radiantcapital---loss-of-precision)
 
 [20240101 OrbitChain](#20240101-orbitchain---incorrect-input-validation)
+
+[20231225 Telcoin](#20231225-telcoin---storage-collision)
 
 [20231222 PineProtocol](#20231222-pineprotocol---business-logic-flaw)
 
@@ -746,6 +750,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20240112 WiseLending - Loss of Precision
+
+### Lost: ~464K
+
+```
+forge test --contracts ./src/test/WiseLending02_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[WiseLending02_exp.sol](src/test/WiseLending02_exp.sol)
+
+#### Link reference
+
+https://twitter.com/EXVULSEC/status/1746138811862577515
+
+https://twitter.com/peckshield/status/1745907642118123774
+
+---
+
 ### 20240104 Gamma - Price manipulation
 
 ### Lost: ~6.3M
@@ -801,6 +825,26 @@ forge test --contracts ./src/test/OrbitChain_exp.sol -vvv
 #### Link reference
 
 https://blog.solidityscan.com/orbit-chain-hack-analysis-b71c36a54a69
+
+---
+
+### 20231225 Telcoin - Storage Collision
+
+### Lost: ~1,24M
+
+```
+forge test --contracts ./src/test/Telcoin_exp.sol -vvv
+```
+
+#### Contract
+
+[Telcoin_exp.sol](src/test/Telcoin_exp.sol)
+
+#### Link reference
+
+https://blocksec.com/phalcon/blog/telcoin-security-incident-in-depth-analysis
+
+https://hacked.slowmist.io/?c=&page=2
 
 ---
 
