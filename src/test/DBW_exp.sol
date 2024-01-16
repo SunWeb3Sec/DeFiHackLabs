@@ -61,7 +61,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
-            );
+        );
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {

@@ -3,7 +3,7 @@ src = 'src'
 out = 'out'
 libs = ['lib']
 
-rpc_endpoints = { mainnet = "https://rpc.ankr.com/eth", optimism = "https://opt-mainnet.g.alchemy.com/v2/demo", fantom = "https://rpc.ankr.com/fantom", arbitrum = "https://rpc.ankr.com/arbitrum", bsc = "https://rpc.ankr.com/bsc", moonriver = "https://moonriver.public.blastapi.io", gnosis = "https://rpc.ankr.com/gnosis", Avalanche = "https://rpc.ankr.com/avalanche", polygon = "https://rpc.ankr.com/polygon", celo = "https://rpc.ankr.com/celo" }
+rpc_endpoints = { mainnet = "https://rpc.ankr.com/eth", optimism = "https://opt-mainnet.g.alchemy.com/v2/demo", fantom = "https://rpc.ankr.com/fantom", arbitrum = "https://rpc.ankr.com/arbitrum", bsc = "https://rpc.ankr.com/bsc", moonriver = "https://moonriver.public.blastapi.io", gnosis = "https://rpc.ankr.com/gnosis", Avalanche = "https://rpc.ankr.com/avalanche", polygon = "https://rpc.ankr.com/polygon", celo = "https://rpc.ankr.com/celo", Base = "https://developer-access-mainnet.base.org" }
 
 # See more config options https://github.com/gakonst/foundry/tree/master/config
 

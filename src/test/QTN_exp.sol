@@ -28,7 +28,7 @@ contract ContractTest is DSTest {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 16430212);
+        cheats.createSelectFork("mainnet", 16_430_212);
         cheats.label(address(QTN), "QTN");
         cheats.label(address(WETH), "WETH");
         cheats.label(address(Router), "Router");
@@ -46,7 +46,7 @@ contract ContractTest is DSTest {
 
         emit log_named_decimal_uint(
             "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-            );
+        );
     }
 
     function QTNContractFactory() internal {

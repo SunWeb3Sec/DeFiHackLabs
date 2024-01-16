@@ -89,7 +89,7 @@ contract ContractTest is Test {
     }
 
     function LockAndClaimToken() internal {
-        SHIDOINU.approve(address(ShidoLock), type(uint).max);
+        SHIDOINU.approve(address(ShidoLock), type(uint256).max);
         ShidoLock.lockTokens();
         ShidoLock.claimTokens();
     }

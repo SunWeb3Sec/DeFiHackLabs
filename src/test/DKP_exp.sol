@@ -43,7 +43,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker USDT balance after exploit", USDT.balanceOf(address(this)) - 800 * 1e18, USDT.decimals()
-            );
+        );
     }
 
     function exchangeDKP() internal {

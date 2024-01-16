@@ -60,7 +60,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-            );
+        );
     }
 
     function executeOperation(

