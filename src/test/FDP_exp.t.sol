@@ -3,9 +3,8 @@ pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
 
-// Attacker: 0x14d8ada7a0ba91f59dc0cb97c8f44f1d177c2195
-// Attack Contract: 0xdb2d869ac23715af204093e933f5eb57f2dc12a9
-// Vulnerable Contract: 0x1954b6bd198c29c3ecf2d6f6bc70a4d41ea1cc07
+// Attacker: https://bscscan.com/address/0xc726bd0e973722e17eb088b8fcfedaa931fa0293
+// Attack Contract: https://bscscan.com/address/0xe02970bd38b283c3079720c1e71001abe001bc83
 // Attack Tx: https://phalcon.blocksec.com/tx/bsc/0x09925028ce5d6a54801d04ff8f39e79af6c24289e84b301ddcdb6adfa51e901b
 //            https://bscscan.com/tx/0x09925028ce5d6a54801d04ff8f39e79af6c24289e84b301ddcdb6adfa51e901b
 

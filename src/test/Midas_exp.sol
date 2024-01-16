@@ -99,7 +99,7 @@ contract ContractTest is DSTest {
 
         emit log_named_decimal_uint(
             "Attacker WMATIC balance after exploit", WMATIC.balanceOf(address(this)), WMATIC.decimals()
-            );
+        );
     }
 
     function balancerFlashloan() internal {

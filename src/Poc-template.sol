@@ -20,20 +20,19 @@ import "./interface.sol";
 // Hacking God : https://www.google.com/
 
 contract ContractTest is Test {
-    IERC20 USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
-    IUSDT USDT = IUSDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
-    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    IUSDC constant USDC = IUSDC(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+    IUSDT constant USDT = IUSDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
     
     function setUp() public {
-        cheats.createSelectFork("mainnet", 15460093);
-        cheats.label(address(USDT), "USDT");
-        cheats.label(address(USDC), "USDC");
+        vm.createSelectFork("mainnet", 15460093);
+        vm.label(address(USDC), "USDC");
+        vm.label(address(USDT), "USDT");
         //address alice = makeAddr("alice");
     }
     
-    function testExploit() public{
-        //cheats.startPrank(alice);
-        //cheats.stopPrank();
+    function testExploit() public {
+        //vm.startPrank(alice);
+        //vm.stopPrank();
     }
 }
 

@@ -103,10 +103,10 @@ contract RodeoTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker balance of unshETH after exploit", unshETH.balanceOf(address(this)), unshETH.decimals()
-            );
+        );
         emit log_named_decimal_uint(
             "Attacker balance of WETH after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-            );
+        );
     }
 
     function receiveFlashLoan(

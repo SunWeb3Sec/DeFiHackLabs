@@ -63,7 +63,7 @@ contract ContractTest is DSTest {
 
         emit log_named_decimal_uint(
             "Attacker USDC.E balance after exploit", USDC_E.balanceOf(address(this)), USDC_E.decimals()
-            );
+        );
         emit log_named_decimal_uint("Attacker TIC balance after exploit", TIC.balanceOf(address(this)), TIC.decimals());
     }
 

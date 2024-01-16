@@ -45,10 +45,10 @@ contract ContractTest is DSTest {
         // IQBridgeHandler(QBridgeHandler).deposit(resourceID, attacker, data);
         emit log_named_address(
             "contractAddress", IQBridgeHandler(QBridgeHandler).resourceIDToTokenContractAddress(resourceID)
-            );
+        );
         emit log_named_uint(
             "is 0 address whitelisted", IQBridgeHandler(QBridgeHandler).contractWhitelist(address(0)) ? 1 : 0
-            );
+        );
 
         IQBridge(QBridge).deposit(1, resourceID, data);
 

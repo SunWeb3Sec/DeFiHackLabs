@@ -79,7 +79,7 @@ contract ContractTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker crvUSD balance after exploit", crvUSD.balanceOf(address(this)), crvUSD.decimals()
-            );
+        );
     }
 
     function receiveFlashLoan(

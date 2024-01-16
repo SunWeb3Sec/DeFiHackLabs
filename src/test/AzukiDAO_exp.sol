@@ -45,7 +45,7 @@ contract AzukiTest is Test {
         deal(address(Bean), azukiDAOExploiter, 0);
         emit log_named_decimal_uint(
             "Attacker balance of Bean token before exploit", Bean.balanceOf(azukiDAOExploiter), Bean.decimals()
-            );
+        );
         // Arguments for the claim() function calls
         // Signature: sender + contracts + tokenIds + claimAmount + endTime
         bytes32 r = 0xd044373fa377c3af4a854829176d14eebc23d96c342401b294f3491f0616559c;
@@ -81,6 +81,6 @@ contract AzukiTest is Test {
 
         emit log_named_decimal_uint(
             "Attacker balance of Bean token after exploit", Bean.balanceOf(azukiDAOExploiter), Bean.decimals()
-            );
+        );
     }
 }
