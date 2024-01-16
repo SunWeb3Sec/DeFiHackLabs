@@ -1283,6 +1283,8 @@ https://etherscan.io/tx/0x8c3f442fc6d640a6ff3ea0b12be64f1d4609ea94edd2966f42c01c
 
 ### 20221010 Carrot - Public functionCall
 
+### Lost: 31,318 BUSDT
+
 Testing
 
 ```sh
