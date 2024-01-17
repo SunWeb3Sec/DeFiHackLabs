@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20240117 SocketGateway](#20240117-socketgateway---lack-of-calldata-validation)
+[20240117 SocketGateway](#20240112-socketgateway---lack-of-calldata-validation)
 
 [20240112 WiseLending](#20240112-wiselending---loss-of-precision)
 
