@@ -33,6 +33,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
 [20240117 SocketGateway](#20240117-socketgateway---lack-of-calldata-validation)
 
 [20240112 WiseLending](#20240112-wiselending---loss-of-precision)
@@ -785,7 +786,7 @@ forge test --contracts ./src/test/WiseLending02_exp.sol -vvv --evm-version shang
 
 #### Link reference
 
-https://twitter.com/MetaTrustAlert/status/1746070784471380092
+https://twitter.com/EXVULSEC/status/1746829519334650018
 
 https://twitter.com/peckshield/status/1745907642118123774
 
