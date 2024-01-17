@@ -65,7 +65,7 @@
 [20210308 DODO](#20210308-dodo---flashloan-attack)
 
 [20210305 Paid Network](#20210305-paid-network---private-key-compromised)
-
+[20210204 Yearn YDai](#20210204-yearn-ydai---Slippage-proection-absent)
 [20210125 Sushi Badger Digg](#20210125-sushi-badger-digg---sandwich-attack)
 
 [20201229 Cover Protocol](#20201229-cover-protocol)
@@ -748,6 +748,29 @@ forge test --contracts ./src/test/PAID_exp.sol -vv
 https://paidnetwork.medium.com/paid-network-attack-postmortem-march-7-2021-9e4c0fef0e07
 
 https://etherscan.io/tx/0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0
+
+---
+
+
+### 20210204 Yearn YDai - Slippage proection absent
+
+#### Lost: 11 Million $
+
+Testing
+
+```sh
+forge test --contracts ./src/test/Yearn_ydai.sol -vv
+```
+
+#### Contract
+
+[Yearn_ydai.sol](../../src/test/Yearn_ydai.sol)
+
+#### Link reference
+
+https://github.com/yearn/yearn-security/blob/master/disclosures/2021-02-04.md
+
+https://etherscan.io/tx/0x59faab5a1911618064f1ffa1e4649d85c99cfd9f0d64dcebbc1af7d7630da98b
 
 ---
 
