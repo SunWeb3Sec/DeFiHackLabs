@@ -3595,9 +3595,61 @@ interface ILendingPool {
     function withdraw(address asset, uint256 amount, address to) external returns (uint256);
 }
 
+interface ILendingPoolAddressesProvider {
+    event MarketIdSet(string newMarketId);
+    event LendingPoolUpdated(address indexed newAddress);
+    event ConfigurationAdminUpdated(address indexed newAddress);
+    event EmergencyAdminUpdated(address indexed newAddress);
+    event LendingPoolConfiguratorUpdated(address indexed newAddress);
+    event LendingPoolCollateralManagerUpdated(address indexed newAddress);
+    event PriceOracleUpdated(address indexed newAddress);
+    event LendingRateOracleUpdated(address indexed newAddress);
+    event ProxyCreated(bytes32 id, address indexed newAddress);
+    event AddressSet(bytes32 id, address indexed newAddress, bool hasProxy);
+
+    function getMarketId() external view returns (string memory);
+
+    function setMarketId(string calldata marketId) external;
+
+    function setAddress(bytes32 id, address newAddress) external;
+
+    function setAddressAsProxy(bytes32 id, address impl) external;
+
+    function getAddress(bytes32 id) external view returns (address);
+
+    function getLendingPool() external view returns (address);
+
+    function setLendingPoolImpl(address pool) external;
+
+    function getLendingPoolConfigurator() external view returns (address);
+
+    function setLendingPoolConfiguratorImpl(address configurator) external;
+
+    function getLendingPoolCollateralManager() external view returns (address);
+
+    function setLendingPoolCollateralManager(address manager) external;
+
+    function getPoolAdmin() external view returns (address);
+
+    function setPoolAdmin(address admin) external;
+
+    function getEmergencyAdmin() external view returns (address);
+
+    function setEmergencyAdmin(address admin) external;
+
+    function getPriceOracle() external view returns (address);
+
+    function setPriceOracle(address priceOracle) external;
+
+    function getLendingRateOracle() external view returns (address);
+
+    function setLendingRateOracle(address lendingRateOracle) external;
+}
+
 interface AToken {
     function redeem(uint256 amount) external;
 }
+
 
 interface VyperContract {
     function add_liquidity(uint256[3] calldata amounts, uint256 min_mint_amount) external;
