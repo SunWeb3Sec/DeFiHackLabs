@@ -764,7 +764,7 @@ forge test --contracts ./src/test/WiseLending02_exp.sol -vvv --evm-version shang
 
 #### Link reference
 
-https://twitter.com/EXVULSEC/status/1746138811862577515
+https://twitter.com/MetaTrustAlert/status/1746070784471380092
 
 https://twitter.com/peckshield/status/1745907642118123774
 
