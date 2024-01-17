@@ -1305,6 +1305,8 @@ https://bscscan.com/tx/0xa624660c29ee97f3f4ebd36232d8199e7c97533c9db711fa4027994
 
 ### 20221009 Xave Finance - Malicious Proposal Mint & Transfer Ownership
 
+### Lost: 100,000,000,000,000 RNBW
+
 Testing
 
 ```sh
