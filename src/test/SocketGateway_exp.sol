@@ -19,6 +19,21 @@ interface ISocketVulnRoute {
     ) external payable returns (uint256);
 }
 
+
+// @KeyInfo - Total Lost : ~3.3M US$
+// Attacker : https://etherscan.io/address/0x50DF5a2217588772471B84aDBbe4194A2Ed39066
+// Attack Contract : https://etherscan.io/address/0xf2D5951bB0A4d14BdcC37b66f919f9A1009C05d1
+// Vulnerable Contract : https://etherscan.io/address/0x3a23F943181408EAC424116Af7b7790c94Cb97a5 (the faulty route is vulnerable not the gateway itself)
+// Attack Tx : https://etherscan.io/tx/0xc6c3331fa8c2d30e1ef208424c08c039a89e510df2fb6ae31e5aa40722e28fd6
+
+// @Info
+// Vulnerable Contract Code : https://etherscan.io/address/0xCC5fDA5e3cA925bd0bb428C8b2669496eE43067e#code
+
+// @Analysis
+// Post-mortem :https://twitter.com/BeosinAlert/status/1747450173675196674
+// Twitter Guy : https://twitter.com/peckshield/status/1747353782004900274
+
+//In this example i didnt do a batch transferfrom for multiple target addresses,just did one for simplicity
 contract SocketGatewayExp is Test {
     address _gateway = 0x3a23F943181408EAC424116Af7b7790c94Cb97a5;
     uint32 routeId = 406; //Recently added vulnerable route id
