@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-343 incidents included.
+344 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240117 BmiZapper](#20240117-bmizapper---arbitrary-external-call)
 
 [20240117 SocketGateway](#20240112-socketgateway---lack-of-calldata-validation)
 
@@ -752,6 +754,23 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20240117 BmiZapper - Arbitrary external call vulnerability
+
+### Lost: ~114K
+
+```
+forge test --contracts ./src/test/Bmizapper_exp.sol -vvv 
+```
+
+#### Contract
+
+[BmiZapper_exp.sol](src/test/BmiZapper_exp.sol)
+
+#### Link reference
+
+https://x.com/0xmstore/status/1747756898172952725
+
+---
 ### 20240112 SocketGateway - Lack of calldata validation
 
 ### Lost: ~3.3Million $
