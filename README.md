@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20240117 BmiZapper](#20240117-bmizapper---arbitrary-external-call)
+[20240117 BmiZapper](#20240117-bmizapper---arbitrary-external-call-vulnerability)
 
 [20240117 SocketGateway](#20240112-socketgateway---lack-of-calldata-validation)
 
