@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-344 incidents included.
+345 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240125 NBLGAME](#20240125-nblgame---reentrancy)
 
 [20240117 BmiZapper](#20240117-bmizapper---arbitrary-external-call-vulnerability)
 
@@ -754,12 +756,32 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20240125 NBLGAME - Reentrancy
+
+### Lost: ~180K
+
+```
+forge test --contracts ./src/test/NBLGAME_exp.sol -vvv
+```
+
+#### Contract
+
+[NBLGAME_exp.sol](src/test/NBLGAME_exp.sol)
+
+#### Link reference
+
+https://twitter.com/SlowMist_Team/status/1750526097106915453
+
+https://twitter.com/AnciliaInc/status/1750558426382635036
+
+---
+
 ### 20240117 BmiZapper - Arbitrary external call vulnerability
 
 ### Lost: ~114K
 
 ```
-forge test --contracts ./src/test/Bmizapper_exp.sol -vvv 
+forge test --contracts ./src/test/Bmizapper_exp.sol -vvv
 ```
 
 #### Contract
@@ -771,6 +793,7 @@ forge test --contracts ./src/test/Bmizapper_exp.sol -vvv
 https://x.com/0xmstore/status/1747756898172952725
 
 ---
+
 ### 20240112 SocketGateway - Lack of calldata validation
 
 ### Lost: ~3.3Million $
