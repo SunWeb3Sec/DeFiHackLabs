@@ -224,6 +224,9 @@
 
 [20220320 Umbrella Network](#20220320-umbrella-network---underflow)
 
+[20220315 Agave Finance](#20220313-agave-finance---erc667-reentrancy)
+
+
 [20220315 Hundred Finance](#20220313-hundred-finance---erc667-reentrancy)
 
 [20220313 Paraluni](#20220313-paraluni---flashloan--reentrancy)
@@ -1304,6 +1307,8 @@ https://bscscan.com/tx/0xa624660c29ee97f3f4ebd36232d8199e7c97533c9db711fa4027994
 ---
 
 ### 20221009 Xave Finance - Malicious Proposal Mint & Transfer Ownership
+
+### Lost: 100,000,000,000,000 RNBW
 
 Testing
 
@@ -2694,7 +2699,26 @@ https://medium.com/immunefi/a-poc-of-the-hundred-finance-heist-4121f23a098
 https://gnosisscan.io/tx/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098
 
 ---
+### 20220313 Agave Finance - ERC667 Reentrancy
 
+#### Lost: $1.5 million
+
+Testing
+
+```sh
+forge test --contracts ./src/test/Agave_exp.sol -vv
+```
+
+#### Contract
+
+[Agave_exp.sol](../../src/test/Agave_exp.sol)
+
+#### Link reference
+
+https://medium.com/agavefinance/agave-exploit-reentrancy-in-liquidation-call-51ae407bc56
+https://gnosisscan.io/tx/0xa262141abcf7c127b88b4042aee8bf601f4f3372c9471dbd75cb54e76524f18e
+
+---
 ### 20220313 Paraluni - Flashloan & Reentrancy
 
 #### Lost: $1.7 million

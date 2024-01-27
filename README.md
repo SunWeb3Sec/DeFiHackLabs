@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-340 incidents included.
+345 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -24,7 +24,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### OnChain transaction debugging (Ongoing)
 
-- Lesson 1: Tools ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/en) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools) | [Vietnamese](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/vi) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/ko) )
+- Lesson 1: Tools ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/en) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools) | [Vietnamese](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/vi) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/ko) | [Spanish](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/01_tools/es) )
 - Lesson 2: Warm up ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/02_warmup/ko) )
 - Lesson 3: Write Your Own PoC (Price Oracle Manipulation) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/03_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/03_write_your_own_poc/) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/03_write_your_own_poc/ko) )
 - Lesson 4: Write Your Own PoC (MEV Bot) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/) | [Korean](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/04_write_your_own_poc/kr/) )
@@ -33,6 +33,12 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240125 NBLGAME](#20240125-nblgame---reentrancy)
+
+[20240117 BmiZapper](#20240117-bmizapper---arbitrary-external-call-vulnerability)
+
+[20240117 SocketGateway](#20240112-socketgateway---lack-of-calldata-validation)
 
 [20240112 WiseLending](#20240112-wiselending---loss-of-precision)
 
@@ -750,6 +756,64 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20240125 NBLGAME - Reentrancy
+
+### Lost: ~180K
+
+```
+forge test --contracts ./src/test/NBLGAME_exp.sol -vvv
+```
+
+#### Contract
+
+[NBLGAME_exp.sol](src/test/NBLGAME_exp.sol)
+
+#### Link reference
+
+https://twitter.com/SlowMist_Team/status/1750526097106915453
+
+https://twitter.com/AnciliaInc/status/1750558426382635036
+
+---
+
+### 20240117 BmiZapper - Arbitrary external call vulnerability
+
+### Lost: ~114K
+
+```
+forge test --contracts ./src/test/Bmizapper_exp.sol -vvv
+```
+
+#### Contract
+
+[BmiZapper_exp.sol](src/test/BmiZapper_exp.sol)
+
+#### Link reference
+
+https://x.com/0xmstore/status/1747756898172952725
+
+---
+
+### 20240112 SocketGateway - Lack of calldata validation
+
+### Lost: ~3.3Million $
+
+```
+forge test --contracts ./src/test/SocketGateway_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[SocketGateway_exp.sol](src/test/SocketGateway_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BeosinAlert/status/1747450173675196674
+
+https://twitter.com/peckshield/status/1747353782004900274
+
+---
+
 ### 20240112 WiseLending - Loss of Precision
 
 ### Lost: ~464K
@@ -764,7 +828,7 @@ forge test --contracts ./src/test/WiseLending02_exp.sol -vvv --evm-version shang
 
 #### Link reference
 
-https://twitter.com/EXVULSEC/status/1746138811862577515
+https://twitter.com/EXVULSEC/status/1746829519334650018
 
 https://twitter.com/peckshield/status/1745907642118123774
 
