@@ -1351,6 +1351,8 @@ https://bscscan.com/tx/0xe59fa48212c4ee716c03e648e04f0ca390f4a4fc921a890fded0e01
 
 ### 20221002 Transit Swap - Incorrect owner address validation
 
+### Lost: over $21 Million
+
 Testing
 
 ```sh
