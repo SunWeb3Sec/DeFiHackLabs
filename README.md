@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-345 incidents included.
+346 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240128 BarleyFinance](#20240128-barleyfinance---reentrancy)
 
 [20240125 NBLGAME](#20240125-nblgame---reentrancy)
 
@@ -755,6 +757,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240128 BarleyFinance - Reentrancy
+
+### Lost: ~130K
+
+```
+forge test --contracts ./src/test/BarleyFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[BarleyFinance_exp.sol](src/test/BarleyFinance_exp.sol)
+
+#### Link reference
+
+https://phalcon.blocksec.com/explorer/security-incidents
+
+https://www.bitget.com/news/detail/12560603890246
+
+https://twitter.com/Phalcon_xyz/status/1751788389139992824
+
+---
 
 ### 20240125 NBLGAME - Reentrancy
 
