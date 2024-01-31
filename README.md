@@ -774,6 +774,8 @@ forge test --contracts ./src/test/MIMSpell2_exp.sol -vvv
 
 #### Link reference
 
+https://twitter.com/kankodu/status/1752581744803680680
+
 https://twitter.com/Phalcon_xyz/status/1752278614551216494
 
 https://twitter.com/peckshield/status/1752279373779194011
