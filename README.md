@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-346 incidents included.
+347 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240130 MIMSpell](#20240130-mimspell---precission-loss)
 
 [20240128 BarleyFinance](#20240128-barleyfinance---reentrancy)
 
@@ -757,6 +759,28 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240130 MIMSpell - Precission Loss
+
+### Lost: ~6,5M
+
+```
+forge test --contracts ./src/test/MIMSpell2_exp.sol -vvv
+```
+
+#### Contract
+
+[MIMSpell2_exp.sol](src/test/MIMSpell2_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1752278614551216494
+
+https://twitter.com/peckshield/status/1752279373779194011
+
+https://phalcon.blocksec.com/explorer/security-incidents
+
+---
 
 ### 20240128 BarleyFinance - Reentrancy
 
