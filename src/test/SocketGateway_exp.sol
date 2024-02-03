@@ -19,7 +19,6 @@ interface ISocketVulnRoute {
     ) external payable returns (uint256);
 }
 
-
 // @KeyInfo - Total Lost : ~3.3M US$
 // Attacker : https://etherscan.io/address/0x50DF5a2217588772471B84aDBbe4194A2Ed39066
 // Attack Contract : https://etherscan.io/address/0xf2D5951bB0A4d14BdcC37b66f919f9A1009C05d1

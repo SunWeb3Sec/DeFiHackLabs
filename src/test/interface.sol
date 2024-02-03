@@ -3650,7 +3650,6 @@ interface AToken {
     function redeem(uint256 amount) external;
 }
 
-
 interface VyperContract {
     function add_liquidity(uint256[3] calldata amounts, uint256 min_mint_amount) external;
 

