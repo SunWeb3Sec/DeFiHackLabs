@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-347 incidents included.
+348 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240201 AffineDeFi](#20240201-affinedefi---lack-of-validation-userData)
 
 [20240130 MIMSpell](#20240130-mimspell---precission-loss)
 
@@ -759,6 +761,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240201 AffineDeFi - lack of validation userData
+
+### Lost: ~88K
+
+```
+forge test --contracts ./src/test/AffineDeFi_exp.sol -vvv
+```
+
+#### Contract
+
+[AffineDeFi_exp.sol](src/test/AffineDeFi_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1753020812284809440
+
+https://twitter.com/CyversAlerts/status/1753040754287513655
+
+---
 
 ### 20240130 MIMSpell - Precission Loss
 
