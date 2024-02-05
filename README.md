@@ -648,6 +648,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220206 Meter](past/2022/README.md#20220206-Meter---bridge)
 
+[20220206 TecraSpace](past/2022/README.md#20220204-TecraSpace---Any-token-is-destroyed)
+
 [20220128 Qubit Finance](past/2022/README.md#20220128-qubit-finance---bridge-address0safetransferfrom-does-not-revert)
 
 [20220118 Multichain (Anyswap)](past/2022/README.md#20220118-multichain-anyswap---insufficient-token-validation)

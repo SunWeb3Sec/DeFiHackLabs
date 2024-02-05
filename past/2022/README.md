@@ -243,6 +243,8 @@
 
 [20220205 Meter](#20220205-Meter---bridge)
 
+[20220204 TecraSpace](#20220204-TecraSpace---Any-token-is-destroyed)
+
 [20220128 Qubit Finance](#20220128-qubit-finance---bridge-address0safetransferfrom-does-not-revert)
 
 [20220118 Multichain (Anyswap)](#20220118-multichain-anyswap---insufficient-token-validation)
@@ -2886,6 +2888,28 @@ https://blog.chainsafe.io/breaking-down-the-meter-io-hack-a46a389e7ae4
 
 this does not seem to be the correct transaction though:
 https://moonriver.moonscan.io/tx/0x5a87c24d0665c8f67958099d1ad22e39a03aa08d47d00b7276b8d42294ee0591
+
+---
+
+### 20220204 TecraSpace - Any token is destroyed
+
+#### Lost: ~63k $USDT 
+
+Testing
+
+```sh
+forge test --contracts ./src/test/TecraSpace_exp.sol -vv
+```
+
+#### Contract
+
+[TecraSpace_exp.sol](../../src/test/TecraSpace_exp.sol)
+
+#### Link reference
+
+https://etherscan.io/address/0x6653d9bcbc28fc5a2f5fb5650af8f2b2e1695a15
+
+https://phalcon.blocksec.com/explorer/tx/eth/0x81e9918e248d14d78ff7b697355fd9f456c6d7881486ed14fdfb69db16631154
 
 ---
 
