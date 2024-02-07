@@ -48,6 +48,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240112 WiseLending](#20240112-wiselending---loss-of-precision)
 
+[20240110 LQDX Alert](#20240112-wiselending---loss-of-precision)
+
 [20240104 Gamma](#20240104-gamma---price-manipulation)
 
 [20240102 RadiantCapital](#20240102-radiantcapital---loss-of-precision)
@@ -907,6 +909,25 @@ https://twitter.com/EXVULSEC/status/1746829519334650018
 https://twitter.com/peckshield/status/1745907642118123774
 
 ---
+
+### 20240110 LQDX Alert - Unauthorized TransferFrom
+
+### Lost: unknown
+
+```
+forge test --contracts src/test/LQDX_alert_exp.sol -vvv
+```
+
+#### Contract
+
+[LQDX_alert_exp.sol](src/test/LQDX_alert_exp.sol)
+
+#### Link reference
+
+https://twitter.com/SlowMist_Team/status/1744972012865671452
+
+---
+
 
 ### 20240104 Gamma - Price manipulation
 
