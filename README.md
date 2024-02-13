@@ -48,7 +48,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240112 WiseLending](#20240112-wiselending---loss-of-precision)
 
-[20240110 LQDX Alert](#20240112-wiselending---loss-of-precision)
+[20240110 LQDX Alert](#20240110-lqdx---unauthorized-transferfrom)
 
 [20240104 Gamma](#20240104-gamma---price-manipulation)
 
@@ -910,7 +910,7 @@ https://twitter.com/peckshield/status/1745907642118123774
 
 ---
 
-### 20240110 LQDX Alert - Unauthorized TransferFrom
+### 20240110 LQDX - Unauthorized TransferFrom
 
 ### Lost: unknown
 
