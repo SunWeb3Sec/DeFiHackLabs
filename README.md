@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20240216 ParticleTrade](#20240216-ParticleTrade---lack-of-validation-data)
+
 [20240215 Miner](#20240215-Miner---lack-of-validation-dst-address)
 
 [20240201 AffineDeFi](#20240201-affinedefi---lack-of-validation-userData)
@@ -767,6 +769,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240216 ParticleTrade - lack of validation data
+
+### Lost: ~50k
+
+```
+forge test --contracts ./src/test/ParticleTrade_exp.sol -vvv
+```
+
+#### Contract
+
+[ParticleTrade_exp.sol](src/test/ParticleTrade_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1758028270770250134
+
+---
 
 ### 20240215 Miner - lack of validation dst address
 
