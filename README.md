@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-352 incidents included.
+353 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -37,6 +37,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240216 ParticleTrade](#20240216-ParticleTrade---lack-of-validation-data)
 
 [20240215 Miner](#20240215-Miner---lack-of-validation-dst-address)
+
+[20240211 Game](#20240211-game---reentrancy--business-logic-flaw)
 
 [20240201 AffineDeFi](#20240201-affinedefi---lack-of-validation-userData)
 
@@ -806,6 +808,24 @@ https://twitter.com/Phalcon_xyz/status/1757777340002681326
 
 ---
 
+### 20240211 Game - Reentrancy && Business Logic Flaw
+
+### Lost: ~20 ETH
+
+```
+forge test --contracts ./src/test/Game_exp.sol -vvv
+```
+
+#### Contract
+
+[Game_exp.sol](src/test/Game_exp.sol)
+
+#### Link reference
+
+https://twitter.com/AnciliaInc/status/1757533144033739116
+
+---
+
 ### 20240201 AffineDeFi - lack of validation userData
 
 ### Lost: ~88K
@@ -967,7 +987,6 @@ forge test --contracts src/test/LQDX_alert_exp.sol -vvv
 https://twitter.com/SlowMist_Team/status/1744972012865671452
 
 ---
-
 
 ### 20240104 Gamma - Price manipulation
 
