@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-353 incidents included.
+354 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -39,6 +39,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240215 Miner](#20240215-Miner---lack-of-validation-dst-address)
 
 [20240211 Game](#20240211-game---reentrancy--business-logic-flaw)
+
+[20240205 BurnsDefi](#20240205-burnsdefi---price-manipulation)
 
 [20240201 AffineDeFi](#20240201-affinedefi---lack-of-validation-userData)
 
@@ -823,6 +825,26 @@ forge test --contracts ./src/test/Game_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/AnciliaInc/status/1757533144033739116
+
+---
+
+### 20240205 BurnsDefi - Price Manipulation
+
+### Lost: ~67K
+
+```
+forge test --contracts ./src/test/BurnsDefi_exp.sol -vvv
+```
+
+#### Contract
+
+[BurnsDefi_exp.sol](src/test/BurnsDefi_exp.sol)
+
+#### Link reference
+
+https://twitter.com/pennysplayer/status/1754342573815238946
+
+https://medium.com/neptune-mutual/how-was-citadel-finance-exploited-a5f9acd0b408 (similar incident)
 
 ---
 
