@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-354 incidents included.
+355 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20240216 ParticleTrade](#20240216-ParticleTrade---lack-of-validation-data)
+
+[20240215 DualPools](#20240215-DualPools---precision-truncation)
 
 [20240215 Miner](#20240215-Miner---lack-of-validation-dst-address)
 
@@ -789,6 +791,24 @@ forge test --contracts ./src/test/ParticleTrade_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/Phalcon_xyz/status/1758028270770250134
+
+---
+
+### 20240215 DualPools - precision truncation
+
+### Lost: ~42k
+
+```
+forge test --contracts ./src/test/DualPools_exp.sol -vvvv
+```
+
+#### Contract
+
+[DualPools_exp.sol](src/test/DualPools_exp.sol)
+
+#### Link reference
+
+https://medium.com/@lunaray/dualpools-hack-analysis-5209233801fa
 
 ---
 
