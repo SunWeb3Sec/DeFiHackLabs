@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20240219 RuggedArt](#20240219-RuggedArt---reentrancy)
+
 [20240216 ParticleTrade](#20240216-ParticleTrade---lack-of-validation-data)
 
 [20240215 DualPools](#20240215-DualPools---precision-truncation)
@@ -775,6 +777,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240219 RuggedArte - reentrancy
+
+### Lost: ~10k
+
+```
+forge test --contracts ./src/test/RuggedArte_exp.sol -vvv
+```
+
+#### Contract
+
+[RuggedArte_exp.sol](src/test/RuggedArte_exp.sol)
+
+#### Link reference
+
+https://twitter.com/EXVULSEC/status/1759822545875025953
+
+---
 
 ### 20240216 ParticleTrade - lack of validation data
 
