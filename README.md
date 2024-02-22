@@ -778,7 +778,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20240219 RuggedArte - reentrancy
+### 20240219 RuggedArt - reentrancy
 
 ### Lost: ~10k
 
