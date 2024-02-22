@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20240221 GAIN](#20240221-GAIN---bad-function-implementation)
+
 [20240219 RuggedArt](#20240219-RuggedArt---reentrancy)
 
 [20240216 ParticleTrade](#20240216-ParticleTrade---lack-of-validation-data)
@@ -777,6 +779,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240221 GAIN - bad function implementation
+
+### Lost: ~6.4 ETH
+
+```
+forge test --contracts ./src/test/GAIN_exp.sol -vvv
+```
+
+#### Contract
+
+[GAIN_exp.sol](src/test/GAIN_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1760559768241160679
+
+---
 
 ### 20240219 RuggedArt - reentrancy
 
