@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20240221 DeezNutz404](#20240221-deeznutz-404---lack-of-validation)
+[20240221 DeezNutz404](#20240221-Deeznutz404---lack-of-validation)
 
 [20240221 GAIN](#20240221-GAIN---bad-function-implementation)
 
@@ -787,16 +787,16 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### Lost: ~170k
 
 ```
-forge test --contracts ./src/test/DeezNutz404_exp.sol -vvv
+forge test --contracts ./src/test/Deeznutz404_exp.sol -vvv
 ```
 
 #### Contract
 
-[DeezNutz404_exp.sol](src/test/DeezNutz404_exp.sol)
+[Deeznutz404_exp.sol](src/test/Deeznutz404_exp.sol)
 
 #### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1760481343161700523
+https://twitter.com/CertiKAlert/status/1760583150382579879
 
 ---
 
