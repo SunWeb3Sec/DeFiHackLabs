@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-357 incidents included.
+358 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240223 BlueberryProtocol](#20240223-BlueberryProtocol---logic-flaw)
 
 [20240221 DeezNutz404](#20240221-deeznutz-404---lack-of-validation)
 
@@ -781,6 +783,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240223 BlueberryProtocol - logic flaw
+
+### Lost: ~1,400,000 USD
+
+```
+forge test --contracts ./src/test/BlueberryProtocol_exp.sol -vvv
+```
+
+#### Contract
+
+[BlueberryProtocol_exp.sol](src/test/BlueberryProtocol_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1760481343161700523
+
+---
 
 ### 20240221 DeezNutz 404 - lack of validation
 
