@@ -798,7 +798,7 @@ forge test --contracts ./src/test/BlueberryProtocol_exp.sol -vvv
 
 #### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1760481343161700523
+https://twitter.com/blueberryFDN/status/1760865357236211964
 
 ---
 
