@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-358 incidents included.
+359 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -411,6 +411,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230130 BEVO](#20230130---bevo---reflection-token)
 
 [20230126 TomInu Token](#20230126---tinu---reflection-token)
+
+[20230119 SHOCO Token](#20230119---shoco---reflection-token)
 
 [20230119 ThoreumFinance](#20230119---thoreumfinance-business-logic-flaw)
 
@@ -4703,23 +4705,23 @@ https://twitter.com/libevm/status/1618718156343873536
 
 ---
 
-### 20230118 - QTNToken - business logic flaw
+### 20230119 - SHOCO - Reflection token
 
-### Lost: ~2ETH
+### Lost: ~4ETH
 
 Testing
 
 ```sh
-forge test --contracts ./src/test/QTN_exp.sol -vvv
+forge test --contracts ./src/test/SHOCO_exp.sol -vvvgit
 ```
 
 #### Contract
 
-[QTN_exp.sol](src/test/QTN_exp.sol)
+[SHOCO_exp.sol](src/test/SHOCO_exp.sol)
 
 #### Link reference
 
-https://twitter.com/BlockSecTeam/status/1615625901739511809
+https://github.com/Autosaida/DeFiHackAnalysis/blob/master/analysis/230119_SHOCO.md
 
 ---
 
@@ -4741,6 +4743,26 @@ forge test --contracts ./src/test/ThoreumFinance_exp.sol -vvv
 
 https://bscscan.com/tx/0x3fe3a1883f0ae263a260f7d3e9b462468f4f83c2c88bb89d1dee5d7d24262b51
 https://twitter.com/AnciliaInc/status/1615944396134043648
+
+---
+
+### 20230118 - QTNToken - business logic flaw
+
+### Lost: ~2ETH
+
+Testing
+
+```sh
+forge test --contracts ./src/test/QTN_exp.sol -vvv
+```
+
+#### Contract
+
+[QTN_exp.sol](src/test/QTN_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1615625901739511809
 
 ---
 
