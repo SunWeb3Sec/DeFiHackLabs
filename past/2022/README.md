@@ -200,7 +200,7 @@
 
 [20220416 BeanstalkFarms](#20220416-beanstalkfarms---dao--flashloan)
 
-[20220415 Rikkei Finance](#20220415-rikkei-finance---accesscontrol--price-oracle-manipulation)
+[20220415 Rikkei Finance](#20220415-rikkei-finance---access-control--price-oracle-manipulation)
 
 [20220412 ElephantMoney](#20220412-elephantmoney---flashloan--price-oracle-manipulation)
 
