@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-362 incidents included.
+363 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240306 TGBS](#20240306-tgbs---business-logic-flaw)
 
 [20240305 Woofi](#20240305-woofi---price-manipulation)
 
@@ -792,6 +794,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20240306 TGBS - Business Logic Flaw
+
+### Lost: ~150K
+
+```
+forge test --contracts ./src/test/TGBS_exp.sol -vvv
+```
+
+#### Contract
+
+[TGBS_exp.sol](src/test/TGBS_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1765290290083144095
+
+https://twitter.com/Phalcon_xyz/status/1765285257949974747
+
+---
+
 ### 20240305 Woofi - Price Manipulation
 
 ### Lost: ~8M
@@ -805,11 +827,11 @@ forge test --contracts ./src/test/Woofi_exp.sol -vvv
 [Woofi_exp.sol](src/test/Woofi_exp.sol)
 
 #### Link reference
+
 https://twitter.com/spreekaway/status/1765046559832764886
 https://twitter.com/PeckShieldAlert/status/1765054155478175943
 
 ---
-
 
 ### 20240228 Seneca - Arbitrary External Call Vulnerability
 
@@ -913,7 +935,7 @@ forge test --contracts ./src/test/RuggedArte_exp.sol -vvv
 
 #### Contract
 
-[RuggedArte_exp.sol](src/test/RuggedArt_exp.sol) 
+[RuggedArte_exp.sol](src/test/RuggedArt_exp.sol)
 
 #### Link reference
 
