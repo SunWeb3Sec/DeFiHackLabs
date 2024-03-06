@@ -40,6 +40,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240228 SMOOFSStaking](#20240228-smoofsstaking---reentrancy)
 
+[20240223 CompoundUni]()
+
 [20240223 BlueberryProtocol](#20240223-BlueberryProtocol---logic-flaw)
 
 [20240221 DeezNutz404](#20240221-deeznutz-404---lack-of-validation)
@@ -846,6 +848,24 @@ forge test --contracts ./src/test/SMOOFSStaking_exp.sol -vvv
 https://twitter.com/AnciliaInc/status/1762893563103428783
 
 https://twitter.com/0xNickLFranklin/status/1762895774311178251
+
+---
+
+### 20240223 CompoundUni - Oracle bad price
+
+### Lost: ~439,537 USD
+
+```
+forge test --contracts ./src/test/CompoundUni_exp.sol -vvv
+```
+
+#### Contract
+
+[CompoundUni_exp.sol](src/test/CompoundUni_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xLEVI104/status/1762092203894276481
 
 ---
 
