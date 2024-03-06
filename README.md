@@ -40,7 +40,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240228 SMOOFSStaking](#20240228-smoofsstaking---reentrancy)
 
-[20240223 CompoundUni]()
+[20240223 CompoundUni](#20240223-CompoundUni---Oracle-bad-price)
 
 [20240223 BlueberryProtocol](#20240223-BlueberryProtocol---logic-flaw)
 
