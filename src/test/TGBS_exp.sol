@@ -71,6 +71,7 @@ contract ContractTest is Test {
         while (i < 1600) {
             TGBS.transfer(address(this), 1);
             uint256 burnBlock = TGBS._burnBlock();
+            // If burn block is not a current block number, the amount of TGBS will be burned in swap pair
             if (burnBlock != block.number) {
                 ++i;
             }
