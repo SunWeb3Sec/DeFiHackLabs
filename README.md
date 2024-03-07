@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-364 incidents included.
+365 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -107,6 +107,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20231129 AIS](#20231129-ais---access-control)
 
 [20231125 TheNFTV2](#20231125-thenftv2---logic-flaw)
+
+[20231122 KyberSwap](#20231122-kyberswap---precision-loss)
 
 [20231117 Token8633_9419](#20231117-token8633_9419---price-manipulation)
 
@@ -1516,6 +1518,36 @@ forge test --contracts ./src/test/TheNFTV2_exp.sol -vvv
 #### Link Reference
 
 https://x.com/MetaTrustAlert/status/1728616715825848377
+
+---
+
+### 20231122 KyberSwap - precision loss
+
+### Lost: ~$48M
+
+The attacks were spread over 6 chains and 17 transactions.
+
+Each transaction targeted and drained up to 5 pools from KyberSwap elastic CLAMM.
+
+### Test
+
+All the pool hacks follow the same scheme as  the first:
+
+```
+forge test --contracts ./src/test/KyberSwap_exp.eth.1.sol -vvv
+```
+
+#### Contract
+
+[KyberSwap_exp.eth.1.sol](src/test/KyberSwap_exp.eth.1.sol)
+
+#### Link Reference
+
+[Quick analysis](https://twitter.com/BlockSecTeam/status/1727560157888942331).
+
+[In depth analysis](https://blocksec.com/blog/yet-another-tragedy-of-precision-loss-an-in-depth-analysis-of-the-kyber-swap-incident-1).
+
+[List of transactions](https://phalcon.blocksec.com/explorer/security-incidents?page=1).
 
 ---
 
