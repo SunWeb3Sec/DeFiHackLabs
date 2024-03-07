@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-365 incidents included.
+366 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240307 GHT](#20240307-ght--business-logic-flaw)
 
 [20240306 TGBS](#20240306-tgbs---business-logic-flaw)
 
@@ -797,6 +799,22 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240307 GHT - Business Logic Flaw
+
+### Lost: ~57K
+
+```
+forge test --contracts ./src/test/GHT_exp.sol -vvv
+```
+
+#### Contract
+
+[GHT_exp.sol](src/test/GHT_exp.sol)
+
+#### Link reference
+
+---
 
 ### 20240306 TGBS - Business Logic Flaw
 
