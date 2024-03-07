@@ -162,6 +162,9 @@ interface CheatCodes {
     function createSelectFork(string calldata, uint256) external returns (uint256);
     // Creates _and_ also selects a new fork with the given endpoint and the latest block and returns the identifier of the fork
     function createSelectFork(string calldata) external returns (uint256);
+    /// Creates and also selects new fork with the given endpoint and at the block the given transaction was mined in,
+    /// replays all transaction mined in the block before the transaction, returns the identifier of the fork.
+    function createSelectFork(string calldata urlOrAlias, bytes32 txHash) external returns (uint256 forkId);
     // Takes a fork identifier created by `createFork` and sets the corresponding forked state as active.
     function selectFork(uint256) external;
     /// Returns the currently active fork
