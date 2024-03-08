@@ -36,6 +36,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240307 GHT](#20240307-ght--business-logic-flaw)
 
+[20240306 ALP](#20240306-alp---public-internal-function)
+
 [20240306 TGBS](#20240306-tgbs---business-logic-flaw)
 
 [20240305 Woofi](#20240305-woofi---price-manipulation)
@@ -815,6 +817,26 @@ forge test --contracts ./src/test/GHT_exp.sol -vvv
 [GHT_exp.sol](src/test/GHT_exp.sol)
 
 #### Link reference
+
+---
+
+### 20240306 ALP - Public internal function
+
+### Lost: ~10K
+
+Testing
+
+```
+forge test --contracts ./src/test/ALP_exp.sol -vvv
+```
+
+#### Contract
+
+[ALP_exp.sol](src/test/ALP_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/0xNickLFranklin/status/1765296663667875880
 
 ---
 
