@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-366 incidents included.
+368 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -69,6 +69,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240130 MIMSpell](#20240130-mimspell---precission-loss)
 
 [20240128 BarleyFinance](#20240128-barleyfinance---reentrancy)
+
+[20240127 CitadelFinance](#20240127-citadelfinance---price-manipulation)
 
 [20240125 NBLGAME](#20240125-nblgame---reentrancy)
 
@@ -1141,6 +1143,24 @@ https://twitter.com/Phalcon_xyz/status/1751788389139992824
 
 ---
 
+### 20240127 CitadelFinance - Price Manipulation
+
+### Lost: ~93K
+
+```
+forge test --contracts ./src/test/CitadelFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[CitadelFinance_exp.sol](src/test/CitadelFinance_exp.sol)
+
+#### Link reference
+
+https://medium.com/neptune-mutual/how-was-citadel-finance-exploited-a5f9acd0b408
+
+---
+
 ### 20240125 NBLGAME - Reentrancy
 
 ### Lost: ~180K
@@ -1549,7 +1569,7 @@ Each transaction targeted and drained up to 5 pools from KyberSwap elastic CLAMM
 
 ### Test
 
-All the pool hacks follow the same scheme as  the first:
+All the pool hacks follow the same scheme as the first:
 
 ```
 forge test --contracts ./src/test/KyberSwap_exp.eth.1.sol -vvv
