@@ -34,7 +34,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20240307 GHT](#20240307-ght--business-logic-flaw)
+[20240307 GHT](#20240307-ght---business-logic-flaw)
+
+[20240306 ALP](#20240306-alp---public-internal-function)
 
 [20240306 ALP](#20240306-alp---public-internal-function)
 
