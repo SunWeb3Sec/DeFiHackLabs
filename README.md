@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-369 incidents included.
+370 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -40,8 +40,6 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240306 ALP](#20240306-alp---public-internal-function)
 
-[20240306 ALP](#20240306-alp---public-internal-function)
-
 [20240306 TGBS](#20240306-tgbs---business-logic-flaw)
 
 [20240305 Woofi](#20240305-woofi---price-manipulation)
@@ -67,6 +65,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240215 Miner](#20240215-Miner---lack-of-validation-dst-address)
 
 [20240211 Game](#20240211-game---reentrancy--business-logic-flaw)
+
+[20240208 Pandora404](#20240208-pandora---interger-underflow)
 
 [20240205 BurnsDefi](#20240205-burnsdefi---price-manipulation)
 
@@ -1088,6 +1088,23 @@ forge test --contracts ./src/test/Game_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/AnciliaInc/status/1757533144033739116
+
+---
+### 20240208 Pandora - interger underflow
+
+### Lost: ~17K USD
+
+```
+forge test --contracts ./src/test/PANDORA_exp.sol -vvv
+```
+
+#### Contract
+
+[PANDORA_exp.sol](src/test/PANDORA_exp.sol)
+
+#### Link reference
+
+https://twitter.com/pennysplayer/status/1766479470058406174
 
 ---
 
