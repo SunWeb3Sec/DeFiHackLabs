@@ -816,6 +816,18 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 forge test --contracts src/test/UnizenIO_exp.sol -vvvv
 ```
 
+#### Contract
+
+[UnizenIO_exp.sol](src/test/UnizenIO_exp.sol) | [UnizenIO2_exp.sol](src/test/UnizenIO2_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1766274000534004187
+
+https://twitter.com/AnciliaInc/status/1766261463025684707
+
+---
+
 ### 20240307 GHT - Business Logic Flaw
 
 ### Lost: ~57K
@@ -1090,6 +1102,7 @@ forge test --contracts ./src/test/Game_exp.sol -vvv
 https://twitter.com/AnciliaInc/status/1757533144033739116
 
 ---
+
 ### 20240208 Pandora - interger underflow
 
 ### Lost: ~17K USD
