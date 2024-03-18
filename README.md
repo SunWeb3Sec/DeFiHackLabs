@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-370 incidents included.
+371 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -33,6 +33,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240314 MO](#20240314-mo---business-logic-flaw)
 
 [20240308 UnizenIO](#20240309-unizenio---unverified-external-call)
 
@@ -807,6 +809,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240314 MO - business logic flaw
+
+### Lost: ~413k USDT
+
+```
+forge test --contracts src/test/MO_exp.sol -vvv
+```
+
+#### Contract
+
+[MO_exp.sol](src/test/MO_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1768184024483430523
+
+---
 
 ### 20240309 UnizenIO - unverified external call
 
