@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-371 incidents included.
+372 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 
 [20240314 MO](#20240314-mo---business-logic-flaw)
+
+[20240313 IT](#20240313-it---business-logic-flaw)
 
 [20240308 UnizenIO](#20240309-unizenio---unverified-external-call)
 
@@ -825,6 +827,24 @@ forge test --contracts src/test/MO_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/0xNickLFranklin/status/1768184024483430523
+
+---
+
+### 20240313 IT - business logic flaw
+
+### Lost: ~13k USDT
+
+```
+forge test --via-ir  --contracts src/test/IT_exp.sol -vvv
+```
+
+#### Contract
+
+[IT_exp.sol](src/test/IT_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1768171595561046489
 
 ---
 
