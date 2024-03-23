@@ -1,0 +1,53 @@
+# Contributing Guidelines
+
+Thank you for your interest in contributing to our project! This guide will walk you through the process of adding a new entry to README using the provided script.
+
+## Prerequisites
+
+- Python 3.x installed on your system
+- Basic knowledge of using the command line
+
+## Steps to Contribute
+
+1. Clone the repository to your local machine.
+
+2. Navigate to the project directory in your terminal.
+
+3. Run the `add_new_entry.py` script by executing the following command:
+   ```
+   python add_new_entry.py
+   ```
+
+4. The script will prompt you to enter the following information:
+
+   - **File Name**: Enter the name of the Exploit POC file in the format `Example_exp.sol`.
+
+   - **Timestamp String**: 
+     - Go to the Etherscan explorer (or the equivalent explorer for the relevant chain) and locate the transaction details page for the hack or POC.
+     - Copy the timestamp from the transaction details page, without including the time zone information, without any quotes.
+     - Paste the timestamp in the format: `Mar-21-2024 02:51:33 PM`.
+
+   - **Lost Amount**: Enter the amount lost in the hack or POC.
+
+   - **Additional Details**: Provide any additional relevant details about the hack or POC.
+
+   - **Link Reference**: Enter the link to the reference material or source of information.
+
+5. After entering all the required information, the script will automatically update the `README.md` file with the new entry and update the table of contents.
+
+6. Review the changes made to the `README.md` file to ensure the information is accurate and properly formatted.
+
+7. Commit the changes and push them to your forked repository.
+
+8. Create a pull request from your forked repository to the main repository, providing a clear description of the changes you made.
+
+9. Wait for the maintainers to review your pull request. They may provide feedback or request further changes.
+
+10. Once your pull request is approved, it will be merged into the main repository.
+
+## Important Notes
+
+- Make sure to follow the formatting guidelines and provide accurate information when adding a new entry.
+- If you encounter any issues or have questions, please open an issue on the repository or reach out to the maintainers.
+
+Thank you for your contribution to our project! Your efforts are greatly appreciated.
