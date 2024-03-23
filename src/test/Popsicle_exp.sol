@@ -328,7 +328,20 @@ contract TokenVault {
         (succ,) = target.call(dataTocall);
     }
 }
-//Note most of the vault attacks are in profit excent for wbtc and dai balances,something to check later,overall the poc is correct
+
+// @KeyInfo - Total Lost : 20M
+// Attacker : https://etherscan.io/address/0xf9E3D08196F76f5078882d98941b71C0884BEa52
+// Attack Contract : https://etherscan.io/address/0xdFb6faB7f4bc9512d5620e679E90D1C91C4EAdE6
+// Vulnerable Contract : https://etherscan.io/address/0xc4ff55a4329f84f9Bf0F5619998aB570481EBB48
+// Attack Tx : https://etherscan.io/tx/0xcd7dae143a4c0223349c16237ce4cd7696b1638d116a72755231ede872ab70fc
+
+// @Info
+// Vulnerable Contract Code : https://etherscan.io/address/0xc4ff55a4329f84f9Bf0F5619998aB570481EBB48#code
+
+// @Analysis
+// Post-mortem : https://blocksecteam.medium.com/the-analysis-of-the-popsicle-finance-security-incident-9d9d5a3045c1
+// Twitter Guy : https://twitter.com/BlockSecTeam/status/1422786223156776968
+// Hacking God : https://twitter.com/BlockSecTeam/status/1422786223156776968
 
 contract PopsicleExp is Test {
     using SafeERC20 for IERC20;
