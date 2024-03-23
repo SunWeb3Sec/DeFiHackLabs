@@ -54,3 +54,96 @@ Thank you for your interest in contributing to our project! This guide will walk
 - If you encounter any issues or have questions, please open an issue on the repository or reach out to the maintainers.
 
 Thank you for your contribution to our project! Your efforts are greatly appreciated.
+
+
+## Example Guide
+
+1. **Install Dependencies**: Make sure you have Python and the required packages (`toml` and `forge-std`) installed.
+
+2. **Run the Python Script**: Execute the Python script by running `python script.py` in your terminal or command prompt.
+
+3. **Select Network**: When prompted, choose the network you want to use for the exploit. The script will display a list of available networks, and you can select one by entering the corresponding number. If the network you want is not listed, you can add a new network by providing its name and RPC URL.
+
+4. **Enter Required Information**: After selecting the network, the script will prompt you to enter the following information:
+
+   - File name (e.g., `Example_exp.sol`)
+   - Timestamp string (e.g., `Mar-21-2024 02:51:33 PM`)
+   - Lost amount
+   - Additional details
+   - Link reference
+   - Attacker's address
+   - Attack contract address
+   - Vulnerable contract address
+   - Attack transaction hash
+   - Post-mortem URL
+   - Twitter guy URL
+   - Hacking god URL
+
+5. **Create POC File**: The script will ask if you want to create a new Solidity file for the proof-of-concept (POC). If you choose "yes", it will generate a new file in the `src/test/` directory with the provided information and a template for the exploit code.
+
+6. **Update README.md**: The script will update the `README.md` file with a new entry containing the provided information.
+
+7. **Implement Exploit Code**: Open the generated Solidity file (e.g., `Example_exp.sol`) and implement the exploit code in the `//implement exploit code here` section.
+
+8. **Run the Exploit**: In your terminal or command prompt, navigate to the project directory and run the following command to test the exploit:
+
+   ```sh
+   forge test --contracts ./src/test/Example_exp.sol -vvv
+   ```
+
+   Replace `Example_exp.sol` with the actual file name of the generated Solidity file.
+
+## Example Output
+
+With the example data filled in for the `mainnet` network, the tool will add this to the readme allong with the exploit to past defi incidents,like how it already is done before:
+
+```markdown
+### 20240321 Example - Lost 100 ETH
+
+### Lost: 100 ETH
+
+```sh
+forge test --contracts ./src/test/Example_exp.sol -vvv
+```
+#### Contract
+[Example_exp.sol](src/test/Example_exp.sol)
+### Link reference
+
+https://example.com/incident-report
+
+---
+
+The generated Solidity file (`Example_exp.sol`) might look like this:
+
+```js
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.15;
+import "forge-std/Test.sol";
+
+// @KeyInfo - Total Lost : 100 ETH
+// Attacker : https://etherscan.io/address/0xcafebabe
+// Attack Contract : https://etherscan.io/address/attackcontractaddrhere
+// Vulnerable Contract : https://etherscan.io/address/vulcontractaddrhere
+// Attack Tx : https://etherscan.io/tx/0x123456789
+// @Info
+// Vulnerable Contract Code : https://etherscan.io/address/vulcontractaddrhere#code
+// @Analysis
+// Post-mortem : postmortemurlhere
+// Twitter Guy : twitterguyhere
+// Hacking God : hackinggodhere
+
+contract ExploitExample is Test {
+    uint256 blocknumToForkFrom = 1234567;
+
+    function setUp() public {
+        vm.createSelectFork("mainnet", blocknumToForkFrom);
+    }
+
+    function testExploit() public {
+        // Implement exploit code here
+
+        // Log balances after exploit
+        emit log_named_decimal_uint(" Attacker ETH Balance After exploit", address(this).balance, 18);
+    }
+}
+```
