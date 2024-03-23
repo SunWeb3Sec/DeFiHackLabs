@@ -17,6 +17,7 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 - Follow the [instructions](https://book.getfoundry.sh/getting-started/installation.html) to install [Foundry](https://github.com/foundry-rs/foundry).
 
 - Clone and install dependencies:`git submodule update --init --recursive`
+- [Contributing Guidelines](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/CONTRIBUTING.md)
 
 ## [Web3 Cybersecurity Academy](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy)
 
