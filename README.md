@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-347 incidents included.
+373 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -17,6 +17,7 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 - Follow the [instructions](https://book.getfoundry.sh/getting-started/installation.html) to install [Foundry](https://github.com/foundry-rs/foundry).
 
 - Clone and install dependencies:`git submodule update --init --recursive`
+- [Contributing Guidelines](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/CONTRIBUTING.md)
 
 ## [Web3 Cybersecurity Academy](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy)
 
@@ -33,10 +34,55 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20240321 SSS](#20240321-sss---token-balance-doubles-on-transfer-to-self)
+
+[20240314 MO](#20240314-mo---business-logic-flaw)
+
+[20240313 IT](#20240313-it---business-logic-flaw)
+
+[20240308 UnizenIO](#20240309-unizenio---unverified-external-call)
+
+[20240307 GHT](#20240307-ght---business-logic-flaw)
+
+[20240306 ALP](#20240306-alp---public-internal-function)
+
+[20240306 TGBS](#20240306-tgbs---business-logic-flaw)
+
+[20240305 Woofi](#20240305-woofi---price-manipulation)
+
+[20240228 Seneca](#20240228-seneca---arbitrary-external-call-vulnerability)
+
+[20240228 SMOOFSStaking](#20240228-smoofsstaking---reentrancy)
+
+[20240223 CompoundUni](#20240223-CompoundUni---Oracle-bad-price)
+
+[20240223 BlueberryProtocol](#20240223-BlueberryProtocol---logic-flaw)
+
+[20240221 DeezNutz404](#20240221-deeznutz-404---lack-of-validation)
+
+[20240221 GAIN](#20240221-GAIN---bad-function-implementation)
+
+[20240219 RuggedArt](#20240219-RuggedArt---reentrancy)
+
+[20240216 ParticleTrade](#20240216-ParticleTrade---lack-of-validation-data)
+
+[20240215 DualPools](#20240215-DualPools---precision-truncation)
+
+[20240215 Miner](#20240215-Miner---lack-of-validation-dst-address)
+
+[20240211 Game](#20240211-game---reentrancy--business-logic-flaw)
+
+[20240208 Pandora404](#20240208-pandora---interger-underflow)
+
+[20240205 BurnsDefi](#20240205-burnsdefi---price-manipulation)
+
+[20240201 AffineDeFi](#20240201-affinedefi---lack-of-validation-userData)
 
 [20240130 MIMSpell](#20240130-mimspell---precission-loss)
 
 [20240128 BarleyFinance](#20240128-barleyfinance---reentrancy)
+
+[20240127 CitadelFinance](#20240127-citadelfinance---price-manipulation)
 
 [20240125 NBLGAME](#20240125-nblgame---reentrancy)
 
@@ -45,6 +91,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240117 SocketGateway](#20240112-socketgateway---lack-of-calldata-validation)
 
 [20240112 WiseLending](#20240112-wiselending---loss-of-precision)
+
+[20240110 LQDX Alert](#20240110-lqdx---unauthorized-transferfrom)
 
 [20240104 Gamma](#20240104-gamma---price-manipulation)
 
@@ -75,6 +123,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20231129 AIS](#20231129-ais---access-control)
 
 [20231125 TheNFTV2](#20231125-thenftv2---logic-flaw)
+
+[20231122 KyberSwap](#20231122-kyberswap---precision-loss)
 
 [20231117 Token8633_9419](#20231117-token8633_9419---price-manipulation)
 
@@ -390,6 +440,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230126 TomInu Token](#20230126---tinu---reflection-token)
 
+[20230119 SHOCO Token](#20230119---shoco---reflection-token)
+
 [20230119 ThoreumFinance](#20230119---thoreumfinance-business-logic-flaw)
 
 [20230118 QTN Token](#20230118---qtntoken---business-logic-flaw)
@@ -646,6 +698,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220206 Meter](past/2022/README.md#20220206-Meter---bridge)
 
+[20220206 TecraSpace](past/2022/README.md#20220204-TecraSpace---Any-token-is-destroyed)
+
 [20220128 Qubit Finance](past/2022/README.md#20220128-qubit-finance---bridge-address0safetransferfrom-does-not-revert)
 
 [20220118 Multichain (Anyswap)](past/2022/README.md#20220118-multichain-anyswap---insufficient-token-validation)
@@ -760,6 +814,411 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20240321 SSS - Token Balance Doubles on Transfer to self
+
+### Lost: 4.8M
+
+
+```sh
+forge test --contracts ./src/test/SSS_exp.sol -vvv
+```
+#### Contract
+[SSS_exp.sol](src/test/SSS_exp.sol)
+### Link reference
+
+https://twitter.com/dot_pengun/status/1770989208125272481
+
+---
+
+### 20240314 MO - business logic flaw
+
+### Lost: ~413k USDT
+
+```
+forge test --contracts src/test/MO_exp.sol -vvv
+```
+
+#### Contract
+
+[MO_exp.sol](src/test/MO_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1768184024483430523
+
+---
+
+### 20240313 IT - business logic flaw
+
+### Lost: ~13k USDT
+
+```
+forge test --via-ir  --contracts src/test/IT_exp.sol -vvv
+```
+
+#### Contract
+
+[IT_exp.sol](src/test/IT_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1768171595561046489
+
+---
+
+### 20240309 UnizenIO - unverified external call
+
+### Lost: ~2M
+
+```
+forge test --contracts src/test/UnizenIO_exp.sol -vvvv
+```
+
+#### Contract
+
+[UnizenIO_exp.sol](src/test/UnizenIO_exp.sol) | [UnizenIO2_exp.sol](src/test/UnizenIO2_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1766274000534004187
+
+https://twitter.com/AnciliaInc/status/1766261463025684707
+
+---
+
+### 20240307 GHT - Business Logic Flaw
+
+### Lost: ~57K
+
+```
+forge test --contracts ./src/test/GHT_exp.sol -vvv
+```
+
+#### Contract
+
+[GHT_exp.sol](src/test/GHT_exp.sol)
+
+#### Link reference
+
+---
+
+### 20240306 ALP - Public internal function
+
+### Lost: ~10K
+
+Testing
+
+```
+forge test --contracts ./src/test/ALP_exp.sol -vvv
+```
+
+#### Contract
+
+[ALP_exp.sol](src/test/ALP_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/0xNickLFranklin/status/1765296663667875880
+
+---
+
+### 20240306 TGBS - Business Logic Flaw
+
+### Lost: ~150K
+
+```
+forge test --contracts ./src/test/TGBS_exp.sol -vvv
+```
+
+#### Contract
+
+[TGBS_exp.sol](src/test/TGBS_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1765290290083144095
+
+https://twitter.com/Phalcon_xyz/status/1765285257949974747
+
+---
+
+### 20240305 Woofi - Price Manipulation
+
+### Lost: ~8M
+
+```
+forge test --contracts ./src/test/Woofi_exp.sol -vvv
+```
+
+#### Contract
+
+[Woofi_exp.sol](src/test/Woofi_exp.sol)
+
+#### Link reference
+
+https://twitter.com/spreekaway/status/1765046559832764886
+https://twitter.com/PeckShieldAlert/status/1765054155478175943
+
+---
+
+### 20240228 Seneca - Arbitrary External Call Vulnerability
+
+### Lost: ~6M
+
+```
+forge test --contracts ./src/test/Seneca_exp.sol -vvv
+```
+
+#### Contract
+
+[Seneca_exp.sol](src/test/Seneca_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1763045563040411876
+
+---
+
+### 20240228 SMOOFSStaking - Reentrancy
+
+### Lost: Unclear
+
+```
+forge test --contracts ./src/test/SMOOFSStaking_exp.sol -vvv
+```
+
+#### Contract
+
+[SMOOFSStaking_exp.sol](src/test/SMOOFSStaking_exp.sol)
+
+#### Link reference
+
+https://twitter.com/AnciliaInc/status/1762893563103428783
+
+https://twitter.com/0xNickLFranklin/status/1762895774311178251
+
+---
+
+### 20240223 CompoundUni - Oracle bad price
+
+### Lost: ~439,537 USD
+
+```
+forge test --contracts ./src/test/CompoundUni_exp.sol -vvv
+```
+
+#### Contract
+
+[CompoundUni_exp.sol](src/test/CompoundUni_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xLEVI104/status/1762092203894276481
+
+---
+
+### 20240223 BlueberryProtocol - logic flaw
+
+### Lost: ~1,400,000 USD
+
+```
+forge test --contracts ./src/test/BlueberryProtocol_exp.sol -vvv
+```
+
+#### Contract
+
+[BlueberryProtocol_exp.sol](src/test/BlueberryProtocol_exp.sol)
+
+#### Link reference
+
+https://twitter.com/blueberryFDN/status/1760865357236211964
+
+---
+
+### 20240221 DeezNutz 404 - lack of validation
+
+### Lost: ~170k
+
+```
+forge test --contracts ./src/test/DeezNutz404_exp.sol -vvv
+```
+
+#### Contract
+
+[DeezNutz404_exp.sol](src/test/DeezNutz404_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1760481343161700523
+
+---
+
+### 20240221 GAIN - bad function implementation
+
+### Lost: ~6.4 ETH
+
+```
+forge test --contracts ./src/test/GAIN_exp.sol -vvv
+```
+
+#### Contract
+
+[GAIN_exp.sol](src/test/GAIN_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1760559768241160679
+
+---
+
+### 20240219 RuggedArt - reentrancy
+
+### Lost: ~10k
+
+```
+forge test --contracts ./src/test/RuggedArte_exp.sol -vvv
+```
+
+#### Contract
+
+[RuggedArte_exp.sol](src/test/RuggedArt_exp.sol)
+
+#### Link reference
+
+https://twitter.com/EXVULSEC/status/1759822545875025953
+
+---
+
+### 20240216 ParticleTrade - lack of validation data
+
+### Lost: ~50k
+
+```
+forge test --contracts ./src/test/ParticleTrade_exp.sol -vvv
+```
+
+#### Contract
+
+[ParticleTrade_exp.sol](src/test/ParticleTrade_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1758028270770250134
+
+---
+
+### 20240215 DualPools - precision truncation
+
+### Lost: ~42k
+
+```
+forge test --contracts ./src/test/DualPools_exp.sol -vvvv
+```
+
+#### Contract
+
+[DualPools_exp.sol](src/test/DualPools_exp.sol)
+
+#### Link reference
+
+https://medium.com/@lunaray/dualpools-hack-analysis-5209233801fa
+
+---
+
+### 20240215 Miner - lack of validation dst address
+
+### Lost: ~150k
+
+```
+forge test --contracts ./src/test/Miner_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[Miner_exp.sol](src/test/Miner_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1757777340002681326
+
+---
+
+### 20240211 Game - Reentrancy && Business Logic Flaw
+
+### Lost: ~20 ETH
+
+```
+forge test --contracts ./src/test/Game_exp.sol -vvv
+```
+
+#### Contract
+
+[Game_exp.sol](src/test/Game_exp.sol)
+
+#### Link reference
+
+https://twitter.com/AnciliaInc/status/1757533144033739116
+
+---
+
+### 20240208 Pandora - interger underflow
+
+### Lost: ~17K USD
+
+```
+forge test --contracts ./src/test/PANDORA_exp.sol -vvv
+```
+
+#### Contract
+
+[PANDORA_exp.sol](src/test/PANDORA_exp.sol)
+
+#### Link reference
+
+https://twitter.com/pennysplayer/status/1766479470058406174
+
+---
+
+### 20240205 BurnsDefi - Price Manipulation
+
+### Lost: ~67K
+
+```
+forge test --contracts ./src/test/BurnsDefi_exp.sol -vvv
+```
+
+#### Contract
+
+[BurnsDefi_exp.sol](src/test/BurnsDefi_exp.sol)
+
+#### Link reference
+
+https://twitter.com/pennysplayer/status/1754342573815238946
+
+https://medium.com/neptune-mutual/how-was-citadel-finance-exploited-a5f9acd0b408 (similar incident)
+
+---
+
+### 20240201 AffineDeFi - lack of validation userData
+
+### Lost: ~88K
+
+```
+forge test --contracts ./src/test/AffineDeFi_exp.sol -vvv
+```
+
+#### Contract
+
+[AffineDeFi_exp.sol](src/test/AffineDeFi_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1753020812284809440
+
+https://twitter.com/CyversAlerts/status/1753040754287513655
+
+---
+
 ### 20240130 MIMSpell - Precission Loss
 
 ### Lost: ~6,5M
@@ -803,6 +1262,24 @@ https://phalcon.blocksec.com/explorer/security-incidents
 https://www.bitget.com/news/detail/12560603890246
 
 https://twitter.com/Phalcon_xyz/status/1751788389139992824
+
+---
+
+### 20240127 CitadelFinance - Price Manipulation
+
+### Lost: ~93K
+
+```
+forge test --contracts ./src/test/CitadelFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[CitadelFinance_exp.sol](src/test/CitadelFinance_exp.sol)
+
+#### Link reference
+
+https://medium.com/neptune-mutual/how-was-citadel-finance-exploited-a5f9acd0b408
 
 ---
 
@@ -881,6 +1358,24 @@ forge test --contracts ./src/test/WiseLending02_exp.sol -vvv --evm-version shang
 https://twitter.com/EXVULSEC/status/1746829519334650018
 
 https://twitter.com/peckshield/status/1745907642118123774
+
+---
+
+### 20240110 LQDX - Unauthorized TransferFrom
+
+### Lost: unknown
+
+```
+forge test --contracts src/test/LQDX_alert_exp.sol -vvv
+```
+
+#### Contract
+
+[LQDX_alert_exp.sol](src/test/LQDX_alert_exp.sol)
+
+#### Link reference
+
+https://twitter.com/SlowMist_Team/status/1744972012865671452
 
 ---
 
@@ -1183,6 +1678,36 @@ forge test --contracts ./src/test/TheNFTV2_exp.sol -vvv
 #### Link Reference
 
 https://x.com/MetaTrustAlert/status/1728616715825848377
+
+---
+
+### 20231122 KyberSwap - precision loss
+
+### Lost: ~$48M
+
+The attacks were spread over 6 chains and 17 transactions.
+
+Each transaction targeted and drained up to 5 pools from KyberSwap elastic CLAMM.
+
+### Test
+
+All the pool hacks follow the same scheme as the first:
+
+```
+forge test --contracts ./src/test/KyberSwap_exp.eth.1.sol -vvv
+```
+
+#### Contract
+
+[KyberSwap_exp.eth.1.sol](src/test/KyberSwap_exp.eth.1.sol)
+
+#### Link Reference
+
+[Quick analysis](https://twitter.com/BlockSecTeam/status/1727560157888942331).
+
+[In depth analysis](https://blocksec.com/blog/yet-another-tragedy-of-precision-loss-an-in-depth-analysis-of-the-kyber-swap-incident-1).
+
+[List of transactions](https://phalcon.blocksec.com/explorer/security-incidents?page=1).
 
 ---
 
@@ -4477,23 +5002,23 @@ https://twitter.com/libevm/status/1618718156343873536
 
 ---
 
-### 20230118 - QTNToken - business logic flaw
+### 20230119 - SHOCO - Reflection token
 
-### Lost: ~2ETH
+### Lost: ~4ETH
 
 Testing
 
 ```sh
-forge test --contracts ./src/test/QTN_exp.sol -vvv
+forge test --contracts ./src/test/SHOCO_exp.sol -vvvgit
 ```
 
 #### Contract
 
-[QTN_exp.sol](src/test/QTN_exp.sol)
+[SHOCO_exp.sol](src/test/SHOCO_exp.sol)
 
 #### Link reference
 
-https://twitter.com/BlockSecTeam/status/1615625901739511809
+https://github.com/Autosaida/DeFiHackAnalysis/blob/master/analysis/230119_SHOCO.md
 
 ---
 
@@ -4515,6 +5040,26 @@ forge test --contracts ./src/test/ThoreumFinance_exp.sol -vvv
 
 https://bscscan.com/tx/0x3fe3a1883f0ae263a260f7d3e9b462468f4f83c2c88bb89d1dee5d7d24262b51
 https://twitter.com/AnciliaInc/status/1615944396134043648
+
+---
+
+### 20230118 - QTNToken - business logic flaw
+
+### Lost: ~2ETH
+
+Testing
+
+```sh
+forge test --contracts ./src/test/QTN_exp.sol -vvv
+```
+
+#### Contract
+
+[QTN_exp.sol](src/test/QTN_exp.sol)
+
+#### Link reference
+
+https://twitter.com/BlockSecTeam/status/1615625901739511809
 
 ---
 
