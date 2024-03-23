@@ -22,7 +22,7 @@ jobs:
       - name: Run Forge tests
         run: |
           shopt -s nullglob
-          changed_files=$(git diff --name-only origin/${{ github.base_ref }} HEAD)
+          changed_files=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }} HEAD)
           for file in $changed_files; do
             if [[ $file == src/test/*_exp.sol ]]; then
               forge test --contracts "$file" -vvv
