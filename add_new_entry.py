@@ -147,34 +147,41 @@ forge test --contracts ./src/test/{file_name} -vvv
     with open("README.md", "w") as file:
         file.write(updated_content)
 
+def replace_placeholders(content, replacements):
+    for placeholder, replacement in replacements.items():
+        content = content.replace(placeholder, replacement)
+    return content
+
 def create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_contract_address,
-                             vulnerable_contract_address, attack_tx_hash,
-                             post_mortem_url, twitter_guy_url, hacking_god_url, selected_network):
+                             vulnerable_contract_address, attack_tx_hash, post_mortem_url,
+                             twitter_guy_url, hacking_god_url, selected_network):
     new_file_name = file_name.replace("_exp.sol", "") + "_exp.sol"
     new_file_path = os.path.join("src", "test", new_file_name)
 
     with open("script/Exploit-template_new.sol", "r") as template_file:
         template_content = template_file.read()
 
-    # Set the explorer URL based on the selected network
     explorer_url = set_explorer_url(selected_network)
 
-    # Replace placeholders with user-provided data
-    modified_content = template_content.replace("~999M US$", lost_amount)
-    modified_content = modified_content.replace("0xcafebabe", f"{explorer_url}/address/{attacker_address}")
-    modified_content = modified_content.replace("attackcontractaddrhere", f"{explorer_url}/address/{attack_contract_address}")
-    modified_content = modified_content.replace("vulcontractaddrhere", f"{explorer_url}/address/{vulnerable_contract_address}")
-    modified_content = modified_content.replace("0x123456789", f"{explorer_url}/tx/{attack_tx_hash}")
-    modified_content = modified_content.replace("https://etherscan.io/address/0xdeadbeef#code", f"{explorer_url}/address/{vulnerable_contract_address}#code")
-    modified_content = modified_content.replace("postmortemurlhere", post_mortem_url)
-    modified_content = modified_content.replace("twitterguyhere", twitter_guy_url)
-    modified_content = modified_content.replace("hackinggodhere", hacking_god_url)
-    modified_content = modified_content.replace("ExploitScript", file_name.split("_")[0])
-    modified_content = modified_content.replace("mainnet", selected_network)
-    modified_content = modified_content.replace("19_494_655", "1234567")
-    modified_content = modified_content.replace("//implement exploit code here", "// Implement exploit code here")
-    modified_content = modified_content.replace("//Try to log balances after exploit here to show the POC works,example is below", "// Log balances after exploit")
-    modified_content = modified_content.replace("address(this).balance", "address(this).balance")
+    replacements = {
+        "~999M US$": lost_amount,
+        "0xcafebabe": f"{explorer_url}/address/{attacker_address}",
+        "attackcontractaddrhere": f"{explorer_url}/address/{attack_contract_address}",
+        "vulcontractaddrhere": f"{explorer_url}/address/{vulnerable_contract_address}",
+        "0x123456789": f"{explorer_url}/tx/{attack_tx_hash}",
+        "https://etherscan.io/address/0xdeadbeef#code": f"{explorer_url}/address/{vulnerable_contract_address}#code",
+        "postmortemurlhere": post_mortem_url,
+        "twitterguyhere": twitter_guy_url,
+        "hackinggodhere": hacking_god_url,
+        "ExploitScript": file_name.split("_")[0],
+        "mainnet": selected_network,
+        "19_494_655": "1234567",
+        "//implement exploit code here": "// Implement exploit code here",
+        "//Try to log balances after exploit here to show the POC works,example is below": "// Log balances after exploit",
+        "address(this).balance": "address(this).balance"
+    }
+
+    modified_content = replace_placeholders(template_content, replacements)
 
     with open(new_file_path, "w") as new_file:
         new_file.write(modified_content)
