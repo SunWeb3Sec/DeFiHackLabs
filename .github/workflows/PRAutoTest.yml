@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
+          fetch-depth: 0  # Required to fetch all branches
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
         with:
@@ -22,7 +23,7 @@ jobs:
       - name: Run Forge tests
         run: |
           shopt -s nullglob
-          changed_files=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }} HEAD)
+          changed_files=$(git diff --name-only ${{ github.base_ref }} HEAD)
           for file in $changed_files; do
             if [[ $file == src/test/*_exp.sol ]]; then
               forge test --contracts "$file" -vvv
