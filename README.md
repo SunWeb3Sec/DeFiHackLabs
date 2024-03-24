@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-373 incidents included.
+374 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20240314 ARK](#20240324-ark---business-logic-flaw)
+
 [20240321 SSS](#20240321-sss---token-balance-doubles-on-transfer-to-self)
 
 [20240314 MO](#20240314-mo---business-logic-flaw)
@@ -823,6 +825,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 forge test --contracts ./src/test/SSS_exp.sol -vvv
 ```
 #### Contract
+
+### 20240324 ARK - business logic flaw
+
+### Lost: ~348BNB
+
+```
+forge test --contracts src/test/ARK_exp.sol -vvv
+```
+
+#### Contract
+
+[ARK_exp.sol](src/test/ARK_exp.sol)
+
+#### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1771728823534375249
+
+---
+
 [SSS_exp.sol](src/test/SSS_exp.sol)
 ### Link reference
 
