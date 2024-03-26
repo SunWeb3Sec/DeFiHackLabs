@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-374 incidents included.
+375 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240325 ZongZi](#20240325-zongzi---price-manipulation)
+
 [20240314 ARK](#20240324-ark---business-logic-flaw)
 
 [20240321 SSS](#20240321-sss---token-balance-doubles-on-transfer-to-self)
@@ -816,14 +819,32 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20240325 ZongZi - Price Manipulation
+
+### Lost: ~223K
+
+```
+forge test --contracts src/test/ZongZi_exp.sol -vvv
+```
+
+#### Contract
+
+[ZongZi_exp.sol](src/test/ZongZi_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1772195949638775262
+
+---
+
 ### 20240321 SSS - Token Balance Doubles on Transfer to self
 
 ### Lost: 4.8M
 
-
 ```sh
 forge test --contracts ./src/test/SSS_exp.sol -vvv
 ```
+
 #### Contract
 
 ### 20240324 ARK - business logic flaw
@@ -845,6 +866,7 @@ https://twitter.com/Phalcon_xyz/status/1771728823534375249
 ---
 
 [SSS_exp.sol](src/test/SSS_exp.sol)
+
 ### Link reference
 
 https://twitter.com/dot_pengun/status/1770989208125272481
