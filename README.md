@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-375 incidents included.
+376 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -40,6 +40,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240314 ARK](#20240324-ark---business-logic-flaw)
 
 [20240321 SSS](#20240321-sss---token-balance-doubles-on-transfer-to-self)
+
+[20240320 Paraswap](#20240320-paraswap---incorrect-access-control)
 
 [20240314 MO](#20240314-mo---business-logic-flaw)
 
@@ -870,6 +872,24 @@ https://twitter.com/Phalcon_xyz/status/1771728823534375249
 ### Link reference
 
 https://twitter.com/dot_pengun/status/1770989208125272481
+
+---
+
+### 20240320 Paraswap - Incorrect Access Control
+
+### Lost: ~24K
+
+```
+forge test --contracts src/test/Paraswap_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[Paraswap_exp.sol](src/test/Paraswap_exp.sol)
+
+#### Link reference
+
+https://medium.com/neptune-mutual/analysis-of-the-paraswap-exploit-1f97c604b4fe
 
 ---
 
