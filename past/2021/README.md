@@ -3,7 +3,6 @@
 ## Before 2021 - List of Past DeFi Incidents
 
 40 incidents included.
-
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
 [20211218 Grim Finance](#20211218-grim-finance---flashloan--reentrancy)
@@ -33,6 +32,8 @@
 [20210811 Poly Network](#20210811-poly-network---bridge-getting-around-modifier-through-cross-chain-message)
 
 [20210804 WaultFinance](#20210804-waultfinace---flashloan-price-manipulation)
+
+[20210803 Popsicle](#20210803-popsicle---repeated-reward-claim---logic-flaw)
 
 [20210728 Levyathan Finance](#20210728-levyathan-finance---i-lost-keys-and-minting-ii-vulnerable-emergencywithdraw)
 
@@ -83,6 +84,25 @@
 [20180422 Beauty Chain](#20180422-beauty-chain---integer-overflow)
 
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
+
+
+
+### 20210803 Popsicle - Repeated Reward Claim - Logic Flaw
+
+### Lost: 20M
+
+
+```sh
+forge test --contracts ./src/test/Popsicle_exp.sol -vvv
+```
+#### Contract
+[Popsicle_exp.sol](src/test/Popsicle_exp.sol)
+### Link reference
+
+https://blocksecteam.medium.com/the-analysis-of-the-popsicle-finance-security-incident-9d9d5a3045c1
+
+---
+
 
 ### 20211221 Visor Finance - Reentrancy
 
