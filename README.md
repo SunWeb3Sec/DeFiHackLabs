@@ -849,6 +849,15 @@ forge test --contracts ./src/test/SSS_exp.sol -vvv
 
 #### Contract
 
+
+[SSS_exp.sol](src/test/SSS_exp.sol)
+
+### Link reference
+
+https://twitter.com/dot_pengun/status/1770989208125272481
+
+---
+
 ### 20240324 ARK - business logic flaw
 
 ### Lost: ~348BNB
@@ -864,14 +873,6 @@ forge test --contracts src/test/ARK_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/Phalcon_xyz/status/1771728823534375249
-
----
-
-[SSS_exp.sol](src/test/SSS_exp.sol)
-
-### Link reference
-
-https://twitter.com/dot_pengun/status/1770989208125272481
 
 ---
 
