@@ -13,7 +13,7 @@ import "./interface.sol";
     Price Feed : https://bscscan.com/address/0xaa24b64c9b44d874368b09325c6d60165c4b39f2#code*/
 
 /* @News
-    Offical Announce : https://mobile.twitter.com/Fortressloans/status/1523495202115051520
+    Official Announce : https://mobile.twitter.com/Fortressloans/status/1523495202115051520
     PeckShield Alert Thread : https://twitter.com/PeckShieldAlert/status/1523489670323404800
     Blocksec Alert Thread : https://twitter.com/BlockSecTeam/status/1523530484877209600*/
 

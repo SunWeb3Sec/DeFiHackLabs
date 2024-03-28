@@ -19,7 +19,7 @@ import "./interface.sol";
 // Owner 5 : 0x9e6affa8a14174ca4e931a2d6b7056c41b9beeb6
 
 // @Analysis
-// Offical post-mortem : https://twitter.com/Reaper_Farm/status/1554500909740302337
+// Official post-mortem : https://twitter.com/Reaper_Farm/status/1554500909740302337
 // Beosin : https://twitter.com/BeosinAlert/status/1554476940593340421
 
 contract Attacker is Test {
