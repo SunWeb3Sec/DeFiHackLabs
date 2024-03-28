@@ -92,7 +92,7 @@ library Utils {
         result = sha256(abi.encodePacked(bytes1(0x01), _l, _r));
     }
 
-    /* @notice              Compare if two bytes are equal, which are in storage and memory, seperately
+    /* @notice              Compare if two bytes are equal, which are in storage and memory, separately
                             Refer from https://github.com/summa-tx/bitcoin-spv/blob/master/solidity/contracts/BytesLib.sol#L368
     *  @param _preBytes     The bytes stored in storage
     *  @param _postBytes    The bytes stored in memory
@@ -235,7 +235,7 @@ library Utils {
     /* @notice              Check if the elements number of _signers within _keepers array is no less than _m
     *  @param _keepers      The array consists of serveral address
     *  @param _signers      Some specific addresses to be looked into
-    *  @param _m            The number requirement paramter
+    *  @param _m            The number requirement parameter
     *  @return              True means containment, false meansdo do not contain.
     */
 
@@ -473,7 +473,7 @@ library ZeroCopySource {
     /* @notice              Read next byte as boolean type starting at offset from buff
     *  @param buff          Source bytes array
     *  @param offset        The position from where we read the boolean value
-    *  @return              The the read boolean value and new offset
+    *  @return              The read boolean value and new offset
     */
     function NextBool(bytes memory buff, uint256 offset) internal returns (bool, uint256) {
         require(offset + 1 <= buff.length && offset < offset + 1, "Offset exceeds limit");

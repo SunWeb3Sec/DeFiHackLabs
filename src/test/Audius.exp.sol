@@ -22,8 +22,8 @@ import "./interface.sol";
 // UniswapV2 Router 2 : https://etherscan.io/address/0x7a250d5630b4cf539739df2c5dacb4c659f2488d#code
 
 // @NewsTrack
-// Offical Announcement : https://twitter.com/AudiusProject/status/1551000725169180672
-// Offical Post-Mortem : https://blog.audius.co/article/audius-governance-takeover-post-mortem-7-23-22
+// Official Announcement : https://twitter.com/AudiusProject/status/1551000725169180672
+// Official Post-Mortem : https://blog.audius.co/article/audius-governance-takeover-post-mortem-7-23-22
 // SunSec : https://twitter.com/1nf0s3cpt/status/1551050841146400768
 // Abmedia News : https://abmedia.io/20220724-audius-hacked-by-mal-governance-proposal
 // Beosin Alert : https://twitter.com/BeosinAlert/status/1551041795735408641

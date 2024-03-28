@@ -17,7 +17,7 @@ import "./interface.sol";
 // BAYC Contract: 0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d
 
 // @News
-// Offical Announce : https://twitter.com/XCarnival_Lab/status/1541226298399653888
+// Official Announce : https://twitter.com/XCarnival_Lab/status/1541226298399653888
 // PeckShield Alert Thread : https://twitter.com/peckshield/status/1541047171453034501
 // Blocksec Alert Thread : https://twitter.com/BlockSecTeam/status/1541070850505723905
 
