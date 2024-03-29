@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-377 incidents included.
+378 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20240329 PrismaFi](#20240329-prismaFi---insufficient-validation)
+
 [20240309 Juice](#20240309-juice---business-logic-flaw)
 
 [20240325 ZongZi](#20240325-zongzi---price-manipulation)
@@ -824,8 +826,23 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 
 
+### 20240329 PrismaFi - Insufficient Validation
 
-### 20240309 Juice - 
+### Lost: $~11M
+
+
+```sh
+forge test --contracts ./src/test/Prisma_exp.sol -vvv
+```
+#### Contract
+[Prisma_exp.sol](src/test/Prisma_exp.sol)
+### Link reference
+
+https://twitter.com/EXVULSEC/status/1773371049951797485
+
+---
+
+### 20240309 Juice - Business Logic Flaw
 
 ### Lost: ~54 ETH
 
