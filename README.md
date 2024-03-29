@@ -112,365 +112,365 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 <details> <summary> 2023 </summary>
   
-[20231225 Telcoin](#20231225-telcoin---storage-collision)
+[20231225 Telcoin](past/2023/README.md#20231225-telcoin---storage-collision)
 
-[20231222 PineProtocol](#20231222-pineprotocol---business-logic-flaw)
+[20231222 PineProtocol](past/2023/README.md#20231222-pineprotocol---business-logic-flaw)
 
-[20231220 TransitFinance](#20231220-transitfinance---lack-of-validation-pool)
+[20231220 TransitFinance](past/2023/README.md#20231220-transitfinance---lack-of-validation-pool)
 
-[20231217 FloorProtocol](#20231217-floorprotocol---business-logic-flaw)
+[20231217 FloorProtocol](past/2023/README.md#20231217-floorprotocol---business-logic-flaw)
 
-[20231216 NFTTrader](#20231216-nfttrader---reentrancy)
+[20231216 NFTTrader](past/2023/README.md#20231216-nfttrader---reentrancy)
 
-[20231213 HYPR](#20231213-hypr---business-logic-flaw)
+[20231213 HYPR](past/2023/README.md#20231213-hypr---business-logic-flaw)
 
-[20231206 TIME](#20231206-time---arbitrary-address-spoofing-attack)
+[20231206 TIME](past/2023/README.md#20231206-time---arbitrary-address-spoofing-attack)
 
-[20231206 ElephantStatus](#20231206-elephantstatus---price-manipulation)
+[20231206 ElephantStatus](past/2023/README.md#20231206-elephantstatus---price-manipulation)
 
-[20231205 BEARNDAO](#20231205-bearndao---business-logic-flaw)
+[20231205 BEARNDAO](past/2023/README.md#20231205-bearndao---business-logic-flaw)
 
-[20231201 UnverifiedContr_0x431abb](#20231201-unverifiedcontr_0x431abb---business-logic-flaw)
+[20231201 UnverifiedContr_0x431abb](past/2023/README.md#20231201-unverifiedcontr_0x431abb---business-logic-flaw)
 
-[20231129 AIS](#20231129-ais---access-control)
+[20231129 AIS](past/2023/README.md#20231129-ais---access-control)
 
-[20231125 TheNFTV2](#20231125-thenftv2---logic-flaw)
+[20231125 TheNFTV2](past/2023/README.md#20231125-thenftv2---logic-flaw)
 
-[20231122 KyberSwap](#20231122-kyberswap---precision-loss)
+[20231122 KyberSwap](past/2023/README.md#20231122-kyberswap---precision-loss)
 
-[20231117 Token8633_9419](#20231117-token8633_9419---price-manipulation)
+[20231117 Token8633_9419](past/2023/README.md#20231117-token8633_9419---price-manipulation)
 
-[20231117 ShibaToken](#20231117-shibatoken---business-logic-flaw)
+[20231117 ShibaToken](past/2023/README.md#20231117-shibatoken---business-logic-flaw)
 
-[20231115 LinkDAO](#20231115-linkdao---bad-k-value-verification)
+[20231115 LinkDAO](past/2023/README.md#20231115-linkdao---bad-k-value-verification)
 
-[20231114 OKC Project](#20231114-OKC-Project---Instant-Rewards-Unlocked)
+[20231114 OKC Project](past/2023/README.md#20231114-OKC-Project---Instant-Rewards-Unlocked)
 
-[20231112 MEV_0x8c2d](#20231112-mevbot_0x8c2d---lack-of-access-control)
+[20231112 MEV_0x8c2d](past/2023/README.md#20231112-mevbot_0x8c2d---lack-of-access-control)
 
-[20231112 MEV_0xa247](#20231112-mevbot_0xa247---incorrect-access-control)
+[20231112 MEV_0xa247](past/2023/README.md#20231112-mevbot_0xa247---incorrect-access-control)
 
-[20231111 Mahalend](#20231111-mahalend---donate-inflation-exchangerate--rounding-error)
+[20231111 Mahalend](past/2023/README.md#20231111-mahalend---donate-inflation-exchangerate--rounding-error)
 
-[20231110 Raft_fi](#20231110-raft_fi---donate-inflation-exchangerate--rounding-error)
+[20231110 Raft_fi](past/2023/README.md#20231110-raft_fi---donate-inflation-exchangerate--rounding-error)
 
-[20231110 GrokToken](#20231110-grok---lack-of-slippage-protection)
+[20231110 GrokToken](past/2023/README.md#20231110-grok---lack-of-slippage-protection)
 
-[20231107 MEVbot](#20231107-mevbot---lack-of-access-control)
+[20231107 MEVbot](past/2023/README.md#20231107-mevbot---lack-of-access-control)
 
-[20231106 TrustPad](#20231106-trustpad---lack-of-msgsender-address-verification)
+[20231106 TrustPad](past/2023/README.md#20231106-trustpad---lack-of-msgsender-address-verification)
 
-[20231106 TheStandard_io](#20231106-thestandard_io---lack-of-slippage-protection)
+[20231106 TheStandard_io](past/2023/README.md#20231106-thestandard_io---lack-of-slippage-protection)
 
-[20231102 3913Token](#20231102-3913token---deflationary-token-attack)
+[20231102 3913Token](past/2023/README.md#20231102-3913token---deflationary-token-attack)
 
-[20231101 OnyxProtocol](#20231101-onyxprotocol---precission-loss-vulnerability)
+[20231101 OnyxProtocol](past/2023/README.md#20231101-onyxprotocol---precission-loss-vulnerability)
 
-[20231031 UniBotRouter](#20231031-UniBotRouter---arbitrary-external-call)
+[20231031 UniBotRouter](past/2023/README.md#20231031-UniBotRouter---arbitrary-external-call)
 
-[20231028 AstridProtocol](#20231028-AstridProtocol---business-logic-flaw)
+[20231028 AstridProtocol](past/2023/README.md#20231028-AstridProtocol---business-logic-flaw)
 
-[20231024 MaestroRouter2](#20231024-maestrorouter2---arbitrary-external-call)
+[20231024 MaestroRouter2](past/2023/README.md#20231024-maestrorouter2---arbitrary-external-call)
 
-[20231022 OpenLeverage](#20231022-openleverage---business-logic-flaw)
+[20231022 OpenLeverage](past/2023/README.md#20231022-openleverage---business-logic-flaw)
 
-[20231019 kTAF](#20231019-ktaf---compoundv2-inflation-attack)
+[20231019 kTAF](past/2023/README.md#20231019-ktaf---compoundv2-inflation-attack)
 
-[20231018 HopeLend](#20231018-hopelend---div-precision-loss)
+[20231018 HopeLend](past/2023/README.md#20231018-hopelend---div-precision-loss)
 
-[20231018 MicDao](#20231018-micdao---price-manipulation)
+[20231018 MicDao](past/2023/README.md#20231018-micdao---price-manipulation)
 
-[20231013 BelugaDex](#20231013-belugadex---price-manipulation)
+[20231013 BelugaDex](past/2023/README.md#20231013-belugadex---price-manipulation)
 
-[20231013 WiseLending](#20231013-wiselending---donate-inflation-exchangerate--rounding-error)
+[20231013 WiseLending](past/2023/README.md#20231013-wiselending---donate-inflation-exchangerate--rounding-error)
 
-[20231012 Platypus](#20231012-platypus---business-logic-flaw)
+[20231012 Platypus](past/2023/README.md#20231012-platypus---business-logic-flaw)
 
-[20231011 BH](#20231011-bh---price-manipulation)
+[20231011 BH](past/2023/README.md#20231011-bh---price-manipulation)
 
-[20231008 pSeudoEth](#20231008-pseudoeth---pool-manipulation)
+[20231008 pSeudoEth](past/2023/README.md#20231008-pseudoeth---pool-manipulation)
 
-[20231007 StarsArena](#20231007-starsarena---reentrancy)
+[20231007 StarsArena](past/2023/README.md#20231007-starsarena---reentrancy)
 
-[20231005 DePayRouter](#20231005-depayrouter---business-logic-flaw)
+[20231005 DePayRouter](past/2023/README.md#20231005-depayrouter---business-logic-flaw)
 
-[20230930 FireBirdPair](#20230930-FireBirdPair---lack-slippage-protection)
+[20230930 FireBirdPair](past/2023/README.md#20230930-FireBirdPair---lack-slippage-protection)
 
-[20230929 DEXRouter](#20230929-dexrouter---arbitrary-external-call)
+[20230929 DEXRouter](past/2023/README.md#20230929-dexrouter---arbitrary-external-call)
 
-[20230926 XSDWETHpool](#20230926-XSDWETHpool---reentrancy)
+[20230926 XSDWETHpool](past/2023/README.md#20230926-XSDWETHpool---reentrancy)
 
-[20230924 KubSplit](#20230924-kubsplit---pool-manipulation)
+[20230924 KubSplit](past/2023/README.md#20230924-kubsplit---pool-manipulation)
 
-[20230921 CEXISWAP](#20230921-cexiswap---incorrect-access-control)
+[20230921 CEXISWAP](past/2023/README.md#20230921-cexiswap---incorrect-access-control)
 
-[20230916 uniclyNFT](#20230916-uniclynft---reentrancy)
+[20230916 uniclyNFT](past/2023/README.md#20230916-uniclynft---reentrancy)
 
-[20230911 0x0DEX](#20230911-0x0dex---parameter-manipulation)
+[20230911 0x0DEX](past/2023/README.md#20230911-0x0dex---parameter-manipulation)
 
-[20230909 BFCToken](#20230909-bfctoken---business-logic-flaw)
+[20230909 BFCToken](past/2023/README.md#20230909-bfctoken---business-logic-flaw)
 
-[20230908 APIG](#20230908-apig---business-logic-flaw)
+[20230908 APIG](past/2023/README.md#20230908-apig---business-logic-flaw)
 
-[20230907 HCT](#20230907-hct---price-manipulation)
+[20230907 HCT](past/2023/README.md#20230907-hct---price-manipulation)
 
-[20230905 JumpFarm](#20230905-JumpFarm---rebasing-logic-issue)
+[20230905 JumpFarm](past/2023/README.md#20230905-JumpFarm---rebasing-logic-issue)
 
-[20230905 HeavensGate](#20230905-HeavensGate---rebasing-logic-issue)
+[20230905 HeavensGate](past/2023/README.md#20230905-HeavensGate---rebasing-logic-issue)
 
-[20230905 FloorDAO](#20230905-floordao---rebasing-logic-issue)
+[20230905 FloorDAO](past/2023/README.md#20230905-floordao---rebasing-logic-issue)
 
-[20230902 DAppSocial](#20230902-dappsocial---business-logic-flaw)
+[20230902 DAppSocial](past/2023/README.md#20230902-dappsocial---business-logic-flaw)
 
-[20230829 EAC](#20230829-eac---price-manipulation)
+[20230829 EAC](past/2023/README.md#20230829-eac---price-manipulation)
 
-[20230827 Balancer](#20230827-balancer---rounding-error--business-logic-flaw)
+[20230827 Balancer](past/2023/README.md#20230827-balancer---rounding-error--business-logic-flaw)
 
-[20230826 SVT](#20230826-svt---flawed-price-calculation)
+[20230826 SVT](past/2023/README.md#20230826-svt---flawed-price-calculation)
 
-[20230824 GSS](#20230824-gss---skim-token-balance)
+[20230824 GSS](past/2023/README.md#20230824-gss---skim-token-balance)
 
-[20230821 EHIVE](#20230821-ehive---business-logic-flaw)
+[20230821 EHIVE](past/2023/README.md#20230821-ehive---business-logic-flaw)
 
-[20230819 BTC20](#20230819-btc20---price-manipulation)
+[20230819 BTC20](past/2023/README.md#20230819-btc20---price-manipulation)
 
-[20230818 ExactlyProtocol](#20230818-exactlyprotocol---insufficient-validation)
+[20230818 ExactlyProtocol](past/2023/README.md#20230818-exactlyprotocol---insufficient-validation)
 
-[20230814 ZunamiProtocol](#20230814-zunamiprotocol---price-manipulation)
+[20230814 ZunamiProtocol](past/2023/README.md#20230814-zunamiprotocol---price-manipulation)
 
-[20230809 EarningFram](#20230809-earningfram---reentrancy)
+[20230809 EarningFram](past/2023/README.md#20230809-earningfram---reentrancy)
 
-[20230802 CurveBurner](#20230802-curveburner---lack-slippage-protection)
+[20230802 CurveBurner](past/2023/README.md#20230802-curveburner---lack-slippage-protection)
 
-[20230802 Uwerx](#20230802-uwerx---fault-logic)
+[20230802 Uwerx](past/2023/README.md#20230802-uwerx---fault-logic)
 
-[20230801 NeutraFinance](#20230801-neutrafinance---price-manipulation)
+[20230801 NeutraFinance](past/2023/README.md#20230801-neutrafinance---price-manipulation)
 
-[20230801 LeetSwap](#20230801-leetswap---access-control)
+[20230801 LeetSwap](past/2023/README.md#20230801-leetswap---access-control)
 
-[20230731 GYMNET](#20230731-gymnet---insufficient-validation)
+[20230731 GYMNET](past/2023/README.md#20230731-gymnet---insufficient-validation)
 
-[20230730 Curve](#20230730-curve---vyper-compiler-bug--reentrancy)
+[20230730 Curve](past/2023/README.md#20230730-curve---vyper-compiler-bug--reentrancy)
 
-[20230726 Carson](#20230726-carson---price-manipulation)
+[20230726 Carson](past/2023/README.md#20230726-carson---price-manipulation)
 
-[20230724 Palmswap](#20230724-palmswap---business-logic-flaw)
+[20230724 Palmswap](past/2023/README.md#20230724-palmswap---business-logic-flaw)
 
-[20230723 MintoFinance](#20230723-mintofinance---signature-replay)
+[20230723 MintoFinance](past/2023/README.md#20230723-mintofinance---signature-replay)
 
-[20230722 ConicFinance02](#20230722-conic-finance-02---price-manipulation)
+[20230722 ConicFinance02](past/2023/README.md#20230722-conic-finance-02---price-manipulation)
 
-[20230721 ConicFinance](#20230721-conic-finance---read-only-reentrancy--misconfiguration)
+[20230721 ConicFinance](past/2023/README.md#20230721-conic-finance---read-only-reentrancy--misconfiguration)
 
-[20230721 SUT](#20230721-sut---business-logic-flaw)
+[20230721 SUT](past/2023/README.md#20230721-sut---business-logic-flaw)
 
-[20230720 Utopia](#20230720-utopia---business-logic-flaw)
+[20230720 Utopia](past/2023/README.md#20230720-utopia---business-logic-flaw)
 
-[20230720 FFIST](#20230720-ffist---business-logic-flaw)
+[20230720 FFIST](past/2023/README.md#20230720-ffist---business-logic-flaw)
 
-[20230718 APEDAO](#20230718-apedao---business-logic-flaw)
+[20230718 APEDAO](past/2023/README.md#20230718-apedao---business-logic-flaw)
 
-[20230718 BNO](#20230718-bno---invalid-emergency-withdraw-mechanism)
+[20230718 BNO](past/2023/README.md#20230718-bno---invalid-emergency-withdraw-mechanism)
 
-[20230717 NewFi](#20230717-newfi---lack-slippage-protection)
+[20230717 NewFi](past/2023/README.md#20230717-newfi---lack-slippage-protection)
 
-[20230712 Platypus](#20230712-platypus---bussiness-logic-flaw)
+[20230712 Platypus](past/2023/README.md#20230712-platypus---bussiness-logic-flaw)
 
-[20230712 WGPT](#20230712-wgpt---business-logic-flaw)
+[20230712 WGPT](past/2023/README.md#20230712-wgpt---business-logic-flaw)
 
-[20230711 RodeoFinance](#20230711-rodeofinance---twap-oracle-manipulation)
+[20230711 RodeoFinance](past/2023/README.md#20230711-rodeofinance---twap-oracle-manipulation)
 
-[20230711 Libertify](#20230711-libertify---reentrancy)
+[20230711 Libertify](past/2023/README.md#20230711-libertify---reentrancy)
 
-[20230710 ArcadiaFi](#20230710-arcadiafi---reentrancy)
+[20230710 ArcadiaFi](past/2023/README.md#20230710-arcadiafi---reentrancy)
 
-[20230708 CIVNFT](#20230708-civnft---lack-of-access-control)
+[20230708 CIVNFT](past/2023/README.md#20230708-civnft---lack-of-access-control)
 
-[20230708 Civfund](#20230708-civfund---lack-of-access-control)
+[20230708 Civfund](past/2023/README.md#20230708-civfund---lack-of-access-control)
 
-[20230707 LUSD](#20230707-LUSD---price-manipulation-attack)
+[20230707 LUSD](past/2023/README.md#20230707-LUSD---price-manipulation-attack)
 
-[20230704 BambooIA](#20230704-bambooia---price-manipulation-attack)
+[20230704 BambooIA](past/2023/README.md#20230704-bambooia---price-manipulation-attack)
 
-[20230704 BaoCommunity](#20230704-baocommunity---donate-inflation-exchangerate--rounding-error)
+[20230704 BaoCommunity](past/2023/README.md#20230704-baocommunity---donate-inflation-exchangerate--rounding-error)
 
-[20230703 AzukiDAO](#20230703-azukidao---invalid-signature-verification)
+[20230703 AzukiDAO](past/2023/README.md#20230703-azukidao---invalid-signature-verification)
 
-[20230630 Biswap](#20230630-biswap---v3migrator-exploit)
+[20230630 Biswap](past/2023/README.md#20230630-biswap---v3migrator-exploit)
 
-[20230628 Themis](#20230628-themis---manipulation-of-prices-using-flashloan)
+[20230628 Themis](past/2023/README.md#20230628-themis---manipulation-of-prices-using-flashloan)
 
-[20230623 SHIDO](#20230623-shido---business-loigc)
+[20230623 SHIDO](past/2023/README.md#20230623-shido---business-loigc)
 
-[20230621 BabyDogeCoin02](#20230621-babydogecoin02---lack-slippage-protection)
+[20230621 BabyDogeCoin02](past/2023/README.md#20230621-babydogecoin02---lack-slippage-protection)
 
-[20230621 BUNN](#20230621-bunn---reflection-tokens)
+[20230621 BUNN](past/2023/README.md#20230621-bunn---reflection-tokens)
 
-[20230620 MIM](#20230620-mimspell---arbitrary-external-call-vulnerability)
+[20230620 MIM](past/2023/README.md#20230620-mimspell---arbitrary-external-call-vulnerability)
 
-[20230618 ARA](#20230618-ara---incorrect-handling-of-permissions)
+[20230618 ARA](past/2023/README.md#20230618-ara---incorrect-handling-of-permissions)
 
-[20230617 Pawnfi](#20230617-pawnfi---business-logic-flaw)
+[20230617 Pawnfi](past/2023/README.md#20230617-pawnfi---business-logic-flaw)
 
-[20230615 CFC](#20230615-cfc---uniswap-skim-token-balance-attack)
+[20230615 CFC](past/2023/README.md#20230615-cfc---uniswap-skim-token-balance-attack)
 
-[20230615 DEPUSDT_LEVUSDC](#20230615-depusdt_levusdc---incorrect-access-control)
+[20230615 DEPUSDT_LEVUSDC](past/2023/README.md#20230615-depusdt_levusdc---incorrect-access-control)
 
-[20230612 Sturdy Finance](#20230612-sturdy-finance---read-only-reentrancy)
+[20230612 Sturdy Finance](past/2023/README.md#20230612-sturdy-finance---read-only-reentrancy)
 
-[20230611 SellToken04](#20230611-sellToken04---Price-Manipulation)
+[20230611 SellToken04](past/2023/README.md#20230611-sellToken04---Price-Manipulation)
 
-[20230607 CompounderFinance](#20230607-compounderfinance---manipulation-of-funds-through-fluctuations-in-the-amount-of-exchangeable-assets)
+[20230607 CompounderFinance](past/2023/README.md#20230607-compounderfinance---manipulation-of-funds-through-fluctuations-in-the-amount-of-exchangeable-assets)
 
-[20230606 VINU](#20230606-vinu---price-manipulation)
+[20230606 VINU](past/2023/README.md#20230606-vinu---price-manipulation)
 
-[20230606 UN](#20230606-un---price-manipulation)
+[20230606 UN](past/2023/README.md#20230606-un---price-manipulation)
 
-[20230602 NST SimpleSwap](#20230602-nst-simple-swap---unverified-contract-wrong-approval)
+[20230602 NST SimpleSwap](past/2023/README.md#20230602-nst-simple-swap---unverified-contract-wrong-approval)
 
-[20230601 DDCoin](#20230601-ddcoin---flashloan-attack-and-smart-contract-vulnerability)
+[20230601 DDCoin](past/2023/README.md#20230601-ddcoin---flashloan-attack-and-smart-contract-vulnerability)
 
-[20230601 Cellframenet](#20230601-cellframenet---calculation-issues-during-liquidity-migration)
+[20230601 Cellframenet](past/2023/README.md#20230601-cellframenet---calculation-issues-during-liquidity-migration)
 
-[20230531 ERC20TokenBank](#20230531-erc20tokenbank---price-manipulation)
+[20230531 ERC20TokenBank](past/2023/README.md#20230531-erc20tokenbank---price-manipulation)
 
-[20230529 Jimbo](#20230529-jimbo---protocol-specific-price-manipulation)
+[20230529 Jimbo](past/2023/README.md#20230529-jimbo---protocol-specific-price-manipulation)
 
-[20230529 BabyDogeCoin](#20230529-babydogecoin---lack-slippage-protection)
+[20230529 BabyDogeCoin](past/2023/README.md#20230529-babydogecoin---lack-slippage-protection)
 
-[20230529 FAPEN](#20230529-fapen---wrong-balance-check)
+[20230529 FAPEN](past/2023/README.md#20230529-fapen---wrong-balance-check)
 
-[20230529 NOON_NO](#20230529-noon-no---wrong-visibility-in-function)
+[20230529 NOON_NO](past/2023/README.md#20230529-noon-no---wrong-visibility-in-function)
 
-[20230525 GPT](#20230525-gpt-token---fee-machenism-exploitation)
+[20230525 GPT](past/2023/README.md#20230525-gpt-token---fee-machenism-exploitation)
 
-[20230524 LocalTrade](#20230524-local-trade-lct---inproper-access-control-of-close-source-contract)
+[20230524 LocalTrade](past/2023/README.md#20230524-local-trade-lct---inproper-access-control-of-close-source-contract)
 
-[20230524 CS](#20230524-cs-token---outdated-global-variable)
+[20230524 CS](past/2023/README.md#20230524-cs-token---outdated-global-variable)
 
-[20230523 LFI](#20230523-lfi-token---business-logic-flaw)
+[20230523 LFI](past/2023/README.md#20230523-lfi-token---business-logic-flaw)
 
-[20230514 landNFT](#20230514-landNFT---lack-of-permission-control)
+[20230514 landNFT](past/2023/README.md#20230514-landNFT---lack-of-permission-control)
 
-[20230514 SellToken03](#20230514-selltoken03---unchecked-user-input)
+[20230514 SellToken03](past/2023/README.md#20230514-selltoken03---unchecked-user-input)
 
-[20230513 Bitpaidio](#20230513-bitpaidio---business-logic-flaw)
+[20230513 Bitpaidio](past/2023/README.md#20230513-bitpaidio---business-logic-flaw)
 
-[20230513 SellToken02](#20230513-selltoken02---price-manipulation)
+[20230513 SellToken02](past/2023/README.md#20230513-selltoken02---price-manipulation)
 
-[20230512 LW](#20230512-lw---flashloan-price-manipulation)
+[20230512 LW](past/2023/README.md#20230512-lw---flashloan-price-manipulation)
 
-[20230511 SellToken01](#20230511-selltoken01---business-logic-flaw)
+[20230511 SellToken01](past/2023/README.md#20230511-selltoken01---business-logic-flaw)
 
-[20230510 SNK](#20230510-snk---reward-calculation-error)
+[20230510 SNK](past/2023/README.md#20230510-snk---reward-calculation-error)
 
-[20230509 MCC](#20230509-mcc---reflection-token)
+[20230509 MCC](past/2023/README.md#20230509-mcc---reflection-token)
 
-[20230509 HODL](#20230509-hodl---reflection-token)
+[20230509 HODL](past/2023/README.md#20230509-hodl---reflection-token)
 
-[20230506 Melo](#20230506-melo---access-control)
+[20230506 Melo](past/2023/README.md#20230506-melo---access-control)
 
-[20230505 DEI](#20230505-dei---wrong-implemention)
+[20230505 DEI](past/2023/README.md#20230505-dei---wrong-implemention)
 
-[20230503 NeverFall](#20230503-NeverFall---price-manipulation)
+[20230503 NeverFall](past/2023/README.md#20230503-NeverFall---price-manipulation)
 
-[20230502 Level](#20230502-level---business-logic-flaw)
+[20230502 Level](past/2023/README.md#20230502-level---business-logic-flaw)
 
-[20230428 0vix](#20230428-0vix---flashloan-price-manipulation)
+[20230428 0vix](past/2023/README.md#20230428-0vix---flashloan-price-manipulation)
 
-[20230427 SiloFinance](#20230427-Silo-finance---Business-Logic-Flaw)
+[20230427 SiloFinance](past/2023/README.md#20230427-Silo-finance---Business-Logic-Flaw)
 
-[20230424 Axioma](#20230424-Axioma---business-logic-flaw)
+[20230424 Axioma](past/2023/README.md#20230424-Axioma---business-logic-flaw)
 
-[20230419 OLIFE](#20230419-OLIFE---Reflection-token)
+[20230419 OLIFE](past/2023/README.md#20230419-OLIFE---Reflection-token)
 
-[20230416 Swapos V2](#20230416-swapos-v2----error-k-value-attack)
+[20230416 Swapos V2](past/2023/README.md#20230416-swapos-v2----error-k-value-attack)
 
-[20230415 HundredFinance](#20230415-hundredfinance---donate-inflation-exchangerate--rounding-error)
+[20230415 HundredFinance](past/2023/README.md#20230415-hundredfinance---donate-inflation-exchangerate--rounding-error)
 
-[20230413 yearnFinance](#20230413-yearnFinance---misconfiguration)
+[20230413 yearnFinance](past/2023/README.md#20230413-yearnFinance---misconfiguration)
 
-[20230412 MetaPoint](#20230412-metapoint---Unrestricted-Approval)
+[20230412 MetaPoint](past/2023/README.md#20230412-metapoint---Unrestricted-Approval)
 
-[20230411 Paribus](#20230411-paribus---reentrancy)
+[20230411 Paribus](past/2023/README.md#20230411-paribus---reentrancy)
 
-[20230409 SushiSwap](#20230409-SushiSwap---Unchecked-User-Input)
+[20230409 SushiSwap](past/2023/README.md#20230409-SushiSwap---Unchecked-User-Input)
 
-[20230405 Sentiment](#20230405-sentiment---read-only-reentrancy)
+[20230405 Sentiment](past/2023/README.md#20230405-sentiment---read-only-reentrancy)
 
-[20230402 Allbridge](#20230402-allbridge---flashloan-price-manipulation)
+[20230402 Allbridge](past/2023/README.md#20230402-allbridge---flashloan-price-manipulation)
 
-[20230328 SafeMoon Hack](#20230328-safemoon-hack)
+[20230328 SafeMoon Hack](past/2023/README.md#20230328-safemoon-hack)
 
-[20230328 THENA](#20230328---thena---yield-protocol-flaw)
+[20230328 THENA](past/2023/README.md#20230328---thena---yield-protocol-flaw)
 
-[20230325 DBW](#20230325---dbw--business-logic-flaw)
+[20230325 DBW](past/2023/README.md#20230325---dbw--business-logic-flaw)
 
-[20230322 BIGFI](#20230322---bigfi---reflection-token)
+[20230322 BIGFI](past/2023/README.md#20230322---bigfi---reflection-token)
 
-[20230317 ParaSpace NFT](#20230317---paraspace-nft---flashloan--scaledbalanceof-manipulation)
+[20230317 ParaSpace NFT](past/2023/README.md#20230317---paraspace-nft---flashloan--scaledbalanceof-manipulation)
 
-[20230315 Poolz](#20230315---poolz---integer-overflow)
+[20230315 Poolz](past/2023/README.md#20230315---poolz---integer-overflow)
 
-[20230313 EulerFinance](#20230313---eulerfinance---business-logic-flaw)
+[20230313 EulerFinance](past/2023/README.md#20230313---eulerfinance---business-logic-flaw)
 
-[20230308 DKP](#20230308---dkp---flashloan-price-manipulation)
+[20230308 DKP](past/2023/README.md#20230308---dkp---flashloan-price-manipulation)
 
-[20230307 Phoenix](#20230307---phoenix---access-control--arbitrary-external-call)
+[20230307 Phoenix](past/2023/README.md#20230307---phoenix---access-control--arbitrary-external-call)
 
-[20230227 LaunchZone](#20230227---launchzone---access-control)
+[20230227 LaunchZone](past/2023/README.md#20230227---launchzone---access-control)
 
-[20230227 SwapX](#20230227---swapx---access-control)
+[20230227 SwapX](past/2023/README.md#20230227---swapx---access-control)
 
-[20230224 EFVault](#20230224---efvault---storage-collision)
+[20230224 EFVault](past/2023/README.md#20230224---efvault---storage-collision)
 
-[20230222 DYNA](#20230222---dyna---business-logic-flaw)
+[20230222 DYNA](past/2023/README.md#20230222---dyna---business-logic-flaw)
 
-[20230218 RevertFinance](#20230218---revertfinance---arbitrary-external-call-vulnerability)
+[20230218 RevertFinance](past/2023/README.md#20230218---revertfinance---arbitrary-external-call-vulnerability)
 
-[20230217 Starlink](#20230217---starlink---business-logic-flaw)
+[20230217 Starlink](past/2023/README.md#20230217---starlink---business-logic-flaw)
 
-[20230217 Dexible](#20230217---dexible---arbitrary-external-call-vulnerability)
+[20230217 Dexible](past/2023/README.md#20230217---dexible---arbitrary-external-call-vulnerability)
 
-[20230217 Platypusdefi](#20230217---platypusdefi---business-logic-flaw)
+[20230217 Platypusdefi](past/2023/README.md#20230217---platypusdefi---business-logic-flaw)
 
-[20230210 Sheep Token](#20230210---sheep---reflection-token)
+[20230210 Sheep Token](past/2023/README.md#20230210---sheep---reflection-token)
 
-[20230210 dForce](#20230210---dforce---read-only-reentrancy)
+[20230210 dForce](past/2023/README.md#20230210---dforce---read-only-reentrancy)
 
-[20230207 CowSwap](#20230207---cowswap---arbitrary-external-call-vulnerability)
+[20230207 CowSwap](past/2023/README.md#20230207---cowswap---arbitrary-external-call-vulnerability)
 
-[20230206 FDP Token](#20230206---fdp---reflection-token)
+[20230206 FDP Token](past/2023/README.md#20230206---fdp---reflection-token)
 
-[20230203 Orion Protocol](#20230203---orion-protocol---reentrancy)
+[20230203 Orion Protocol](past/2023/README.md#20230203---orion-protocol---reentrancy)
 
-[20230203 Spherax USDs](#20230203---spherax-usds---balance-recalculation-bug)
+[20230203 Spherax USDs](past/2023/README.md#20230203---spherax-usds---balance-recalculation-bug)
 
-[20230202 BonqDAO](#20230202---BonqDAO---price-oracle-manipulation)
+[20230202 BonqDAO](past/2023/README.md#20230202---BonqDAO---price-oracle-manipulation)
 
-[20230130 BEVO](#20230130---bevo---reflection-token)
+[20230130 BEVO](past/2023/README.md#20230130---bevo---reflection-token)
 
-[20230126 TomInu Token](#20230126---tinu---reflection-token)
+[20230126 TomInu Token](past/2023/README.md#20230126---tinu---reflection-token)
 
-[20230119 SHOCO Token](#20230119---shoco---reflection-token)
+[20230119 SHOCO Token](past/2023/README.md#20230119---shoco---reflection-token)
 
-[20230119 ThoreumFinance](#20230119---thoreumfinance-business-logic-flaw)
+[20230119 ThoreumFinance](past/2023/README.md#20230119---thoreumfinance-business-logic-flaw)
 
-[20230118 QTN Token](#20230118---qtntoken---business-logic-flaw)
+[20230118 QTN Token](past/2023/README.md#20230118---qtntoken---business-logic-flaw)
 
-[20230118 UPS Token](#20230118---upstoken---business-logic-flaw)
+[20230118 UPS Token](past/2023/README.md#20230118---upstoken---business-logic-flaw)
 
-[20230117 OmniEstate](#20230117---OmniEstate---no-input-parameter-check)
+[20230117 OmniEstate](past/2023/README.md#20230117---OmniEstate---no-input-parameter-check)
 
-[20230116 MidasCapital](#20230116---midascapital---read-only-reentrancy)
+[20230116 MidasCapital](past/2023/README.md#20230116---midascapital---read-only-reentrancy)
 
-[20230111 UFDao](#20230111---ufdao---incorrect-parameter-setting)
+[20230111 UFDao](past/2023/README.md#20230111---ufdao---incorrect-parameter-setting)
 
-[20230111 ROE](#20230111---roefinance---flashloan-price-manipulation)
+[20230111 ROE](past/2023/README.md#20230111---roefinance---flashloan-price-manipulation)
 
-[20230110 BRA](#20230110---bra---business-logic-flaw)
+[20230110 BRA](past/2023/README.md#20230110---bra---business-logic-flaw)
 
-[20230103 GDS](#20230103---gds---business-logic-flaw)
+[20230103 GDS](past/2023/README.md#20230103---gds---business-logic-flaw)
 
 </details>
   
