@@ -36,8 +36,6 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ## List of Past DeFi Incidents
 [20240329 PrismaFi](#20240329-prismaFi---insufficient-validation)
 
-[20240309 Juice](#20240309-juice---business-logic-flaw)
-
 [20240325 ZongZi](#20240325-zongzi---price-manipulation)
 
 [20240314 ARK](#20240324-ark---business-logic-flaw)
@@ -49,6 +47,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240314 MO](#20240314-mo---business-logic-flaw)
 
 [20240313 IT](#20240313-it---business-logic-flaw)
+
+[20240309 Juice](#20240309-juice---business-logic-flaw)
 
 [20240308 UnizenIO](#20240309-unizenio---unverified-external-call)
 
@@ -846,22 +846,6 @@ https://twitter.com/EXVULSEC/status/1773371049951797485
 
 ---
 
-### 20240309 Juice - Business Logic Flaw
-
-### Lost: ~54 ETH
-
-
-```sh
-forge test --contracts ./src/test/Juice_exp.sol -vvv
-```
-#### Contract
-[Juice_exp.sol](src/test/Juice_exp.sol)
-### Link reference
-
-https://medium.com/@juicebotapp/juice-staking-exploit-next-steps-95e218b3ec71
-
----
-
 ### 20240325 ZongZi - Price Manipulation
 
 ### Lost: ~223K
@@ -968,6 +952,22 @@ forge test --via-ir  --contracts src/test/IT_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/0xNickLFranklin/status/1768171595561046489
+
+---
+
+### 20240309 Juice - Business Logic Flaw
+
+### Lost: ~54 ETH
+
+
+```sh
+forge test --contracts ./src/test/Juice_exp.sol -vvv
+```
+#### Contract
+[Juice_exp.sol](src/test/Juice_exp.sol)
+### Link reference
+
+https://medium.com/@juicebotapp/juice-staking-exploit-next-steps-95e218b3ec71
 
 ---
 
