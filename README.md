@@ -50,7 +50,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240309 Juice](#20240309-juice---business-logic-flaw)
 
-[20240308 UnizenIO](#20240309-unizenio---unverified-external-call)
+[20240309 UnizenIO](#20240309-unizenio---unverified-external-call)
 
 [20240307 GHT](#20240307-ght---business-logic-flaw)
 
