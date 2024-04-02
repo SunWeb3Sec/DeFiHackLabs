@@ -5,7 +5,7 @@ pragma solidity >=0.7.0 <0.9.0;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     ILand Land = ILand(0x50f5474724e0Ee42D9a4e711ccFB275809Fd6d4a);
     address victim = 0x9cfA73B8d300Ec5Bf204e4de4A58e5ee6B7dC93C;
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);

@@ -22,7 +22,7 @@ interface sDAO is IERC20 {
     function getReward() external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     sDAO SDAO = sDAO(0x6666625Ab26131B490E7015333F97306F05Bf816);
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);

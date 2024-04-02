@@ -19,7 +19,7 @@ interface IDEI is IERC20 {
     function burnFrom(address account, uint256 amount) external;
 }
 
-contract DEIPocTest is DSTest {
+contract DEIPocTest is Test {
     IStablePair pair = IStablePair(0x7DC406b9B904a52D10E19E848521BbA2dE74888b);
     IDEI DEI = IDEI(0xDE1E704dae0B4051e80DAbB26ab6ad6c12262DA0);
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);

@@ -58,7 +58,7 @@ contract depositToken {
     }
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 ZABU = IERC20(0xDd453dBD253fA4E5e745047d93667Ce9DA93bbCF);
     IERC20 WAVAX = IERC20(0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7);
     IERC20 SPORE = IERC20(0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985);

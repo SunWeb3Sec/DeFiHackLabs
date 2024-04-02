@@ -14,7 +14,7 @@ interface MUBank {
     function mu_gold_bond(address stable, uint256 amount) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     MUBank Bank = MUBank(0x4aA679402c6afcE1E0F7Eb99cA4f09a30ce228ab);
     IERC20 MU = IERC20(0xD036414fa2BCBb802691491E323BFf1348C5F4Ba);
     IERC20 MUG = IERC20(0xF7ed17f0Fb2B7C9D3DDBc9F0679b2e1098993e81);

@@ -26,7 +26,7 @@ import "./interface.sol";
 
 // Test result: ok. 1 passed; 0 failed; finished in 9.72s%
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     address private cftoken = 0x8B7218CF6Ac641382D7C723dE8aA173e98a80196;
     address private cfpair = 0x7FdC0D8857c6D90FD79E22511baf059c0c71BF8b;
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);

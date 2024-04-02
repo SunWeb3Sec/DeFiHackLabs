@@ -126,7 +126,7 @@ contract SecondContract {
     receive() external payable {}
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IDaiFlashloan DaiFlash = IDaiFlashloan(0x1EB4CF3A948E7D72A198fe073cCb8C7a948cD853);
     ICurvePool curvePool = ICurvePool(0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7);
     IComptroller comptroller = IComptroller(0x3d5BC3c8d13dcB8bF317092d84783c2697AE9258);

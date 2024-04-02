@@ -9,7 +9,7 @@ import "./interface.sol";
 // @TX
 // https://bscscan.com/tx/0xcc8fdb3c6af8bb9dfd87e913b743a13bbf138a143c27e0f387037887d28e3c7a
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 RFB = IERC20(0x26f1457f067bF26881F311833391b52cA871a4b5);
     IWBNB WBNB = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);

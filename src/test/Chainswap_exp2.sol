@@ -16,7 +16,7 @@ struct Signature {
 //   function receive(uint256 fromChainId, address to, uint256 nonce, uint256 volume, Signature[] memory signatures) virtual external payable;
 // }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     address exploiter = 0xEda5066780dE29D00dfb54581A707ef6F52D8113;
     address proxy = 0x089165ac9a7Bf61833Da86268F34A01652543466;
     address impl = 0xc5185d2c68aAa7c5f0921948f8135d01510D647F;

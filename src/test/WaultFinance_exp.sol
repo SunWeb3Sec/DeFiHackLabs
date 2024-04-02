@@ -15,7 +15,7 @@ interface WUSDMASTER {
     function maxStakeAmount() external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 WUSD = IERC20(0x3fF997eAeA488A082fb7Efc8e6B9951990D0c3aB);
     IERC20 BUSD = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);

@@ -41,7 +41,7 @@ interface ILIFI {
     ) external payable;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     address from = address(0xC6f2bDE06967E04caAf4bF4E43717c3342680d76);
     address lifi = address(0x5A9Fd7c39a6C488E715437D7b1f3C823d5596eD1);
     address exploiter = address(0x878099F08131a18Fab6bB0b4Cfc6B6DAe54b177E);

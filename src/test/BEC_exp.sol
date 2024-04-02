@@ -13,7 +13,7 @@ interface BECToken {
 // https://etherscan.io/tx/0xad89ff16fd1ebe3a0a7cf4ed282302c06626c1af33221ebe0d3a470aba4a660f
 // https://etherscan.io/address/0xc5d105e63711398af9bbff092d4b6769c82f793d#code  Line261
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     address attacker1 = 0xb4D30Cac5124b46C2Df0CF3e3e1Be05f42119033;
     address attacker2 = 0x0e823fFE018727585EaF5Bc769Fa80472F76C3d7;
     BECToken bec = BECToken(0xC5d105E63711398aF9bbff092d4B6769C82F793D);

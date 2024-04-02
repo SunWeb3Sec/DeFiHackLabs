@@ -26,7 +26,7 @@ IULME constant ULME = IULME(0xAE975a25646E6eB859615d0A147B909c13D31FEd);
 address constant dodo1 = 0xD7B7218D778338Ea05f5Ecce82f86D365E25dBCE;
 address constant dodo2 = 0x9ad32e3054268B849b84a8dBcC7c8f7c52E4e69A;
 
-contract Attacker is DSTest {
+contract Attacker is Test {
     IERC20 constant USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
 
     uint256 dodo1Balance;

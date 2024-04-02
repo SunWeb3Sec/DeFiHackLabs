@@ -36,7 +36,7 @@ interface HouseWallet {
     ) external payable;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     HouseWallet houseWallet = HouseWallet(0xae191Ca19F0f8E21d754c6CAb99107eD62B6fe53);
     uint256 randomNumber = 12_345_678_000_000_000_000_000_000;
 

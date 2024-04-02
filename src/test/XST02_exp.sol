@@ -9,7 +9,7 @@ import "./interface.sol";
 // XST Logic Contract Address: https://etherscan.io/address/0xb276647e70cb3b81a1ca302cf8de280ff0ce5799#code
 // https://tools.blocksec.com/tx/eth/0x873f7c77d5489c1990f701e9bb312c103c5ebcdcf0a472db726730814bfd55f3
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 XST = IERC20(0x91383A15C391c142b80045D8b4730C1c37ac0378);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     Uni_Pair_V2 Pair1 = Uni_Pair_V2(0x0d4a11d5EEaaC28EC3F61d100daF4d40471f1852); // WETH USDT

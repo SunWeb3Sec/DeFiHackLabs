@@ -15,7 +15,7 @@ interface sushiBar {
     function leave(uint256) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC777 n00d = IERC777(0x2321537fd8EF4644BacDCEec54E5F35bf44311fA);
     Uni_Pair_V2 Pair = Uni_Pair_V2(0x5476DB8B72337d44A6724277083b1a927c82a389);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);

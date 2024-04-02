@@ -39,7 +39,7 @@ contract claimReward {
     }
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     address constant dodo = 0x26d0c625e5F5D6de034495fbDe1F6e9377185618;
     IVTF VTF = IVTF(0xc6548caF18e20F88cC437a52B6D388b0D54d830D);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);

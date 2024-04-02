@@ -19,7 +19,7 @@ interface BPair {
     function getReserves() external view returns (uint112 _reserve0, uint112 _reserve1, uint32 _blockTimestampLast);
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IERC20 BDEX = IERC20(0x7E0F01918D92b2750bbb18fcebeEDD5B94ebB867);
     BvaultsStrategy vaultsStrategy = BvaultsStrategy(0xB2B1DC3204ee8899d6575F419e72B53E370F6B20);

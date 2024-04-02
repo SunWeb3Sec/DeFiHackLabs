@@ -5,7 +5,7 @@ pragma solidity >=0.7.0 <0.9.0;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IBuildFinance BuildGovernance = IBuildFinance(0x5A6eBeB61A80B2a2a5e0B4D893D731358d888583);
     IERC20 build = IERC20(0x6e36556B3ee5Aa28Def2a8EC3DAe30eC2B208739);

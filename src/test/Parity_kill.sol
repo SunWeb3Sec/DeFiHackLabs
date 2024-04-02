@@ -12,7 +12,7 @@ interface parity {
     function initWallet(address[] memory _owners, uint256 _required, uint256 _daylimit) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     parity WalletLibrary = parity(payable(0x863DF6BFa4469f3ead0bE8f9F2AAE51c91A907b4));
 
     address[] public owner;

@@ -40,7 +40,7 @@ address constant Vyper1 = 0x98245Bfbef4e3059535232D68821a58abB265C45;
 address constant Vyper2 = 0x1d4B4796853aEDA5Ab457644a18B703b6bA8b4aB;
 address constant PancakeRouter = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
 
-contract ProposalCreateFactory is DSTest {
+contract ProposalCreateFactory is Test {
     /* Method 0xb9470ff4 */
     // 創建提案, 提案內容為: 設置 fToken 的抵押係數從 0 變更為 700000000000000000 (0.7 ether)
     function ProposalCreated() public {
@@ -66,7 +66,7 @@ contract ProposalCreateFactory is DSTest {
     }
 }
 
-contract Attack is DSTest {
+contract Attack is Test {
     /* Method 0x2b69be8e */
     function exploit() public {
         // Excute Proposal 11
@@ -256,7 +256,7 @@ contract Attack is DSTest {
     receive() external payable {}
 }
 
-contract Hacker is DSTest {
+contract Hacker is Test {
     using stdStorage for StdStorage;
 
     StdStorage stdstore;

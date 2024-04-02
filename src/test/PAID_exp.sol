@@ -16,7 +16,7 @@ interface IPaid {
     function balanceOf(address account) external view returns (uint256);
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     // FakeToken FakeTokenContract;
     IPaid PAID = IPaid(0x8c8687fC965593DFb2F0b4EAeFD55E9D8df348df);
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);

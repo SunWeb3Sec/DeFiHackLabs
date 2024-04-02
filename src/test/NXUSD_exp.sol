@@ -32,7 +32,7 @@ interface ICauldronV2 {
     ) external payable returns (uint256, uint256);
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     ILendingPool aaveLendingPool = ILendingPool(0x794a61358D6845594F94dc1DB02A252b5b4814aD);
     Uni_Router_V2 Router = Uni_Router_V2(0x60aE616a2155Ee3d9A68541Ba4544862310933d4);
     Uni_Pair_V2 Pair = Uni_Pair_V2(0xf4003F4efBE8691B60249E6afbD307aBE7758adb);

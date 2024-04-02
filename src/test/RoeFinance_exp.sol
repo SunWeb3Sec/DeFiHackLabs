@@ -24,7 +24,7 @@ interface vdWBTC_USDC_LP {
     function approveDelegation(address delegatee, uint256 amount) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IBalancerVault balancer = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
     ROE roe = ROE(0x5F360c6b7B25DfBfA4F10039ea0F7ecfB9B02E60);
     Uni_Pair_V2 Pair = Uni_Pair_V2(0x004375Dff511095CC5A197A54140a24eFEF3A416);

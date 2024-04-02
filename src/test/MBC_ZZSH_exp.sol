@@ -18,7 +18,7 @@ interface IZZSH is IERC20 {
     function swapAndLiquifyStepv1() external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 ETH = IERC20(0x2170Ed0880ac9A755fd29B2688956BD959F933F8);
     IMBC MBC = IMBC(0x4E87880A72f6896E7e0a635A5838fFc89b13bd17);

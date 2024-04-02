@@ -13,7 +13,7 @@ interface ERCPorxy {
     function migrate() external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 oldBGLD = IERC20(0xC2319E87280c64e2557a51Cb324713Dd8d1410a3);

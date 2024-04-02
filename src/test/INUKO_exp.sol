@@ -44,7 +44,7 @@ interface Unitroller {
     function enterMarkets(address[] calldata vTokens) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 INUKO = IERC20(0xEa51801b8F5B88543DdaD3D1727400c15b209D8f);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);

@@ -9,7 +9,7 @@ import "./interface.sol";
 // TX
 // https://bscscan.com/tx/0x8385625e9d8011f4ad5d023d64dc7985f0315b6a4be37424c7212fe4c10dafe0
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 PLTD = IERC20(0x29b2525e11BC0B0E9E59f705F318601eA6756645);
     Uni_Pair_V2 Pair = Uni_Pair_V2(0x4397C76088db8f16C15455eB943Dd11F2DF56545);

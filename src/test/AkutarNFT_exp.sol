@@ -15,7 +15,7 @@ There are two serious logic vulnerabilities
 
 forge test --contracts ./src/test/AkutarNFT_exp.sol -vv  
 */
-contract AkutarNFTExploit is DSTest {
+contract AkutarNFTExploit is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IAkutarNFT akutarNft = IAkutarNFT(0xF42c318dbfBaab0EEE040279C6a2588Fa01a961d);
 

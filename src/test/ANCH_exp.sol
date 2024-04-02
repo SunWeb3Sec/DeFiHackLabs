@@ -9,7 +9,7 @@ import "./interface.sol";
 // @Contract address
 // https://bscscan.com/address/0xa4f5d4afd6b9226b3004dd276a9f778eb75f2e9e#code
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 ANCH = IERC20(0xA4f5d4aFd6b9226b3004dD276A9F778EB75f2e9e);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     Uni_Pair_V2 Pair = Uni_Pair_V2(0xaD0dA05b9C20fa541012eE2e89AC99A864CC68Bb);

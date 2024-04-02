@@ -9,7 +9,7 @@ import "./interface.sol";
 // @Contract address
 // https://bscscan.com/address/0x94e06c77b02ade8341489ab9a23451f68c13ec1c#code
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 HackDao = IERC20(0x94e06c77b02Ade8341489Ab9A23451F68c13eC1C);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     Uni_Pair_V2 Pair1 = Uni_Pair_V2(0xcd4CDAa8e96ad88D82EABDdAe6b9857c010f4Ef2); // HackDao WBNB

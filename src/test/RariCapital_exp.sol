@@ -14,7 +14,7 @@ interface Bank {
     function work(uint256 id, address goblin, uint256 loan, uint256 maxReturn, bytes calldata data) external payable;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     Bank vault = Bank(0x67B66C99D3Eb37Fa76Aa3Ed1ff33E8e39F0b9c7A);
     IERC20 fakeToken = IERC20(payable(0x2f755e8980f0c2E81681D82CCCd1a4BD5b4D5D46));
     address attacker = address(0xCB36b1ee0Af68Dce5578a487fF2Da81282512233);

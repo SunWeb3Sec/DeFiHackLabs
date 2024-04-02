@@ -6,7 +6,7 @@ import "./interface.sol";
 
 // Credit: SupremacyCA, the poc rewritten from SupremacyCA.
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     IERC20 doodle = IERC20(0x2F131C4DAd4Be81683ABb966b4DE05a549144443);
     IDOODLENFTXVault doodleVault = IDOODLENFTXVault(0x2F131C4DAd4Be81683ABb966b4DE05a549144443);

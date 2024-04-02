@@ -5,7 +5,7 @@ pragma solidity >=0.7.0 <0.9.0;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     WETH9 WETH = WETH9(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     USDC usdc = USDC(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
     MonoToken mono = MonoToken(0x2920f7d6134f4669343e70122cA9b8f19Ef8fa5D);

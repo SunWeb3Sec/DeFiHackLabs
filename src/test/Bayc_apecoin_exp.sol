@@ -11,7 +11,7 @@ Debug:
 https://dashboard.tenderly.co/tx/mainnet/0xeb8c3bebed11e2e4fcd30cbfc2fb3c55c4ca166003c7f7d319e78eaab9747098
 https://tools.blocksec.com/tx/eth/0xeb8c3bebed11e2e4fcd30cbfc2fb3c55c4ca166003c7f7d319e78eaab9747098*/
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IBAYCi bayc = IBAYCi(0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D);
     INFTXVault NFTXVault = INFTXVault(0xEA47B64e1BFCCb773A0420247C0aa0a3C1D2E5C5);

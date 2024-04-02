@@ -44,7 +44,7 @@ interface RubicProxy2 {
     ) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
     RubicProxy1 Rubic1 = RubicProxy1(0x3335A88bb18fD3b6824b59Af62b50CE494143333);
     RubicProxy2 Rubic2 = RubicProxy2(0x33388CF69e032C6f60A420b37E44b1F5443d3333);

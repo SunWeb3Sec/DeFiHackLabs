@@ -14,7 +14,7 @@ interface TIFIFinance {
     function borrow(address qToken, uint256 amount) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     TIFIFinance TIFI = TIFIFinance(0x8A6F7834A9d60090668F5db33FEC353a7Fb4704B);
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     Uni_Router_V2 TIFIRouter = Uni_Router_V2(0xC8595392B8ca616A226dcE8F69D9E0c7D4C81FE4);

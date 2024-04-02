@@ -18,7 +18,7 @@ interface INovaExchange {
     function approve(address spender, uint256 value) external returns (bool);
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     INovaExchange novaContract = INovaExchange(0xB5B27564D05Db32CF4F25813D35b6E6de9210941);
     address attacker = 0xCBF184b8156e1271449CFb42A7D0556A8DCFEf72;

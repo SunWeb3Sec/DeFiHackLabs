@@ -21,7 +21,7 @@ import "./interface.sol";
  * https://www.newsbtc.com/news/company/bsc-flash-loan-attack-pancakebunny/
  */
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     address WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
     address USDT = 0x55d398326f99059fF775485246999027B3197955;

@@ -17,7 +17,7 @@ interface IDutchAuction {
     ) external payable returns (bool[] memory successes, bytes[] memory results);
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IDutchAuction DutchAuction = IDutchAuction(0x4c4564a1FE775D97297F9e3Dc2e762e0Ed5Dda0e);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     bytes[] public data;

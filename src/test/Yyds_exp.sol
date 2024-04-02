@@ -13,7 +13,7 @@ interface TargetWithdraw {
     function withdrawReturnAmountByReferral() external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 YYDS = IERC20(0xB19463ad610ea472a886d77a8ca4b983E4fAf245);

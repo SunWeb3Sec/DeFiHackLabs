@@ -14,7 +14,7 @@ interface TransparentUpgradeableProxy {
     function swap(address a1, address a2, uint256 amount) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 APC = IERC20(0x2AA504586d6CaB3C59Fa629f74c586d78b93A025);
     IERC20 MUSD = IERC20(0x473C33C55bE10bB53D81fe45173fcc444143a13e);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);

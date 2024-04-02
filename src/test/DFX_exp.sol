@@ -19,7 +19,7 @@ interface Curve {
     function withdraw(uint256 _curvesToBurn, uint256 _deadline) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 XIDR = IERC20(0xebF2096E01455108bAdCbAF86cE30b6e5A72aa52);
     IERC20 USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);

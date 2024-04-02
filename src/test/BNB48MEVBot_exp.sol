@@ -7,7 +7,7 @@ interface MEVBot {
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     address public _token0;
     address public _token1;
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);

@@ -41,7 +41,7 @@ interface Unitroller {
     function enterMarkets(address[] calldata vTokens) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IERC20 CTK = IERC20(0xA8c2B8eec3d368C0253ad3dae65a5F2BBB89c929);
     IERC20 BUSD = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
