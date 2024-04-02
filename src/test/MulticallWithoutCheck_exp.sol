@@ -15,7 +15,7 @@ interface Target {
     function multicallWithoutCheck(Call[] memory calls) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     struct Call {
         address target;
         bytes callData;

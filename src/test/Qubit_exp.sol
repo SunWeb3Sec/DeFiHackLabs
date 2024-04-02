@@ -15,7 +15,7 @@ interface IQBridgeHandler {
     function deposit(bytes32 resourceID, address depositer, bytes calldata data) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     address attacker = 0xD01Ae1A708614948B2B5e0B7AB5be6AFA01325c7;
     address QBridge = 0x20E5E35ba29dC3B540a1aee781D0814D5c77Bce6;

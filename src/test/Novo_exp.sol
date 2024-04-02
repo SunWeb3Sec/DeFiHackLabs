@@ -17,7 +17,7 @@ interface INOVOLP {
     function sync() external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IPancakePair PancakePair = IPancakePair(0xEeBc161437FA948AAb99383142564160c92D2974);
     IPancakeRouter PancakeRouter = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
     IWBNB wbnb = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));

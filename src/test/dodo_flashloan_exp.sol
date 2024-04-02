@@ -5,7 +5,7 @@ pragma solidity >=0.7.0 <0.9.0;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     uint256 wCRES_amount = 130_000_000_000_000_000_000_000;
 
     uint256 usdt_amount = 1_100_000_000_000;

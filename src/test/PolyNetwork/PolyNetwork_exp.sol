@@ -34,7 +34,7 @@ interface IEthCrossChainData {
     function getEthTxHash(uint256 ethTxHashIndex) external view returns (bytes32);
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     struct Header {
         uint32 version;
         uint64 chainId;

@@ -50,7 +50,7 @@ interface CauldronMediumRiskV1 {
     ) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     BentoBoxV1 BentBox = BentoBoxV1(0xF5BCE5077908a1b7370B9ae04AdC565EBd643966);
     CauldronMediumRiskV1 Cauldron = CauldronMediumRiskV1(0xbb02A884621FB8F5BFd263A67F58B65df5b090f3);
     IERC20 xSUSHI = IERC20(0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272);

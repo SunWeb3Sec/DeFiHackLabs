@@ -12,7 +12,7 @@ The vulnerability would have allowed a malicious attacker to assign a user’s a
 
 a faulty implementation of standard transferFrom() ERC-20 function in wxBTRFLY token.
 */
-contract RedactedCartelExploit is DSTest {
+contract RedactedCartelExploit is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IRedactedCartelSafeERC20 wxBTRFLY = IRedactedCartelSafeERC20(0x186E55C0BebD2f69348d94C4A27556d93C5Bd36C);
 

@@ -100,7 +100,7 @@ interface SicleRouter {
     ) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     JoeRouter Router = JoeRouter(0x60aE616a2155Ee3d9A68541Ba4544862310933d4);
     SicleRouter sicleRouter = SicleRouter(0xC7f372c62238f6a5b79136A9e5D16A2FD7A3f0F5);
     USDPlus USDplus = USDPlus(0x73cb180bf0521828d8849bc8CF2B920918e23032);

@@ -5,7 +5,7 @@ pragma solidity 0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IWBNB wbnb = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
 
     address public BUSD_USDT_Pair = 0x7EFaEf62fDdCCa950418312c6C91Aef321375A00;

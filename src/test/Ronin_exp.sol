@@ -15,7 +15,7 @@ interface IRoninBridge {
     ) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     address attacker = 0x098B716B8Aaf21512996dC57EB0615e2383E2f96;
     address roninBridge = 0x1A2a1c938CE3eC39b6D47113c7955bAa9DD454F2;
     address WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;

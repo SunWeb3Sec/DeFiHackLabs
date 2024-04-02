@@ -8,7 +8,7 @@ interface ProxyFactory {
     function createProxy(address masterCopy, bytes calldata data) external returns (address payable proxy);
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     ProxyFactory proxy = ProxyFactory(0x76E2cFc1F5Fa8F6a5b3fC4c8F4788F0116861F9B);
     address public childcontract;
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);

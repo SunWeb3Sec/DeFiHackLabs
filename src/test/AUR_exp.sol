@@ -25,7 +25,7 @@ interface IAurumNodePool {
     function getNodes(address account) external view returns (NodeEntity[] memory nodes);
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 AUR = IERC20(0x73A1163EA930A0a67dFEFB9C3713Ef0923755B78);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
 

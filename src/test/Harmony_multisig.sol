@@ -4,7 +4,7 @@ pragma solidity 0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IERC20 usdt = IERC20(0xdAC17F958D2ee523a2206206994597C13D831ec7);
     MultiSig MultiSigWallet = MultiSig(payable(0x715CdDa5e9Ad30A0cEd14940F9997EE611496De6));

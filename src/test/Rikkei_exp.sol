@@ -5,7 +5,7 @@ pragma solidity >=0.7.0 <0.9.0;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 usdc = IERC20(0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d);
     IRToken rbnb = IRToken(0x157822aC5fa0Efe98daa4b0A55450f4a182C10cA);
     IRToken rusdc = IRToken(0x916e87d16B2F3E097B9A6375DC7393cf3B5C11f5);

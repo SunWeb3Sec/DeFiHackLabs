@@ -14,7 +14,7 @@ interface SushiRouter {
     ) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     address attacker = 0x8d3d13cac607B7297Ff61A5E1E71072758AF4D01;
     address sushiSwapRouter = 0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506;

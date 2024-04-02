@@ -22,7 +22,7 @@ interface AlpacaWBNBVault {
     ) external payable;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     AlpacaWBNBVault vault = AlpacaWBNBVault(0xd7D069493685A581d27824Fc46EdA46B7EfC0063);
     IWBNB wbnb = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     IERC20 vSafeVaultWBNB = IERC20(payable(0xD4BBF439d3EAb5155Ca7c0537E583088fB4CFCe8));

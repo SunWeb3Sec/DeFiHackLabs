@@ -22,7 +22,7 @@ interface IUFT is IERC20 {
     ) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     SHOP shop = SHOP(0xCA49EcF7e7bb9bBc9D1d295384663F6BA5c0e366);
     IUFT UFT = IUFT(0xf887A2DaC0DD432997C970BCE597A94EaD4A8c25);

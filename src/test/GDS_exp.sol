@@ -54,7 +54,7 @@ contract ClaimReward {
     }
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     GDSToken GDS = GDSToken(0xC1Bb12560468fb255A8e8431BDF883CC4cB3d278);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);

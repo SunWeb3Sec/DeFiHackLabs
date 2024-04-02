@@ -23,7 +23,7 @@ interface MultichainRouter {
     ) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 NUM = IERC20(0x3496B523e5C00a4b4150D6721320CdDb234c3079);
     IERC20 USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);

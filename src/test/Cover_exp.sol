@@ -14,7 +14,7 @@ interface Blacksmith {
     function withdraw(address _lpToken, uint256 _amount) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     Blacksmith public bs = Blacksmith(0xE0B94a7BB45dD905c79bB1992C9879f40F1CAeD5);

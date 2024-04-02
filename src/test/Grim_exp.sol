@@ -4,7 +4,7 @@ pragma solidity 0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     address btcAddress = 0x321162Cd933E2Be498Cd2267a90534A804051b11;
     address wftmAddress = 0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83;
     address routerAddress = 0x16327E3FbDaCA3bcF7E38F5Af2599D2DDc33aE52;

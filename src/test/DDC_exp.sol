@@ -38,7 +38,7 @@ interface IPair {
     function sync() external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IRouter TargetRouter = IRouter(0x22Dc25866BB53c52BAfA6cB80570FC83FC7dd125);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);

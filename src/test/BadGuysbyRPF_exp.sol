@@ -15,7 +15,7 @@ Etherscan tx - https://etherscan.io/tx/0xb613c68b00c532fe9b28a50a91c021d61a98d90
 
 forge test --contracts ./src/test/BadGuysbyRPF_exp.sol -vv*/
 
-contract BadGuysbyRPFExploit is DSTest {
+contract BadGuysbyRPFExploit is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     address owner = 0x09eFF2449882F9e727A8e9498787f8ff81465Ade; //owner of Bad Guys by RPF

@@ -35,7 +35,7 @@ contract AirDropRewardContract {
     }
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 RL = IERC20(0x4bBfae575Dd47BCFD5770AB4bC54Eb83DB088888);
     RLLpIncentive RLL = RLLpIncentive(0x335ddcE3f07b0bdaFc03F56c1b30D3b269366666);

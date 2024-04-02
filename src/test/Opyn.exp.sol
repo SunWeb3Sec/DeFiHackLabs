@@ -11,7 +11,7 @@ https://medium.com/opyn/opyn-eth-put-exploit-post-mortem-1a009e3347a8
 @Transaction
 0x56de6c4bd906ee0c067a332e64966db8b1e866c7965c044163a503de6ee6552a*/
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IOpyn opyn = IOpyn(0x951D51bAeFb72319d9FBE941E1615938d89ABfe2);
 
     address attacker = 0xe7870231992Ab4b1A01814FA0A599115FE94203f;

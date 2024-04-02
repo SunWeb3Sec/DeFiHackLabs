@@ -5,7 +5,7 @@ pragma solidity >=0.7.0 <0.9.0;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IUniswapV2Pair pair = IUniswapV2Pair(0xbC2C5392b0B841832bEC8b9C30747BADdA7b70ca);
     IERC20 rena = IERC20(0x56de8BC61346321D4F2211e3aC3c0A7F00dB9b76);
     IRevest revest = IRevest(0x2320A28f52334d62622cc2EaFa15DE55F9987eD9);

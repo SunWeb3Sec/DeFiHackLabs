@@ -9,7 +9,7 @@ import "./interface.sol";
 // @TX
 // https://etherscan.io/tx/0xe3f0d14cfb6076cabdc9057001c3fafe28767a192e88005bc37bd7d385a1116a
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     address _pcAPE = 0xDDDe38696FBe5d11497D72d8801F651642d62353;
     address _vDebtUSDC = 0x1B36ad30F6866716FF08EB599597D8CE7607571d;
     address _vDebtwstETH = 0xCA76D6D905b08e3224945bFA0340E92CCbbE5171;

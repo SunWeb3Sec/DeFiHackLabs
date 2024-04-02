@@ -51,7 +51,7 @@ contract claimReward {
     }
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     UEarnPool Pool = UEarnPool(0x02D841B976298DCd37ed6cC59f75D9Dd39A3690c);
     Uni_Pair_V2 Pair = Uni_Pair_V2(0x7EFaEf62fDdCCa950418312c6C91Aef321375A00);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);

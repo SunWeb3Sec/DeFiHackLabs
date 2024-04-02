@@ -26,7 +26,7 @@ interface IUSD {
     function sync() external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IPancakePair PancakePair = IPancakePair(0x7EFaEf62fDdCCa950418312c6C91Aef321375A00); // KIMO/WBNB pair
     address private usdt = 0x55d398326f99059fF775485246999027B3197955;
     address private swap = 0x5a9846062524631C01ec11684539623DAb1Fae58;

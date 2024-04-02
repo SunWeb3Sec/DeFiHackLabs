@@ -4,7 +4,7 @@ pragma solidity 0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     CheatCodes cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IPancakeRouter pancakeRouter = IPancakeRouter(payable(0x6CD71A07E72C514f5d511651F6808c6395353968));
     GymToken gymnet = GymToken(0x3a0d9d7764FAE860A659eb96A500F1323b411e68);

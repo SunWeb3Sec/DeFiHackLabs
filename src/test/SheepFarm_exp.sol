@@ -18,7 +18,7 @@ interface SheepFram {
     function sellVillage() external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     SheepFram sheepFram = SheepFram(0x4726010da871f4b57b5031E3EA48Bde961F122aA);
     address neighbor = 0x14598f3a9f3042097486DC58C65780Daf3e3acFB;
 

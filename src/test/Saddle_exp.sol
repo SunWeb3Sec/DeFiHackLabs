@@ -16,7 +16,7 @@ interface ISaddle {
     function swap(uint8 i, uint8 j, uint256 dx, uint256 min_dy, uint256 deadline) external returns (uint256);
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     address private constant eulerLoans = 0x07df2ad9878F8797B4055230bbAE5C808b8259b3;
     address private constant usdc = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
     address private constant susd = 0x57Ab1ec28D129707052df4dF418D58a2D46d5f51;

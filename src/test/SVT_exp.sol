@@ -14,7 +14,7 @@ interface ISVTpool {
     function sell(uint256 amount) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 BUSD = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 SVT = IERC20(0x657334B4FF7bDC4143941B1F94301f37659c6281);
     ISVTpool pool = ISVTpool(0x2120F8F305347b6aA5E5dBB347230a8234EB3379);

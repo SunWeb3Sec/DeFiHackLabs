@@ -42,7 +42,7 @@ interface ELPExchange is IERC20 {
     ) external;
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IERC20 TIC = IERC20(0x75739a693459f33B1FBcC02099eea3eBCF150cBe);
     IERC20 USDC_E = IERC20(0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664);
     Uni_Pair_V2 SPair = Uni_Pair_V2(0x4CF9dC05c715812FeAD782DC98de0168029e05C8);

@@ -10,7 +10,7 @@ interface ETHpledge {
 // Expected error. [FAIL. Reason: Pancake: INSUFFICIENT_INPUT_AMOUNT]
 // Because we don't repay funds to pancake.
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IPancakePair PancakePair = IPancakePair(0x7EFaEf62fDdCCa950418312c6C91Aef321375A00);
     IPancakePair PancakePair2 = IPancakePair(0x92f961B6bb19D35eedc1e174693aAbA85Ad2425d);
     IERC20 busd = IERC20(0x55d398326f99059fF775485246999027B3197955);

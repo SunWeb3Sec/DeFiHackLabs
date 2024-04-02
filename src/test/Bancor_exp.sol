@@ -19,7 +19,7 @@ interface IBancor {
     function safeTransferFrom(IERC20 _token, address _from, address _to, uint256 _value) external;
 }
 
-contract BancorExploit is DSTest {
+contract BancorExploit is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     address bancorAddress = 0x5f58058C0eC971492166763c8C22632B583F667f;
     address victim = 0xfd0B4DAa7bA535741E6B5Ba28Cba24F9a816E67E;

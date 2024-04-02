@@ -19,7 +19,7 @@ interface Token {
     function transfer(address recipient, uint256 amount) external returns (bool);
 }
 
-contract ContractTest is DSTest {
+contract ContractTest is Test {
     IpancakePair ipancake = IpancakePair(0x0eD7e52944161450477ee417DE9Cd3a859b14fD0);
     WBNB wbnb = WBNB(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     Surge surge = Surge(0xE1E1Aa58983F6b8eE8E4eCD206ceA6578F036c21);
