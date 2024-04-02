@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-379 incidents included.
+380 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,7 +34,10 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
 [20240401 ATM](#20240401-atm---business-logic-flaw)
+
+[20240401 OpenLeverage](#20240401-openleverage---reentrancy)
 
 [20240329 PrismaFi](#20240329-prismaFi---insufficient-validation)
 
@@ -837,6 +840,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ```
 forge test --contracts ./src/test/ATM_exp.sol -vvv
 ```
+
 #### Contract
 
 [ATM_exp.sol](src/test/ATM_exp.sol)
@@ -844,18 +848,39 @@ forge test --contracts ./src/test/ATM_exp.sol -vvv
 ### Link reference
 
 https://twitter.com/0xNickLFranklin/status/1775008489569718508
+
+---
+
+### 20240401 OpenLeverage - Reentrancy
+
+### Lost: ~234K
+
+```
+forge test --contracts src/test/OpenLeverage2_exp.sol -vvv
+```
+
+#### Contract
+
+[OpenLeverage2_exp.sol](src/test/OpenLeverage2_exp.sol)
+
+### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1774727539975672136
+
 ---
 
 ### 20240329 PrismaFi - Insufficient Validation
 
 ### Lost: $~11M
 
-
 ```sh
 forge test --contracts ./src/test/Prisma_exp.sol -vvv
 ```
+
 #### Contract
+
 [Prisma_exp.sol](src/test/Prisma_exp.sol)
+
 ### Link reference
 
 https://twitter.com/EXVULSEC/status/1773371049951797485
@@ -889,7 +914,6 @@ forge test --contracts ./src/test/SSS_exp.sol -vvv
 ```
 
 #### Contract
-
 
 [SSS_exp.sol](src/test/SSS_exp.sol)
 
@@ -975,12 +999,14 @@ https://twitter.com/0xNickLFranklin/status/1768171595561046489
 
 ### Lost: ~54 ETH
 
-
 ```sh
 forge test --contracts ./src/test/Juice_exp.sol -vvv
 ```
+
 #### Contract
+
 [Juice_exp.sol](src/test/Juice_exp.sol)
+
 ### Link reference
 
 https://medium.com/@juicebotapp/juice-staking-exploit-next-steps-95e218b3ec71
