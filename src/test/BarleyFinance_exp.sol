@@ -64,7 +64,7 @@ contract ContractTest is Test {
     }
 
     function testExploit() public {
-        // Start with 200 DAI tokens transfered from exploiter to attack contract in txs:
+        // Start with 200 DAI tokens transferred from exploiter to attack contract in txs:
         // https://phalcon.blocksec.com/explorer/tx/eth/0xa685928b5102349a5cc50527fec2e03cb136c233505471bdd4363d0ab077a69a
         // https://phalcon.blocksec.com/explorer/tx/eth/0xaaa197c7478063eb1124c8d8b03016fe080e6ec4c4f4a4e6d7f09022084e3390
         // DAI tokens will be used by wBARL flash function
