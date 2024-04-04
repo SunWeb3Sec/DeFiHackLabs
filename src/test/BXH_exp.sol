@@ -38,7 +38,7 @@ contract Attacker is Test {
     }
 
     function testExploit() public {
-        // Before attack need depoit first
+        // Before attack need deposit first
 
         // cheat.rollFork(21665464);
         // cheat.prank(0x81C63d821b7CdF70C61009A81FeF8Db5949AC0C9);
