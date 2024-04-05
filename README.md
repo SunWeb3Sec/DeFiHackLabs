@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-380 incidents included.
+381 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -40,6 +40,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240401 OpenLeverage](#20240401-openleverage---reentrancy)
 
 [20240329 PrismaFi](#20240329-prismaFi---insufficient-validation)
+
+[20240328 LavaLending](#20240328-lavalending---business-logic-flaw)
 
 [20240325 ZongZi](#20240325-zongzi---price-manipulation)
 
@@ -884,6 +886,28 @@ forge test --contracts ./src/test/Prisma_exp.sol -vvv
 ### Link reference
 
 https://twitter.com/EXVULSEC/status/1773371049951797485
+
+---
+
+### 20240328 LavaLending - Business Logic Flaw
+
+### Lost: ~340K
+
+```
+forge test --contracts src/test/LavaLending_exp.sol -vvv
+```
+
+#### Contract
+
+[LavaLending_exp.sol](src/test/LavaLending_exp.sol)
+
+#### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1774727539975672136
+
+https://twitter.com/Phalcon_xyz/status/1773546399713345965
+
+https://hackmd.io/@LavaSecurity/03282024
 
 ---
 
