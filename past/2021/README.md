@@ -282,7 +282,7 @@ https://twitter.com/BlockSecTeam/status/1438100688215560192
 
 ---
 
-### 20210912 ZABU Finance - Deflationary token uncompatible
+### 20210912 ZABU Finance - Deflationary token incompatible
 
 Testing
 
@@ -488,7 +488,7 @@ https://chain-swap.medium.com/chainswap-post-mortem-and-compensation-plan-90cad5
 
 ---
 
-### 20210628 SafeDollar - Deflationary token uncompatible
+### 20210628 SafeDollar - Deflationary token incompatible
 
 ### Lost: $.2 million
 
