@@ -48,7 +48,7 @@ contract ContractTest is Test {
 
     CheatCodes constant cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
-    // ankr rpc bsc maybe unavailible, please use QuickNode
+    // ankr rpc bsc maybe unavailable, please use QuickNode
     function setUp() public {
         cheat.createSelectFork("bsc", 22_535_101);
     }

@@ -109,7 +109,7 @@ contract ContractTest is Test {
         TIMEToWETH();
         WETH.withdraw(WETH.balanceOf(address(this)));
 
-        // In the end of attack tx also ~5 ether was transfered to Flashbot
+        // In the end of attack tx also ~5 ether was transferred to Flashbot
         emit log_named_decimal_uint(
             "Exploiter ETH balance after attack",
             address(this).balance,
