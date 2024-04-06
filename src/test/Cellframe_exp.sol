@@ -123,7 +123,7 @@ contract ContractTest is Test {
         uint256 lpAmount = CELL9.balanceOf(address(this)) / 10;
         emit log_named_uint("Amount of liquidity to migrate (for one migrate call)", lpAmount);
 
-        // 8 calls to migrate were successfull. Ninth - revert in attack tx.
+        // 8 calls to migrate were successfully. Ninth - revert in attack tx.
         for (uint256 i; i < 9; ++i) {
             LpMigration.migrate(lpAmount);
         }
