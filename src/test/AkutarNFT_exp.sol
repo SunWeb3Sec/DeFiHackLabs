@@ -11,7 +11,7 @@ There are two serious logic vulnerabilities
 
 1. First can cause a DoS attack due to the missing check if the bidder is a contract. As a result, the attacker can call the revert() and stop the honest bidders from getting back their bid amount.
 
-2. The Second will make the project fund (more than 34M USD) being locked forever due to incorrect check in the require statment.
+2. The Second will make the project fund (more than 34M USD) being locked forever due to incorrect check in the require statement.
 
 forge test --contracts ./src/test/AkutarNFT_exp.sol -vv  
 */

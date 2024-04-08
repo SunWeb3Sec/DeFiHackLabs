@@ -9,7 +9,7 @@ import "./interface.sol";
 // @TX
 // https://bscscan.com/tx/0x24a68d2a4bbb02f398d3601acfd87b09f543d935fc24862c314aaf64c295acdb
 // @Summary
-// Relfection token,call deliver function to decrease pairs token balance,and swap to get the profit.
+// Reelection token,call deliver function to decrease pairs token balance,and swap to get the profit.
 
 interface Bunn is IERC20 {
     function deliver(uint256 tAmount) external;
