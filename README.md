@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-381 incidents included.
+382 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240408 SQUID](#20240408-squid---sandwich-attack)
 
 [20240401 ATM](#20240401-atm---business-logic-flaw)
 
@@ -834,6 +836,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240408 SQUID - sandwich attack
+
+### Lost: $~87K USD
+
+```
+forge test --contracts ./src/test/SQUID_exp.sol -vvv
+```
+
+#### Contract
+
+[SQUID_exp.sol](src/test/SQUID_exp.sol)
+
+### Link reference
+
+https://twitter.com/bbbb/status/1777228277415039304
+
+---
 
 ### 20240401 ATM - business logic flaw
 
