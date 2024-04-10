@@ -39,6 +39,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240408 SQUID](#20240408-squid---sandwich-attack)
 
+[20240404 WSM](#20240404-wsm---manipulating-price)
+
 [20240401 ATM](#20240401-atm---business-logic-flaw)
 
 [20240401 OpenLeverage](#20240401-openleverage---reentrancy)
@@ -872,6 +874,26 @@ forge test --contracts ./src/test/SQUID_exp.sol -vvv
 ### Link reference
 
 https://twitter.com/bbbb/status/1777228277415039304
+
+---
+
+---
+
+### 20240404 wsm - manipulating price
+
+### Lost: $~18K USD
+
+```
+forge test --contracts ./src/test/WSM_exp.sol -vvv
+```
+
+#### Contract
+
+[WSM_exp.sol](src/test/WSM_exp.sol)
+
+### Link reference
+
+https://hacked.slowmist.io/#:~:text=Hacked%20target%3A%20Wall%20Street%20Memes
 
 ---
 
