@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[202404012 GROKD](#202404012-grokd---lack-of-access-control)
+
 [20240409 UPS](#20240409-ups---business-logic-flaw)
 
 [20240408 SQUID](#20240408-squid---sandwich-attack)
@@ -840,6 +842,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 202404012 GROKD - lack of access control
+
+### Lost: $~150 BNB
+
+```
+forge test --contracts ./src/test/GROKD_exp.sol -vvv
+```
+
+#### Contract
+
+[GROKD_exp.sol](src/test/GROKD_exp.sol)
+
+### Link reference
+
+https://x.com/hipalex921/status/1778482890705416323?t=KvvG83s7SXr9I55aftOc6w&s=05
+
+---
 
 ### 20240409 UPS - business logic flaw
 
