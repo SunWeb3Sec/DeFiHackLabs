@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-384 incidents included.
+385 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[202404012 GROKD](#202404012-grokd---lack-of-access-control)
 
 [20240409 UPS](#20240409-ups---business-logic-flaw)
 
@@ -840,6 +842,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 202404012 GROKD - lack of access control
+
+### Lost: $~150 BNB
+
+```
+forge test --contracts ./src/test/GROKD_exp.sol -vvv
+```
+
+#### Contract
+
+[GROKD_exp.sol](src/test/GROKD_exp.sol)
+
+### Link reference
+
+https://x.com/hipalex921/status/1778482890705416323?t=KvvG83s7SXr9I55aftOc6w&s=05
+
+---
 
 ### 20240409 UPS - business logic flaw
 
