@@ -63,7 +63,7 @@ contract AttackContract is Test {
             "[Note] We skipped the part where the attacker made a flash loan with 16 pools to get the initial capital"
         );
 
-        // Attacker flashloan 16 pools, to borrow 2.95 millon USDT as initial capital
+        // Attacker flashloan 16 pools, to borrow 2.95 million USDT as initial capital
         stdstore.target(USDT).sig(IERC20(USDT).balanceOf.selector).with_key(address(this)).checked_write(
             2_952_797_730_003_166_405_412_733
         );
