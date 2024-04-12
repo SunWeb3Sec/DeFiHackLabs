@@ -24,7 +24,7 @@ First, let’s look into the malicious Tx in detail.
 This is a Seaport Tx, 134 NFT were sold with 0 ETH price in this Tx:
 * `0xabeaa3375534d2931b2149067af3e7b8458d2f0c` - victim
 * `0x4574043b6423953723356237042bf6df2304f297` - malicious Tx originator
-* `0xc0fdf4fa92f88b82ccbebfc80fbe4eb7e5a8e0ca` - malicous assets taker
+* `0xc0fdf4fa92f88b82ccbebfc80fbe4eb7e5a8e0ca` - malicious assets taker
 
 `The victim` signed the malicious Seaport Tx in his wallet so `the malicious Tx originator` got the victims signature and then bought the assets with 0 cost.
 For anyone who is not familiar with Seaport protocol, you can find more information in the next section.
