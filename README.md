@@ -117,7 +117,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240117 SocketGateway](#20240112-socketgateway---lack-of-calldata-validation)
 
-[20240112 WiseLending](#20240112-wiselending---loss-of-precision)
+[20240112 WiseLending](#20240112-wiselending---bad-healthfactor-check)
 
 [20240110 LQDX Alert](#20240110-lqdx---unauthorized-transferfrom)
 
@@ -1612,23 +1612,23 @@ https://twitter.com/peckshield/status/1747353782004900274
 
 ---
 
-### 20240112 WiseLending - Loss of Precision
+### 20240112 WiseLending - Bad HealthFactor Check
 
 ### Lost: ~464K
 
 ```
-forge test --contracts ./src/test/WiseLending02_exp.sol -vvv --evm-version shanghai
+forge test --contracts ./src/test/WiseLending02.exp.sol -vvv --evm-version shanghai
 ```
 
 #### Contract
 
 [WiseLending02_exp.sol](src/test/WiseLending02_exp.sol)
 
+[WiseLending02.exp.sol](src/test/WiseLending02.exp.sol)
+
 #### Link reference
 
-https://twitter.com/EXVULSEC/status/1746829519334650018
-
-https://twitter.com/peckshield/status/1745907642118123774
+https://twitter.com/danielvf/status/1746303616778981402
 
 ---
 
