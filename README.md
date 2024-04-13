@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20240412 SumerMoney](#20240412-sumermoney---Reentrancy)
+
 [202404012 GROKD](#202404012-grokd---lack-of-access-control)
 
 [20240409 UPS](#20240409-ups---business-logic-flaw)
@@ -842,6 +844,22 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240412 SumerMoney - Reentrancy
+
+### Lost: 350K
+
+
+```sh
+forge test --contracts ./src/test/SumerMoney_exp.sol -vvv
+```
+#### Contract
+[SumerMoney_exp.sol](src/test/SumerMoney_exp.sol)
+### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1778986926705672698
+
+---
 
 ### 202404012 GROKD - lack of access control
 
