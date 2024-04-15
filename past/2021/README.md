@@ -80,6 +80,8 @@
 
 [20200618 Bancor Protocol](#20200618-bancor-protocol---access-control)
 
+[20200419 LendfMe](#20200419-lendfme---erc777-reentrancy)
+
 [20200418 UniSwapV1](#20200418-uniswapv1---erc777-reentrancy)
 
 [20180422 Beauty Chain](#20180422-beauty-chain---integer-overflow)
@@ -896,6 +898,26 @@ forge test --contracts ./src/test/Bancor_exp.sol -vv
 https://blog.bancor.network/bancors-response-to-today-s-smart-contract-vulnerability-dc888c589fe4
 
 https://etherscan.io/address/0x5f58058c0ec971492166763c8c22632b583f667f
+
+---
+
+### 20200419 LendfMe - ERC777 Reentrancy
+
+#### Lost: $25,000,000
+
+Testing
+
+```sh
+forge test --contracts ./src/test/LendfMe_exp.sol -vv
+```
+
+#### Contract
+
+[LendfMe_exp](../../src/test/LendfMe_exp.sol)
+
+#### Link reference
+
+https://peckshield.medium.com/uniswap-lendf-me-hacks-root-cause-and-loss-analysis-50f3263dcc09
 
 ---
 
