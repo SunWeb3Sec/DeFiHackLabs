@@ -226,7 +226,6 @@
 
 [20220315 Agave Finance](#20220313-agave-finance---erc667-reentrancy)
 
-
 [20220315 Hundred Finance](#20220313-hundred-finance---erc667-reentrancy)
 
 [20220313 Paraluni](#20220313-paraluni---flashloan--reentrancy)
@@ -248,7 +247,6 @@
 [20220128 Qubit Finance](#20220128-qubit-finance---bridge-address0safetransferfrom-does-not-revert)
 
 [20220118 Multichain (Anyswap)](#20220118-multichain-anyswap---insufficient-token-validation)
-
 
 ### 20221230 - DFS - Insufficient validation + flashloan
 
@@ -2335,7 +2333,6 @@ https://bscscan.com/tx/0x4f2005e3815c15d1a9abd8588dd1464769a00414a6b7adcbfd75a53
 
 ---
 
-
 ### 20220423 Akutar NFT - Denial of Service
 
 #### Lost: 34M USD
@@ -2703,6 +2700,7 @@ https://medium.com/immunefi/a-poc-of-the-hundred-finance-heist-4121f23a098
 https://gnosisscan.io/tx/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098
 
 ---
+
 ### 20220313 Agave Finance - ERC667 Reentrancy
 
 #### Lost: $1.5 million
@@ -2723,6 +2721,7 @@ https://medium.com/agavefinance/agave-exploit-reentrancy-in-liquidation-call-51a
 https://gnosisscan.io/tx/0xa262141abcf7c127b88b4042aee8bf601f4f3372c9471dbd75cb54e76524f18e
 
 ---
+
 ### 20220313 Paraluni - Flashloan & Reentrancy
 
 #### Lost: $1.7 million
@@ -2893,7 +2892,7 @@ https://moonriver.moonscan.io/tx/0x5a87c24d0665c8f67958099d1ad22e39a03aa08d47d00
 
 ### 20220204 TecraSpace - Any token is destroyed
 
-#### Lost: ~63k $USDT 
+#### Lost: ~63k $USDT
 
 Testing
 

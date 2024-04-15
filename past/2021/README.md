@@ -2,7 +2,7 @@
 
 ## Before 2021 - List of Past DeFi Incidents
 
-40 incidents included.
+43 incidents included.
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
@@ -65,7 +65,9 @@
 [20210308 DODO](#20210308-dodo---flashloan-attack)
 
 [20210305 Paid Network](#20210305-paid-network---private-key-compromised)
+
 [20210204 Yearn YDai](#20210204-yearn-ydai---Slippage-proection-absent)
+
 [20210125 Sushi Badger Digg](#20210125-sushi-badger-digg---sandwich-attack)
 
 [20201229 Cover Protocol](#20201229-cover-protocol)
@@ -77,6 +79,8 @@
 [20200804 Opyn Protocol](#20200804-opyn-protocol---msgValue-in-loop)
 
 [20200618 Bancor Protocol](#20200618-bancor-protocol---access-control)
+
+[20200419 LendfMe](#20200419-lendfme---erc777-reentrancy)
 
 [20200418 UniSwapV1](#20200418-uniswapv1---erc777-reentrancy)
 
@@ -599,6 +603,7 @@ forge test --contracts src/test/BurgerSwap_exp.sol -vv
 [BurgerSwap_exp.sol](../../src/test/BurgerSwap_exp.sol)
 
 #### Link reference
+
 https://twitter.com/Mudit__Gupta/status/1398156036574306304
 
 ---
@@ -751,7 +756,6 @@ https://etherscan.io/tx/0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627
 
 ---
 
-
 ### 20210204 Yearn YDai - Slippage proection absent
 
 #### Lost: 11 Million $
@@ -894,6 +898,26 @@ forge test --contracts ./src/test/Bancor_exp.sol -vv
 https://blog.bancor.network/bancors-response-to-today-s-smart-contract-vulnerability-dc888c589fe4
 
 https://etherscan.io/address/0x5f58058c0ec971492166763c8c22632b583f667f
+
+---
+
+### 20200419 LendfMe - ERC777 Reentrancy
+
+#### Lost: $25,000,000
+
+Testing
+
+```sh
+forge test --contracts ./src/test/LendfMe_exp.sol -vv
+```
+
+#### Contract
+
+[LendfMe_exp](../../src/test/LendfMe_exp.sol)
+
+#### Link reference
+
+https://peckshield.medium.com/uniswap-lendf-me-hacks-root-cause-and-loss-analysis-50f3263dcc09
 
 ---
 
