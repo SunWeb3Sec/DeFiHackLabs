@@ -65,7 +65,9 @@
 [20210308 DODO](#20210308-dodo---flashloan-attack)
 
 [20210305 Paid Network](#20210305-paid-network---private-key-compromised)
+
 [20210204 Yearn YDai](#20210204-yearn-ydai---Slippage-proection-absent)
+
 [20210125 Sushi Badger Digg](#20210125-sushi-badger-digg---sandwich-attack)
 
 [20201229 Cover Protocol](#20201229-cover-protocol)
@@ -599,6 +601,7 @@ forge test --contracts src/test/BurgerSwap_exp.sol -vv
 [BurgerSwap_exp.sol](../../src/test/BurgerSwap_exp.sol)
 
 #### Link reference
+
 https://twitter.com/Mudit__Gupta/status/1398156036574306304
 
 ---
@@ -750,7 +753,6 @@ https://paidnetwork.medium.com/paid-network-attack-postmortem-march-7-2021-9e4c0
 https://etherscan.io/tx/0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0
 
 ---
-
 
 ### 20210204 Yearn YDai - Slippage proection absent
 

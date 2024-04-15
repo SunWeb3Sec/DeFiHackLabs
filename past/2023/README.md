@@ -2,7 +2,6 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-
 ### 20231225 Telcoin - Storage Collision
 
 ### Lost: ~1,24M
