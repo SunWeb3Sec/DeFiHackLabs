@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-387 incidents included.
+388 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20240415 Chainge](#20240415-chainge---input-validation)
 [20240412 FIL314](#20240412-fil314---insufficient-validation-and-price-manipulation)
 
 [20240412 SumerMoney](#20240412-sumermoney---Reentrancy)
@@ -848,6 +849,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 
 
+
+
+
+
+### 20240415 Chainge - Input Validation
+
+### Lost: ~200K
+
+
+```sh
+forge test --contracts ./src/test/Chainge_exp.sol -vvv
+```
+#### Contract
+[Chainge_exp.sol](src/test/Chainge_exp.sol)
+### Link reference
+
+https://twitter.com/CyversAlerts/status/1779875922381860920
+
+---
 
 ### 20240412 FIL314 - 
 
