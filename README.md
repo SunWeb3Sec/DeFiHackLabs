@@ -35,6 +35,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 [20240415 Chainge](#20240415-chainge---input-validation)
+
 [20240412 FIL314](#20240412-fil314---insufficient-validation-and-price-manipulation)
 
 [20240412 SumerMoney](#20240412-sumermoney---Reentrancy)
