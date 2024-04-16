@@ -856,7 +856,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### Lost: >100K
 
 ```sh
-forge test --contracts src/test/MARS_exp.sol
+forge test --contracts src/test/MARS_exp.sol -vv
 ```
 
 #### Contract

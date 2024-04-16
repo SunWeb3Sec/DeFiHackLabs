@@ -13,6 +13,7 @@ import "./interface.sol";
 
 // @Analyses
 // https://twitter.com/Phalcon_xyz/status/1780150315603701933
+// The pair contract can get reflections from taxes. Thus the attacker can user flashloan to repeated swap and sync for better pricing.
 
 
 IPancakeV3Pool constant v3pair = IPancakeV3Pool(0x36696169C63e42cd08ce11f5deeBbCeBae652050);
