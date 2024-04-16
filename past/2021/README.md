@@ -2,7 +2,7 @@
 
 ## Before 2021 - List of Past DeFi Incidents
 
-43 incidents included.
+44 incidents included.
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
@@ -77,6 +77,8 @@
 [20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
 
 [20200804 Opyn Protocol](#20200804-opyn-protocol---msgValue-in-loop)
+
+[20200628 Balancer Protocol](#20200628-balancer-protocol---token-incompatible)
 
 [20200618 Bancor Protocol](#20200618-bancor-protocol---access-control)
 
@@ -878,6 +880,26 @@ forge test --contracts ./src/test/Opyn.exp.sol -vv
 https://medium.com/opyn/opyn-eth-put-exploit-post-mortem-1a009e3347a8
 
 https://etherscan.io/tx/0x56de6c4bd906ee0c067a332e64966db8b1e866c7965c044163a503de6ee6552a
+
+---
+
+### 20200628 Balancer Protocol - Token Incompatible
+
+Testing
+
+```sh
+forge test --contracts ./src/test/Balancer_20200628_exp.sol -vv
+```
+
+#### Contract
+
+[Balancer_20200628_exp.sol](../../src/test/Balancer_20200628_exp.sol)
+
+#### Link reference
+
+https://slowmist.medium.com/detailed-analysis-of-balancer-hack-de8bd86020de
+
+https://etherscan.io/tx/0x013be97768b702fe8eccef1a40544d5ecb3c1961ad5f87fee4d16fdc08c78106
 
 ---
 
