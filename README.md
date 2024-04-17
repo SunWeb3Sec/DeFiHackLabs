@@ -867,10 +867,6 @@ forge test --contracts src/test/SATX_exp.sol -vvv
 https://x.com/bbbb/status/1780341239801393479
 
 
-### 20240415 Chainge - Input Validation
-
-### Lost: ~200K
-
 ### 20240416 MARS - Bad Reflection
 
 ### Lost: >100K
