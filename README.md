@@ -1417,7 +1417,7 @@ https://twitter.com/0xNickLFranklin/status/1760559768241160679
 ### Lost: ~10k
 
 ```
-forge test --contracts ./src/test/RuggedArte_exp.sol -vvv
+forge test --contracts ./src/test/RuggedArt_exp.sol -vvv
 ```
 
 #### Contract
