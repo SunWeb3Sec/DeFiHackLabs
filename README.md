@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-390 incidents included.
+391 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20240419 HedgeyFinance](#20240419-hedgeyfinance---)
 
 [20240416 SATX](#20240416-satx---logic-flaw)
 
@@ -852,6 +853,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20240419 HedgeyFinance - 
+
+### Lost: 48M USD
+
+
+```sh
+forge test --contracts ./src/test/HedgeyFinance_exp.sol -vvv
+```
+#### Contract
+[HedgeyFinance_exp.sol](src/test/HedgeyFinance_exp.sol)
+### Link reference
+
+https://twitter.com/Cube3AI/status/1781294512716820918
+
+---
 
 ### 20240416 SATX - Logic Flaw
 
