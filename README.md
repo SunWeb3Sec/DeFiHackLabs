@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-387 incidents included.
+391 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,14 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20240419 HedgeyFinance](#20240419-hedgeyfinance---)
+
+[20240416 SATX](#20240416-satx---logic-flaw)
+
+[20240416 MARS_DEFI](#20240416-mars---bad-reflection)
+
+[20240415 Chainge](#20240415-chainge---input-validation)
+
 [20240412 FIL314](#20240412-fil314---insufficient-validation-and-price-manipulation)
 
 [20240412 SumerMoney](#20240412-sumermoney---Reentrancy)
@@ -848,6 +856,66 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 
 
+
+### 20240419 HedgeyFinance - 
+
+### Lost: 48M USD
+
+
+```sh
+forge test --contracts ./src/test/HedgeyFinance_exp.sol -vvv
+```
+#### Contract
+[HedgeyFinance_exp.sol](src/test/HedgeyFinance_exp.sol)
+### Link reference
+
+https://twitter.com/Cube3AI/status/1781294512716820918
+
+---
+
+### 20240416 SATX - Logic Flaw
+
+### Lost: ~ 50 BNB
+
+```sh
+forge test --contracts src/test/SATX_exp.sol -vvv
+```
+
+#### Contract
+[SATX_exp.sol](src/test/SATX_exp.sol)
+### Link reference
+https://x.com/bbbb/status/1780341239801393479
+
+
+### 20240416 MARS - Bad Reflection
+
+### Lost: >100K
+
+```sh
+forge test --contracts src/test/MARS_exp.sol -vv
+```
+
+#### Contract
+[MARS_exp.sol](src/test/MARS_exp.sol)
+### Link reference
+https://twitter.com/Phalcon_xyz/status/1780150315603701933
+
+
+### 20240415 Chainge - Input Validation
+
+### Lost: ~200K
+
+
+```sh
+forge test --contracts ./src/test/Chainge_exp.sol -vvv
+```
+#### Contract
+[Chainge_exp.sol](src/test/Chainge_exp.sol)
+### Link reference
+
+https://twitter.com/CyversAlerts/status/1779875922381860920
+
+---
 
 ### 20240412 FIL314 - 
 
