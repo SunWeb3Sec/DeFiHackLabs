@@ -2,7 +2,7 @@
 pragma solidity 0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // Address https://polygonscan.com/address/0x940ce652a51ebadb5df09d605dbeda95fdcf697b
 interface Target {

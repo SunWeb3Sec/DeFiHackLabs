@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 interface IEuler {
     function flashLoan(address receiver, address token, uint256 amount, bytes calldata data) external returns (bool);

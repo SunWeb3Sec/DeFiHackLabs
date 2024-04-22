@@ -2,7 +2,7 @@
 pragma solidity 0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 contract ContractTest is Test {
     address btcAddress = 0x321162Cd933E2Be498Cd2267a90534A804051b11;

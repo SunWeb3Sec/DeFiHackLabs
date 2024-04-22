@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~36K USD$ (LEVUSDC) + ~69K USD$ (DEPUSDT)
 // Vulnerable Proxy DEPUSDT : https://etherscan.io/address/0x7b190a928aa76eece5cb3e0f6b3bdb24fcdd9b4f

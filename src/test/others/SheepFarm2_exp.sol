@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // Attack reason: Wrong function logic
 // Info about attack: https://twitter.com/BlockSecTeam/status/1592734292727455744

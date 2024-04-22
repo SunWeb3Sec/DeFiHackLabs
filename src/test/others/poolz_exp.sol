@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 contract ContractTest is Test {
     IDPPAdvanced constant dppAdvanced = IDPPAdvanced(0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476);

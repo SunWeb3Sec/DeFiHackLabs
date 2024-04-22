@@ -2,7 +2,7 @@
 pragma solidity ^0.8.20;
 
 import {Test, console2} from "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // TX 1:https://app.blocksec.com/explorer/tx/bsc/0x383dbb44a91687b2b9bbd8b6779957a198d114f24af662776f384569b84fc549
 // TX 2: https://app.blocksec.com/explorer/tx/bsc/0x8293946b5c88c4a21250ca6dc93c6d1a695fb5d067bb2d4aed0a11bd5af1fb32

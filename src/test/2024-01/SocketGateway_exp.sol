@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 interface ISocketGateway {
     function executeRoute(uint32 routeId, bytes calldata routeData) external payable returns (bytes memory);

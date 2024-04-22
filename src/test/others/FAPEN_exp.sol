@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~600 USD$
 // Vulnerable contract address: https://bscscan.com/address/0xf3f1abae8bfeca054b330c379794a7bf84988228

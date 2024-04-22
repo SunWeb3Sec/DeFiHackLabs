@@ -1,7 +1,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 interface IWRAP {
     function withdraw(address from, address to, uint256 amount) external;

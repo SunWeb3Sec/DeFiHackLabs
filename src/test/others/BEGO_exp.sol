@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~12 WBNB
 // Attacker : 0xde01f6Ce91E4F4bdB94BB934d30647d72182320F

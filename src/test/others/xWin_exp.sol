@@ -10,7 +10,7 @@ pragma solidity ^0.8.10;
 // This incident was due to an invalid slippage control in the protocol, which is exploited in a flashloan to obtain extra xWin rewards.
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 struct TradeParams {
     address xFundAddress;

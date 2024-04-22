@@ -3,7 +3,7 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 contract ContractTest is Test {
     IUniswapV2Pair pair = IUniswapV2Pair(0xbC2C5392b0B841832bEC8b9C30747BADdA7b70ca);

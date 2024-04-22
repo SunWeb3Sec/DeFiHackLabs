@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~50K US$
 // Attacker : https://bscscan.com/address/0x4404de29913e0fd055190e680771a016777973e5

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // Report https://twitter.com/CertiKAlert/status/1576195971003858944
 // Attacker : 0x08e08f4b701d33c253ad846868424c1f3c9a4db3

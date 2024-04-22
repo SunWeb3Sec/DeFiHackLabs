@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 /* @KeyInfo -- Total Lost : 1,048 ETH + 400,000 DAI (~3,000,000 US$)
     Attacker Wallet : https://bscscan.com/address/0xA6AF2872176320015f8ddB2ba013B38Cb35d22Ad

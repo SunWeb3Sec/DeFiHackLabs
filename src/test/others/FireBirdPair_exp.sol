@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~8536 MATIC (This tx exploit 3211 MATIC)
 // Attacker : https://polygonscan.com/address/0x8e83cd1bad00cf933b86214aaaab4db56abf68aa

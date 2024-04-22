@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : 1 NFT (ID: 4689)
 // Attacker : https://etherscan.io/address/0x92cfcb70b2591ceb1e3c6d90e21e8154e7d29832

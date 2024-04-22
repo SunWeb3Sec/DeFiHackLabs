@@ -1,7 +1,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @Analysis
 // https://slowmist.medium.com/brief-analysis-of-zabu-finance-being-hacked-44243919ea29

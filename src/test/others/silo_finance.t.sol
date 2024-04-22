@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
 
-import "./interface.sol";
+import "./../interface.sol";
 
 // It's a postmortem, now it's disclosed, just for studying.
 // analysis and code: https://medium.com/immunefi/silo-finance-logic-error-bugfix-review-35de29bd934a

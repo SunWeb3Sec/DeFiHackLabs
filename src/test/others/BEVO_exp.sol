@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // Total lost: 144 BNB
 // Frontrunner: https://bscscan.com/address/0xd3455773c44bf0809e2aeff140e029c632985c50

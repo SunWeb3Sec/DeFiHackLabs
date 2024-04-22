@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // Pool1: UniswapV2 WETH/USDT
 // Pool2: UniswapV2 WETH/XST

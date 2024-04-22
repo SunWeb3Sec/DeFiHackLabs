@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~51K USD$
 // Attacker : https://snowtrace.io/address/0xc64afc460290ed3df848f378621b96cb7179521a

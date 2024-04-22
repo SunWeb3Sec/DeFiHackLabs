@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~127K BUSDT
 // Attacker : 0x3DF6cd58716d22855aFb3B828F82F10708AfbB4f

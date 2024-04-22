@@ -2,7 +2,7 @@
 pragma solidity 0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 /*
     Vulnerable contract: https://bscscan.com/address/0x109Ea28dbDea5E6ec126FbC8c33845DFe812a300#code

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : Unclear
 // Attacker : https://polygonscan.com/address/0x149b268b8b8101e2b5df84a601327484cb43221c

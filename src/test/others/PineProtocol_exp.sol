@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~90K (info from hacked.slowmist.io)
 // Attacker : https://etherscan.io/address/0x05324c970713450ba0bc12efd840034fcb0a4baa

@@ -1,6 +1,6 @@
 import "forge-std/Test.sol";
 
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~$1,400,000 USD
 // Attacker : https://etherscan.io/address/0xc0ffeebabe5d496b2dde509f9fa189c25cf29671 (whitehat)

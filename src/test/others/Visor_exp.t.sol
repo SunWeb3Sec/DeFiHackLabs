@@ -3,7 +3,7 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 contract ContractTest is Test {
     IRewardsHypervisor irrewards = IRewardsHypervisor(0xC9f27A50f82571C1C8423A42970613b8dBDA14ef);

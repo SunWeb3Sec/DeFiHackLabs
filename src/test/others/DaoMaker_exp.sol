@@ -3,7 +3,7 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 /*
     Attacker: 0x2708cace7b42302af26f1ab896111d87faeff92f
     Attack tx: https://etherscan.io/tx/0x96bf6bd14a81cf19939c0b966389daed778c3a9528a6c5dd7a4d980dec966388

@@ -3,7 +3,7 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 interface IpancakePair {
     function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;

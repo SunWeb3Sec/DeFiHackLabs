@@ -3,7 +3,7 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 contract ContractTest is Test {
     ILand Land = ILand(0x50f5474724e0Ee42D9a4e711ccFB275809Fd6d4a);

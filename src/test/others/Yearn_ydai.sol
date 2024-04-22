@@ -3,7 +3,7 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 //Converted to foundry test from this file https://gist.github.com/xu3kev/cb1992269c429647d24b6759aff6261c
 
 // @KeyInfo - Total Lost : ~11M US$

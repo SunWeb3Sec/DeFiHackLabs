@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo
 // Attacker : 0x0000000038b8889b6ab9790e20FC16fdC5714922

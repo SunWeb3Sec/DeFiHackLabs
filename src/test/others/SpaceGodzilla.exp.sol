@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 /* @KeyInfo - Total Lost : 25,378 BUSD
     Attacker Wallet : https://bscscan.com/address/0x00a62eb08868ec6feb23465f61aa963b89e57e57

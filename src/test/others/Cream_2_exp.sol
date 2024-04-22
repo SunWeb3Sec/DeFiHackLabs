@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @Analysis
 // https://medium.com/immunefi/hack-analysis-cream-finance-oct-2021-fc222d913fc5

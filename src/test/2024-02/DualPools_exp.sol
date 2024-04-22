@@ -1,6 +1,6 @@
 import "forge-std/Test.sol";
 
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~$42000 USD
 // Attacker : https://bscscan.com/address/0x4645863205b47a0a3344684489e8c446a437d66c

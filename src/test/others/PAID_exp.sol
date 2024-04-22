@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @Analysis
 // https://paidnetwork.medium.com/paid-network-attack-postmortem-march-7-2021-9e4c0fef0e07

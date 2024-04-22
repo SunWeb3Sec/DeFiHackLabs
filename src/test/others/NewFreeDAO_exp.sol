@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : 4481 BNB (~125M US$)
 // Attacker : 0x22c9736d4fc73a8fa0eb436d2ce919f5849d6fd2

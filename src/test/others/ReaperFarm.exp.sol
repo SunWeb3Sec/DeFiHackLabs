@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~1.7M US$
 // Attacker : 0x5636e55e4a72299a0f194c001841e2ce75bb527a (ReaperFarm Exploiter 1 - who trigger the exploit)

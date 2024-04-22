@@ -2,7 +2,7 @@
 pragma solidity 0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 contract ContractTest is Test {
     ICErc20Delegate cTUSD = ICErc20Delegate(0x12392F67bdf24faE0AF363c24aC620a2f67DAd86);

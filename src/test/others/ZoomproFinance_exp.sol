@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // Exploit Alert ref: https://twitter.com/blocksecteam/status/1567027459207606273?s=21&t=ZNoZgSdAuI4dJIFlMaTJeg
 // Origin Attack Transaction: 0xe176bd9cfefd40dc03508e91d856bd1fe72ffc1e9260cd63502db68962b4de1a

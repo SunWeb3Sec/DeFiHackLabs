@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 interface IGnosisBridgedAsset is IERC20 {
     function mint(address, uint256) external returns (bool);
