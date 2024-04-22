@@ -856,27 +856,26 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20240422 Z123 - manipulating price
+### 20240422 Z123 - manipulating price 
 
 ### Lost: 135k USD
 
-
-
-### 20240419 HedgeyFinance - Logic Flaw
-
-### Lost: 48M USD
 ```sh
 forge test --contracts ./src/test/Z123_exp.sol -vvv
 ```
 
 #### Contract
-[HedgeyFinance_exp.sol](src/test/Z123_exp.sol)
+[Z123_exp.sol](src/test/Z123_exp.sol)
 
 ### Link reference
 
 https://twitter.com/PeckShieldAlert/status/1782322484911784385
 
 ---
+
+### 20240419 HedgeyFinance - Logic Flaw
+
+### Lost: 48M USD
 
 ```sh
 forge test --contracts ./src/test/HedgeyFinance_exp.sol -vvv
