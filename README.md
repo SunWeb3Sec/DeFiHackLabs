@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
-[20240419 HedgeyFinance](#20240419-hedgeyfinance---)
+[20240419 HedgeyFinance](#20240419-hedgeyfinance---logic-flaw)
 
 [20240416 SATX](#20240416-satx---logic-flaw)
 
@@ -857,7 +857,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 
 
-### 20240419 HedgeyFinance - 
+### 20240419 HedgeyFinance - Logic Flaw
 
 ### Lost: 48M USD
 
