@@ -858,7 +858,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### 20240422 Z123 - manipulating price 
 
-### Lost: 135k USD
+### Lost: 136k USD
 
 ```sh
 forge test --contracts ./src/test/Z123_exp.sol -vvv
