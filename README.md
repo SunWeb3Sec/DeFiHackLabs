@@ -34,7 +34,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
-[20240422 Z123](#20240419-hedgeyfinance---logic-flaw)
+[20240424 YIEDL](#20240424-yiedl---input-validation)
+
+[20240422 Z123](#20240422-z123---price-manipulation)
 
 [20240419 HedgeyFinance](#20240419-hedgeyfinance---logic-flaw)
 
@@ -855,6 +857,14 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240424 YIELD - Input Validation 
+
+### Lost: 150k USD
+
+```sh
+forge test --contracts ./src/test/YIEDL_exp.sol -vvv
+```
 
 ### 20240422 Z123 - manipulating price 
 
