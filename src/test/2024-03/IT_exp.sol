@@ -82,16 +82,13 @@ contract ContractTest is Test {
     }
 
     function mintToPoolIfNeeded (uint256 amount) public returns (uint256) {
-        Uni_Pair_V2 exchange = IT_USDT;
-        IERC20 usdtToken = USDT;
-
         uint256 tokenUsdtRate;
-        (uint112 reserve0, uint112 reserve1, ) = exchange.getReserves();
+        (uint112 reserve0, uint112 reserve1, ) = IT_USDT.getReserves();
 
         uint256 tokenReserve;
         uint256 usdtReserve;
 
-        if(address(IT) == exchange.token0()){
+        if(address(IT) == IT_USDT.token0()){
             tokenReserve = uint256(reserve0);
             usdtReserve = uint256(reserve1);
         } else {
@@ -104,20 +101,17 @@ contract ContractTest is Test {
 
         uint256 tokenReserveAfterBuy = tokenReserve - amount;
         // uint256 usdtReserveAfterBuy = k.div(tokenReserveAfterBuy);
-        uint256 usdtReserveAfterBuy = this.min(tokenReserve * (usdtReserve) / (tokenReserveAfterBuy), usdtToken.balanceOf(address(exchange))); // min impltementing rule 3
+        uint256 usdtReserveAfterBuy = this.min(tokenReserve * (usdtReserve) / (tokenReserveAfterBuy), USDT.balanceOf(address(IT_USDT))); // min impltementing rule 3
 
         uint256 maxTokenUsdtRateAfterBuy = tokenUsdtRate + (tokenUsdtRate / (100));
 
         uint256 tokenMinReserveAfterBuy = usdtReserveAfterBuy * (PRECISION) / (maxTokenUsdtRateAfterBuy);
 
-        uint256 mintAmount;
         if(tokenReserveAfterBuy >= tokenMinReserveAfterBuy){
-            mintAmount = amount / 2;
+            return amount / 2;
         } else {
-            mintAmount = this.max(tokenMinReserveAfterBuy - (tokenReserveAfterBuy), amount / 2);
+            return this.max(tokenMinReserveAfterBuy - (tokenReserveAfterBuy), amount / 2);
         }
-        
-        return mintAmount;
     }
 
 }
