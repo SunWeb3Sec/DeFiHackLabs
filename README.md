@@ -34,6 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20240425 NGFS](#20240425-ngfs---bad-access-control)
 [20240424 XBridge](#20240424-xbridge---logic-flaw)
 
 [20240424 YIEDL](#20240424-yiedl---input-validation)
@@ -864,6 +865,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### Lost: >200k USD(plus a lot of STC, SRLTY, Mazi tokens)
 
+
+
+
+
+### 20240425 NGFS - Bad Access Control
+
+### Lost: ~190K
+
+
+```sh
+forge test --contracts ./src/test/NGFS_exp.sol -vvv
+```
+#### Contract
+[NGFS_exp.sol](src/test/NGFS_exp.sol)
+### Link reference
+
+https://twitter.com/CertiKAlert/status/1783476515331616847
+
+---
 ```sh
 forge test --contracts ./src/test/XBridge_exp.sol -vvv
 ```
