@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-393 incidents included.
+394 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20240424 XBridge](#20240424-xbridge---logic-flaw)
+
 [20240424 YIEDL](#20240424-yiedl---input-validation)
 
 [20240422 Z123](#20240422-z123---price-manipulation)
@@ -857,6 +859,14 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240424 XBridge - Logic Flaw 
+
+### Lost: >200k USD(plus a lot of STC, SRLTY, Mazi tokens)
+
+```sh
+forge test --contracts ./src/test/XBridge_exp.sol -vvv
+```
 
 ### 20240424 YIELD - Input Validation 
 
