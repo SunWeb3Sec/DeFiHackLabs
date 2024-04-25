@@ -13,7 +13,7 @@ import "forge-std/Test.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0xa608985f5b40cdf6862bec775207f84280a91e3a#code
 
 // @Analysis
-// Post-mortem : 
+// Post-mortem : https://louistsai.vercel.app/p/2024-04-25-ngfs-exploit/
 // Twitter Guy : https://twitter.com/CertiKAlert/status/1783476515331616847
 // Hacking God : 
 
