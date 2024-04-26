@@ -880,7 +880,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 
 ```sh
-forge test --contracts ./src/test/NGFS_exp.sol -vvv
+forge test --contracts ./src/test/NGFS_exp.sol -vvv --evm-version shanghai
 ```
 #### Contract
 [NGFS_exp.sol](src/test/NGFS_exp.sol)
