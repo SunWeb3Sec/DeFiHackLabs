@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-395 incidents included.
+396 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -144,6 +144,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240101 OrbitChain](#20240101-orbitchain---incorrect-input-validation)
 
 <details> <summary> 2023 </summary>
+  
+[20231230 ChannelsFinance](past/2023/README.md#20231230-channelsfinance---compoundv2-inflation-attack)
   
 [20231225 Telcoin](past/2023/README.md#20231225-telcoin---storage-collision)
 

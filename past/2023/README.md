@@ -2,6 +2,24 @@
 
 ## 2023 - List of Past DeFi Incidents
 
+### 20231230 ChannelsFinance - CompoundV2 Inflation Attack
+
+### Lost: ~320K
+
+```
+forge test --contracts src/test/ChannelsFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[ChannelsFinance_exp.sol](../../src/test/ChannelsFinance_exp.sol)
+
+#### Link reference
+
+https://twitter.com/AnciliaInc/status/1741353303542501455
+
+---
+
 ### 20231225 Telcoin - Storage Collision
 
 ### Lost: ~1,24M
