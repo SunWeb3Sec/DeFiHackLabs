@@ -2103,7 +2103,7 @@ https://www.jinse.com/news/blockchain/1658455.html
 
 ---
 
-### 20220608 Optimism - Wintermute - Signature replay
+### 20220608 Optimism - Wintermute
 
 #### Lost: 20 million Optimism (OP) tokens returned 17 million of them
 
