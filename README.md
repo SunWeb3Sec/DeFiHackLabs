@@ -710,7 +710,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220416 BeanstalkFarms](past/2022/README.md#20220416-beanstalkfarms---dao--flashloan)
 
-[20220415 Rikkei Finance](past/2022/README.md#20220415-rikkei-finance---accesscontrol--price-oracle-manipulation)
+[20220415 Rikkei Finance](past/2022/README.md#20220415-rikkei-finance---access-control--price-oracle-manipulation)
 
 [20220412 ElephantMoney](past/2022/README.md#20220412-elephantmoney---flashloan--price-oracle-manipulation)
 
