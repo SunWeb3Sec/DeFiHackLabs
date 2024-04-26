@@ -670,7 +670,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220710 Omni NFT](past/2022/README.md#20220710-omni-nft---reentrancy)
 
-[20220706 FlippazOne NFT](past/2022/README.md#20220706-flippazone-nft----accesscontrol)
+[20220706 FlippazOne NFT](past/2022/README.md#20220706-flippazone-nft---accesscontrol)
 
 [20220701 Quixotic - Optimism NFT Marketplace](past/2022/README.md#20220701-quixotic---optimism-nft-marketplace)
 
