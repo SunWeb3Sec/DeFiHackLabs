@@ -66,13 +66,13 @@ https://twitter.com/MistTrack_io/status/1738131780459430338
 ### Lost: ~110k
 
 ```
-forge test --contracts ./src/test/TransitFinance_exp.sol -vvv
+forge test --contracts ./src/test/others/TransitFinance_exp.sol -vvv
 
 ```
 
 #### Contract
 
-[TransitFinance_exp.sol](../../src/test/TransitFinance_exp.sol)
+[TransitFinance_exp.sol](../../src/test/others/TransitFinance_exp.sol)
 
 #### Link reference
 
