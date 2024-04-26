@@ -288,7 +288,7 @@ https://twitter.com/BlockSecTeam/status/1438100688215560192
 
 ---
 
-### 20210912 ZABU Finance - Deflationary token incompatible
+### 20210912 ZABU Finance - Deflationary token uncompatible
 
 Testing
 
