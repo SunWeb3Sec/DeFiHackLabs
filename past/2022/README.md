@@ -2355,7 +2355,7 @@ https://etherscan.io/address/0xf42c318dbfbaab0eee040279c6a2588fa01a961d#code
 
 ---
 
-### 20220421 Zeed Finance - Reward distribution flaw
+### 20220421 Zeed Finance
 
 #### Lost: $1 million
 
