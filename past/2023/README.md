@@ -45,13 +45,13 @@ https://hacked.slowmist.io/?c=&page=2
 ### Lost: ~90k
 
 ```
-forge test --contracts ./src/test/PineProtocol_exp.sol -vvv
+forge test --contracts ./src/test/others/PineProtocol_exp.sol -vvv
 
 ```
 
 #### Contract
 
-[PineProtocol_exp.sol](../../src/test/PineProtocol_exp.sol)
+[PineProtocol_exp.sol](../../src/test/others/PineProtocol_exp.sol)
 
 #### Link reference
 
