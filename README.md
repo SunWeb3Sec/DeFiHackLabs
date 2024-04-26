@@ -893,7 +893,7 @@ https://twitter.com/CertiKAlert/status/1783476515331616847
 forge test --contracts ./src/test/XBridge_exp.sol -vvv
 ```
 
-### 20240424 YIELD - Input Validation 
+### 20240424 YIEDL - Input Validation 
 
 ### Lost: 150k USD
 
