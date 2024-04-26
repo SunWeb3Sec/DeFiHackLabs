@@ -538,7 +538,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20221209 NOVAToken](past/2022/README.md#20221209---novatoken---malicious-unlimted-minting-rugged)
 
-[20221207 AES](past/2022/README.md#20221207---aes-deflationary-token----business-logic-flaw--flashloan-price-manipulation)
+[20221207 AES](past/2022/README.md#20221207---aes-deflationary-token---business-logic-flaw--flashloan-price-manipulation)
 
 [20221205 RFB](past/2022/README.md#20221205---rfb---predicting-random-numbers)
 
