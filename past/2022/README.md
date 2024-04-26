@@ -82,7 +82,7 @@
 
 [20221020 HEALTH Token](#20221020-health---transfer-logic-flaw)
 
-[20221019 BEGO Token](#20221019-bego---incorrect-signature-verification)
+[20221019 BEGO Token](#20221020-bego---incorrect-signature-verification)
 
 [20221018 HPAY](#20221018-hpay---access-control)
 
@@ -1068,7 +1068,7 @@ https://twitter.com/BlockSecTeam/status/1583073442433495040
 
 ---
 
-### 20221019 BEGO - Incorrect signature verification
+### 20221020 BEGO - Incorrect signature verification
 
 ### Lost 12 BNB
 
