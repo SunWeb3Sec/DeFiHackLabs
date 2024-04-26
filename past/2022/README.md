@@ -28,7 +28,7 @@
 
 [20221209 NOVAToken](#20221209---novatoken---malicious-unlimted-minting-rugged)
 
-[20221207 AES](#20221207---aes-deflationary-token----business-logic-flaw--flashloan-price-manipulation)
+[20221207 AES](#20221207---aes-deflationary-token---business-logic-flaw--flashloan-price-manipulation)
 
 [20221205 RFB](#20221205---rfb---predicting-random-numbers)
 
