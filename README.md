@@ -1596,7 +1596,7 @@ https://twitter.com/AnciliaInc/status/1757533144033739116
 
 ---
 
-### 20240208 Pandora - integer underflow
+### 20240208 Pandora - interger underflow
 
 ### Lost: ~17K USD
 
