@@ -716,7 +716,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220411 Creat Future](past/2022/README.md#20220411-creat-future)
 
-[20220409 GYMNetwork](past/2022/README.md#20220409-gymnetwork)
+[20220409 GYMNetwork](past/2022/README.md#20220409-gymnetwork---flashloan--token-migrate-flaw)
 
 [20220329 Ronin Network](past/2022/README.md#20220329-ronin-network---Bridge)
 
