@@ -494,7 +494,7 @@ https://chain-swap.medium.com/chainswap-post-mortem-and-compensation-plan-90cad5
 
 ---
 
-### 20210628 SafeDollar - Deflationary token incompatible
+### 20210628 SafeDollar - Deflationary token uncompatible
 
 ### Lost: $.2 million
 
