@@ -7,12 +7,12 @@
 ### Lost: ~320K
 
 ```
-forge test --contracts src/test/others/ChannelsFinance_exp.sol -vvv
+forge test --contracts src/test/ChannelsFinance_exp.sol -vvv
 ```
 
 #### Contract
 
-[ChannelsFinance_exp.sol](../../src/test/others/ChannelsFinance_exp.sol)
+[ChannelsFinance_exp.sol](../../src/test/ChannelsFinance_exp.sol)
 
 #### Link reference
 
