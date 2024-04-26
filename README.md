@@ -954,11 +954,11 @@ https://twitter.com/Cube3AI/status/1781294512716820918
 ### Lost: ~ 50 BNB
 
 ```sh
-forge test --contracts src/test/SATX_exp.sol -vvv
+forge test --contracts src/test/others/SATX_exp.sol -vvv
 ```
 
 #### Contract
-[SATX_exp.sol](src/test/SATX_exp.sol)
+[SATX_exp.sol](src/test/others/SATX_exp.sol)
 ### Link reference
 https://x.com/bbbb/status/1780341239801393479
 
