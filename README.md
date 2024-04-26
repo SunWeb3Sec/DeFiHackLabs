@@ -993,7 +993,7 @@ https://twitter.com/CyversAlerts/status/1779875922381860920
 
 ---
 
-### 20240412 FIL314 - 
+### 20240412 FIL314 - Insufficient Validation And Price Manipulation
 
 ### Lost: ~14 BNB
 
