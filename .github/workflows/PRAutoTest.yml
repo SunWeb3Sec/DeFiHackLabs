@@ -24,6 +24,10 @@ jobs:
         with:
           version: nightly
 
+      - name: Build 
+        run: forge build
+        id: build
+
       - name: Run Forge tests
         run: |
           shopt -s nullglob
