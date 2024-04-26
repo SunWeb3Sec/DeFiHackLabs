@@ -56,7 +56,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240412 SumerMoney](#20240412-sumermoney---Reentrancy)
 
-[202404012 GROKD](#202404012-grokd---lack-of-access-control)
+[20240412 GROKD](#20240412-grokd---lack-of-access-control)
 
 [20240409 UPS](#20240409-ups---business-logic-flaw)
 
