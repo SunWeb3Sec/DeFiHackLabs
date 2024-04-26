@@ -983,10 +983,10 @@ https://twitter.com/Phalcon_xyz/status/1780150315603701933
 
 
 ```sh
-forge test --contracts ./src/test/Chainge_exp.sol -vvv
+forge test --contracts ./src/test/others/Chainge_exp.sol -vvv
 ```
 #### Contract
-[Chainge_exp.sol](src/test/Chainge_exp.sol)
+[Chainge_exp.sol](src/test/others/Chainge_exp.sol)
 ### Link reference
 
 https://twitter.com/CyversAlerts/status/1779875922381860920
