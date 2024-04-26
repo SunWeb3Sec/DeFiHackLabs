@@ -2864,7 +2864,7 @@ https://etherscan.io/tx/0x34516ee081c221d8576939f68aee71e002dd5557180d45194209d6
 
 ---
 
-### 20220205 Meter - Bridge
+### 20220206 Meter - Bridge
 
 #### Lost: $4.3 million
 
