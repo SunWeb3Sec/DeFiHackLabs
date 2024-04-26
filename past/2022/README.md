@@ -2225,12 +2225,12 @@ https://news.coincu.com/73892-the-flashloan-attack-on-the-ape-airdrop-to-claim-1
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/FortressLoans.exp.sol -vvv
+forge test --contracts ./src/test/2022-05/FortressLoans.exp.sol -vvv
 ```
 
 #### Contract
 
-[FortressLoans.exp.sol](../../src/test/others/FortressLoans.exp.sol)
+[FortressLoans.exp.sol](../../src/test/2022-05/FortressLoans.exp.sol)
 
 #### Link reference
 
