@@ -1925,7 +1925,7 @@ https://etherscan.io/tx/0x05d65e0adddc5d9ccfe6cd65be4a7899ebcb6e5ec7a39787971bcc
 
 ---
 
-### 20220706 FlippazOne NFT - Access control
+### 20220706 FlippazOne NFT - Accesscontrol
 
 The ownerWithdrawAllTo() without onlyOwner can call it.
 
