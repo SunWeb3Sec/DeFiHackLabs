@@ -2079,7 +2079,7 @@ https://etherscan.io/tx/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255
 
 ---
 
-### 20220608 GYMNetwork - Access control
+### 20220608 GYMNetwork - Accesscontrol
 
 #### Lost: $2.1 million
 
