@@ -275,12 +275,12 @@ https://twitter.com/CertiKAlert/status/1608788290785665024
 Testing
 
 ```sh
-forge test --contracts ./src/test/JAY_exp.sol -vvv
+forge test --contracts ./src/test/others/JAY_exp.sol -vvv
 ```
 
 #### Contract
 
-[JAY_exp.sol](../../src/test/JAY_exp.sol)
+[JAY_exp.sol](../../src/test/others/JAY_exp.sol)
 
 #### Link reference
 
