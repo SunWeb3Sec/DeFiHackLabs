@@ -382,7 +382,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230525 GPT](past/2023/README.md#20230525-gpt-token---fee-machenism-exploitation)
 
-[20230524 LocalTrade](past/2023/README.md#20230524-local-trade-lct---inproper-access-control-of-close-source-contract)
+[20230524 LocalTrade](past/2023/README.md#20230524-local-trade-lct---improper-access-control-of-close-source-contract)
 
 [20230524 CS](past/2023/README.md#20230524-cs-token---outdated-global-variable)
 
