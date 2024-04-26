@@ -160,7 +160,7 @@
 
 [20220710 Omni NFT](#20220710-omni-nft---reentrancy)
 
-[20220706 FlippazOne NFT](#20220706-flippazone-nft----accesscontrol)
+[20220706 FlippazOne NFT](#20220706-flippazone-nft---accesscontrol)
 
 [20220701 Quixotic - Optimism NFT Marketplace](#20220701-quixotic---optimism-nft-marketplace)
 
