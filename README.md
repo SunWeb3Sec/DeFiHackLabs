@@ -1781,14 +1781,14 @@ https://twitter.com/peckshield/status/1747353782004900274
 ### Lost: ~464K
 
 ```
-forge test --contracts ./src/test/2024-01/WiseLending02.exp.sol -vvv --evm-version shanghai
+forge test --contracts ./src/test/others/WiseLending02.exp.sol -vvv --evm-version shanghai
 ```
 
 #### Contract
 
-[WiseLending02_exp.sol](src/test/2024-01/WiseLending02_exp.sol)
+[WiseLending02_exp.sol](src/test/others/WiseLending02_exp.sol)
 
-[WiseLending02.exp.sol](src/test/2024-01/WiseLending02.exp.sol)
+[WiseLending02.exp.sol](src/test/others/WiseLending02.exp.sol)
 
 #### Link reference
 
