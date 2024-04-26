@@ -1511,12 +1511,12 @@ https://twitter.com/0xNickLFranklin/status/1760559768241160679
 ### Lost: ~10k
 
 ```
-forge test --contracts ./src/test/2024-02/RuggedArte_exp.sol -vvv
+forge test --contracts ./src/test/2024-02/RuggedArt_exp.sol -vvv
 ```
 
 #### Contract
 
-[RuggedArte_exp.sol](src/test/2024-02/RuggedArt_exp.sol)
+[RuggedArt_exp.sol](src/test/2024-02/RuggedArt_exp.sol)
 
 #### Link reference
 
