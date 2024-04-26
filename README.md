@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-394 incidents included.
+396 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,7 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
-
+[20240425 NGFS](#20240425-ngfs---bad-access-control)
 [20240424 XBridge](#20240424-xbridge---logic-flaw)
 
 [20240424 YIEDL](#20240424-yiedl---input-validation)
@@ -144,9 +144,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240101 OrbitChain](#20240101-orbitchain---incorrect-input-validation)
 
 <details> <summary> 2023 </summary>
-
+  
 [20231230 ChannelsFinance](past/2023/README.md#20231230-channelsfinance---compoundv2-inflation-attack)
-
+  
 [20231225 Telcoin](past/2023/README.md#20231225-telcoin---storage-collision)
 
 [20231222 PineProtocol](past/2023/README.md#20231222-pineprotocol---business-logic-flaw)
@@ -863,15 +863,34 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20240424 XBridge - Logic Flaw
+### 20240424 XBridge - Logic Flaw 
 
 ### Lost: >200k USD(plus a lot of STC, SRLTY, Mazi tokens)
 
+
+
+
+
+### 20240425 NGFS - Bad Access Control
+
+### Lost: ~190K
+
+
+```sh
+forge test --contracts ./src/test/NGFS_exp.sol -vvv
+```
+#### Contract
+[NGFS_exp.sol](src/test/NGFS_exp.sol)
+### Link reference
+
+https://twitter.com/CertiKAlert/status/1783476515331616847
+
+---
 ```sh
 forge test --contracts ./src/test/XBridge_exp.sol -vvv
 ```
 
-### 20240424 YIELD - Input Validation
+### 20240424 YIELD - Input Validation 
 
 ### Lost: 150k USD
 
@@ -879,7 +898,7 @@ forge test --contracts ./src/test/XBridge_exp.sol -vvv
 forge test --contracts ./src/test/YIEDL_exp.sol -vvv
 ```
 
-### 20240422 Z123 - manipulating price
+### 20240422 Z123 - manipulating price 
 
 ### Lost: 136k USD
 
@@ -888,7 +907,6 @@ forge test --contracts ./src/test/Z123_exp.sol -vvv
 ```
 
 #### Contract
-
 [Z123_exp.sol](src/test/Z123_exp.sol)
 
 ### Link reference
@@ -904,11 +922,8 @@ https://twitter.com/PeckShieldAlert/status/1782322484911784385
 ```sh
 forge test --contracts ./src/test/HedgeyFinance_exp.sol -vvv
 ```
-
 #### Contract
-
 [HedgeyFinance_exp.sol](src/test/HedgeyFinance_exp.sol)
-
 ### Link reference
 
 https://twitter.com/Cube3AI/status/1781294512716820918
@@ -924,12 +939,10 @@ forge test --contracts src/test/SATX_exp.sol -vvv
 ```
 
 #### Contract
-
 [SATX_exp.sol](src/test/SATX_exp.sol)
-
 ### Link reference
-
 https://x.com/bbbb/status/1780341239801393479
+
 
 ### 20240416 MARS - Bad Reflection
 
@@ -940,44 +953,40 @@ forge test --contracts src/test/MARS_exp.sol -vv
 ```
 
 #### Contract
-
 [MARS_exp.sol](src/test/MARS_exp.sol)
-
 ### Link reference
-
 https://twitter.com/Phalcon_xyz/status/1780150315603701933
+
 
 ### 20240415 Chainge - Input Validation
 
 ### Lost: ~200K
 
+
 ```sh
 forge test --contracts ./src/test/Chainge_exp.sol -vvv
 ```
-
 #### Contract
-
 [Chainge_exp.sol](src/test/Chainge_exp.sol)
-
 ### Link reference
 
 https://twitter.com/CyversAlerts/status/1779875922381860920
 
 ---
 
-### 20240412 FIL314 -
+### 20240412 FIL314 - 
 
 ### Lost: ~14 BNB
+
 
 ```sh
 forge test --contracts ./src/test/FIL314_exp.sol -vvv
 ```
-
 #### Contract
-
 [FIL314_exp.sol](src/test/FIL314_exp.sol)
-
 ### Link reference
+
+
 
 ---
 
