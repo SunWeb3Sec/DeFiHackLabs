@@ -577,7 +577,7 @@ https://twitter.com/DecurityHQ/status/1719657969925677161
 Test
 
 ```
-forge test --contracts .\src\test\UniBot_exp.sol --evm-version 'shanghai' -vvv
+forge test --contracts ./src/test/UniBot_exp.sol --evm-version 'shanghai' -vvv
 ```
 
 #### Contract
@@ -597,7 +597,7 @@ https://twitter.com/PeckShieldAlert/status/1719251390319796477
 Test
 
 ```
-forge test --contracts .\src\test\Astrid_exp.sol --evm-version 'shanghai' -vvv
+forge test --contracts ./src/test/Astrid_exp.sol --evm-version 'shanghai' -vvv
 ```
 
 #### Contract
@@ -617,7 +617,7 @@ https://twitter.com/Phalcon_xyz/status/1718454835966775325
 Test
 
 ```
-forge test --contracts .\src\test\MaestroRouter2_exp.sol --evm-version 'shanghai' -vvv
+forge test --contracts ./src/test/MaestroRouter2_exp.sol --evm-version 'shanghai' -vvv
 ```
 
 #### Contract
