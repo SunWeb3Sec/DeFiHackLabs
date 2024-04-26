@@ -255,12 +255,12 @@
 Testing
 
 ```sh
-forge test --contracts ./src/test/DFS_exp.sol -vvv
+forge test --contracts ./src/test/others/DFS_exp.sol -vvv
 ```
 
 #### Contract
 
-[DFS_exp.sol](../../src/test/DFS_exp.sol)
+[DFS_exp.sol](../../src/test/others/DFS_exp.sol)
 
 #### Link reference
 
