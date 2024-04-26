@@ -968,11 +968,11 @@ https://x.com/bbbb/status/1780341239801393479
 ### Lost: >100K
 
 ```sh
-forge test --contracts src/test/MARS_exp.sol -vv
+forge test --contracts src/test/others/MARS_exp.sol -vv
 ```
 
 #### Contract
-[MARS_exp.sol](src/test/MARS_exp.sol)
+[MARS_exp.sol](src/test/others/MARS_exp.sol)
 ### Link reference
 https://twitter.com/Phalcon_xyz/status/1780150315603701933
 
