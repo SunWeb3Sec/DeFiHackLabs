@@ -34,6 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20240420 Rico](#20240420-rico---arbitrary-call)
 [20240425 NGFS](#20240425-ngfs---bad-access-control)
 [20240424 XBridge](#20240424-xbridge---logic-flaw)
 
@@ -862,6 +863,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20240420 Rico - Arbitrary Call
+
+### Lost: 36K
+
+
+```sh
+forge test --contracts ./src/test/Rico_exp.sol -vvv
+```
+#### Contract
+[Rico_exp.sol](src/test/Rico_exp.sol)
+### Link reference
+
+https://twitter.com/ricocreditsys/status/1781803698940781009
+
+---
 
 ### 20240424 XBridge - Logic Flaw 
 
