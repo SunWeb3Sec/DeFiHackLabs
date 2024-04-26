@@ -738,7 +738,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220313 Paraluni](past/2022/README.md#20220313-paraluni---flashloan--reentrancy)
 
-[20220309 Fantasm Finance](past/2022/README.md#20220309-fantasm-finance)
+[20220309 Fantasm Finance](past/2022/README.md#20220309-fantasm-finance---business-logic-in-mint)
 
 [20220305 Bacon Protocol](past/2022/README.md#20220305-bacon-protocol---reentrancy)
 
