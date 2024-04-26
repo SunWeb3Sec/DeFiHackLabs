@@ -901,7 +901,7 @@ forge test --contracts ./src/test/XBridge_exp.sol -vvv
 forge test --contracts ./src/test/YIEDL_exp.sol -vvv
 ```
 
-### 20240422 Z123 - manipulating price 
+### 20240422 Z123 - price manipulating
 
 ### Lost: 136k USD
 
