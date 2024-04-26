@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-396 incidents included.
+397 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -35,11 +35,14 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 [20240425 NGFS](#20240425-ngfs---bad-access-control)
+
 [20240424 XBridge](#20240424-xbridge---logic-flaw)
 
 [20240424 YIEDL](#20240424-yiedl---input-validation)
 
 [20240422 Z123](#20240422-z123---price-manipulation)
+
+[20240420 Rico](#20240420-rico---arbitrary-call)
 
 [20240419 HedgeyFinance](#20240419-hedgeyfinance---logic-flaw)
 
@@ -912,6 +915,22 @@ forge test --contracts ./src/test/Z123_exp.sol -vvv
 ### Link reference
 
 https://twitter.com/PeckShieldAlert/status/1782322484911784385
+
+---
+
+### 20240420 Rico - Arbitrary Call
+
+### Lost: 36K
+
+
+```sh
+forge test --contracts ./src/test/2024-04/Rico_exp.sol -vvv
+```
+#### Contract
+[Rico_exp.sol](src/test/Rico_exp.sol)
+### Link reference
+
+https://twitter.com/ricocreditsys/status/1781803698940781009
 
 ---
 
