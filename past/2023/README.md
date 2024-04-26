@@ -85,12 +85,12 @@ https://explorer.phalcon.xyz/tx/bsc/0x93ae5f0a121d5e1aadae052c36bc5ecf2d406d3522
 ### Lost: ~$1,6M
 
 ```
-forge test --contracts ./src/test/FloorProtocol_exp.sol --evm-version 'shanghai' -vvv
+forge test --contracts ./src/test/others/FloorProtocol_exp.sol --evm-version 'shanghai' -vvv
 ```
 
 #### Contract
 
-[FloorProtocol_exp.sol](../../src/test/FloorProtocol_exp.sol)
+[FloorProtocol_exp.sol](../../src/test/others/FloorProtocol_exp.sol)
 
 #### Link reference
 
