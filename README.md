@@ -939,10 +939,10 @@ https://twitter.com/ricocreditsys/status/1781803698940781009
 ### Lost: 48M USD
 
 ```sh
-forge test --contracts ./src/test/HedgeyFinance_exp.sol -vvv
+forge test --contracts ./src/test/others/HedgeyFinance_exp.sol -vvv
 ```
 #### Contract
-[HedgeyFinance_exp.sol](src/test/HedgeyFinance_exp.sol)
+[HedgeyFinance_exp.sol](src/test/others/HedgeyFinance_exp.sol)
 ### Link reference
 
 https://twitter.com/Cube3AI/status/1781294512716820918
