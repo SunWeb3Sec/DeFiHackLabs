@@ -3552,7 +3552,7 @@ https://twitter.com/SlowMist_Team/status/1621087651158966274
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/BEVO_exp.t.sol -vvv
+forge test --contracts ./src/test/others/BEVO_exp.sol -vvv
 ```
 
 #### Contract
