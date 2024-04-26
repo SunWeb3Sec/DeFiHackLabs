@@ -230,7 +230,7 @@
 
 [20220313 Paraluni](#20220313-paraluni---flashloan--reentrancy)
 
-[20220309 Fantasm Finance](#20220309-fantasm-finance)
+[20220309 Fantasm Finance](#20220309-fantasm-finance---business-logic-in-mint)
 
 [20220305 Bacon Protocol](#20220305-bacon-protocol---reentrancy)
 
