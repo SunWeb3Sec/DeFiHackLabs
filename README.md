@@ -422,7 +422,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230419 OLIFE](past/2023/README.md#20230419-OLIFE---Reflection-token)
 
-[20230416 Swapos V2](past/2023/README.md#20230416-swapos-v2----error-k-value-attack)
+[20230416 Swapos V2](past/2023/README.md#20230416-swapos-v2---error-k-value-attack)
 
 [20230415 HundredFinance](past/2023/README.md#20230415-hundredfinance---donate-inflation-exchangerate--rounding-error)
 
