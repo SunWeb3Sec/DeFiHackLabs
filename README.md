@@ -56,7 +56,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240412 SumerMoney](#20240412-sumermoney---Reentrancy)
 
-[202404012 GROKD](#202404012-grokd---lack-of-access-control)
+[20240412 GROKD](#20240412-grokd---lack-of-access-control)
 
 [20240409 UPS](#20240409-ups---business-logic-flaw)
 
@@ -382,7 +382,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230525 GPT](past/2023/README.md#20230525-gpt-token---fee-machenism-exploitation)
 
-[20230524 LocalTrade](past/2023/README.md#20230524-local-trade-lct---inproper-access-control-of-close-source-contract)
+[20230524 LocalTrade](past/2023/README.md#20230524-local-trade-lct---improper-access-control-of-close-source-contract)
 
 [20230524 CS](past/2023/README.md#20230524-cs-token---outdated-global-variable)
 
@@ -422,7 +422,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20230419 OLIFE](past/2023/README.md#20230419-OLIFE---Reflection-token)
 
-[20230416 Swapos V2](past/2023/README.md#20230416-swapos-v2----error-k-value-attack)
+[20230416 Swapos V2](past/2023/README.md#20230416-swapos-v2---error-k-value-attack)
 
 [20230415 HundredFinance](past/2023/README.md#20230415-hundredfinance---donate-inflation-exchangerate--rounding-error)
 
@@ -538,7 +538,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20221209 NOVAToken](past/2022/README.md#20221209---novatoken---malicious-unlimted-minting-rugged)
 
-[20221207 AES](past/2022/README.md#20221207---aes-deflationary-token----business-logic-flaw--flashloan-price-manipulation)
+[20221207 AES](past/2022/README.md#20221207---aes-deflationary-token---business-logic-flaw--flashloan-price-manipulation)
 
 [20221205 RFB](past/2022/README.md#20221205---rfb---predicting-random-numbers)
 
@@ -670,7 +670,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220710 Omni NFT](past/2022/README.md#20220710-omni-nft---reentrancy)
 
-[20220706 FlippazOne NFT](past/2022/README.md#20220706-flippazone-nft----accesscontrol)
+[20220706 FlippazOne NFT](past/2022/README.md#20220706-flippazone-nft---accesscontrol)
 
 [20220701 Quixotic - Optimism NFT Marketplace](past/2022/README.md#20220701-quixotic---optimism-nft-marketplace)
 
@@ -710,13 +710,13 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220416 BeanstalkFarms](past/2022/README.md#20220416-beanstalkfarms---dao--flashloan)
 
-[20220415 Rikkei Finance](past/2022/README.md#20220415-rikkei-finance---accesscontrol--price-oracle-manipulation)
+[20220415 Rikkei Finance](past/2022/README.md#20220415-rikkei-finance---access-control--price-oracle-manipulation)
 
 [20220412 ElephantMoney](past/2022/README.md#20220412-elephantmoney---flashloan--price-oracle-manipulation)
 
 [20220411 Creat Future](past/2022/README.md#20220411-creat-future)
 
-[20220409 GYMNetwork](past/2022/README.md#20220409-gymnetwork)
+[20220409 GYMNetwork](past/2022/README.md#20220409-gymnetwork---flashloan--token-migrate-flaw)
 
 [20220329 Ronin Network](past/2022/README.md#20220329-ronin-network---Bridge)
 
@@ -738,7 +738,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20220313 Paraluni](past/2022/README.md#20220313-paraluni---flashloan--reentrancy)
 
-[20220309 Fantasm Finance](past/2022/README.md#20220309-fantasm-finance)
+[20220309 Fantasm Finance](past/2022/README.md#20220309-fantasm-finance---business-logic-in-mint)
 
 [20220305 Bacon Protocol](past/2022/README.md#20220305-bacon-protocol---reentrancy)
 
@@ -893,7 +893,7 @@ https://twitter.com/CertiKAlert/status/1783476515331616847
 forge test --contracts ./src/test/XBridge_exp.sol -vvv
 ```
 
-### 20240424 YIELD - Input Validation 
+### 20240424 YIEDL - Input Validation 
 
 ### Lost: 150k USD
 
@@ -901,7 +901,7 @@ forge test --contracts ./src/test/XBridge_exp.sol -vvv
 forge test --contracts ./src/test/YIEDL_exp.sol -vvv
 ```
 
-### 20240422 Z123 - manipulating price 
+### 20240422 Z123 - price manipulation
 
 ### Lost: 136k USD
 
@@ -939,10 +939,10 @@ https://twitter.com/ricocreditsys/status/1781803698940781009
 ### Lost: 48M USD
 
 ```sh
-forge test --contracts ./src/test/HedgeyFinance_exp.sol -vvv
+forge test --contracts ./src/test/others/HedgeyFinance_exp.sol -vvv
 ```
 #### Contract
-[HedgeyFinance_exp.sol](src/test/HedgeyFinance_exp.sol)
+[HedgeyFinance_exp.sol](src/test/others/HedgeyFinance_exp.sol)
 ### Link reference
 
 https://twitter.com/Cube3AI/status/1781294512716820918
@@ -954,11 +954,11 @@ https://twitter.com/Cube3AI/status/1781294512716820918
 ### Lost: ~ 50 BNB
 
 ```sh
-forge test --contracts src/test/SATX_exp.sol -vvv
+forge test --contracts src/test/others/SATX_exp.sol -vvv
 ```
 
 #### Contract
-[SATX_exp.sol](src/test/SATX_exp.sol)
+[SATX_exp.sol](src/test/others/SATX_exp.sol)
 ### Link reference
 https://x.com/bbbb/status/1780341239801393479
 
@@ -968,11 +968,11 @@ https://x.com/bbbb/status/1780341239801393479
 ### Lost: >100K
 
 ```sh
-forge test --contracts src/test/MARS_exp.sol -vv
+forge test --contracts src/test/others/MARS_exp.sol -vv
 ```
 
 #### Contract
-[MARS_exp.sol](src/test/MARS_exp.sol)
+[MARS_exp.sol](src/test/others/MARS_exp.sol)
 ### Link reference
 https://twitter.com/Phalcon_xyz/status/1780150315603701933
 
@@ -983,17 +983,17 @@ https://twitter.com/Phalcon_xyz/status/1780150315603701933
 
 
 ```sh
-forge test --contracts ./src/test/Chainge_exp.sol -vvv
+forge test --contracts ./src/test/others/Chainge_exp.sol -vvv
 ```
 #### Contract
-[Chainge_exp.sol](src/test/Chainge_exp.sol)
+[Chainge_exp.sol](src/test/others/Chainge_exp.sol)
 ### Link reference
 
 https://twitter.com/CyversAlerts/status/1779875922381860920
 
 ---
 
-### 20240412 FIL314 - 
+### 20240412 FIL314 - Insufficient Validation And Price Manipulation
 
 ### Lost: ~14 BNB
 
@@ -1511,12 +1511,12 @@ https://twitter.com/0xNickLFranklin/status/1760559768241160679
 ### Lost: ~10k
 
 ```
-forge test --contracts ./src/test/2024-02/RuggedArte_exp.sol -vvv
+forge test --contracts ./src/test/others/RuggedArt_exp.sol -vvv
 ```
 
 #### Contract
 
-[RuggedArte_exp.sol](src/test/2024-02/RuggedArt_exp.sol)
+[RuggedArt_exp.sol](src/test/others/RuggedArt_exp.sol)
 
 #### Link reference
 
@@ -1596,7 +1596,7 @@ https://twitter.com/AnciliaInc/status/1757533144033739116
 
 ---
 
-### 20240208 Pandora - integer underflow
+### 20240208 Pandora - interger underflow
 
 ### Lost: ~17K USD
 
@@ -1781,14 +1781,14 @@ https://twitter.com/peckshield/status/1747353782004900274
 ### Lost: ~464K
 
 ```
-forge test --contracts ./src/test/2024-01/WiseLending02.exp.sol -vvv --evm-version shanghai
+forge test --contracts ./src/test/others/WiseLending02.exp.sol -vvv --evm-version shanghai
 ```
 
 #### Contract
 
-[WiseLending02_exp.sol](src/test/2024-01/WiseLending02_exp.sol)
+[WiseLending02_exp.sol](src/test/others/WiseLending02_exp.sol)
 
-[WiseLending02.exp.sol](src/test/2024-01/WiseLending02.exp.sol)
+[WiseLending02.exp.sol](src/test/others/WiseLending02.exp.sol)
 
 #### Link reference
 
