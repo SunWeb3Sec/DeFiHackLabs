@@ -867,10 +867,6 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20240424 XBridge - Logic Flaw
-
-### Lost: >200k USD(plus a lot of STC, SRLTY, Mazi tokens)
-
 ### 20240425 NGFS - Bad Access Control
 
 ### Lost: ~190K
@@ -889,9 +885,19 @@ https://twitter.com/CertiKAlert/status/1783476515331616847
 
 ---
 
+### 20240424 XBridge - Logic Flaw
+
+### Lost: >200k USD(plus a lot of STC, SRLTY, Mazi tokens)
+
 ```sh
 forge test --contracts ./src/test/XBridge_exp.sol -vvv
 ```
+
+#### Contract
+
+[XBridge_exp.sol](src/test/XBridge_exp.sol)
+
+---
 
 ### 20240424 YIEDL - Input Validation
 
