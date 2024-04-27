@@ -4270,65 +4270,6 @@ interface ILib {
     function withdrawAll() external returns (bool);
 }
 
-interface FToken {}
-
-interface IGovernorAlpha {
-    function propose(
-        address[] memory targets,
-        uint256[] memory values,
-        string[] memory signatures,
-        bytes[] memory calldatas,
-        string memory description
-    ) external returns (uint256);
-    function castVote(uint256 proposalId, bool support) external;
-    function queue(uint256 proposalId) external;
-    function execute(uint256 proposalId) external payable;
-    function state(uint256 proposalId) external view;
-}
-
-interface IChain {
-    function submit(
-        uint32 _dataTimestamp,
-        bytes32 _root,
-        bytes32[] memory _keys,
-        uint256[] memory _values,
-        uint8[] memory _v,
-        bytes32[] memory _r,
-        bytes32[] memory _s
-    ) external;
-}
-
-interface IFortressPriceOracle {
-    function getUnderlyingPrice(FToken fToken) external view returns (uint256);
-}
-
-interface IFTS {
-    function approve(address spender, uint256 rawAmount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
-}
-
-interface IfFTS {
-    function mint(uint256 mintAmount) external returns (uint256);
-    function balanceOf(address owner) external view returns (uint256);
-}
-
-interface IFBep20Delegator {
-    function getCash() external view returns (uint256);
-    function borrow(uint256 borrowAmount) external returns (uint256);
-    function underlying() external returns (address);
-}
-
-interface IBorrowerOperations {
-    function openTrove(
-        uint256 _maxFee,
-        uint256 _LUSDAmount,
-        uint256 _ETHAmount,
-        address _upperHint,
-        address _lowerHint,
-        address _frontEndTag
-    ) external;
-}
-
 interface IARTH is IERC20 {}
 
 interface IARTHUSD {

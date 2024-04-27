@@ -34,6 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
 [20240425 NGFS](#20240425-ngfs---bad-access-control)
 
 [20240424 XBridge](#20240424-xbridge---logic-flaw)
@@ -147,9 +148,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240101 OrbitChain](#20240101-orbitchain---incorrect-input-validation)
 
 <details> <summary> 2023 </summary>
-  
+
 [20231230 ChannelsFinance](past/2023/README.md#20231230-channelsfinance---compoundv2-inflation-attack)
-  
+
 [20231225 Telcoin](past/2023/README.md#20231225-telcoin---storage-collision)
 
 [20231222 PineProtocol](past/2023/README.md#20231222-pineprotocol---business-logic-flaw)
@@ -511,7 +512,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230103 GDS](past/2023/README.md#20230103---gds---business-logic-flaw)
 
 </details>
-  
+
 <details> <summary> 2022 </summary>
 
 [20221230 DFS](past/2022/README.md#20221230---dfs---insufficient-validation--flashloan)
@@ -866,34 +867,39 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-### 20240424 XBridge - Logic Flaw 
-
-### Lost: >200k USD(plus a lot of STC, SRLTY, Mazi tokens)
-
-
-
-
-
 ### 20240425 NGFS - Bad Access Control
 
 ### Lost: ~190K
 
-
 ```sh
 forge test --contracts ./src/test/NGFS_exp.sol -vvv --evm-version shanghai
 ```
+
 #### Contract
+
 [NGFS_exp.sol](src/test/NGFS_exp.sol)
+
 ### Link reference
 
 https://twitter.com/CertiKAlert/status/1783476515331616847
 
 ---
+
+### 20240424 XBridge - Logic Flaw
+
+### Lost: >200k USD(plus a lot of STC, SRLTY, Mazi tokens)
+
 ```sh
 forge test --contracts ./src/test/XBridge_exp.sol -vvv
 ```
 
-### 20240424 YIEDL - Input Validation 
+#### Contract
+
+[XBridge_exp.sol](src/test/XBridge_exp.sol)
+
+---
+
+### 20240424 YIEDL - Input Validation
 
 ### Lost: 150k USD
 
@@ -910,6 +916,7 @@ forge test --contracts ./src/test/Z123_exp.sol -vvv
 ```
 
 #### Contract
+
 [Z123_exp.sol](src/test/Z123_exp.sol)
 
 ### Link reference
@@ -922,12 +929,14 @@ https://twitter.com/PeckShieldAlert/status/1782322484911784385
 
 ### Lost: 36K
 
-
 ```sh
 forge test --contracts ./src/test/2024-04/Rico_exp.sol -vvv
 ```
+
 #### Contract
+
 [Rico_exp.sol](src/test/Rico_exp.sol)
+
 ### Link reference
 
 https://twitter.com/ricocreditsys/status/1781803698940781009
@@ -941,8 +950,11 @@ https://twitter.com/ricocreditsys/status/1781803698940781009
 ```sh
 forge test --contracts ./src/test/others/HedgeyFinance_exp.sol -vvv
 ```
+
 #### Contract
+
 [HedgeyFinance_exp.sol](src/test/others/HedgeyFinance_exp.sol)
+
 ### Link reference
 
 https://twitter.com/Cube3AI/status/1781294512716820918
@@ -958,10 +970,21 @@ forge test --contracts src/test/others/SATX_exp.sol -vvv
 ```
 
 #### Contract
-[SATX_exp.sol](src/test/others/SATX_exp.sol)
-### Link reference
-https://x.com/bbbb/status/1780341239801393479
 
+<<<<<<< HEAD
+[SATX_exp.sol](src/test/others/SATX_exp.sol)
+
+### Link reference
+
+# https://x.com/bbbb/status/1780341239801393479
+
+> > > > > > > 0047d7c (docs: prettier)
+
+[SATX_exp.sol](src/test/SATX_exp.sol)
+
+### Link reference
+
+https://x.com/bbbb/status/1780341239801393479
 
 ### 20240416 MARS - Bad Reflection
 
@@ -972,21 +995,31 @@ forge test --contracts src/test/others/MARS_exp.sol -vv
 ```
 
 #### Contract
-[MARS_exp.sol](src/test/others/MARS_exp.sol)
-### Link reference
-https://twitter.com/Phalcon_xyz/status/1780150315603701933
 
+[MARS_exp.sol](src/test/others/MARS_exp.sol)
+
+### Link reference
+
+# https://twitter.com/Phalcon_xyz/status/1780150315603701933
+
+[MARS_exp.sol](src/test/MARS_exp.sol)
+
+### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1780150315603701933
 
 ### 20240415 Chainge - Input Validation
 
 ### Lost: ~200K
 
-
 ```sh
 forge test --contracts ./src/test/others/Chainge_exp.sol -vvv
 ```
+
 #### Contract
+
 [Chainge_exp.sol](src/test/others/Chainge_exp.sol)
+
 ### Link reference
 
 https://twitter.com/CyversAlerts/status/1779875922381860920
@@ -997,15 +1030,15 @@ https://twitter.com/CyversAlerts/status/1779875922381860920
 
 ### Lost: ~14 BNB
 
-
 ```sh
 forge test --contracts ./src/test/2024-04/FIL314_exp.sol -vvv
 ```
+
 #### Contract
+
 [FIL314_exp.sol](src/test/2024-04/FIL314_exp.sol)
+
 ### Link reference
-
-
 
 ---
 
