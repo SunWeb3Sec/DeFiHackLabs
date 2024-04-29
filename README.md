@@ -34,6 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20240210 DN404](#20240210-dn404---access-control)
 
 [20240425 NGFS](#20240425-ngfs---bad-access-control)
 
@@ -868,6 +869,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20240210 DN404 - Access Control
+
+### Lost: 200K
+
+
+```sh
+forge test --contracts ./src/test/DN404_exp.sol -vvv
+```
+#### Contract
+[DN404_exp.sol](src/test/DN404_exp.sol)
+### Link reference
+
+
+
+---
 
 ### 20240425 NGFS - Bad Access Control
 
