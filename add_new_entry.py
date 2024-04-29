@@ -6,14 +6,14 @@ import toml
 def parse_foundry_toml():
     with open("foundry.toml", "r") as toml_file:
         config = toml.load(toml_file)
-        rpc_endpoints = config.get("profile", {}).get("default", {}).get("rpc_endpoints", {})
+        rpc_endpoints = config.get("rpc_endpoints", {})
     return rpc_endpoints
 
 def update_foundry_toml(rpc_endpoints):
     with open("foundry.toml", "r") as toml_file:
         config = toml.load(toml_file)
 
-    config["profile"]["default"]["rpc_endpoints"] = rpc_endpoints
+    config["rpc_endpoints"] = rpc_endpoints
 
     with open("foundry.toml", "w") as toml_file:
         toml.dump(config, toml_file)
