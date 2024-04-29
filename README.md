@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-397 incidents included.
+398 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -132,6 +132,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240127 CitadelFinance](#20240127-citadelfinance---price-manipulation)
 
 [20240125 NBLGAME](#20240125-nblgame---reentrancy)
+
+[20240122 DAO_SoulMate](#20240122-dao_soulmate---incorrect-access-control)
 
 [20240117 BmiZapper](#20240117-bmizapper---arbitrary-external-call-vulnerability)
 
@@ -1768,6 +1770,24 @@ forge test --contracts ./src/test/2024-01/NBLGAME_exp.sol -vvv
 https://twitter.com/SlowMist_Team/status/1750526097106915453
 
 https://twitter.com/AnciliaInc/status/1750558426382635036
+
+---
+
+### 20240122 DAO_SoulMate - Incorrect Access Control
+
+### Lost: ~319K
+
+```
+forge test --contracts ./src/test/2024-01/DAO_SoulMate_exp.sol -vvv --evm-version 'shanghai'
+```
+
+#### Contract
+
+[DAO_SoulMate_exp.sol](src/test/2024-01/DAO_SoulMate_exp.sol)
+
+#### Link reference
+
+https://twitter.com/MetaSec_xyz/status/1749743245599617282
 
 ---
 
