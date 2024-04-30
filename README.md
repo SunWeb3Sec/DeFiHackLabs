@@ -161,6 +161,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20231217 FloorProtocol](past/2023/README.md#20231217-floorprotocol---business-logic-flaw)
 
+[20231216 GoodDollar](past/2023/README.md#20231216-gooddollar---lack-of-input-validation--reentrancy)
+
 [20231216 NFTTrader](past/2023/README.md#20231216-nfttrader---reentrancy)
 
 [20231213 HYPR](past/2023/README.md#20231213-hypr---business-logic-flaw)
