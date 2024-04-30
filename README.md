@@ -981,12 +981,6 @@ forge test --contracts src/test/others/SATX_exp.sol -vvv
 
 ### Link reference
 
-# https://x.com/bbbb/status/1780341239801393479
-
-[SATX_exp.sol](src/test/SATX_exp.sol)
-
-### Link reference
-
 https://x.com/bbbb/status/1780341239801393479
 
 ---
