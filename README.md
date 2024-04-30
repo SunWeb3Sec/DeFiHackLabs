@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-399 incidents included.
+400 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -118,6 +118,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240215 Miner](#20240215-Miner---lack-of-validation-dst-address)
 
 [20240211 Game](#20240211-game---reentrancy--business-logic-flaw)
+
+[20240210 DN404](#20240210-dn404---access-control)
 
 [20240208 Pandora404](#20240208-pandora---interger-underflow)
 
@@ -975,20 +977,19 @@ forge test --contracts src/test/others/SATX_exp.sol -vvv
 
 #### Contract
 
-<<<<<<< HEAD
 [SATX_exp.sol](src/test/others/SATX_exp.sol)
 
 ### Link reference
 
 # https://x.com/bbbb/status/1780341239801393479
 
-> > > > > > > 0047d7c (docs: prettier)
-
 [SATX_exp.sol](src/test/SATX_exp.sol)
 
 ### Link reference
 
 https://x.com/bbbb/status/1780341239801393479
+
+---
 
 ### 20240416 MARS - Bad Reflection
 
@@ -1633,6 +1634,18 @@ https://twitter.com/AnciliaInc/status/1757533144033739116
 
 ---
 
+### 20240210 DN404 - Access Control
+
+### Lost: 200K
+
+
+```sh
+forge test --contracts ./src/test/2024-02/DN404_exp.sol -vvv
+```
+#### Contract
+[DN404_exp.sol](src/test/2024-02/DN404_exp.sol)
+
+---
 ### 20240208 Pandora - interger underflow
 
 ### Lost: ~17K USD
