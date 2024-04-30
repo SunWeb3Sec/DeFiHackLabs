@@ -102,6 +102,24 @@ https://defimon.xyz/exploit/mainnet/0x7e5433f02f4bf07c4f2a2d341c450e07d7531428
 
 ---
 
+### 20231216 GoodDollar - Lack of Input Validation & Reentrancy
+
+### Lost: ~$2M
+
+```
+forge test --contracts ./src/test/others/GoodDollar_exp.sol -vvv
+```
+
+#### Contract
+
+[GoodDollar_exp.sol](../../src/test/others/GoodDollar_exp.sol)
+
+#### Link reference
+
+https://twitter.com/MetaSec_xyz/status/1736428284756607386
+
+---
+
 ### 20231216 NFTTrader - Reentrancy
 
 ### Lost: ~$3M

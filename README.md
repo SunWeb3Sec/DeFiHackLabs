@@ -977,14 +977,11 @@ forge test --contracts src/test/others/SATX_exp.sol -vvv
 
 #### Contract
 
-<<<<<<< HEAD
 [SATX_exp.sol](src/test/others/SATX_exp.sol)
 
 ### Link reference
 
 # https://x.com/bbbb/status/1780341239801393479
-
-> > > > > > > 0047d7c (docs: prettier)
 
 [SATX_exp.sol](src/test/SATX_exp.sol)
 
