@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-399 incidents included.
+400 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,7 +34,6 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
-[20240210 DN404](#20240210-dn404---access-control)
 
 [20240425 NGFS](#20240425-ngfs---bad-access-control)
 
@@ -120,6 +119,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240211 Game](#20240211-game---reentrancy--business-logic-flaw)
 
+[20240210 DN404](#20240210-dn404---access-control)
+
 [20240208 Pandora404](#20240208-pandora---interger-underflow)
 
 [20240205 BurnsDefi](#20240205-burnsdefi---price-manipulation)
@@ -161,6 +162,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20231220 TransitFinance](past/2023/README.md#20231220-transitfinance---lack-of-validation-pool)
 
 [20231217 FloorProtocol](past/2023/README.md#20231217-floorprotocol---business-logic-flaw)
+
+[20231216 GoodDollar](past/2023/README.md#20231216-gooddollar---lack-of-input-validation--reentrancy)
 
 [20231216 NFTTrader](past/2023/README.md#20231216-nfttrader---reentrancy)
 
@@ -869,24 +872,6 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
-
-
-
-
-### 20240210 DN404 - Access Control
-
-### Lost: 200K
-
-
-```sh
-forge test --contracts ./src/test/DN404_exp.sol -vvv
-```
-#### Contract
-[DN404_exp.sol](src/test/DN404_exp.sol)
-
-
-
----
 
 ### 20240425 NGFS - Bad Access Control
 
@@ -1650,6 +1635,18 @@ https://twitter.com/AnciliaInc/status/1757533144033739116
 
 ---
 
+### 20240210 DN404 - Access Control
+
+### Lost: 200K
+
+
+```sh
+forge test --contracts ./src/test/2024-02/DN404_exp.sol -vvv
+```
+#### Contract
+[DN404_exp.sol](src/test/2024-02/DN404_exp.sol)
+
+---
 ### 20240208 Pandora - interger underflow
 
 ### Lost: ~17K USD
