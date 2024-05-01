@@ -34,6 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20240430 PikeFinance](#20240430-pikefinance---uninitialized-proxy)
 
 [20240425 NGFS](#20240425-ngfs---bad-access-control)
 
@@ -868,6 +869,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20240430 PikeFinance - Uninitialized Proxy
+
+### Lost: 1.4M
+
+
+```sh
+forge test --contracts ./src/test/PikeFinance_exp.sol -vvv
+```
+#### Contract
+[PikeFinance_exp.sol](src/test/PikeFinance_exp.sol)
+### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1785508900093194591
+
+---
 
 ### 20240425 NGFS - Bad Access Control
 
