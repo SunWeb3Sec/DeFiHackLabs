@@ -1017,12 +1017,6 @@ forge test --contracts src/test/others/MARS_exp.sol -vv
 
 ### Link reference
 
-# https://twitter.com/Phalcon_xyz/status/1780150315603701933
-
-[MARS_exp.sol](src/test/MARS_exp.sol)
-
-### Link reference
-
 https://twitter.com/Phalcon_xyz/status/1780150315603701933
 
 ### 20240415 Chainge - Input Validation
