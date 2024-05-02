@@ -881,10 +881,10 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 
 ```sh
-forge test --contracts ./src/test/PikeFinance_exp.sol -vvv
+forge test --contracts ./src/test/2024-04/PikeFinance_exp.sol -vvv
 ```
 #### Contract
-[PikeFinance_exp.sol](src/test/PikeFinance_exp.sol)
+[PikeFinance_exp.sol](src/test/2024-04/PikeFinance_exp.sol)
 ### Link reference
 
 https://twitter.com/Phalcon_xyz/status/1785508900093194591
@@ -959,7 +959,7 @@ forge test --contracts ./src/test/2024-04/Rico_exp.sol -vvv
 
 #### Contract
 
-[Rico_exp.sol](src/test/Rico_exp.sol)
+[Rico_exp.sol](src/test/2024-04/Rico_exp.sol)
 
 ### Link reference
 
