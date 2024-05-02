@@ -121,7 +121,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 [20240211 Game](#20240211-game---reentrancy--business-logic-flaw)
 
-[20240210 DN404](#20240210-dn404---access-control)
+[20240210 FILX DN404](#20240210-filx-dn404---access-control)
 
 [20240208 Pandora404](#20240208-pandora---interger-underflow)
 
@@ -1646,7 +1646,7 @@ https://twitter.com/AnciliaInc/status/1757533144033739116
 
 ---
 
-### 20240210 DN404 - Access Control
+### 20240210 FILX DN404 - Access Control
 
 ### Lost: 200K
 
