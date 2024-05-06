@@ -2776,12 +2776,12 @@ https://twitter.com/BlockSecTeam/status/1653267431127920641
 Testing
 
 ```
-forge test --contracts ./src/test/others/0vix_exp.sol -vvv
+forge test --contracts ./src/test/2023-04/0vix_exp.sol -vvv
 ```
 
 #### Contract
 
-[0vix_exp.sol](../../src/test/others/0vix_exp.sol)
+[0vix_exp.sol](../../src/test/2023-04/0vix_exp.sol)
 
 #### Link Reference
 
