@@ -351,12 +351,12 @@ forge test --contracts ./src/test/2023-11/ShibaToken_exp.sol -vvv
 Test
 
 ```
-forge test --contracts ./src/test/others/LinkDao_exp.sol -vvv
+forge test --contracts ./src/test/2023-11/LinkDao_exp.sol -vvv
 ```
 
 #### Contract
 
-[LinkDao_exp.sol](../../src/test/others/LinkDao_exp.sol)
+[LinkDao_exp.sol](../../src/test/2023-11/LinkDao_exp.sol)
 
 #### Link Reference
 
