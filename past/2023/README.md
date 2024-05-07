@@ -25,12 +25,12 @@ https://twitter.com/AnciliaInc/status/1741353303542501455
 ### Lost: ~1,24M
 
 ```
-forge test --contracts ./src/test/others/Telcoin_exp.sol -vvv
+forge test --contracts ./src/test/2023-12/Telcoin_exp.sol -vvv
 ```
 
 #### Contract
 
-[Telcoin_exp.sol](../../src/test/others/Telcoin_exp.sol)
+[Telcoin_exp.sol](../../src/test/2023-12/Telcoin_exp.sol)
 
 #### Link reference
 
