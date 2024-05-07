@@ -827,12 +827,12 @@ https://slowmist.medium.com/a-brief-analysis-of-the-cover-protocol-hacked-event-
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Pickle_exp.sol -vv
+forge test --contracts ./src/test/2020-11/Pickle_exp.sol -vv
 ```
 
 #### Contract
 
-[Pickle_exp.sol](../../src/test/others/Pickle_exp.sol)
+[Pickle_exp.sol](../../src/test/2020-11/Pickle_exp.sol)
 
 #### Link reference
 
