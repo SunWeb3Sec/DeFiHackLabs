@@ -457,12 +457,12 @@ https://levyathan-index.medium.com/post-mortem-levyathan-c3ff7f9a6f65
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Chainswap_exp2.sol -vv
+forge test --contracts ./src/test/2021-07/Chainswap_exp2.sol -vv
 ```
 
 #### Contract
 
-[Chainswap_exp2.sol](../../src/test/others/Chainswap_exp2.sol)
+[Chainswap_exp2.sol](../../src/test/2021-07/Chainswap_exp2.sol)
 
 #### Link reference
 
