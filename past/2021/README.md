@@ -193,12 +193,12 @@ https://etherscan.io/tx/0x9f14d093a2349de08f02fc0fb018dadb449351d0cdb7d0738ff69c
 Testing
 
 ```sh
- forge test --contracts ./src/test/others/Cream_2_exp.sol -vvv
+ forge test --contracts ./src/test/2021-10/Cream_2_exp.sol -vvv
 ```
 
 #### Contract
 
-[Cream_2_exp.sol](../../src/test/others/Cream_2_exp.sol)
+[Cream_2_exp.sol](../../src/test/2021-10/Cream_2_exp.sol)
 
 #### Link reference
 
