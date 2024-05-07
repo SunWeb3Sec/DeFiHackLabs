@@ -121,12 +121,12 @@ https://etherscan.io/tx/0x69272d8c84d67d1da2f6425b339192fa472898dce936f24818fda4
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Grim_exp.sol -vv
+forge test --contracts ./src/test/2021-12/Grim_exp.sol -vv
 ```
 
 #### Contract
 
-[Grim_exp.sol](../../src/test/others/Grim_exp.sol)
+[Grim_exp.sol](../../src/test/2021-12/Grim_exp.sol)
 
 #### Link reference
 
