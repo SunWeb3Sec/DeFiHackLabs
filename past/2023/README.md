@@ -573,12 +573,12 @@ https://defimon.xyz/attack/bsc/0x8163738d6610ca32f048ee9d30f4aa1ffdb3ca1eddf95c0
 Test
 
 ```
-forge test --contracts ./src/test/others/OnyxProtocol_exp.sol --evm-version 'shanghai' -vvv
+forge test --contracts ./src/test/2023-11/OnyxProtocol_exp.sol --evm-version 'shanghai' -vvv
 ```
 
 #### Contract
 
-[OnyxProtocol_exp.sol](../../src/test/others/OnyxProtocol_exp.sol)
+[OnyxProtocol_exp.sol](../../src/test/2023-11/OnyxProtocol_exp.sol)
 
 #### Link Reference
 
