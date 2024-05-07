@@ -481,12 +481,12 @@ https://chain-swap.medium.com/chainswap-exploit-11-july-2021-post-mortem-6e4e346
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Chainswap_exp1.sol -vv
+forge test --contracts ./src/test/2021-07/Chainswap_exp1.sol -vv
 ```
 
 #### Contract
 
-[Chainswap_exp1.sol](../../src/test/others/Chainswap_exp1.sol)
+[Chainswap_exp1.sol](../../src/test/2021-07/Chainswap_exp1.sol)
 
 #### Link reference
 
