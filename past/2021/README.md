@@ -293,12 +293,12 @@ https://twitter.com/BlockSecTeam/status/1438100688215560192
 Testing
 
 ```sh
-forge test --contracts src/test/others/ZABU_exp.sol -vvv
+forge test --contracts src/test/2021-09/ZABU_exp.sol -vvv
 ```
 
 #### Contract
 
-[ZABU_exp.sol](../../src/test/others/ZABU_exp.sol)
+[ZABU_exp.sol](../../src/test/2021-09/ZABU_exp.sol)
 
 ### Link reference
 
