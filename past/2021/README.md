@@ -359,12 +359,12 @@ https://etherscan.io/tx/0xa9a1b8ea288eb9ad315088f17f7c7386b9989c95b4d13c81b69d5d
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/XSURGE_exp.t.sol -vv
+forge test --contracts ./src/test/2021-08/XSURGE_exp.t.sol -vv
 ```
 
 #### Contract
 
-[XSURGE_exp.t.sol](../../src/test/others/XSURGE_exp.t.sol)
+[XSURGE_exp.t.sol](../../src/test/2021-08/XSURGE_exp.t.sol)
 
 #### Link reference
 
