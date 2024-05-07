@@ -431,12 +431,12 @@ https://twitter.com/Phalcon_xyz/status/1723591214262632562
 Test
 
 ```
-forge test --contracts ./src/test/others/MahaLend_exp.sol -vvv
+forge test --contracts ./src/test/2023-11/MahaLend_exp.sol -vvv
 ```
 
 ### Contract
 
-[MahaLend_exp.sol](../../src/test/others/MahaLend_exp.sol)
+[MahaLend_exp.sol](../../src/test/2023-11/MahaLend_exp.sol)
 
 #### Link Reference
 
