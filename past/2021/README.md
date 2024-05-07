@@ -255,12 +255,12 @@ https://etherscan.io/tx/0x78d6355703507f88f2090eb780d245b0ab26bf470eabdb004761ce
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Nimbus_exp.sol -vv
+forge test --contracts ./src/test/2021-09/Nimbus_exp.sol -vv
 ```
 
 #### Contract
 
-[Nimbus_exp.sol](../../src/test/others/Nimbus_exp.sol)
+[Nimbus_exp.sol](../../src/test/2021-09/Nimbus_exp.sol)
 
 #### Link reference
 
@@ -275,12 +275,12 @@ https://twitter.com/BlockSecTeam/status/1438100688215560192
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/NowSwap_exp.sol -vv
+forge test --contracts ./src/test/2021-09/NowSwap_exp.sol -vv
 ```
 
 #### Contract
 
-[NowSwap_exp.sol](../../src/test/others/NowSwap_exp.sol)
+[NowSwap_exp.sol](../../src/test/2021-09/NowSwap_exp.sol)
 
 #### Link reference
 
