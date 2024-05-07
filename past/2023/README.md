@@ -295,12 +295,12 @@ Each transaction targeted and drained up to 5 pools from KyberSwap elastic CLAMM
 All the pool hacks follow the same scheme as the first:
 
 ```
-forge test --contracts ./src/test/others/KyberSwap_exp.eth.1.sol -vvv
+forge test --contracts ./src/test/2023-11/KyberSwap_exp.eth.1.sol -vvv
 ```
 
 #### Contract
 
-[KyberSwap_exp.eth.1.sol](../../src/test/others/KyberSwap_exp.eth.1.sol)
+[KyberSwap_exp.eth.1.sol](../../src/test/2023-11/KyberSwap_exp.eth.1.sol)
 
 #### Link Reference
 
