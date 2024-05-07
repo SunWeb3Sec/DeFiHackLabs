@@ -125,12 +125,12 @@ https://twitter.com/MetaSec_xyz/status/1736428284756607386
 ### Lost: ~$3M
 
 ```
-forge test --contracts ./src/test/others/NFTTrader_exp.sol -vvv
+forge test --contracts ./src/test/2023-12/NFTTrader_exp.sol -vvv
 ```
 
 #### Contract
 
-[NFTTrader_exp.sol](../../src/test/others/NFTTrader_exp.sol)
+[NFTTrader_exp.sol](../../src/test/2023-12/NFTTrader_exp.sol)
 
 #### Link reference
 
