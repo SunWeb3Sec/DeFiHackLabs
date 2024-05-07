@@ -319,12 +319,12 @@ forge test --contracts ./src/test/2023-11/KyberSwap_exp.eth.1.sol -vvv
 Test
 
 ```
-forge test --contracts ./src/test/others/Token8633_9419_exp.sol -vvv
+forge test --contracts ./src/test/2023-11/Token8633_9419_exp.sol -vvv
 ```
 
 #### Contract
 
-[Token8633_9419_exp.sol](../../src/test/others/Token8633_9419_exp.sol)
+[Token8633_9419_exp.sol](../../src/test/2023-11/Token8633_9419_exp.sol)
 
 ---
 
