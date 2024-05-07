@@ -491,12 +491,12 @@ https://twitter.com/Phalcon_xyz/status/1722841076120130020
 Test
 
 ```
-forge test --contracts ./src/test/others/bot_exp.sol -vvv
+forge test --contracts ./src/test/2023-11/bot_exp.sol -vvv
 ```
 
 #### Contract
 
-[bot_exp.sol](../../src/test/others/bot_exp.sol)
+[bot_exp.sol](../../src/test/2023-11/bot_exp.sol)
 
 #### Link Reference
 
