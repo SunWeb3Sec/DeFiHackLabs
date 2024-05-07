@@ -697,12 +697,12 @@ https://rekt.news/spartan-rekt/
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Uranium_exp.sol -vv
+forge test --contracts ./src/test/2021-04/Uranium_exp.sol -vv
 ```
 
 #### Contract
 
-[Uranium_exp.sol](../../src/test/others/Uranium_exp.sol)
+[Uranium_exp.sol](../../src/test/2021-04/Uranium_exp.sol)
 
 #### Link reference
 
