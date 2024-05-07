@@ -335,12 +335,12 @@ https://etherscan.io/tx/0xd5e2edd6089dcf5dca78c0ccbdf659acedab173a8ab3cb65720e35
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Cream_exp.sol -vv
+forge test --contracts ./src/test/2021-08/Cream_exp.sol -vv
 ```
 
 #### Contract
 
-[Cream_exp.sol](../../src/test/others/Cream_exp.sol)
+[Cream_exp.sol](../../src/test/2021-08/Cream_exp.sol)
 
 #### Link reference
 
