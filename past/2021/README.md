@@ -868,12 +868,12 @@ https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d026
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Opyn.exp.sol -vv
+forge test --contracts ./src/test/2020-08/Opyn.exp.sol -vv
 ```
 
 #### Contract
 
-[Opyn.exp.sol](../../src/test/others/Opyn.exp.sol)
+[Opyn.exp.sol](../../src/test/2020-08/Opyn.exp.sol)
 
 #### Link reference
 
