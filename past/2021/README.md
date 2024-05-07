@@ -559,12 +559,12 @@ https://bscscan.com/tx/0xeaaa8f4d33b1035a790f0d7c4eb6e38db7d6d3b580e0bbc9ba39a9d
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/88mph_exp.sol -vv
+forge test --contracts ./src/test/2021-06/88mph_exp.sol -vv
 ```
 
 #### Contract
 
-[88mph_exp.sol](../../src/test/others/88mph_exp.sol)
+[88mph_exp.sol](../../src/test/2021-06/88mph_exp.sol)
 
 #### Link reference
 
