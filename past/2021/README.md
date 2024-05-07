@@ -501,12 +501,12 @@ https://chain-swap.medium.com/chainswap-post-mortem-and-compensation-plan-90cad5
 Testing
 
 ```sh
-forge test --contracts src/test/others/SafeDollar_exp.sol -vvv
+forge test --contracts src/test/2021-06/SafeDollar_exp.sol -vvv
 ```
 
 #### Contract
 
-[SafeDollar_exp.sol](../../src/test/others/SafeDollar_exp.sol)
+[SafeDollar_exp.sol](../../src/test/2021-06/SafeDollar_exp.sol)
 
 #### Link reference
 
