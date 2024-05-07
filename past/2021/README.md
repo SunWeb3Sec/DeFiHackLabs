@@ -415,12 +415,12 @@ One of the biggest design lessons that people need to take away from this is: if
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/WaultFinance_exp.sol -vvv
+forge test --contracts ./src/test/2021-08/WaultFinance_exp.sol -vvv
 ```
 
 #### Contract
 
-[WaultFinance_exp.sol](../../src/test/others/WaultFinance_exp.sol)
+[WaultFinance_exp.sol](../../src/test/2021-08/WaultFinance_exp.sol)
 
 #### Link reference
 
