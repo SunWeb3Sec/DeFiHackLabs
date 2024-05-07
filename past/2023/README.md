@@ -1013,12 +1013,12 @@ https://twitter.com/DecurityHQ/status/1703096116047421863
 Test
 
 ```
-forge test --contracts ./src/test/others/0x0DEX_exp.sol -vvv
+forge test --contracts ./src/test/2023-09/0x0DEX_exp.sol -vvv
 ```
 
 #### Contract
 
-[0x0DEX_exp.sol](../../src/test/others/0x0DEX_exp.sol)
+[0x0DEX_exp.sol](../../src/test/2023-09/0x0DEX_exp.sol)
 
 #### Link Reference
 
