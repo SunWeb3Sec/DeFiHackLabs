@@ -209,12 +209,12 @@ https://twitter.com/Phalcon_xyz/status/1732354930529435940
 Test
 
 ```
-forge test --contracts ./src/test/others/BEARNDAO_exp.sol -vvv
+forge test --contracts ./src/test/2023-12/BEARNDAO_exp.sol -vvv
 ```
 
 #### Contract
 
-[BEARNDAO_exp.sol](../../src/test/others/BEARNDAO_exp.sol)
+[BEARNDAO_exp.sol](../../src/test/2023-12/BEARNDAO_exp.sol)
 
 #### Link reference
 
