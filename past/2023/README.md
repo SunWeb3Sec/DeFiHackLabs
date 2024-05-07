@@ -677,12 +677,12 @@ https://defimon.xyz/exploit/bsc/0x5366c6ba729d9cf8d472500afc1a2976ac2fe9ff
 Test
 
 ```
-forge test --contracts ./src/test/others/kTAF_exp.sol -vvv
+forge test --contracts ./src/test/2023-10/kTAF_exp.sol -vvv
 ```
 
 #### Contract
 
-[kTAF_exp.sol](../../src/test/others/kTAF_exp.sol)
+[kTAF_exp.sol](../../src/test/2023-10/kTAF_exp.sol)
 
 #### Link Reference
 
