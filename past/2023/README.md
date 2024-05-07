@@ -147,12 +147,12 @@ https://twitter.com/0xArhat/status/1736038250190651467
 ### Lost: ~$200k
 
 ```
-forge test --contracts ./src/test/others/HYPR_exp.sol -vvv
+forge test --contracts ./src/test/2023-12/HYPR_exp.sol -vvv
 ```
 
 #### Contract
 
-[HYPR_exp.sol](../../src/test/others/HYPR_exp.sol)
+[HYPR_exp.sol](../../src/test/2023-12/HYPR_exp.sol)
 
 #### Link reference
 
