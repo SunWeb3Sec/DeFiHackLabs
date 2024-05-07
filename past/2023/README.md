@@ -615,12 +615,12 @@ https://twitter.com/PeckShieldAlert/status/1719251390319796477
 Test
 
 ```
-forge test --contracts ./src/test/others/Astrid_exp.sol --evm-version 'shanghai' -vvv
+forge test --contracts ./src/test/2023-10/Astrid_exp.sol --evm-version 'shanghai' -vvv
 ```
 
 #### Contract
 
-[Astrid_exp.sol](../../src/test/others/Astrid_exp.sol)
+[Astrid_exp.sol](../../src/test/2023-10/Astrid_exp.sol)
 
 #### Link Reference
 
