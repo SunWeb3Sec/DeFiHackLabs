@@ -531,12 +531,12 @@ https://twitter.com/BeosinAlert/status/1721800306101793188
 Test
 
 ```
-forge test --contracts ./src/test/others/TheStandard_io_exp.sol -vvv
+forge test --contracts ./src/test/2023-11/TheStandard_io_exp.sol -vvv
 ```
 
 #### Contract
 
-[TheStandard_io_exp.sol](../../src/test/others/TheStandard_io_exp.sol)
+[TheStandard_io_exp.sol](../../src/test/2023-11/TheStandard_io_exp.sol)
 
 #### Link Reference
 
@@ -553,7 +553,7 @@ https://twitter.com/CertiKAlert/status/1721839125836321195
 Test
 
 ```
-forge test --contracts ./src/test/others/3913_exp.sol --evm-version 'shanghai' -vvv
+forge test --contracts ./src/test/2023-11/3913_exp.sol --evm-version 'shanghai' -vvv
 ```
 
 #### Contract
