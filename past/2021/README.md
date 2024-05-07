@@ -970,12 +970,12 @@ https://blog.blockmagnates.com/detailed-explanation-of-uniswaps-erc777-re-entry-
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/BEC_exp.sol -vv
+forge test --contracts ./src/test/2018-04/BEC_exp.sol -vv
 ```
 
 #### Contract
 
-[BEC_exp.sol](../../src/test/others/BEC_exp.sol)
+[BEC_exp.sol](../../src/test/2018-04/BEC_exp.sol)
 
 #### Link reference
 
