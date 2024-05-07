@@ -229,12 +229,12 @@ https://twitter.com/AnciliaInc/status/1732159377749180646
 Test
 
 ```
-forge test --contracts ./src/test/others/UnverifiedContr_0x431abb_exp.sol -vvv
+forge test --contracts ./src/test/2023-12/UnverifiedContr_0x431abb_exp.sol -vvv
 ```
 
 #### Contract
 
-[UnverifiedContr_0x431abb_exp.sol](../../src/test/others/UnverifiedContr_0x431abb_exp.sol)
+[UnverifiedContr_0x431abb_exp.sol](../../src/test/2023-12/UnverifiedContr_0x431abb_exp.sol)
 
 #### Link reference
 
