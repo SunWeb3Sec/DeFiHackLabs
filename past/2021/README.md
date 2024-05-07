@@ -805,12 +805,12 @@ https://cmichel.io/replaying-ethereum-hacks-sushiswap-badger-dao-digg/
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Cover_exp.sol -vv
+forge test --contracts ./src/test/2020-12/Cover_exp.sol -vv
 ```
 
 #### Contract
 
-[Cover_exp.sol](../../src/test/others/Cover_exp.sol)
+[Cover_exp.sol](../../src/test/2020-12/Cover_exp.sol)
 
 #### Link reference
 
