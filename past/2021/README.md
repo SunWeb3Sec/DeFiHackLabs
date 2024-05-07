@@ -635,12 +635,12 @@ https://bscscan.com/tx/0x897c2de73dd55d7701e1b69ffb3a17b0f4801ced88b0c75fe1551c5
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/RariCapital_exp.sol -vv
+forge test --contracts ./src/test/2021-05/RariCapital_exp.sol -vv
 ```
 
 #### Contract
 
-[RariCapital_exp.sol](../../src/test/others/RariCapital_exp.sol)
+[RariCapital_exp.sol](../../src/test/2021-05/RariCapital_exp.sol)
 
 #### Link reference
 
