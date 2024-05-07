@@ -635,12 +635,12 @@ https://twitter.com/Phalcon_xyz/status/1718454835966775325
 Test
 
 ```
-forge test --contracts ./src/test/others/MaestroRouter2_exp.sol --evm-version 'shanghai' -vvv
+forge test --contracts ./src/test/2023-10/MaestroRouter2_exp.sol --evm-version 'shanghai' -vvv
 ```
 
 #### Contract
 
-[MaestroRouter2_exp.sol](../../src/test/others/MaestroRouter2_exp.sol)
+[MaestroRouter2_exp.sol](../../src/test/2023-10/MaestroRouter2_exp.sol)
 
 #### Link Reference
 
