@@ -335,12 +335,12 @@ forge test --contracts ./src/test/2023-11/Token8633_9419_exp.sol -vvv
 Test
 
 ```
-forge test --contracts ./src/test/others/ShibaToken_exp.sol -vvv
+forge test --contracts ./src/test/2023-11/ShibaToken_exp.sol -vvv
 ```
 
 #### Contract
 
-[ShibaToken_exp.sol](../../src/test/others/ShibaToken_exp.sol)
+[ShibaToken_exp.sol](../../src/test/2023-11/ShibaToken_exp.sol)
 
 ---
 
