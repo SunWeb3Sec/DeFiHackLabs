@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-403 incidents included.
+404 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240507 SATURN](#20240507-saturn---price-manipulation)
+
 [20240506 OSN](#20240506-osn---reward-distribution-problem)
 
 [20240430 Yield](#20240430-yield---business-logic-flaw)
@@ -878,6 +881,21 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20240507 SATURN - Price Manipulation
+
+### Lost: ~15 BNB
+
+
+```sh
+forge test --contracts src/test/2024-05/OSN_exp.sol -vvv
+```
+#### Contract
+[SATURN_exp.sol](src/test/2024-05/SATURN_exp.sol)
+### Link reference
+
+https://twitter.com/ChainAegis/status/1787667253435195841
+
+---
 
 ### 20240506 OSN - Reward Distribution Problem
 
