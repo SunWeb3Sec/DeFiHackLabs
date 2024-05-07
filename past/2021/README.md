@@ -597,12 +597,12 @@ https://bscscan.com/tx/0x765de8357994a206bb90af57dcf427f48a2021f2f28ca81f2c00bc3
 Testing
 
 ```sh
-forge test --contracts src/test/others/BurgerSwap_exp.sol -vv
+forge test --contracts src/test/2021-05/BurgerSwap_exp.sol -vv
 ```
 
 #### Contract
 
-[BurgerSwap_exp.sol](../../src/test/others/BurgerSwap_exp.sol)
+[BurgerSwap_exp.sol](../../src/2021-05/others/BurgerSwap_exp.sol)
 
 #### Link reference
 
