@@ -950,12 +950,12 @@ https://peckshield.medium.com/uniswap-lendf-me-hacks-root-cause-and-loss-analysi
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/uniswap-erc777.sol -vv
+forge test --contracts ./src/test/2020-04/uniswap-erc777.sol -vv
 ```
 
 #### Contract
 
-[uniswap-erc777.sol](../../src/test/others/uniswap-erc777.sol)
+[uniswap-erc777.sol](../../src/test/2020-04/uniswap-erc777.sol)
 
 #### Link reference
 
