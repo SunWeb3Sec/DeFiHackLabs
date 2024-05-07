@@ -383,12 +383,12 @@ https://bscscan.com/tx/0x8c93d6e5d6b3ec7478b4195123a696dbc82a3441be090e048fe4b33
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/PolyNetwork/PolyNetwork_exp.sol -vv
+forge test --contracts ./src/test/2021-08/PolyNetwork/PolyNetwork_exp.sol -vv
 ```
 
 #### Contract
 
-[PolyNetwork_exp.sol](../../src/test/others/PolyNetwork/PolyNetwork_exp.sol)
+[PolyNetwork_exp.sol](../../src/test/2021-08/PolyNetwork/PolyNetwork_exp.sol)
 
 #### Link reference
 
