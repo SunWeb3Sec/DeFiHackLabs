@@ -743,12 +743,12 @@ https://etherscan.io/tx/0x395675b56370a9f5fe8b32badfa80043f5291443bd6c8273900476
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/PAID_exp.sol -vv
+forge test --contracts ./src/test/2021-03/PAID_exp.sol -vv
 ```
 
 #### Contract
 
-[PAID_exp.sol](../../src/test/others/PAID_exp.sol)
+[PAID_exp.sol](../../src/test/2021-03/PAID_exp.sol)
 
 #### Link reference
 
