@@ -411,12 +411,12 @@ https://twitter.com/Phalcon_xyz/status/1723897569661657553
 Test
 
 ```
-forge test --contracts ./src/test/others/MEV_0xa247_exp.sol -vvv
+forge test --contracts ./src/test/2023-11/MEV_0xa247_exp.sol -vvv
 ```
 
 #### Contract
 
-[MEV_0xa247_exp.sol](../../src/test/others/MEV_0xa247_exp.sol)
+[MEV_0xa247_exp.sol](../../src/test/2023-11/MEV_0xa247_exp.sol)
 
 #### Link Reference
 
