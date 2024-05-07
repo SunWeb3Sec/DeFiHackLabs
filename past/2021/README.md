@@ -787,12 +787,12 @@ https://etherscan.io/tx/0x59faab5a1911618064f1ffa1e4649d85c99cfd9f0d64dcebbc1af7
 Testing
 
 ```sh
-forge test --contracts src/test/others/Sushi-Badger_Digg.exp.sol -vvvv
+forge test --contracts src/test/2021-01/Sushi-Badger_Digg.exp.sol -vvvv
 ```
 
 #### Contract
 
-[Sushi-Badger_Digg.exp.sol](../../src/test/others/Sushi-Badger_Digg.exp.sol)
+[Sushi-Badger_Digg.exp.sol](../../src/test/2021-01/Sushi-Badger_Digg.exp.sol)
 
 #### Link reference
 
