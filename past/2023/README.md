@@ -471,12 +471,12 @@ https://twitter.com/BlockSecTeam/status/1723229393529835972
 Test
 
 ```
-forge test --contracts ./src/test/others/grok_exp.sol -vvv
+forge test --contracts ./src/test/2023-11/grok_exp.sol -vvv
 ```
 
 #### Contract
 
-[grok_exp.sol](../../src/test/others/grok_exp.sol)
+[grok_exp.sol](../../src/test/2023-11/grok_exp.sol)
 
 #### Link Reference
 
