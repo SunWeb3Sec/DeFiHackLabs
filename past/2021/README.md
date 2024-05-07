@@ -313,12 +313,12 @@ https://slowmist.medium.com/brief-analysis-of-zabu-finance-being-hacked-44243919
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/DaoMaker_exp.sol -vv
+forge test --contracts ./src/test/2021-09/DaoMaker_exp.sol -vv
 ```
 
 #### Contract
 
-[DaoMaker_exp.sol](../../src/test/others/DaoMaker_exp.sol)
+[DaoMaker_exp.sol](../../src/test/2021-09/DaoMaker_exp.sol)
 
 #### Link reference
 
