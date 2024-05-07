@@ -521,12 +521,12 @@ https://twitter.com/peckshield/status/1409443556251430918
 Testing
 
 ```sh
-forge test --contracts src/test/others/xWin_exp.sol -vvv
+forge test --contracts src/test/2021-06/xWin_exp.sol -vvv
 ```
 
 #### Contract
 
-[xWin_exp.sol](../../src/test/others/xWin_exp.sol)
+[xWin_exp.sol](../../src/test/2021-06/xWin_exp.sol)
 
 #### Link reference
 
