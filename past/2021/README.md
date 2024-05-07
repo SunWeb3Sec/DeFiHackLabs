@@ -213,12 +213,12 @@ https://medium.com/immunefi/hack-analysis-cream-finance-oct-2021-fc222d913fc5
 Testing
 
 ```sh
-forge test --contracts src/test/others/IndexedFinance_exp.t.sol -vv
+forge test --contracts src/test/2021-10/IndexedFinance_exp.t.sol -vv
 ```
 
 #### Contract
 
-[IndexedFinance_exp.t.sol](../../src/test/others/IndexedFinance_exp.t.sol)
+[IndexedFinance_exp.t.sol](../../src/test/2021-10/IndexedFinance_exp.t.sol)
 
 #### Link reference
 
