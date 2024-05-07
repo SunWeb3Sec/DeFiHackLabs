@@ -107,12 +107,12 @@ https://defimon.xyz/exploit/mainnet/0x7e5433f02f4bf07c4f2a2d341c450e07d7531428
 ### Lost: ~$2M
 
 ```
-forge test --contracts ./src/test/others/GoodDollar_exp.sol -vvv
+forge test --contracts ./src/test/2023-12/GoodDollar_exp.sol -vvv
 ```
 
 #### Contract
 
-[GoodDollar_exp.sol](../../src/test/others/GoodDollar_exp.sol)
+[GoodDollar_exp.sol](../../src/test/2023-12/GoodDollar_exp.sol)
 
 #### Link reference
 
