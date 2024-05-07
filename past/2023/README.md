@@ -189,12 +189,12 @@ https://blog.openzeppelin.com/arbitrary-address-spoofing-vulnerability-erc2771co
 Test
 
 ```
-forge test --contracts ./src/test/others/ElephantStatus_exp.sol -vvv
+forge test --contracts ./src/test/2023-12/ElephantStatus_exp.sol -vvv
 ```
 
 #### Contract
 
-[ElephantStatus_exp.sol](../../src/test/others/ElephantStatus_exp.sol)
+[ElephantStatus_exp.sol](../../src/test/2023-12/ElephantStatus_exp.sol)
 
 #### Link reference
 
