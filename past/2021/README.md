@@ -233,12 +233,12 @@ https://blocksecteam.medium.com/the-analysis-of-indexed-finance-security-inciden
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Sushimiso_exp.sol -vv
+forge test --contracts ./src/test/2021-09/Sushimiso_exp.sol -vv
 ```
 
 #### Contract
 
-[Sushimiso_exp.sol](../../src/test/others/Sushimiso_exp.sol)
+[Sushimiso_exp.sol](../../src/test/2021-09/Sushimiso_exp.sol)
 
 #### Link reference
 
