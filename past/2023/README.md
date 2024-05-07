@@ -249,12 +249,12 @@ https://twitter.com/Phalcon_xyz/status/1730625352953901123
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/AIS_exp.sol -vvv
+forge test --contracts ./src/test/2023-11/AIS_exp.sol -vvv
 ```
 
 #### Contract
 
-[AIS_exp.sol](../../src/test/others/AIS_exp.sol)
+[AIS_exp.sol](../../src/test/2023-11/AIS_exp.sol)
 
 #### Link reference
 
