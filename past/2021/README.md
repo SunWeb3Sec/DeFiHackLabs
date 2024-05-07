@@ -888,12 +888,12 @@ https://etherscan.io/tx/0x56de6c4bd906ee0c067a332e64966db8b1e866c7965c044163a503
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Balancer_20200628_exp.sol -vv
+forge test --contracts ./src/test/2020-06/Balancer_20200628_exp.sol -vv
 ```
 
 #### Contract
 
-[Balancer_20200628_exp.sol](../../src/test/others/Balancer_20200628_exp.sol)
+[Balancer_20200628_exp.sol](../../src/test/2020-06/Balancer_20200628_exp.sol)
 
 #### Link reference
 
@@ -908,12 +908,12 @@ https://etherscan.io/tx/0x013be97768b702fe8eccef1a40544d5ecb3c1961ad5f87fee4d16f
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Bancor_exp.sol -vv
+forge test --contracts ./src/test/2020-06/Bancor_exp.sol -vv
 ```
 
 #### Contract
 
-[Bancor_exp.sol](../../src/test/others/Bancor_exp.sol)
+[Bancor_exp.sol](../../src/test/2020-06/Bancor_exp.sol)
 
 #### Link reference
 
