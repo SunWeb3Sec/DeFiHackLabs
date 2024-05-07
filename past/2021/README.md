@@ -577,12 +577,12 @@ https://medium.com/immunefi/88mph-function-initialization-bug-fix-postmortem-c3a
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/PancakeHunny_exp.sol -vv
+forge test --contracts ./src/test/2021-06/PancakeHunny_exp.sol -vv
 ```
 
 #### Contract
 
-[PancakeHunny_exp.sol](../../src/test/others/PancakeHunny_exp.sol)
+[PancakeHunny_exp.sol](../../src/test/2021-06/PancakeHunny_exp.sol)
 
 #### Link reference
 
