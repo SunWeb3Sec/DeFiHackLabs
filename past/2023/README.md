@@ -511,12 +511,12 @@ https://twitter.com/BlockSecTeam/status/1722101942061601052
 Test
 
 ```
-forge test --contracts ./src/test/others/TrustPad_exp.sol  -vvv
+forge test --contracts ./src/test/2023-11/TrustPad_exp.sol  -vvv
 ```
 
 #### Contract
 
-[TrustPad_exp.sol](../../src/test/others/TrustPad_exp.sol)
+[TrustPad_exp.sol](../../src/test/2023-11/TrustPad_exp.sol)
 
 #### Link Reference
 
