@@ -269,12 +269,12 @@ https://twitter.com/Phalcon_xyz/status/1729861048004391306
 Test
 
 ```
-forge test --contracts ./src/test/others/TheNFTV2_exp.sol -vvv
+forge test --contracts ./src/test/2023-11/TheNFTV2_exp.sol -vvv
 ```
 
 #### Contract
 
-[TheNFTV2_exp.sol](../../src/test/others/TheNFTV2_exp.sol)
+[TheNFTV2_exp.sol](../../src/test/2023-11/TheNFTV2_exp.sol)
 
 #### Link Reference
 
