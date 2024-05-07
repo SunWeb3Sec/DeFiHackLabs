@@ -615,12 +615,12 @@ https://twitter.com/Mudit__Gupta/status/1398156036574306304
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/PancakeBunny_exp.sol -vv
+forge test --contracts ./src/test/2021-05/PancakeBunny_exp.sol -vv
 ```
 
 #### Contract
 
-[PancakeBunny_exp.sol](../../src/test/others/PancakeBunny_exp.sol)
+[PancakeBunny_exp.sol](../../src/test/2021-05/PancakeBunny_exp.sol)
 
 #### Link reference
 
