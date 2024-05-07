@@ -677,12 +677,12 @@ https://bscscan.com/tx/0xa00def91954ba9f1a1320ef582420d41ca886d417d996362bf3ac3f
 Testing
 
 ```sh
-forge test --contracts src/test/others/Spartan_exp.t.sol -vv
+forge test --contracts src/test/2021-05/Spartan_exp.t.sol -vv
 ```
 
 #### Contract
 
-[Spartan_exp.t.sol](../../src/test/others/Spartan_exp.t.sol)
+[Spartan_exp.t.sol](../../src/test/2021-05/Spartan_exp.t.sol)
 
 #### Link reference
 
