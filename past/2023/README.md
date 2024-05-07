@@ -657,12 +657,12 @@ https://twitter.com/BeosinAlert/status/1717013965203804457
 Test
 
 ```
-forge test --contracts ./src/test/others/OpenLeverage_exp.sol -vvv
+forge test --contracts ./src/test/2023-10/OpenLeverage_exp.sol -vvv
 ```
 
 #### Contract
 
-[OpenLeverage_exp.sol](../../src/test/others/OpenLeverage_exp.sol)
+[OpenLeverage_exp.sol](../../src/test/2023-10/OpenLeverage_exp.sol)
 
 #### Link Reference
 
