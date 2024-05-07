@@ -930,12 +930,12 @@ https://etherscan.io/address/0x5f58058c0ec971492166763c8c22632b583f667f
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/LendfMe_exp.sol -vv
+forge test --contracts ./src/test/2020-04/LendfMe_exp.sol -vv
 ```
 
 #### Contract
 
-[LendfMe_exp](../../src/test/others/LendfMe_exp.sol)
+[LendfMe_exp](../../src/test/2020-04/LendfMe_exp.sol)
 
 #### Link reference
 
