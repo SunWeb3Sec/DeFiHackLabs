@@ -35,7 +35,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
-[20240508 SATURN](#20240508-GPU---self-transfer)
+[20240508 GPU](#20240508-GPU---self-transfer)
 
 [20240507 SATURN](#20240507-saturn---price-manipulation)
 
