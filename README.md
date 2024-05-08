@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-404 incidents included.
+405 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240508 GPU](#20240508-GPU---self-transfer)
 
 [20240507 SATURN](#20240507-saturn---price-manipulation)
 
@@ -880,6 +882,22 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+### 20240508 GPU - self transfer
+
+### Lost: ~32K USD
+
+```sh
+forge test --contracts src/test/2024-05/GPU_exp.sol -vvv
+```
+#### Contract
+[GPU_exp.sol](src/test/2024-05/GPU_exp.sol)
+### Link reference
+
+https://twitter.com/PeckShieldAlert/status/1788153869987611113
+
+---
 
 ### 20240507 SATURN - Price Manipulation
 
