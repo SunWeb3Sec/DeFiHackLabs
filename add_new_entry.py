@@ -1,5 +1,5 @@
-import re
 from datetime import datetime
+import re
 import os
 import toml
 import subprocess
@@ -66,7 +66,7 @@ def select_network(rpc_endpoints):
 def get_sol_file_info():
     print("NOTE: The script automatically adds explorer URLs for any address provided.")
     file_name = input("Enter the file name (e.g., Example_exp.sol): ")
-    timestamp_str = input("Enter the timestamp string (e.g., Mar-21-2024 02:51:33 PM): ")
+    timestamp_str = input("Enter the timestamp string (e.g., Mar-21-2024 02:51:33 PM) or leave empty to use current timestamp: ")
     lost_amount = input("Enter the lost amount: ")
     additional_details = input("Enter additional details: ")
     link_reference = input("Enter the link reference: ")
@@ -91,12 +91,15 @@ def add_new_entry(selected_network):
         attacker_address, attack_contract_address, vulnerable_contract_address, attack_tx_hash, post_mortem_url, twitter_guy_url, hacking_god_url = get_sol_file_extra_info()
         create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_contract_address,
                                  vulnerable_contract_address, attack_tx_hash,
-                                 post_mortem_url, twitter_guy_url, hacking_god_url, selected_network)
+                                 post_mortem_url, twitter_guy_url, hacking_god_url, selected_network, timestamp_str)
 
     with open("README.md", "r") as file:
         content = file.read()
 
-    timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p")
+    if timestamp_str:
+        timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p")
+    else:
+        timestamp = datetime.now()
     formatted_date = timestamp.strftime("%Y%m%d")
     name = file_name.split("_")[0]
 
@@ -144,8 +147,11 @@ def replace_placeholders(content, replacements):
 
 def create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_contract_address,
                              vulnerable_contract_address, attack_tx_hash, post_mortem_url,
-                             twitter_guy_url, hacking_god_url, selected_network):
-    timestamp = datetime.now()
+                             twitter_guy_url, hacking_god_url, selected_network, timestamp_str):
+    if timestamp_str:
+        timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p")
+    else:
+        timestamp = datetime.now()
     formatted_date = timestamp.strftime("%Y-%m")
     new_file_name = file_name.replace("_exp.sol", "") + "_exp.sol"
     new_file_path = os.path.join("src", "test", formatted_date, new_file_name)
@@ -208,7 +214,7 @@ def process_sol_files(sol_files):
 
 def add_new_entry_from_file(file_path):
     file_name = os.path.basename(file_path)
-    timestamp_str = input(f"Enter the timestamp string for {file_name} (e.g., Mar-21-2024 02:51:33 PM): ")
+    timestamp_str = input(f"Enter the timestamp string for {file_name} (e.g., Mar-21-2024 02:51:33 PM) or leave empty to use current timestamp: ")
     lost_amount = input(f"Enter the lost amount for {file_name}: ")
     additional_details = input(f"Enter additional details for {file_name}: ")
     link_reference = input(f"Enter the link reference for {file_name}: ")
@@ -216,7 +222,10 @@ def add_new_entry_from_file(file_path):
     with open("README.md", "r") as file:
         content = file.read()
 
-    timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p")
+    if timestamp_str:
+        timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p")
+    else:
+        timestamp = datetime.now()
     formatted_date = timestamp.strftime("%Y%m%d")
     name = file_name.split("_")[0]
 
