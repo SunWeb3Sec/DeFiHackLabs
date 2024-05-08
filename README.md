@@ -886,7 +886,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### 20240508 GPU - self transfer
 
-### Lost: ~36K USD
+### Lost: ~32K USD
 
 ```sh
 forge test --contracts src/test/2024-05/GPU_exp.sol -vvv
