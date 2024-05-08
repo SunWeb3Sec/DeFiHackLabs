@@ -4,22 +4,12 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
-// TX : https://app.blocksec.com/explorer/tx/bsc/0xc7927a68464ebab1c0b1af58a5466da88f09ba9b30e6c255b46b1bc2e7d1bf09
-// GUY : https://twitter.com/SlowMist_Team/status/1787330586857861564
-// Profit : ~109K USD
-// Here is only one tx,total you can see here :https://bscscan.com/address/0x835b45d38cbdccf99e609436ff38e31ac05bc502#tokentxns
-// REASON : Reward Distribution Problem
-// Distribution contract did not check the LP hold time or whether the reciever is contract or not
-// Actually there are 3 steps
-// TX1:create help contract,split money : https://app.blocksec.com/explorer/tx/bsc/0xbf22eabb5db8785642ba17930bddef48d0d1bb94ebd1e03e7faa6f2a3d1a5540
-// TX2:help contract add Liq : https://app.blocksec.com/explorer/tx/bsc/0x69c64b226f8bf06216cc665ad5e3777ad1b120909326f120f0816ac65a9099c0
-// TX3:attack tx
-interface Imoney {
-    function addLiq(uint256 value) external;
-    function cc() external;
-}
+// Profit : ~36 USD
+// TX : https://app.blocksec.com/explorer/tx/bsc/0x2c0ada695a507d7a03f4f308f545c7db4847b2b2c82de79e702d655d8c95dadb
+// GUY : https://twitter.com/PeckShieldAlert/status/1788153869987611113
+// Vuln Contract: https://bscscan.com/address/0xf51cbf9f8e089ca48e454eb79731037a405972ce
 
-contract ContractTest is Test {
+contract GPUExploit is Test {
     IERC20 gpuToken_ = IERC20(address(0xf51CBf9F8E089Ca48e454EB79731037a405972ce));
     IERC20 busd_ = IERC20(payable(address(0x55d398326f99059fF775485246999027B3197955)));
 
