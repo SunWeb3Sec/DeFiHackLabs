@@ -752,11 +752,13 @@ Testing
 
 ```sh
 forge test --contracts ./src/test/2022-11/SheepFarm_exp.sol -vvv
+forge test --contracts ./src/test/2022-11/SheepFarm2_exp.sol -vvv
 ```
 
 #### Contract
 
 [SheepFarm_exp.sol](../../src/test/2022-11/SheepFarm_exp.sol)
+[SheepFarm2_exp.sol](../../src/test/2022-11/SheepFarm2_exp.sol)
 
 #### Link reference
 
@@ -2872,12 +2874,12 @@ Testing
 
 ```sh
 Solana TBD
-forge test --contracts ./src/test/2022-02/meter_exp.sol -vv
+forge test --contracts ./src/test/2022-02/Meter_exp.sol -vv
 ```
 
 #### Contract
 
-[meter_exp.sol](../../src/test/2022-02/meter_exp.sol)
+[meter_exp.sol](../../src/test/2022-02/Meter_exp.sol)
 
 #### Link reference
 

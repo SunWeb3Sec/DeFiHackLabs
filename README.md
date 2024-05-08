@@ -934,12 +934,12 @@ https://twitter.com/Phalcon_xyz/status/1785508900093194591
 ### Lost: ~190K
 
 ```sh
-forge test --contracts ./src/test/NGFS_exp.sol -vvv --evm-version shanghai
+forge test --contracts ./src/test/2024-04/NGFS_exp.sol -vvv --evm-version shanghai
 ```
 
 #### Contract
 
-[NGFS_exp.sol](src/test/NGFS_exp.sol)
+[NGFS_exp.sol](src/test/2024-04/NGFS_exp.sol)
 
 ### Link reference
 
@@ -952,12 +952,12 @@ https://twitter.com/CertiKAlert/status/1783476515331616847
 ### Lost: >200k USD(plus a lot of STC, SRLTY, Mazi tokens)
 
 ```sh
-forge test --contracts ./src/test/XBridge_exp.sol -vvv
+forge test --contracts ./src/test/2024-04/XBridge_exp.sol -vvv
 ```
 
 #### Contract
 
-[XBridge_exp.sol](src/test/XBridge_exp.sol)
+[XBridge_exp.sol](src/test/2024-04/XBridge_exp.sol)
 
 ---
 
@@ -966,7 +966,7 @@ forge test --contracts ./src/test/XBridge_exp.sol -vvv
 ### Lost: 150k USD
 
 ```sh
-forge test --contracts ./src/test/YIEDL_exp.sol -vvv
+forge test --contracts ./src/test/2024-04/YIEDL_exp.sol -vvv
 ```
 
 ### 20240422 Z123 - price manipulation
@@ -974,12 +974,12 @@ forge test --contracts ./src/test/YIEDL_exp.sol -vvv
 ### Lost: 136k USD
 
 ```sh
-forge test --contracts ./src/test/Z123_exp.sol -vvv
+forge test --contracts ./src/test/2024-04/Z123_exp.sol -vvv
 ```
 
 #### Contract
 
-[Z123_exp.sol](src/test/Z123_exp.sol)
+[Z123_exp.sol](src/test/2024-04/Z123_exp.sol)
 
 ### Link reference
 
@@ -1010,12 +1010,12 @@ https://twitter.com/ricocreditsys/status/1781803698940781009
 ### Lost: 48M USD
 
 ```sh
-forge test --contracts ./src/test/others/HedgeyFinance_exp.sol -vvv
+forge test --contracts ./src/test/2024-04/HedgeyFinance_exp.sol -vvv
 ```
 
 #### Contract
 
-[HedgeyFinance_exp.sol](src/test/others/HedgeyFinance_exp.sol)
+[HedgeyFinance_exp.sol](src/test/2024-04/HedgeyFinance_exp.sol)
 
 ### Link reference
 
@@ -1028,12 +1028,12 @@ https://twitter.com/Cube3AI/status/1781294512716820918
 ### Lost: ~ 50 BNB
 
 ```sh
-forge test --contracts src/test/others/SATX_exp.sol -vvv
+forge test --contracts src/test/2024-04/SATX_exp.sol -vvv
 ```
 
 #### Contract
 
-[SATX_exp.sol](src/test/others/SATX_exp.sol)
+[SATX_exp.sol](src/test/2024-04/SATX_exp.sol)
 
 ### Link reference
 
@@ -1046,12 +1046,12 @@ https://x.com/bbbb/status/1780341239801393479
 ### Lost: >100K
 
 ```sh
-forge test --contracts src/test/others/MARS_exp.sol -vv
+forge test --contracts src/test/2024-04/MARS_exp.sol -vv
 ```
 
 #### Contract
 
-[MARS_exp.sol](src/test/others/MARS_exp.sol)
+[MARS_exp.sol](src/test/2024-04/MARS_exp.sol)
 
 ### Link reference
 
@@ -1593,12 +1593,12 @@ https://twitter.com/0xNickLFranklin/status/1760559768241160679
 ### Lost: ~10k
 
 ```
-forge test --contracts ./src/test/others/RuggedArt_exp.sol -vvv
+forge test --contracts ./src/test/2024-02/RuggedArt_exp.sol -vvv
 ```
 
 #### Contract
 
-[RuggedArt_exp.sol](src/test/others/RuggedArt_exp.sol)
+[RuggedArt_exp.sol](src/test/2024-02/RuggedArt_exp.sol)
 
 #### Link reference
 
@@ -1893,14 +1893,14 @@ https://twitter.com/peckshield/status/1747353782004900274
 ### Lost: ~464K
 
 ```
-forge test --contracts ./src/test/others/WiseLending02.exp.sol -vvv --evm-version shanghai
+forge test --contracts ./src/test/2024-01/WiseLending02.exp.sol -vvv --evm-version shanghai
 ```
 
 #### Contract
 
-[WiseLending02_exp.sol](src/test/others/WiseLending02_exp.sol)
+[WiseLending02_exp.sol](src/test/2024-01/WiseLending02_exp.sol)
 
-[WiseLending02.exp.sol](src/test/others/WiseLending02.exp.sol)
+[WiseLending02.exp.sol](src/test/2024-01/WiseLending02.exp.sol)
 
 #### Link reference
 

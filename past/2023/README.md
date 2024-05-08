@@ -2004,7 +2004,7 @@ forge test --contracts ./src/test/2023-06/SHIDO_exp.sol -vvv
 
 #### Contract
 
-[SHIDO_exp.sol](../../src/test/2023-06/SHIDO_exp.sol) | [SHIDO_exp2.sol](../../src/test/2023-06/SHIDO_exp2.sol)
+[SHIDO_exp.sol](../../src/test/2023-06/SHIDO_exp.sol) | [SHIDO_exp2.sol](../../src/test/2023-06/SHIDO_exp2.sol) | [ShidoBlobal_exp.sol](../../src/test/2023-06/ShidoGlobal_exp.sol) 
 
 #### Link Reference
 
