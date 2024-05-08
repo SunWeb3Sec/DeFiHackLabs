@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20240508 SATURN](#20240508-GPU---self-transfer)
+
 [20240507 SATURN](#20240507-saturn---price-manipulation)
 
 [20240506 OSN](#20240506-osn---reward-distribution-problem)
@@ -894,6 +896,23 @@ forge test --contracts src/test/2024-05/OSN_exp.sol -vvv
 ### Link reference
 
 https://twitter.com/ChainAegis/status/1787667253435195841
+
+---
+
+
+### 20240506 GPU - self transfer
+
+### Lost: ~36K USD
+
+
+```sh
+forge test --contracts src/test/2024-05/GPU_exp.sol -vvv
+```
+#### Contract
+[GPU_exp.sol](src/test/2024-05/GPU_exp.sol)
+### Link reference
+
+https://twitter.com/PeckShieldAlert/status/1788153869987611113
 
 ---
 
