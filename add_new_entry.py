@@ -63,6 +63,12 @@ def select_network(rpc_endpoints):
 
     return selected_network, rpc_endpoints
 
+def get_timestamp_from_str(timestampstr):
+    if timestampstr:
+        return datetime.strptime(timestampstr, "%b-%d-%Y %I:%M:%S %p")
+    else:
+        return datetime.now()
+
 def get_sol_file_info():
     print("NOTE: The script automatically adds explorer URLs for any address provided.")
     file_name = input("Enter the file name (e.g., Example_exp.sol): ")
@@ -95,11 +101,7 @@ def add_new_entry(selected_network):
 
     with open("README.md", "r") as file:
         content = file.read()
-
-    if timestamp_str:
-        timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p")
-    else:
-        timestamp = datetime.now()
+    timestamp = get_timestamp_from_str(timestamp_str)
     formatted_date = timestamp.strftime("%Y%m%d")
     name = file_name.split("_")[0]
 
@@ -148,10 +150,8 @@ def replace_placeholders(content, replacements):
 def create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_contract_address,
                              vulnerable_contract_address, attack_tx_hash, post_mortem_url,
                              twitter_guy_url, hacking_god_url, selected_network, timestamp_str):
-    if timestamp_str:
-        timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p")
-    else:
-        timestamp = datetime.now()
+
+    timestamp = get_timestamp_from_str(timestamp_str)
     formatted_date = timestamp.strftime("%Y-%m")
     new_file_name = file_name.replace("_exp.sol", "") + "_exp.sol"
     new_file_path = os.path.join("src", "test", formatted_date, new_file_name)
@@ -222,10 +222,7 @@ def add_new_entry_from_file(file_path):
     with open("README.md", "r") as file:
         content = file.read()
 
-    if timestamp_str:
-        timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p")
-    else:
-        timestamp = datetime.now()
+    timestamp = get_timestamp_from_str(timestamp_str)
     formatted_date = timestamp.strftime("%Y%m%d")
     name = file_name.split("_")[0]
 
