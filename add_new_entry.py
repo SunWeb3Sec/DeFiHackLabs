@@ -175,10 +175,6 @@ def create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_co
         "hackinggodhere": hacking_god_url,
         "ExploitScript": file_name.split("_")[0],
         "mainnet": selected_network,
-        "19_494_655": "1234567",
-        "//implement exploit code here": "// Implement exploit code here",
-        "//Try to log balances after exploit here to show the POC works,example is below": "// Log balances after exploit",
-        "address(this).balance": "address(this).balance"
     }
 
     modified_content = replace_placeholders(template_content, replacements)
