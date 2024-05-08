@@ -884,10 +884,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ### List of DeFi Hacks & POCs
 
 
-### 20240506 GPU - self transfer
+### 20240508 GPU - self transfer
 
 ### Lost: ~36K USD
-
 
 ```sh
 forge test --contracts src/test/2024-05/GPU_exp.sol -vvv
