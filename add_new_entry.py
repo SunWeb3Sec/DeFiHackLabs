@@ -182,13 +182,28 @@ def create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_co
     with open(new_file_path, "w") as new_file:
         new_file.write(modified_content)
 
+def is_git_command_available():
+    try:
+        subprocess.check_output(["git", "--version"])
+        return True
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        return False
+
 def get_uncommitted_sol_files():
+    if not is_git_command_available():
+        print("Git command is not available. Skipping uncommitted file retrieval.")
+        return []
+
     command = "git ls-files --others --exclude-standard src/test/**/*.sol"
     output = subprocess.check_output(command, shell=True, text=True)
     uncommitted_files = output.strip().split("\n")
     return uncommitted_files
 
 def get_recently_committed_sol_files():
+    if not is_git_command_available():
+        print("Git command is not available. Skipping recently committed file retrieval.")
+        return []
+
     command = "git diff --name-only HEAD~1 HEAD src/test/**/*.sol"
     output = subprocess.check_output(command, shell=True, text=True)
     recently_committed_files = output.strip().split("\n")
