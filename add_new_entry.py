@@ -2,6 +2,7 @@ import re
 from datetime import datetime
 import os
 import toml
+import subprocess
 
 def parse_foundry_toml():
     with open("foundry.toml", "r") as toml_file:
@@ -21,7 +22,7 @@ def update_foundry_toml(rpc_endpoints):
 def set_explorer_url(network):
     explorer_urls = {
         "mainnet": "https://etherscan.io",
-        "blast":"https://blastscan.io",
+        "blast": "https://blastscan.io",
         "optimism": "https://optimistic.etherscan.io",
         "fantom": "https://ftmscan.com",
         "arbitrum": "https://arbiscan.io",
@@ -37,13 +38,11 @@ def set_explorer_url(network):
 
 def select_network(rpc_endpoints):
     while True:
-        # Display the available networks
         print("Available networks:")
         for i, network in enumerate(rpc_endpoints, start=1):
             print(f"{i}. {network}")
         print(f"{len(rpc_endpoints) + 1}. Add a new network")
 
-        # Prompt the user to select a network
         choice = input("Enter the number corresponding to the network you want to use: ")
 
         try:
@@ -64,24 +63,16 @@ def select_network(rpc_endpoints):
 
     return selected_network, rpc_endpoints
 
-def add_new_entry():
-    # Read the rpc_endpoints from foundry.toml
-    rpc_endpoints = parse_foundry_toml()
-
-    # Select the network
-    selected_network, rpc_endpoints = select_network(rpc_endpoints)
-
-    # Update foundry.toml with the selected network
-    # update_foundry_toml(rpc_endpoints)
-    print("NOTE do not give explorer urls for any address asked in the script,script automatically adds it")
+def get_sol_file_info():
+    print("NOTE: The script automatically adds explorer URLs for any address provided.")
     file_name = input("Enter the file name (e.g., Example_exp.sol): ")
-    timestamp_str = input(
-        "Enter the timestamp string (e.g., Mar-21-2024 02:51:33 PM): "
-    )
+    timestamp_str = input("Enter the timestamp string (e.g., Mar-21-2024 02:51:33 PM): ")
     lost_amount = input("Enter the lost amount: ")
     additional_details = input("Enter additional details: ")
     link_reference = input("Enter the link reference: ")
+    return file_name, timestamp_str, lost_amount, additional_details, link_reference
 
+def get_sol_file_extra_info():
     attacker_address = input("Enter the attacker's address: ")
     attack_contract_address = input("Enter the attack contract address: ")
     vulnerable_contract_address = input("Enter the vulnerable contract address: ")
@@ -89,10 +80,15 @@ def add_new_entry():
     post_mortem_url = input("Enter the post-mortem URL: ")
     twitter_guy_url = input("Enter the Twitter guy URL: ")
     hacking_god_url = input("Enter the hacking god URL: ")
+    return attacker_address, attack_contract_address, vulnerable_contract_address, attack_tx_hash, post_mortem_url, twitter_guy_url, hacking_god_url
+
+def add_new_entry(selected_network):
+    file_name, timestamp_str, lost_amount, additional_details, link_reference = get_sol_file_info()
 
     create_poc_file = input("Do you want to create a new Solidity file for this POC? (yes/no): ")
 
     if create_poc_file.lower() == "yes":
+        attacker_address, attack_contract_address, vulnerable_contract_address, attack_tx_hash, post_mortem_url, twitter_guy_url, hacking_god_url = get_sol_file_extra_info()
         create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_contract_address,
                                  vulnerable_contract_address, attack_tx_hash,
                                  post_mortem_url, twitter_guy_url, hacking_god_url, selected_network)
@@ -100,27 +96,30 @@ def add_new_entry():
     with open("README.md", "r") as file:
         content = file.read()
 
-    # Convert the timestamp string to a datetime object
     timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p")
-
-    # Format the date as desired
     formatted_date = timestamp.strftime("%Y%m%d")
-
-    # Extract the name from the file name
     name = file_name.split("_")[0]
 
-    # Generate the new entry
-    new_entry = f"""
+    new_entry = generate_new_entry(formatted_date, name, additional_details, lost_amount, file_name, link_reference)
+
+    updated_content = insert_new_entry(content, new_entry)
+    updated_content = update_table_of_contents(updated_content, formatted_date, name, additional_details)
+
+    with open("README.md", "w") as file:
+        file.write(updated_content)
+
+def generate_new_entry(formatted_date, name, additional_details, lost_amount, file_name, link_reference):
+    return f"""
 ### {formatted_date} {name} - {additional_details}
 
 ### Lost: {lost_amount}
 
 
 ```sh
-forge test --contracts ./src/test/{file_name} -vvv
+forge test --contracts ./src/test/{formatted_date[:4]}-{formatted_date[4:6]}/{file_name} -vvv
 ```
 #### Contract
-[{file_name}](src/test/{file_name})
+[{file_name}](src/test/{formatted_date[:4]}-{formatted_date[4:6]}/{file_name})
 ### Link reference
 
 {link_reference}
@@ -129,23 +128,14 @@ forge test --contracts ./src/test/{file_name} -vvv
 
 """
 
-    # Find the position to insert the new entry
-    insert_pos = re.search(
-        r"### List of DeFi Hacks & POCs(.*?)(?=###|\Z)", content, re.DOTALL
-    ).end()
+def insert_new_entry(content, new_entry):
+    insert_pos = re.search(r"### List of DeFi Hacks & POCs(.*?)(?=###|\Z)", content, re.DOTALL).end()
+    return content[:insert_pos] + "\n\n" + new_entry + content[insert_pos:]
 
-    # Insert the new entry
-    updated_content = content[:insert_pos] + "\n\n" + new_entry + content[insert_pos:]
-
-    # Update the table of contents
+def update_table_of_contents(content, formatted_date, name, additional_details):
     toc_entry = f"[{formatted_date} {name}](#{formatted_date.lower()}-{name.lower()}---{additional_details.lower().replace(' ', '-')})"
-    toc_insert_pos = re.search(r"## List of Past DeFi Incidents", updated_content).end()
-    updated_content = (
-        updated_content[:toc_insert_pos] + "\n" + toc_entry + updated_content[toc_insert_pos:]
-    )
-
-    with open("README.md", "w") as file:
-        file.write(updated_content)
+    toc_insert_pos = re.search(r"## List of Past DeFi Incidents", content).end()
+    return content[:toc_insert_pos] + "\n" + toc_entry + content[toc_insert_pos:]
 
 def replace_placeholders(content, replacements):
     for placeholder, replacement in replacements.items():
@@ -155,8 +145,12 @@ def replace_placeholders(content, replacements):
 def create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_contract_address,
                              vulnerable_contract_address, attack_tx_hash, post_mortem_url,
                              twitter_guy_url, hacking_god_url, selected_network):
+    timestamp = datetime.now()
+    formatted_date = timestamp.strftime("%Y-%m")
     new_file_name = file_name.replace("_exp.sol", "") + "_exp.sol"
-    new_file_path = os.path.join("src", "test", new_file_name)
+    new_file_path = os.path.join("src", "test", formatted_date, new_file_name)
+
+    os.makedirs(os.path.dirname(new_file_path), exist_ok=True)
 
     with open("script/Exploit-template_new.sol", "r") as template_file:
         template_content = template_file.read()
@@ -186,4 +180,65 @@ def create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_co
     with open(new_file_path, "w") as new_file:
         new_file.write(modified_content)
 
-add_new_entry()
+def get_uncommitted_sol_files():
+    command = "git ls-files --others --exclude-standard src/test/**/*.sol"
+    output = subprocess.check_output(command, shell=True, text=True)
+    uncommitted_files = output.strip().split("\n")
+    return uncommitted_files
+
+def get_recently_committed_sol_files():
+    command = "git diff --name-only HEAD~1 HEAD src/test/**/*.sol"
+    output = subprocess.check_output(command, shell=True, text=True)
+    recently_committed_files = output.strip().split("\n")
+    return recently_committed_files
+
+def check_readme_entry(file_path):
+    with open("README.md", "r") as file:
+        content = file.read()
+    file_name = os.path.basename(file_path)
+    return file_name not in content
+
+def process_sol_files(sol_files):
+    for file_path in sol_files:
+        if check_readme_entry(file_path):
+            print(f"No README entry found for {file_path}. Adding new entry...")
+            add_new_entry_from_file(file_path)
+        else:
+            print(f"README entry already exists for {file_path}. Skipping...")
+
+def add_new_entry_from_file(file_path):
+    file_name = os.path.basename(file_path)
+    timestamp_str = input(f"Enter the timestamp string for {file_name} (e.g., Mar-21-2024 02:51:33 PM): ")
+    lost_amount = input(f"Enter the lost amount for {file_name}: ")
+    additional_details = input(f"Enter additional details for {file_name}: ")
+    link_reference = input(f"Enter the link reference for {file_name}: ")
+
+    with open("README.md", "r") as file:
+        content = file.read()
+
+    timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p")
+    formatted_date = timestamp.strftime("%Y%m%d")
+    name = file_name.split("_")[0]
+
+    new_entry = generate_new_entry(formatted_date, name, additional_details, lost_amount, file_name, link_reference)
+
+    updated_content = insert_new_entry(content, new_entry)
+    updated_content = update_table_of_contents(updated_content, formatted_date, name, additional_details)
+
+    with open("README.md", "w") as file:
+        file.write(updated_content)
+
+def main():
+    rpc_endpoints = parse_foundry_toml()
+    selected_network, rpc_endpoints = select_network(rpc_endpoints)
+
+    add_new_entry(selected_network)
+
+    uncommitted_sol_files = get_uncommitted_sol_files()
+    recently_committed_sol_files = get_recently_committed_sol_files()
+
+    process_sol_files(uncommitted_sol_files)
+    process_sol_files(recently_committed_sol_files)
+
+if __name__ == "__main__":
+    main()
