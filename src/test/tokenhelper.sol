@@ -19,4 +19,9 @@ library TokenHelper {
         bytes memory result = callTokenFunction(tokenAddress, abi.encodeWithSignature("decimals()"));
         return abi.decode(result, (uint8));
     }
+
+    function getTokenSymbol(address tokenAddress) internal view returns (string memory) {
+        bytes memory result = callTokenFunction(tokenAddress, abi.encodeWithSignature("symbol()"));
+        return abi.decode(result, (string));
+    }
 }

@@ -19,10 +19,15 @@ contract BaseTestWithBalanceLog is Test {
     }
 
     modifier balanceLog() {
-        //Set eth balance to 0 if eth  is funding token as foundry sets a high default balance for contracts unless set
+        //Set eth balance to 0 if eth is funding token as foundry sets a high default balance for contracts unless set
         if (fundingToken == address(0)) vm.deal(address(this), 0);
-        emit log_named_decimal_uint("Attacker ETH Balance Before exploit", getFundingBal(), getFundingDecimals());
+
+        string memory tokenSymbol = fundingToken == address(0) ? "ETH" : TokenHelper.getTokenSymbol(fundingToken);
+        string memory balanceBeforeStr = string(abi.encodePacked("Attacker ", tokenSymbol, " Balance Before exploit"));
+        string memory balanceAfterStr = string(abi.encodePacked("Attacker ", tokenSymbol, " Balance After exploit"));
+
+        emit log_named_decimal_uint(balanceBeforeStr, getFundingBal(), getFundingDecimals());
         _;
-        emit log_named_decimal_uint("Attacker ETH Balance After exploit", getFundingBal(), getFundingDecimals());
+        emit log_named_decimal_uint(balanceAfterStr, getFundingBal(), getFundingDecimals());
     }
 }
