@@ -29,7 +29,7 @@ def set_explorer_url(network):
         "bsc": "https://bscscan.com",
         "moonriver": "https://moonriver.moonscan.io",
         "gnosis": "https://gnosisscan.io",
-        "avalanche": "https://snowtrace.io",
+        "Avalanche": "https://snowtrace.io",
         "polygon": "https://polygonscan.com",
         "celo": "https://celoscan.io",
         "Base": "https://basescan.org"
@@ -74,7 +74,7 @@ def get_sol_file_info():
     file_name = input("Enter the file name (e.g., Example_exp.sol): ")
     timestamp_str = input("Enter the timestamp string (e.g., Mar-21-2024 02:51:33 PM) or leave empty to use current timestamp: ")
     lost_amount = input("Enter the lost amount: ")
-    additional_details = input("Enter additional details: ")
+    additional_details = input("Enter additional details (e.g., Reentrancy): ")
     link_reference = input("Enter the link reference: ")
     return file_name, timestamp_str, lost_amount, additional_details, link_reference
 
@@ -87,6 +87,16 @@ def get_sol_file_extra_info():
     twitter_guy_url = input("Enter the Twitter guy URL: ")
     hacking_god_url = input("Enter the hacking god URL: ")
     return attacker_address, attack_contract_address, vulnerable_contract_address, attack_tx_hash, post_mortem_url, twitter_guy_url, hacking_god_url
+
+def should_add_shanghaiflag(chain):
+    shanghai_chains = ["Base", "optimism", "bsc"]
+    return chain in shanghai_chains
+
+def get_run_command(formatted_date,file_name,chain):
+    basecommand = f"""forge test --contracts ./src/test/{formatted_date[:4]}-{formatted_date[4:6]}/{file_name} -vvv"""
+    if(should_add_shanghaiflag(chain)):
+        basecommand = basecommand + " --evm-version shanghai"
+    return basecommand
 
 def add_new_entry(selected_network):
     file_name, timestamp_str, lost_amount, additional_details, link_reference = get_sol_file_info()
@@ -105,7 +115,7 @@ def add_new_entry(selected_network):
     formatted_date = timestamp.strftime("%Y%m%d")
     name = file_name.split("_")[0]
 
-    new_entry = generate_new_entry(formatted_date, name, additional_details, lost_amount, file_name, link_reference)
+    new_entry = generate_new_entry(formatted_date, name, additional_details, lost_amount, file_name, link_reference,selected_network)
 
     updated_content = insert_new_entry(content, new_entry)
     updated_content = update_table_of_contents(updated_content, formatted_date, name, additional_details)
@@ -113,7 +123,7 @@ def add_new_entry(selected_network):
     with open("README.md", "w") as file:
         file.write(updated_content)
 
-def generate_new_entry(formatted_date, name, additional_details, lost_amount, file_name, link_reference):
+def generate_new_entry(formatted_date, name, additional_details, lost_amount, file_name, link_reference,selected_network):
     return f"""
 ### {formatted_date} {name} - {additional_details}
 
@@ -121,7 +131,7 @@ def generate_new_entry(formatted_date, name, additional_details, lost_amount, fi
 
 
 ```sh
-forge test --contracts ./src/test/{formatted_date[:4]}-{formatted_date[4:6]}/{file_name} -vvv
+{get_run_command(formatted_date,file_name,selected_network)}
 ```
 #### Contract
 [{file_name}](src/test/{formatted_date[:4]}-{formatted_date[4:6]}/{file_name})
