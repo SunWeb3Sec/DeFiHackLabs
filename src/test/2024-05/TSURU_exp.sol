@@ -3,8 +3,7 @@ pragma solidity ^0.8.15;
 
 import "./../interface.sol";
 
-import "forge-std/Test.sol";
-
+import "../basetest.sol";
 // @KeyInfo - Total Lost : 140K
 // Attacker :https://basescan.org/address/0x7A5Eb99C993f4C075c222F9327AbC7426cFaE386
 // Attack Contract :https://basescan.org/address/0xa2209b48506c4e7f3a879ec1c1c2c4ee16c2c017
@@ -36,48 +35,6 @@ interface IUniswapV3Pool {
 
     function token0() external view returns (address);
     function token1() external view returns (address);
-}
-
-library TokenHelper {
-    function callTokenFunction(address tokenAddress, bytes memory data) private view returns (bytes memory) {
-        (bool success, bytes memory result) = tokenAddress.staticcall(data);
-        require(success, "Failed to call token function");
-        return result;
-    }
-
-    function getTokenBalance(address tokenAddress, address targetAddress) internal view returns (uint256) {
-        bytes memory result =
-            callTokenFunction(tokenAddress, abi.encodeWithSignature("balanceOf(address)", targetAddress));
-        return abi.decode(result, (uint256));
-    }
-
-    function getTokenDecimals(address tokenAddress) internal view returns (uint8) {
-        bytes memory result = callTokenFunction(tokenAddress, abi.encodeWithSignature("decimals()"));
-        return abi.decode(result, (uint8));
-    }
-}
-
-
-
-contract BaseTestWithBalanceLog is Test {
-    //Change this to the target token to get token balance of,Keep it address 0 if its ETH that is gotten at the end of the exploit
-    address fundingToken = address(0);
-
-    function getFundingBal() internal view returns (uint256) {
-        return fundingToken == address(0)
-            ? address(this).balance
-            : TokenHelper.getTokenBalance(fundingToken, address(this));
-    }
-
-    function getFundingDecimals() internal view returns (uint8) {
-        return fundingToken == address(0) ? 18 : TokenHelper.getTokenDecimals(fundingToken);
-    }
-
-    modifier balanceLog() {
-        emit log_named_decimal_uint("Attacker ETH Balance Before exploit", getFundingBal(), getFundingDecimals());
-        _;
-        emit log_named_decimal_uint("Attacker ETH Balance After exploit", getFundingBal(), getFundingDecimals());
-    }
 }
 
 contract TsuruExploit is BaseTestWithBalanceLog {
