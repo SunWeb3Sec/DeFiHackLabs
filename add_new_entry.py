@@ -32,7 +32,7 @@ def set_explorer_url(network):
         "avalanche": "https://snowtrace.io",
         "polygon": "https://polygonscan.com",
         "celo": "https://celoscan.io",
-        "base": "https://basescan.org"
+        "Base": "https://basescan.org"
     }
     return explorer_urls.get(network, "")
 
