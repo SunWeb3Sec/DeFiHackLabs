@@ -175,6 +175,7 @@ def create_poc_solidity_file(file_name, lost_amount, attacker_address, attack_co
         "hackinggodhere": hacking_god_url,
         "ExploitScript": file_name.split("_")[0],
         "mainnet": selected_network,
+        "../src/test/basetest.sol":"../basetest.sol",
     }
 
     modified_content = replace_placeholders(template_content, replacements)
