@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240510 GFOX](#20240510-gfox---lack-of-access-control)
 [20240510 TSURU](#20240510-tsuru---insufficient-validation)
 
 [20240508 GPU](#20240508-GPU---self-transfer)
@@ -884,17 +886,36 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20240510 GFOX - lack of access control
 
-### 20240510 TSURU - Insufficient Validation 
+### Lost: 330K USD
+
+```sh
+forge test --contracts ./src/test/2024-05/GFOX_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[GFOX_exp.sol](src/test/2024-05/GFOX_exp.sol)
+
+### Link reference
+
+https://twitter.com/CertiKAlert/status/1788751142144401886
+
+---
+
+### 20240510 TSURU - Insufficient Validation
 
 ### Lost: 140K
-
 
 ```sh
 forge test --contracts ./src/test/2024-05/TSURU_exp.sol -vvv --evm-version shanghai
 ```
+
 #### Contract
+
 [TSURU_exp.sol](src/test/2024-05/TSURU_exp.sol)
+
 ### Link reference
 
 https://base.tsuru.wtf/usdtsuru-exploit-incident-report
@@ -908,8 +929,11 @@ https://base.tsuru.wtf/usdtsuru-exploit-incident-report
 ```sh
 forge test --contracts src/test/2024-05/GPU_exp.sol -vvv
 ```
+
 #### Contract
+
 [GPU_exp.sol](src/test/2024-05/GPU_exp.sol)
+
 ### Link reference
 
 https://twitter.com/PeckShieldAlert/status/1788153869987611113
@@ -920,12 +944,14 @@ https://twitter.com/PeckShieldAlert/status/1788153869987611113
 
 ### Lost: ~15 BNB
 
-
 ```sh
 forge test --contracts src/test/2024-05/OSN_exp.sol -vvv
 ```
+
 #### Contract
+
 [SATURN_exp.sol](src/test/2024-05/SATURN_exp.sol)
+
 ### Link reference
 
 https://twitter.com/ChainAegis/status/1787667253435195841
@@ -936,12 +962,14 @@ https://twitter.com/ChainAegis/status/1787667253435195841
 
 ### Lost: ~109K USD
 
-
 ```sh
 forge test --contracts src/test/2024-05/OSN_exp.sol -vvv --evm-version shanghai
 ```
+
 #### Contract
+
 [OSN_exp.sol](src/test/2024-05/OSN_exp.sol)
+
 ### Link reference
 
 https://twitter.com/SlowMist_Team/status/1787330586857861564
@@ -952,12 +980,14 @@ https://twitter.com/SlowMist_Team/status/1787330586857861564
 
 ### Lost: 181K
 
-
 ```sh
 forge test --contracts ./src/test/2024-04/Yield_exp.sol -vvv
 ```
+
 #### Contract
+
 [Yield_exp.sol](src/test/2024-04/Yield_exp.sol)
+
 ### Link reference
 
 https://twitter.com/peckshield/status/1785121607192817692
@@ -970,12 +1000,14 @@ https://medium.com/immunefi/yield-protocol-logic-error-bugfix-review-7b86741e6f5
 
 ### Lost: 1.4M
 
-
 ```sh
 forge test --contracts ./src/test/2024-04/PikeFinance_exp.sol -vvv
 ```
+
 #### Contract
+
 [PikeFinance_exp.sol](src/test/2024-04/PikeFinance_exp.sol)
+
 ### Link reference
 
 https://twitter.com/Phalcon_xyz/status/1785508900093194591
@@ -1735,14 +1767,16 @@ https://twitter.com/AnciliaInc/status/1757533144033739116
 
 ### Lost: 200K
 
-
 ```sh
 forge test --contracts ./src/test/2024-02/DN404_exp.sol -vvv
 ```
+
 #### Contract
+
 [DN404_exp.sol](src/test/2024-02/DN404_exp.sol)
 
 ---
+
 ### 20240208 Pandora - interger underflow
 
 ### Lost: ~17K USD
