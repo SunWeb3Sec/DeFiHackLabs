@@ -17,15 +17,16 @@ contract BaseTestWithBalanceLog is Test {
 
     constructor() {
         chainIdToInfo[1] = ChainInfo("MAINNET", "ETH");
+        chainIdToInfo[238] = ChainInfo("BLAST", "ETH");
         chainIdToInfo[10] = ChainInfo("OPTIMISM", "ETH");
-        chainIdToInfo[56] = ChainInfo("BSC", "BNB");
-        chainIdToInfo[100] = ChainInfo("XDAI", "XDAI");
-        chainIdToInfo[137] = ChainInfo("POLYGON", "MATIC");
         chainIdToInfo[250] = ChainInfo("FANTOM", "FTM");
         chainIdToInfo[42161] = ChainInfo("ARBITRUM", "ETH");
-        chainIdToInfo[43114] = ChainInfo("AVALANCHE", "AVAX");
-        chainIdToInfo[42220] = ChainInfo("CELO", "CELO");
+        chainIdToInfo[56] = ChainInfo("BSC", "BNB");
         chainIdToInfo[1285] = ChainInfo("MOONRIVER", "MOVR");
+        chainIdToInfo[100] = ChainInfo("GNOSIS", "XDAI");
+        chainIdToInfo[43114] = ChainInfo("AVALANCHE", "AVAX");
+        chainIdToInfo[137] = ChainInfo("POLYGON", "MATIC");
+        chainIdToInfo[42220] = ChainInfo("CELO", "CELO");
         chainIdToInfo[8453] = ChainInfo("BASE", "ETH");
     }
 
