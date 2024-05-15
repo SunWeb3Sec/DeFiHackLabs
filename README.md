@@ -888,10 +888,6 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-
-
-
-
 ### 20240514 PredyFinance - Reentrancy
 
 ### Lost: $464K
@@ -931,7 +927,6 @@ https://twitter.com/CertiKAlert/status/1788751142144401886
 ### 20240510 TSURU - Insufficient Validation 
 
 ### Lost: 140K
-
 
 ```sh
 forge test --contracts ./src/test/2024-05/TSURU_exp.sol -vvv --evm-version shanghai
