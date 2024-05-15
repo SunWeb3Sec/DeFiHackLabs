@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-407 incidents included.
+408 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 [20240514 PredyFinance](#20240514-predyfinance---reentrancy)
+
+[20240510 GFOX](#20240510-gfox---lack-of-access-control)
 
 [20240510 TSURU](#20240510-tsuru---insufficient-validation)
 
@@ -886,10 +888,6 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
-
-
-
-
 ### 20240514 PredyFinance - Reentrancy
 
 ### Lost: $464K
@@ -906,10 +904,29 @@ https://twitter.com/Phalcon_xyz/status/1790307019590680851
 
 ---
 
-### 20240510 TSURU - Insufficient Validation 
+### 20240510 GFOX - lack of access control
+
+### Lost: 330K USD
 
 ### Lost: 140K
 
+```sh
+forge test --contracts ./src/test/2024-05/GFOX_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[GFOX_exp.sol](src/test/2024-05/GFOX_exp.sol)
+
+### Link reference
+
+https://twitter.com/CertiKAlert/status/1788751142144401886
+
+---
+
+### 20240510 TSURU - Insufficient Validation 
+
+### Lost: 140K
 
 ```sh
 forge test --contracts ./src/test/2024-05/TSURU_exp.sol -vvv --evm-version shanghai
