@@ -41,24 +41,24 @@ contract PredyFinance is BaseTestWithBalanceLog {
             whitelistEnabled: false,
             fee: 0,
             assetRiskParams: Perp.AssetRiskParams({
-                riskRatio: 100_000_001,
+                riskRatio: 0.100000001 gwei,
                 debtRiskRatio: 0,
                 rangeSize: 1000,
                 rebalanceThreshold: 500,
-                minSlippage: 1_005_000,
-                maxSlippage: 1_050_000
+                minSlippage: 1.005 ether,
+                maxSlippage: 1.05 ether
             }),
             quoteIrmParams: InterestRateModel.IRMParams({
-                baseRate: 10_000_000_000_000_000,
-                kinkRate: 900_000_000_000_000_000,
-                slope1: 500_000_000_000_000_000,
-                slope2: 1_000_000_000_000_000_000
+                baseRate: 0.01 ether,
+                kinkRate: 0.9 ether,
+                slope1: 0.5 ether,
+                slope2: 1 ether
             }),
             baseIrmParams: InterestRateModel.IRMParams({
-                baseRate: 10_000_000_000_000_000,
-                kinkRate: 900_000_000_000_000_000,
-                slope1: 500_000_000_000_000_000,
-                slope2: 1_000_000_000_000_000_000
+                baseRate: 0.01 ether,
+                kinkRate: 0.9 ether,
+                slope1: 0.5 ether,
+                slope2: 1 ether
             })
         });
         uint256 pairId = predyPool.registerPair(addPairParam); // register pair, the owner of the pair is attack contract
