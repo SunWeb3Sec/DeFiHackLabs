@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.15;
 
-import "../src/test/basetest.sol";
+import "../basetest.sol";
 import "./../interface.sol";
 
 // @KeyInfo - Total Lost : 330K
