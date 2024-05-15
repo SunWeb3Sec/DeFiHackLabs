@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-406 incidents included.
+407 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+[20240514 PredyFinance](#20240514-predyfinance---reentrancy)
+
 [20240510 TSURU](#20240510-tsuru---insufficient-validation)
 
 [20240508 GPU](#20240508-GPU---self-transfer)
@@ -884,6 +886,25 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+
+
+
+
+### 20240514 PredyFinance - Reentrancy
+
+### Lost: $464K
+
+
+```sh
+forge test --contracts ./src/test/2024-05/PredyFinance_exp.sol -vvv
+```
+#### Contract
+[PredyFinance_exp.sol](src/test/2024-05/PredyFinance_exp.sol)
+### Link reference
+
+https://twitter.com/Phalcon_xyz/status/1790307019590680851
+
+---
 
 ### 20240510 TSURU - Insufficient Validation 
 
