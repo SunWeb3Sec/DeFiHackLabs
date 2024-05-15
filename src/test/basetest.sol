@@ -20,13 +20,13 @@ contract BaseTestWithBalanceLog is Test {
         chainIdToInfo[238] = ChainInfo("BLAST", "ETH");
         chainIdToInfo[10] = ChainInfo("OPTIMISM", "ETH");
         chainIdToInfo[250] = ChainInfo("FANTOM", "FTM");
-        chainIdToInfo[42161] = ChainInfo("ARBITRUM", "ETH");
+        chainIdToInfo[42_161] = ChainInfo("ARBITRUM", "ETH");
         chainIdToInfo[56] = ChainInfo("BSC", "BNB");
         chainIdToInfo[1285] = ChainInfo("MOONRIVER", "MOVR");
         chainIdToInfo[100] = ChainInfo("GNOSIS", "XDAI");
-        chainIdToInfo[43114] = ChainInfo("AVALANCHE", "AVAX");
+        chainIdToInfo[43_114] = ChainInfo("AVALANCHE", "AVAX");
         chainIdToInfo[137] = ChainInfo("POLYGON", "MATIC");
-        chainIdToInfo[42220] = ChainInfo("CELO", "CELO");
+        chainIdToInfo[42_220] = ChainInfo("CELO", "CELO");
         chainIdToInfo[8453] = ChainInfo("BASE", "ETH");
     }
 
@@ -38,7 +38,8 @@ contract BaseTestWithBalanceLog is Test {
     function getChainSymbol(uint256 chainId) internal view returns (string memory symbol) {
         (, symbol) = getChainInfo(chainId);
         //Return eth as default if chainid is not registed in mapping
-        if(symbol == "") {
+        // Return eth as default if chainid is not registered in mapping
+        if (bytes(symbol).length == 0) {
             symbol = "ETH";
         }
     }
@@ -54,19 +55,22 @@ contract BaseTestWithBalanceLog is Test {
     }
 
     function getBaseCurrencySymbol() internal view returns (string memory) {
-        return getChainSymbol(block.chainid);
+        string memory chainSymbol = getChainSymbol(block.chainid);
+        return fundingToken == address(0) ? chainSymbol : TokenHelper.getTokenSymbol(fundingToken);
     }
 
     modifier balanceLog() {
-        //Set eth balance to 0 if eth is funding token as foundry sets a high default balance for contracts unless set
         if (fundingToken == address(0)) vm.deal(address(this), 0);
-
-        string memory tokenSymbol = fundingToken == address(0) ? getBaseCurrencySymbol() : TokenHelper.getTokenSymbol(fundingToken);
-        string memory balanceBeforeStr = string(abi.encodePacked("Attacker ", tokenSymbol, " Balance Before exploit"));
-        string memory balanceAfterStr = string(abi.encodePacked("Attacker ", tokenSymbol, " Balance After exploit"));
-
-        emit log_named_decimal_uint(balanceBeforeStr, getFundingBal(), getFundingDecimals());
+        logBalance("Before");
         _;
-        emit log_named_decimal_uint(balanceAfterStr, getFundingBal(), getFundingDecimals());
+        logBalance("After");
+    }
+
+    function logBalance(string memory stage) private {
+        emit log_named_decimal_uint(
+            string(abi.encodePacked("Attacker ", getBaseCurrencySymbol(), " Balance ", stage, " exploit")),
+            getFundingBal(),
+            getFundingDecimals()
+        );
     }
 }
