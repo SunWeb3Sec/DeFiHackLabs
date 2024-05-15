@@ -8,8 +8,40 @@ contract BaseTestWithBalanceLog is Test {
     //Change this to the target token to get token balance of,Keep it address 0 if its ETH that is gotten at the end of the exploit
     address fundingToken = address(0);
 
+    struct ChainInfo {
+        string name;
+        string symbol;
+    }
+
+    mapping(uint256 => ChainInfo) private chainIdToInfo;
+
+    constructor() {
+        chainIdToInfo[1] = ChainInfo("MAINNET", "ETH");
+        chainIdToInfo[10] = ChainInfo("OPTIMISM", "ETH");
+        chainIdToInfo[56] = ChainInfo("BSC", "BNB");
+        chainIdToInfo[100] = ChainInfo("XDAI", "XDAI");
+        chainIdToInfo[137] = ChainInfo("POLYGON", "MATIC");
+        chainIdToInfo[250] = ChainInfo("FANTOM", "FTM");
+        chainIdToInfo[42161] = ChainInfo("ARBITRUM", "ETH");
+        chainIdToInfo[43114] = ChainInfo("AVALANCHE", "AVAX");
+        chainIdToInfo[42220] = ChainInfo("CELO", "CELO");
+        chainIdToInfo[1285] = ChainInfo("MOONRIVER", "MOVR");
+        chainIdToInfo[8453] = ChainInfo("BASE", "ETH");
+    }
+
+    function getChainInfo(uint256 chainId) internal view returns (string memory, string memory) {
+        ChainInfo storage info = chainIdToInfo[chainId];
+        return (info.name, info.symbol);
+    }
+
+    function getChainSymbol(uint256 chainId) internal view returns (string memory symbol) {
+        (, symbol) = getChainInfo(chainId);
+    }
+
     function getFundingBal() internal view returns (uint256) {
-        return fundingToken == address(0) ? address(this).balance : TokenHelper.getTokenBalance(fundingToken, address(this));
+        return fundingToken == address(0)
+            ? address(this).balance
+            : TokenHelper.getTokenBalance(fundingToken, address(this));
     }
 
     function getFundingDecimals() internal view returns (uint8) {
@@ -17,26 +49,7 @@ contract BaseTestWithBalanceLog is Test {
     }
 
     function getBaseCurrencySymbol() internal view returns (string memory) {
-        uint256 chainId = block.chainid;
-        console.log(chainId);
-        //Eth or ethl2s should have eth as base currency
-        if (chainId == 1 || chainId == 10 || chainId == 250 || chainId == 42161  || chainId == 1285 || chainId == 8453) {
-            return "ETH";
-        }
-        else if (chainId == 100) {
-            return "XDAI";
-        }
-        else if (chainId == 56) {
-            return "BNB";
-        } else if (chainId == 43114) {
-            return "AVAX";
-        } else if (chainId == 137) {
-            return "MATIC";
-        } else if (chainId == 42220) {
-            return "CELO";
-        } else {
-            return "ETH";
-        }
+        return getChainSymbol(block.chainid);
     }
 
     modifier balanceLog() {
