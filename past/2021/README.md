@@ -2,7 +2,7 @@
 
 ## Before 2021 - List of Past DeFi Incidents
 
-44 incidents included.
+43 incidents included.
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
@@ -97,12 +97,12 @@
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Visor_exp.t.sol -vv
+forge test --contracts ./src/test/2021-12/Visor_exp.sol -vv
 ```
 
 #### Contract
 
-[Visor_exp.t.sol](../../src/test/others/Visor_exp.t.sol)
+[Visor_exp.sol](../../src/test/2021-12/Visor_exp.sol)
 
 #### Link reference
 
@@ -121,12 +121,12 @@ https://etherscan.io/tx/0x69272d8c84d67d1da2f6425b339192fa472898dce936f24818fda4
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Grim_exp.sol -vv
+forge test --contracts ./src/test/2021-12/Grim_exp.sol -vv
 ```
 
 #### Contract
 
-[Grim_exp.sol](../../src/test/others/Grim_exp.sol)
+[Grim_exp.sol](../../src/test/2021-12/Grim_exp.sol)
 
 #### Link reference
 
@@ -145,12 +145,12 @@ https://ftmscan.com/tx/0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb2
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/NerveBridge.t.sol -vv
+forge test --contracts ./src/test/2021-12/NerveBridge_exp.sol -vv
 ```
 
 #### Contract
 
-[NerveBridge.t.sol](../../src/test/others/NerveBridge.t.sol)
+[NerveBridge_exp.sol](../../src/test/2021-12/NerveBridge_exp.sol)
 
 #### Link reference
 
@@ -165,12 +165,12 @@ https://blocksecteam.medium.com/the-analysis-of-nerve-bridge-security-incident-e
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Mono_exp.t.sol -vv
+forge test --contracts ./src/test/2021-11/Mono_exp.sol -vv
 ```
 
 #### Contract
 
-[Mono_exp.t.sol](../../src/test/others/Mono_exp.t.sol)
+[Mono_exp.sol](../../src/test/2021-11/Mono_exp.sol)
 
 #### Link reference
 
@@ -193,12 +193,12 @@ https://etherscan.io/tx/0x9f14d093a2349de08f02fc0fb018dadb449351d0cdb7d0738ff69c
 Testing
 
 ```sh
- forge test --contracts ./src/test/others/Cream_2_exp.sol -vvv
+ forge test --contracts ./src/test/2021-10/Cream_2_exp.sol -vvv
 ```
 
 #### Contract
 
-[Cream_2_exp.sol](../../src/test/others/Cream_2_exp.sol)
+[Cream_2_exp.sol](../../src/test/2021-10/Cream_2_exp.sol)
 
 #### Link reference
 
@@ -213,12 +213,12 @@ https://medium.com/immunefi/hack-analysis-cream-finance-oct-2021-fc222d913fc5
 Testing
 
 ```sh
-forge test --contracts src/test/others/IndexedFinance_exp.t.sol -vv
+forge test --contracts src/test/2021-10/IndexedFinance_exp.sol -vv
 ```
 
 #### Contract
 
-[IndexedFinance_exp.t.sol](../../src/test/others/IndexedFinance_exp.t.sol)
+[IndexedFinance_exp.sol](../../src/test/2021-10/IndexedFinance_exp.sol)
 
 #### Link reference
 
@@ -233,12 +233,12 @@ https://blocksecteam.medium.com/the-analysis-of-indexed-finance-security-inciden
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Sushimiso_exp.sol -vv
+forge test --contracts ./src/test/2021-09/Sushimiso_exp.sol -vv
 ```
 
 #### Contract
 
-[Sushimiso_exp.sol](../../src/test/others/Sushimiso_exp.sol)
+[Sushimiso_exp.sol](../../src/test/2021-09/Sushimiso_exp.sol)
 
 #### Link reference
 
@@ -255,12 +255,12 @@ https://etherscan.io/tx/0x78d6355703507f88f2090eb780d245b0ab26bf470eabdb004761ce
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Nimbus_exp.sol -vv
+forge test --contracts ./src/test/2021-09/Nimbus_exp.sol -vv
 ```
 
 #### Contract
 
-[Nimbus_exp.sol](../../src/test/others/Nimbus_exp.sol)
+[Nimbus_exp.sol](../../src/test/2021-09/Nimbus_exp.sol)
 
 #### Link reference
 
@@ -275,12 +275,12 @@ https://twitter.com/BlockSecTeam/status/1438100688215560192
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/NowSwap_exp.sol -vv
+forge test --contracts ./src/test/2021-09/NowSwap_exp.sol -vv
 ```
 
 #### Contract
 
-[NowSwap_exp.sol](../../src/test/others/NowSwap_exp.sol)
+[NowSwap_exp.sol](../../src/test/2021-09/NowSwap_exp.sol)
 
 #### Link reference
 
@@ -293,12 +293,12 @@ https://twitter.com/BlockSecTeam/status/1438100688215560192
 Testing
 
 ```sh
-forge test --contracts src/test/others/ZABU_exp.sol -vvv
+forge test --contracts src/test/2021-09/ZABU_exp.sol -vvv
 ```
 
 #### Contract
 
-[ZABU_exp.sol](../../src/test/others/ZABU_exp.sol)
+[ZABU_exp.sol](../../src/test/2021-09/ZABU_exp.sol)
 
 ### Link reference
 
@@ -313,12 +313,12 @@ https://slowmist.medium.com/brief-analysis-of-zabu-finance-being-hacked-44243919
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/DaoMaker_exp.sol -vv
+forge test --contracts ./src/test/2021-09/DaoMaker_exp.sol -vv
 ```
 
 #### Contract
 
-[DaoMaker_exp.sol](../../src/test/others/DaoMaker_exp.sol)
+[DaoMaker_exp.sol](../../src/test/2021-09/DaoMaker_exp.sol)
 
 #### Link reference
 
@@ -335,12 +335,12 @@ https://etherscan.io/tx/0xd5e2edd6089dcf5dca78c0ccbdf659acedab173a8ab3cb65720e35
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Cream_exp.sol -vv
+forge test --contracts ./src/test/2021-08/Cream_exp.sol -vv
 ```
 
 #### Contract
 
-[Cream_exp.sol](../../src/test/others/Cream_exp.sol)
+[Cream_exp.sol](../../src/test/2021-08/Cream_exp.sol)
 
 #### Link reference
 
@@ -359,12 +359,12 @@ https://etherscan.io/tx/0xa9a1b8ea288eb9ad315088f17f7c7386b9989c95b4d13c81b69d5d
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/XSURGE_exp.t.sol -vv
+forge test --contracts ./src/test/2021-08/XSURGE_exp.sol -vv
 ```
 
 #### Contract
 
-[XSURGE_exp.t.sol](../../src/test/others/XSURGE_exp.t.sol)
+[XSURGE_exp.sol](../../src/test/2021-08/XSURGE_exp.sol)
 
 #### Link reference
 
@@ -383,12 +383,12 @@ https://bscscan.com/tx/0x8c93d6e5d6b3ec7478b4195123a696dbc82a3441be090e048fe4b33
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/PolyNetwork/PolyNetwork_exp.sol -vv
+forge test --contracts ./src/test/2021-08/PolyNetwork_exp.sol -vv
 ```
 
 #### Contract
 
-[PolyNetwork_exp.sol](../../src/test/others/PolyNetwork/PolyNetwork_exp.sol)
+[PolyNetwork_exp.sol](../../src/test/2021-08/PolyNetwork_exp.sol)
 
 #### Link reference
 
@@ -415,12 +415,12 @@ One of the biggest design lessons that people need to take away from this is: if
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/WaultFinance_exp.sol -vvv
+forge test --contracts ./src/test/2021-08/WaultFinance_exp.sol -vvv
 ```
 
 #### Contract
 
-[WaultFinance_exp.sol](../../src/test/others/WaultFinance_exp.sol)
+[WaultFinance_exp.sol](../../src/test/2021-08/WaultFinance_exp.sol)
 
 #### Link reference
 
@@ -437,12 +437,12 @@ https://inspexco.medium.com/wault-finance-incident-analysis-wex-price-manipulati
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Levyathan_poc.sol -vv
+forge test --contracts ./src/test/2021-07/Levyathan_exp.sol -vv
 ```
 
 #### Contract
 
-[Levyathan_poc.sol](../../src/test/others/Levyathan_poc.sol)
+[Levyathan_exp.sol](../../src/test/2021-07/Levyathan_exp.sol)
 
 #### Link reference
 
@@ -457,12 +457,12 @@ https://levyathan-index.medium.com/post-mortem-levyathan-c3ff7f9a6f65
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Chainswap_exp2.sol -vv
+forge test --contracts ./src/test/2021-07/Chainswap_exp2.sol -vv
 ```
 
 #### Contract
 
-[Chainswap_exp2.sol](../../src/test/others/Chainswap_exp2.sol)
+[Chainswap_exp2.sol](../../src/test/2021-07/Chainswap_exp2.sol)
 
 #### Link reference
 
@@ -481,12 +481,12 @@ https://chain-swap.medium.com/chainswap-exploit-11-july-2021-post-mortem-6e4e346
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Chainswap_exp1.sol -vv
+forge test --contracts ./src/test/2021-07/Chainswap_exp1.sol -vv
 ```
 
 #### Contract
 
-[Chainswap_exp1.sol](../../src/test/others/Chainswap_exp1.sol)
+[Chainswap_exp1.sol](../../src/test/2021-07/Chainswap_exp1.sol)
 
 #### Link reference
 
@@ -501,12 +501,12 @@ https://chain-swap.medium.com/chainswap-post-mortem-and-compensation-plan-90cad5
 Testing
 
 ```sh
-forge test --contracts src/test/others/SafeDollar_exp.sol -vvv
+forge test --contracts src/test/2021-06/SafeDollar_exp.sol -vvv
 ```
 
 #### Contract
 
-[SafeDollar_exp.sol](../../src/test/others/SafeDollar_exp.sol)
+[SafeDollar_exp.sol](../../src/test/2021-06/SafeDollar_exp.sol)
 
 #### Link reference
 
@@ -521,12 +521,12 @@ https://twitter.com/peckshield/status/1409443556251430918
 Testing
 
 ```sh
-forge test --contracts src/test/others/xWin_exp.sol -vvv
+forge test --contracts src/test/2021-06/xWin_exp.sol -vvv
 ```
 
 #### Contract
 
-[xWin_exp.sol](../../src/test/others/xWin_exp.sol)
+[xWin_exp.sol](../../src/test/2021-06/xWin_exp.sol)
 
 #### Link reference
 
@@ -539,12 +539,12 @@ https://peckshield.medium.com/xwin-finance-incident-root-cause-analysis-71d0820e
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Eleven.sol -vv
+forge test --contracts ./src/test/2021-06/Eleven_exp.sol -vv
 ```
 
 #### Contract
 
-[Eleven.sol](../../src/test/others/Eleven.sol)
+[Eleven.sol](../../src/test/2021-06/Eleven_exp.sol)
 
 #### Link reference
 
@@ -559,12 +559,12 @@ https://bscscan.com/tx/0xeaaa8f4d33b1035a790f0d7c4eb6e38db7d6d3b580e0bbc9ba39a9d
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/88mph_exp.sol -vv
+forge test --contracts ./src/test/2021-06/88mph_exp.sol -vv
 ```
 
 #### Contract
 
-[88mph_exp.sol](../../src/test/others/88mph_exp.sol)
+[88mph_exp.sol](../../src/test/2021-06/88mph_exp.sol)
 
 #### Link reference
 
@@ -577,12 +577,12 @@ https://medium.com/immunefi/88mph-function-initialization-bug-fix-postmortem-c3a
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/PancakeHunny_exp.sol -vv
+forge test --contracts ./src/test/2021-06/PancakeHunny_exp.sol -vv
 ```
 
 #### Contract
 
-[PancakeHunny_exp.sol](../../src/test/others/PancakeHunny_exp.sol)
+[PancakeHunny_exp.sol](../../src/test/2021-06/PancakeHunny_exp.sol)
 
 #### Link reference
 
@@ -597,12 +597,12 @@ https://bscscan.com/tx/0x765de8357994a206bb90af57dcf427f48a2021f2f28ca81f2c00bc3
 Testing
 
 ```sh
-forge test --contracts src/test/others/BurgerSwap_exp.sol -vv
+forge test --contracts src/test/2021-05/BurgerSwap_exp.sol -vv
 ```
 
 #### Contract
 
-[BurgerSwap_exp.sol](../../src/test/others/BurgerSwap_exp.sol)
+[BurgerSwap_exp.sol](../../src/test/2021-05/BurgerSwap_exp.sol)
 
 #### Link reference
 
@@ -615,12 +615,12 @@ https://twitter.com/Mudit__Gupta/status/1398156036574306304
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/PancakeBunny_exp.sol -vv
+forge test --contracts ./src/test/2021-05/PancakeBunny_exp.sol -vv
 ```
 
 #### Contract
 
-[PancakeBunny_exp.sol](../../src/test/others/PancakeBunny_exp.sol)
+[PancakeBunny_exp.sol](../../src/test/2021-05/PancakeBunny_exp.sol)
 
 #### Link reference
 
@@ -635,12 +635,12 @@ https://bscscan.com/tx/0x897c2de73dd55d7701e1b69ffb3a17b0f4801ced88b0c75fe1551c5
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/RariCapital_exp.sol -vv
+forge test --contracts ./src/test/2021-05/RariCapital_exp.sol -vv
 ```
 
 #### Contract
 
-[RariCapital_exp.sol](../../src/test/others/RariCapital_exp.sol)
+[RariCapital_exp.sol](../../src/test/2021-05/RariCapital_exp.sol)
 
 #### Link reference
 
@@ -655,12 +655,12 @@ https://etherscan.com/tx/0x171072422efb5cd461546bfe986017d9b5aa427ff1c07ebe8acc0
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/ValueDefi_exp.sol -vv
+forge test --contracts ./src/test/2021-05/ValueDefi_exp.sol -vv
 ```
 
 #### Contract
 
-[ValueDefi_exp.sol](../../src/test/others/ValueDefi_exp.sol)
+[ValueDefi_exp.sol](../../src/test/2021-05/ValueDefi_exp.sol)
 
 #### Link reference
 
@@ -677,12 +677,12 @@ https://bscscan.com/tx/0xa00def91954ba9f1a1320ef582420d41ca886d417d996362bf3ac3f
 Testing
 
 ```sh
-forge test --contracts src/test/others/Spartan_exp.t.sol -vv
+forge test --contracts src/test/2021-05/Spartan_exp.sol -vv
 ```
 
 #### Contract
 
-[Spartan_exp.t.sol](../../src/test/others/Spartan_exp.t.sol)
+[Spartan_exp.sol](../../src/test/2021-05/Spartan_exp.sol)
 
 #### Link reference
 
@@ -697,12 +697,12 @@ https://rekt.news/spartan-rekt/
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Uranium_exp.sol -vv
+forge test --contracts ./src/test/2021-04/Uranium_exp.sol -vv
 ```
 
 #### Contract
 
-[Uranium_exp.sol](../../src/test/others/Uranium_exp.sol)
+[Uranium_exp.sol](../../src/test/2021-04/Uranium_exp.sol)
 
 #### Link reference
 
@@ -719,12 +719,12 @@ https://bscscan.com/tx/0x5a504fe72ef7fc76dfeb4d979e533af4e23fe37e90b5516186d5787
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/dodo_flashloan_exp.sol -vv
+forge test --contracts ./src/test/2021-03/dodo_flashloan_exp.sol -vv
 ```
 
 #### Contract
 
-[dodo_flashloan_exp.sol](../../src/test/others/dodo_flashloan_exp.sol)
+[dodo_flashloan_exp.sol](../../src/test/2021-03/dodo_flashloan_exp.sol)
 
 #### Link reference
 
@@ -743,12 +743,12 @@ https://etherscan.io/tx/0x395675b56370a9f5fe8b32badfa80043f5291443bd6c8273900476
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/PAID_exp.sol -vv
+forge test --contracts ./src/test/2021-03/PAID_exp.sol -vv
 ```
 
 #### Contract
 
-[PAID_exp.sol](../../src/test/others/PAID_exp.sol)
+[PAID_exp.sol](../../src/test/2021-03/PAID_exp.sol)
 
 #### Link reference
 
@@ -765,12 +765,12 @@ https://etherscan.io/tx/0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Yearn_ydai.sol -vv
+forge test --contracts ./src/test/2021-02/Yearn_ydai_exp.sol -vv
 ```
 
 #### Contract
 
-[Yearn_ydai.sol](../../src/test/others/Yearn_ydai.sol)
+[Yearn_ydai.sol](../../src/test/2021-02/Yearn_ydai_exp.sol)
 
 #### Link reference
 
@@ -787,12 +787,12 @@ https://etherscan.io/tx/0x59faab5a1911618064f1ffa1e4649d85c99cfd9f0d64dcebbc1af7
 Testing
 
 ```sh
-forge test --contracts src/test/others/Sushi-Badger_Digg.exp.sol -vvvv
+forge test --contracts src/test/2021-01/Sushi_Badger_Digg_exp.sol -vvvv
 ```
 
 #### Contract
 
-[Sushi-Badger_Digg.exp.sol](../../src/test/others/Sushi-Badger_Digg.exp.sol)
+[Sushi-Badger_Digg.exp.sol](../../src/test/2021-01/Sushi_Badger_Digg_exp.sol)
 
 #### Link reference
 
@@ -805,12 +805,12 @@ https://cmichel.io/replaying-ethereum-hacks-sushiswap-badger-dao-digg/
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Cover_exp.sol -vv
+forge test --contracts ./src/test/2020-12/Cover_exp.sol -vv
 ```
 
 #### Contract
 
-[Cover_exp.sol](../../src/test/others/Cover_exp.sol)
+[Cover_exp.sol](../../src/test/2020-12/Cover_exp.sol)
 
 #### Link reference
 
@@ -827,12 +827,12 @@ https://slowmist.medium.com/a-brief-analysis-of-the-cover-protocol-hacked-event-
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Pickle_exp.sol -vv
+forge test --contracts ./src/test/2020-11/Pickle_exp.sol -vv
 ```
 
 #### Contract
 
-[Pickle_exp.sol](../../src/test/others/Pickle_exp.sol)
+[Pickle_exp.sol](../../src/test/2020-11/Pickle_exp.sol)
 
 #### Link reference
 
@@ -849,13 +849,13 @@ https://etherscan.io/tx/0xe72d4e7ba9b5af0cf2a8cfb1e30fd9f388df0ab3da79790be842bf
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/HarvestFinance_exp.sol -vv
+forge test --contracts ./src/test/2020-10/HarvestFinance_exp.sol -vv
 
 ```
 
 #### Contract
 
-[HarvestFinance_exp.sol](../../src/test/others/HarvestFinance_exp.sol)
+[HarvestFinance_exp.sol](../../src/test/2020-10/HarvestFinance_exp.sol)
 
 #### Link reference
 
@@ -868,12 +868,12 @@ https://etherscan.io/tx/0x35f8d2f572fceaac9288e5d462117850ef2694786992a8c3f6d026
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Opyn.exp.sol -vv
+forge test --contracts ./src/test/2020-08/Opyn_exp.sol -vv
 ```
 
 #### Contract
 
-[Opyn.exp.sol](../../src/test/others/Opyn.exp.sol)
+[Opyn.exp.sol](../../src/test/2020-08/Opyn_exp.sol)
 
 #### Link reference
 
@@ -888,12 +888,12 @@ https://etherscan.io/tx/0x56de6c4bd906ee0c067a332e64966db8b1e866c7965c044163a503
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Balancer_20200628_exp.sol -vv
+forge test --contracts ./src/test/2020-06/Balancer_20200628_exp.sol -vv
 ```
 
 #### Contract
 
-[Balancer_20200628_exp.sol](../../src/test/others/Balancer_20200628_exp.sol)
+[Balancer_20200628_exp.sol](../../src/test/2020-06/Balancer_20200628_exp.sol)
 
 #### Link reference
 
@@ -908,12 +908,12 @@ https://etherscan.io/tx/0x013be97768b702fe8eccef1a40544d5ecb3c1961ad5f87fee4d16f
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Bancor_exp.sol -vv
+forge test --contracts ./src/test/2020-06/Bancor_exp.sol -vv
 ```
 
 #### Contract
 
-[Bancor_exp.sol](../../src/test/others/Bancor_exp.sol)
+[Bancor_exp.sol](../../src/test/2020-06/Bancor_exp.sol)
 
 #### Link reference
 
@@ -930,12 +930,12 @@ https://etherscan.io/address/0x5f58058c0ec971492166763c8c22632b583f667f
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/LendfMe_exp.sol -vv
+forge test --contracts ./src/test/2020-04/LendfMe_exp.sol -vv
 ```
 
 #### Contract
 
-[LendfMe_exp](../../src/test/others/LendfMe_exp.sol)
+[LendfMe_exp](../../src/test/2020-04/LendfMe_exp.sol)
 
 #### Link reference
 
@@ -950,12 +950,12 @@ https://peckshield.medium.com/uniswap-lendf-me-hacks-root-cause-and-loss-analysi
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/uniswap-erc777.sol -vv
+forge test --contracts ./src/test/2020-04/uniswap-erc777.sol -vv
 ```
 
 #### Contract
 
-[uniswap-erc777.sol](../../src/test/others/uniswap-erc777.sol)
+[uniswap-erc777.sol](../../src/test/2020-04/uniswap-erc777.sol)
 
 #### Link reference
 
@@ -970,12 +970,12 @@ https://blog.blockmagnates.com/detailed-explanation-of-uniswaps-erc777-re-entry-
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/BEC_exp.sol -vv
+forge test --contracts ./src/test/2018-04/BEC_exp.sol -vv
 ```
 
 #### Contract
 
-[BEC_exp.sol](../../src/test/others/BEC_exp.sol)
+[BEC_exp.sol](../../src/test/2018-04/BEC_exp.sol)
 
 #### Link reference
 
@@ -992,12 +992,12 @@ https://etherscan.io/address/0xc5d105e63711398af9bbff092d4b6769c82f793d#code
 Testing
 
 ```sh
-forge test --contracts ./src/test/others/Parity_kill.sol -vvvv
+forge test --contracts ./src/test/2017-11/Parity_kill_exp.sol -vvvv
 ```
 
 #### Contract
 
-[Parity_kill.sol](../../src/test/others/Parity_kill.sol)
+[Parity_kill.sol](../../src/test/2017-11/Parity_kill_exp.sol)
 
 #### Link reference
 
