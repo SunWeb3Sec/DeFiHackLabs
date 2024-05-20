@@ -101,7 +101,7 @@ ERC-20 Tokens Transferred: 用戶 A 轉入 3,524,968.44 USDT 到 Curve 3 pool，
 
 [範例程式碼](https://github.com/SunWeb3Sec/DeFiLabs/blob/main/src/test/Uniswapv2_flashswap.sol)參考，執行以下指令
 ```sh
-forge test --contracts ./src/test/Uniswapv2_flashswap.sol -vv
+forge test --contracts ./src/test/Uniswapv2_flashswap.sol -vvvv
 ```
 ![圖片](https://user-images.githubusercontent.com/52526645/211125357-695c3fd0-4a56-4a70-9c98-80bac65586b8.png)
 
