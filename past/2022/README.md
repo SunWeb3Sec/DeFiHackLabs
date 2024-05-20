@@ -2,7 +2,7 @@
 
 ## 2022 - List of Past DeFi Incidents
 
-122 incidents included.
+123 incidents included.
 
 [20221230 DFS](#20221230---dfs---insufficient-validation--flashloan)
 
@@ -139,6 +139,8 @@
 [20220902 ShadowFi](#20220902-shadowfi---access-control)
 
 [20220902 Bad Guys by RPF](#20220902-bad-guys-by-rpf---business-logic-flaw--missing-check-for-number-of-nft-to-mint)
+
+[20220828 DDC](#20220828-ddc)
 
 [20220824 LuckyTiger NFT](#20220824-luckytiger-nft---predicting-random-numbers)
 
@@ -1204,7 +1206,7 @@ Testing
 forge test --contracts ./src/test/2022-10/MEVa47b_exp.sol -vvv
 ```
 
-### Contract
+#### Contract
 
 [MEVa47b_exp.sol](../../src/test/2022-10/MEVa47b_exp.sol)
 
@@ -1704,6 +1706,22 @@ https://twitter.com/RugDoctorApe/status/1565739119606890498
 https://etherscan.io/tx/0x27e64a8215ae1528245c912bcca09883fdd7cce69249bd5d5d1c0eecf5297b96
 
 ---
+
+### 20220828 DDC
+
+Testing
+
+```sh
+forge test --contracts ./src/test/2022-08/DDC_exp.sol -vvv
+```
+
+#### Contract
+
+[DDC_exp.sol](../../src/test/2022-08/DDC_exp.sol)
+
+#### Link reference
+
+https://x.com/BeosinAlert/status/1564240190851383302
 
 ### 20220824 LuckyTiger NFT - Predicting Random Numbers
 
