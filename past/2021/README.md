@@ -102,7 +102,7 @@ forge test --contracts ./src/test/2021-12/Visor_exp.sol -vv
 
 #### Contract
 
-[Visor_exp.t.sol](../../src/test/2021-12/Visor_exp.sol)
+[Visor_exp.sol](../../src/test/2021-12/Visor_exp.sol)
 
 #### Link reference
 
@@ -150,7 +150,7 @@ forge test --contracts ./src/test/2021-12/NerveBridge_exp.sol -vv
 
 #### Contract
 
-[NerveBridge.t.sol](../../src/test/2021-12/NerveBridge_exp.sol)
+[NerveBridge_exp.sol](../../src/test/2021-12/NerveBridge_exp.sol)
 
 #### Link reference
 
@@ -170,7 +170,7 @@ forge test --contracts ./src/test/2021-11/Mono_exp.sol -vv
 
 #### Contract
 
-[Mono_exp.t.sol](../../src/test/2021-11/Mono_exp.sol)
+[Mono_exp.sol](../../src/test/2021-11/Mono_exp.sol)
 
 #### Link reference
 
@@ -218,7 +218,7 @@ forge test --contracts src/test/2021-10/IndexedFinance_exp.sol -vv
 
 #### Contract
 
-[IndexedFinance_exp.t.sol](../../src/test/2021-10/IndexedFinance_exp.sol)
+[IndexedFinance_exp.sol](../../src/test/2021-10/IndexedFinance_exp.sol)
 
 #### Link reference
 
@@ -364,7 +364,7 @@ forge test --contracts ./src/test/2021-08/XSURGE_exp.sol -vv
 
 #### Contract
 
-[XSURGE_exp.t.sol](../../src/test/2021-08/XSURGE_exp.sol)
+[XSURGE_exp.sol](../../src/test/2021-08/XSURGE_exp.sol)
 
 #### Link reference
 
@@ -442,7 +442,7 @@ forge test --contracts ./src/test/2021-07/Levyathan_exp.sol -vv
 
 #### Contract
 
-[Levyathan_poc.sol](../../src/test/2021-07/Levyathan_exp.sol)
+[Levyathan_exp.sol](../../src/test/2021-07/Levyathan_exp.sol)
 
 #### Link reference
 
@@ -682,7 +682,7 @@ forge test --contracts src/test/2021-05/Spartan_exp.sol -vv
 
 #### Contract
 
-[Spartan_exp.t.sol](../../src/test/2021-05/Spartan_exp.sol)
+[Spartan_exp.sol](../../src/test/2021-05/Spartan_exp.sol)
 
 #### Link reference
 
