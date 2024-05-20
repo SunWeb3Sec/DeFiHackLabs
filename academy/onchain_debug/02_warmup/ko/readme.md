@@ -115,7 +115,7 @@ forge test --contracts ./src/test/Uniswapv2.sol -vvvv
 - [샘플 코드](https://github.com/SunWeb3Sec/DeFiLabs/blob/main/src/test/Uniswapv2_flashswap.sol)를 참조하여, 다음 명령을 실행합니다.
 
 ```sh
-forge test --contracts ./src/test/Uniswapv2_flashswap.sol -vv
+forge test --contracts ./src/test/Uniswapv2_flashswap.sol -vvvv
 ```
 
 ![圖片](https://user-images.githubusercontent.com/52526645/211125357-695c3fd0-4a56-4a70-9c98-80bac65586b8.png)
