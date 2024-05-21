@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-414 incidents included.
+415 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -162,6 +162,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20240110 LQDX Alert](#20240110-lqdx---unauthorized-transferfrom)
 
 [20240104 Gamma](#20240104-gamma---price-manipulation)
+
+[20240102 MIC](#20240102-mic---business-logic-flaw)
 
 [20240102 RadiantCapital](#20240102-radiantcapital---loss-of-precision)
 
@@ -1088,7 +1090,6 @@ forge test --contracts ./src/test/2024-04/YIEDL_exp.sol -vvv
 #### Contract
 
 [YIEDL_exp.sol](src/test/2024-04/YIEDL_exp.sol)
-
 
 ### 20240422 Z123 - price manipulation
 
@@ -2064,6 +2065,24 @@ forge test --contracts ./src/test/2024-01/Gamma_exp.sol -vvv
 https://twitter.com/officer_cia/status/1742772207997050899
 
 https://twitter.com/shoucccc/status/1742765618984829326
+
+---
+
+### 20240102 MIC - Business Logic Flaw
+
+### Lost: ~500K
+
+```
+forge test --contracts ./src/test/2024-01/MIC_exp.sol -vvv
+```
+
+#### Contract
+
+[MIC_exp.sol](src/test/2024-01/MIC_exp.sol)
+
+#### Link reference
+
+https://x.com/MetaSec_xyz/status/1742484748239536173
 
 ---
 
