@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20240514 Sonne Finance](#20240514-sonne-finance---precision-loss)
+
 [20240514 PredyFinance](#20240514-predyfinance---reentrancy)
 
 [20240510 GFOX](#20240510-gfox---lack-of-access-control)
@@ -900,6 +902,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240514 Sonne Finance - Precision loss
+
+### Lost: $20M
+
+```sh
+forge test --contracts ./src/test/2024-05/Sonne_exp.sol -vvv
+```
+
+#### Contract
+
+[Sonne_exp.sol](src/test/2024-05/Sonne_exp.sol)
+
+### Link reference
+
+https://neptunemutual.com/blog/taking-a-closer-look-at-sonne-finance-exploit/
+
+---
 
 ### 20240514 PredyFinance - Reentrancy
 
