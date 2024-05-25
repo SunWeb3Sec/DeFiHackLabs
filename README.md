@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-416 incidents included.
+417 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## List of Past DeFi Incidents
+
+[20240522 Burner](#20240522-Burner---sandwich-ack)
 
 [20240514 Sonne Finance](#20240514-sonne-finance---precision-loss)
 
@@ -904,6 +906,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240522 Burner - sandwich ack
+
+### Lost: 1.7 eth
+
+```sh
+forge test --contracts .\src\test\2024-05\Burner_exp.sol -vv
+```
+#### Contract
+
+[Burner_exp.sol](src/test/2024-05/Burner_exp.sol)
+
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1792925754243625311
+
+---
 
 ### 20240514 Sonne Finance - Precision loss
 
