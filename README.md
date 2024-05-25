@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20240522 Burner](#20240522-Burner---sandwich-ack)
+
 [20240514 Sonne Finance](#20240514-sonne-finance---precision-loss)
 
 [20240514 PredyFinance](#20240514-predyfinance---reentrancy)
@@ -904,6 +906,24 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240522 Burner - sandwich ack
+
+### Lost: 1.7 eth
+
+```sh
+forge test --contracts .\src\test\2024-05\Burner_exp.sol -vv
+```
+#### Contract
+
+[Burner_exp.sol](src/test/2024-05/Burner_exp.sol)
+
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1792925754243625311
+
+---
 
 ### 20240514 Sonne Finance - Precision loss
 
