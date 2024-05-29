@@ -35,6 +35,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20240526 NORMIE](#20240526-normie---business-logic-flaw)
+
 [20240522 Burner](#20240522-Burner---sandwich-ack)
 
 [20240514 Sonne Finance](#20240514-sonne-finance---precision-loss)
@@ -907,12 +909,30 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20240526 NORMIE - Business Logic Flaw
+
+### Lost: $490K
+
+```sh
+forge test --contracts ./src/test/2024-05/NORMIE_exp.sol -vv
+```
+#### Contract
+
+[NORMIE_exp.sol](src/test/2024-05/NORMIE_exp.sol)
+
+
+### Link reference
+
+https://x.com/lookonchain/status/1794680612399542672
+
+---
+
 ### 20240522 Burner - sandwich ack
 
 ### Lost: 1.7 eth
 
 ```sh
-forge test --contracts .\src\test\2024-05\Burner_exp.sol -vv
+forge test --contracts ./src/test/2024-05/Burner_exp.sol -vv
 ```
 #### Contract
 
