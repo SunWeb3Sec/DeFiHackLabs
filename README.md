@@ -42,6 +42,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
+[20240526 SCROLL](#20240529-SCROLL---integer-underflow)
+
 [20240526 NORMIE](#20240526-normie---business-logic-flaw)
 
 [20240522 Burner](#20240522-Burner---sandwich-ack)
@@ -915,6 +917,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240529 SCROLL - Integer Underflow
+
+### Lost: $490K
+
+```sh
+forge test --contracts ./src/test/2024-05/SCROLL_exp.sol -vvv
+```
+#### Contract
+
+[NORMIE_exp.sol](src/test/2024-05/SCROLL_exp.sol)
+
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1795650745448169741
+
+---
 
 ### 20240526 NORMIE - Business Logic Flaw
 
