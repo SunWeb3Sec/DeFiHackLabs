@@ -42,7 +42,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
-[20240526 SCROLL](#20240529-SCROLL---integer-underflow)
+[20240529 SCROLL](#20240529-SCROLL---integer-underflow)
 
 [20240526 NORMIE](#20240526-normie---business-logic-flaw)
 
