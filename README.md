@@ -920,7 +920,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### 20240529 SCROLL - Integer Underflow
 
-### Lost: $490K
+### Lost: 76 ETH
 
 ```sh
 forge test --contracts ./src/test/2024-05/SCROLL_exp.sol -vvv
