@@ -34,10 +34,13 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## Donate us
+
 If you appreciate our work, please consider donating. Even a small amount helps us continue developing and improving our projects, and promoting web3 security.
+
 - EVM Chains - 0xD7d6215b4EF4b9B5f40baea48F41047Eb67a11D5
 
-## DeFiHackLabs Sponsors 
+## DeFiHackLabs Sponsors
+
 - Stay tuned!
 
 ## List of Past DeFi Incidents
@@ -211,6 +214,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20231202 bZxProtocol](past/2023/README.md#20231202-bzxprotocol---inflation-attack)
 
 [20231201 UnverifiedContr_0x431abb](past/2023/README.md#20231201-unverifiedcontr_0x431abb---business-logic-flaw)
+
+[20231130 CAROLProtocol](past/2023/README.md#20231130-carolprotocol---price-manipulation-via-reentrancy)
 
 [20231129 AIS](past/2023/README.md#20231129-ais---access-control)
 
@@ -925,10 +930,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ```sh
 forge test --contracts ./src/test/2024-05/SCROLL_exp.sol -vvv
 ```
+
 #### Contract
 
 [SCROLL_exp.sol](src/test/2024-05/SCROLL_exp.sol)
-
 
 ### Link reference
 
@@ -943,10 +948,10 @@ https://x.com/0xNickLFranklin/status/1795650745448169741
 ```sh
 forge test --contracts ./src/test/2024-05/NORMIE_exp.sol -vv
 ```
+
 #### Contract
 
 [NORMIE_exp.sol](src/test/2024-05/NORMIE_exp.sol)
-
 
 ### Link reference
 
@@ -961,10 +966,10 @@ https://x.com/lookonchain/status/1794680612399542672
 ```sh
 forge test --contracts ./src/test/2024-05/Burner_exp.sol -vv
 ```
+
 #### Contract
 
 [Burner_exp.sol](src/test/2024-05/Burner_exp.sol)
-
 
 ### Link reference
 
