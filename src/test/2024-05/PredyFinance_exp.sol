@@ -5,13 +5,13 @@ import "../basetest.sol";
 import "../interface.sol";
 
 // @KeyInfo - Total Lost : $464K
-// Attacker : https://arbiscan.io/address/https://arbiscan.io/address/0x76b02ab483482740248e2ab38b5a879a31c6d008
-// Attack Contract : https://arbiscan.io/address/https://arbiscan.io/address/0xb79714634895f52a4f6a75eceb58c96246370149
-// Vulnerable Contract : https://arbiscan.io/address/https://arbiscan.io/address/0x7b8b944ab2f24c829504a7a6d70fce5298f2147c
+// Attacker : https://arbiscan.io/address/0x76b02ab483482740248e2ab38b5a879a31c6d008
+// Attack Contract : https://arbiscan.io/address/0xb79714634895f52a4f6a75eceb58c96246370149
+// Vulnerable Contract : https://arbiscan.io/address/0x7b8b944ab2f24c829504a7a6d70fce5298f2147c
 // Attack Tx : https://arbiscan.io/tx/0xbe163f651d23f0c9e4d4a443c0cc163134a31a1c2761b60188adcfd33178f50f
 
 // @Info
-// Vulnerable Contract Code : https://arbiscan.io/address/https://arbiscan.io/address/0x7b8b944ab2f24c829504a7a6d70fce5298f2147c#code
+// Vulnerable Contract Code : https://arbiscan.io/address/0x7b8b944ab2f24c829504a7a6d70fce5298f2147c#code
 
 // @Analysis
 // Post-mortem :
