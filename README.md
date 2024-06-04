@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-419 incidents included.
+420 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -44,6 +44,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - Stay tuned!
 
 ## List of Past DeFi Incidents
+
+[20240601 VeloCore](#20240601-VeloCore---lack-of-access-control)
 
 [20240529 SCROLL](#20240529-SCROLL---integer-underflow)
 
@@ -922,6 +924,26 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240601 VeloCore - lack-of-access-control
+
+### Lost: $6.88M
+
+```sh
+forge test --contracts  src/test/2024-06/Velocore_exp.sol -vv
+```
+#### Contract
+
+[Velocore_exp.sol](src/test/2024-06/Velocore_exp.sol)
+
+
+### Link reference
+
+https://x.com/BeosinAlert/status/1797247874528645333
+
+---
+
+
 
 ### 20240529 SCROLL - Integer Underflow
 
