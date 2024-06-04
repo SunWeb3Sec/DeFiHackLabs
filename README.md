@@ -41,6 +41,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 If you appreciate our work, please consider donating. Even a small amount helps us continue developing and improving our projects, and promoting web3 security.
 
 - EVM Chains - 0xD7d6215b4EF4b9B5f40baea48F41047Eb67a11D5
+- [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
 
