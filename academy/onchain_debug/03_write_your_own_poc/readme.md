@@ -570,7 +570,7 @@ Logs:
 Test result: ok. 1 passed; 0 failed; finished in 1.66s
 ```
 
-> 註: DeFiHackLabs 提供的 EGD-Finance.exp.sol 有 Reproduce 攻擊者的前置 Stacking 作業。
+> 註: DeFiHackLabs 提供的 EGD-Finance.exp.sol 有 Reproduce 攻擊者的前置 Staking 作業。
 >
 > 本教程未涵蓋到前置動作，你可以自己練習看看！
 > Attacker Stack Tx: 0x4a66d01a017158ff38d6a88db98ba78435c606be57ca6df36033db4d9514f9f8
