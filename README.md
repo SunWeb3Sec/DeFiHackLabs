@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-420 incidents included.
+421 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -44,6 +44,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240606 MineSTM](#20240606-MineSTM---business-logic-flaw)
 
 [20240601 VeloCore](#20240601-VeloCore---lack-of-access-control)
 
@@ -924,6 +926,23 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240606 MineSTM - Business Logic Flaw
+
+### Lost: $13.8K
+
+```sh
+forge test --contracts  src/test/2024-06/MineSTM_exp.sol -vv
+```
+#### Contract
+
+[MineSTM_exp.sol](src/test/2024-06/MineSTM_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1798920774511898862
+
+---
 
 ### 20240601 VeloCore - lack-of-access-control
 
