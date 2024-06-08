@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-421 incidents included.
+422 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,6 +34,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) )
 
 ## Who Support Us? DeFiHackLabs Received Grant From
+
 [![gcc PM](https://github.com/SunWeb3Sec/DeFiHackLabs/assets/107249780/84fb64ac-1d2b-45ba-b864-b744bbbfdb30)](https://x.com/GCCofCommons)
 
 ## Donate us
@@ -54,6 +55,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240526 NORMIE](#20240526-normie---business-logic-flaw)
 
 [20240522 Burner](#20240522-Burner---sandwich-ack)
+
+[20240516 TCH](#20240516-tch---signature-malleability-vulnerability)
 
 [20240514 Sonne Finance](#20240514-sonne-finance---precision-loss)
 
@@ -934,6 +937,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ```sh
 forge test --contracts  src/test/2024-06/MineSTM_exp.sol -vv
 ```
+
 #### Contract
 
 [MineSTM_exp.sol](src/test/2024-06/MineSTM_exp.sol)
@@ -951,18 +955,16 @@ https://x.com/0xNickLFranklin/status/1798920774511898862
 ```sh
 forge test --contracts  src/test/2024-06/Velocore_exp.sol -vv
 ```
+
 #### Contract
 
 [Velocore_exp.sol](src/test/2024-06/Velocore_exp.sol)
-
 
 ### Link reference
 
 https://x.com/BeosinAlert/status/1797247874528645333
 
 ---
-
-
 
 ### 20240529 SCROLL - Integer Underflow
 
@@ -1015,6 +1017,24 @@ forge test --contracts ./src/test/2024-05/Burner_exp.sol -vv
 ### Link reference
 
 https://x.com/0xNickLFranklin/status/1792925754243625311
+
+---
+
+### 20240516 TCH - Signature Malleability Vulnerability
+
+### Lost: $18K
+
+```sh
+forge test --contracts ./src/test/2024-05/TCH_exp.sol -vvv
+```
+
+#### Contract
+
+[TCH_exp.sol](src/test/2024-05/TCH_exp.sol)
+
+### Link reference
+
+https://x.com/DecurityHQ/status/1791180322882629713
 
 ---
 
