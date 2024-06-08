@@ -68,7 +68,7 @@ contract ContractTest is Test {
 
 
     function setUp() public {
-        vm.createSelectFork("https://linea.blockpi.network/v1/rpc/public", 5079177 - 1);
+        vm.createSelectFork("https://linea.drpc.org", 5079177 - 1);
     }
 
     function testExploit() public {
