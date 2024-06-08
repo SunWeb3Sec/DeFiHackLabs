@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "../interface.sol";
 
 // @KeyInfo - Total Lost : ~$1.6M(https://debank.com/profile/0x0cfc28d16d07219249c6d6d6ae24e7132ee4caa7, >200k USD(plus a lot of STC, SRLTY, Mazi tokens))
 // Attacker : https://etherscan.io/address/0x0cfc28d16d07219249c6d6d6ae24e7132ee4caa7
