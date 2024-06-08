@@ -1,5 +1,5 @@
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "../interface.sol";
 
 // @KeyInfo - Total Lost : ≈135k
 // Attacker : 0x3026C464d3Bd6Ef0CeD0D49e80f171b58176Ce32
