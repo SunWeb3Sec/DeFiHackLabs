@@ -8,7 +8,7 @@ import "./../interface.sol";
 // Attacker : 0x1751e3e1aaf1a3e7b973c889b7531f43fc59f7d0
 // AttackContract : 0x89767960b76b009416bc7ff4a4b79051eed0a9ee
 // StakingRewards contract: 0xB3FB1D01B07A706736Ca175f827e4F56021b85dE
-// Attack TX: https://etherscan.io/enslookup-search?search=https://ethtx.info/mainnet/0xe72d4e7ba9b5af0cf2a8cfb1e30fd9f388df0ab
+// Attack TX: https://etherscan.io/tx/0x33479bcfbc792aa0f8103ab0d7a3784788b5b0e1467c81ffbed1b7682660b4fa
 // Attack TX: https://bscscan.com/tx/0x784b68dc7d06ee181f3127d5eb5331850b5e690cc63dd099cd7b8dc863204bf6
 
 interface IStakingRewards {
