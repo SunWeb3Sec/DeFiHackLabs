@@ -5,13 +5,13 @@ import "forge-std/Test.sol";
 import "src/test/interface.sol";
 
 // @KeyInfo - Total Lost : 181K
-// Attacker : https://arbiscan.io/address/https://arbiscan.io/address/0x1abe06f451e2d569b3e9123baf33b51f68878656
-// Attack Contract : https://arbiscan.io/address/https://arbiscan.io/address/0xd775fd7b76424a553e4adce6c2f99be419ce8d41
-// Vulnerable Contract : https://arbiscan.io/address/https://arbiscan.io/address/0x3b4ffd93ce5fcf97e61aa8275ec241c76cc01a47
-// Attack Tx : https://arbiscan.io/tx/https://arbiscan.io/tx/0x6caa65b3fc5c8d4c7104574c3a15cd6208f742f9ada7d81ba027b20473137705
+// Attacker : https://arbiscan.io/address/0x1abe06f451e2d569b3e9123baf33b51f68878656
+// Attack Contract : https://arbiscan.io/address/0xd775fd7b76424a553e4adce6c2f99be419ce8d41
+// Vulnerable Contract : https://arbiscan.io/address/0x3b4ffd93ce5fcf97e61aa8275ec241c76cc01a47
+// Attack Tx : https://arbiscan.io/tx/0x6caa65b3fc5c8d4c7104574c3a15cd6208f742f9ada7d81ba027b20473137705
 
 // @Info
-// Vulnerable Contract Code : https://arbiscan.io/address/https://arbiscan.io/address/0x3b4ffd93ce5fcf97e61aa8275ec241c76cc01a47#code
+// Vulnerable Contract Code : https://arbiscan.io/address/0x3b4ffd93ce5fcf97e61aa8275ec241c76cc01a47#code
 
 // @Analysis
 // Post-mortem :
