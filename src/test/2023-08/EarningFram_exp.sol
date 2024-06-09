@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0x863e572b215fd67c855d973f870266cf827aea5e#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/Phalcon_xyz/status/1689182459269644288
-// Hacking God : https://www.google.com/
 
 interface IENF_ETHLEV is IERC20 {
     function deposit(uint256 assets, address receiver) external payable returns (uint256);

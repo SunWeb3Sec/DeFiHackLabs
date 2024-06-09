@@ -15,10 +15,8 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0x7b8c378df8650373d82ceb1085a18fe34031784f#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/PeckShieldAlert/status/1656850634312925184
 // Twitter Guy : https://twitter.com/hexagate_/status/1657051084131639296
-// Hacking God : https://www.google.com/
 
 interface ILW is IERC20 {
     function getTokenPrice() external view returns (uint256);

@@ -14,10 +14,8 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0xa963ee460cf4b474c35ded8fff91c4ec011fb640#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/Phalcon_xyz/status/1672473343734480896
 // Twitter Guy : https://twitter.com/AnciliaInc/status/1672382613473083393
-// Hacking God : https://www.google.com/
 
 interface IShidoLock {
     function lockTokens() external;

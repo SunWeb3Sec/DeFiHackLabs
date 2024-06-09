@@ -16,7 +16,6 @@ import "./../interface.sol";
 // @Analysis
 // Post-mortem : https://medium.com/@ConicFinance/post-mortem-eth-and-crvusd-omnipool-exploits-c9c7fa213a3d
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1682356244299010049
-// Hacking God : https://www.google.com/
 
 interface IConicEthPool {
     function handleDepeggedCurvePool(address) external;

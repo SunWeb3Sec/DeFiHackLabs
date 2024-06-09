@@ -18,7 +18,6 @@ import "../test/../interface.sol";
 // Post-mortem : https://blocksecteam.medium.com/yet-another-risk-posed-by-precision-loss-an-in-depth-analysis-of-the-recent-balancer-incident-fad93a3c75d4
 // Post-mortem : https://medium.com/balancer-protocol/rate-manipulation-in-balancer-boosted-pools-technical-postmortem-53db4b642492
 // Twitter Guy : https://twitter.com/wavey0x/status/1702311454689357851
-// Hacking God : https://www.google.com/
 
 interface BBToken is IERC20 {
     function getVirtualSupply() external view returns (uint256);

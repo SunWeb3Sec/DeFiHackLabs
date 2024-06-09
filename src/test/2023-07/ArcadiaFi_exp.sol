@@ -17,7 +17,6 @@ import "./../interface.sol";
 // Post-mortem : https://arcadiafinance.medium.com/post-mortem-72e9d24a79b0
 // Twitter Guy : https://twitter.com/Phalcon_xyz/status/1678250590709899264
 // Twitter Guy : https://twitter.com/peckshield/status/1678265212770693121
-// Hacking God : https://www.google.com/
 
 interface IFactory {
     function createVault(uint256 salt, uint16 vaultVersion, address baseCurrency) external returns (address vault);

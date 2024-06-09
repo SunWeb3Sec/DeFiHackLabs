@@ -11,9 +11,7 @@ import "./../interface.sol";
 // Attack Tx : https://etherscan.io/tx/0x4ab68b21799828a57ea99c1288036889b39bf85785240576e697ebff524b3930
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/CertiKAlert/status/1710979615164944729
-// Hacking God : https://www.google.com/
 
 contract ContractTest is Test {
     IWETH WETH = IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));

@@ -14,10 +14,8 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://basescan.org/address/0x94dac4a3ce998143aa119c05460731da80ad90cf#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1686217464051539968
 // Twitter Guy : https://twitter.com/peckshield/status/1686209024587710464
-// Hacking God : https://www.google.com/
 
 interface ILeetSwapPiar {
     function _transferFeesSupportingTaxTokens(address token, uint256 amount) external returns (uint256);

@@ -17,7 +17,6 @@ import "./../interface.sol";
 // Post-mortem : https://sturdyfinance.medium.com/exploit-post-mortem-49261493307a
 // Twitter Guy : https://twitter.com/AnciliaInc/status/1668081008615325698
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1668084629654638592
-// Hacking God : https://www.google.com/
 
 interface IwstETH is IERC20 {
     function unwrap(uint256 _wstETHAmount) external returns (uint256);

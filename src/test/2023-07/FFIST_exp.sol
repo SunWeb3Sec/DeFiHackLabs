@@ -14,10 +14,8 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0x80121da952a74c06adc1d7f85a237089b57af347#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/Phalcon_xyz/status/1681869807698984961
 // Twitter Guy : https://twitter.com/AnciliaInc/status/1681901107940065280
-// Hacking God : https://www.google.com/
 
 interface IairdropToken is IERC20 {
     function lastAirdropAddress() external view returns (address);

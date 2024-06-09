@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0xc748673057861a797275CD8A068AbB95A902e8de#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/hexagate_/status/1671517819840745475
-// Hacking God : https://www.google.com/
 
 interface IFeeFreeRouter {
     function addLiquidity(

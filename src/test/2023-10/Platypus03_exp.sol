@@ -14,10 +14,8 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://snowtrace.io/address/0xe5c84c7630a505b6adf69b5594d0ff7fedd5f447#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1712445197538468298
 // Twitter Guy : https://twitter.com/peckshield/status/1712354198246035562
-// Hacking God : https://www.google.com/
 
 interface IPlatypusPool {
     function deposit(address token, uint256 amount, address to, uint256 deadline) external returns (uint256);
