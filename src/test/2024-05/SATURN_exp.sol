@@ -12,11 +12,6 @@ import "../interface.sol";
 // @Info
 // Vulnerable Contract Code : https://bscscan.com/address/0x9BDF251435cBC6774c7796632e9C80B233055b93#code
 
-// @Analysis
-// Post-mortem : https://www.google.com/
-// Twitter Guy : https://www.google.com/
-// Hacking God : https://www.google.com/
-
 contract ContractTest is Test {
     address public attacker = address(this);
     address public SATURN_creater = 0xc8Ce1ecDfb7be4c5a661DEb6C1664Ab98df3Cd62;

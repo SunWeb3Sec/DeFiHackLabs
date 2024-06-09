@@ -16,7 +16,6 @@ import "./../interface.sol";
 // @Analysis
 // Post-mortem : https://medium.com/@ConicFinance/post-mortem-eth-and-crvusd-omnipool-exploits-c9c7fa213a3d
 // Twitter Guy : https://twitter.com/spreekaway/status/1682467603518726144
-// Hacking God : https://www.google.com/
 
 interface IConicPool {
     function deposit(uint256 underlyingAmount, uint256 minLpReceived, bool stake) external returns (uint256);

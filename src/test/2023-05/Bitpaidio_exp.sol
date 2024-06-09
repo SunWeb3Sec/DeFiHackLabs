@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0x9d6d817ea5d4a69ff4c4509bea8f9b2534cec108#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1657411284076478465
-// Hacking God : https://www.google.com/
 
 interface IStaking {
     function Lock_Token(uint256 plan, uint256 _amount) external;

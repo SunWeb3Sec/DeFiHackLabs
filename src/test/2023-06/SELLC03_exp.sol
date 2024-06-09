@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0x84Be9475051a08ee5364fBA44De7FE83a5eCC4f1#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/EoceneSecurity/status/1668468933723328513
-// Hacking God : https://www.google.com/
 
 interface Miner {
     function setBNB(address token, address token1) external payable;

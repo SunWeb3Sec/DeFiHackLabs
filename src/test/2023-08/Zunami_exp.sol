@@ -14,10 +14,8 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/peckshield/status/1690877589005778945
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1690931111776358400
-// Hacking God : https://www.google.com/
 
 interface IUZD is IERC20 {
     function cacheAssetPrice() external;

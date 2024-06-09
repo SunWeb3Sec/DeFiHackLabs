@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0xb0f8fe96b4880adbdede0ddf446bd1e7ef122c4e#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/PeckShieldAlert/status/1676224397248454657
-// Hacking God : https://www.google.com/
 
 // @similar event
 // https://blog.hundred.finance/15-04-23-hundred-finance-hack-post-mortem-d895b618cf33

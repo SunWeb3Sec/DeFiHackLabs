@@ -16,9 +16,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0xeaf83465025b4bf9020fdf9ea5fb6e71dc8a0779#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1657715018908180480
-// Hacking God : https://www.google.com/
 
 interface IStakingRewards {
     function stake(address token, address token1, address token2, address up, uint256 amount) external;

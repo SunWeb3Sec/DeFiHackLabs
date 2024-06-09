@@ -11,9 +11,7 @@ import "./../interface.sol";
 // Attack Tx : https://etherscan.io/tx/0x9a036058afb58169bfa91a826f5fcf4c0a376e650960669361d61bef99205f35
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/CertiKAlert/status/1709764146324009268
-// Hacking God : https://www.google.com/
 
 interface IDepayRouterV1 {
     function route(

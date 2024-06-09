@@ -15,9 +15,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://polygonscan.com/address/0xe6e5f921c8cd480030efb16166c3f83abc85298d#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/AnciliaInc/status/1660767088699666433
-// Hacking God : https://www.google.com/
 
 interface IVLFI is IERC20 {
     function claimRewards(address to) external;

@@ -11,8 +11,6 @@ import "./../interface.sol";
 
 // @Analysis
 // Post-mortem : https://x.com/0xNickLFranklin/status/1760559768241160679
-// Twitter Guy : https://twitter.com/
-// Hacking God : https://www.google.com/
 
 contract ContractTest is Test {
     IWETH WETH = IWETH(payable(address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)));

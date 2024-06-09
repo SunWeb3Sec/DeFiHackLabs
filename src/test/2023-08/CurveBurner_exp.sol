@@ -15,8 +15,6 @@ import "./../interface.sol";
 
 // @Analysis
 // Post-mortem : https://medium.com/@Hypernative/exotic-culinary-hypernative-systems-caught-a-unique-sandwich-attack-against-curve-finance-6d58c32e436b
-// Twitter Guy : https://www.google.com/
-// Hacking God : https://www.google.com/
 
 interface ICurveBurner {
     function execute() external;

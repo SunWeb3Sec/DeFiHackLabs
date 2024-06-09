@@ -10,10 +10,6 @@ import "./../interface.sol";
 // Vulnerable Contract : https://polygonscan.com/address/0x5e9cd0861f927adeccfeb2c0124879b277dd66ac
 // Attack Tx : https://polygonscan.com/tx/0x96d80c609f7a39b45f2bb581c6ba23402c20c2b6cd528317692c31b8d3948328
 
-// @Analysis
-// Post-mortem : https://www.google.com/
-// Twitter Guy : https://www.google.com/
-// Hacking God : https://www.google.com/
 
 interface IFireBirdRouter {
     function swapExactTokensForTokens(

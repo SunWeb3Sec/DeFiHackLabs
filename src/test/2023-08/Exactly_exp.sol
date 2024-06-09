@@ -16,7 +16,6 @@ import "./../interface.sol";
 // @Analysis
 // Post-mortem : https://medium.com/@exactly_protocol/exactly-protocol-incident-post-mortem-b4293d97e3ed
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1692533280971936059
-// Hacking God : https://www.google.com/
 
 interface IexaUSDC is IERC4626 {
     function asset() external returns (address);

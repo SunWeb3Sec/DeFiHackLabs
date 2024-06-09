@@ -16,7 +16,6 @@ import "./../interface.sol";
 // @Analysis
 // Post-mortem : https://hackmd.io/@LlamaRisk/BJzSKHNjn
 // Twitter Guy : https://twitter.com/vyperlang/status/1685692973051498497
-// Hacking God : https://www.google.com/
 
 interface ICurve {
     function exchange(

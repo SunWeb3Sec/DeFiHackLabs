@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0xb8dc09eec82cab2e86c7edc8dd5882dd92d22411#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/Phalcon_xyz/status/1680961588323557376
-// Hacking God : https://www.google.com/
 
 interface IStakedV3 {
     function Invest(

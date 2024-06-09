@@ -14,10 +14,8 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0x84524baa1951247b3a2617a843e6ece915bb9674#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/bbbb/status/1712841315522638034
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1712871304993689709
-// Hacking God : https://www.google.com/
 
 interface IPositionNFTs {
     function mintPositionForUser(address _user) external returns (uint256);

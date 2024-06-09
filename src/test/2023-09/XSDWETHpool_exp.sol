@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0xfadda925e10d07430f5d7461689fd90d3d81bb48#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/CertiKAlert/status/1706765042916450781
-// Hacking God : https://www.google.com/
 // invoke function burnpoolXSD() after executing TransferHelper.safeTransferETH();
 
 interface IXSD is IERC20 {

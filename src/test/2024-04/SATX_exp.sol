@@ -12,11 +12,6 @@ import "../interface.sol";
 // @Info
 // Vulnerable Contract Code : https://bscscan.com/address/0xfd80a436da2f4f4c42a5dbfa397064cfeb7d9508#code
 
-// @Analysis
-// Post-mortem : https://www.google.com/
-// Twitter Guy : https://www.google.com/
-// Hacking God : https://www.google.com/
-
 contract ContractTest is Test {
     address public attacker = address(this);
     IERC20 constant SATX = IERC20(0xFd80a436dA2F4f4C42a5dBFA397064CfEB7D9508);

@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://snowtrace.io/address/0x7e1333a39abed9a5664661957b80ba01d2702b1e#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/peckshield/status/1678800450303164431
-// Hacking God : https://www.google.com/
 // Root Cause
 // Deposit according to the USDC-LP within the ratio to calculate the deposit USDC amount.
 // Withdrawal when the amount of USDC-LP to take with the USDT.e-LP inside the ratio to do the calculation of withdrawal amount

@@ -10,9 +10,7 @@ import "./../interface.sol";
 // Attack Tx : https://etherscan.io/tx/0xcdd93e37ba2991ce02d8ca07bf6563bf5cd5ae801cbbce3dd0babb22e30b2dbe
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/DecurityHQ/status/1692924369662513472
-// Hacking God : https://www.google.com/
 
 contract ContractTest is Test {
     IERC20 BTC20 = IERC20(0xE86DF1970055e9CaEe93Dae9B7D5fD71595d0e18);

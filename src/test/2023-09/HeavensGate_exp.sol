@@ -12,9 +12,7 @@ import "./../interface.sol";
 // Attack Tx : https://etherscan.io/tx/0x8e1b0ab098c4cc5f632e00b0842b5f825bbd15ded796d4a59880bb724f6c5372
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/hexagate_/status/1699003711937216905
-// Hacking God : https://www.google.com/
 
 interface Staking {
     function stake(address _to, uint256 _amount) external;

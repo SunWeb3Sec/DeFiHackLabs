@@ -10,9 +10,7 @@ import "./../interface.sol";
 // Attack Tx : https://bscscan.com/tx/0x477f9ee698ac8ae800ffa012ab52fd8de39b58996245c5e39a4233c1ae5f1baa
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/bbbb/status/1696520866564350157
-// Hacking God : https://www.google.com/
 
 contract ContractTest is Test {
     address private constant usdt = 0x55d398326f99059fF775485246999027B3197955;

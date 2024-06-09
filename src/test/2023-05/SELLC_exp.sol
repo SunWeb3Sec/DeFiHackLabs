@@ -16,10 +16,8 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0x274b3e185c9c8f4ddef79cb9a8dc0d94f73a7675#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/AnciliaInc/status/1656337400329834496
 // Twitter Guy : https://twitter.com/AnciliaInc/status/1656341587054702598
-// Hacking God : https://www.google.com/
 
 interface IStakingRewards {
     function addLiquidity(address _token, address token1, uint256 amount1) external;

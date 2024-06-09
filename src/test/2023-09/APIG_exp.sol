@@ -10,9 +10,7 @@ import "./../interface.sol";
 // Attack Tx : https://bscscan.com/tx/0x66dee84591aeeba6e5f31e12fe728f2ddc79a06426036793487a980c3b952947
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/CertiKAlert/status/1700128158647734745
-// Hacking God : https://www.google.com/
 
 interface IBEP20 {
     function totalSupply() external view returns (uint256);
