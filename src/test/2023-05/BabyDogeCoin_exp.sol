@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0xc748673057861a797275cd8a068abb95a902e8de#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/Phalcon_xyz/status/1662744426475831298
-// Hacking God : https://www.google.com/
 
 interface IFarm {
     function depositOnBehalf(uint256 amount, address account) external;

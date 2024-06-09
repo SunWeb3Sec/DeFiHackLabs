@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0x765b8d7cd8ff304f796f4b6fb1bcf78698333f6d#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1663810037788311561
-// Hacking God : https://www.google.com/
 
 interface IExchangeBetweenPools {
     function doExchange(uint256 amounts) external returns (bool);

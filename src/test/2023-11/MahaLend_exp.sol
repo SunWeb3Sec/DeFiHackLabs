@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0xfd11aba71c06061f446ade4eec057179f19c23c4#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/Phalcon_xyz/status/1723223766350832071
-// Hacking God : https://www.google.com/
 
 contract ContractTest is Test {
     IERC20 ARTH = IERC20(0x8CC0F052fff7eaD7f2EdCCcaC895502E884a8a71);

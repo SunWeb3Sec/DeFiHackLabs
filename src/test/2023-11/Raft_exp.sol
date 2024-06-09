@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0x9ab6b21cdf116f611110b048987e58894786c244#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1723229393529835972
-// Hacking God : https://www.google.com/
 
 interface IPRM {
     function liquidate(address position) external;
