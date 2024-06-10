@@ -17,7 +17,7 @@ address constant wbnb = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
 
 
 contract MetaDragonTest is Test {
-    uint256 endTokenId = 400;
+    uint256 endTokenId = 40;
 
     function setUp() external {
         vm.createSelectFork("bsc", 39_141_426);
