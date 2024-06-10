@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-422 incidents included.
+423 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -51,6 +51,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240601 VeloCore](#20240601-VeloCore---lack-of-access-control)
 
 [20240529 SCROLL](#20240529-SCROLL---integer-underflow)
+
+[20240529 MetaDragon](#20240529-metadragon---lack-of-access-control)
 
 [20240526 NORMIE](#20240526-normie---business-logic-flaw)
 
@@ -981,6 +983,24 @@ forge test --contracts ./src/test/2024-05/SCROLL_exp.sol -vvv
 ### Link reference
 
 https://x.com/0xNickLFranklin/status/1795650745448169741
+
+---
+
+### 20240529 MetaDragon - Lack of Access Control
+
+### Lost: ~ $180k
+
+```sh
+forge test --contracts src/test/2024-05/MetaDragon_exp.sol -vvvvv  --evm-version shanghai
+```
+
+#### Contract
+
+[MetaDragon_exp.sol](src/test/2024-05/MetaDragon_exp.sol)
+
+### Link reference
+
+https://x.com/Phalcon_xyz/status/1795746828064854497
 
 ---
 
