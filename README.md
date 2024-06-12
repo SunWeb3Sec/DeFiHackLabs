@@ -45,7 +45,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20240611 JokInTheBox](#20240611-JokInTheBox----business-logic-flaw)
+[20240611 JokInTheBox](#20240611-JokInTheBox---business-logic-flaw)
 
 [20240610 Bazaar](#20240610-bazaar---insufficient-permission-check)
 
@@ -937,7 +937,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-### 20240611 JokInTheBox - business-logic-flaw
+### 20240611 JokInTheBox - business logic flaw
 
 ### Lost: 9.2 eth
 
