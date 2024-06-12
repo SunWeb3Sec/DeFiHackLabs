@@ -45,6 +45,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20240610 Bazaar](#20240610-bazaar---insufficient-permission-check)
 
 [20240606 MineSTM](#20240606-MineSTM---business-logic-flaw)
 
@@ -933,6 +934,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20240610 Bazaar - Insufficient Permission Check
+
+### Lost: 1.4M
+
+
+```sh
+forge test --contracts ./src/test/2024-06/Bazaar_exp.sol -vvv
+```
+#### Contract
+[Bazaar_exp.sol](src/test/2024-06/Bazaar_exp.sol)
+### Link reference
+
+https://x.com/shoucccc/status/1800353122159833195
+
+---
 
 ### 20240606 MineSTM - Business Logic Flaw
 
