@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-425 incidents included.
+426 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -45,6 +45,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20240611 JokInTheBox](#20240611-JokInTheBox---business-logic-flaw)
+
 [20240610 Bazaar](#20240610-bazaar---insufficient-permission-check)
 
 [20240606 MineSTM](#20240606-MineSTM---business-logic-flaw)
@@ -935,7 +937,21 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20240611 JokInTheBox - business logic flaw
 
+### Lost: 9.2 eth
+
+```sh
+forge test --contracts .\src\test\2024-06\JokInTheBox.sol  -vv --evm-version cancun
+
+```
+#### Contract
+[JokInTheBox_exp.sol](src/test/2024-06/JokInTheBox_exp.sol)
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1800355604692910571
+
+---
 
 
 ### 20240610 Bazaar - Insufficient Permission Check
