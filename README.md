@@ -49,6 +49,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240610 Bazaar](#20240610-bazaar---insufficient-permission-check)
 
+[20240608 YYStoken](#20240608-YYStoken---business-logic-flaw)
+
 [20240606 MineSTM](#20240606-MineSTM---business-logic-flaw)
 
 [20240601 VeloCore](#20240601-VeloCore---lack-of-access-control)
