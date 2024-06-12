@@ -950,6 +950,7 @@ forge test --contracts .\src\test\2024-06\JokInTheBox.sol  -vv --evm-version can
 ### Link reference
 
 https://x.com/0xNickLFranklin/status/1800355604692910571
+
 ---
 
 
