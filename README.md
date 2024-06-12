@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-423 incidents included.
+424 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240529 SCROLL](#20240529-SCROLL---integer-underflow)
 
 [20240529 MetaDragon](#20240529-metadragon---lack-of-access-control)
+
+[20240527 RedKeysCoin](#20240527-redkeyscoin---weak-rng)
 
 [20240526 NORMIE](#20240526-normie---business-logic-flaw)
 
@@ -1001,6 +1003,22 @@ forge test --contracts src/test/2024-05/MetaDragon_exp.sol -vvvvv  --evm-version
 ### Link reference
 
 https://x.com/Phalcon_xyz/status/1795746828064854497
+
+---
+
+### 20240527 RedKeysCoin - Weak RNG
+
+### Lost: $12K
+
+```sh
+forge test --contracts ./src/test/2024-05/RedKeysCoin_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[RedKeysCoin_exp.sol](src/test/2024-05/RedKeysCoin_exp.sol)
+
+### Link reference
 
 ---
 
