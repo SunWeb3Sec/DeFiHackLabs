@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-426 incidents included.
+427 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240611 JokInTheBox](#20240611-JokInTheBox---business-logic-flaw)
 
 [20240610 Bazaar](#20240610-bazaar---insufficient-permission-check)
+
+[20240608 YYStoken](#20240608-YYStoken---business-logic-flaw)
 
 [20240606 MineSTM](#20240606-MineSTM---business-logic-flaw)
 
