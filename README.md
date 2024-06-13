@@ -972,6 +972,24 @@ https://x.com/shoucccc/status/1800353122159833195
 
 ---
 
+### 20240608 YYStoken - Business Logic Flaw
+
+### Lost: $28K
+
+```sh
+forge test --contracts  src/test/2024-06/YYS_exp.sol -vv
+```
+
+#### Contract
+
+[YYS_exp.sol](src/test/2024-06/YYS_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1799610045589831833
+
+---
+
 ### 20240606 MineSTM - Business Logic Flaw
 
 ### Lost: $13.8K
