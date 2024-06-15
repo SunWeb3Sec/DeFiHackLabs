@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-427 incidents included.
+428 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -58,6 +58,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240529 SCROLL](#20240529-SCROLL---integer-underflow)
 
 [20240529 MetaDragon](#20240529-metadragon---lack-of-access-control)
+
+[20240528 EXcommunity](#20240528-EXcommunity_exp.sol---business-logic-flaw)
 
 [20240527 RedKeysCoin](#20240527-redkeyscoin---weak-rng)
 
@@ -1059,6 +1061,24 @@ forge test --contracts src/test/2024-05/MetaDragon_exp.sol -vvvvv  --evm-version
 ### Link reference
 
 https://x.com/Phalcon_xyz/status/1795746828064854497
+
+---
+
+### 20240528 EXcommunity - Business Logic Flaw
+
+### Lost: 33BNB
+
+```sh
+forge test --contracts ./src/test/2024-05/EXcommunity_exp.sol -vvv
+```
+
+#### Contract
+
+[EXcommunity_exp.sol](src/test/2024-05/EXcommunity_exp.sol)
+
+### Link reference
+
+https://x.com/SlowMist_Team/status/1795648617530995130
 
 ---
 
