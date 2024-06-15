@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-428 incidents included.
+429 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -57,11 +57,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240601 VeloCore](#20240601-VeloCore---lack-of-access-control)
 
+[20240531 MixedSwapRouter](#20240531-MixedSwapRouter---arbitrary-call)
+
 [20240529 SCROLL](#20240529-SCROLL---integer-underflow)
 
 [20240529 MetaDragon](#20240529-metadragon---lack-of-access-control)
 
-[20240528 EXcommunity](#20240528-EXcommunity_exp.sol---business-logic-flaw)
+[20240528 EXcommunity](#20240528-EXcommunity---business-logic-flaw)
 
 [20240527 RedKeysCoin](#20240527-redkeyscoin---weak-rng)
 
@@ -1045,6 +1047,24 @@ forge test --contracts  src/test/2024-06/Velocore_exp.sol -vv
 ### Link reference
 
 https://x.com/BeosinAlert/status/1797247874528645333
+
+---
+
+### 20240531 MixedSwapRouter - Arbitrary Call
+
+### Lost: >10700USD(WINR token)
+
+```sh
+forge test --contracts ./src/test/2024-05/MixedSwapRouter_exp.sol -vvv
+```
+
+#### Contract
+
+[MixedSwapRouter_exp.sol](src/test/2024-05/MixedSwapRouter_exp.sol)
+
+### Link reference
+
+https://x.com/ChainAegis/status/1796484286738227579
 
 ---
 
