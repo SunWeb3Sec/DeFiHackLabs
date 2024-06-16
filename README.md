@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-429 incidents included.
+430 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -45,6 +45,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20240611 Crb2](#20240616-Crb2---business-logic-flaw)
+
 [20240611 JokInTheBox](#20240611-JokInTheBox---business-logic-flaw)
 
 [20240610 Bazaar](#20240610-bazaar---insufficient-permission-check)
@@ -944,6 +946,21 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240616 Crb2 - business logic flaw
+
+### Lost: ~15K
+
+```sh
+forge test --contracts .\src\test\2024-06\Crb2_exp.sol  -vv --evm-version shanghai
+
+```
+#### Contract
+[Crb2_exp.sol](src/test/2024-06/Crb2_exp.sol)
+### Link reference
+
+---
+
 
 ### 20240611 JokInTheBox - business logic flaw
 
