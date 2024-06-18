@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-429 incidents included.
+430 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -47,6 +47,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ## List of Past DeFi Incidents
 [20240616 WIFCOIN_ETH](#20240616-WIFCOIN_ETH---business-logic-flaw)
 
+[20240611 Crb2](#20240616-Crb2---business-logic-flaw)
+
 [20240611 JokInTheBox](#20240611-JokInTheBox---business-logic-flaw)
 
 [20240610 Bazaar](#20240610-bazaar---insufficient-permission-check)
@@ -54,6 +56,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240608 YYStoken](#20240608-YYStoken---business-logic-flaw)
 
 [20240606 MineSTM](#20240606-MineSTM---business-logic-flaw)
+
+[20240604 NCD](#20240604-NCD---business-logic-flaw)
 
 [20240601 VeloCore](#20240601-VeloCore---lack-of-access-control)
 
@@ -961,6 +965,21 @@ https://x.com/ChainAegis/status/1802550962977964139
 
 ---
 
+### 20240616 Crb2 - business logic flaw
+
+### Lost: ~15K
+
+```sh
+forge test --contracts .\src\test\2024-06\Crb2_exp.sol  -vv --evm-version shanghai
+
+```
+#### Contract
+[Crb2_exp.sol](src/test/2024-06/Crb2_exp.sol)
+### Link reference
+
+---
+
+
 ### 20240611 JokInTheBox - business logic flaw
 
 ### Lost: 9.2 eth
@@ -1026,6 +1045,24 @@ forge test --contracts  src/test/2024-06/MineSTM_exp.sol -vv
 ### Link reference
 
 https://x.com/0xNickLFranklin/status/1798920774511898862
+
+---
+
+### 20240604 NCD - Business Logic Flaw
+
+### Lost: $6.4K
+
+```sh
+forge test --contracts  src/test/2024-06/NCD_exp.sol -vv
+```
+
+#### Contract
+
+[NCD_exp.sol](src/test/2024-06/NCD_exp.sol)
+
+### Link reference
+
+https://x.com/SlowMist_Team/status/1797821034319765604
 
 ---
 
