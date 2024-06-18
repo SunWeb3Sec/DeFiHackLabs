@@ -45,6 +45,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20240616 WIFCOIN_ETH](#20240616-WIFCOIN_ETH---business-logic-flaw)
+
 [20240611 JokInTheBox](#20240611-JokInTheBox---business-logic-flaw)
 
 [20240610 Bazaar](#20240610-bazaar---insufficient-permission-check)
@@ -943,6 +945,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20240611 WIFCOIN_ETH - business logic flaw
+
+### Lost: 13189.92USD(WIF token)
+
+```sh
+forge test --contracts .\src\test\2024-06\WIFCOIN_ETH_exp.sol  -vv --evm-version "shanghai"
+
+```
+#### Contract
+[WIFCOIN_ETH_exp.sol](src/test/2024-06/WIFCOIN_ETH_exp.sol)
+### Link reference
+
+https://x.com/ChainAegis/status/1802550962977964139
+
+---
+
 ### 20240611 JokInTheBox - business logic flaw
 
 ### Lost: 9.2 eth
@@ -958,7 +976,6 @@ forge test --contracts .\src\test\2024-06\JokInTheBox.sol  -vv --evm-version can
 https://x.com/0xNickLFranklin/status/1800355604692910571
 
 ---
-
 
 ### 20240610 Bazaar - Insufficient Permission Check
 
