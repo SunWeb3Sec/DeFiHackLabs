@@ -949,7 +949,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-### 20240611 WIFCOIN_ETH - business logic flaw
+### 20240616 WIFCOIN_ETH - business logic flaw
 
 ### Lost: 13189.92USD(WIF token)
 
