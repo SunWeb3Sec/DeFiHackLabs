@@ -528,8 +528,6 @@ forge test --contracts ./src/test/2023-12/HYPR_exp.sol -vvv
 
 https://twitter.com/BlockSecTeam/status/1735197818883588574
 
-https://twitter.com/MevRefund/status/1734791082376941810
-
 ---
 
 ### 20231206 TIME - Arbitrary Address Spoofing Attack
