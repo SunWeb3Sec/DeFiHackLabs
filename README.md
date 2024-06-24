@@ -1835,7 +1835,7 @@ https://twitter.com/0xNickLFranklin/status/1768171595561046489
 ### Lost: ~54 ETH
 
 ```sh
-forge test --contracts ./src/test/2024-03/Juice_exp.sol -vvv
+forge test --contracts ./src/test/2024-03/Juice_exp.sol -vvv --evm-version shanghai
 ```
 
 #### Contract

