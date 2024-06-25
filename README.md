@@ -954,7 +954,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ### Lost: 13189.92USD(WIF token)
 
 ```sh
-forge test --contracts .\src\test\2024-06\WIFCOIN_ETH_exp.sol  -vv --evm-version "shanghai"
+forge test --contracts ./src/test/2024-06/WIFCOIN_ETH_exp.sol  -vv --evm-version "shanghai"
 
 ```
 #### Contract
@@ -970,7 +970,7 @@ https://x.com/ChainAegis/status/1802550962977964139
 ### Lost: ~15K
 
 ```sh
-forge test --contracts .\src\test\2024-06\Crb2_exp.sol  -vv --evm-version shanghai
+forge test --contracts ./src/test/2024-06/Crb2_exp.sol  -vv --evm-version shanghai
 
 ```
 #### Contract
