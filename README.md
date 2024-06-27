@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-431 incidents included.
+432 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -46,6 +46,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20240627 XiaoPANG](#20240627-xiaopang---publically-claimable-lp-bal-in-lp)
+
 [20240616 WIFCOIN_ETH](#20240616-WIFCOIN_ETH---business-logic-flaw)
 
 [20240611 Crb2](#20240616-Crb2---business-logic-flaw)
