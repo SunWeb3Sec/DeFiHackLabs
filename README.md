@@ -45,6 +45,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20240627 XiaoPANG](#20240627-xiaopang---publically-claimable-lp-bal-in-lp)
 [20240616 WIFCOIN_ETH](#20240616-WIFCOIN_ETH---business-logic-flaw)
 
 [20240611 Crb2](#20240616-Crb2---business-logic-flaw)
@@ -948,6 +949,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20240627 XiaoPANG - Publically Claimable LP Bal in LP
+
+### Lost: 87,906.71
+
+
+```sh
+forge test --contracts ./src/test/2024-06/XiaoPANG_exp.sol -vvv
+```
+#### Contract
+[XiaoPANG_exp.sol](src/test/2024-06/XiaoPANG_exp.sol)
+### Link reference
+
+https://x.com/MevRefund/status/1806146944898650202
+
+---
 
 ### 20240616 WIFCOIN_ETH - business logic flaw
 
