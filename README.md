@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-432 incidents included.
+436 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -45,6 +45,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
 [20240627 XiaoPANG](#20240627-xiaopang---publically-claimable-lp-bal-in-lp)
 
 [20240616 WIFCOIN_ETH](#20240616-WIFCOIN_ETH---business-logic-flaw)
@@ -229,6 +230,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231216 GoodDollar](past/2023/README.md#20231216-gooddollar---lack-of-input-validation--reentrancy)
 
+[20231216 KEST](past/2023/README.md#20231216-kest---business-logic-flaw)
+
 [20231216 NFTTrader](past/2023/README.md#20231216-nfttrader---reentrancy)
 
 [20231213 HYPR](past/2023/README.md#20231213-hypr---business-logic-flaw)
@@ -245,7 +248,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231130 CAROLProtocol](past/2023/README.md#20231130-carolprotocol---price-manipulation-via-reentrancy)
 
+[20231129 Burntbubba](past/2023/README.md#20231129-burntbubba---price-manipulation)
+
 [20231129 AIS](past/2023/README.md#20231129-ais---access-control)
+
+[20231125 MetaLend](past/2023/README.md#20231125-metalend---compoundv2-inflation-attack)
 
 [20231125 TheNFTV2](past/2023/README.md#20231125-thenftv2---logic-flaw)
 
@@ -254,6 +261,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20231117 Token8633_9419](past/2023/README.md#20231117-token8633_9419---price-manipulation)
 
 [20231117 ShibaToken](past/2023/README.md#20231117-shibatoken---business-logic-flaw)
+
+[20231115 XAI](past/2023/README.md#20231115-xai---business-logic-flaw)
 
 [20231115 LinkDAO](past/2023/README.md#20231115-linkdao---bad-k-value-verification)
 
@@ -955,12 +964,14 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### Lost: 87,906.71
 
-
 ```sh
 forge test --contracts ./src/test/2024-06/XiaoPANG_exp.sol -vvv
 ```
+
 #### Contract
+
 [XiaoPANG_exp.sol](src/test/2024-06/XiaoPANG_exp.sol)
+
 ### Link reference
 
 https://x.com/MevRefund/status/1806146944898650202
@@ -975,8 +986,11 @@ https://x.com/MevRefund/status/1806146944898650202
 forge test --contracts ./src/test/2024-06/WIFCOIN_ETH_exp.sol  -vv --evm-version "shanghai"
 
 ```
+
 #### Contract
+
 [WIFCOIN_ETH_exp.sol](src/test/2024-06/WIFCOIN_ETH_exp.sol)
+
 ### Link reference
 
 https://x.com/ChainAegis/status/1802550962977964139
@@ -991,12 +1005,14 @@ https://x.com/ChainAegis/status/1802550962977964139
 forge test --contracts ./src/test/2024-06/Crb2_exp.sol  -vv --evm-version shanghai
 
 ```
+
 #### Contract
+
 [Crb2_exp.sol](src/test/2024-06/Crb2_exp.sol)
+
 ### Link reference
 
 ---
-
 
 ### 20240611 JokInTheBox - business logic flaw
 
@@ -1006,8 +1022,11 @@ forge test --contracts ./src/test/2024-06/Crb2_exp.sol  -vv --evm-version shangh
 forge test --contracts .\src\test\2024-06\JokInTheBox.sol  -vv --evm-version cancun
 
 ```
+
 #### Contract
+
 [JokInTheBox_exp.sol](src/test/2024-06/JokInTheBox_exp.sol)
+
 ### Link reference
 
 https://x.com/0xNickLFranklin/status/1800355604692910571
@@ -1018,12 +1037,14 @@ https://x.com/0xNickLFranklin/status/1800355604692910571
 
 ### Lost: 1.4M
 
-
 ```sh
 forge test --contracts ./src/test/2024-06/Bazaar_exp.sol -vvv
 ```
+
 #### Contract
+
 [Bazaar_exp.sol](src/test/2024-06/Bazaar_exp.sol)
+
 ### Link reference
 
 https://x.com/shoucccc/status/1800353122159833195
