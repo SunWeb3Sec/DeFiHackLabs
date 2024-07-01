@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-186 incidents included.
+187 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -37,6 +37,8 @@
 [20231129 Burntbubba](#20231129-burntbubba---price-manipulation)
 
 [20231129 AIS](#20231129-ais---access-control)
+
+[20231128 FiberRouter](#20231128-FiberRouter---input-validation)
 
 [20231125 MetaLend](#20231125-metalend---compoundv2-inflation-attack)
 
@@ -713,6 +715,26 @@ forge test --contracts ./src/test/2023-11/AIS_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/Phalcon_xyz/status/1729861048004391306
+
+---
+
+### 20231128 FiberRouter - input validation
+
+### Lost: 18 eth
+
+Testing
+
+```sh
+forge test --contracts ./src/test/2023-11/FiberRouter_exp.sol -vvv
+```
+
+#### Contract
+
+[FiberRouter_exp.sol](../../src/test/2023-11/FiberRouter_exp.sol)
+
+#### Link reference
+
+https://x.com/MetaSec_xyz/status/1729323254610002277
 
 ---
 

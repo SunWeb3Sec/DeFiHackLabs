@@ -46,6 +46,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
+[20240628 Will](#20240628-Will---business-logic-flaw)
+
+[20240627 APEMAGA](#20240627-APEMAGA---business-logic-flaw)
+
 [20240627 XiaoPANG](#20240627-xiaopang---publically-claimable-lp-bal-in-lp)
 
 [20240616 WIFCOIN_ETH](#20240616-WIFCOIN_ETH---business-logic-flaw)
@@ -109,6 +113,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240420 Rico](#20240420-rico---arbitrary-call)
 
 [20240419 HedgeyFinance](#20240419-hedgeyfinance---logic-flaw)
+
+[20240417 UnverifiedContr_0x00C409](#20240417-UnverifiedContr_0x00C409---unverified-external-call)
 
 [20240416 SATX](#20240416-satx---logic-flaw)
 
@@ -251,6 +257,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20231129 Burntbubba](past/2023/README.md#20231129-burntbubba---price-manipulation)
 
 [20231129 AIS](past/2023/README.md#20231129-ais---access-control)
+
+[20231128 FiberRouter](past/2023/README.md#20231128-FiberRouter---input-validation)
 
 [20231125 MetaLend](past/2023/README.md#20231125-metalend---compoundv2-inflation-attack)
 
@@ -960,6 +968,42 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20240628 Will - business logic flaw
+
+### Lost: $52K
+
+```sh
+forge test --contracts ./src/test/2024-06/Will_exp.sol -vvv --evm-version "shanghai"
+```
+
+#### Contract
+
+[Will_exp.sol](src/test/2024-06/Will_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1806704287252394238
+
+---
+
+### 20240627 APEMAGA - business logic flaw
+
+### Lost: 9 eth
+
+```sh
+forge test --contracts ./src/test/2024-06/APEMAGA_exp.sol -vvv --evm-version "shanghai"
+```
+
+#### Contract
+
+[APEMAGA_exp.sol](src/test/2024-06/APEMAGA_exp.sol)
+
+### Link reference
+
+https://x.com/ChainAegis/status/1806297556852601282
+
+---
+
 ### 20240627 XiaoPANG - Publically Claimable LP Bal in LP
 
 ### Lost: 87,906.71
@@ -1524,6 +1568,24 @@ forge test --contracts ./src/test/2024-04/HedgeyFinance_exp.sol -vvv
 ### Link reference
 
 https://twitter.com/Cube3AI/status/1781294512716820918
+
+---
+
+### 20240417 UnverifiedContr_0x00C409 - unverified external call
+
+### Lost: ~ 18 eth
+
+```sh
+forge test --contracts src/test/2024-04/UnverifiedContr_0x00C409_exp.sol -vvv
+```
+
+#### Contract
+
+[UnverifiedContr_0x00C409_exp.sol](src/test/2024-04/UnverifiedContr_0x00C409_exp.sol)
+
+### Link reference
+
+https://x.com/CyversAlerts/status/1780593407871635538
 
 ---
 
