@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-440 incidents included.
+441 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -317,6 +317,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20231012 Platypus](past/2023/README.md#20231012-platypus---business-logic-flaw)
 
 [20231011 BH](past/2023/README.md#20231011-bh---price-manipulation)
+
+[20231008 ZS](past/2023/README.md#20231008-zs---business-logic-flaw)
 
 [20231008 pSeudoEth](past/2023/README.md#20231008-pseudoeth---pool-manipulation)
 
