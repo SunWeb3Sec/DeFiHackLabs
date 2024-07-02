@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-188 incidents included.
+189 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -839,6 +839,26 @@ forge test --contracts ./src/test/2023-11/ShibaToken_exp.sol -vvv
 #### Contract
 
 [ShibaToken_exp.sol](../../src/test/2023-11/ShibaToken_exp.sol)
+
+---
+
+### 20231115 EHX - Lack of Slippage Control
+
+### Lost: Unclear
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/EHX_exp.sol -vvv
+```
+
+#### Contract
+
+[EHX_exp.sol](../../src/test/2023-11/EHX_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1724691996638618086
 
 ---
 
