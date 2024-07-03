@@ -981,12 +981,12 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ### List of DeFi Hacks & POCs
 
 
-### 20240627 UncertifiedContract_uname - lack-of-access-control
+### 20240703 UncertifiedContract_uname - lack-of-access-control
 
 ### Lost: 27 eth
 
 ```sh
-forge test --contracts ./src/test/2024-06/UncertifiedContract_uname_exp.sol -vvv --evm-version "cancun"
+forge test --contracts ./src/test/2024-07/UncertifiedContract_uname_exp.sol -vvv --evm-version "cancun"
 ```
 
 #### Contract
