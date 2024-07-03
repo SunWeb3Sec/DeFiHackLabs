@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-442 incidents included.
+444 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -88,6 +88,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240514 PredyFinance](#20240514-predyfinance---reentrancy)
 
+[20240512 TGC](#20240512-tgc---business-logic-flaw)
+
 [20240510 GFOX](#20240510-gfox---lack-of-access-control)
 
 [20240510 TSURU](#20240510-tsuru---insufficient-validation)
@@ -119,6 +121,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240416 SATX](#20240416-satx---logic-flaw)
 
 [20240416 MARS_DEFI](#20240416-mars---bad-reflection)
+
+[20240415 GFA](#20240415-gfa---business-logic-flaw)
 
 [20240415 Chainge](#20240415-chainge---input-validation)
 
@@ -1349,6 +1353,24 @@ https://twitter.com/Phalcon_xyz/status/1790307019590680851
 
 ---
 
+### 20240512 TGC - Business Logic Flaw
+
+### Lost: $32K
+
+```sh
+forge test --contracts ./src/test/2024-05/TGC_exp.sol -vvv
+```
+
+#### Contract
+
+[TGC_exp.sol](src/test/2024-05/TGC_exp.sol)
+
+### Link reference
+
+https://x.com/ChainAegis/status/1789490986588205529
+
+---
+
 ### 20240510 GFOX - lack of access control
 
 ### Lost: 330K USD
@@ -1626,6 +1648,26 @@ forge test --contracts src/test/2024-04/MARS_exp.sol -vv
 ### Link reference
 
 https://twitter.com/Phalcon_xyz/status/1780150315603701933
+
+---
+
+### 20240415 GFA - business-logic-flaw
+
+### Lost: ~14K USD
+
+```sh
+forge test --contracts src/test/2024-04/GFA_exp.sol -vvv
+```
+
+#### Contract
+
+[GFA_exp.sol](src/test/2024-04/GFA_exp.sol)
+
+### Link reference
+
+https://x.com/ChainAegis/status/1779809931962827055
+
+---
 
 ### 20240415 Chainge - Input Validation
 
