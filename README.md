@@ -46,7 +46,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
-[20240703 UncertifiedContract_uname](#20240628-UncertifiedContract_uname_exp---lack-of-access-control)
+[20240703 UncertifiedContract_uname](#20240703-UncertifiedContract_uname_exp---lack-of-access-control)
 
 [20240628 Will](#20240628-Will---business-logic-flaw)
 
