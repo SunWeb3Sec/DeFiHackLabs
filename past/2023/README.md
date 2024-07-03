@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-189 incidents included.
+190 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -49,6 +49,8 @@
 [20231117 Token8633_9419](#20231117-token8633_9419---price-manipulation)
 
 [20231117 ShibaToken](#20231117-shibatoken---business-logic-flaw)
+
+[20231116 WECO](#20231116-weco---business-logic-flaw)
 
 [20231115 XAI](#20231115-xai---business-logic-flaw)
 
@@ -839,6 +841,26 @@ forge test --contracts ./src/test/2023-11/ShibaToken_exp.sol -vvv
 #### Contract
 
 [ShibaToken_exp.sol](../../src/test/2023-11/ShibaToken_exp.sol)
+
+---
+
+### 20231116 WECO - Business Logic Flaw
+
+### Lost: ~$18K
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/WECO_exp.sol -vvv
+```
+
+#### Contract
+
+[WECO_exp.sol](../../src/test/2023-11/WECO_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1725311048625041887
 
 ---
 

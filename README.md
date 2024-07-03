@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-444 incidents included.
+445 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -273,6 +273,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20231117 Token8633_9419](past/2023/README.md#20231117-token8633_9419---price-manipulation)
 
 [20231117 ShibaToken](past/2023/README.md#20231117-shibatoken---business-logic-flaw)
+
+[20231116 WECO](past/2023/README.md#20231116-weco---business-logic-flaw)
 
 [20231115 EHX](past/2023/README.md#20231115-ehx---lack-of-slippage-control)
 
