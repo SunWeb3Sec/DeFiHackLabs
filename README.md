@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-445 incidents included.
+446 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -45,6 +45,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240703 UncertifiedContract_uname](#20240628-UncertifiedContract_uname_exp---lack-of-access-control)
 
 [20240628 Will](#20240628-Will---business-logic-flaw)
 
@@ -977,6 +979,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+### 20240627 UncertifiedContract_uname -lack-of-access-control
+
+### Lost: 27 eth
+
+```sh
+forge test --contracts ./src/test/2024-06/UncertifiedContract_uname_exp.sol -vvv --evm-version "cancun"
+```
+
+#### Contract
+
+[UncertifiedContract_uname_exp.sol](src/test/2024-07/UncertifiedContract_uname_exp.sol)
+
+### Link reference
+
+https://x.com/SlowMist_Team/status/1808334870650970514
+
+---
 
 ### 20240628 Will - business logic flaw
 
