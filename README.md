@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-446 incidents included.
+447 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -127,6 +127,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240415 GFA](#20240415-gfa---business-logic-flaw)
 
 [20240415 Chainge](#20240415-chainge---input-validation)
+
+[20240414 Hackathon](#20240414-hackathon---business-logic-flaw)
 
 [20240412 FIL314](#20240412-fil314---insufficient-validation-and-price-manipulation)
 
@@ -1707,6 +1709,24 @@ forge test --contracts ./src/test/2024-04/Chainge_exp.sol -vvv
 ### Link reference
 
 https://twitter.com/CyversAlerts/status/1779875922381860920
+
+---
+
+### 20240414 Hackathon - business logic flaw
+
+### Lost: ~20K
+
+```sh
+forge test --contracts ./src/test/2024-04/Hackathon_exp.sol -vvv
+```
+
+#### Contract
+
+[Hackathon_exp.sol](src/test/2024-04/Hackathon_exp.sol)
+
+### Link reference
+
+https://x.com/EXVULSEC/status/1779519508375613827
 
 ---
 
