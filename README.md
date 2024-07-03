@@ -981,7 +981,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ### List of DeFi Hacks & POCs
 
 
-### 20240627 UncertifiedContract_uname -lack-of-access-control
+### 20240627 UncertifiedContract_uname - lack-of-access-control
 
 ### Lost: 27 eth
 
