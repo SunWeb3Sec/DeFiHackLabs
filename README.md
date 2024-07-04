@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-448 incidents included.
+450 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -184,9 +184,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240223 BlueberryProtocol](#20240223-BlueberryProtocol---logic-flaw)
 
+[20240222 SwarmMarkets](#20240222-SwarmMarkets---lack-of-validation)
+
 [20240221 DeezNutz404](#20240221-deeznutz-404---lack-of-validation)
 
 [20240221 GAIN](#20240221-GAIN---bad-function-implementation)
+
+[20240220 EGGX](#20240220-EGGX---reentrancy)
 
 [20240219 RuggedArt](#20240219-RuggedArt---reentrancy)
 
@@ -2227,6 +2231,24 @@ https://twitter.com/blueberryFDN/status/1760865357236211964
 
 ---
 
+### 20240222 SwarmMarkets - lack of validation
+
+### Lost: ~7k $DAI
+
+```
+forge test --contracts ./src/test/2024-02/SwarmMarkets_exp.sol -vvv
+```
+
+#### Contract
+
+[SwarmMarkets_exp.sol](src/test/2024-02/SwarmMarkets_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/eth/0xa4d7ee2ddb9db06961a17e2a5ae71743a266bcb720be138670f4a10e8dfc13e9
+
+---
+
 ### 20240221 DeezNutz 404 - lack of validation
 
 ### Lost: ~170k
@@ -2260,6 +2282,24 @@ forge test --contracts ./src/test/2024-02/GAIN_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/0xNickLFranklin/status/1760559768241160679
+
+---
+
+### 20240220 EGGX - reentrancy
+
+### Lost: ~2 ETH
+
+```
+forge test --contracts ./src/test/2024-02/EGGX_exp.sol -vvv
+```
+
+#### Contract
+
+[EGGX_exp.sol](src/test/2024-02/EGGX_exp.sol)
+
+#### Link reference
+
+https://x.com/PeiQi_0/status/1759826303044497726
 
 ---
 
