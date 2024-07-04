@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-448 incidents included.
+449 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -183,6 +183,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240223 CompoundUni](#20240223-CompoundUni---Oracle-bad-price)
 
 [20240223 BlueberryProtocol](#20240223-BlueberryProtocol---logic-flaw)
+
+[20240221 SwarmMarkets](#20240222-SwarmMarkets---lack-of-validation)
 
 [20240221 DeezNutz404](#20240221-deeznutz-404---lack-of-validation)
 
@@ -2224,6 +2226,24 @@ forge test --contracts ./src/test/2024-02/BlueberryProtocol_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/blueberryFDN/status/1760865357236211964
+
+---
+
+### 20240222 SwarmMarkets - lack of validation
+
+### Lost: ~7k $DAI
+
+```
+forge test --contracts ./src/test/2024-02/SwarmMarkets_exp.sol -vvv
+```
+
+#### Contract
+
+[SwarmMarkets_exp.sol](src/test/2024-02/SwarmMarkets_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/eth/0xa4d7ee2ddb9db06961a17e2a5ae71743a266bcb720be138670f4a10e8dfc13e9
 
 ---
 
