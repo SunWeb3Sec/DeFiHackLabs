@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-452 incidents included.
+453 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -229,6 +229,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240115 Shell_MEV_0xa898](#20240115-Shell_MEV_0xa898---loss-of-precision)
 
 [20240112 WiseLending](#20240112-wiselending---bad-healthfactor-check)
+
+[20240110 Freedom](#20240110-Freedom---loss-of-precision)
 
 [20240110 LQDX Alert](#20240110-lqdx---unauthorized-transferfrom)
 
@@ -2660,6 +2662,24 @@ forge test --contracts ./src/test/2024-01/WiseLending02_exp.sol -vvv --evm-versi
 #### Link reference
 
 https://twitter.com/danielvf/status/1746303616778981402
+
+---
+
+### 20240110  Freedom - Loss of Precision
+
+### Lost: 74 $WBNB
+
+```
+forge test --contracts src/test/2024-01/Freedom_exp.sol -vvv
+```
+
+#### Contract
+
+[Freedom_exp.sol](src/test/2024-01/Freedom_exp_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0x309523343cc1bb9d28b960ebf83175fac941b4a590830caccff44263d9a80ff0
 
 ---
 
