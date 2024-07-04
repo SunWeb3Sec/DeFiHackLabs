@@ -6,6 +6,8 @@
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
+[20231228 DominoTT](#20231228-DominoTT---precision-loss)
+
 [20231228 CCV](#20231228-CCV---precision-loss)
 
 [20231225 Telcoin](#20231225-telcoin---storage-collision)
