@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-191 incidents included.
+192 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
