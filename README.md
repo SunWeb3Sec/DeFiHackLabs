@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-455 incidents included.
+456 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -55,6 +55,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240627 APEMAGA](#20240627-APEMAGA---business-logic-flaw)
 
 [20240627 XiaoPANG](#20240627-xiaopang---publically-claimable-lp-bal-in-lp)
+
+[20240617 Dyson_money](#20240617-dyson_money---business-logic-flaw)
 
 [20240616 WIFCOIN_ETH](#20240616-WIFCOIN_ETH---business-logic-flaw)
 
@@ -1086,6 +1088,25 @@ forge test --contracts ./src/test/2024-06/XiaoPANG_exp.sol -vvv
 ### Link reference
 
 https://x.com/MevRefund/status/1806146944898650202
+
+---
+
+### 20240617 Dyson_money - business logic flaw
+
+### Lost: 52 BNB
+
+```sh
+forge test --contracts ./src/test/2024-06/Dyson_money_exp.sol  -vvv
+
+```
+
+#### Contract
+
+[Dyson_money_exp.sol](src/test/2024-06/Dyson_money_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1802634237667054052
 
 ---
 
