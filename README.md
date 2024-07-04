@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-454 incidents included.
+455 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -247,6 +247,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 <details> <summary> 2023 </summary>
 
 [20231230 ChannelsFinance](past/2023/README.md#20231230-channelsfinance---compoundv2-inflation-attack)
+
+[20231228 CCV](past/2023/README.md#20231225-CCV---precision-loss)
 
 [20231225 Telcoin](past/2023/README.md#20231225-telcoin---storage-collision)
 
