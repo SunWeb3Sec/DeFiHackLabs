@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-451 incidents included.
+452 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -225,6 +225,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240117 BmiZapper](#20240117-bmizapper---arbitrary-external-call-vulnerability)
 
 [20240117 SocketGateway](#20240112-socketgateway---lack-of-calldata-validation)
+
+[20240115 Shell_MEV_0xa898](#20240115-Shell_MEV_0xa898---loss-of-precision)
 
 [20240112 WiseLending](#20240112-wiselending---bad-healthfactor-check)
 
@@ -2602,6 +2604,24 @@ forge test --contracts ./src/test/2024-01/Bmizapper_exp.sol -vvv
 #### Link reference
 
 https://x.com/0xmstore/status/1747756898172952725
+
+---
+
+### 20240115 Shell_MEV_0xa898 - loss of precision
+
+### Lost: ~1K $BUSD
+
+```
+forge test --contracts ./src/test/2024-01/Shell_MEV_0xa898_exp.sol -vvv
+```
+
+#### Contract
+
+[Shell_MEV_0xa898_exp.sol](src/test/2024-01/Shell_MEV_0xa898_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0x24f114c0ef65d39e0988d164e052ce8052fe4a4fd303399a8c1bb855e8da01e9
 
 ---
 
