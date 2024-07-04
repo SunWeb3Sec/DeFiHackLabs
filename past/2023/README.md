@@ -2,9 +2,11 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-190 incidents included.
+191 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
+
+[20231228 CCV](#20231228-CCV---precision-loss)
 
 [20231225 Telcoin](#20231225-telcoin---storage-collision)
 
@@ -403,6 +405,25 @@ forge test --contracts src/test/2023-12/ChannelsFinance_exp.sol -vvv
 https://twitter.com/AnciliaInc/status/1741353303542501455
 
 ---
+
+### 20231228 CCV - Precision loss
+
+### Lost: ~3.2K $BUSD
+
+```
+forge test --contracts src/test/2023-12/CCV_exp.sol -vvv
+```
+
+#### Contract
+
+[CCV_exp.sol](../../src/test/2023-12/CCV_exp.sol)
+
+#### Link reference
+
+app.blocksec.com/explorer/tx/bsc/0x6ba4152db9da45f5751f2c083bf77d4b3385373d5660c51fe2e4382718afd9b4
+
+---
+
 
 ### 20231225 Telcoin - Storage Collision
 
