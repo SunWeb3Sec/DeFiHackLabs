@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-453 incidents included.
+454 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -199,6 +199,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240216 ParticleTrade](#20240216-ParticleTrade---lack-of-validation-data)
 
 [20240215 DualPools](#20240215-DualPools---precision-truncation)
+
+[20240215 Babyloogn](#20240215-Babyloogn---reentrancy)
 
 [20240215 Miner](#20240215-Miner---lack-of-validation-dst-address)
 
@@ -2378,6 +2380,24 @@ forge test --contracts ./src/test/2024-02/DualPools_exp.sol -vvvv
 #### Link reference
 
 https://medium.com/@lunaray/dualpools-hack-analysis-5209233801fa
+
+---
+
+### 20240215 Babyloogn  - reentrancy
+
+### Lost: ~2 $BNB
+
+```
+forge test --contracts ./src/test/2024-02/Babyloogn_exp.sol -vvvv
+```
+
+#### Contract
+
+[Babyloogn_exp.sol](src/test/2024-02/Babyloogn_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0xd081d6bb96326be5305a6c00dd51d1799971794941576554341738abc1ceb202
 
 ---
 
