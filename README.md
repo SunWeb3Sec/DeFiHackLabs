@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-449 incidents included.
+450 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -189,6 +189,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240221 DeezNutz404](#20240221-deeznutz-404---lack-of-validation)
 
 [20240221 GAIN](#20240221-GAIN---bad-function-implementation)
+
+[20240220 EGGX](#20240220-EGGX---reentrancy)
 
 [20240219 RuggedArt](#20240219-RuggedArt---reentrancy)
 
@@ -2280,6 +2282,24 @@ forge test --contracts ./src/test/2024-02/GAIN_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/0xNickLFranklin/status/1760559768241160679
+
+---
+
+### 20240220 EGGX - reentrancy
+
+### Lost: ~2 ETH
+
+```
+forge test --contracts ./src/test/2024-02/EGGX_exp.sol -vvv
+```
+
+#### Contract
+
+[EGGX_exp.sol](src/test/2024-02/EGGX_exp.sol)
+
+#### Link reference
+
+https://x.com/PeiQi_0/status/1759826303044497726
 
 ---
 
