@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-456 incidents included.
+458 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -324,6 +324,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231102 3913Token](past/2023/README.md#20231102-3913token---deflationary-token-attack)
 
+[20231101 SwampFinance](past/2023/README.md#20231101-swampfinance---business-logic-flaw)
+
 [20231101 OnyxProtocol](past/2023/README.md#20231101-onyxprotocol---precission-loss-vulnerability)
 
 [20231031 UniBotRouter](past/2023/README.md#20231031-UniBotRouter---arbitrary-external-call)
@@ -471,6 +473,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20230620 MIM](past/2023/README.md#20230620-mimspell---arbitrary-external-call-vulnerability)
 
 [20230618 ARA](past/2023/README.md#20230618-ara---incorrect-handling-of-permissions)
+
+[20230617 MidasCapitalXYZ](past/2023/README.md#20230617-midascapitalxyz---precision-loss)
 
 [20230617 Pawnfi](past/2023/README.md#20230617-pawnfi---business-logic-flaw)
 
@@ -999,7 +1003,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
-
 
 ### 20240703 UncertifiedContract_uname_exp - lack-of-access-control
 
@@ -2406,7 +2409,7 @@ https://medium.com/@lunaray/dualpools-hack-analysis-5209233801fa
 
 ---
 
-### 20240215 Babyloogn  - reentrancy
+### 20240215 Babyloogn - reentrancy
 
 ### Lost: ~2 $BNB
 
@@ -2708,7 +2711,7 @@ https://twitter.com/danielvf/status/1746303616778981402
 
 ---
 
-### 20240110  Freedom - Loss of Precision
+### 20240110 Freedom - Loss of Precision
 
 ### Lost: 74 $WBNB
 

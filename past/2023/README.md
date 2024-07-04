@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-191 incidents included.
+193 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -226,6 +226,8 @@
 
 [20230618 ARA](#20230618-ara---incorrect-handling-of-permissions)
 
+[20230617 MidasCapitalXYZ](#20230617-midascapitalxyz---precision-loss)
+
 [20230617 Pawnfi](#20230617-pawnfi---business-logic-flaw)
 
 [20230615 CFC](#20230615-cfc---uniswap-skim-token-balance-attack)
@@ -423,7 +425,6 @@ forge test --contracts src/test/2023-12/CCV_exp.sol -vvv
 app.blocksec.com/explorer/tx/bsc/0x6ba4152db9da45f5751f2c083bf77d4b3385373d5660c51fe2e4382718afd9b4
 
 ---
-
 
 ### 20231225 Telcoin - Storage Collision
 
@@ -1144,6 +1145,26 @@ forge test --contracts ./src/test/2023-11/3913_exp.sol --evm-version 'shanghai' 
 #### Link Reference
 
 https://defimon.xyz/attack/bsc/0x8163738d6610ca32f048ee9d30f4aa1ffdb3ca1eddf95c0eba086c3e936199ed
+
+---
+
+### 20231101 SwampFinance - Business Logic Flaw
+
+### Lost: Unclear
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/SwampFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[SwampFinance_exp.sol](../../src/test/2023-11/SwampFinance_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1720373044517208261
 
 ---
 
@@ -2692,6 +2713,26 @@ forge test --contracts ./src/test/2023-06/ARA_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/BeosinAlert/status/1670638160550965248
+
+---
+
+### 20230617 MidasCapitalXYZ - Precision Loss
+
+### Lost: ~$600K
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-06/MidasCapitalXYZ_exp.sol -vvv
+```
+
+#### Contract
+
+[MidasCapitalXYZ_exp.sol](../../src/test/2023-06/MidasCapitalXYZ_exp.sol)
+
+#### Link Reference
+
+https://medium.com/midas-capital/midas-exploit-post-mortem-1ae266222994
 
 ---
 
