@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-450 incidents included.
+451 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -163,6 +163,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240314 MO](#20240314-mo---business-logic-flaw)
 
 [20240313 IT](#20240313-it---business-logic-flaw)
+
+[20240311 Binemon](#20240311-Binemon---precission-loss)
 
 [20240309 Juice](#20240309-juice---business-logic-flaw)
 
@@ -2041,6 +2043,24 @@ forge test --via-ir  --contracts src/test/2024-03/IT_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/0xNickLFranklin/status/1768171595561046489
+
+---
+
+### 20240311 Binemon - precission-loss
+
+### Lost: ~0.2 BNB
+
+```
+forge test --contracts src/test/2024-03/Binemon_exp.sol -vvv
+```
+
+#### Contract
+
+[Binemon_exp.sol](src/test/2024-03/Binemon_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0x1999bb5c11a8d8bfa7620fc5cc37f5bc59c1a99d7a9250a8d6076c93bbdbeb5f
 
 ---
 
