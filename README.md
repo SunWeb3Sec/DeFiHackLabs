@@ -184,7 +184,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240223 BlueberryProtocol](#20240223-BlueberryProtocol---logic-flaw)
 
-[20240221 SwarmMarkets](#20240222-SwarmMarkets---lack-of-validation)
+[20240222 SwarmMarkets](#20240222-SwarmMarkets---lack-of-validation)
 
 [20240221 DeezNutz404](#20240221-deeznutz-404---lack-of-validation)
 
