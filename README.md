@@ -252,6 +252,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231228 CCV](past/2023/README.md#20231225-CCV---precision-loss)
 
+[20231228 DominoTT](past/2023/README.md#20231228-dominott---precision-loss) 
+
 [20231225 Telcoin](past/2023/README.md#20231225-telcoin---storage-collision)
 
 [20231222 PineProtocol](past/2023/README.md#20231222-pineprotocol---business-logic-flaw)
