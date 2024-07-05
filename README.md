@@ -46,6 +46,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20180424 SmartMesh](#20180424-smartmesh---overflow)
+[20240606 SteamSwap](#20240606-steamswap---logic-flaw)
 
 [20240703 UncertifiedContract_uname](#20240703-UncertifiedContract_uname_exp---lack-of-access-control)
 
@@ -1006,6 +1007,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20240606 SteamSwap - Logic Flaw
+
+### Lost: 14K
+
+
+```sh
+forge test --contracts ./src/test/2024-06/SteamSwap_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[SteamSwap_exp.sol](src/test/2024-06/SteamSwap_exp.sol)
+### Link reference
+
+https://x.com/SlowMist_Team/status/1798905797440897386
+
+---
 
 
 
