@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-460 incidents included.
+461 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -46,6 +46,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20180424 SmartMesh](#20180424-smartmesh---overflow)
+
 [20240606 SteamSwap](#20240606-steamswap---logic-flaw)
 
 [20240703 UncertifiedContract_uname](#20240703-UncertifiedContract_uname_exp---lack-of-access-control)
