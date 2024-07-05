@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-192 incidents included.
+193 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -227,6 +227,8 @@
 [20230620 MIM](#20230620-mimspell---arbitrary-external-call-vulnerability)
 
 [20230618 ARA](#20230618-ara---incorrect-handling-of-permissions)
+
+[20230617 MidasCapitalXYZ](#20230617-midascapitalxyz---precision-loss)
 
 [20230617 Pawnfi](#20230617-pawnfi---business-logic-flaw)
 
@@ -2732,6 +2734,26 @@ forge test --contracts ./src/test/2023-06/Pawnfi_exp.sol -vvv
 #### Link Reference
 
 https://blog.solidityscan.com/pawnfi-hack-analysis-38ac9160cbb4
+
+---
+
+### 20230617 MidasCapitalXYZ - Precision Loss
+
+### Lost: ~$600K
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-06/MidasCapitalXYZ_exp.sol -vvv
+```
+
+#### Contract
+
+[MidasCapitalXYZ_exp.sol](../../src/test/2023-06/MidasCapitalXYZ_exp.sol)
+
+#### Link Reference
+
+https://medium.com/midas-capital/midas-exploit-post-mortem-1ae266222994
 
 ---
 
