@@ -50,6 +50,8 @@
 
 [20210603 PancakeHunny](#20210603-pancakehunny---incorrect-calculation)
 
+[20210527 JulSwap](#20210527-julswap---flash-loan)
+
 [20210527 BurgerSwap](#20210527-burgerswap---mathematical-flaw--reentrancy)
 
 [20210519 PancakeBunny](#20210519-pancakebunny---price-oracle-manipulation)
@@ -591,6 +593,22 @@ forge test --contracts ./src/test/2021-06/PancakeHunny_exp.sol -vv
 https://medium.com/hunnyfinance/pancakehunny-post-mortem-analysis-de78967401d8
 
 https://bscscan.com/tx/0x765de8357994a206bb90af57dcf427f48a2021f2f28ca81f2c00bc3b9842be8e
+
+---
+
+### 20210527 JulSwap - Flash Loan
+
+### Lost: 1.5M
+
+
+```sh
+forge test --contracts ./src/test/2021-05/JulSwap_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[JulSwap_exp.sol](src/test/2021-05/JulSwap_exp.sol)
+### Link reference
+
+https://x.com/tg_cryptos/status/1398090345368408064
 
 ---
 
