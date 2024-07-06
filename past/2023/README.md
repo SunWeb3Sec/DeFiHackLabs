@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-193 incidents included.
+194 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -77,6 +77,8 @@
 [20231106 TrustPad](#20231106-trustpad---lack-of-msgsender-address-verification)
 
 [20231106 TheStandard_io](#20231106-thestandard_io---lack-of-slippage-protection)
+
+[20231102 BRAND](#20231102-brand---lack-of-access-control)
 
 [20231102 3913Token](#20231102-3913token---deflationary-token-attack)
 
@@ -1146,6 +1148,26 @@ forge test --contracts ./src/test/2023-11/TheStandard_io_exp.sol -vvv
 https://twitter.com/Phalcon_xyz/status/1721807569222549518
 
 https://twitter.com/CertiKAlert/status/1721839125836321195
+
+---
+
+### 20231102 BRAND - Lack of access control
+
+### Lost: ~23 WBNB
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/BRAND_exp.sol  -vvv
+```
+
+#### Contract
+
+[BRAND_exp.sol](../../src/test/2023-11/BRAND_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1720035913009709473
 
 ---
 
