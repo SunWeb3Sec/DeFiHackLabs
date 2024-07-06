@@ -344,6 +344,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231031 UniBotRouter](past/2023/README.md#20231031-UniBotRouter---arbitrary-external-call)
 
+[20231030 LaEeb](past/2023/README.md#20231030-laeeb---lack-slippage-protection)
+
 [20231028 AstridProtocol](past/2023/README.md#20231028-AstridProtocol---business-logic-flaw)
 
 [20231024 MaestroRouter2](past/2023/README.md#20231024-maestrorouter2---arbitrary-external-call)

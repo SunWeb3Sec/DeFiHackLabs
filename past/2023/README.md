@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-194 incidents included.
+195 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -85,6 +85,8 @@
 [20231101 OnyxProtocol](#20231101-onyxprotocol---precission-loss-vulnerability)
 
 [20231031 UniBotRouter](#20231031-UniBotRouter---arbitrary-external-call)
+
+[20231030 LaEeb](#20231030-laEeb---lack-slippage-protection)
 
 [20231028 AstridProtocol](#20231028-AstridProtocol---business-logic-flaw)
 
@@ -1230,6 +1232,26 @@ forge test --contracts ./src/test/2023-10/UniBot_exp.sol --evm-version 'shanghai
 #### Link Reference
 
 https://twitter.com/PeckShieldAlert/status/1719251390319796477
+
+---
+
+### 20231030 LaEeb - Lack Slippage Protection
+
+### Lost: ~1.8 WBNB
+
+Test
+
+```
+forge test --contracts ./src/test/2023-10/LaEeb_exp.sol -vvv
+```
+
+#### Contract
+
+[LaEeb_exp.sol](../../src/test/2023-10/LaEeb_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1718964562165420076
 
 ---
 
