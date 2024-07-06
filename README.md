@@ -45,6 +45,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20210516 bEarn](#20210516-bearn---logic-flaw)
 [20180424 SmartMesh](#20180424-smartmesh---overflow)
 
 [20240606 SteamSwap](#20240606-steamswap---logic-flaw)
@@ -1023,6 +1024,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 
 
+
+
+
+
+### 20210516 bEarn - Logic Flaw
+
+### Lost: 11M
+
+
+```sh
+forge test --contracts ./src/test/2021-05/bEarn_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[bEarn_exp.sol](src/test/2021-05/bEarn_exp.sol)
+### Link reference
+
+https://bearndao.medium.com/bvaults-busd-alpaca-strategy-exploit-post-mortem-and-bearn-s-compensation-plan-b0b38c3b5540
+
+---
 
 ### 20240606 SteamSwap - Logic Flaw
 
