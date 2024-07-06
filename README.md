@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-468 incidents included.
+469 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -343,6 +343,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20231101 OnyxProtocol](past/2023/README.md#20231101-onyxprotocol---precission-loss-vulnerability)
 
 [20231031 UniBotRouter](past/2023/README.md#20231031-UniBotRouter---arbitrary-external-call)
+
+[20231030 LaEeb](past/2023/README.md#20231030-laeeb---lack-slippage-protection)
 
 [20231028 AstridProtocol](past/2023/README.md#20231028-AstridProtocol---business-logic-flaw)
 
