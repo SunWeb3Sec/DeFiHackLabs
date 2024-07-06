@@ -2,7 +2,7 @@
 
 ## Before 2021 - List of Past DeFi Incidents
 
-45 incidents included.
+46 incidents included.
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
@@ -55,6 +55,8 @@
 [20210527 BurgerSwap](#20210527-burgerswap---mathematical-flaw--reentrancy)
 
 [20210519 PancakeBunny](#20210519-pancakebunny---price-oracle-manipulation)
+
+[20210516 bEarn](#20210516-bearn---logic-flaw)
 
 [20210508 Rari Capital](#20210509-raricapital---cross-contract-reentrancy)
 
@@ -647,6 +649,22 @@ forge test --contracts ./src/test/2021-05/PancakeBunny_exp.sol -vv
 https://rekt.news/pancakebunny-rekt/
 
 https://bscscan.com/tx/0x897c2de73dd55d7701e1b69ffb3a17b0f4801ced88b0c75fe1551c5fcce6a979
+
+---
+
+### 20210516 bEarn - Logic Flaw
+
+### Lost: 11M
+
+
+```sh
+forge test --contracts ./src/test/2021-05/bEarn_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[bEarn_exp.sol](src/test/2021-05/bEarn_exp.sol)
+### Link reference
+
+https://bearndao.medium.com/bvaults-busd-alpaca-strategy-exploit-post-mortem-and-bearn-s-compensation-plan-b0b38c3b5540
 
 ---
 
