@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-461 incidents included.
+463 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240627 XiaoPANG](#20240627-xiaopang---publically-claimable-lp-bal-in-lp)
 
+[20240618 INcufi](#20240618-incufi---business-logic-flaw)
+
 [20240617 Dyson_money](#20240617-dyson_money---business-logic-flaw)
 
 [20240616 WIFCOIN_ETH](#20240616-WIFCOIN_ETH---business-logic-flaw)
@@ -76,6 +78,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240604 NCD](#20240604-NCD---business-logic-flaw)
 
 [20240601 VeloCore](#20240601-VeloCore---lack-of-access-control)
+
+[20240531 Liquiditytokens](#20240531-liquiditytokens---business-logic-flaw)
 
 [20240531 MixedSwapRouter](#20240531-MixedSwapRouter---arbitrary-call)
 
@@ -1137,6 +1141,25 @@ https://x.com/MevRefund/status/1806146944898650202
 
 ---
 
+### 20240618 INcufi - business logic flaw
+
+### Lost: ~59K USD
+
+```sh
+forge test --contracts ./src/test/2024-06/INcufi_exp.sol  -vvv
+
+```
+
+#### Contract
+
+[INcufi_exp.sol](src/test/2024-06/Incufi_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1803317022513832301
+
+---
+
 ### 20240617 Dyson_money - business logic flaw
 
 ### Lost: 52 BNB
@@ -1298,6 +1321,24 @@ forge test --contracts  src/test/2024-06/Velocore_exp.sol -vv
 ### Link reference
 
 https://x.com/BeosinAlert/status/1797247874528645333
+
+---
+
+### 20240531 Liquiditytokens - Business Logic Flaw
+
+### Lost: ~200K USD
+
+```sh
+forge test --contracts ./src/test/2024-05/Liquiditytokens_exp.sol -vvv
+```
+
+#### Contract
+
+[Liquiditytokens_exp.sol](src/test/2024-05/Liquiditytokens_exp.sol)
+
+### Link reference
+
+https://x.com/EXVULSEC/status/1796499069583724638
 
 ---
 
