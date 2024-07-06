@@ -45,6 +45,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20210527 JulSwap](#20210527-julswap---flash-loan)
 [20180424 SmartMesh](#20180424-smartmesh---overflow)
 
 [20240606 SteamSwap](#20240606-steamswap---logic-flaw)
@@ -1023,6 +1024,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 
 
+
+
+
+
+### 20210527 JulSwap - Flash Loan
+
+### Lost: 1.5M
+
+
+```sh
+forge test --contracts ./src/test/2021-05/JulSwap_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[JulSwap_exp.sol](src/test/2021-05/JulSwap_exp.sol)
+### Link reference
+
+https://x.com/tg_cryptos/status/1398090345368408064
+
+---
 
 ### 20240606 SteamSwap - Logic Flaw
 
