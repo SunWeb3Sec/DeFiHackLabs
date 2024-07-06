@@ -2,7 +2,7 @@
 
 ## Before 2021 - List of Past DeFi Incidents
 
-43 incidents included.
+45 incidents included.
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
@@ -85,6 +85,8 @@
 [20200419 LendfMe](#20200419-lendfme---erc777-reentrancy)
 
 [20200418 UniSwapV1](#20200418-uniswapv1---erc777-reentrancy)
+
+[20180424 SmartMesh](#20180424-smartmesh---overflow)
 
 [20180422 Beauty Chain](#20180422-beauty-chain---integer-overflow)
 
@@ -712,6 +714,21 @@ https://bscscan.com/tx/0x5a504fe72ef7fc76dfeb4d979e533af4e23fe37e90b5516186d5787
 
 ---
 
+### 20180424 SmartMesh - Overflow
+
+### Lost: 140M
+
+
+```sh
+forge test --contracts ./src/test/2018-04/SmartMesh_exp.sol -vvv
+```
+#### Contract
+[SmartMesh_exp.sol](src/test/2018-04/SmartMesh_exp.sol)
+### Link reference
+
+https://cryptojobslist.com/blog/two-vulnerable-erc20-contracts-deep-dive-beautychain-smartmesh
+
+---
 ### 20210308 DODO - Flashloan Attack
 
 #### Lost: $700,000
