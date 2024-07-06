@@ -961,6 +961,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20210519 PancakeBunny](past/2021/README.md#20210519-pancakebunny---price-oracle-manipulation)
 
+[20210516 bEarn](past/2021/README.md#20210516-bearn---logic-flaw)
+
 [20210508 Rari Capital](past/2021/README.md#20210509-raricapital---cross-contract-reentrancy)
 
 [20210508 Value Defi](past/2021/README.md#20210508-value-defi---cross-contract-reentrancy)
@@ -1025,12 +1027,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
-
-
-
-
-
-
 
 ### 20210527 JulSwap - Flash Loan
 
