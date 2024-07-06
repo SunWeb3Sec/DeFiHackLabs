@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-463 incidents included.
+465 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -86,6 +86,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240529 SCROLL](#20240529-SCROLL---integer-underflow)
 
 [20240529 MetaDragon](#20240529-metadragon---lack-of-access-control)
+
+[20240528 Tradeonorion](#20240528-Tradeonorion---business-logic-flaw)
 
 [20240528 EXcommunity](#20240528-EXcommunity---business-logic-flaw)
 
@@ -172,6 +174,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240314 MO](#20240314-mo---business-logic-flaw)
 
 [20240313 IT](#20240313-it---business-logic-flaw)
+
+[20240312 BBT](#20240312-bbt---business-logic-flaw)
 
 [20240311 Binemon](#20240311-Binemon---precission-loss)
 
@@ -1396,6 +1400,24 @@ https://x.com/Phalcon_xyz/status/1795746828064854497
 
 ---
 
+### 20240528 Tradeonorion - Business Logic Flaw
+
+### Lost: ~645K
+
+```sh
+forge test --contracts ./src/test/2024-05/Tradeonorion_exp.sol -vvv
+```
+
+#### Contract
+
+[Tradeonorion_exp.sol](src/test/2024-05/Tradeonorion_exp.sol)
+
+### Link reference
+
+https://x.com/MetaSec_xyz/status/1796008961302258001
+
+---
+
 ### 20240528 EXcommunity - Business Logic Flaw
 
 ### Lost: 33BNB
@@ -2159,6 +2181,24 @@ forge test --via-ir  --contracts src/test/2024-03/IT_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/0xNickLFranklin/status/1768171595561046489
+
+---
+
+### 20240312 BBT - business logic flaw
+
+### Lost: ~5.06 ETH
+
+```
+forge test  --contracts src/test/2024-03/BBT_exp.sol -vvv
+```
+
+#### Contract
+
+[BBT_exp.sol](src/test/2024-03/BBT_exp.sol)
+
+#### Link reference
+
+https://x.com/8olidity/status/1767470002566058088
 
 ---
 
