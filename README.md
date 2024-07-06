@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-468 incidents included.
+469 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -45,7 +45,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20210516 bEarn](#20210516-bearn---logic-flaw)
 
 [20240606 SteamSwap](#20240606-steamswap---logic-flaw)
 
@@ -960,6 +959,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20210519 PancakeBunny](past/2021/README.md#20210519-pancakebunny---price-oracle-manipulation)
 
+[20210516 bEarn](past/2021/README.md#20210516-bearn---logic-flaw)
+
 [20210508 Rari Capital](past/2021/README.md#20210509-raricapital---cross-contract-reentrancy)
 
 [20210508 Value Defi](past/2021/README.md#20210508-value-defi---cross-contract-reentrancy)
@@ -1024,31 +1025,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
-
-
-
-
-
-
-
-
-
-
-### 20210516 bEarn - Logic Flaw
-
-### Lost: 11M
-
-
-```sh
-forge test --contracts ./src/test/2021-05/bEarn_exp.sol -vvv --evm-version shanghai
-```
-#### Contract
-[bEarn_exp.sol](src/test/2021-05/bEarn_exp.sol)
-### Link reference
-
-https://bearndao.medium.com/bvaults-busd-alpaca-strategy-exploit-post-mortem-and-bearn-s-compensation-plan-b0b38c3b5540
-
----
 
 ### 20210527 JulSwap - Flash Loan
 
