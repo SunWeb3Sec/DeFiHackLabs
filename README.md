@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-463 incidents included.
+464 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -86,6 +86,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240529 SCROLL](#20240529-SCROLL---integer-underflow)
 
 [20240529 MetaDragon](#20240529-metadragon---lack-of-access-control)
+
+[20240528 Tradeonorion](#20240528-Tradeonorion---business-logic-flaw)
 
 [20240528 EXcommunity](#20240528-EXcommunity---business-logic-flaw)
 
@@ -1393,6 +1395,24 @@ forge test --contracts src/test/2024-05/MetaDragon_exp.sol -vvvvv  --evm-version
 ### Link reference
 
 https://x.com/Phalcon_xyz/status/1795746828064854497
+
+---
+
+### 20240528 Tradeonorion - Business Logic Flaw
+
+### Lost: ~645K
+
+```sh
+forge test --contracts ./src/test/2024-05/Tradeonorion_exp.sol -vvv
+```
+
+#### Contract
+
+[Tradeonorion_exp.sol](src/test/2024-05/Tradeonorion_exp.sol)
+
+### Link reference
+
+https://x.com/MetaSec_xyz/status/1796008961302258001
 
 ---
 
