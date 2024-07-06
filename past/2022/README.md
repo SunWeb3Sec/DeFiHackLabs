@@ -2,7 +2,7 @@
 
 ## 2022 - List of Past DeFi Incidents
 
-123 incidents included.
+124 incidents included.
 
 [20221230 DFS](#20221230---dfs---insufficient-validation--flashloan)
 
@@ -149,6 +149,8 @@
 [20220809 ANCH](#20220809-anch---skim-token-balance)
 
 [20220807 EGD Finance](#20220807-egd-finance---flashloans--price-manipulation)
+
+[20220803 Qixi](#20220803-Qixi---underflow)
 
 [20220802 Nomad Bridge](#20220802-nomad-bridge---business-logic-flaw--incorrect-acceptable-merkle-root-checks)
 
@@ -1799,6 +1801,26 @@ forge test --contracts ./src/test/2022-08/EGD_Finance_exp.sol -vvv
 https://twitter.com/BlockSecTeam/status/1556483435388350464
 
 https://twitter.com/PeckShieldAlert/status/1556486817406283776
+
+---
+
+### 20220803 Qixi - Underflow
+
+#### Lost: 6.08 BNB
+
+Testing
+
+```sh
+forge test --contracts ./src/test/2022-08/Qixi_exp.sol -vvv
+```
+
+#### Contract
+
+[Qixi_exp.sol](../../src/test/2022-08/Qixi_exp.sol)
+
+#### Link reference
+
+https://x.com/8olidity/status/1555366421693345792
 
 ---
 

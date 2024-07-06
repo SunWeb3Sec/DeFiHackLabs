@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-465 incidents included.
+466 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -800,6 +800,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20220809 ANCH](past/2022/README.md#20220809-anch---skim-token-balance)
 
 [20220807 EGD Finance](past/2022/README.md#20220807-egd-finance---flashloans--price-manipulation)
+
+[20220803 Qixi](past/2022/README.md#20220803-qixi---underflow)
 
 [20220802 Nomad Bridge](past/2022/README.md#20220802-nomad-bridge---business-logic-flaw--incorrect-acceptable-merkle-root-checks)
 
