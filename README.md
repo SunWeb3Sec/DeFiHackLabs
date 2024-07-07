@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-469 incidents included.
+470 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -918,6 +918,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20211214 Nerve Bridge](past/2021/README.md#20211214-nerve-bridge---swap-metapool-attack)
 
 [20211130 MonoX Finance](past/2021/README.md#20211130-monox-finance---price-manipulation)
+
+[20211123 Ploutoz Finance](#past/2021/20211123-ploutoz---flash-loan)
 
 [20211027 Cream Finance](past/2021/README.md#20211027-creamfinance---price-manipulation)
 
