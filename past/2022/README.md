@@ -1806,9 +1806,6 @@ https://twitter.com/PeckShieldAlert/status/1556486817406283776
 
 ---
 
-[20220804 EtnProcudt](#20220804-etnprocudt---business-logic-flaw)
-
-
 ### 20220804 EtnProcudt - Business Logic Flaw
 
 #### Lost: 3074 USD
