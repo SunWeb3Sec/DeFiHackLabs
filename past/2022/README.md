@@ -2,7 +2,7 @@
 
 ## 2022 - List of Past DeFi Incidents
 
-124 incidents included.
+125 incidents included.
 
 [20221230 DFS](#20221230---dfs---insufficient-validation--flashloan)
 
@@ -149,6 +149,8 @@
 [20220809 ANCH](#20220809-anch---skim-token-balance)
 
 [20220807 EGD Finance](#20220807-egd-finance---flashloans--price-manipulation)
+
+[20220804 EtnProcudt](#20220804-etnprocudt---business-logic-flaw)
 
 [20220803 Qixi](#20220803-Qixi---underflow)
 
@@ -1801,6 +1803,29 @@ forge test --contracts ./src/test/2022-08/EGD_Finance_exp.sol -vvv
 https://twitter.com/BlockSecTeam/status/1556483435388350464
 
 https://twitter.com/PeckShieldAlert/status/1556486817406283776
+
+---
+
+[20220804 EtnProcudt](#20220804-etnprocudt---business-logic-flaw)
+
+
+### 20220804 EtnProcudt - Business Logic Flaw
+
+#### Lost: 3074 USD
+
+Testing
+
+```sh
+forge test --contracts ./src/test/2022-08/EtnProcudt_exp.sol -vvv
+```
+
+#### Contract
+
+[EtnProcudt_exp.sol](../../src/test/2022-08/EtnProcudt_exp.sol)
+
+#### Link reference
+
+https://x.com/BeosinAlert/status/1555439220474642432
 
 ---
 
