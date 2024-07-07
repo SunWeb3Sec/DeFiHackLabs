@@ -804,6 +804,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20220807 EGD Finance](past/2022/README.md#20220807-egd-finance---flashloans--price-manipulation)
 
+[20220804 EtnProcudt](past/2022/README.md#20220804-etnprocudt---business-logic-flaw)
+
 [20220803 Qixi](past/2022/README.md#20220803-qixi---underflow)
 
 [20220802 Nomad Bridge](past/2022/README.md#20220802-nomad-bridge---business-logic-flaw--incorrect-acceptable-merkle-root-checks)
