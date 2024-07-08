@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-471 incidents included.
+472 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -147,6 +147,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240412 SumerMoney](#20240412-sumermoney---Reentrancy)
 
 [20240412 GROKD](#20240412-grokd---lack-of-access-control)
+
+[20240410 BigBangSwap](#20240410-BigBangSwap---precision-loss)
 
 [20240409 UPS](#20240409-ups---business-logic-flaw)
 
@@ -1952,6 +1954,24 @@ forge test --contracts ./src/test/2024-04/GROKD_exp.sol -vvv
 ### Link reference
 
 https://x.com/hipalex921/status/1778482890705416323?t=KvvG83s7SXr9I55aftOc6w&s=05
+
+---
+
+### 20240410 BigBangSwap - precission loss
+
+### Lost: $~5K $BUSD
+
+```
+forge test --contracts ./src/test/2024-04/BigBangSwap_exp.sol -vvv
+```
+
+#### Contract
+
+[BigBangSwap_exp.sol](src/test/2024-04/BigBangSwap_exp.sol)
+
+### Link reference
+
+https://x.com/ChainAegis/status/1778254222288621912
 
 ---
 
