@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-473 incidents included.
+474 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -197,6 +197,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240228 Seneca](#20240228-seneca---arbitrary-external-call-vulnerability)
 
 [20240228 SMOOFSStaking](#20240228-smoofsstaking---reentrancy)
+
+[20240223 Zoomer](#20240223-zoomer---business-logic-flaw)
 
 [20240223 CompoundUni](#20240223-CompoundUni---Oracle-bad-price)
 
@@ -2417,6 +2419,24 @@ forge test --contracts ./src/test/2024-02/SMOOFSStaking_exp.sol -vvv
 https://twitter.com/AnciliaInc/status/1762893563103428783
 
 https://twitter.com/0xNickLFranklin/status/1762895774311178251
+
+---
+
+### 20240223 Zoomer - Business Logic Flaw
+
+### Lost: ~14 ETH
+
+```
+forge test --contracts ./src/test/2024-02/Zoomer_exp.sol -vvv --evm-version "shanghai"
+```
+
+#### Contract
+
+[Zoomer_exp.sol](src/test/2024-02/Zoomer_exp.sol)
+
+#### Link reference
+
+https://x.com/ChainAegis/status/1761246415488225668
 
 ---
 
