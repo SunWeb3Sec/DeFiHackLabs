@@ -1057,12 +1057,12 @@ https://x.com/tg_cryptos/status/1398090345368408064
 ### Lost: ~7K USD
 
 ```sh
-forge test --contracts ./src/test/2024-08/LW_exp.sol -vvv
+forge test --contracts ./src/test/2024-07/LW_exp.sol -vvv
 ```
 
 #### Contract
 
-[LW_exp.sol](src/test/2024-08/LW_exp.sol)
+[LW_exp.sol](src/test/2024-07/LW_exp.sol)
 
 ### Link reference
 
