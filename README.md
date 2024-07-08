@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-472 incidents included.
+473 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -46,7 +46,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
-[20240606 SteamSwap](#20240606-steamswap---logic-flaw)
+[20240708 LW](#20240708-Lw---integer-underflow)
 
 [20240703 UncertifiedContract_uname](#20240703-UncertifiedContract_uname_exp---lack-of-access-control)
 
@@ -71,6 +71,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240610 Bazaar](#20240610-bazaar---insufficient-permission-check)
 
 [20240608 YYStoken](#20240608-YYStoken---business-logic-flaw)
+
+[20240606 SteamSwap](#20240606-steamswap---logic-flaw)
 
 [20240606 MineSTM](#20240606-MineSTM---business-logic-flaw)
 
@@ -1050,19 +1052,21 @@ https://x.com/tg_cryptos/status/1398090345368408064
 
 ---
 
-### 20240606 SteamSwap - Logic Flaw
+### 20240708 LW - Integer Underflow
 
-### Lost: 14K
-
+### Lost: ~7K USD
 
 ```sh
-forge test --contracts ./src/test/2024-06/SteamSwap_exp.sol -vvv --evm-version shanghai
+forge test --contracts ./src/test/2024-07/LW_exp.sol -vvv
 ```
+
 #### Contract
-[SteamSwap_exp.sol](src/test/2024-06/SteamSwap_exp.sol)
+
+[LW_exp.sol](src/test/2024-07/LW_exp.sol)
+
 ### Link reference
 
-https://x.com/SlowMist_Team/status/1798905797440897386
+https://x.com/0xNickLFranklin/status/1810245893490368820
 
 ---
 
@@ -1282,6 +1286,22 @@ forge test --contracts  src/test/2024-06/YYS_exp.sol -vv
 ### Link reference
 
 https://x.com/0xNickLFranklin/status/1799610045589831833
+
+---
+
+### 20240606 SteamSwap - Logic Flaw
+
+### Lost: 14K
+
+
+```sh
+forge test --contracts ./src/test/2024-06/SteamSwap_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[SteamSwap_exp.sol](src/test/2024-06/SteamSwap_exp.sol)
+### Link reference
+
+https://x.com/SlowMist_Team/status/1798905797440897386
 
 ---
 
