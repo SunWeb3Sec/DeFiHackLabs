@@ -30,6 +30,8 @@ interface ILoanToken {
         address receiver,
         bytes memory data
     ) external payable;
+
+    function loanTokenAddress() external view returns (address);
 }
 
 contract Ploutoz is BaseTestWithBalanceLog {
@@ -71,6 +73,16 @@ contract Ploutoz is BaseTestWithBalanceLog {
         uint256 _amount0Out = 0;
         uint256 _amount1Out = 1_000_400.0 ether;
         IUniswapV2Pair(PancakeSwap).swap(_amount0Out, _amount1Out, address(this), "X");
+
+        swapLoanedTokenToStables();
+    }
+
+    function swapLoanedTokenToStables() internal {
+        swapLoanedTokenToStable(pCAKE);
+        swapLoanedTokenToStable(pDOLLY);
+        swapLoanedTokenToStable(pWETH);
+        swapLoanedTokenToStable(pBTCB);
+        swapLoanedTokenToStable(pUSDT);
     }
 
     function pancakeCall(address sender, uint256 amount0Out, uint256 amount1Out, bytes memory data) external {
@@ -124,6 +136,17 @@ contract Ploutoz is BaseTestWithBalanceLog {
 
         // BUSD loan
         borrowSingleLoan(pBUSD, 90_000 ether, 2000 ether);
+    }
+
+    function swapLoanedTokenToStable(address lToken) internal {
+        address assetIn = ILoanToken(lToken).loanTokenAddress();
+        uint256 amountIn = TokenHelper.getTokenBalance(assetIn, address(this));
+        address router = PancakeRouter;
+        address[] memory path = new address[](2);
+        path[0] = assetIn;
+        path[1] = BUSD;
+        IERC20(assetIn).approve(router, type(uint256).max);
+        Uni_Router_V2(router).swapExactTokensForTokens(amountIn, 0, path, address(this), block.timestamp);
     }
 
     function borrowSingleLoan(address token, uint256 withdrawAmount, uint256 collateralTokenSent) internal {
