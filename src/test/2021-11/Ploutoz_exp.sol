@@ -136,9 +136,10 @@ contract Ploutoz is BaseTestWithBalanceLog {
     }
 
     function swapLoanedTokenToStable(address lToken) internal {
+        address assetIn = ILoanToken(lToken).loanTokenAddress();
         uint256 amountIn = TokenHelper.getTokenBalance(assetIn, address(this));
         address[] memory path = new address[](2);
-        path[0] = ILoanToken(lToken).loanTokenAddress();
+        path[0] = assetIn;
         path[1] = BUSD;
         IERC20(assetIn).approve(PancakeRouter, type(uint256).max);
         Uni_Router_V2(PancakeRouter).swapExactTokensForTokens(amountIn, 0, path, address(this), block.timestamp);
