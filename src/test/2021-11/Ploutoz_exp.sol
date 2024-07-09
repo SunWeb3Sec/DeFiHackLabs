@@ -90,18 +90,16 @@ contract Ploutoz is BaseTestWithBalanceLog {
         uint256 amountIn;
         uint256 amountOutMin = 0;
         address[] memory path = new address[](2);
-        uint256 deadline;
+        uint256 deadline = block.timestamp;
 
         amountIn = 1_000_000 ether;
         path[0] = BUSD;
         path[1] = DOP;
-        deadline = 1_637_659_447;
         Uni_Router_V2(TwindexSwapRouter).swapExactTokensForTokens(amountIn, amountOutMin, path, address(this), deadline);
 
         amountIn = 400 ether;
         path[0] = BUSD;
         path[1] = DOP;
-        deadline = 1_637_659_447;
         Uni_Router_V2(PancakeRouter).swapExactTokensForTokens(amountIn, amountOutMin, path, address(this), deadline);
 
         //Here we borrow the assets
@@ -110,7 +108,6 @@ contract Ploutoz is BaseTestWithBalanceLog {
         amountIn = 570_625_638_619_593_832_545_805;
         path[0] = DOP;
         path[1] = BUSD;
-        deadline = 1_637_659_447;
         Uni_Router_V2(TwindexSwapRouter).swapExactTokensForTokens(amountIn, amountOutMin, path, address(this), deadline);
 
         uint256 amount = 1_002_951.02 ether;
@@ -139,14 +136,12 @@ contract Ploutoz is BaseTestWithBalanceLog {
     }
 
     function swapLoanedTokenToStable(address lToken) internal {
-        address assetIn = ILoanToken(lToken).loanTokenAddress();
         uint256 amountIn = TokenHelper.getTokenBalance(assetIn, address(this));
-        address router = PancakeRouter;
         address[] memory path = new address[](2);
-        path[0] = assetIn;
+        path[0] = ILoanToken(lToken).loanTokenAddress();
         path[1] = BUSD;
-        IERC20(assetIn).approve(router, type(uint256).max);
-        Uni_Router_V2(router).swapExactTokensForTokens(amountIn, 0, path, address(this), block.timestamp);
+        IERC20(assetIn).approve(PancakeRouter, type(uint256).max);
+        Uni_Router_V2(PancakeRouter).swapExactTokensForTokens(amountIn, 0, path, address(this), block.timestamp);
     }
 
     function borrowSingleLoan(address token, uint256 withdrawAmount, uint256 collateralTokenSent) internal {
