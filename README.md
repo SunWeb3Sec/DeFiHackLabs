@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-474 incidents included.
+475 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -119,6 +119,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240430 Yield](#20240430-yield---business-logic-flaw)
 
 [20240430 PikeFinance](#20240430-pikefinance---uninitialized-proxy)
+
+[20240427 BNBX](#20240427-BNBX---precision-loss)
 
 [20240425 NGFS](#20240425-ngfs---bad-access-control)
 
@@ -1718,6 +1720,24 @@ forge test --contracts ./src/test/2024-04/PikeFinance_exp.sol -vvv
 ### Link reference
 
 https://twitter.com/Phalcon_xyz/status/1785508900093194591
+
+---
+
+### 20240427 BNBX - precission loss
+
+### Lost: ~75 $BNB
+
+```sh
+forge test --contracts ./src/test/2024-04/BNBX_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[BNBX_exp.sol](src/test/2024-04/BNBX_exp.sol)
+
+### Link reference
+
+https://x.com/ChainAegis/status/1784431544557514896
 
 ---
 
