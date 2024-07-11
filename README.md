@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-478 incidents included.
+479 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -45,6 +45,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240711 SBT](#20240711-sbt---business-logic-flaw)
 
 [20240711 GAX](#20240711-GAX---precision-loss)
 
@@ -1064,7 +1066,26 @@ https://x.com/tg_cryptos/status/1398090345368408064
 
 ---
 
-### 20240711GAX - Precision loss
+
+### 20240711 SBT - business logic flaw
+
+### Lost: ~56K USD
+
+```sh
+forge test --contracts ./src/test/2024-07/SBT_exp.sol -vvv
+```
+
+#### Contract
+
+[SBT_exp.sol](src/test/2024-07/SBT_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1811401263969673654
+
+---
+
+### 20240711 GAX - Precision loss
 
 ### Lost: ~50K $BUSD
 
