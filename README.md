@@ -716,6 +716,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20221119 AnnexFinance](past/2022/README.md#20221119---annexfinance---verify-flashloan-callback)
 
+[20221118 Polynomial](past/2022/README.md#20221118---polynomial---no-input-validation)
+
 [20221117 UEarnPool](past/2022/README.md#20221117---uearnpool---flashloan-attack)
 
 [20221116 SheepFarm](past/2022/README.md#20221116---sheepfarm---no-input-validation)

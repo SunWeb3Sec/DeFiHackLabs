@@ -2,7 +2,7 @@
 
 ## 2022 - List of Past DeFi Incidents
 
-125 incidents included.
+126 incidents included.
 
 [20221230 DFS](#20221230---dfs---insufficient-validation--flashloan)
 
@@ -51,6 +51,8 @@
 [20221121 SDAO](#20221121---sdao---business-logic-flaw)
 
 [20221119 AnnexFinance](#20221119---annexfinance---verify-flashloan-callback)
+
+[20221118 Polynomial](#20221118---Polynomial---no-input-validation)
 
 [20221117 UEarnPool](#20221117---uearnpool---flashloan-attack)
 
@@ -749,6 +751,26 @@ forge test --contracts ./src/test/2022-11/Annex_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/AnciliaInc/status/1593690338526273536
+
+---
+
+### 20221118 - Polynomial - No input validation
+
+### Lost: ~1.4K USD
+
+Testing
+
+```sh
+forge test --contracts ./src/test/2022-11/Polynomial_exp.sol -vvv
+```
+
+#### Contract
+
+[Polynomial_exp.sol](../../src/test/2022-11/Polynomial_exp.sol)
+
+#### Link reference
+
+https://x.com/peckshield/status/1602216000187174912
 
 ---
 
