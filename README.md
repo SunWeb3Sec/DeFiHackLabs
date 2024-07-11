@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-476 incidents included.
+477 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -171,6 +171,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240325 ZongZi](#20240325-zongzi---price-manipulation)
 
 [20240314 ARK](#20240324-ark---business-logic-flaw)
+
+[20240323 CGT](#20240323-cgt---incorrect-access-control)
 
 [20240321 SSS](#20240321-sss---token-balance-doubles-on-transfer-to-self)
 
@@ -2164,6 +2166,24 @@ forge test --contracts src/test/2024-03/ZongZi_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/0xNickLFranklin/status/1772195949638775262
+
+---
+
+### 20240323 CGT - Incorrect Access Control
+
+### Lost: 996B (CGT token)
+
+```sh
+forge test --contracts ./src/test/2024-03/CGT_exp.sol -vvv
+```
+
+#### Contract
+
+[CGT_exp.sol](src/test/2024-03/CGT_exp.sol)
+
+### Link reference
+
+ttps://x.com/AnciliaInc/status/1771598968448745536
 
 ---
 
