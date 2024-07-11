@@ -22,6 +22,8 @@
 
 [20221211 Lodestar](#20221211---lodestar---flashloan-price-manipulation)
 
+[20221211 MEVbot_0x28d9](past/2022/README.md#20221211---MEVbot_0x28d9---precision-loss)
+
 [20221210 MUMUG](#20221210---mumug---flashloan-price-manipulation)
 
 [20221210 TIFIToken](#20221210---tifitoken---flashloan-price-manipulation)
@@ -437,6 +439,26 @@ forge test --contracts ./src/test/2022-12/Lodestar_exp.sol -vvv
 https://twitter.com/SolidityFinance/status/1601684150456438784
 
 https://blog.lodestarfinance.io/post-mortem-summary-13f5fe0bb336
+
+---
+
+### 20221211 - MEVbot_0x28d9 - Precision loss
+
+### Lost: $2k $USDT
+
+Testing
+
+```sh
+forge test --contracts ./src/test/2022-12/MEVbot_0x28d9_exp.sol -vvv
+```
+
+#### Contract
+
+[MEVbot_0x28d9_exp.sol](../../src/test/2022-12/MEVbot_0x28d9_exp.sol)
+
+#### Link reference
+
+https://x.com/8olidity/status/1601795241433964544
 
 ---
 
