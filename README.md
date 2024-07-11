@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-477 incidents included.
+478 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -45,6 +45,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240711 GAX](#20240711-GAX---precision-loss)
 
 [20240708 LW](#20240708-Lw---integer-underflow)
 
@@ -1059,6 +1061,24 @@ forge test --contracts ./src/test/2021-05/JulSwap_exp.sol -vvv --evm-version sha
 ### Link reference
 
 https://x.com/tg_cryptos/status/1398090345368408064
+
+---
+
+### 20240711GAX - Precision loss
+
+### Lost: ~50K $BUSD
+
+```sh
+forge test --contracts ./src/test/2024-07/GAX_exp.sol -vvv
+```
+
+#### Contract
+
+[GAX_exp.sol](src/test/2024-07/GAX_exp.sol)
+
+### Link reference
+
+https://x.com/EXVULSEC/status/1811348160851378333
 
 ---
 
