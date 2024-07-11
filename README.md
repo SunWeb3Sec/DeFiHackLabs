@@ -174,6 +174,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240314 ARK](#20240324-ark---business-logic-flaw)
 
+[20240323 CGT](#20240323-cgt---incorrect-access-control)
+
 [20240321 SSS](#20240321-sss---token-balance-doubles-on-transfer-to-self)
 
 [20240320 Paraswap](#20240320-paraswap---incorrect-access-control)
@@ -715,6 +717,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20221121 SDAO](past/2022/README.md#20221121---sdao---business-logic-flaw)
 
 [20221119 AnnexFinance](past/2022/README.md#20221119---annexfinance---verify-flashloan-callback)
+
+[20221118 Polynomial](past/2022/README.md#20221118---polynomial---no-input-validation)
 
 [20221117 UEarnPool](past/2022/README.md#20221117---uearnpool---flashloan-attack)
 
@@ -2184,6 +2188,24 @@ forge test --contracts src/test/2024-03/ZongZi_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/0xNickLFranklin/status/1772195949638775262
+
+---
+
+### 20240323 CGT - Incorrect Access Control
+
+### Lost: 996B (CGT token)
+
+```sh
+forge test --contracts ./src/test/2024-03/CGT_exp.sol -vvv
+```
+
+#### Contract
+
+[CGT_exp.sol](src/test/2024-03/CGT_exp.sol)
+
+### Link reference
+
+https://x.com/AnciliaInc/status/1771598968448745536
 
 ---
 
