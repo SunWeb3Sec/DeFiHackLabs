@@ -2183,7 +2183,7 @@ forge test --contracts ./src/test/2024-03/CGT_exp.sol -vvv
 
 ### Link reference
 
-ttps://x.com/AnciliaInc/status/1771598968448745536
+https://x.com/AnciliaInc/status/1771598968448745536
 
 ---
 
