@@ -684,6 +684,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20221211 Lodestar](past/2022/README.md#20221211---lodestar---flashloan-price-manipulation)
 
+[20221211 MEVbot_0x28d9](past/2022/README.md#20221211---MEVbot_0x28d9---precision-loss)
+
 [20221210 MUMUG](past/2022/README.md#20221210---mumug---flashloan-price-manipulation)
 
 [20221210 TIFIToken](past/2022/README.md#20221210---tifitoken---flashloan-price-manipulation)
