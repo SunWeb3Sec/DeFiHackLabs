@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-479 incidents included.
+480 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -241,6 +241,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240201 AffineDeFi](#20240201-affinedefi---lack-of-validation-userData)
 
 [20240130 MIMSpell](#20240130-mimspell---precission-loss)
+
+[20240129 PeapodsFinance](#20240128-PeapodsFinance---reentrancy)
 
 [20240128 BarleyFinance](#20240128-barleyfinance---reentrancy)
 
@@ -2834,6 +2836,24 @@ https://twitter.com/Phalcon_xyz/status/1752278614551216494
 https://twitter.com/peckshield/status/1752279373779194011
 
 https://phalcon.blocksec.com/explorer/security-incidents
+
+---
+
+### 20240129 PeapodsFinance_exp - Reentrancy
+
+### Lost: ~1K $DAI
+
+```
+forge test --contracts ./src/test/2024-01/PeapodsFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[PeapodsFinance_exp.sol](src/test/2024-01/PeapodsFinance_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/eth/0x95c1604789c93f41940a7fd9eca11276975a9a65d250b89a247736287dbd2b7e
 
 ---
 
