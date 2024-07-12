@@ -1,7 +1,7 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 // @KeyInfo -- Total Lost : ~3074 USD
 // TX : https://app.blocksec.com/explorer/tx/bsc/0x72321a3b50bb68ac3b46b0ab973b0e87b6c48ab73d23c4ba2cb73527f978d995
@@ -14,7 +14,7 @@ interface Etnshop{
     function mint( uint commId, string memory name, string memory logo) external returns (uint);
 }
 interface Etnnft is IERC721{
-    function mintETN(string memory uri, string memory name, string memory cid) external payable
+    function mintETN(string memory uri, string memory name, string memory cid) external payable;
 }
 interface EtnProduct{
     function newProduct(uint commId, uint shopId, uint price, string memory name, string memory video ) external;
