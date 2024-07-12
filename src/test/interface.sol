@@ -387,6 +387,7 @@ interface IUniswapV2Pair {
     function approve(address spender, uint256 value) external returns (bool);
     function transfer(address to, uint256 value) external returns (bool);
     function transferFrom(address from, address to, uint256 value) external returns (bool);
+    function burn(address to) external returns (uint amount0, uint amount1);
 }
 
 interface IBacon {
