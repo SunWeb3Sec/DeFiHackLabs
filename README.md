@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-482 incidents included.
+483 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -239,6 +239,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240208 Pandora404](#20240208-pandora---interger-underflow)
 
 [20240205 BurnsDefi](#20240205-burnsdefi---price-manipulation)
+
+[20240202 ADC](#20240202-adc---incorrect-access-control)
 
 [20240201 AffineDeFi](#20240201-affinedefi---lack-of-validation-userData)
 
@@ -2813,6 +2815,24 @@ forge test --contracts ./src/test/2024-02/BurnsDefi_exp.sol -vvv
 https://twitter.com/pennysplayer/status/1754342573815238946
 
 https://medium.com/neptune-mutual/how-was-citadel-finance-exploited-a5f9acd0b408 (similar incident)
+
+---
+
+### 20240202 ADC - incorrect-access-control
+
+### Lost: ~20 eth
+
+```
+forge test --contracts ./src/test/2024-02/ADC_exp.sol -vvv
+```
+
+#### Contract
+
+[ADC_exp.sol](src/test/2024-02/ADC_exp.sol)
+
+#### Link reference
+
+https://x.com/EXVULSEC/status/1753294675971313790
 
 ---
 
