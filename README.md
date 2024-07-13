@@ -987,6 +987,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20210603 PancakeHunny](past/2021/README.md#20210603-pancakehunny---incorrect-calculation)
 
+[20210527 JulSwap](past/2021/README.md#20210527-julswap---flash-loan)
+
 [20210527 BurgerSwap](past/2021/README.md#20210527-burgerswap---mathematical-flaw--reentrancy)
 
 [20210519 PancakeBunny](past/2021/README.md#20210519-pancakebunny---price-oracle-manipulation)
@@ -1058,21 +1060,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-### 20210527 JulSwap - Flash Loan
-
-### Lost: 1.5M
-
-
-```sh
-forge test --contracts ./src/test/2021-05/JulSwap_exp.sol -vvv --evm-version shanghai
-```
-#### Contract
-[JulSwap_exp.sol](src/test/2021-05/JulSwap_exp.sol)
-### Link reference
-
-https://x.com/tg_cryptos/status/1398090345368408064
-
----
 
 ### 20240712 DoughFina - Incorrect input validation
 
