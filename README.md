@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-480 incidents included.
+483 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -45,6 +45,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240712 DoughFina](#20240712-doughfina---incorrect-input-validation)
 
 [20240711 SBT](#20240711-sbt---business-logic-flaw)
 
@@ -238,7 +240,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240205 BurnsDefi](#20240205-burnsdefi---price-manipulation)
 
+[20240202 ADC](#20240202-adc---incorrect-access-control)
+
 [20240201 AffineDeFi](#20240201-affinedefi---lack-of-validation-userData)
+
+[20240130 XSIJ](#20240130-xsij---business-logic-flaw)
 
 [20240130 MIMSpell](#20240130-mimspell---precission-loss)
 
@@ -1068,6 +1074,23 @@ https://x.com/tg_cryptos/status/1398090345368408064
 
 ---
 
+### 20240712 DoughFina - Incorrect input validation
+
+### Lost: ~1.8M USD
+
+```sh
+forge test --contracts ./src/test/2024-07/DoughFina_exp.sol -vvv
+```
+
+#### Contract
+
+[DoughFina_exp.sol](src/test/2024-07/DoughFina_exp.sol)
+
+### Link reference
+
+https://x.com/CertiKAlert/status/1811668992882307478
+
+---
 
 ### 20240711 SBT - business logic flaw
 
@@ -2795,6 +2818,24 @@ https://medium.com/neptune-mutual/how-was-citadel-finance-exploited-a5f9acd0b408
 
 ---
 
+### 20240202 ADC - incorrect-access-control
+
+### Lost: ~20 eth
+
+```
+forge test --contracts ./src/test/2024-02/ADC_exp.sol -vvv
+```
+
+#### Contract
+
+[ADC_exp.sol](src/test/2024-02/ADC_exp.sol)
+
+#### Link reference
+
+https://x.com/EXVULSEC/status/1753294675971313790
+
+---
+
 ### 20240201 AffineDeFi - lack of validation userData
 
 ### Lost: ~88K
@@ -2812,6 +2853,24 @@ forge test --contracts ./src/test/2024-02/AffineDeFi_exp.sol -vvv
 https://twitter.com/Phalcon_xyz/status/1753020812284809440
 
 https://twitter.com/CyversAlerts/status/1753040754287513655
+
+---
+
+### 20240130 XSIJ - Business Logic Flaw
+
+### Lost: ~51K USD
+
+```
+forge test --contracts ./src/test/2024-01/XSIJ_exp.sol -vvv
+```
+
+#### Contract
+
+[XSIJ_exp.sol](src/test/2024-01/XSIJ_exp.sol)
+
+#### Link reference
+
+https://x.com/CertiKAlert/status/1752384801535918264
 
 ---
 
