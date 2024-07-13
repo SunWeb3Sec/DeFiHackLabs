@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-481 incidents included.
+482 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -241,6 +241,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240205 BurnsDefi](#20240205-burnsdefi---price-manipulation)
 
 [20240201 AffineDeFi](#20240201-affinedefi---lack-of-validation-userData)
+
+[20240130 XSIJ](#20240130-xsij---business-logic-flaw)
 
 [20240130 MIMSpell](#20240130-mimspell---precission-loss)
 
@@ -2831,6 +2833,24 @@ forge test --contracts ./src/test/2024-02/AffineDeFi_exp.sol -vvv
 https://twitter.com/Phalcon_xyz/status/1753020812284809440
 
 https://twitter.com/CyversAlerts/status/1753040754287513655
+
+---
+
+### 20240130 XSIJ - Business Logic Flaw
+
+### Lost: ~51K USD
+
+```
+forge test --contracts ./src/test/2024-01/XSIJ_exp.sol -vvv
+```
+
+#### Contract
+
+[XSIJ_exp.sol](src/test/2024-01/XSIJ_exp.sol)
+
+#### Link reference
+
+https://x.com/CertiKAlert/status/1752384801535918264
 
 ---
 
