@@ -5151,3 +5151,22 @@ interface IPancakeV3Pool is
     IPancakeV3PoolActions,
     IPancakeV3PoolOwnerActions
 {}
+
+interface ILoanTokenLogicWeth {
+        function mintWithEther(
+        address receiver)
+        external
+        payable
+        returns (uint256 mintAmount);
+    function burnToEther(
+        address receiver,
+        uint256 burnAmount)
+        external
+    returns (uint256 loanAmountPaid);
+    function transfer(
+        address _to,
+        uint256 _value)
+        external
+    returns (bool);
+    function balanceOf(address _who) external view returns (uint256);
+}
