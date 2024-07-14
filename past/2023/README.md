@@ -78,6 +78,8 @@
 
 [20231106 TheStandard_io](#20231106-thestandard_io---lack-of-slippage-protection)
 
+[20231106 KR](past/2023/README.md#20231106-KR---precission-loss)
+
 [20231102 BRAND](#20231102-brand---lack-of-access-control)
 
 [20231102 3913Token](#20231102-3913token---deflationary-token-attack)
@@ -1128,6 +1130,26 @@ forge test --contracts ./src/test/2023-11/TrustPad_exp.sol  -vvv
 #### Link Reference
 
 https://twitter.com/BeosinAlert/status/1721800306101793188
+
+---
+
+### 20231106 KR - Precision loss
+
+### Lost: ~$15K
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/KR_exp.sol  -vvv
+```
+
+#### Contract
+
+[KR_exp.sol](../../src/test/2023-11/KR_exp.sol)
+
+#### Link Reference
+
+https://app.blocksec.com/explorer/tx/bsc/0x2abf871eb91d03bc8145bf2a415e79132a103ae9f2b5bbf18b8342ea9207ccd7
 
 ---
 

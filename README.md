@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-484 incidents included.
+485 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -355,6 +355,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20231106 TrustPad](past/2023/README.md#20231106-trustpad---lack-of-msgsender-address-verification)
 
 [20231106 TheStandard_io](past/2023/README.md#20231106-thestandard_io---lack-of-slippage-protection)
+
+[20231106 KR](past/2023/README.md#20231106-KR---precission-loss)
 
 [20231102 BRAND](past/2023/README.md#20231102-brand---lack-of-access-control)
 
