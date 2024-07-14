@@ -2,7 +2,7 @@
 
 ## Before 2021 - List of Past DeFi Incidents
 
-47 incidents included.
+48 incidents included.
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
@@ -81,6 +81,8 @@
 [20201121 Pickle Finance](#20201121-pickle-finance)
 
 [20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
+
+[20200912 bzx](#20200912-bzx---incorrect-transfer)
 
 [20200804 Opyn Protocol](#20200804-opyn-protocol---msgValue-in-loop)
 
@@ -765,6 +767,38 @@ forge test --contracts ./src/test/2021-04/Uranium_exp.sol -vv
 https://twitter.com/FrankResearcher/status/1387347025742557186
 
 https://bscscan.com/tx/0x5a504fe72ef7fc76dfeb4d979e533af4e23fe37e90b5516186d5787893c37991
+
+---
+
+### 20200912 bzx - Incorrect transfer
+
+### Lost: 
+
+
+```sh
+forge test --contracts ./src/test/2020-09/bzx_exp.sol -vvv
+```
+#### Contract
+[bzx_exp.sol](src/test/2020-09/bzx_exp.sol)
+### Link reference
+
+https://twitter.com/0x000000000marc/status/1305354469354303488
+
+---
+
+### 20210527 JulSwap - Flash Loan
+
+### Lost: 1.5M
+
+
+```sh
+forge test --contracts ./src/test/2021-05/JulSwap_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[JulSwap_exp.sol](src/test/2021-05/JulSwap_exp.sol)
+### Link reference
+
+https://x.com/tg_cryptos/status/1398090345368408064
 
 ---
 
