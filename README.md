@@ -356,6 +356,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231106 TheStandard_io](past/2023/README.md#20231106-thestandard_io---lack-of-slippage-protection)
 
+[20231106 KR](past/2023/README.md#20231106-KR---precission-loss)
+
 [20231102 BRAND](past/2023/README.md#20231102-brand---lack-of-access-control)
 
 [20231102 3913Token](past/2023/README.md#20231102-3913token---deflationary-token-attack)
