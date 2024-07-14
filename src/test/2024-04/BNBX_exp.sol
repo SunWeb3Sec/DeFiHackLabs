@@ -19,10 +19,9 @@ contract ContractTest is Test {
     address BNBX_0x389a = 0x389A9AE29fbE53cca7bC8B7a4d9D0a04078e1C24;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 38_230_509 - 1);
-        vm.label(address(BNBX), "BNBX");
-        vm.label(address(WBNB), "WBNB");
-        vm.label(address(BNBX_0x389a), "BNBX_0x389a");
+        vm.createSelectFork("bsc", 33_267_985 - 1);
+        vm.label(address(KR), "KR");
+        vm.label(address(BUSD), "BUSD");
     }
 
     function testExploit() public {
