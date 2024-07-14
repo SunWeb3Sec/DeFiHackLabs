@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-195 incidents included.
+196 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -25,6 +25,8 @@
 [20231216 NFTTrader](#20231216-nfttrader---reentrancy)
 
 [20231213 HYPR](#20231213-hypr---business-logic-flaw)
+
+[20231207 HNet](past/2023/README.md#20231207-HNet---business-logic-flaw)
 
 [20231206 TIME](#20231206-time---arbitrary-address-spoofing-attack)
 
@@ -608,6 +610,24 @@ forge test --contracts ./src/test/2023-12/HYPR_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/BlockSecTeam/status/1735197818883588574
+
+---
+
+### 20231207 HNet - Business logic flaw
+
+### Lost: ~2.4 $WBNB
+
+```
+forge test --contracts src/test/2023-12/HNet_exp.sol -vvv
+```
+
+#### Contract
+
+[HNet_exp.sol](../../src/test/2023-12/HNet_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0x67af906c1efc05067a01f197bd780ebf4e0a76729d54288a400e715f87ea50c7
 
 ---
 
