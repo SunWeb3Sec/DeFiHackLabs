@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-483 incidents included.
+484 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -45,6 +45,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20200912 bzx](#20200912-bzx---incorrect-transfer)
 
 [20240712 DoughFina](#20240712-doughfina---incorrect-input-validation)
 
@@ -1060,6 +1061,40 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+
+
+
+### 20200912 bzx - Incorrect transfer
+
+### Lost: 
+
+
+```sh
+forge test --contracts ./src/test/2020-09/bzx_exp.sol -vvv
+```
+#### Contract
+[bzx_exp.sol](src/test/2020-09/bzx_exp.sol)
+### Link reference
+
+https://twitter.com/0x000000000marc/status/1305354469354303488
+
+---
+
+### 20210527 JulSwap - Flash Loan
+
+### Lost: 1.5M
+
+
+```sh
+forge test --contracts ./src/test/2021-05/JulSwap_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[JulSwap_exp.sol](src/test/2021-05/JulSwap_exp.sol)
+### Link reference
+
+https://x.com/tg_cryptos/status/1398090345368408064
+
+---
 
 ### 20240712 DoughFina - Incorrect input validation
 
