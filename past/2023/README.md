@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-197 incidents included.
+198 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -229,6 +229,8 @@
 [20230630 Biswap](#20230630-biswap---v3migrator-exploit)
 
 [20230628 Themis](#20230628-themis---manipulation-of-prices-using-flashloan)
+
+[20230627 UnverifiedContr_9ad32](#20230627-unverifiedcontr_9ad32---business-loigc)
 
 [20230623 SHIDO](#20230623-shido---business-loigc)
 
@@ -2740,6 +2742,26 @@ forge test --contracts ./src/test/2023-06/Themis_exp.sol -vvv
 https://twitter.com/BeosinAlert/status/1673930979348717570
 
 https://twitter.com/BlockSecTeam/status/1673897088617426946
+
+---
+
+### 20230627 UnverifiedContr_9ad32 - Business Loigc Flaw
+
+### Lost: ~5955 USD
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-06/UnverifiedContr_9ad32_exp.sol -vvv
+```
+
+#### Contract
+
+[UnverifiedContr_9ad32_exp.sol](../../src/test/2023-06/UnverifiedContr_9ad32_exp.sol)
+
+#### Link Reference
+
+https://x.com/DecurityHQ/status/1673708133926031360
 
 ---
 
