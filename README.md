@@ -422,6 +422,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230907 HCT](past/2023/README.md#20230907-hct---price-manipulation)
 
+[20230905 QuantumWN](past/2023/README.md#20230905-quantumwn---rebasing-logic-issue)
+
 [20230905 JumpFarm](past/2023/README.md#20230905-JumpFarm---rebasing-logic-issue)
 
 [20230905 HeavensGate](past/2023/README.md#20230905-HeavensGate---rebasing-logic-issue)
