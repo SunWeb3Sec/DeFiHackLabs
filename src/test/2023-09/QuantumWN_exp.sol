@@ -14,7 +14,6 @@ interface IStaking {
     function unstake(address _to, uint256 _amount, bool _rebase) external;
     function stake(address _to, uint256 _amount) external;
 }
-
 contract Exploit is Test {
     IBalancerVault balancer = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
