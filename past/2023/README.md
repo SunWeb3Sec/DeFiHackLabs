@@ -24,6 +24,8 @@
 
 [20231216 NFTTrader](#20231216-nfttrader---reentrancy)
 
+[20231214 PHIL](#20231214-PHIL---business-logic-flaw)
+
 [20231213 HYPR](#20231213-hypr---business-logic-flaw)
 
 [20231207 HNet](past/2023/README.md#20231207-HNet---business-logic-flaw)
@@ -592,6 +594,24 @@ https://twitter.com/AnciliaInc/status/1736263884217139333
 https://twitter.com/SlowMist_Team/status/1736005523550646535
 
 https://twitter.com/0xArhat/status/1736038250190651467
+
+---
+
+### 20231214 PHIL - Business Logic Flaw
+
+### Lost: ~$2 $BNB
+
+```
+forge test --contracts ./src/test/2023-12/PHIL_exp.sol -vvv
+```
+
+#### Contract
+
+[PHIL_exp.sol](../../src/test/2023-12/PHIL_exp.sol)
+
+#### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0x51dfa4311d6989c21b460590460a94f854446176fc184b8d1a16314fd043f737
 
 ---
 
