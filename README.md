@@ -356,6 +356,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231110 GrokToken](past/2023/README.md#20231110-grok---lack-of-slippage-protection)
 
+[20231107 RBalancer](past/2023/README.md#20231107-rbalancer---business-logic-flaw)
+
 [20231107 MEVbot](past/2023/README.md#20231107-mevbot---lack-of-access-control)
 
 [20231106 TrustPad](past/2023/README.md#20231106-trustpad---lack-of-msgsender-address-verification)
