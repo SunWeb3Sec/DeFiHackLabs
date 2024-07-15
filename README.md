@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-487 incidents included.
+488 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -421,6 +421,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20230908 APIG](past/2023/README.md#20230908-apig---business-logic-flaw)
 
 [20230907 HCT](past/2023/README.md#20230907-hct---price-manipulation)
+
+[20230905 QuantumWN](past/2023/README.md#20230905-quantumwn---rebasing-logic-issue)
 
 [20230905 JumpFarm](past/2023/README.md#20230905-JumpFarm---rebasing-logic-issue)
 

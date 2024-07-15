@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-196 incidents included.
+197 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -141,6 +141,8 @@
 [20230908 APIG](#20230908-apig---business-logic-flaw)
 
 [20230907 HCT](#20230907-hct---price-manipulation)
+
+[20230905 QuantumWN](#20230905-quantumwn---rebasing-logic-issue)
 
 [20230905 JumpFarm](#20230905-JumpFarm---rebasing-logic-issue)
 
@@ -1812,6 +1814,26 @@ forge test --contracts ./src/test/2023-09/HCT_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/leovctech/status/1699775506785198499
+
+---
+
+### 20230905 QuantumWN - Rebasing logic issue
+
+### Lost: ~$0.5 ETH
+
+Test
+
+```
+forge test --contracts ./src/test/2023-09/QuantumWN_exp.sol -vvv
+```
+
+#### Contract
+
+[QuantumWN_exp.sol](../../src/test/2023-09/QuantumWN_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/DecurityHQ/status/1699384904218202618
 
 ---
 
