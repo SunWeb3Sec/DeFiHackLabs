@@ -300,6 +300,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231216 NFTTrader](past/2023/README.md#20231216-nfttrader---reentrancy)
 
+[20231214 PHIL](past/2023/README.md#20231214-PHIL---business-logic-flaw)
+
 [20231213 HYPR](past/2023/README.md#20231213-hypr---business-logic-flaw)
 
 [20231207 HNet](past/2023/README.md#20231207-HNet---business-logic-flaw)
