@@ -35,7 +35,9 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## Who Support Us? DeFiHackLabs Received Grant From
 
-[![gcc PM](https://github.com/SunWeb3Sec/DeFiHackLabs/assets/107249780/84fb64ac-1d2b-45ba-b864-b744bbbfdb30)](https://x.com/GCCofCommons)
+<a href="https://x.com/GCCofCommons">
+  <img src="https://github.com/SunWeb3Sec/DeFiHackLabs/assets/107249780/84fb64ac-1d2b-45ba-b864-b744bbbfdb30" width="600"/>
+</a>
 
 ## Donate us
 
