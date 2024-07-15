@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-489 incidents included.
+490 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -355,6 +355,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20231110 Raft_fi](past/2023/README.md#20231110-raft_fi---donate-inflation-exchangerate--rounding-error)
 
 [20231110 GrokToken](past/2023/README.md#20231110-grok---lack-of-slippage-protection)
+
+[20231107 RBalancer](past/2023/README.md#20231107-rbalancer---business-logic-flaw)
 
 [20231107 MEVbot](past/2023/README.md#20231107-mevbot---lack-of-access-control)
 

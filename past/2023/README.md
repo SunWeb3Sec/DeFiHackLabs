@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-198 incidents included.
+199 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -75,6 +75,8 @@
 [20231110 Raft_fi](#20231110-raft_fi---donate-inflation-exchangerate--rounding-error)
 
 [20231110 GrokToken](#20231110-grok---lack-of-slippage-protection)
+
+[20231107 RBalancer](#20231107-rbalancer---business-logic-flaw)
 
 [20231107 MEVbot](#20231107-mevbot---lack-of-access-control)
 
@@ -1134,6 +1136,26 @@ forge test --contracts ./src/test/2023-11/grok_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/Phalcon_xyz/status/1722841076120130020
+
+---
+
+### 20231107 RBalancer - Business Logic Flaw
+
+### Lost: ~17 ETH
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/RBalancer_exp.sol -vvv --evm-version "shanghai"
+```
+
+#### Contract
+
+[RBalancer_exp.sol](../../src/test/2023-11/RBalancer_exp.sol)
+
+#### Link Reference
+
+https://x.com/AnciliaInc/status/1722121056083943909
 
 ---
 
