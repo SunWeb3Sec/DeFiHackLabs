@@ -242,6 +242,8 @@
 
 [20230620 MIM](#20230620-mimspell---arbitrary-external-call-vulnerability)
 
+[20230619 Contract_0x7657](#20230620-Contract_0x7657---business-loigc)
+
 [20230618 ARA](#20230618-ara---incorrect-handling-of-permissions)
 
 [20230617 MidasCapitalXYZ](#20230617-midascapitalxyz---precision-loss)
@@ -2866,6 +2868,26 @@ forge test --contracts ./src/test/2023-06/MIMSpell_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/hexagate_/status/1671188024607100928?cxt=HHwWgMC--e2poLEuAAAA
+
+---
+
+### 20230619 Contract_0x7657 - Business Loigc
+
+### Lost: ~$20k $USDT
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-06/Contract_0x7657_exp.sol -vvv
+```
+
+#### Contract
+
+[Contract_0x7657_exp.sol](../../src/test/2023-06/Contract_0x7657_exp.sol)
+
+#### Link Reference
+
+https://x.com/DecurityHQ/status/1670806260550184962
 
 ---
 
