@@ -524,6 +524,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230620 MIM](past/2023/README.md#20230620-mimspell---arbitrary-external-call-vulnerability)
 
+[20230619 Contract_0x7657](#20230620-Contract_0x7657---business-loigc)
+
 [20230618 ARA](past/2023/README.md#20230618-ara---incorrect-handling-of-permissions)
 
 [20230617 MidasCapitalXYZ](past/2023/README.md#20230617-midascapitalxyz---precision-loss)
