@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-199 incidents included.
+205 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -28,7 +28,7 @@
 
 [20231213 HYPR](#20231213-hypr---business-logic-flaw)
 
-[20231207 HNet](past/2023/README.md#20231207-HNet---business-logic-flaw)
+[20231207 HNet](#20231207-HNet---business-logic-flaw)
 
 [20231206 TIME](#20231206-time---arbitrary-address-spoofing-attack)
 
@@ -60,6 +60,8 @@
 
 [20231116 WECO](#20231116-weco---business-logic-flaw)
 
+[20231115 EHX](#20231115-ehx---lack-of-slippage-control)
+
 [20231115 XAI](#20231115-xai---business-logic-flaw)
 
 [20231115 LinkDAO](#20231115-linkdao---bad-k-value-verification)
@@ -82,15 +84,17 @@
 
 [20231106 TrustPad](#20231106-trustpad---lack-of-msgsender-address-verification)
 
-[20231106 TheStandard_io](#20231106-thestandard_io---lack-of-slippage-protection)
+[20231106 KR](#20231106-KR---precision-loss)
 
-[20231106 KR](past/2023/README.md#20231106-KR---precission-loss)
+[20231106 TheStandard_io](#20231106-thestandard_io---lack-of-slippage-protection)
 
 [20231102 BRAND](#20231102-brand---lack-of-access-control)
 
 [20231102 3913Token](#20231102-3913token---deflationary-token-attack)
 
 [20231101 OnyxProtocol](#20231101-onyxprotocol---precission-loss-vulnerability)
+
+[20231101 SwampFinance](#20231101-swampfinance---business-logic-flaw)
 
 [20231031 UniBotRouter](#20231031-UniBotRouter---arbitrary-external-call)
 
@@ -444,7 +448,7 @@ forge test --contracts src/test/2023-12/CCV_exp.sol -vvv
 
 #### Link reference
 
-app.blocksec.com/explorer/tx/bsc/0x6ba4152db9da45f5751f2c083bf77d4b3385373d5660c51fe2e4382718afd9b4
+https://app.blocksec.com/explorer/tx/bsc/0x6ba4152db9da45f5751f2c083bf77d4b3385373d5660c51fe2e4382718afd9b4
 
 ---
 
@@ -493,7 +497,6 @@ https://hacked.slowmist.io/?c=&page=2
 
 ```
 forge test --contracts ./src/test/2023-12/PineProtocol_exp.sol -vvv
-
 ```
 
 #### Contract
@@ -514,7 +517,6 @@ https://twitter.com/MistTrack_io/status/1738131780459430338
 
 ```
 forge test --contracts ./src/test/2023-12/TransitFinance_exp.sol -vvv
-
 ```
 
 #### Contract
@@ -1304,6 +1306,26 @@ forge test --contracts ./src/test/2023-11/OnyxProtocol_exp.sol --evm-version 'sh
 https://twitter.com/Phalcon_xyz/status/1719697319824851051
 https://defimon.xyz/attack/mainnet/0xf7c21600452939a81b599017ee24ee0dfd92aaaccd0a55d02819a7658a6ef635
 https://twitter.com/DecurityHQ/status/1719657969925677161
+
+---
+
+### 20231101 SwampFinance - Business Logic Flaw
+
+### Lost: Unclear
+
+Test
+
+```
+forge test --contracts ./src/test/2023-11/SwampFinance_exp.sol -vvv
+```
+
+#### Contract
+
+[SwampFinance_exp.sol](../../src/test/2023-11/SwampFinance_exp.sol)
+
+#### Link Reference
+
+https://x.com/MetaSec_xyz/status/1720373044517208261
 
 ---
 

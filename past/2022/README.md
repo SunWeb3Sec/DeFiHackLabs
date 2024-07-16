@@ -2,7 +2,7 @@
 
 ## 2022 - List of Past DeFi Incidents
 
-126 incidents included.
+127 incidents included.
 
 [20221230 DFS](#20221230---dfs---insufficient-validation--flashloan)
 
@@ -22,7 +22,7 @@
 
 [20221211 Lodestar](#20221211---lodestar---flashloan-price-manipulation)
 
-[20221211 MEVbot_0x28d9](past/2022/README.md#20221211---MEVbot_0x28d9---precision-loss)
+[20221211 MEVbot_0x28d9](#20221211---MEVbot_0x28d9---precision-loss)
 
 [20221210 MUMUG](#20221210---mumug---flashloan-price-manipulation)
 
