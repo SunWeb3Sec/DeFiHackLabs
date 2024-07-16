@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-491 incidents included.
+496 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -524,7 +524,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230620 MIM](past/2023/README.md#20230620-mimspell---arbitrary-external-call-vulnerability)
 
-[20230619 Contract_0x7657](#20230620-Contract_0x7657---business-loigc)
+[20230619 Contract_0x7657](past/2023/README.md#20230620-Contract_0x7657---business-loigc)
 
 [20230618 ARA](past/2023/README.md#20230618-ara---incorrect-handling-of-permissions)
 
@@ -882,8 +882,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20220529 NOVO Protocol](past/2022/README.md#20220529-novo-protocol---flashloan--price-oracle-manipulation)
 
-[20210527 JulSwap](past/2021/README.md#20210527-julswap---flash-loan)
-
 [20220524 HackDao](past/2022/README.md#20220524-HackDao---Skim-token-balance)
 
 [20220517 ApeCoin](past/2022/README.md#20220517-apecoin-ape---flashloan)
@@ -963,7 +961,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20211130 MonoX Finance](past/2021/README.md#20211130-monox-finance---price-manipulation)
 
-[20211123 Ploutoz Finance](#past/2021/20211123-ploutoz---flash-loan)
+[20211123 Ploutoz Finance](past/2021/README.md#20211123-ploutoz---flash-loan)
 
 [20211027 Cream Finance](past/2021/README.md#20211027-creamfinance---price-manipulation)
 
@@ -1036,7 +1034,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20201026 Harvest Finance](past/2021/README.md#20201026-harvest-finance---flashloan-attack)
 
-[20200912 bzx](#past/2021/README.md#20200912-bzx---incorrect-transfer)
+[20200912 bzx](past/2021/README.md#20200912-bzx---incorrect-transfer)
 
 [20200804 Opyn Protocol](past/2021/README.md#20200804-opyn-protocol---msgValue-in-loop)
 
@@ -3195,7 +3193,7 @@ forge test --gas-report --contracts <contract> -vvv
 ```
 
 For Example:
-Let us find out the gas used in the [Audius poc](past/2022/README.md#20220723-audius---storage-collision--malicious-proposal)
+Let us find out the gas used in the [Audius poc](src/test/2022-07/Audius_exp.sol)
 
 **Execution**
 
