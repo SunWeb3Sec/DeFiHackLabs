@@ -516,6 +516,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230627 UnverifiedContr_9ad32](past/2023/README.md#20230627-unverifiedcontr_9ad32---business-loigc-flaw)
 
+[20230627 STRAC](#20230627-STRAC---business-loigc)
+
 [20230623 SHIDO](past/2023/README.md#20230623-shido---business-loigc)
 
 [20230621 BabyDogeCoin02](past/2023/README.md#20230621-babydogecoin02---lack-slippage-protection)

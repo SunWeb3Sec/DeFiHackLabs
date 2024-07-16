@@ -232,6 +232,8 @@
 
 [20230628 Themis](#20230628-themis---manipulation-of-prices-using-flashloan)
 
+[20230627 STRAC](#20230627-STRAC---business-loigc)
+
 [20230627 UnverifiedContr_9ad32](#20230627-unverifiedcontr_9ad32---business-loigc)
 
 [20230623 SHIDO](#20230623-shido---business-loigc)
@@ -2786,6 +2788,26 @@ forge test --contracts ./src/test/2023-06/UnverifiedContr_9ad32_exp.sol -vvv
 #### Link Reference
 
 https://x.com/DecurityHQ/status/1673708133926031360
+
+---
+
+### 20230627 STRAC - Business Loigc Flaw
+
+### Lost: ~12 $ETH
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-06/STRAC_exp.sol -vvv
+```
+
+#### Contract
+
+[STRAC_exp.sol](../../src/test/2023-06/STRAC_exp.sol)
+
+#### Link Reference
+
+https://x.com/DecurityHQ/status/1673769624611987487
 
 ---
 
