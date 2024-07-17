@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-497 incidents included.
+498 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -511,6 +511,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20230703 AzukiDAO](past/2023/README.md#20230703-azukidao---invalid-signature-verification)
 
 [20230630 Biswap](past/2023/README.md#20230630-biswap---v3migrator-exploit)
+
+[20230630 MyAi](#20230630-MyAi---business-loigc)
 
 [20230628 Themis](past/2023/README.md#20230628-themis---manipulation-of-prices-using-flashloan)
 
