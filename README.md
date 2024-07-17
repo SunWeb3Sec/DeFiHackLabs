@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-498 incidents included.
+499 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -47,6 +47,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240716 Lifiprotocol](#20240716-lifiprotocol---incorrect-input-validation)
 
 [20240712 DoughFina](#20240712-doughfina---incorrect-input-validation)
 
@@ -1079,6 +1081,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240716 Lifiprotocol - Incorrect input validation
+
+### Lost: ~10M USD
+
+```sh
+forge test --contracts ./src/test/2024-07/Lifiprotocol_exp.sol -vvv
+```
+
+#### Contract
+
+[Lifiprotocol_exp.sol](src/test/2024-07/Lifiprotocol_exp.sol)
+
+### Link reference
+
+https://x.com/danielvf/status/1505689981385334784
+
+---
 
 ### 20240712 DoughFina - Incorrect input validation
 
