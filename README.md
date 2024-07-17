@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-501 incidents included.
+502 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -171,6 +171,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240408 SQUID](#20240408-squid---sandwich-attack)
 
 [20240404 WSM](#20240404-wsm---manipulating-price)
+
+[20240402 HoppyFrogERC](#20240402-hoppyfrogerc---business-logic-flaw)
 
 [20240401 ATM](#20240401-atm---business-logic-flaw)
 
@@ -2188,6 +2190,24 @@ forge test --contracts ./src/test/2024-04/WSM_exp.sol -vvv
 ### Link reference
 
 https://hacked.slowmist.io/#:~:text=Hacked%20target%3A%20Wall%20Street%20Memes
+
+---
+
+### 20240402 HoppyFrogERC - business logic flaw
+
+### Lost: ~0.3 ETH
+
+```
+forge test --contracts ./src/test/2024-04/HoppyFrogERC_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[HoppyFrogERC_exp.sol](src/test/2024-04/HoppyFrogERC_exp.sol)
+
+### Link reference
+
+https://x.com/ChainAegis/status/1775351437410918420
 
 ---
 
