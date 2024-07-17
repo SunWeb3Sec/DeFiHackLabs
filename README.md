@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-499 incidents included.
+500 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -49,6 +49,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ## List of Past DeFi Incidents
 
 [20240716 Lifiprotocol](#20240716-lifiprotocol---incorrect-input-validation)
+
+[20240714 Minterest](#20240714-minterest---Reentrancy)
 
 [20240712 DoughFina](#20240712-doughfina---incorrect-input-validation)
 
@@ -1097,6 +1099,24 @@ forge test --contracts ./src/test/2024-07/Lifiprotocol_exp.sol -vvv
 ### Link reference
 
 https://x.com/danielvf/status/1505689981385334784
+
+---
+
+### 20240714 Minterest - Reentrancy
+
+### Lost: ~427 ETH
+
+```sh
+forge test --contracts ./src/test/2024-07/Minterest_exp.sol -vvv
+```
+
+#### Contract
+
+[Minterest_exp.sol](src/test/2024-07/Minterest_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1813122959219040323
 
 ---
 
