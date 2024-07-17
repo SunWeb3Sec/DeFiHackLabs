@@ -234,6 +234,8 @@
 
 [20230630 Biswap](#20230630-biswap---v3migrator-exploit)
 
+[20230630 MyAi](#20230630-MyAi---business-loigc)
+
 [20230628 Themis](#20230628-themis---manipulation-of-prices-using-flashloan)
 
 [20230627 STRAC](#20230627-STRAC---business-loigc)
@@ -2768,6 +2770,26 @@ forge test --contracts ./src/test/2023-06/Biswap_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/MetaTrustAlert/status/1674814217122349056?s=20
+
+---
+
+### 20230630 MyAi - Business Loigc
+
+### Lost: ~2 $BNB
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-06/MyAi_exp.sol -vvv
+```
+
+#### Contract
+
+[MyAi_exp.sol](../../src/test/2023-06/MyAi_exp.sol)
+
+#### Link Reference
+
+https://x.com/DecurityHQ/status/1674781372182048776
 
 ---
 
