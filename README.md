@@ -492,6 +492,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230717 NewFi](past/2023/README.md#20230717-newfi---lack-slippage-protection)
 
+[20230715 USDTStakingContract28](past/2023/README.md#20230715-usdtstakingcontract28---lack-of-access-control)
+
 [20230712 Platypus](past/2023/README.md#20230712-platypus---bussiness-logic-flaw)
 
 [20230712 WGPT](past/2023/README.md#20230712-wgpt---business-logic-flaw)
