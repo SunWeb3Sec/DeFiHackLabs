@@ -2,7 +2,7 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-205 incidents included.
+206 incidents included.
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
@@ -209,6 +209,8 @@
 [20230718 BNO](#20230718-bno---invalid-emergency-withdraw-mechanism)
 
 [20230717 NewFi](#20230717-newfi---lack-slippage-protection)
+
+[20230715 USDTStakingContract28](#20230715-usdtstakingcontract28---lack-of-access-control)
 
 [20230712 Platypus](#20230712-platypus---bussiness-logic-flaw)
 
@@ -2512,6 +2514,26 @@ forge test --contracts ./src/test/2023-07/NewFi_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/Phalcon_xyz/status/1680961588323557376
+
+---
+
+### 20230715 USDTStakingContract28 - Lack of access control
+
+### Lost: ~20999 USD
+
+Testing
+
+```
+forge test --contracts ./src/test/2023-07/USDTStakingContract28_exp.sol -vvv
+```
+
+#### Contract
+
+[USDTStakingContract28_exp.sol](../../src/test/2023-07/USDTStakingContract28_exp.sol)
+
+#### Link Reference
+
+https://x.com/DecurityHQ/status/1680117291013267456
 
 ---
 

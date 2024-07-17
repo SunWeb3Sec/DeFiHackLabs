@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-500 incidents included.
+501 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -491,6 +491,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20230718 BNO](past/2023/README.md#20230718-bno---invalid-emergency-withdraw-mechanism)
 
 [20230717 NewFi](past/2023/README.md#20230717-newfi---lack-slippage-protection)
+
+[20230715 USDTStakingContract28](past/2023/README.md#20230715-usdtstakingcontract28---lack-of-access-control)
 
 [20230712 Platypus](past/2023/README.md#20230712-platypus---bussiness-logic-flaw)
 
