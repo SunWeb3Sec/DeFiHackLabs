@@ -5,10 +5,6 @@ import "forge-std/Test.sol";
 import "./../interface.sol";
 
 /*
-Lendf.Me Reentry Exploit PoC
-
-See https://peckshield.medium.com/uniswap-lendf-me-hacks-root-cause-and-loss-analysis-50f3263dcc09 for more detail
-
 Example tx - https://etherscan.io/tx/0xae7d664bdfcc54220df4f18d339005c6faf6e62c9ca79c56387bc0389274363b
 */
 
@@ -35,7 +31,7 @@ contract LendfMeExploit is Test {
     function setUp() public {
         cheats.createSelectFork("mainnet", 9899725);
     }
-
+    // This function is for callback.
     function tokensToSend(
         address, // operator
         address, // from
