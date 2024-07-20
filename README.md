@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-502 incidents included.
+503 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240711 GAX](#20240711-GAX---precision-loss)
 
 [20240708 LW](#20240708-Lw---integer-underflow)
+
+[20240705 DeFiPlaza](#20240705-defiplaza---loss-of-precision)
 
 [20240703 UncertifiedContract_uname](#20240703-UncertifiedContract_uname_exp---lack-of-access-control)
 
@@ -1193,6 +1195,24 @@ forge test --contracts ./src/test/2024-07/LW_exp.sol -vvv
 ### Link reference
 
 https://x.com/0xNickLFranklin/status/1810245893490368820
+
+---
+
+### 20240705 DeFiPlaza - loss of precision
+
+### Lost: ~200K USD
+
+```sh
+forge test --contracts ./src/test/2024-07/DeFiPlaza_exp.sol -vvv
+```
+
+#### Contract
+
+[DeFiPlaza_exp.sol](src/test/2024-07/DeFiPlaza_exp.sol)
+
+### Link reference
+
+https://x.com/DecurityHQ/status/1809222922998808760
 
 ---
 
