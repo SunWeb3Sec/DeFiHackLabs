@@ -1,6 +1,12 @@
-// This contract is not certified
+// This contract is not verified
 import "forge-std/Test.sol";
 import "./../interface.sol";
+
+// @KeyInfo - Total Lost : ~27 ETH
+// TX : https://etherscan.io/tx/0x1194e1d6085885ce054a7ff8cd3cd0c3fa308ec87e4ccde8dd0549842fef4f1b
+// Attacker : https://etherscan.io/address/0xabee16e74dd268105f166c27a847edc2b8e7cc4e
+// Attack Contract : https://etherscan.io/address/0x27b27842771df79af6a69795f6fca0948c8333c0
+// GUY : https://x.com/SlowMist_Team/status/1808334870650970514
 
 interface IVictime{
     function uniswapV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes memory data) external;

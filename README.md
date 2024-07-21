@@ -62,7 +62,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240705 DeFiPlaza](#20240705-defiplaza---loss-of-precision)
 
-[20240703 UncertifiedContract_uname](#20240703-UncertifiedContract_uname_exp---lack-of-access-control)
+[20240703 UnverifiedContr_0x452E25](#20240703-UnverifiedContr_0x452E25---lack-of-access-control)
 
 [20240702 MRP](#20240702-mrp---reentrancy)
 
@@ -1216,17 +1216,17 @@ https://x.com/DecurityHQ/status/1809222922998808760
 
 ---
 
-### 20240703 UncertifiedContract_uname_exp - lack-of-access-control
+### 20240703 UnverifiedContr_0x452E25 - lack-of-access-control
 
-### Lost: 27 eth
+### Lost: 27 ETH
 
 ```sh
-forge test --contracts ./src/test/2024-07/UncertifiedContract_uname_exp.sol -vvv --evm-version "cancun"
+forge test --contracts ./src/test/2024-07/UnverifiedContr_0x452E25_exp.sol -vvv --evm-version "cancun"
 ```
 
 #### Contract
 
-[UncertifiedContract_uname_exp.sol](src/test/2024-07/UncertifiedContract_uname_exp.sol)
+[UnverifiedContr_0x452E25_exp.sol](src/test/2024-07/UnverifiedContr_0x452E25_exp.sol)
 
 ### Link reference
 

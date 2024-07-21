@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-// @KeyInfo - Total Lost : ~50 $BUSD
+// @KeyInfo - Total Lost : ~50k $BUSD
 // Attacker : https://bscscan.com/address/0x8ccf2860f38fc2f4a56dec897c8c976503fcb123
 // Attack Contract : https://bscscan.com/address/0x64b9d294cd918204d1ee6bce283edb49302ddf7e
 // Vulnerable Contract : https://bscscan.com/address/0xdb4b73df2f6de4afcd3a883efe8b7a4b0763822b

@@ -6,8 +6,10 @@ import "./../interface.sol";
 
 // @KeyInfo -- Total Lost : ~200k USD
 // TX : https://app.blocksec.com/explorer/tx/eth/0xa245deda8553c6e4c575baff9b50ef35abf4c8f990f8f36897696f896f240e3a
-// Attacker : https://etherscan.io/address/0xfde0d1575ed8e06fbf36256bcdfa1f359281455a
-// Attack Contract : https://etherscan.io/address/0x6980a47bee930a4584b09ee79ebe46484fbdbdd0
+// Frontrunner : https://etherscan.io/address/0xfde0d1575ed8e06fbf36256bcdfa1f359281455a
+// Original Attacker: https://etherscan.io/address/0x14b362d2e38250604f21a334d71c13e2ed478467
+// Frontrunner Attack Contract: https://etherscan.io/address/0x6980a47bee930a4584b09ee79ebe46484fbdbdd0
+// Original Attack Contract : https://etherscan.io/address/0xa4e8969bba1e1d48c30c948de0884cdff43e2d54
 // GUY : https://x.com/DecurityHQ/status/1809222922998808760
 
 interface DeFiPlaza is IERC20{
