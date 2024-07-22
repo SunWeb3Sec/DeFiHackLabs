@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-503 incidents included.
+502 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -69,8 +69,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240628 Will](#20240628-Will---business-logic-flaw)
 
 [20240627 APEMAGA](#20240627-APEMAGA---business-logic-flaw)
-
-[20240627 XiaoPANG](#20240627-xiaopang---publically-claimable-lp-bal-in-lp)
 
 [20240618 INcufi](#20240618-incufi---business-logic-flaw)
 
@@ -1285,24 +1283,6 @@ forge test --contracts ./src/test/2024-06/APEMAGA_exp.sol -vvv --evm-version "sh
 ### Link reference
 
 https://x.com/ChainAegis/status/1806297556852601282
-
----
-
-### 20240627 XiaoPANG - Publically Claimable LP Bal in LP
-
-### Lost: ~30 ETH
-
-```sh
-forge test --contracts ./src/test/2024-06/XiaoPANG_exp.sol -vvv --evm-version "shanghai"
-```
-
-#### Contract
-
-[XiaoPANG_exp.sol](src/test/2024-06/XiaoPANG_exp.sol)
-
-### Link reference
-
-https://x.com/MevRefund/status/1806146944898650202
 
 ---
 
