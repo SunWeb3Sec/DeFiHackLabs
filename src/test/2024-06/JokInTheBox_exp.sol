@@ -3,6 +3,13 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
+// Profit : ~9.2 ETH
+// Attacker: https://etherscan.io/address/0xfcd4acbc55df53fbc4c9d275e3495b490635f113
+// Attack Contract: https://etherscan.io/address/0x9d3425d45df30183fda059c586543dcdeb5993e6
+// TX : https://etherscan.io/tx/0xe8277ef6ba8611bd12dc5a6e7ca4b984423bc0b3828159f83b466fdcf4fe054f
+
+// GUY : https://x.com/ChainAegis/status/1802550962977964139
+
 interface IJokInTheBox is IERC20 {
     struct LockPeriod {
         bool isValid;

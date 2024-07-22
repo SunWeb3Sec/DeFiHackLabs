@@ -3,6 +3,15 @@ pragma solidity ^0.8.10;
 import "../basetest.sol";
 import "./../interface.sol";
 
+// Profit : ~3.4 ETH
+// Attacker: https://etherscan.io/address/0x394ba273315240510b61ca22ba152e3478a45892
+// Attack Contract: https://etherscan.io/address/0x93d4f6f84d242c7959f8d1f1917ddbc9fb925ada
+// TX1 : https://etherscan.io/tx/0xda8f6a4bed7e5689a343d111632d37480c0316f1d20b732803c4bd482823e284
+// TX2 : https://etherscan.io/tx/0x58424115c6576b19cfb78b0b7ff00e0c13daa06d259f2a67210c112731519e09
+
+// GUY : https://x.com/ChainAegis/status/1802550962977964139
+
+
 interface WIFStaking is IERC20 {
     function stake(uint256 _stakingId, uint256 _amount) external;
     function claimEarned(uint256 _stakingId, uint256 _burnRate) external;

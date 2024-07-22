@@ -4,12 +4,16 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
+// Profit : ~9 ETH
 // TX : https://app.blocksec.com/explorer/tx/eth/0x6beb21b53f5b205c088570333ec875b720e333b49657f7026b01ed72b026851e?line=19
+// Attacker : https://etherscan.io/address/0xb297735e9fb3e695ccce3963bfe042f318901ea0
+// Attack Contract : https://etherscan.io/address/0x8de6314058c0b7eea809881d73e69b425c01f0b5#code
+// Vulnerable Contract : https://etherscan.io/address/0x56ff4afd909aa66a1530fe69bf94c74e6d44500c
 // GUY : https://x.com/ChainAegis/status/1806297556852601282
-// Profit : ~9 WETH
+
 interface APEMAGA  is IERC20{
     function family(address account) external;
-    }
+}
 
 contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);

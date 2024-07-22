@@ -7,7 +7,7 @@ import "./../interface.sol";
 // @KeyInfo - Total Lost : 	$6.88M
 // Attack Tx : https://lineascan.build/tx/0xed11d5b013bf3296b1507da38b7bcb97845dd037d33d3d1b0c5e763889cdbed1
 // Attacker Address : https://lineascan.build/address/0x8cdc37ed79c5ef116b9dc2a53cb86acaca3716bf
-
+// Attack Contract : https://lineascan.build/address/0xb7f6354b2cfd3018b3261fbc63248a56a24ae91a
 
 // @Analysis: https://x.com/BeosinAlert/status/1797247874528645333
 
