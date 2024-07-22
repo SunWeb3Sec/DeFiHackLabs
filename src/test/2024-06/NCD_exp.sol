@@ -1,6 +1,14 @@
+pragma solidity ^0.8.10;
+
 import "forge-std/Test.sol";
 import "../interface.sol";
 
+// @KeyInfo - Total Lost : $6.4K
+// Attacker : https://bscscan.com/address/0xd52f125085b70f7f52bd112500a9c334b7246984
+// Attack Contract : https://bscscan.com/address/0xfad2a0642a44a68606c2295e69d383700643be68
+// Attack Tx : https://bscscan.com/tx/0xbfb9b3b8a0d3c589a02f06c516b5c7b7569739edd00f9836645080f2148aefc7
+
+// GUY : https://x.com/SlowMist_Team/status/1797821034319765604
 
 interface INcd is IERC20{
     function mineStartTime(address) external view returns(uint256);

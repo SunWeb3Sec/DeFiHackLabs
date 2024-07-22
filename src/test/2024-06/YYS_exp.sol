@@ -8,7 +8,8 @@ import "./../interface.sol";
 // @KeyInfo - Total Lost : 	$28K
 // Attack Tx : https://app.blocksec.com/explorer/tx/bsc/0x397a09af6494c0bfcd89e010f5dd65d90f3ee1cf1ff813ce5b0c1d42a1c8dec9?line=84
 // Attacker Address : https://bscscan.com/address/0x101723def8695f5bb8d5d4aa70869c10b5ff6340
-
+// Attack Contract1: https://bscscan.com/address/0x832e6540da54d07cb0dfea8957be690c8eb2c6a0
+// Attack Contract2: https://bscscan.com/tx/0xfda026b479c5e0070f4eed542b292031f4e077c6917d211820c572ac33842cda
 
 // @Analysis: https://x.com/0xNickLFranklin/status/1799610045589831833
 

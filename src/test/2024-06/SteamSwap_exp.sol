@@ -4,7 +4,7 @@ pragma solidity ^0.8.15;
 import "../basetest.sol";
 import "../interface.sol";
 
-// @KeyInfo - Total Lost : 14K
+// @KeyInfo - Total Lost : ~$91k
 // Attacker : https://bscscan.com/address/0xb2d546547168f61debf0a780210b5591e4dd39a8
 // Attack Contract : https://bscscan.com/address/0xa4fd1beac3b5fb78a8ec074338152100b87437a9
 // Vulnerable Contract : https://bscscan.com/address/0xb7d0a1adafa3e9e8d8e244c20b6277bee17a09b6
@@ -42,7 +42,7 @@ contract SteamSwap is BaseTestWithBalanceLog {
     function setUp() public {
         vm.createSelectFork("bsc", blocknumToForkFrom);
         //Change this to the target token to get token balance of,Keep it address 0 if its ETH that is gotten at the end of the exploit
-        fundingToken = address(STM);
+        fundingToken = address(BUSD);
     }
 
     function testExploit() public balanceLog {

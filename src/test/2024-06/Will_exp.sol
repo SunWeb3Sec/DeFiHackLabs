@@ -4,12 +4,14 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
-// TX::https://app.blocksec.com/explorer/tx/bsc/0xefe58a14fc0022872262678b358aaae64a26fe2389d09093eb14752ea99415e9
-// GUY : https://x.com/0xNickLFranklin/status/1806704287252394238
 // Profit : ~52777 USD
+// Attacker: https://bscscan.com/address/0xb6911dee6a5b1c65ad1ac11a99aec09c2cf83c0e
+// Attack Contract: https://bscscan.com/address/0x63b4de190c35f900bb7adf1a13d66fb1f0d624a1#code
 // Actually there are 2 steps
-// TX1: : https://app.blocksec.com/explorer/tx/bsc/0xc12ccc3bdaf3f0ec1efa09d089a0c1dbad05519e1eb0fa6475ffcc6317cbde4d
-// TX2::https://app.blocksec.com/explorer/tx/bsc/0xefe58a14fc0022872262678b358aaae64a26fe2389d09093eb14752ea99415e9
+// TX1 : https://app.blocksec.com/explorer/tx/bsc/0xc12ccc3bdaf3f0ec1efa09d089a0c1dbad05519e1eb0fa6475ffcc6317cbde4d
+// TX2 :https://app.blocksec.com/explorer/tx/bsc/0xefe58a14fc0022872262678b358aaae64a26fe2389d09093eb14752ea99415e9
+
+// GUY : https://x.com/0xNickLFranklin/status/1806704287252394238
 
 interface Trading{
     function placeSellOrder(uint256 usdtAmount, uint256 margin, uint256 minUsdtReceived) external; 

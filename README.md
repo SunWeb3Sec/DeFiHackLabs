@@ -1272,7 +1272,7 @@ https://x.com/0xNickLFranklin/status/1806704287252394238
 
 ### 20240627 APEMAGA - business logic flaw
 
-### Lost: 9 eth
+### Lost: ~9 ETH
 
 ```sh
 forge test --contracts ./src/test/2024-06/APEMAGA_exp.sol -vvv --evm-version "shanghai"
@@ -1290,10 +1290,10 @@ https://x.com/ChainAegis/status/1806297556852601282
 
 ### 20240627 XiaoPANG - Publically Claimable LP Bal in LP
 
-### Lost: 87,906.71
+### Lost: ~30 ETH
 
 ```sh
-forge test --contracts ./src/test/2024-06/XiaoPANG_exp.sol -vvv
+forge test --contracts ./src/test/2024-06/XiaoPANG_exp.sol -vvv --evm-version "shanghai"
 ```
 
 #### Contract
@@ -1312,7 +1312,6 @@ https://x.com/MevRefund/status/1806146944898650202
 
 ```sh
 forge test --contracts ./src/test/2024-06/INcufi_exp.sol  -vvv
-
 ```
 
 #### Contract
@@ -1331,7 +1330,6 @@ https://x.com/0xNickLFranklin/status/1803317022513832301
 
 ```sh
 forge test --contracts ./src/test/2024-06/Dyson_money_exp.sol  -vvv
-
 ```
 
 #### Contract
@@ -1346,11 +1344,10 @@ https://x.com/0xNickLFranklin/status/1802634237667054052
 
 ### 20240616 WIFCOIN_ETH - business logic flaw
 
-### Lost: 13189.92USD(WIF token)
+### Lost: ~3.4 ETH (WIF token)
 
 ```sh
 forge test --contracts ./src/test/2024-06/WIFCOIN_ETH_exp.sol  -vv --evm-version "shanghai"
-
 ```
 
 #### Contract
@@ -1369,7 +1366,6 @@ https://x.com/ChainAegis/status/1802550962977964139
 
 ```sh
 forge test --contracts ./src/test/2024-06/Crb2_exp.sol  -vv --evm-version shanghai
-
 ```
 
 #### Contract
@@ -1382,11 +1378,10 @@ forge test --contracts ./src/test/2024-06/Crb2_exp.sol  -vv --evm-version shangh
 
 ### 20240611 JokInTheBox - business logic flaw
 
-### Lost: 9.2 eth
+### Lost: ~9.2 ETH
 
 ```sh
-forge test --contracts .\src\test\2024-06\JokInTheBox.sol  -vv --evm-version cancun
-
+forge test --contracts ./src/test/2024-06/JokInTheBox_exp.sol  -vv --evm-version cancun
 ```
 
 #### Contract
@@ -1437,14 +1432,16 @@ https://x.com/0xNickLFranklin/status/1799610045589831833
 
 ### 20240606 SteamSwap - Logic Flaw
 
-### Lost: 14K
-
+### Lost: ~$91k
 
 ```sh
 forge test --contracts ./src/test/2024-06/SteamSwap_exp.sol -vvv --evm-version shanghai
 ```
+
 #### Contract
+
 [SteamSwap_exp.sol](src/test/2024-06/SteamSwap_exp.sol)
+
 ### Link reference
 
 https://x.com/SlowMist_Team/status/1798905797440897386
