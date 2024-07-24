@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-502 incidents included.
+503 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -47,6 +47,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240724 Spectra_finance](#20240724-spectra_finance---incorrect-input-validation)
 
 [20240716 Lifiprotocol](#20240716-lifiprotocol---incorrect-input-validation)
 
@@ -1087,6 +1089,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240724 Spectra_finance - Incorrect input validation
+
+### Lost: ~73K USD
+
+```sh
+forge test --contracts ./src/test/2024-07/Spectra_finance_exp.sol -vvv
+```
+
+#### Contract
+
+[Spectra_finance_exp.sol](src/test/2024-07/Spectra_finance_exp.sol)
+
+### Link reference
+
+https://x.com/shoucccc/status/1815981585637990899
+
+---
 
 ### 20240716 Lifiprotocol - Incorrect input validation
 
