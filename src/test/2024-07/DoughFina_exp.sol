@@ -8,7 +8,7 @@ pragma solidity ^0.8.10;
 // GUY : https://x.com/CertiKAlert/status/1811668992882307478
 
 import "forge-std/Test.sol";
-import "./interface.sol";
+import "./../interface.sol";
 
 interface  ConnectorDeleverageParaswap{
   function flashloanReq(bool _opt, address[] memory debtTokens, uint256[] memory debtAmounts, uint256[] memory debtRateMode, address[] memory collateralTokens, uint256[] memory collateralAmounts, bytes[] memory swapData) external;
