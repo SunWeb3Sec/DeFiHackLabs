@@ -1180,7 +1180,7 @@ https://x.com/0xNickLFranklin/status/1811401263969673654
 
 ---
 
-### 20240711 GAX - Precision loss
+### 20240711 GAX - Lack of access control
 
 ### Lost: ~50K $BUSD
 
