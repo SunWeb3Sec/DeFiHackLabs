@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-503 incidents included.
+504 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -49,6 +49,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ## List of Past DeFi Incidents
 
 [20240724 Spectra_finance](#20240724-spectra_finance---incorrect-input-validation)
+
+[20240723 MEVbot_0xdd7c](#20240723-mevbot_0xdd7c---incorrect-input-validation)
 
 [20240716 Lifiprotocol](#20240716-lifiprotocol---incorrect-input-validation)
 
@@ -1105,6 +1107,24 @@ forge test --contracts ./src/test/2024-07/Spectra_finance_exp.sol -vvv
 ### Link reference
 
 https://x.com/shoucccc/status/1815981585637990899
+
+---
+
+### 20240723 MEVbot_0xdd7c - Incorrect input validation
+
+### Lost: ~18k USD
+
+```sh
+forge test --contracts src/test/MEVbot_0xdd7c_exp.sol -vvv --evm-version cancun
+```
+
+#### Contract
+
+[MEVbot_0xdd7c_exp.sol](src/test/2024-07/MEVbot_0xdd7c_exp.sol)
+
+### Link reference
+
+https://x.com/SlowMist_Team/status/1815656653100077532
 
 ---
 
