@@ -58,7 +58,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240711 SBT](#20240711-sbt---business-logic-flaw)
 
-[20240711 GAX](#20240711-GAX---precision-loss)
+[20240711 GAX](#20240711-GAX---lack-of-access-control)
 
 [20240708 LW](#20240708-Lw---integer-underflow)
 
