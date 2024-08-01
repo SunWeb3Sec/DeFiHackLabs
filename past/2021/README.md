@@ -82,8 +82,6 @@
 
 [20201026 Harvest Finance](#20201026-harvest-finance---flashloan-attack)
 
-[20181007 SpankChain](#20181007-spankchain---reentrancy)
-
 [20200912 bzx](#20200912-bzx---incorrect-transfer)
 
 [20200804 Opyn Protocol](#20200804-opyn-protocol---msgValue-in-loop)
@@ -95,6 +93,8 @@
 [20200419 LendfMe](#20200419-lendfme---erc777-reentrancy)
 
 [20200418 UniSwapV1](#20200418-uniswapv1---erc777-reentrancy)
+
+[20181007 SpankChain](#20181007-spankchain---reentrancy)
 
 [20180424 SmartMesh](#20180424-smartmesh---overflow)
 
