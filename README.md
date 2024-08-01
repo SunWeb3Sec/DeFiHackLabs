@@ -1062,6 +1062,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20200418 UniSwapV1](past/2021/README.md#20200418-uniswapv1---erc777-reentrancy)
 
+[20181007 SpankChain](past/2021/README.md#20181007-spankchain---reentrancy)
+
 [20180424 SmartMesh](past/2021/README.md#20180424-smartmesh---overflow)
 
 [20180422 Beauty Chain](past/2021/README.md##20180422-beauty-chain---integer-overflow)
