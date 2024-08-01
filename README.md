@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-504 incidents included.
+505 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -1061,6 +1061,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20200419 LendfMe](past/2021/README.md#20200419-lendfme---erc777-reentrancy)
 
 [20200418 UniSwapV1](past/2021/README.md#20200418-uniswapv1---erc777-reentrancy)
+
+[20181007 SpankChain](past/2021/README.md#20181007-spankchain---reentrancy)
 
 [20180424 SmartMesh](past/2021/README.md#20180424-smartmesh---overflow)
 

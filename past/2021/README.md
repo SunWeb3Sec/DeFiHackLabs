@@ -2,7 +2,7 @@
 
 ## Before 2021 - List of Past DeFi Incidents
 
-48 incidents included.
+49 incidents included.
 
 [20211221 Visor Finance](#20211221-visor-finance---reentrancy)
 
@@ -93,6 +93,8 @@
 [20200419 LendfMe](#20200419-lendfme---erc777-reentrancy)
 
 [20200418 UniSwapV1](#20200418-uniswapv1---erc777-reentrancy)
+
+[20181007 SpankChain](#20181007-spankchain---reentrancy)
 
 [20180424 SmartMesh](#20180424-smartmesh---overflow)
 
@@ -1059,6 +1061,22 @@ forge test --contracts ./src/test/2020-04/uniswap-erc777.sol -vv
 #### Link reference
 
 https://blog.blockmagnates.com/detailed-explanation-of-uniswaps-erc777-re-entry-risk-8fa5b3738e08
+
+---
+
+### 20181007 SpankChain - Reentrancy
+
+### Lost: 155 $ETH
+
+
+```sh
+forge test --contracts ./src/test/2018-10/SpankChain_exp.sol -vvv
+```
+#### Contract
+[SpankChain_exp.sol](src/test/2018-10/SpankChain_exp.sol)
+### Link reference
+
+https://app.blocksec.com/explorer/tx/eth/0x21e9d20b57f6ae60dac23466c8395d47f42dc24628e5a31f224567a2b4effa88
 
 ---
 
