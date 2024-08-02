@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-505 incidents included.
+506 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -47,6 +47,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240801 Convergence](#20240801-Convergence---incorrect-input-validation)
 
 [20240724 Spectra_finance](#20240724-spectra_finance---incorrect-input-validation)
 
@@ -1093,6 +1095,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240801 Convergence - Incorrect input validation
+
+### Lost: ~200K USD
+
+```sh
+forge test --contracts ./src/test/2024-08/Convergence_exp.sol -vvvv --evm-version cancun
+```
+
+#### Contract
+
+[Convergence_exp.sol](src/test/2024-08/Convergence_exp.sol)
+
+### Link reference
+
+https://x.com/DecurityHQ/status/1819030089012527510
+
+---
 
 ### 20240724 Spectra_finance - Incorrect input validation
 
