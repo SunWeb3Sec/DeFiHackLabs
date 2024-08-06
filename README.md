@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-506 incidents included.
+508 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -324,11 +324,15 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231206 ElephantStatus](past/2023/README.md#20231206-elephantstatus---price-manipulation)
 
+[20231205 MAMO](past/2023/README.md#20231205-mamo---price-manipulation)
+
 [20231205 BEARNDAO](past/2023/README.md#20231205-bearndao---business-logic-flaw)
 
 [20231202 bZxProtocol](past/2023/README.md#20231202-bzxprotocol---inflation-attack)
 
 [20231201 UnverifiedContr_0x431abb](past/2023/README.md#20231201-unverifiedcontr_0x431abb---business-logic-flaw)
+
+[20231130 EEE](past/2023/README.md#20231130-eee---price-manipulation)
 
 [20231130 CAROLProtocol](past/2023/README.md#20231130-carolprotocol---price-manipulation-via-reentrancy)
 
