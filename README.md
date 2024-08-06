@@ -47,6 +47,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20231130 EEE](#20231130-eee---price-manipulation)
 [20231205 MAMO](#20231205-mamo---price-manipulation)
 
 [20240801 Convergence](#20240801-Convergence---incorrect-input-validation)
@@ -1099,6 +1100,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 
 
+
+
+
+
+### 20231130 EEE - Price Manipulation
+
+### Lost: ~$22.8K
+
+
+```sh
+forge test --contracts ./src/test/2023-11/EEE_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[EEE_exp.sol](src/test/2023-11/EEE_exp.sol)
+### Link reference
+
+https://bscscan.com/tx/0x7312d9f9c13fc69f00f58e92a112a3e7f036ced7e65f7e0fa67382488d5557dc
+
+---
 
 ### 20231205 MAMO - Price Manipulation
 
