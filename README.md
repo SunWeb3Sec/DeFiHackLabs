@@ -47,6 +47,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20231205 MAMO](#20231205-mamo---price-manipulation)
 
 [20240801 Convergence](#20240801-Convergence---incorrect-input-validation)
 
@@ -1095,6 +1096,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20231205 MAMO - Price Manipulation
+
+### Lost: ~$3.3K
+
+
+```sh
+forge test --contracts ./src/test/2023-12/MAMO_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[MAMO_exp.sol](src/test/2023-12/MAMO_exp.sol)
+### Link reference
+
+https://bscscan.com/tx/0x189a8dc1e0fea34fd7f5fa78c6e9bdf099a8d575ff5c557fa30d90c6acd0b29f
+
+---
 
 ### 20240801 Convergence - Incorrect input validation
 
