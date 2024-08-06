@@ -707,6 +707,22 @@ https://twitter.com/Phalcon_xyz/status/1732354930529435940
 
 ---
 
+### 20231205 MAMO - Price Manipulation
+
+### Lost: ~$3.3K
+
+
+```sh
+forge test --contracts ./src/test/2023-12/MAMO_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[MAMO_exp.sol](../../src/test/2023-12/MAMO_exp.sol)
+### Link reference
+
+https://bscscan.com/tx/0x189a8dc1e0fea34fd7f5fa78c6e9bdf099a8d575ff5c557fa30d90c6acd0b29f
+
+---
+
 ### 20231205 BEARNDAO - Business Logic Flaw
 
 ### Lost: ~$769k
@@ -764,6 +780,22 @@ forge test --contracts ./src/test/2023-12/UnverifiedContr_0x431abb_exp.sol -vvv
 #### Link reference
 
 https://twitter.com/Phalcon_xyz/status/1730625352953901123
+
+---
+
+### 20231130 EEE - Price Manipulation
+
+### Lost: ~$22.8K
+
+
+```sh
+forge test --contracts ./src/test/2023-11/EEE_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[EEE_exp.sol](../../src/test/2023-11/EEE_exp.sol)
+### Link reference
+
+https://bscscan.com/tx/0x7312d9f9c13fc69f00f58e92a112a3e7f036ced7e65f7e0fa67382488d5557dc
 
 ---
 

@@ -47,8 +47,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20231130 EEE](#20231130-eee---price-manipulation)
-[20231205 MAMO](#20231205-mamo---price-manipulation)
 
 [20240801 Convergence](#20240801-Convergence---incorrect-input-validation)
 
@@ -326,11 +324,15 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231206 ElephantStatus](past/2023/README.md#20231206-elephantstatus---price-manipulation)
 
+[20231205 MAMO](past/2023/README.md#20231205-mamo---price-manipulation)
+
 [20231205 BEARNDAO](past/2023/README.md#20231205-bearndao---business-logic-flaw)
 
 [20231202 bZxProtocol](past/2023/README.md#20231202-bzxprotocol---inflation-attack)
 
 [20231201 UnverifiedContr_0x431abb](past/2023/README.md#20231201-unverifiedcontr_0x431abb---business-logic-flaw)
+
+[20231130 EEE](past/2023/README.md#20231130-eee---price-manipulation)
 
 [20231130 CAROLProtocol](past/2023/README.md#20231130-carolprotocol---price-manipulation-via-reentrancy)
 
@@ -1102,39 +1104,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 
 
-
-
-### 20231130 EEE - Price Manipulation
-
-### Lost: ~$22.8K
-
-
-```sh
-forge test --contracts ./src/test/2023-11/EEE_exp.sol -vvv --evm-version shanghai
-```
-#### Contract
-[EEE_exp.sol](src/test/2023-11/EEE_exp.sol)
-### Link reference
-
-https://bscscan.com/tx/0x7312d9f9c13fc69f00f58e92a112a3e7f036ced7e65f7e0fa67382488d5557dc
-
----
-
-### 20231205 MAMO - Price Manipulation
-
-### Lost: ~$3.3K
-
-
-```sh
-forge test --contracts ./src/test/2023-12/MAMO_exp.sol -vvv --evm-version shanghai
-```
-#### Contract
-[MAMO_exp.sol](src/test/2023-12/MAMO_exp.sol)
-### Link reference
-
-https://bscscan.com/tx/0x189a8dc1e0fea34fd7f5fa78c6e9bdf099a8d575ff5c557fa30d90c6acd0b29f
-
----
 
 ### 20240801 Convergence - Incorrect input validation
 
