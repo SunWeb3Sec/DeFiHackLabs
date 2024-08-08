@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-511 incidents included.
+514 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -870,6 +870,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20220824 LuckyTiger NFT](past/2022/README.md#20220824-luckytiger-nft---predicting-random-numbers)
 
+[20220816 Circle_2](past/2022/README.md#20220816-circle---price-manipulation)
+
+[20220813 Circle](past/2022/README.md#20220813-circle---price-manipulation)
+
 [20220810 XSTABLE Protocol](past/2022/README.md#20220810-xstable-protocol---incorrect-logic-check)
 
 [20220809 ANCH](past/2022/README.md#20220809-anch---skim-token-balance)
@@ -1108,6 +1112,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+
 ### 20240806 Novax - Price Manipulation
 
 ### Lost: ~25K USD
@@ -1125,7 +1130,6 @@ forge test --contracts ./src/test/2024-08/NovaXM2E_exp.sol -vvv
 https://x.com/EXVULSEC/status/1820676684410147276
 
 ---
-
 
 ### 20240801 Convergence - Incorrect input validation
 
