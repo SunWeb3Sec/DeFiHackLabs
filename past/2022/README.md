@@ -1791,6 +1791,38 @@ https://etherscan.io/tx/0x804ff3801542bff435a5d733f4d8a93a535d73d0de0f843fd97975
 
 ---
 
+### 20220816 Circle - Price Manipulation
+
+### Lost: ~$151.6K
+
+
+```sh
+forge test --contracts ./src/test/2022-08/Circle_exp2.sol -vvv
+```
+#### Contract
+[Circle_exp2.sol](../../src/test/2022-08/Circle_exp2.sol)
+### Link reference
+
+https://app.blocksec.com/explorer/tx/eth/0xf1818f62c635e5c80ef16b7857da812c74ce330ebed46682b4d173bffe84c666?line=74
+
+---
+
+### 20220813 Circle - Price Manipulation
+
+### Lost: ~$50.5K
+
+
+```sh
+forge test --contracts ./src/test/2022-08/Circle_exp1.sol -vvv
+```
+#### Contract
+[Circle_exp1.sol](../../src/test/2022-08/Circle_exp1.sol)
+### Link reference
+
+https://app.blocksec.com/explorer/tx/eth/0xa4e650772f6e6b7ecc0964fe4c3854850669d1467570a2fa2b6edfa0f112c4b7
+
+---
+
 ### 20220810 XSTABLE Protocol - Incorrect Logic Check
 
 Testing
