@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-511 incidents included.
+513 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -867,6 +867,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20220828 DDC](past/2022/README.md#20220828-ddc)
 
 [20220824 LuckyTiger NFT](past/2022/README.md#20220824-luckytiger-nft---predicting-random-numbers)
+
+[20220816 Circle_2](past/2022/README.md#20220816-circle---price-manipulation)
+
+[20220813 Circle](past/2022/README.md#20220813-circle---price-manipulation)
 
 [20220810 XSTABLE Protocol](past/2022/README.md#20220810-xstable-protocol---incorrect-logic-check)
 
