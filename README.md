@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-508 incidents included.
+510 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -184,6 +184,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240401 OpenLeverage](#20240401-openleverage---reentrancy)
 
+[20240329 ETHFIN](#20240329-ethfin---price-manipulation)
+
 [20240329 PrismaFi](#20240329-prismaFi---insufficient-validation)
 
 [20240328 LavaLending](#20240328-lavalending---business-logic-flaw)
@@ -245,6 +247,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240215 Babyloogn](#20240215-Babyloogn---reentrancy)
 
 [20240215 Miner](#20240215-Miner---lack-of-validation-dst-address)
+
+[20240213 MINER BSC](#20240213-miner---price-manipulation)
 
 [20240211 Game](#20240211-game---reentrancy--business-logic-flaw)
 
@@ -2310,6 +2314,22 @@ https://twitter.com/0xNickLFranklin/status/1774727539975672136
 
 ---
 
+### 20240329 ETHFIN - Price Manipulation
+
+### Lost: ~$1.24K (2.13 BNB)
+
+
+```sh
+forge test --contracts ./src/test/2024-03/ETHFIN_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[ETHFIN_exp.sol](src/test/2024-03/ETHFIN_exp.sol)
+### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0xfe031685d84f3bae1785f5b2bd0ed480b87815c3f23ce6ced73b8573b7e367c6
+
+---
+
 ### 20240329 PrismaFi - Insufficient Validation
 
 ### Lost: $~11M
@@ -2876,6 +2896,22 @@ forge test --contracts ./src/test/2024-02/Miner_exp.sol -vvv --evm-version shang
 #### Link reference
 
 https://twitter.com/Phalcon_xyz/status/1757777340002681326
+
+---
+
+### 20240213 MINER - Price Manipulation
+
+### Lost: ~3.5 WBNB
+
+
+```sh
+forge test --contracts ./src/test/2024-02/MINER_bsc_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[MINER_bsc_exp.sol](src/test/2024-02/MINER_bsc_exp.sol)
+### Link reference
+
+https://app.blocksec.com/explorer/tx/bsc/0x15ab671c9bf918fa4b6a9eed9ccb527f32aca40e926ede2aec2c84dfa9c30512?line=6
 
 ---
 
