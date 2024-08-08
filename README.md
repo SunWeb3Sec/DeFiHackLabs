@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-513 incidents included.
+514 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -47,6 +47,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240806 Novax](#20240806-Novax---price-manipulation)
 
 [20240801 Convergence](#20240801-Convergence---incorrect-input-validation)
 
@@ -1109,6 +1111,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+### 20240806 Novax - Price Manipulation
+
+### Lost: ~25K USD
+
+```sh
+forge test --contracts ./src/test/2024-08/NovaXM2E_exp.sol -vvv
+```
+
+#### Contract
+
+[NovaXM2E_exp.sol](src/test/2024-08/NovaXM2E_exp.sol)
+
+### Link reference
+
+https://x.com/EXVULSEC/status/1820676684410147276
+
+---
 
 ### 20240801 Convergence - Incorrect input validation
 
