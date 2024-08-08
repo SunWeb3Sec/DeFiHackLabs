@@ -649,6 +649,22 @@ https://twitter.com/BlockSecTeam/status/1735197818883588574
 
 ---
 
+### 20231211 GoodCompound - Price Manipulation
+
+### Lost: ~$13K (~250 COMP Token)
+
+
+```sh
+forge test --contracts ./src/test/2023-12/GoodCompound_exp.sol -vvv
+```
+#### Contract
+[GoodCompound_exp.sol](../../src/test/2023-12/GoodCompound_exp.sol)
+### Link reference
+
+https://getherscan.io/tx/0x1106418384414ed56cd7cbb9fedc66a02d39b663d580abc618f2d387348354ab
+
+---
+
 ### 20231207 HNet - Business logic flaw
 
 ### Lost: ~2.4 $WBNB
