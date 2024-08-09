@@ -43,6 +43,7 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 If you appreciate our work, please consider donating. Even a small amount helps us continue developing and improving our projects, and promoting web3 security.
 
+- Gitcoin Grants Round 21, [Donate DeFiHackLabs](https://explorer.gitcoin.co/?utm_source=grants.gitcoin.co&utm_medium=internal_link&utm_campaign=gg19&utm_content=community-rounds#/round/10/44/38)
 - EVM Chains - 0xD7d6215b4EF4b9B5f40baea48F41047Eb67a11D5
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
