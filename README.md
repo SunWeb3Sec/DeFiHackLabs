@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-514 incidents included.
+515 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240812 iVest](#20240812-iVest---business-logic-flaw)
 
 [20240806 Novax](#20240806-Novax---price-manipulation)
 
@@ -1112,6 +1114,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240812 iVest - Business logic flaw
+
+### Lost: ~338 WBNB
+
+```sh
+forge test --contracts src/test/2024-08/IvestDao_exp.sol -vvv
+```
+
+#### Contract
+
+[IvestDao_exp.sol](src/test/2024-08/IvestDao_exp.sol)
+
+### Link reference
+
+https://x.com/AnciliaInc/status/1822870201698050064
+
+---
 
 
 ### 20240806 Novax - Price Manipulation
