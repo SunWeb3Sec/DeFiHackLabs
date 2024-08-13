@@ -703,6 +703,22 @@ https://getherscan.io/tx/0x1106418384414ed56cd7cbb9fedc66a02d39b663d580abc618f2d
 
 ---
 
+### 20231209 BCT - Price Manipulation
+
+### Lost: ~10.2BNB
+
+
+```sh
+forge test --contracts ./src/test/2023-12/BCT_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[BCT_exp.sol](../../src/test/2023-12/BCT_exp.sol)
+### Link reference
+
+https://bscscan.com/tx/0xdae0b85e01670e6b6b317657a72fb560fc388664cf8bfdd9e1b0ae88e0679103
+
+---
+
 ### 20231207 HNet - Business logic flaw
 
 ### Lost: ~2.4 $WBNB
