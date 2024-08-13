@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-515 incidents included.
+517 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -303,6 +303,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 <details> <summary> 2023 </summary>
 
+[20231231 Channels BUSD&USDC](past/2023/README.md#20231231-channels---price-manipulation)
+
 [20231230 ChannelsFinance](past/2023/README.md#20231230-channelsfinance---compoundv2-inflation-attack)
 
 [20231228 CCV](past/2023/README.md#20231225-CCV---precision-loss)
@@ -314,6 +316,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20231222 PineProtocol](past/2023/README.md#20231222-pineprotocol---business-logic-flaw)
 
 [20231220 TransitFinance](past/2023/README.md#20231220-transitfinance---lack-of-validation-pool)
+
+[20231217 Bob](past/2023/README.md#20231217-bob---price-manipulation)
 
 [20231217 FloorProtocol](past/2023/README.md#20231217-floorprotocol---business-logic-flaw)
 
