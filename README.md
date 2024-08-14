@@ -1123,9 +1123,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-
-
-
 ### 20240814 NoName - Arbitrary Call
 
 ### Lost: ~5k
