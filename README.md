@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20240814 YodlRouter](#20240814-noname---arbitrary-call)
 
 [20240812 iVest](#20240812-iVest---business-logic-flaw)
 
@@ -1120,6 +1121,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20240814 NoName - Arbitrary Call
+
+### Lost: ~5k
+
+
+```sh
+forge test --contracts ./src/test/2024-08/YodlRouter_exp.sol -vvv
+```
+#### Contract
+[NoName_exp.sol](src/test/2024-08/NoName_exp.sol)
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1823601087011807636
+
+---
 
 ### 20240812 iVest - Business logic flaw
 
