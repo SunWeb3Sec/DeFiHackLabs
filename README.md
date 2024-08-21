@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-519 incidents included.
+520 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240816 Zenterest](#20240816-Zenterest---price-out-of-date)
 
 [20240814 YodlRouter](#20240814-noname---arbitrary-call)
 
@@ -1122,6 +1124,23 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240816 Zenterest - Price Out Of Date
+
+### Lost: ~21000 USD
+
+```sh
+forge test --contracts ./src/test/2024-08/Zenterest_exp.sol -vvvv --evm-version shanghai
+```
+#### Contract
+
+[Zenterest_exp.sol](src/test/2024-08/Zenterest_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1824579761383018564
+
+---
 
 ### 20240814 NoName - Arbitrary Call
 
