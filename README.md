@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-520 incidents included.
+521 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20240813 VOW](#20240813-vow---misconfiguration)
 
 [20240816 Zenterest](#20240816-Zenterest---price-out-of-date)
 
@@ -1124,6 +1125,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20240813 VOW - Misconfiguration
+
+### Lost: ~ 1M USD
+
+
+```sh
+forge test --contracts ./src/test/2024-08/VOW_exp.sol -vvv
+```
+#### Contract
+[VOW_exp.sol](src/test/2024-08/VOW_exp.sol)
+### Link reference
+
+https://x.com/Vowcurrency/status/1823407231658025300
+
+---
 
 ### 20240816 Zenterest - Price Out Of Date
 
