@@ -1,8 +1,8 @@
-# Debugging OnChain de Transacciones: 2. Calentamiento
+# Debugging/Análisis OnChain de Transacciones: 2. Calentamiento
 
 Autor: [Sun](https://twitter.com/1nf0s3cpt)
 
-Traducción: [JP](https://x.com/0xJayPi)
+Traducción: [JP](https://x.com/CanonicalJP)
 
 Comunidad [Discord](https://discord.gg/Fjyngakf3h)
 
