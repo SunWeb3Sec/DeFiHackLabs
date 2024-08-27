@@ -1,15 +1,15 @@
-# Debugging OnChain de Transacciones: 2. Calentamiento
+# Debugging/Análisis OnChain de Transacciones: 2. Calentamiento
 
 Autor: [Sun](https://twitter.com/1nf0s3cpt)
 
-Traducción: [JP](https://x.com/0xJayPi)
+Traducción: [JP](https://x.com/CanonicalJP)
 
 Comunidad [Discord](https://discord.gg/Fjyngakf3h)
 
 Este artículo ha sido publicado en XREX y [WTF Academy](https://github.com/AmazingAng/WTF-Solidity#%E9%93%BE%E4%B8%8A%E5%A8%81%E8%83%81%E5%88%86%E6%9E%90)
 
 Los datos on-chain pueden incluir transferencias simples de una interacción, interacciones con uno o múltiples contratos DeFi, arbitraje de préstamos flash, propuestas de gobernanza, transacciones entre cadenas y más. En esta sección, comencemos con un inicio simple.
-Introduciré en el Explorador de BlockChain - Etherscan lo que nos interesa, y luego usaré [Phalcon](https://phalcon.blocksec.com/) para comparar las diferencias entre estas transacciones que llaman funciones: Transferencia de activos, swap en UniSWAP, aumento de liquidez en Curve 3pool, propuestas de Compound, Uniswap Flashswap.
+Introduciré en el Explorador de BlockChain - Etherscan lo que nos interesa, y luego usaré [Phalcon](https://phalcon.blocksec.com/) para comparar las diferencias entre estas transacciones que llaman funciones: Transferencia de activos, swap en UniSWAP, aumento de liquidez en Curve 3pool, propuestas de Compound, Uniswap Flash Swap.
 
 ## Comencemos el calentamiento
 
@@ -74,17 +74,17 @@ forge test --contracts ./src/test/Uniswapv2_flashswap.sol -vvvv
 ![圖片](https://user-images.githubusercontent.com/52526645/211125357-695c3fd0-4a56-4a70-9c98-80bac65586b8.png)
 
 - En este ejemplo, se realiza un préstamo flashloan de 100 WETH a través del swap UNI/WETH de Uniswap. Ten en cuenta que se debe pagar una comisión del 0.3% en los reembolsos.
-- Según la figura - flujo de llamadas, flashswap llama a swap, y luego reembolsa llamando de vuelta a uniswapV2Call.
+- Según la figura - flujo de llamadas, flash swap llama a swap, y luego reembolsa llamando de vuelta a uniswapV2Call.
 
 ![圖片](https://user-images.githubusercontent.com/52526645/211038895-a1bc681a-41cd-4900-a745-3d3ddd0237d4.png)
 
-- Introducción adicional a Flashloan y Flashswap:
+- Introducción adicional a Flash Loan y Flash Swap:
 
   - A. Puntos en común:
 Ambos pueden prestar Tokens sin colateralizar activos, y deben ser devueltos en el mismo bloque, de lo contrario la transacción falla.
 
   - B. La diferencia:
-Si se toma prestado token0 a través de Flashloan token0/token1, se debe devolver token0. Flashswap presta token0, y puedes devolver token0 o token1, lo que es más flexible.
+Si se toma prestado token0 a través de Flashloan token0/token1, se debe devolver token0. Flash Swap presta token0, y puedes devolver token0 o token1, lo que es más flexible.
 
 Para más operaciones básicas de DeFi, consulta [DeFiLab](https://github.com/SunWeb3Sec/DeFiLabs).
 
@@ -110,4 +110,4 @@ Los cheatcodes de Foundry son esenciales para realizar análisis de blockchain. 
 
 [Awesome-foundry](https://github.com/crisgarner/awesome-foundry)
 
-[Flashloan vs Flashswap](https://blog.infura.io/post/build-a-flash-loan-arbitrage-bot-on-infura-part-i)
+[Flash Loan vs Flash Swap](https://blog.infura.io/post/build-a-flash-loan-arbitrage-bot-on-infura-part-i)
