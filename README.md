@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-521 incidents included.
+522 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240903 Penpiexyz_io](#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
+
 [20240816 Zenterest](#20240816-Zenterest---price-out-of-date)
 
 [20240814 YodlRouter](#20240814-noname---arbitrary-call)
@@ -1126,16 +1129,36 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20240903 Penpiexyz_io - Reentrancy and Reward Manipulation
+
+### Lost: 11,113.6 ETH (~$27,348,259 USD)
+
+```sh
+forge test --contracts ./src/test/2024-09/Penpiexyzio_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+
+[Penpiexyzio_exp.sol](src/test/2024-09/Penpiexyzio_exp.sol)
+
+### Link reference
+
+https://x.com/peckshield/status/1831072098669953388
+https://x.com/AnciliaInc/status/1831080555292856476
+https://x.com/hackenclub/status/1831383106554573099
+post-morten: https://x.com/Penpiexyz_io/status/1831462760787452240
+
+---
+
 ### 20240816 Zenterest - Price Out Of Date
 
 ### Lost: ~21000 USD
 
 ```sh
-forge test --contracts ./src/test/2024-08/Zenterest_exp.sol -vvvv --evm-version shanghai
+forge test --contracts ./src/test/2024-09/Zenterest_exp.sol -vvvv --evm-version shanghai
 ```
 #### Contract
 
-[Zenterest_exp.sol](src/test/2024-08/Zenterest_exp.sol)
+[Zenterest_exp.sol](src/test/2024-09/Zenterest_exp.sol)
 
 ### Link reference
 
