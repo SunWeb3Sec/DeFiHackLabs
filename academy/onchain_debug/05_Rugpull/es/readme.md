@@ -8,7 +8,7 @@ Comunidad [Discord](https://discord.gg/Fjyngakf3h)
 
 El 12 de enero de 2023 a las 07:22:39 AM UTC, según el monitoreo en cadena de NUMEN, el proyecto CirculateBUSD ha sido vaciado por el creador del contrato, causando una pérdida de 2.27 millones de dólares.
 
-La transferencia de fondos de este proyecto se debe principalmente a que el administrador llama a CirculateBUSD.startTrading, y el principal parámetro de juicio en startTrading es el valor devuelto por el contrato no de código abierto SwapHelper.TradingInfo establecido por el administrador, y luego llama a SwapHelper.swaptoToken para transferir fondos.
+La transferencia de fondos de este proyecto se debe principalmente a que el administrador llama a CirculateBUSD.startTrading, y el principal parámetro en startTrading es el valor devuelto por el contrato SwapHelper.TradingInfo (de código no abierto) establecido por el administrador, y luego llama a SwapHelper.swaptoToken para transferir fondos.
 
 Transacción: [https://bscscan.com/tx/0x3475278b4264d4263309020060a1af28d7be02963feaf1a1e97e9830c68834b3](https://bscscan.com/tx/0x3475278b4264d4263309020060a1af28d7be02963feaf1a1e97e9830c68834b3)
 
@@ -76,6 +76,6 @@ Todo el análisis anterior es suficiente para determinar que este es un evento d
 Resumen
 =======
 
-Numen Cyber Labs recuerda a los usuarios que al realizar inversiones, es necesario llevar a cabo auditorías de seguridad en los contratos del proyecto. Puede haber funciones en el contrato no verificado donde la autoridad del proyecto es demasiado grande o afecta directamente la seguridad de los activos del usuario. Los problemas con este proyecto son solo la punta del iceberg de todo el ecosistema blockchain. Cuando los usuarios invierten y las partes del proyecto desarrollan proyectos, deben realizar auditorías de seguridad en el código.
+Numen Cyber Labs recuerda a los usuarios que al realizar inversiones, es necesario llevar a cabo auditorías de seguridad en los contratos del proyecto. Puede haber funciones en el contrato no verificado donde la autoridad del proyecto es demasiado grande o afecta directamente la seguridad de los activos del usuario. Los problemas con este proyecto son solo la punta del iceberg de todo el ecosistema blockchain. Cuando los usuarios invierten, siempren deben verificar las auditorías de seguridad realizadas en el código.
 
 Numen Cyber Labs está comprometido con la protección de la seguridad ecológica de Web3. Por favor, manténganse atentos para más noticias y análisis de ataques recientes.
