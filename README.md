@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20240828 AAVE](#20240828-aave---arbitrary-call-error)
 
 [20240903 Penpiexyz_io](#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
 
@@ -1128,6 +1129,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20240828 AAVE - Arbitrary Call Error
+
+### Lost: 52000
+
+
+```sh
+forge test --contracts ./src/test/2024-08/AAVE_Repay_Adapter.sol -vvv
+```
+#### Contract
+[AAVE_Repay_Adapter.sol](src/test/2024-08/AAVE_Repay_Adapter.sol)
+### Link reference
+
+https://www.vibraniumaudits.com/post/aave-hacked-via-periphery-contract-56kstolenfromtipjar
+
+---
 
 ### 20240903 Penpiexyz_io - Reentrancy and Reward Manipulation
 
