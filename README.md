@@ -48,10 +48,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
 [20240903 Penpiexyz_io](#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
 
 [20240816 Zenterest](#20240816-Zenterest---price-out-of-date)
+
+[20240828 AAVE](#20240828-aave---arbitrary-call-error)
 
 [20240814 YodlRouter](#20240814-noname---arbitrary-call)
 
@@ -1143,11 +1144,29 @@ forge test --contracts ./src/test/2024-09/Penpiexyzio_exp.sol -vvv --evm-version
 ### Link reference
 
 https://x.com/peckshield/status/1831072098669953388
+
 https://x.com/AnciliaInc/status/1831080555292856476
+
 https://x.com/hackenclub/status/1831383106554573099
+
 post-morten: https://x.com/Penpiexyz_io/status/1831462760787452240
 
 ---
+
+### 20240828 AAVE - Arbitrary Call Error
+
+### Lost: 52000
+
+
+```sh
+forge test --contracts ./src/test/2024-08/AAVE_Repay_Adapter.sol -vvv
+```
+#### Contract
+[AAVE_Repay_Adapter.sol](src/test/2024-08/AAVE_Repay_Adapter.sol)
+
+### Link reference
+
+https://www.vibraniumaudits.com/post/aave-hacked-via-periphery-contract-56kstolenfromtipjar
 
 ### 20240816 Zenterest - Price Out Of Date
 
