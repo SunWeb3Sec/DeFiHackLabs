@@ -1173,11 +1173,11 @@ https://www.vibraniumaudits.com/post/aave-hacked-via-periphery-contract-56kstole
 ### Lost: ~21000 USD
 
 ```sh
-forge test --contracts ./src/test/2024-09/Zenterest_exp.sol -vvvv --evm-version shanghai
+forge test --contracts ./src/test/2024-08/Zenterest_exp.sol -vvvv --evm-version shanghai
 ```
 #### Contract
 
-[Zenterest_exp.sol](src/test/2024-09/Zenterest_exp.sol)
+[Zenterest_exp.sol](src/test/2024-08/Zenterest_exp.sol)
 
 ### Link reference
 
