@@ -8,7 +8,7 @@ import "../interface.sol";
 // Attacker : https://bscscan.com/address/0xb9596d6e53d81981b9f06ca2ca6d3e422232d575
 // Attack Contract : https://bscscan.com/address/0x258850ec735f6532fe34fe24ef9628992a9b7e84
 // Vulnerable Contract : https://bscscan.com/address/0x5d78cfc8732fd328015c9b73699de9556ef06e8e
-// Attack Tx : https://app.blocksec.com/explorer/tx/bsc/0x316c35d483b72700e6f4984650d217304146b3732bb148e32fa7f8017843eb24
+// Attack Tx : https://bscscan.com/tx/0xa94338d8aa312ed4b97b2a4dcb27f632b1ade6f3abec667e3bf9f002a75dabe0
 
 // @Info
 // Vulnerable Contract Code : https://bscscan.com/address/0x5d78cfc8732fd328015c9b73699de9556ef06e8e#code
