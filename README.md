@@ -48,7 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20240923 Bankroll](#20240923-Bankroll---incorrect-input-validation)
+[20240923 Bankroll_Network](#20240923-Bankroll_Network---incorrect-input-validation)
 
 [20240903 Penpiexyz_io](#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
 
@@ -1132,7 +1132,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-### 20240923 Bankroll - - Incorrect input validation
+### 20240923 Bankroll_Network - Incorrect input validation
 
 ### Lost: ~404 WBNB (~234.8K USD)
 

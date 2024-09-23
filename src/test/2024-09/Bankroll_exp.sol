@@ -5,19 +5,17 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
-// @KeyInfo - Total Lost : ~999M US$
-// Attacker : 0xcafebabe
-// Attack Contract : 0xdeadbeef
-// Vulnerable Contract : 0xdeadbeef
-// Attack Tx : 0x123456789
+// @KeyInfo - Total Lost : ~404 WBNB
+// Attacker : 0x4645863205b47a0a3344684489e8c446a437d66c
+// Attack Contract : 0x8f921e27e3af106015d1c3a244ec4f48dbfcad14
+// Vulnerable Contract : 0x564d4126af2b195ffaa7fb470ed658b1d9d07a5
+// Attack Tx : 0xd4c7c11c46f81b6bf98284e4921a5b9f0ff97b4c71ebade206cb10507e4503b0
 
 // @Info
-// Vulnerable Contract Code : https://etherscan.io/address/0xdeadbeef#code
+// Vulnerable Contract Code : https://bscscan.com/address/0x564d4126af2b195ffaa7fb470ed658b1d9d07a54#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
-// Twitter Guy : https://www.google.com/
-// Hacking God : https://www.google.com/
+// https://x.com/Phalcon_xyz/status/1838042368018137547
 
 contract ContractTest is Test {
     IWBNB WBNB = IWBNB(payable(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c));
