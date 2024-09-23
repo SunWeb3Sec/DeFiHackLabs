@@ -8,7 +8,7 @@ import "./../interface.sol";
 // Attack Contract: https://etherscan.io/address/0x9d3425d45df30183fda059c586543dcdeb5993e6
 // TX : https://etherscan.io/tx/0xe8277ef6ba8611bd12dc5a6e7ca4b984423bc0b3828159f83b466fdcf4fe054f
 
-// GUY : https://x.com/ChainAegis/status/1802550962977964139
+// GUY : https://x.com/0xNickLFranklin/status/1800355604692910571
 
 interface IJokInTheBox is IERC20 {
     struct LockPeriod {

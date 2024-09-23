@@ -4,7 +4,7 @@ pragma solidity ^0.8.10;
 // @KeyInfo - Total Lost : ~2 $BNB
 // Attacker : https://bscscan.com/address/0x835b45d38cbdccf99e609436ff38e31ac05bc502
 // Vulnerable Contract : https://bscscan.com/address/0x4308d314096878d3bf16c9d8db86101f70bbebf1
-// Attack Tx : https://bscscan.com/tx/0x51dfa4311d6989c21b460590460a94f854446176fc184b8d1a16314fd043f737
+// Attack Tx : https://bscscan.com/tx/0x20ecd8310a2cc7f7774aa5a045c8a99ad84a8451d6650f24e0911e9f4355b13a
 
 import "forge-std/Test.sol";
 import "./../interface.sol";

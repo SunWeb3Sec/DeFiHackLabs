@@ -4,7 +4,9 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
-// TX : https://phalcon.blocksec.com/explorer/tx/bsc/0x9983ca8eaee9ee69629f74537eaf031272af75f1e5a7725911d8b06df17c67ca
+// Attacker : https://bscscan.com/address/0xff61Ba33Ed51322BB716EAb4137Adf985644b94d
+// Attack Contract : https://bscscan.com/address/0x0edf13f6bd033f0f267d46c6e9dff9c7190e0fa0
+// Attack Tx : https://phalcon.blocksec.com/explorer/tx/bsc/0x9983ca8eaee9ee69629f74537eaf031272af75f1e5a7725911d8b06df17c67ca
 // GUY : https://twitter.com/0xNickLFranklin/status/1765296663667875880
 // Profit : 10K USD
 // REASON : public interal call

@@ -2,7 +2,7 @@
 
 ## 2022 - List of Past DeFi Incidents
 
-127 incidents included.
+129 incidents included.
 
 [20221230 DFS](#20221230---dfs---insufficient-validation--flashloan)
 
@@ -22,7 +22,7 @@
 
 [20221211 Lodestar](#20221211---lodestar---flashloan-price-manipulation)
 
-[20221211 MEVbot_0x28d9](#20221211---MEVbot_0x28d9---precision-loss)
+[20221211 MEVbot_0x28d9](#20221211---MEVbot_0x28d9---insufficient-validation)
 
 [20221210 MUMUG](#20221210---mumug---flashloan-price-manipulation)
 
@@ -52,7 +52,7 @@
 
 [20221119 AnnexFinance](#20221119---annexfinance---verify-flashloan-callback)
 
-[20221118 Polynomial](#20221118---Polynomial---no-input-validation)
+[20221118 Polynomial](#20221118---polynomial---no-input-validation)
 
 [20221117 UEarnPool](#20221117---uearnpool---flashloan-attack)
 
@@ -128,9 +128,9 @@
 
 [20220913 MevBot Private TX](#20220913-mevbot-private-tx)
 
-[20220910 DPC](#20220910-dpc---Incorrect-Reward-calculation)
+[20220909 DPC](#20220909-dpc---Incorrect-Reward-calculation)
 
-[20220909 YYDS](#20220909-YYDS---pair-manipulate)
+[20220908 YYDS](#20220908-YYDS---pair-manipulate)
 
 [20220908 NewFreeDAO](#20220908-newfreedao---flashloans-attack)
 
@@ -148,15 +148,19 @@
 
 [20220824 LuckyTiger NFT](#20220824-luckytiger-nft---predicting-random-numbers)
 
+[20220816 Circle_2](#20220816-circle---price-manipulation)
+
+[20220813 Circle](#20220813-circle---price-manipulation)
+
 [20220810 XSTABLE Protocol](#20220810-xstable-protocol---incorrect-logic-check)
 
 [20220809 ANCH](#20220809-anch---skim-token-balance)
 
 [20220807 EGD Finance](#20220807-egd-finance---flashloans--price-manipulation)
 
-[20220804 EtnProcudt](#20220804-etnprocudt---business-logic-flaw)
+[20220804 EtnProduct](#20220804-etnproduct---business-logic-flaw)
 
-[20220803 Qixi](#20220803-Qixi---underflow)
+[20220803 Qixi](#20220803-qixi---underflow)
 
 [20220802 Nomad Bridge](#20220802-nomad-bridge---business-logic-flaw--incorrect-acceptable-merkle-root-checks)
 
@@ -234,7 +238,7 @@
 
 [20220320 Umbrella Network](#20220320-umbrella-network---underflow)
 
-[20220315 Agave Finance](#20220313-agave-finance---erc667-reentrancy)
+[20220315 Agave Finance](#20220315-agave-finance---erc667-reentrancy)
 
 [20220315 Hundred Finance](#20220313-hundred-finance---erc667-reentrancy)
 
@@ -444,7 +448,7 @@ https://blog.lodestarfinance.io/post-mortem-summary-13f5fe0bb336
 
 ---
 
-### 20221211 - MEVbot_0x28d9 - Precision loss
+### 20221211 - MEVbot_0x28d9 - Insufficient validation
 
 ### Lost: $2k $USDT
 
@@ -1882,19 +1886,19 @@ https://twitter.com/PeckShieldAlert/status/1556486817406283776
 
 ---
 
-### 20220804 EtnProcudt - Business Logic Flaw
+### 20220804 EtnProduct - Business Logic Flaw
 
 #### Lost: 3074 USD
 
 Testing
 
 ```sh
-forge test --contracts ./src/test/2022-08/EtnProcudt_exp.sol -vvv
+forge test --contracts ./src/test/2022-08/EtnProduct_exp.sol -vvv
 ```
 
 #### Contract
 
-[EtnProcudt_exp.sol](../../src/test/2022-08/EtnProcudt_exp.sol)
+[EtnProcudt_exp.sol](../../src/test/2022-08/EtnProduct_exp.sol)
 
 #### Link reference
 
@@ -2838,7 +2842,7 @@ https://gnosisscan.io/tx/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c5
 
 ---
 
-### 20220313 Agave Finance - ERC667 Reentrancy
+### 20220315 Agave Finance - ERC667 Reentrancy
 
 #### Lost: $1.5 million
 

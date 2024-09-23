@@ -1073,7 +1073,7 @@ https://blog.blockmagnates.com/detailed-explanation-of-uniswaps-erc777-re-entry-
 forge test --contracts ./src/test/2018-10/SpankChain_exp.sol -vvv
 ```
 #### Contract
-[SpankChain_exp.sol](src/test/2018-10/SpankChain_exp.sol)
+[SpankChain_exp.sol](../../src/test/2018-10/SpankChain_exp.sol)
 ### Link reference
 
 https://app.blocksec.com/explorer/tx/eth/0x21e9d20b57f6ae60dac23466c8395d47f42dc24628e5a31f224567a2b4effa88
