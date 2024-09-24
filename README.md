@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-523 incidents included.
+524 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20240923 Bankroll_Network](#20240923-Bankroll_Network---incorrect-input-validation)
+
 [20240903 Penpiexyz_io](#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
 
 [20240816 Zenterest](#20240816-Zenterest---price-out-of-date)
@@ -1129,6 +1131,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20240923 Bankroll_Network - Incorrect input validation
+
+### Lost: ~404 WBNB (~234.8K USD)
+
+```sh
+forge test --contracts ./src/test/2024-09/Bankroll_exp.sol -vvv
+```
+
+#### Contract
+
+[Bankroll_exp.sol](/src/test/2024-09/Bankroll_exp.sol)
+
+### Link reference
+
+https://x.com/Phalcon_xyz/status/1838042368018137547
+
+
 
 ### 20240903 Penpiexyz_io - Reentrancy and Reward Manipulation
 
