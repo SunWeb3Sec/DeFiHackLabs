@@ -5,7 +5,6 @@ import "../basetest.sol";
 
 // @KeyInfo - Total Lost : 140M
 // Attacker : https://etherscan.io/address/0xd6a09bdb29e1eafa92a30373c44b09e2e2e0651e
-// Attack Contract : https://etherscan.io/address/
 // Vulnerable Contract : https://etherscan.io/address/0x55f93985431fc9304077687a35a1ba103dc1e081
 // Attack Tx : https://etherscan.io/tx/0x1abab4c8db9a30e703114528e31dee129a3a758f7f8abc3b6494aad3d304e43f
 

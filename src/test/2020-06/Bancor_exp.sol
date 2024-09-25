@@ -13,7 +13,8 @@ As a result, if any user had granted approval to these contracts was vulnerable.
 
 The attacker can check if an user had granted an allowance to Bancor Contracts to transfer the ERC20 token 
 
-Example tx - https://etherscan.io/tx/0x4643b63dcbfc385b8ab8c86cbc46da18c2e43d277de3e5bc3b4516d3c0fdeb9f*/
+Example tx - https://etherscan.io/tx/0x4643b63dcbfc385b8ab8c86cbc46da18c2e43d277de3e5bc3b4516d3c0fdeb9f
+*/
 
 interface IBancor {
     function safeTransferFrom(IERC20 _token, address _from, address _to, uint256 _value) external;

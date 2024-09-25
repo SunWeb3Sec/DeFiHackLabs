@@ -2,15 +2,15 @@
 
 ## 2023 - List of Past DeFi Incidents
 
-206 incidents included.
+214 incidents included.
 
-[20231231 Channels BUSD&USDC](past/2023/README.md#20231231-channels---price-manipulation)
+[20231231 Channels BUSD&USDC](#20231231-channels---price-manipulation)
 
 [20231230 ChannelsFinance](#20231230-channelsfinance---compoundv2-inflation-attack)
 
-[20231228 DominoTT](#20231228-DominoTT---precision-loss)
+[20231228 CCV](#20231225-CCV---precision-loss)
 
-[20231228 CCV](#20231228-CCV---precision-loss)
+[20231228 DominoTT](#20231228-dominott---precision-loss) 
 
 [20231225 Telcoin](#20231225-telcoin---storage-collision)
 
@@ -32,17 +32,25 @@
 
 [20231213 HYPR](#20231213-hypr---business-logic-flaw)
 
+[20231211 GoodCompound](#20231211-goodcompound---price-manipulation)
+
+[20231209 BCT](#20231209-bct---price-manipulation)
+
 [20231207 HNet](#20231207-HNet---business-logic-flaw)
 
 [20231206 TIME](#20231206-time---arbitrary-address-spoofing-attack)
 
 [20231206 ElephantStatus](#20231206-elephantstatus---price-manipulation)
 
+[20231205 MAMO](#20231205-mamo---price-manipulation)
+
 [20231205 BEARNDAO](#20231205-bearndao---business-logic-flaw)
 
 [20231202 bZxProtocol](#20231202-bzxprotocol---inflation-attack)
 
 [20231201 UnverifiedContr_0x431abb](#20231201-unverifiedcontr_0x431abb---business-logic-flaw)
+
+[20231130 EEE](#20231130-eee---price-manipulation)
 
 [20231130 CAROLProtocol](#20231130-carolprotocol---price-manipulation-via-reentrancy)
 
@@ -88,21 +96,21 @@
 
 [20231106 TrustPad](#20231106-trustpad---lack-of-msgsender-address-verification)
 
-[20231106 KR](#20231106-KR---precision-loss)
-
 [20231106 TheStandard_io](#20231106-thestandard_io---lack-of-slippage-protection)
+
+[20231106 KR](#20231106-KR---precission-loss)
 
 [20231102 BRAND](#20231102-brand---lack-of-access-control)
 
 [20231102 3913Token](#20231102-3913token---deflationary-token-attack)
 
-[20231101 OnyxProtocol](#20231101-onyxprotocol---precission-loss-vulnerability)
-
 [20231101 SwampFinance](#20231101-swampfinance---business-logic-flaw)
+
+[20231101 OnyxProtocol](#20231101-onyxprotocol---precission-loss-vulnerability)
 
 [20231031 UniBotRouter](#20231031-UniBotRouter---arbitrary-external-call)
 
-[20231030 LaEeb](#20231030-laEeb---lack-slippage-protection)
+[20231030 LaEeb](#20231030-laeeb---lack-slippage-protection)
 
 [20231028 AstridProtocol](#20231028-AstridProtocol---business-logic-flaw)
 
@@ -244,9 +252,9 @@
 
 [20230628 Themis](#20230628-themis---manipulation-of-prices-using-flashloan)
 
-[20230627 STRAC](#20230627-STRAC---business-loigc)
+[20230627 UnverifiedContr_9ad32](#20230627-unverifiedcontr_9ad32---business-loigc-flaw)
 
-[20230627 UnverifiedContr_9ad32](#20230627-unverifiedcontr_9ad32---business-loigc)
+[20230627 STRAC](#20230627-STRAC---business-loigc)
 
 [20230623 SHIDO](#20230623-shido---business-loigc)
 
@@ -428,12 +436,13 @@
 
 ### Lost: ~$4.4K
 
-
 ```sh
 forge test --contracts ./src/test/2023-12/Channels_exp.sol -vvv --evm-version shanghai
 ```
 #### Contract
+
 [Channels_exp.sol](../../src/test/2023-12/Channels_exp.sol)
+
 ### Link reference
 
 https://app.blocksec.com/explorer/tx/bsc/0xcf729a9392b0960cd315d7d49f53640f000ca6b8a0bd91866af5821fdf36afc5
@@ -490,7 +499,7 @@ forge test --contracts src/test/2023-12/DominoTT_exp.sol -vvv
 
 #### Link reference
 
-https://app.blocksec.com/explorer/tx/bsc/0x6ba4152db9da45f5751f2c083bf77d4b3385373d5660c51fe2e4382718afd9b4
+https://app.blocksec.com/explorer/tx/bsc/0x1ee617cd739b1afcc673a180e60b9a32ad3ba856226a68e8748d58fcccc877a8
 
 ---
 
@@ -665,7 +674,7 @@ forge test --contracts ./src/test/2023-12/PHIL_exp.sol -vvv
 
 #### Link reference
 
-https://app.blocksec.com/explorer/tx/bsc/0x51dfa4311d6989c21b460590460a94f854446176fc184b8d1a16314fd043f737
+https://app.blocksec.com/explorer/tx/bsc/0x20ecd8310a2cc7f7774aa5a045c8a99ad84a8451d6650f24e0911e9f4355b13a
 
 ---
 
@@ -857,12 +866,14 @@ https://twitter.com/Phalcon_xyz/status/1730625352953901123
 
 ### Lost: ~$22.8K
 
-
 ```sh
 forge test --contracts ./src/test/2023-11/EEE_exp.sol -vvv --evm-version shanghai
 ```
+
 #### Contract
+
 [EEE_exp.sol](../../src/test/2023-11/EEE_exp.sol)
+
 ### Link reference
 
 https://bscscan.com/tx/0x7312d9f9c13fc69f00f58e92a112a3e7f036ced7e65f7e0fa67382488d5557dc
@@ -909,7 +920,7 @@ https://x.com/MetaSec_xyz/status/1730044259087315046
 
 ---
 
-### 20231129 AIS - Access Control
+### 20231129  AIS- Access Control
 
 ### Lost: ~$61k
 

@@ -7,6 +7,9 @@ pragma solidity ^0.8.10;
 // Vulnerable Contract : https://bscscan.com/address/0xa45d4359246dbd523ab690bef01da06b07450030
 // Attack Tx : https://phalcon.blocksec.com/explorer/tx/bsc/0x94055664287a565d4867a97ba6d5d2e28c55d10846e3f83355ba84bd1b9280fc
 
+// @Analysis
+// https://x.com/DecurityHQ/status/1778075039293727143
+// https://x.com/0xNickLFranklin/status/1778237524558970889
 
 import "forge-std/Test.sol";
 import "./../interface.sol";
