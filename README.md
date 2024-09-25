@@ -48,7 +48,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
 [20240923 Bankroll_Network](#20240923-Bankroll_Network---incorrect-input-validation)
+
+[20240913 OTSeaStaking](#20240913-OTSeaStaking---Logic-Flaw)
 
 [20240903 Penpiexyz_io](#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
 
@@ -1148,7 +1151,22 @@ forge test --contracts ./src/test/2024-09/Bankroll_exp.sol -vvv
 
 https://x.com/Phalcon_xyz/status/1838042368018137547
 
+### 20240913 OTSeaStaking - Logic Flaw
 
+### Lost: 26k
+
+```sh
+forge test --contracts ./src/test/2024-09/OTSeaStaking_exp.sol -vvv
+```
+#### Contract
+
+[OTSeaStaking_exp.sol](src/test/2024-09/OTSeaStaking_exp.sol)
+
+### Link reference
+
+Nick Franklin: https://nickfranklin.site/2024/09/13/otsea-staking-hacked/
+
+---
 
 ### 20240903 Penpiexyz_io - Reentrancy and Reward Manipulation
 
