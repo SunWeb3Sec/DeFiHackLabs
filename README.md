@@ -1150,9 +1150,13 @@ forge test --contracts ./src/test/2024-09/MARA_exp.sol -vvv
 
 ```
 
+#### Contract
+
+[MARA_exp.sol](/src/test/2024-09/MARA_exp.sol)
+
 ### Link reference
 
-https://app.blocksec.com/explorer/tx/bsc/0x0fe3716431f8c2e43217c3ca6d25eed87e14d0fbfa9c9ee8ce4cef2e5ec4583c
+https://bscscan.com/tx/0x0fe3716431f8c2e43217c3ca6d25eed87e14d0fbfa9c9ee8ce4cef2e5ec4583c
 
 ### 20240923 Bankroll_Network - Incorrect input validation
 
