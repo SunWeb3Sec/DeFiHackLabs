@@ -26,11 +26,10 @@ contract Exploit is Test {
 
 
     function setUp() public {
-        cheats.createSelectFork("bsc",35702095
+        cheats.createSelectFork("bsc",35702095);
         deal(address(BUSD),address(this),0 ether);
-);
-
     }
+
     function testExploit() public {
         emit log_named_decimal_uint(
             "Attacker USDT balance before exploit", BUSD.balanceOf(address(this)), BUSD.decimals()
