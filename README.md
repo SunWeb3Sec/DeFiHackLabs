@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-527 incidents included.
+528 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240926 Bedrock_DeFi](#20240926-Bedrock_DeFi---swap-eth/btc-1/1-in-mint-function)
 
 [20240924 MARA](#20240924-MARA---price-manipulation)
 
@@ -1140,6 +1142,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20240926 Bedrock_DeFi - Swap ETH/BTC 1/1 in mint function
+
+### Lost: 27.83925883 BTC (~$1.7M USD)
+
+```sh
+forge test --contracts ./src/test/2024-09/Bedrock_DeFi_exp.sol -vvv
+```
+#### Contract
+
+[Bedrock_DeFi_exp.sol](src/test/2024-09/Bedrock_DeFi_exp.sol)
+
+### Link reference
+
+https://x.com/certikalert/status/1839403126694326374
+
+---
 
 ### 20240924-MARA---price-manipulation
 
