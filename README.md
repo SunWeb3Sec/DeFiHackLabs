@@ -1144,7 +1144,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-### 20240926 OnyxDAO - Fagke Market
+### 20240926 OnyxDAO - Fake Market
 
 ### Lost: 4.1M VUSD, 7.35M XCN, 5K DAI, 0.23 WBTC, 50K USDT (>$3.8M USD)
 
