@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-528 incidents included.
+529 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20240926 OnyxDAO](#20240926-OnyxDAO---fake-market)
 
 [20240926 Bedrock_DeFi](#20240926-Bedrock_DeFi---swap-eth/btc-1/1-in-mint-function)
 
@@ -1142,6 +1144,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20240926 OnyxDAO - Fake Market
+
+### Lost: 4.1M VUSD, 7.35M XCN, 5K DAI, 0.23 WBTC, 50K USDT (>$3.8M USD)
+
+```sh
+forge test --contracts ./src/test/2024-09/OnyxDAO_exp.sol -vvv
+```
+
+#### Contract
+
+[OnyxDAO_exp.sol](src/test/2024-09/OnyxDAO_exp.sol)
+
+### Link reference
+
+https://x.com/peckshield/status/1839302663680438342
+
+---
+
 ### 20240926 Bedrock_DeFi - Swap ETH/BTC 1/1 in mint function
 
 ### Lost: 27.83925883 BTC (~$1.7M USD)
@@ -1149,6 +1169,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ```sh
 forge test --contracts ./src/test/2024-09/Bedrock_DeFi_exp.sol -vvv
 ```
+
 #### Contract
 
 [Bedrock_DeFi_exp.sol](src/test/2024-09/Bedrock_DeFi_exp.sol)
