@@ -148,7 +148,10 @@ def insert_new_entry(content, new_entry):
     return content[:insert_pos] + "\n\n" + new_entry + content[insert_pos:]
 
 def update_table_of_contents(content, formatted_date, name, additional_details):
-    toc_entry = f"[{formatted_date} {name}](#{formatted_date.lower()}-{name.lower()}---{additional_details.lower().replace(' ', '-')})"
+    sanitized_name = re.sub(r'[^a-zA-Z0-9\s-]', '', name.lower())
+    sanitized_details = re.sub(r'[^a-zA-Z0-9\s-]', '', additional_details.lower())
+    link = f"#{formatted_date}-{sanitized_name}---{sanitized_details.replace(' ', '-')}"
+    toc_entry = f"[{formatted_date} {name}]({link})"
     toc_insert_pos = re.search(r"## List of Past DeFi Incidents", content).end()
     return content[:toc_insert_pos] + "\n" + toc_entry + content[toc_insert_pos:]
 
