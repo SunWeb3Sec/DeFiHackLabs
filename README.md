@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-529 incidents included.
+530 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20241002 LavaLending](#20241002-LavaLending---price-manipulation)
 
 [20240926 OnyxDAO](#20240926-OnyxDAO---fake-market)
 
@@ -1143,6 +1145,28 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+### 20241002 LavaLending - Price Manipulation
+
+### Lost: 1 USDC, 125795.6 cUSDC, 0,0067 WBTC, 2.25 WETH (~$130K USD)
+
+```sh
+forge test --contracts ./src/test/2024-10/LavaLending_exp.sol -vvv
+```
+
+#### Contract
+
+[LavaLending_exp.sol](src/test/2024-10/LavaLending_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1841823216425435308
+
+
+https://nickfranklin.site/2024/10/03/unknown-lending-project-hacked-due-to-price-oracle-manipulation/
+
+---
 
 ### 20240926 OnyxDAO - Fake Market
 
