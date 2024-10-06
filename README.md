@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-530 incidents included.
+531 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20241005 AIZPTToken](#20241005-AIZPTToken---wrong-price-calculation)
 
 [20241002 LavaLending](#20241002-LavaLending---price-manipulation)
 
@@ -1146,6 +1148,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+
+### 20241005 AIZPTToken - Wrong Price Calculation
+
+### Total Lost : 34.88 BNB (~$20K USD)
+
+```sh
+forge test --contracts ./src/test/2024-10/AIZPTToken_exp.sol -vvv
+```
+
+#### Contract
+
+[AIZPTToken_exp.sol](src/test/2024-10/AIZPTToken_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1842576732047700077
+
+---
 
 ### 20241002 LavaLending - Price Manipulation
 
