@@ -49,6 +49,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
+[20241006 SASHAToken](#20241006-sashatoken---price-manipulation)
+
 [20241005 AIZPTToken](#20241005-AIZPTToken---wrong-price-calculation)
 
 [20241002 LavaLending](#20241002-LavaLending---price-manipulation)
@@ -1148,6 +1150,21 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20241006 SASHAToken - Price Manipulation
+
+### Total Lost : ~249 ETH (~$600K USD)
+
+```
+forge test --contracts ./src/test/2024-10/SASHAToken_exp.sol -vvv
+```
+
+#### Contract
+
+[SASHAToken_exp.sol](src/test/2024-10/SASHAToken_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1842864840265883833
 
 ### 20241005 AIZPTToken - Wrong Price Calculation
 
