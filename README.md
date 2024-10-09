@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-531 incidents included.
+532 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -55,6 +55,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20241002 LavaLending](#20241002-LavaLending---price-manipulation)
 
+[20241001 FireToken](#20241001-firetoken---pair-manipulation-with-transfer-function)
+
 [20240926 OnyxDAO](#20240926-OnyxDAO---fake-market)
 
 [20240926 Bedrock_DeFi](#20240926-Bedrock_DeFi---swap-eth/btc-1/1-in-mint-function)
@@ -64,7 +66,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240923 Bankroll_Network](#20240923-Bankroll_Network---incorrect-input-validation)
 
 [20240913 OTSeaStaking](#20240913-OTSeaStaking---Logic-Flaw)
-
 
 [20240910 Caterpillar_Coin_CUT](#20240910-Caterpillar_Coin_CUT---price-manipulation)
 
@@ -1181,6 +1182,24 @@ forge test --contracts ./src/test/2024-10/AIZPTToken_exp.sol -vvv
 ### Link reference
 
 https://x.com/0xNickLFranklin/status/1842576732047700077
+
+---
+
+### 20241001 FireToken - Pair Manipulation With Transfer Function
+
+### Lost: 8.45 ETH (~$20K USD)
+
+```sh
+forge test --contracts ./src/test/2024-10/FireToken_exp.sol -vvv
+```
+
+#### Contract
+
+[FireToken_exp.sol](src/test/2024-10/FireToken_exp.sol)
+
+### Link reference
+
+https://twitter.com/0xNickLFranklin/status/1841305965750350089
 
 ---
 
