@@ -2818,7 +2818,7 @@ https://twitter.com/0xNickLFranklin/status/1768184024483430523
 ### Lost: ~13k USDT
 
 ```
-forge test --via-ir --contracts IT_exp -vvv
+forge test --via-ir ---match-contract IT_exp -vvv
 ```
 
 #### Contract
@@ -2836,7 +2836,7 @@ https://twitter.com/0xNickLFranklin/status/1768171595561046489
 ### Lost: ~5.06 ETH
 
 ```
-forge test --contracts BBT_exp -vvv
+forge test --match-contract BBT_exp -vvv
 ```
 
 #### Contract
