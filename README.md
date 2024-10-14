@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-533 incidents included.
+534 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20241011 P719Token](#20241011-p719token---price-manipulation-inflate-attack)
 
 [20241006 SASHAToken](#20241006-sashatoken---price-manipulation)
 
@@ -1151,6 +1153,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20241011 P719Token - Price Manipulation Inflate Attack
+
+### Total Lost : 547.18 BNB (~$312K USD)
+
+```
+forge test --match-contract P719Token_exp -vvv
+```
+
+#### Contract
+
+[P719Token_exp.sol](src/test/2024-10/P719Token_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1844753750386426182
+
+---
+
 ### 20241006 SASHAToken - Price Manipulation
 
 ### Total Lost : ~249 ETH (~$600K USD)
@@ -1166,6 +1186,8 @@ forge test --match-contract SASHAToken_exp -vvv
 ### Link reference
 
 https://x.com/0xNickLFranklin/status/1842864840265883833
+
+---
 
 ### 20241005 AIZPTToken - Wrong Price Calculation
 
