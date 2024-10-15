@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-534 incidents included.
+535 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
 [20241013 MorphoBlue](#20241013-morphoblue---overpriced-asset-in-oracle)
 
 [20241011 P719Token](#20241011-p719token---price-manipulation-inflate-attack)
