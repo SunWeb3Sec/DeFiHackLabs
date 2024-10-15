@@ -44,17 +44,17 @@ contract BaseTestWithBalanceLog is Test {
         }
     }
 
-    function getFundingBal() internal view returns (uint256) {
+    function getFundingBal() internal  returns (uint256) {
         return fundingToken == address(0)
             ? address(this).balance
             : TokenHelper.getTokenBalance(fundingToken, address(this));
     }
 
-    function getFundingDecimals() internal view returns (uint8) {
+    function getFundingDecimals() internal  returns (uint8) {
         return fundingToken == address(0) ? 18 : TokenHelper.getTokenDecimals(fundingToken);
     }
 
-    function getBaseCurrencySymbol() internal view returns (string memory) {
+    function getBaseCurrencySymbol() internal  returns (string memory) {
         string memory chainSymbol = getChainSymbol(block.chainid);
         return fundingToken == address(0) ? chainSymbol : TokenHelper.getTokenSymbol(fundingToken);
     }
