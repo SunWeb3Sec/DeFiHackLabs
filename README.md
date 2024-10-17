@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-535 incidents included.
+536 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -52,6 +52,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20241013 MorphoBlue](#20241013-morphoblue---overpriced-asset-in-oracle)
 
 [20241011 P719Token](#20241011-p719token---price-manipulation-inflate-attack)
+
+[20241006 HYDT](#20241010-hydt---oracle-price-manipulation)
 
 [20241006 SASHAToken](#20241006-sashatoken---price-manipulation)
 
@@ -1207,6 +1209,25 @@ forge test --match-contract SASHAToken_exp -vvv
 ### Link reference
 
 https://x.com/0xNickLFranklin/status/1842864840265883833
+
+---
+
+
+### 20241010 HYDT - Oracle Price Manipulation
+
+### Total Lost : 5.8k USDT
+
+```
+forge test --contracts ./src/test/2024-10/HYDT_exp.sol -vvv --evm-version cancun
+```
+
+#### Contract
+
+[HYDT_exp.sol](src/test/2024-10/HYDT_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1844241843518951451
 
 ---
 
