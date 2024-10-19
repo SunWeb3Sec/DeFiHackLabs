@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-536 incidents included.
+537 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -78,6 +78,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240903 Penpiexyz_io](#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
 
 [20240816 Zenterest](#20240816-Zenterest---price-out-of-date)
+
+[20240816 OMPxContract](#20240816-ompx-contract---flashloan)
 
 [20240828 AAVE](#20240828-aave---arbitrary-call-error)
 
@@ -1196,7 +1198,7 @@ https://x.com/TenArmorAlert/status/1844753750386426182
 
 ### 20241006 SASHAToken - Price Manipulation
 
-### Total Lost : ~249 ETH (~$600K USD)
+### Total Lost : 249 ETH (~$600K USD)
 
 ```
 forge test --match-contract SASHAToken_exp -vvv
@@ -1449,6 +1451,23 @@ forge test --match-contract Zenterest_exp -vvvv --evm-version shanghai
 ### Link reference
 
 https://x.com/0xNickLFranklin/status/1824579761383018564
+
+---
+
+### 20240816 OMPx Contract - FlashLoan
+
+### Lost: 4.37 ETH (~11527 USD)
+
+```sh
+forge test --match-contract OMPxContract_exp -vvv
+```
+#### Contract
+
+[OMPxContract_exp.sol](src/test/2024-08/OMPxContract_exp.sol)
+
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1820816386551357448
 
 ---
 
