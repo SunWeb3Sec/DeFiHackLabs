@@ -1198,7 +1198,7 @@ https://x.com/TenArmorAlert/status/1844753750386426182
 
 ### 20241006 SASHAToken - Price Manipulation
 
-### Total Lost : ~249 ETH (~$600K USD)
+### Total Lost : 249 ETH (~$600K USD)
 
 ```
 forge test --match-contract SASHAToken_exp -vvv
