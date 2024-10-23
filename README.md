@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-537 incidents included.
+538 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20241022 VISTA](#20241022-vista---flashmint-receive-error)
 
 [20241013 MorphoBlue](#20241013-morphoblue---overpriced-asset-in-oracle)
 
@@ -1159,7 +1161,21 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20241022 Vista - flashmint receive error
 
+### Lost: $28,000
+
+
+```sh
+forge test --contracts ./src/test/2024-10/VISTA_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[VISTA_exp.sol](src/test/2024-10/VISTA_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1848403791881900130
+
+---
 
 
 ### 20241013 MorphoBlue - Overpriced Asset in Oracle
