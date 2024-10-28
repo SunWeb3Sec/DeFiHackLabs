@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-538 incidents included.
+539 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20241026 CompoundFork](#20241026-compoundfork---flashloan-attack)
+
 [20241022 Erc20transfer](#20241022-erc20transfer---access-control)
 
 [20241022 VISTA](#20241022-vista---flashmint-receive-error)
@@ -1164,6 +1166,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 
 
+
+
+
+
+### 20241026 CompoundFork - Flashloan attack
+
+### Lost: $1M
+
+
+```sh
+forge test --contracts ./src/test/2024-10/CompoundFork_exploit.sol -vvv --evm-version shanghai
+```
+#### Contract
+[CompoundFork_exploit.sol](src/test/2024-10/CompoundFork_exploit.sol)
+### Link reference
+
+https://x.com/Phalcon_xyz/status/1849636437349527725,https://app.blocksec.com/explorer/tx/base/0x6ab5b7b51f780e8c6c5ddaf65e9badb868811a95c1fd64e86435283074d3149e
+
+---
 
 ### 20241022 Erc20transfer - Access Control
 
