@@ -128,9 +128,15 @@ contract Exploit is Test {
 /* -------------------- Interface -------------------- */
 
 interface IEGD_Finance {
-    function bond(address invitor) external;
-    function stake(uint256 amount) external;
-    function calculateAll(address addr) external view returns (uint256);
+    function bond(
+        address invitor
+    ) external;
+    function stake(
+        uint256 amount
+    ) external;
+    function calculateAll(
+        address addr
+    ) external view returns (uint256);
     function claimAllReward() external;
     function getEGDPrice() external view returns (uint256);
 }

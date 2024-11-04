@@ -26,7 +26,9 @@ interface IJimboController {
 interface ILBPair {
     function getActiveId() external view returns (uint24 activeId);
 
-    function getBin(uint24 id) external view returns (uint128 binReserveX, uint128 binReserveY);
+    function getBin(
+        uint24 id
+    ) external view returns (uint128 binReserveX, uint128 binReserveY);
 
     function getSwapIn(
         uint128 amountOut,
@@ -89,7 +91,9 @@ interface ILBRouter {
         IERC20[] tokenPath;
     }
 
-    function addLiquidity(LiquidityParameters calldata liquidityParameters)
+    function addLiquidity(
+        LiquidityParameters calldata liquidityParameters
+    )
         external
         returns (
             uint256 amountXAdded,

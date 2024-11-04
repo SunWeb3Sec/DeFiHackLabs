@@ -30,12 +30,16 @@ contract BaseTestWithBalanceLog is Test {
         chainIdToInfo[8453] = ChainInfo("BASE", "ETH");
     }
 
-    function getChainInfo(uint256 chainId) internal view returns (string memory, string memory) {
+    function getChainInfo(
+        uint256 chainId
+    ) internal view returns (string memory, string memory) {
         ChainInfo storage info = chainIdToInfo[chainId];
         return (info.name, info.symbol);
     }
 
-    function getChainSymbol(uint256 chainId) internal view returns (string memory symbol) {
+    function getChainSymbol(
+        uint256 chainId
+    ) internal view returns (string memory symbol) {
         (, symbol) = getChainInfo(chainId);
         //Return eth as default if chainid is not registed in mapping
         // Return eth as default if chainid is not registered in mapping
@@ -44,17 +48,17 @@ contract BaseTestWithBalanceLog is Test {
         }
     }
 
-    function getFundingBal() internal  returns (uint256) {
+    function getFundingBal() internal returns (uint256) {
         return fundingToken == address(0)
             ? address(this).balance
             : TokenHelper.getTokenBalance(fundingToken, address(this));
     }
 
-    function getFundingDecimals() internal  returns (uint8) {
+    function getFundingDecimals() internal returns (uint8) {
         return fundingToken == address(0) ? 18 : TokenHelper.getTokenDecimals(fundingToken);
     }
 
-    function getBaseCurrencySymbol() internal  returns (string memory) {
+    function getBaseCurrencySymbol() internal returns (string memory) {
         string memory chainSymbol = getChainSymbol(block.chainid);
         return fundingToken == address(0) ? chainSymbol : TokenHelper.getTokenSymbol(fundingToken);
     }
@@ -66,7 +70,9 @@ contract BaseTestWithBalanceLog is Test {
         logBalance("After");
     }
 
-    function logBalance(string memory stage) private {
+    function logBalance(
+        string memory stage
+    ) private {
         emit log_named_decimal_uint(
             string(abi.encodePacked("Attacker ", getBaseCurrencySymbol(), " Balance ", stage, " exploit")),
             getFundingBal(),

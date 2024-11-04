@@ -29,7 +29,9 @@ contract CSExp is Test, IDODOCallee {
         cheats.createSelectFork("bsc", 28_494_868);
     }
 
-    function doFlashLoan(IDPPOracle oracle) internal {
+    function doFlashLoan(
+        IDPPOracle oracle
+    ) internal {
         oracle.flashLoan(0, BUSD.balanceOf(address(oracle)), address(this), abi.encode(uint256(0)));
     }
 

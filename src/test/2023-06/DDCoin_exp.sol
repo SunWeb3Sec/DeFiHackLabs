@@ -27,16 +27,22 @@ interface IMarketPlace {
 
     function currenyId() external view returns (uint256);
 
-    function inviteLimit(address) external view returns (uint256);
+    function inviteLimit(
+        address
+    ) external view returns (uint256);
 
-    function items(uint256 id)
+    function items(
+        uint256 id
+    )
         external
         view
         returns (uint256 price, uint256 amount, uint256 totalAmount, uint256 index, uint256 time, address buyer);
 
     function listItem(uint256 _amount, address invite) external returns (uint256);
 
-    function sellItem(uint256 _amount) external returns (SellListing memory);
+    function sellItem(
+        uint256 _amount
+    ) external returns (SellListing memory);
 }
 
 contract DDTest is Test {
@@ -121,7 +127,9 @@ contract DDTest is Test {
         BUSDT.transfer(msg.sender, quoteAmount);
     }
 
-    function swapBUSDTToDD(uint256 amountOut) internal {
+    function swapBUSDTToDD(
+        uint256 amountOut
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(BUSDT);
         path[1] = address(DD);

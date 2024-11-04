@@ -273,7 +273,9 @@ interface LockedDeal {
 
     function GetPoolAllowance(uint256 _PoolId, address _Address) external view returns (uint256);
 
-    function GetPoolData(uint256 _id) external view returns (uint64, uint256, address, address);
+    function GetPoolData(
+        uint256 _id
+    ) external view returns (uint64, uint256, address, address);
 
     function GovernerContract() external view returns (address);
 
@@ -283,13 +285,21 @@ interface LockedDeal {
 
     function PozTimer() external view returns (uint256);
 
-    function SetFee(uint16 _fee) external;
+    function SetFee(
+        uint16 _fee
+    ) external;
 
-    function SetMinDuration(uint16 _minDuration) external;
+    function SetMinDuration(
+        uint16 _minDuration
+    ) external;
 
-    function SetPOZFee(uint16 _fee) external;
+    function SetPOZFee(
+        uint16 _fee
+    ) external;
 
-    function SetPozTimer(uint256 _pozTimer) external;
+    function SetPozTimer(
+        uint256 _pozTimer
+    ) external;
 
     function SplitPoolAmount(uint256 _PoolId, uint256 _NewAmount, address _NewOwner) external returns (uint256);
 
@@ -305,13 +315,19 @@ interface LockedDeal {
 
     function WithdrawERC20Fee(address _Token, address _to) external;
 
-    function WithdrawETHFee(address _to) external;
+    function WithdrawETHFee(
+        address _to
+    ) external;
 
-    function WithdrawToken(uint256 _PoolId) external returns (bool);
+    function WithdrawToken(
+        uint256 _PoolId
+    ) external returns (bool);
 
     function isTokenFilterOn() external view returns (bool);
 
-    function isTokenWhiteListed(address _tokenAddress) external view returns (bool);
+    function isTokenWhiteListed(
+        address _tokenAddress
+    ) external view returns (bool);
 
     function maxTransactionLimit() external view returns (uint256);
 
@@ -321,17 +337,27 @@ interface LockedDeal {
 
     function renounceOwnership() external;
 
-    function setGovernerContract(address _address) external;
+    function setGovernerContract(
+        address _address
+    ) external;
 
-    function setMaxTransactionLimit(uint256 _newLimit) external;
+    function setMaxTransactionLimit(
+        uint256 _newLimit
+    ) external;
 
-    function setWhiteListAddress(address _address) external;
+    function setWhiteListAddress(
+        address _address
+    ) external;
 
-    function setWhiteListId(uint256 _id) external;
+    function setWhiteListId(
+        uint256 _id
+    ) external;
 
     function swapTokenFilter() external;
 
-    function transferOwnership(address newOwner) external;
+    function transferOwnership(
+        address newOwner
+    ) external;
 
     receive() external payable;
 }

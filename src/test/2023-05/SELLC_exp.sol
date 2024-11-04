@@ -128,7 +128,9 @@ contract ContractTest is Test {
         }
     }
 
-    function process(uint256 amount) internal {
+    function process(
+        uint256 amount
+    ) internal {
         uint256 SellQILPAmount = SellQILP.balanceOf(address(customLP));
         address[] memory path = new address[](2);
         path[0] = address(this);
@@ -171,7 +173,9 @@ contract ContractTest is Test {
         return true;
     }
 
-    function mint(uint256 amount) external {
+    function mint(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] += amount;
         // totalSupply += amount;
     }
@@ -213,13 +217,17 @@ contract SHITCOIN {
         return true;
     }
 
-    function mint(uint256 amount) external {
+    function mint(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] += amount;
         totalSupply += amount;
         emit Transfer(address(0), msg.sender, amount);
     }
 
-    function burn(uint256 amount) external {
+    function burn(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] -= amount;
         totalSupply -= amount;
         emit Transfer(msg.sender, address(0), amount);

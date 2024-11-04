@@ -9,11 +9,15 @@ contract MockACOToken {
         return address(0);
     }
 
-    function mintToPayable(address account) external payable returns (uint256) {
+    function mintToPayable(
+        address account
+    ) external payable returns (uint256) {
         return 1;
     }
 
-    function balanceOf(address account) public view returns (uint256) {
+    function balanceOf(
+        address account
+    ) public view returns (uint256) {
         return 1;
     }
 

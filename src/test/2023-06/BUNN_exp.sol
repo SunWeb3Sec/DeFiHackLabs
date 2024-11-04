@@ -12,7 +12,9 @@ import "./../interface.sol";
 // Reelection token,call deliver function to decrease pairs token balance,and swap to get the profit.
 
 interface Bunn is IERC20 {
-    function deliver(uint256 tAmount) external;
+    function deliver(
+        uint256 tAmount
+    ) external;
 }
 
 contract ContractTest is Test {

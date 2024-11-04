@@ -12,7 +12,9 @@ import "./../interface.sol";
 // https://bscscan.com/tx/0x2bb704e0d158594f7373ec6e53dc9da6c6639f269207da8dab883fc3b5bf6694
 
 interface GDSToken is IERC20 {
-    function pureUsdtToToken(uint256 _uAmount) external returns (uint256);
+    function pureUsdtToToken(
+        uint256 _uAmount
+    ) external returns (uint256);
 }
 
 interface ISwapFlashLoan {
@@ -150,7 +152,9 @@ contract ContractTest is Test {
         );
     }
 
-    function USDTToGDS(uint256 USDTAmount) internal {
+    function USDTToGDS(
+        uint256 USDTAmount
+    ) internal {
         USDT.approve(address(Router), type(uint256).max);
         address[] memory path = new address[](2);
         path[0] = address(USDT);

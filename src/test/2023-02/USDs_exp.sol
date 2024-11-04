@@ -11,7 +11,9 @@ import "forge-std/console.sol";
 // https://arbiscan.io/tx/0xfaf84cabc3e1b0cf1ff1738dace1b2810f42d98baeea17b146ae032f0bdf82d5
 
 interface USDs {
-    function balanceOf(address _account) external returns (uint256);
+    function balanceOf(
+        address _account
+    ) external returns (uint256);
     function mint(address _account, uint256 _amount) external;
     function transfer(address to, uint256 amount) external returns (bool);
     function vaultAddress() external returns (address);

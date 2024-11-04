@@ -29,13 +29,19 @@ import "./../interface.sol";
 interface IEHIVE is IERC20 {
     function stake(uint256 stakeAmount, uint256 validator) external;
 
-    function unstake(uint256 validator) external;
+    function unstake(
+        uint256 validator
+    ) external;
 }
 
 interface IUnstake {
-    function unstake(address _user) external;
+    function unstake(
+        address _user
+    ) external;
 
-    function stake(uint256 amount) external;
+    function stake(
+        uint256 amount
+    ) external;
 }
 
 contract EHIVETest is Test {
@@ -119,11 +125,15 @@ contract EHIVETest is Test {
 contract UnstakeContract is Test {
     IEHIVE private constant EHIVE = IEHIVE(0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd);
 
-    function stake(uint256 amount) external {
+    function stake(
+        uint256 amount
+    ) external {
         EHIVE.stake(amount, 0);
     }
 
-    function unstake(address _user) external {
+    function unstake(
+        address _user
+    ) external {
         EHIVE.stake(EHIVE.balanceOf(address(this)), 0);
         EHIVE.unstake(0);
         EHIVE.transfer(_user, EHIVE.balanceOf(address(this)));

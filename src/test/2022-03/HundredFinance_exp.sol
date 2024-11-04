@@ -21,10 +21,18 @@ Debug tx: https://dashboard.tenderly.co/tx/xdai/0x534b84f657883ddc1b66a314e8b392
 ref: https://github.com/compound-finance/compound-protocol/issues/141
 credit: https://github.com/Hephyrius/Immuni-Hundred-POC*/
 interface ICompoundToken {
-    function borrow(uint256 borrowAmount) external;
-    function repayBorrow(uint256 repayAmount) external;
-    function redeem(uint256 redeemAmount) external;
-    function mint(uint256 amount) external;
+    function borrow(
+        uint256 borrowAmount
+    ) external;
+    function repayBorrow(
+        uint256 repayAmount
+    ) external;
+    function redeem(
+        uint256 redeemAmount
+    ) external;
+    function mint(
+        uint256 amount
+    ) external;
     function comptroller() external view returns (address);
 }
 

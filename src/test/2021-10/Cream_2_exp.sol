@@ -21,8 +21,12 @@ interface YVaultPeakProxy {
 }
 
 interface IYearnVault {
-    function deposit(uint256 amount) external;
-    function withdraw(uint256 amount) external;
+    function deposit(
+        uint256 amount
+    ) external;
+    function withdraw(
+        uint256 amount
+    ) external;
     function pricePerShare() external view returns (uint256);
     function totalAssets() external view returns (uint256);
 }
@@ -39,20 +43,28 @@ interface ICurveDepositor {
 }
 
 interface ICether {
-    function borrow(uint256 borrowAmount) external returns (uint256);
+    function borrow(
+        uint256 borrowAmount
+    ) external returns (uint256);
     function mint() external payable;
     function underlying() external view returns (address);
 }
 
 interface ICrToken {
-    function borrow(uint256 borrowAmount) external;
-    function mint(uint256 mintAmount) external;
+    function borrow(
+        uint256 borrowAmount
+    ) external;
+    function mint(
+        uint256 mintAmount
+    ) external;
     function underlying() external view returns (address);
     function getCash() external view returns (uint256);
 }
 
 interface IComptroller {
-    function enterMarkets(address[] memory cTokens) external;
+    function enterMarkets(
+        address[] memory cTokens
+    ) external;
     // function getAccountLiquidity() external view returns(address[] memory markets);
 }
 
@@ -66,13 +78,15 @@ contract SecondContract {
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     address constant crETH = 0xD06527D5e56A3495252A528C4987003b712860eE;
 
-    function justDoIt(address paramAddress) public {
+    function justDoIt(
+        address paramAddress
+    ) public {
         contractAddress = paramAddress;
         address[] memory assets = new address[](1);
         assets[0] = address(WETH);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = 524_102 * 1e18;
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
         console.log("[7. Aave FlashLoan 524_102 WETH]");
         AaveFlash.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
@@ -318,11 +332,15 @@ contract ContractTest is Test {
         ICether(crETH).borrow(523_208 * 1e18);
     }
 
-    function borrowTokens(address token) internal {
+    function borrowTokens(
+        address token
+    ) internal {
         ICrToken(token).borrow(ICrToken(token).getCash());
     }
 
-    function withdrawUnderlying(address token) public returns (uint256 amount) {
+    function withdrawUnderlying(
+        address token
+    ) public returns (uint256 amount) {
         address underlying = ICrToken(token).underlying();
         amount = IERC20(underlying).balanceOf(address(this));
     }

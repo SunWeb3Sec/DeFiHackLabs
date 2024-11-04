@@ -169,7 +169,9 @@ contract Slave {
         wstETH.approve(address(ParaProxy), type(uint256).max);
     }
 
-    function remove(uint256 _amountOfShares) external {
+    function remove(
+        uint256 _amountOfShares
+    ) external {
         ParaProxy.supply(address(wstETH), wstETH.balanceOf(address(this)), address(this), 0);
         ParaProxy.borrow(address(cAPE), _amountOfShares, 0, address(this));
         cAPE.transfer(owner, cAPE.balanceOf(address(this)));

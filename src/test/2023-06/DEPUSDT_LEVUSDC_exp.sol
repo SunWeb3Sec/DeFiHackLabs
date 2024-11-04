@@ -17,7 +17,9 @@ interface IProxy {
 }
 
 interface IToken {
-    function balanceOf(address who) external view returns (uint256);
+    function balanceOf(
+        address who
+    ) external view returns (uint256);
 
     function transferFrom(address sender, address recipient, uint256 amount) external;
 }

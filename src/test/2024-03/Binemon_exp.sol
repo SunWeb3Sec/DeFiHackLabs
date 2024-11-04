@@ -10,7 +10,6 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
-
 interface IBIN_WBNB {}
 
 interface IBIN is IERC20 {
@@ -18,7 +17,6 @@ interface IBIN is IERC20 {
 }
 
 contract ContractTest is Test {
-
     IBIN BIN = IBIN(address(0xe56842Ed550Ff2794F010738554db45E60730371));
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IPancakeRouter Router = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));

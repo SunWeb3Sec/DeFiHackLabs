@@ -14,9 +14,13 @@ import "./../interface.sol";
 // https://twitter.com/BlockSecTeam/status/1683680026766737408
 
 interface IVault {
-    function buyUSDP(address _receiver) external returns (uint256);
+    function buyUSDP(
+        address _receiver
+    ) external returns (uint256);
 
-    function sellUSDP(address _receiver) external returns (uint256);
+    function sellUSDP(
+        address _receiver
+    ) external returns (uint256);
 }
 
 interface ILiquidityEvent {

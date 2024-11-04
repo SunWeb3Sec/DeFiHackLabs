@@ -10,8 +10,12 @@ import "./../interface.sol";
 // https://bscscan.com/tx/0xf2a0c957fef493af44f55b201fbc6d82db2e4a045c5c856bfe3d8cb80fa30c12
 
 interface ISVTpool {
-    function buy(uint256 amount) external;
-    function sell(uint256 amount) external;
+    function buy(
+        uint256 amount
+    ) external;
+    function sell(
+        uint256 amount
+    ) external;
 }
 
 contract ContractTest is Test {

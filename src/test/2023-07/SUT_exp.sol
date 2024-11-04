@@ -24,13 +24,17 @@ interface IUniswapV3Router {
         uint160 sqrtPriceLimitX96;
     }
 
-    function exactInputSingle(ExactInputSingleParams memory params) external payable returns (uint256 amountOut);
+    function exactInputSingle(
+        ExactInputSingleParams memory params
+    ) external payable returns (uint256 amountOut);
 }
 
 interface ISUTTokenSale {
     function tokenPrice() external view returns (uint256);
 
-    function buyTokens(uint256 _numberOfTokens) external payable;
+    function buyTokens(
+        uint256 _numberOfTokens
+    ) external payable;
 }
 
 contract SUTTest is Test {

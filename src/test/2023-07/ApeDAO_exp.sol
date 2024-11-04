@@ -90,7 +90,9 @@ contract ApeDAOTest is Test {
         Router.swapExactTokensForTokens(19_000 * 1e18, 0, path, address(this), block.timestamp + 100);
     }
 
-    function swapAPEDAOToBUSDT(uint256 amountIn) internal {
+    function swapAPEDAOToBUSDT(
+        uint256 amountIn
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(APEDAO);
         path[1] = address(BUSDT);

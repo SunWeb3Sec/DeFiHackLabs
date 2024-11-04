@@ -30,8 +30,12 @@ interface ISwap {
 interface AllBridgePool {
     function tokenBalance() external view returns (uint256);
     function vUsdBalance() external view returns (uint256);
-    function deposit(uint256 amount) external;
-    function withdraw(uint256 amountLp) external;
+    function deposit(
+        uint256 amount
+    ) external;
+    function withdraw(
+        uint256 amountLp
+    ) external;
 }
 
 contract ContractTest is Test {

@@ -18,7 +18,9 @@ import "./../interface.sol";
 
 interface Miner {
     function setBNB(address token, address token1) external payable;
-    function sendMiner(address token) external;
+    function sendMiner(
+        address token
+    ) external;
 }
 
 contract ContractTest is Test {

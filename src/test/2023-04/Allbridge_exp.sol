@@ -19,12 +19,18 @@ interface IPool {
         uint256 deadline
     ) external returns (uint256 actualToAmount, uint256 haircut);
 
-    function deposit(uint256 amount) external;
+    function deposit(
+        uint256 amount
+    ) external;
 }
 
 interface IPool2 {
-    function deposit(uint256 amount) external;
-    function withdraw(uint256 amountLp) external;
+    function deposit(
+        uint256 amount
+    ) external;
+    function withdraw(
+        uint256 amountLp
+    ) external;
 }
 
 interface IBridge {

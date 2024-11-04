@@ -32,7 +32,9 @@ interface IBAYC {
 
     function transferFrom(address from, address to, uint256 tokenId) external;
 
-    function ownerOf(uint256 tokenId) external view returns (address owner);
+    function ownerOf(
+        uint256 tokenId
+    ) external view returns (address owner);
 }
 
 interface IXNFT {
@@ -46,7 +48,9 @@ interface IXNFT {
         uint256 borrowAmount
     ) external;
 
-    function withdrawNFT(uint256 orderId) external;
+    function withdrawNFT(
+        uint256 orderId
+    ) external;
 }
 
 interface IXToken {

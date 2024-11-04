@@ -49,6 +49,8 @@ contract Attacker is Test {
 }
 
 interface IReaperVaultV2 {
-    function balanceOf(address owner) external view returns (uint256);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256);
     function redeem(uint256 shares, address receiver, address owner) external returns (uint256 assets);
 }

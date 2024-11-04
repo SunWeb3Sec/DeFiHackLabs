@@ -17,7 +17,9 @@ import "./../interface.sol";
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1663810037788311561
 
 interface IExchangeBetweenPools {
-    function doExchange(uint256 amounts) external returns (bool);
+    function doExchange(
+        uint256 amounts
+    ) external returns (bool);
 }
 
 contract ContractTest is Test {

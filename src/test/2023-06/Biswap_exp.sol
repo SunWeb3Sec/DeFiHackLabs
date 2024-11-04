@@ -27,7 +27,9 @@ interface V3Migrator {
         bool refundAsETH;
     }
 
-    function migrate(MigrateParams calldata params) external returns (uint256 refund0, uint256 refund1);
+    function migrate(
+        MigrateParams calldata params
+    ) external returns (uint256 refund0, uint256 refund1);
 }
 
 interface IBiswapFactoryV3 {
@@ -49,7 +51,9 @@ contract SimpleERC20 {
         _symbol = symbol_;
     }
 
-    function balanceOf(address account) public view virtual returns (uint256) {
+    function balanceOf(
+        address account
+    ) public view virtual returns (uint256) {
         return _balances[account];
     }
 
@@ -156,7 +160,9 @@ contract FakePair is SimpleERC20 {
         token1Amount = t1;
     }
 
-    function burn(address to) external returns (uint256, uint256) {
+    function burn(
+        address to
+    ) external returns (uint256, uint256) {
         return (token0Amount, token1Amount);
     }
 }

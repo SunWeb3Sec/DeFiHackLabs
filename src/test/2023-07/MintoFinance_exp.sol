@@ -47,7 +47,9 @@ interface PancakeRouter3 {
         uint160 sqrtPriceLimitX96;
     }
 
-    function exactInputSingle(ExactInputSingleParams memory params) external payable returns (uint256 amountOut);
+    function exactInputSingle(
+        ExactInputSingleParams memory params
+    ) external payable returns (uint256 amountOut);
 }
 
 contract MintoFinance_exp is Test {

@@ -24,7 +24,9 @@ interface IPancakeRouterV3 {
         uint160 sqrtPriceLimitX96;
     }
 
-    function exactInputSingle(ExactInputSingleParams memory params) external payable returns (uint256 amountOut);
+    function exactInputSingle(
+        ExactInputSingleParams memory params
+    ) external payable returns (uint256 amountOut);
 }
 
 contract ARATest is Test {

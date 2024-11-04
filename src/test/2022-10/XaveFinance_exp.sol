@@ -49,7 +49,9 @@ interface IDaoModule {
 
     function buildQuestion(string memory proposalId, bytes32[] memory txHashes) external pure returns (string memory);
 
-    function questionIds(bytes32) external returns (bytes32);
+    function questionIds(
+        bytes32
+    ) external returns (bytes32);
 }
 
 interface IRealitio {
@@ -86,7 +88,9 @@ contract XaveFinanceExploit is Test {
         return abi.encodeWithSignature("mint(address,uint256)", to, amount);
     }
 
-    function encodeWithSignature_transferOwnership(address to) internal pure returns (bytes memory) {
+    function encodeWithSignature_transferOwnership(
+        address to
+    ) internal pure returns (bytes memory) {
         return abi.encodeWithSignature("transferOwnership(address)", to);
     }
 

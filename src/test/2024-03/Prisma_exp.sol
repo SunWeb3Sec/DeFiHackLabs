@@ -23,7 +23,9 @@ interface IERC20 {
     function symbol() external view returns (string memory);
     function decimals() external view returns (uint8);
     function totalSupply() external view returns (uint256);
-    function balanceOf(address owner) external view returns (uint256);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256);
     function allowance(address owner, address spender) external view returns (uint256);
 
     function approve(address spender, uint256 value) external returns (bool);
@@ -67,7 +69,9 @@ interface IBorrowerOperations {
 }
 
 interface IPriceFeed {
-    function fetchPrice(address _token) external returns (uint256);
+    function fetchPrice(
+        address _token
+    ) external returns (uint256);
 }
 
 interface IBalancerVault {

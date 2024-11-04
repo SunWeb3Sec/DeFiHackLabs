@@ -11,37 +11,61 @@ import "./../interface.sol";
 
 interface Bond {
     function buyBond(uint256 lpAmount, uint256 bondId) external;
-    function claim(uint256 index) external;
+    function claim(
+        uint256 index
+    ) external;
 }
 
 interface VBUSD {
-    function mint(uint256 mintAmount) external;
-    function redeemUnderlying(uint256 redeemAmount) external;
+    function mint(
+        uint256 mintAmount
+    ) external;
+    function redeemUnderlying(
+        uint256 redeemAmount
+    ) external;
 }
 
 interface VBNB {
     function mint() external payable;
-    function redeemUnderlying(uint256 redeemAmount) external;
+    function redeemUnderlying(
+        uint256 redeemAmount
+    ) external;
 }
 
 interface VETH {
-    function mint(uint256 mintAmount) external;
-    function redeemUnderlying(uint256 redeemAmount) external;
+    function mint(
+        uint256 mintAmount
+    ) external;
+    function redeemUnderlying(
+        uint256 redeemAmount
+    ) external;
 }
 
 interface VBTC {
-    function mint(uint256 mintAmount) external;
-    function redeemUnderlying(uint256 redeemAmount) external;
+    function mint(
+        uint256 mintAmount
+    ) external;
+    function redeemUnderlying(
+        uint256 redeemAmount
+    ) external;
 }
 
 interface VUSDT {
-    function borrow(uint256 borrowAmount) external;
-    function repayBorrow(uint256 repayAmount) external;
+    function borrow(
+        uint256 borrowAmount
+    ) external;
+    function repayBorrow(
+        uint256 repayAmount
+    ) external;
 }
 
 interface Unitroller {
-    function getAccountLiquidity(address account) external returns (uint256, uint256, uint256);
-    function enterMarkets(address[] calldata vTokens) external;
+    function getAccountLiquidity(
+        address account
+    ) external returns (uint256, uint256, uint256);
+    function enterMarkets(
+        address[] calldata vTokens
+    ) external;
 }
 
 contract ContractTest is Test {

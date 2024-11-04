@@ -80,9 +80,13 @@ interface IApeStaking {
         IApeCoinStaking.PairNftWithdrawWithAmount[] memory _nftPairs
     ) external;
 
-    function setCollectRate(uint256 newCollectRate) external;
+    function setCollectRate(
+        uint256 newCollectRate
+    ) external;
 
-    function pools(uint256)
+    function pools(
+        uint256
+    )
         external
         view
         returns (
@@ -96,7 +100,9 @@ interface IApeStaking {
 }
 
 interface IPToken is IERC20 {
-    function randomTrade(uint256 nftIdCount) external returns (uint256[] memory nftIds);
+    function randomTrade(
+        uint256 nftIdCount
+    ) external returns (uint256[] memory nftIds);
 }
 
 contract PawnfiTest is Test {
@@ -208,7 +214,9 @@ contract PawnfiTest is Test {
         }
     }
 
-    function depositBorrowWithdrawApe(uint256 amount) internal {
+    function depositBorrowWithdrawApe(
+        uint256 amount
+    ) internal {
         uint256[] memory _mainTokenIds;
         uint256[] memory _bakcTokenIds;
         ApeStakingStorage.DepositInfo memory depositInfo =

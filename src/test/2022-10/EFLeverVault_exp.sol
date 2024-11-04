@@ -23,8 +23,12 @@ import "./../interface.sol";
 // Twitter Daniel Von Fange : https://twitter.com/danielvf/status/1580936010556661761
 
 interface IEFLeverVault {
-    function deposit(uint256) external payable;
-    function withdraw(uint256) external;
+    function deposit(
+        uint256
+    ) external payable;
+    function withdraw(
+        uint256
+    ) external;
 }
 
 contract ContractTest is Test {

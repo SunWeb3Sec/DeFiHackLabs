@@ -60,7 +60,7 @@ contract ContractTest is Test {
         assets[0] = address(USDC);
         uint256[] memory amount = new uint256[](1);
         amount[0] = depositAmount;
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
         MahaLend.flashLoan(address(this), assets, amount, modes, address(this), "", 0);
 

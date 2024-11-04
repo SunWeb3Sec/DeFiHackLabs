@@ -18,7 +18,9 @@ import "./../interface.sol";
 
 interface IStaking {
     function Lock_Token(uint256 plan, uint256 _amount) external;
-    function withdraw(uint256 _plan) external;
+    function withdraw(
+        uint256 _plan
+    ) external;
 }
 
 contract ContractTest is Test {

@@ -11,7 +11,9 @@ import "forge-std/Test.sol";
 */
 
 interface NFT {
-    function balanceOf(address _owner) external view returns (uint256 balance);
+    function balanceOf(
+        address _owner
+    ) external view returns (uint256 balance);
 }
 
 contract luckyHack is Test {

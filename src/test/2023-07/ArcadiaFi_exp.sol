@@ -30,7 +30,9 @@ interface LendingPool {
         bytes calldata actionData,
         bytes3 referrer
     ) external;
-    function liquidateVault(address vault) external;
+    function liquidateVault(
+        address vault
+    ) external;
 }
 
 interface IVault {
@@ -43,7 +45,9 @@ interface IVault {
         uint256[] calldata assetIds,
         uint256[] calldata assetAmounts
     ) external;
-    function openTrustedMarginAccount(address creditor) external;
+    function openTrustedMarginAccount(
+        address creditor
+    ) external;
 }
 
 interface IActionMultiCall {}
@@ -84,7 +88,7 @@ contract ContractTest is Test {
         uint256[] memory amounts = new uint256[](2);
         amounts[0] = 29_847_813_623_947_075_968;
         amounts[1] = 11_916_676_700;
-        uint256[] memory modes = new uint[](2);
+        uint256[] memory modes = new uint256[](2);
         modes[0] = 0;
         modes[1] = 0;
         aaveV3.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
@@ -249,7 +253,9 @@ contract Helper1 {
     IERC20 WETH = IERC20(0x4200000000000000000000000000000000000006);
     LendingPool darcWETH = LendingPool(0xD417c28aF20884088F600e724441a3baB38b22cc);
 
-    constructor(address target) {
+    constructor(
+        address target
+    ) {
         owner = msg.sender;
         proxy = target;
     }
@@ -267,7 +273,9 @@ contract Helper2 {
     IERC20 USDC = IERC20(0x7F5c764cBc14f9669B88837ca1490cCa17c31607);
     LendingPool darcUSDC = LendingPool(0x9aa024D3fd962701ED17F76c17CaB22d3dc9D92d);
 
-    constructor(address target) {
+    constructor(
+        address target
+    ) {
         owner = msg.sender;
         proxy = target;
     }
