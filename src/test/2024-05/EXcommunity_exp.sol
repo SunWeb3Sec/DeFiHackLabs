@@ -107,7 +107,7 @@ contract ContractTest is Test {
         }
     }
 
-    receive() public payable {}
+    receive() external payable {}
     fallback() external payable {}
 }
 

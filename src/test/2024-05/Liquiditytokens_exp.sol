@@ -154,7 +154,7 @@ contract ContractTest is Test {
         }
     }
 
-    receive() public payable {}
+    receive() external payable {}
 }
 
 contract Money is Test {
@@ -189,4 +189,5 @@ contract Money is Test {
     }
 
     fallback() external payable {}
+    receive() external payable {}
 }

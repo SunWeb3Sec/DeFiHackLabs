@@ -86,7 +86,7 @@ contract ContractTest is Test {
         }
     }
 
-    receive() public payable {}
+    receive() external payable {}
 }
 
 contract Exploit is Test {
