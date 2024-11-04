@@ -40,7 +40,9 @@ address constant pool16 = 0xD534fAE679f7F02364D177E9D44F1D15963c0Dd7;   // DODO/
 
 interface ISpaceGodzilla {
     function swapAndLiquifyStepv1() external;
-    function swapTokensForOther(uint256 tokenAmount) external;
+    function swapTokensForOther(
+        uint256 tokenAmount
+    ) external;
 }
 
 contract AttackContract is Test {

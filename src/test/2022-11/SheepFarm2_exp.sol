@@ -9,15 +9,21 @@ import "./../interface.sol";
 // Tx: https://bscscan.com/tx/0x8b3e0e3ea04829f941ca24c85032c3b4aeb1f8b1b278262901c2c5847dc72f1c
 
 interface ISheepFarm {
-    function register(address neighbor) external;
+    function register(
+        address neighbor
+    ) external;
 
     function addGems() external payable;
 
-    function upgradeVillage(uint256 farmId) external;
+    function upgradeVillage(
+        uint256 farmId
+    ) external;
 
     function sellVillage() external;
 
-    function withdrawMoney(uint256 wool) external;
+    function withdrawMoney(
+        uint256 wool
+    ) external;
 }
 
 contract ContractTest is Test {

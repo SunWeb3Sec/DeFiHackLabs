@@ -18,8 +18,12 @@ import "./../interface.sol";
 
 interface CakeFlipVault {
     function getReward() external;
-    function withdraw(uint256 amount) external;
-    function rewards(address) external view returns (uint256);
+    function withdraw(
+        uint256 amount
+    ) external;
+    function rewards(
+        address
+    ) external view returns (uint256);
 }
 
 contract ContractTest is Test {

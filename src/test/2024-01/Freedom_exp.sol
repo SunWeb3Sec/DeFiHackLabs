@@ -15,24 +15,20 @@ interface IFREEWBNBPOOL {
 }
 
 interface IUSDTHACKPOOL {
-    function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
-    function skim(address to) external;
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
+    function skim(
+        address to
+    ) external;
     function sync() external;
 }
 
 interface IDPPAdvanced {
-    function flashLoan(
-        uint256 baseAmount,
-        uint256 quoteAmount,
-        address assetTo,
-        bytes calldata data
-    ) external;
+    function flashLoan(uint256 baseAmount, uint256 quoteAmount, address assetTo, bytes calldata data) external;
 }
 
 interface IFREEB {
     function buyToken(uint256 listingId, uint256 expectedPaymentAmount) external;
 }
-
 
 contract ContractTest is Test {
     event TokenBalance(string key, uint256 val);
@@ -45,7 +41,6 @@ contract ContractTest is Test {
     IDPPAdvanced DODO = IDPPAdvanced(0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476);
 
     address FREEBProxy = 0xAE3ADa8787245977832c6DaB2d4474D3943527Ab;
-
 
     function setUp() public {
         vm.createSelectFork("bsc", 35_123_711 - 1);

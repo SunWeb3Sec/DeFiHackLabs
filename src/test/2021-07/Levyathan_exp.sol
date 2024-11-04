@@ -127,7 +127,9 @@ interface ITimelock {
         bytes32 predecessor,
         bytes32 salt
     ) external returns (bytes32 hash);
-    function isOperationPending(bytes32 id) external returns (bool pending);
+    function isOperationPending(
+        bytes32 id
+    ) external returns (bool pending);
     function execute(
         address target,
         uint256 value,
@@ -135,7 +137,9 @@ interface ITimelock {
         bytes32 predecessor,
         bytes32 salt
     ) external;
-    function isOperationDone(bytes32 id) external returns (bool done);
+    function isOperationDone(
+        bytes32 id
+    ) external returns (bool done);
 }
 
 interface ILEV {
@@ -144,7 +148,11 @@ interface ILEV {
 
 interface IMasterChef {
     function recoverLevOwnership() external;
-    function leaveStaking(uint256 _amount) external;
+    function leaveStaking(
+        uint256 _amount
+    ) external;
     function withdraw(uint256 _pid, uint256 _amount) external;
-    function emergencyWithdraw(uint256 _pid) external;
+    function emergencyWithdraw(
+        uint256 _pid
+    ) external;
 }

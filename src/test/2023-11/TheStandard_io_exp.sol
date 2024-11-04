@@ -46,20 +46,17 @@ interface NonfungiblePositionManager {
 }
 
 interface IPositionsNFT is IPoolInitializer {
-    function collect(NonfungiblePositionManager.CollectParams memory params)
-        external
-        payable
-        returns (uint256 amount0, uint256 amount1);
+    function collect(
+        NonfungiblePositionManager.CollectParams memory params
+    ) external payable returns (uint256 amount0, uint256 amount1);
 
-    function decreaseLiquidity(NonfungiblePositionManager.DecreaseLiquidityParams memory params)
-        external
-        payable
-        returns (uint256 amount0, uint256 amount1);
+    function decreaseLiquidity(
+        NonfungiblePositionManager.DecreaseLiquidityParams memory params
+    ) external payable returns (uint256 amount0, uint256 amount1);
 
-    function mint(NonfungiblePositionManager.MintParams memory params)
-        external
-        payable
-        returns (uint256 tokenId, uint128 liquidity, uint256 amount0, uint256 amount1);
+    function mint(
+        NonfungiblePositionManager.MintParams memory params
+    ) external payable returns (uint256 tokenId, uint128 liquidity, uint256 amount0, uint256 amount1);
 }
 
 interface ISmartVaultManagerV2 {
@@ -85,10 +82,9 @@ interface ISwapRouter {
 }
 
 interface ICamelotRouter {
-    function exactInputSingle(ISwapRouter.ExactInputSingleParams memory params)
-        external
-        payable
-        returns (uint256 amountOut);
+    function exactInputSingle(
+        ISwapRouter.ExactInputSingleParams memory params
+    ) external payable returns (uint256 amountOut);
 }
 
 contract ContractTest is Test {
@@ -195,7 +191,9 @@ contract ContractTest is Test {
         PositionsNFT.decreaseLiquidity(params);
     }
 
-    function collectWBTC_PAXG(uint256 _tokenId) internal {
+    function collectWBTC_PAXG(
+        uint256 _tokenId
+    ) internal {
         NonfungiblePositionManager.CollectParams memory params = NonfungiblePositionManager.CollectParams({
             tokenId: _tokenId,
             recipient: address(this),
@@ -218,7 +216,9 @@ contract ContractTest is Test {
         RouterV3.exactInputSingle(params);
     }
 
-    function USDCToWBTC(uint24 _fee) internal {
+    function USDCToWBTC(
+        uint24 _fee
+    ) internal {
         Uni_Router_V3.ExactOutputSingleParams memory params = Uni_Router_V3.ExactOutputSingleParams({
             tokenIn: address(USDC),
             tokenOut: address(WBTC),

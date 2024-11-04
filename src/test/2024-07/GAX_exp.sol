@@ -16,7 +16,7 @@ contract ContractTest is Test {
     address VulnContract_addr = 0xdb4b73Df2F6dE4AFCd3A883efE8b7a4B0763822b;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 40375925 - 1);
+        vm.createSelectFork("bsc", 40_375_925 - 1);
         vm.label(address(BUSD), "BUSD");
         vm.label(address(GAX), "GAX");
         vm.label(address(VulnContract_addr), "VulnContract");

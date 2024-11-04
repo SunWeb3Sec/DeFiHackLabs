@@ -16,11 +16,15 @@ import "./../interface.sol";
 interface IRewardVaultDelegator {
     function initialize(address bnftRegistry, address vrfCoordinator, uint64 subscriptionId) external;
 
-    function setImplementation(address implementation) external;
+    function setImplementation(
+        address implementation
+    ) external;
 
     function admin() external view returns (address);
 
-    function a(address addr) external;
+    function a(
+        address addr
+    ) external;
 }
 
 contract ContractTest is Test {
@@ -96,7 +100,9 @@ contract ContractTest is Test {
         );
     }
 
-    function a(address addr) external {
+    function a(
+        address addr
+    ) external {
         address[] memory victims = new address[](6);
         address[] memory tokens = new address[](6);
 

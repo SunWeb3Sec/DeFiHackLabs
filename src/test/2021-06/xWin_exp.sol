@@ -26,8 +26,12 @@ interface IBank {
 }
 
 interface IxWinDefi {
-    function Subscribe(TradeParams memory _tradeParams) external payable;
-    function Redeem(TradeParams memory _tradeParams) external payable;
+    function Subscribe(
+        TradeParams memory _tradeParams
+    ) external payable;
+    function Redeem(
+        TradeParams memory _tradeParams
+    ) external payable;
     function WithdrawReward() external payable;
 }
 

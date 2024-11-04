@@ -84,7 +84,9 @@ Explanation by: Kayaba-Attribution
 */
 
 interface ICarrot is IERC20 {
-    function transReward(bytes memory data) external;
+    function transReward(
+        bytes memory data
+    ) external;
 }
 
 contract ContractTest is Test {

@@ -108,7 +108,9 @@ contract ContractTest is Test {
 
     mapping(address => uint256) public balances;
 
-    function balanceOf(address account) public view virtual returns (uint256) {
+    function balanceOf(
+        address account
+    ) public view virtual returns (uint256) {
         return balances[account];
     }
 

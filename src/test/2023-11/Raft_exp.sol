@@ -17,7 +17,9 @@ import "./../interface.sol";
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1723229393529835972
 
 interface IPRM {
-    function liquidate(address position) external;
+    function liquidate(
+        address position
+    ) external;
 
     struct ERC20PermitSignature {
         address token;
@@ -112,7 +114,7 @@ contract ContractTest is Test {
         assets[0] = address(cbETH);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = 6000 ether;
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
         aaveV3.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
 

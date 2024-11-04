@@ -23,5 +23,7 @@ interface IERC721Metadata is IERC721 {
     /**
      * @dev Returns the Uniform Resource Identifier (URI) for `tokenId` token.
      */
-    function tokenURI(uint256 tokenId) external view returns (string memory);
+    function tokenURI(
+        uint256 tokenId
+    ) external view returns (string memory);
 }

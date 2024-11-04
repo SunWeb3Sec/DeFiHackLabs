@@ -35,7 +35,7 @@ contract ContractTest is Test {
         console.log("Before Start: %d WETH", startWETH);
         address[] memory tokens = new address[](1);
         tokens[0] = address(WETH);
-        uint256[] memory amounts = new uint[](1);
+        uint256[] memory amounts = new uint256[](1);
         amounts[0] = amount;
         Balancer.flashLoan(address(this), tokens, amounts, "");
 
@@ -50,7 +50,7 @@ contract ContractTest is Test {
         uint256[] memory feeAmounts,
         bytes memory userData
     ) external {
-        address[] memory path = new address [](2);
+        address[] memory path = new address[](2);
         (path[0], path[1]) = (address(WETH), address(pEth));
         UniRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
             amounts[0], 0, path, address(this), type(uint256).max

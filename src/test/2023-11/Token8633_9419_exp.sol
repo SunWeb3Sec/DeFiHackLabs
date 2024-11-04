@@ -10,7 +10,9 @@ import "forge-std/Test.sol";
 // Attack Tx : https://explorer.phalcon.xyz/tx/bsc/0xf6ec3c22b718c3da17746416992bac7b65a4ef42ccf5b43cf0716c82bffc2844
 
 interface IERC20 {
-    function balanceOf(address) external view returns (uint256);
+    function balanceOf(
+        address
+    ) external view returns (uint256);
     function transfer(address, uint256) external returns (bool);
     function approve(address, uint256) external returns (bool);
     function transferFrom(address, address, uint256) external returns (bool);

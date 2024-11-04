@@ -23,9 +23,15 @@ import "./../interface.sol";
 // ACai Article (in Chinese) : https://www.cnblogs.com/ACaiGarden/p/16872933.html
 
 interface IMintableAutoCompundRelockBonus {
-    function setToken(address) external;
-    function stake(uint256) external;
-    function withdraw(uint256) external;
+    function setToken(
+        address
+    ) external;
+    function stake(
+        uint256
+    ) external;
+    function withdraw(
+        uint256
+    ) external;
 }
 
 contract ContractTest is Test {
@@ -125,13 +131,17 @@ contract SHITCOIN {
         return true;
     }
 
-    function mint(uint256 amount) external {
+    function mint(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] += amount;
         totalSupply += amount;
         emit Transfer(address(0), msg.sender, amount);
     }
 
-    function burn(uint256 amount) external {
+    function burn(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] -= amount;
         totalSupply -= amount;
         emit Transfer(msg.sender, address(0), amount);

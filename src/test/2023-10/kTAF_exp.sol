@@ -14,9 +14,13 @@ import "./../interface.sol";
 // https://defimon.xyz/attack/mainnet/0x325999373f1aae98db2d89662ff1afbe0c842736f7564d16a7b52bf5c777d3a4
 
 interface ICErc20Immutable {
-    function borrow(uint256 borrowAmount) external returns (uint256);
+    function borrow(
+        uint256 borrowAmount
+    ) external returns (uint256);
 
-    function borrowBalanceStored(address account) external view returns (uint256);
+    function borrowBalanceStored(
+        address account
+    ) external view returns (uint256);
 
     function liquidateBorrow(
         address borrower,
@@ -32,7 +36,9 @@ interface IComptroller {
         uint256 actualRepayAmount
     ) external view returns (uint256, uint256);
 
-    function enterMarkets(address[] memory cTokens) external returns (uint256[] memory);
+    function enterMarkets(
+        address[] memory cTokens
+    ) external returns (uint256[] memory);
 }
 
 contract ContractTest is Test {

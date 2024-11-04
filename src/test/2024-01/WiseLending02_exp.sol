@@ -122,7 +122,9 @@ contract WiseLendingTest is Test {
 }
 
 interface Pool {
-    function depositExactAmount(uint256 _underlyingLpAssetAmount) external returns (uint256, uint256);
+    function depositExactAmount(
+        uint256 _underlyingLpAssetAmount
+    ) external returns (uint256, uint256);
     function getPositionLendingShares(uint256, address) external returns (uint256);
 }
 
@@ -136,7 +138,9 @@ interface Oracle {
         view
         returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
 
-    function getRoundData(uint80 _roundId)
+    function getRoundData(
+        uint80 _roundId
+    )
         external
         view
         returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
@@ -157,10 +161,9 @@ interface IWiseLending {
 
     function borrowExactAmount(uint256 _nftId, address _poolToken, uint256 _amount) external returns (uint256);
 
-    function lendingPoolData(address _poolToken)
-        external
-        view
-        returns (uint256 pseudoTotalPool, uint256 totalDepositShares, uint256 collateralFactor);
+    function lendingPoolData(
+        address _poolToken
+    ) external view returns (uint256 pseudoTotalPool, uint256 totalDepositShares, uint256 collateralFactor);
 }
 
 interface IWiseSecurity {

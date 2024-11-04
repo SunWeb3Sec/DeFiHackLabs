@@ -64,7 +64,9 @@ interface IGovernence {
         uint16 _maxInProgressProposals,
         address _guardianAddress
     ) external;
-    function evaluateProposalOutcome(uint256 _proposalId) external returns (Outcome);
+    function evaluateProposalOutcome(
+        uint256 _proposalId
+    ) external returns (Outcome);
     function submitProposal(
         bytes32 _targetContractRegistryKey,
         uint256 _callValue,
@@ -86,7 +88,9 @@ interface IDelegateManagerV2 {
         address _governanceAddress,
         uint256 _undelegateLockupDuration
     ) external;
-    function setServiceProviderFactoryAddress(address _spFactory) external;
+    function setServiceProviderFactoryAddress(
+        address _spFactory
+    ) external;
     function delegateStake(address _targetSP, uint256 _amount) external returns (uint256);
 }
 
@@ -176,7 +180,9 @@ contract AttackContract is Test {
     }
 
     /* Tx1 callback functions */
-    function getContract(bytes32 _targetContractRegistryKey) external returns (address) {
+    function getContract(
+        bytes32 _targetContractRegistryKey
+    ) external returns (address) {
         return AUDIO;
     }
 
@@ -196,7 +202,9 @@ contract AttackContract is Test {
         return true;
     }
 
-    function validateAccountStakeBalance(address) external pure {}
+    function validateAccountStakeBalance(
+        address
+    ) external pure {}
 
     receive() external payable {}
 }

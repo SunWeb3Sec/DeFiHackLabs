@@ -93,7 +93,7 @@ contract ContractTest is Test {
         assets[0] = address(WBTC);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = 2300 * 1e8;
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
 
         AaveV3.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
@@ -130,7 +130,7 @@ contract ContractTest is Test {
                 assets[0] = address(WBTC);
                 uint256[] memory amounts = new uint256[](1);
                 amounts[0] = 2000 * 1e8;
-                uint256[] memory modes = new uint[](1);
+                uint256[] memory modes = new uint256[](1);
                 modes[0] = 0x0;
 
                 HopeLend.flashLoan(address(this), assets, amounts, modes, address(this), "", 0x0);
@@ -147,11 +147,11 @@ contract ContractTest is Test {
             HopeLend.borrow(address(HOPE), HOPEBalance, 2, 0, address(this));
             HopeLend.borrow(address(stHOPE), stHOPEBalance, 2, 0, address(this));
 
-            address[] memory path = new address [](2);
+            address[] memory path = new address[](2);
             (path[0], path[1]) = (address(stHOPE), address(HOPE));
             UniRouter02.swapExactTokensForTokens(stHOPEBalance, 0, path, address(this), type(uint256).max);
 
-            address[] memory path1 = new address [](2);
+            address[] memory path1 = new address[](2);
             (path1[0], path1[1]) = (address(HOPE), address(USDT));
             UniRouter02.swapExactTokensForTokens(
                 HOPE.balanceOf(address(this)), 0, path1, address(this), block.timestamp + 10_000

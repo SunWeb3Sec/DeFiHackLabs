@@ -42,16 +42,24 @@ contract Exploit is Test {
 interface IERC20 {
     function transfer(address to, uint256 amount) external returns (bool);
     function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
     function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 
-    function deliver(uint256 tAmount) external;
+    function deliver(
+        uint256 tAmount
+    ) external;
 }
 
 interface WETH9 {
     function deposit() external payable;
     function transfer(address to, uint256 value) external returns (bool);
     function approve(address guy, uint256 wad) external returns (bool);
-    function withdraw(uint256 wad) external;
-    function balanceOf(address) external view returns (uint256);
+    function withdraw(
+        uint256 wad
+    ) external;
+    function balanceOf(
+        address
+    ) external view returns (uint256);
 }

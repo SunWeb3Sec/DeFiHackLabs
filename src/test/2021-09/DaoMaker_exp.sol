@@ -17,7 +17,9 @@ import "./../interface.sol";
 
 interface DAOMaker {
     function init(uint256, uint256[] calldata, uint256[] calldata, address) external;
-    function emergencyExit(address) external;
+    function emergencyExit(
+        address
+    ) external;
 }
 
 contract ContractTest is Test {

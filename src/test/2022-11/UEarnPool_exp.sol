@@ -27,26 +27,36 @@ import "./../interface.sol";
 // rewrad: 162_000 = 1_200_000 * 0.1 + 600_000 * 0.05 + 300_000 * 0.03 + 300_000 * 0.01
 
 interface UEarnPool {
-    function bindInvitor(address invitor) external;
+    function bindInvitor(
+        address invitor
+    ) external;
     function stake(uint256 pid, uint256 amount) external;
-    function claimTeamReward(address account) external;
+    function claimTeamReward(
+        address account
+    ) external;
 }
 
 contract claimReward {
     UEarnPool Pool = UEarnPool(0x02D841B976298DCd37ed6cC59f75D9Dd39A3690c);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
 
-    function bind(address invitor) external {
+    function bind(
+        address invitor
+    ) external {
         Pool.bindInvitor(invitor);
     }
 
-    function stakeAndClaimReward(uint256 amount) external {
+    function stakeAndClaimReward(
+        uint256 amount
+    ) external {
         USDT.approve(address(address(Pool)), type(uint256).max);
         Pool.stake(0, amount);
         Pool.claimTeamReward(address(this));
     }
 
-    function withdraw(address receiver) external {
+    function withdraw(
+        address receiver
+    ) external {
         USDT.transfer(receiver, USDT.balanceOf(address(this)));
     }
 }
