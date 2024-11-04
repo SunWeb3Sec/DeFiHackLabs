@@ -35,7 +35,7 @@ contract ContractTest is Test {
         bool zeroForOne = true;
         uint160 sqrtPriceLimitX96 = 4_295_128_740;
         bytes memory data = abi.encodePacked(uint8(0x61));
-        int256 amountSpecified = 21000 * 1e18;
+        int256 amountSpecified = 21_000 * 1e18;
         PHILTOWBNB.swap(address(this), zeroForOne, amountSpecified, sqrtPriceLimitX96, data);
     }
 

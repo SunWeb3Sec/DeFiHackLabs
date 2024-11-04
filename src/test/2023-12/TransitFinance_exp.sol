@@ -97,7 +97,9 @@ contract ContractTest is Test {
 
 interface ITransitRouter {
     function transitFee() external view returns (uint256, uint256);
-    function exactInputV3Swap(ExactInputV3SwapParams calldata params) external payable returns (uint256 returnAmount);
+    function exactInputV3Swap(
+        ExactInputV3SwapParams calldata params
+    ) external payable returns (uint256 returnAmount);
 }
 
 interface IUniswapV3Pool {

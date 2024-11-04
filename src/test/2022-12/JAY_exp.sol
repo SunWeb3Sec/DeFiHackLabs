@@ -26,8 +26,12 @@ interface IJay {
         uint256[] memory erc1155Ids,
         uint256[] memory erc1155Amounts
     ) external payable;
-    function sell(uint256 value) external;
-    function balanceOf(address account) external view returns (uint256);
+    function sell(
+        uint256 value
+    ) external;
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
 }
 
 contract ContractTest is Test {

