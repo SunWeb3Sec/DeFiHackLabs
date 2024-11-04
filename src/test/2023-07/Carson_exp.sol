@@ -86,7 +86,9 @@ contract CarsonTest is Test {
         );
     }
 
-    function CarsonToBUSDT(uint256 amount) internal {
+    function CarsonToBUSDT(
+        uint256 amount
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(Carson);
         path[1] = address(BUSDT);

@@ -47,7 +47,9 @@ contract ContractTest is Test {
         WBNB.approve(address(router), type(uint256).max);
     }
 
-    function EnableSwitch(bool state) internal {
+    function EnableSwitch(
+        bool state
+    ) internal {
         vm.prank(SATURN_creater);
         address(SATURN).call(abi.encodeWithSignature("setEnableSwitch(bool)", state));
     }

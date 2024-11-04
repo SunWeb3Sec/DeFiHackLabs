@@ -10,7 +10,9 @@ import "./../interface.sol";
 // https://snowtrace.io/tx/0xc6fb8217e45870a93c25e2098f54f6e3b24674a3083c30664867de474bf0212d
 
 interface LSWUSDC {
-    function maxFlashLoan(address token) external view returns (uint256);
+    function maxFlashLoan(
+        address token
+    ) external view returns (uint256);
     function flashFee(address token, uint256 amount) external view returns (uint256);
     function flashLoan(address receiver, address token, uint256 amount, bytes calldata data) external;
     function deposit(uint256 amount, address to) external returns (uint256);

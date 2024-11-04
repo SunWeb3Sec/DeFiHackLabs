@@ -13,7 +13,9 @@ import "./../interface.sol";
 // Twitter Guy : https://twitter.com/leovctech/status/1699775506785198499
 
 interface ICoinToken {
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
 
     function transfer(address recipient, uint256 amount) external returns (bool);
 
@@ -23,7 +25,9 @@ interface ICoinToken {
 
     function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 
-    function burn(uint256 _value) external;
+    function burn(
+        uint256 _value
+    ) external;
 
     event Transfer(address indexed from, address indexed to, uint256 value);
 

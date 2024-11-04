@@ -29,8 +29,12 @@ interface ICurve {
 }
 
 interface IYVDai {
-    function balanceOf(address) external view returns (uint256);
-    function deposit(uint256 _amount) external;
+    function balanceOf(
+        address
+    ) external view returns (uint256);
+    function deposit(
+        uint256 _amount
+    ) external;
     function earn() external;
     function withdrawAll() external;
 }

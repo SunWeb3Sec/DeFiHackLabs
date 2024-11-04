@@ -76,7 +76,9 @@ contract BFCTest is Test {
 
     receive() external payable {}
 
-    function swapBUSDTToBFC(uint256 amountIn) internal {
+    function swapBUSDTToBFC(
+        uint256 amountIn
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(BUSDT);
         path[1] = address(BFC);

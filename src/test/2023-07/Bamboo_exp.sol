@@ -37,7 +37,9 @@ contract BambooTest is Test {
         vm.label(address(router), "PancakeRouter");
     }
 
-    function toEth(uint256 _wei) internal returns (string memory) {
+    function toEth(
+        uint256 _wei
+    ) internal returns (string memory) {
         string memory eth = vm.toString(_wei / 1 ether);
         string memory decs = vm.toString(_wei % 1 ether);
 

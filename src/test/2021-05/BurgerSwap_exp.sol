@@ -100,7 +100,9 @@ contract FAKE_TOKEN {
     Exploit private immutable exploit;
     bool private isExploiting;
 
-    constructor(address main) {
+    constructor(
+        address main
+    ) {
         balanceOf[main] = 99 ether;
         exploit = Exploit(main);
     }
@@ -139,7 +141,9 @@ contract FAKE_TOKEN {
 interface IERC20 {
     function transfer(address to, uint256 amount) external returns (bool);
     function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
     function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 }
 
@@ -174,8 +178,12 @@ interface IDemaxDelegate {
 }
 
 interface IUniswapV2Pair {
-    function balanceOf(address) external view returns (uint256);
-    function skim(address to) external;
+    function balanceOf(
+        address
+    ) external view returns (uint256);
+    function skim(
+        address to
+    ) external;
     function sync() external;
     function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes memory data) external;
 }

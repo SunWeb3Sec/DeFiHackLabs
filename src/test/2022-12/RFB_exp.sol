@@ -43,14 +43,18 @@ contract ContractTest is Test {
         WBNB.transfer(dodo, 20 * 1e18);
     }
 
-    function check(uint256 amount) public payable {
+    function check(
+        uint256 amount
+    ) public payable {
         uint256 BNBBalance = address(this).balance;
         BNBToRFB(amount);
         RFBToBNB();
         require(address(this).balance - BNBBalance > 0);
     }
 
-    function BNBToRFB(uint256 amount) public payable {
+    function BNBToRFB(
+        uint256 amount
+    ) public payable {
         address[] memory path = new address[](2);
         path[0] = address(WBNB);
         path[1] = address(RFB);

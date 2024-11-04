@@ -4,7 +4,9 @@ import "forge-std/Test.sol";
 import "./../interface.sol";
 
 interface TargetClaim {
-    function claim(address) external;
+    function claim(
+        address
+    ) external;
 }
 
 interface TargetWithdraw {

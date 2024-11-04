@@ -11,9 +11,13 @@ import "./../interface.sol";
 // forge test --contracts ./src/test/NovaExchange_exp.sol -vv
 
 interface INovaExchange {
-    function rewardHolders(uint256 amount) external;
+    function rewardHolders(
+        uint256 amount
+    ) external;
 
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
 
     function approve(address spender, uint256 value) external returns (bool);
 }

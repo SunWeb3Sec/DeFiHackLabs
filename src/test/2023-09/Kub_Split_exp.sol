@@ -20,7 +20,9 @@ interface IStakingRewards {
 }
 
 interface ISplit is IERC20 {
-    function setPair(address token) external;
+    function setPair(
+        address token
+    ) external;
 }
 
 contract ContractTest is Test {

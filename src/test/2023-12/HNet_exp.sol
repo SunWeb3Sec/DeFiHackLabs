@@ -28,13 +28,19 @@ interface IForwarder {
         bytes data;
     }
 
-    function getNonce(address from) external view returns (uint256);
+    function getNonce(
+        address from
+    ) external view returns (uint256);
     function execute(ForwardRequest memory req, bytes memory signature) external payable returns (bool, bytes memory);
 }
 
 interface IHNet is IERC20 {
-    function burn(uint256 amount) external;
-    function multicall(bytes[] memory data) external returns (bytes[] memory results);
+    function burn(
+        uint256 amount
+    ) external;
+    function multicall(
+        bytes[] memory data
+    ) external returns (bytes[] memory results);
 }
 
 contract ContractTest is Test {
@@ -47,7 +53,7 @@ contract ContractTest is Test {
     address attacker = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 34_141_220 -1);
+        vm.createSelectFork("bsc", 34_141_220 - 1);
         vm.label(address(HNet), "HNet");
     }
 

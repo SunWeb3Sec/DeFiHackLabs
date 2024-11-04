@@ -12,20 +12,30 @@ import "./../interface.sol";
 
 interface NimbusBNB is IERC20 {
     function deposit() external payable;
-    function withdraw(uint256 wad) external;
+    function withdraw(
+        uint256 wad
+    ) external;
 }
 
 interface StakingRewardFixedAPY is IERC20 {
-    function stake(uint256 amount) external;
+    function stake(
+        uint256 amount
+    ) external;
     function getReward() external;
     function withdraw() external;
-    function earned(address account) external view returns (uint256);
+    function earned(
+        address account
+    ) external view returns (uint256);
 }
 
 interface LockStakingRewardFixedAPY {
-    function stake(uint256 amount) external;
+    function stake(
+        uint256 amount
+    ) external;
     function getReward() external;
-    function earned(address account) external view returns (uint256);
+    function earned(
+        address account
+    ) external view returns (uint256);
 }
 
 contract ContractTest is Test {

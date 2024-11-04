@@ -9,7 +9,6 @@ import "./../interface.sol";
  * - https://twitter.com/kayaba2002
  * - https://twitter.com/eugenioclrc
  */
-
 interface Structs {
     struct Val {
         uint256 value;
@@ -25,14 +24,17 @@ interface Structs {
         Liquidate, // liquidate an undercollateralized or expiring account
         Vaporize, // use excess tokens to zero-out a completely negative account
         Call // send arbitrary data to an address
+
     }
 
     enum AssetDenomination {
         Wei // the amount is denominated in wei
+
     }
 
     enum AssetReference {
         Delta // the amount is given as a delta from the current value
+
     }
 
     struct AssetAmount {

