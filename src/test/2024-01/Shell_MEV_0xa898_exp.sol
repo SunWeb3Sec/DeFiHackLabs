@@ -10,7 +10,6 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
-
 contract ContractTest is Test {
     event TokenBalance(string key, uint256 val);
 
@@ -63,6 +62,7 @@ contract ContractTest is Test {
             SHELL.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
     }
+
     fallback() external payable {}
     receive() external payable {}
 }

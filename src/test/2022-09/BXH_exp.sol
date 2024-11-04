@@ -156,17 +156,23 @@ interface TokenStakingPoolDelegate {
 
     function adminAddress() external view returns (address);
 
-    function batchPrepareRewardTable(uint256 spareCount) external returns (uint256);
+    function batchPrepareRewardTable(
+        uint256 spareCount
+    ) external returns (uint256);
 
     function claimAllReward() external;
 
-    function claimBylpToken(address _lpToken) external;
+    function claimBylpToken(
+        address _lpToken
+    ) external;
 
     function decayPeriod() external view returns (uint256);
 
     function decayRatio() external view returns (uint256);
 
-    function decayTable(uint256) external view returns (uint256);
+    function decayTable(
+        uint256
+    ) external view returns (uint256);
 
     function delegateCaller() external view returns (address);
 
@@ -174,9 +180,13 @@ interface TokenStakingPoolDelegate {
 
     function depositByDelegate(uint256 _pid, address _toUser, uint256 _amount) external;
 
-    function emergencyWithdraw(uint256 _pid) external;
+    function emergencyWithdraw(
+        uint256 _pid
+    ) external;
 
-    function getITokenBlockRewardV(uint256 _lastRewardBlock) external view returns (uint256);
+    function getITokenBlockRewardV(
+        uint256 _lastRewardBlock
+    ) external view returns (uint256);
 
     function getITokenBlockRewardV(uint256 _lastRewardBlock, uint256 blocknumber) external view returns (uint256);
 
@@ -196,13 +206,19 @@ interface TokenStakingPoolDelegate {
 
     function pending(uint256 _pid, address _user) external view returns (uint256, uint256);
 
-    function pendingAllReward(address _user) external view returns (uint256, uint256);
+    function pendingAllReward(
+        address _user
+    ) external view returns (uint256, uint256);
 
     function pendingBylpToken(address _lpToken, address _user) external view returns (uint256, uint256);
 
-    function phase(uint256 blockNumber) external view returns (uint256);
+    function phase(
+        uint256 blockNumber
+    ) external view returns (uint256);
 
-    function poolInfo(uint256)
+    function poolInfo(
+        uint256
+    )
         external
         view
         returns (
@@ -223,13 +239,19 @@ interface TokenStakingPoolDelegate {
 
     function renounceOwnership() external;
 
-    function rewardV(uint256 blockNumber) external view returns (uint256);
+    function rewardV(
+        uint256 blockNumber
+    ) external view returns (uint256);
 
-    function safeGetITokenBlockReward(uint256 _lastRewardBlock) external returns (uint256);
+    function safeGetITokenBlockReward(
+        uint256 _lastRewardBlock
+    ) external returns (uint256);
 
     function set(uint256 _pid, uint256 _allocPoint, bool _withUpdate) external;
 
-    function setAdmin(address _adminAddress) external;
+    function setAdmin(
+        address _adminAddress
+    ) external;
 
     function setBonus(
         uint256 _pid,
@@ -239,17 +261,25 @@ interface TokenStakingPoolDelegate {
         uint256 _lockSeconds
     ) external;
 
-    function setDecayPeriod(uint256 _block) external;
+    function setDecayPeriod(
+        uint256 _block
+    ) external;
 
-    function setDecayRatio(uint256 _ratio) external;
+    function setDecayRatio(
+        uint256 _ratio
+    ) external;
 
     function setDelegate(bool open, address caller) external;
 
-    function setPause(bool _paused) external;
+    function setPause(
+        bool _paused
+    ) external;
 
     function setPoolDepositLimited(uint256 _pid, uint256 _depositMin, uint256 _depositMax) external;
 
-    function setTokenPerBlock(uint256 _newPerBlock) external;
+    function setTokenPerBlock(
+        uint256 _newPerBlock
+    ) external;
 
     function startBlock() external view returns (uint256);
 
@@ -257,9 +287,13 @@ interface TokenStakingPoolDelegate {
 
     function totalAllocPoint() external view returns (uint256);
 
-    function transferOwnership(address newOwner) external;
+    function transferOwnership(
+        address newOwner
+    ) external;
 
-    function updatePool(uint256 _pid) external;
+    function updatePool(
+        uint256 _pid
+    ) external;
 
     function userDepositInfo(uint256, address, uint256) external view returns (uint256 orderTime, uint256 amount);
 

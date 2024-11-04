@@ -11,7 +11,6 @@ import "./../interface.sol";
 
 // GUY : https://x.com/ChainAegis/status/1802550962977964139
 
-
 interface WIFStaking is IERC20 {
     function stake(uint256 _stakingId, uint256 _amount) external;
     function claimEarned(uint256 _stakingId, uint256 _burnRate) external;

@@ -65,7 +65,9 @@ contract GPUExploit is Test {
         );
     }
 
-    function getBalance(IERC20 token) private view returns (uint256) {
+    function getBalance(
+        IERC20 token
+    ) private view returns (uint256) {
         return token.balanceOf(address(this));
     }
 }

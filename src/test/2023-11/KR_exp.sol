@@ -10,7 +10,9 @@ import "forge-std/Test.sol";
 import "./../interface.sol";
 
 interface IKR is IERC20 {
-    function sellKr(uint256 tokenToSell) external;
+    function sellKr(
+        uint256 tokenToSell
+    ) external;
 }
 
 contract ContractTest is Test {
