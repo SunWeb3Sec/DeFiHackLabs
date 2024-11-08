@@ -20,7 +20,7 @@ Transaction Viewer 這類工具是最常用的，可以幫助我們針對想要�
 
 #### 鏈支援度比較
 
-Phalcon： `Ethereum、BSC、Cronos、Avalanche C-Chain、Polygon`
+Phalcon： `Ethereum、BSC、Avalanche C-Chain、Polygon、Solana、Arbitrum、Fantom、Optimism、Base、Linea、zkSync Era、Kava、Evmos、Merlin、Manta、Mantle、Holesky testnet、Sepolia testnet`
 
 Sam's Transaction viewer： `Ethereum、Polygon、BSC、Avalanche C-Chain、Fantom、Arbitrum、Optimism`
 

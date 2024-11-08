@@ -23,7 +23,7 @@ Antes de entrar en el análisis, permíteme presentarte algunas herramientas hab
 Transaction Viewer (`Tx.viewer`) es la herramienta más utilizada, es capaz de listar el "stack trace" de las llamadas a funciones y los datos de entrada en cada función durante la transacción. Las herramientas de inspección o análisis de transacciones son todas similares; la mayor diferencia es el soporte de diferentes cadenas y el soporte de funciones auxiliares. Yo personalmente uso `Phalcon` y el Transaction Viewer de Sam. Si encuentro cadenas no soportadas, utilizo `Tenderly`. Tenderly soporta la mayoría de las cadenas, pero la legibilidad es más limitada, y el análisis puede ser lento usando su función de "Debug". Sin embargo, es una de las primeras herramientas que aprendí junto con `Ethtx`.
 
 #### Comparación del Soporte de Diferentes Cadenas
-- Phalcon： `Ethereum, BSC, Cronos, Avalanche C-Chain, Polygon`
+- Phalcon： `Ethereum、BSC、Avalanche C-Chain、Polygon、Solana、Arbitrum、Fantom、Optimism、Base、Linea、zkSync Era、Kava、Evmos、Merlin、Manta、Mantle、Holesky testnet、Sepolia testnet`
 
 - Sam's Transaction viewer： `Ethereum, Polygon, BSC, Avalanche C-Chain, Fantom, Arbitrum, Optimism`
 

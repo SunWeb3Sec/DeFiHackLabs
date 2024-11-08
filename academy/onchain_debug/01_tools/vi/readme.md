@@ -23,7 +23,7 @@ Các công cụ xem giao dịch (Transaction Viewers) được sử dụng phổ
 
 #### So sánh các chain hỗ trợ (của các Transaction Viewer)
 
-Phalcon： `Ethereum、BSC、Cronos、Avalanche C-Chain、Polygon`
+Phalcon： `Ethereum、BSC、Avalanche C-Chain、Polygon、Solana、Arbitrum、Fantom、Optimism、Base、Linea、zkSync Era、Kava、Evmos、Merlin、Manta、Mantle、Holesky testnet、Sepolia testnet`
 
 Sam's Transaction viewer： `Ethereum、Polygon、BSC、Avalanche C-Chain、Fantom、Arbitrum、Optimism`
 
