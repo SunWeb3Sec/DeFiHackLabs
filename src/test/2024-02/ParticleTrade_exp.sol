@@ -23,7 +23,9 @@ interface IParticleExchange {
     function swapWithEth(Lien calldata lien, uint256 lienId) external;
     function onERC721Received(address, address from, uint256 tokenId, bytes calldata data) external returns (bytes4);
     function withdrawAccountBalance() external;
-    function accountBalance(address account) external returns (uint256 balance);
+    function accountBalance(
+        address account
+    ) external returns (uint256 balance);
 
     struct Lien {
         address lender; // NFT supplier address
@@ -97,7 +99,9 @@ contract ContractTest is Test {
         emit log_named_decimal_uint("Attacker Eth balance after attack:", address(this).balance, 18);
     }
 
-    function ownerOf(uint256 tokenId) external returns (address owner) {
+    function ownerOf(
+        uint256 tokenId
+    ) external returns (address owner) {
         return ownerofaddr;
     }
 
@@ -106,6 +110,5 @@ contract ContractTest is Test {
         return;
     }
 
-    receive() external payable {
-    }
+    receive() external payable {}
 }

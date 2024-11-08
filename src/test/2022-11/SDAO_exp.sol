@@ -11,14 +11,24 @@ import "./../interface.sol";
 // https://bscscan.com/tx/0xb3ac111d294ea9dedfd99349304a9606df0b572d05da8cedf47ba169d10791ed
 
 interface sDAO is IERC20 {
-    function stakeLP(uint256 _lpAmount) external;
-    function withdrawTeam(address _token) external;
+    function stakeLP(
+        uint256 _lpAmount
+    ) external;
+    function withdrawTeam(
+        address _token
+    ) external;
     function getPerTokenReward() external view returns (uint256);
-    function userLPStakeAmount(address account) external view returns (uint256);
-    function userRewardPerTokenPaid(address account) external view returns (uint256);
+    function userLPStakeAmount(
+        address account
+    ) external view returns (uint256);
+    function userRewardPerTokenPaid(
+        address account
+    ) external view returns (uint256);
     function totalStakeReward() external view returns (uint256);
     function lastTotalStakeReward() external view returns (uint256);
-    function pendingToken(address account) external view returns (uint256);
+    function pendingToken(
+        address account
+    ) external view returns (uint256);
     function getReward() external;
 }
 

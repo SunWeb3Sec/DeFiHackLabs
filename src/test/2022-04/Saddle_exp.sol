@@ -70,7 +70,9 @@ contract ContractTest is Test {
         console.log("USDC exchanged: %s", IERC20(usdc).balanceOf(address(this)));
     }
 
-    function swapToSaddle(uint256 amountStart) internal {
+    function swapToSaddle(
+        uint256 amountStart
+    ) internal {
         //Swap SUSD for SaddleUSDV2
         uint256 amount = amountStart;
         IERC20(susd).approve(saddlepool, amount);

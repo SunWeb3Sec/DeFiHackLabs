@@ -24,7 +24,11 @@ jobs:
         with:
           version: nightly
 
-      - name: Build 
+      - name: Format
+        run: forge fmt
+        id: fmt
+
+      - name: Build
         run: forge build
         id: build
 

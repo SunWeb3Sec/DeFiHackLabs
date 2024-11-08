@@ -18,7 +18,9 @@ import "./../interface.sol";
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1682356244299010049
 
 interface IConicEthPool {
-    function handleDepeggedCurvePool(address) external;
+    function handleDepeggedCurvePool(
+        address
+    ) external;
 
     function deposit(uint256 underlyingAmount, uint256 minLpReceived, bool stake) external returns (uint256);
 
@@ -26,7 +28,9 @@ interface IConicEthPool {
 }
 
 interface IGenericOracleV2 {
-    function getUSDPrice(address) external returns (uint256);
+    function getUSDPrice(
+        address
+    ) external returns (uint256);
 }
 
 interface ICurve {
@@ -105,7 +109,7 @@ contract ContractTest is Test {
         assets[0] = address(stETH);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = 20_000 ether;
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
         aaveV2.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
     }

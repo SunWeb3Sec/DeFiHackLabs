@@ -23,11 +23,15 @@ interface IPancakeRouterV3 {
         uint160 sqrtPriceLimitX96;
     }
 
-    function exactInputSingle(ExactInputSingleParams memory params) external payable returns (uint256 amountOut);
+    function exactInputSingle(
+        ExactInputSingleParams memory params
+    ) external payable returns (uint256 amountOut);
 }
 
 interface ILpMigration {
-    function migrate(uint256 amountLP) external;
+    function migrate(
+        uint256 amountLP
+    ) external;
 }
 
 contract ContractTest is Test {

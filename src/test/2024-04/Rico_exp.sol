@@ -70,7 +70,9 @@ contract Rico is Test {
         );
     }
 
-    function _getTransferData(address token) internal view returns (bytes memory data) {
+    function _getTransferData(
+        address token
+    ) internal view returns (bytes memory data) {
         uint256 tokenBalance = IERC20(token).balanceOf(BankDiamond);
         data = abi.encodeWithSelector(IERC20.transfer.selector, address(this), tokenBalance);
     }
@@ -83,7 +85,9 @@ contract Rico is Test {
         }
     }
 
-    function transferTokens(address token) internal {
+    function transferTokens(
+        address token
+    ) internal {
         IBankDiamond(BankDiamond).flash(token, _getTransferData(token));
     }
 
@@ -94,7 +98,9 @@ contract Rico is Test {
         }
     }
 
-    function swapTokens(address token) internal {
+    function swapTokens(
+        address token
+    ) internal {
         uint256 tokenBalance = IERC20(token).balanceOf(address(this));
         IERC20(token).approve(UniV3Router, tokenBalance);
 

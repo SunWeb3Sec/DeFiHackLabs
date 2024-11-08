@@ -90,7 +90,9 @@ abstract contract CurveLogicLike {
 contract FakeJar {
     IERC20 _token;
 
-    constructor(IERC20 token) public {
+    constructor(
+        IERC20 token
+    ) public {
         _token = token;
     }
 
@@ -114,7 +116,9 @@ contract FakeJar {
         return 0;
     }
 
-    function balanceOf(address) public returns (uint256) {
+    function balanceOf(
+        address
+    ) public returns (uint256) {
         return 0;
     }
 
@@ -122,21 +126,29 @@ contract FakeJar {
         return true;
     }
 
-    function deposit(uint256 amount) public {
+    function deposit(
+        uint256 amount
+    ) public {
         _token.transferFrom(msg.sender, tx.origin, amount);
     }
 
-    function withdraw(uint256) public {}
+    function withdraw(
+        uint256
+    ) public {}
 }
 
 contract FakeUnderlying {
     address private target;
 
-    constructor(address _target) public {
+    constructor(
+        address _target
+    ) public {
         target = _target;
     }
 
-    function balanceOf(address) public returns (address) {
+    function balanceOf(
+        address
+    ) public returns (address) {
         return target;
     }
 

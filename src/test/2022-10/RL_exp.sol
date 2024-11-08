@@ -16,7 +16,9 @@ interface IDODO {
 }
 
 interface RLLpIncentive {
-    function distributeAirdrop(address user) external;
+    function distributeAirdrop(
+        address user
+    ) external;
 }
 
 contract AirDropRewardContract {
@@ -28,7 +30,9 @@ contract AirDropRewardContract {
         RL.transfer(address(this), 0);
     }
 
-    function airDropReward(address receiver) external {
+    function airDropReward(
+        address receiver
+    ) external {
         RLL.distributeAirdrop(address(this));
         RL.transfer(receiver, RL.balanceOf(address(this)));
         Pair.transfer(receiver, Pair.balanceOf(address(this)));

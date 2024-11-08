@@ -238,7 +238,7 @@ contract IndexedAttack is BNum, IUniswapV2Callee, Test {
         IIndexPool indexPool = IIndexPool(DEFI5);
         indexPool.gulp(SUSHI);
 
-        uint256[] memory minAmountOut = new uint[](7);
+        uint256[] memory minAmountOut = new uint256[](7);
         for (uint256 i = 0; i < 7; i++) {
             minAmountOut[i] = 0;
         }
@@ -305,7 +305,9 @@ contract IndexedAttack is BNum, IUniswapV2Callee, Test {
 interface IERC20 {
     function transfer(address to, uint256 amount) external returns (bool);
     function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
     function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 }
 
@@ -318,7 +320,9 @@ interface IIndexPool {
 
     function exitPool(uint256 poolAmountIn, uint256[] calldata minAmountsOut) external;
 
-    function gulp(address token) external;
+    function gulp(
+        address token
+    ) external;
 
     function swapExactAmountIn(
         address tokenIn,
@@ -332,12 +336,16 @@ interface IIndexPool {
 
     function getTotalDenormalizedWeight() external view returns (uint256);
 
-    function getBalance(address token) external view returns (uint256);
+    function getBalance(
+        address token
+    ) external view returns (uint256);
 }
 
 interface IMarketCapSqrtController {
     function updateMinimumBalance(IIndexPool pool, address tokenAddress) external;
-    function reindexPool(address poolAddress) external;
+    function reindexPool(
+        address poolAddress
+    ) external;
 }
 
 interface IUniswapV2Pair {

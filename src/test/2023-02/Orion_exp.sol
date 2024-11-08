@@ -133,7 +133,9 @@ contract ATKToken is IERC20 {
     IERC20 USDT = IERC20(0xdAC17F958D2ee523a2206206994597C13D831ec7);
     ORION Orion = ORION(0xb5599f568D3f3e6113B286d010d2BCa40A7745AA);
 
-    constructor(address exploiter) {
+    constructor(
+        address exploiter
+    ) {
         mint(100 * 1e18);
         exp = exploiter;
     }
@@ -162,19 +164,27 @@ contract ATKToken is IERC20 {
         return true;
     }
 
-    function mint(uint256 amount) public {
+    function mint(
+        uint256 amount
+    ) public {
         balanceOf[msg.sender] += amount;
         totalSupply += amount;
         emit Transfer(address(0), msg.sender, amount);
     }
 
-    function burn(uint256 amount) external {
+    function burn(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] -= amount;
         totalSupply -= amount;
         emit Transfer(msg.sender, address(0), amount);
     }
 
-    function withdraw(uint256 wad) external {}
-    function deposit(uint256 wad) external returns (bool) {}
+    function withdraw(
+        uint256 wad
+    ) external {}
+    function deposit(
+        uint256 wad
+    ) external returns (bool) {}
     function owner() external view returns (address) {}
 }

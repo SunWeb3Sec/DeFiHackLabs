@@ -6,7 +6,9 @@ import "forge-std/Test.sol";
 import "./../interface.sol";
 
 interface BECToken {
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
     function batchTransfer(address[] calldata _receivers, uint256 _value) external returns (bool);
 }
 

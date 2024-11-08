@@ -87,7 +87,7 @@ contract ContractTest is Test {
         assets[0] = address(DAI);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = aaveFlashLoanAmount;
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
         bytes memory params =
             abi.encode(30_000_000, 200_000_000, 100_000_000, 44_000_000, address(DAI), address(eDAI), address(dDAI));

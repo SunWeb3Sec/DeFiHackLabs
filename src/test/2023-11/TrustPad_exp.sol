@@ -21,9 +21,13 @@ import "./../interface.sol";
 interface ILaunchpadLockableStaking {
     function receiveUpPool(address account, uint256 amount) external;
 
-    function withdraw(uint256 amount) external;
+    function withdraw(
+        uint256 amount
+    ) external;
 
-    function userInfo(address)
+    function userInfo(
+        address
+    )
         external
         view
         returns (
@@ -110,11 +114,15 @@ contract ContractTest is Test {
         );
     }
 
-    function isLocked(address account) external pure returns (bool) {
+    function isLocked(
+        address account
+    ) external pure returns (bool) {
         return true;
     }
 
-    function depositLockStart(address addr) external returns (uint256) {
+    function depositLockStart(
+        address addr
+    ) external returns (uint256) {
         (bool success,) =
             address(helperContract).delegatecall(abi.encodeWithSignature("depositLockStart(address)", addr));
         require(success, "Delegatecall to depositLockStart failed");
@@ -154,7 +162,9 @@ contract HelperContract is Test {
         require((withdrawAmount - _amount) == TPAD.balanceOf(address(this)));
     }
 
-    function depositLockStart(address addr) external returns (uint256) {
+    function depositLockStart(
+        address addr
+    ) external returns (uint256) {
         uint256 start;
         if (_depositLockStart != uint256(0)) {
             uint256 lockPeriod = LaunchpadLockableStaking.lockPeriod();

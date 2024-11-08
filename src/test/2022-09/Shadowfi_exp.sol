@@ -5,7 +5,9 @@ import "./../interface.sol";
 
 interface ISDF {
     function burn(address, uint256) external;
-    function balanceOf(address owner) external view returns (uint256);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256);
     function approve(address spender, uint256 value) external returns (bool);
 }
 

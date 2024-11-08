@@ -20,7 +20,9 @@ import "./../interface.sol";
 // https://twitter.com/chainlight_io/status/1603282848311480320
 
 interface VulContract {
-    function setAdmin(address) external;
+    function setAdmin(
+        address
+    ) external;
     function remaining(address, address) external;
 }
 

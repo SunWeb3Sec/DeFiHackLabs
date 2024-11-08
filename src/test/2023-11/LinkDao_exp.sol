@@ -18,7 +18,9 @@ import "forge-std/Test.sol";
 interface IUniswapV2Pair {
     event Transfer(address indexed from, address indexed to, uint256 value);
 
-    function balanceOf(address owner) external view returns (uint256);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256);
     function transfer(address to, uint256 value) external returns (bool);
 
     event Swap(

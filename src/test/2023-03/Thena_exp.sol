@@ -31,8 +31,12 @@ interface IVolatileV1 {
         bytes32 s
     ) external;
     function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
-    function burn(address to) external returns (uint256 amount0, uint256 amount1);
-    function mint(address to) external returns (uint256 liquidity);
+    function burn(
+        address to
+    ) external returns (uint256 amount0, uint256 amount1);
+    function mint(
+        address to
+    ) external returns (uint256 liquidity);
     function getReserves() external view returns (uint256 _reserve0, uint256 _reserve1, uint256 _blockTimestampLast);
     function getAmountOut(uint256, address) external view returns (uint256);
 
@@ -41,8 +45,12 @@ interface IVolatileV1 {
     function totalSupply() external view returns (uint256);
     function decimals() external view returns (uint8);
 
-    function claimable0(address _user) external view returns (uint256);
-    function claimable1(address _user) external view returns (uint256);
+    function claimable0(
+        address _user
+    ) external view returns (uint256);
+    function claimable1(
+        address _user
+    ) external view returns (uint256);
 
     function isStable() external view returns (bool);
 }

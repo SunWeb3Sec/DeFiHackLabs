@@ -31,12 +31,16 @@ interface ICurvePools is ICurvePool {
 }
 
 interface IDForce {
-    function borrowBalanceStored(address account) external returns (uint256);
+    function borrowBalanceStored(
+        address account
+    ) external returns (uint256);
     function liquidateBorrow(address _borrower, uint256 _repayAmount, address _assetCollateral) external;
 }
 
 interface IPriceOracleV2 {
-    function getUnderlyingPrice(address _asset) external returns (uint256);
+    function getUnderlyingPrice(
+        address _asset
+    ) external returns (uint256);
 }
 
 interface GMXVAULT {
@@ -162,7 +166,7 @@ contract ContractTest is Test {
         assets[0] = address(WETH);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = aaveV3FlashloanAmount;
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
         aaveV3.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
     }
@@ -192,7 +196,7 @@ contract ContractTest is Test {
         assets[0] = address(WETH);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = WETH.balanceOf(rWETH);
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
         emit log_named_decimal_uint("3.Radiant Flashloan WETH amount", amounts[0], WETH.decimals());
         Radiant.flashLoan(address(this), assets, amounts, modes, address(0), new bytes(1), 0);

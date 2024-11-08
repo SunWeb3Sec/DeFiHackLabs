@@ -17,9 +17,13 @@ interface ISilo {
 
     function borrow(address _asset, uint256 _amount) external returns (uint256 debtAmount, uint256 debtShare);
 
-    function assetStorage(address _asset) external view returns (IBaseSilo.AssetStorage memory);
+    function assetStorage(
+        address _asset
+    ) external view returns (IBaseSilo.AssetStorage memory);
 
-    function accrueInterest(address _asset) external returns (uint256 interest);
+    function accrueInterest(
+        address _asset
+    ) external returns (uint256 interest);
 }
 
 interface IBaseSilo {
@@ -51,7 +55,9 @@ contract OtherAccount {
 
     address owner;
 
-    constructor(ISilo _silo) {
+    constructor(
+        ISilo _silo
+    ) {
         owner = msg.sender;
         SILO = _silo;
     }

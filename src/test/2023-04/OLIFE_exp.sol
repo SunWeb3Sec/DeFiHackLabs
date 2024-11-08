@@ -15,8 +15,12 @@ import "./../interface.sol";
 
 interface IOceanLife {
     function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
-    function deliver(uint256 tAmount) external;
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
+    function deliver(
+        uint256 tAmount
+    ) external;
     function transfer(address recipient, uint256 amount) external returns (bool);
 }
 
@@ -42,7 +46,9 @@ contract ContractTest is Test {
         emit log_named_decimal_uint("[End] Attacker WBNB balance after exploit", WBNB.balanceOf(address(this)), 18);
     }
 
-    function loopTransfer(uint256 num) internal {
+    function loopTransfer(
+        uint256 num
+    ) internal {
         uint256 i;
         while (i < num) {
             uint256 amount = OLIFE.balanceOf(address(this));

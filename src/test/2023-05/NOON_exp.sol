@@ -19,7 +19,9 @@ interface INO {
 
     function transfer(address to, uint256 value) external;
 
-    function balanceOf(address account) external returns (uint256);
+    function balanceOf(
+        address account
+    ) external returns (uint256);
 }
 
 contract ContractTest is Test {

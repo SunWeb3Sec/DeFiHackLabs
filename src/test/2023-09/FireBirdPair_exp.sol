@@ -10,7 +10,6 @@ import "./../interface.sol";
 // Vulnerable Contract : https://polygonscan.com/address/0x5e9cd0861f927adeccfeb2c0124879b277dd66ac
 // Attack Tx : https://polygonscan.com/tx/0x96d80c609f7a39b45f2bb581c6ba23402c20c2b6cd528317692c31b8d3948328
 
-
 interface IFireBirdRouter {
     function swapExactTokensForTokens(
         address tokenIn,
@@ -72,7 +71,7 @@ contract ContractTest is Test {
 
         address[] memory tokens = new address[](1);
         tokens[0] = address(WMATIC);
-        uint256[] memory amounts = new uint[](1);
+        uint256[] memory amounts = new uint256[](1);
         amounts[0] = amount;
         bytes memory userData = "";
         Balancer.flashLoan(address(this), tokens, amounts, userData);
@@ -120,7 +119,7 @@ contract ContractTest is Test {
         uint8[] memory dexIds = new uint8[](1);
         dexIds[0] = dexId;
 
-        uint256[] memory results = new uint[](2);
+        uint256[] memory results = new uint256[](2);
         results = Router.swapExactTokensForTokens(
             tokenIn, tokenOut, amountIn, amountOutMin, paths, dexIds, address(this), type(uint256).max
         );

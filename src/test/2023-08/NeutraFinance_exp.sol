@@ -155,17 +155,23 @@ interface ICamelotFactory {
 
     function ownerFeeShare() external view returns (uint256);
 
-    function referrersFeeShare(address) external view returns (uint256);
+    function referrersFeeShare(
+        address
+    ) external view returns (uint256);
 
     function getPair(address tokenA, address tokenB) external view returns (address pair);
 
-    function allPairs(uint256) external view returns (address pair);
+    function allPairs(
+        uint256
+    ) external view returns (address pair);
 
     function allPairsLength() external view returns (uint256);
 
     function createPair(address tokenA, address tokenB) external returns (address pair);
 
-    function setFeeTo(address) external;
+    function setFeeTo(
+        address
+    ) external;
 
     function feeInfo() external view returns (uint256 _ownerFeeShare, address _feeTo);
 }
@@ -182,7 +188,9 @@ interface ICamelotPair {
 
     function totalSupply() external view returns (uint256);
 
-    function balanceOf(address owner) external view returns (uint256);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256);
 
     function allowance(address owner, address spender) external view returns (uint256);
 
@@ -196,7 +204,9 @@ interface ICamelotPair {
 
     function PERMIT_TYPEHASH() external pure returns (bytes32);
 
-    function nonces(address owner) external view returns (uint256);
+    function nonces(
+        address owner
+    ) external view returns (uint256);
 
     function permit(
         address owner,
@@ -239,15 +249,21 @@ interface ICamelotPair {
 
     function setFeePercent(uint16 token0FeePercent, uint16 token1FeePercent) external;
 
-    function mint(address to) external returns (uint256 liquidity);
+    function mint(
+        address to
+    ) external returns (uint256 liquidity);
 
-    function burn(address to) external returns (uint256 amount0, uint256 amount1);
+    function burn(
+        address to
+    ) external returns (uint256 amount0, uint256 amount1);
 
     function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
 
     function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data, address referrer) external;
 
-    function skim(address to) external;
+    function skim(
+        address to
+    ) external;
 
     function sync() external;
 
@@ -255,7 +271,9 @@ interface ICamelotPair {
 }
 
 interface IConvert {
-    function convert(uint256 _amount) external;
+    function convert(
+        uint256 _amount
+    ) external;
 }
 
 contract CounterTest is Test {
@@ -277,7 +295,7 @@ contract CounterTest is Test {
     function test() public {
         console.log("Attacker's WETH token balance: ", WETH.balanceOf(address(this)));
         IERC20[] memory tokens = new IERC20[](1);
-        uint256[] memory amount = new uint[](1);
+        uint256[] memory amount = new uint256[](1);
         tokens[0] = WETH;
         amount[0] = 1000 ether;
         bytes memory userdata;

@@ -16,13 +16,23 @@ interface IAurumNodePool {
         uint256 lastClaimTime;
     }
 
-    function createNode(uint256 count) external;
-    function changeNodePrice(uint256 newNodePrice) external;
-    function changeRewardPerNode(uint256 _rewardPerDay) external;
-    function claimNodeReward(uint256 _creationTime) external;
+    function createNode(
+        uint256 count
+    ) external;
+    function changeNodePrice(
+        uint256 newNodePrice
+    ) external;
+    function changeRewardPerNode(
+        uint256 _rewardPerDay
+    ) external;
+    function claimNodeReward(
+        uint256 _creationTime
+    ) external;
 
     function getRewardAmountOf(address account, uint256 creationTime) external view returns (uint256);
-    function getNodes(address account) external view returns (NodeEntity[] memory nodes);
+    function getNodes(
+        address account
+    ) external view returns (NodeEntity[] memory nodes);
 }
 
 contract ContractTest is Test {
@@ -70,7 +80,9 @@ contract ContractTest is Test {
         emit log_named_decimal_uint("[End] Attacker BNB balance after exploit", address(this).balance, 18);
     }
 
-    function BNBtoAUR(uint256 amount) internal {
+    function BNBtoAUR(
+        uint256 amount
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(WBNB);
         path[1] = address(AUR);

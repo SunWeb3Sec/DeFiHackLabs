@@ -15,7 +15,9 @@ import "./../interface.sol";
 
 interface IPHXPROXY {
     function buyLeverage(uint256 amount, uint256 minAmount, uint256 deadLine, bytes calldata /*data*/ ) external;
-    function delegateCallSwap(bytes memory data) external;
+    function delegateCallSwap(
+        bytes memory data
+    ) external;
 }
 
 contract ContractTest is Test {
@@ -102,13 +104,17 @@ contract SHITCOIN {
         return true;
     }
 
-    function mint(uint256 amount) external {
+    function mint(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] += amount;
         totalSupply += amount;
         emit Transfer(address(0), msg.sender, amount);
     }
 
-    function burn(uint256 amount) external {
+    function burn(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] -= amount;
         totalSupply -= amount;
         emit Transfer(msg.sender, address(0), amount);

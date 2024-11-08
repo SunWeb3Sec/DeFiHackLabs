@@ -9,7 +9,9 @@ import "./../interface.sol";
 interface ZABUFarm {
     function deposit(uint256 _pid, uint256 _amount) external;
     function withdraw(uint256 _pid, uint256 _amount) external;
-    function emergencyWithdraw(uint256 _pid) external;
+    function emergencyWithdraw(
+        uint256 _pid
+    ) external;
 }
 
 interface PangolinRouter {
@@ -156,7 +158,9 @@ contract ContractTest is Test {
         addressContract = _add;
     }
 
-    function buyPNG(uint256 amount) public {
+    function buyPNG(
+        uint256 amount
+    ) public {
         address[] memory path = new address[](2);
         path[0] = address(WAVAX);
         path[1] = address(PNG);

@@ -261,7 +261,9 @@ contract Slave {
         bool _var0 = abi.decode(returned0, (bool));
     }
 
-    function remove(uint256 _amountOfShares) public payable {
+    function remove(
+        uint256 _amountOfShares
+    ) public payable {
         // supply(asset, amount, onBehalfOf, referralCode) -> ()
         _ParaProxy.call(
             abi.encodePacked(

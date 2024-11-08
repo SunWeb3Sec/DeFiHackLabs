@@ -72,7 +72,9 @@ contract ContractTest is Test {
         }
     }
 
-    function theSwap(uint256 i) internal {
+    function theSwap(
+        uint256 i
+    ) internal {
         curveYSwap.exchange_underlying(2, 1, 17_200_000 * 10 ** 6, 17_000_000 * 10 ** 6);
         harvest.deposit(49_000_000_000_000);
         curveYSwap.exchange_underlying(1, 2, 17_310_000 * 10 ** 6, 17_000_000 * 10 ** 6);

@@ -16,7 +16,9 @@ import "./../interface.sol";
 interface IConic {
     function deposit(uint256 underlyingAmount, uint256 minLpReceived, bool stake) external returns (uint256);
 
-    function handleDepeggedCurvePool(address curvePool_) external;
+    function handleDepeggedCurvePool(
+        address curvePool_
+    ) external;
 
     function withdraw(uint256 conicLpAmount, uint256 minUnderlyingReceived) external returns (uint256);
 }

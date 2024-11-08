@@ -14,9 +14,9 @@ import "../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0xe3a0bc3483ae5a04db7ef2954315133a6f7d228e#code
 
 // @Analysis
-// Post-mortem : 
-// Twitter Guy : 
-// Hacking God : 
+// Post-mortem :
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 interface IR {

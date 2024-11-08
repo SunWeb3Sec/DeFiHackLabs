@@ -11,7 +11,9 @@ import "./../interface.sol";
 // Attack Tx : https://phalcon.blocksec.com/explorer/tx/eth/0xd17266bcdf30cbcbd7d0b5a006f43141981aeee2e1f860f68c9a1805ecacbc68?line=3
 interface IGHT {
     function transferFrom(address, address, uint256) external;
-    function balanceOf(address) external view returns (uint256);
+    function balanceOf(
+        address
+    ) external view returns (uint256);
 }
 
 interface CheatCodesNew {

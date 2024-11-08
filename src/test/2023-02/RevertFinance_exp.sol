@@ -20,7 +20,9 @@ interface V3Utils {
         bool unwrap; // if tokenIn or tokenOut is WETH - unwrap
     }
 
-    function swap(SwapParams calldata params) external;
+    function swap(
+        SwapParams calldata params
+    ) external;
 }
 
 contract ContractTest is Test {
@@ -79,7 +81,9 @@ contract ContractTest is Test {
         return true;
     }
 
-    function balanceOf(address owner) external view returns (uint256) {
+    function balanceOf(
+        address owner
+    ) external view returns (uint256) {
         if (counter == 1) return 1;
         else return 0;
     }

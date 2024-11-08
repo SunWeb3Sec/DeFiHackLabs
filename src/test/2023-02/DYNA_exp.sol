@@ -12,12 +12,18 @@ import "./../interface.sol";
 // https://bscscan.com/tx/0xc09678fec49c643a30fc8e4dec36d0507dae7e9123c270e1f073d335deab6cf0
 
 interface IStakingDYNA {
-    function deposit(uint256 _stakeAmount) external;
-    function redeem(uint256 _redeemAmount) external;
+    function deposit(
+        uint256 _stakeAmount
+    ) external;
+    function redeem(
+        uint256 _redeemAmount
+    ) external;
 }
 
 interface IDYNA is IERC20 {
-    function _setMaxSoldAmount(uint256 maxvalue) external;
+    function _setMaxSoldAmount(
+        uint256 maxvalue
+    ) external;
     function _maxSoldAmount() external view returns (uint256);
 }
 
@@ -26,16 +32,22 @@ contract StakingReward {
     IStakingDYNA StakingDYNA = IStakingDYNA(0xa7B5eabC3Ee82c585f5F4ccC26b81c3Bd62Ff3a9);
     address Owner;
 
-    constructor(address owner) {
+    constructor(
+        address owner
+    ) {
         Owner = owner;
         DYNA.approve(address(StakingDYNA), type(uint256).max);
     }
 
-    function deposit(uint256 amount) external {
+    function deposit(
+        uint256 amount
+    ) external {
         StakingDYNA.deposit(amount);
     }
 
-    function withdraw(uint256 amount) external {
+    function withdraw(
+        uint256 amount
+    ) external {
         StakingDYNA.redeem(amount);
         DYNA.transfer(Owner, DYNA.balanceOf(address(this)));
     }

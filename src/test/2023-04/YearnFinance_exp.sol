@@ -12,21 +12,26 @@ import "./../interface.sol";
 // https://etherscan.io/tx/0xd55e43c1602b28d4fd4667ee445d570c8f298f5401cf04e62ec329759ecda95d
 
 interface IIEarnAPRWithPool {
-    function recommend(address _token)
-        external
-        view
-        returns (string memory choice, uint256 capr, uint256 iapr, uint256 aapr, uint256 dapr);
+    function recommend(
+        address _token
+    ) external view returns (string memory choice, uint256 capr, uint256 iapr, uint256 aapr, uint256 dapr);
 }
 
 interface IyToken {
     function approve(address spender, uint256 amount) external returns (bool);
     function balanceAave() external view returns (uint256);
     function balance() external view returns (uint256);
-    function balanceOf(address who) external view returns (uint256);
+    function balanceOf(
+        address who
+    ) external view returns (uint256);
     function decimals() external view returns (uint8);
-    function deposit(uint256 _amount) external;
+    function deposit(
+        uint256 _amount
+    ) external;
     function getPricePerFullShare() external view returns (uint256);
-    function withdraw(uint256 _shares) external;
+    function withdraw(
+        uint256 _shares
+    ) external;
     function rebalance() external;
 }
 
@@ -36,7 +41,9 @@ interface IAaveLendingPoolCoreV1 {
 
 interface IbZxiUSDC {
     function mint(address receiver, uint256 depositAmount) external returns (uint256 mintAmount);
-    function balanceOf(address _owner) external view returns (uint256);
+    function balanceOf(
+        address _owner
+    ) external view returns (uint256);
     function tokenPrice() external view returns (uint256 price);
     function transfer(address _to, uint256 _value) external returns (bool);
 }

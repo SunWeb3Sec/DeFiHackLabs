@@ -10,8 +10,12 @@ interface IQBridge {
 
 interface IQBridgeHandler {
     // mapping(address => bool) public contractWhitelist;
-    function resourceIDToTokenContractAddress(bytes32) external returns (address);
-    function contractWhitelist(address) external returns (bool);
+    function resourceIDToTokenContractAddress(
+        bytes32
+    ) external returns (address);
+    function contractWhitelist(
+        address
+    ) external returns (bool);
     function deposit(bytes32 resourceID, address depositer, bytes calldata data) external;
 }
 

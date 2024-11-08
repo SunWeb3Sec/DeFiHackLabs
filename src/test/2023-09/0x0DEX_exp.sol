@@ -54,7 +54,9 @@ interface IOxODexPool {
         WithdrawalData memory withdrawalData
     ) external;
 
-    function getCurrentRingIndex(uint256 amountToken) external view returns (uint256);
+    function getCurrentRingIndex(
+        uint256 amountToken
+    ) external view returns (uint256);
 
     function getRingHash(uint256 _amountToken, uint256 _ringIndex) external view returns (bytes32);
 }
@@ -140,11 +142,15 @@ contract ContractTest is Test {
         }
     }
 
-    function addFee(uint256 realAmount) internal pure returns (uint256 total) {
+    function addFee(
+        uint256 realAmount
+    ) internal pure returns (uint256 total) {
         total = realAmount + (realAmount * 9) / 1000;
     }
 
-    function deposit(uint256 amount) internal returns (uint256 ringIndex) {
+    function deposit(
+        uint256 amount
+    ) internal returns (uint256 ringIndex) {
         // Public key signature
         uint256[4] memory pks = [0x1, 0x2, Bx, By];
         ringIndex = OxODexPool.getCurrentRingIndex(amount);

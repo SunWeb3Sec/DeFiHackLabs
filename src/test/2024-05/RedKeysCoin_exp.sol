@@ -57,17 +57,15 @@ contract RedKeysCoin is BaseTestWithBalanceLog {
     }
 
     // random number generator with same logic of target contract
-    function randomNumber(uint256 counter) internal view returns (uint256) {
+    function randomNumber(
+        uint256 counter
+    ) internal view returns (uint256) {
         uint256 seed = uint256(
             keccak256(
                 abi.encodePacked(
-                    counter +
-                        block.timestamp +
-                        block.prevrandao +
-                        ((uint256(keccak256(abi.encodePacked(block.coinbase)))) / (block.timestamp)) +
-                        block.gaslimit +
-                        ((uint256(keccak256(abi.encodePacked(address(this))))) / (block.timestamp)) +
-                        block.number
+                    counter + block.timestamp + block.prevrandao
+                        + ((uint256(keccak256(abi.encodePacked(block.coinbase)))) / (block.timestamp)) + block.gaslimit
+                        + ((uint256(keccak256(abi.encodePacked(address(this))))) / (block.timestamp)) + block.number
                 )
             )
         );

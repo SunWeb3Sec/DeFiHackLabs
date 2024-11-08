@@ -27,7 +27,9 @@ interface IERC721 is IERC165 {
     /**
      * @dev Returns the number of tokens in ``owner``'s account.
      */
-    function balanceOf(address owner) external view returns (uint256 balance);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256 balance);
 
     /**
      * @dev Returns the owner of the `tokenId` token.
@@ -36,7 +38,9 @@ interface IERC721 is IERC165 {
      *
      * - `tokenId` must exist.
      */
-    function ownerOf(uint256 tokenId) external view returns (address owner);
+    function ownerOf(
+        uint256 tokenId
+    ) external view returns (address owner);
 
     /**
      * @dev Safely transfers `tokenId` token from `from` to `to`.
@@ -124,7 +128,9 @@ interface IERC721 is IERC165 {
      *
      * - `tokenId` must exist.
      */
-    function getApproved(uint256 tokenId) external view returns (address operator);
+    function getApproved(
+        uint256 tokenId
+    ) external view returns (address operator);
 
     /**
      * @dev Returns if the `operator` is allowed to manage all of the assets of `owner`.

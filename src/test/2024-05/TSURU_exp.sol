@@ -19,6 +19,7 @@ import "../basetest.sol";
 // Hacking God : https://x.com/SlowMist_Team/status/1788936928634834958
 
 pragma solidity ^0.8.0;
+
 interface IWrapper is IERC20 {
     function onERC1155Received(address, address from, uint256 id, uint256 amount, bytes calldata) external;
 }

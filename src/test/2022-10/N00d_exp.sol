@@ -11,8 +11,12 @@ import "./../interface.sol";
 // https://etherscan.io/tx/0x8037b3dc0bf9d5d396c10506824096afb8125ea96ada011d35faa89fa3893aea
 
 interface sushiBar {
-    function enter(uint256) external;
-    function leave(uint256) external;
+    function enter(
+        uint256
+    ) external;
+    function leave(
+        uint256
+    ) external;
 }
 
 contract ContractTest is Test {

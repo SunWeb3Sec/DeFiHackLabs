@@ -126,14 +126,28 @@ contract Attacker is Test {
 interface IROIToken {
     function GetBuyBackTimeInterval() external view returns (uint256);
     function GetSwapMinutes() external view returns (uint256);
-    function SetBuyBackDivisor(uint256 newDivisor) external;
-    function SetBuyBackMaxTimeForHistories(uint256 newMinutes) external;
-    function SetBuyBackRangeRate(uint256 newPercent) external;
-    function SetBuyBackTimeInterval(uint256 newMinutes) external;
-    function SetSwapMinutes(uint256 newMinutes) external;
+    function SetBuyBackDivisor(
+        uint256 newDivisor
+    ) external;
+    function SetBuyBackMaxTimeForHistories(
+        uint256 newMinutes
+    ) external;
+    function SetBuyBackRangeRate(
+        uint256 newPercent
+    ) external;
+    function SetBuyBackTimeInterval(
+        uint256 newMinutes
+    ) external;
+    function SetSwapMinutes(
+        uint256 newMinutes
+    ) external;
     function Sweep() external;
-    function Sweep(uint256 amount) external;
-    function _addressFees(address)
+    function Sweep(
+        uint256 amount
+    ) external;
+    function _addressFees(
+        address
+    )
         external
         view
         returns (
@@ -156,7 +170,9 @@ interface IROIToken {
     function _isEnabledBuyBackAndBurn() external view returns (bool);
     function _liquidityFee() external view returns (uint256);
     function _maxTxAmount() external view returns (uint256);
-    function _sellHistories(uint256) external view returns (uint256 time, uint256 bnbAmount);
+    function _sellHistories(
+        uint256
+    ) external view returns (uint256 time, uint256 bnbAmount);
     function _sellLiquidityFee() external view returns (uint256);
     function _sellTaxFee() external view returns (uint256);
     function _startTimeForSwap() external view returns (uint256);
@@ -164,25 +180,45 @@ interface IROIToken {
     function afterPreSale() external;
     function allowance(address owner, address spender) external view returns (uint256);
     function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
     function buyBackEnabled() external view returns (bool);
     function buyBackSellLimit() external view returns (uint256);
     function buyBackSellLimitAmount() external view returns (uint256);
-    function changeRouterVersion(address _router) external returns (address _pair);
+    function changeRouterVersion(
+        address _router
+    ) external returns (address _pair);
     function deadAddress() external view returns (address);
     function decimals() external view returns (uint8);
     function decreaseAllowance(address spender, uint256 subtractedValue) external returns (bool);
-    function deliver(uint256 tAmount) external;
-    function excludeFromFee(address account) external;
-    function excludeFromReward(address account) external;
+    function deliver(
+        uint256 tAmount
+    ) external;
+    function excludeFromFee(
+        address account
+    ) external;
+    function excludeFromReward(
+        address account
+    ) external;
     function getTime() external view returns (uint256);
     function getUnlockTime() external view returns (uint256);
-    function includeInFee(address account) external;
-    function includeInReward(address account) external;
+    function includeInFee(
+        address account
+    ) external;
+    function includeInReward(
+        address account
+    ) external;
     function increaseAllowance(address spender, uint256 addedValue) external returns (bool);
-    function isExcludedFromFee(address account) external view returns (bool);
-    function isExcludedFromReward(address account) external view returns (bool);
-    function lock(uint256 time) external;
+    function isExcludedFromFee(
+        address account
+    ) external view returns (bool);
+    function isExcludedFromReward(
+        address account
+    ) external view returns (bool);
+    function lock(
+        uint256 time
+    ) external;
     function marketingAddress() external view returns (address);
     function marketingDivisor() external view returns (uint256);
     function minimumTokensBeforeSwapAmount() external view returns (uint256);
@@ -197,21 +233,37 @@ interface IROIToken {
         uint256 _addressTaxFee,
         uint256 _addressLiquidityFee
     ) external;
-    function setAutoBuyBackEnabled(bool _enabled) external;
+    function setAutoBuyBackEnabled(
+        bool _enabled
+    ) external;
     function setBuyAddressFee(
         address _address,
         bool _enable,
         uint256 _addressTaxFee,
         uint256 _addressLiquidityFee
     ) external;
-    function setBuyBackEnabled(bool _enabled) external;
-    function setBuyBackSellLimit(uint256 buyBackSellSetLimit) external;
+    function setBuyBackEnabled(
+        bool _enabled
+    ) external;
+    function setBuyBackSellLimit(
+        uint256 buyBackSellSetLimit
+    ) external;
     function setBuyFee(uint256 buyTaxFee, uint256 buyLiquidityFee) external;
-    function setLiquidityFeePercent(uint256 liquidityFee) external;
-    function setMarketingAddress(address _marketingAddress) external;
-    function setMarketingDivisor(uint256 divisor) external;
-    function setMaxTxAmount(uint256 maxTxAmount) external;
-    function setNumTokensSellToAddToBuyBack(uint256 _minimumTokensBeforeSwap) external;
+    function setLiquidityFeePercent(
+        uint256 liquidityFee
+    ) external;
+    function setMarketingAddress(
+        address _marketingAddress
+    ) external;
+    function setMarketingDivisor(
+        uint256 divisor
+    ) external;
+    function setMaxTxAmount(
+        uint256 maxTxAmount
+    ) external;
+    function setNumTokensSellToAddToBuyBack(
+        uint256 _minimumTokensBeforeSwap
+    ) external;
     function setSellAddressFee(
         address _address,
         bool _enable,
@@ -219,17 +271,25 @@ interface IROIToken {
         uint256 _addressLiquidityFee
     ) external;
     function setSellFee(uint256 sellTaxFee, uint256 sellLiquidityFee) external;
-    function setSwapAndLiquifyEnabled(bool _enabled) external;
-    function setTaxFeePercent(uint256 taxFee) external;
+    function setSwapAndLiquifyEnabled(
+        bool _enabled
+    ) external;
+    function setTaxFeePercent(
+        uint256 taxFee
+    ) external;
     function swapAndLiquifyEnabled() external view returns (bool);
     function symbol() external view returns (string memory);
-    function tokenFromReflection(uint256 rAmount) external view returns (uint256);
+    function tokenFromReflection(
+        uint256 rAmount
+    ) external view returns (uint256);
     function totalFees() external view returns (uint256);
     function totalSupply() external view returns (uint256);
     function transfer(address recipient, uint256 amount) external returns (bool);
     function transferForeignToken(address _token, address _to) external returns (bool _sent);
     function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-    function transferOwnership(address newOwner) external;
+    function transferOwnership(
+        address newOwner
+    ) external;
     function uniswapV2Pair() external view returns (address);
     function uniswapV2Router() external view returns (address);
     function unlock() external;

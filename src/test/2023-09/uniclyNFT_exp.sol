@@ -82,7 +82,9 @@ contract ContractTest is Test {
         uJENNY_WETH.swap(amountOut, 0, address(this), bytes(""));
     }
 
-    function UJENNYToWETH(uint256 amount) internal {
+    function UJENNYToWETH(
+        uint256 amount
+    ) internal {
         (uint112 reserveuJENNY, uint112 reserveWETH,) = uJENNY_WETH.getReserves();
         uint256 amountOut = calcAmountOut(reserveWETH, reserveuJENNY, amount);
         uJENNY.transfer(address(uJENNY_WETH), amount);

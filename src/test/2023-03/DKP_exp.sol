@@ -15,7 +15,9 @@ import "./../interface.sol";
 // and the attacker manipulates this price through flashLoan, swapping a very small amount of USDT for a large amount of DKP and selling it for a profit
 
 interface IDKPExchange {
-    function exchange(uint256 amount) external;
+    function exchange(
+        uint256 amount
+    ) external;
 }
 
 contract ContractTest is Test {

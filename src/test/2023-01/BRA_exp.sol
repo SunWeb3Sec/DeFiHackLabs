@@ -170,7 +170,9 @@ interface IDPPAdvanced {
         view
         returns (uint256 i, uint256 K, uint256 B, uint256 Q, uint256 B0, uint256 Q0, uint256 R);
     function getQuoteInput() external view returns (uint256 input);
-    function getUserFeeRate(address user) external view returns (uint256 lpFeeRate, uint256 mtFeeRate);
+    function getUserFeeRate(
+        address user
+    ) external view returns (uint256 lpFeeRate, uint256 mtFeeRate);
     function getVaultReserve() external view returns (uint256 baseReserve, uint256 quoteReserve);
     function init(
         address owner,
@@ -183,7 +185,9 @@ interface IDPPAdvanced {
         uint256 i,
         bool isOpenTWAP
     ) external;
-    function initOwner(address newOwner) external;
+    function initOwner(
+        address newOwner
+    ) external;
     function querySellBase(
         address trader,
         uint256 payBaseAmount
@@ -204,9 +208,15 @@ interface IDPPAdvanced {
         uint256 minQuoteReserve
     ) external returns (bool);
     function retrieve(address to, address token, uint256 amount) external;
-    function sellBase(address to) external returns (uint256 receiveQuoteAmount);
-    function sellQuote(address to) external returns (uint256 receiveBaseAmount);
-    function transferOwnership(address newOwner) external;
+    function sellBase(
+        address to
+    ) external returns (uint256 receiveQuoteAmount);
+    function sellQuote(
+        address to
+    ) external returns (uint256 receiveBaseAmount);
+    function transferOwnership(
+        address newOwner
+    ) external;
     function tuneParameters(
         uint256 newLpFeeRate,
         uint256 newI,

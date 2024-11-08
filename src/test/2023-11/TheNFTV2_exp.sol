@@ -31,7 +31,7 @@ contract TheNFTV2Test is Test {
         assets[0] = address(WETH);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = 80_000 * 1e18;
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
 
         emit log_named_decimal_uint("[Start] Attacker ETH Balance", WETH.balanceOf(address(this)), WETH.decimals());

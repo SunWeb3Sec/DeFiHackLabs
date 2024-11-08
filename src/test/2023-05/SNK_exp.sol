@@ -139,8 +139,12 @@ interface IPancakeRouter01 {
 }
 
 interface ISNKMinter {
-    function bindParent(address parent) external;
-    function stake(uint256 amount) external;
+    function bindParent(
+        address parent
+    ) external;
+    function stake(
+        uint256 amount
+    ) external;
     function getReward() external;
     function exit() external;
 }
@@ -230,7 +234,9 @@ contract HackerTemplate {
         minter.stake(SNKToken.balanceOf(address(this)));
     }
 
-    function bind(address p) public onlyOwner {
+    function bind(
+        address p
+    ) public onlyOwner {
         minter.bindParent(p);
     }
 

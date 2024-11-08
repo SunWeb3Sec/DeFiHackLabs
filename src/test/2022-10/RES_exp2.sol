@@ -135,7 +135,9 @@ contract ContractTest is Test {
         );
     }
 
-    function buyRES(uint256 amountBuy) internal {
+    function buyRES(
+        uint256 amountBuy
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(USDT_TOKEN);
         path[1] = address(RES_TOKEN);

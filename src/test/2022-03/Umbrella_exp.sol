@@ -12,7 +12,9 @@ import "./../interface.sol";
 // Attack TX: https://bscscan.com/tx/0x784b68dc7d06ee181f3127d5eb5331850b5e690cc63dd099cd7b8dc863204bf6
 
 interface IStakingRewards {
-    function withdraw(uint256 amount) external;
+    function withdraw(
+        uint256 amount
+    ) external;
 }
 
 contract AttackContract is Test {

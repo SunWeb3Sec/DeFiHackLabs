@@ -5,9 +5,13 @@ import "forge-std/Test.sol";
 import "./../interface.sol";
 
 interface Blacksmith {
-    function claimRewardsForPools(address[] calldata _lpTokens) external;
+    function claimRewardsForPools(
+        address[] calldata _lpTokens
+    ) external;
 
-    function claimRewards(address _lpToken) external;
+    function claimRewards(
+        address _lpToken
+    ) external;
 
     function deposit(address _lpToken, uint256 _amount) external;
 

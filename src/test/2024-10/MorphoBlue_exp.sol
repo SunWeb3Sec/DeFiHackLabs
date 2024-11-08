@@ -367,7 +367,8 @@ contract MorphoBlue is BaseTestWithBalanceLog {
         // Prepare multicall data
         bytes[] memory calls = new bytes[](3);
         calls[0] = abi.encodeWithSelector(IMorphoBundler.erc20TransferFrom.selector, asset, amount);
-        calls[1] = abi.encodeWithSelector(IMorphoBundler.morphoSupplyCollateral.selector, marketParams, amount, onBehalf, "");
+        calls[1] =
+            abi.encodeWithSelector(IMorphoBundler.morphoSupplyCollateral.selector, marketParams, amount, onBehalf, "");
         calls[2] = abi.encodeWithSelector(
             IMorphoBundler.morphoBorrow.selector,
             marketParams,

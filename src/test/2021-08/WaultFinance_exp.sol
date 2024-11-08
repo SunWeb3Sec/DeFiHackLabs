@@ -10,8 +10,12 @@ import "./../interface.sol";
 // tx
 // https://bscscan.com/tx/0x31262f15a5b82999bf8d9d0f7e58dcb1656108e6031a2797b612216a95e1670e
 interface WUSDMASTER {
-    function stake(uint256) external;
-    function redeem(uint256) external;
+    function stake(
+        uint256
+    ) external;
+    function redeem(
+        uint256
+    ) external;
     function maxStakeAmount() external;
 }
 

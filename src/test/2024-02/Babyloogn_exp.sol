@@ -7,7 +7,6 @@ pragma solidity ^0.8.10;
 // Vulnerable Contract : https://bscscan.com/address/0x971d08bba900230298add23e61e04b04226b5073
 // Attack Tx : https://phalcon.blocksec.com/explorer/tx/bsc/0xd081d6bb96326be5305a6c00dd51d1799971794941576554341738abc1ceb202
 
-
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
@@ -19,7 +18,9 @@ interface IBabyloognNFT {
 
 interface IBabyloogn {
     function approve(address spender, uint256 amount) external;
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(
+        address account
+    ) external view returns (uint256);
 }
 
 contract ContractTest is Test {
@@ -30,7 +31,6 @@ contract ContractTest is Test {
     IPancakeRouter Router = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
     IBabyloognAirdrop Airdrop = IBabyloognAirdrop(0x971d08bbA900230298ADD23e61E04B04226b5073);
     IBabyloognNFT BabyloognNTF = IBabyloognNFT(0x5eb47C41FC9BEcf123C9E484C51de37830842AdD);
-
 
     function setUp() public {
         vm.createSelectFork("bsc", 36_159_516 - 1);

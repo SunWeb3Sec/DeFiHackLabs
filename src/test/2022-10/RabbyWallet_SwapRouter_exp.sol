@@ -119,7 +119,9 @@ contract ContractTest is Test {
         );
     }
 
-    function balanceOf(address) external pure returns (uint256) {
+    function balanceOf(
+        address
+    ) external pure returns (uint256) {
         return 100e18;
     }
 

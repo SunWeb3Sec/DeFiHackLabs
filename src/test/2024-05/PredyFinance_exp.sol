@@ -155,7 +155,9 @@ interface IPredyPool {
         int256 sqrtPayoff;
     }
 
-    function registerPair(AddPairLogic.AddPairParams memory addPairParam) external returns (uint256);
+    function registerPair(
+        AddPairLogic.AddPairParams memory addPairParam
+    ) external returns (uint256);
 
     function trade(
         TradeParams memory tradeParams,

@@ -19,7 +19,9 @@ import "./../interface.sol";
 // Hacking God :
 
 interface IClaimer {
-    function claim(uint256[] calldata tokenIds) external;
+    function claim(
+        uint256[] calldata tokenIds
+    ) external;
 }
 
 contract SumerMoney is Test {
@@ -115,7 +117,9 @@ contract Helper {
         owner = msg.sender;
     }
 
-    function borrow(uint256 amount) external {
+    function borrow(
+        uint256 amount
+    ) external {
         USDC.approve(address(sdrUSDC), amount);
         sdrUSDC.mint(amount);
 

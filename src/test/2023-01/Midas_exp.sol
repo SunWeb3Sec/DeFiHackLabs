@@ -11,7 +11,9 @@ import "./../interface.sol";
 // https://polygonscan.com/tx/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f
 
 interface PriceProvider {
-    function getUnderlyingPrice(address cTokens) external view returns (uint256);
+    function getUnderlyingPrice(
+        address cTokens
+    ) external view returns (uint256);
 }
 
 interface ICurvePools is ICurvePool {
@@ -27,7 +29,9 @@ contract LiquidateContract {
     ICErc20Delegate FAGEUR = ICErc20Delegate(0x5aa0197D0d3E05c4aA070dfA2f54Cd67A447173A);
     IERC20 STMATCI_F = IERC20(0xe7CEA2F6d7b120174BF3A9Bc98efaF1fF72C997d);
 
-    function liquidate(address receiver) external payable {
+    function liquidate(
+        address receiver
+    ) external payable {
         IERC20(FJCHF.underlying()).approve(address(FJCHF), type(uint256).max);
         IERC20(FJEUR.underlying()).approve(address(FJEUR), type(uint256).max);
         IERC20(FJGBP.underlying()).approve(address(FJGBP), type(uint256).max);
@@ -129,7 +133,7 @@ contract ContractTest is Test {
         assets[0] = address(WMATIC);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = aaveV3FlashloanAmount;
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
         aaveV3.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
     }
@@ -140,7 +144,7 @@ contract ContractTest is Test {
         assets[0] = address(WMATIC);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = aaveV2FlashloanAmount;
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
         aaveV2.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
     }

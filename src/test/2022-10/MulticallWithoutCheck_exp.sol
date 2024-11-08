@@ -12,7 +12,9 @@ interface Target {
         uint256 value;
     }
 
-    function multicallWithoutCheck(Call[] memory calls) external;
+    function multicallWithoutCheck(
+        Call[] memory calls
+    ) external;
 }
 
 contract ContractTest is Test {

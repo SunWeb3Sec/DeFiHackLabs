@@ -132,7 +132,9 @@ contract GYMTest is Test {
         );
     }
 
-    function GYMNETTofakeUSDT(address victim) internal {
+    function GYMNETTofakeUSDT(
+        address victim
+    ) internal {
         address[] memory path = new address[](2);
         path[0] = address(GYMNET);
         path[1] = address(fakeUSDT);

@@ -14,7 +14,9 @@ import "./../interface.sol";
 // @Analysis - https://twitter.com/hexagate_/status/1663501550600302601
 
 interface IFAPEN is IERC20 {
-    function unstake(uint256 amount) external;
+    function unstake(
+        uint256 amount
+    ) external;
 }
 
 contract ContractTest is Test {

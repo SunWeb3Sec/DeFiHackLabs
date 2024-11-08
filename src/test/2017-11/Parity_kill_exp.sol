@@ -5,9 +5,13 @@ import "forge-std/Test.sol";
 import "./../interface.sol";
 
 interface parity {
-    function isOwner(address _addr) external view returns (bool);
+    function isOwner(
+        address _addr
+    ) external view returns (bool);
 
-    function kill(address _to) external;
+    function kill(
+        address _to
+    ) external;
 
     function initWallet(address[] memory _owners, uint256 _required, uint256 _daylimit) external;
 }

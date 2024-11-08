@@ -18,24 +18,32 @@ import "./../interface.sol";
 // invoke function burnpoolXSD() after executing TransferHelper.safeTransferETH();
 
 interface IXSD is IERC20 {
-    function burnpoolXSD(uint256 _xsdamount) external;
+    function burnpoolXSD(
+        uint256 _xsdamount
+    ) external;
 }
 
 interface IXSDRouter {
     function swapXSDForETH(uint256 amountOut, uint256 amountInMax) external;
-    function swapETHForBankX(uint256 amountOut) external payable;
+    function swapETHForBankX(
+        uint256 amountOut
+    ) external payable;
 }
 
 interface IXSDWETHpool {
     function PERMIT_TYPEHASH() external pure returns (bytes32);
-    function nonces(address owner) external view returns (uint256);
+    function nonces(
+        address owner
+    ) external view returns (uint256);
     function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
     function price0CumulativeLast() external view returns (uint256);
     function price1CumulativeLast() external view returns (uint256);
     function kLast() external view returns (uint256);
     function collatDollarBalance() external returns (uint256);
     function swap(uint256 amount0Out, uint256 amount1Out, address to) external;
-    function skim(address to) external;
+    function skim(
+        address to
+    ) external;
     function sync() external;
 }
 

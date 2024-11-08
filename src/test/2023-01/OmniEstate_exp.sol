@@ -14,8 +14,12 @@ import "./../interface.sol";
 
 interface OmniStakingPool {
     function invest(uint256 end_date, uint256 qty_ort) external;
-    function withdrawAndClaim(uint256 lockId) external;
-    function getUserStaking(address user) external returns (uint256[] memory);
+    function withdrawAndClaim(
+        uint256 lockId
+    ) external;
+    function getUserStaking(
+        address user
+    ) external returns (uint256[] memory);
 }
 
 contract ContractTest is Test {

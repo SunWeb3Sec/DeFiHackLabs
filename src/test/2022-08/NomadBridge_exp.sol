@@ -84,5 +84,7 @@ contract Attacker is Test {
 }
 
 interface IReplica {
-    function process(bytes memory _message) external returns (bool _success);
+    function process(
+        bytes memory _message
+    ) external returns (bool _success);
 }

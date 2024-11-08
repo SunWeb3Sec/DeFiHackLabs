@@ -46,7 +46,9 @@ interface ISwapRouter {
         uint256 amountOutMinimum;
     }
 
-    function exactInput(ExactInputParams memory params) external payable returns (uint256 amountOut);
+    function exactInput(
+        ExactInputParams memory params
+    ) external payable returns (uint256 amountOut);
 }
 
 contract RodeoTest is Test {

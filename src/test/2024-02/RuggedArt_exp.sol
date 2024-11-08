@@ -24,8 +24,12 @@ interface IRUGGEDUNIV3POOL {
 interface IRUGGEDPROXY {
     function claimReward() external;
     function targetedPurchase(uint256[] memory _tokenIds, UniversalRouterExecute calldata swapParam) external payable;
-    function unstake(uint256 _amount) external;
-    function stake(uint256 _amount) external;
+    function unstake(
+        uint256 _amount
+    ) external;
+    function stake(
+        uint256 _amount
+    ) external;
 
     struct UniversalRouterExecute {
         bytes commands;
@@ -36,7 +40,9 @@ interface IRUGGEDPROXY {
 
 interface IRUGGED is IERC20 {
     function getTokenIdPool() external view returns (uint256[] memory);
-    function ownerOf(uint256 id) external view returns (address owner);
+    function ownerOf(
+        uint256 id
+    ) external view returns (address owner);
 }
 
 interface IWeth is IERC20 {}

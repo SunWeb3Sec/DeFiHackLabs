@@ -130,7 +130,7 @@ contract ContractTest is Test {
         uint256 loanAmountPaid = iYFI.burn(address(this), iYFIAmount);
 
         // Repay flashloan
-        uint256 amountOut = (((amount0 * 1_000) + 1) / 997) - amount0;
+        uint256 amountOut = (((amount0 * 1000) + 1) / 997) - amount0;
         WETHToYFI(amountOut);
         YFI.transfer(address(YFI_WETH), YFI.balanceOf(address(this)));
     }
@@ -151,7 +151,9 @@ contract ContractTest is Test {
         loanId = loanData.loanId;
     }
 
-    function withdrawCollateral(bytes32 loanID) private {
+    function withdrawCollateral(
+        bytes32 loanID
+    ) private {
         bzX.withdrawCollateral(loanID, address(this), iYFIQuantity);
     }
 
@@ -160,25 +162,19 @@ contract ContractTest is Test {
         path[0] = address(WBTC);
         path[1] = address(WETH);
         SushiRouter.swapExactTokensForTokens(
-            WBTC.balanceOf(address(this)),
-            0,
-            path,
-            address(this),
-            block.timestamp + 100
+            WBTC.balanceOf(address(this)), 0, path, address(this), block.timestamp + 100
         );
     }
 
-    function WETHToYFI(uint256 amount) private {
+    function WETHToYFI(
+        uint256 amount
+    ) private {
         WETH.approve(address(UniRouter), type(uint256).max);
         address[] memory path = new address[](2);
         path[0] = address(WETH);
         path[1] = address(YFI);
         UniRouter.swapTokensForExactTokens(
-            amount,
-            WETH.balanceOf(address(this)),
-            path,
-            address(this),
-            block.timestamp + 100
+            amount, WETH.balanceOf(address(this)), path, address(this), block.timestamp + 100
         );
     }
 

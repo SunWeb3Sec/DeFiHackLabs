@@ -13,7 +13,9 @@ import "./../interface.sol";
 // https://bscscan.com/tx/0xc2d2d7164a9d3cfce1e1dac7dc328b350c693feb0a492a6989ceca7104eef9b7
 
 interface IVTF is IERC20 {
-    function updateUserBalance(address _user) external;
+    function updateUserBalance(
+        address _user
+    ) external;
 }
 
 interface IROUTER {
@@ -33,7 +35,9 @@ contract claimReward {
         VTF.updateUserBalance(address(this));
     }
 
-    function claim(address receiver) external {
+    function claim(
+        address receiver
+    ) external {
         VTF.updateUserBalance(address(this));
         VTF.transfer(receiver, VTF.balanceOf(address(this)));
     }

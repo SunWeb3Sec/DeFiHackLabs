@@ -22,7 +22,9 @@ import "./../interface.sol";
 
 interface IStaxLPStaking {
     function migrateStake(address oldStaking, uint256 amount) external;
-    function withdrawAll(bool claim) external;
+    function withdrawAll(
+        bool claim
+    ) external;
 }
 
 contract ContractTest is Test {

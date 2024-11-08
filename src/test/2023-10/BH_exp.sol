@@ -15,7 +15,9 @@ import "./../interface.sol";
 // https://twitter.com/DecurityHQ/status/1712118881425203350
 
 interface IUnverifiedContract1 {
-    function Upgrade(address _lpToken) external;
+    function Upgrade(
+        address _lpToken
+    ) external;
 }
 
 contract ContractTest is Test {

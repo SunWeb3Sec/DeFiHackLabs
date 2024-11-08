@@ -17,7 +17,9 @@ import "./../interface.sol";
 // https://twitter.com/QuillAudits/status/1615634917802807297
 
 interface ITokenUPS is IERC20 {
-    function myPressure(address _address) external view returns (uint256);
+    function myPressure(
+        address _address
+    ) external view returns (uint256);
 }
 
 contract UpswingExploit is Test {

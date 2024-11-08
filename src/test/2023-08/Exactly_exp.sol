@@ -54,8 +54,12 @@ interface IAuditor {
         address marketToSimulate,
         uint256 withdrawAmount
     ) external view returns (uint256 sumCollateral, uint256 sumDebtPlusEffects);
-    function markets(address market) external view returns (MarketData memory);
-    function assetPrice(address priceFeed) external view returns (uint256);
+    function markets(
+        address market
+    ) external view returns (MarketData memory);
+    function assetPrice(
+        address priceFeed
+    ) external view returns (uint256);
 }
 
 interface IDebtManager {
@@ -129,7 +133,9 @@ contract ContractTest is Test {
     }
 
     // https://solidity-by-example.org/app/minimal-proxy/
-    function Clone(address target) public returns (address result) {
+    function Clone(
+        address target
+    ) public returns (address result) {
         bytes20 targetBytes = bytes20(target);
         assembly {
             let clone := mload(0x40)
@@ -289,7 +295,9 @@ contract FakeMarket is Nonces {
         }
     }
 
-    function setVictim(address v) external {
+    function setVictim(
+        address v
+    ) external {
         // setV
         victim = v;
     }
@@ -388,11 +396,15 @@ contract FakeMarket is Nonces {
         uint256 floatingBorrowShares;
     }
 
-    function previewRefund(uint256 shares) public view returns (uint256) {
+    function previewRefund(
+        uint256 shares
+    ) public view returns (uint256) {
         return fakeTokenAmount;
     }
 
-    function accounts(address owner) external view returns (Account memory) {
+    function accounts(
+        address owner
+    ) external view returns (Account memory) {
         return Account(0, 0, 0);
     }
 
@@ -400,7 +412,9 @@ contract FakeMarket is Nonces {
 
     // ******************** ERC4626 ******************** //
 
-    function maxWithdraw(address owner) external view returns (uint256) {
+    function maxWithdraw(
+        address owner
+    ) external view returns (uint256) {
         return 0;
     }
 
@@ -430,12 +444,16 @@ contract FakeMarket is Nonces {
         return true;
     }
 
-    function mint(uint256 amount) external {
+    function mint(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] += amount;
         totalSupply += amount;
     }
 
-    function burn(uint256 amount) external {
+    function burn(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] -= amount;
         totalSupply -= amount;
     }
@@ -452,7 +470,9 @@ contract FakeMarket is Nonces {
         _useNonce(owner);
     }
 
-    function nonces(address owner) public view virtual override(Nonces) returns (uint256) {
+    function nonces(
+        address owner
+    ) public view virtual override(Nonces) returns (uint256) {
         return super.nonces(owner);
     }
 }

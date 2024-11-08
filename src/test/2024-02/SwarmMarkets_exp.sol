@@ -7,7 +7,6 @@ pragma solidity ^0.8.10;
 // Vulnerable Contract : https://etherscan.io/address/0x2b9dc65253c035eb21778cb3898eab5a0ada0cce
 // Attack Tx : https://etherscan.io/tx/0xc0be8c3792a5b1ba7d653dc681ff611a5b79a75fe51c359cf1aac633e9441574
 
-
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
@@ -15,7 +14,6 @@ interface IXTOKEN {
     function mint(address account, uint256 amount) external;
     function burnFrom(address account, uint256 amount) external;
 }
-
 
 interface IXTOKENWrapper {
     function unwrap(address _xToken, uint256 _amount) external;
@@ -35,7 +33,7 @@ contract ContractTest is Test {
     IERC20 USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 19286457 - 1);
+        vm.createSelectFork("mainnet", 19_286_457 - 1);
         vm.label(address(XTOKEN), "XTOKEN");
         vm.label(address(XTOKEN2), "XTOKEN2");
         vm.label(address(wrapper), "wrapper");
@@ -53,7 +51,6 @@ contract ContractTest is Test {
         emit log_named_decimal_uint("Attacker DAI balance after attack:", DAI.balanceOf(address(this)), 18);
         emit log_named_decimal_uint("Attacker USDC balance after attack:", DAI.balanceOf(address(this)), 18);
     }
-
 
     fallback() external payable {}
 }

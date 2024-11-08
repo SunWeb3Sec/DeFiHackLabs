@@ -17,7 +17,9 @@ interface Zapper {
         bytes callData;
     }
 
-    function zapIn(ZapData calldata zapCall) external;
+    function zapIn(
+        ZapData calldata zapCall
+    ) external;
 }
 
 contract ContractTest is Test {
@@ -72,7 +74,9 @@ contract ContractTest is Test {
         return true;
     }
 
-    function balanceOf(address account) external view returns (uint256) {
+    function balanceOf(
+        address account
+    ) external view returns (uint256) {
         return 1;
     }
 

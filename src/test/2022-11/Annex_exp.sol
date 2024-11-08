@@ -70,11 +70,15 @@ contract ContractTest is Test {
         return 0;
     }
 
-    function balanceOf(address account) external returns (uint256) {
+    function balanceOf(
+        address account
+    ) external returns (uint256) {
         return 0;
     }
 
-    function redeem(uint256 redeemTokens) external returns (uint256) {
+    function redeem(
+        uint256 redeemTokens
+    ) external returns (uint256) {
         return 0;
     }
 }
@@ -111,13 +115,17 @@ contract MyERC20 {
         return true;
     }
 
-    function mint(uint256 amount) external {
+    function mint(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] += amount;
         totalSupply += amount;
         emit Transfer(address(0), msg.sender, amount);
     }
 
-    function burn(uint256 amount) external {
+    function burn(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] -= amount;
         totalSupply -= amount;
         emit Transfer(msg.sender, address(0), amount);

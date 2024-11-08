@@ -5,16 +5,22 @@ import "./../interface.sol";
 
 interface IPair {
     function approve(address, uint256) external;
-    function balanceOf(address) external returns (uint256);
+    function balanceOf(
+        address
+    ) external returns (uint256);
 }
 
 interface IDPC {
     function approve(address, uint256) external;
-    function balanceOf(address) external returns (uint256);
+    function balanceOf(
+        address
+    ) external returns (uint256);
     function tokenAirdrop(address, address, uint256) external;
     function stakeLp(address, address, uint256) external;
     function claimStakeLp(address, uint256) external;
-    function claimDpcAirdrop(address) external;
+    function claimDpcAirdrop(
+        address
+    ) external;
 }
 
 contract ContractTest is Test {
