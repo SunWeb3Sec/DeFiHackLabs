@@ -2,6 +2,7 @@
 src = 'src'
 out = 'out'
 libs = ['lib']
+fs_permissions = [{ access = "read", path = "./"}]
 
 [rpc_endpoints]
 mainnet = "https://rpc.ankr.com/eth"
@@ -32,3 +33,6 @@ single_line_statement_blocks = 'preserve'
 variable_override_spacing = true
 wrap_comments = false
 ignore = []
+
+
+
