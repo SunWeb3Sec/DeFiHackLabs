@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-540 incidents included.
+541 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -49,6 +49,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20241119 PolterFinance](#20241119-polterfinance---flashloan-attack)
+
 [20241111 DeltaPrime](#20241111-deltaprime---reentrancy)
 
 [20241026 CompoundFork](#20241026-compoundfork---flashloan-attack)
@@ -1166,13 +1167,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
-
-
-
-
-
-
-
 
 ### 20241119 PolterFinance - FlashLoan Attack
 
