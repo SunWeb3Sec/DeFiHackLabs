@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-540 incidents included.
+541 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20241119 PolterFinance](#20241119-polterfinance---flashloan-attack)
+
 [20241111 DeltaPrime](#20241111-deltaprime---reentrancy)
 
 [20241026 CompoundFork](#20241026-compoundfork---flashloan-attack)
@@ -1166,9 +1168,21 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20241119 PolterFinance - FlashLoan Attack
+
+### Lost: $7M
 
 
+```sh
+forge test --contracts ./src/test/2024-11/PolterFinance_exploit.sol -vvv
+```
+#### Contract
+[PolterFinance_exploit.sol](src/test/2024-11/PolterFinance_exploit.sol)
+### Link reference
 
+https://twitter.com/Bcpaintball26/status/1857865758551805976
+
+---
 
 ### 20241111 DeltaPrime - Reentrancy
 
