@@ -1212,7 +1212,8 @@ forge test --contracts ./src/test/2024-10/CompoundFork_exploit.sol -vvv --evm-ve
 [CompoundFork_exploit.sol](src/test/2024-10/CompoundFork_exploit.sol)
 ### Link reference
 
-https://x.com/Phalcon_xyz/status/1849636437349527725,https://app.blocksec.com/explorer/tx/base/0x6ab5b7b51f780e8c6c5ddaf65e9badb868811a95c1fd64e86435283074d3149e
+https://x.com/Phalcon_xyz/status/1849636437349527725
+https://app.blocksec.com/explorer/tx/base/0x6ab5b7b51f780e8c6c5ddaf65e9badb868811a95c1fd64e86435283074d3149e
 
 ---
 
