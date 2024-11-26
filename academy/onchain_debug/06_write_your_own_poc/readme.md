@@ -168,7 +168,7 @@ Author: [gbaleeee](https://twitter.com/gbaleeeee)
   }
   ```
   
-  更为详细完整的代码在DefiHackLabs库中：[DFX_exp.sol](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/DFX_exp.sol)
+  更为详细完整的代码在DefiHackLabs库中：[DFX_exp.sol](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2022-11/DFX_exp.sol)
   
 - 验证Fund flow  
   这时，我们可以通过攻击交易中代币发出的事件来对之前资金流动图进行验证
