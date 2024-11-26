@@ -183,7 +183,7 @@ Los Ataques de Reentrancy se pueden identificar principalmente en tres tipos:
   }
   ```
 
-  Se puede encontrar una base de código más detallada en el repositorio DefiHackLabs: [DFX_exp.sol](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/DFX_exp.sol)
+  Se puede encontrar una base de código más detallada en el repositorio DefiHackLabs: [DFX_exp.sol](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2022-11/DFX_exp.sol)
 
 - Verificar el Flujo de Fondos  
   

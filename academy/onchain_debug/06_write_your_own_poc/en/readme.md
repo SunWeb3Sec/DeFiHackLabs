@@ -179,7 +179,7 @@ Reentrancy Attacks can be mainly identified into three types:
   }
   ```
 
-  More detailed codebase can be found in the DefiHackLabs repo： [DFX_exp.sol](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/DFX_exp.sol)
+  More detailed codebase can be found in the DefiHackLabs repo： [DFX_exp.sol](https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2022-11/DFX_exp.sol)
 
 - Verify Fund Flow  
   
