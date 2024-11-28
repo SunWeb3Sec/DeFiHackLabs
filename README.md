@@ -1177,7 +1177,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 forge test --contracts ./src/test/2024-11/PolterFinance_exploit.sol -vvv
 ```
 #### Contract
-[PolterFinance_exploit.sol](src/test/2024-11/PolterFinance_exploit.sol)
+[PolterFinance_exploit.sol](src/test/2024-11/PolterFinance_exploit.sol_exp.sol)
 ### Link reference
 
 https://twitter.com/Bcpaintball26/status/1857865758551805976
