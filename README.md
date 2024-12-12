@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-541 incidents included.
+542 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -137,6 +137,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240611 Crb2](#20240616-Crb2---business-logic-flaw)
 
 [20240611 JokInTheBox](#20240611-JokInTheBox---business-logic-flaw)
+
+[20240610 UwuLend - Price Manipulation](#20240610-UwuLend---Price-Manipulation)
 
 [20240610 Bazaar](#20240610-bazaar---insufficient-permission-check)
 
@@ -1965,6 +1967,30 @@ forge test --match-contract JokInTheBox_exp -vvv --evm-version cancun
 ### Link reference
 
 https://x.com/0xNickLFranklin/status/1800355604692910571
+
+---
+
+### 20240610 UwULend - Price Manipulation
+
+### Lost: 19.3M
+
+```sh
+forge test --contracts ./src/test/2024-06/UwuLend_First_exp.sol -vvv --evm-version shanghai
+```
+
+```sh
+forge test --contracts ./src/test/2024-06/UwuLend_Second_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+
+[UwuLend_First_exp.sol](src/test/2024-06/UwuLend_First_exp.sol)
+
+[UwuLend_Second_exp.sol](src/test/2024-06/UwuLend_Second_exp.sol)
+
+### Link reference
+
+https://x.com/peckshield/status/1800176089316163831
 
 ---
 

