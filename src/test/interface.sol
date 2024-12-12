@@ -4198,6 +4198,8 @@ interface ILendingPool {
         uint16 referralCode,
         address onBehalfOf
     ) external;
+
+    function repay(address asset, uint256 amount, uint256 RateMode,address onBehalfOf) external payable;
     function repay(address _reserve, uint256 _amount, address _onBehalfOf) external payable;
     /**
      * @dev Function to liquidate a non-healthy position collateral-wise, with Health Factor below 1
@@ -5937,4 +5939,23 @@ interface ILoanTokenLogicWeth {
     function balanceOf(
         address _who
     ) external view returns (uint256);
+}
+
+
+interface IMorphoBuleFlashLoan {
+    function flashLoan(address token, uint256 assets, bytes calldata data) external;
+}
+
+interface IUniswapV3Flash {
+    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
+}
+
+
+interface IMakerDaoFlash {
+    function flashLoan(
+        address receiver,
+        address token,
+        uint256 amount,
+        bytes calldata data
+    ) external returns (bool);
 }
