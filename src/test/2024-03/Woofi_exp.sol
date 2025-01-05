@@ -15,9 +15,9 @@ import "./../interface.sol";
 // https://twitter.com/spreekaway/status/1765046559832764886
 // https://twitter.com/PeckShieldAlert/status/1765054155478175943
 
-interface IUniswapV3Flash {
-    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
-}
+//interface IUniswapV3Flash {
+//    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
+//}
 
 interface ILBTFlashloan {
     function flashLoan(ILBFlashLoanCallback receiver, bytes32 amounts, bytes calldata data) external;
@@ -84,7 +84,7 @@ interface IWooracleV2 {
     ) external view returns (State memory);
 }
 
-contract ContractTest is Test {
+contract Woofi_exp is Test {
     IERC20 public constant WOO = IERC20(0xcAFcD85D8ca7Ad1e1C6F82F651fA15E33AEfD07b);
     IERC20 public constant USDCe = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
     IERC20 public constant WETH = IERC20(0x82aF49447D8a07e3bd95BD0d56f35241523fBab1);
