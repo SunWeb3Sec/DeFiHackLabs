@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-544 incidents included.
+545 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250104 SorStaking](#20250104-SorStaking---Incorrect-reward-calculation)
+
 [20250104 98#Token](#20250104-98Token---Unprotected-public-function)
 
 [20250101 LAURAToken](#20250101-lauratoken---pair-balance-manipulation)
@@ -1173,6 +1175,21 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250104 SorStaking - Incorrect reward calculation
+
+### Lost: ～8 ETH
+
+```sh
+forge test --contracts ./src/test/2025-01/sorraStaking.sol  -vv --evm-version cancun
+```
+#### Contract
+[sorraStaking.sol](src/test/2025-01/sorraStaking.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1875582709512188394
+
+---
 
 ### 20250104 98Token - Unprotected public function
 
