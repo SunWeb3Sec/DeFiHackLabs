@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250106 Mosca](#20250106-mosca---logic-flaw)
 [20250107 IPC](#20250107-IPC---Incorrect-burn-pairs)
 
 [20250104 SorStaking](#20250104-SorStaking---Incorrect-reward-calculation)
@@ -1177,6 +1178,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20250106 Mosca - Logic Flaw
+
+### Lost: 19K
+
+
+```sh
+forge test --contracts ./src/test/2025-01/Mosca_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Mosca_exp.sol](src/test/2025-01/Mosca_exp.sol)
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1876884383736430821
+
+---
 
 ### 20250107 IPC Incorrect burn pairs
 
