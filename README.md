@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-547 incidents included.
+548 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -51,7 +51,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250108 LPMine](#20250108-LPMine---Incorrect-reward-calculation)
 
-[20250107 IPC - Incorrect burn pairs](#20250107-IPC---Incorrect-burn-pairs)
+[20250107 IPC](#20250107-IPC---Incorrect-burn-pairs)
+
+[20250106 Mosca](#20250106-mosca---logic-flaw)
 
 [20250104 SorStaking](#20250104-SorStaking---Incorrect-reward-calculation)
 
@@ -1196,7 +1198,7 @@ https://x.com/TenArmorAlert/status/1877030261067571234
 
 ---
 
-### 20250107 IPC - Incorrect burn pairs
+### 20250107 IPC Incorrect burn pairs
 
 ### Lost: ～590k USDT
 
@@ -1208,6 +1210,22 @@ forge test --contracts ./src/test/2025-01/IPC_exp.sol  -vvv --evm-version cancun
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1876663900663370056
+
+---
+
+### 20250106 Mosca - Logic Flaw
+
+### Lost: 19K
+
+
+```sh
+forge test --contracts ./src/test/2025-01/Mosca_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Mosca_exp.sol](src/test/2025-01/Mosca_exp.sol)
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1876884383736430821
 
 ---
 
