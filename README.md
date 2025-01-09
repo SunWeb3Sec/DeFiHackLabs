@@ -48,9 +48,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20250106 Mosca](#20250106-mosca---logic-flaw)
 
 [20250107 IPC](#20250107-IPC---Incorrect-burn-pairs)
+
+[20250106 Mosca](#20250106-mosca---logic-flaw)
 
 [20250104 SorStaking](#20250104-SorStaking---Incorrect-reward-calculation)
 
@@ -1180,8 +1181,20 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20250107 IPC Incorrect burn pairs
 
+### Lost: ～590k USDT
 
+```sh
+forge test --contracts ./src/test/2025-01/IPC_exp.sol  -vvv --evm-version cancun
+```
+#### Contract
+[IPC_exp.sol](src/test/2025-01/IPC_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1876663900663370056
+
+---
 
 ### 20250106 Mosca - Logic Flaw
 
@@ -1198,22 +1211,6 @@ forge test --contracts ./src/test/2025-01/Mosca_exp.sol -vvv --evm-version shang
 https://x.com/0xNickLFranklin/status/1876884383736430821
 
 ---
-
-### 20250107 IPC Incorrect burn pairs
-
-### Lost: ～590k USDT
-
-```sh
-forge test --contracts ./src/test/2025-01/IPC_exp.sol  -vvv --evm-version cancun
-```
-#### Contract
-[IPC_exp.sol](src/test/2025-01/IPC_exp.sol)
-### Link reference
-
-https://x.com/TenArmorAlert/status/1876663900663370056
-
----
-
 
 ### 20250104 SorStaking - Incorrect reward calculation
 
