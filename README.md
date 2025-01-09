@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-546 incidents included.
+547 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,7 +48,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20250107 IPC](#20250107-IPC---Incorrect-burn-pairs)
+[20250108 LPMine](#20250108-LPMine---Incorrect-reward-calculation)
+
+[20250107 IPC - Incorrect burn pairs](#20250107-IPC---Incorrect-burn-pairs)
 
 [20250104 SorStaking](#20250104-SorStaking---Incorrect-reward-calculation)
 
@@ -1178,7 +1180,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-### 20250107 IPC Incorrect burn pairs
+### 20250108 LPMine - Incorrect reward calculation 
+
+### Lost: ~24k USDT
+
+```sh
+forge test --contracts ./src/test/2025-01/LPMine.sol  -vvv --evm-version cancun
+```
+#### Contract
+[LPMine_exp.sol](src/test/2025-01/LPMine_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1877030261067571234
+
+---
+
+### 20250107 IPC - Incorrect burn pairs
 
 ### Lost: ～590k USDT
 
@@ -1192,7 +1209,6 @@ forge test --contracts ./src/test/2025-01/IPC_exp.sol  -vvv --evm-version cancun
 https://x.com/TenArmorAlert/status/1876663900663370056
 
 ---
-
 
 ### 20250104 SorStaking - Incorrect reward calculation
 
