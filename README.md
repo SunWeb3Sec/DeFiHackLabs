@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-546 incidents included.
+547 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -49,6 +49,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20250106 Mosca](#20250106-mosca---logic-flaw)
+
 [20250107 IPC](#20250107-IPC---Incorrect-burn-pairs)
 
 [20250104 SorStaking](#20250104-SorStaking---Incorrect-reward-calculation)
