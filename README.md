@@ -51,7 +51,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250108 LPMine](#20250108-LPMine---Incorrect-reward-calculation)
 
-[20250107 IPC](#20250107-IPC---Incorrect-burn-pairs)
+[20250107 IPC](#20250106-mosca---logic-flaw)
 
 [20250106 Mosca](#20250106-mosca---logic-flaw)
 
