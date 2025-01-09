@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
 [20250108 LPMine](#20250108-LPMine---Incorrect-reward-calculation)
 
 [20250107 IPC - Incorrect burn pairs](#20250107-IPC---Incorrect-burn-pairs)
