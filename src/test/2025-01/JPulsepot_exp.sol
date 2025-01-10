@@ -35,7 +35,7 @@ contract JPulsepot is BaseTestWithBalanceLog {
     function setUp() public {
         vm.createSelectFork("bsc", blocknumToForkFrom);
         //Change this to the target token to get token balance of,Keep it address 0 if its ETH that is gotten at the end of the exploit
-        fundingToken = address(0);
+        fundingToken = address(BNB);
     }
 
     function testExploit() public balanceLog {
