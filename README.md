@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250111 RoulettePotV2](#20250111-roulettepotv2---price-manipulation)
 
 [20250108 LPMine](#20250108-LPMine---Incorrect-reward-calculation)
 
@@ -1182,6 +1183,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20250111 RoulettePotV2 - Price Manipulation
+
+### Lost: ~28K
+
+
+```sh
+forge test --contracts ./src/test/2025-01/RoulettePotV2_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[RoulettePotV2_exp.sol](src/test/2025-01/RoulettePotV2_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1878008055717376068
+
+---
 
 ### 20250108 LPMine - Incorrect reward calculation 
 
