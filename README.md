@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-548 incidents included.
+550 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,7 +48,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
 [20250111 RoulettePotV2](#20250111-roulettepotv2---price-manipulation)
+
+[20250110 JPulsepot](#20250110-jpulsepot---logic-flaw)
 
 [20250108 LPMine](#20250108-LPMine---Incorrect-reward-calculation)
 
@@ -1184,9 +1187,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-
-
-
 ### 20250111 RoulettePotV2 - Price Manipulation
 
 ### Lost: ~28K
@@ -1200,6 +1200,22 @@ forge test --contracts ./src/test/2025-01/RoulettePotV2_exp.sol -vvv --evm-versi
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1878008055717376068
+
+---
+
+### 20250110 JPulsepot - Logic Flaw
+
+### Lost: 21.5K
+
+
+```sh
+forge test --contracts ./src/test/2025-01/JPulsepot_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[JPulsepot_exp.sol](src/test/2025-01/JPulsepot_exp.sol)
+### Link reference
+
+https://x.com/CertiKAlert/status/1877662352834793639
 
 ---
 
