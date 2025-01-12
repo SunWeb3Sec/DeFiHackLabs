@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-548 incidents included.
+549 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250110 JPulsepot](#20250110-jpulsepot---logic-flaw)
 
 [20250108 LPMine](#20250108-LPMine---Incorrect-reward-calculation)
 
@@ -1182,6 +1184,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250110 JPulsepot - Logic Flaw
+
+### Lost: 21.5K
+
+
+```sh
+forge test --contracts ./src/test/2025-01/JPulsepot_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[JPulsepot_exp.sol](src/test/2025-01/JPulsepot_exp.sol)
+### Link reference
+
+https://x.com/CertiKAlert/status/1877662352834793639
+
+---
 
 ### 20250108 LPMine - Incorrect reward calculation 
 
