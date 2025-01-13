@@ -2,7 +2,6 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-
 552 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
@@ -49,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250113 Mosca2](#20250113-mosca2---logic-flaw)
 
 [20250111 RoulettePotV2](#20250111-roulettepotv2---price-manipulation)
 
@@ -1190,6 +1191,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20250113 Mosca2 - Logic Flaw
+
+### Lost: 37.6K
+
+
+```sh
+forge test --contracts ./src/test/2025-01/Mosca2_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Mosca2_exp.sol](src/test/2025-01/Mosca2_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1878699517450883407
+
+---
+
 ### 20250111 RoulettePotV2 - Price Manipulation
 
 ### Lost: ~28K
@@ -1311,9 +1328,6 @@ https://x.com/TenArmorAlert/status/1874455664187023752
 
 ---
 
-
-
-
 ### 20241203 Pledge - Access Control
 
 ### Lost: 15K
@@ -1329,7 +1343,6 @@ forge test --contracts ./src/test/2024-12/Pledge_exp.sol -vvv --evm-version shan
 https://x.com/TenArmorAlert/status/1864126176848965810
 
 ---
-
 
 ### 20241119 PolterFinance - FlashLoan Attack
 
