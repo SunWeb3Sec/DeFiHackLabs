@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-550 incidents included.
+552 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -65,6 +65,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250104 98#Token](#20250104-98Token---Unprotected-public-function)
 
 [20250101 LAURAToken](#20250101-lauratoken---pair-balance-manipulation)
+
+[20241203 Pledge](#20241203-pledge---access-control)
 
 [20241119 PolterFinance](#20241119-polterfinance---flashloan-attack)
 
@@ -1308,6 +1310,26 @@ forge test --contracts ./src/test/2025-01/LAURAToken_exp.sol -vvv
 https://x.com/TenArmorAlert/status/1874455664187023752
 
 ---
+
+
+
+
+### 20241203 Pledge - Access Control
+
+### Lost: 15K
+
+
+```sh
+forge test --contracts ./src/test/2024-12/Pledge_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Pledge_exp.sol](src/test/2024-12/Pledge_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1864126176848965810
+
+---
+
 
 ### 20241119 PolterFinance - FlashLoan Attack
 
