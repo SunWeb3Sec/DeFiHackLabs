@@ -49,6 +49,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
 [20250113 Mosca2](#20250113-mosca2---logic-flaw)
 
 [20250111 RoulettePotV2](#20250111-roulettepotv2---price-manipulation)
@@ -1188,9 +1189,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
-
-
-
 
 ### 20250113 Mosca2 - Logic Flaw
 
