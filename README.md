@@ -48,8 +48,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20241223 Moonhacker](#20241223-moonhacker---improper-input-validation)
-
 [20250113 Mosca2](#20250113-mosca2---logic-flaw)
 
 [20250111 RoulettePotV2](#20250111-roulettepotv2---price-manipulation)
@@ -67,6 +65,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250104 98#Token](#20250104-98Token---Unprotected-public-function)
 
 [20250101 LAURAToken](#20250101-lauratoken---pair-balance-manipulation)
+
+[20241223 Moonhacker](#20241223-moonhacker---improper-input-validation)
 
 [20241203 Pledge](#20241203-pledge---access-control)
 
@@ -1192,25 +1192,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-
-
-
-### 20241223 Moonhacker - improper input validation
-
-### Lost:  318.9 k
-
-
-```sh
-forge test --contracts ./src/test/2024-12/Moonhacker_exp.sol -vvv --evm-version shanghai
-```
-#### Contract
-[Moonhacker_exp.sol](src/test/2024-12/Moonhacker_exp.sol)
-### Link reference
-
-https://blog.solidityscan.com/moonhacker-vault-hack-analysis-ab122cb226f6
-
----
-
 ### 20250113 Mosca2 - Logic Flaw
 
 ### Lost: 37.6K
@@ -1345,6 +1326,22 @@ forge test --contracts ./src/test/2025-01/LAURAToken_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1874455664187023752
+
+---
+
+### 20241223 Moonhacker - improper input validation
+
+### Lost:  318.9 k
+
+
+```sh
+forge test --contracts ./src/test/2024-12/Moonhacker_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Moonhacker_exp.sol](src/test/2024-12/Moonhacker_exp.sol)
+### Link reference
+
+https://blog.solidityscan.com/moonhacker-vault-hack-analysis-ab122cb226f6
 
 ---
 
