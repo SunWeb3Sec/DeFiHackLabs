@@ -8,7 +8,7 @@ import "./../interface.sol";
 // Attacker : https://snowtrace.io/address/0x0cd4fd0eecd2c5ad24de7f17ae35f9db6ac51ee7
 // Attack Contract : https://snowtrace.io/address/0x44e251786a699518d6273ea1e027cec27b49d3bd
 // Vulnerable Contract : https://snowtrace.io/address/0xe5c84c7630a505b6adf69b5594d0ff7fedd5f447
-// Attack Tx : https://snowtrace.io/tx/0x4425f757715e23d392cda666bc0492d9e5d5848ff89851a1821eab5ed12bb867 mutiple txs
+// Attack Tx : https://snowtrace.io/tx/0x4425f757715e23d392cda666bc0492d9e5d5848ff89851a1821eab5ed12bb867 multiple txs
 
 // @Info
 // Vulnerable Contract Code : https://snowtrace.io/address/0xe5c84c7630a505b6adf69b5594d0ff7fedd5f447#code
