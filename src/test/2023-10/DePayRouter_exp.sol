@@ -17,7 +17,7 @@ interface IDepayRouterV1 {
     function route(
         // The path of the token conversion.
         address[] calldata path,
-        // Amounts passed to proccessors:
+        // Amounts passed to processors:
         // e.g. [amountIn, amountOut, deadline]
         uint256[] calldata amounts,
         // Addresses passed to plugins:
