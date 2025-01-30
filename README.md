@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-553 incidents included.
+554 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250118 Paribus](#20250118-paribus---bad-oracle)
+
 [20250113 Mosca2](#20250113-mosca2---logic-flaw)
 
 [20250111 RoulettePotV2](#20250111-roulettepotv2---price-manipulation)
@@ -1191,6 +1194,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250118 Paribus - Bad oracle
+
+### Lost: ~86k
+
+
+```sh
+forge test --contracts ./src/test/2025-01/Paribus_exp.sol -vvv
+```
+#### Contract
+[Paribus_exp.sol](src/test/2025-01/Paribus_exp.sol)
+### Link reference
+
+https://app.blocksec.com/explorer/tx/arbitrum/0xf5e753d3da60db214f2261343c1e1bc46e674d2fa4b7a953eaf3c52123aeebd2?line=415
+
+---
 
 ### 20250113 Mosca2 - Logic Flaw
 
