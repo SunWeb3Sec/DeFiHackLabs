@@ -71,6 +71,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250101 LAURAToken](#20250101-lauratoken---pair-balance-manipulation)
 
+<details> <summary> 2024 </summary>
+
 [20241223 Moonhacker](#20241223-moonhacker---improper-input-validation)
 
 [20241203 Pledge](#20241203-pledge---access-control)
@@ -376,6 +378,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240102 RadiantCapital](#20240102-radiantcapital---loss-of-precision)
 
 [20240101 OrbitChain](#20240101-orbitchain---incorrect-input-validation)
+
+</details>
 
 <details> <summary> 2023 </summary>
 
