@@ -3,6 +3,7 @@ src = 'src'
 out = 'out'
 libs = ['lib']
 fs_permissions = [{ access = "read", path = "./"}]
+evm_version = 'shanghai'
 
 [rpc_endpoints]
 mainnet = "https://rpc.ankr.com/eth"

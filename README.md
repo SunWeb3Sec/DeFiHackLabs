@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-554 incidents included.
+555 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250121 Ast](#20250121-ast---Price-Manipulation)
 
 [20250118 Paribus](#20250118-paribus---bad-oracle)
 
@@ -1194,6 +1196,21 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250121 Ast - Price-Manipulation
+
+### Lost: ~65K
+
+```sh
+forge test --contracts ./src/test/2025-01/Ast_exp.sol -vvv
+```
+#### Contract
+[Ast_exp.sol](src/test/2025-01/Ast_exp.sol)
+### Link reference
+
+https://medium.com/@joichiro.sai/ast-token-hack-how-a-faulty-transfer-logic-led-to-a-65k-exploit-da75aed59a43
+
+---
 
 ### 20250118 Paribus - Bad oracle
 
