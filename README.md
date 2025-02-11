@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-555 incidents included.
+556 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250123 ODOS](#20250123-ODOS---invalid-signature-verification)
 
 [20250121 Ast](#20250121-ast---Price-Manipulation)
 
@@ -1200,6 +1202,19 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250123 ODOS - invalid-signature-verification
+
+### Lost: ~50k
+
+```sh
+forge test --contracts ./src/test/2025-01/ODOS_exp.sol -vvv
+```
+#### Contract
+[OODS_exp.sol](src/test/2025-01/OODS_exp.sol)
+### Link reference
+
+https://app.blocksec.com/explorer/tx/base/0xd10faa5b33ddb501b1dc6430896c966048271f2510ff9ed681dd6d510c5df9f6
 
 ### 20250121 Ast - Price-Manipulation
 
