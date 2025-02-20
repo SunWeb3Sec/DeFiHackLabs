@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-556 incidents included.
+557 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250211 FourMeme](#20250211-fourmeme---unchecked-pancakeswap-pool)
 
 [20250123 ODOS](#20250123-ODOS---invalid-signature-verification)
 
@@ -1202,6 +1203,26 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20250211 FourMeme - Logic Flaw
+
+### Lost: ~186k
+
+
+```sh
+forge test --contracts ./src/test/2025-02/FourMeme_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[FourMeme_exp.sol](src/test/2025-02/FourMeme_exp.sol)
+### Link reference
+
+https://www.chaincatcher.com/en/article/2167296
+
+
+---
 
 ### 20250123 ODOS - invalid-signature-verification
 
