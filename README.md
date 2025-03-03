@@ -51,7 +51,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250221 Bybit](#20250221-bybit---phishing-attack)
 
-[20250211 FourMeme](#20250211-fourmeme---unchecked-pancakeswap-pool)
+[20250211 FourMeme](#20250211-fourmeme---logic-flaw)
 
 [20250123 ODOS](#20250123-ODOS---invalid-signature-verification)
 
