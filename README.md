@@ -79,311 +79,311 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 <details> <summary> 2024 </summary>
 
-[20241223 Moonhacker](past/2023/README.md#20241223-moonhacker---improper-input-validation)
+[20241223 Moonhacker](past/2024/README.md#20241223-moonhacker---improper-input-validation)
 
-[20241203 Pledge](past/2023/README.md#20241203-pledge---access-control)
+[20241203 Pledge](past/2024/README.md#20241203-pledge---access-control)
 
-[20241119 PolterFinance](past/2023/README.md#20241119-polterfinance---flashloan-attack)
+[20241119 PolterFinance](past/2024/README.md#20241119-polterfinance---flashloan-attack)
 
-[20241111 DeltaPrime](past/2023/README.md#20241111-deltaprime---reentrancy)
+[20241111 DeltaPrime](past/2024/README.md#20241111-deltaprime---reentrancy)
 
-[20241026 CompoundFork](past/2023/README.md#20241026-compoundfork---flashloan-attack)
+[20241026 CompoundFork](past/2024/README.md#20241026-compoundfork---flashloan-attack)
 
-[20241022 Erc20transfer](past/2023/README.md#20241022-erc20transfer---access-control)
+[20241022 Erc20transfer](past/2024/README.md#20241022-erc20transfer---access-control)
 
-[20241022 VISTA](past/2023/README.md#20241022-vista---flashmint-receive-error)
+[20241022 VISTA](past/2024/README.md#20241022-vista---flashmint-receive-error)
 
-[20241013 MorphoBlue](past/2023/README.md#20241013-morphoblue---overpriced-asset-in-oracle)
+[20241013 MorphoBlue](past/2024/README.md#20241013-morphoblue---overpriced-asset-in-oracle)
 
-[20241011 P719Token](past/2023/README.md#20241011-p719token---price-manipulation-inflate-attack)
+[20241011 P719Token](past/2024/README.md#20241011-p719token---price-manipulation-inflate-attack)
 
-[20241006 HYDT](past/2023/README.md#20241010-hydt---oracle-price-manipulation)
+[20241006 HYDT](past/2024/README.md#20241010-hydt---oracle-price-manipulation)
 
-[20241006 SASHAToken](past/2023/README.md#20241006-sashatoken---price-manipulation)
+[20241006 SASHAToken](past/2024/README.md#20241006-sashatoken---price-manipulation)
 
-[20241005 AIZPTToken](past/2023/README.md#20241005-AIZPTToken---wrong-price-calculation)
+[20241005 AIZPTToken](past/2024/README.md#20241005-AIZPTToken---wrong-price-calculation)
 
-[20241002 LavaLending](past/2023/README.md#20241002-LavaLending---price-manipulation)
+[20241002 LavaLending](past/2024/README.md#20241002-LavaLending---price-manipulation)
 
-[20241001 FireToken](past/2023/README.md#20241001-firetoken---pair-manipulation-with-transfer-function)
+[20241001 FireToken](past/2024/README.md#20241001-firetoken---pair-manipulation-with-transfer-function)
 
-[20240926 OnyxDAO](past/2023/README.md#20240926-OnyxDAO---fake-market)
+[20240926 OnyxDAO](past/2024/README.md#20240926-OnyxDAO---fake-market)
 
-[20240926 Bedrock_DeFi](past/2023/README.md#20240926-Bedrock_DeFi---swap-eth/btc-1/1-in-mint-function)
+[20240926 Bedrock_DeFi](past/2024/README.md#20240926-Bedrock_DeFi---swap-eth/btc-1/1-in-mint-function)
 
-[20240924 MARA](past/2023/README.md#20240924-MARA---price-manipulation)
+[20240924 MARA](past/2024/README.md#20240924-MARA---price-manipulation)
 
-[20240923 Bankroll_Network](past/2023/README.md#20240923-Bankroll_Network---incorrect-input-validation)
+[20240923 Bankroll_Network](past/2024/README.md#20240923-Bankroll_Network---incorrect-input-validation)
 
-[20240913 OTSeaStaking](past/2023/README.md#20240913-OTSeaStaking---Logic-Flaw)
+[20240913 OTSeaStaking](past/2024/README.md#20240913-OTSeaStaking---Logic-Flaw)
 
-[20240910 Caterpillar_Coin_CUT](past/2023/README.md#20240910-Caterpillar_Coin_CUT---price-manipulation)
+[20240910 Caterpillar_Coin_CUT](past/2024/README.md#20240910-Caterpillar_Coin_CUT---price-manipulation)
 
-[20240903 Penpiexyz_io](past/2023/README.md#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
+[20240903 Penpiexyz_io](past/2024/README.md#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
 
-[20240816 Zenterest](past/2023/README.md#20240816-Zenterest---price-out-of-date)
+[20240816 Zenterest](past/2024/README.md#20240816-Zenterest---price-out-of-date)
 
-[20240816 OMPxContract](past/2023/README.md#20240816-ompx-contract---flashloan)
+[20240816 OMPxContract](past/2024/README.md#20240816-ompx-contract---flashloan)
 
-[20240828 AAVE](past/2023/README.md#20240828-aave---arbitrary-call-error)
+[20240828 AAVE](past/2024/README.md#20240828-aave---arbitrary-call-error)
 
-[20240814 YodlRouter](past/2023/README.md#20240814-noname---arbitrary-call)
+[20240814 YodlRouter](past/2024/README.md#20240814-noname---arbitrary-call)
 
-[20240813 VOW](past/2023/README.md#20240813-vow---misconfiguration)
+[20240813 VOW](past/2024/README.md#20240813-vow---misconfiguration)
 
-[20240812 iVest](past/2023/README.md#20240812-iVest---business-logic-flaw)
+[20240812 iVest](past/2024/README.md#20240812-iVest---business-logic-flaw)
 
-[20240806 Novax](past/2023/README.md#20240806-Novax---price-manipulation)
+[20240806 Novax](past/2024/README.md#20240806-Novax---price-manipulation)
 
-[20240801 Convergence](past/2023/README.md#20240801-Convergence---incorrect-input-validation)
+[20240801 Convergence](past/2024/README.md#20240801-Convergence---incorrect-input-validation)
 
-[20240724 Spectra_finance](past/2023/README.md#20240724-spectra_finance---incorrect-input-validation)
+[20240724 Spectra_finance](past/2024/README.md#20240724-spectra_finance---incorrect-input-validation)
 
-[20240723 MEVbot_0xdd7c](past/2023/README.md#20240723-mevbot_0xdd7c---incorrect-input-validation)
+[20240723 MEVbot_0xdd7c](past/2024/README.md#20240723-mevbot_0xdd7c---incorrect-input-validation)
 
-[20240716 Lifiprotocol](past/2023/README.md#20240716-lifiprotocol---incorrect-input-validation)
+[20240716 Lifiprotocol](past/2024/README.md#20240716-lifiprotocol---incorrect-input-validation)
 
-[20240714 Minterest](past/2023/README.md#20240714-minterest---Reentrancy)
+[20240714 Minterest](past/2024/README.md#20240714-minterest---Reentrancy)
 
-[20240712 DoughFina](past/2023/README.md#20240712-doughfina---incorrect-input-validation)
+[20240712 DoughFina](past/2024/README.md#20240712-doughfina---incorrect-input-validation)
 
-[20240711 SBT](past/2023/README.md#20240711-sbt---business-logic-flaw)
+[20240711 SBT](past/2024/README.md#20240711-sbt---business-logic-flaw)
 
-[20240711 GAX](past/2023/README.md#20240711-GAX---lack-of-access-control)
+[20240711 GAX](past/2024/README.md#20240711-GAX---lack-of-access-control)
 
-[20240708 LW](past/2023/README.md#20240708-Lw---integer-underflow)
+[20240708 LW](past/2024/README.md#20240708-Lw---integer-underflow)
 
-[20240705 DeFiPlaza](past/2023/README.md#20240705-defiplaza---loss-of-precision)
+[20240705 DeFiPlaza](past/2024/README.md#20240705-defiplaza---loss-of-precision)
 
-[20240703 UnverifiedContr_0x452E25](past/2023/README.md#20240703-UnverifiedContr_0x452E25---lack-of-access-control)
+[20240703 UnverifiedContr_0x452E25](past/2024/README.md#20240703-UnverifiedContr_0x452E25---lack-of-access-control)
 
-[20240702 MRP](past/2023/README.md#20240702-mrp---reentrancy)
+[20240702 MRP](past/2024/README.md#20240702-mrp---reentrancy)
 
-[20240628 Will](past/2023/README.md#20240628-Will---business-logic-flaw)
+[20240628 Will](past/2024/README.md#20240628-Will---business-logic-flaw)
 
-[20240627 APEMAGA](past/2023/README.md#20240627-APEMAGA---business-logic-flaw)
+[20240627 APEMAGA](past/2024/README.md#20240627-APEMAGA---business-logic-flaw)
 
-[20240618 INcufi](past/2023/README.md#20240618-incufi---business-logic-flaw)
+[20240618 INcufi](past/2024/README.md#20240618-incufi---business-logic-flaw)
 
-[20240617 Dyson_money](past/2023/README.md#20240617-dyson_money---business-logic-flaw)
+[20240617 Dyson_money](past/2024/README.md#20240617-dyson_money---business-logic-flaw)
 
-[20240616 WIFCOIN_ETH](past/2023/README.md#20240616-WIFCOIN_ETH---business-logic-flaw)
+[20240616 WIFCOIN_ETH](past/2024/README.md#20240616-WIFCOIN_ETH---business-logic-flaw)
 
-[20240611 Crb2](past/2023/README.md#20240616-Crb2---business-logic-flaw)
+[20240611 Crb2](past/2024/README.md#20240616-Crb2---business-logic-flaw)
 
-[20240611 JokInTheBox](past/2023/README.md#20240611-JokInTheBox---business-logic-flaw)
+[20240611 JokInTheBox](past/2024/README.md#20240611-JokInTheBox---business-logic-flaw)
 
-[20240610 UwuLend - Price Manipulation](past/2023/README.md#20240610-UwuLend---Price-Manipulation)
+[20240610 UwuLend - Price Manipulation](past/2024/README.md#20240610-UwuLend---Price-Manipulation)
 
-[20240610 Bazaar](past/2023/README.md#20240610-bazaar---insufficient-permission-check)
+[20240610 Bazaar](past/2024/README.md#20240610-bazaar---insufficient-permission-check)
 
-[20240608 YYStoken](past/2023/README.md#20240608-YYStoken---business-logic-flaw)
+[20240608 YYStoken](past/2024/README.md#20240608-YYStoken---business-logic-flaw)
 
-[20240606 SteamSwap](past/2023/README.md#20240606-steamswap---logic-flaw)
+[20240606 SteamSwap](past/2024/README.md#20240606-steamswap---logic-flaw)
 
-[20240606 MineSTM](past/2023/README.md#20240606-MineSTM---business-logic-flaw)
+[20240606 MineSTM](past/2024/README.md#20240606-MineSTM---business-logic-flaw)
 
-[20240604 NCD](past/2023/README.md#20240604-NCD---business-logic-flaw)
+[20240604 NCD](past/2024/README.md#20240604-NCD---business-logic-flaw)
 
-[20240601 VeloCore](past/2023/README.md#20240601-VeloCore---lack-of-access-control)
+[20240601 VeloCore](past/2024/README.md#20240601-VeloCore---lack-of-access-control)
 
-[20240531 Liquiditytokens](past/2023/README.md#20240531-liquiditytokens---business-logic-flaw)
+[20240531 Liquiditytokens](past/2024/README.md#20240531-liquiditytokens---business-logic-flaw)
 
-[20240531 MixedSwapRouter](past/2023/README.md#20240531-MixedSwapRouter---arbitrary-call)
+[20240531 MixedSwapRouter](past/2024/README.md#20240531-MixedSwapRouter---arbitrary-call)
 
-[20240529 SCROLL](past/2023/README.md#20240529-SCROLL---integer-underflow)
+[20240529 SCROLL](past/2024/README.md#20240529-SCROLL---integer-underflow)
 
-[20240529 MetaDragon](past/2023/README.md#20240529-metadragon---lack-of-access-control)
+[20240529 MetaDragon](past/2024/README.md#20240529-metadragon---lack-of-access-control)
 
-[20240528 Tradeonorion](past/2023/README.md#20240528-Tradeonorion---business-logic-flaw)
+[20240528 Tradeonorion](past/2024/README.md#20240528-Tradeonorion---business-logic-flaw)
 
-[20240528 EXcommunity](past/2023/README.md#20240528-EXcommunity---business-logic-flaw)
+[20240528 EXcommunity](past/2024/README.md#20240528-EXcommunity---business-logic-flaw)
 
-[20240527 RedKeysCoin](past/2023/README.md#20240527-redkeyscoin---weak-rng)
+[20240527 RedKeysCoin](past/2024/README.md#20240527-redkeyscoin---weak-rng)
 
-[20240526 NORMIE](past/2023/README.md#20240526-normie---business-logic-flaw)
+[20240526 NORMIE](past/2024/README.md#20240526-normie---business-logic-flaw)
 
-[20240522 Burner](past/2023/README.md#20240522-Burner---sandwich-ack)
+[20240522 Burner](past/2024/README.md#20240522-Burner---sandwich-ack)
 
-[20240516 TCH](past/2023/README.md#20240516-tch---signature-malleability-vulnerability)
+[20240516 TCH](past/2024/README.md#20240516-tch---signature-malleability-vulnerability)
 
-[20240514 Sonne Finance](past/2023/README.md#20240514-sonne-finance---precision-loss)
+[20240514 Sonne Finance](past/2024/README.md#20240514-sonne-finance---precision-loss)
 
-[20240514 PredyFinance](past/2023/README.md#20240514-predyfinance---reentrancy)
+[20240514 PredyFinance](past/2024/README.md#20240514-predyfinance---reentrancy)
 
-[20240512 TGC](past/2023/README.md#20240512-tgc---business-logic-flaw)
+[20240512 TGC](past/2024/README.md#20240512-tgc---business-logic-flaw)
 
-[20240510 GFOX](past/2023/README.md#20240510-gfox---lack-of-access-control)
+[20240510 GFOX](past/2024/README.md#20240510-gfox---lack-of-access-control)
 
-[20240510 TSURU](past/2023/README.md#20240510-tsuru---insufficient-validation)
+[20240510 TSURU](past/2024/README.md#20240510-tsuru---insufficient-validation)
 
-[20240508 GPU](past/2023/README.md#20240508-GPU---self-transfer)
+[20240508 GPU](past/2024/README.md#20240508-GPU---self-transfer)
 
-[20240507 SATURN](past/2023/README.md#20240507-saturn---price-manipulation)
+[20240507 SATURN](past/2024/README.md#20240507-saturn---price-manipulation)
 
-[20240506 OSN](past/2023/README.md#20240506-osn---reward-distribution-problem)
+[20240506 OSN](past/2024/README.md#20240506-osn---reward-distribution-problem)
 
-[20240430 Yield](past/2023/README.md#20240430-yield---business-logic-flaw)
+[20240430 Yield](past/2024/README.md#20240430-yield---business-logic-flaw)
 
-[20240430 PikeFinance](past/2023/README.md#20240430-pikefinance---uninitialized-proxy)
+[20240430 PikeFinance](past/2024/README.md#20240430-pikefinance---uninitialized-proxy)
 
-[20240427 BNBX](past/2023/README.md#20240427-BNBX---precision-loss)
+[20240427 BNBX](past/2024/README.md#20240427-BNBX---precision-loss)
 
-[20240425 NGFS](past/2023/README.md#20240425-ngfs---bad-access-control)
+[20240425 NGFS](past/2024/README.md#20240425-ngfs---bad-access-control)
 
-[20240424 XBridge](past/2023/README.md#20240424-xbridge---logic-flaw)
+[20240424 XBridge](past/2024/README.md#20240424-xbridge---logic-flaw)
 
-[20240424 YIEDL](past/2023/README.md#20240424-yiedl---input-validation)
+[20240424 YIEDL](past/2024/README.md#20240424-yiedl---input-validation)
 
-[20240422 Z123](past/2023/README.md#20240422-z123---price-manipulation)
+[20240422 Z123](past/2024/README.md#20240422-z123---price-manipulation)
 
-[20240420 Rico](past/2023/README.md#20240420-rico---arbitrary-call)
+[20240420 Rico](past/2024/README.md#20240420-rico---arbitrary-call)
 
-[20240419 HedgeyFinance](past/2023/README.md#20240419-hedgeyfinance---logic-flaw)
+[20240419 HedgeyFinance](past/2024/README.md#20240419-hedgeyfinance---logic-flaw)
 
-[20240417 UnverifiedContr_0x00C409](past/2023/README.md#20240417-UnverifiedContr_0x00C409---unverified-external-call)
+[20240417 UnverifiedContr_0x00C409](past/2024/README.md#20240417-UnverifiedContr_0x00C409---unverified-external-call)
 
-[20240416 SATX](past/2023/README.md#20240416-satx---logic-flaw)
+[20240416 SATX](past/2024/README.md#20240416-satx---logic-flaw)
 
-[20240416 MARS_DEFI](past/2023/README.md#20240416-mars---bad-reflection)
+[20240416 MARS_DEFI](past/2024/README.md#20240416-mars---bad-reflection)
 
-[20240415 GFA](past/2023/README.md#20240415-gfa---business-logic-flaw)
+[20240415 GFA](past/2024/README.md#20240415-gfa---business-logic-flaw)
 
-[20240415 ChaingeFinance](past/2023/README.md#20240415-chaingeFinance---arbitrary-external-call)
+[20240415 ChaingeFinance](past/2024/README.md#20240415-chaingeFinance---arbitrary-external-call)
 
-[20240414 Hackathon](past/2023/README.md#20240414-hackathon---business-logic-flaw)
+[20240414 Hackathon](past/2024/README.md#20240414-hackathon---business-logic-flaw)
 
-[20240412 FIL314](past/2023/README.md#20240412-fil314---insufficient-validation-and-price-manipulation)
+[20240412 FIL314](past/2024/README.md#20240412-fil314---insufficient-validation-and-price-manipulation)
 
-[20240412 SumerMoney](past/2023/README.md#20240412-sumermoney---Reentrancy)
+[20240412 SumerMoney](past/2024/README.md#20240412-sumermoney---Reentrancy)
 
-[20240412 GROKD](past/2023/README.md#20240412-grokd---lack-of-access-control)
+[20240412 GROKD](past/2024/README.md#20240412-grokd---lack-of-access-control)
 
-[20240410 BigBangSwap](past/2023/README.md#20240410-BigBangSwap---precision-loss)
+[20240410 BigBangSwap](past/2024/README.md#20240410-BigBangSwap---precision-loss)
 
-[20240409 UPS](past/2023/README.md#20240409-ups---business-logic-flaw)
+[20240409 UPS](past/2024/README.md#20240409-ups---business-logic-flaw)
 
-[20240408 SQUID](past/2023/README.md#20240408-squid---sandwich-attack)
+[20240408 SQUID](past/2024/README.md#20240408-squid---sandwich-attack)
 
-[20240404 WSM](past/2023/README.md#20240404-wsm---manipulating-price)
+[20240404 WSM](past/2024/README.md#20240404-wsm---manipulating-price)
 
-[20240402 HoppyFrogERC](past/2023/README.md#20240402-hoppyfrogerc---business-logic-flaw)
+[20240402 HoppyFrogERC](past/2024/README.md#20240402-hoppyfrogerc---business-logic-flaw)
 
-[20240401 ATM](past/2023/README.md#20240401-atm---business-logic-flaw)
+[20240401 ATM](past/2024/README.md#20240401-atm---business-logic-flaw)
 
-[20240401 OpenLeverage](past/2023/README.md#20240401-openleverage---business-logic-flaw)
+[20240401 OpenLeverage](past/2024/README.md#20240401-openleverage---business-logic-flaw)
 
-[20240329 ETHFIN](past/2023/README.md#20240329-ethfin---lack-of-access-control)
+[20240329 ETHFIN](past/2024/README.md#20240329-ethfin---lack-of-access-control)
 
-[20240329 PrismaFi](past/2023/README.md#20240329-prismaFi---insufficient-validation)
+[20240329 PrismaFi](past/2024/README.md#20240329-prismaFi---insufficient-validation)
 
-[20240328 LavaLending](past/2023/README.md#20240328-lavalending---business-logic-flaw)
+[20240328 LavaLending](past/2024/README.md#20240328-lavalending---business-logic-flaw)
 
-[20240325 ZongZi](past/2023/README.md#20240325-zongzi---price-manipulation)
+[20240325 ZongZi](past/2024/README.md#20240325-zongzi---price-manipulation)
 
-[20240314 ARK](past/2023/README.md#20240324-ark---business-logic-flaw)
+[20240314 ARK](past/2024/README.md#20240324-ark---business-logic-flaw)
 
-[20240323 CGT](past/2023/README.md#20240323-cgt---incorrect-access-control)
+[20240323 CGT](past/2024/README.md#20240323-cgt---incorrect-access-control)
 
-[20240321 SSS](past/2023/README.md#20240321-sss---token-balance-doubles-on-transfer-to-self)
+[20240321 SSS](past/2024/README.md#20240321-sss---token-balance-doubles-on-transfer-to-self)
 
-[20240320 Paraswap](past/2023/README.md#20240320-paraswap---incorrect-access-control)
+[20240320 Paraswap](past/2024/README.md#20240320-paraswap---incorrect-access-control)
 
-[20240314 MO](past/2023/README.md#20240314-mo---business-logic-flaw)
+[20240314 MO](past/2024/README.md#20240314-mo---business-logic-flaw)
 
-[20240313 IT](past/2023/README.md#20240313-it---business-logic-flaw)
+[20240313 IT](past/2024/README.md#20240313-it---business-logic-flaw)
 
-[20240312 BBT](past/2023/README.md#20240312-bbt---business-logic-flaw)
+[20240312 BBT](past/2024/README.md#20240312-bbt---business-logic-flaw)
 
-[20240311 Binemon](past/2023/README.md#20240311-Binemon---precission-loss)
+[20240311 Binemon](past/2024/README.md#20240311-Binemon---precission-loss)
 
-[20240309 Juice](past/2023/README.md#20240309-juice---business-logic-flaw)
+[20240309 Juice](past/2024/README.md#20240309-juice---business-logic-flaw)
 
-[20240309 UnizenIO](past/2023/README.md#20240309-unizenio---unverified-external-call)
+[20240309 UnizenIO](past/2024/README.md#20240309-unizenio---unverified-external-call)
 
-[20240307 GHT](past/2023/README.md#20240307-ght---business-logic-flaw)
+[20240307 GHT](past/2024/README.md#20240307-ght---business-logic-flaw)
 
-[20240306 ALP](past/2023/README.md#20240306-alp---public-internal-function)
+[20240306 ALP](past/2024/README.md#20240306-alp---public-internal-function)
 
-[20240306 TGBS](past/2023/README.md#20240306-tgbs---business-logic-flaw)
+[20240306 TGBS](past/2024/README.md#20240306-tgbs---business-logic-flaw)
 
-[20240305 Woofi](past/2023/README.md#20240305-woofi---price-manipulation)
+[20240305 Woofi](past/2024/README.md#20240305-woofi---price-manipulation)
 
-[20240228 Seneca](past/2023/README.md#20240228-seneca---arbitrary-external-call-vulnerability)
+[20240228 Seneca](past/2024/README.md#20240228-seneca---arbitrary-external-call-vulnerability)
 
-[20240228 SMOOFSStaking](past/2023/README.md#20240228-smoofsstaking---reentrancy)
+[20240228 SMOOFSStaking](past/2024/README.md#20240228-smoofsstaking---reentrancy)
 
-[20240223 Zoomer](past/2023/README.md#20240223-zoomer---business-logic-flaw)
+[20240223 Zoomer](past/2024/README.md#20240223-zoomer---business-logic-flaw)
 
-[20240223 CompoundUni](past/2023/README.md#20240223-CompoundUni---Oracle-bad-price)
+[20240223 CompoundUni](past/2024/README.md#20240223-CompoundUni---Oracle-bad-price)
 
-[20240223 BlueberryProtocol](past/2023/README.md#20240223-BlueberryProtocol---logic-flaw)
+[20240223 BlueberryProtocol](past/2024/README.md#20240223-BlueberryProtocol---logic-flaw)
 
-[20240222 SwarmMarkets](past/2023/README.md#20240222-SwarmMarkets---lack-of-validation)
+[20240222 SwarmMarkets](past/2024/README.md#20240222-SwarmMarkets---lack-of-validation)
 
-[20240221 DeezNutz404](past/2023/README.md#20240221-deeznutz-404---lack-of-validation)
+[20240221 DeezNutz404](past/2024/README.md#20240221-deeznutz-404---lack-of-validation)
 
-[20240221 GAIN](past/2023/README.md#20240221-GAIN---bad-function-implementation)
+[20240221 GAIN](past/2024/README.md#20240221-GAIN---bad-function-implementation)
 
-[20240220 EGGX](past/2023/README.md#20240220-EGGX---reentrancy)
+[20240220 EGGX](past/2024/README.md#20240220-EGGX---reentrancy)
 
-[20240219 RuggedArt](past/2023/README.md#20240219-RuggedArt---reentrancy)
+[20240219 RuggedArt](past/2024/README.md#20240219-RuggedArt---reentrancy)
 
-[20240216 ParticleTrade](past/2023/README.md#20240216-ParticleTrade---lack-of-validation-data)
+[20240216 ParticleTrade](past/2024/README.md#20240216-ParticleTrade---lack-of-validation-data)
 
-[20240215 DualPools](past/2023/README.md#20240215-DualPools---precision-truncation)
+[20240215 DualPools](past/2024/README.md#20240215-DualPools---precision-truncation)
 
-[20240215 Babyloogn](past/2023/README.md#20240215-Babyloogn---lack-of-validation)
+[20240215 Babyloogn](past/2024/README.md#20240215-Babyloogn---lack-of-validation)
 
-[20240215 Miner](past/2023/README.md#20240215-Miner---lack-of-validation-dst-address)
+[20240215 Miner](past/2024/README.md#20240215-Miner---lack-of-validation-dst-address)
 
-[20240213 MINER BSC](past/2023/README.md#20240213-miner---price-manipulation)
+[20240213 MINER BSC](past/2024/README.md#20240213-miner---price-manipulation)
 
-[20240211 Game](past/2023/README.md#20240211-game---reentrancy--business-logic-flaw)
+[20240211 Game](past/2024/README.md#20240211-game---reentrancy--business-logic-flaw)
 
-[20240210 FILX DN404](past/2023/README.md#20240210-filx-dn404---access-control)
+[20240210 FILX DN404](past/2024/README.md#20240210-filx-dn404---access-control)
 
-[20240208 Pandora404](past/2023/README.md#20240208-pandora---interger-underflow)
+[20240208 Pandora404](past/2024/README.md#20240208-pandora---interger-underflow)
 
-[20240205 BurnsDefi](past/2023/README.md#20240205-burnsdefi---price-manipulation)
+[20240205 BurnsDefi](past/2024/README.md#20240205-burnsdefi---price-manipulation)
 
-[20240202 ADC](past/2023/README.md#20240202-adc---incorrect-access-control)
+[20240202 ADC](past/2024/README.md#20240202-adc---incorrect-access-control)
 
-[20240201 AffineDeFi](past/2023/README.md#20240201-affinedefi---lack-of-validation-userData)
+[20240201 AffineDeFi](past/2024/README.md#20240201-affinedefi---lack-of-validation-userData)
 
-[20240130 XSIJ](past/2023/README.md#20240130-xsij---business-logic-flaw)
+[20240130 XSIJ](past/2024/README.md#20240130-xsij---business-logic-flaw)
 
-[20240130 MIMSpell](past/2023/README.md#20240130-mimspell---precission-loss)
+[20240130 MIMSpell](past/2024/README.md#20240130-mimspell---precission-loss)
 
-[20240129 PeapodsFinance](past/2023/README.md#20240128-PeapodsFinance---reentrancy)
+[20240129 PeapodsFinance](past/2024/README.md#20240128-PeapodsFinance---reentrancy)
 
-[20240128 BarleyFinance](past/2023/README.md#20240128-barleyfinance---reentrancy)
+[20240128 BarleyFinance](past/2024/README.md#20240128-barleyfinance---reentrancy)
 
-[20240127 CitadelFinance](past/2023/README.md#20240127-citadelfinance---price-manipulation)
+[20240127 CitadelFinance](past/2024/README.md#20240127-citadelfinance---price-manipulation)
 
-[20240125 NBLGAME](past/2023/README.md#20240125-nblgame---reentrancy)
+[20240125 NBLGAME](past/2024/README.md#20240125-nblgame---reentrancy)
 
-[20240122 DAO_SoulMate](past/2023/README.md#20240122-dao_soulmate---incorrect-access-control)
+[20240122 DAO_SoulMate](past/2024/README.md#20240122-dao_soulmate---incorrect-access-control)
 
-[20240117 BmiZapper](past/2023/README.md#20240117-bmizapper---arbitrary-external-call-vulnerability)
+[20240117 BmiZapper](past/2024/README.md#20240117-bmizapper---arbitrary-external-call-vulnerability)
 
-[20240117 SocketGateway](past/2023/README.md#20240112-socketgateway---lack-of-calldata-validation)
+[20240117 SocketGateway](past/2024/README.md#20240112-socketgateway---lack-of-calldata-validation)
 
-[20240115 Shell_MEV_0xa898](past/2023/README.md#20240115-Shell_MEV_0xa898---lack-of-access-control)
+[20240115 Shell_MEV_0xa898](past/2024/README.md#20240115-Shell_MEV_0xa898---lack-of-access-control)
 
-[20240112 WiseLending](past/2023/README.md#20240112-wiselending---bad-healthfactor-check)
+[20240112 WiseLending](past/2024/README.md#20240112-wiselending---bad-healthfactor-check)
 
-[20240110 Freedom](past/2023/README.md#20240110-Freedom---lack-of-access-control)
+[20240110 Freedom](past/2024/README.md#20240110-Freedom---lack-of-access-control)
 
-[20240110 LQDX Alert](past/2023/README.md#20240110-lqdx---unauthorized-transferfrom)
+[20240110 LQDX Alert](past/2024/README.md#20240110-lqdx---unauthorized-transferfrom)
 
-[20240104 Gamma](past/2023/README.md#20240104-gamma---price-manipulation)
+[20240104 Gamma](past/2024/README.md#20240104-gamma---price-manipulation)
 
-[20240102 MIC](past/2023/README.md#20240102-mic---business-logic-flaw)
+[20240102 MIC](past/2024/README.md#20240102-mic---business-logic-flaw)
 
-[20240102 RadiantCapital](past/2023/README.md#20240102-radiantcapital---loss-of-precision)
+[20240102 RadiantCapital](past/2024/README.md#20240102-radiantcapital---loss-of-precision)
 
-[20240101 OrbitChain](past/2023/README.md#20240101-orbitchain---incorrect-input-validation)
+[20240101 OrbitChain](past/2024/README.md#20240101-orbitchain---incorrect-input-validation)
 
 </details>
 
