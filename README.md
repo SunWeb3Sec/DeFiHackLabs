@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250223 HegicOptions](#20250223-hegicoptions---the-attacker-initially-deposited-00025-wbtc-into-the-victim-contract-tx-0x9c27d45c1daa943ce0b92a70ba5efa6ab34409b14b568146d2853c1ddaf14f82)
 
 [20250221 Bybit](#20250221-bybit---phishing-attack)
 
@@ -1206,6 +1207,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20250223 HegicOptions - Business Logic Flaw
+
+### Lost: ~104M
+
+
+```sh
+forge test --contracts ./src/test/2025-02/HegicOptions_exp.sol -vvv
+```
+#### Contract
+[HegicOptions_exp.sol](src/test/2025-02/HegicOptions_exp.sol)
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1895770229265121493
+
+---
 
 ### 20250221 Bybit - Phishing attack
 
