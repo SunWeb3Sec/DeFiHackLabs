@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-558 incidents included.
+559 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250223 HegicOptions](#20250223-hegicoptions---business-logic-flaw)
 
 [20250221 Bybit](#20250221-bybit---phishing-attack)
 
@@ -1206,6 +1207,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20250223 HegicOptions - Business Logic Flaw
+
+### Lost: ~104M
+
+
+```sh
+forge test --contracts ./src/test/2025-02/HegicOptions_exp.sol -vvv
+```
+#### Contract
+[HegicOptions_exp.sol](src/test/2025-02/HegicOptions_exp.sol)
+### Link reference
+
+https://x.com/0xNickLFranklin/status/1895770229265121493
+
+---
 
 ### 20250221 Bybit - Phishing attack
 
