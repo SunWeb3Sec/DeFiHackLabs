@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-560 incidents included.
+561 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -84,6 +84,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 <details> <summary> 2024 </summary>
 
 [20241223 Moonhacker](past/2024/README.md#20241223-moonhacker---improper-input-validation)
+
+[20241210 CloberDEX](#20241210-cloberdex---reentrancy)
 
 [20241203 Pledge](past/2024/README.md#20241203-pledge---access-control)
 
@@ -1227,6 +1229,25 @@ forge test --contracts ./src/test/2025-03/H2O_exp.sol -vvv --evm-version cancun
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1900525198157205692
+
+---
+
+
+
+
+### 20241210 CloberDEX - Reentrancy
+
+### Lost: ~501K US$ (133.7 WETH)
+
+
+```sh
+forge test --contracts ./src/test/2024-12/CloberDEX_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[CloberDEX_exp.sol](src/test/2024-12/CloberDEX_exp.sol)
+### Link reference
+
+https://x.com/peckshield/status/1866443215186088048
 
 ---
 
