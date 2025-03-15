@@ -48,6 +48,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250314 H2O](#20250314-H2O---weak-random-mint)
+
 [20250223 HegicOptions](#20250223-hegicoptions---business-logic-flaw)
 
 [20250221 Bybit](#20250221-bybit---phishing-attack)
@@ -1210,8 +1213,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+[20250314 H2O](#20250314-H2O---weak-random-mint)
 
+### 20250314 H2O - Weak Random Mint
 
+### Lost: 22470 USD
+
+```sh
+forge test --contracts ./src/test/2025-03/H2O_exp.sol -vvv --evm-version cancun
+```
+
+#### Contract
+[H2O_exp.sol](src/test/2025-03/H2O_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1900525198157205692
+
+---
 
 
 
