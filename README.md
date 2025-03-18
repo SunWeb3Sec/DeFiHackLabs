@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-562 incidents included.
+563 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,7 +48,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
 [20250318 DCFToken](#20250318-dcftoken---lack-of-slippage-protection)
+
+[20250316 wKeyDAO](#20250316-wkeydao---unprotected-function)
 
 [20250314 H2O](#20250314-H2O---weak-random-mint)
 
@@ -1214,11 +1217,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-[20250314 H2O](#20250314-H2O---weak-random-mint)
-
-
-
-
 ### 20250318 DCFToken - Lack of Slippage Protection
 
 ### Lost: ~442k
@@ -1232,6 +1230,23 @@ forge test --contracts ./src/test/2025-03/DCFToken_exp.sol -vvv --evm-version sh
 ### Link reference
 
 https://x.com/Phalcon_xyz/status/1860890801909190664
+
+---
+
+
+### 20250316 wKeyDAO - unprotected function
+
+### Lost: 737,000
+
+
+```sh
+forge test --contracts ./src/test/2025-03/wKeyDAO_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[wKeyDAO_exp.sol](src/test/2025-03/wKeyDAO_exp.sol)
+### Link reference
+
+https://x.com/Phalcon_xyz/status/1900809936906711549
 
 ---
 
