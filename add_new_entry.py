@@ -119,6 +119,7 @@ def add_new_entry(selected_network):
 
     updated_content = insert_new_entry(content, new_entry)
     updated_content = update_table_of_contents(updated_content, formatted_date, name, additional_details)
+    updated_content = update_sum_of_incidents(updated_content)
 
     with open("README.md", "w") as file:
         file.write(updated_content)
@@ -154,6 +155,15 @@ def update_table_of_contents(content, formatted_date, name, additional_details):
     toc_entry = f"[{formatted_date} {name}]({link})"
     toc_insert_pos = re.search(r"## List of Past DeFi Incidents", content).end()
     return content[:toc_insert_pos] + "\n" + toc_entry + content[toc_insert_pos:]
+
+def update_sum_of_incidents(content):
+    match = re.search(r"(\d+)\s+incidents included\.", content)
+    if match:
+        old_number = int(match.group(1))
+        new_number = old_number + 1
+        return content[:match.start()] + f"{new_number} incidents included." + content[match.end():]
+    return content 
+
 
 def replace_placeholders(content, replacements):
     for placeholder, replacement in replacements.items():
@@ -255,6 +265,7 @@ def add_new_entry_from_file(file_path):
 
     updated_content = insert_new_entry(content, new_entry)
     updated_content = update_table_of_contents(updated_content, formatted_date, name, additional_details)
+    updated_content = update_sum_of_incidents(updated_content)
 
     with open("README.md", "w") as file:
         file.write(updated_content)
