@@ -11,7 +11,7 @@ import "./../interface.sol";
 // TX1 : https://app.blocksec.com/explorer/tx/bsc/0xc12ccc3bdaf3f0ec1efa09d089a0c1dbad05519e1eb0fa6475ffcc6317cbde4d
 // TX2 :https://app.blocksec.com/explorer/tx/bsc/0xefe58a14fc0022872262678b358aaae64a26fe2389d09093eb14752ea99415e9
 
-// GUY : https://x.com/0xNickLFranklin/status/1806704287252394238
+ 
 
 interface Trading {
     function placeSellOrder(uint256 usdtAmount, uint256 margin, uint256 minUsdtReceived) external;

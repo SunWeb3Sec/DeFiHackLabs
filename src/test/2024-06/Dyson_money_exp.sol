@@ -8,7 +8,7 @@ import "./../interface.sol";
 // TX : https://app.blocksec.com/explorer/tx/bsc/0xbac614f4d103939a9611ca35f4ec9451e1e98512d573c822fbff70fafdbbb5a0
 // Attacker : https://bscscan.com/address/0x4ced363484dfebd0fab1b33c3eca0edca44a346c
 // Attack Contract : https://bscscan.com/address/0x00db72390c1843de815ef635ee58ac19b54af4ef
-// GUY : https://x.com/0xNickLFranklin/status/1802634237667054052
+ 
 
 interface Vulncontract is IERC20 {
     struct MintParams {

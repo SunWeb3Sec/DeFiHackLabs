@@ -13,7 +13,7 @@ import "../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0xe51D3dE9b81916D383eF97855C271250852eC7B7#code
 
 // @Analysis
-// Twitter Guy : https://x.com/0xNickLFranklin/status/1795650745448169741
+ 
 
 interface IUniversalRouter {
     function execute(bytes calldata commands, bytes[] calldata input) external payable;

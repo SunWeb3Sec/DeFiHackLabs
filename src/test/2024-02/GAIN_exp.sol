@@ -10,7 +10,7 @@ import "./../interface.sol";
 // Attack Tx : https://etherscan.io/tx/0x7acc896b8d82874c67127ff3359d7437a15fdb4229ed83da00da1f4d8370764e
 
 // @Analysis
-// Post-mortem : https://x.com/0xNickLFranklin/status/1760559768241160679
+ 
 
 contract ContractTest is Test {
     IWETH WETH = IWETH(payable(address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)));

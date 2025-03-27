@@ -8,7 +8,7 @@ import "./../interface.sol";
 // TX : https://app.blocksec.com/explorer/tx/mantle/0xb3c4c313a8d3e2843c9e6e313b199d7339211cdc70c2eca9f4d88b1e155fd6bd
 // Attacker : https://mantlescan.info/address/0x618f768af6291705eb13e0b2e96600b3851911d1
 // Attack Contract : https://mantlescan.info/address/0x5fdac50aa48e3e86299a04ad18a68750b2074d2d
-// GUY : https://x.com/0xNickLFranklin/status/1813122959219040323
+ 
 interface IERC3156FlashBorrower {
     function onFlashLoan(
         address initiator,

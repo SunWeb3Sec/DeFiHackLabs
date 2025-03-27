@@ -5,7 +5,7 @@ import "forge-std/Test.sol";
 import "./../interface.sol";
 
 // TX : https://phalcon.blocksec.com/explorer/tx/bsc/0xee10553c26742bec9a4761fd717642d19012bab1704cbced048425070ee21a8a?line=2
-// GUY : https://twitter.com/0xNickLFranklin/status/1775008489569718508
+ 
 // Profit : ~182K USD
 // REASON : Business Logic Flaw
 // Sandwitch attack,the contract will exchange token -> WBNB & WBNB -> USDT,So use transfer / skim to

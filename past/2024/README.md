@@ -166,7 +166,7 @@ forge test --match-contract SASHAToken_exp -vvv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1842864840265883833
+ [Pending]
 
 ---
 
@@ -203,7 +203,7 @@ forge test --match-contract AIZPTToken_exp -vvv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1842576732047700077
+ [Pending]
 
 ---
 
@@ -221,7 +221,7 @@ forge test --contracts ./../../src/test/2024-10/FireToken_exp.sol -vvv
 
 ### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1841305965750350089
+ [Pending]
 
 ---
 
@@ -239,7 +239,7 @@ forge test --match-contract LavaLending_exp -vvv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1841823216425435308
+ [Pending]
 
 
 https://nickfranklin.site/2024/10/03/unknown-lending-project-hacked-due-to-price-oracle-manipulation/
@@ -406,7 +406,7 @@ forge test --match-contract Zenterest_exp -vvvv --evm-version shanghai
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1824579761383018564
+ [Pending]
 
 ---
 
@@ -423,7 +423,7 @@ forge test --match-contract OMPxContract_exp -vvv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1820816386551357448
+ [Pending]
 
 ---
 
@@ -439,7 +439,7 @@ forge test --match-contract YodlRouter_exp -vvv
 [YodlRouter_exp.sol](../../src/test/2024-08/YodlRouter_exp.sol)
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1823601087011807636
+ [Pending]
 
 ---
 
@@ -582,7 +582,7 @@ forge test --match-contract Minterest_exp -vvv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1813122959219040323
+ [Pending]
 
 ---
 
@@ -618,7 +618,7 @@ forge test --match-contract SBT_exp -vvv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1811401263969673654
+ [Pending]
 
 ---
 
@@ -654,7 +654,7 @@ forge test --match-contract LW_exp -vvv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1810245893490368820
+ [Pending]
 
 ---
 
@@ -708,7 +708,7 @@ forge test --match-contract MRP_exp -vvv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1808309614443733005
+ [Pending]
 
 ---
 
@@ -726,7 +726,7 @@ forge test --match-contract Will_exp -vvv --evm-version "shanghai"
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1806704287252394238
+ [Pending]
 
 ---
 
@@ -762,7 +762,7 @@ forge test --match-contract INcufi_exp -vvv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1803317022513832301
+ [Pending]
 
 ---
 
@@ -780,7 +780,7 @@ forge test --match-contract Dyson_money_exp -vvv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1802634237667054052
+ [Pending]
 
 ---
 
@@ -832,7 +832,7 @@ forge test --match-contract JokInTheBox_exp -vvv --evm-version cancun
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1800355604692910571
+ [Pending]
 
 ---
 
@@ -892,7 +892,7 @@ forge test --match-contract YYS_exp -vv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1799610045589831833
+ [Pending]
 
 ---
 
@@ -928,7 +928,7 @@ forge test --match-contract MineSTM_exp -vv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1798920774511898862
+ [Pending]
 
 ---
 
@@ -1018,7 +1018,7 @@ forge test --match-contract SCROLL_exp -vvv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1795650745448169741
+ [Pending]
 
 ---
 
@@ -1124,7 +1124,7 @@ forge test --match-contract Burner_exp -vv
 
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1792925754243625311
+ [Pending]
 
 ---
 
@@ -1582,7 +1582,7 @@ forge test --match-contract SumerMoney_exp -vvv
 
 ### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1778986926705672698
+ [Pending]
 
 ---
 
@@ -1636,7 +1636,7 @@ forge test --match-contract UPS_exp -vvv
 
 ### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1777589021058728214
+ [Pending]
 
 ---
 
@@ -1708,7 +1708,7 @@ forge test --match-contract ATM_exp -vvv
 
 ### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1775008489569718508
+ [Pending]
 
 ---
 
@@ -1726,7 +1726,7 @@ forge test --match-contract OpenLeverage2_exp -vvv
 
 ### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1774727539975672136
+ [Pending]
 
 ---
 
@@ -1780,7 +1780,7 @@ forge test --match-contract LavaLending_exp -vvv
 
 #### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1774727539975672136
+ [Pending]
 
 https://twitter.com/Phalcon_xyz/status/1773546399713345965
 
@@ -1802,7 +1802,7 @@ forge test --match-contract ZongZi_exp -vvv
 
 #### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1772195949638775262
+ [Pending]
 
 ---
 
@@ -1892,7 +1892,7 @@ forge test --match-contract MO_exp -vvv
 
 #### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1768184024483430523
+ [Pending]
 
 ---
 
@@ -1910,7 +1910,7 @@ forge test --via-ir ---match-contract IT_exp -vvv
 
 #### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1768171595561046489
+ [Pending]
 
 ---
 
@@ -2020,7 +2020,7 @@ forge test --match-contract ALP_exp -vvv
 
 #### Link Reference
 
-https://twitter.com/0xNickLFranklin/status/1765296663667875880
+ [Pending]
 
 ---
 
@@ -2038,7 +2038,7 @@ forge test --match-contract TGBS_exp -vvv
 
 #### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1765290290083144095
+ [Pending]
 
 https://twitter.com/Phalcon_xyz/status/1765285257949974747
 
@@ -2097,7 +2097,7 @@ forge test --match-contract SMOOFSStaking_exp -vvv
 
 https://twitter.com/AnciliaInc/status/1762893563103428783
 
-https://twitter.com/0xNickLFranklin/status/1762895774311178251
+ [Pending]
 
 ---
 
@@ -2187,7 +2187,7 @@ forge test --match-contract DeezNutz404_exp -vvv
 
 #### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1760481343161700523
+ [Pending]
 
 ---
 
@@ -2205,7 +2205,7 @@ forge test --match-contract GAIN_exp -vvv
 
 #### Link reference
 
-https://twitter.com/0xNickLFranklin/status/1760559768241160679
+ [Pending]
 
 ---
 
