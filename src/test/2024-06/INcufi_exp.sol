@@ -8,7 +8,7 @@ import "./../interface.sol";
 // TX : https://app.blocksec.com/explorer/tx/bsc/0x556419e0a6ee8e6de6b3679605f9f62ad013007419a1b55c9f56590a824bfb52
 // Attacker : https://bscscan.com/address/0xb6911dee6a5b1c65ad1ac11a99aec09c2cf83c0e
 // Attack Contract : https://bscscan.com/address/0x4237d006471b38af0e1691c00d96193a8ff5709f
-// GUY : https://x.com/0xNickLFranklin/status/1803317022513832301
+ 
 
 interface INcufi {
     struct order {

@@ -6,7 +6,7 @@ import "./../interface.sol";
 
 // TX : https://app.blocksec.com/explorer/tx/bsc/0x9fcf38d0af4dd08f4d60f7658b623e35664e74bca0eaebdb0c3b9a6965d6257b
 // GUY : https://twitter.com/bbbb/status/1777228277415039304
-// GUY : https://twitter.com/0xNickLFranklin/status/1777235767577964980
+ 
 // Profit : ~87K USD
 // REASON : Sandwitch attack
 

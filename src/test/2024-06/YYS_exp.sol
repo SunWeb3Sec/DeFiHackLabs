@@ -10,7 +10,7 @@ import "./../interface.sol";
 // Attack Contract1: https://bscscan.com/address/0x832e6540da54d07cb0dfea8957be690c8eb2c6a0
 // Attack Contract2: https://bscscan.com/address/0x4192abd1466b49be9d1e99918aee99e0dbd65289
 
-// @Analysis: https://x.com/0xNickLFranklin/status/1799610045589831833
+ 
 
 interface Isell {
     function updateAllowance() external;

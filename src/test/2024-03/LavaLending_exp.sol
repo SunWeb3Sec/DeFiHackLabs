@@ -12,7 +12,7 @@ import "./../interface.sol";
 // Attack Tx : https://phalcon.blocksec.com/explorer/tx/arbitrum/0xcb1a2f5eeb1a767ea5ccbc3665351fadc1af135d12a38c504f8f6eb997e9e603
 
 // @Analysis
-// https://twitter.com/0xNickLFranklin/status/1774727539975672136
+ 
 // https://twitter.com/Phalcon_xyz/status/1773546399713345965
 // @Post Mortem
 // https://hackmd.io/@LavaSecurity/03282024

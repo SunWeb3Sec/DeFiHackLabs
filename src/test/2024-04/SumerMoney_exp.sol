@@ -15,7 +15,7 @@ import "./../interface.sol";
 
 // @Analysis
 // Post-mortem :
-// Twitter Guy : https://twitter.com/0xNickLFranklin/status/1778986926705672698
+ 
 // Hacking God :
 
 interface IClaimer {

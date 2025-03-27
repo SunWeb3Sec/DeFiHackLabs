@@ -7,7 +7,7 @@ import "./../interface.sol";
 // Attack Tx : https://etherscan.io/tx/0x3bba4fb6de00dd38df3ad68e51c19fe575a95a296e0632028f101c5199b6f714
 
 // @Info
-// https://x.com/0xNickLFranklin/status/1792925754243625311
+ 
 
 interface IBurner is IERC20 {
     function convertAndBurn(

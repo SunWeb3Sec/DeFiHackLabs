@@ -11,7 +11,7 @@ import "./../interface.sol";
 // Attack Tx : https://phalcon.blocksec.com/explorer/tx/bsc/0xa0408770d158af99a10c60474d6433f4c20f3052e54423f4e590321341d4f2a4
 
 // @Analysis
-// https://twitter.com/0xNickLFranklin/status/1765290290083144095
+ 
 // https://twitter.com/Phalcon_xyz/status/1765285257949974747
 
 interface ITGBS is IERC20 {

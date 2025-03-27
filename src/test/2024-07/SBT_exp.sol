@@ -5,7 +5,7 @@ pragma solidity ^0.8.10;
 // TX : https://app.blocksec.com/explorer/tx/bsc/0x9a8c4c4edb7a76ecfa935780124c409f83a08d15c560bb67302182f8969be20d
 // Attacker : https://bscscan.com/address/0x3026c464d3bd6ef0ced0d49e80f171b58176ce32
 // Attack Contract : https://bscscan.com/address/0x88f9e1799465655f0dd206093dbd08922a1d9e28
-// GUY : https://x.com/0xNickLFranklin/status/1811401263969673654
+ 
 
 import "forge-std/Test.sol";
 import "./../interface.sol";

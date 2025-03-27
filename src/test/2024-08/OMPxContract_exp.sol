@@ -14,7 +14,7 @@ import "../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0x09a80172ed7335660327cd664876b5df6fe06108#code
 
 // @Analysis
-// Twitter Guy : https://x.com/0xNickLFranklin/status/1820816386551357448
+ 
 
 // Contracts involved
 address constant OMPxContract = 0x09A80172ED7335660327cD664876b5df6FE06108;

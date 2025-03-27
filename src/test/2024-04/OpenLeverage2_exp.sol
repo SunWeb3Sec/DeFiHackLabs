@@ -11,7 +11,7 @@ import "./../interface.sol";
 // Attack Tx 2 : https://phalcon.blocksec.com/explorer/tx/bsc/0x210071108f3e5cd24f49ef4b8bcdc11804984b0c0334e18a9a2cdb4cd5186067
 
 // @Analysis
-// https://twitter.com/0xNickLFranklin/status/1774727539975672136
+ 
 
 interface ITradeController {
     function activeTrades(

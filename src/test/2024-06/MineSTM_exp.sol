@@ -9,7 +9,7 @@ import "./../interface.sol";
 // Attacker Address : https://bscscan.com/address/0x40a82dfdbf01630ea87a0372cf95fa8636fcad89
 // Attack Contract : https://bscscan.com/address/0x88c17622d33b327268924e9f90a9e475a244e3ab
 
-// @Analysis: https://x.com/0xNickLFranklin/status/1798920774511898862
+ 
 
 interface IMineSTM {
     function updateAllowance() external;

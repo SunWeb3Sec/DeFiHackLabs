@@ -10,7 +10,7 @@ import "../interface.sol";
 // Attack Tx : https://app.blocksec.com/explorer/tx/eth/0xd9fdc7d03eec28fc2453c5fa68eff82d4c297f436a6a5470c54ca3aecd2db17e
 
 // @Analysis
-// Twitter Guy : https://x.com/0xNickLFranklin/status/1842864840265883833
+ 
 
 // Contracts involved
 address constant SASHA = 0xD1456D1b9CEb59abD4423a49D40942a9485CeEF6;

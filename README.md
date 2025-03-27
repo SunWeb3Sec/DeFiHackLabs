@@ -1318,7 +1318,7 @@ forge test --contracts ./src/test/2025-02/HegicOptions_exp.sol -vvv
 [HegicOptions_exp.sol](src/test/2025-02/HegicOptions_exp.sol)
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1895770229265121493
+ [Pending]
 
 ---
 
@@ -1487,7 +1487,7 @@ forge test --contracts ./src/test/2025-01/Mosca_exp.sol -vvv --evm-version shang
 [Mosca_exp.sol](src/test/2025-01/Mosca_exp.sol)
 ### Link reference
 
-https://x.com/0xNickLFranklin/status/1876884383736430821
+ [Pending]
 
 ---
 

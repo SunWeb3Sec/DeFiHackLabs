@@ -12,7 +12,7 @@ import "./../interface.sol";
 
 // @Analysis
 // https://twitter.com/AnciliaInc/status/1762893563103428783
-// https://twitter.com/0xNickLFranklin/status/1762895774311178251
+ 
 
 interface ISMOOFSStaking {
     function Stake(

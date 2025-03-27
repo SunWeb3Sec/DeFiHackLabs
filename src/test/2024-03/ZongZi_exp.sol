@@ -11,7 +11,7 @@ import "./../interface.sol";
 // Attack txs : https://phalcon.blocksec.com/explorer/tx/bsc/0x247f4b3dbde9d8ab95c9766588d80f8dae835129225775ebd05a6dd2c69cd79f
 
 // @Analysis
-// https://twitter.com/0xNickLFranklin/status/1772195949638775262
+ 
 
 interface IZZF is IERC20 {
     function burnToHolder(uint256 amount, address _invitation) external;

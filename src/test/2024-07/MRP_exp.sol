@@ -8,7 +8,7 @@ import "./../interface.sol";
 // TX : https://app.blocksec.com/explorer/tx/bsc/0x4353a6d37e95a0844f511f0ea9300ef3081130b24f0cf7a4bd1cae26ec393101
 // Attacker : https://bscscan.com/address/0x132d9bbdbe718365af6cc9e43bac109a9a53b138
 // Attack Contract : https://bscscan.com/address/0x2bd8980a925e6f5a910be8cc0ad1cff663e62d9d
-// GUY : https://x.com/0xNickLFranklin/status/1808309614443733005
+ 
 
 contract Exploit is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
