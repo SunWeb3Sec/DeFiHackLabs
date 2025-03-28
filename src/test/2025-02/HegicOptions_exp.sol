@@ -18,7 +18,6 @@ import "../interface.sol";
 // @Analysis
 // Post-mortem : 
 // Twitter Guy : 
-// Hacking God :  https://nickfranklin.site/2025/03/01/hegic-options-hacked/
 pragma solidity ^0.8.0;
 
 contract HegicOptions is Test {

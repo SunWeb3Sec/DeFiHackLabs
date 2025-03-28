@@ -327,8 +327,6 @@ forge test --match-contract OTSeaStaking_exp -vvv
 
 ### Link reference
 
-Nick Franklin: https://nickfranklin.site/2024/09/13/otsea-staking-hacked/
-
 
 ---
 
