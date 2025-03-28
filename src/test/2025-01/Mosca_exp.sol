@@ -13,7 +13,7 @@ import "../basetest.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0x1962b3356122d6a56f978e112d14f5e23a25037d#code
 
 // @Analysis
-// Post-mortem : https://nickfranklin.site/2025/01/08/mosca-hacked/
+// Post-mortem : 
 // Twitter Guy : 
 // Hacking God : 
 pragma solidity ^0.8.0;
