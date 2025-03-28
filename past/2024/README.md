@@ -241,9 +241,6 @@ forge test --match-contract LavaLending_exp -vvv
 
  [Pending]
 
-
-https://nickfranklin.site/2024/10/03/unknown-lending-project-hacked-due-to-price-oracle-manipulation/
-
 ---
 
 ### 20240926 OnyxDAO - Fake Market
