@@ -15,7 +15,6 @@ import "../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0xf2c8e860ca12cde3f3195423ecf54427a4f30916#code
 
 // @Analysis
-// Nick Franklin : https://nickfranklin.site/2024/09/13/otsea-staking-hacked/
 */
 
 interface OTSeaRevenueDistributor {
