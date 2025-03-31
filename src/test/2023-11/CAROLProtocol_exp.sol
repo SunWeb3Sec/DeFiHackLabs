@@ -77,7 +77,7 @@ contract ContractTest is Test {
     bool withdrawingWETH;
 
     function setUp() public {
-        vm.createSelectFork("Base", blocknumToForkFrom);
+        vm.createSelectFork("base", blocknumToForkFrom);
         vm.label(address(CAROLProtocol), "CAROLProtocol");
         vm.label(address(WETH), "WETH");
         vm.label(address(SynapseETHPools), "SynapseETHPools");

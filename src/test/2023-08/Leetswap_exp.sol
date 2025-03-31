@@ -30,7 +30,7 @@ contract ContractTest is Test {
     ILeetSwapPiar Pair = ILeetSwapPiar(0x94dAC4a3Ce998143aa119c05460731dA80ad90cf);
 
     function setUp() public {
-        vm.createSelectFork("Base", 2_031_746);
+        vm.createSelectFork("base", 2_031_746);
         vm.label(address(WETH), "WETH");
         vm.label(address(axlUSDC), "axlUSDC");
         vm.label(address(Router), "Router");

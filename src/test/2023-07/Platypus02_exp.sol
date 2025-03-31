@@ -50,7 +50,7 @@ contract ContractTest is Test {
     IAaveFlashloan aaveV3 = IAaveFlashloan(0x794a61358D6845594F94dc1DB02A252b5b4814aD);
 
     function setUp() public {
-        vm.createSelectFork("Avalanche", 32_470_736);
+        vm.createSelectFork("avalanche", 32_470_736);
         vm.label(address(USDTe), "USDTe");
         vm.label(address(USDC), "USDC");
         vm.label(address(LP_USDC), "LP_USDC");

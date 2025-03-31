@@ -35,7 +35,7 @@ contract ContractTest is Test {
     bytes32 ERC6492_DETECTION_SUFFIX = bytes32(hex"6492649264926492649264926492649264926492649264926492649264926492");
 
     function setUp() public {
-        vm.createSelectFork("Base", 25431001 - 1);
+        vm.createSelectFork("base", 25431001 - 1);
 
         vm.label(address(odosLimitOrderRouterInstance), "OdosLimitOrderRouter");
         vm.label(address(USDCInstance), "USDC");
