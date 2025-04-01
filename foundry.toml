@@ -18,6 +18,8 @@ avalanche = "https://avax.meowrpc.com"
 polygon = "https://rpc.ankr.com/polygon"
 celo = "https://rpc.ankr.com/celo"
 base = "https://developer-access-mainnet.base.org"
+linea = "https://linea.drpc.org"
+mantle = "https://rpc.mantle.xyz"
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/.config
 

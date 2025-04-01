@@ -64,7 +64,7 @@ contract Exploit is Test {
     uint256 public wrapAmount;
 
     function setUp() public {
-        cheats.createSelectFork("https://rpc.mantle.xyz", 66_416_576);
+        cheats.createSelectFork("mantle", 66_416_576);
     }
 
     function testExpolit() public {

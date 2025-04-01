@@ -36,7 +36,7 @@ contract RPCS_alive_test is Test {
         vm.createSelectFork("gnosis");
     }
     
-    function test_Avalanche() public {
+    function test_avalanche() public {
         vm.createSelectFork("avalanche");
     }
     
@@ -48,7 +48,15 @@ contract RPCS_alive_test is Test {
         vm.createSelectFork("celo");
     }
     
-    function test_Base() public {
+    function test_base() public {
         vm.createSelectFork("base");
+    }
+    
+    function test_linea() public {
+        vm.createSelectFork("linea");
+    }
+    
+    function test_mantle() public {
+        vm.createSelectFork("mantle");
     }
 }
