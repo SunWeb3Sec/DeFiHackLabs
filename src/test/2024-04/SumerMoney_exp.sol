@@ -46,7 +46,7 @@ contract SumerMoney is Test {
         vm.label(address(sdrUSDC), "sdrUSDC");
         vm.label(address(sdrcbETH), "sdrcbETH");
         vm.label(address(claimer), "claimer");
-        vm.createSelectFork("Base", blocknumToForkFrom);
+        vm.createSelectFork("base", blocknumToForkFrom);
     }
 
     function testExploit() public {

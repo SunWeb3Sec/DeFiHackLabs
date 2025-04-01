@@ -32,7 +32,7 @@ contract Exploit is Test {
     IUniswapV2Pair private wethPair; // Fake Pair Digg<>WETH
 
     function testHack() external {
-        vm.createSelectFork("https://rpc.builder0x69.io", 11_720_049);
+        vm.createSelectFork("mainnet", 11_720_049);
 
         IUniswapV2Pair FakePair = createAndProvideLiquidity();
         wethPair = IUniswapV2Pair(address(FakePair));

@@ -26,7 +26,7 @@ contract JumpFarmExploit is Test {
     IERC20 sJump = IERC20(0xdd28c9d511a77835505d2fBE0c9779ED39733bdE);
 
     function setUp() public {
-        vm.createSelectFork("https://eth.llamarpc.com", 18_070_346);
+        vm.createSelectFork("mainnet", 18_070_346);
 
         vm.label(address(balancer), "BalancerVault");
         vm.label(address(weth), "WETH");

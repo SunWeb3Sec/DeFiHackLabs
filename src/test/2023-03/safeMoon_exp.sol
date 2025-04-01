@@ -70,7 +70,7 @@ contract SafemoonAttackerTest is Test, IPancakeCallee {
     IWETH public weth;
 
     function setUp() public {
-        vm.createSelectFork("https://rpc.ankr.com/bsc", 26_854_757);
+        vm.createSelectFork("bsc", 26_854_757);
 
         sfmoon = ISafemoon(0x42981d0bfbAf196529376EE702F2a9Eb9092fcB5);
         pancakePair = IPancakePair(0x1CEa83EC5E48D9157fCAe27a19807BeF79195Ce1);

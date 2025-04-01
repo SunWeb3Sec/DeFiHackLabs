@@ -57,7 +57,7 @@ contract TsuruExploit is BaseTestWithBalanceLog {
     IWrapper wrapper = IWrapper(tsuruwrapper);
 
     function setUp() public {
-        vm.createSelectFork("Base", blocknumToForkFrom);
+        vm.createSelectFork("base", blocknumToForkFrom);
         fundingToken = weth;
     }
 

@@ -58,7 +58,7 @@ contract ContractTest is Test {
     bytes32 USDC_ETH_VLP_bytes32 = 0x000000000000000000000000e2c67a9b15e9e7ff8a9cb0dfb8fee5609923e5db;
 
     function setUp() public {
-        vm.createSelectFork("https://linea.drpc.org", 5_079_177 - 1);
+        vm.createSelectFork("linea", 5_079_177 - 1);
     }
 
     function testExploit() public {

@@ -22,7 +22,7 @@ contract TomInuExploit is Test {
     IUniswapV2Pair private constant TINU_WETH = IUniswapV2Pair(0xb835752Feb00c278484c464b697e03b03C53E11B);
 
     function testHack() external {
-        vm.createSelectFork("https://eth.llamarpc.com", 16_489_408);
+        vm.createSelectFork("mainnet", 16_489_408);
 
         // flashloan WETH from Balancer
         address[] memory tokens = new address[](1);

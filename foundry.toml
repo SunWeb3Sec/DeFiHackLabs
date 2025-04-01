@@ -6,18 +6,20 @@ fs_permissions = [{ access = "read", path = "./"}]
 evm_version = 'shanghai'
 
 [rpc_endpoints]
-mainnet = "https://rpc.ankr.com/eth"
+mainnet = "https://eth.llamarpc.com"
 blast = "https://rpc.ankr.com/blast"
 optimism = "https://optimism.llamarpc.com"
-fantom = "https://rpc.ankr.com/fantom"
-arbitrum = "https://rpc.ankr.com/arbitrum"
-bsc = "https://rpc.ankr.com/bsc"
+fantom = "https://fantom-pokt.nodies.app"
+arbitrum = "https://arbitrum.llamarpc.com"
+bsc = "https://binance.llamarpc.com"
 moonriver = "https://moonriver.public.blastapi.io"
-gnosis = "https://rpc.ankr.com/gnosis"
-Avalanche = "https://rpc.ankr.com/avalanche"
+gnosis = "https://gnosis.drpc.org"
+avalanche = "https://avax.meowrpc.com"
 polygon = "https://rpc.ankr.com/polygon"
 celo = "https://rpc.ankr.com/celo"
-Base = "https://developer-access-mainnet.base.org"
+base = "https://developer-access-mainnet.base.org"
+linea = "https://linea.drpc.org"
+mantle = "https://rpc.mantle.xyz"
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/.config
 

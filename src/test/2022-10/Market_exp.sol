@@ -66,7 +66,7 @@ contract MarketExploitTest is Test {
     IERC20 private constant USDC = IERC20(0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174);
 
     function setUp() public {
-        vm.createSelectFork("https://polygon.llamarpc.com", 34_716_800); // fork Polygon at block 34716800
+        vm.createSelectFork("polygon", 34_716_800); // fork Polygon at block 34716800
         vm.deal(address(this), 0); // set address(this).balance to 0
     }
 

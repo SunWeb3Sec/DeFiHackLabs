@@ -79,7 +79,7 @@ contract CloberDex is BaseTestWithBalanceLog {
 
     function setUp() public {
         // evm_version Requires to be "cancun"
-        vm.createSelectFork("Base", blocknumToForkFrom);
+        vm.createSelectFork("base", blocknumToForkFrom);
         deal(address(this), 0);
         deal(msg.sender, 1e18);
         morpho = IMorphoBuleFlashLoan(payable(morphoBlue));
@@ -95,7 +95,7 @@ contract CloberDex is BaseTestWithBalanceLog {
 
     function testRealAttacker() public {
         emit log_named_decimal_uint("The Real Attacker's ETH before the attack:", address(attacker).balance / 1e18, 0);
-        vm.createSelectFork("Base", blocknumToForkFrom + 1);
+        vm.createSelectFork("base", blocknumToForkFrom + 1);
         emit log_named_decimal_uint("The Real Attacker's ETH after the attack:", address(attacker).balance / 1e18, 0);
     }
 

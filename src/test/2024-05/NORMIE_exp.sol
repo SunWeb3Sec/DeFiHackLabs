@@ -27,7 +27,7 @@ contract ContractTest is Test {
     address NORMIE = 0x7F12d13B34F5F4f0a9449c16Bcd42f0da47AF200;
 
     function setUp() public {
-        vm.createSelectFork("https://rpc.ankr.com/base", 14_952_783 - 1);
+        vm.createSelectFork("base", 14_952_783 - 1);
 
         uint256 ETH_balance_transfer_to_Zero_Address = address(this).balance - 3 ether;
 

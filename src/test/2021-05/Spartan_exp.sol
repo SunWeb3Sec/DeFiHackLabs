@@ -22,7 +22,7 @@ contract Exploit is Test {
     ISpartanPool private constant SPT1_WBNB = ISpartanPool(0x3de669c4F1f167a8aFBc9993E4753b84b576426f); // SPARTAN<>WBNB
 
     function setUp() public {
-        vm.createSelectFork("https://binance.llamarpc.com", 7_048_832);
+        vm.createSelectFork("bsc", 7_048_832);
     }
 
     function testExploit() public {

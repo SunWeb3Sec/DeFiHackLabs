@@ -56,7 +56,7 @@ contract Token8633_9419_exp is Test {
     receive() external payable {}
 
     function setUp() public {
-        vm.createSelectFork("https://rpc.ankr.com/bsc", 33_545_074);
+        vm.createSelectFork("bsc", 33_545_074);
         // vm.createSelectFork("https://rpc.ankr.com/bsc", bytes32(0xf6ec3c22b718c3da17746416992bac7b65a4ef42ccf5b43cf0716c82bffc2844));
     }
 

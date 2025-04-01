@@ -41,7 +41,7 @@ contract LinkDao_exp is Test {
     receive() external payable {}
 
     function setUp() public {
-        vm.createSelectFork("https://rpc.ankr.com/bsc", 33_527_744);
+        vm.createSelectFork("bsc", 33_527_744);
         // vm.createSelectFork("https://rpc.ankr.com/bsc", bytes32(0x4ed59e3013215c272536775a966f4365112997a6eec534d38325be014f2e15ee));
     }
 

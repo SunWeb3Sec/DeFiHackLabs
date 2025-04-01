@@ -47,7 +47,7 @@ contract ContractTest is Test {
     TimelockController t = TimelockController(0x37fF10390F22fABDc2137E428A6E6965960D60b6);
 
     function setUp() public {
-        vm.createSelectFork("https://rpc.ankr.com/optimism", 120_062_493 - 1);
+        vm.createSelectFork("optimism", 120_062_493 - 1);
     }
 
     function testExploit() public {
