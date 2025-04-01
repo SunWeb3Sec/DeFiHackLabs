@@ -75,7 +75,7 @@ contract ContractTest is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     function setUp() public {
-        cheats.createSelectFork("https://polygon.llamarpc.com", 38_118_347);
+        cheats.createSelectFork("polygon", 38_118_347);
         cheats.label(address(balancer), "balancer");
         cheats.label(address(aaveV3), "aaveV3");
         cheats.label(address(aaveV2), "aaveV2");

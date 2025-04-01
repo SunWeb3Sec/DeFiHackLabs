@@ -46,8 +46,7 @@ contract Moonhacker is BaseTestWithBalanceLog {
 
     function setUp() public {
         // You may need to change "optimism" to your own rpc url
-        // vm.createSelectFork("optimism", blocknumToForkFrom);
-        vm.createSelectFork("https://optimism-mainnet.infura.io/v3/3114f26b0b814b5881d86af336b2be9b", blocknumToForkFrom);
+        vm.createSelectFork("optimism", blocknumToForkFrom);
 
         fundingToken = address(USDC);
 

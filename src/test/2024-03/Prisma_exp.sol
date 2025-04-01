@@ -99,7 +99,7 @@ contract PrismaExploit is Test {
 
     function setUp() public {
         // set up the fork
-        vm.createSelectFork("https://rpc.ankr.com/eth", attackTx);
+        vm.createSelectFork("mainnet", attackTx);
 
         // chainlink price feed and balancer vault
         priceFeed = IPriceFeed(0xC105CeAcAeD23cad3E9607666FEF0b773BC86aac);

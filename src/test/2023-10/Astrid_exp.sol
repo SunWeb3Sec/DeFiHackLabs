@@ -105,7 +105,7 @@ contract ASTTest is Test {
     IERC20 WETH = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
 
     function setUp() public {
-        cheats.createSelectFork("https://rpc.ankr.com/eth", 18_448_167);
+        cheats.createSelectFork("mainnet", 18_448_167);
     }
 
     function testExpolit() public {

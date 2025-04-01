@@ -58,7 +58,7 @@ contract IndexedAttack is BNum, IUniswapV2Callee, Test {
     uint256 private constant borrowedSushiAmount = 220_000 * 1e18;
 
     function setUp() public {
-        vm.createSelectFork("https://eth.llamarpc.com", 13_417_948);
+        vm.createSelectFork("mainnet", 13_417_948);
     }
 
     function testHack() public {

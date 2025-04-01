@@ -131,7 +131,7 @@ contract ShibaToken_exp is Test {
     receive() external payable {}
 
     function setUp() public {
-        vm.createSelectFork("https://rpc.ankr.com/bsc", 33_528_882);
+        vm.createSelectFork("bsc", 33_528_882);
         // vm.createSelectFork("https://rpc.ankr.com/bsc", bytes32(0x75a26224da9faf37c2b3a4a634a096af7fec561f631a02c93e11e4a19d159477));
     }
 
