@@ -51,8 +51,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250328 Alkimiya_IO](#20250328-alkimiya_io---unsafecast)
 
-[20250316 wKeyDAO](#20250316-wkeydao---unprotected-function)
-
 [20250318 DCFToken](#20250318-dcftoken---lack-of-slippage-protection)
 
 [20250316 wKeyDAO](#20250316-wkeydao---unprotected-function)
