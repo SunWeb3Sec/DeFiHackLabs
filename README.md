@@ -49,7 +49,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
-[20250328 Alkimiya_IO](#20250314-Alkimiya_IO---unsafecast)
+[20250328 Alkimiya_IO](#20250328-alkimiya_io---unsafecast)
 
 [20250316 wKeyDAO](#20250316-wkeydao---unprotected-function)
 
