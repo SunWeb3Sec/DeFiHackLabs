@@ -52,6 +52,22 @@ https://twitter.com/Bcpaintball26/status/1857865758551805976
 
 ---
 
+### 20241114 vETH - Vulnerable Price Dependency
+
+### Lost: 447k
+
+
+```sh
+forge test --contracts ./src/test/2024-11/vETH_exp.sol -vvv
+```
+#### Contract
+[vETH_exp.sol](src/test/2024-11/vETH_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1856984299905716645
+
+---
+
 ### 20241111 DeltaPrime - Reentrancy
 
 ### Lost: $4.75 M
