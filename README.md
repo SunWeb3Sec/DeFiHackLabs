@@ -1260,26 +1260,6 @@ https://x.com/Phalcon_xyz/status/1860890801909190664
 
 ---
 
-
-### 20250316 wKeyDAO - unprotected function
-
-### Lost: 737,000
-
-
-```sh
-forge test --contracts ./src/test/2025-03/wKeyDAO_exp.sol -vvv --evm-version shanghai
-```
-#### Contract
-[wKeyDAO_exp.sol](src/test/2025-03/wKeyDAO_exp.sol)
-### Link reference
-
-https://x.com/Phalcon_xyz/status/1900809936906711549
-
----
-
-
-
-
 ### 20250316 wKeyDAO - unprotected function
 
 ### Lost: 737,000
