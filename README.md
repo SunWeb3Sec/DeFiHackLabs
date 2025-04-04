@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-564 incidents included.
+565 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -98,6 +98,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20241203 Pledge](past/2024/README.md#20241203-pledge---access-control)
 
 [20241119 PolterFinance](past/2024/README.md#20241119-polterfinance---flashloan-attack)
+
+[20241114 vETH](past/2024/README.md#20241114-veth---vulnerable-price-dependency)
 
 [20241111 DeltaPrime](past/2024/README.md#20241111-deltaprime---reentrancy)
 
@@ -1220,6 +1222,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
 
 ### 20250328 Alkimiya_IO - unsafecast
 
