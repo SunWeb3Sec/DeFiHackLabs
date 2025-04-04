@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-564 incidents included.
+565 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20241114 vETH](#20241114-veth---vulnerable-price-dependency)
 
 [20250328 Alkimiya_IO](#20250314-Alkimiya_IO---unsafecast)
 
@@ -1220,6 +1221,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20241114 vETH - Vulnerable Price Dependency
+
+### Lost: 447k
+
+
+```sh
+forge test --contracts ./src/test/2024-11/vETH_exp.sol -vvv
+```
+#### Contract
+[vETH_exp.sol](src/test/2024-11/vETH_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1856984299905716645
+
+---
 
 ### 20250328 Alkimiya_IO - unsafecast
 
