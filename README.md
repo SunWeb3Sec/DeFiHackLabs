@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-565 incidents included.
+566 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250305 OneInchFusionV1SettlementHack.sol](#20250305-oneinchfusionv1settlementhacksol---arbitrary-yul-calldata)
 
 [20250328 Alkimiya_IO](#20250328-alkimiya_io---unsafecast)
 
@@ -1221,6 +1222,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+
+
+
+
+### 20250305 OneInchFusionV1SettlementHack.sol - Arbitrary Yul Calldata
+
+### Lost: 4.5M
+
+
+```sh
+forge test --contracts ./src/test/2025-03/OneInchFusionV1SettlementHack.sol -vvv
+```
+#### Contract
+[OneInchFusionV1SettlementHack.sol](src/test/2025-03/OneInchFusionV1SettlementHack.sol)
+### Link reference
+
+linkhere
+
+---
 
 ### 20250328 Alkimiya_IO - unsafecast
 
