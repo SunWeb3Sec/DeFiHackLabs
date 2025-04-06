@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-566 incidents included.
+567 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,7 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20250305 OneInchFusionV1SettlementHack.sol](#20250305-oneinchfusionv1settlementhacksol---arbitrary-yul-calldata)
+
+[20250330 LeverageSIR](#20250330-leveragesir---storage-slot-1-collision)
 
 [20250328 Alkimiya_IO](#20250328-alkimiya_io---unsafecast)
 
@@ -57,6 +58,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250316 wKeyDAO](#20250316-wkeydao---unprotected-function)
 
 [20250314 H2O](#20250314-H2O---weak-random-mint)
+
+[20250305 OneInchFusionV1SettlementHack.sol](#20250305-oneinchfusionv1settlementhacksol---arbitrary-yul-calldata)
 
 [20250223 HegicOptions](#20250223-hegicoptions---business-logic-flaw)
 
@@ -1223,24 +1226,26 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ### List of DeFi Hacks & POCs
 
 
+[20250330 LeverageSIR](#20250330-leveragesir---storage-slot1-collision)
+### 20250330 LeverageSIR - Storage SLOT1 collision
 
-
-
-### 20250305 OneInchFusionV1SettlementHack.sol - Arbitrary Yul Calldata
-
-### Lost: 4.5M
-
+### Lost: ~ 353.8 K (17814,86 USDC, 1,4085 WBTC, 119,87 WETH)
 
 ```sh
-forge test --contracts ./src/test/2025-03/OneInchFusionV1SettlementHack.sol -vvv
+forge test --contracts ./src/test/2025-03/LeverageSIR_exp.sol -vvv --watch --evm-version cancun
 ```
+
 #### Contract
-[OneInchFusionV1SettlementHack.sol](src/test/2025-03/OneInchFusionV1SettlementHack.sol)
+[LeverageSIR_exp.sol](src/test/2025-03/LeverageSIR_exp.sol)
+
 ### Link reference
 
-linkhere
+https://x.com/TenArmorAlert/status/1906268185046745262
 
 ---
+
+
+
 
 ### 20250328 Alkimiya_IO - unsafecast
 
@@ -1311,8 +1316,21 @@ https://x.com/TenArmorAlert/status/1900525198157205692
 
 ---
 
+### 20250305 OneInchFusionV1SettlementHack.sol - Arbitrary Yul Calldata
+
+### Lost: 4.5M
 
 
+```sh
+forge test --contracts ./src/test/2025-03/OneInchFusionV1SettlementHack.sol -vvv
+```
+#### Contract
+[OneInchFusionV1SettlementHack.sol](src/test/2025-03/OneInchFusionV1SettlementHack.sol)
+### Link reference
+
+linkhere
+
+---
 
 ### 20241210 CloberDEX - Reentrancy
 
