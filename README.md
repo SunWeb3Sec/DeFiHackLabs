@@ -1316,7 +1316,7 @@ https://x.com/TenArmorAlert/status/1900525198157205692
 
 ---
 
-### 20250305 OneInchFusionV1SettlementHack.sol - Arbitrary Yul Calldata
+### 20250305 1inch FusionV1 Settlement - Arbitrary Yul Calldata
 
 ### Lost: 4.5M
 
@@ -1328,7 +1328,7 @@ forge test --contracts ./src/test/2025-03/OneInchFusionV1SettlementHack.sol -vvv
 [OneInchFusionV1SettlementHack.sol](src/test/2025-03/OneInchFusionV1SettlementHack.sol)
 ### Link reference
 
-linkhere
+[linkhere](https://blog.decurity.io/yul-calldata-corruption-1inch-postmortem-a7ea7a53bfd9)
 
 ---
 
