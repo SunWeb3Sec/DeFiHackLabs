@@ -131,7 +131,7 @@ contract ParibusExploit is BaseTestWithBalanceLog {
         );
         CamelotRouterV3.exactInputSingle(CamelotStructure);
 
-        NFT_Position_Manager.MintParams memory Structure = NFTPositionManager.MintParams(
+        NFTPositionManager.MintParams memory Structure = NFTPositionManager.MintParams(
             address(PBX),
             address(USDT),
             -870000,

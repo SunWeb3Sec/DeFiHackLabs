@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-566 incidents included.
+567 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -58,6 +58,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250316 wKeyDAO](#20250316-wkeydao---unprotected-function)
 
 [20250314 H2O](#20250314-H2O---weak-random-mint)
+
+[20250305 1inch Fusion V1 Settlement](#20250305-1inch-fusionv1-settlement---arbitrary-yul-calldata)
 
 [20250223 HegicOptions](#20250223-hegicoptions---business-logic-flaw)
 
@@ -1314,8 +1316,21 @@ https://x.com/TenArmorAlert/status/1900525198157205692
 
 ---
 
+### 20250305 1inch FusionV1 Settlement - Arbitrary Yul Calldata
+
+### Lost: 4.5M
 
 
+```sh
+forge test --contracts ./src/test/2025-03/OneInchFusionV1SettlementHack.sol -vvv
+```
+#### Contract
+[OneInchFusionV1SettlementHack.sol](src/test/2025-03/OneInchFusionV1SettlementHack.sol)
+### Link reference
+
+[linkhere](https://blog.decurity.io/yul-calldata-corruption-1inch-postmortem-a7ea7a53bfd9)
+
+---
 
 ### 20241210 CloberDEX - Reentrancy
 
