@@ -59,7 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250314 H2O](#20250314-H2O---weak-random-mint)
 
-[20250305 OneInchFusionV1SettlementHack.sol](#20250305-oneinchfusionv1settlementhacksol---arbitrary-yul-calldata)
+[20250305 1inch Fusion V1 Settlement](#20250305-oneinchfusionv1settlementhacksol---arbitrary-yul-calldata)
 
 [20250223 HegicOptions](#20250223-hegicoptions---business-logic-flaw)
 
