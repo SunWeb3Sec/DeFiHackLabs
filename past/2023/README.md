@@ -3723,6 +3723,8 @@ forge test --contracts ./src/test/2023-05/HODLCapital_exp.sol -vvv
 
 https://explorer.phalcon.xyz/tx/eth/0xedc214a62ff6fd764200ddaa8ceae54f842279eadab80900be5f29d0b75212df
 
+https://x.com/numencyber/status/1655825767392247808
+
 ---
 
 ### 20230506 Melo - Access Control
