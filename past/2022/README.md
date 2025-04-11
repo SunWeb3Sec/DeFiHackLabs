@@ -776,6 +776,8 @@ forge test --contracts ./src/test/2022-11/Polynomial_exp.sol -vvv
 
 https://x.com/peckshield/status/1602216000187174912
 
+https://x.com/0xPoor4ever/status/1602156729105788929
+
 ---
 
 ### 20221117 - UEarnPool - FlashLoan Attack
@@ -1759,7 +1761,7 @@ https://etherscan.io/tx/0x27e64a8215ae1528245c912bcca09883fdd7cce69249bd5d5d1c0e
 
 ---
 
-### 20220828 DDC
+### 20220828 DDC - Unchecked External Calls
 
 Testing
 
@@ -1774,6 +1776,8 @@ forge test --contracts ./src/test/2022-08/DDC_exp.sol -vvv
 #### Link reference
 
 https://x.com/BeosinAlert/status/1564240190851383302
+
+https://immunebytes.com/blog/ddc-token-hack-aug-28-2022-detailed-analysis/
 
 ### 20220824 LuckyTiger NFT - Predicting Random Numbers
 
