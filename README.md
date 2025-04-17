@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-567 incidents included.
+568 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250416 YVToken](#20250416-ybtoken---not-slippage-protection)
 
 [20250330 LeverageSIR](#20250330-leveragesir---storage-slot-1-collision)
 
@@ -1226,13 +1228,32 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ### List of DeFi Hacks & POCs
 
 
-[20250330 LeverageSIR](#20250330-leveragesir---storage-slot1-collision)
+### 20250416 YVToken - Not Slippage Protection
+
+### Lost: 15261.68240413121964707 BUSD
+
+```sh
+forge test --contracts ./src/test/2025-04/YBToken_exp.sol -vvv --evm-version cancun
+```
+
+#### Contract
+[YBToken_exp.sol](src/test/2025-04/YBToken_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1912684902664782087
+
+---
+
+
+
+
 ### 20250330 LeverageSIR - Storage SLOT1 collision
 
 ### Lost: ~ 353.8 K (17814,86 USDC, 1,4085 WBTC, 119,87 WETH)
 
 ```sh
-forge test --contracts ./src/test/2025-03/LeverageSIR_exp.sol -vvv --watch --evm-version cancun
+forge test --contracts ./src/test/2025-03/LeverageSIR_exp.sol -vvv --evm-version cancun
 ```
 
 #### Contract
