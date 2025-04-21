@@ -4079,7 +4079,7 @@ https://twitter.com/BeosinAlert/status/1642372700726505473
 
 ---
 
-### 20230328 SafeMoon Hack
+### 20230328 SafeMoon Hack - Access Control
 
 ### Lost: $8.9M
 
