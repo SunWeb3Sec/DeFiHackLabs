@@ -920,7 +920,7 @@ https://x.com/MetaSec_xyz/status/1730044259087315046
 
 ---
 
-### 20231129  AIS- Access Control
+### 20231129  AIS - Insufficient validation
 
 ### Lost: ~$61k
 
@@ -4119,7 +4119,7 @@ https://twitter.com/LTV888/status/1640563457094451214?t=OBHfonYm9yYKvMros6Uw_g&s
 
 ---
 
-### 20230325 - DBW- Business Logic Flaw
+### 20230325 - DBW - Business Logic Flaw
 
 ### Lost: $24k
 
@@ -4663,7 +4663,7 @@ https://github.com/Autosaida/DeFiHackAnalysis/blob/master/analysis/230119_SHOCO.
 
 ---
 
-### 20230119 - ThoreumFinance-business logic flaw
+### 20230119 - ThoreumFinance - business logic flaw
 
 ### Lost: ~2000 BNB
 
