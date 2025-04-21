@@ -299,7 +299,7 @@ https://twitter.com/BlockSecTeam/status/1438100688215560192
 
 ---
 
-### 20210915 NowSwap Platform
+### 20210915 NowSwap Platform - Incorrect calculation
 
 #### Lost: 158.28 WETH and 535,706 USDT
 
