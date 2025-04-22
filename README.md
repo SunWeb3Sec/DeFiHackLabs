@@ -1523,7 +1523,7 @@ https://x.com/TenArmorAlert/status/1877030261067571234
 
 ---
 
-### 20250107 IPC Incorrect burn pairs
+### 20250107 IPC Incorrect burn pairs - Logic Flaw
 
 ### Lost: ～590k USDT
 

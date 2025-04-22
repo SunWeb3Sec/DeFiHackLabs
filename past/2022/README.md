@@ -1553,7 +1553,7 @@ https://bscscan.com/tx/0xd692f71de2768017390395db815d34033013136c378177c05d0d46e
 
 ---
 
-### 20220913 MevBot private tx
+### 20220913 MevBot private tx - Incorrect access control
 
 ### Lost: $140 K
 
@@ -2500,7 +2500,7 @@ https://etherscan.io/address/0xf42c318dbfbaab0eee040279c6a2588fa01a961d#code
 
 ---
 
-### 20220421 Zeed Finance
+### 20220421 Zeed Finance - Incorrect calculation
 
 #### Lost: $1 million
 
@@ -2604,7 +2604,7 @@ https://bscscan.com/tx/0xec317deb2f3efdc1dbf7ed5d3902cdf2c33ae512151646383a8cf8c
 
 ---
 
-### 20220411 Creat Future
+### 20220411 Creat Future - Overflow
 
 #### Lost: $1.9 million
 
@@ -2714,7 +2714,7 @@ https://etherscan.io/tx/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846
 
 ---
 
-### 20220326 Auctus
+### 20220326 Auctus - Arbitrary Call
 
 #### Lost: $726 k
 
@@ -2736,7 +2736,7 @@ https://etherscan.io/tx/0x2e7d7e7a6eb157b98974c8687fbd848d0158d37edc1302ea08ee5d
 
 ---
 
-### 20220322 CompoundTUSDSweepTokenBypass
+### 20220322 CompoundTUSDSweepTokenBypass - Insufficient validation
 
 Testing
 
