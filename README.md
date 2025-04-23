@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-569 incidents included.
+570 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -66,6 +66,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250305 1inch Fusion V1 Settlement](#20250305-1inch-fusionv1-settlement---arbitrary-yul-calldata)
 
 [20250223 HegicOptions](#20250223-hegicoptions---business-logic-flaw)
+
+[20250221 StepHeroNFTs](#20250221-stepheronfts---reentrancy-on-sell-nft)
 
 [20250221 Bybit](#20250221-bybit---phishing-attack)
 
@@ -1406,6 +1408,30 @@ forge test --contracts ./src/test/2025-02/HegicOptions_exp.sol -vvv
  [Pending]
 
 ---
+
+
+
+
+### 20250221 StepHeroNFTs - Reentrancy On Sell NFT
+
+### Lost : 137.9 BNB
+
+```sh
+forge test --contracts ./src/test/2025-02/StepHeroNFTs_exp.sol -vvv
+```
+
+#### Contract
+[StepHeroNFTs_exp.sol](src/test/2025-02/StepHeroNFTs_exp.sol)
+
+### Link reference
+
+https://x.com/SlowMist_Team/status/1892822286715277344
+
+---
+
+
+
+
 
 ### 20250221 Bybit - Phishing attack
 
