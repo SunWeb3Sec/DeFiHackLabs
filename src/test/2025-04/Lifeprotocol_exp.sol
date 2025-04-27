@@ -23,7 +23,7 @@ address constant dpp = 0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476;
 address constant busd = 0x55d398326f99059fF775485246999027B3197955;
 address constant lifeToken = 0x19B2834f99Fb9eB4164CB5b49046Ec207F894197;
 
-contract t2 is Test {
+contract LifeProtocol_exp is Test {
     uint256 public quoteAmount = 110000 * 1e18;
 
     function setUp() public {
