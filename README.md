@@ -152,7 +152,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240828 AAVE](past/2024/README.md#20240828-aave---arbitrary-call-error)
 
-[20240814 YodlRouter](past/2024/README.md#20240814-noname---arbitrary-call)
+[20240814 YodlRouter](past/2024/README.md#20240814-yodlrouter---arbitrary-call)
 
 [20240813 VOW](past/2024/README.md#20240813-vow---misconfiguration)
 
