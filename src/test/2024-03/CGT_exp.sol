@@ -8,7 +8,7 @@ import "./../interface.sol";
 // TX : https://app.blocksec.com/explorer/tx/eth/0x4ff4028b03c3df468197358b99f5160e5709e7fce3884cc8ce818856d058e106
 // Attacker : https://etherscan.io/address/0xdaaa6294c47b5743bdafe0613d1926ee27ae8cf5
 // Attack Contract : https://etherscan.io/address/0x1e791527aea32cddbd7ceb7f04612db536816545
-// GUY : https://x.com/AnciliaInc/status/1771598968448745536
+// Post Report : https://investcurio.medium.com/curiodaos-recovery-plan-1255427f35de
 
 interface IMERC20 is IERC20 {
     function mint(address guy, uint256 wad) external;
