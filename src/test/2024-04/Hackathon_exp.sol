@@ -5,8 +5,10 @@ import "forge-std/Test.sol";
 import "./../interface.sol";
 
 // TX : https://app.blocksec.com/explorer/tx/bsc/0xea181f730886ece947e255ab508f5af1d0f569fee3368b651d5dbb28549087b5
+// Vulnearable Contract: 0x11cee747Faaf0C0801075253ac28aB503C888888
 // GUY : https://x.com/EXVULSEC/status/1779519508375613827
 // Profit : ~20K USD
+// Root Cause: when `sender == recipient == pair`, the recipient’s balance is credited twice, once in each branch
 
 contract Exploit is Test {
     CheatCodes cheats = CheatCodes(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
