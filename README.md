@@ -55,9 +55,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250418 BTNFT](#20250418-btnft---claim-rewards-without-protection)
 
-[20250416 YVToken](#20250416-ybtoken---not-slippage-protection)
+[20250416 YVToken](#20250416-yvtoken---not-slippage-protection)
 
-[20250330 LeverageSIR](#20250330-leveragesir---storage-slot-1-collision)
+[20250330 LeverageSIR](#20250330-leveragesir---storage-slot1-collision)
 
 [20250328 Alkimiya_IO](#20250328-alkimiya_io---unsafecast)
 
@@ -65,7 +65,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250316 wKeyDAO](#20250316-wkeydao---unprotected-function)
 
-[20250314 H2O](#20250314-H2O---weak-random-mint)
+[20250314 H2O](#20250314-h2o---weak-random-mint)
 
 [20250305 1inch Fusion V1 Settlement](#20250305-1inch-fusionv1-settlement---arbitrary-yul-calldata)
 
@@ -77,9 +77,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250211 FourMeme](#20250211-fourmeme---logic-flaw)
 
-[20250123 ODOS](#20250123-ODOS---invalid-signature-verification)
+[20250123 ODOS](#20250123-odos---invalid-signature-verification)
 
-[20250121 Ast](#20250121-ast---Price-Manipulation)
+[20250121 Ast](#20250121-ast---price-manipulation)
 
 [20250118 Paribus](#20250118-paribus---bad-oracle)
 
@@ -89,15 +89,15 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250110 JPulsepot](#20250110-jpulsepot---logic-flaw)
 
-[20250108 LPMine](#20250108-LPMine---Incorrect-reward-calculation)
+[20250108 LPMine](#20250108-lpmine---incorrect-reward-calculation)
 
 [20250107 IPC](#20250106-mosca---logic-flaw)
 
 [20250106 Mosca](#20250106-mosca---logic-flaw)
 
-[20250104 SorStaking](#20250104-SorStaking---Incorrect-reward-calculation)
+[20250104 SorStaking](#20250104-sorstaking---incorrect-reward-calculation)
 
-[20250104 98#Token](#20250104-98Token---Unprotected-public-function)
+[20250104 98#Token](#20250104-98token---unprotected-public-function)
 
 [20250101 LAURAToken](#20250101-lauratoken---pair-balance-manipulation)
 
