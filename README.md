@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-571 incidents included.
+572 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250511 MBUToken](#20250511-mbutoken---price-manipulation-not-confirmed)
+
 [20250426 Lifeprotocol](#20250426-lifeprotocol---price-manipulation)
 
 [20250418 BTNFT](#20250418-btnft---claim-rewards-without-protection)
@@ -1231,6 +1234,28 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+
+
+### 20250511 MBUToken - Price Manipulation not confirmed
+
+### Lost: ~2.16 M BUSD
+
+```sh
+forge test --contracts ./src/test/2025-05/MBUToken_exp.sol -vvv
+```
+
+#### Contract
+[MBUToken_exp.sol](src/test/2025-05/MBUToken_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1921474575965065701
+
+https://x.com/CertiKAlert/status/1921483904483000457
+
+---
 
 
 
