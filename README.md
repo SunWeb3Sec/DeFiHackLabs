@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-572 incidents included.
+573 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -52,6 +52,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250511 MBUToken](#20250511-mbutoken---price-manipulation-not-confirmed)
 
 [20250426 Lifeprotocol](#20250426-lifeprotocol---price-manipulation)
+
+[20250426 ImpermaxV3](#20250426-impermaxv3---floashloan)
 
 [20250418 BTNFT](#20250418-btnft---claim-rewards-without-protection)
 
@@ -1235,9 +1237,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-
-
-
 ### 20250511 MBUToken - Price Manipulation not confirmed
 
 ### Lost: ~2.16 M BUSD
@@ -1257,9 +1256,6 @@ https://x.com/CertiKAlert/status/1921483904483000457
 
 ---
 
-
-
-
 ### 20250426 Lifeprotocol - Price Manipulation
 
 ### Lost: 15114 BUSD
@@ -1273,6 +1269,22 @@ forge test --contracts ./src/test/2025-04/Lifeprotocol_exp.sol -vvv --evm-versio
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1916312483792408688
+
+---
+
+### 20250426 ImpermaxV3 - Floashloan
+
+### Lost: 62,628.66 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-04/ImpermaxV3_exp.sol -vvv
+```
+#### Contract
+[ImpermaxV3_exp.sol](src/test/2025-04/ImpermaxV3_exp.sol)
+### Link reference
+
+https://medium.com/@quillaudits/how-impermax-v3-lost-300k-in-a-flashloan-attack-35b02d0cf152
 
 ---
 
