@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-572 incidents included.
+573 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250426 ImpermaxV3](#20250426-impermaxv3---floashloan)
 
 [20250511 MBUToken](#20250511-mbutoken---price-manipulation-not-confirmed)
 
@@ -1237,6 +1238,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 
 
+
+
+
+
+### 20250426 ImpermaxV3 - Floashloan
+
+### Lost: 62,628.66 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-04/ImpermaxV3_exp.sol -vvv
+```
+#### Contract
+[ImpermaxV3_exp.sol](src/test/2025-04/ImpermaxV3_exp.sol)
+### Link reference
+
+https://medium.com/@quillaudits/how-impermax-v3-lost-300k-in-a-flashloan-attack-35b02d0cf152
+
+---
 
 ### 20250511 MBUToken - Price Manipulation not confirmed
 
