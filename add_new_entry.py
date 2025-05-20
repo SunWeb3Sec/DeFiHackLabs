@@ -94,7 +94,7 @@ def should_add_shanghaiflag(chain):
 
 def get_run_command(formatted_date,file_name,chain):
     basecommand = f"""forge test --contracts ./src/test/{formatted_date[:4]}-{formatted_date[4:6]}/{file_name} -vvv"""
-    if(should_add_shanghaiflag(chain)):
+    if(chain is not None and should_add_shanghaiflag(chain)):
         basecommand = basecommand + " --evm-version shanghai"
     return basecommand
 
@@ -261,7 +261,7 @@ def add_new_entry_from_file(file_path):
     formatted_date = timestamp.strftime("%Y%m%d")
     name = file_name.split("_")[0]
 
-    new_entry = generate_new_entry(formatted_date, name, additional_details, lost_amount, file_name, link_reference)
+    new_entry = generate_new_entry(formatted_date, name, additional_details, lost_amount, file_name, link_reference, None)
 
     updated_content = insert_new_entry(content, new_entry)
     updated_content = update_table_of_contents(updated_content, formatted_date, name, additional_details)
