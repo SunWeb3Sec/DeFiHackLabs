@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-573 incidents included.
+574 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -107,7 +107,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20241223 Moonhacker](past/2024/README.md#20241223-moonhacker---improper-input-validation)
 
-[20241210 CloberDEX](#20241210-cloberdex---reentrancy)
+[20241210 LABUBUToken](past/2024/README.md#20241210-labubu-token---logic-flaw)
+
+[20241210 CloberDEX](past/2024/README.md#20241210-cloberdex---reentrancy)
 
 [20241203 Pledge](past/2024/README.md#20241203-pledge---access-control)
 
@@ -1431,22 +1433,6 @@ forge test --contracts ./src/test/2025-03/OneInchFusionV1SettlementHack.sol -vvv
 ### Link reference
 
 [linkhere](https://blog.decurity.io/yul-calldata-corruption-1inch-postmortem-a7ea7a53bfd9)
-
----
-
-### 20241210 CloberDEX - Reentrancy
-
-### Lost: ~501K US$ (133.7 WETH)
-
-
-```sh
-forge test --contracts ./src/test/2024-12/CloberDEX_exp.sol -vvv --evm-version cancun
-```
-#### Contract
-[CloberDEX_exp.sol](src/test/2024-12/CloberDEX_exp.sol)
-### Link reference
-
-https://x.com/peckshield/status/1866443215186088048
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-153 incidents included.
+155 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -17,6 +17,39 @@ forge test --contracts ./../../src/test/2024-12/Moonhacker_exp.sol -vvv --evm-ve
 ### Link reference
 
 https://blog.solidityscan.com/moonhacker-vault-hack-analysis-ab122cb226f6
+
+---
+
+### 20241210 LABUBU Token - Logic Flaw
+
+#### Lost: 17.4 BNB (~ $12,048)
+
+```sh
+forge test --contracts ./../../src/test/2024-12/LABUBU_exp.sol -vvv
+```
+
+#### Contract
+
+[LABUBU_exp.sol](../../src/test/2024-12/LABUBU_exp.sol)
+
+### Link reference
+
+[Pending]
+
+---
+
+### 20241210 CloberDEX - Reentrancy
+
+### Lost: ~501K US$ (133.7 WETH)
+
+```sh
+forge test --contracts ./../../src/test/2024-12/CloberDEX_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[CloberDEX_exp.sol](../../src/test/2024-12/CloberDEX_exp.sol)
+### Link reference
+
+https://x.com/peckshield/status/1866443215186088048
 
 ---
 
