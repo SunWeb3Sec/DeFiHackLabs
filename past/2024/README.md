@@ -34,7 +34,7 @@ forge test --contracts ./../../src/test/2024-12/LABUBU_exp.sol -vvv
 
 ### Link reference
 
-[Pending]
+https://x.com/TenArmorAlert/status/1866481066610958431
 
 ---
 
