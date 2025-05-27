@@ -14,6 +14,9 @@ import "../interface.sol";
 // Vulnerable Contract Code : https://basescan.org/address/0x93D619623abc60A22Ee71a15dB62EedE3EF4dD5a#code
 //                            L127 ~ L138
 
+// @Analysis
+// Twitter Guy : https://x.com/TenArmorAlert/status/1866481066610958431
+
 address constant PancakeV3Pool = 0xe70294c3D81ea914A883ad84fD80473C048C028C;
 address constant PancakeV3Router = 0x13f4EA83D0bd40E75C8222255bc855a974568Dd4;
 address constant PancakeV2Router = 0x10ED43C718714eb63d5aA57B78B54704E256024E;

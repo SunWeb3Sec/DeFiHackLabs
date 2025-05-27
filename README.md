@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-574 incidents included.
+575 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -62,6 +62,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250330 LeverageSIR](#20250330-leveragesir---storage-slot1-collision)
 
 [20250328 Alkimiya_IO](#20250328-alkimiya_io---unsafecast)
+
+[20250320 BBXToken](#20250320-bbxtoken---price-manipulation)
 
 [20250318 DCFToken](#20250318-dcftoken---lack-of-slippage-protection)
 
@@ -1368,8 +1370,23 @@ https://x.com/TenArmorAlert/status/1906371419807568119
 
 ---
 
+### 20250320 BBXToken - Price Manipulation
 
+### Lost: 11902 BUSD
 
+```sh
+forge test --contracts ./src/test/2025-03/BBXToken_exp.sol -vvv
+```
+
+#### Contract
+
+[BBXToken_exp.sol](src/test/2025-03/BBXToken_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1902651550733906379
+
+---
 
 ### 20250318 DCFToken - Lack of Slippage Protection
 
