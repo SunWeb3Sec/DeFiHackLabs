@@ -62,7 +62,7 @@ contract MidasXYZExploit is Test {
     }
 
     function testExploit() public {
-        // Initial HAY and BUSDT amounts transfered by exploiter to this contract before attack start
+        // Initial HAY and BUSDT amounts transferred by exploiter to this contract before attack start
         deal(address(HAY), address(this), 220_000e18);
         deal(address(BUSDT), address(this), 23_000e18);
 

