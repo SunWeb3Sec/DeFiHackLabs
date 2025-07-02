@@ -13,7 +13,7 @@ import "../interface.sol";
 // block: 29437439
 
 // @Info
-// Vulnerable Contract Code : https://bscscan.com/address/0x5d93f216f17c225a8b5ffa34e74b7133436281ee#code
+// Vulnerable Contract Code : https://basescan.org/address/0x5d93f216f17c225a8b5ffa34e74b7133436281ee#code
 // https://medium.com/@quillaudits/how-impermax-v3-lost-300k-in-a-flashloan-attack-35b02d0cf152
 
 address constant ImpermaxV3Borrowable = 0x5d93f216f17c225a8B5fFA34e74B7133436281eE;
