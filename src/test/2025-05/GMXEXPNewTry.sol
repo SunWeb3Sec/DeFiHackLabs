@@ -66,7 +66,7 @@ contract GMXEXPNewTry is BaseTestWithBalanceLog {
     uint256 USDC_FLASHLOAN_AMT = 7_538_567_619_570;
     uint256 USDC_DIRECT_TRANSFER_TO_VAULT_AMT = 1538567619570;
     uint256 USDC_GLPMINT_AMT = 6000000000000;
-    uint256 WBTC_SHORT_SIZEDELTA = 1000000000000000000000000000000000; // Much smaller initial position
+    uint256 WBTC_SHORT_SIZEDELTA = 1000000000000000000000000000000000;
 
     constructor() {}
 
@@ -191,8 +191,10 @@ contract GMXEXPNewTry is BaseTestWithBalanceLog {
         // First approve USDC to the vault
         TokenHelper.approveToken(USDC, GMX_VAULT_V1, type(uint256).max);
         
-        // Create the short position with proper parameters
-        // Use a smaller initial position size to avoid "losses exceed collateral"
+        // Create the short position with proper collateral amount
+        // The key is to provide actual collateral, not just sizeDelta
+        uint256 collateralAmount = 1000000000000; // 1000 USDC as collateral
+        
         gmxVault.increasePosition(
             address(this),  // account
             USDC,           // collateralToken (USDC)
