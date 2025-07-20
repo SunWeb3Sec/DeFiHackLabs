@@ -46,7 +46,7 @@ contract GMXEXPNewTry is BaseTestWithBalanceLog {
     address public constant GMX_ROUTER_V1 = 0xaBBc5F99639c9B6bCb58544ddf04EFA6802F4064;
     address public constant GMX_REWARD_ROUTER_V2 = 0xB95DB5B167D75e6d04227CfFFA61069348d271F5;
     address public constant GMX_GLPMANAGER = 0x3963FfC9dff443c2A94f21b129D429891E32ec18;
-    address public constant GMX_POSITION_ROUTER = 0xb87a436B93fFE9D75c5cFA7bAcFff96430b09868;
+    address public constant GMX_POSITION_ROUTER = 0xb87a436B93fFE9D75c5cFA7bAcFfF96430b09868;
 
     address public GMX_KEEPER = 0xd4266F8F82F7405429EE18559e548979D49160F3;
 
@@ -134,23 +134,26 @@ contract GMXEXPNewTry is BaseTestWithBalanceLog {
         // Approve USDC
         TokenHelper.approveToken(USDC, GMX_VAULT_V1, type(uint256).max);
         
-        // Create increase order with proper parameters
+        // Create increase order with proper parameters - use smaller size to avoid revert
         address[] memory path = new address[](1);
         path[0] = USDC;
         
-        // Create the short position using position router
-        gmxPositionRouter.createIncreaseOrder{value: 0.001 ether}(
+        // Use smaller position size to avoid "Vault: losses exceed collateral"
+        uint256 positionSize = 1000000000000000000000000000000000; // 1e33
+        uint256 collateralAmount = 1000000000000; // 1e12 USDC
+        
+        gmxPositionRouter.createIncreaseOrder{value: 0.0003 ether}(
             path,
-            1000000000000, // 1000 USDC collateral
+            collateralAmount,
             WBTC,
             0,
-            10000000000000000000000000000000000, // 10x leverage
+            positionSize,
             USDC,
             false, // short
-            0,
-            false,
+            0,     // triggerPrice
+            false, // triggerAboveThreshold
             0.0003 ether,
-            false
+            false  // shouldWrap
         );
     }
 
@@ -189,12 +192,12 @@ contract GMXEXPNewTry is BaseTestWithBalanceLog {
         // Create decrease order to close the short
         gmxPositionRouter.createDecreaseOrder{value: 0.0003 ether}(
             WBTC,
-            10000000000000000000000000000000000,
+            1000000000000000000000000000000000, // positionSize
             USDC,
-            0,
-            false,
-            0,
-            false
+            0, // collateralDelta
+            false, // isLong
+            0, // triggerPrice
+            false // triggerAboveThreshold
         );
     }
 
