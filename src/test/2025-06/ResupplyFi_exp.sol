@@ -19,7 +19,9 @@ import "../basetest.sol";
 
 interface IERC20 {
     function approve(address, uint256) external;
-    function balanceOf(address) external view returns (uint256);
+    function balanceOf(
+        address
+    ) external view returns (uint256);
     function transfer(address, uint256) external;
 }
 
@@ -28,9 +30,13 @@ interface ICurvePool {
 }
 
 interface IsCRVUSD {
-    function mint(uint256) external;
+    function mint(
+        uint256
+    ) external;
     function approve(address, uint256) external;
-    function balanceOf(address) external view returns (uint256);
+    function balanceOf(
+        address
+    ) external view returns (uint256);
     function redeem(uint256, address, address) external;
 }
 
@@ -44,8 +50,12 @@ interface IUniswapV3Pool {
 }
 
 interface IWETH {
-    function balanceOf(address) external view returns (uint256);
-    function withdraw(uint256) external;
+    function balanceOf(
+        address
+    ) external view returns (uint256);
+    function withdraw(
+        uint256
+    ) external;
 }
 
 interface IMorphoBlue {
@@ -67,18 +77,18 @@ contract ResupplyFi is BaseTestWithBalanceLog {
     IResupplyVault private constant resupplyVault = IResupplyVault(0x6e90c85a495d54c6d7E1f3400FEF1f6e59f86bd6);
     ICurvePool private constant curveReusdPool = ICurvePool(0xc522A6606BBA746d7960404F22a3DB936B6F4F50);
     IUniswapV3Pool private constant uniswapV3Pool = IUniswapV3Pool(0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640);
-    
+
     // Attacker Address
     address private constant attackerEoa = 0x6D9f6E900ac2CE6770Fd9f04f98B7B0fc355E2EA;
 
     // Exploit Parameters
-    uint256 private constant forkBlockNumber = 22785460;
-    uint256 private constant flashLoanAmount = 4_000 * 1e6; // 4,000 USDC
-    uint256 private constant crvUsdTransferAmount = 2_000 * 1e18; // 2,000 crvUSD
+    uint256 private constant forkBlockNumber = 22_785_460;
+    uint256 private constant flashLoanAmount = 4000 * 1e6; // 4,000 USDC
+    uint256 private constant crvUsdTransferAmount = 2000 * 1e18; // 2,000 crvUSD
     uint256 private constant sCrvUsdMintAmount = 1;
     uint256 private constant borrowAmount = 10_000_000 * 1e18; // 10,000,000 reUSD
-    uint256 private constant redeemAmount = 9339517.438774046 ether; // ~9,339.52 sCrvUsd
-    uint256 private constant finalExchangeAmount = 9813732.715269934 ether; // ~9,813.73 crvUSD
+    uint256 private constant redeemAmount = 9_339_517.438774046 ether; // ~9,339.52 sCrvUsd
+    uint256 private constant finalExchangeAmount = 9_813_732.715269934 ether; // ~9,813.73 crvUSD
 
     receive() external payable {}
 
