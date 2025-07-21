@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-575 incidents included.
+576 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -48,6 +48,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250626 ResupplyFi](#20250626-resupplyfi---share-price-manipulation)
 
 [20250511 MBUToken](#20250511-mbutoken---price-manipulation-not-confirmed)
 
@@ -1240,6 +1241,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250626 ResupplyFi - Share price manipulation
+
+### Lost: 9.6M USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/ResupplyFi_exp.sol -vvv
+```
+#### Contract
+[ResupplyFi_exp.sol](src/test/2025-06/ResupplyFi_exp.sol)
+### Link reference
+
+https://x.com/ResupplyFi/status/1938927974272938420
+
+---
 
 ### 20250511 MBUToken - Price Manipulation not confirmed
 
