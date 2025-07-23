@@ -213,7 +213,7 @@ contract ContractTest is Test {
             100000000000000000, // amountIn
             address(weth_), // indexToken
             0, // minOut
-            531064000000000000000000000000000, // sizeDelta，3.215倍的杠杆
+            531064000000000000000000000000000, // sizeDelta，2.003倍的杠杆
             address(weth_), // collateralToken
             true, // isLong
             1500000000000000000000000000000000, // triggerPrice
