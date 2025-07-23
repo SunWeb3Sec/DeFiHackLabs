@@ -267,10 +267,13 @@ contract ContractTest is Test {
     }
 
     // Key point: globalShortAveragePrice has already been changed
+    // This is GMX’s callback function, gmxPositionCallback, which is called when a market order is closed.
     function gmxPositionCallback(bytes32 positionKey, bool isExecuted, bool isIncrease) external {
         createCloseETHPosition();
     }
 
+    // It is called when closing an ETH position.
+    // This is also a critical reentrancy point.
     fallback() external payable {
         if(isProfit) {
             profitAttack();
