@@ -48,6 +48,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250709 GMX](#20250709-gmx---share-price-manipulation)
+
 [20250626 ResupplyFi](#20250626-resupplyfi---share-price-manipulation)
 
 [20250511 MBUToken](#20250511-mbutoken---price-manipulation-not-confirmed)
@@ -1241,6 +1243,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250709 GMX - Share price manipulation
+
+### Lost: 41M USD
+
+```sh
+forge test --contracts ./src/test/2025-07/gmx_exp.sol -vvv
+```
+#### Contract
+[gmx_exp.sol](src/test/2025-07/gmx_exp.sol)
+
+### Link reference
+
+https://x.com/GMX_IO/status/1943336664102756471
+
+---
 
 ### 20250626 ResupplyFi - Share price manipulation
 
