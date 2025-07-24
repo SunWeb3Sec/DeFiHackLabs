@@ -802,7 +802,7 @@ forge test --match-contract INcufi_exp -vvv
 
 #### Contract
 
-[INcufi_exp.sol](../../src/test/2024-06/Incufi_exp.sol)
+[INcufi_exp.sol](../../src/test/2024-06/INcufi_exp.sol)
 
 ### Link reference
 
