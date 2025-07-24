@@ -2635,7 +2635,7 @@ forge test --match-contract Bmizapper_exp -vvv
 
 #### Contract
 
-[BmiZapper_exp.sol](../../src/test/2024-01/BmiZapper_exp.sol)
+[BmiZapper_exp.sol](../../src/test/2024-01/Bmizapper_exp.sol)
 
 #### Link reference
 
