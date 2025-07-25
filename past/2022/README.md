@@ -3017,12 +3017,12 @@ Testing
 
 ```sh
 Solana TBD
-forge test --contracts ./src/test/2022-02/meter_exp.sol -vv
+forge test --contracts ./src/test/2022-02/Meter_exp.sol -vv
 ```
 
 #### Contract
 
-[meter_exp.sol](../../src/test/2022-02/meter_exp.sol)
+[Meter_exp.sol](../../src/test/2022-02/Meter_exp.sol)
 
 #### Link reference
 
