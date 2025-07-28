@@ -1,35 +1,34 @@
 # Contributing Guidelines
-
 Thank you for your interest in contributing to the DeFiHackLabs project! We appreciate your efforts to help us maintain a comprehensive collection of DeFi hack incidents and their respective proof-of-concept (POC) exploits. This guide will walk you through the process of adding a new incident entry to the project.
 
+## Table of Contents
+* [Prerequisites](##prerequisites)
+* [Adding a New Incident Entry](##adding-a-new-incident-entry)
+* [Important Notes](##important-notes)
+
 ## Prerequisites
-
 Before getting started, ensure you have the following:
-
-- Python 3.x installed on your system
-- Basic knowledge of using the command line
-- `toml` package installed (run `pip install toml` to install it)
+* Python 3.x installed on your system
+* Basic knowledge of using the command line
+* `toml` package installed (run `pip install toml` to install it)
 
 ## Adding a New Incident Entry
-
 To add a new incident entry to the project, follow these steps:
 
+### Step 1: Fork and Clone the Repository
 1. Fork the [DeFiHackLabs repository](https://github.com/SunWeb3Sec/DeFiHackLabs) on GitHub.
-
 2. Clone your forked repository to your local machine:
-   ```bash
-   git clone https://github.com/your-username-here/DeFiHackLabs.git
-   ```
-
+```bash
+git clone https://github.com/your-username-here/DeFiHackLabs.git
+```
 3. Navigate to the project directory:
-   ```bash
-   cd DeFiHackLabs
-   ```
-
+```bash
+cd DeFiHackLabs
+ ```
 4. Run the `add_new_entry.py` script:
-   ```bash
-   python add_new_entry.py
-   ```
+```bash
+python add_new_entry.py
+```
 
 5. The script will prompt you to enter the following information:
    ## Note: do not paste in explorer urls,the script automatically generates them based on the network selected
@@ -65,32 +64,31 @@ To add a new incident entry to the project, follow these steps:
    - **Twitter Guy URL**: Enter the URL to a Twitter thread or user providing insights about the incident.
    - **Hacking God URL**: Enter the URL to a write-up or analysis by a respected security researcher or hacker.
 
-6. The script will ask if you want to create a new Solidity file for the POC. If you choose "yes", it will generate a new file in the `src/test/` directory with the provided information and a template for the exploit code.
+### Step 2: Implement the Exploit Code
+1. The script will ask if you want to create a new Solidity file for the POC. If you choose "yes", it will generate a new file in the `src/test/` directory with the provided information and a template for the exploit code.
+2. The script will update the `README.md` file with the new incident entry and add it to the table of contents.
+3. Implement the exploit code in the generated Solidity file (e.g., `IncidentName_exp.sol`) by replacing the placeholder code in testExploit with your exploit POC logic.
 
-7. The script will update the `README.md` file with the new incident entry and add it to the table of contents.
-
-8. Implement the exploit code in the generated Solidity file (e.g., `IncidentName_exp.sol`) by replacing the placeholder code in testExploit with your exploit POC logic.
-
-9. Test the exploit by running the following command:
-   ```bash
+### Step 3: Test and Commit Your Changes
+1. Test the exploit by running the following command:
+ ```bash
    forge test --contracts ./src/test/IncidentName_exp.sol -vvv
    ```
-
-10. Commit your changes and push them to your forked repository:
-    ```bash
+2. Commit your changes and push them to your forked repository:
+```bash
     git add .
     git commit -m "feat: Add POC for IncidentName"
     git push origin main
     ```
+3. Open a pull request from your forked repository to the main DeFiHackLabs repository. Provide a clear description of the incident you added.
 
-11. Open a pull request from your forked repository to the main DeFiHackLabs repository. Provide a clear description of the incident you added.
-
-12. Our maintainers will review your pull request. They may provide feedback or request further changes. Once your pull request is approved, it will be merged into the main repository.
+4. Our maintainers will review your pull request. They may provide feedback or request further changes. Once your pull request is approved, it will be merged into the main repository.
 
 ## Important Notes
+ - **Make sure to follow the formatting guidelines and provide accurate information when adding a new incident entry.**
+ - **Do not include the UTC offset when copying the timestamp from the transaction details page on the blockchain explorer.**
+ - **If you encounter any issues or have questions, please open an issue on the https://github.com/SunWeb3Sec/DeFiHackLabs/issues or reach out to our maintainers.**
 
-- Make sure to follow the formatting guidelines and provide accurate information when adding a new incident entry.
-- Do not include the UTC offset when copying the timestamp from the transaction details page on the blockchain explorer.
-- If you encounter any issues or have questions, please open an issue on the [DeFiHackLabs repository](https://github.com/SunWeb3Sec/DeFiHackLabs/issues) or reach out to our maintainers.
+We appreciate your contribution to the DeFiHackLabs project. Your efforts help us maintain a valuable resource for the DeFi community to learn from past incidents and improve the security of DeFi protocols. Thank you for your support! 
 
-We appreciate your contribution to the DeFiHackLabs project. Your efforts help us maintain a valuable resource for the DeFi community to learn from past incidents and improve the security of DeFi protocols. Thank you for your support!
+---
