@@ -36,6 +36,8 @@
 
 [20210804 WaultFinance](#20210804-waultfinace---flashloan-price-manipulation)
 
+[20210804 Popsicle](#20210804-popsicle---repeated-reward-claim---logic-flaw)
+
 [20210728 Levyathan Finance](#20210728-levyathan-finance---i-lost-keys-and-minting-ii-vulnerable-emergencywithdraw)
 
 [20210710 Chainswap](#20210710-chainswap---bridge-logic-flaw)
@@ -458,6 +460,26 @@ forge test --contracts ./src/test/2021-08/WaultFinance_exp.sol -vvv
 https://medium.com/@Knownsec_Blockchain_Lab/wault-finance-flash-loan-security-incident-analysis-368a2e1ebb5b
 
 https://inspexco.medium.com/wault-finance-incident-analysis-wex-price-manipulation-using-wusdmaster-contract-c344be3ed376
+
+---
+
+### 20210804 Popsicle - Repeated Reward Claim - Logic Flaw
+
+#### Lost: 20M USD
+
+Testing
+
+```sh
+forge test --contracts ./src/test/2021-08/Popsicle_exp.sol -vvv
+```
+
+#### Contract
+
+[Popsicle_exp.sol](../../src/test/2021-08/Popsicle_exp.sol)
+
+#### Link reference
+
+https://blocksecteam.medium.com/the-analysis-of-the-popsicle-finance-security-incident-9d9d5a3045c1
 
 ---
 
