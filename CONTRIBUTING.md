@@ -2,9 +2,9 @@
 Thank you for your interest in contributing to the DeFiHackLabs project! We appreciate your efforts to help us maintain a comprehensive collection of DeFi hack incidents and their respective proof-of-concept (POC) exploits. This guide will walk you through the process of adding a new incident entry to the project.
 
 ## Table of Contents
-* [Prerequisites](##prerequisites)
-* [Adding a New Incident Entry](##adding-a-new-incident-entry)
-* [Important Notes](##important-notes)
+* [Prerequisites](#prerequisites)
+* [Adding a New Incident Entry](#adding-a-new-incident-entry)
+* [Important Notes](#important-notes)
 
 ## Prerequisites
 Before getting started, ensure you have the following:

@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-578 incidents included.
+[578 incidents included.](#list-of-past-defi-incidents)
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -11,6 +11,17 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 [Transaction debugging tools](https://github.com/SunWeb3Sec/DeFiHackLabs/#transaction-debugging-tools)
 
 **Disclaimer:** This content serves solely as a proof of concept showcasing past DeFi hacking incidents. It is strictly intended for educational purposes and should not be interpreted as encouraging or endorsing any form of illegal activities or actual hacking attempts. The provided information is for informational and learning purposes only, and any actions taken based on this content are solely the responsibility of the individual. The usage of this information should adhere to applicable laws, regulations, and ethical standards.
+
+## Table of Contents
+* [Getting Started](#getting-started)
+* [Who Support Us](#who-support-us)
+* [Donate Us](#donate-us)
+* [List of Past DeFi Incidents](#list-of-past-defi-incidents)
+* [Transaction debugging tools](#transaction-debugging-tools)
+* [Ethereum Signature Database](#ethereum-signature-database)
+* [Useful tools](#useful-tools)
+* [Hacks Dashboard](#hacks-dashboard)
+* [List of DeFi Hacks & POCs](#list-of-defi-hacks-pocs)
 
 ## Getting Started
 
@@ -1242,9 +1253,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [De.Fi](https://de.fi/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/) | [BlockSec](https://app.blocksec.com/explorer/security-incidents)
 
----
+
 
 ### List of DeFi Hacks & POCs
+
+---
 
 ### 20250724 SWAPPStaking - Incorrect Reward calculation
 
