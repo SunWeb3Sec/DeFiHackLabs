@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-581 incidents included.
+582 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250619 BankrollNetwork](#20250619-bankrollnetwork---incorrect-dividends-calculation)
 [20250728 SuperRare](#20250728-superrare---access-control)
 
 [20250724 SWAPPStaking](#20250724-swappstaking---incorrect-reward-calculation)
@@ -1262,6 +1263,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250619 BankrollNetwork - Incorrect dividends calculation
+
+### Lost: 24.5 WBNB
+
+
+```sh
+forge test --contracts ./src/test/2025-06/BankrollNetwork_exp -vvv --evm-version shanghai
+```
+#### Contract
+[BankrollNetwork_exp](src/test/2025-06/BankrollNetwork_exp)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1935618109802459464
+
+---
 
 ### 20250728 SuperRare - Access Control
 
