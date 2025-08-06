@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-[578 incidents included.](#list-of-past-defi-incidents)
+581 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -14,15 +14,15 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 ## Table of Contents
 * [Getting Started](#getting-started)
-* [Who Support Us](#who-support-us)
+* [Who Support Us](#who-support-us-defihacklabs-received-grant-from)
 * [Donate Us](#donate-us)
 * [List of Past DeFi Incidents](#list-of-past-defi-incidents)
 * [Transaction debugging tools](#transaction-debugging-tools)
 * [Ethereum Signature Database](#ethereum-signature-database)
 * [Useful tools](#useful-tools)
 * [Hacks Dashboard](#hacks-dashboard)
-* [List of DeFi Hacks & POCs](#list-of-defi-hacks-pocs)
-
+* [List of DeFi Hacks & POCs](#list-of-defi-hacks--pocs)
+  
 ## Getting Started
 
 - Follow the [instructions](https://book.getfoundry.sh/getting-started/installation.html) to install [Foundry](https://github.com/foundry-rs/foundry).
@@ -59,11 +59,15 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250728 SuperRare](#20250728-superrare---access-control)
+
 [20250724 SWAPPStaking](#20250724-swappstaking---incorrect-reward-calculation)
 
 [20250709 GMX](#20250709-gmx---share-price-manipulation)
 
 [20250626 ResupplyFi](#20250626-resupplyfi---share-price-manipulation)
+
+[20250617 MetaPool](#20250617-metapool---access-control)
 
 [20250511 MBUToken](#20250511-mbutoken---price-manipulation-not-confirmed)
 
@@ -1164,6 +1168,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20210804 WaultFinance](past/2021/README.md#20210804-waultfinace---flashloan-price-manipulation)
 
+[20210804 Popsicle](past/2021/README.md#20210804-popsicle---repeated-reward-claim---logic-flaw)
+
 [20210728 Levyathan Finance](past/2021/README.md#20210728-levyathan-finance---i-lost-keys-and-minting-ii-vulnerable-emergencywithdraw)
 
 [20210710 Chainswap](past/2021/README.md#20210710-chainswap---bridge-logic-flaw)
@@ -1253,9 +1259,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [Slowmist](https://hacked.slowmist.io/) | [Defillama](https://defillama.com/hacks) | [De.Fi](https://de.fi/rekt-database) | [Rekt](https://rekt.news/) | [Cryptosec](https://cryptosec.info/defi-hacks/) | [BlockSec](https://app.blocksec.com/explorer/security-incidents)
 
-
+---
 
 ### List of DeFi Hacks & POCs
+
+### 20250728 SuperRare - Access Control
+
+### Lost: 730K USD
+
+```sh
+forge test --contracts ./src/test/2025-07/SuperRare_exp.sol -vvv
+```
+#### Contract
+[SuperRare_exp.sol](src/test/2025-07/SuperRare_exp.sol)
+### Link reference
+
+https://x.com/SlowMist_Team/status/1949770231733530682
 
 ---
 
@@ -1304,6 +1323,22 @@ forge test --contracts ./src/test/2025-06/ResupplyFi_exp.sol -vvv
 ### Link reference
 
 https://x.com/ResupplyFi/status/1938927974272938420
+
+---
+
+### 20250617 MetaPool - Access Control
+
+### Lost: 25k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/MetaPool_exp.sol -vvv
+```
+#### Contract
+[MetaPool_exp.sol](src/test/2025-06/MetaPool_exp.sol)
+### Link reference
+
+https://x.com/peckshield/status/1934895187102454206
 
 ---
 
