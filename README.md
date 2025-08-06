@@ -12,6 +12,17 @@ Notion: [101 root cause analysis of past DeFi hacked incidents](https://web3sec.
 
 **Disclaimer:** This content serves solely as a proof of concept showcasing past DeFi hacking incidents. It is strictly intended for educational purposes and should not be interpreted as encouraging or endorsing any form of illegal activities or actual hacking attempts. The provided information is for informational and learning purposes only, and any actions taken based on this content are solely the responsibility of the individual. The usage of this information should adhere to applicable laws, regulations, and ethical standards.
 
+## Table of Contents
+* [Getting Started](#getting-started)
+* [Who Support Us](#who-support-us-defihacklabs-received-grant-from)
+* [Donate Us](#donate-us)
+* [List of Past DeFi Incidents](#list-of-past-defi-incidents)
+* [Transaction debugging tools](#transaction-debugging-tools)
+* [Ethereum Signature Database](#ethereum-signature-database)
+* [Useful tools](#useful-tools)
+* [Hacks Dashboard](#hacks-dashboard)
+* [List of DeFi Hacks & POCs](#list-of-defi-hacks--pocs)
+  
 ## Getting Started
 
 - Follow the [instructions](https://book.getfoundry.sh/getting-started/installation.html) to install [Foundry](https://github.com/foundry-rs/foundry).
