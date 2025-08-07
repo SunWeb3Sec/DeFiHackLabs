@@ -59,7 +59,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20250619 BankrollNetwork](#20250619-bankrollnetwork---incorrect-dividends-calculation)
 [20250728 SuperRare](#20250728-superrare---access-control)
 
 [20250724 SWAPPStaking](#20250724-swappstaking---incorrect-reward-calculation)
@@ -67,6 +66,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250709 GMX](#20250709-gmx---share-price-manipulation)
 
 [20250626 ResupplyFi](#20250626-resupplyfi---share-price-manipulation)
+
+[20250619 BankrollNetwork](#20250619-bankrollnetwork---incorrect-dividends-calculation)
 
 [20250617 MetaPool](#20250617-metapool---access-control)
 
@@ -1264,22 +1265,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-### 20250619 BankrollNetwork - Incorrect dividends calculation
-
-### Lost: 24.5 WBNB
-
-
-```sh
-forge test --contracts ./src/test/2025-06/BankrollNetwork_exp -vvv --evm-version shanghai
-```
-#### Contract
-[BankrollNetwork_exp](src/test/2025-06/BankrollNetwork_exp)
-### Link reference
-
-https://x.com/TenArmorAlert/status/1935618109802459464
-
----
-
 ### 20250728 SuperRare - Access Control
 
 ### Lost: 730K USD
@@ -1340,6 +1325,22 @@ forge test --contracts ./src/test/2025-06/ResupplyFi_exp.sol -vvv
 ### Link reference
 
 https://x.com/ResupplyFi/status/1938927974272938420
+
+---
+
+### 20250619 BankrollNetwork - Incorrect dividends calculation
+
+### Lost: 24.5 WBNB
+
+
+```sh
+forge test --contracts ./src/test/2025-06/BankrollNetwork_exp -vvv --evm-version shanghai
+```
+#### Contract
+[BankrollNetwork_exp](src/test/2025-06/BankrollNetwork_exp)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1935618109802459464
 
 ---
 
