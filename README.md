@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-584 incidents included.
+585 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,7 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
+[20250619 Bankrollstack](#20250619-bankrollstack---incorrect-dividends-calculation)
 [20250620 Gangsterfinance](#20250620-gangsterfinance---incorrect-dividends)
 [20250518 KRC](#20250518-krc---deflationary-token)
 [20250619 BankrollNetwork](#20250619-bankrollnetwork---incorrect-dividends-calculation)
@@ -1276,6 +1276,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 =======
 <<<<<<< HEAD
 =======
+
+### 20250619 Bankrollstack - Incorrect dividends calculation
+
+### Lost: 5k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/Bankrollstack -vvv --evm-version shanghai
+```
+#### Contract
+[Bankrollstack](src/test/2025-06/Bankrollstack)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1935618109802459464
+
+---
 
 ### 20250620 Gangsterfinance - Incorrect dividends
 
