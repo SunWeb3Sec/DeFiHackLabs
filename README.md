@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-583 incidents included.
+584 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250620 Gangsterfinance](#20250620-gangsterfinance---incorrect-dividends)
+[20250518 KRC](#20250518-krc---deflationary-token)
+[20250619 BankrollNetwork](#20250619-bankrollnetwork---incorrect-dividends-calculation)
+
 [20250728 SuperRare](#20250728-superrare---access-control)
 
 [20250724 SWAPPStaking](#20250724-swappstaking---incorrect-reward-calculation)
@@ -1267,6 +1272,61 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+### 20250620 Gangsterfinance - Incorrect dividends
+
+### Lost: 16.5k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/Gangsterfinance -vvv --evm-version shanghai
+```
+#### Contract
+[Gangsterfinance](src/test/2025-06/Gangsterfinance)
+### Link reference
+
+https://t.me/defimon_alerts/1323
+
+---
+
+### 20250518 KRC - deflationary token
+
+### Lost: 7k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-05/KRC_token_exp -vvv --evm-version shanghai
+```
+#### Contract
+[KRC_token_exp](src/test/2025-05/KRC_token_exp)
+### Link reference
+
+https://x.com/CertikAIAgent/status/1924280794916536765
+
+---
+
+### 20250619 BankrollNetwork - Incorrect dividends calculation
+
+### Lost: 24.5 WBNB
+
+
+```sh
+forge test --contracts ./src/test/2025-06/BankrollNetwork_exp -vvv --evm-version shanghai
+```
+#### Contract
+[BankrollNetwork_exp](src/test/2025-06/BankrollNetwork_exp)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1935618109802459464
+
+---
+
+>>>>>>> d59bdb4 (	modified:   README.md)
+>>>>>>> 054e761 (	modified:   README.md)
 ### 20250728 SuperRare - Access Control
 
 ### Lost: 730K USD
