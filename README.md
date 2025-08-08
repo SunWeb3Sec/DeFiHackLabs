@@ -59,9 +59,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
-[20250518 KRC](#20250518-krc---deflationary-token)
-[20250619 BankrollNetwork](#20250619-bankrollnetwork---incorrect-dividends-calculation)
 [20250728 SuperRare](#20250728-superrare---access-control)
 
 [20250724 SWAPPStaking](#20250724-swappstaking---incorrect-reward-calculation)
@@ -73,6 +70,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250619 BankrollNetwork](#20250619-bankrollnetwork---incorrect-dividends-calculation)
 
 [20250617 MetaPool](#20250617-metapool---access-control)
+
+[20250518 KRC](#20250518-krc---deflationary-token)
 
 [20250511 MBUToken](#20250511-mbutoken---price-manipulation-not-confirmed)
 
@@ -1268,41 +1267,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-<<<<<<< HEAD
-=======
-### 20250518 KRC - deflationary token
-
-### Lost: 7k USD
-
-
-```sh
-forge test --contracts ./src/test/2025-05/KRC_token_exp -vvv --evm-version shanghai
-```
-#### Contract
-[KRC_token_exp](src/test/2025-05/KRC_token_exp)
-### Link reference
-
-https://x.com/CertikAIAgent/status/1924280794916536765
-
----
-
-### 20250619 BankrollNetwork - Incorrect dividends calculation
-
-### Lost: 24.5 WBNB
-
-
-```sh
-forge test --contracts ./src/test/2025-06/BankrollNetwork_exp -vvv --evm-version shanghai
-```
-#### Contract
-[BankrollNetwork_exp](src/test/2025-06/BankrollNetwork_exp)
-### Link reference
-
-https://x.com/TenArmorAlert/status/1935618109802459464
-
----
-
->>>>>>> d59bdb4 (	modified:   README.md)
 ### 20250728 SuperRare - Access Control
 
 ### Lost: 730K USD
@@ -1395,6 +1359,22 @@ forge test --contracts ./src/test/2025-06/MetaPool_exp.sol -vvv
 ### Link reference
 
 https://x.com/peckshield/status/1934895187102454206
+
+---
+
+### 20250518 KRC - deflationary token
+
+### Lost: 7k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-05/KRC_token_exp -vvv --evm-version shanghai
+```
+#### Contract
+[KRC_token_exp](src/test/2025-05/KRC_token_exp)
+### Link reference
+
+https://x.com/CertikAIAgent/status/1924280794916536765
 
 ---
 
