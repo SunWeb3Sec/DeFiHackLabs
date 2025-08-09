@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-584 incidents included.
+585 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -68,6 +68,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250709 GMX](#20250709-gmx---share-price-manipulation)
 
 [20250626 ResupplyFi](#20250626-resupplyfi---share-price-manipulation)
+
+[20250620 Gangsterfinance](#20250620-gangsterfinance---incorrect-dividends)
 
 [20250619 BankrollNetwork](#20250619-bankrollnetwork---incorrect-dividends-calculation)
 
@@ -1345,6 +1347,22 @@ forge test --contracts ./src/test/2025-06/ResupplyFi_exp.sol -vvv
 ### Link reference
 
 https://x.com/ResupplyFi/status/1938927974272938420
+
+---
+
+### 20250620 Gangsterfinance - Incorrect dividends
+
+### Lost: 16.5k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/Gangsterfinance -vvv --evm-version shanghai
+```
+#### Contract
+[Gangsterfinance](src/test/2025-06/Gangsterfinance)
+### Link reference
+
+https://t.me/defimon_alerts/1323
 
 ---
 
