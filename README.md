@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-587 incidents included.
+588 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -118,6 +118,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250121 Ast](#20250121-ast---price-manipulation)
 
 [20250118 Paribus](#20250118-paribus---bad-oracle)
+
+[20250114 IdolsNFT](#20250114-idolsnft---logic-flaw)
 
 [20250113 Mosca2](#20250113-mosca2---logic-flaw)
 
@@ -1775,6 +1777,22 @@ forge test --contracts ./src/test/2025-01/Paribus_exp.sol -vvv
 ### Link reference
 
 https://app.blocksec.com/explorer/tx/arbitrum/0xf5e753d3da60db214f2261343c1e1bc46e674d2fa4b7a953eaf3c52123aeebd2?line=415
+
+---
+
+### 20250114 IdolsNFT - Logic Flaw
+
+### Lost: 97 stETH
+
+
+```sh
+forge test --contracts ./src/test/2025-01/IdolsNFT_exp.sol -vvv
+```
+#### Contract
+[IdolsNFT_exp.sol](src/test/2025-01/IdolsNFT_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1879376744161132981
 
 ---
 
