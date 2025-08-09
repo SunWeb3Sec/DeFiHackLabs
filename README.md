@@ -1356,10 +1356,10 @@ https://x.com/ResupplyFi/status/1938927974272938420
 
 
 ```sh
-forge test --contracts ./src/test/2025-06/Gangsterfinance -vvv --evm-version shanghai
+forge test --contracts ./src/test/2025-06/Gangsterfinance.sol -vvv --evm-version shanghai
 ```
 #### Contract
-[Gangsterfinance](src/test/2025-06/Gangsterfinance)
+[Gangsterfinance](src/test/2025-06/Gangsterfinance.sol)
 ### Link reference
 
 https://t.me/defimon_alerts/1323
@@ -1372,10 +1372,10 @@ https://t.me/defimon_alerts/1323
 
 
 ```sh
-forge test --contracts ./src/test/2025-06/BankrollNetwork_exp -vvv --evm-version shanghai
+forge test --contracts ./src/test/2025-06/BankrollNetwork_exp.sol -vvv --evm-version shanghai
 ```
 #### Contract
-[BankrollNetwork_exp](src/test/2025-06/BankrollNetwork_exp)
+[BankrollNetwork_exp](src/test/2025-06/BankrollNetwork_exp.sol)
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1935618109802459464
