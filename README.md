@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-583 incidents included.
+584 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -62,6 +62,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250728 SuperRare](#20250728-superrare---access-control)
 
 [20250724 SWAPPStaking](#20250724-swappstaking---incorrect-reward-calculation)
+
+[20250720 Stepp2p](#20250720-stepp2p---logic-flaw)
 
 [20250709 GMX](#20250709-gmx---share-price-manipulation)
 
@@ -1295,6 +1297,22 @@ forge test --contracts ./src/test/2025-07/SWAPPStaking_exp.sol -vvv
 ### Link reference
 
 https://x.com/deeberiroz/status/1947213692220710950
+
+---
+
+### 20250720 Stepp2p - Logic Flaw
+
+### Lost: 43k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-07/Stepp2p_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Stepp2p_exp.sol](src/test/2025-07/Stepp2p_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1946887946877149520
 
 ---
 
