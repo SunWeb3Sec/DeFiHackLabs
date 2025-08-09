@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-585 incidents included.
+586 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -74,6 +74,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250619 BankrollNetwork](#20250619-bankrollnetwork---incorrect-dividends-calculation)
 
 [20250617 MetaPool](#20250617-metapool---access-control)
+
+[20250526 YDT](#20250526-YDT---logic-flaw)
 
 [20250518 KRC](#20250518-krc---deflationary-token)
 
@@ -1398,13 +1400,29 @@ https://x.com/peckshield/status/1934895187102454206
 
 ---
 
+### 20250526 YDT - Logic Flaw
+
+### Lost: 41k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-05/YDTtoken_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[YDTtoken_exp](src/test/2025-05/YDTtoken_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1926587721885040686
+
+---
+
 ### 20250518 KRC - deflationary token
 
 ### Lost: 7k USD
 
 
 ```sh
-forge test --contracts ./src/test/2025-05/KRC_token_exp -vvv --evm-version shanghai
+forge test --contracts ./src/test/2025-05/KRC_token_exp.sol -vvv --evm-version shanghai
 ```
 #### Contract
 [KRC_token_exp](src/test/2025-05/KRC_token_exp)
