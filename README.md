@@ -59,18 +59,17 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20250619 Bankrollstack](#20250619-bankrollstack---incorrect-dividends-calculation)
-[20250620 Gangsterfinance](#20250620-gangsterfinance---incorrect-dividends)
-[20250518 KRC](#20250518-krc---deflationary-token)
-[20250619 BankrollNetwork](#20250619-bankrollnetwork---incorrect-dividends-calculation)
-
 [20250728 SuperRare](#20250728-superrare---access-control)
 
 [20250724 SWAPPStaking](#20250724-swappstaking---incorrect-reward-calculation)
 
+[20250720 Stepp2p](#20250720-stepp2p---logic-flaw)
+
 [20250709 GMX](#20250709-gmx---share-price-manipulation)
 
 [20250626 ResupplyFi](#20250626-resupplyfi---share-price-manipulation)
+
+[20250620 Gangsterfinance](#20250620-gangsterfinance---incorrect-dividends)
 
 [20250619 BankrollNetwork](#20250619-bankrollnetwork---incorrect-dividends-calculation)
 
@@ -1272,77 +1271,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
-### 20250619 Bankrollstack - Incorrect dividends calculation
-
-### Lost: 5k USD
-
-
-```sh
-forge test --contracts ./src/test/2025-06/Bankrollstack -vvv --evm-version shanghai
-```
-#### Contract
-[Bankrollstack](src/test/2025-06/Bankrollstack)
-### Link reference
-
-https://x.com/TenArmorAlert/status/1935618109802459464
-
----
-
-### 20250620 Gangsterfinance - Incorrect dividends
-
-### Lost: 16.5k USD
-
-
-```sh
-forge test --contracts ./src/test/2025-06/Gangsterfinance -vvv --evm-version shanghai
-```
-#### Contract
-[Gangsterfinance](src/test/2025-06/Gangsterfinance)
-### Link reference
-
-https://t.me/defimon_alerts/1323
-
----
-
-### 20250518 KRC - deflationary token
-
-### Lost: 7k USD
-
-
-```sh
-forge test --contracts ./src/test/2025-05/KRC_token_exp -vvv --evm-version shanghai
-```
-#### Contract
-[KRC_token_exp](src/test/2025-05/KRC_token_exp)
-### Link reference
-
-https://x.com/CertikAIAgent/status/1924280794916536765
-
----
-
-### 20250619 BankrollNetwork - Incorrect dividends calculation
-
-### Lost: 24.5 WBNB
-
-
-```sh
-forge test --contracts ./src/test/2025-06/BankrollNetwork_exp -vvv --evm-version shanghai
-```
-#### Contract
-[BankrollNetwork_exp](src/test/2025-06/BankrollNetwork_exp)
-### Link reference
-
-https://x.com/TenArmorAlert/status/1935618109802459464
-
----
-
->>>>>>> d59bdb4 (	modified:   README.md)
->>>>>>> 054e761 (	modified:   README.md)
 ### 20250728 SuperRare - Access Control
 
 ### Lost: 730K USD
@@ -1371,6 +1299,22 @@ forge test --contracts ./src/test/2025-07/SWAPPStaking_exp.sol -vvv
 ### Link reference
 
 https://x.com/deeberiroz/status/1947213692220710950
+
+---
+
+### 20250720 Stepp2p - Logic Flaw
+
+### Lost: 43k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-07/Stepp2p_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Stepp2p_exp.sol](src/test/2025-07/Stepp2p_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1946887946877149520
 
 ---
 
@@ -1403,6 +1347,22 @@ forge test --contracts ./src/test/2025-06/ResupplyFi_exp.sol -vvv
 ### Link reference
 
 https://x.com/ResupplyFi/status/1938927974272938420
+
+---
+
+### 20250620 Gangsterfinance - Incorrect dividends
+
+### Lost: 16.5k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/Gangsterfinance -vvv --evm-version shanghai
+```
+#### Contract
+[Gangsterfinance](src/test/2025-06/Gangsterfinance)
+### Link reference
+
+https://t.me/defimon_alerts/1323
 
 ---
 
