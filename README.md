@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-586 incidents included.
+587 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -60,6 +60,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20250728 SuperRare](#20250728-superrare---access-control)
+
+[20250726 MulticallWithETH](#20250726-MulticallWithETH---arbitrary-call)
 
 [20250724 SWAPPStaking](#20250724-swappstaking---incorrect-reward-calculation)
 
@@ -1285,6 +1287,21 @@ forge test --contracts ./src/test/2025-07/SuperRare_exp.sol -vvv
 ### Link reference
 
 https://x.com/SlowMist_Team/status/1949770231733530682
+
+---
+
+### 20250726 MulticallWithETH - arbitrary-call
+
+### Lost: 10K USD
+
+
+```sh
+forge test --contracts ./src/test/2025-07/MulticallWithETH_exp.sol -vvv
+```
+#### Contract
+[MulticallWithETH_exp.sol](src/test/2025-07/MulticallWithETH_exp.sol)
+### Link reference
+
 
 ---
 
