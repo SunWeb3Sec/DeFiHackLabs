@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-588 incidents included.
+589 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -82,6 +82,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250518 KRC](#20250518-krc---deflationary-token)
 
 [20250511 MBUToken](#20250511-mbutoken---price-manipulation-not-confirmed)
+
+[20250509 Nalakuvara_LotteryTicket50](#20250509-nalakuvara_lotteryticket50---price-manipulation)
 
 [20250426 Lifeprotocol](#20250426-lifeprotocol---price-manipulation)
 
@@ -1467,6 +1469,23 @@ forge test --contracts ./src/test/2025-05/MBUToken_exp.sol -vvv
 https://x.com/TenArmorAlert/status/1921474575965065701
 
 https://x.com/CertiKAlert/status/1921483904483000457
+
+---
+
+### 20250509 Nalakuvara_LotteryTicket50 - Price Manipulation
+
+### Lost: ~ 105.5K USD
+
+```sh
+forge test --contracts ./src/test/2025-05/Nalakuvara_LotteryTicket50_exp.sol -vvv
+```
+
+#### Contract
+[Nalakuvara_LotteryTicket50_exp.sol](src/test/2025-05/Nalakuvara_LotteryTicket50_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1920816516653617318
 
 ---
 
