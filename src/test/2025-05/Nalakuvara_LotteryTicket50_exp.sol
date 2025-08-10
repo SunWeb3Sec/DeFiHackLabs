@@ -36,12 +36,14 @@ contract Nalakuvara_LotteryTicket50_exp is Test {
     }
 
     function testExploit() public {
+        emit log_named_decimal_uint("USDC before attack", IUSDC(usdc).balanceOf(attacker), 6);
+
         vm.prank(attacker);
         AttackerC ac = new AttackerC{value: 0.2 ether}();
         ac.attack();
         vm.stopPrank();
 
-        emit log_named_decimal_uint("USDC profit", IUSDC(usdc).balanceOf(attacker), 6);
+        emit log_named_decimal_uint("USDC after attack", IUSDC(usdc).balanceOf(attacker), 6);
     }
 }
 
