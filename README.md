@@ -60,6 +60,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20250811 WXC](#20250811-wxc---incorrect-token-burn-mechanism)
+
 [20250728 SuperRare](#20250728-superrare---access-control)
 
 [20250726 MulticallWithETH](#20250726-MulticallWithETH---arbitrary-call)
