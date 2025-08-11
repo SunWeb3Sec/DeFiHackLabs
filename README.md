@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-593 incidents included.
+594 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -122,6 +122,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250221 Bybit](#20250221-bybit---phishing-attack)
 
 [20250211 FourMeme](#20250211-fourmeme---logic-flaw)
+
+[20250208 Peapods Finance](#20250208-peapods-finance---price-manipulation)
 
 [20250123 ODOS](#20250123-odos---invalid-signature-verification)
 
@@ -1819,6 +1821,22 @@ forge test --contracts ./src/test/2025-02/FourMeme_exp.sol -vvv --evm-version sh
 
 https://www.chaincatcher.com/en/article/2167296
 
+---
+
+### 20250208 Peapods Finance - Price Manipulation
+
+### Lost: ~ $3,500
+
+```sh
+forge test --contracts ./src/test/2025-02/PeapodsFinance_exp.sol -vvv
+```
+
+#### Contract
+[PeapodsFinance_exp.sol](src/test/2025-02/PeapodsFinance_exp.sol)
+
+### Link reference
+
+https://blog.solidityscan.com/peapods-finance-hack-analysis-bdc5432107a5
 
 ---
 
