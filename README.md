@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-592 incidents included.
+593 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250811 WXC](#20250811-wxc---incorrect-token-burn-mechanism)
+
 [20250728 SuperRare](#20250728-superrare---access-control)
 
 [20250726 MulticallWithETH](#20250726-MulticallWithETH---arbitrary-call)
@@ -1284,6 +1286,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250811 WXC - Incorrect token burn mechanism
+
+### Lost: 37.5 WBNB
+
+
+```sh
+forge test --contracts ./src/test/2025-08/WXC_Token -vvv --evm-version shanghai
+```
+#### Contract
+[WXC_Token](src/test/2025-08/WXC_Token)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1954774967481962832
+
+---
 
 ### 20250728 SuperRare - Access Control
 
