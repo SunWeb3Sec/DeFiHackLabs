@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-594 incidents included.
+595 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -134,6 +134,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250114 IdolsNFT](#20250114-idolsnft---logic-flaw)
 
 [20250113 Mosca2](#20250113-mosca2---logic-flaw)
+
+[20250112 Unilend](#20250112-unilend---logic-flaw)
 
 [20250111 RoulettePotV2](#20250111-roulettepotv2---price-manipulation)
 
@@ -1913,6 +1915,22 @@ forge test --contracts ./src/test/2025-01/Mosca2_exp.sol -vvv --evm-version shan
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1878699517450883407
+
+---
+
+### 20250112 Unilend - Logic Flaw
+
+### Lost: 60 stETH
+
+
+```sh
+forge test --contracts ./src/test/2025-01/Unilend_exp.sol -vvv
+```
+#### Contract
+[Unilend_exp.sol](src/test/2025-01/Unilend_exp.sol)
+### Link reference
+
+https://slowmist.medium.com/analysis-of-the-unilend-hack-90022fa35a54
 
 ---
 
