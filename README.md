@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-596 incidents included.
+597 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250812 Bebop](#20250812-bebop---arbitrary-user-input)
 [20250811 WXC](#20250811-wxc---incorrect-token-burn-mechanism)
 
 [20250728 SuperRare](#20250728-superrare---access-control)
@@ -1292,6 +1293,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250812 Bebop - Arbitrary user input
+
+### Lost: 21k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-08/Bebop_dex -vvv
+```
+#### Contract
+[Bebop_dex](src/test/2025-08/Bebop_dex)
+### Link reference
+
+https://x.com/SuplabsYi/status/1955230173365961128
+
+---
 
 ### 20250811 WXC - Incorrect token burn mechanism
 
