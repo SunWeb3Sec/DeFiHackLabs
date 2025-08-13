@@ -19,6 +19,22 @@ forge test --contracts ./../../src/test/2024-12/Moonhacker_exp.sol -vvv --evm-ve
 https://blog.solidityscan.com/moonhacker-vault-hack-analysis-ab122cb226f6
 
 ---
+### 20241214 JHY - Logic Flaw
+
+### Lost: 11k BSC-USD
+
+```sh
+forge test --contracts ./src/test/2024-12/JHY_exp.sol -vvv
+```
+#### Contract
+
+[JHY_exp.sol](../../src/test/2024-12/JHY_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1867950089156575317
+
+---
 
 ### 20241210 LABUBU Token - Logic Flaw
 
