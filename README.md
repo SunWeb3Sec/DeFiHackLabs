@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-600 incidents included.
+602 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -176,6 +176,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20241119 PolterFinance](past/2024/README.md#20241119-polterfinance---flashloan-attack)
 
+[20241117 MFT](past/2024/README.md#20241117-mft---logic-flaw)
+
 [20241114 vETH](past/2024/README.md#20241114-veth---vulnerable-price-dependency)
 
 [20241111 DeltaPrime](past/2024/README.md#20241111-deltaprime---reentrancy)
@@ -207,6 +209,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240924 MARA](past/2024/README.md#20240924-MARA---price-manipulation)
 
 [20240923 Bankroll_Network](past/2024/README.md#20240923-Bankroll_Network---incorrect-input-validation)
+
+[20240920 Shezmu](past/2024/README.md#20240920-shezmu---access-control)
 
 [20240913 OTSeaStaking](past/2024/README.md#20240913-OTSeaStaking---Logic-Flaw)
 
