@@ -102,6 +102,24 @@ https://x.com/TenArmorAlert/status/1860554838897197135
 
 ---
 
+### 20241121 Matez - Integer Truncation
+
+### Lost: 80k USD
+
+
+```sh
+forge test --contracts ./../../src/test/2024-11/Matez_exp.sol -vvv
+```
+#### Contract
+
+[Matez_exp.sol](../../src/test/2024-11/Matez_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1859830885966905670
+
+---
+
 ### 20241119 PolterFinance - FlashLoan Attack
 
 ### Lost: $7M
