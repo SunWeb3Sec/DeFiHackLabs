@@ -59,7 +59,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
 [20250812 Bebop](#20250812-bebop---arbitrary-user-input)
+
 [20250811 WXC](#20250811-wxc---incorrect-token-burn-mechanism)
 
 [20250728 SuperRare](#20250728-superrare---access-control)
@@ -1300,10 +1302,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 
 ```sh
-forge test --contracts ./src/test/2025-08/Bebop_dex -vvv
+forge test --contracts ./src/test/2025-08/Bebop_dex_exp.sol -vvv
 ```
 #### Contract
-[Bebop_dex](src/test/2025-08/Bebop_dex)
+[Bebop_dex](src/test/2025-08/Bebop_dex_exp.sol)
 ### Link reference
 
 https://x.com/SuplabsYi/status/1955230173365961128
