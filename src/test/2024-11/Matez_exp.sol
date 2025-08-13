@@ -10,7 +10,7 @@ import "../basetest.sol";
 // Attack Tx : https://bscscan.com/tx/0x840b0dc64dbb91e8aba524f67189f639a0bc94ee9256c57d79083bb3fd46ec91
 
 // @Info
-// Vulnerable Contract Code : https://bscscan.com/address/0x0ad02ce1b8eb978fd8dc4abec5bf92dfa81ed705#code
+// Vulnerable Contract Code : https://bscscan.com/address/0x326FB70eF9e70f8f4c38CFbfaF39F960A5C252fa#code
 
 // @Analysis
 // Post-mortem : N/A
