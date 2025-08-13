@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-597 incidents included.
+599 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -162,11 +162,15 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20241223 Moonhacker](past/2024/README.md#20241223-moonhacker---improper-input-validation)
 
+[20241214 JHY](past/2024/README.md#20241214-jhy---logic-flaw)
+
 [20241210 LABUBUToken](past/2024/README.md#20241210-labubu-token---logic-flaw)
 
 [20241210 CloberDEX](past/2024/README.md#20241210-cloberdex---reentrancy)
 
 [20241203 Pledge](past/2024/README.md#20241203-pledge---access-control)
+
+[20241123 Ak1111](past/2024/README.md#20241123-ak1111---access-control)
 
 [20241119 PolterFinance](past/2024/README.md#20241119-polterfinance---flashloan-attack)
 
