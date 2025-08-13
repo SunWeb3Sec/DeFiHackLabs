@@ -85,6 +85,23 @@ https://x.com/TenArmorAlert/status/1864126176848965810
 
 ---
 
+### 20241123 Ak1111 - Access Control
+
+### Lost: 31.5K USD
+
+```sh
+forge test --contracts ./../../src/test/2024-11/Ak1111_exp.sol -vvv
+```
+#### Contract
+
+[Ak1111_exp.sol](../../src/test/2024-11/Ak1111_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1860554838897197135
+
+---
+
 ### 20241119 PolterFinance - FlashLoan Attack
 
 ### Lost: $7M
