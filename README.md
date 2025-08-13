@@ -172,6 +172,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20241123 Ak1111](past/2024/README.md#20241123-ak1111---access-control)
 
+[20241121 Matez](past/2024/README.md#20241121-matez---integer-truncation)
+
 [20241119 PolterFinance](past/2024/README.md#20241119-polterfinance---flashloan-attack)
 
 [20241114 vETH](past/2024/README.md#20241114-veth---vulnerable-price-dependency)
@@ -1313,6 +1315,7 @@ forge test --contracts ./src/test/2025-08/Bebop_dex_exp.sol -vvv
 ### Link reference
 
 https://x.com/SuplabsYi/status/1955230173365961128
+
 
 ---
 
