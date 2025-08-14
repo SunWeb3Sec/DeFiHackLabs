@@ -509,6 +509,21 @@ post-morten: https://x.com/Penpiexyz_io/status/1831462760787452240
 
 ---
 
+### 20240902 Pythia - Logic Flaw
+
+### Lost: 21 ETH
+
+```sh
+forge test --contracts ./../../src/test/2024-09/Pythia_exp.sol -vvv
+```
+#### Contract
+[Pythia_exp.sol](../../src/test/2024-09/Pythia_exp.sol)
+### Link reference
+
+https://x.com/QuillAudits_AI/status/1830976830607892649
+
+---
+
 ### 20240828 AAVE - Arbitrary Call Error
 
 ### Lost: 52000
