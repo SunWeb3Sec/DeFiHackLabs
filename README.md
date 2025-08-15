@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-604 incidents included.
+605 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250813 coinbase](#20250813-coinbase---misconfiguration)
+
 [20250813 Grizzifi](#20250813-grizzifi---logic-flaw)
 
 [20250812 Bebop](#20250812-bebop---arbitrary-user-input)
@@ -1308,6 +1311,21 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250813 coinbase - Misconfiguration
+
+### Lost: 300k USD
+
+```sh
+forge test --contracts ./src/test/2025-08/coinbase_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[coinbase_exp.sol](src/test/2025-08/coinbase_exp.sol)
+### Link reference
+
+https://x.com/deeberiroz/status/1955718986894549344
+
+---
 
 ### 20250813 Grizzifi - Logic Flaw
 
