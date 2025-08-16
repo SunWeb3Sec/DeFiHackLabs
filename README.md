@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-605 incidents included.
+606 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -101,6 +101,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250426 Lifeprotocol](#20250426-lifeprotocol---price-manipulation)
 
 [20250426 ImpermaxV3](#20250426-impermaxv3---floashloan)
+
+[20250404 AIRWA](#20250404-airwa---access-control)
 
 [20250418 BTNFT](#20250418-btnft---claim-rewards-without-protection)
 
@@ -1685,8 +1687,23 @@ https://x.com/TenArmorAlert/status/1912684902664782087
 
 ---
 
+### 20250404 AIRWA - Access Control
+
+### Lost: $33.6K
+
+```sh
+forge test --contracts ./src/test/2025-04/AIRWA_exp.sol -vvv
+```
+
+#### Contract
+[AIRWA_exp](src/test/2025-04/AIRWA_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1908086092772900909
 
 
+---
 
 ### 20250330 LeverageSIR - Storage SLOT1 collision
 
