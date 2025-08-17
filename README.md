@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-608 incidents included.
+609 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -61,6 +61,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ## List of Past DeFi Incidents
 
 [20250816 d3xai](#20250816-d3xai---price-manipulation)
+
+[20250815 SizeCredit](#20250815-sizecredit---access-control)
 
 [20250813 coinbase](#20250813-coinbase---misconfiguration)
 
@@ -1332,6 +1334,24 @@ forge test --contracts ./src/test/2025-08/d3xai_exp.sol -vvv
 ### Link reference
 
 https://x.com/suplabsyi/status/1956695597546893598
+
+---
+
+### 20250815 SizeCredit - Access Control
+
+### Lost: 19.7k USD
+
+```sh
+forge test --contracts ./src/test/2025-08/SizeCredit_exp.sol -vvv
+```
+
+#### Contract
+
+[SizeCredit_exp.sol](src/test/2025-08/SizeCredit_exp.sol)
+
+### Link reference
+
+https://x.com/SuplabsYi/status/1956306748073230785
 
 ---
 
