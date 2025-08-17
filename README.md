@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-609 incidents included.
+610 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -125,6 +125,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250316 wKeyDAO](#20250316-wkeydao---unprotected-function)
 
 [20250314 H2O](#20250314-h2o---weak-random-mint)
+
+[20250311 DUCKVADER](#20250311-duckvader---free-mint-bug)
 
 [20250307 SBRToken](#20250307-sbr-token---price-manipulation)
 
@@ -1864,6 +1866,23 @@ forge test --contracts ./src/test/2025-03/H2O_exp.sol -vvv --evm-version cancun
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1900525198157205692
+
+---
+
+### 20250311 DUCKVADER - Free Mint Bug
+
+### Lost: ~ $9.6K
+
+```sh
+forge test --contracts ./src/test/2025-03/DUCKVADER_exp.sol -vvv
+```
+
+#### Contract
+[DUCKVADER_exp.sol](src/test/2025-03/DUCKVADER_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1899378096056201414
 
 ---
 
