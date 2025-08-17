@@ -116,6 +116,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250328 Alkimiya_IO](#20250328-alkimiya_io---unsafecast)
 
+[20200327 YziAIToken](#20250327-yziai---rug-pull)
+
 [20250320 BBXToken](#20250320-bbxtoken---price-manipulation)
 
 [20250318 DCFToken](#20250318-dcftoken---lack-of-slippage-protection)
@@ -1778,6 +1780,23 @@ forge test --contracts ./src/test/2025-03/Alkimiya_io_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1906371419807568119
+
+---
+
+### 20250327 YziAI - Rug Pull
+
+### Lost: ~ $239.4K
+
+```sh
+forge test --contracts ./src/test/2025-03/YziAIToken_exp.sol -vvv
+```
+
+#### Contract
+[YziAIToken_exp.sol](src/test/2025-03/YziAIToken_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1905528525785805027
 
 ---
 
