@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-606 incidents included.
+607 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250816 d3xai](#20250816-d3xai---price-manipulation)
 
 [20250813 coinbase](#20250813-coinbase---misconfiguration)
 
@@ -1313,6 +1315,23 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250816 d3xai - Price Manipulation
+
+### Lost: 190 BNB
+
+```sh
+forge test --contracts ./src/test/2025-08/d3xai_exp.sol -vvv
+```
+#### Contract
+
+[d3xai_exp.sol](src/test/2025-08/d3xai_exp.sol)
+
+### Link reference
+
+https://x.com/suplabsyi/status/1956695597546893598
+
+---
 
 ### 20250813 coinbase - Misconfiguration
 
