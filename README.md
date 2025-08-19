@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-611 incidents included.
+612 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -82,6 +82,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250720 Stepp2p](#20250720-stepp2p---logic-flaw)
 
 [20250709 GMX](#20250709-gmx---share-price-manipulation)
+
+[20250705 RANT](#20250705-rant---logic-flaw)
 
 [20250626 ResupplyFi](#20250626-resupplyfi---share-price-manipulation)
 
@@ -1517,6 +1519,23 @@ forge test --contracts ./src/test/2025-07/gmx_exp.sol -vvv
 ### Link reference
 
 https://x.com/GMX_IO/status/1943336664102756471
+
+---
+
+### 20250705 RANT - Logic Flaw
+
+### Lost: ~ $204K
+
+```sh
+forge test --contracts ./src/test/2025-07/RANTToken_exp.sol -vvv
+```
+#### Contract
+[RANTToken_exp.sol](src/test/2025-07/RANTToken_exp.sol)
+
+### Link reference
+
+- https://x.com/Phalcon_xyz/status/1941788315549946225
+- https://x.com/AgentLISA_ai/status/1942162643437203531
 
 ---
 
