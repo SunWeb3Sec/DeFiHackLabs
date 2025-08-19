@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-610 incidents included.
+611 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,8 +59,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
 [20250816 d3xai](#20250816-d3xai---price-manipulation)
+
+[20250815 PDZ](#20250815-pdz---price-manipulation)
 
 [20250815 SizeCredit](#20250815-sizecredit---access-control)
 
@@ -1321,6 +1322,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250815 PDZ - Price Manipulation
+
+### Lost: 3.3 BNB
+
+
+```sh
+forge test --contracts ./src/test/2025-08/PDZ_exp.sol -vvv
+```
+#### Contract
+
+[PDZ_exp.sol](src/test/2025-08/PDZ_exp.sol)
+
+### Link reference
+
+https://x.com/tikkalaresearch/status/1957500585965678828
+
+---
 
 ### 20250816 d3xai - Price Manipulation
 
