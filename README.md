@@ -1435,7 +1435,7 @@ https://x.com/SuplabsYi/status/1955230173365961128
 forge test --contracts ./src/test/2025-08/WXC_Token -vvv --evm-version shanghai
 ```
 #### Contract
-[WXC_Token](src/test/2025-08/WXC_Token)
+[WXC_Token](src/test/2025-08/WXC_Token_exp.sol)
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1954774967481962832
