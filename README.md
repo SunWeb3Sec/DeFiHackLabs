@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-615 incidents included.
+616 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,7 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
+[20250702 FPC](#20250702-fpc---logic-flaw)
 [20250820 0x8d2e](#20250820-0x8d2e---access-control)
 
 [20250816 d3xai](#20250816-d3xai---price-manipulation)
@@ -1599,6 +1599,25 @@ forge test --contracts ./src/test/2025-07/RANTToken_exp.sol -vvv
 - https://x.com/AgentLISA_ai/status/1942162643437203531
 
 ---
+
+### 20250702 FPC - Logic Flaw
+
+### Lost: 4.7M USDT
+
+```sh
+forge test --contracts ./src/test/2025-07/FPC_exp.sol -vvv
+```
+
+#### Contract
+
+[FPC_exp.sol](src/test/2025-07/FPC_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1940423393880244327
+
+---
+
 
 ### 20250626 ResupplyFi - Share price manipulation
 
