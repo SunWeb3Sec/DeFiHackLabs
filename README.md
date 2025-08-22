@@ -59,7 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20250702 FPC](#20250702-fpc---logic-flaw)
+
 [20250820 0x8d2e](#20250820-0x8d2e---access-control)
 
 [20250816 d3xai](#20250816-d3xai---price-manipulation)
@@ -91,6 +91,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250709 GMX](#20250709-gmx---share-price-manipulation)
 
 [20250705 RANT](#20250705-rant---logic-flaw)
+
+[20250702 FPC](#20250702-fpc---logic-flaw)
 
 [20250626 ResupplyFi](#20250626-resupplyfi---share-price-manipulation)
 
