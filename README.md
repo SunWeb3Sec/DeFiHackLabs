@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-614 incidents included.
+615 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -67,6 +67,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250815 PDZ](#20250815-pdz---price-manipulation)
 
 [20250815 SizeCredit](#20250815-sizecredit---access-control)
+
+[20250813 YuliAI](#20250813-yuliai---price-manipulation)
 
 [20250813 coinbase](#20250813-coinbase---misconfiguration)
 
@@ -1398,6 +1400,24 @@ forge test --contracts ./src/test/2025-08/SizeCredit_exp.sol -vvv
 ### Link reference
 
 https://x.com/SuplabsYi/status/1956306748073230785
+
+---
+
+### 20250813 YuliAI - Price Manipulation
+
+### Lost: 78k USDT
+
+```sh
+forge test --contracts ./src/test/2025-08/YuliAI_exp.sol -vvv
+```
+
+#### Contract
+
+[YuliAI_exp.sol](src/test/2025-08/YuliAI_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1955817707808432584
 
 ---
 
