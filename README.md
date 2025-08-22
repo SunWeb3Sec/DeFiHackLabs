@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-616 incidents included.
+617 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -93,6 +93,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250705 RANT](#20250705-rant---logic-flaw)
 
 [20250702 FPC](#20250702-fpc---logic-flaw)
+
+[20250629 Stead](#20250629-stead---access-control)
 
 [20250626 ResupplyFi](#20250626-resupplyfi---share-price-manipulation)
 
@@ -1617,6 +1619,24 @@ forge test --contracts ./src/test/2025-07/FPC_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1940423393880244327
+
+---
+
+### 20250629 Stead - Access Control
+
+### Lost: 14.5k USD
+
+```sh
+forge test --contracts ./src/test/2025-06/Stead_exp.sol -vvv
+```
+
+#### Contract
+
+[Stead_exp.sol](src/test/2025-06/Stead_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1939508301596672036
 
 ---
 
