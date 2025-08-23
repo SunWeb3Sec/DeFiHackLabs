@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-618 incidents included.
+620 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250820 Multicall](#20250820-multicall---access-control)
 
 [20250820 0x8d2e](#20250820-0x8d2e---access-control)
 
@@ -97,6 +98,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250629 Stead](#20250629-stead---access-control)
 
 [20250626 ResupplyFi](#20250626-resupplyfi---share-price-manipulation)
+
+[20250623 GradientMakerPool](#20250623-gradientmakerpool---price-oracle-manipulation)
 
 [20250620 Gangsterfinance](#20250620-gangsterfinance---incorrect-dividends)
 
@@ -1338,6 +1341,23 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20250820 Multicall - Access Control
+
+### Lost: 17k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-08/Multicall_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Multicall.sol](src/test/2025-08/Multicall_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1958354933247590450
+
+---
+
 ### 20250820 0x8d2e - Access Control
 
 ### Lost: 40k USDC
@@ -1642,7 +1662,6 @@ https://x.com/TenArmorAlert/status/1939508301596672036
 
 ---
 
-
 ### 20250626 ResupplyFi - Share price manipulation
 
 ### Lost: 9.6M USD
@@ -1656,6 +1675,23 @@ forge test --contracts ./src/test/2025-06/ResupplyFi_exp.sol -vvv
 ### Link reference
 
 https://x.com/ResupplyFi/status/1938927974272938420
+
+---
+
+### 20250623 GradientMakerPool - Price Oracle Manipulation
+
+### Lost: 5k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/GradientMakerPool_exp.sol -vvv
+```
+#### Contract
+[GradientMakerPool_exp.sol](src/test/2025-06/GradientMakerPool_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1339
 
 ---
 
