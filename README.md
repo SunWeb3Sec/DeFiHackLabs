@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-618 incidents included.
+619 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,7 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
+[20250623 GradientMakerPool](#20250623-gradientmakerpool---price-oracle-manipulation)
 [20250820 0x8d2e](#20250820-0x8d2e---access-control)
 
 [20250816 d3xai](#20250816-d3xai---price-manipulation)
@@ -1337,6 +1337,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250623 GradientMakerPool - Price Oracle Manipulation
+
+### Lost: 5k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/GradientMakerPool -vvv
+```
+#### Contract
+[GradientMakerPool](src/test/2025-06/GradientMakerPool)
+### Link reference
+
+https://t.me/defimon_alerts/1339
+
+---
 
 ### 20250820 0x8d2e - Access Control
 
