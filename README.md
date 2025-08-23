@@ -1347,10 +1347,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 
 ```sh
-forge test --contracts ./src/test/2025-08/Multicall -vvv --evm-version shanghai
+forge test --contracts ./src/test/2025-08/Multicall_exp.sol -vvv --evm-version shanghai
 ```
 #### Contract
-[Multicall](src/test/2025-08/Multicall.sol)
+[Multicall.sol](src/test/2025-08/Multicall_exp.sol)
 
 ### Link reference
 
@@ -1684,10 +1684,10 @@ https://x.com/ResupplyFi/status/1938927974272938420
 
 
 ```sh
-forge test --contracts ./src/test/2025-06/GradientMakerPool -vvv
+forge test --contracts ./src/test/2025-06/GradientMakerPool_exp.sol -vvv
 ```
 #### Contract
-[GradientMakerPool](src/test/2025-06/GradientMakerPool.sol)
+[GradientMakerPool_exp.sol](src/test/2025-06/GradientMakerPool_exp.sol)
 
 ### Link reference
 
