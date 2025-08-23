@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-614 incidents included.
+618 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -68,6 +68,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250815 SizeCredit](#20250815-sizecredit---access-control)
 
+[20250813 YuliAI](#20250813-yuliai---price-manipulation)
+
 [20250813 coinbase](#20250813-coinbase---misconfiguration)
 
 [20250813 Grizzifi](#20250813-grizzifi---logic-flaw)
@@ -89,6 +91,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250709 GMX](#20250709-gmx---share-price-manipulation)
 
 [20250705 RANT](#20250705-rant---logic-flaw)
+
+[20250702 FPC](#20250702-fpc---logic-flaw)
+
+[20250629 Stead](#20250629-stead---access-control)
 
 [20250626 ResupplyFi](#20250626-resupplyfi---share-price-manipulation)
 
@@ -183,6 +189,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 <details> <summary> 2024 </summary>
 
 [20241223 Moonhacker](past/2024/README.md#20241223-moonhacker---improper-input-validation)
+
+[20241218 Slurpy](past/2024/README.md#20241218-slurpycoin---logic-flaw)
 
 [20241214 JHY](past/2024/README.md#20241214-jhy---logic-flaw)
 
@@ -1401,6 +1409,24 @@ https://x.com/SuplabsYi/status/1956306748073230785
 
 ---
 
+### 20250813 YuliAI - Price Manipulation
+
+### Lost: 78k USDT
+
+```sh
+forge test --contracts ./src/test/2025-08/YuliAI_exp.sol -vvv
+```
+
+#### Contract
+
+[YuliAI_exp.sol](src/test/2025-08/YuliAI_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1955817707808432584
+
+---
+
 ### 20250813 coinbase - Misconfiguration
 
 ### Lost: 300k USD
@@ -1579,6 +1605,43 @@ forge test --contracts ./src/test/2025-07/RANTToken_exp.sol -vvv
 - https://x.com/AgentLISA_ai/status/1942162643437203531
 
 ---
+
+### 20250702 FPC - Logic Flaw
+
+### Lost: 4.7M USDT
+
+```sh
+forge test --contracts ./src/test/2025-07/FPC_exp.sol -vvv
+```
+
+#### Contract
+
+[FPC_exp.sol](src/test/2025-07/FPC_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1940423393880244327
+
+---
+
+### 20250629 Stead - Access Control
+
+### Lost: 14.5k USD
+
+```sh
+forge test --contracts ./src/test/2025-06/Stead_exp.sol -vvv
+```
+
+#### Contract
+
+[Stead_exp.sol](src/test/2025-06/Stead_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1939508301596672036
+
+---
+
 
 ### 20250626 ResupplyFi - Share price manipulation
 
