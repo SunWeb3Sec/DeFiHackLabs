@@ -1341,23 +1341,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-### 20250820 Multicall - Access Control
-
-### Lost: 17k USD
-
-
-```sh
-forge test --contracts ./src/test/2025-08/Multicall_exp.sol -vvv --evm-version shanghai
-```
-#### Contract
-[Multicall.sol](src/test/2025-08/Multicall_exp.sol)
-
-### Link reference
-
-https://x.com/TenArmorAlert/status/1958354933247590450
-
----
-
 ### 20250820 0x8d2e - Access Control
 
 ### Lost: 40k USDC
