@@ -6,12 +6,12 @@ import "../interface.sol";
 
 // @KeyInfo - Total Lost : 3k USD
 // Attacker : https://bscscan.com/address/0x132d9bbdbe718365af6cc9e43bac109a9a53b138
-// Attack Contract : N/A
-// Vulnerable Contract : https://bscscan.com/address/0x051e057ea275caf9a73578a97af6e8965e5a2349
+// Attack Contract : https://bscscan.com/address/0x051e057ea275caf9a73578a97af6e8965e5a2349
+// Vulnerable Contract : https://bscscan.com/address/0x72c114A1A4abC65BE2Be3E356eEde296Dbb8ba4c
 // Attack Tx : https://bscscan.com/tx/0x6c729ee778332244de099ba0cb68808fcd7be4a667303fcdf2f54dd4b3d29051
 
 // @Info
-// Vulnerable Contract Code : https://bscscan.com/address/0x051e057ea275caf9a73578a97af6e8965e5a2349#code
+// Vulnerable Contract Code : https://bscscan.com/address/0x72c114A1A4abC65BE2Be3E356eEde296Dbb8ba4c#code
 
 // @Analysis
 // Post-mortem : N/A
