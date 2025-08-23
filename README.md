@@ -60,7 +60,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20250820 Multicall](#20250820-multicall---access-control)
-[20250623 GradientMakerPool](#20250623-gradientmakerpool---price-oracle-manipulation)
+
 [20250820 0x8d2e](#20250820-0x8d2e---access-control)
 
 [20250816 d3xai](#20250816-d3xai---price-manipulation)
@@ -98,6 +98,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250629 Stead](#20250629-stead---access-control)
 
 [20250626 ResupplyFi](#20250626-resupplyfi---share-price-manipulation)
+
+[20250623 GradientMakerPool](#20250623-gradientmakerpool---price-oracle-manipulation)
 
 [20250620 Gangsterfinance](#20250620-gangsterfinance---incorrect-dividends)
 
@@ -1348,26 +1350,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 forge test --contracts ./src/test/2025-08/Multicall -vvv --evm-version shanghai
 ```
 #### Contract
-[Multicall](src/test/2025-08/Multicall)
+[Multicall](src/test/2025-08/Multicall.sol)
+
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1958354933247590450
-
----
-
-### 20250623 GradientMakerPool - Price Oracle Manipulation
-
-### Lost: 5k USD
-
-
-```sh
-forge test --contracts ./src/test/2025-06/GradientMakerPool -vvv
-```
-#### Contract
-[GradientMakerPool](src/test/2025-06/GradientMakerPool)
-### Link reference
-
-https://t.me/defimon_alerts/1339
 
 ---
 
@@ -1675,7 +1662,6 @@ https://x.com/TenArmorAlert/status/1939508301596672036
 
 ---
 
-
 ### 20250626 ResupplyFi - Share price manipulation
 
 ### Lost: 9.6M USD
@@ -1689,6 +1675,23 @@ forge test --contracts ./src/test/2025-06/ResupplyFi_exp.sol -vvv
 ### Link reference
 
 https://x.com/ResupplyFi/status/1938927974272938420
+
+---
+
+### 20250623 GradientMakerPool - Price Oracle Manipulation
+
+### Lost: 5k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/GradientMakerPool -vvv
+```
+#### Contract
+[GradientMakerPool](src/test/2025-06/GradientMakerPool.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1339
 
 ---
 
