@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-619 incidents included.
+620 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250823 ABCCApp](#20250823-abccapp---lack-of-access-control)
 
 [20250820 0x8d2e](#20250820-0x8d2e---access-control)
 
@@ -1339,6 +1341,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250823 ABCCApp - Lack of Access Control
+
+### Lost: ~ $10.1K
+
+```sh
+forge test --contracts ./src/test/2025-08/ABCCApp_exp.sol -vvv
+```
+
+#### Contract
+
+[ABCCApp_exp.sol](src/test/2025-08/ABCCApp_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1959457212914352530
+
+---
 
 ### 20250820 0x8d2e - Access Control
 
