@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-620 incidents included.
+621 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -149,6 +149,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250307 SBRToken](#20250307-sbr-token---price-manipulation)
 
 [20250305 1inch Fusion V1 Settlement](#20250305-1inch-fusionv1-settlement---arbitrary-yul-calldata)
+
+[20250304 Pump](#20250304-pump---not-slippage-protection)
 
 [20250223 HegicOptions](#20250223-hegicoptions---business-logic-flaw)
 
@@ -2095,6 +2097,24 @@ forge test --contracts ./src/test/2025-03/OneInchFusionV1SettlementHack.sol -vvv
 ### Link reference
 
 [linkhere](https://blog.decurity.io/yul-calldata-corruption-1inch-postmortem-a7ea7a53bfd9)
+
+---
+
+### 20250304 Pump - Not Slippage Protection
+
+### Lost: ~ $6.4K
+
+```sh
+forge test --contracts ./src/test/2025-03/Pump_exp.sol -vvv
+```
+
+#### Contract
+
+[Pump_exp.sol](src/test/2025-03/Pump_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1897115993962635520
 
 ---
 
