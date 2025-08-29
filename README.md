@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-622 incidents included.
+623 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250820 MulticallWithXera](#20250820-multicallwithxera---access-control)
 [20250717 WETC](#20250717-wetc---incorrect-burn-logic)
 [20250823 ABCCApp](#20250823-abccapp---lack-of-access-control)
 
@@ -1343,6 +1344,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250820 MulticallWithXera - Access Control
+
+### Lost: 17k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-08/MulticallWithXera -vvv --evm-version shanghai
+```
+#### Contract
+[MulticallWithXera](src/test/2025-08/MulticallWithXera)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1958354933247590450
+
+---
 
 ### 20250717 WETC - Incorrect Burn Logic
 
