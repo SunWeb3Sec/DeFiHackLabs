@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-621 incidents included.
+622 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -111,6 +111,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250617 MetaPool](#20250617-metapool---access-control)
 
 [20250526 YDT](#20250526-YDT---logic-flaw)
+
+[20250524 RICE](#20250524-rice---lack-of-access-control)
 
 [20250518 KRC](#20250518-krc---deflationary-token)
 
@@ -1773,6 +1775,23 @@ forge test --contracts ./src/test/2025-05/YDTtoken_exp.sol -vvv --evm-version ca
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1926587721885040686
+
+---
+
+### 20250524 RICE - Lack of Access Control
+
+### Lost: ~ $88.1K
+
+```sh
+forge test --contracts ./src/test/2025-05/RICE_exp.sol -vvv
+```
+
+#### Contract
+[RICE_exp.sol](src/test/2025-05/RICE_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1926461662644633770
 
 ---
 
