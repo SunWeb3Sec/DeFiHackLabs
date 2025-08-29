@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-621 incidents included.
+622 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,7 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
+[20250717 WETC](#20250717-wetc---incorrect-burn-logic)
 [20250823 ABCCApp](#20250823-abccapp---lack-of-access-control)
 
 [20250820 0x8d2e](#20250820-0x8d2e---access-control)
@@ -1343,6 +1343,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250717 WETC - Incorrect Burn Logic
+
+### Lost: 101k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-07/WETC_Token -vvv --evm-version shanghai
+```
+#### Contract
+[WETC_Token](src/test/2025-07/WETC_Token)
+### Link reference
+
+https://t.me/evmhacks/78?single
+
+---
 
 ### 20250823 ABCCApp - Lack of Access Control
 
