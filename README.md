@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-635 incidents included.
+637 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,7 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20250527 UsualMoney](#20250527-usualmoney---arbitrage)
+
 [20250827 0xf340](#20250827-0xf340---access-control)
 
 [20250823 ABCCApp](#20250823-abccapp---lack-of-access-control)
@@ -116,11 +116,17 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250612 AAVEBoost](#20250612-AAVEBoost---logic-flaw)
 
+[20250610 unverified_8490](#20250610-Unverified_8490---access-control)
+
 [20250528 Corkprotocol](#20250528-corkprotocol---access-control)
+
+[20250527 UsualMoney](#20250527-usualmoney---arbitrage)
 
 [20250526 YDT](#20250526-YDT---logic-flaw)
 
 [20250524 RICE](#20250524-rice---lack-of-access-control)
+
+[20250520 IRYSAI](#20250520-irysai---rug-pull)
 
 [20250518 KRC](#20250518-krc---deflationary-token)
 
@@ -1370,22 +1376,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-### 20250527 UsualMoney - Arbitrage
-
-### Lost: 43k USD
-
-
-```sh
-forge test --contracts ./src/test/2025-05/UsualMoney -vvv
-```
-#### Contract
-[UsualMoney](src/test/2025-05/UsualMoney)
-### Link reference
-
-https://x.com/BlockSecTeam/status/1927601457815040283
-
----
-
 ### 20250827 0xf340 - Access Control
 
 ### Lost: 4k USD
@@ -1869,6 +1859,22 @@ https://x.com/CertiKAlert/status/1933011428157563188
 
 ---
 
+### 20250610 Unverified_8490---access-control
+
+### Lost: 48.3K USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/unverified_8490_exp.sol -vvv
+```
+#### Contract
+[unverified_8490_exp](src/test/2025-06/unverified_8490_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1932309011564781774
+
+---
+
 ### 20250528 Corkprotocol - access-control
 
 ### Lost: 12M USD
@@ -1883,6 +1889,22 @@ forge test --contracts ./src/test/2025-05/Corkprotocol_exp.sol -vvv
 
 https://x.com/SlowMist_Team/status/1928100756156194955
 
+
+---
+
+### 20250527 UsualMoney - Arbitrage
+
+### Lost: 43k USD
+
+```sh
+forge test --contracts ./src/test/2025-05/UsualMoney_exp.sol -vvv
+```
+#### Contract
+[UsualMoney_exp.sol](src/test/2025-05/UsualMoney_exp.sol)
+
+### Link reference
+
+https://x.com/BlockSecTeam/status/1927601457815040283
 
 ---
 
@@ -1916,6 +1938,22 @@ forge test --contracts ./src/test/2025-05/RICE_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1926461662644633770
+
+---
+
+### 20250520 IRYSAI - rug pull
+
+### Lost: 69.6K USD
+
+
+```sh
+forge test --contracts ./src/test/2025-05/IRYSAI_exp.sol -vvv
+```
+#### Contract
+[IRYSAI_exp](src/test/2025-05/IRYSAI_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1925012844052975776
 
 ---
 
