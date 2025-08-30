@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-633 incidents included.
+634 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -263,6 +263,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240926 Bedrock_DeFi](past/2024/README.md#20240926-Bedrock_DeFi---swap-eth/btc-1/1-in-mint-function)
 
 [20240924 MARA](past/2024/README.md#20240924-MARA---price-manipulation)
+
+[20240923 PestoToken](past/2024/README.md#20240923-PestoToken---price-manipulation)
 
 [20240923 Bankroll_Network](past/2024/README.md#20240923-Bankroll_Network---incorrect-input-validation)
 
