@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-634 incidents included.
+635 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,7 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
+[20250527 UsualMoney](#20250527-usualmoney---arbitrage)
 [20250827 0xf340](#20250827-0xf340---access-control)
 
 [20250823 ABCCApp](#20250823-abccapp---lack-of-access-control)
@@ -1369,6 +1369,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250527 UsualMoney - Arbitrage
+
+### Lost: 43k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-05/UsualMoney -vvv
+```
+#### Contract
+[UsualMoney](src/test/2025-05/UsualMoney)
+### Link reference
+
+https://x.com/BlockSecTeam/status/1927601457815040283
+
+---
 
 ### 20250827 0xf340 - Access Control
 
