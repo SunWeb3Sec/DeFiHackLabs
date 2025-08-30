@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-636 incidents included.
+637 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -119,6 +119,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250610 unverified_8490](#20250610-Unverified_8490---access-control)
 
 [20250528 Corkprotocol](#20250528-corkprotocol---access-control)
+
+[20250527 UsualMoney](#20250527-usualmoney---arbitrage)
 
 [20250526 YDT](#20250526-YDT---logic-flaw)
 
@@ -1887,6 +1889,22 @@ forge test --contracts ./src/test/2025-05/Corkprotocol_exp.sol -vvv
 
 https://x.com/SlowMist_Team/status/1928100756156194955
 
+
+---
+
+### 20250527 UsualMoney - Arbitrage
+
+### Lost: 43k USD
+
+```sh
+forge test --contracts ./src/test/2025-05/UsualMoney_exp.sol -vvv
+```
+#### Contract
+[UsualMoney_exp.sol](src/test/2025-05/UsualMoney_exp.sol)
+
+### Link reference
+
+https://x.com/BlockSecTeam/status/1927601457815040283
 
 ---
 
