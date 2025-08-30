@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-625 incidents included.
+629 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -114,6 +114,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250617 MetaPool](#20250617-metapool---access-control)
 
+[20250612 AAVEBoost](#20250612-AAVEBoost---logic-flaw)
+
+[20250528 Corkprotocol](#20250528-corkprotocol---access-control)
+
 [20250526 YDT](#20250526-YDT---logic-flaw)
 
 [20250524 RICE](#20250524-rice---lack-of-access-control)
@@ -129,6 +133,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250426 Lifeprotocol](#20250426-lifeprotocol---price-manipulation)
 
 [20250426 ImpermaxV3](#20250426-impermaxv3---floashloan)
+
+[20250416 Roar](#20250416-roar---rug-pull)
 
 [20250404 AIRWA](#20250404-airwa---access-control)
 
@@ -163,6 +169,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250221 StepHeroNFTs](#20250221-stepheronfts---reentrancy-on-sell-nft)
 
 [20250221 Bybit](#20250221-bybit---phishing-attack)
+
+[20250215 unverified_d4f1](#20250215-unverified_d4f1---access-control)
 
 [20250211 FourMeme](#20250211-fourmeme---logic-flaw)
 
@@ -1819,6 +1827,39 @@ https://x.com/peckshield/status/1934895187102454206
 
 ---
 
+### 20250612 AAVEBoost---logic-flaw
+
+### Lost: 14.8K USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/AAVEBoost_exp.sol -vvv
+```
+#### Contract
+[AAVEBoost_exp](src/test/2025-06/AAVEBoost_exp.sol)
+### Link reference
+
+https://x.com/CertiKAlert/status/1933011428157563188
+
+---
+
+### 20250528 Corkprotocol - access-control
+
+### Lost: 12M USD
+
+
+```sh
+forge test --contracts ./src/test/2025-05/Corkprotocol_exp.sol -vvv
+```
+#### Contract
+[Corkprotocol_exp](src/test/2025-05/Corkprotocol_exp.sol)
+### Link reference
+
+https://x.com/SlowMist_Team/status/1928100756156194955
+
+
+---
+
 ### 20250526 YDT - Logic Flaw
 
 ### Lost: 41k USD
@@ -1985,6 +2026,23 @@ forge test --contracts ./src/test/2025-04/YBToken_exp.sol -vvv --evm-version can
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1912684902664782087
+
+---
+
+### 20250416 Roar - Rug Pull
+
+### Lost: $777k
+
+```sh
+forge test --contracts ./src/test/2025-04/Roar_exp.sol -vvv
+```
+
+#### Contract
+[Roar_exp](src/test/2025-04/Roar_exp.sol)
+
+### Link reference
+
+https://x.com/CertiKAlert/status/1912430535999189042
 
 ---
 
@@ -2247,6 +2305,22 @@ forge test --contracts ./src/test/2025-02/Bybit_exp.sol -vvv
 ### Link reference
 
 https://x.com/dhkleung/status/1893073663391604753
+
+---
+
+### 20250215 unverified_d4f1 - access-control
+
+### Lost: ~15.2k
+
+
+```sh
+forge test --contracts ./src/test/2025-02/unverified_d4f1_exp.sol -vvv
+```
+#### Contract
+[unverified_d4f1_exp.sol](src/test/2025-02/unverified_d4f1_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1890776122918309932
 
 ---
 
