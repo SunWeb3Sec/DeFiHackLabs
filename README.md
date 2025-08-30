@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-627 incidents included.
+628 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -133,6 +133,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250426 Lifeprotocol](#20250426-lifeprotocol---price-manipulation)
 
 [20250426 ImpermaxV3](#20250426-impermaxv3---floashloan)
+
+[20250416 Roar](#20250416-roar---rug-pull)
 
 [20250404 AIRWA](#20250404-airwa---access-control)
 
@@ -2022,6 +2024,23 @@ forge test --contracts ./src/test/2025-04/YBToken_exp.sol -vvv --evm-version can
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1912684902664782087
+
+---
+
+### 20250416 Roar - Rug Pull
+
+### Lost: $777k
+
+```sh
+forge test --contracts ./src/test/2025-04/Roar_exp.sol -vvv
+```
+
+#### Contract
+[Roar_exp](src/test/2025-04/Roar_exp.sol)
+
+### Link reference
+
+https://x.com/CertiKAlert/status/1912430535999189042
 
 ---
 
