@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-157 incidents included.
+159 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -501,6 +501,24 @@ https://x.com/Phalcon_xyz/status/1838042368018137547
 
 ---
 
+### 20240923 PestoToken - Price Manipulation
+
+### Lost: 1.4K
+
+```sh
+forge test --contracts ./../../src/test/2024-09/PestoToken_exp.sol -vvv
+```
+
+#### Contract
+
+[PestoToken_exp.sol](/../../src/test/2024-09/PestoToken_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1838225968009527652
+
+---
+
 ### 20240920 Shezmu - Access Control
 
 ### Lost: 4.9M USD
@@ -554,6 +572,26 @@ https://www.certik.com/zh-CN/resources/blog/caterpillar-coin-cut-token-incident-
 
 
 ---
+
+### 20240905 HANAToken - Price Manipulation
+
+### Lost: 283 USD
+
+```sh
+forge test --contracts ./../../src/test/2024-09/HANAToken_exp.sol -vvv
+```
+
+#### Contract
+
+[HANAToken_exp.sol](/../../src/test/2024-09/HANAToken_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1838963740731203737
+
+
+---
+
 
 ### 20240903 Penpiexyz_io - Reentrancy and Reward Manipulation
 
