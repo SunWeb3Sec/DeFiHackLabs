@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-628 incidents included.
+629 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -169,6 +169,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250221 StepHeroNFTs](#20250221-stepheronfts---reentrancy-on-sell-nft)
 
 [20250221 Bybit](#20250221-bybit---phishing-attack)
+
+[20250215 unverified_d4f1](#20250215-unverified_d4f1--access-control)
 
 [20250211 FourMeme](#20250211-fourmeme---logic-flaw)
 
@@ -2303,6 +2305,22 @@ forge test --contracts ./src/test/2025-02/Bybit_exp.sol -vvv
 ### Link reference
 
 https://x.com/dhkleung/status/1893073663391604753
+
+---
+
+### 20250215 unverified_d4f1 - Access control
+
+### Lost: ~15.2k
+
+
+```sh
+forge test --contracts ./src/test/2025-02/unverified_d4f1_exp.sol -vvv
+```
+#### Contract
+[unverified_d4f1_exp.sol](src/test/2025-02/unverified_d4f1_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1890776122918309932
 
 ---
 
