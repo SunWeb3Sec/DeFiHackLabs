@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-626 incidents included.
+627 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -113,6 +113,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250619 BankrollNetwork](#20250619-bankrollnetwork---incorrect-dividends-calculation)
 
 [20250617 MetaPool](#20250617-metapool---access-control)
+
+[20250612 AAVEBoost](#20250612-AAVEBoost---logic-flaw)
 
 [20250528 Corkprotocol](#20250528-corkprotocol---access-control)
 
@@ -1821,6 +1823,22 @@ https://x.com/peckshield/status/1934895187102454206
 
 ---
 
+### 20250612 AAVEBoost---logic-flaw
+
+### Lost: 14.8K USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/AAVEBoost_exp.sol -vvv
+```
+#### Contract
+[AAVEBoost_exp](src/test/2025-06/AAVEBoost_exp.sol)
+### Link reference
+
+https://x.com/CertiKAlert/status/1933011428157563188
+
+---
+
 ### 20250528 Corkprotocol - access-control
 
 ### Lost: 12M USD
@@ -1835,7 +1853,6 @@ forge test --contracts ./src/test/2025-05/Corkprotocol_exp.sol -vvv
 
 https://x.com/SlowMist_Team/status/1928100756156194955
 
----
 
 ---
 
