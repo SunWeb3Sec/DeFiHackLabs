@@ -170,7 +170,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250221 Bybit](#20250221-bybit---phishing-attack)
 
-[20250215 unverified_d4f1](#20250215-unverified_d4f1--access-control)
+[20250215 unverified_d4f1](#20250215-unverified_d4f1---access-control)
 
 [20250211 FourMeme](#20250211-fourmeme---logic-flaw)
 
@@ -2308,7 +2308,7 @@ https://x.com/dhkleung/status/1893073663391604753
 
 ---
 
-### 20250215 unverified_d4f1 - Access control
+### 20250215 unverified_d4f1 - access-control
 
 ### Lost: ~15.2k
 
