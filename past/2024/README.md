@@ -209,7 +209,7 @@ https://x.com/TenArmorAlert/status/1856984299905716645
 
 ### 20241111 DeltaPrime - Reentrancy
 
-### Lost: $4.75 M
+### Lost: $12.9 K
 
 
 ```sh
@@ -220,6 +220,22 @@ forge test --contracts ./../../src/test/2024-11/DeltaPrime_exp.sol -vvv
 ### Link reference
 
 https://x.com/peckshield/status/1855910524460159197
+
+---
+
+### 20241109 X319 - Access Control
+
+### Lost: $12.9 K
+
+
+```sh
+forge test --contracts ./../../src/test/2024-11/X319_exp.sol -vvv
+```
+#### Contract
+[X319_exp.sol](../../src/test/2024-11/X319_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1855263208124416377
 
 ---
 
