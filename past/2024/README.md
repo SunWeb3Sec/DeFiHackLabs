@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-155 incidents included.
+157 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -105,6 +105,23 @@ https://x.com/TenArmorAlert/status/1864126176848965810
 
 ---
 
+### 20241126 NFTG - Access Control
+
+### Lost: 10k USD
+
+```sh
+forge test --contracts ./../../src/test/2024-11/NFTG_exp.sol -vvv
+```
+#### Contract
+
+[NFTG_exp.sol](../../src/test/2024-11/NFTG_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1861430745572745245
+
+---
+
 ### 20241123 Ak1111 - Access Control
 
 ### Lost: 31.5K USD
@@ -192,7 +209,7 @@ https://x.com/TenArmorAlert/status/1856984299905716645
 
 ### 20241111 DeltaPrime - Reentrancy
 
-### Lost: $4.75 M
+### Lost: $12.9 K
 
 
 ```sh
@@ -203,6 +220,38 @@ forge test --contracts ./../../src/test/2024-11/DeltaPrime_exp.sol -vvv
 ### Link reference
 
 https://x.com/peckshield/status/1855910524460159197
+
+---
+
+### 20241109 X319 - Access Control
+
+### Lost: $12.9 K
+
+
+```sh
+forge test --contracts ./../../src/test/2024-11/X319_exp.sol -vvv
+```
+#### Contract
+[X319_exp.sol](../../src/test/2024-11/X319_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1855263208124416377
+
+---
+
+### 20241107 ChiSale - Logic Flaw
+
+### Lost: $16.3 K
+
+
+```sh
+forge test --contracts ./../../src/test/2024-11/ChiSale_exp.sol -vvv
+```
+#### Contract
+[ChiSale_exp.sol](../../src/test/2024-11/ChiSale_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1854357930382156107
 
 ---
 

@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-629 incidents included.
+632 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -220,6 +220,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20241203 Pledge](past/2024/README.md#20241203-pledge---access-control)
 
+[20241126 NFTG](past/2024/README.md#20241126-NFTG---access-control)
+
 [20241123 Ak1111](past/2024/README.md#20241123-ak1111---access-control)
 
 [20241121 Matez](past/2024/README.md#20241121-matez---integer-truncation)
@@ -231,6 +233,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20241114 vETH](past/2024/README.md#20241114-veth---vulnerable-price-dependency)
 
 [20241111 DeltaPrime](past/2024/README.md#20241111-deltaprime---reentrancy)
+
+[20241109 X319](past/2024/README.md#20241109-X319---access-control)
+
+[20241107 ChiSale](past/2024/README.md#20241107-ChiSale---logic-flaw)
 
 [20241026 CompoundFork](past/2024/README.md#20241026-compoundfork---flashloan-attack)
 
