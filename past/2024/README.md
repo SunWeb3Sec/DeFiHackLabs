@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-158 incidents included.
+159 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -498,6 +498,24 @@ forge test --match-contract Bankroll_exp -vvv
 ### Link reference
 
 https://x.com/Phalcon_xyz/status/1838042368018137547
+
+---
+
+### 20240923 PestoToken - Price Manipulation
+
+### Lost: 1.4K
+
+```sh
+forge test --contracts ./../../src/test/2024-09/PestoToken_exp.sol -vvv
+```
+
+#### Contract
+
+[PestoToken_exp.sol](/../../src/test/2024-09/PestoToken_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1838225968009527652
 
 ---
 
