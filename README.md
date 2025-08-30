@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-635 incidents included.
+636 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -123,6 +123,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250526 YDT](#20250526-YDT---logic-flaw)
 
 [20250524 RICE](#20250524-rice---lack-of-access-control)
+
+[20250520 IRYSAI](#20250520-irysai---rug-pull)
 
 [20250518 KRC](#20250518-krc---deflationary-token)
 
@@ -1918,6 +1920,22 @@ forge test --contracts ./src/test/2025-05/RICE_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1926461662644633770
+
+---
+
+### 20250520 IRYSAI - rug pull
+
+### Lost: 69.6K USD
+
+
+```sh
+forge test --contracts ./src/test/2025-05/IRYSAI_exp.sol -vvv
+```
+#### Contract
+[IRYSAI_exp](src/test/2025-05/IRYSAI_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1925012844052975776
 
 ---
 
