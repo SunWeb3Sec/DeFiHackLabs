@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-163 incidents included.
+164 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -284,6 +284,22 @@ forge test --contracts ./../../src/test/2024-11/VRug_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1854702463737380958
+
+---
+
+### 20241029 BUBAI - Rug pull
+
+### Lost: $131K
+
+
+```sh
+forge test --contracts ./../../src/test/2024-10/BUBAI_exp.sol -vvv
+```
+#### Contract
+[BUBAI_exp.sol](../../src/test/2024-10/BUBAI_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1851445795918118927
 
 ---
 
