@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-171 incidents included.
+172 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -119,6 +119,23 @@ forge test --contracts ./../../src/test/2024-11/NFTG_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1861430745572745245
+
+---
+
+### 20241124 Proxy_b7e1 - Logic Flaw
+
+### Lost: 8.5k USD
+
+```sh
+forge test --contracts ./../../src/test/2024-11/proxy_b7e1_exp.sol -vvv --via-ir
+```
+#### Contract
+
+[proxy_b7e1_exp.sol](../../src/test/2024-11/proxy_b7e1_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1860867560885150050
 
 ---
 
