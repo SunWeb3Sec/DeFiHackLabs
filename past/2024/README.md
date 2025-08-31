@@ -640,7 +640,7 @@ https://x.com/shoucccc/status/1837228053862437244
 
 ### 20240918 Unverified_766a - Access control
 
-### Lost: 110K
+### Lost: 100 USD
 
 ```sh
 forge test --contracts ./../../src/test/2024-09/unverified_766a_exp.sol -vvv
