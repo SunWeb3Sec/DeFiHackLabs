@@ -2430,7 +2430,7 @@ forge test --contracts ./src/test/2025-02/HegicOptions_exp.sol -vvv
 
 ### 20250222 Unverified_35bc - Reentrancy
 
-### Lost : 137.9 BNB
+### Lost : $6.7K
 
 ```sh
 forge test --contracts ./src/test/2025-02/unverified_35bc_exp.sol -vvv
