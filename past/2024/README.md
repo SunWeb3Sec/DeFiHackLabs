@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-174 incidents included.
+175 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -171,6 +171,22 @@ forge test --contracts ./../../src/test/2024-11/Matez_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1859830885966905670
+
+---
+
+### 20241120 MainnetSettler - Access Control
+
+### Lost: $66K
+
+
+```sh
+forge test --contracts ./../../src/test/2024-11/MainnetSettler_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[MainnetSettler_exp.sol](../../src/test/2024-11/MainnetSettler_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1859416451473604902
 
 ---
 
