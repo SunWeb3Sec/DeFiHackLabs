@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-172 incidents included.
+173 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -666,6 +666,23 @@ forge test --contracts ./../../src/test/2024-09/unverified_03f9_exp.sol -vvv
 
 ### Link reference
 https://x.com/TenArmorAlert/status/1834488796953673862
+
+---
+
+### 20240911 INUMI - Access control
+
+### Lost: ~11.7k USD
+
+```sh
+forge test --contracts ./../../src/test/2024-09/INUMI_exp.sol -vvv
+```
+
+#### Contract
+
+[INUMI_exp.sol](/../../src/test/2024-09/INUMI_exp.sol)
+
+### Link reference
+https://x.com/TenArmorAlert/status/1834504921561100606
 
 ---
 
