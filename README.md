@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-655 incidents included.
+656 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -227,6 +227,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20241223 Moonhacker](past/2024/README.md#20241223-moonhacker---improper-input-validation)
 
 [20241218 Slurpy](past/2024/README.md#20241218-slurpycoin---logic-flaw)
+
+[20241216 BTC24H](past/2024/README.md#20241216-btc24h---logic-flaw)
 
 [20241214 JHY](past/2024/README.md#20241214-jhy---logic-flaw)
 

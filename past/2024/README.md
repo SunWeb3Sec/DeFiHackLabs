@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-172 incidents included.
+173 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -36,6 +36,24 @@ forge test --contracts ../../src/test/2024-12/SlurpyCoin_exp.sol -vvv
 ### Link reference
 
 https://x.com/CertiKAlert/status/1869580379675590731
+
+---
+
+### 20241216 BTC24H - Logic Flaw
+
+### Lost: ~ $85.7K
+
+```sh
+forge test --contracts ../../src/test/2024-12/BTC24H_exp.sol -vvv
+```
+
+#### Contract
+
+[BTC24H_exp.sol](../../src/test/2024-12/BTC24H_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1868845296945426760
 
 ---
 
