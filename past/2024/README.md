@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-168 incidents included.
+169 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -618,6 +618,22 @@ forge test --match-contract OTSeaStaking_exp -vvv
 
 ### Link reference
 
+---
+
+### 20240911 AIRBTC_exp - Access control
+
+### Lost: ~6.8k USD
+
+```sh
+forge test --contracts ./../../src/test/2024-09/AIRBTC_exp.sol -vvv
+```
+
+#### Contract
+
+[AIRBTC_exp.sol](/../../src/test/2024-09/AIRBTC_exp.sol)
+
+### Link reference
+https://x.com/TenArmorAlert/status/1833825098962550802
 
 ---
 
