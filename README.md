@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-657 incidents included.
+658 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -145,6 +145,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250426 ImpermaxV3](#20250426-impermaxv3---floashloan)
 
 [20250416 Roar](#20250416-roar---rug-pull)
+
+[20250411 Unverified 0x6077](#20250411-unverified-0x6077---lack-of-access-control)
 
 [20250408 Laundromat](#20250408-laundromat---logic-flaw)
 
@@ -2180,6 +2182,23 @@ forge test --contracts ./src/test/2025-04/Roar_exp.sol -vvv
 ### Link reference
 
 https://x.com/CertiKAlert/status/1912430535999189042
+
+---
+
+### 20250411 Unverified 0x6077 - Lack of Access Control
+
+### Lost: ~ $62.3K
+
+```sh
+forge test --contracts ./src/test/2025-04/Unverified_6077_exp.sol -vvv
+```
+
+#### Contract
+[Unverified_6077_exp](src/test/2025-04/Unverified_6077_exp.sol)
+
+### Link reference
+
+
 
 ---
 
