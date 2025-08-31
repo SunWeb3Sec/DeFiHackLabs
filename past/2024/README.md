@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-161 incidents included.
+170 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -252,6 +252,54 @@ forge test --contracts ./../../src/test/2024-11/ChiSale_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1854357930382156107
+
+---
+
+### 20241107 CoW - Access Control
+
+### Lost: $59 K
+
+
+```sh
+forge test --contracts ./../../src/test/2024-11/CoW_exp.sol -vvv
+```
+#### Contract
+[CoW_exp.sol](../../src/test/2024-11/CoW_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1854538807854649791
+
+---
+
+### 20241107 VRug - Rug pull
+
+### Lost: $8.4 K
+
+
+```sh
+forge test --contracts ./../../src/test/2024-11/VRug_exp.sol -vvv
+```
+#### Contract
+[VRug_exp.sol](../../src/test/2024-11/VRug_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1854702463737380958
+
+---
+
+### 20241029 BUBAI - Rug pull
+
+### Lost: $131K
+
+
+```sh
+forge test --contracts ./../../src/test/2024-10/BUBAI_exp.sol -vvv
+```
+#### Contract
+[BUBAI_exp.sol](../../src/test/2024-10/BUBAI_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1851445795918118927
 
 ---
 
@@ -557,6 +605,22 @@ https://x.com/shoucccc/status/1837228053862437244
 
 ---
 
+### 20240913 Unverified_5697 - Access Control
+
+### Lost: 12K
+
+```sh
+forge test --contracts ./../../src/test/2024-09/unverified_5697_exp.sol -vvv
+```
+#### Contract
+
+[unverified_5697_exp.sol](../../src/test/2024-09/unverified_5697_exp.sol)
+
+### Link reference
+https://x.com/TenArmorAlert/status/1834432197375533433
+
+---
+
 ### 20240913 OTSeaStaking - Logic Flaw
 
 ### Lost: 26k
@@ -570,6 +634,22 @@ forge test --match-contract OTSeaStaking_exp -vvv
 
 ### Link reference
 
+---
+
+### 20240911 AIRBTC_exp - Access control
+
+### Lost: ~6.8k USD
+
+```sh
+forge test --contracts ./../../src/test/2024-09/AIRBTC_exp.sol -vvv
+```
+
+#### Contract
+
+[AIRBTC_exp.sol](/../../src/test/2024-09/AIRBTC_exp.sol)
+
+### Link reference
+https://x.com/TenArmorAlert/status/1833825098962550802
 
 ---
 
@@ -589,6 +669,24 @@ forge test --match-contract Caterpillar_Coin_CUT_exp -vvv --evm-version shanghai
 
 https://www.certik.com/zh-CN/resources/blog/caterpillar-coin-cut-token-incident-analysis
 
+
+---
+
+### 20240905 Unverified_a89f - Access control
+
+### Lost: 1.5k
+
+```sh
+forge test --contracts ./../../src/test/2024-09/unverified_a89f_exp.sol -vvv
+```
+
+#### Contract
+
+[unverified_a89f_exp.sol](/../../src/test/2024-09/unverified_a89f_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1831637553415610877
 
 ---
 
@@ -626,6 +724,25 @@ forge test --contracts ./../../src/test/2024-09/HANAToken_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1838963740731203737
+
+
+---
+
+### 20240904 Unverified_16d0 - Access control
+
+### Lost: 329 USD
+
+```sh
+forge test --contracts ./../../src/test/2024-09/unverified_16d0.sol -vvv
+```
+
+#### Contract
+
+[unverified_16d0.sol](/../../src/test/2024-09/unverified_16d0.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1831511554619273630
 
 
 ---
@@ -669,6 +786,24 @@ https://x.com/QuillAudits_AI/status/1830976830607892649
 
 ---
 
+### 20240828 Unverified_667d - Access control
+
+### Lost: $10k
+
+```sh
+forge test --contracts ./../../src/test/2024-08/unverified_667d_exp.sol -vvv
+```
+
+#### Contract
+
+[unverified_667d_exp.sol](../../src/test/2024-08/unverified_667d_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1828983569278231038
+
+---
+
 ### 20240828 AAVE - Arbitrary Call Error
 
 ### Lost: 52000
@@ -684,6 +819,25 @@ forge test --match-contract AAVE_Repay_Adapter -vvv
 ### Link reference
 
 https://www.vibraniumaudits.com/post/aave-hacked-via-periphery-contract-56kstolenfromtipjar
+
+---
+
+### 20240820 Coco - Logic flaw
+
+### Lost: 280BNB
+
+```sh
+forge test --contracts ./../../src/test/2024-08/COCO_exp.sol -vvv
+```
+#### Contract
+
+[COCO_exp.sol](../../src/test/2024-08/COCO_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1826101724278579639
+
+---
 
 ### 20240816 Zenterest - Price Out Of Date
 

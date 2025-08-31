@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-643 incidents included.
+653 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -180,6 +180,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250223 HegicOptions](#20250223-hegicoptions---business-logic-flaw)
 
+[20250222 Unverified_35bc](#20250222-Unverified_35bc---reentrancy)
+
 [20250221 StepHeroNFTs](#20250221-stepheronfts---reentrancy-on-sell-nft)
 
 [20250221 Bybit](#20250221-bybit---phishing-attack)
@@ -252,6 +254,12 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20241107 ChiSale](past/2024/README.md#20241107-ChiSale---logic-flaw)
 
+[20241107 CoW](past/2024/README.md#20241107-CoW---access-control)
+
+[20241107 UniV2](past/2024/README.md#20241107-UniV2---rug-pull)
+
+[20241029 BUBAI](past/2024/README.md#20241029-BUBAI---rug-pull)
+
 [20241026 CompoundFork](past/2024/README.md#20241026-compoundfork---flashloan-attack)
 
 [20241022 Erc20transfer](past/2024/README.md#20241022-erc20transfer---access-control)
@@ -286,19 +294,31 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240920 Shezmu](past/2024/README.md#20240920-shezmu---access-control)
 
+[20240913 Unverified_5697](past/2024/README.md#20240913-unverified_5697---access-control)
+
 [20240913 OTSeaStaking](past/2024/README.md#20240913-OTSeaStaking---Logic-Flaw)
 
+[20240911 AIRBTC](past/2024/README.md#20240911-AIRBTC---access-control)
+
 [20240910 Caterpillar_Coin_CUT](past/2024/README.md#20240910-Caterpillar_Coin_CUT---price-manipulation)
+
+[20240905 Unverified_a89f](past/2024/README.md#20240905-unverified_a89f---access-control)
 
 [20240905 PLN](past/2024/README.md#20240905-PLN---access-control)
 
 [20240905 HANAToken](past/2024/README.md#20240905-HANAToken---price-manipulation)
 
+[20240904 Unverified_16d0](past/2024/README.md#20240904-unverified_16d0---access-control)
+
 [20240903 Penpiexyz_io](past/2024/README.md#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
 
 [20240902 Pythia](past/2024/README.md#20240902-pythia---logic-flaw)
 
+[20240828 Unverified_667d](past/2024/README.md#20240828-unverified_667d---access-control)
+
 [20240828 AAVE](past/2024/README.md#20240828-aave---arbitrary-call-error)
+
+[20240820 COCO](past/2024/README.md#20240820-coco---logic-flaw)
 
 [20240816 Zenterest](past/2024/README.md#20240816-Zenterest---price-out-of-date)
 
@@ -2406,6 +2426,25 @@ forge test --contracts ./src/test/2025-02/HegicOptions_exp.sol -vvv
 ### Link reference
 
  [Pending]
+
+
+---
+
+### 20250222 Unverified_35bc - Reentrancy
+
+### Lost : $6.7K
+
+```sh
+forge test --contracts ./src/test/2025-02/unverified_35bc_exp.sol -vvv
+```
+
+#### Contract
+[Unverified_35bc_exp.sol](src/test/2025-02/unverified_35bc_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1893333680417890648
+
 
 ---
 
