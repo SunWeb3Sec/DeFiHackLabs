@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-651 incidents included.
+652 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -179,6 +179,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250304 Pump](#20250304-pump---not-slippage-protection)
 
 [20250223 HegicOptions](#20250223-hegicoptions---business-logic-flaw)
+
+[20250222 Unverified_35bc](#20250222-Unverified_35bc---reentrancy)
 
 [20250221 StepHeroNFTs](#20250221-stepheronfts---reentrancy-on-sell-nft)
 
@@ -2422,6 +2424,25 @@ forge test --contracts ./src/test/2025-02/HegicOptions_exp.sol -vvv
 ### Link reference
 
  [Pending]
+
+
+---
+
+### 20250222 Unverified_35bc - Reentrancy
+
+### Lost : 137.9 BNB
+
+```sh
+forge test --contracts ./src/test/2025-02/unverified_35bc_exp.sol -vvv
+```
+
+#### Contract
+[Unverified_35bc_exp.sol](src/test/2025-02/unverified_35bc_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1893333680417890648
+
 
 ---
 
