@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-648 incidents included.
+649 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -299,6 +299,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240905 PLN](past/2024/README.md#20240905-PLN---access-control)
 
 [20240905 HANAToken](past/2024/README.md#20240905-HANAToken---price-manipulation)
+
+[20240904 Unverified_16d0](past/2024/README.md#20240904-unverified_16d0---access-control)
 
 [20240903 Penpiexyz_io](past/2024/README.md#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
 
