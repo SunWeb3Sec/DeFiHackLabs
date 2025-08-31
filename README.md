@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-639 incidents included.
+640 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -167,6 +167,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250314 H2O](#20250314-h2o---weak-random-mint)
 
 [20250311 DUCKVADER](#20250311-duckvader---free-mint-bug)
+
+[20250307 UNI](#20250307-uni--logic-flaw)
 
 [20250307 SBRToken](#20250307-sbr-token---price-manipulation)
 
@@ -2301,6 +2303,22 @@ forge test --contracts ./src/test/2025-03/DUCKVADER_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1899378096056201414
+
+---
+
+### 20250307 UNI - Logic Flaw
+
+### Lost: ~ $14K
+
+```sh
+forge test --contracts ./src/test/2025-03/UNI_exp.sol -vvv
+```
+#### Contract
+[UNI_exp](./src/test/2025-03/UNI_exp.sol)
+
+### Link reference
+
+https://x.com/CertiKAlert/status/1897973904653607330
 
 ---
 
