@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-165 incidents included.
+166 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -714,6 +714,24 @@ forge test --contracts ./../../src/test/2024-09/Pythia_exp.sol -vvv
 ### Link reference
 
 https://x.com/QuillAudits_AI/status/1830976830607892649
+
+---
+
+### 20240828 Unverified_667d - Access control
+
+### Lost: $10k
+
+```sh
+forge test --contracts ./../../src/test/2024-08/unverified_667d_exp.sol -vvv
+```
+
+#### Contract
+
+[unverified_667d_exp.sol](../../src/test/2024-08/unverified_667d_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1828983569278231038
 
 ---
 
