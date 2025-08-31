@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-175 incidents included.
+176 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -635,6 +635,23 @@ forge test --contracts ./../../src/test/2024-09/Shezmu_exp.sol -vvv
 ### Link reference
 
 https://x.com/shoucccc/status/1837228053862437244
+
+---
+
+### 20240915 WXETA - Logic Flaw
+
+### Lost: 110K
+
+```sh
+forge test --contracts ./../../src/test/2024-09/WXETA_exp.sol -vvv
+```
+#### Contract
+
+[WXETA_exp.sol](../../src/test/2024-09/WXETA_exp.sol)
+
+### Link reference
+https://x.com/TenArmorAlert/status/1835494807495659645
+
 
 ---
 
