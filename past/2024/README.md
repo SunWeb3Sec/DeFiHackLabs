@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-162 incidents included.
+163 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -252,6 +252,22 @@ forge test --contracts ./../../src/test/2024-11/ChiSale_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1854357930382156107
+
+---
+
+### 20241107 CoW - Access Control
+
+### Lost: $59 K
+
+
+```sh
+forge test --contracts ./../../src/test/2024-11/CoW_exp.sol -vvv
+```
+#### Contract
+[CoW_exp.sol](../../src/test/2024-11/CoW_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1854538807854649791
 
 ---
 
