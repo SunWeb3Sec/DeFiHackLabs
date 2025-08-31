@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-655 incidents included.
+660 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -244,6 +244,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20241121 Matez](past/2024/README.md#20241121-matez---integer-truncation)
 
+[20241120 MainnetSettler](past/2024/README.md#20241120-mainnetsettler---access-control)
+
 [20241119 PolterFinance](past/2024/README.md#20241119-polterfinance---flashloan-attack)
 
 [20241117 MFT](past/2024/README.md#20241117-mft---logic-flaw)
@@ -296,11 +298,19 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240920 Shezmu](past/2024/README.md#20240920-shezmu---access-control)
 
+[20240918 Unverified_766a](past/2024/README.md#20240918-unverified_766a---access-control)
+
+[20240915 WXETA](past/2024/README.md#20240915-WXETA---Logic-Flaw)
+
 [20240913 Unverified_5697](past/2024/README.md#20240913-unverified_5697---access-control)
 
 [20240913 OTSeaStaking](past/2024/README.md#20240913-OTSeaStaking---Logic-Flaw)
 
 [20240912 Unverified_03f9](past/2024/README.md#20240912-Unverified_03f9---access-control)
+
+[20240911 INUMI](past/2024/README.md#20240911-INUMI---access-control)
+
+[20240911 INUMI_db27](past/2024/README.md#20240911-INUMI_db27---access-control)
 
 [20240911 AIRBTC](past/2024/README.md#20240911-AIRBTC---access-control)
 
