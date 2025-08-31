@@ -2,7 +2,22 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-172 incidents included.
+178 incidents included.
+
+### 20241227 Bizness - Reentrancy
+
+### Lost: 15.7k USD
+
+```sh
+forge test --contracts ./../../src/test/2024-12/Bizness_exp.sol -vvv
+```
+#### Contract
+[Bizness_exp.sol](../../src/test/2024-12/Bizness_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1872857132363645205
+
+---
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -171,6 +186,22 @@ forge test --contracts ./../../src/test/2024-11/Matez_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1859830885966905670
+
+---
+
+### 20241120 MainnetSettler - Access Control
+
+### Lost: $66K
+
+
+```sh
+forge test --contracts ./../../src/test/2024-11/MainnetSettler_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[MainnetSettler_exp.sol](../../src/test/2024-11/MainnetSettler_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1859416451473604902
 
 ---
 
@@ -622,6 +653,41 @@ https://x.com/shoucccc/status/1837228053862437244
 
 ---
 
+### 20240918 Unverified_766a - Access control
+
+### Lost: 100 USD
+
+```sh
+forge test --contracts ./../../src/test/2024-09/unverified_766a_exp.sol -vvv
+```
+#### Contract
+
+[unverified_766a_exp.sol](../../src/test/2024-09/unverified_766a_exp.sol)
+
+### Link reference
+https://x.com/TenArmorAlert/status/1836339028616188321
+
+
+
+---
+
+### 20240915 WXETA - Logic Flaw
+
+### Lost: 110K
+
+```sh
+forge test --contracts ./../../src/test/2024-09/WXETA_exp.sol -vvv
+```
+#### Contract
+
+[WXETA_exp.sol](../../src/test/2024-09/WXETA_exp.sol)
+
+### Link reference
+https://x.com/TenArmorAlert/status/1835494807495659645
+
+
+---
+
 ### 20240913 Unverified_5697 - Access Control
 
 ### Lost: 12K
@@ -666,6 +732,40 @@ forge test --contracts ./../../src/test/2024-09/unverified_03f9_exp.sol -vvv
 
 ### Link reference
 https://x.com/TenArmorAlert/status/1834488796953673862
+
+---
+
+### 20240911 INUMI - Access control
+
+### Lost: ~11.7k USD
+
+```sh
+forge test --contracts ./../../src/test/2024-09/INUMI_exp.sol -vvv
+```
+
+#### Contract
+
+[INUMI_exp.sol](/../../src/test/2024-09/INUMI_exp.sol)
+
+### Link reference
+https://x.com/TenArmorAlert/status/1834504921561100606
+
+---
+
+### 20240911 INUMI_db27 - Access control
+
+### Lost: ~4.7k USD
+
+```sh
+forge test --contracts ./../../src/test/2024-09/IUNMI_db27_exp.sol -vvv
+```
+
+#### Contract
+
+[IUNMI_db27_exp.sol](/../../src/test/2024-09/IUNMI_db27_exp.sol)
+
+### Link reference
+https://x.com/TenArmorAlert/status/1834503422655263099
 
 ---
 
