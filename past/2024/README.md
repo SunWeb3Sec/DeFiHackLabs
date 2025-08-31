@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-173 incidents included.
+174 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -310,7 +310,6 @@ https://x.com/TenArmorAlert/status/1854538807854649791
 
 ### Lost: $8.4 K
 
-
 ```sh
 forge test --contracts ./../../src/test/2024-11/VRug_exp.sol -vvv
 ```
@@ -319,6 +318,23 @@ forge test --contracts ./../../src/test/2024-11/VRug_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1854702463737380958
+
+---
+
+### 20241105 RPP - Logic Flaw
+
+### Lost: ~ $14.1K
+
+```sh
+forge test --contracts ./../../src/test/2024-11/RPP_exp.sol -vvv
+```
+
+#### Contract
+[RPP_exp.sol](../../src/test/2024-11/RPP_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1853984974309142768
 
 ---
 

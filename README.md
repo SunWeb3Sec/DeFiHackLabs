@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-656 incidents included.
+657 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -261,6 +261,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20241107 CoW](past/2024/README.md#20241107-CoW---access-control)
 
 [20241107 UniV2](past/2024/README.md#20241107-UniV2---rug-pull)
+
+[20241105 RPP](past/2024/README.md#20241105-rpp---logic-flaw)
 
 [20241029 BUBAI](past/2024/README.md#20241029-BUBAI---rug-pull)
 
