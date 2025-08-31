@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-655 incidents included.
+656 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,7 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
+[20250831 Hexotic](#20250831-hexotic---incorrect-input-validation)
 [20250827 0xf340](#20250827-0xf340---access-control)
 
 [20250823 ABCCApp](#20250823-abccapp---lack-of-access-control)
@@ -1411,6 +1411,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250831 Hexotic - Incorrect Input Validation
+
+### Lost: 500 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-08/Hexotic -vvv
+```
+#### Contract
+[Hexotic](src/test/2025-08/Hexotic)
+### Link reference
+
+https://t.me/defimon_alerts/1757
+
+---
 
 ### 20250827 0xf340 - Access Control
 
