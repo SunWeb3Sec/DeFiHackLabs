@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-658 incidents included.
+665 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20250831 Hexotic](#20250831-hexotic---incorrect-input-validation)
 
 [20250827 0xf340](#20250827-0xf340---access-control)
 
@@ -146,8 +148,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250416 Roar](#20250416-roar---rug-pull)
 
-[20250411 Unverified 0x6077](#20250411-unverified-0x6077---lack-of-access-control)
-
 [20250408 Laundromat](#20250408-laundromat---logic-flaw)
 
 [20250404 AIRWA](#20250404-airwa---access-control)
@@ -155,6 +155,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250418 BTNFT](#20250418-btnft---claim-rewards-without-protection)
 
 [20250416 YVToken](#20250416-yvtoken---not-slippage-protection)
+
+[20250411 Unverified 0x6077](#20250411-unverified-0x6077---lack-of-access-control)
 
 [20250330 LeverageSIR](#20250330-leveragesir---storage-slot1-collision)
 
@@ -226,6 +228,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 <details> <summary> 2024 </summary>
 
+[20241227 Bizness](past/2024/README.md#20241227-bizness---reentrancy)
+
 [20241223 Moonhacker](past/2024/README.md#20241223-moonhacker---improper-input-validation)
 
 [20241218 Slurpy](past/2024/README.md#20241218-slurpycoin---logic-flaw)
@@ -247,6 +251,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20241123 Ak1111](past/2024/README.md#20241123-ak1111---access-control)
 
 [20241121 Matez](past/2024/README.md#20241121-matez---integer-truncation)
+
+[20241120 MainnetSettler](past/2024/README.md#20241120-mainnetsettler---access-control)
 
 [20241119 PolterFinance](past/2024/README.md#20241119-polterfinance---flashloan-attack)
 
@@ -302,11 +308,19 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240920 Shezmu](past/2024/README.md#20240920-shezmu---access-control)
 
+[20240918 Unverified_766a](past/2024/README.md#20240918-unverified_766a---access-control)
+
+[20240915 WXETA](past/2024/README.md#20240915-WXETA---Logic-Flaw)
+
 [20240913 Unverified_5697](past/2024/README.md#20240913-unverified_5697---access-control)
 
 [20240913 OTSeaStaking](past/2024/README.md#20240913-OTSeaStaking---Logic-Flaw)
 
 [20240912 Unverified_03f9](past/2024/README.md#20240912-Unverified_03f9---access-control)
+
+[20240911 INUMI](past/2024/README.md#20240911-INUMI---access-control)
+
+[20240911 INUMI_db27](past/2024/README.md#20240911-INUMI_db27---access-control)
 
 [20240911 AIRBTC](past/2024/README.md#20240911-AIRBTC---access-control)
 
@@ -1418,6 +1432,23 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20250831 Hexotic - Incorrect Input Validation
+
+### Lost: 500 USD
+
+```sh
+forge test --contracts ./src/test/2025-08/Hexotic_exp.sol -vvv
+```
+#### Contract
+[Hexotic_exp.sol](src/test/2025-08/Hexotic_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1757
+
+---
+
+
 ### 20250827 0xf340 - Access Control
 
 ### Lost: 4k USD
@@ -2147,10 +2178,6 @@ https://x.com/TenArmorAlert/status/1913500336301502542
 
 ---
 
-
-
-
-
 ### 20250416 YVToken - Not Slippage Protection
 
 ### Lost: 15261.68240413121964707 BUSD
@@ -2197,8 +2224,6 @@ forge test --contracts ./src/test/2025-04/Unverified_6077_exp.sol -vvv
 [Unverified_6077_exp](src/test/2025-04/Unverified_6077_exp.sol)
 
 ### Link reference
-
-
 
 ---
 
