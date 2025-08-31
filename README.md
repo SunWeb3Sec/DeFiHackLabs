@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-655 incidents included.
+656 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -223,6 +223,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250101 LAURAToken](#20250101-lauratoken---pair-balance-manipulation)
 
 <details> <summary> 2024 </summary>
+
+[20241227 Bizness](past/2024/README.md#20241227-bizness---reentrancy)
 
 [20241223 Moonhacker](past/2024/README.md#20241223-moonhacker---improper-input-validation)
 
