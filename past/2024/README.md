@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-159 incidents included.
+160 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -516,6 +516,25 @@ forge test --contracts ./../../src/test/2024-09/PestoToken_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1838225968009527652
+
+---
+
+### 20240920 DOGGO - Logic Flaw
+
+### Lost: 7K USD
+
+
+```sh
+forge test --contracts ./../../src/test/2024-09/Shezmu_exp.sol -vvv
+```
+
+#### Contract
+
+[Shezmu_exp.sol](../../src/test/2024-09/Shezmu_exp.sol)
+
+### Link reference
+
+https://x.com/shoucccc/status/1837228053862437244
 
 ---
 
