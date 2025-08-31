@@ -2,7 +2,22 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-177 incidents included.
+178 incidents included.
+
+### 20241227 Bizness - Reentrancy
+
+### Lost: 15.7k USD
+
+```sh
+forge test --contracts ./../../src/test/2024-12/Bizness_exp.sol -vvv
+```
+#### Contract
+[Bizness_exp.sol](../../src/test/2024-12/Bizness_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1872857132363645205
+
+---
 
 ### 20241223 Moonhacker - improper input validation
 
