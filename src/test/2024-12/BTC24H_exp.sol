@@ -7,11 +7,11 @@ import "../interface.sol";
 // @KeyInfo - Total Lost : ~ 4,953 USDT + 0.76 WBTC ($85.7K)
 // Attacker : https://polygonscan.com/address/0xde0a99fb39e78efd3529e31d78434f7645601163
 // Attack Contract : https://polygonscan.com/address/0x3cb2452c615007b9ef94d5814765eb48b71ae520
-// Vulnerable Contract :
+// Vulnerable Contract : https://polygonscan.com/address/0x968e1c984a431f3d0299563f15d48c395f70f719
 // Attack Tx : https://polygonscan.com/tx/0x554c9e4067e3bc0201ba06fc2cfeeacd178d7dd9c69f9b211bc661bb11296fde
 
 // @Info
-// Vulnerable Contract Code :
+// Vulnerable Contract Code : https://polygonscan.com/address/0x968e1c984a431f3d0299563f15d48c395f70f719#code
 
 // @Analysis
 // Post-mortem : N/A
