@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-657 incidents included.
+658 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -243,6 +243,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20241123 Ak1111](past/2024/README.md#20241123-ak1111---access-control)
 
 [20241121 Matez](past/2024/README.md#20241121-matez---integer-truncation)
+
+[20241120 MainnetSettler](past/2024/README.md#20241120-mainnetsettler---access-control)
 
 [20241119 PolterFinance](past/2024/README.md#20241119-polterfinance---flashloan-attack)
 
