@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-642 incidents included.
+643 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -95,6 +95,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250716 VDS](#20250716-vds---logic-flaw)
 
 [20250709 GMX](#20250709-gmx---share-price-manipulation)
+
+[20250705 Unverified_54cd](#20250705-unverified_54cd---access-control)
 
 [20250705 RANT](#20250705-rant---logic-flaw)
 
@@ -1703,6 +1705,21 @@ forge test --contracts ./src/test/2025-07/gmx_exp.sol -vvv
 ### Link reference
 
 https://x.com/GMX_IO/status/1943336664102756471
+
+---
+
+### 20250705 Unverified - Access Control
+
+### Lost: ~ $285.7K
+
+```sh
+forge test --contracts ./src/test/2025-07/unverified_54cd_exp.sol -vvv
+```
+#### Contract
+[unverified_54cd_exp.sol](src/test/2025-07/unverified_54cd_exp.sol)
+
+### Link reference
+https://x.com/TenArmorAlert/status/1941689712621576493
 
 ---
 
