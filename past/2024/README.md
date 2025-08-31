@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-170 incidents included.
+171 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -633,6 +633,22 @@ forge test --match-contract OTSeaStaking_exp -vvv
 [OTSeaStaking_exp.sol](../../src/test/2024-09/OTSeaStaking_exp.sol)
 
 ### Link reference
+
+---
+
+### 20240912 Unverified_03f9 - Access Control
+
+### Lost: 1.7k
+
+```sh
+forge test --contracts ./../../src/test/2024-09/unverified_03f9_exp.sol -vvv
+```
+#### Contract
+
+[unverified_03f9_exp.sol](../../src/test/2024-09/unverified_03f9_exp.sol)
+
+### Link reference
+https://x.com/TenArmorAlert/status/1834488796953673862
 
 ---
 
