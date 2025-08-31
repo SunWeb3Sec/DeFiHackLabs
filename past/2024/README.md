@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-164 incidents included.
+165 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -732,6 +732,25 @@ forge test --match-contract AAVE_Repay_Adapter -vvv
 ### Link reference
 
 https://www.vibraniumaudits.com/post/aave-hacked-via-periphery-contract-56kstolenfromtipjar
+
+---
+
+### 20240820 Coco - Logic flaw
+
+### Lost: 280BNB
+
+```sh
+forge test --contracts ./../../src/test/2024-08/COCO_exp.sol -vvv
+```
+#### Contract
+
+[COCO_exp.sol](../../src/test/2024-08/COCO_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1826101724278579639
+
+---
 
 ### 20240816 Zenterest - Price Out Of Date
 
