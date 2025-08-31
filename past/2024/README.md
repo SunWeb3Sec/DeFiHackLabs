@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-166 incidents included.
+167 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -674,6 +674,25 @@ forge test --contracts ./../../src/test/2024-09/HANAToken_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1838963740731203737
+
+
+---
+
+### 20240904 Unverified_16d0 - Access control
+
+### Lost: 329 USD
+
+```sh
+forge test --contracts ./../../src/test/2024-09/unverified_16d0.sol -vvv
+```
+
+#### Contract
+
+[unverified_16d0.sol](/../../src/test/2024-09/unverified_16d0.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1831511554619273630
 
 
 ---
