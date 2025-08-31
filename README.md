@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-646 incidents included.
+647 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -303,6 +303,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240903 Penpiexyz_io](past/2024/README.md#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
 
 [20240902 Pythia](past/2024/README.md#20240902-pythia---logic-flaw)
+
+[20240820 COCO](past/2024/README.md#20240820-coco---logic-flaw)
 
 [20240828 AAVE](past/2024/README.md#20240828-aave---arbitrary-call-error)
 
