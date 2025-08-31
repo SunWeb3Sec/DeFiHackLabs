@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-178 incidents included.
+180 incidents included.
 
 ### 20241227 Bizness - Reentrancy
 
@@ -53,6 +53,25 @@ forge test --contracts ../../src/test/2024-12/SlurpyCoin_exp.sol -vvv
 https://x.com/CertiKAlert/status/1869580379675590731
 
 ---
+
+### 20241216 BTC24H - Logic Flaw
+
+### Lost: ~ $85.7K
+
+```sh
+forge test --contracts ../../src/test/2024-12/BTC24H_exp.sol -vvv
+```
+
+#### Contract
+
+[BTC24H_exp.sol](../../src/test/2024-12/BTC24H_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1868845296945426760
+
+---
+
 
 ### 20241214 JHY - Logic Flaw
 
@@ -332,6 +351,23 @@ forge test --contracts ./../../src/test/2024-11/VRug_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1854702463737380958
+
+---
+
+### 20241105 RPP - Logic Flaw
+
+### Lost: ~ $14.1K
+
+```sh
+forge test --contracts ./../../src/test/2024-11/RPP_exp.sol -vvv
+```
+
+#### Contract
+[RPP_exp.sol](../../src/test/2024-11/RPP_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1853984974309142768
 
 ---
 

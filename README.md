@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-662 incidents included.
+665 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -156,6 +156,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250416 YVToken](#20250416-yvtoken---not-slippage-protection)
 
+[20250411 Unverified 0x6077](#20250411-unverified-0x6077---lack-of-access-control)
+
 [20250330 LeverageSIR](#20250330-leveragesir---storage-slot1-collision)
 
 [20250328 Alkimiya_IO](#20250328-alkimiya_io---unsafecast)
@@ -232,6 +234,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20241218 Slurpy](past/2024/README.md#20241218-slurpycoin---logic-flaw)
 
+[20241216 BTC24H](past/2024/README.md#20241216-btc24h---logic-flaw)
+
 [20241214 JHY](past/2024/README.md#20241214-jhy---logic-flaw)
 
 [20241210 LABUBUToken](past/2024/README.md#20241210-labubu-token---logic-flaw)
@@ -265,6 +269,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20241107 CoW](past/2024/README.md#20241107-CoW---access-control)
 
 [20241107 UniV2](past/2024/README.md#20241107-UniV2---rug-pull)
+
+[20241105 RPP](past/2024/README.md#20241105-rpp---logic-flaw)
 
 [20241029 BUBAI](past/2024/README.md#20241029-BUBAI---rug-pull)
 
@@ -2172,10 +2178,6 @@ https://x.com/TenArmorAlert/status/1913500336301502542
 
 ---
 
-
-
-
-
 ### 20250416 YVToken - Not Slippage Protection
 
 ### Lost: 15261.68240413121964707 BUSD
@@ -2207,6 +2209,21 @@ forge test --contracts ./src/test/2025-04/Roar_exp.sol -vvv
 ### Link reference
 
 https://x.com/CertiKAlert/status/1912430535999189042
+
+---
+
+### 20250411 Unverified 0x6077 - Lack of Access Control
+
+### Lost: ~ $62.3K
+
+```sh
+forge test --contracts ./src/test/2025-04/Unverified_6077_exp.sol -vvv
+```
+
+#### Contract
+[Unverified_6077_exp](src/test/2025-04/Unverified_6077_exp.sol)
+
+### Link reference
 
 ---
 
