@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-161 incidents included.
+162 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -252,6 +252,22 @@ forge test --contracts ./../../src/test/2024-11/ChiSale_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1854357930382156107
+
+---
+
+### 20241107 VRug - Rug pull
+
+### Lost: $8.4 K
+
+
+```sh
+forge test --contracts ./../../src/test/2024-11/VRug_exp.sol -vvv
+```
+#### Contract
+[VRug_exp.sol](../../src/test/2024-11/VRug_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1854702463737380958
 
 ---
 
