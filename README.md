@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-650 incidents included.
+651 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -293,6 +293,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240920 Shezmu](past/2024/README.md#20240920-shezmu---access-control)
 
 [20240913 OTSeaStaking](past/2024/README.md#20240913-OTSeaStaking---Logic-Flaw)
+
+[20240911 AIRBTC](past/2024/README.md#20240911-AIRBTC---access-control)
 
 [20240910 Caterpillar_Coin_CUT](past/2024/README.md#20240910-Caterpillar_Coin_CUT---price-manipulation)
 
