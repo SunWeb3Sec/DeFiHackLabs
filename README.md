@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-656 incidents included.
+662 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,7 +59,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
 [20250831 Hexotic](#20250831-hexotic---incorrect-input-validation)
+
 [20250827 0xf340](#20250827-0xf340---access-control)
 
 [20250823 ABCCApp](#20250823-abccapp---lack-of-access-control)
@@ -224,6 +226,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 <details> <summary> 2024 </summary>
 
+[20241227 Bizness](past/2024/README.md#20241227-bizness---reentrancy)
+
 [20241223 Moonhacker](past/2024/README.md#20241223-moonhacker---improper-input-validation)
 
 [20241218 Slurpy](past/2024/README.md#20241218-slurpycoin---logic-flaw)
@@ -243,6 +247,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20241123 Ak1111](past/2024/README.md#20241123-ak1111---access-control)
 
 [20241121 Matez](past/2024/README.md#20241121-matez---integer-truncation)
+
+[20241120 MainnetSettler](past/2024/README.md#20241120-mainnetsettler---access-control)
 
 [20241119 PolterFinance](past/2024/README.md#20241119-polterfinance---flashloan-attack)
 
@@ -296,11 +302,19 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240920 Shezmu](past/2024/README.md#20240920-shezmu---access-control)
 
+[20240918 Unverified_766a](past/2024/README.md#20240918-unverified_766a---access-control)
+
+[20240915 WXETA](past/2024/README.md#20240915-WXETA---Logic-Flaw)
+
 [20240913 Unverified_5697](past/2024/README.md#20240913-unverified_5697---access-control)
 
 [20240913 OTSeaStaking](past/2024/README.md#20240913-OTSeaStaking---Logic-Flaw)
 
 [20240912 Unverified_03f9](past/2024/README.md#20240912-Unverified_03f9---access-control)
+
+[20240911 INUMI](past/2024/README.md#20240911-INUMI---access-control)
+
+[20240911 INUMI_db27](past/2024/README.md#20240911-INUMI_db27---access-control)
 
 [20240911 AIRBTC](past/2024/README.md#20240911-AIRBTC---access-control)
 
@@ -1416,17 +1430,18 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### Lost: 500 USD
 
-
 ```sh
-forge test --contracts ./src/test/2025-08/Hexotic -vvv
+forge test --contracts ./src/test/2025-08/Hexotic_exp.sol -vvv
 ```
 #### Contract
-[Hexotic](src/test/2025-08/Hexotic)
+[Hexotic_exp.sol](src/test/2025-08/Hexotic_exp.sol)
+
 ### Link reference
 
 https://t.me/defimon_alerts/1757
 
 ---
+
 
 ### 20250827 0xf340 - Access Control
 
