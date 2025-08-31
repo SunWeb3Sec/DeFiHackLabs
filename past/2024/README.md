@@ -2,7 +2,7 @@
 
 ## 2024 - List of Past DeFi Incidents
 
-159 incidents included.
+161 incidents included.
 
 ### 20241223 Moonhacker - improper input validation
 
@@ -519,6 +519,25 @@ https://x.com/TenArmorAlert/status/1838225968009527652
 
 ---
 
+### 20240920 DOGGO - Logic Flaw
+
+### Lost: 7K USD
+
+
+```sh
+forge test --contracts ./../../src/test/2024-09/DOGGO_exp.sol -vvv
+```
+
+#### Contract
+
+[DOGGO_exp.sol](../../src/test/2024-09/DOGGO_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1837358462076080521
+
+---
+
 ### 20240920 Shezmu - Access Control
 
 ### Lost: 4.9M USD
@@ -569,6 +588,25 @@ forge test --match-contract Caterpillar_Coin_CUT_exp -vvv --evm-version shanghai
 ### Link reference
 
 https://www.certik.com/zh-CN/resources/blog/caterpillar-coin-cut-token-incident-analysis
+
+
+---
+
+### 20240905 PLN - Access control
+
+### Lost: 400K USD
+
+```sh
+forge test --contracts ./../../src/test/2024-09/PLN_exp.sol -vvv
+```
+
+#### Contract
+
+[PLN_exp.sol](/../../src/test/2024-09/PLN_exp.sol)
+
+### Link reference
+
+https://x.com/TenArmorAlert/status/1831525062253654300
 
 
 ---

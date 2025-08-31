@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-638 incidents included.
+643 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -96,6 +96,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250709 GMX](#20250709-gmx---share-price-manipulation)
 
+[20250705 Unverified_54cd](#20250705-unverified_54cd---access-control)
+
 [20250705 RANT](#20250705-rant---logic-flaw)
 
 [20250702 FPC](#20250702-fpc---logic-flaw)
@@ -144,6 +146,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250416 Roar](#20250416-roar---rug-pull)
 
+[20250408 Laundromat](#20250408-laundromat---logic-flaw)
+
 [20250404 AIRWA](#20250404-airwa---access-control)
 
 [20250418 BTNFT](#20250418-btnft---claim-rewards-without-protection)
@@ -165,6 +169,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250314 H2O](#20250314-h2o---weak-random-mint)
 
 [20250311 DUCKVADER](#20250311-duckvader---free-mint-bug)
+
+[20250307 UNI](#20250307-uni--logic-flaw)
 
 [20250307 SBRToken](#20250307-sbr-token---price-manipulation)
 
@@ -276,11 +282,15 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240923 Bankroll_Network](past/2024/README.md#20240923-Bankroll_Network---incorrect-input-validation)
 
+[20240920 DOGGO](past/2024/README.md#20240920-DOGGO---logic-flaw)
+
 [20240920 Shezmu](past/2024/README.md#20240920-shezmu---access-control)
 
 [20240913 OTSeaStaking](past/2024/README.md#20240913-OTSeaStaking---Logic-Flaw)
 
 [20240910 Caterpillar_Coin_CUT](past/2024/README.md#20240910-Caterpillar_Coin_CUT---price-manipulation)
+
+[20240905 PLN](past/2024/README.md#20240905-PLN---access-control)
 
 [20240905 HANAToken](past/2024/README.md#20240905-HANAToken---price-manipulation)
 
@@ -1698,6 +1708,21 @@ https://x.com/GMX_IO/status/1943336664102756471
 
 ---
 
+### 20250705 Unverified - Access Control
+
+### Lost: ~ $285.7K
+
+```sh
+forge test --contracts ./src/test/2025-07/unverified_54cd_exp.sol -vvv
+```
+#### Contract
+[unverified_54cd_exp.sol](src/test/2025-07/unverified_54cd_exp.sol)
+
+### Link reference
+https://x.com/TenArmorAlert/status/1941689712621576493
+
+---
+
 ### 20250705 RANT - Logic Flaw
 
 ### Lost: ~ $204K
@@ -2130,6 +2155,22 @@ https://x.com/CertiKAlert/status/1912430535999189042
 
 ---
 
+### 20250408 Laundromat - Logic Flaw
+
+### Lost: 1.5K USD
+
+
+```sh
+forge test --contracts ./src/test/2025-04/Laundromat_exp.sol -vvv
+```
+#### Contract
+[Laundromat_exp.sol](src/test/2025-04/Laundromat_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/1909814943290884596
+
+---
+
 ### 20250404 AIRWA - Access Control
 
 ### Lost: $33.6K
@@ -2283,6 +2324,22 @@ forge test --contracts ./src/test/2025-03/DUCKVADER_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1899378096056201414
+
+---
+
+### 20250307 UNI - Logic Flaw
+
+### Lost: ~ $14K
+
+```sh
+forge test --contracts ./src/test/2025-03/UNI_exp.sol -vvv
+```
+#### Contract
+[UNI_exp](./src/test/2025-03/UNI_exp.sol)
+
+### Link reference
+
+https://x.com/CertiKAlert/status/1897973904653607330
 
 ---
 
