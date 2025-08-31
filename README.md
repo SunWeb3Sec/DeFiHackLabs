@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-656 incidents included.
+657 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -303,6 +303,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240912 Unverified_03f9](past/2024/README.md#20240912-Unverified_03f9---access-control)
 
 [20240911 INUMI](past/2024/README.md#20240911-INUMI---access-control)
+
+[20240911 INUMI_db27](past/2024/README.md#20240911-INUMI_db27---access-control)
 
 [20240911 AIRBTC](past/2024/README.md#20240911-AIRBTC---access-control)
 
