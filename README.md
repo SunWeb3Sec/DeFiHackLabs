@@ -60,6 +60,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20250830 EverValueCoin](#20250830-evervaluecoin---arbitrage)
+
 [20250831 Hexotic](#20250831-hexotic---incorrect-input-validation)
 
 [20250827 0xf340](#20250827-0xf340---access-control)
