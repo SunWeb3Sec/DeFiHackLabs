@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-665 incidents included.
+666 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -59,6 +59,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250830 EverValueCoin](#20250830-evervaluecoin---arbitrage)
 
 [20250831 Hexotic](#20250831-hexotic---incorrect-input-validation)
 
@@ -1431,6 +1432,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20250830 EverValueCoin - Arbitrage
+
+### Lost: 100k USD
+
+
+```sh
+forge test --contracts ./src/test/2025-08/EverValueCoin -vvv
+```
+#### Contract
+[EverValueCoin](src/test/2025-08/EverValueCoin)
+### Link reference
+
+https://x.com/SuplabsYi/status/1961906638438445268
+
+---
 
 ### 20250831 Hexotic - Incorrect Input Validation
 
