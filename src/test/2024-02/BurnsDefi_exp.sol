@@ -8,7 +8,7 @@ import "./../interface.sol";
 // Attacker : https://bscscan.com/address/0xc9fbcf3eb24385491f73bbf691b13a6f8be7c339
 // Attack Contract : https://bscscan.com/address/0xb5eebf73448e22ce6a556f848360057f6aadd4e7
 // Vuln Contract : https://bscscan.com/address/0x4fb9657ac5d311dd54b37a75cfb873b127eb21fd
-// Attack Tx : https://phalcon.blocksec.com/explorer/tx/bsc/0x1d0af3a963682748493f21bf9e955ce3a950bee5817401bf2486db7a0af104b4
+// Attack Tx : https://app.blocksec.com/explorer/tx/bsc/0x1d0af3a963682748493f21bf9e955ce3a950bee5817401bf2486db7a0af104b4
 
 // @Analysis
 // https://twitter.com/pennysplayer/status/1754342573815238946

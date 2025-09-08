@@ -7,8 +7,8 @@ import "./../interface.sol";
 // @KeyInfo - Total Lost : ~234K
 // Attacker : https://bscscan.com/address/0x5bb5b6d41c3e5e41d9b9ed33d12f1537a1293d5f
 // Vulnerable Contract : https://bscscan.com/address/0xf436f8fe7b26d87eb74e5446acec2e8ad4075e47
-// Attack Tx 1 : https://phalcon.blocksec.com/explorer/tx/bsc/0xf78a85eb32a193e3ed2e708803b57ea8ea22a7f25792851e3de2d7945e6d02d5
-// Attack Tx 2 : https://phalcon.blocksec.com/explorer/tx/bsc/0x210071108f3e5cd24f49ef4b8bcdc11804984b0c0334e18a9a2cdb4cd5186067
+// Attack Tx 1 : https://app.blocksec.com/explorer/tx/bsc/0xf78a85eb32a193e3ed2e708803b57ea8ea22a7f25792851e3de2d7945e6d02d5
+// Attack Tx 2 : https://app.blocksec.com/explorer/tx/bsc/0x210071108f3e5cd24f49ef4b8bcdc11804984b0c0334e18a9a2cdb4cd5186067
 
 // @Analysis
  

@@ -12,10 +12,10 @@ import {IPool as IKyberswapPool} from "./KyberSwap/interfaces/IPool.sol";
 // Attacker EOA: https://etherscan.io/address/0x50275E0B7261559cE1644014d4b78D4AA63BE836
 // Attacker Contracts : https://etherscan.io/address/0xaf2acf3d4ab78e4c702256d214a3189a874cdc13
 // Vulnerable Contract : https://etherscan.io/address/0xFd7B111AA83b9b6F547E617C7601EfD997F64703
-// Transaction : https://phalcon.blocksec.com/explorer/tx/eth/0x485e08dc2b6a4b3aeadcb89c3d18a37666dc7d9424961a2091d6b3696792f0f3 (block 18630392)
+// Transaction : https://app.blocksec.com/explorer/tx/eth/0x485e08dc2b6a4b3aeadcb89c3d18a37666dc7d9424961a2091d6b3696792f0f3 (block 18630392)
 
 // @Analysis
-// https://phalcon.blocksec.com/explorer/security-incidents
+// https://app.blocksec.com/explorer/security-incidents
 // https://twitter.com/BlockSecTeam/status/1727560157888942331
 // https://blocksec.com/blog/yet-another-tragedy-of-precision-loss-an-in-depth-analysis-of-the-kyber-swap-incident-1
 // https://blog.solidityscan.com/kyberswap-hack-analysis-25e25f2e4a7b

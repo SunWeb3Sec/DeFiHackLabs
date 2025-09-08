@@ -8,7 +8,7 @@ import "./../interface.sol";
 // Attacker : https://arbiscan.io/address/0xfcf88e5e1314ca3b6be7eed851568834233f8b49
 // Attack Contract : https://arbiscan.io/address/0xfcbf411237ac830dc892edec054f15ba7f9ea5a6
 // Vuln Contract : https://arbiscan.io/address/0x34b666992fcce34669940ab6b017fe11e5750799
-// One of the attack txs : https://phalcon.blocksec.com/explorer/tx/arbitrum/0xf52a681bc76df1e3a61d9266e3a66c7388ef579d62373feb4fd0991d36006855
+// One of the attack txs : https://app.blocksec.com/explorer/tx/arbitrum/0xf52a681bc76df1e3a61d9266e3a66c7388ef579d62373feb4fd0991d36006855
 
 // @Analysis
 // https://medium.com/neptune-mutual/how-was-citadel-finance-exploited-a5f9acd0b408
@@ -65,7 +65,7 @@ contract ContractTest is Test {
 
     function testExploit() public {
         // Before attack
-        // Deposit CIT tx: https://phalcon.blocksec.com/explorer/tx/arbitrum/0xcf75802229d440e4fbabb4d357fa1886c25e9a6b5c693e9e9573c71c15e2b0d3
+        // Deposit CIT tx: https://app.blocksec.com/explorer/tx/arbitrum/0xcf75802229d440e4fbabb4d357fa1886c25e9a6b5c693e9e9573c71c15e2b0d3
         // Exploiter transfer to attack contract following amount of CIT:
         deal(address(CIT), address(this), 2653 * 1e18);
         // Approve CIT tokens to CitadelStaking contract:
@@ -142,7 +142,7 @@ contract ContractTest is Test {
 
         emit log_string("--------------------End attack--------------------");
         // After couple of above attacks, deposited CIT has been withdrawn in the following tx:
-        // https://phalcon.blocksec.com/explorer/tx/arbitrum/0x09105b771ada0c66f48786260929c0967fc822e037904ced6eac61284b6992d9
+        // https://app.blocksec.com/explorer/tx/arbitrum/0x09105b771ada0c66f48786260929c0967fc822e037904ced6eac61284b6992d9
     }
 
     function WETHToUSDC(

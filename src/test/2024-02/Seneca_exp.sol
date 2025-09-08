@@ -7,7 +7,7 @@ import "./../interface.sol";
 // @KeyInfo - Total Lost : ~$6M
 // Attacker : https://etherscan.io/address/0x94641c01a4937f2c8ef930580cf396142a2942dc
 // Vuln Contract : https://etherscan.io/address/0x65c210c59b43eb68112b7a4f75c8393c36491f06
-// Attack Tx : https://phalcon.blocksec.com/explorer/tx/eth/0x23fcf9d4517f7cc39815b09b0a80c023ab2c8196c826c93b4100f2e26b701286
+// Attack Tx : https://app.blocksec.com/explorer/tx/eth/0x23fcf9d4517f7cc39815b09b0a80c023ab2c8196c826c93b4100f2e26b701286
 
 // @Analysis
 // https://twitter.com/Phalcon_xyz/status/1763045563040411876

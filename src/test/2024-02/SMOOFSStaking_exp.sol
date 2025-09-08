@@ -8,7 +8,7 @@ import "./../interface.sol";
 // Attacker : https://polygonscan.com/address/0x149b268b8b8101e2b5df84a601327484cb43221c
 // Attack Contract : https://polygonscan.com/address/0x367120bf791cc03f040e2574aea0ca7790d3d2e5
 // Vuln Contract : https://polygonscan.com/address/0x9d6cb01fb91f8c6616e822cf90a4b3d8eb0569c6
-// One of the attack txs : https://phalcon.blocksec.com/explorer/tx/polygon/0xde51af983193b1be3844934b2937a76c19610ddefcdd3ffcf127db3e68749a50
+// One of the attack txs : https://app.blocksec.com/explorer/tx/polygon/0xde51af983193b1be3844934b2937a76c19610ddefcdd3ffcf127db3e68749a50
 
 // @Analysis
 // https://twitter.com/AnciliaInc/status/1762893563103428783

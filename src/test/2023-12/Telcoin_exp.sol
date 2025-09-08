@@ -7,7 +7,7 @@ import "./../interface.sol";
 // @KeyInfo - Total Lost : ~1,24M
 // Attacker : https://polygonscan.com/address/0xdb4b84f0e601e40a02b54497f26e03ef33f3a5b7
 // Vulnerable Contract : https://polygonscan.com/address/0x56bcadff30680ebb540a84d75c182a5dc61981c0
-// Attack Tx (CloneableProxy#1) : https://phalcon.blocksec.com/explorer/tx/polygon/0x35f50851c3b754b4565dc3e69af8f9bdb6555edecc84cf0badf8c1e8141d902d
+// Attack Tx (CloneableProxy#1) : https://app.blocksec.com/explorer/tx/polygon/0x35f50851c3b754b4565dc3e69af8f9bdb6555edecc84cf0badf8c1e8141d902d
 
 // @Analysis
 // https://blocksec.com/phalcon/blog/telcoin-security-incident-in-depth-analysis
@@ -19,7 +19,7 @@ interface ICloneableProxy {
 
 contract ContractTest is Test {
     // CloneableProxy#1 created and 'initialized' at tx:
-    // https://phalcon.blocksec.com/explorer/tx/polygon/0x1a31cb6f417d30fe8769328b3412bfb0d70247a82009ef28dfab5730c82acd05
+    // https://app.blocksec.com/explorer/tx/polygon/0x1a31cb6f417d30fe8769328b3412bfb0d70247a82009ef28dfab5730c82acd05
     ICloneableProxy private constant CloneableProxy = ICloneableProxy(0x56BCADff30680EBB540a84D75c182A5dC61981C0);
     IERC20 private constant TEL = IERC20(0xdF7837DE1F2Fa4631D716CF2502f8b230F1dcc32);
 

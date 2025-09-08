@@ -6,7 +6,7 @@ import "./../interface.sol";
 // @KeyInfo - Total Lost : ~2M USD$
 // Attacker : https://etherscan.io/address/0x2ad8aed847e8d4d3da52aabb7d0f5c25729d10df
 // Vulnerable Contract : (Unizen: Trade Aggregator Proxy) https://etherscan.io/address/0xd3f64baa732061f8b3626ee44bab354f854877ac
-// Attack Tx : https://phalcon.blocksec.com/explorer/tx/eth/0x923d1d63a1165ebd3521516f6d22d015f2e1b4b22d5dc954152b6c089c765fcd ( one of the transactions)
+// Attack Tx : https://app.blocksec.com/explorer/tx/eth/0x923d1d63a1165ebd3521516f6d22d015f2e1b4b22d5dc954152b6c089c765fcd ( one of the transactions)
 
 // @Analysis
 // https://twitter.com/SlowMist_Team/status/1766311510362734824

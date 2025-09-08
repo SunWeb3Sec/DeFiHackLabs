@@ -8,10 +8,10 @@ import "./../interface.sol";
 // Attacker : https://etherscan.io/address/0x7b3a6eff1c9925e509c2b01a389238c1fcc462b6
 // Attack Contracts : https://etherscan.io/address/0x356e7481b957be0165d6751a49b4b7194aef18d5
 // Vuln Contract : https://etherscan.io/address/0x04c80bb477890f3021f03b068238836ee20aa0b8
-// Attack Tx : https://phalcon.blocksec.com/explorer/tx/eth/0x995e880635f4a7462a420a58527023f946710167ea4c6c093d7d193062a33b01
+// Attack Tx : https://app.blocksec.com/explorer/tx/eth/0x995e880635f4a7462a420a58527023f946710167ea4c6c093d7d193062a33b01
 
 // @Analysis
-// https://phalcon.blocksec.com/explorer/security-incidents
+// https://app.blocksec.com/explorer/security-incidents
 // https://www.bitget.com/news/detail/12560603890246
 // https://twitter.com/Phalcon_xyz/status/1751788389139992824
 
@@ -55,8 +55,8 @@ contract ContractTest is Test {
 
     function testExploit() public {
         // Start with 200 DAI tokens transferred from exploiter to attack contract in txs:
-        // https://phalcon.blocksec.com/explorer/tx/eth/0xa685928b5102349a5cc50527fec2e03cb136c233505471bdd4363d0ab077a69a
-        // https://phalcon.blocksec.com/explorer/tx/eth/0xaaa197c7478063eb1124c8d8b03016fe080e6ec4c4f4a4e6d7f09022084e3390
+        // https://app.blocksec.com/explorer/tx/eth/0xa685928b5102349a5cc50527fec2e03cb136c233505471bdd4363d0ab077a69a
+        // https://app.blocksec.com/explorer/tx/eth/0xaaa197c7478063eb1124c8d8b03016fe080e6ec4c4f4a4e6d7f09022084e3390
         // DAI tokens will be used by wBARL flash function
         deal(address(DAI), address(this), 200e18);
 

@@ -10,7 +10,7 @@ import "./../interface.sol";
     - Attacker: https://etherscan.io/address/0xb19b7f59c08ea447f82b587c058ecbf5fde9c299
     - Attack Contract: https://etherscan.io/address/0x6653d9bcbc28fc5a2f5fb5650af8f2b2e1695a15
     - Vuln Contract: https://etherscan.io/address/0xe38b72d6595fd3885d1d2f770aa23e94757f91a1
-    - Attack Tx: https://phalcon.blocksec.com/explorer/tx/eth/0x81e9918e248d14d78ff7b697355fd9f456c6d7881486ed14fdfb69db16631154
+    - Attack Tx: https://app.blocksec.com/explorer/tx/eth/0x81e9918e248d14d78ff7b697355fd9f456c6d7881486ed14fdfb69db16631154
 */
 interface IUSDTInterface {
     function approve(address spender, uint256 value) external;

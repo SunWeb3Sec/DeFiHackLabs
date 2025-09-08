@@ -10,7 +10,7 @@ import "./../interface.sol";
     - Attacker: https://etherscan.io/address/0x09f6be2a7d0d2789f01ddfaf04d4eaa94efc0857
     - Attack Contract: https://etherscan.io/address/0x12d85e5869258a80d4bebe70d176d0f58b2d68e4
     - Vuln Contract: https://etherscan.io/address/0xcd6ca2f0d0c182c5049d9a1f65cde51a706ae142
-    - Attack Tx: https://phalcon.blocksec.com/explorer/tx/eth/0x03543ef96c26d6c79ff6c24219c686ae6d0eb5453b322e54d3b6a5ce456385e5
+    - Attack Tx: https://app.blocksec.com/explorer/tx/eth/0x03543ef96c26d6c79ff6c24219c686ae6d0eb5453b322e54d3b6a5ce456385e5
     - Analysis: https://twitter.com/Phalcon_xyz/status/1753020812284809440
 */
 

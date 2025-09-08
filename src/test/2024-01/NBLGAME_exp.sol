@@ -9,7 +9,7 @@ import "./../interface.sol";
 // Attack Contracts : https://optimistic.etherscan.io/address/0xe4d41bdd6459198b33cc795ff280cee02d91087b
 // https://optimistic.etherscan.io/address/0xfc3b08555b1c328ecf8b8a0ccd85679bf59bba4c (selfdestruct)
 // Vuln Contract : https://optimistic.etherscan.io/address/0x5499178919c79086fd580d6c5f332a4253244d91
-// Attack Tx : https://phalcon.blocksec.com/explorer/tx/optimism/0xf4fc3b638f1a377cf22b729199a9aeb27fc62fe2983a65c4d14b99ee5c5b2328
+// Attack Tx : https://app.blocksec.com/explorer/tx/optimism/0xf4fc3b638f1a377cf22b729199a9aeb27fc62fe2983a65c4d14b99ee5c5b2328
 
 // @Analysis
 // https://twitter.com/SlowMist_Team/status/1750526097106915453
