@@ -1026,7 +1026,7 @@ forge test --contracts ./src/test/2023-11/KyberSwap_exp.eth.1.sol -vvv
 
 [In depth analysis](https://blocksec.com/blog/yet-another-tragedy-of-precision-loss-an-in-depth-analysis-of-the-kyber-swap-incident-1).
 
-[List of transactions](https://phalcon.blocksec.com/explorer/security-incidents?page=1).
+[List of transactions](https://app.blocksec.com/explorer/security-incidents?page=1).
 
 ---
 

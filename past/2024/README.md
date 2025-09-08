@@ -3096,7 +3096,7 @@ https://twitter.com/Phalcon_xyz/status/1752278614551216494
 
 https://twitter.com/peckshield/status/1752279373779194011
 
-https://phalcon.blocksec.com/explorer/security-incidents
+https://app.blocksec.com/explorer/security-incidents
 
 ---
 
@@ -3132,7 +3132,7 @@ forge test --match-contract BarleyFinance_exp -vvv
 
 #### Link reference
 
-https://phalcon.blocksec.com/explorer/security-incidents
+https://app.blocksec.com/explorer/security-incidents
 
 https://www.bitget.com/news/detail/12560603890246
 

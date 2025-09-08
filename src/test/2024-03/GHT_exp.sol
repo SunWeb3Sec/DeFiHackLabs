@@ -8,7 +8,7 @@ import "./../interface.sol";
 // Attacker : https://etherscan.io/address/0x096f0f03e4be68d7e6dd39b22a3846b8ce9849a3
 // Attack Contract : https://etherscan.io/address/0xcc5159b5538268f45afda7b5756fa8769ce3e21f
 // Vuln Contract : https://etherscan.io/address/0x528e046acfb52bd3f9c400e7a5c79a8a2c2863d0
-// Attack Tx : https://phalcon.blocksec.com/explorer/tx/eth/0xd17266bcdf30cbcbd7d0b5a006f43141981aeee2e1f860f68c9a1805ecacbc68?line=3
+// Attack Tx : https://app.blocksec.com/explorer/tx/eth/0xd17266bcdf30cbcbd7d0b5a006f43141981aeee2e1f860f68c9a1805ecacbc68?line=3
 interface IGHT {
     function transferFrom(address, address, uint256) external;
     function balanceOf(
