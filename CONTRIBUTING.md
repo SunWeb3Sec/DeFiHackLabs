@@ -10,7 +10,7 @@ Thank you for your interest in contributing to the DeFiHackLabs project! We appr
 Before getting started, ensure you have the following:
 * Python 3.x installed on your system
 * Basic knowledge of using the command line
-* `toml` package installed (run `pip install toml` to install it)
+* Required Python packages installed (run `pip install -r requirements.txt` to install them)
 
 ## Adding a New Incident Entry
 To add a new incident entry to the project, follow these steps:
@@ -30,11 +30,12 @@ cd DeFiHackLabs
 python add_new_entry.py
 ```
 
-5. The script will prompt you to enter the following information:
-   ## Note: do not paste in explorer urls,the script automatically generates them based on the network selected
-   - **Network**: Enter the index of the network the exploit was on: here is an example screen you will see when running the script
+5. The script will prompt you with the following workflow:
+
+   ### Initial Setup
+   - **Network Selection**: Choose from available networks or add a new one:
       ```bash
-      $ python3 add_new_entry.py 
+      $ python3 add_new_entry.py
       Available networks:
       1. mainnet
       2. blast
@@ -48,32 +49,72 @@ python add_new_entry.py
       10. polygon
       11. celo
       12. Base
-      13. Add a new network
+      13. sei
+      14. Add a new network
+      15. Exit
       Enter the number corresponding to the network you want to use:
       ```
-   - **File Name**: Enter the name of the POC file in the format `IncidentName_exp.sol`.
-   - **Timestamp String**: Enter the timestamp of the incident in the format `Mar-21-2024 02:51:33 PM`. Make sure to copy the timestamp from the incident's transaction details page on the relevant blockchain explorer, without including the UTC offset. (ie the +UTC part of the time)
-   - **Lost Amount**: Enter the amount lost in the incident.
-   - **Additional Details**: Provide any additional relevant details about the incident.
-   - **Link Reference**: Enter the link to the reference material or source of information.
-   - **Attacker's Address**: Enter the attacker's address.
-   - **Attack Contract Address**: Enter the address of the contract used in the attack.
-   - **Vulnerable Contract Address**: Enter the address of the vulnerable contract.
-   - **Attack Transaction Hash**: Enter the transaction hash of the attack.
-   - **Post-mortem URL**: Enter the URL to the post-mortem analysis of the incident.
-   - **Twitter Guy URL**: Enter the URL to a Twitter thread or user providing insights about the incident.
-   - **Hacking God URL**: Enter the URL to a write-up or analysis by a respected security researcher or hacker.
 
-### Step 2: Implement the Exploit Code
-1. The script will ask if you want to create a new Solidity file for the POC. If you choose "yes", it will generate a new file in the `src/test/` directory with the provided information and a template for the exploit code.
-2. The script will update the `README.md` file with the new incident entry and add it to the table of contents.
-3. Implement the exploit code in the generated Solidity file (e.g., `IncidentName_exp.sol`) by replacing the placeholder code in testExploit with your exploit POC logic.
+   ### Adding New Entry vs Processing Existing Files
+   The script will ask two main questions:
+   1. **"Do you want to add a new incident entry manually? (yes/no)"**
+   2. **"Do you want to check for .sol files in 'src/test' missing README.md entries? (yes/no)"**
 
-### Step 3: Test and Commit Your Changes
-1. Test the exploit by running the following command:
+   ### For New Manual Entry (if you answer "yes" to question 1):
+
+   #### Basic Information
+   - **File Name**: Enter the name of the POC file (e.g., `Example_exp.sol`)
+   - **Transaction Hash for Timestamp** (optional): If you have an attack transaction hash, the script can automatically extract the timestamp
+   - **Timestamp String**: If not using transaction hash, enter manually in format `Mar-21-2024 02:51:33 PM`
+   - **Lost Amount**: Enter the amount lost (e.g., `100M USD`, `50 ETH`)
+   - **Additional Details**: Provide relevant details (e.g., `Reentrancy`)
+   - **Link Reference**: Enter reference links
+
+   #### POC File Creation (optional)
+   - **Create Solidity File**: The script asks if you want to create a new Solidity POC file
+   - If yes, it will gather additional information:
+
+   #### Auto-Population from Transaction Hash (if available)
+   - The script can auto-populate addresses using `cast` commands if you provide a transaction hash
+   - **Attacker Address**: Auto-suggested or manually entered
+   - **Attack Contract Address**: Auto-suggested or manually entered
+   - **Vulnerable Contract Address**: Auto-suggested or manually entered
+   - **Attack Transaction Hash**: Used for auto-population
+   - **Post-mortem URL**: Manual entry (must start with http:// or https://)
+   - **Twitter Analysis URL**: Manual entry (must start with http:// or https://)
+   - **Security Research URL**: Manual entry (must start with http:// or https://)
+
+   ### For Processing Existing Files (if you answer "yes" to question 2):
+   The script will:
+   - Scan for uncommitted `.sol` files in `src/test/` directory
+   - Scan for recently committed `.sol` files (from last commit)
+   - Check if README entries exist for these files
+   - Prompt you to add missing README entries for files without them
+
+### Step 2: Automatic Updates
+The script automatically handles:
+1. **README.md Updates**: Adds new incident entry to the "List of DeFi Hacks & POCs" section
+2. **Table of Contents**: Updates the incident count and adds TOC entry
+3. **POC File Generation**: Creates Solidity file from template with auto-populated information
+4. **foundry.toml Updates**: Adds new network RPC endpoints if needed
+5. **Explorer URL Integration**: Automatically generates blockchain explorer links based on selected network
+
+### Step 3: Implement the Exploit Code
+1. If you chose to create a Solidity POC file, it will be generated in `src/test/YYYY-MM/` directory with the template
+2. The generated file will have placeholder code in the `testExploit()` function
+3. Implement your exploit logic by replacing the placeholder code
+4. The file includes auto-generated links to:
+   - Attacker addresses on blockchain explorer
+   - Attack contract addresses on blockchain explorer
+   - Vulnerable contract addresses on blockchain explorer
+   - Attack transaction hash on blockchain explorer
+
+### Step 4: Test and Commit Your Changes
+1. Test the exploit by running the forge test command (the script will show you the exact command):
  ```bash
-   forge test --contracts ./src/test/IncidentName_exp.sol -vvv
+   forge test --contracts ./src/test/YYYY-MM/IncidentName_exp.sol -vvv
 ```
+   Note: For certain chains (Base, Optimism, BSC), the script automatically adds `--evm-version shanghai` flag
 
 2. Commit your changes and push them to your forked repository:
 ```bash
@@ -87,6 +128,13 @@ python add_new_entry.py
 4. Our maintainers will review your pull request. They may provide feedback or request further changes. Once your pull request is approved, it will be merged into the main repository.
 
 ## Important Notes
+ - **The script automatically generates blockchain explorer URLs** - do not paste explorer URLs manually
+ - **Transaction hash auto-population**: If you have an attack transaction hash, the script can automatically extract timestamp and suggest attacker/contract addresses using Foundry's `cast` command
+ - **Directory structure**: POC files are automatically organized into `src/test/YYYY-MM/` directories based on incident date
+ - **Network support**: The script includes support for multiple networks including Sei (newly added)
+ - **Template auto-replacement**: POC files are generated from a template with automatic placeholder replacement
+ - **Git integration**: The script can process existing uncommitted or recently committed `.sol` files to add missing README entries
+ - **URL validation**: The script validates that all URLs start with http:// or https://
  - **Make sure to follow the formatting guidelines and provide accurate information when adding a new incident entry.**
  - **Do not include the UTC offset when copying the timestamp from the transaction details page on the blockchain explorer.**
  - **If you encounter any issues or have questions, please open an issue on the https://github.com/SunWeb3Sec/DeFiHackLabs/issues or reach out to our maintainers.**
