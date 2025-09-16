@@ -10,7 +10,7 @@ Thank you for your interest in contributing to the DeFiHackLabs project! We appr
 Before getting started, ensure you have the following:
 * Python 3.x installed on your system
 * Basic knowledge of using the command line
-* `toml` package installed (run `pip install toml` to install it)
+* Required Python packages installed (run `pip install -r requirements.txt` to install them)
 
 ## Adding a New Incident Entry
 To add a new incident entry to the project, follow these steps:
