@@ -28,6 +28,7 @@ contract BaseTestWithBalanceLog is Test {
         chainIdToInfo[137] = ChainInfo("POLYGON", "MATIC");
         chainIdToInfo[42_220] = ChainInfo("CELO", "CELO");
         chainIdToInfo[8453] = ChainInfo("BASE", "ETH");
+        chainIdToInfo[1329] = ChainInfo("SEI","SEI");
     }
 
     function getChainInfo(
