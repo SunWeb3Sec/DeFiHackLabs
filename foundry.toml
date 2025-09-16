@@ -20,6 +20,7 @@ celo = "https://rpc.ankr.com/celo"
 base = "https://developer-access-mainnet.base.org"
 linea = "https://linea.drpc.org"
 mantle = "https://rpc.mantle.xyz"
+sei = "wss://sei.drpc.org"
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/.config
 

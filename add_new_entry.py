@@ -46,7 +46,8 @@ class Constants:
         "Avalanche": "https://snowtrace.io",
         "polygon": "https://polygonscan.com",
         "celo": "https://celoscan.io",
-        "Base": "https://basescan.org"
+        "Base": "https://basescan.org",
+        "sei": "https://seiscan.io/"
     }
     
     # POC Template Placeholders
