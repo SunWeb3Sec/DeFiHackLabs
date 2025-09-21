@@ -46,7 +46,8 @@ class Constants:
         "Avalanche": "https://snowtrace.io",
         "polygon": "https://polygonscan.com",
         "celo": "https://celoscan.io",
-        "Base": "https://basescan.org"
+        "Base": "https://basescan.org",
+        "sei": "https://seiscan.io/"
     }
     
     # POC Template Placeholders
@@ -646,6 +647,9 @@ class PocManager:
         
         # Replace template placeholders
         modified_content = self._replace_placeholders(template_content, replacements)
+
+        # Replace exploit() with testExploit() for forge test compatibility
+        modified_content = modified_content.replace("function exploit()", "function testExploit()")
         
         # Write to new file
         with open(new_file_path, "w") as new_file:
