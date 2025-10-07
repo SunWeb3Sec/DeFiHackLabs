@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-667 incidents included.
+668 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -44,12 +44,6 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 - Lesson 6: Write Your Own PoC (Reentrancy) ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/) | [Spanish](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/es) | [日本語](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/06_write_your_own_poc/ja) )
 - Lesson 7: Hack Analysis: Nomad Bridge, August 2022 ( [English](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/en/) | [中文](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/) | [Spanish](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/es) | [日本語](https://github.com/SunWeb3Sec/DeFiHackLabs/tree/main/academy/onchain_debug/07_Analysis_nomad_bridge/ja) )
 
-## Who Support Us? DeFiHackLabs Received Grant From
-
-<a href="https://x.com/GCCofCommons">
-  <img src="https://github.com/SunWeb3Sec/DeFiHackLabs/assets/107249780/84fb64ac-1d2b-45ba-b864-b744bbbfdb30" width="600"/>
-</a>
-
 ## Donate us
 
 If you appreciate our work, please consider donating. Even a small amount helps us continue developing and improving our projects, and promoting web3 security.
@@ -59,7 +53,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20251004 MIMSpell3](#20251004-mimspell3---bypassed-insolvency-check)
+
 [20250913 Kame](#20250913-kame---arbitary-external-call)
+
 [20250830 EverValueCoin](#20250830-evervaluecoin---arbitrage)
 
 [20250831 Hexotic](#20250831-hexotic---incorrect-input-validation)
@@ -1433,6 +1430,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20251004 MIMSpell3 - Bypassed Insolvency Check
+
+### Lost: 1.7M USD
+
+
+```sh
+forge test --contracts ./src/test/2025-10/MIMSpell3_exp.sol -vvv
+```
+#### Contract
+[MIMSpell3_exp.sol](src/test/2025-10/MIMSpell3_exp.sol)
+### Link reference
+
+https://x.com/Phalcon_xyz/status/1974532815208485102
+
+---
 
 ### 20250913 Kame - Arbitary External Call
 
