@@ -2034,7 +2034,7 @@ https://x.com/TenArmorAlert/status/1932309011564781774
 
 
 ```sh
-forge test --contracts ./src/test/2025-05/Corkprotocol_exp.sol -vvv
+forge test --contracts ./src/test/2025-05/Corkprotocol_exp.sol -vvv --via-ir --evm-version cancun
 ```
 #### Contract
 [Corkprotocol_exp](src/test/2025-05/Corkprotocol_exp.sol)
