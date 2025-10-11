@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-668 incidents included.
+669 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20251007 TokenHolder](#20251007-tokenholder---access-control)
+
 [20251004 MIMSpell3](#20251004-mimspell3---bypassed-insolvency-check)
 
 [20250913 Kame](#20250913-kame---arbitary-external-call)
@@ -1430,6 +1433,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20251007 TokenHolder - Access Control
+
+### Lost: 20 WBNB
+
+
+```sh
+forge test --contracts ./src/test/2025-10/TokenHolder_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[TokenHolder_exp.sol](src/test/2025-10/TokenHolder_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/2027
+
+---
 
 ### 20251004 MIMSpell3 - Bypassed Insolvency Check
 
