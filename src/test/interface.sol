@@ -3433,6 +3433,13 @@ interface IBalancerVault {
         GIVEN_OUT
     }
 
+    enum UserBalanceOpKind { 
+        DEPOSIT_INTERNAL, 
+        WITHDRAW_INTERNAL, 
+        TRANSFER_INTERNAL, 
+        TRANSFER_EXTERNAL
+    }
+
     struct SingleSwap {
         bytes32 poolId;
         SwapKind kind;
@@ -3447,6 +3454,14 @@ interface IBalancerVault {
         bool fromInternalBalance;
         address payable recipient;
         bool toInternalBalance;
+    }
+
+    struct UserBalanceOp {
+        UserBalanceOpKind kind;
+        address asset;
+        uint256 amount;
+        address sender;
+        address payable recipient;
     }
 
     function swap(
@@ -3471,7 +3486,7 @@ interface IBalancerVault {
         FundManagement memory funds,
         int256[] memory limits,
         uint256 deadline
-    ) external;
+    ) external returns (int256[] memory);
 
     struct JoinPoolRequest {
         address[] asset;
@@ -3510,7 +3525,11 @@ interface IBalancerVault {
 
     function getPoolTokens(
         bytes32 poolId
-    ) external view returns (IERC20[] memory tokens, uint256[] memory balances, uint256 lastChangeBlock);
+    ) external view returns (address[] memory tokens, uint256[] memory balances, uint256 lastChangeBlock);
+
+    function getInternalBalance(address user, address[] memory tokens) external view returns (uint256[] memory);
+
+    function manageUserBalance(UserBalanceOp[] memory ops) external payable;
 }
 
 interface ICointroller {
