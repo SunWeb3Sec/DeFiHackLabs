@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-669 incidents included.
+670 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20251103 BalancerV2](#20251103-balancerv2---precision-loss)
 
 [20251007 TokenHolder](#20251007-tokenholder---access-control)
 
@@ -1433,6 +1435,27 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20251103 BalancerV2 - Precision Loss
+
+### Lost: 120M USD
+
+```sh
+forge test --contracts ./src/test/2025-11/BalancerV2_exp.sol --via-ir -vvv
+```
+
+#### Contract
+[BalancerV2_exp.sol](src/test/2025-11/BalancerV2_exp.sol)
+
+### Link reference
+
+https://x.com/BlockSecTeam/status/1986057732810518640
+
+https://x.com/SlowMist_Team/status/1986379316935205299
+
+https://x.com/hklst4r/status/1985872151077953827
+
+---
 
 ### 20251007 TokenHolder - Access Control
 
