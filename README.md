@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-670 incidents included.
+671 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20251104 Moonwell](#20251104-moonwell---faulty-oracle)
 
 [20251103 BalancerV2](#20251103-balancerv2---precision-loss)
 
@@ -1436,6 +1438,23 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20251104 Moonwell - Faulty Oracle
+
+### Lost: 1M USD
+
+```sh
+forge test --contracts ./src/test/2025-11/Moonwell_exp.sol -vvv
+```
+
+#### Contract
+[Moonwell_exp.sol](src/test/2025-11/Moonwell_exp.sol)
+
+### Link reference
+
+https://x.com/CertiKAlert/status/1985620452992253973
+
+https://www.halborn.com/blog/post/explained-the-moonwell-hack-november-2025
+
 ### 20251103 BalancerV2 - Precision Loss
 
 ### Lost: 120M USD
@@ -1472,6 +1491,17 @@ forge test --contracts ./src/test/2025-10/TokenHolder_exp.sol -vvv --evm-version
 https://t.me/defimon_alerts/2027
 
 ---
+
+### 20251004 Abracadabra - Logic Flaw
+
+### Lost: 1.8M USD
+
+```sh
+forge test --contracts ./src/test/2025-10/Abracadabra_exp.sol -vv
+```
+
+#### Contract
+[Abracadabra_exp.sol](src/test/2025-10/Abracadabra_exp.sol)
 
 ### 20251004 MIMSpell3 - Bypassed Insolvency Check
 
