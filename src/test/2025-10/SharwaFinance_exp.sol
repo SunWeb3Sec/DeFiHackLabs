@@ -4,21 +4,20 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "../interface.sol";
 
-// @KeyInfo - Total Lost : ~999M US$
+// @KeyInfo - Total Lost : 146,000 USD
 // Attacker : https://arbiscan.io/address/0xd356c82e0c85e1568641d084dbdaf76b8df96c08
 // Attack Contract : https://arbiscan.io/address/0xd9ff21caeeea4329133c98a892db16b42f9baa25
-// Vulnerable Contract : 0xdeadbeef
+// Vulnerable Contract : https://arbiscan.io/address/0xd3fde5af30da1f394d6e0d361b552648d0dff797
 // Attack Tx :
 // https://app.blocksec.com/explorer/tx/arbitrum/0xd64729c528e6689cb18b0c90345ab0c9ed18fea44247c89af2f1374643fc89c2?line=-1
 // https://app.blocksec.com/explorer/tx/arbitrum/0x9f8b4841f805ec50cc6632068f759216d85633fbbe34afde86b97bbc41c23ead
 
 // @Info
-// Vulnerable Contract Code : https://etherscan.io/address/0xdeadbeef#code
+// Vulnerable Contract Code : https://arbiscan.io/address/0xd3fde5af30da1f394d6e0d361b552648d0dff797#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
-// Twitter Guy : https://www.google.com/
-// Hacking God : https://www.google.com/
+// https://x.com/phalcon_xyz/status/1980219745480946087?s=46
+// https://blog.verichains.io/p/vulnerability-analysis-deconstructing?utm_source=chatgpt.com
 
 interface IMarginAccountManager {
     function createMarginAccount() external returns (uint256 tokenId);
