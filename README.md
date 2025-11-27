@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-671 incidents included.
+672 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -57,6 +57,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20251104 Moonwell](#20251104-moonwell---faulty-oracle)
 
 [20251103 BalancerV2](#20251103-balancerv2---precision-loss)
+
+[20251020 SharwaFinance](##20251020-sharwafinance---post-insolvency-check)
 
 [20251007 TokenHolder](#20251007-tokenholder---access-control)
 
@@ -1455,6 +1457,8 @@ https://x.com/CertiKAlert/status/1985620452992253973
 
 https://www.halborn.com/blog/post/explained-the-moonwell-hack-november-2025
 
+---
+
 ### 20251103 BalancerV2 - Precision Loss
 
 ### Lost: 120M USD
@@ -1473,6 +1477,23 @@ https://x.com/BlockSecTeam/status/1986057732810518640
 https://x.com/SlowMist_Team/status/1986379316935205299
 
 https://x.com/hklst4r/status/1985872151077953827
+
+---
+
+### 20251020 SharwaFinance - Post Insolvency Check
+
+### Lost: 146,000 USD
+
+```sh
+forge test --contracts ./src/test/2025-10/SharwaFinance_exp.sol -vvv
+```
+
+#### Contract
+[SharwaFinance_exp.sol](src/test/2025-10/SharwaFinance_exp.sol)
+
+### Link reference
+
+https://x.com/phalcon_xyz/status/1980219745480946087?s=46
 
 ---
 
