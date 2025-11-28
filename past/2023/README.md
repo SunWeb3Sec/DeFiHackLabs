@@ -248,15 +248,15 @@
 
 [20230630 Biswap](#20230630-biswap---v3migrator-exploit)
 
-[20230630 MyAi](#20230630-MyAi---business-loigc)
+[20230630 MyAi](#20230630-MyAi---business-logic)
 
 [20230628 Themis](#20230628-themis---manipulation-of-prices-using-flashloan)
 
-[20230627 UnverifiedContr_9ad32](#20230627-unverifiedcontr_9ad32---business-loigc-flaw)
+[20230627 UnverifiedContr_9ad32](#20230627-unverifiedcontr_9ad32---business-logic-flaw)
 
-[20230627 STRAC](#20230627-STRAC---business-loigc)
+[20230627 STRAC](#20230627-STRAC---business-logic-flaw)
 
-[20230623 SHIDO](#20230623-shido---business-loigc)
+[20230623 SHIDO](#20230623-shido---business-logic)
 
 [20230621 BabyDogeCoin02](#20230621-babydogecoin02---lack-slippage-protection)
 
@@ -264,7 +264,7 @@
 
 [20230620 MIM](#20230620-mimspell---arbitrary-external-call-vulnerability)
 
-[20230619 Contract_0x7657](#20230620-Contract_0x7657---business-loigc)
+[20230619 Contract_0x7657](#20230620-Contract_0x7657---business-logic)
 
 [20230618 ARA](#20230618-ara---incorrect-handling-of-permissions)
 
@@ -2908,7 +2908,7 @@ https://twitter.com/MetaTrustAlert/status/1674814217122349056?s=20
 
 ---
 
-### 20230630 MyAi - Business Loigc
+### 20230630 MyAi - Business Logic
 
 ### Lost: ~2 $BNB
 
@@ -2950,7 +2950,7 @@ https://twitter.com/BlockSecTeam/status/1673897088617426946
 
 ---
 
-### 20230627 UnverifiedContr_9ad32 - Business Loigc Flaw
+### 20230627 UnverifiedContr_9ad32 - Business Logic Flaw
 
 ### Lost: ~5955 USD
 
@@ -2970,7 +2970,7 @@ https://x.com/DecurityHQ/status/1673708133926031360
 
 ---
 
-### 20230627 STRAC - Business Loigc Flaw
+### 20230627 STRAC - Business Logic Flaw
 
 ### Lost: ~12 $ETH
 
@@ -2990,7 +2990,7 @@ https://x.com/DecurityHQ/status/1673769624611987487
 
 ---
 
-### 20230623 SHIDO - Business Loigc
+### 20230623 SHIDO - Business Logic
 
 ### Lost: ~997 WBNB
 
@@ -3072,7 +3072,7 @@ https://twitter.com/hexagate_/status/1671188024607100928?cxt=HHwWgMC--e2poLEuAAA
 
 ---
 
-### 20230619 Contract_0x7657 - Business Loigc
+### 20230619 Contract_0x7657 - Business Logic
 
 ### Lost: ~$20k $USDT
 
