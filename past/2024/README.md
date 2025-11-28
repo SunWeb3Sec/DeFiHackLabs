@@ -2982,7 +2982,7 @@ forge test --match-contract DN404_exp -vvv
 
 ---
 
-### 20240208 Pandora - interger underflow
+### 20240208 Pandora - Integer Underflow
 
 ### Lost: ~17K USD
 
