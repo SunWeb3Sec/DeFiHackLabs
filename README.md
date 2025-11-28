@@ -152,7 +152,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250426 Lifeprotocol](#20250426-lifeprotocol---price-manipulation)
 
-[20250426 ImpermaxV3](#20250426-impermaxv3---floashloan)
+[20250426 ImpermaxV3](#20250426-impermaxv3---flashloan-price-oracle-manipulation)
 
 [20250416 Roar](#20250416-roar---rug-pull)
 
@@ -2089,7 +2089,7 @@ https://x.com/peckshield/status/1934895187102454206
 
 ---
 
-### 20250612 AAVEBoost---logic-flaw
+### 20250612 AAVEBoost - Logic Flaw
 
 ### Lost: 14.8K USD
 
@@ -2105,7 +2105,7 @@ https://x.com/CertiKAlert/status/1933011428157563188
 
 ---
 
-### 20250610 Unverified_8490---access-control
+### 20250610 Unverified_8490 - Access Control
 
 ### Lost: 48.3K USD
 
@@ -2121,7 +2121,7 @@ https://x.com/TenArmorAlert/status/1932309011564781774
 
 ---
 
-### 20250528 Corkprotocol - access-control
+### 20250528 Corkprotocol - Access Control
 
 ### Lost: 12M USD
 
@@ -2285,7 +2285,7 @@ https://x.com/TenArmorAlert/status/1916312483792408688
 
 ---
 
-### 20250426 ImpermaxV3 - Floashloan
+### 20250426 ImpermaxV3 - FlashLoan Price Oracle Manipulation
 
 ### Lost: 62,628.66 USD
 

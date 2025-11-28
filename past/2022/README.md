@@ -98,7 +98,7 @@
 
 [20221014 EFLeverVault](#20221014-eflevervault---verify-flashloan-callback)
 
-[20221014 MEVBOT a47b](#20221014-mevbota47b---mevbot-a47b)
+[20221014 MEVBOT a47b](#20221014-mevbota47b---price-oracle-manipulation)
 
 [20221012 ATK](#20221012-atk---flashloan-manipulate-price)
 
@@ -122,7 +122,7 @@
 
 [20220929 BXH](#20220928-bxh---flashloan--price-oracle-manipulation)
 
-[20220928 MEVBOT Badc0de](#20220928-MEVBOT---Badc0de)
+[20220928 MEVBOT Badc0de](#20220928-MEVBOT---arbitrary-call)
 
 [20220923 RADT-DAO](#20220923-RADT-DAO---pair-manipulate)
 
@@ -1250,7 +1250,7 @@ https://twitter.com/danielvf/status/1580936010556661761
 
 ---
 
-### 20221014 MEVBOTa47b - MEVBOT a47b
+### 20221014 MEVBOTa47b - Price Oracle Manipulation
 
 ### Lost: ~187.75 WETH
 
@@ -1507,7 +1507,7 @@ https://bscscan.com/tx/0xa13c8c7a0c97093dba3096c88044273c29cebeee109e23622cd412d
 
 ---
 
-### 20220928 MEVBOT - Badc0de
+### 20220928 MEVBOT - Arbitrary Call
 
 ### Lost: $1,469,700
 
