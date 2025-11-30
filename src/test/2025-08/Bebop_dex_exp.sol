@@ -8,10 +8,10 @@ import "../interface.sol";
 // Attacker : 0x59537353248d0b12c7fcca56a4e420ffec4abc91
 // Attack Contract : 0x091101b0f31833c03dddd5b6411e62a212d05875
 // Vulnerable Contract : 0xbeb0b0623f66bE8cE162EbDfA2ec543A522F4ea6
-// Attack Tx : https://basescan.com/tx/0xe5f8fe69b38613a855dbcb499a2c4ecffe318c620a4c4117bd0e298213b7619d
+// Attack Tx : https://arbiscan.io/tx/0xe5f8fe69b38613a855dbcb499a2c4ecffe318c620a4c4117bd0e298213b7619d
 
 // @Info
-// Vulnerable Contract Code : https://basescan.com/address/0xbeb0b0623f66bE8cE162EbDfA2ec543A522F4ea6#code
+// Vulnerable Contract Code : https://arbiscan.io/address/0xbeb0b0623f66bE8cE162EbDfA2ec543A522F4ea6#code
 
 // @Analysis
 // Post-mortem : https://x.com/SuplabsYi/status/1955230173365961128
