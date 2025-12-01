@@ -80,4 +80,42 @@ contract BaseTestWithBalanceLog is Test {
             getFundingDecimals()
         );
     }
+     function logTokenBalance(
+        address token,
+        address account,
+        string memory label
+    ) internal {
+        if (token == address(0)) {
+            emit log_named_decimal_uint(
+                string(abi.encodePacked(label, " ETH Balance")),
+                account.balance,
+                18
+            );
+        } else {
+            emit log_named_decimal_uint(
+                string(abi.encodePacked(label, " ", TokenHelper.getTokenSymbol(token), " Balance")),
+                TokenHelper.getTokenBalance(token, account),
+                TokenHelper.getTokenDecimals(token)
+            );
+        }
+    }
+
+    function logMultipleTokenBalances(
+        address[] memory tokens,
+        address account,
+        string memory label
+    ) internal {
+        emit log_string(string(abi.encodePacked("=== ", label, " ===")));
+        for (uint256 i = 0; i < tokens.length; i++) {
+            if (tokens[i] == address(0)) {
+                emit log_named_decimal_uint("ETH Balance", account.balance, 18);
+            } else {
+                emit log_named_decimal_uint(
+                    string(abi.encodePacked(TokenHelper.getTokenSymbol(tokens[i]), " Balance")),
+                    TokenHelper.getTokenBalance(tokens[i], account),
+                    TokenHelper.getTokenDecimals(tokens[i])
+                );
+            }
+        }
+    }
 }
