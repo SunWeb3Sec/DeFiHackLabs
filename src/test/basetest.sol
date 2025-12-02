@@ -5,7 +5,6 @@ import "./tokenhelper.sol";
 import "forge-std/Test.sol";
 
 contract BaseTestWithBalanceLog is Test {
-    //Change this to the target token to get token balance of,Keep it address 0 if its ETH that is gotten at the end of the exploit
     address fundingToken = address(0);
 
     struct ChainInfo {
@@ -28,76 +27,53 @@ contract BaseTestWithBalanceLog is Test {
         chainIdToInfo[137] = ChainInfo("POLYGON", "MATIC");
         chainIdToInfo[42_220] = ChainInfo("CELO", "CELO");
         chainIdToInfo[8453] = ChainInfo("BASE", "ETH");
-        chainIdToInfo[1329] = ChainInfo("SEI","SEI");
-    }
-
-    function getChainInfo(
-        uint256 chainId
-    ) internal view returns (string memory, string memory) {
-        ChainInfo storage info = chainIdToInfo[chainId];
-        return (info.name, info.symbol);
+        chainIdToInfo[1329] = ChainInfo("SEI", "SEI");
     }
 
     function getChainSymbol(
         uint256 chainId
     ) internal view returns (string memory symbol) {
-        (, symbol) = getChainInfo(chainId);
-        //Return eth as default if chainid is not registered in mapping
-        // Return eth as default if chainid is not registered in mapping
-        if (bytes(symbol).length == 0) {
-            symbol = "ETH";
+        symbol = chainIdToInfo[chainId].symbol;
+        if (bytes(symbol).length == 0) symbol = "ETH";
+    }
+
+    function _getTokenData(
+        address token,
+        address account
+    ) internal returns (string memory symbol, uint256 balance, uint8 decimals) {
+        if (token == address(0)) {
+            symbol = getChainSymbol(block.chainid);
+            balance = account.balance;
+            decimals = 18;
+        } else {
+            symbol = TokenHelper.getTokenSymbol(token);
+            balance = TokenHelper.getTokenBalance(token, account);
+            decimals = TokenHelper.getTokenDecimals(token);
         }
     }
 
-    function getFundingBal() internal returns (uint256) {
-        return fundingToken == address(0)
-            ? address(this).balance
-            : TokenHelper.getTokenBalance(fundingToken, address(this));
-    }
-
-    function getFundingDecimals() internal returns (uint8) {
-        return fundingToken == address(0) ? 18 : TokenHelper.getTokenDecimals(fundingToken);
-    }
-
-    function getBaseCurrencySymbol() internal returns (string memory) {
-        string memory chainSymbol = getChainSymbol(block.chainid);
-        return fundingToken == address(0) ? chainSymbol : TokenHelper.getTokenSymbol(fundingToken);
-    }
-
-    modifier balanceLog() {
-        if (fundingToken == address(0)) vm.deal(address(this), 0);
-        logBalance("Before");
-        _;
-        logBalance("After");
-    }
-
-    function logBalance(
-        string memory stage
+    function _logTokenBalance(
+        address token,
+        address account,
+        string memory label
     ) private {
-        emit log_named_decimal_uint(
-            string(abi.encodePacked("Attacker ", getBaseCurrencySymbol(), " Balance ", stage, " exploit")),
-            getFundingBal(),
-            getFundingDecimals()
-        );
+        (string memory symbol, uint256 balance, uint8 decimals) = _getTokenData(token, account);
+        emit log_named_decimal_uint(string(abi.encodePacked(label, " ", symbol, " Balance")), balance, decimals);
     }
-     function logTokenBalance(
+
+    modifier balanceLog() virtual {
+        if (fundingToken == address(0)) vm.deal(address(this), 0);
+        _logTokenBalance(fundingToken, address(this), string(abi.encodePacked("Attacker Before exploit")));
+        _;
+        _logTokenBalance(fundingToken, address(this), string(abi.encodePacked("Attacker After exploit")));
+    }
+
+    function logTokenBalance(
         address token,
         address account,
         string memory label
     ) internal {
-        if (token == address(0)) {
-            emit log_named_decimal_uint(
-                string(abi.encodePacked(label, " ETH Balance")),
-                account.balance,
-                18
-            );
-        } else {
-            emit log_named_decimal_uint(
-                string(abi.encodePacked(label, " ", TokenHelper.getTokenSymbol(token), " Balance")),
-                TokenHelper.getTokenBalance(token, account),
-                TokenHelper.getTokenDecimals(token)
-            );
-        }
+        _logTokenBalance(token, account, label);
     }
 
     function logMultipleTokenBalances(
@@ -107,15 +83,7 @@ contract BaseTestWithBalanceLog is Test {
     ) internal {
         emit log_string(string(abi.encodePacked("=== ", label, " ===")));
         for (uint256 i = 0; i < tokens.length; i++) {
-            if (tokens[i] == address(0)) {
-                emit log_named_decimal_uint("ETH Balance", account.balance, 18);
-            } else {
-                emit log_named_decimal_uint(
-                    string(abi.encodePacked(TokenHelper.getTokenSymbol(tokens[i]), " Balance")),
-                    TokenHelper.getTokenBalance(tokens[i], account),
-                    TokenHelper.getTokenDecimals(tokens[i])
-                );
-            }
+            _logTokenBalance(tokens[i], account, "");
         }
     }
 }
