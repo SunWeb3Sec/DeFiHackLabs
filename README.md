@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-672 incidents included.
+673 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20251110 DRLVaultV3](#20251110-drlvaultv3---price-manipulation)
 
 [20251104 Moonwell](#20251104-moonwell---faulty-oracle)
 
@@ -1439,6 +1441,23 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20251110 DRLVaultV3 - Price Manipulation
+
+### Lost: 100k USD
+
+```sh
+forge test --contracts ./src/test/2025-11/DRLVaultV3_exp.sol -vvv
+```
+
+#### Contract
+[DRLVaultV3_exp.sol](src/test/2025-11/DRLVaultV3_exp.sol)
+
+### Link reference
+
+https://blog.verichains.io/p/the-drlvaultv3-exploit-a-slippage
+
+---
 
 ### 20251104 Moonwell - Faulty Oracle
 
