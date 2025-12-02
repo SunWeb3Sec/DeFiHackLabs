@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-673 incidents included.
+674 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20251201 yETH](#20251201-yeth---unsafe-math)
 
 [20251110 DRLVaultV3](#20251110-drlvaultv3---price-manipulation)
 
@@ -1441,6 +1443,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20251201 yETH - Unsafe Math
+
+### Lost: 9M USD
+
+
+```sh
+forge test --contracts ./src/test/2025-12/yETH_exp.sol -vvv  --evm-version cancun
+```
+#### Contract
+[yETH_exp.sol](src/test/2025-12/yETH_exp.sol)
+### Link reference
+
+https://x.com/Togbe0x/status/1995241372354539621
+
+---
 
 ### 20251110 DRLVaultV3 - Price Manipulation
 
