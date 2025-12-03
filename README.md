@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-673 incidents included.
+674 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20251201 yETH](#20251201-yeth---unsafe-math)
+
+[20251110 DRLVaultV3](#20251110-drlvaultv3---price-manipulation)
+
 [20251104 Moonwell](#20251104-moonwell---faulty-oracle)
 
 [20251103 BalancerV2](#20251103-balancerv2---precision-loss)
@@ -1453,6 +1456,23 @@ forge test --contracts ./src/test/2025-12/yETH_exp.sol -vvv  --evm-version cancu
 ### Link reference
 
 https://x.com/Togbe0x/status/1995241372354539621
+
+---
+
+### 20251110 DRLVaultV3 - Price Manipulation
+
+### Lost: 100k USD
+
+```sh
+forge test --contracts ./src/test/2025-11/DRLVaultV3_exp.sol -vvv
+```
+
+#### Contract
+[DRLVaultV3_exp.sol](src/test/2025-11/DRLVaultV3_exp.sol)
+
+### Link reference
+
+https://blog.verichains.io/p/the-drlvaultv3-exploit-a-slippage
 
 ---
 
