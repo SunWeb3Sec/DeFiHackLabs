@@ -5,7 +5,7 @@ pragma solidity ^0.8.10;
 // Attacker : https://etherscan.io/address/0x38f68f119243adbca187e1ef64344ed475a8c69c
 // Attack Contract : https://etherscan.io/address/0x3aa228a80f50763045bdfc45012da124bd0a6809
 // Vulnerable Contract : https://etherscan.io/address/0x2b9dc65253c035eb21778cb3898eab5a0ada0cce
-// Attack Tx : https://etherscan.io/tx/0xc0be8c3792a5b1ba7d653dc681ff611a5b79a75fe51c359cf1aac633e9441574
+// Attack Tx : https://app.blocksec.com/explorer/tx/eth/0xa4d7ee2ddb9db06961a17e2a5ae71743a266bcb720be138670f4a10e8dfc13e9
 
 import "forge-std/Test.sol";
 import "./../interface.sol";
