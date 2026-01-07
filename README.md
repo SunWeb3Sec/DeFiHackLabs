@@ -1580,7 +1580,7 @@ https://x.com/Phalcon_xyz/status/1974532815208485102
 
 ### 20250918 NGP - Price Manipulation
 
-### Lost: 100k USD
+### Lost: 2M USD
 
 ```sh
 forge test --contracts ./src/test/2025-09/NGP_exp.sol -vvv
