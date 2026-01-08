@@ -7,6 +7,7 @@ import "../interface.sol";
 // @KeyInfo - Total Lost : ~ 311.4 BNB
 // Attacker : https://bscscan.com/address/0xad2cb8f48e74065a0b884af9c5a4ecbba101be23
 // Attack Contract : https://bscscan.com/address/0x1e2d48e640243b04a9fa76eb49080e9ab110b4ac
+// Created Attack Contract: https://bscscan.com/address/0xFd9267eE6594bD8E82e8030c353870fA1773F7f8
 // Vulnerable Contract : https://bscscan.com/address/0xc321ac21a07b3d593b269acdace69c3762ca2dd0
 // Attack Tx : https://bscscan.com/tx/0x2d9c1a00cf3d2fda268d0d11794ad2956774b156355e16441d6edb9a448e5a99
 

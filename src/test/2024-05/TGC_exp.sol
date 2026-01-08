@@ -4,7 +4,10 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./../interface.sol";
 
+
 // TX : https://app.blocksec.com/explorer/tx/bsc/0x12e8c24dec36a29fdd9b9d7a8b587b3abd2519089b6438c194e6e5eb357b68d8
+// Attacker : https://bscscan.com/address/0x36fb87c3e65ec608d37e38bd556fb6ebdb3d8a39
+// Attack Contract : https://etherscan.io/address/0x3E1c5Ddd39801C1e72e5aB7E19c614fd398747f8, 
 // GUY : https://x.com/ChainAegis/status/1789490986588205529
 // Profit : ~32K USD
 

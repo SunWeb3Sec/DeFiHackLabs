@@ -8,6 +8,7 @@ import "./../interface.sol";
 // TX : https://app.blocksec.com/explorer/tx/eth/0x53334c36502bd022bd332f2aa493862fd8f722138d1989132a46efddcc6b04d4
 // Attacker : https://etherscan.io/address/0x98250d30aed204e5cbb8fef7f099bc68dbc4b896
 // Attack Contract : https://etherscan.io/address/0xe10b2cfa421d0ecd5153c7a9d53dad949e1990dd
+// Created Attack Contract: https://etherscan.io/address/0x8a2F54B649d22BFd2A6bA23ADAb7DFd2d72EED9f
 // GUY : https://x.com/SlowMist_Team/status/1815656653100077532
 
 library DATA {

@@ -7,6 +7,7 @@ import "./../interface.sol";
 // @KeyInfo - Total Lost : ~404 WBNB
 // Attacker : 0x4645863205b47a0a3344684489e8c446a437d66c
 // Attack Contract : 0x8f921e27e3af106015d1c3a244ec4f48dbfcad14
+// Created Attack Contract: 0x40122cEcaAaD5dd1c1da4d8cEc42120565C547D7
 // Vulnerable Contract : 0x564d4126af2b195ffaa7fb470ed658b1d9d07a5
 // Attack Tx : 0xd4c7c11c46f81b6bf98284e4921a5b9f0ff97b4c71ebade206cb10507e4503b0
 

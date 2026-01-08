@@ -6,6 +6,7 @@ import "../basetest.sol";
 // @KeyInfo - Total Lost : 21.5K
 // Attacker : https://bscscan.com/address/0xf1e73123594cb0f3655d40e4dd6bde41fa8806e8
 // Attack Contract : https://bscscan.com/address/0xe40ab156440804c3404bb80cbb6b47dddd3abfd7
+// Created Attack Contract: https://bscscan.com/address/0x818CD70bE0C9DEC3B0bc52eFAACEb06469Ce587F
 // Vulnerable Contract : https://bscscan.com/address/0x384b9fb6e42dab87f3023d87ea1575499a69998e
 // Attack Tx : https://bscscan.com/tx/0xd6ba15ecf3df9aaae37450df8f79233267af41535793ee1f69c565b50e28f7da
 

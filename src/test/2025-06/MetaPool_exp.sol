@@ -7,6 +7,7 @@ import "../interface.sol";
 // @KeyInfo - Total Lost : 25k USD
 // Attacker : https://etherscan.io/address/0x48f1d0f5831eb6e544f8cbde777b527b87a1be98
 // Attack Contract : https://etherscan.io/address/0xff13d5899aa7d84c10e4cd6fb030b80554424136
+// Created Attack Contract: https://etherscan.io/address/0xC3D10bd8e051a2bE6408d18Be8464654F699a25a
 // Vulnerable Contract : https://etherscan.io/address/0x48afbbd342f64ef8a9ab1c143719b63c2ad81710
 // Attack Tx : https://etherscan.io/tx/0x57ee419a001d85085478d04dd2a73daa91175b1d7c11d8a8fb5622c56fd1fa69
 
