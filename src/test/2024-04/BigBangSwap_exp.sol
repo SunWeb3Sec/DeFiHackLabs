@@ -4,6 +4,7 @@ pragma solidity ^0.8.10;
 // @KeyInfo - Total Lost : ~5k $BUSD
 // Attacker : https://bscscan.com/address/0xc1b6f9898576d722dbf604aaa452cfea3a639c59
 // Attack Contract : https://bscscan.com/address/0xb22cf0e1672344f23f3126fbd35f856e961fd780
+// Created Attack Contract: https://bscscan.com/address/0xAB3D2f2D70deb75ac948F8f8A7136d0f90487cfe
 // Vulnerable Contract : https://bscscan.com/address/0xa45d4359246dbd523ab690bef01da06b07450030
 // Attack Tx : https://app.blocksec.com/explorer/tx/bsc/0x94055664287a565d4867a97ba6d5d2e28c55d10846e3f83355ba84bd1b9280fc
 

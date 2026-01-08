@@ -7,7 +7,8 @@ import "./../interface.sol";
 
 // @KeyInfo - Total Lost : 56000
 // Attacker : https://etherscan.io/address/0x6ea83f23795f55434c38ba67fcc428aec0c296dc
-// Attack Contract : https://etherscan.io/address/0x78b0168a18ef61d7460fabb4795e5f1a9226583e
+// Attack Contract : https://etherscan.io/address/0x5e2FFf7bBc7c634992170fF18240b8f10c4D48C6
+// Created Attack Contract: https://etherscan.io/address/0x78B0168a18eF61D7460FAbb4795e5f1A9226583E
 // Vulnerable Contract : https://etherscan.io/address/0x02e7b8511831b1b02d9018215a0f8f500ea5c6b3
 // Attack Tx : https://etherscan.io/tx/0xc27c3ec61c61309c9af35af062a834e0d6914f9352113617400577c0f2b0e9de
 

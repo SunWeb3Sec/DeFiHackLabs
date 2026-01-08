@@ -7,6 +7,7 @@ import "./../interface.sol";
 // TX : https://app.blocksec.com/explorer/tx/bsc/0x96a955304fed48a8fbfb1396ec7658e7dc42b7c140298b80ce4206df34f40e8d
 // Attacker : https://bscscan.com/address/0x56b2d55457b31fb4b78ebddd6718ea2667804a06
 // Attack Contract : https://bscscan.com/address/0xfe7e9c76affdba7b7442adaca9c7c059ec3092fc
+// Created Attack Contract: https://bscscan.com/address/0x0496824589CD3758119F74560E4Fa970e6dff104
  
 
 contract Exploit is Test {

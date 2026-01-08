@@ -22,6 +22,7 @@ interface ISocketVulnRoute {
 // @KeyInfo - Total Lost : ~3.3M US$
 // Attacker : https://etherscan.io/address/0x50DF5a2217588772471B84aDBbe4194A2Ed39066
 // Attack Contract : https://etherscan.io/address/0xf2D5951bB0A4d14BdcC37b66f919f9A1009C05d1
+// Created Attack Contract: https://etherscan.io/address/0xd2bc9A9c2C39B8693ED4B2b72469032E87ED7F4a
 // Vulnerable Contract : https://etherscan.io/address/0x3a23F943181408EAC424116Af7b7790c94Cb97a5 (the faulty route is vulnerable not the gateway itself)
 // Attack Tx : https://etherscan.io/tx/0xc6c3331fa8c2d30e1ef208424c08c039a89e510df2fb6ae31e5aa40722e28fd6
 
