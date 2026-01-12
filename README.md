@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260108 TRU](#20260108-TRU--unsafe-math-overflow)
+
 [20251201 yETH](#20251201-yeth---unsafe-math)
 
 [20251110 DRLVaultV3](#20251110-drlvaultv3---price-manipulation)
@@ -1444,6 +1446,23 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260109 Truebit - OverFlow
+
+### Lost: 8540ETH
+
+
+```sh
+forge test --contracts ./src/test/2026-01/Truebit_exp.sol -vvv
+```
+#### Contract
+[Truebit_exp.sol](src/test/2026-01/Truebit_exp.sol)
+### Link reference
+
+https://www.certik.com/zh-CN/resources/blog/truebit-incident-analysis
+
+---
+
 
 ### 20251201 yETH - Unsafe Math
 
