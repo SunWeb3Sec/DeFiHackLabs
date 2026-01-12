@@ -1429,7 +1429,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### Transaction debugging tools
 
-[Phalcon](https://explorer.phalcon.xyz/) | [Tx tracer](https://openchain.xyz/trace) | [Cruise](https://cruise.supremacy.team/) | [Ethtx](https://ethtx.info/) | [Tenderly](https://dashboard.tenderly.co/explorer) | [eigenphi](https://tx.eigenphi.io/analyseTransaction)
+[Phalcon](https://explorer.phalcon.xyz/) | [CertiK Skylens](https://skylens.certik.com/) | [Tx tracer](https://openchain.xyz/trace) | [Cruise](https://cruise.supremacy.team/) | [Ethtx](https://ethtx.info/) | [Tenderly](https://dashboard.tenderly.co/explorer) | [eigenphi](https://tx.eigenphi.io/analyseTransaction)
 
 ### Ethereum Signature Database
 
