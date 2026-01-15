@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-676 incidents included.
+677 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,7 +53,16 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20260108 TRU](#20260108-TRU--unsafe-math-overflow)
+
+<details> <summary> 2026 </summary>
+
+[20260108 TRU](#20260108-Truebit---unsafe-math-overflow)
+
+[20260101 PRXVT](#20260101-PRXVT---bussiness-logic-flaw)
+
+</details>
+
+<details> <summary> 2025 </summary>
 
 [20251201 yETH](#20251201-yeth---unsafe-math)
 
@@ -240,6 +249,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250104 98#Token](#20250104-98token---unprotected-public-function)
 
 [20250101 LAURAToken](#20250101-lauratoken---pair-balance-manipulation)
+</details>
 
 <details> <summary> 2024 </summary>
 
@@ -378,6 +388,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20240723 MEVbot_0xdd7c](past/2024/README.md#20240723-mevbot_0xdd7c---incorrect-input-validation)
 
 [20250717 WETC](#20250717-wetc---incorrect-burn-logic)
+
 
 [20240716 Lifiprotocol](past/2024/README.md#20240716-lifiprotocol---incorrect-input-validation)
 
@@ -1447,7 +1458,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-### 20260109 Truebit - OverFlow
+--- 
+
+
+### 20260108 Truebit - Unsafe Math OverFlow
 
 ### Lost: 8540ETH
 
@@ -1460,6 +1474,22 @@ forge test --contracts ./src/test/2026-01/Truebit_exp.sol -vvv
 ### Link reference
 
 https://www.certik.com/zh-CN/resources/blog/truebit-incident-analysis
+
+---
+
+
+### 20260101 PRXVT - Bussiness Logic Flaw
+
+### Lost: 32.8 ETH
+
+```sh
+forge test --contracts ./src/test/2026-01/PRXVT_exp.sol -vvv --block-gas-limit 60000000 # use gas limit control iterations
+```
+#### Contract
+[PRXVT_exp.sol](src/test/2026-01/PRXVT_exp.sol)
+### Link reference
+
+https://x.com/CertiKAlert/status/2006685174587605315
 
 ---
 
