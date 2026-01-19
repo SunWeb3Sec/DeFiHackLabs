@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-678 incidents included.
+679 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -58,6 +58,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260110 FutureSwap](#20260110-futureswap---unit-mismatch)
 
 [20260108 TRU](#20260108-TRU--unsafe-math-overflow)
+
+[20260101 PRXVT](#20260101-PRXVT---bussiness-logic-flaw)
 
 [20251201 yETH](#20251201-yeth---unsafe-math)
 
@@ -1499,6 +1501,20 @@ https://www.certik.com/zh-CN/resources/blog/truebit-incident-analysis
 
 ---
 
+### 20260101 PRXVT - Bussiness Logic Flaw
+
+### Lost: 32.8 ETH
+
+```sh
+forge test --contracts ./src/test/2026-01/PRXVT_exp.sol -vvv --block-gas-limit 60000000 # use gas limit control iterations
+```
+#### Contract
+[PRXVT_exp.sol](src/test/2026-01/PRXVT_exp.sol)
+### Link reference
+
+https://x.com/CertiKAlert/status/2006685174587605315
+
+---
 
 ### 20251201 yETH - Unsafe Math
 
