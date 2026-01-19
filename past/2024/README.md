@@ -9,7 +9,7 @@
 ### Lost: 15.7k USD
 
 ```sh
-forge test --contracts ./../../src/test/2024-12/Bizness_exp.sol -vvv
+forge test --contracts ./src/test/2024-12/Bizness_exp.sol -vvv
 ```
 #### Contract
 [Bizness_exp.sol](../../src/test/2024-12/Bizness_exp.sol)
@@ -25,7 +25,7 @@ https://x.com/TenArmorAlert/status/1872857132363645205
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-12/Moonhacker_exp.sol -vvv --evm-version shanghai
+forge test --contracts ./src/test/2024-12/Moonhacker_exp.sol -vvv --evm-version shanghai
 ```
 #### Contract
 [Moonhacker_exp.sol](../../src/test/2024-12/Moonhacker_exp.sol)
@@ -41,7 +41,7 @@ https://blog.solidityscan.com/moonhacker-vault-hack-analysis-ab122cb226f6
 
 
 ```sh
-forge test --contracts ../../src/test/2024-12/SlurpyCoin_exp.sol -vvv
+forge test --contracts ./src/test/2024-12/SlurpyCoin_exp.sol -vvv
 ```
 
 #### Contract
@@ -59,7 +59,7 @@ https://x.com/CertiKAlert/status/1869580379675590731
 ### Lost: ~ $85.7K
 
 ```sh
-forge test --contracts ../../src/test/2024-12/BTC24H_exp.sol -vvv
+forge test --contracts ./src/test/2024-12/BTC24H_exp.sol -vvv
 ```
 
 #### Contract
@@ -95,7 +95,7 @@ https://x.com/TenArmorAlert/status/1867950089156575317
 #### Lost: 17.4 BNB (~ $12,048)
 
 ```sh
-forge test --contracts ./../../src/test/2024-12/LABUBU_exp.sol -vvv
+forge test --contracts ./src/test/2024-12/LABUBU_exp.sol -vvv
 ```
 
 #### Contract
@@ -113,7 +113,7 @@ https://x.com/TenArmorAlert/status/1866481066610958431
 ### Lost: ~501K US$ (133.7 WETH)
 
 ```sh
-forge test --contracts ./../../src/test/2024-12/CloberDEX_exp.sol -vvv --evm-version cancun
+forge test --contracts ./src/test/2024-12/CloberDEX_exp.sol -vvv --evm-version cancun
 ```
 #### Contract
 [CloberDEX_exp.sol](../../src/test/2024-12/CloberDEX_exp.sol)
@@ -129,7 +129,7 @@ https://x.com/peckshield/status/1866443215186088048
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-12/Pledge_exp.sol -vvv --evm-version shanghai
+forge test --contracts ./src/test/2024-12/Pledge_exp.sol -vvv --evm-version shanghai
 ```
 #### Contract
 [Pledge_exp.sol](../../src/test/2024-12/Pledge_exp.sol)
@@ -144,7 +144,7 @@ https://x.com/TenArmorAlert/status/1864126176848965810
 ### Lost: 10k USD
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/NFTG_exp.sol -vvv
+forge test --contracts ./src/test/2024-11/NFTG_exp.sol -vvv
 ```
 #### Contract
 
@@ -161,7 +161,7 @@ https://x.com/TenArmorAlert/status/1861430745572745245
 ### Lost: 8.5k USD
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/proxy_b7e1_exp.sol -vvv --via-ir
+forge test --contracts ./src/test/2024-11/proxy_b7e1_exp.sol -vvv --via-ir
 ```
 #### Contract
 
@@ -178,7 +178,7 @@ https://x.com/TenArmorAlert/status/1860867560885150050
 ### Lost: 31.5K USD
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/Ak1111_exp.sol -vvv
+forge test --contracts ./src/test/2024-11/Ak1111_exp.sol -vvv
 ```
 #### Contract
 
@@ -196,7 +196,7 @@ https://x.com/TenArmorAlert/status/1860554838897197135
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/Matez_exp.sol -vvv
+forge test --contracts ./src/test/2024-11/Matez_exp.sol -vvv
 ```
 #### Contract
 
@@ -214,7 +214,7 @@ https://x.com/TenArmorAlert/status/1859830885966905670
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/MainnetSettler_exp.sol -vvv --evm-version cancun
+forge test --contracts ./src/test/2024-11/MainnetSettler_exp.sol -vvv --evm-version cancun
 ```
 #### Contract
 [MainnetSettler_exp.sol](../../src/test/2024-11/MainnetSettler_exp.sol)
@@ -230,7 +230,7 @@ https://x.com/TenArmorAlert/status/1859416451473604902
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/PolterFinance_exploit.sol -vvv
+forge test --contracts ./src/test/2024-11/PolterFinance_exploit.sol -vvv
 ```
 #### Contract
 [PolterFinance_exploit.sol](../../src/test/2024-11/PolterFinance_exploit.sol)
@@ -245,7 +245,7 @@ https://twitter.com/Bcpaintball26/status/1857865758551805976
 ### Lost: 33.7k USD
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/MFT_exp.sol -vvv
+forge test --contracts ./src/test/2024-11/MFT_exp.sol -vvv
 ```
 
 #### Contract
@@ -280,7 +280,7 @@ https://x.com/TenArmorAlert/status/1856984299905716645
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/DeltaPrime_exp.sol -vvv
+forge test --contracts ./src/test/2024-11/DeltaPrime_exp.sol -vvv
 ```
 #### Contract
 [DeltaPrime_exp.sol](../../src/test/2024-11/DeltaPrime_exp.sol)
@@ -296,7 +296,7 @@ https://x.com/peckshield/status/1855910524460159197
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/X319_exp.sol -vvv
+forge test --contracts ./src/test/2024-11/X319_exp.sol -vvv
 ```
 #### Contract
 [X319_exp.sol](../../src/test/2024-11/X319_exp.sol)
@@ -312,7 +312,7 @@ https://x.com/TenArmorAlert/status/1855263208124416377
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/ChiSale_exp.sol -vvv
+forge test --contracts ./src/test/2024-11/ChiSale_exp.sol -vvv
 ```
 #### Contract
 [ChiSale_exp.sol](../../src/test/2024-11/ChiSale_exp.sol)
@@ -328,7 +328,7 @@ https://x.com/TenArmorAlert/status/1854357930382156107
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/CoW_exp.sol -vvv
+forge test --contracts ./src/test/2024-11/CoW_exp.sol -vvv
 ```
 #### Contract
 [CoW_exp.sol](../../src/test/2024-11/CoW_exp.sol)
@@ -344,7 +344,7 @@ https://x.com/TenArmorAlert/status/1854538807854649791
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/VRug_exp.sol -vvv
+forge test --contracts ./src/test/2024-11/VRug_exp.sol -vvv
 ```
 #### Contract
 [VRug_exp.sol](../../src/test/2024-11/VRug_exp.sol)
@@ -359,7 +359,7 @@ https://x.com/TenArmorAlert/status/1854702463737380958
 ### Lost: ~ $14.1K
 
 ```sh
-forge test --contracts ./../../src/test/2024-11/RPP_exp.sol -vvv
+forge test --contracts ./src/test/2024-11/RPP_exp.sol -vvv
 ```
 
 #### Contract
@@ -377,7 +377,7 @@ https://x.com/TenArmorAlert/status/1853984974309142768
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-10/BUBAI_exp.sol -vvv
+forge test --contracts ./src/test/2024-10/BUBAI_exp.sol -vvv
 ```
 #### Contract
 [BUBAI_exp.sol](../../src/test/2024-10/BUBAI_exp.sol)
@@ -393,7 +393,7 @@ https://x.com/TenArmorAlert/status/1851445795918118927
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-10/CompoundFork_exploit.sol -vvv --evm-version shanghai
+forge test --contracts ./src/test/2024-10/CompoundFork_exploit.sol -vvv --evm-version shanghai
 ```
 #### Contract
 [CompoundFork_exploit.sol](../../src/test/2024-10/CompoundFork_exploit.sol)
@@ -410,7 +410,7 @@ https://app.blocksec.com/explorer/tx/base/0x6ab5b7b51f780e8c6c5ddaf65e9badb86881
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-10/Erc20transfer_exp.sol -vvv
+forge test --contracts ./src/test/2024-10/Erc20transfer_exp.sol -vvv
 ```
 #### Contract
 [Erc20transfer_exp.sol](../../src/test/2024-10/Erc20transfer_exp.sol)
@@ -426,7 +426,7 @@ https://x.com/d23e_AG/status/1849064161017225645
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-10/VISTA_exp.sol -vvv --evm-version cancun
+forge test --contracts ./src/test/2024-10/VISTA_exp.sol -vvv --evm-version cancun
 ```
 #### Contract
 [VISTA_exp.sol](../../src/test/2024-10/VISTA_exp.sol)
@@ -443,7 +443,7 @@ https://x.com/TenArmorAlert/status/1848403791881900130
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-10/MorphoBlue_exp.sol -vvv --evm-version shanghai
+forge test --contracts ./src/test/2024-10/MorphoBlue_exp.sol -vvv --evm-version shanghai
 ```
 #### Contract
 [MorphoBlue_exp.sol](../../src/test/2024-10/MorphoBlue_exp.sol)
@@ -495,7 +495,7 @@ forge test --match-contract SASHAToken_exp -vvv
 ### Total Lost : 5.8k USDT
 
 ```
-forge test --contracts ./../../src/test/2024-10/HYDT_exp.sol -vvv --evm-version cancun
+forge test --contracts ./src/test/2024-10/HYDT_exp.sol -vvv --evm-version cancun
 ```
 
 #### Contract
@@ -531,7 +531,7 @@ forge test --match-contract AIZPTToken_exp -vvv
 ### Lost: 8.45 ETH (~$20K USD)
 
 ```sh
-forge test --contracts ./../../src/test/2024-10/FireToken_exp.sol -vvv
+forge test --contracts ./src/test/2024-10/FireToken_exp.sol -vvv
 ```
 
 #### Contract
@@ -638,7 +638,7 @@ https://x.com/Phalcon_xyz/status/1838042368018137547
 ### Lost: 1.4K
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/PestoToken_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/PestoToken_exp.sol -vvv
 ```
 
 #### Contract
@@ -657,7 +657,7 @@ https://x.com/TenArmorAlert/status/1838225968009527652
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/DOGGO_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/DOGGO_exp.sol -vvv
 ```
 
 #### Contract
@@ -676,7 +676,7 @@ https://x.com/TenArmorAlert/status/1837358462076080521
 
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/Shezmu_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/Shezmu_exp.sol -vvv
 ```
 
 #### Contract
@@ -694,7 +694,7 @@ https://x.com/shoucccc/status/1837228053862437244
 ### Lost: 100 USD
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/unverified_766a_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/unverified_766a_exp.sol -vvv
 ```
 #### Contract
 
@@ -712,7 +712,7 @@ https://x.com/TenArmorAlert/status/1836339028616188321
 ### Lost: 110K
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/WXETA_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/WXETA_exp.sol -vvv
 ```
 #### Contract
 
@@ -729,7 +729,7 @@ https://x.com/TenArmorAlert/status/1835494807495659645
 ### Lost: 12K
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/unverified_5697_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/unverified_5697_exp.sol -vvv
 ```
 #### Contract
 
@@ -760,7 +760,7 @@ forge test --match-contract OTSeaStaking_exp -vvv
 ### Lost: 1.7k
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/unverified_03f9_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/unverified_03f9_exp.sol -vvv
 ```
 #### Contract
 
@@ -776,7 +776,7 @@ https://x.com/TenArmorAlert/status/1834488796953673862
 ### Lost: ~11.7k USD
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/INUMI_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/INUMI_exp.sol -vvv
 ```
 
 #### Contract
@@ -793,7 +793,7 @@ https://x.com/TenArmorAlert/status/1834504921561100606
 ### Lost: ~4.7k USD
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/IUNMI_db27_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/IUNMI_db27_exp.sol -vvv
 ```
 
 #### Contract
@@ -810,7 +810,7 @@ https://x.com/TenArmorAlert/status/1834503422655263099
 ### Lost: ~6.8k USD
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/AIRBTC_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/AIRBTC_exp.sol -vvv
 ```
 
 #### Contract
@@ -846,7 +846,7 @@ https://www.certik.com/zh-CN/resources/blog/caterpillar-coin-cut-token-incident-
 ### Lost: 1.5k
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/unverified_a89f_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/unverified_a89f_exp.sol -vvv
 ```
 
 #### Contract
@@ -864,7 +864,7 @@ https://x.com/TenArmorAlert/status/1831637553415610877
 ### Lost: 400K USD
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/PLN_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/PLN_exp.sol -vvv
 ```
 
 #### Contract
@@ -883,7 +883,7 @@ https://x.com/TenArmorAlert/status/1831525062253654300
 ### Lost: 283 USD
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/HANAToken_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/HANAToken_exp.sol -vvv
 ```
 
 #### Contract
@@ -902,7 +902,7 @@ https://x.com/TenArmorAlert/status/1838963740731203737
 ### Lost: 329 USD
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/unverified_16d0.sol -vvv
+forge test --contracts ./src/test/2024-09/unverified_16d0.sol -vvv
 ```
 
 #### Contract
@@ -945,7 +945,7 @@ post-morten: https://x.com/Penpiexyz_io/status/1831462760787452240
 ### Lost: 21 ETH
 
 ```sh
-forge test --contracts ./../../src/test/2024-09/Pythia_exp.sol -vvv
+forge test --contracts ./src/test/2024-09/Pythia_exp.sol -vvv
 ```
 #### Contract
 [Pythia_exp.sol](../../src/test/2024-09/Pythia_exp.sol)
@@ -960,7 +960,7 @@ https://x.com/QuillAudits_AI/status/1830976830607892649
 ### Lost: $10k
 
 ```sh
-forge test --contracts ./../../src/test/2024-08/unverified_667d_exp.sol -vvv
+forge test --contracts ./src/test/2024-08/unverified_667d_exp.sol -vvv
 ```
 
 #### Contract
@@ -996,7 +996,7 @@ https://www.vibraniumaudits.com/post/aave-hacked-via-periphery-contract-56kstole
 ### Lost: 280BNB
 
 ```sh
-forge test --contracts ./../../src/test/2024-08/COCO_exp.sol -vvv
+forge test --contracts ./src/test/2024-08/COCO_exp.sol -vvv
 ```
 #### Contract
 
@@ -1456,11 +1456,11 @@ forge test --match-contract JokInTheBox_exp -vvv --evm-version cancun
 ### Lost: 19.3M
 
 ```sh
-forge test --contracts ./../../src/test/2024-06/UwuLend_First_exp.sol -vvv --evm-version shanghai
+forge test --contracts ./src/test/2024-06/UwuLend_First_exp.sol -vvv --evm-version shanghai
 ```
 
 ```sh
-forge test --contracts ./../../src/test/2024-06/UwuLend_Second_exp.sol -vvv --evm-version shanghai
+forge test --contracts ./src/test/2024-06/UwuLend_Second_exp.sol -vvv --evm-version shanghai
 ```
 
 #### Contract
