@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-675 incidents included.
+678 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -1433,7 +1433,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### Transaction debugging tools
 
-[Phalcon](https://explorer.phalcon.xyz/) | [CertiK Skylens](https://skylens.certik.com/) | [Tx tracer](https://openchain.xyz/trace) | [Cruise](https://cruise.supremacy.team/) | [Ethtx](https://ethtx.info/) | [Tenderly](https://dashboard.tenderly.co/explorer) | [eigenphi](https://tx.eigenphi.io/analyseTransaction)
+[Phalcon](https://explorer.phalcon.xyz/) | [Tx tracer](https://openchain.xyz/trace) | [Cruise](https://cruise.supremacy.team/) | [Ethtx](https://ethtx.info/) | [Tenderly](https://dashboard.tenderly.co/explorer) | [eigenphi](https://tx.eigenphi.io/analyseTransaction)
 
 ### Ethereum Signature Database
 
@@ -1451,6 +1451,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+
 ### 20260112 MTToken - Incorrect Fee Logic
 
 ### Lost: 37K USD
@@ -1461,7 +1462,6 @@ forge test -vvv --contracts ./src/test/2026-01/MTToken_exp.sol
 #### Contract
 [MTToken_exp.sol](src/test/2026-01/MTToken_exp.sol)
 ### Link reference
-
 https://x.com/TenArmorAlert/status/2010630024274010460?s=20
 https://x.com/nn0b0dyyy/status/2010638145155661942?s=20
 
