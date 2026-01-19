@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-676 incidents included.
+678 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260112 MTToken](#20260112-mttoken---incorrect-fee-logic)
+
+[20260110 FutureSwap](#20260110-futureswap---unit-mismatch)
+
 [20260108 TRU](#20260108-TRU--unsafe-math-overflow)
 
 [20251201 yETH](#20251201-yeth---unsafe-math)
@@ -1446,6 +1450,38 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+### 20260112 MTToken - Incorrect Fee Logic
+
+### Lost: 37K USD
+
+```sh
+forge test -vvv --contracts ./src/test/2026-01/MTToken_exp.sol
+```
+#### Contract
+[MTToken_exp.sol](src/test/2026-01/MTToken_exp.sol)
+### Link reference
+https://x.com/TenArmorAlert/status/2010630024274010460?s=20
+https://x.com/nn0b0dyyy/status/2010638145155661942?s=20
+
+
+---
+
+### 20260110 FutureSwap - Unit Mismatch
+
+### Lost: 433K USD
+
+```sh
+forge test -vvv --contracts ./src/test/2026-01/futureswap_exp.sol.sol
+```
+#### Contract
+[futureswap_exp.sol](src/test/2026-01/futureswap_exp.sol)
+### Link reference
+
+https://x.com/nn0b0dyyy/status/2009922304927731717?s=20
+
+---
 
 ### 20260109 Truebit - OverFlow
 
