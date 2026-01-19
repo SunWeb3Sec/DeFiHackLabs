@@ -57,7 +57,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260110 FutureSwap](#20260110-futureswap---unit-mismatch)
 
-[20260108 TRU](#20260108-TRU--unsafe-math-overflow)
+[20260109 TRU](#20260109-truebit---overflow)
 
 [20260101 PRXVT](#20260101-PRXVT---bussiness-logic-flaw)
 
