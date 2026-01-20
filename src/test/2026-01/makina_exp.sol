@@ -49,7 +49,7 @@ interface EvmVm {
     ) external;
 }
 
-contract DUSDExploitTest is Test {
+contract MakinaExploitTest is Test {
     address private constant USDC = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
     address private constant DUSD = 0x1e33E98aF620F1D563fcD3cfd3C75acE841204ef;
     address private constant MACHINE = 0x6b006870C83b1Cd49E766Ac9209f8d68763Df721;
@@ -67,7 +67,7 @@ contract DUSDExploitTest is Test {
         vm.label(DUSD_USDC_POOL, "DUSD/USDC Curve Pool");
     }
 
-    function testDUSDExploitTest() public {
+    function testMakinaExploitTest() public {
         IMachineShareOracle oracle = IMachineShareOracle(SHARE_ORACLE);
         IMachine machine = IMachine(MACHINE);
 
