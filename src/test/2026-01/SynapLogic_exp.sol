@@ -20,9 +20,7 @@ contract SynapLogicExploitTest is Test {
     address attacker;
 
     function setUp() public {
-        string memory rpc = vm.envOr("BASE_ENDPOINT", string(""));
-        require(bytes(rpc).length != 0, "BASE_ENDPOINT missing");
-        vm.createSelectFork(rpc, FORK_BLOCK);
+        vm.createSelectFork("base", FORK_BLOCK);
         vm.label(SALE_PROXY, "SaleProxy");
         attacker = makeAddr("attacker");
         vm.label(attacker, "Attacker");
