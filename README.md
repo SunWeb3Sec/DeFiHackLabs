@@ -53,6 +53,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20260120 Makina](#20260120-makina---price-oracle-manipulation)
+
 [20260112 MTToken](#20260112-mttoken---incorrect-fee-logic)
 
 [20260110 FutureSwap](#20260110-futureswap---unit-mismatch)
@@ -1456,6 +1459,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260120 Makina - Price Oracle Manipulation
+
+### Lost: 5.1M USD
+
+```sh
+forge test -vvv --contracts ./src/test/2026-01/makina_exp.sol
+```
+
+#### Contract
+[makina_exp.sol](src/test/2026-01/makina_exp.sol)
+
+### Link reference
+https://x.com/nn0b0dyyy/status/2013472538832314630
+https://x.com/TenArmorAlert/status/2013460083078836342
+https://x.com/CertiKAlert/status/2013473512116363734
 
 
 ### 20260112 MTToken - Incorrect Fee Logic
