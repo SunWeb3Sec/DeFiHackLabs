@@ -18,7 +18,6 @@ import "forge-std/console.sol";
 // Post-mortem : https://x.com/nn0b0dyyy/status/2009922304927731717?s=20
 
 contract ContractTest is Test {
-    string internal constant ARB_RPC = "http://localhost:8124/arbitrum"; // hardcoded as requested
     uint256 internal constant ATTACK_BLOCK = 419_829_771;
     uint256 internal constant FORK_BLOCK = ATTACK_BLOCK - 1;
     uint256 internal constant ATTACK_TIMESTAMP = 1_768_033_835;
@@ -30,7 +29,7 @@ contract ContractTest is Test {
     address internal constant AAVE_USDC_ATOKEN = 0x625E7708f30cA75bfd92586e17077590C60eb4cD;
 
 	function setUp() public {
-        vm.createSelectFork(ARB_RPC, FORK_BLOCK);
+        vm.createSelectFork("arbitrum", FORK_BLOCK);
         vm.roll(ATTACK_BLOCK);
         vm.warp(ATTACK_TIMESTAMP);
 

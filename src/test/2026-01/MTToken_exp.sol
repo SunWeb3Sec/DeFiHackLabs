@@ -21,8 +21,6 @@ import "forge-std/console.sol";
 // Twitter Alert : https://x.com/TenArmorAlert/status/2010630024274010460?s=20
 
 contract MTExploitTest is Test {
-    string internal constant BSC_RPC = "http://localhost:8124/bsc";
-
     uint256 internal constant ATTACK_BLOCK = 74_937_080;
     uint256 internal constant FORK_BLOCK = ATTACK_BLOCK - 1;
     uint256 internal constant ATTACK_TIMESTAMP = 1_768_205_155;
@@ -36,7 +34,7 @@ contract MTExploitTest is Test {
     IMoolahFlashLoan internal constant FLASHLOAN = IMoolahFlashLoan(0x8F73b65B4caAf64FBA2aF91cC5D4a2A1318E5D8C);
 
 	function setUp() public {
-        vm.createSelectFork(BSC_RPC, FORK_BLOCK);
+        vm.createSelectFork("bsc", FORK_BLOCK);
         vm.roll(ATTACK_BLOCK);
         vm.warp(ATTACK_TIMESTAMP);
 
