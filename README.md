@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-680 incidents included.
+681 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20260120 Makina](#20260120-makina---price-oracle-manipulation)
 
 [20260120 SynapLogic](#20260120-synaplogic---business-logic-flaw)
 
@@ -1459,6 +1461,37 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260120 SynapLogic - Business Logic Flaw
+### Lost: 27.6 ETH
+
+```sh
+BASE_ENDPOINT=XXX forge test -vvv --contracts ./src/test/2026-01/SynapLogic_exp.sol
+```
+#### Contract
+[SynapLogic_exp.sol](src/test/2026-01/SynapLogic_exp.sol)
+### Link reference
+https://x.com/TenArmorAlert/status/2013432861366292520?s=20
+https://x.com/hklst4r/status/2013440353844461979?s=20
+https://x.com/CertiKAlert/status/2013440963851755610?s=20
+https://x.com/nn0b0dyyy/status/2013445844394279260?s=20
+
+### 20260120 Makina - Price Oracle Manipulation
+
+### Lost: 5.1M USD
+
+```sh
+forge test -vvv --contracts ./src/test/2026-01/makina_exp.sol
+```
+
+#### Contract
+[makina_exp.sol](src/test/2026-01/makina_exp.sol)
+
+### Link reference
+https://x.com/nn0b0dyyy/status/2013472538832314630
+https://x.com/TenArmorAlert/status/2013460083078836342
+https://x.com/CertiKAlert/status/2013473512116363734
+
 
 ### 20260120 SynapLogic - Business Logic Flaw
 ### Lost: 27.6 ETH
