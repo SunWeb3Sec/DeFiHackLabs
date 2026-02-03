@@ -98,7 +98,7 @@
 
 [20231106 TheStandard_io](#20231106-thestandard_io---lack-of-slippage-protection)
 
-[20231106 KR](#20231106-KR---precission-loss)
+[20231106 KR](#20231106-KR---precision-loss)
 
 [20231102 BRAND](#20231102-brand---lack-of-access-control)
 
@@ -106,7 +106,7 @@
 
 [20231101 SwampFinance](#20231101-swampfinance---business-logic-flaw)
 
-[20231101 OnyxProtocol](#20231101-onyxprotocol---precission-loss-vulnerability)
+[20231101 OnyxProtocol](#20231101-onyxprotocol---precision-loss-vulnerability)
 
 [20231031 UniBotRouter](#20231031-UniBotRouter---arbitrary-external-call)
 
@@ -224,7 +224,7 @@
 
 [20230715 USDTStakingContract28](#20230715-usdtstakingcontract28---lack-of-access-control)
 
-[20230712 Platypus](#20230712-platypus---bussiness-logic-flaw)
+[20230712 Platypus](#20230712-platypus---business-logic-flaw)
 
 [20230712 WGPT](#20230712-wgpt---business-logic-flaw)
 

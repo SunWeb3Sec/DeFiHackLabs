@@ -152,7 +152,7 @@ https://blog.solidityscan.com/ngp-token-hack-analysis-414b6ca16d96
 
 ---
 
-### 20250913 Kame - Arbitary External Call
+### 20250913 Kame - Arbitrary External Call
 
 ### Lost: 18167.8 USD
 
