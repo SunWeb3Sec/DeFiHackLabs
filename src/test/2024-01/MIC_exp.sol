@@ -194,7 +194,7 @@ contract LPFeeClaimer {
         MICToBNB();
         // Transfer BNB to main attack contract
         (bool success,) = msg.sender.call{value: address(this).balance}("");
-        require(success, "Transfering BNB not successful");
+        require(success, "Transferring BNB not successful");
     }
 
     receive() external payable {}
