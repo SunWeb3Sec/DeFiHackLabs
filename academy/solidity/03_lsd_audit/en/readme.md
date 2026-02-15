@@ -1,6 +1,6 @@
 # Lesson 3: Guidelines for Auditing Staking Protocols
 
-Author:[QuillAudits](https://twitter.com/QuillAudits)
+Author: [QuillAudits](https://twitter.com/QuillAudits)
 
 This document outlines the concept of liquidity staking protocols and auditing guidelines for staking protocols. The guidelines cover a range of vulnerable spots such as withdrawal mechanisms, rounding errors, external calls, fee logic, loops, structs, staking duration, and so on. 
 

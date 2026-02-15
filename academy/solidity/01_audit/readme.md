@@ -1,6 +1,6 @@
 # 第一課：智能合約審計方法與技巧
 
-Author：[Sm4rty](https://twitter.com/Sm4rty_)
+Author: [Sm4rty](https://twitter.com/Sm4rty_)
 
 Translation: [SunSec](https://twitter.com/1nf0s3cpt)
 
