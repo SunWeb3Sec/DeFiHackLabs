@@ -64,7 +64,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260109 TRU](#20260109-truebit---overflow)
 
-[20260101 PRXVT](#20260101-PRXVT---bussiness-logic-flaw)
+[20260101 PRXVT](#20260101-PRXVT---business-logic-flaw)
 
 <details> <summary> 2025 </summary>
 
@@ -84,7 +84,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250918 NGP](past/2025/README.md#20250918-ngp---price-manipulation)
 
-[20250913 Kame](past/2025/README.md#20250913-kame---arbitary-external-call)
+[20250913 Kame](past/2025/README.md#20250913-kame---arbitrary-external-call)
 
 [20250830 EverValueCoin](past/2025/README.md#20250830-evervaluecoin---arbitrage)
 
@@ -548,7 +548,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240312 BBT](past/2024/README.md#20240312-bbt---business-logic-flaw)
 
-[20240311 Binemon](past/2024/README.md#20240311-Binemon---precission-loss)
+[20240311 Binemon](past/2024/README.md#20240311-Binemon---precision-loss)
 
 [20240309 Juice](past/2024/README.md#20240309-juice---business-logic-flaw)
 
@@ -606,7 +606,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240130 XSIJ](past/2024/README.md#20240130-xsij---business-logic-flaw)
 
-[20240130 MIMSpell](past/2024/README.md#20240130-mimspell---precission-loss)
+[20240130 MIMSpell](past/2024/README.md#20240130-mimspell---precision-loss)
 
 [20240129 PeapodsFinance](past/2024/README.md#20240128-PeapodsFinance---reentrancy)
 
@@ -736,7 +736,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231106 TheStandard_io](past/2023/README.md#20231106-thestandard_io---lack-of-slippage-protection)
 
-[20231106 KR](past/2023/README.md#20231106-KR---precission-loss)
+[20231106 KR](past/2023/README.md#20231106-KR---precision-loss)
 
 [20231102 BRAND](past/2023/README.md#20231102-brand---lack-of-access-control)
 
@@ -744,7 +744,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231101 SwampFinance](past/2023/README.md#20231101-swampfinance---business-logic-flaw)
 
-[20231101 OnyxProtocol](past/2023/README.md#20231101-onyxprotocol---precission-loss-vulnerability)
+[20231101 OnyxProtocol](past/2023/README.md#20231101-onyxprotocol---precision-loss-vulnerability)
 
 [20231031 UniBotRouter](past/2023/README.md#20231031-UniBotRouter---arbitrary-external-call)
 
@@ -862,7 +862,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230715 USDTStakingContract28](past/2023/README.md#20230715-usdtstakingcontract28---lack-of-access-control)
 
-[20230712 Platypus](past/2023/README.md#20230712-platypus---bussiness-logic-flaw)
+[20230712 Platypus](past/2023/README.md#20230712-platypus---business-logic-flaw)
 
 [20230712 WGPT](past/2023/README.md#20230712-wgpt---business-logic-flaw)
 
@@ -886,15 +886,15 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230630 Biswap](past/2023/README.md#20230630-biswap---v3migrator-exploit)
 
-[20230630 MyAi](past/2023/README.md#20230630-MyAi---business-loigc)
+[20230630 MyAi](past/2023/README.md#20230630-MyAi---business-logic)
 
 [20230628 Themis](past/2023/README.md#20230628-themis---manipulation-of-prices-using-flashloan)
 
-[20230627 UnverifiedContr_9ad32](past/2023/README.md#20230627-unverifiedcontr_9ad32---business-loigc-flaw)
+[20230627 UnverifiedContr_9ad32](past/2023/README.md#20230627-unverifiedcontr_9ad32---business-logic-flaw)
 
-[20230627 STRAC](past/2023/README.md#20230627-STRAC---business-loigc)
+[20230627 STRAC](past/2023/README.md#20230627-STRAC---business-logic)
 
-[20230623 SHIDO](past/2023/README.md#20230623-shido---business-loigc)
+[20230623 SHIDO](past/2023/README.md#20230623-shido---business-logic)
 
 [20230621 BabyDogeCoin02](past/2023/README.md#20230621-babydogecoin02---lack-slippage-protection)
 
@@ -902,7 +902,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230620 MIM](past/2023/README.md#20230620-mimspell---arbitrary-external-call-vulnerability)
 
-[20230619 Contract_0x7657](past/2023/README.md#20230620-Contract_0x7657---business-loigc)
+[20230619 Contract_0x7657](past/2023/README.md#20230619-Contract_0x7657---business-logic)
 
 [20230618 ARA](past/2023/README.md#20230618-ara---incorrect-handling-of-permissions)
 
