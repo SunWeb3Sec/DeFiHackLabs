@@ -1476,8 +1476,11 @@ forge test -vvv --contracts ./src/test/2026-01/SynapLogic_exp.sol
 
 ### Link reference
 https://x.com/TenArmorAlert/status/2013432861366292520?s=20
+
 https://x.com/hklst4r/status/2013440353844461979?s=20
+
 https://x.com/CertiKAlert/status/2013440963851755610?s=20
+
 https://x.com/nn0b0dyyy/status/2013445844394279260?s=20
 
 ### 20260120 Makina - Price Oracle Manipulation
