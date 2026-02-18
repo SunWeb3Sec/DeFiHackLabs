@@ -1481,7 +1481,8 @@ https://x.com/nn0b0dyyy/status/2013445844394279260?s=20
 ### Lost: 5.1M USD
 
 ```sh
-forge test -vvv --contracts ./src/test/2026-01/makina_exp.sol
+forge test -vvv --contracts ./src/test/2026-01/makina_exp.sol --evm-version cancun
+# MUST use evm >= cancun
 ```
 
 #### Contract
