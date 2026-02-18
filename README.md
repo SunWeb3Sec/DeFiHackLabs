@@ -1497,7 +1497,9 @@ forge test -vvv --contracts ./src/test/2026-01/makina_exp.sol --evm-version canc
 
 ### Link reference
 https://x.com/nn0b0dyyy/status/2013472538832314630
+
 https://x.com/TenArmorAlert/status/2013460083078836342
+
 https://x.com/CertiKAlert/status/2013473512116363734
 
 
@@ -1512,6 +1514,7 @@ forge test -vvv --contracts ./src/test/2026-01/MTToken_exp.sol
 [MTToken_exp.sol](src/test/2026-01/MTToken_exp.sol)
 ### Link reference
 https://x.com/TenArmorAlert/status/2010630024274010460?s=20
+
 https://x.com/nn0b0dyyy/status/2010638145155661942?s=20
 
 
