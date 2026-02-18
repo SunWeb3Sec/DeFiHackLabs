@@ -34,8 +34,7 @@ contract SynapLogicExploitTest is Test {
 
         uint256 saleBal = SALE_PROXY.balance;
         uint256 maxRefund = saleBal + value;
-        uint256 maxIters = maxRefund / refundPerIter;
-        uint256 iters = maxIters > 20 ? 20 : maxIters;
+        uint256 iters = maxRefund / refundPerIter;
         uint256 expectedRefund = refundPerIter * iters;
 
         address[] memory recipients = new address[](iters);
