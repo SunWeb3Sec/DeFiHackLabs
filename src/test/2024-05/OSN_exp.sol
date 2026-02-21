@@ -9,7 +9,7 @@ import "./../interface.sol";
 // Profit : ~109K USD
 // Here is only one tx,total you can see here :https://bscscan.com/address/0x835b45d38cbdccf99e609436ff38e31ac05bc502#tokentxns
 // REASON : Reward Distribution Problem
-// Distribution contract did not check the LP hold time or whether the reciever is contract or not
+// Distribution contract did not check the LP hold time or whether the receiver is contract or not
 // Actually there are 3 steps
 // TX1:create help contract,split money : https://app.blocksec.com/explorer/tx/bsc/0xbf22eabb5db8785642ba17930bddef48d0d1bb94ebd1e03e7faa6f2a3d1a5540
 // TX2:help contract add Liq : https://app.blocksec.com/explorer/tx/bsc/0x69c64b226f8bf06216cc665ad5e3777ad1b120909326f120f0816ac65a9099c0
