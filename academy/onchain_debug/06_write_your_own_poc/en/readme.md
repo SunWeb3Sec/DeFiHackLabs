@@ -140,7 +140,7 @@ Reentrancy Attacks can be mainly identified into three types:
   
   ![image](https://user-images.githubusercontent.com/53768199/215330576-d15642f7-5819-4e83-a8c8-1d3a48ad8c6d.png)
   
-  At this point, it is known that the completion of the flash loan is determined by checking whether the corresponding token assets in the contract are greater than or equal to the state before the execution of the flash loan callback. And `depoit` function will make this validation complete.
+  At this point, it is known that the completion of the flash loan is determined by checking whether the corresponding token assets in the contract are greater than or equal to the state before the execution of the flash loan callback. And `deposit` function will make this validation complete.
 
   ```solidity
   require(balance0Before.add(fee0) <= balance0After, 'Curve/insufficient-token0-returned');
