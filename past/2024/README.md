@@ -1943,7 +1943,7 @@ https://twitter.com/Phalcon_xyz/status/1785508900093194591
 
 ---
 
-### 20240427 BNBX - precission loss
+### 20240427 BNBX - precision loss
 
 ### Lost: ~75 $BNB
 
@@ -2219,7 +2219,7 @@ https://x.com/hipalex921/status/1778482890705416323?t=KvvG83s7SXr9I55aftOc6w&s=0
 
 ---
 
-### 20240410 BigBangSwap - precission loss
+### 20240410 BigBangSwap - precision loss
 
 ### Lost: $~5K $BUSD
 
@@ -2547,7 +2547,7 @@ https://x.com/8olidity/status/1767470002566058088
 
 ---
 
-### 20240311 Binemon - precission-loss
+### 20240311 Binemon - precision-loss
 
 ### Lost: ~0.2 BNB
 
