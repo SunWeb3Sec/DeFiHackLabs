@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-681 incidents included.
+682 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20260302 Curve LlamaLend](#20260302-curve-llamalend)
 
 [20260120 Makina](#20260120-makina---price-oracle-manipulation)
 
@@ -1461,6 +1463,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+
+### 20260302 Curve LlamaLend 
+
+### Lost: ~240,000 US$
+
+```sh
+forge test -vvv --contracts ./src/test/2026-03/Curve_LlamaLend_exp.sol
+```
+#### Contract
+[Curve_LlamaLend_exp.sol](‎src/test/2026-03/Curve_LlamaLend_exp.sol)
+
+### Link reference
+https://x.com/yieldsandmore/status/2028368378457362629
+
+---
 
 ### 20260120 SynapLogic - Business Logic Flaw
 
