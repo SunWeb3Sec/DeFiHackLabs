@@ -1473,7 +1473,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 forge test -vvv --contracts ./src/test/2026-03/Curve_LlamaLend_exp.sol
 ```
 #### Contract
-[Curve_LlamaLend_exp.sol](‎src/test/2026-03/Curve_LlamaLend_exp.sol)
+[Curve_LlamaLend_exp.sol](src/test/2026-03/Curve_LlamaLend_exp.sol)
 
 ### Link reference
 https://x.com/yieldsandmore/status/2028368378457362629
