@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-682 incidents included.
+683 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -211,6 +211,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250305 1inch Fusion V1 Settlement](past/2025/README.md#20250305-1inch-fusionv1-settlement---arbitrary-yul-calldata)
 
 [20250304 Pump](past/2025/README.md#20250304-pump---not-slippage-protection)
+
+[20250227 Venus_ZKSync](past/2025/README.md#20250227-venus_zksync---donation-attack)
 
 [20250223 HegicOptions](past/2025/README.md#20250223-hegicoptions---business-logic-flaw)
 

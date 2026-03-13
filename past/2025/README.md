@@ -1217,6 +1217,23 @@ https://x.com/TenArmorAlert/status/1897115993962635520
 
 ---
 
+### 20250227 Venus_ZKSync - Donation Attack
+
+### Lost: 86.72 WETH
+
+```sh
+forge test --zksync -vvv --match-test testSimplifiedAttackFlow --contracts ./src/test/2025-02/Venus_ZKSync_exp.sol
+```
+#### Contract
+[Venus_ZKSync_exp.sol](../../src/test/2025-02/Venus_ZKSync_exp.sol)
+### Link reference
+
+https://explorer.zksync.io/tx/0x35a0172fb6bd450ceb29aa67dc85221826dfd0b7528375400b4ccf15c1eed0d8
+
+https://community.venus.io/t/post-mortem-wusdm-donation-attack-on-venus-zksync/5004
+
+---
+
 ### 20250223 HegicOptions - Business Logic Flaw
 
 ### Lost: ~104M
