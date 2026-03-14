@@ -68,6 +68,13 @@ contract BaseTestWithBalanceLog is Test {
         _logTokenBalance(fundingToken, address(this), string(abi.encodePacked("Attacker After exploit")));
     }
 
+    modifier balanceLog2(address target) virtual {
+        if (fundingToken == address(0)) vm.deal(target, 0);
+        _logTokenBalance(fundingToken, target, string(abi.encodePacked("Attacker Before exploit")));
+        _;
+        _logTokenBalance(fundingToken, target, string(abi.encodePacked("Attacker After exploit")));
+    }
+
     function logTokenBalance(
         address token,
         address account,

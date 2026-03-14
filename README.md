@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-683 incidents included.
+685 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,8 +53,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260310 AlkemiEarn](#20260310-alkemiearn---business-logic)
 
-[20260302 Curve LlamaLend](#20260302-curve-llamalend)
+[20260302 Curve LlamaLend](#20260302-curve-llamalend---share-price-manipulation)
+
+[20260215 Moonwell](#20260215-moonwell---faulty-oracle)
 
 [20260120 Makina](#20260120-makina---price-oracle-manipulation)
 
@@ -1466,8 +1469,23 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20260310 AlkemiEarn - Business Logic
 
-### 20260302 Curve LlamaLend 
+### Lost: 43.45 ETH
+
+
+```sh
+forge test --contracts ./src/test/2026-03/AlkemiEarn_exp.sol -vvv
+```
+#### Contract
+[AlkemiEarn_exp.sol](src/test/2026-03/AlkemiEarn_exp.sol)
+### Link reference
+
+https://x.com/blockaid_/status/2031351881029546194
+
+---
+
+### 20260302 Curve LlamaLend - Share price manipulation
 
 ### Lost: ~240,000 US$
 
@@ -1479,6 +1497,28 @@ forge test -vvv --contracts ./src/test/2026-03/Curve_LlamaLend_exp.sol
 
 ### Link reference
 https://x.com/yieldsandmore/status/2028368378457362629
+
+---
+
+### 20260215 Moonwell - Faulty Oracle
+
+### Lost: 1.78M USD
+
+```sh
+forge test --contracts ./src/test/2026-02/Moonwell_exp.sol -vvv
+```
+
+#### Contract
+[Moonwell_exp.sol](src/test/2026-02/Moonwell_exp.sol)
+
+### Link reference
+https://forum.moonwell.fi/t/mip-x43-cbeth-oracle-incident-summary/2068
+
+https://forum.moonwell.fi/t/recovery-plan-cbeth-incident-and-moonwell-apollo-onboarding/2084
+
+https://x.com/pashov/status/2023872510077616223
+
+https://x.com/moo9000/status/2024040101982990534
 
 ---
 
