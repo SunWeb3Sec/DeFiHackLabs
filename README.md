@@ -53,6 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260310 AlkemiEarn](#20260310-alkemiearn---business-logic)
 
 [20260302 Curve LlamaLend](#20260302-curve-llamalend---share-price-manipulation)
 
@@ -1466,6 +1467,21 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20260310 AlkemiEarn - Business Logic
+
+### Lost: 43.45 ETH
+
+
+```sh
+forge test --contracts ./src/test/2026-03/AlkemiEarn_exp.sol -vvv
+```
+#### Contract
+[AlkemiEarn_exp.sol](src/test/2026-03/AlkemiEarn_exp.sol)
+### Link reference
+
+https://x.com/blockaid_/status/2031351881029546194
+
+---
 
 ### 20260302 Curve LlamaLend - Share price manipulation
 
