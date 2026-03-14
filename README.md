@@ -215,6 +215,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250304 Pump](past/2025/README.md#20250304-pump---not-slippage-protection)
 
+[20250227 Venus_ZKSync](past/2025/README.md#20250227-venus_zksync---donation-attack)
+
 [20250223 HegicOptions](past/2025/README.md#20250223-hegicoptions---business-logic-flaw)
 
 [20250222 Unverified_35bc](past/2025/README.md#20250222-unverified_35bc---reentrancy)
