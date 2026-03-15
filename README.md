@@ -59,6 +59,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260302 Curve LlamaLend](#20260302-curve-llamalend---share-price-manipulation)
 
+[20260222 LAXO Token](#20260222-laxo-token---incorrect-burn-logic)
+
 [20260215 Moonwell](#20260215-moonwell---faulty-oracle)
 
 [20260120 Makina](#20260120-makina---price-oracle-manipulation)
@@ -1514,6 +1516,22 @@ forge test -vvv --contracts ./src/test/2026-03/Curve_LlamaLend_exp.sol
 
 ### Link reference
 https://x.com/yieldsandmore/status/2028368378457362629
+
+---
+
+### 20260222 LAXO Token - Incorrect Burn Logic
+
+### Lost: ~137,000 US$
+
+```sh
+forge test src/test/2026-02/LAXO_Token_exp.sol -vvv
+```
+
+#### Contract
+[LAXO_Token_exp.sol](src/test/2026-02/LAXO_Token_exp.sol)
+
+### Link reference
+https://x.com/CertiKAlert/status/2027317095420072317
 
 ---
 
