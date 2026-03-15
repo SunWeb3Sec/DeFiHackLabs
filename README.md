@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-686 incidents included.
+687 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20260310 AlkemiEarn](#20260310-alkemiearn---business-logic)
+
+[20260315 Venus THE](#20260315-venus-the---borrowbehalf--donation-attack)
 
 [20260302 Curve LlamaLend](#20260302-curve-llamalend---share-price-manipulation)
 
@@ -1470,6 +1472,21 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260315 Venus THE - BorrowBehalf + Donation Attack
+
+### Lost: 913,858.263360521396654198 CAKE + 1,972.530910582753621682 WBNB
+
+```sh
+forge test --contracts src/test/2026-03/Venus_THE_exp.sol --match-test testTraceDrivenPoC -vvv
+```
+#### Contract
+[Venus_THE_exp.sol](src/test/2026-03/Venus_THE_exp.sol)
+
+### Link reference
+https://bscscan.com/tx/0x4f477e941c12bbf32a58dc12db7bb0cb4d31d41ff25b2457e6af3c15d7f5663f
+
+---
 
 ### 20260310 AlkemiEarn - Business Logic
 
