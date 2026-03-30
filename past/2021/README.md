@@ -104,6 +104,8 @@
 
 [20171106 Parity - 'Accidentally Killed It'](#20171106-parity---accidentally-killed-it)
 
+[20170719 Parity Multisig](#20170719-parity-multisig---delegatecall-to-unprotected-initwallet)
+
 ### 20211221 Visor Finance - Reentrancy
 
 #### Lost: $8.2 million
@@ -1145,3 +1147,29 @@ https://elementus.io/blog/which-icos-are-affected-by-the-parity-wallet-bug/
 https://etherscan.io/tx/0x05f71e1b2cb4f03e547739db15d080fd30c989eda04d37ce6264c5686e0722c9
 
 https://etherscan.io/tx/0x47f7cff7a5e671884629c93b368cb18f58a993f4b19c2a53a8662e3f1482f690
+
+---
+
+### 20170719 Parity Multisig - delegatecall to unprotected initWallet
+
+#### Lost: 153,037 ETH (~$30M)
+
+Testing
+
+```sh
+forge test --contracts ./src/test/2017-07/Parity_first_hack_exp.sol -vv
+```
+
+#### Contract
+
+[Parity_first_hack_exp.sol](../../src/test/2017-07/Parity_first_hack_exp.sol)
+
+#### Link reference
+
+https://www.openzeppelin.com/news/on-the-parity-wallet-multisig-hack-405a8c12e8f7
+
+https://haseebq.com/a-hacker-stole-31m-of-ether/
+
+https://etherscan.io/tx/0x9dbf0326a03a2a3719c27be4fa69aacc9857fd231a8d9dcaede4bb083def75ec
+
+https://etherscan.io/tx/0xeef10fc5170f669b86c4cd0444882a96087221325f8bf2f55d6188633aa7be7c

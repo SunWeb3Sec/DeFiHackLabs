@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-687 incidents included.
+688 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -1448,6 +1448,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20180422 Beauty Chain](past/2021/README.md##20180422-beauty-chain---integer-overflow)
 
 [20171106 Parity - 'Accidentally Killed It'](past/2021/README.md##20171106-parity---accidentally-killed-it)
+
+[20170719 Parity Multisig](past/2021/README.md#20170719-parity-multisig---delegatecall-to-unprotected-initwallet)
 
 </details>
 
