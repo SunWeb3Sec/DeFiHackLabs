@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-688 incidents included.
+689 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260327 EST Token](#20260327-est-token---incorrect-token-burn-mechanism)
+
 [20260310 AlkemiEarn](#20260310-alkemiearn---business-logic)
 
 [20260315 Venus THE](#20260315-venus-the---borrowbehalf--donation-attack)
@@ -1474,6 +1476,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260327 EST Token - Incorrect Token Burn Mechanism
+
+### Lost: 150.2 WBNB
+
+```sh
+forge test --contracts src/test/2026-03/EST_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+[EST_exp.sol](src/test/2026-03/EST_exp.sol)
+
+### Link reference
+https://bscscan.com/address/0xD4524Be41cd452576aB9FF7b68a0b89aF8498a91
+
+---
 
 ### 20260315 Venus THE - BorrowBehalf + Donation Attack
 
