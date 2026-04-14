@@ -14,7 +14,7 @@ contract ContractTest is Test {
 
     USDT usdt_token = USDT(0xdAC17F958D2ee523a2206206994597C13D831ec7);
     address maintainer = 0x95C4F5b83aA70810D4f142d58e5F7242Bd891CB0;
-    DVM dvm = DVM(0x051EBD717311350f1684f89335bed4ABd083a2b6);
+    DVM dvm = DVM(0x2BBD66fC4898242BDBD2583BBe1d76E8b8f71445);
     address mtFeeRateModel = 0x5e84190a270333aCe5B9202a3F4ceBf11b81bB01;
     uint256 lpFeeRate = 3_000_000_000_000_000;
     address mywallet = msg.sender;
