@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260414 Saturn Protocol](#20260414-saturn-protocol---withdrawal-freeze--processor-extraction)
+
 [20260327 EST Token](#20260327-est-token---incorrect-token-burn-mechanism)
 
 [20260310 AlkemiEarn](#20260310-alkemiearn---business-logic)
@@ -1476,6 +1478,26 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260414 Saturn Protocol - Withdrawal Freeze + Processor Extraction
+
+### TVL at Risk: ~$35.7M USD
+
+Testing
+
+```sh
+forge test --match-contract SaturnProtocol_SAT001 -vvv --fork-url https://rpc.ankr.com/eth
+```
+
+#### Contract
+
+[SaturnProtocol_exp.sol](src/test/2026-04/SaturnProtocol_exp.sol)
+
+#### Link Reference
+
+https://gist.github.com/sgInnora/b70ad98327649ed4ab976a122f45e485
+
+---
 
 ### 20260327 EST Token - Incorrect Token Burn Mechanism
 
