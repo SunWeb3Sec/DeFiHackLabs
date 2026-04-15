@@ -1480,6 +1480,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ### List of DeFi Hacks & POCs
 
 ## 20260414 MONA LisaVault - reward-farming / BurnAddress accounting exploit!
+
+### Lost  ~60.95K USDT
+
 ```sh
 forge test --contracts src/test/2026-04/MONA_LisaVault_exp.sol -vvv
 ```
