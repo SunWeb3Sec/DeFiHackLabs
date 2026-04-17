@@ -53,7 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20260414 Saturn Protocol](#20260414-saturn-protocol---withdrawal-freeze--processor-extraction)
+[20260414 Saturn Protocol](#20260414-saturn-protocol---vulnerability-disclosure)
 
 [20260327 EST Token](#20260327-est-token---incorrect-token-burn-mechanism)
 
@@ -1479,23 +1479,25 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-### 20260414 Saturn Protocol - Withdrawal Freeze + Processor Extraction
+### 20260414 Saturn Protocol - Vulnerability Disclosure
 
-### TVL at Risk: ~$35.7M USD
+### Lost: 0 (Disclosure only; no exploit occurred)
 
-Testing
+TVL at Risk: ~$35.7M
 
 ```sh
-forge test --match-contract SaturnProtocol_SAT001 -vvv --fork-url https://rpc.ankr.com/eth
+forge test --contracts src/test/2026-04/SaturnProtocol_exp.sol -vvv --fork-url https://rpc.ankr.com/eth
 ```
 
 #### Contract
 
 [SaturnProtocol_exp.sol](src/test/2026-04/SaturnProtocol_exp.sol)
 
-#### Link Reference
+### Link reference
 
 https://gist.github.com/sgInnora/b70ad98327649ed4ab976a122f45e485
+
+Note: Vendor states SAT-001 (underflow) is mitigated by `_validateTotals`, and SAT-002 (tolerance compound) is a trusted-role design observation.
 
 ---
 
