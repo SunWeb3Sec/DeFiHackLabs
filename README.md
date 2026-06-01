@@ -82,6 +82,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260109 TRU](#20260109-truebit---overflow)
 
 [20260101 PRXVT](#20260101-PRXVT---bussiness-logic-flaw)
+[20260528 DxSale](#20260528-dxsale---ownership-override-attack)
 
 <details> <summary> 2025 </summary>
 
@@ -1719,6 +1720,18 @@ forge test --contracts ./src/test/2026-01/PRXVT_exp.sol -vvv --block-gas-limit 6
 #### Contract
 [PRXVT_exp.sol](src/test/2026-01/PRXVT_exp.sol)
 ### Link reference
+### 20260528 DxSale - Ownership Override Attack
+### Lost: ~7.3M USD
+```sh
+forge test --contracts src/test/2026-05/DxSale_exp.sol -vvv
+```
+#### Contract
+[DxSale_exp.sol](src/test/2026-05/DxSale_exp.sol)
+### Link reference
+https://crypto.news/dxsale-exploit-drains-7-3m-in-bnb-through-hidden-contract-backdoor/
+https://x.com/Tahax1/status/1928169316736651568
+https://x.com/CoinsultAudits/status/1928203831996297670
+---
 
 https://x.com/CertiKAlert/status/2006685174587605315
 
