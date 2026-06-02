@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
+[20260526 SKP Token](#20260526-skp-token---deliberately-engineered-drain-insider-exploit--rug-pull)
+
 [20260414 MONA LisaVault](#20260414-mona-lisavault---reward-farming--burnaddress-accounting-exploit)
 
 [20260414 Saturn Protocol](#20260414-saturn-protocol---vulnerability-disclosure)
@@ -1482,6 +1484,35 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+## 20260526 SKP Token - Deliberately Engineered Drain (Insider Exploit / Rug Pull)
+
+### Lost ~$212,195 USDT
+
+**Classification: Premeditated insider exploit — NOT a conventional external hack.**
+
+The SKP token's `_transfer()` hook (`_runSpecialPairFlow`) redistributes unbounded treasury SKP to a single whitelisted address (`WL_ADDRESS`) whenever the pair sends tokens to a buyer and the USDT excess exceeds a threshold. The threshold is trivially crossed with a flash loan. `WL_ADDRESS` is controlled by the `onlyOwner` function `setFeeWhiteList()` — no external attacker had a path to this exploit. The operator set `WL_ADDRESS` to their own exploit contract ~6 days before the drain, accumulated ~$234K of retail USDT over 14 days, then drained it.
+
+**Key on-chain evidence of deliberate engineering:**
+- `setFeeWhiteList()` is `onlyOwner` — WL changed 6 days prior: [tx proof](https://bscscan.com/tx/0xadf1b6ff02a917043c816bc8bd1ed67038d64a19d06544b09ceeb872518fda37)
+- `WL_ADDRESS` deployed and funded from the same wallet as the SKP deployer
+- SKP contract source intentionally left unverified on BSCScan
+- BlockRazor private mempool relay + deBridge cross-chain exit configured in advance
+- SKP deployer simultaneously ran 7+ other disposable anonymous tokens
+
+```sh
+forge test --contracts src/test/2026-05/SKP_exp.sol -vvv
+```
+
+#### Contract
+[SKP_exp.sol](src/test/2026-05/SKP_exp.sol)
+
+### Link reference
+- https://bscscan.com/tx/0xbc01ea37bd2ff8f6aa6afcfbe0406114ff27a01e9aa56102bfa4ad8a0c2f25ee
+- https://bscscan.com/tx/0xadf1b6ff02a917043c816bc8bd1ed67038d64a19d06544b09ceeb872518fda37
+- https://www.bitget.com/amp/news/detail/12560605230076
+
+---
 
 ## 20260414 MONA LisaVault - reward-farming / BurnAddress accounting exploit!
 
