@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-691 incidents included.
+692 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20260529 YSDAO](#20260529-ysdao---price-manipulation-and-tax-bypass)
 
 [20260414 MONA LisaVault](#20260414-mona-lisavault---reward-farming--burnaddress-accounting-exploit)
 
@@ -1482,6 +1484,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260529 YSDAO - Price Manipulation and Tax Bypass
+
+### Lost: ~19.49K USDT
+
+```sh
+forge test --contracts src/test/2026-05/YSDAO_exp.sol -vvv
+```
+
+#### Contract
+[YSDAO_exp.sol](src/test/2026-05/YSDAO_exp.sol)
+
+### Link reference
+https://bscscan.com/tx/0x91f26d96373bbec6a6a8517c7be995a739d65f20fed589d53bc47d8140f91907
+
+---
 
 ## 20260414 MONA LisaVault - reward-farming / BurnAddress accounting exploit!
 
