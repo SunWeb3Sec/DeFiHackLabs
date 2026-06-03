@@ -53,6 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260526 SKP Token](#20260526-skp-token---owner-backdoor-lp-burn--price-manipulation)
 
 [20260414 MONA LisaVault](#20260414-mona-lisavault---reward-farming--burnaddress-accounting-exploit)
 
@@ -1483,6 +1484,16 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20260526 SKP Token - Owner Backdoor LP Burn + Price Manipulation
+### Lost: ~$212K USD
+```sh
+forge test --contracts src/test/2026-05/SKP_exp.sol -vvv
+```
+#### Contract
+[SKP_exp.sol](src/test/2026-05/SKP_exp.sol)
+### Link reference
+https://www.cryptotimes.io/2026/05/27/skp-liquidity-exploit-drains-212k-across-bnb-chain-defi-protocols/
+---
 ## 20260414 MONA LisaVault - reward-farming / BurnAddress accounting exploit!
 
 ### Lost  ~60.95K USDT
