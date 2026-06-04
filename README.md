@@ -53,6 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260528 LegendaryMoneyMonNft](#20260528-legendarymoneymon---ecrecover-address0-signature-bypass)
 [20260527 Joe Agent](#20260527-joe-agent---reentrancy-in-removeliquidityviacontract)
 [20260526 SKP Token](#20260526-skp-token---owner-backdoor-lp-burn--price-manipulation)
 
@@ -1484,6 +1485,16 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260528 LegendaryMoneyMonNft - ecrecover address(0) Signature Bypass
+### Lost: ~$85.5K USD (85,519 USDT)
+```sh
+forge test --contracts src/test/2026-05/LegendaryMoneyMonNft_exp.sol -vvv
+```
+#### Contract
+[LegendaryMoneyMonNft_exp.sol](src/test/2026-05/LegendaryMoneyMonNft_exp.sol)
+### Link reference
+https://x.com/SlowMist_Team/status/2060205558687486441
+---
 ### 20260527 Joe Agent - Reentrancy in removeLiquidityViaContract
 ### Lost: ~$45K USD (62.5 BNB + ~1.196M JOE)
 ```sh
