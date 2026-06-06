@@ -53,6 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260604 ATM Token](#20260604-atm-token---hidden-transferfrom-auto-swap-drain)
 [20260528 LegendaryMoneyMonNft](#20260528-legendarymoneymon---ecrecover-address0-signature-bypass)
 [20260527 Joe Agent](#20260527-joe-agent---reentrancy-in-removeliquidityviacontract)
 [20260525 WUSD.fi](#20260525-wusdfi---englove-sybil-incentive-abuse)
@@ -1485,6 +1486,16 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 
+### 20260604 ATM Token - Hidden transferFrom Auto-Swap Drain
+### Lost: ~$243,543 USDT
+```sh
+forge test --contracts src/test/2026-06/ATM_exp.sol -vvv
+```
+#### Contract
+[ATM_exp.sol](src/test/2026-06/ATM_exp.sol)
+### Link reference
+https://hacked.slowmist.io
+---
 ### List of DeFi Hacks & POCs
 ### 20260528 LegendaryMoneyMonNft - ecrecover address(0) Signature Bypass
 ### Lost: ~$85.5K USD (85,519 USDT)
