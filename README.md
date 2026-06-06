@@ -53,6 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburnreserve-manipulation)
 [20260604 ATM Token](#20260604-atm-token---hidden-transferfrom-auto-swap-drain)
 [20260528 LegendaryMoneyMonNft](#20260528-legendarymoneymon---ecrecover-address0-signature-bypass)
 [20260527 Joe Agent](#20260527-joe-agent---reentrancy-in-removeliquidityviacontract)
@@ -1493,6 +1494,16 @@ forge test --contracts src/test/2026-06/ATM_exp.sol -vvv
 ```
 #### Contract
 [ATM_exp.sol](src/test/2026-06/ATM_exp.sol)
+### Link reference
+https://hacked.slowmist.io
+---
+### 20260604 BYToken - Permissionless triggerAutoBurn Reserve Manipulation
+### Lost: ~$87,402 (146.60 WBNB)
+```sh
+forge test --contracts src/test/2026-06/BYToken_exp.sol -vvv
+```
+#### Contract
+[BYToken_exp.sol](src/test/2026-06/BYToken_exp.sol)
 ### Link reference
 https://hacked.slowmist.io
 ---
