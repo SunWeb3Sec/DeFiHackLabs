@@ -53,11 +53,23 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburnreserve-manipulation)
+
+[20260604 ATM Token](#20260604-atm-token---hidden-transferfrom-auto-swap-drain)
+
+[20260528 LegendaryMoneyMonNft](#20260528-legendarymoneymon---ecrecover-address0-signature-bypass)
+
+[20260527 Joe Agent](#20260527-joe-agent---reentrancy-in-removeliquidityviacontract)
+
+[20260525 WUSD.fi](#20260525-wusdfi---englove-sybil-incentive-abuse)
+
+[20260526 SKP Token](#20260526-skp-token---owner-backdoor-lp-burn--price-manipulation)
+
+[20260529 YSDAO](#20260529-ysdao---price-manipulation-and-tax-bypass)
 
 [20260414 MONA LisaVault](#20260414-mona-lisavault---reward-farming--burnaddress-accounting-exploit)
 
 [20260414 Saturn Protocol](#20260414-saturn-protocol---vulnerability-disclosure)
-
 
 [20260327 EST Token](#20260327-est-token---incorrect-token-burn-mechanism)
 
@@ -1482,8 +1494,84 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 
+### 20260604 ATM Token - Hidden transferFrom Auto-Swap Drain
+### Lost: ~$243,543 USDT
+```sh
+forge test --contracts src/test/2026-06/ATM_exp.sol -vvv
+```
+#### Contract
+[ATM_exp.sol](src/test/2026-06/ATM_exp.sol)
+### Link reference
+https://hacked.slowmist.io
+---
+### 20260604 BYToken - Permissionless triggerAutoBurn Reserve Manipulation
+### Lost: ~$87,402 (146.60 WBNB)
+```sh
+forge test --contracts src/test/2026-06/BYToken_exp.sol -vvv
+```
+#### Contract
+[BYToken_exp.sol](src/test/2026-06/BYToken_exp.sol)
+### Link reference
+https://hacked.slowmist.io
+---
 ### List of DeFi Hacks & POCs
+### 20260528 LegendaryMoneyMonNft - ecrecover address(0) Signature Bypass
+### Lost: ~$85.5K USD (85,519 USDT)
+```sh
+forge test --contracts src/test/2026-05/LegendaryMoneyMonNft_exp.sol -vvv
+```
+#### Contract
+[LegendaryMoneyMonNft_exp.sol](src/test/2026-05/LegendaryMoneyMonNft_exp.sol)
+### Link reference
+https://x.com/SlowMist_Team/status/2060205558687486441
+---
+### 20260527 Joe Agent - Reentrancy in removeLiquidityViaContract
+### Lost: ~$45K USD (62.5 BNB + ~1.196M JOE)
+```sh
+forge test --contracts src/test/2026-05/JoeAgent_exp.sol -vvv
+```
+#### Contract
+[JoeAgent_exp.sol](src/test/2026-05/JoeAgent_exp.sol)
+### Link reference
+https://x.com/SlowMist_Team/status/2059887450663551352
+---
+### 20260525 WUSD.fi - _englove Sybil Incentive Abuse
+### Lost: ~$200K USD (GLOVE emissions + LP drain)
+```sh
+forge test --contracts src/test/2026-05/WUSD_exp.sol -vvv
+```
+#### Contract
+[WUSD_exp.sol](src/test/2026-05/WUSD_exp.sol)
+### Link reference
+https://x.com/exvulsec/status/2058803971947385330
+---
 
+### 20260529 YSDAO - Price Manipulation and Tax Bypass
+
+### Lost: ~19.49K USDT
+
+```sh
+forge test --contracts src/test/2026-05/YSDAO_exp.sol -vvv
+```
+
+#### Contract
+[YSDAO_exp.sol](src/test/2026-05/YSDAO_exp.sol)
+
+### Link reference
+https://bscscan.com/tx/0x91f26d96373bbec6a6a8517c7be995a739d65f20fed589d53bc47d8140f91907
+
+---
+
+### 20260526 SKP Token - Owner Backdoor LP Burn + Price Manipulation
+### Lost: ~$212K USD
+```sh
+forge test --contracts src/test/2026-05/SKP_exp.sol -vvv
+```
+#### Contract
+[SKP_exp.sol](src/test/2026-05/SKP_exp.sol)
+### Link reference
+https://www.cryptotimes.io/2026/05/27/skp-liquidity-exploit-drains-212k-across-bnb-chain-defi-protocols/
+---
 ## 20260414 MONA LisaVault - reward-farming / BurnAddress accounting exploit!
 
 ### Lost  ~60.95K USDT
