@@ -53,7 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburnreserve-manipulation)
+[20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburn-reserve-manipulation)
 
 [20260604 ATM Token](#20260604-atm-token---hidden-transferfrom-auto-swap-drain)
 
@@ -1494,16 +1494,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 
-### 20260604 ATM Token - Hidden transferFrom Auto-Swap Drain
-### Lost: ~$243,543 USDT
-```sh
-forge test --contracts src/test/2026-06/ATM_exp.sol -vvv
-```
-#### Contract
-[ATM_exp.sol](src/test/2026-06/ATM_exp.sol)
-### Link reference
-https://hacked.slowmist.io
----
+### List of DeFi Hacks & POCs
+
 ### 20260604 BYToken - Permissionless triggerAutoBurn Reserve Manipulation
 ### Lost: ~$87,402 (146.60 WBNB)
 ```sh
@@ -1513,8 +1505,19 @@ forge test --contracts src/test/2026-06/BYToken_exp.sol -vvv
 [BYToken_exp.sol](src/test/2026-06/BYToken_exp.sol)
 ### Link reference
 https://hacked.slowmist.io
+
+### 20260604 ATM Token - Hidden transferFrom Auto-Swap Drain
+### Lost: ~$243,543 USDT
+```sh
+forge test --contracts src/test/2026-06/ATM_exp.sol -vvv
+```
+#### Contract
+[ATM_exp.sol](src/test/2026-06/ATM_exp.sol)
+### Link reference
+https://hacked.slowmist.io
+
 ---
-### List of DeFi Hacks & POCs
+
 ### 20260528 LegendaryMoneyMonNft - ecrecover address(0) Signature Bypass
 ### Lost: ~$85.5K USD (85,519 USDT)
 ```sh
@@ -1524,6 +1527,7 @@ forge test --contracts src/test/2026-05/LegendaryMoneyMonNft_exp.sol -vvv
 [LegendaryMoneyMonNft_exp.sol](src/test/2026-05/LegendaryMoneyMonNft_exp.sol)
 ### Link reference
 https://x.com/SlowMist_Team/status/2060205558687486441
+
 ---
 ### 20260527 Joe Agent - Reentrancy in removeLiquidityViaContract
 ### Lost: ~$45K USD (62.5 BNB + ~1.196M JOE)
@@ -1534,6 +1538,7 @@ forge test --contracts src/test/2026-05/JoeAgent_exp.sol -vvv
 [JoeAgent_exp.sol](src/test/2026-05/JoeAgent_exp.sol)
 ### Link reference
 https://x.com/SlowMist_Team/status/2059887450663551352
+
 ---
 ### 20260525 WUSD.fi - _englove Sybil Incentive Abuse
 ### Lost: ~$200K USD (GLOVE emissions + LP drain)
@@ -1544,6 +1549,7 @@ forge test --contracts src/test/2026-05/WUSD_exp.sol -vvv
 [WUSD_exp.sol](src/test/2026-05/WUSD_exp.sol)
 ### Link reference
 https://x.com/exvulsec/status/2058803971947385330
+
 ---
 
 ### 20260529 YSDAO - Price Manipulation and Tax Bypass
