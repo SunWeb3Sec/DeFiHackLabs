@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-697 incidents included.
+699 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -64,6 +64,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260525 WUSD.fi](#20260525-wusdfi---englove-sybil-incentive-abuse)
 
 [20260526 SKP Token](#20260526-skp-token---owner-backdoor-lp-burn--price-manipulation)
+
+[20260529 YSDAO](#20260529-ysdao---price-manipulation-and-tax-bypass)
 
 [20260414 MONA LisaVault](#20260414-mona-lisavault---reward-farming--burnaddress-accounting-exploit)
 
@@ -1541,6 +1543,22 @@ forge test --contracts src/test/2026-05/WUSD_exp.sol -vvv
 [WUSD_exp.sol](src/test/2026-05/WUSD_exp.sol)
 ### Link reference
 https://x.com/exvulsec/status/2058803971947385330
+---
+
+### 20260529 YSDAO - Price Manipulation and Tax Bypass
+
+### Lost: ~19.49K USDT
+
+```sh
+forge test --contracts src/test/2026-05/YSDAO_exp.sol -vvv
+```
+
+#### Contract
+[YSDAO_exp.sol](src/test/2026-05/YSDAO_exp.sol)
+
+### Link reference
+https://bscscan.com/tx/0x91f26d96373bbec6a6a8517c7be995a739d65f20fed589d53bc47d8140f91907
+
 ---
 
 ### 20260526 SKP Token - Owner Backdoor LP Burn + Price Manipulation
