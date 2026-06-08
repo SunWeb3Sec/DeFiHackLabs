@@ -60,7 +60,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260414 Saturn Protocol](#20260414-saturn-protocol---vulnerability-disclosure)
 
-
 [20260327 EST Token](#20260327-est-token---incorrect-token-burn-mechanism)
 
 [20260310 AlkemiEarn](#20260310-alkemiearn---business-logic)
@@ -1501,11 +1500,11 @@ The SKP token's `_transfer()` hook (`_runSpecialPairFlow`) redistributes unbound
 - SKP deployer simultaneously ran 7+ other disposable anonymous tokens
 
 ```sh
-forge test --contracts src/test/2026-05/SKP_exp.sol -vvv
+forge test --contracts src/test/2026-05/SKP_exp2.sol -vvv
 ```
 
 #### Contract
-[SKP_exp.sol](src/test/2026-05/SKP_exp.sol)
+[SKP_exp.sol](src/test/2026-05/SKP_exp2.sol)
 
 ### Link reference
 - https://bscscan.com/tx/0xbc01ea37bd2ff8f6aa6afcfbe0406114ff27a01e9aa56102bfa4ad8a0c2f25ee
