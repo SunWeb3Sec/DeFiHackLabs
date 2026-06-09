@@ -14,7 +14,7 @@ import {IERC20} from "forge-std/interfaces/IERC20.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0x71518580f36feceffe0721f06ba4703218cd7f63#code
 //
 // @Analysis
-// Post-mortem : https://x.com/VerusCoin/status/2057465214975492358
+// Post-mortem : https://x.com/VerusCoin/status/2056829444124213652
 
 contract VerusBridgeTest is Test {
     bytes32 internal constant TX_HASH = 0x6990f01720f57fc515d0e976a0c4f8157e0a9529194c4c15d190e98d087eb321;
