@@ -52,6 +52,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - EVM Chains - 0xD7d6215b4EF4b9B5f40baea48F41047Eb67a11D5
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE).
+
 ## List of Past DeFi Incidents
 [20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburn-reserve-manipulation)
 
