@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-701 incidents included.
+713 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -57,19 +57,45 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260604 ATM Token](#20260604-atm-token---hidden-transferfrom-auto-swap-drain)
 
+[20260530 AROS](#20260530-aros---signature-replay)
+
+[20260529 YSDAO](#20260529-ysdao---price-manipulation-and-tax-bypass)
+
 [20260528 LegendaryMoneyMonNft](#20260528-legendarymoneymon---ecrecover-address0-signature-bypass)
 
+[20260528 DxSale](#20260528-dxsale---ownership-override-attack)
+
 [20260527 Joe Agent](#20260527-joe-agent---reentrancy-in-removeliquidityviacontract)
+
+[20260526 SKP Token](#20260526-skp-token---owner-backdoor-lp-burn--price-manipulation)
+
+[20260526 SKP Token](#20260526-skp-token---deliberately-engineered-drain-insider-exploit--rug-pull)
 
 [20260525 New Market Trading](#20260525-new-market-trading---squidroutermodule-missing-caller-check)
 
 [20260525 WUSD.fi](#20260525-wusdfi---englove-sybil-incentive-abuse)
 
-[20260526 SKP Token](#20260526-skp-token---owner-backdoor-lp-burn--price-manipulation)
+[20260522 FractalProtocol](#20260522-fractalprotocol---business-logic-flaw)
 
-[20260529 YSDAO](#20260529-ysdao---price-manipulation-and-tax-bypass)
+[20260521 MureDistribution](#20260521-muredistribution---signature-verification-bypass)
 
-[20260526 SKP Token](#20260526-skp-token---deliberately-engineered-drain-insider-exploit--rug-pull)
+[20260520 MAPProtocol](#20260520-mapprotocol---arbitrary-mint)
+
+[20260517 VerusBridge](#20260517-verusbridge---insufficient-validation)
+
+[20260517 SEAToken](#20260517-seatoken---business-logic-flaw)
+
+[20260515 AdsharesBridge](#20260515-adsharesbridge---insufficient-validation)
+
+[20260512 SQTokenStaking](#20260512-sqtokenstaking---access-control)
+
+[20260511 INKFinance](#20260511-inkfinance---business-logic-flaw)
+
+[20260510 Renegade](#20260510-renegade---uninitialized-proxy)
+
+[20260507 TrustedVolumes](#20260507-trustedvolumes---signature-replay)
+
+[20260505 Ekubo](#20260505-ekubo---business-logic-flaw)
 
 [20260414 MONA LisaVault](#20260414-mona-lisavault---reward-farming--burnaddress-accounting-exploit)
 
@@ -77,9 +103,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260327 EST Token](#20260327-est-token---incorrect-token-burn-mechanism)
 
-[20260310 AlkemiEarn](#20260310-alkemiearn---business-logic)
-
 [20260315 Venus THE](#20260315-venus-the---borrowbehalf--donation-attack)
+
+[20260310 AlkemiEarn](#20260310-alkemiearn---business-logic)
 
 [20260302 Curve LlamaLend](#20260302-curve-llamalend---share-price-manipulation)
 
@@ -98,7 +124,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260109 TRU](#20260109-truebit---overflow)
 
 [20260101 PRXVT](#20260101-PRXVT---bussiness-logic-flaw)
-[20260528 DxSale](#20260528-dxsale---ownership-override-attack)
 
 <details> <summary> 2025 </summary>
 
@@ -1522,6 +1547,35 @@ https://hacked.slowmist.io
 
 ---
 
+### 20260530 AROS - Signature Replay
+### Lost: ~$295K
+```sh
+forge test --contracts src/test/2026-05/AROS_exp.sol -vvv --evm-version prague
+```
+#### Contract
+[AROS_exp.sol](src/test/2026-05/AROS_exp.sol)
+### Link reference
+https://bscscan.com/tx/0xe89fe640ec5241edfca7d8dcae77a0a4270dee15e4bbd043fc60e393aabf41e1
+https://x.com/TenArmorAlert/status/2061289921990570349
+
+---
+
+### 20260529 YSDAO - Price Manipulation and Tax Bypass
+
+### Lost: ~19.49K USDT
+
+```sh
+forge test --contracts src/test/2026-05/YSDAO_exp.sol -vvv
+```
+
+#### Contract
+[YSDAO_exp.sol](src/test/2026-05/YSDAO_exp.sol)
+
+### Link reference
+https://bscscan.com/tx/0x91f26d96373bbec6a6a8517c7be995a739d65f20fed589d53bc47d8140f91907
+
+---
+
 ### 20260528 LegendaryMoneyMonNft - ecrecover address(0) Signature Bypass
 ### Lost: ~$85.5K USD (85,519 USDT)
 ```sh
@@ -1533,6 +1587,21 @@ forge test --contracts src/test/2026-05/LegendaryMoneyMonNft_exp.sol -vvv
 https://x.com/SlowMist_Team/status/2060205558687486441
 
 ---
+
+### 20260528 DxSale - Ownership Override Attack
+### Lost: ~7.3M USD
+```sh
+forge test --contracts src/test/2026-05/DxSale_exp.sol -vvv
+```
+#### Contract
+[DxSale_exp.sol](src/test/2026-05/DxSale_exp.sol)
+### Link reference
+https://crypto.news/dxsale-exploit-drains-7-3m-in-bnb-through-hidden-contract-backdoor/
+https://x.com/Tahax1/status/1928169316736651568
+https://x.com/CoinsultAudits/status/1928203831996297670
+
+---
+
 ### 20260527 Joe Agent - Reentrancy in removeLiquidityViaContract
 ### Lost: ~$45K USD (62.5 BNB + ~1.196M JOE)
 ```sh
@@ -1553,32 +1622,6 @@ FOUNDRY_EVM_VERSION=cancun forge test --contracts src/test/2026-05/NewMarketTrad
 [NewMarketTrading_exp.sol](src/test/2026-05/NewMarketTrading_exp.sol)
 ### Link reference
 https://rekt.news/newmarkettrading-rekt
----
-### 20260525 WUSD.fi - _englove Sybil Incentive Abuse
-### Lost: ~$200K USD (GLOVE emissions + LP drain)
-```sh
-forge test --contracts src/test/2026-05/WUSD_exp.sol -vvv
-```
-#### Contract
-[WUSD_exp.sol](src/test/2026-05/WUSD_exp.sol)
-### Link reference
-https://x.com/exvulsec/status/2058803971947385330
-
----
-
-### 20260529 YSDAO - Price Manipulation and Tax Bypass
-
-### Lost: ~19.49K USDT
-
-```sh
-forge test --contracts src/test/2026-05/YSDAO_exp.sol -vvv
-```
-
-#### Contract
-[YSDAO_exp.sol](src/test/2026-05/YSDAO_exp.sol)
-
-### Link reference
-https://bscscan.com/tx/0x91f26d96373bbec6a6a8517c7be995a739d65f20fed589d53bc47d8140f91907
 
 ---
 
@@ -1622,6 +1665,166 @@ forge test --contracts src/test/2026-05/SKP_exp2.sol -vvv
 ---
 
 ---
+### 20260525 WUSD.fi - _englove Sybil Incentive Abuse
+### Lost: ~$200K USD (GLOVE emissions + LP drain)
+```sh
+forge test --contracts src/test/2026-05/WUSD_exp.sol -vvv
+```
+#### Contract
+[WUSD_exp.sol](src/test/2026-05/WUSD_exp.sol)
+### Link reference
+https://x.com/exvulsec/status/2058803971947385330
+
+---
+
+### 20260522 FractalProtocol - Business Logic Flaw
+### Lost: ~$13.7K
+```sh
+forge test --contracts src/test/2026-05/FractalProtocol_exp.sol -vvv
+```
+#### Contract
+[FractalProtocol_exp.sol](src/test/2026-05/FractalProtocol_exp.sol)
+### Link reference
+https://arbiscan.io/tx/0x20db78913a51c3b3aece860ea142c240f3f8fa3b5bbf533a3d1d48eed857e10f
+https://x.com/DefimonAlerts/status/2058619391776878967
+
+---
+
+### 20260521 MureDistribution - Signature Verification Bypass
+### Lost: ~5.45 ETH
+```sh
+forge test --contracts src/test/2026-05/MureDistribution_exp.sol -vvv
+```
+#### Contract
+[MureDistribution_exp.sol](src/test/2026-05/MureDistribution_exp.sol)
+### Link reference
+https://etherscan.io/tx/0xb83040361a0ec72fa2d06ad69493226518a5f8b5d96c19b400626248f9c5b798
+https://x.com/DefimonAlerts/status/2058211424761942226
+
+---
+
+### 20260520 MAPProtocol - Arbitrary Mint
+### Lost: ~$180K
+```sh
+forge test --contracts src/test/2026-05/MAPProtocol_exp.sol -vvv
+```
+#### Contract
+[MAPProtocol_exp.sol](src/test/2026-05/MAPProtocol_exp.sol)
+### Link reference
+https://etherscan.io/tx/0x31e56b4737649e0acdb0ebb4eca44d16aeca25f60c022cbde85f092bde27664a
+https://x.com/MapProtocol/status/2059587998409490510
+
+---
+
+### 20260517 VerusBridge - Insufficient Validation
+### Lost: ~$11.58M
+```sh
+forge test --contracts src/test/2026-05/VerusBridge_exp.sol -vvv
+```
+#### Contract
+[VerusBridge_exp.sol](src/test/2026-05/VerusBridge_exp.sol)
+### Link reference
+https://etherscan.io/tx/0x6990f01720f57fc515d0e976a0c4f8157e0a9529194c4c15d190e98d087eb321
+https://x.com/VerusCoin/status/2057465214975492358
+
+---
+
+### 20260517 SEAToken - Business Logic Flaw
+### Lost: ~$110K
+```sh
+forge test --contracts src/test/2026-05/SEAToken_exp.sol -vvv
+```
+#### Contract
+[SEAToken_exp.sol](src/test/2026-05/SEAToken_exp.sol)
+### Link reference
+https://arbiscan.io/tx/0x001cb16e17c4c5a5c4d02423c9e9b2f2b11ab6b2a1baf2ba53b8fcaf06167716
+https://anomly.rs/metasea-redeemposition-distributor-drain-arb-2026-05-17
+
+---
+
+### 20260515 AdsharesBridge - Insufficient Validation
+### Lost: ~$628K
+```sh
+forge test --contracts src/test/2026-05/AdsharesBridge_exp.sol -vvv
+```
+#### Contract
+[AdsharesBridge_exp.sol](src/test/2026-05/AdsharesBridge_exp.sol)
+### Link reference
+https://etherscan.io/tx/0x8844b4ec371c4b13d7fac701b5d546a7c2fba12621a9596dd14b662b14408789
+https://etherscan.io/tx/0xfba82bb34515d7aefbf0c89582b71d915ec8861c96babaafdc882743dbc23509
+https://etherscan.io/tx/0xa3476575183204b4a662dd6ee56f6499d806e4f41ce83d98366752d31e9e9ca3
+https://x.com/DefimonAlerts/status/2055751467579936770
+
+---
+
+### 20260512 SQTokenStaking - Access Control
+### Lost: ~$346.1K
+```sh
+forge test --contracts src/test/2026-05/SQTokenStaking_exp.sol -vvv --evm-version prague
+```
+#### Contract
+[SQTokenStaking_exp.sol](src/test/2026-05/SQTokenStaking_exp.sol)
+### Link reference
+https://bscscan.com/tx/0x1bae633eda9b3d98999ea116bc403712eaa07093ec32bd6d559085cc4607f5b8
+https://x.com/Defi_Nerd_sec/status/2054425936746148148
+
+---
+
+### 20260511 INKFinance - Business Logic Flaw
+### Lost: ~$140K
+```sh
+forge test --contracts src/test/2026-05/INKFinance_exp.sol -vvv
+```
+#### Contract
+[INKFinance_exp.sol](src/test/2026-05/INKFinance_exp.sol)
+### Link reference
+https://polygonscan.com/tx/0xb469a24ec737be16fe41367a7b5b315c7f03b4e0ff3af50b3a2db03b3066b982
+https://www.cryptotimes.io/2026/05/11/ink-finance-exploited-on-polygon-140k-usdt-drained-in-flash-loan-attack/
+
+---
+
+### 20260510 Renegade - Uninitialized Proxy
+### Lost: ~$209K
+```sh
+forge test --contracts src/test/2026-05/Renegade_exp.sol -vvv
+```
+#### Contract
+[Renegade_exp.sol](src/test/2026-05/Renegade_exp.sol)
+### Link reference
+https://arbiscan.io/tx/0x0e494685ace16d372066c5b4db959b58ebac6d88166c2d9d618e0e421dc0c77e
+https://x.com/renegade_fi/status/2053531772634427599
+https://x.com/DefimonAlerts/status/2053538325969977801
+
+---
+
+### 20260507 TrustedVolumes - Signature Replay
+### Lost: ~$6.7M
+```sh
+forge test --contracts src/test/2026-05/TrustedVolumes_exp.sol -vvv
+```
+#### Contract
+[TrustedVolumes_exp.sol](src/test/2026-05/TrustedVolumes_exp.sol)
+### Link reference
+https://etherscan.io/tx/0xc5c61b3ac39d854773b9dc34bd0cdbc8b5bbf75f18551802a0b5881fcb990513
+https://x.com/trustedvolumes/status/2052235435292910005
+https://www.quillaudits.com/blog/hack-analysis/trustedvolumes-rfq-hack
+
+---
+
+### 20260505 Ekubo - Business Logic Flaw
+### Lost: ~$1.4M
+```sh
+forge test --contracts src/test/2026-05/Ekubo_exp.sol -vvv
+```
+#### Contract
+[Ekubo_exp.sol](src/test/2026-05/Ekubo_exp.sol)
+### Link reference
+https://etherscan.io/tx/0x770bc9a1f7c32cb63a5002b9ceb5c7994cd3af0fc6b2309cb32d3c46f629daa0
+https://x.com/EkuboProtocol/status/2051754481465856038
+https://x.com/blockaid_/status/2051757787714118125
+
+---
+
 ## 20260414 MONA LisaVault - reward-farming / BurnAddress accounting exploit!
 
 ### Lost  ~60.95K USDT
@@ -1858,19 +2061,6 @@ forge test --contracts ./src/test/2026-01/PRXVT_exp.sol -vvv --block-gas-limit 6
 #### Contract
 [PRXVT_exp.sol](src/test/2026-01/PRXVT_exp.sol)
 ### Link reference
-### 20260528 DxSale - Ownership Override Attack
-### Lost: ~7.3M USD
-```sh
-forge test --contracts src/test/2026-05/DxSale_exp.sol -vvv
-```
-#### Contract
-[DxSale_exp.sol](src/test/2026-05/DxSale_exp.sol)
-### Link reference
-https://crypto.news/dxsale-exploit-drains-7-3m-in-bnb-through-hidden-contract-backdoor/
-https://x.com/Tahax1/status/1928169316736651568
-https://x.com/CoinsultAudits/status/1928203831996297670
----
-
 https://x.com/CertiKAlert/status/2006685174587605315
 
 ---
