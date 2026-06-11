@@ -61,6 +61,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260527 Joe Agent](#20260527-joe-agent---reentrancy-in-removeliquidityviacontract)
 
+[20260525 New Market Trading](#20260525-new-market-trading---squidroutermodule-missing-caller-check)
+
 [20260525 WUSD.fi](#20260525-wusdfi---englove-sybil-incentive-abuse)
 
 [20260526 SKP Token](#20260526-skp-token---owner-backdoor-lp-burn--price-manipulation)
@@ -1541,6 +1543,16 @@ forge test --contracts src/test/2026-05/JoeAgent_exp.sol -vvv
 ### Link reference
 https://x.com/SlowMist_Team/status/2059887450663551352
 
+---
+### 20260525 New Market Trading - SquidRouterModule Missing Caller Check
+### Lost: ~$3.98M USD
+```sh
+FOUNDRY_EVM_VERSION=cancun forge test --contracts src/test/2026-05/NewMarketTrading_exp.sol --match-contract NewMarketTradingExploit -vv
+```
+#### Contract
+[NewMarketTrading_exp.sol](src/test/2026-05/NewMarketTrading_exp.sol)
+### Link reference
+https://rekt.news/newmarkettrading-rekt
 ---
 ### 20260525 WUSD.fi - _englove Sybil Incentive Abuse
 ### Lost: ~$200K USD (GLOVE emissions + LP drain)
