@@ -1798,16 +1798,16 @@ https://x.com/DefimonAlerts/status/2053538325969977801
 ---
 
 ### 20260507 TrustedVolumes - Signature Replay
-### Lost: ~$6.7M
+### Lost: ~$5.87M
 ```sh
-forge test --contracts src/test/2026-05/TrustedVolumes_exp.sol -vvv
+forge test --contracts src/test/2026-05/TrustedVolumes_exp.sol --match-contract TrustedVolumesExploit -vv
 ```
 #### Contract
 [TrustedVolumes_exp.sol](src/test/2026-05/TrustedVolumes_exp.sol)
 ### Link reference
-https://etherscan.io/tx/0xc5c61b3ac39d854773b9dc34bd0cdbc8b5bbf75f18551802a0b5881fcb990513
-https://x.com/trustedvolumes/status/2052235435292910005
-https://www.quillaudits.com/blog/hack-analysis/trustedvolumes-rfq-hack
+https://rekt.news/trustedvolumes-rekt
+https://www.darknavy.org/web3/exploits/trustedvolumes-rfq-proxy-drain/
+https://blog.verichains.io/p/trustedvolumes-exploit-analysis
 
 ---
 
