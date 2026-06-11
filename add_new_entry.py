@@ -684,10 +684,16 @@ class GitManager:
             print("Git command is not available. Skipping uncommitted file retrieval.")
             return []
         
-        command = f"git ls-files --others --exclude-standard {self.constants.SRC_TEST_DIR}/**/*.sol"
-        output = subprocess.check_output(command, shell=True, text=True)
-        uncommitted_files = output.strip().split("\n")
-        return uncommitted_files
+        try:
+            # Use argument list instead of shell=True for better robustness
+            args = ["git", "ls-files", "--others", "--exclude-standard", self.constants.SRC_TEST_DIR]
+            output = subprocess.check_output(args, text=True)
+            files = output.strip().split("\n")
+            # Filter for .sol files manually to avoid shell globbing issues
+            uncommitted_files = [f for f in files if f.endswith(".sol") and f]
+            return uncommitted_files
+        except subprocess.CalledProcessError:
+            return []
     
     def get_recently_committed_sol_files(self) -> list:
         """Get list of recently committed .sol files"""
@@ -695,10 +701,16 @@ class GitManager:
             print("Git command is not available. Skipping recently committed file retrieval.")
             return []
         
-        command = f"git diff --name-only HEAD~1 HEAD {self.constants.SRC_TEST_DIR}/**/*.sol"
-        output = subprocess.check_output(command, shell=True, text=True)
-        recently_committed_files = output.strip().split("\n")
-        return recently_committed_files
+        try:
+            # Use argument list and specify the directory to restrict the diff
+            args = ["git", "diff", "--name-only", "HEAD~1", "HEAD", "--", self.constants.SRC_TEST_DIR]
+            output = subprocess.check_output(args, text=True)
+            files = output.strip().split("\n")
+            # Filter for .sol files
+            recently_committed_files = [f for f in files if f.endswith(".sol") and f]
+            return recently_committed_files
+        except subprocess.CalledProcessError:
+            return []
 
 
 ######################
