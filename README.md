@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-714 incidents included.
+715 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260614 Aztec Connect](#20260614-aztec-connect---numrealtxs-proofsettlement-mismatch-permissionless-rollupprocessorv3)
+
 [20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburn-reserve-manipulation)
 
 [20260604 ATM Token](#20260604-atm-token---hidden-transferfrom-auto-swap-drain)
@@ -1524,6 +1526,17 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260614 Aztec Connect - numRealTxs Proof/Settlement Mismatch (permissionless RollupProcessorV3)
+### Lost: ~$2.19M (this PoC reproduces the 908.99 ETH leg)
+```sh
+forge test --contracts src/test/2026-06/AztecConnect_exp.sol -vvv
+```
+#### Contract
+[AztecConnect_exp.sol](src/test/2026-06/AztecConnect_exp.sol)
+### Link reference
+https://www.cryptotimes.io/2026/06/15/aztec-exploit-drains-2-19m-from-dormant-privacy-protocol/
+https://dev.to/cryip/how-a-single-validation-mismatch-can-drain-millions-lessons-from-the-aztec-connect-exploit-2598
 
 ### 20260604 BYToken - Permissionless triggerAutoBurn Reserve Manipulation
 ### Lost: ~$87,402 (146.60 WBNB)
