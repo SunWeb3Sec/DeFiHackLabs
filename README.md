@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-718 incidents included.
+719 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -57,6 +57,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260616 DIP](#20260616-dip---fee-on-transfer-reserve-manipulation)
 
 [20260615 Thetanuts](#20260615-thetanuts---index-vault-component-share-accounting-flaw)
+
+[20260614 Aztec Connect](#20260614-aztec-connect---numrealtxs-proofsettlement-mismatch-permissionless-rollupprocessorv3)
 
 [20260609 TOPBPool](#20260609-topbpool---governance-controlled-token-mint-and-balancer-pool-drain)
 
@@ -1566,6 +1568,20 @@ https://x.com/PeckShieldAlert/status/2066540451126190312
 
 ---
 
+### 20260614 Aztec Connect - numRealTxs Proof/Settlement Mismatch (permissionless RollupProcessorV3)
+### Lost: ~$2.19M (this PoC reproduces the 908.99 ETH leg)
+```sh
+forge test --contracts src/test/2026-06/AztecConnect_exp.sol -vvv
+```
+#### Contract
+[AztecConnect_exp.sol](src/test/2026-06/AztecConnect_exp.sol)
+### Link reference
+https://www.cryptotimes.io/2026/06/15/aztec-exploit-drains-2-19m-from-dormant-privacy-protocol/
+
+https://dev.to/cryip/how-a-single-validation-mismatch-can-drain-millions-lessons-from-the-aztec-connect-exploit-2598
+
+---
+
 ### 20260609 TOPBPool - Governance-controlled token mint and Balancer pool drain
 
 ### Lost: 944.20 WETH
@@ -1713,15 +1729,6 @@ https://www.cryptotimes.io/2026/05/27/skp-liquidity-exploit-drains-212k-across-b
 ### Lost ~$212,195 USDT
 
 **Classification: Premeditated insider exploit — NOT a conventional external hack.**
-
-The SKP token's `_transfer()` hook (`_runSpecialPairFlow`) redistributes unbounded treasury SKP to a single whitelisted address (`WL_ADDRESS`) whenever the pair sends tokens to a buyer and the USDT excess exceeds a threshold. The threshold is trivially crossed with a flash loan. `WL_ADDRESS` is controlled by the `onlyOwner` function `setFeeWhiteList()` — no external attacker had a path to this exploit. The operator set `WL_ADDRESS` to their own exploit contract ~6 days before the drain, accumulated ~$234K of retail USDT over 14 days, then drained it.
-
-**Key on-chain evidence of deliberate engineering:**
-- `setFeeWhiteList()` is `onlyOwner` — WL changed 6 days prior: [tx proof](https://bscscan.com/tx/0xadf1b6ff02a917043c816bc8bd1ed67038d64a19d06544b09ceeb872518fda37)
-- `WL_ADDRESS` deployed and funded from the same wallet as the SKP deployer
-- SKP contract source intentionally left unverified on BSCScan
-- BlockRazor private mempool relay + deBridge cross-chain exit configured in advance
-- SKP deployer simultaneously ran 7+ other disposable anonymous tokens
 
 ```sh
 forge test --contracts src/test/2026-05/SKP_exp2.sol -vvv
