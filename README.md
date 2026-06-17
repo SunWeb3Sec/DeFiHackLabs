@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-714 incidents included.
+715 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260609 TOPBPool](#20260609-topbpool---governance-controlled-token-mint-and-balancer-pool-drain)
 [20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburn-reserve-manipulation)
 
 [20260604 ATM Token](#20260604-atm-token---hidden-transferfrom-auto-swap-drain)
@@ -1524,6 +1525,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260609 TOPBPool - Governance-controlled token mint and Balancer pool drain
+
+### Lost: 944.20 WETH
+
+
+```sh
+forge test --contracts ./src/test/2026-06/TOPBPool_exp.sol -vvv
+```
+#### Contract
+[TOPBPool_exp.sol](src/test/2026-06/TOPBPool_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2064616112822583505
+
+---
 
 ### 20260604 BYToken - Permissionless triggerAutoBurn Reserve Manipulation
 ### Lost: ~$87,402 (146.60 WBNB)
