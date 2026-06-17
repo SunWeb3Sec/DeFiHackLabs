@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-717 incidents included.
+718 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -57,6 +57,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260616 DIP](#20260616-dip---fee-on-transfer-reserve-manipulation)
 
 [20260615 Thetanuts](#20260615-thetanuts---index-vault-component-share-accounting-flaw)
+
+[20260609 TOPBPool](#20260609-topbpool---governance-controlled-token-mint-and-balancer-pool-drain)
 
 [20260609 NovaBox](#20260609-novabox---constructor-dividend-checkpoint-bypass)
 
@@ -1561,6 +1563,22 @@ forge test --contracts ./src/test/2026-06/Thetanuts_exp.sol -vvv
 ### Link reference
 
 https://x.com/PeckShieldAlert/status/2066540451126190312
+
+---
+
+### 20260609 TOPBPool - Governance-controlled token mint and Balancer pool drain
+
+### Lost: 944.20 WETH
+
+
+```sh
+forge test --contracts ./src/test/2026-06/TOPBPool_exp.sol -vvv
+```
+#### Contract
+[TOPBPool_exp.sol](src/test/2026-06/TOPBPool_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2064616112822583505
 
 ---
 
