@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-714 incidents included.
+715 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260616 DIP](#20260616-dip---fee-on-transfer-reserve-manipulation)
 [20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburn-reserve-manipulation)
 
 [20260604 ATM Token](#20260604-atm-token---hidden-transferfrom-auto-swap-drain)
@@ -1524,6 +1525,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260616 DIP - Fee-on-Transfer Reserve Manipulation
+
+### Lost: 111,097.59 USDC
+
+
+```sh
+forge test --contracts ./src/test/2026-06/DIP_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[DIP_exp.sol](src/test/2026-06/DIP_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/2067059314519417163
+
+---
 
 ### 20260604 BYToken - Permissionless triggerAutoBurn Reserve Manipulation
 ### Lost: ~$87,402 (146.60 WBNB)
