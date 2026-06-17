@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-715 incidents included.
+718 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,7 +53,15 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20260616 DIP](#20260616-dip---fee-on-transfer-reserve-manipulation)
+
+[20260615 Thetanuts](#20260615-thetanuts---index-vault-component-share-accounting-flaw)
+
 [20260609 TOPBPool](#20260609-topbpool---governance-controlled-token-mint-and-balancer-pool-drain)
+
+[20260609 NovaBox](#20260609-novabox---constructor-dividend-checkpoint-bypass)
+
 [20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburn-reserve-manipulation)
 
 [20260604 ATM Token](#20260604-atm-token---hidden-transferfrom-auto-swap-drain)
@@ -1526,6 +1534,38 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20260616 DIP - Fee-on-Transfer Reserve Manipulation
+
+### Lost: 111,097.59 USDC
+
+
+```sh
+forge test --contracts ./src/test/2026-06/DIP_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[DIP_exp.sol](src/test/2026-06/DIP_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/2067059314519417163
+
+---
+
+### 20260615 Thetanuts - Index vault component-share accounting flaw
+
+### Lost: 105471.50 USDC
+
+
+```sh
+forge test --contracts ./src/test/2026-06/Thetanuts_exp.sol -vvv
+```
+#### Contract
+[Thetanuts_exp.sol](src/test/2026-06/Thetanuts_exp.sol)
+### Link reference
+
+https://x.com/PeckShieldAlert/status/2066540451126190312
+
+---
+
 ### 20260609 TOPBPool - Governance-controlled token mint and Balancer pool drain
 
 ### Lost: 944.20 WETH
@@ -1539,6 +1579,22 @@ forge test --contracts ./src/test/2026-06/TOPBPool_exp.sol -vvv
 ### Link reference
 
 https://x.com/DefimonAlerts/status/2064616112822583505
+
+---
+
+### 20260609 NovaBox - Constructor Dividend Checkpoint Bypass
+
+### Lost: 56.73 ETH
+
+
+```sh
+forge test --contracts ./src/test/2026-06/NovaBox_exp.sol --evm-version prague -vvv
+```
+#### Contract
+[NovaBox_exp.sol](src/test/2026-06/NovaBox_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2064616360466919793
 
 ---
 
