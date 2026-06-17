@@ -4,8 +4,27 @@ pragma solidity ^0.8.15;
 import "./tokenhelper.sol";
 import "forge-std/Test.sol";
 
+// Base contract for DeFi exploit POCs. Inherit from this instead of Test directly.
+// Provides before/after balance logging via the `balanceLog` modifier.
+//
+// Single-asset mode (default):
+//   Set `fundingToken` to the token you profit in (address(0) = native ETH/chain coin).
+//   The `balanceLog` modifier logs that one token before and after testExploit().
+//
+// Multi-asset mode:
+//   Set `multiAssetLog = true` and populate `fundingTokens` with every token you want tracked.
+//   The same `balanceLog` modifier will log all of them. No override needed.
+//   Optionally set `attacker` to log a different address (e.g. a separate profit contract).
+//   If `attacker` is left as address(0), it resolves to address(this).
 contract BaseTestWithBalanceLog is Test {
+    // Single-asset mode: the token to log profit in. address(0) = native coin.
     address fundingToken = address(0);
+    // Multi-asset mode: full list of tokens to track (ERC-20 or address(0) for native).
+    address[] fundingTokens;
+    // Set to true to enable multi-asset logging via fundingTokens[].
+    bool multiAssetLog = false;
+    // Address whose balances are logged. Defaults to address(this) when left as address(0).
+    address attacker;
 
     struct ChainInfo {
         string name;
@@ -61,11 +80,24 @@ contract BaseTestWithBalanceLog is Test {
         emit log_named_decimal_uint(string(abi.encodePacked(label, " ", symbol, " Balance")), balance, decimals);
     }
 
+    function _attacker() private view returns (address) {
+        return attacker == address(0) ? address(this) : attacker;
+    }
+
     modifier balanceLog() virtual {
-        if (fundingToken == address(0)) vm.deal(address(this), 0);
-        _logTokenBalance(fundingToken, address(this), string(abi.encodePacked("Attacker Before exploit")));
+        if (multiAssetLog) {
+            if (fundingToken == address(0)) vm.deal(_attacker(), 0);
+            _logMultiAssetBalances("Before exploit");
+        } else {
+            if (fundingToken == address(0)) vm.deal(_attacker(), 0);
+            _logTokenBalance(fundingToken, _attacker(), "Attacker Before exploit");
+        }
         _;
-        _logTokenBalance(fundingToken, address(this), string(abi.encodePacked("Attacker After exploit")));
+        if (multiAssetLog) {
+            _logMultiAssetBalances("After exploit");
+        } else {
+            _logTokenBalance(fundingToken, _attacker(), "Attacker After exploit");
+        }
     }
 
     modifier balanceLog2(address target) virtual {
@@ -92,5 +124,19 @@ contract BaseTestWithBalanceLog is Test {
         for (uint256 i = 0; i < tokens.length; i++) {
             _logTokenBalance(tokens[i], account, "");
         }
+    }
+
+    function _addFundingToken(address token) internal {
+        fundingTokens.push(token);
+    }
+
+    function _addFundingTokens(address[] memory tokens) internal {
+        for (uint256 i = 0; i < tokens.length; i++) {
+            fundingTokens.push(tokens[i]);
+        }
+    }
+
+    function _logMultiAssetBalances(string memory label) internal {
+        logMultipleTokenBalances(fundingTokens, _attacker(), label);
     }
 }
