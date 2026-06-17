@@ -1730,15 +1730,6 @@ https://www.cryptotimes.io/2026/05/27/skp-liquidity-exploit-drains-212k-across-b
 
 **Classification: Premeditated insider exploit — NOT a conventional external hack.**
 
-The SKP token's `_transfer()` hook (`_runSpecialPairFlow`) redistributes unbounded treasury SKP to a single whitelisted address (`WL_ADDRESS`) whenever the pair sends tokens to a buyer and the USDT excess exceeds a threshold. The threshold is trivially crossed with a flash loan. `WL_ADDRESS` is controlled by the `onlyOwner` function `setFeeWhiteList()` — no external attacker had a path to this exploit. The operator set `WL_ADDRESS` to their own exploit contract ~6 days before the drain, accumulated ~$234K of retail USDT over 14 days, then drained it.
-
-**Key on-chain evidence of deliberate engineering:**
-- `setFeeWhiteList()` is `onlyOwner` — WL changed 6 days prior: [tx proof](https://bscscan.com/tx/0xadf1b6ff02a917043c816bc8bd1ed67038d64a19d06544b09ceeb872518fda37)
-- `WL_ADDRESS` deployed and funded from the same wallet as the SKP deployer
-- SKP contract source intentionally left unverified on BSCScan
-- BlockRazor private mempool relay + deBridge cross-chain exit configured in advance
-- SKP deployer simultaneously ran 7+ other disposable anonymous tokens
-
 ```sh
 forge test --contracts src/test/2026-05/SKP_exp2.sol -vvv
 ```
