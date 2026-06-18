@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-720 incidents included.
+722 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,7 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
+[20260617 LBP](#20260617-lbp---lbp-balanceof-reward-accounting)
 [20260616 DIP](#20260616-dip---fee-on-transfer-reserve-manipulation)
 
 [20260615 Thetanuts](#20260615-thetanuts---index-vault-component-share-accounting-flaw)
@@ -65,6 +65,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260609 NovaBox](#20260609-novabox---constructor-dividend-checkpoint-bypass)
 
 [20260607 AmbientCrocSwapDex](#20260607-ambientcrocswapdex---native-surplus-accounting-flaw)
+
+[20260606 BOSS](#20260606-boss---boss-helper-mintburn-and-transfer-tax-pool-skew)
 
 [20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburn-reserve-manipulation)
 
@@ -1538,6 +1540,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20260617 LBP - LBP balanceOf reward accounting
+
+### Lost: 610.56 BNB
+
+
+```sh
+forge test --contracts ./src/test/2026-06/LBP_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[LBP_exp.sol](src/test/2026-06/LBP_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2067329401977532429
+
+---
+
 ### 20260616 DIP - Fee-on-Transfer Reserve Manipulation
 
 ### Lost: 111,097.59 USDC
@@ -1629,6 +1647,22 @@ forge test --contracts ./src/test/2026-06/AmbientCrocSwapDex_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/2063816231023427861
+
+---
+
+### 20260606 BOSS - BOSS helper mint/burn and transfer-tax pool skew
+
+### Lost: 10,207.54 USDT
+
+
+```sh
+forge test --contracts ./src/test/2026-06/BOSS_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[BOSS_exp.sol](src/test/2026-06/BOSS_exp.sol)
+### Link reference
+
+https://x.com/audit_911/status/2063819348305985748
 
 ---
 
