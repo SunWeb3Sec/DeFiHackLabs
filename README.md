@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-727 incidents included.
+728 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -60,6 +60,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260617 WHALE](#20260617-whale---transfer-accounting-reserve-desync)
 
 [20260617 LBP](#20260617-lbp---lbp-balanceof-reward-accounting)
+[20260617 Aztec V1](#20260617-aztec-v1---escapehatch-proof-forgery-permissionless-rollupprocessor-exit)
 
 [20260616 DIP](#20260616-dip---fee-on-transfer-reserve-manipulation)
 
@@ -1550,6 +1551,16 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260617 Aztec V1 - escapeHatch Proof-Forgery (permissionless RollupProcessor exit)
+### Lost: ~$2.2M (1158 ETH + 150,000 DAI + 0.4696 renBTC)
+```sh
+forge test --contracts src/test/2026-06/AztecEscapeHatch_exp.sol -vvv
+```
+#### Contract
+[AztecEscapeHatch_exp.sol](src/test/2026-06/AztecEscapeHatch_exp.sol)
+### Link reference
+https://x.com/SlowMist_Team
+---
 
 ### 20260620 OLPC - OLPC pair reserve manipulation
 
