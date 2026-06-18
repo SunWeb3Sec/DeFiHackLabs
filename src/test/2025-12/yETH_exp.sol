@@ -53,28 +53,18 @@ contract YETHExploitTest is BaseTestWithBalanceLog {
     IERC20 constant YETH = IERC20(0x1BED97CBC3c24A4fb5C069C6E311a967386131f7);
     IOETH constant OETH = IOETH(0x39254033945AA2E4809Cc2977E7087BEE48bd7Ab);
 
-    address[] internal assetsToLog;
-    modifier balanceLog() override {
-        //Set eth bal to 0
-        vm.deal(address(this), 0);
-        logMultipleTokenBalances(assetsToLog, address(this), "Before exploit");
-        _;
-        logMultipleTokenBalances(assetsToLog, address(this), "After exploit");
-    }
-
     function setUp() public {
         vm.createSelectFork("mainnet", FORK_BLOCK);
         fundingToken = address(0);
-        assetsToLog = new address[](NUM_ASSETS + 2);
+        multiAssetLog = true;
+        fundingTokens = new address[](NUM_ASSETS + 2);
 
-        // Get all pool assets
         for (uint256 i = 0; i < NUM_ASSETS; i++) {
-            assetsToLog[i] = POOL.assets(i);
+            fundingTokens[i] = POOL.assets(i);
         }
 
-        // Add YETH and ETH
-        assetsToLog[NUM_ASSETS] = address(YETH);
-        assetsToLog[NUM_ASSETS + 1] = address(0); // ETH
+        fundingTokens[NUM_ASSETS] = address(YETH);
+        fundingTokens[NUM_ASSETS + 1] = address(0); // ETH
     }
 
     function testExploit() public balanceLog {

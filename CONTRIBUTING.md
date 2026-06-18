@@ -4,6 +4,7 @@ Thank you for your interest in contributing to the DeFiHackLabs project! We appr
 ## Table of Contents
 * [Prerequisites](#prerequisites)
 * [Adding a New Incident Entry](#adding-a-new-incident-entry)
+* [Balance Logging in POCs](#balance-logging-in-pocs)
 * [Important Notes](#important-notes)
 
 ## Prerequisites
@@ -126,6 +127,69 @@ The script automatically handles:
 3. Open a pull request from your forked repository to the main DeFiHackLabs repository. Provide a clear description of the incident you added.
 
 4. Our maintainers will review your pull request. They may provide feedback or request further changes. Once your pull request is approved, it will be merged into the main repository.
+
+## Balance Logging in POCs
+
+All POCs should inherit from `BaseTestWithBalanceLog` (in `src/test/basetest.sol`) instead of `forge-std/Test.sol` directly. It provides automatic before/after balance logging via the `balanceLog` modifier.
+
+### Single-asset mode (default)
+
+Set `fundingToken` to the token the attacker profits in. Use `address(0)` for native coin (ETH, BNB, etc.). The `balanceLog` modifier will log that token's balance before and after `testExploit()`.
+
+```solidity
+contract MyExploit is BaseTestWithBalanceLog {
+    function setUp() public {
+        vm.createSelectFork("mainnet", BLOCK);
+        fundingToken = address(WETH); // log WETH profit
+    }
+
+    function testExploit() public balanceLog {
+        // exploit logic
+    }
+}
+```
+
+### Multi-asset mode
+
+When an exploit touches multiple tokens (e.g. lending pool drains across several reserves), enable multi-asset logging:
+
+1. Set `multiAssetLog = true`
+2. Populate `fundingTokens[]` with every token you want tracked
+3. Use the same `balanceLog` modifier — no override needed
+
+```solidity
+contract MyExploit is BaseTestWithBalanceLog {
+    function setUp() public {
+        vm.createSelectFork("mainnet", BLOCK);
+        multiAssetLog = true;
+        fundingTokens = new address[](3);
+        fundingTokens[0] = address(USDC);
+        fundingTokens[1] = address(WETH);
+        fundingTokens[2] = address(0); // native ETH
+    }
+
+    function testExploit() public balanceLog {
+        // exploit logic — all three tokens logged before and after
+    }
+}
+```
+
+Or add tokens one at a time using the helper:
+
+```solidity
+_addFundingToken(address(USDC));
+_addFundingToken(address(WETH));
+```
+
+### Setting a custom attacker address
+
+By default balances are logged for `address(this)` (the test contract). If the exploit profits to a separate address, set the `attacker` field:
+
+```solidity
+attacker = 0xDeaDBeef...; // log this address instead of address(this)
+```
+
+Leave it unset (or set to `address(0)`) to keep the default `address(this)` behaviour.
 
 ## Important Notes
  - **The script automatically generates blockchain explorer URLs** - do not paste explorer URLs manually

