@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-722 incidents included.
+723 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -67,6 +67,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260607 AmbientCrocSwapDex](#20260607-ambientcrocswapdex---native-surplus-accounting-flaw)
 
 [20260606 BOSS](#20260606-boss---boss-helper-mintburn-and-transfer-tax-pool-skew)
+
+[20260605 DTXT](#20260605-dtxt---liquidity-misclassification-fee-bypass)
 
 [20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburn-reserve-manipulation)
 
@@ -1663,6 +1665,22 @@ forge test --contracts ./src/test/2026-06/BOSS_exp.sol -vvv --evm-version shangh
 ### Link reference
 
 https://x.com/audit_911/status/2063819348305985748
+
+---
+
+### 20260605 DTXT - Liquidity Misclassification Fee Bypass
+
+### Lost: 35,041.11 USDT
+
+
+```sh
+forge test --contracts ./src/test/2026-06/DTXT_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[DTXT_exp.sol](src/test/2026-06/DTXT_exp.sol)
+### Link reference
+
+https://x.com/audit_911/status/2063793931138347015
 
 ---
 
