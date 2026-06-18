@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-723 incidents included.
+724 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -69,6 +69,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260606 BOSS](#20260606-boss---boss-helper-mintburn-and-transfer-tax-pool-skew)
 
 [20260605 DTXT](#20260605-dtxt---liquidity-misclassification-fee-bypass)
+
+[20260605 AISOTHPresale](#20260605-aisothpresale---fixed-price-presale-arbitrage)
 
 [20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburn-reserve-manipulation)
 
@@ -1681,6 +1683,22 @@ forge test --contracts ./src/test/2026-06/DTXT_exp.sol -vvv --evm-version shangh
 ### Link reference
 
 https://x.com/audit_911/status/2063793931138347015
+
+---
+
+### 20260605 AISOTHPresale - Fixed-price presale arbitrage
+
+### Lost: 30,314.76 USDT
+
+
+```sh
+forge test --contracts ./src/test/2026-06/AISOTHPresale_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[AISOTHPresale_exp.sol](src/test/2026-06/AISOTHPresale_exp.sol)
+### Link reference
+
+https://x.com/audit_911/status/2063565495073415618
 
 ---
 
