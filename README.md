@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-720 incidents included.
+721 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -63,6 +63,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260609 TOPBPool](#20260609-topbpool---governance-controlled-token-mint-and-balancer-pool-drain)
 
 [20260609 NovaBox](#20260609-novabox---constructor-dividend-checkpoint-bypass)
+
+[20260606 BOSS](#20260606-boss---boss-helper-mintburn-and-transfer-tax-pool-skew)
 
 [20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburn-reserve-manipulation)
 
@@ -1627,6 +1629,22 @@ forge test --contracts ./src/test/2026-06/NovaBox_exp.sol --evm-version prague -
 ### Link reference
 
 https://x.com/DefimonAlerts/status/2064616360466919793
+
+---
+
+### 20260606 BOSS - BOSS helper mint/burn and transfer-tax pool skew
+
+### Lost: 10,207.54 USDT
+
+
+```sh
+forge test --contracts ./src/test/2026-06/BOSS_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[BOSS_exp.sol](src/test/2026-06/BOSS_exp.sol)
+### Link reference
+
+https://x.com/audit_911/status/2063819348305985748
 
 ---
 
