@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-724 incidents included.
+725 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,7 +53,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20260617 WHALE](#20260617-whale---transfer-accounting-reserve-desync)
+
 [20260617 LBP](#20260617-lbp---lbp-balanceof-reward-accounting)
+
 [20260616 DIP](#20260616-dip---fee-on-transfer-reserve-manipulation)
 
 [20260615 Thetanuts](#20260615-thetanuts---index-vault-component-share-accounting-flaw)
@@ -1543,6 +1547,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260617 WHALE - Transfer Accounting Reserve Desync
+
+### Lost: 3,460.41 USDT
+
+
+```sh
+forge test --contracts ./src/test/2026-06/WHALE_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[WHALE_exp.sol](src/test/2026-06/WHALE_exp.sol)
+### Link reference
+
+https://x.com/audit_911/status/2067451654694412720
+
+---
 
 ### 20260617 LBP - LBP balanceOf reward accounting
 
