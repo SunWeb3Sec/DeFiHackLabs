@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-719 incidents included.
+720 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,7 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
+[20260607 AmbientCrocSwapDex](#20260607-ambientcrocswapdex---native-surplus-accounting-flaw)
 [20260616 DIP](#20260616-dip---fee-on-transfer-reserve-manipulation)
 
 [20260615 Thetanuts](#20260615-thetanuts---index-vault-component-share-accounting-flaw)
@@ -1535,6 +1535,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260607 AmbientCrocSwapDex - Native surplus accounting flaw
+
+### Lost: 67.85 ETH
+
+
+```sh
+forge test --contracts ./src/test/2026-06/AmbientCrocSwapDex_exp.sol -vvv
+```
+#### Contract
+[AmbientCrocSwapDex_exp.sol](src/test/2026-06/AmbientCrocSwapDex_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/2063816231023427861
+
+---
 
 ### 20260616 DIP - Fee-on-Transfer Reserve Manipulation
 
