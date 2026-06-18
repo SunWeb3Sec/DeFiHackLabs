@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-719 incidents included.
+720 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,7 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
+[20260605 AISOTHPresale](#20260605-aisothpresale---fixed-price-presale-arbitrage)
 [20260616 DIP](#20260616-dip---fee-on-transfer-reserve-manipulation)
 
 [20260615 Thetanuts](#20260615-thetanuts---index-vault-component-share-accounting-flaw)
@@ -1535,6 +1535,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260605 AISOTHPresale - Fixed-price presale arbitrage
+
+### Lost: 30,314.76 USDT
+
+
+```sh
+forge test --contracts ./src/test/2026-06/AISOTHPresale_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[AISOTHPresale_exp.sol](src/test/2026-06/AISOTHPresale_exp.sol)
+### Link reference
+
+https://x.com/audit_911/status/2063565495073415618
+
+---
 
 ### 20260616 DIP - Fee-on-Transfer Reserve Manipulation
 
