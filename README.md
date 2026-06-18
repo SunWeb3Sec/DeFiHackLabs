@@ -53,7 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20260607 AmbientCrocSwapDex](#20260607-ambientcrocswapdex---native-surplus-accounting-flaw)
+
 [20260616 DIP](#20260616-dip---fee-on-transfer-reserve-manipulation)
 
 [20260615 Thetanuts](#20260615-thetanuts---index-vault-component-share-accounting-flaw)
@@ -63,6 +63,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260609 TOPBPool](#20260609-topbpool---governance-controlled-token-mint-and-balancer-pool-drain)
 
 [20260609 NovaBox](#20260609-novabox---constructor-dividend-checkpoint-bypass)
+
+[20260607 AmbientCrocSwapDex](#20260607-ambientcrocswapdex---native-surplus-accounting-flaw)
 
 [20260604 BYToken](#20260604-bytoken---permissionless-triggerautoburn-reserve-manipulation)
 
@@ -1536,22 +1538,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
-### 20260607 AmbientCrocSwapDex - Native surplus accounting flaw
-
-### Lost: 67.85 ETH
-
-
-```sh
-forge test --contracts ./src/test/2026-06/AmbientCrocSwapDex_exp.sol -vvv
-```
-#### Contract
-[AmbientCrocSwapDex_exp.sol](src/test/2026-06/AmbientCrocSwapDex_exp.sol)
-### Link reference
-
-https://x.com/TenArmorAlert/status/2063816231023427861
-
----
-
 ### 20260616 DIP - Fee-on-Transfer Reserve Manipulation
 
 ### Lost: 111,097.59 USDC
@@ -1627,6 +1613,22 @@ forge test --contracts ./src/test/2026-06/NovaBox_exp.sol --evm-version prague -
 ### Link reference
 
 https://x.com/DefimonAlerts/status/2064616360466919793
+
+---
+
+### 20260607 AmbientCrocSwapDex - Native surplus accounting flaw
+
+### Lost: 67.85 ETH
+
+
+```sh
+forge test --contracts ./src/test/2026-06/AmbientCrocSwapDex_exp.sol -vvv
+```
+#### Contract
+[AmbientCrocSwapDex_exp.sol](src/test/2026-06/AmbientCrocSwapDex_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/2063816231023427861
 
 ---
 
