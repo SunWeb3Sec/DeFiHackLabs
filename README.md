@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-721 incidents included.
+722 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -63,6 +63,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260609 TOPBPool](#20260609-topbpool---governance-controlled-token-mint-and-balancer-pool-drain)
 
 [20260609 NovaBox](#20260609-novabox---constructor-dividend-checkpoint-bypass)
+
+[20260607 AmbientCrocSwapDex](#20260607-ambientcrocswapdex---native-surplus-accounting-flaw)
 
 [20260606 BOSS](#20260606-boss---boss-helper-mintburn-and-transfer-tax-pool-skew)
 
@@ -1629,6 +1631,22 @@ forge test --contracts ./src/test/2026-06/NovaBox_exp.sol --evm-version prague -
 ### Link reference
 
 https://x.com/DefimonAlerts/status/2064616360466919793
+
+---
+
+### 20260607 AmbientCrocSwapDex - Native surplus accounting flaw
+
+### Lost: 67.85 ETH
+
+
+```sh
+forge test --contracts ./src/test/2026-06/AmbientCrocSwapDex_exp.sol -vvv
+```
+#### Contract
+[AmbientCrocSwapDex_exp.sol](src/test/2026-06/AmbientCrocSwapDex_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/2063816231023427861
 
 ---
 
