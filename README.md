@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-726 incidents included.
+727 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,7 +53,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260620 OLPC](#20260620-olpc---olpc-pair-reserve-manipulation)
+
 [20260618 JB](#20260618-jb---jb-helper-repeated-cycle-drains-jbusdt-pair)
+
 [20260617 WHALE](#20260617-whale---transfer-accounting-reserve-desync)
 
 [20260617 LBP](#20260617-lbp---lbp-balanceof-reward-accounting)
@@ -1547,6 +1550,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260620 OLPC - OLPC pair reserve manipulation
+
+### Lost: 1,115,903.66 USDT
+
+
+```sh
+forge test --contracts ./src/test/2026-06/OLPC_exp.sol --evm-version shanghai -vvv
+```
+#### Contract
+[OLPC_exp.sol](src/test/2026-06/OLPC_exp.sol)
+### Link reference
+
+https://x.com/exvulsec/status/2068308334512365924
+
+---
 
 ### 20260618 JB - JB helper repeated cycle drains JB/USDT pair
 
