@@ -117,6 +117,10 @@ contract ContractTest is BaseTestWithBalanceLog {
         uint256 olpcSellNetDenominator = 10_000;
         uint256 pairBalance = IERC20(OLPC).balanceOf(OLPC_LABUBU_PAIR);
         uint256 targetBalance = pairBalance / reserveDecayTargetDivisor;
+
+        // Root cause: OLPC owner set decimalsValue to 7326680472586200649 at BSC block 96479712
+        // (2026-05-05 08:19:47 UTC), making tiny dust transfers force large pair balance decay.
+        // https://bscscan.com/tx/0xa413fdf688398348ddf0246275c6fe3a98806670252e44bfe0acd50b4d50efa2
         uint256 burnScale = ICustomToken(OLPC).decimalsValue();
 
         // Skim leaves pairBalance - skimAmount * (decimalsValue() - 1); choose dust that targets 10% balance.
