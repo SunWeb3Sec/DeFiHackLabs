@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-729 incidents included.
+730 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -138,6 +138,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260302 Curve LlamaLend](#20260302-curve-llamalend---share-price-manipulation)
 
 [20260222 LAXO Token](#20260222-laxo-token---incorrect-burn-logic)
+
+[20260216 XDKRecycle](#20260216-xdkrecycle---xdk-recycle-reserve-manipulation)
 
 [20260215 Moonwell](#20260215-moonwell---faulty-oracle)
 
@@ -2189,6 +2191,22 @@ forge test src/test/2026-02/LAXO_Token_exp.sol -vvv
 
 ### Link reference
 https://x.com/CertiKAlert/status/2027317095420072317
+
+---
+
+### 20260216 XDKRecycle - XDK recycle reserve manipulation
+
+### Lost: 6.84 WBNB
+
+
+```sh
+forge test --contracts ./src/test/2026-02/XDKRecycle_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[XDKRecycle_exp.sol](src/test/2026-02/XDKRecycle_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2024163654631882916
 
 ---
 
