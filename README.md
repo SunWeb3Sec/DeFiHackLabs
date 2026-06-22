@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-725 incidents included.
+726 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,7 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-
+[20260618 JB](#20260618-jb---jb-helper-repeated-cycle-drains-jbusdt-pair)
 [20260617 WHALE](#20260617-whale---transfer-accounting-reserve-desync)
 
 [20260617 LBP](#20260617-lbp---lbp-balanceof-reward-accounting)
@@ -1547,6 +1547,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260618 JB - JB helper repeated cycle drains JB/USDT pair
+
+### Lost: 49,958.06 USDT
+
+
+```sh
+forge test --contracts ./src/test/2026-06/JB_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[JB_exp.sol](src/test/2026-06/JB_exp.sol)
+### Link reference
+
+https://x.com/audit_911/status/2067943961327763788
+
+---
 
 ### 20260617 WHALE - Transfer Accounting Reserve Desync
 
