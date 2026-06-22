@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-727 incidents included.
+728 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260622 Aztec Escape Hatch](#20260622-aztec-escape-hatch---proof_id-accounting-bypass-whitehat-reproduction)
+
 [20260620 OLPC](#20260620-olpc---olpc-pair-reserve-manipulation)
 
 [20260618 JB](#20260618-jb---jb-helper-repeated-cycle-drains-jbusdt-pair)
@@ -1550,6 +1552,20 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260622 Aztec Escape Hatch - proof_id Accounting Bypass (whitehat reproduction)
+### Lost: N/A (purely educational; worst-case impact would have been ~$2M, matching the separate vulnerability that actually drained the contracts)
+```sh
+forge test --contracts src/test/2026-06/AztecEscapeHatch_exp.sol -vvv
+```
+#### Contract
+[AztecEscapeHatch_exp.sol](src/test/2026-06/AztecEscapeHatch_exp.sol)
+### Link reference
+https://github.com/AztecProtocol/aztec-2.0
+
+https://x.com/ivanbogatyy/status/2069159603942596830
+
+---
 
 ### 20260620 OLPC - OLPC pair reserve manipulation
 
