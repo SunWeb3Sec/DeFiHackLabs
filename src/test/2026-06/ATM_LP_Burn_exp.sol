@@ -12,7 +12,6 @@ import "../interface.sol";
 // Attack Tx : https://bscscan.com/tx/0x4e9f3dc3ce3c0a6aa19dae0f1384ff46e801b433b7e3bc4c780de486db6c950a
 // Liquidity Setup Tx : https://bscscan.com/tx/0x2bb7f486730d7d6a271a2a0c18cec45c89f447a95e956415f18d2a0671ec789c
 // Victim LP Transfer Tx : https://bscscan.com/tx/0x5c27edc326e38641d8ce6093cd7f15ae5fca039f5fb988b7f10cb432e6e3a056
-// Alert Reported Tx (post-burn check) : https://bscscan.com/tx/0x939fc92996c9205eac83b86817abe2ef5f7f1eeadfb43557e2cfb3123720b3f1
 
 // @Info
 // Vulnerable Contract Code : https://bscscan.com/address/0x9753a64fb7c233fdc43f04dab9cca88e1e229eba#code
