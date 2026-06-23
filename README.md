@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-728 incidents included.
+729 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260622 ATM](#20260622-atm---lp-token-burn)
 [20260620 OLPC](#20260620-olpc---olpc-pair-reserve-manipulation)
 
 [20260618 JB](#20260618-jb---jb-helper-repeated-cycle-drains-jbusdt-pair)
@@ -1551,6 +1552,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260622 ATM - LP Token Burn
+
+### Lost: 1,603.99 WBNB
+
+
+```sh
+forge test --contracts ./src/test/2026-06/ATM_LP_Burn_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[ATM_LP_Burn_exp.sol](src/test/2026-06/ATM_LP_Burn_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/2068993748936151209
+
+---
 
 ### 20260620 OLPC - OLPC pair reserve manipulation
 
