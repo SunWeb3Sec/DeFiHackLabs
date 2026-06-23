@@ -1551,16 +1551,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
-### 20260617 Aztec V1 - escapeHatch Proof-Forgery (permissionless RollupProcessor exit)
-### Lost: ~$2.2M (1158 ETH + 150,000 DAI + 0.4696 renBTC)
-```sh
-forge test --contracts src/test/2026-06/AztecEscapeHatch_exp.sol -vvv
-```
-#### Contract
-[AztecEscapeHatch_exp.sol](src/test/2026-06/AztecEscapeHatch_exp.sol)
-### Link reference
-https://x.com/SlowMist_Team
----
 
 ### 20260620 OLPC - OLPC pair reserve manipulation
 
@@ -1592,6 +1582,17 @@ forge test --contracts ./src/test/2026-06/JB_exp.sol -vvv --evm-version cancun
 
 https://x.com/audit_911/status/2067943961327763788
 
+---
+
+### 20260617 Aztec V1 - escapeHatch Proof-Forgery (permissionless RollupProcessor exit)
+### Lost: ~$2.2M (1158 ETH + 150,000 DAI + 0.4696 renBTC)
+```sh
+forge test --contracts src/test/2026-06/AztecEscapeHatch_exp.sol -vvv
+```
+#### Contract
+[AztecEscapeHatch_exp.sol](src/test/2026-06/AztecEscapeHatch_exp.sol)
+### Link reference
+https://x.com/SlowMist_Team
 ---
 
 ### 20260617 WHALE - Transfer Accounting Reserve Desync
