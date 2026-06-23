@@ -1360,6 +1360,23 @@ https://blog.solidityscan.com/peapods-finance-hack-analysis-bdc5432107a5
 
 ---
 
+### 20250126 AIXBTForcedSwap - Hardcoded Auth Key
+
+### Lost: 13,597.36 USDC
+
+```sh
+forge test --contracts ./src/test/2025-01/AIXBTForcedSwap_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+[AIXBTForcedSwap_exp.sol](../../src/test/2025-01/AIXBTForcedSwap_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/363
+
+---
+
 ### 20250123 ODOS - invalid-signature-verification
 
 ### Lost: ~50k
