@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-731 incidents included.
+732 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -98,6 +98,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260526 SKP Token](#20260526-skp-token---owner-backdoor-lp-burn--price-manipulation)
 
 [20260526 SKP Token](#20260526-skp-token---deliberately-engineered-drain-insider-exploit--rug-pull)
+
+[20260525 SquidRouterModule](#20260525-squidroutermodule---missing-caller-check)
 
 [20260525 New Market Trading](#20260525-new-market-trading---squidroutermodule-missing-caller-check)
 
@@ -1878,6 +1880,22 @@ forge test --contracts src/test/2026-05/JoeAgent_exp.sol -vvv
 https://x.com/SlowMist_Team/status/2059887450663551352
 
 ---
+### 20260525 SquidRouterModule - Missing caller check
+
+### Lost: 0.25 WBTC + 0.29 wTAO + 0.02 WETH
+
+
+```sh
+FOUNDRY_EVM_VERSION=cancun forge test --contracts ./src/test/2026-05/SquidRouterModule_exp.sol -vvv
+```
+#### Contract
+[SquidRouterModule_exp.sol](src/test/2026-05/SquidRouterModule_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/3045
+
+---
+
 ### 20260525 New Market Trading - SquidRouterModule Missing Caller Check
 ### Lost: ~$3.98M USD
 ```sh
