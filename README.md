@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-737 incidents included.
+738 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -113,6 +113,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260521 MureDistribution](#20260521-muredistribution---signature-verification-bypass)
 
 [20260520 MAPProtocol](#20260520-mapprotocol---arbitrary-mint)
+
+[20260518 TesseraSwap](#20260518-tesseraswap---callback-repayment-price-spread)
 
 [20260517 VerusBridge](#20260517-verusbridge---insufficient-validation)
 
@@ -2012,6 +2014,18 @@ forge test --contracts src/test/2026-05/MAPProtocol_exp.sol -vvv
 ### Link reference
 https://etherscan.io/tx/0x31e56b4737649e0acdb0ebb4eca44d16aeca25f60c022cbde85f092bde27664a
 https://x.com/MapProtocol/status/2059587998409490510
+
+---
+
+### 20260518 TesseraSwap - Callback Repayment Price Spread
+### Lost: ~$20K
+```sh
+forge test --contracts ./src/test/2026-05/TesseraSwap_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[TesseraSwap_exp.sol](src/test/2026-05/TesseraSwap_exp.sol)
+### Link reference
+https://t.me/defimon_alerts/3038
 
 ---
 
