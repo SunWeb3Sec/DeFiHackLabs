@@ -19,8 +19,8 @@ import "../interface.sol";
 // The attacker used SquidMulticall.run with one Default call whose target was the Binance-Peg ETH token.
 // Because the victim had approved SquidMulticall, the multicall contract could execute transferFrom and
 // move 1 ETH from the victim to the attacker.
-// Incident context: the Twitter report said the victim had about $800K of cross-chain approvals at risk
-// and that Defimon later rescued about $512K. This exploit transaction itself transferred 1 ETH.
+// The Twitter report notes about $800K of cross-chain approvals were at risk and about $512K was later
+// rescued by Defimon. This PoC is scoped to the exploit transaction, which transferred 1 ETH.
 
 address constant ATTACKER = address(bytes20(hex"e02b595ca69d8d3e120043536e6e76caea385a82"));
 address constant SQUID_MULTICALL = address(bytes20(hex"ad6cea45f98444a922a2b4fe96b8c90f0862d2f4"));
