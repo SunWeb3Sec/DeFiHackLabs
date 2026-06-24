@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-740 incidents included.
+741 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260623 RoyalRoyalties](#20260623-royalroyalties---zero-amount-erc1155-batch-transfer-inflated-royal-lda-tier-balance)
+
 [20260622 Aztec Escape Hatch](#20260622-aztec-escape-hatch---proof_id-accounting-bypass-whitehat-reproduction)
 
 [20260622 ATM](#20260622-atm---lp-token-burn)
@@ -1575,6 +1577,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260623 RoyalRoyalties - Zero-amount ERC1155 batch transfer inflated Royal LDA tier balance
+
+### Lost: 261,162.93 USDC
+
+
+```sh
+forge test --contracts ./src/test/2026-06/RoyalRoyalties_exp.sol -vvv
+```
+#### Contract
+[RoyalRoyalties_exp.sol](src/test/2026-06/RoyalRoyalties_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/2069596801725002121
+
+---
 
 ### 20260622 Aztec Escape Hatch - proof_id Accounting Bypass (whitehat reproduction)
 ### Lost: N/A (purely educational; worst-case impact would have been ~$2M, matching the separate vulnerability that actually drained the contracts)
