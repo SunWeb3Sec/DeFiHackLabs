@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-741 incidents included.
+742 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -135,6 +135,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260507 TrustedVolumes](#20260507-trustedvolumes---signature-replay)
 
 [20260505 Ekubo](#20260505-ekubo---business-logic-flaw)
+
+[20260420 ThetanutsVaultShareRounding](#20260420-thetanutsvaultsharerounding---vault-share-rounding-manipulation)
 
 [20260415 XLootStaking](#20260415-xlootstaking---duplicate-xloot-redemption)
 
@@ -2172,6 +2174,22 @@ forge test --contracts src/test/2026-05/Ekubo_exp.sol -vvv
 https://etherscan.io/tx/0x770bc9a1f7c32cb63a5002b9ceb5c7994cd3af0fc6b2309cb32d3c46f629daa0
 https://x.com/EkuboProtocol/status/2051754481465856038
 https://x.com/blockaid_/status/2051757787714118125
+
+---
+
+### 20260420 ThetanutsVaultShareRounding - Vault Share Rounding Manipulation
+
+### Lost: 0.15 WBTC
+
+
+```sh
+forge test --contracts ./src/test/2026-04/ThetanutsVaultShareRounding_exp.sol -vvv
+```
+#### Contract
+[ThetanutsVaultShareRounding_exp.sol](src/test/2026-04/ThetanutsVaultShareRounding_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/2933
 
 ---
 
