@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-742 incidents included.
+743 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -135,6 +135,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260507 TrustedVolumes](#20260507-trustedvolumes---signature-replay)
 
 [20260505 Ekubo](#20260505-ekubo---business-logic-flaw)
+
+[20260428 RWAVault](#20260428-rwavault---missing-erc4626-allowance-check)
 
 [20260420 ThetanutsVaultShareRounding](#20260420-thetanutsvaultsharerounding---vault-share-rounding-manipulation)
 
@@ -2174,6 +2176,22 @@ forge test --contracts src/test/2026-05/Ekubo_exp.sol -vvv
 https://etherscan.io/tx/0x770bc9a1f7c32cb63a5002b9ceb5c7994cd3af0fc6b2309cb32d3c46f629daa0
 https://x.com/EkuboProtocol/status/2051754481465856038
 https://x.com/blockaid_/status/2051757787714118125
+
+---
+
+### 20260428 RWAVault - Missing ERC4626 allowance check
+
+### Lost: 398,655.47 USDC
+
+
+```sh
+forge test --contracts ./src/test/2026-04/RWAVault_exp.sol -vvv
+```
+#### Contract
+[RWAVault_exp.sol](src/test/2026-04/RWAVault_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/2958
 
 ---
 
