@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-744 incidents included.
+745 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -138,6 +138,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260505 Ekubo](#20260505-ekubo---business-logic-flaw)
 
 [20260428 RWAVault](#20260428-rwavault---missing-erc4626-allowance-check)
+
+[20260421 KipseliPropAMM](#20260421-kipselipropamm---pricing--decimals-mismatch)
 
 [20260420 ThetanutsVaultShareRounding](#20260420-thetanutsvaultsharerounding---vault-share-rounding-manipulation)
 
@@ -2205,6 +2207,22 @@ forge test --contracts ./src/test/2026-04/RWAVault_exp.sol -vvv
 ### Link reference
 
 https://t.me/defimon_alerts/2958
+
+---
+
+### 20260421 KipseliPropAMM - Pricing / Decimals Mismatch
+
+### Lost: 0.93 cbBTC
+
+
+```sh
+forge test --contracts ./src/test/2026-04/KipseliPropAMM_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[KipseliPropAMM_exp.sol](src/test/2026-04/KipseliPropAMM_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2046873857571934254
 
 ---
 
