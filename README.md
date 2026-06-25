@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-743 incidents included.
+744 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -129,6 +129,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260512 SQTokenStaking](#20260512-sqtokenstaking---access-control)
 
 [20260511 INKFinance](#20260511-inkfinance---business-logic-flaw)
+[20260511 HumaFinance](#20260511-humafinance---credit-approval-bypass)
 
 [20260510 Renegade](#20260510-renegade---uninitialized-proxy)
 
@@ -2134,6 +2135,18 @@ forge test --contracts src/test/2026-05/INKFinance_exp.sol -vvv
 ### Link reference
 https://polygonscan.com/tx/0xb469a24ec737be16fe41367a7b5b315c7f03b4e0ff3af50b3a2db03b3066b982
 https://www.cryptotimes.io/2026/05/11/ink-finance-exploited-on-polygon-140k-usdt-drained-in-flash-loan-attack/
+
+---
+
+### 20260511 HumaFinance - Credit Approval Bypass
+### Lost: ~$101K (82,315 USDC + 19,074 USDC.e)
+```sh
+forge test --contracts src/test/2026-05/HumaCreditApprovalBypass_exp.sol -vv
+```
+#### Contract
+[HumaCreditApprovalBypass_exp.sol](src/test/2026-05/HumaCreditApprovalBypass_exp.sol)
+### Link reference
+https://www.cryptotimes.io/2026/05/11/huma-finance-v1-exploit-on-polygon-drains-101k-in-usdc/
 
 ---
 
