@@ -4,6 +4,7 @@ DeFi Hack Manager - A tool for documenting and managing DeFi hack POCs
 """
 
 from datetime import datetime
+import argparse
 import re
 import os
 import toml
@@ -269,8 +270,51 @@ class DefiHackLibrary:
         formatted_date = timestamp.strftime("%Y%m%d")
         name = file_name.split("_")[0]
         
-        self.readme_manager.update_readme(formatted_date, name, additional_details, 
+        self.readme_manager.update_readme(formatted_date, name, additional_details,
                                         lost_amount, file_name, link_reference, None)
+
+    def add_entry_cli(self, args: argparse.Namespace) -> int:
+        """Add an entry non-interactively from parsed CLI arguments.
+
+        Mirrors the interactive flow but takes every value from `args`, so the
+        whole tx2poc -> DeFiHackLabs export can run unattended. Unlike the
+        interactive "process existing files" path, the selected network is
+        passed through to the README run command, so chain-specific flags such
+        as `--evm-version shanghai` are emitted correctly.
+        """
+        rpc_endpoints = self.config_manager.parse_foundry_toml()
+
+        # Register the network on demand when an RPC URL is supplied.
+        if args.network not in rpc_endpoints:
+            if not args.rpc_url:
+                print(f"Error: network '{args.network}' not found in {self.constants.FOUNDRY_TOML_PATH}. "
+                      f"Pass --rpc-url to add it.")
+                return 1
+            rpc_endpoints[args.network] = args.rpc_url
+            self.config_manager.update_foundry_toml(rpc_endpoints)
+
+        # Resolve the timestamp: explicit value wins, else derive from the tx hash.
+        timestamp_str = args.timestamp or ""
+        if not timestamp_str and args.tx_hash and self.transaction_manager.is_cast_command_available():
+            timestamp_str = self.transaction_manager.get_timestamp_from_tx_hash(
+                args.tx_hash, rpc_endpoints[args.network], auto_confirm=True)
+
+        timestamp = self.transaction_manager.get_timestamp_from_str(timestamp_str)
+        formatted_date = timestamp.strftime("%Y%m%d")
+        name = args.file.split("_")[0]
+
+        # Optionally generate the Solidity PoC from the template.
+        if args.create_poc:
+            self.poc_manager.create_poc_solidity_file(
+                args.file, args.lost_amount, args.attacker or "", args.attack_contract or "",
+                args.vulnerable or "", args.tx_hash or "", args.post_mortem or "",
+                args.twitter or "", args.hacking_god or "", args.network,
+                timestamp.strftime("%b-%d-%Y %I:%M:%S %p"))
+
+        self.readme_manager.update_readme(formatted_date, name, args.details,
+                                        args.lost_amount, args.file, args.link, args.network)
+        print("\nNon-interactive entry complete.")
+        return 0
 
 
 class ConfigManager:
@@ -407,8 +451,12 @@ class TransactionManager:
             print("Using current timestamp instead.")
             return datetime.now()
     
-    def get_timestamp_from_tx_hash(self, tx_hash: str, rpc_url: str) -> str:
-        """Get timestamp from transaction hash"""
+    def get_timestamp_from_tx_hash(self, tx_hash: str, rpc_url: str, auto_confirm: bool = False) -> str:
+        """Get timestamp from transaction hash.
+
+        When auto_confirm is True the suggested timestamp is returned without
+        prompting, so the derivation can be used in non-interactive mode.
+        """
         print(f"Fetching block number for tx {tx_hash}...")
         tx_data = self._run_cast_command(
             ["tx", tx_hash, "--json"],
@@ -440,7 +488,7 @@ class TransactionManager:
                                 dt_object = datetime.fromtimestamp(unix_timestamp)
                                 suggested_timestamp_str = dt_object.strftime("%b-%d-%Y %I:%M:%S %p")
                                 print(f"Suggested timestamp: {suggested_timestamp_str}")
-                                if input("Use suggested timestamp? (yes/no): ").lower() == 'yes':
+                                if auto_confirm or input("Use suggested timestamp? (yes/no): ").lower() == 'yes':
                                     return suggested_timestamp_str
                             except ValueError:
                                 print(f"Could not parse block timestamp: {unix_timestamp_any}")
@@ -717,25 +765,89 @@ class GitManager:
 # MAIN SCRIPT
 ######################
 
-def main():
-    """Main entry point for the script"""
-    library = DefiHackLibrary()
-    
-    rpc_endpoints = library.config_manager.parse_foundry_toml()
-    selected_network, rpc_endpoints = library.select_network()
-    
+def build_arg_parser() -> argparse.ArgumentParser:
+    """Build the CLI parser.
+
+    With no arguments the script stays fully interactive (unchanged behavior).
+    Passing --network switches to non-interactive mode, which is what the
+    tx2poc export pipeline uses to add an entry without any prompts.
+    """
+    parser = argparse.ArgumentParser(
+        description="Document a DeFi hack PoC. Interactive by default; pass "
+                    "--network (with --file and --lost-amount) for non-interactive mode.")
+
+    # Non-interactive entry fields.
+    parser.add_argument("--network", help="Network alias from foundry.toml (e.g. bsc). Enables non-interactive mode.")
+    parser.add_argument("--file", help="PoC filename, e.g. Example_exp.sol.")
+    parser.add_argument("--lost-amount", help="Lost amount string, e.g. '100M USD'.")
+    parser.add_argument("--details", default="", help="Short root cause / category, e.g. 'Reentrancy'.")
+    parser.add_argument("--link", default="", help="Reference / source link.")
+
+    timestamp_group = parser.add_mutually_exclusive_group()
+    timestamp_group.add_argument("--timestamp", help="Timestamp 'Mon-DD-YYYY HH:MM:SS AM/PM'.")
+    timestamp_group.add_argument("--tx-hash", dest="tx_hash", help="Attack tx hash; timestamp auto-derived via cast.")
+
+    parser.add_argument("--rpc-url", dest="rpc_url", help="RPC URL used to register --network when it is missing from foundry.toml.")
+
+    # Optional Solidity PoC creation from the template.
+    parser.add_argument("--create-poc", dest="create_poc", action="store_true", help="Also create the Solidity PoC from the template.")
+    parser.add_argument("--attacker", help="Attacker address (with --create-poc).")
+    parser.add_argument("--attack-contract", dest="attack_contract", help="Attack contract address (with --create-poc).")
+    parser.add_argument("--vulnerable", help="Vulnerable contract address (with --create-poc).")
+    parser.add_argument("--post-mortem", dest="post_mortem", help="Post-mortem URL (with --create-poc).")
+    parser.add_argument("--twitter", help="Twitter / X URL (with --create-poc).")
+    parser.add_argument("--hacking-god", dest="hacking_god", help="Researcher URL (with --create-poc).")
+
+    # Path overrides (handy for CI and tests).
+    parser.add_argument("--foundry-toml", dest="foundry_toml", help="Path to foundry.toml.")
+    parser.add_argument("--readme", help="Path to README.md.")
+    parser.add_argument("--template", help="Path to the PoC template.")
+    parser.add_argument("--src-test-dir", dest="src_test_dir", help="Path to the src/test directory.")
+
+    return parser
+
+
+def run_interactive(library: "DefiHackLibrary") -> int:
+    """Original interactive flow."""
+    library.config_manager.parse_foundry_toml()
+    selected_network, _ = library.select_network()
+
     if selected_network is None:
-        return
-    
+        return 0
+
     # Ask user if they want to add a new entry manually first
     if input("Do you want to add a new incident entry manually? (yes/no): ").lower() == 'yes':
         library.add_new_entry(selected_network)
-    
+
     # Then, ask about processing existing .sol files
     if input(f"Do you want to check for .sol files in '{library.constants.SRC_TEST_DIR}' missing {library.constants.README_PATH} entries? (yes/no): ").lower() == 'yes':
         library.process_existing_files()
-    
+
     print("\nScript finished.")
+    return 0
+
+
+def main(argv=None) -> int:
+    """Main entry point for the script"""
+    parser = build_arg_parser()
+    args = parser.parse_args(argv)
+
+    library = DefiHackLibrary(
+        config_path=args.foundry_toml,
+        readme_path=args.readme,
+        template_path=args.template,
+        src_test_dir=args.src_test_dir,
+    )
+
+    if args.network is None:
+        return run_interactive(library)
+
+    # Non-interactive mode.
+    missing = [name for name, value in (("--file", args.file), ("--lost-amount", args.lost_amount)) if not value]
+    if missing:
+        parser.error(f"non-interactive mode (--network) requires: {', '.join(missing)}")
+    return library.add_entry_cli(args)
+
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "--test":
@@ -744,4 +856,4 @@ if __name__ == "__main__":
         unittest.main()
     else:
         # Run the main script
-        main()
+        sys.exit(main())

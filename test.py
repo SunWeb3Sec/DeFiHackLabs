@@ -21,8 +21,9 @@ from contextlib import redirect_stdout
 try:
     # Assuming the refactored code was saved as defi_hack_manager.py
     from add_new_entry import (
-        Constants, ConfigManager, TransactionManager, 
-        ReadmeManager, PocManager, GitManager, DefiHackLibrary
+        Constants, ConfigManager, TransactionManager,
+        ReadmeManager, PocManager, GitManager, DefiHackLibrary,
+        build_arg_parser, main, run_interactive
     )
 except ImportError:
     # If you're running this test file separately, you may need to adjust the import path
@@ -924,6 +925,106 @@ class TestDefiHackLibrary(unittest.TestCase):
                         
                         # Assert _add_new_entry_from_file is called for the first file
                         self.library._add_new_entry_from_file.assert_called_once_with("src/test/2024-05/Test1_exp.sol")
+
+
+class TestCliArgs(unittest.TestCase):
+    """Test the non-interactive CLI argument handling"""
+
+    def _cli_args(self, extra):
+        base = ["--network", "bsc", "--file", "DLMC_exp.sol", "--lost-amount", "222,560.22 USDT"]
+        return build_arg_parser().parse_args(base + extra)
+
+    def test_parse_args_defaults(self):
+        """No arguments keeps interactive defaults"""
+        args = build_arg_parser().parse_args([])
+        self.assertIsNone(args.network)
+        self.assertEqual(args.details, "")
+        self.assertEqual(args.link, "")
+        self.assertFalse(args.create_poc)
+
+    def test_timestamp_and_tx_hash_are_mutually_exclusive(self):
+        """--timestamp and --tx-hash cannot be combined"""
+        with self.assertRaises(SystemExit):
+            build_arg_parser().parse_args(["--timestamp", "x", "--tx-hash", "0xabc"])
+
+    def test_main_without_network_runs_interactive(self):
+        """Absent --network falls back to the interactive flow"""
+        with mock.patch("add_new_entry.DefiHackLibrary"):
+            with mock.patch("add_new_entry.run_interactive", return_value=0) as mock_interactive:
+                rc = main([])
+                self.assertEqual(rc, 0)
+                mock_interactive.assert_called_once()
+
+    def test_main_non_interactive_requires_file_and_amount(self):
+        """--network without --file/--lost-amount errors out"""
+        with mock.patch("add_new_entry.DefiHackLibrary"):
+            with self.assertRaises(SystemExit):
+                main(["--network", "bsc"])
+
+    def test_main_non_interactive_dispatches_to_add_entry_cli(self):
+        """A complete non-interactive invocation calls add_entry_cli"""
+        with mock.patch("add_new_entry.DefiHackLibrary") as mock_lib:
+            instance = mock_lib.return_value
+            instance.add_entry_cli.return_value = 0
+            rc = main(["--network", "bsc", "--file", "DLMC_exp.sol", "--lost-amount", "1 ETH"])
+            self.assertEqual(rc, 0)
+            instance.add_entry_cli.assert_called_once()
+
+    def test_add_entry_cli_updates_readme_with_network(self):
+        """add_entry_cli passes the network through so chain flags are emitted"""
+        library = DefiHackLibrary()
+        args = self._cli_args(["--details", "Referral drain", "--link", "https://x.com/a",
+                               "--timestamp", "Jun-24-2026 11:15:10 AM"])
+        with mock.patch.object(library.config_manager, "parse_foundry_toml", return_value={"bsc": "https://bsc"}):
+            with mock.patch.object(library.readme_manager, "update_readme") as mock_update:
+                rc = library.add_entry_cli(args)
+        self.assertEqual(rc, 0)
+        mock_update.assert_called_once_with(
+            "20260624", "DLMC", "Referral drain", "222,560.22 USDT",
+            "DLMC_exp.sol", "https://x.com/a", "bsc")
+
+    def test_add_entry_cli_unknown_network_without_rpc_fails(self):
+        """An unknown network without --rpc-url is a hard error"""
+        library = DefiHackLibrary()
+        args = self._cli_args(["--timestamp", "Jun-24-2026 11:15:10 AM"])
+        with mock.patch.object(library.config_manager, "parse_foundry_toml", return_value={}):
+            with mock.patch.object(library.readme_manager, "update_readme") as mock_update:
+                rc = library.add_entry_cli(args)
+        self.assertEqual(rc, 1)
+        mock_update.assert_not_called()
+
+    def test_add_entry_cli_registers_network_with_rpc(self):
+        """An unknown network is registered when --rpc-url is supplied"""
+        library = DefiHackLibrary()
+        args = self._cli_args(["--timestamp", "Jun-24-2026 11:15:10 AM", "--rpc-url", "https://bsc.new"])
+        with mock.patch.object(library.config_manager, "parse_foundry_toml", return_value={}):
+            with mock.patch.object(library.config_manager, "update_foundry_toml") as mock_toml:
+                with mock.patch.object(library.readme_manager, "update_readme") as mock_update:
+                    rc = library.add_entry_cli(args)
+        self.assertEqual(rc, 0)
+        mock_toml.assert_called_once_with({"bsc": "https://bsc.new"})
+        mock_update.assert_called_once()
+
+    def test_add_entry_cli_create_poc(self):
+        """--create-poc generates the Solidity file from the template"""
+        library = DefiHackLibrary()
+        args = self._cli_args(["--timestamp", "Jun-24-2026 11:15:10 AM", "--create-poc",
+                               "--attacker", "0xatk", "--vulnerable", "0xvuln"])
+        with mock.patch.object(library.config_manager, "parse_foundry_toml", return_value={"bsc": "https://bsc"}):
+            with mock.patch.object(library.poc_manager, "create_poc_solidity_file") as mock_poc:
+                with mock.patch.object(library.readme_manager, "update_readme"):
+                    rc = library.add_entry_cli(args)
+        self.assertEqual(rc, 0)
+        mock_poc.assert_called_once()
+
+    def test_get_timestamp_auto_confirm_skips_prompt(self):
+        """auto_confirm returns the derived timestamp without prompting"""
+        manager = TransactionManager(Constants())
+        with mock.patch.object(manager, "_run_cast_command",
+                               side_effect=[{"blockNumber": "0x10"}, {"timestamp": "1650000000"}]):
+            with mock.patch("builtins.input", side_effect=AssertionError("input should not be called")):
+                result = manager.get_timestamp_from_tx_hash("0xabc", "https://rpc", auto_confirm=True)
+        self.assertTrue(result)
 
 
 if __name__ == "__main__":
