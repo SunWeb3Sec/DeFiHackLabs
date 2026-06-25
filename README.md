@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-746 incidents included.
+747 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260624 DLMC](#20260624-dlmc---reserve-derived-liveprice-manipulation)
 [20260623 RoyalRoyalties](#20260623-royalroyalties---zero-amount-erc1155-batch-transfer-inflated-royal-lda-tier-balance)
 
 [20260622 Aztec Escape Hatch](#20260622-aztec-escape-hatch---proof_id-accounting-bypass-whitehat-reproduction)
@@ -1586,6 +1587,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260624 DLMC - Reserve-derived livePrice manipulation
+
+### Lost: 222,560.22 USDT
+
+
+```sh
+forge test --contracts ./src/test/2026-06/DLMC_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[DLMC_exp.sol](src/test/2026-06/DLMC_exp.sol)
+### Link reference
+
+https://x.com/TenArmorAlert/status/2069957542109958498
+
+---
 
 ### 20260623 RoyalRoyalties - Zero-amount ERC1155 batch transfer inflated Royal LDA tier balance
 
