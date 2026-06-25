@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-745 incidents included.
+746 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -138,6 +138,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260505 Ekubo](#20260505-ekubo---business-logic-flaw)
 
 [20260428 RWAVault](#20260428-rwavault---missing-erc4626-allowance-check)
+
+[20260425 SingularityDynaVault](#20260425-singularitydynavault---oracle-misconfiguration--share-inflation)
 
 [20260421 KipseliPropAMM](#20260421-kipselipropamm---pricing--decimals-mismatch)
 
@@ -2207,6 +2209,22 @@ forge test --contracts ./src/test/2026-04/RWAVault_exp.sol -vvv
 ### Link reference
 
 https://t.me/defimon_alerts/2958
+
+---
+
+### 20260425 SingularityDynaVault - Oracle Misconfiguration / Share Inflation
+
+### Lost: 413.13K USDC
+
+
+```sh
+forge test --contracts ./src/test/2026-04/SingularityDynaVault_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[SingularityDynaVault_exp.sol](src/test/2026-04/SingularityDynaVault_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2048698708309705069
 
 ---
 
