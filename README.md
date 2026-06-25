@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-747 incidents included.
+748 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -143,6 +143,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260425 SingularityDynaVault](#20260425-singularitydynavault---oracle-misconfiguration--share-inflation)
 
 [20260421 KipseliPropAMM](#20260421-kipselipropamm---pricing--decimals-mismatch)
+
+[20260420 JuiceboxREVLoans](#20260420-juiceboxrevloans---fake-terminal-loan-source-validation-bypass)
 
 [20260420 ThetanutsVaultShareRounding](#20260420-thetanutsvaultsharerounding---vault-share-rounding-manipulation)
 
@@ -2258,6 +2260,22 @@ forge test --contracts ./src/test/2026-04/KipseliPropAMM_exp.sol -vvv --evm-vers
 ### Link reference
 
 https://x.com/DefimonAlerts/status/2046873857571934254
+
+---
+
+### 20260420 JuiceboxREVLoans - Fake terminal loan source validation bypass
+
+### Lost: 21.77 ETH
+
+
+```sh
+forge test --contracts ./src/test/2026-04/JuiceboxREVLoans_exp.sol -vvv
+```
+#### Contract
+[JuiceboxREVLoans_exp.sol](src/test/2026-04/JuiceboxREVLoans_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2046862935650345139
 
 ---
 
