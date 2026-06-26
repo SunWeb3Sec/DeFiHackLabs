@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-749 incidents included.
+750 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260625 LixirPermitDrain](#20260625-lixirpermitdrain---broken-signature-verification)
 [20260625 OceanBPoolSideStaking](#20260625-oceanbpoolsidestaking---bpool-single-sided-joinexit-math-with-sidestaking-gulp-accounting)
 [20260624 DLMC](#20260624-dlmc---reserve-derived-liveprice-manipulation)
 [20260623 RoyalRoyalties](#20260623-royalroyalties---zero-amount-erc1155-batch-transfer-inflated-royal-lda-tier-balance)
@@ -1590,6 +1591,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260625 LixirPermitDrain - Broken Signature Verification
+
+### Lost: 2.60 ETH, 4,477.72 USDC, 3,609.95 USDT, 24,182.56 LIX
+
+
+```sh
+forge test --contracts ./src/test/2026-06/LixirPermitDrain_exp.sol -vvv
+```
+#### Contract
+[LixirPermitDrain_exp.sol](src/test/2026-06/LixirPermitDrain_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2070362661691207935
+
+---
 
 ### 20260625 OceanBPoolSideStaking - BPool single-sided join/exit math with SideStaking gulp accounting
 
