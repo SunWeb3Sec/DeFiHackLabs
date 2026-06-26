@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-748 incidents included.
+749 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -53,6 +53,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260625 OceanBPoolSideStaking](#20260625-oceanbpoolsidestaking---bpool-single-sided-joinexit-math-with-sidestaking-gulp-accounting)
 [20260624 DLMC](#20260624-dlmc---reserve-derived-liveprice-manipulation)
 [20260623 RoyalRoyalties](#20260623-royalroyalties---zero-amount-erc1155-batch-transfer-inflated-royal-lda-tier-balance)
 
@@ -1589,6 +1590,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260625 OceanBPoolSideStaking - BPool single-sided join/exit math with SideStaking gulp accounting
+
+### Lost: 127.86K mOCEAN
+
+
+```sh
+forge test --contracts ./src/test/2026-06/OceanBPoolSideStaking_exp.sol -vvv
+```
+#### Contract
+[OceanBPoolSideStaking_exp.sol](src/test/2026-06/OceanBPoolSideStaking_exp.sol)
+### Link reference
+
+http://x.com/defimonalerts/status/2070362661540286735
+
+---
 
 ### 20260624 DLMC - Reserve-derived livePrice manipulation
 
