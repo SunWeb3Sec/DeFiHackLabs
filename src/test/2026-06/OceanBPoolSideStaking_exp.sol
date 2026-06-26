@@ -8,7 +8,7 @@ import "../interface.sol";
 // Attacker : 0x3fa8cf7fea68c8e76a9838d77889464ddfb6a6cf
 // Attack Contract : 0xdd4bfd70117b5b6b343fc8d2c8c0075d095dbee5
 // Vulnerable Contract : 0xbb3051df2d3e408dae6e6daa2296bc6215f0dcfd
-// Victim : multiple Ocean Protocol BPool entry/state pools
+// Victim : 0xe7832A036da14dC3BBcEc5F73a8193221E9F0DA5, 0x2dd64bA8d9b9B1bB402Aa70214E1Fb1D7AF314a1, 0x25faf893edCef3b1C94029f01a088448669fcB9a, 0x1f5927CB77EA8449F0281ed14847A70d7A4f7053, 0x56A5cf2fB3f5b12e6c4bC4C0f100800D3735E522, 0x569C692125CF32bAF19E4ce713F9cf43e4c18c2C, 0x95f57249e6DD394318025068a8BFC841ac6eC0DD, 0x193F1cE9108644cD4d09C769d8DCD100F2B901D6
 // Attack Tx : https://polygonscan.com/tx/0x6dc8a7fba1303faef3ec7afa770b90b17ec5ecd73b51229277a9b0492e285796
 
 // @Info
