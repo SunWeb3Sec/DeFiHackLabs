@@ -92,6 +92,27 @@ python add_new_entry.py
    - Check if README entries exist for these files
    - Prompt you to add missing README entries for files without them
 
+### Non-Interactive Mode (CLI flags)
+For scripted/CI workflows you can skip every prompt by passing `--network` together with `--file` and `--lost-amount`. The PoC file must already exist under `src/test/YYYY-MM/`.
+
+```bash
+python add_new_entry.py \
+  --network bsc \
+  --file Example_exp.sol \
+  --lost-amount "100K USD" \
+  --details "Reentrancy" \
+  --link "https://x.com/.../status/..." \
+  --timestamp "Mar-21-2024 02:51:33 PM"
+```
+
+Useful options:
+- `--timestamp "Mon-DD-YYYY HH:MM:SS AM/PM"` or `--tx-hash <hash>` to auto-derive the timestamp via `cast` (no prompt).
+- `--rpc-url <url>` to register `--network` when it is missing from `foundry.toml`.
+- `--create-poc` (with `--attacker`, `--attack-contract`, `--vulnerable`, `--post-mortem`, `--twitter`, `--hacking-god`) to also generate the Solidity file from the template.
+- `--foundry-toml`, `--readme`, `--template`, `--src-test-dir` to override paths.
+
+Unlike the interactive "process existing files" path, non-interactive mode threads the selected network into the generated `forge` command, so chain-specific flags such as `--evm-version shanghai` (Base/optimism/bsc) are emitted automatically. Running with no flags keeps the original interactive behavior.
+
 ### Step 2: Automatic Updates
 The script automatically handles:
 1. **README.md Updates**: Adds new incident entry to the "List of DeFi Hacks & POCs" section
