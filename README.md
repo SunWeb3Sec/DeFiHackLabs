@@ -150,6 +150,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260425 SingularityDynaVault](#20260425-singularitydynavault---oracle-misconfiguration--share-inflation)
 
+[20260423 GiddyVaultV3](#20260423-giddyvaultv3---incomplete-signature-coverage)
+
 [20260421 KipseliPropAMM](#20260421-kipselipropamm---pricing--decimals-mismatch)
 
 [20260420 JuiceboxREVLoans](#20260420-juiceboxrevloans---fake-terminal-loan-source-validation-bypass)
@@ -2336,6 +2338,22 @@ forge test --contracts ./src/test/2026-04/SingularityDynaVault_exp.sol -vvv --ev
 ### Link reference
 
 https://x.com/DefimonAlerts/status/2048698708309705069
+
+---
+
+### 20260423 GiddyVaultV3 - Incomplete Signature Coverage
+
+### Lost: $1.3M
+
+
+```sh
+forge test --contracts ./src/test/2026-04/giddyvaultv3_compound_auth_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[giddyvaultv3_compound_auth_exp.sol](src/test/2026-04/giddyvaultv3_compound_auth_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2047334517535642024
 
 ---
 
