@@ -8,13 +8,13 @@ import "../interface.sol";
 // Attacker : 0x52e38d496f8d712394d5ed55e4d4cdd21f1957de
 // Attack Contract : 0x9774d7bbf21f1c50881df62518c3160ab3a5a989
 // Vulnerable Contract : 0x2e13771622b967e9afbf0dc6c7736c6b7544b0b7
-// Attack Tx : {link: https://bscscan.com/tx/0x1bb9c2a30564ed685580f17890d5fa153edb3e86cc39fe6804cfb6dbfa0cae92}
+// Attack Tx : https://bscscan.com/tx/0x1bb9c2a30564ed685580f17890d5fa153edb3e86cc39fe6804cfb6dbfa0cae92
 //
 // @Info
-// Vulnerable Contract Code : {https://bscscan.com/address/0x2e13771622b967e9afbf0dc6c7736c6b7544b0b7#code}
+// Vulnerable Contract Code : https://bscscan.com/address/0x2e13771622b967e9afbf0dc6c7736c6b7544b0b7#code
 //
 // @Analysis
-// Twitter Guy : {https://t.me/defimon_alerts/556}
+// Twitter Guy : https://t.me/defimon_alerts/556
 //
 // PTM exposed addLiquidity(uint256,uint256) publicly. The function spends the
 // PTM token contract's own PTM and USDT balances through Pancake Router without
