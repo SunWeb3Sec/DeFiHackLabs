@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-753 incidents included.
+754 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -145,6 +145,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260428 RWAVault](#20260428-rwavault---missing-erc4626-allowance-check)
 
 [20260428 JUDAO](#20260428-judao---judao-sell-hook-reserve-drain)
+
+[20260427 Unverified_a152](#20260427-unverified_a152---allowancetarget-approval-drain)
 
 [20260425 SingularityDynaVault](#20260425-singularitydynavault---oracle-misconfiguration--share-inflation)
 
@@ -2300,6 +2302,22 @@ forge test --contracts ./src/test/2026-04/JUDAO_exp.sol -vvv --evm-version shang
 ### Link reference
 
 https://t.me/defimon_alerts/2955
+
+---
+
+### 20260427 Unverified_a152 - AllowanceTarget approval drain
+
+### Lost: 229K USDT
+
+
+```sh
+forge test --contracts ./src/test/2026-04/unverified_a152_exp.sol -vvv
+```
+#### Contract
+[unverified_a152_exp.sol](src/test/2026-04/unverified_a152_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/2987
 
 ---
 
