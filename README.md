@@ -2,7 +2,8 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-756 incidents included.
+
+757 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -177,6 +178,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260327 EST Token](#20260327-est-token---incorrect-token-burn-mechanism)
 
 [20260324 XocolatlLiquidator](#20260324-xocolatlliquidator---access-control--input-validation)
+
+[20260324 Univ3CollateralToken](#20260324-univ3collateraltoken---logic-error)
 
 [20260315 Venus THE](#20260315-venus-the---borrowbehalf--donation-attack)
 
@@ -2568,6 +2571,22 @@ forge test --contracts ./src/test/2026-03/XocolatlLiquidator_exp.sol -vvv --evm-
 ### Link reference
 
 https://t.me/defimon_alerts/2834
+
+---
+
+### 20260324 Univ3CollateralToken - Logic Error
+
+### Lost: 57K USD
+
+
+```sh
+forge test --contracts ./src/test/2026-03/Univ3CollateralToken_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[Univ3CollateralToken_exp.sol](src/test/2026-03/Univ3CollateralToken_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2036449500512891317
 
 ---
 
