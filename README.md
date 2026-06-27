@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-757 incidents included.
+758 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -175,6 +175,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260331 WhalebitOracleManipulation](#20260331-whalebitoraclemanipulation---algebra-spot-price-oracle-manipulation)
 
+[20260328 VTSwapHook](#20260328-vtswaphook---pricing-error-in-uniswapv4-hook)
 [20260327 EST Token](#20260327-est-token---incorrect-token-burn-mechanism)
 
 [20260324 XocolatlLiquidator](#20260324-xocolatlliquidator---access-control--input-validation)
@@ -2539,6 +2540,22 @@ forge test --contracts ./src/test/2026-03/WhalebitOracleManipulation_exp.sol -vv
 ### Link reference
 
 https://x.com/DefimonAlerts/status/2039372077686251787
+
+---
+
+### 20260328 VTSwapHook - Pricing Error in UniswapV4 Hook
+
+### Lost: 4,507,034.03 vATH + 2,007,935.14 ATH
+
+
+```sh
+forge test --contracts ./src/test/2026-03/VTSwapHook_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[VTSwapHook_exp.sol](src/test/2026-03/VTSwapHook_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2038647146098954283
 
 ---
 
