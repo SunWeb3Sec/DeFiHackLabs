@@ -15,7 +15,7 @@ import "../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0x237d59bf98ec4f4f013bc35d66f22d2bc9504b3f#code
 
 // @Analysis
-// Social : https://x.com/DefimonAlerts/status/2034532549905580417
+// Twitter Guy : https://x.com/DefimonAlerts/status/2034532549905580417
 //
 // The JAKE meToken owner is an unverified public wrapper. The attacker repeatedly minted JAKE through the wrapper's
 // payable path, then burned the freshly minted balance through the same owner-privileged wrapper. Because the burn is
