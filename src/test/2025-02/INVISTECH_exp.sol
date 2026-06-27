@@ -8,13 +8,13 @@ import "../interface.sol";
 // Attacker : 0x52e38d496f8d712394d5ed55e4d4cdd21f1957de
 // Attack Contract : 0x3f364b486b99dd1433287d3b1aa49addfe94f790
 // Vulnerable Contract : 0xAa217F7BaB90100419B99c027AdCf5f0a005C192
-// Attack Tx : {link: https://bscscan.com/tx/0x92126f0bde98d360b37b7074fea6f41fd47fd19d1cced134681ff64b1aef56b8}
+// Attack Tx : https://bscscan.com/tx/0x92126f0bde98d360b37b7074fea6f41fd47fd19d1cced134681ff64b1aef56b8
 //
 // @Info
-// Vulnerable Contract Code : {https://bscscan.com/address/0xaa217f7bab90100419b99c027adcf5f0a005c192#code}
+// Vulnerable Contract Code : https://bscscan.com/address/0xaa217f7bab90100419b99c027adcf5f0a005c192#code
 //
 // @Analysis
-// Twitter Guy : {https://t.me/defimon_alerts/515}
+// Twitter Guy : https://t.me/defimon_alerts/515
 //
 // INVISTECH taxes transfers when either side is a configured pair. On buys from
 // the INVISTECH/WBNB pair, the tax is charged from the pair itself, removing
