@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-760 incidents included.
+761 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -187,6 +187,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260319 Revamp](#20260319-revamp---reward-accounting-drain)
 [20260315 Venus THE](#20260315-venus-the---borrowbehalf--donation-attack)
 
+[20260315 StakeOnMe](#20260315-stakeonme---owner-privileged-jake-burn-reserve-drain)
 [20260310 AlkemiEarn](#20260310-alkemiearn---business-logic)
 
 [20260302 Curve LlamaLend](#20260302-curve-llamalend---share-price-manipulation)
@@ -2654,6 +2655,22 @@ forge test --contracts src/test/2026-03/Venus_THE_exp.sol --match-test testTrace
 
 ### Link reference
 https://bscscan.com/tx/0x4f477e941c12bbf32a58dc12db7bb0cb4d31d41ff25b2457e6af3c15d7f5663f
+
+---
+
+### 20260315 StakeOnMe - Owner-privileged JAKE burn reserve drain
+
+### Lost: 0.28 ETH
+
+
+```sh
+forge test --contracts ./src/test/2026-03/unverified_237d_exp.sol -vvv
+```
+#### Contract
+[unverified_237d_exp.sol](src/test/2026-03/unverified_237d_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2034532549905580417
 
 ---
 
