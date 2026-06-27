@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-763 incidents included.
+764 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -324,6 +324,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250416 Roar](past/2025/README.md#20250416-roar---rug-pull)
 
 [20250408 Laundromat](past/2025/README.md#20250408-laundromat---logic-flaw)
+
+[20250407 AmpKashi](past/2025/README.md#20250407-ampkashi---amp-collateral-borrow-price-manipulation)
 
 [20250404 AIRWA](past/2025/README.md#20250404-airwa---access-control)
 
