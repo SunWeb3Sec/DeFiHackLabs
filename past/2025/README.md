@@ -1234,6 +1234,21 @@ https://community.venus.io/t/post-mortem-wusdm-donation-attack-on-venus-zksync/5
 
 ---
 
+### 20250224 INVISTECH - Pair Tax Price Manipulation
+
+### Lost: 5.14 WBNB
+
+```sh
+forge test --contracts ./src/test/2025-02/INVISTECH_exp.sol -vvv
+```
+#### Contract
+[INVISTECH_exp.sol](../../src/test/2025-02/INVISTECH_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/515
+
+---
+
 ### 20250223 HegicOptions - Business Logic Flaw
 
 ### Lost: ~104M
