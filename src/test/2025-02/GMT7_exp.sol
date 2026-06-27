@@ -8,14 +8,13 @@ import "../interface.sol";
 // Attacker : 0x0A4125690753b6Cc82cAdbCa0f0899eb2025acB0
 // Attack Contract : 0x8EA93821691BB9Ec2cE0b4EDaCd920e9025779E4
 // Vulnerable Contract : 0x9AD90eeaB3CAff64A762Cb40387Ee1BB18bd31E3
-// Attack Tx : {link: https://bscscan.com/tx/0x5eb225ce9fb2c7a169e1736eb3b2bf2b6a5843839dd84cdcf6fe2ab0577ae21f}
+// Attack Tx : https://bscscan.com/tx/0x5eb225ce9fb2c7a169e1736eb3b2bf2b6a5843839dd84cdcf6fe2ab0577ae21f
 //
 // @Info
-// Vulnerable Contract Code : {unverified}
-// GMT7 Token Code : {https://bscscan.com/address/0xf1a895976d7916f4c38ce0bb1ea2945448888888#code}
+// Vulnerable Contract Code : https://bscscan.com/address/0xf1a895976d7916f4c38ce0bb1ea2945448888888#code
 //
 // @Analysis
-// Twitter Guy : {https://t.me/defimon_alerts/443}
+// Twitter Guy : https://t.me/defimon_alerts/443
 //
 // The unverified GMT7 helper held token balances and router approvals. Its public trading
 // functions let the attacker force the helper to buy GMT7, then repeatedly sell the helper's
