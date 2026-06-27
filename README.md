@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-751 incidents included.
+752 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -141,6 +141,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260505 Ekubo](#20260505-ekubo---business-logic-flaw)
 
 [20260428 RWAVault](#20260428-rwavault---missing-erc4626-allowance-check)
+
+[20260428 JUDAO](#20260428-judao---judao-sell-hook-reserve-drain)
 
 [20260425 SingularityDynaVault](#20260425-singularitydynavault---oracle-misconfiguration--share-inflation)
 
@@ -2264,6 +2266,22 @@ forge test --contracts ./src/test/2026-04/RWAVault_exp.sol -vvv
 ### Link reference
 
 https://t.me/defimon_alerts/2958
+
+---
+
+### 20260428 JUDAO - JUDAO sell-hook reserve drain
+
+### Lost: 205K USDT + 36 BNB
+
+
+```sh
+forge test --contracts ./src/test/2026-04/JUDAO_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[JUDAO_exp.sol](src/test/2026-04/JUDAO_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/2955
 
 ---
 
