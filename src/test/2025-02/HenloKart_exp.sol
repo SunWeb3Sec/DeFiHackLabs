@@ -7,13 +7,13 @@ import "../basetest.sol";
 // Attacker : 0xc2b2197ca4b2ee3b4eb61fc59e6d592d04a2e26a
 // Attack Contract : 0xbb7cef7b870bdb80cdd2857785ad7e84303b5625
 // Vulnerable Contract : 0x27fafc210e4b240786d9ef3aa44399fb7e107f6f
-// Attack Tx : {link: https://basescan.org/tx/0xf9ccb244be71ce3ff8c61021dc43a51c21bd1e11d73e61e64d05a9218f832c7e}
+// Attack Tx : https://basescan.org/tx/0xf9ccb244be71ce3ff8c61021dc43a51c21bd1e11d73e61e64d05a9218f832c7e
 //
 // @Info
-// Vulnerable Contract Code : {https://basescan.org/address/0x27fafc210e4b240786d9ef3aa44399fb7e107f6f#code}
+// Vulnerable Contract Code : https://basescan.org/address/0x27fafc210e4b240786d9ef3aa44399fb7e107f6f#code
 //
 // @Analysis
-// Twitter Guy : {https://t.me/defimon_alerts/518}
+// Twitter Guy : https://t.me/defimon_alerts/518
 //
 // HenloKart's ETH transfer helper treated `from == msg.sender` as permission to
 // send ETH from the HenloKart contract balance, instead of requiring msg.value.
