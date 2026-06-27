@@ -9,7 +9,6 @@ import "../interface.sol";
 // Attack Contract : 0x9C1819640201f223596FaD4F6401900B4B732eeA
 // Vulnerable Contract : 0x1F8336aEF584795E282FECe8DE356BaBD7734c59
 // Victim : 0x1F8336aEF584795E282FECe8DE356BaBD7734c59
-// Payout Source : 0x000000000000000000000000000000000000dEaD
 // Attack Tx : https://bscscan.com/tx/0xb74a572967ce997afa5920811e6a9dc8b82a6e41ee31fa4d1a24a85aec89e342
 
 // @Info
