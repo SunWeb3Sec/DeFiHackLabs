@@ -11,7 +11,8 @@ import "../interface.sol";
 // Attack Tx : https://bscscan.com/tx/0x5eb225ce9fb2c7a169e1736eb3b2bf2b6a5843839dd84cdcf6fe2ab0577ae21f
 //
 // @Info
-// Vulnerable Contract Code : https://bscscan.com/address/0xf1a895976d7916f4c38ce0bb1ea2945448888888#code
+// Vulnerable Contract Code : unverified
+// GMT7 Token Code : https://bscscan.com/address/0xf1a895976d7916f4c38ce0bb1ea2945448888888#code
 //
 // @Analysis
 // Twitter Guy : https://t.me/defimon_alerts/443
