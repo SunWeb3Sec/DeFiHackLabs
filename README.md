@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-754 incidents included.
+755 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -173,6 +173,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260331 WhalebitOracleManipulation](#20260331-whalebitoraclemanipulation---algebra-spot-price-oracle-manipulation)
 
 [20260327 EST Token](#20260327-est-token---incorrect-token-burn-mechanism)
+
+[20260324 XocolatlLiquidator](#20260324-xocolatlliquidator---access-control--input-validation)
 
 [20260315 Venus THE](#20260315-venus-the---borrowbehalf--donation-attack)
 
@@ -2532,6 +2534,22 @@ forge test --contracts src/test/2026-03/EST_exp.sol -vvv --evm-version shanghai
 
 ### Link reference
 https://bscscan.com/address/0xD4524Be41cd452576aB9FF7b68a0b89aF8498a91
+
+---
+
+### 20260324 XocolatlLiquidator - Access Control / Input Validation
+
+### Lost: 3.25 cbETH and 0.22 WETH
+
+
+```sh
+forge test --contracts ./src/test/2026-03/XocolatlLiquidator_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[XocolatlLiquidator_exp.sol](src/test/2026-03/XocolatlLiquidator_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/2834
 
 ---
 
