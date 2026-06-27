@@ -1343,6 +1343,22 @@ https://www.chaincatcher.com/en/article/2167296
 
 ---
 
+### 20250211 LimitOrderProtocol - Access Control
+
+### Lost: 2800000 BRAINS
+
+
+```sh
+forge test --contracts ./src/test/2025-02/LimitOrderProtocol_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[LimitOrderProtocol_exp.sol](../../src/test/2025-02/LimitOrderProtocol_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/447
+
+---
+
 ### 20250208 Peapods Finance - Price Manipulation
 
 ### Lost: ~ $3,500
