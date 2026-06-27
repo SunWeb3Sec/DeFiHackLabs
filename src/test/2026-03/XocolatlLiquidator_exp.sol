@@ -15,7 +15,7 @@ import "../interface.sol";
 // Vulnerable Contract Code : https://base.blockscout.com/address/0xeab948ec7ce3f403b63787ba3884aaf43d07ca9c#code
 
 // @Analysis
-// Social : https://t.me/defimon_alerts/2834
+// Twitter Guy : https://t.me/defimon_alerts/2834
 // Reference : https://github.com/La-DAO/xocolatl-contracts/blob/10c68fb1bfd41196359bf35b8e0fb97a305898f2/contracts/AccountLiquidator.sol
 //
 // AccountLiquidator.liquidateUser trusted an arbitrary caller-supplied HouseOfReserve. The attacker supplied fake
