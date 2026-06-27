@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-750 incidents included.
+751 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -149,6 +149,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260420 JuiceboxREVLoans](#20260420-juiceboxrevloans---fake-terminal-loan-source-validation-bypass)
 
 [20260420 ThetanutsVaultShareRounding](#20260420-thetanutsvaultsharerounding---vault-share-rounding-manipulation)
+
+[20260419 AaveRebalancerCreditDelegation](#20260419-aaverebalancercreditdelegation---arbitrary-external-call--credit-delegation-abuse)
 
 [20260415 XLootStaking](#20260415-xlootstaking---duplicate-xloot-redemption)
 
@@ -2326,6 +2328,22 @@ forge test --contracts ./src/test/2026-04/ThetanutsVaultShareRounding_exp.sol -v
 ### Link reference
 
 https://t.me/defimon_alerts/2933
+
+---
+
+### 20260419 AaveRebalancerCreditDelegation - Arbitrary External Call / Credit Delegation Abuse
+
+### Lost: 6,999.91 WAVAX
+
+
+```sh
+forge test --contracts ./src/test/2026-04/AaveRebalancerCreditDelegation_exp.sol -vvv
+```
+#### Contract
+[AaveRebalancerCreditDelegation_exp.sol](src/test/2026-04/AaveRebalancerCreditDelegation_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2046504796463808991
 
 ---
 
