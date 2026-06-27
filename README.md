@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-763 incidents included.
+764 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -346,6 +346,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250316 wKeyDAO](past/2025/README.md#20250316-wkeydao---unprotected-function)
 
 [20250314 H2O](past/2025/README.md#20250314-h2o---weak-random-mint)
+
+[20250311 ZeroExSettler](past/2025/README.md#20250311-zeroexsettler---arbitrary-external-call)
 
 [20250311 DUCKVADER](past/2025/README.md#20250311-duckvader---free-mint-bug)
 

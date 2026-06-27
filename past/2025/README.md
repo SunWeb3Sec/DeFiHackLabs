@@ -1134,6 +1134,23 @@ https://x.com/TenArmorAlert/status/1900525198157205692
 
 ---
 
+### 20250311 ZeroExSettler - Arbitrary External Call
+
+### Lost: 3,008 USDT
+
+```sh
+forge test --contracts ./src/test/2025-03/ZeroExSettler_exp.sol -vvv --evm-version cancun
+```
+
+#### Contract
+[ZeroExSettler_exp.sol](../../src/test/2025-03/ZeroExSettler_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/599
+
+---
+
 ### 20250311 DUCKVADER - Free Mint Bug
 
 ### Lost: ~ $9.6K
