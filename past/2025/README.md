@@ -1234,6 +1234,21 @@ https://community.venus.io/t/post-mortem-wusdm-donation-attack-on-venus-zksync/5
 
 ---
 
+### 20250226 HenloKart - Fake Native Deposit And Immediate Cancel
+
+### Lost: 0.59 ETH
+
+```sh
+forge test --contracts ./src/test/2025-02/HenloKart_exp.sol -vvv
+```
+#### Contract
+[HenloKart_exp.sol](../../src/test/2025-02/HenloKart_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/518
+
+---
+
 ### 20250223 HegicOptions - Business Logic Flaw
 
 ### Lost: ~104M
