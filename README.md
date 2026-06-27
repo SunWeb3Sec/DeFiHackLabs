@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-761 incidents included.
+762 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -185,6 +185,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260319 ATMBlindBox](#20260319-atmblindbox---weak-randomness--predictable-rng)
 
 [20260319 Revamp](#20260319-revamp---reward-accounting-drain)
+[20260316 unverified](#20260316-unverified---checkoutpool-old-boc-missing-access-control)
 [20260315 Venus THE](#20260315-venus-the---borrowbehalf--donation-attack)
 
 [20260315 StakeOnMe](#20260315-stakeonme---owner-privileged-jake-burn-reserve-drain)
@@ -2640,6 +2641,22 @@ forge test --contracts ./src/test/2026-03/Revamp_exp.sol -vvv --evm-version canc
 ### Link reference
 
 https://x.com/DefimonAlerts/status/2034532544239088053
+
+---
+
+### 20260316 unverified - CheckoutPool Old BOC Missing Access Control
+
+### Lost: 85,730 USDC
+
+
+```sh
+forge test --contracts ./src/test/2026-03/unverified_1304_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[unverified_1304_exp.sol](src/test/2026-03/unverified_1304_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2034532547191820390
 
 ---
 
