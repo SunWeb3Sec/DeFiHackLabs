@@ -8,14 +8,14 @@ import "../interface.sol";
 // Attacker : 0xc2B2197ca4B2eE3b4EB61Fc59E6D592d04a2e26A
 // Attack Contract : 0xfeCC81Ad11E2362CDb6C3df16FF49682fF229dE7
 // Vulnerable Contract : 0xCe8D7Cd4DdB3Fd50bAae0Cc59DBfd786a7f0e44e
-// Attack Tx : {link: https://basescan.org/tx/0xf16c30f57d6f47d68fe8ee6ed1986ed9c0d837b00750daef9c742c395b55d564}
+// Attack Tx : https://basescan.org/tx/0xf16c30f57d6f47d68fe8ee6ed1986ed9c0d837b00750daef9c742c395b55d564
 //
 // @Info
-// Vulnerable Contract Code : {https://basescan.org/address/0xce8d7cd4ddb3fd50baae0cc59dbfd786a7f0e44e#code}
-// Proxy Contract Code : {https://basescan.org/address/0xb5486f71c902fe0844bb07221fa8f47834d90b1b#code}
+// Vulnerable Contract Code : https://basescan.org/address/0xce8d7cd4ddb3fd50baae0cc59dbfd786a7f0e44e#code
+// Proxy Contract Code : https://basescan.org/address/0xb5486f71c902fe0844bb07221fa8f47834d90b1b#code
 //
 // @Analysis
-// Twitter Guy : {https://t.me/defimon_alerts/447}
+// Twitter Guy : https://t.me/defimon_alerts/447
 //
 // The LimitOrderProtocol proxy pointed to an implementation with an unrestricted
 // transferTokens() helper. The attacker used the victim's existing BRAINS allowance to
