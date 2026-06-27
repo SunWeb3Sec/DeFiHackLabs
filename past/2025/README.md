@@ -1101,6 +1101,23 @@ https://x.com/Phalcon_xyz/status/1860890801909190664
 
 ---
 
+### 20250318 unverified - Business Logic Flaw
+
+### Lost: 0.40 WAVAX
+
+```sh
+forge test --contracts ./src/test/2025-03/unverified_3f27_exp.sol -vvv
+```
+
+#### Contract
+[unverified_3f27_exp.sol](../../src/test/2025-03/unverified_3f27_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/624
+
+---
+
 ### 20250316 wKeyDAO - unprotected function
 
 ### Lost: 737,000
