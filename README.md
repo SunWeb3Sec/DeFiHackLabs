@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-762 incidents included.
+763 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -181,6 +181,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260324 XocolatlLiquidator](#20260324-xocolatlliquidator---access-control--input-validation)
 
 [20260324 Univ3CollateralToken](#20260324-univ3collateraltoken---logic-error)
+
+[20260323 BCE](#20260323-bce---deflationary-token-logic-error)
 
 [20260319 ATMBlindBox](#20260319-atmblindbox---weak-randomness--predictable-rng)
 
@@ -2609,6 +2611,22 @@ forge test --contracts ./src/test/2026-03/Univ3CollateralToken_exp.sol -vvv --ev
 ### Link reference
 
 https://x.com/DefimonAlerts/status/2036449500512891317
+
+---
+
+### 20260323 BCE - Deflationary Token Logic Error
+
+### Lost: ~800,000 USDT
+
+
+```sh
+forge test --contracts ./src/test/2026-03/bce_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[bce_exp.sol](src/test/2026-03/bce_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/2814
 
 ---
 
