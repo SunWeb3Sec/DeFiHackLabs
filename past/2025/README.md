@@ -1360,6 +1360,23 @@ https://blog.solidityscan.com/peapods-finance-hack-analysis-bdc5432107a5
 
 ---
 
+### 20250201 GoldReserve - Business Logic Flaw
+
+### Lost: 12.74 BNB
+
+```sh
+forge test --contracts ./src/test/2025-02/GoldReserve_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+[GoldReserve_exp.sol](../../src/test/2025-02/GoldReserve_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/434
+
+---
+
 ### 20250126 AIXBTForcedSwap - Hardcoded Auth Key
 
 ### Lost: 13,597.36 USDC
