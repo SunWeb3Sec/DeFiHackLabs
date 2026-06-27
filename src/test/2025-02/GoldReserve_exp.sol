@@ -8,13 +8,13 @@ import "../interface.sol";
 // Attacker : 0xfBE2CF822e1361FB74421E2a0bD9844A48932cE2
 // Attack Contract : 0x3Fc424f13BE05D4F261877a4a9B9963C02222815
 // Vulnerable Contract : 0x7c77576a2b48504EBD9fF0810D799651f68742d3
-// Attack Tx : {link: https://bscscan.com/tx/0x79c2e41b10462d374f21ecd4da048029cc71692e0c9ef275d4aad228e6f8afe0}
+// Attack Tx : https://bscscan.com/tx/0x79c2e41b10462d374f21ecd4da048029cc71692e0c9ef275d4aad228e6f8afe0
 //
 // @Info
-// Vulnerable Contract Code : {https://bscscan.com/address/0x7c77576a2b48504EBD9fF0810D799651f68742d3#code}
+// Vulnerable Contract Code : https://bscscan.com/address/0x7c77576a2b48504EBD9fF0810D799651f68742d3#code
 //
 // @Analysis
-// Twitter Guy : {https://t.me/defimon_alerts/434}
+// Twitter Guy : https://t.me/defimon_alerts/434
 //
 // GoldReserve tracked claimed profit by address while entitlement was calculated from the
 // caller's current ERC1155 balance. The attacker minted NFTs after a profit deposit, then
