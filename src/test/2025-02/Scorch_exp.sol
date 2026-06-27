@@ -8,13 +8,13 @@ import "../interface.sol";
 // Attacker : 0xc9A5643eD8E4CD68d16FE779D378C0E8e7225A54
 // Attack Contract : 0x60E1a5714AB98f4ba55811c45899Fb425433BB65
 // Vulnerable Contract : 0xA3D0e72c8A2fE9127A77412BF34bEe5e4945bd49
-// Attack Tx : {link: https://etherscan.io/tx/0x02dc4409af99de400b2427dad525c31467a8fd2ac6cb251f885d33c073510ba2}
+// Attack Tx : https://etherscan.io/tx/0x02dc4409af99de400b2427dad525c31467a8fd2ac6cb251f885d33c073510ba2
 //
 // @Info
-// Vulnerable Contract Code : {https://etherscan.io/address/0xa3d0e72c8a2fe9127a77412bf34bee5e4945bd49#code}
+// Vulnerable Contract Code : https://etherscan.io/address/0xa3d0e72c8a2fe9127a77412bf34bee5e4945bd49#code
 //
 // @Analysis
-// Twitter Guy : {https://t.me/defimon_alerts/451}
+// Twitter Guy : https://t.me/defimon_alerts/451
 //
 // Scorch.scorch() paid ETH using a live Uniswap getAmountsOut() quote from the
 // manipulable OTC/WETH pool. The attacker inflated the quote with a WETH->OTC swap,
