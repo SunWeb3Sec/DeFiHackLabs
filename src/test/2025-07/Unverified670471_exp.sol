@@ -3,6 +3,24 @@ pragma solidity ^0.8.15;
 
 import "../basetest.sol";
 
+// @KeyInfo - Total Lost : $1,818.33
+// Attacker : 0xe4B97Db5FAF476DB464Bc271097Fac97d6CE3783
+// Attack Contract : 0x2Db9F0A1e21a68b5dF3B0ab9F5CEb154eFA26f2D
+// Vulnerable Contract : 0x6704713B32CB1B3e89B0CF7D77417807061BdEB8
+// Attack Tx : https://etherscan.io/tx/0x6a2a9f48ff78966cb44772c3551a56d7c5b788168f81cae8d06006c79a86fc16
+//
+// @Info
+// Vulnerable Contract Code : https://etherscan.io/address/0x6704713B32CB1B3e89B0CF7D77417807061BdEB8#code
+// Vulnerable Implementation : https://etherscan.io/address/0x0b5125099395324e8f0db097a3e0c286e3dcba12#code
+//
+// @Analysis
+// Telegram Alert : https://t.me/defimon_alerts/1549
+//
+// Attack summary: The attacker borrowed WETH, WBTC, and USDC from Balancer, forwarded callback-shaped calldata to the
+// victim, and kept the borrowed assets while the victim repaid Balancer.
+// Root cause: The unverified proxy accepted an externally forwarded Balancer `receiveFlashLoan` callback without
+// sufficient caller/origin validation.
+
 interface IERC20Like {
     function approve(address spender, uint256 amount) external returns (bool);
     function balanceOf(address account) external view returns (uint256);
