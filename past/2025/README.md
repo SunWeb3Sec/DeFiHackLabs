@@ -622,6 +622,22 @@ https://x.com/TenArmorAlert/status/1937761064713941187
 
 ---
 
+### 20250625 ParaSwapDAIApproval - Stale Approval
+
+### Lost: 2,298.68 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/ParaSwapDAIApproval_exp.sol -vvv
+```
+#### Contract
+[ParaSwapDAIApproval_exp.sol](../../src/test/2025-06/ParaSwapDAIApproval_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1352
+
+---
+
 
 ### 20250623 GradientMakerPool - Price Oracle Manipulation
 
