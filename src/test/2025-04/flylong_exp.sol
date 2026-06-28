@@ -27,7 +27,6 @@ address constant TRACE_HELPER = 0xC8e256A41d0Ac7fd8d9ac31c0Ae1942dC5Ef8419;
 address constant FLYLONG_TOKEN = 0x9cA66a67dC3d77bEb59DC11cAf96677843797c08;
 address constant FLYLONG_WBNB_PAIR = 0x27c0E529b3aA9289686dAf7ea12C9aCBcC3bb9A8;
 address constant WBNB_TOKEN = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
-string constant DEFAULT_BSC_RPC_URL = "https://bsc-mainnet.public.blastapi.io";
 
 interface IFlyLong {
     function balanceOf(
