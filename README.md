@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-778 incidents included.
+779 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -238,6 +238,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250831 Hexotic](past/2025/README.md#20250831-hexotic---incorrect-input-validation)
 
 [20250827 0xf340](past/2025/README.md#20250827-0xf340---access-control)
+
+[20250823 EquilibriaEPendle](past/2025/README.md#20250823-equilibriaependle---reward-accounting-flaw)
 
 [20250823 ABCCApp](past/2025/README.md#20250823-abccapp---lack-of-access-control)
 
