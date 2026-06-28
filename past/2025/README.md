@@ -589,6 +589,22 @@ https://x.com/TenArmorAlert/status/1939508301596672036
 
 ---
 
+### 20250628 InitcodeFactoryFees - Access Control
+
+### Lost: 2,383.25 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/InitcodeFactoryFees_exp.sol -vvv
+```
+#### Contract
+[InitcodeFactoryFees_exp.sol](../../src/test/2025-06/InitcodeFactoryFees_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1366
+
+---
+
 ### 20250626 ResupplyFi - Share price manipulation
 
 ### Lost: 9.6M USD
