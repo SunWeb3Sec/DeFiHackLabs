@@ -408,6 +408,23 @@ https://x.com/TenArmorAlert/status/1954774967481962832
 
 ---
 
+### 20250729 AnyswapWETHPermit - Permit Validation Bypass
+
+### Lost: 200 WETH
+
+```sh
+forge test --contracts ./src/test/2025-07/AnyswapWETHPermit_exp.sol -vvv
+```
+
+#### Contract
+[AnyswapWETHPermit_exp.sol](../../src/test/2025-07/AnyswapWETHPermit_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1582
+
+---
+
 ### 20250728 SuperRare - Access Control
 
 ### Lost: 730K USD
