@@ -2,22 +2,6 @@
 
 ## 2025 - List of Past DeFi Incidents
 
-### 20250128 MCAI - Tax wallet allowance bypass
-
-### Lost: 12.03 WETH
-
-
-```sh
-forge test --contracts ./src/test/2025-01/MCAI_exp.sol -vvv
-```
-#### Contract
-[MCAI_exp.sol](../../src/test/2025-01/MCAI_exp.sol)
-### Link reference
-
-https://t.me/defimon_alerts/409
-
----
-
 ### 20251201 yETH - Unsafe Math
 
 ### Lost: 9M USD
@@ -1373,6 +1357,22 @@ forge test --contracts ./src/test/2025-02/PeapodsFinance_exp.sol -vvv
 ### Link reference
 
 https://blog.solidityscan.com/peapods-finance-hack-analysis-bdc5432107a5
+
+---
+
+### 20250128 MCAI - Tax wallet allowance bypass
+
+### Lost: 12.03 WETH
+
+
+```sh
+forge test --contracts ./src/test/2025-01/MCAI_exp.sol -vvv
+```
+#### Contract
+[MCAI_exp.sol](../../src/test/2025-01/MCAI_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/409
 
 ---
 

@@ -54,7 +54,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20250128 MCAI](past/2025/README.md#20250128-mcai---tax-wallet-allowance-bypass)
 [20260625 LixirPermitDrain](#20260625-lixirpermitdrain---broken-signature-verification)
 [20260625 OceanBPoolSideStaking](#20260625-oceanbpoolsidestaking---bpool-single-sided-joinexit-math-with-sidestaking-gulp-accounting)
 [20260624 DLMC](#20260624-dlmc---reserve-derived-liveprice-manipulation)
@@ -373,6 +372,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250211 FourMeme](past/2025/README.md#20250211-fourmeme---logic-flaw)
 
 [20250208 Peapods Finance](past/2025/README.md#20250208-peapods-finance---price-manipulation)
+
+[20250128 MCAI](past/2025/README.md#20250128-mcai---tax-wallet-allowance-bypass)
 
 [20250126 AIXBTForcedSwap](past/2025/README.md#20250126-aixbtforcedswap---hardcoded-auth-key)
 
