@@ -9,6 +9,7 @@ import "../interface.sol";
 // Attack Contract : 0x0A2d023b1EcFbFb091464ADEbc852e19E0F02E6b
 // Vulnerable Contract : 0x615b0B54e585ab83ba1c94a734cd4499dEc1C956
 // Attack Tx : https://etherscan.io/tx/0x185a16017fb4d9b2fefdf5935435253d53d4758238275426b507fe54eb4fe97a
+// Related Tx : https://etherscan.io/tx/0xc16984edf1ac3e50f1a10842310c7ab3983ab0d1f9f5eb6fb859a59e416048f8
 //
 // @Info
 // Vulnerable Contract Code : https://etherscan.io/address/0x615b0B54e585ab83ba1c94a734cd4499dEc1C956#code
