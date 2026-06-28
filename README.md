@@ -54,7 +54,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20250808 ArbitrumBaseSwapper](past/2025/README.md#20250808-arbitrumbaseswapper---business-logic-flaw)
 [20260625 LixirPermitDrain](#20260625-lixirpermitdrain---broken-signature-verification)
 [20260625 OceanBPoolSideStaking](#20260625-oceanbpoolsidestaking---bpool-single-sided-joinexit-math-with-sidestaking-gulp-accounting)
 [20260624 DLMC](#20260624-dlmc---reserve-derived-liveprice-manipulation)
@@ -268,6 +267,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250811 WXC](past/2025/README.md#20250811-wxc---incorrect-token-burn-mechanism)
 
+[20250808 ArbitrumBaseSwapper](past/2025/README.md#20250808-arbitrumbaseswapper---business-logic-flaw)
+
 [20250805 MyCoinMaster](past/2025/README.md#20250805-mycoinmaster---business-logic-flaw)
 
 [20250804 BscInitcodeToken](past/2025/README.md#20250804-bscinitcodetoken---business-logic-flaw)
@@ -275,7 +276,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250801 PendleReflector](past/2025/README.md#20250801-pendlereflector---business-logic-flaw)
 
 [20250729 AnyswapWETHPermit](past/2025/README.md#20250729-anyswapwethpermit---permit-validation-bypass)
-
 
 [20250728 SuperRare](past/2025/README.md#20250728-superrare---access-control)
 
