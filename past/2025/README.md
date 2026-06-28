@@ -1377,6 +1377,22 @@ https://t.me/defimon_alerts/443
 
 ---
 
+### 20250128 MCAI - Tax wallet allowance bypass
+
+### Lost: 12.03 WETH
+
+
+```sh
+forge test --contracts ./src/test/2025-01/MCAI_exp.sol -vvv
+```
+#### Contract
+[MCAI_exp.sol](../../src/test/2025-01/MCAI_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/409
+
+---
+
 ### 20250126 AIXBTForcedSwap - Hardcoded Auth Key
 
 ### Lost: 13,597.36 USDC
