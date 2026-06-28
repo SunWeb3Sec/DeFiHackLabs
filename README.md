@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-778 incidents included.
+779 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -292,6 +292,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250619 BankrollStack](past/2025/README.md#20250619-bankrollstack---incorrect-dividends-calculation)
 
 [20250619 BankrollNetwork](past/2025/README.md#20250619-bankrollnetwork---incorrect-dividends-calculation)
+
+[20250618 BankrollStackPlus](past/2025/README.md#20250618-bankrollstackplus---incorrect-dividends-calculation)
 
 [20250617 MetaPool](past/2025/README.md#20250617-metapool---access-control)
 
