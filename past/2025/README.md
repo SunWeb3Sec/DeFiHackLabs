@@ -929,6 +929,22 @@ https://x.com/peckshield/status/1934895187102454206
 
 ---
 
+### 20250615 WaleCoin - Access Control
+
+### Lost: 918.83 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/WaleCoin_exp.sol -vvv
+```
+#### Contract
+[WaleCoin_exp.sol](../../src/test/2025-06/WaleCoin_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1279
+
+---
+
 ### 20250615 FixedTokenBSwap - Price Oracle Manipulation
 
 ### Lost: 2.2K USD
