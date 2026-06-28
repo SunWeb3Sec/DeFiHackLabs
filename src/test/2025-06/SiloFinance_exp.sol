@@ -24,12 +24,12 @@ import "../interface.sol";
 // constraining them to the selected Silo market. Any borrower that had granted the helper debt receive
 // approval could therefore be borrowed against by routing a swap callback into `Silo.borrow`.
 
-address constant ATTACKER = address(uint160(0x0004377cfaf4b4a44bb84042218cdda4cebcf8fd62));
-address constant HISTORICAL_ATTACK_CONTRACT = address(uint160(0x0079c5c002410a67ac7a0cde2c2217c3f560859c7e));
-address constant SILO_LEVERAGE_HELPER = address(uint160(0x00cbee4617abf667830fe3ee7dc8d6f46380829df9));
-address constant WETH_SILO = address(uint160(0x00160287e2d3fdcde9e91317982fc1cc01c1f94085));
-address constant COLLATERAL_BORROWER = address(uint160(0x0060baf994f44dd10c19c0c47cbfe6048a4ffe4860));
-address constant WETH_TOKEN = address(uint160(0x00c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2));
+address constant ATTACKER = 0x04377cfaF4b4A44bb84042218cdDa4cEBCf8fd62;
+address constant HISTORICAL_ATTACK_CONTRACT = 0x79C5c002410A67Ac7a0cdE2C2217c3f560859c7e;
+address constant SILO_LEVERAGE_HELPER = 0xCbEe4617ABF667830fe3ee7DC8d6f46380829DF9;
+address constant WETH_SILO = 0x160287E2D3fdCDE9E91317982fc1Cc01C1f94085;
+address constant COLLATERAL_BORROWER = 0x60BAF994f44dd10c19C0c47cbFE6048a4fFe4860;
+address constant WETH_TOKEN = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
 uint256 constant BORROW_AMOUNT = 224 ether;
 uint256 constant HISTORICAL_DEBT_SHARES = 223_975_555_653_555_068_856;
