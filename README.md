@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-778 incidents included.
+779 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20250813 BeefyZapRouter](past/2025/README.md#20250813-beefyzaprouter---arbitrary-external-call)
 [20260625 LixirPermitDrain](#20260625-lixirpermitdrain---broken-signature-verification)
 [20260625 OceanBPoolSideStaking](#20260625-oceanbpoolsidestaking---bpool-single-sided-joinexit-math-with-sidestaking-gulp-accounting)
 [20260624 DLMC](#20260624-dlmc---reserve-derived-liveprice-manipulation)
