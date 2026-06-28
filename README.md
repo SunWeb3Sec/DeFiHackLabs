@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-765 incidents included.
+766 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -374,6 +374,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250208 GMT7](past/2025/README.md#20250208-gmt7---access-control)
 
 [20250208 Peapods Finance](past/2025/README.md#20250208-peapods-finance---price-manipulation)
+
+[20250201 GoldReserve](past/2025/README.md#20250201-goldreserve---business-logic-flaw)
 
 [20250128 MCAI](past/2025/README.md#20250128-mcai---tax-wallet-allowance-bypass)
 
