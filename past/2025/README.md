@@ -2,6 +2,22 @@
 
 ## 2025 - List of Past DeFi Incidents
 
+### 20250307 StackMarket - Business Logic Flaw
+
+### Lost: 0.56 WETH
+
+
+```sh
+forge test --contracts ./src/test/2025-03/StackMarket_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[StackMarket_exp.sol](../../src/test/2025-03/StackMarket_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/575
+
+---
+
 ### 20251201 yETH - Unsafe Math
 
 ### Lost: 9M USD
