@@ -1354,6 +1354,22 @@ https://t.me/defimon_alerts/1184
 
 ---
 
+### 20250525 Dumbo - Business Logic Flaw
+
+### Lost: 628.45 BUSD
+
+
+```sh
+forge test --contracts ./src/test/2025-05/Dumbo_exp.sol -vv --evm-version shanghai
+```
+#### Contract
+[Dumbo_exp.sol](../../src/test/2025-05/Dumbo_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1181
+
+---
+
 ### 20250524 RICE - Lack of Access Control
 
 ### Lost: ~ $88.1K
