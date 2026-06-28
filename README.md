@@ -267,6 +267,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250724 SWAPPStaking](past/2025/README.md#20250724-swappstaking---incorrect-reward-calculation)
 
+[20250724 EmptySetReserve](past/2025/README.md#20250724-emptysetreserve---fixed-order-swap)
+
 [20250721 BoJLeverageMarket](past/2025/README.md#20250721-bojleveragemarket---liquidity-index-manipulation)
 
 [20250720 Stepp2p](past/2025/README.md#20250720-stepp2p---logic-flaw)
