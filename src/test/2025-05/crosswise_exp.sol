@@ -29,7 +29,6 @@ address constant CRSS_TOKEN = 0x99FEFBC5cA74cc740395D65D384EDD52Cb3088Bb;
 address constant CRSS_WBNB_PAIR = 0xb5d85cA38a9CbE63156a02650884D92A6e736DDC;
 address constant WBNB_TOKEN = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
 address constant SPOOFED_STAKER = 0xfD3002cE12D81c4e5F62B97F3c72f18122291A65;
-string constant DEFAULT_BSC_RPC_URL = "https://bsc-mainnet.public.blastapi.io";
 
 interface ICrssToken {
     function balanceOf(
