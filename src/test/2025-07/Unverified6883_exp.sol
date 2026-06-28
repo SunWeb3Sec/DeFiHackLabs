@@ -3,6 +3,23 @@ pragma solidity ^0.8.15;
 
 import "../basetest.sol";
 
+// @KeyInfo - Total Lost : $1,006.89
+// Attacker : 0x87c6D33808F10348Cd9a4Cd825f25BE341d7bA2d
+// Attack Contract : 0x46bBB647B61560432b58eCBa6Bd048D691701D82
+// Vulnerable Contract : 0x6883Fe4D2EE50941b80b41b8F7F9BF2561D844Cc
+// Attack Tx : https://etherscan.io/tx/0x6fb78c7737463ea39a23159dd8496c178106b4ee657f2fb6fcb628240c39cd2e
+//
+// @Info
+// Vulnerable Contract Code : https://etherscan.io/address/0x6883Fe4D2EE50941b80b41b8F7F9BF2561D844Cc#code
+//
+// @Analysis
+// Telegram Alert : https://t.me/defimon_alerts/1544
+//
+// Attack summary: The attacker used a real DAI/WETH flash swap, created a temporary token/pair, and made that fake
+// pair call the victim's UniswapV2 callback.
+// Root cause: The unverified victim accepted a callback from a freshly-created fake pair and transferred WETH to it;
+// manipulated fake-pair reserves let the attacker withdraw WETH and keep the surplus after repaying the real flash swap.
+
 interface IERC20Like {
     function balanceOf(address account) external view returns (uint256);
     function transfer(address to, uint256 amount) external returns (bool);
