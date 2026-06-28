@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-778 incidents included.
+779 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -264,6 +264,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250728 SuperRare](past/2025/README.md#20250728-superrare---access-control)
 
 [20250726 MulticallWithETH](past/2025/README.md#20250726-multicallwitheth---arbitrary-call)
+
+[20250725 WhereIsMyDragonTreasure](past/2025/README.md#20250725-whereismydragontreasure---fixed-reward-redemption)
 
 [20250724 SWAPPStaking](past/2025/README.md#20250724-swappstaking---incorrect-reward-calculation)
 
