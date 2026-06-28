@@ -1200,6 +1200,22 @@ https://x.com/TenArmorAlert/status/1897826817429442652
 
 ---
 
+### 20250306 PTM - Business Logic Flaw
+
+### Lost: 552.63 USDT
+
+
+```sh
+forge test --contracts ./src/test/2025-03/PTM_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[PTM_exp.sol](../../src/test/2025-03/PTM_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/556
+
+---
+
 ### 20250305 1inch FusionV1 Settlement - Arbitrary Yul Calldata
 
 ### Lost: 4.5M
@@ -1360,6 +1376,38 @@ https://www.chaincatcher.com/en/article/2167296
 
 ---
 
+### 20250211 Scorch - Price Oracle Manipulation
+
+### Lost: 0.14 ETH
+
+
+```sh
+forge test --contracts ./src/test/2025-02/Scorch_exp.sol -vvv
+```
+#### Contract
+[Scorch_exp.sol](../../src/test/2025-02/Scorch_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/451
+
+---
+
+### 20250211 LimitOrderProtocol - Access Control
+
+### Lost: 2800000 BRAINS
+
+
+```sh
+forge test --contracts ./src/test/2025-02/LimitOrderProtocol_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[LimitOrderProtocol_exp.sol](../../src/test/2025-02/LimitOrderProtocol_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/447
+
+---
+
 ### 20250208 Peapods Finance - Price Manipulation
 
 ### Lost: ~ $3,500
@@ -1374,6 +1422,56 @@ forge test --contracts ./src/test/2025-02/PeapodsFinance_exp.sol -vvv
 ### Link reference
 
 https://blog.solidityscan.com/peapods-finance-hack-analysis-bdc5432107a5
+
+---
+
+### 20250208 GMT7 - Access Control
+
+### Lost: 16.75 BNB
+
+```sh
+forge test --contracts ./src/test/2025-02/GMT7_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+[GMT7_exp.sol](../../src/test/2025-02/GMT7_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/443
+
+---
+
+### 20250201 GoldReserve - Business Logic Flaw
+
+### Lost: 12.74 BNB
+
+```sh
+forge test --contracts ./src/test/2025-02/GoldReserve_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+[GoldReserve_exp.sol](../../src/test/2025-02/GoldReserve_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/434
+
+---
+
+### 20250128 MCAI - Tax wallet allowance bypass
+
+### Lost: 12.03 WETH
+
+
+```sh
+forge test --contracts ./src/test/2025-01/MCAI_exp.sol -vvv
+```
+#### Contract
+[MCAI_exp.sol](../../src/test/2025-01/MCAI_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/409
 
 ---
 
