@@ -1360,6 +1360,23 @@ https://blog.solidityscan.com/peapods-finance-hack-analysis-bdc5432107a5
 
 ---
 
+### 20250208 GMT7 - Access Control
+
+### Lost: 16.75 BNB
+
+```sh
+forge test --contracts ./src/test/2025-02/GMT7_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+[GMT7_exp.sol](../../src/test/2025-02/GMT7_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/443
+
+---
+
 ### 20250128 MCAI - Tax wallet allowance bypass
 
 ### Lost: 12.03 WETH

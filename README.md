@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-764 incidents included.
+765 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -370,6 +370,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250215 unverified_d4f1](past/2025/README.md#20250215-unverified_d4f1---access-control)
 
 [20250211 FourMeme](past/2025/README.md#20250211-fourmeme---logic-flaw)
+
+[20250208 GMT7](past/2025/README.md#20250208-gmt7---access-control)
 
 [20250208 Peapods Finance](past/2025/README.md#20250208-peapods-finance---price-manipulation)
 
