@@ -53,7 +53,7 @@ contract ContractTest is BaseTestWithBalanceLog {
     receive() external payable {}
 
     function setUp() public {
-        vm.createSelectFork(vm.envOr("BSC_RPC_URL", DEFAULT_BSC_RPC_URL), 48_728_493);
+        vm.createSelectFork("bsc", 48_728_493);
 
         fundingToken = address(0);
         attacker = address(this);
