@@ -487,6 +487,23 @@ https://t.me/evmhacks/78?single
 
 ---
 
+### 20250716 StrategyLlamaLendConvex - Share Price Manipulation
+
+### Lost: 563.12 USDC
+
+```sh
+forge test --contracts ./src/test/2025-07/StrategyLlamaLendConvex_exp.sol -vvv
+```
+
+#### Contract
+[StrategyLlamaLendConvex_exp.sol](../../src/test/2025-07/StrategyLlamaLendConvex_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1495
+
+---
+
 
 ### 20250716 VDS - Logic Flaw
 
