@@ -265,6 +265,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250811 WXC](past/2025/README.md#20250811-wxc---incorrect-token-burn-mechanism)
 
+[20250805 MyCoinMaster](past/2025/README.md#20250805-mycoinmaster---business-logic-flaw)
+
 [20250804 BscInitcodeToken](past/2025/README.md#20250804-bscinitcodetoken---business-logic-flaw)
 
 [20250729 AnyswapWETHPermit](past/2025/README.md#20250729-anyswapwethpermit---permit-validation-bypass)
