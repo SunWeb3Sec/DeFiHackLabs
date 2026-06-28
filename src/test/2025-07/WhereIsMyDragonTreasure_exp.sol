@@ -17,10 +17,10 @@ import "../interface.sol";
 // @Analysis
 // Telegram Alert : https://t.me/defimon_alerts/1537
 //
-// Attack summary: The attacker used EthItem recipe redemptions to mint one legendary card wrapper, then sent it to
-// WhereIsMyDragonTreasure to redeem the configured fixed ETH reward.
-// Root cause: WhereIsMyDragonTreasure paid a fixed `_singleReward` for each received legendary card, allowing the
-// attacker to convert existing recipe wrapper balances into a full reward payout.
+// Attack summary: The attacker used lower-cost EthItem recipe redemptions to mint/acquire one legendary card wrapper,
+// then redeemed it at WhereIsMyDragonTreasure for the configured fixed ETH reward.
+// Root cause: WhereIsMyDragonTreasure paid a fixed `_singleReward` for each legendary card while the effective cost to
+// mint/acquire a redeemable card through the recipe path was lower than that fixed redemption price.
 
 interface IEthItemERC1155 {
     function safeBatchTransferFrom(
