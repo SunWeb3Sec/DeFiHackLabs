@@ -1387,6 +1387,23 @@ https://t.me/defimon_alerts/968
 
 ---
 
+### 20250428 tcdp - Broken transferFrom Allowance Check
+
+### Lost: 2.02 ETH
+
+```sh
+forge test --contracts ./src/test/2025-04/tcdp_exp.sol -vvv
+```
+
+#### Contract
+[tcdp_exp.sol](../../src/test/2025-04/tcdp_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/932
+
+---
+
 ### 20250427 bitdog - Access Control
 
 ### Lost: 2.10 BNB
