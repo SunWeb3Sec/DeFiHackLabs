@@ -1200,6 +1200,21 @@ https://x.com/TenArmorAlert/status/1897826817429442652
 
 ---
 
+### 20250306 RnsPay - Arbitrary External Call
+
+### Lost: 1050 USDC
+
+```sh
+forge test --contracts ./src/test/2025-03/RnsPay_exp.sol -vvv
+```
+#### Contract
+[RnsPay_exp.sol](../../src/test/2025-03/RnsPay_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/562
+
+---
+
 ### 20250306 PTM - Business Logic Flaw
 
 ### Lost: 552.63 USDT
