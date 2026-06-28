@@ -881,6 +881,21 @@ https://x.com/TenArmorAlert/status/1920816516653617318
 
 ---
 
+### 20250506 Crosswise - Trusted Forwarder Spoof
+
+### Lost: 4.16 WBNB
+
+```sh
+forge test --contracts ./src/test/2025-05/crosswise_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[crosswise_exp.sol](../../src/test/2025-05/crosswise_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1002
+
+---
+
 ### 20250427 AventaRewardClaim - Claim Accounting
 
 ### Lost: 16,019,528 AVENTA

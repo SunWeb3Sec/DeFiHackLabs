@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-778 incidents included.
+779 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -316,6 +316,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250511 MBUToken](past/2025/README.md#20250511-mbutoken---price-manipulation-not-confirmed)
 
 [20250509 Nalakuvara_LotteryTicket50](past/2025/README.md#20250509-nalakuvara_lotteryticket50---price-manipulation)
+
+[20250506 Crosswise](past/2025/README.md#20250506-crosswise---trusted-forwarder-spoof)
 
 [20250427 AventaRewardClaim](past/2025/README.md#20250427-aventarewardclaim---claim-accounting)
 
