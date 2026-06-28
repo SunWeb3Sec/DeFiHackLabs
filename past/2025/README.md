@@ -881,6 +881,23 @@ https://x.com/TenArmorAlert/status/1920816516653617318
 
 ---
 
+### 20250427 multitransferswap - Business Logic Flaw
+
+### Lost: 0.34 ETH
+
+```sh
+forge test --contracts ./src/test/2025-04/multitransferswap_exp.sol -vvv
+```
+
+#### Contract
+[multitransferswap_exp.sol](../../src/test/2025-04/multitransferswap_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/929
+
+---
+
 ### 20250427 AventaRewardClaim - Claim Accounting
 
 ### Lost: 16,019,528 AVENTA
