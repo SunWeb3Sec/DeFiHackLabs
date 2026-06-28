@@ -704,6 +704,22 @@ https://x.com/TenArmorAlert/status/1937761064713941187
 
 ---
 
+### 20250625 SiloFinance - Arbitrary Call
+
+### Lost: 500,000+ USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/SiloFinance_exp.sol -vvv
+```
+#### Contract
+[SiloFinance_exp.sol](../../src/test/2025-06/SiloFinance_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1356
+
+---
+
 ### 20250625 ParaSwapDAIApproval - Stale Approval
 
 ### Lost: 2,298.68 USD
