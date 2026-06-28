@@ -502,6 +502,23 @@ https://x.com/TenArmorAlert/status/1946887946877149520
 
 ---
 
+### 20250717 unverified - Signature Verification
+
+### Lost: 502.42 USDT
+
+```sh
+forge test --contracts ./src/test/2025-07/unverified_8fd3_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+[unverified_8fd3_exp.sol](../../src/test/2025-07/unverified_8fd3_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1508
+
+---
+
 ### 20250717 WETC - Incorrect Burn Logic
 
 ### Lost: 101k USD
