@@ -24,6 +24,7 @@ import "../interface.sol";
 // pool balances are distorted by the flash-swap outputs and mint far more LP shares than the dust
 // contribution should receive. This tx also depended on the attacker EOA being allowlisted as tx.origin
 // for the unverified pair token transfer gate.
+// Related same-root-cause tx : https://snowtrace.io/tx/0xdfd0df964bcb15c18c1f5792907ff798c67d7315b961f11aabd66ecb5249dde2
 
 interface IBIFKN314PairVictim {
     function addLiquidity(
