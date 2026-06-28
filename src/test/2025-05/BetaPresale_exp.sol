@@ -84,7 +84,7 @@ contract ContractTest is BaseTestWithBalanceLog {
     address private profitReceiver;
 
     function setUp() public {
-        vm.createSelectFork(vm.envOr("BSC_RPC_URL", DEFAULT_BSC_RPC_URL), 49_951_833);
+        vm.createSelectFork("bsc", 49_951_833);
 
         profitReceiver = makeAddr("profitReceiver");
         fundingToken = WBNB_TOKEN;
