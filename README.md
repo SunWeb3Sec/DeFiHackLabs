@@ -303,6 +303,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250623 GradientMakerPool](past/2025/README.md#20250623-gradientmakerpool---price-oracle-manipulation)
 
+[20250620 TokenVault](past/2025/README.md#20250620-tokenvault---incorrect-dividends-calculation)
+
 [20250620 HoldSafe](past/2025/README.md#20250620-holdsafe---price-manipulation)
 
 [20250620 Gangsterfinance](past/2025/README.md#20250620-gangsterfinance---incorrect-dividends)

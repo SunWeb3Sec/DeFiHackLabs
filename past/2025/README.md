@@ -771,6 +771,22 @@ https://t.me/defimon_alerts/1339
 
 ---
 
+### 20250620 TokenVault - Incorrect dividends calculation
+
+### Lost: 3,226.51 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/TokenVault_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[TokenVault_exp.sol](../../src/test/2025-06/TokenVault_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1325
+
+---
+
 ### 20250620 HoldSafe - Price Manipulation
 
 ### Lost: 4,824.96 USD
