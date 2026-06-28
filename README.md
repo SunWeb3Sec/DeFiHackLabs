@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-776 incidents included.
+777 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -356,6 +356,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250311 ZeroExSettler](past/2025/README.md#20250311-zeroexsettler---arbitrary-external-call)
 
 [20250311 DUCKVADER](past/2025/README.md#20250311-duckvader---free-mint-bug)
+
+[20250307 StackMarket](past/2025/README.md#20250307-stackmarket---business-logic-flaw)
 
 [20250307 UNI](past/2025/README.md#20250307-uni---logic-flaw)
 
