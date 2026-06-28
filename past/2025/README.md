@@ -324,6 +324,23 @@ https://t.me/defimon_alerts/1676
 
 ---
 
+### 20250816 unverified - Business Logic Flaw
+
+### Lost: 3,131.11 DAI
+
+```sh
+forge test --contracts ./src/test/2025-08/unverified_d132_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+
+[unverified_d132_exp.sol](../../src/test/2025-08/unverified_d132_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1675
+
+---
+
 ### 20250816 d3xai - Price Manipulation
 
 ### Lost: 190 BNB
