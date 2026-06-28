@@ -733,6 +733,22 @@ https://x.com/TenArmorAlert/status/1932309011564781774
 
 ---
 
+### 20250608 TokenFactory - Business Logic Flaw
+
+### Lost: 657.17 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/TokenFactory_exp.sol -vvv
+```
+#### Contract
+[TokenFactory_exp.sol](../../src/test/2025-06/TokenFactory_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1242
+
+---
+
 ### 20250528 Corkprotocol - Access Control
 
 ### Lost: 12M USD

@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-778 incidents included.
+779 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -298,6 +298,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250612 AAVEBoost](past/2025/README.md#20250612-aaveboost---logic-flaw)
 
 [20250610 unverified_8490](past/2025/README.md#20250610-unverified_8490---access-control)
+
+[20250608 TokenFactory](past/2025/README.md#20250608-tokenfactory---business-logic-flaw)
 
 [20250528 Corkprotocol](past/2025/README.md#20250528-corkprotocol---access-control)
 
