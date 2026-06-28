@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-778 incidents included.
+779 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -240,6 +240,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250827 0xf340](past/2025/README.md#20250827-0xf340---access-control)
 
 [20250823 ABCCApp](past/2025/README.md#20250823-abccapp---lack-of-access-control)
+
+[20250822 Unverified_6f7a](past/2025/README.md#20250822-unverified_6f7a---access-control)
 
 [20250820 MulticallWithXera](past/2025/README.md#20250820-multicallwithxera---access-control)
 
