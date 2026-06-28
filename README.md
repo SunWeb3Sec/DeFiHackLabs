@@ -54,7 +54,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20250815 SizeFlashLoanLooping](past/2025/README.md#20250815-sizeflashloanlooping---arbitrary-external-call)
 [20260625 LixirPermitDrain](#20260625-lixirpermitdrain---broken-signature-verification)
 [20260625 OceanBPoolSideStaking](#20260625-oceanbpoolsidestaking---bpool-single-sided-joinexit-math-with-sidestaking-gulp-accounting)
 [20260624 DLMC](#20260624-dlmc---reserve-derived-liveprice-manipulation)
@@ -247,6 +246,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250820 0x8d2e](past/2025/README.md#20250820-0x8d2e---access-control)
 
 [20250816 d3xai](past/2025/README.md#20250816-d3xai---price-manipulation)
+
+[20250815 SizeFlashLoanLooping](past/2025/README.md#20250815-sizeflashloanlooping---arbitrary-external-call)
 
 [20250815 PDZ](past/2025/README.md#20250815-pdz---price-manipulation)
 
