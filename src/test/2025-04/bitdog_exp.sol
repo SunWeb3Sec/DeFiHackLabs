@@ -27,7 +27,6 @@ address constant ROOT_ATTACK_CONTRACT = 0xDfdf4A3EC9CA12ccB46DAabDc65b41ea852136
 address constant TRACE_HELPER = 0xc4b9D3Ed47A92aDd82cFAaB96b2d1D57E6887F04;
 address constant BITDOG_TOKEN = 0x4BBb53252B0ceE84e6824e85989Ea2EddEec25F1;
 address constant ROUTER_BEFORE = 0xE0dce975e949Fd437BC5e1072734020dE780C0f9;
-string constant DEFAULT_BSC_RPC_URL = "https://bsc-mainnet.public.blastapi.io";
 
 interface IBITDOG {
     function changeRouterVersion(
