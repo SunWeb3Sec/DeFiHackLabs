@@ -26,7 +26,6 @@ address constant ATTACKER = 0xF499F7a82De632CFd194025A51C88d1b44C8155e;
 address constant TRACE_ATTACK_CONTRACT = 0x81e631FaC80CdaC59b1A5BBC5667AaaCB238965F;
 address constant BITALLX_SC = 0xa5f3728767F834C591eE99C8C5854b752F39C385;
 address constant USDT_TOKEN = 0x55d398326f99059fF775485246999027B3197955;
-string constant DEFAULT_BSC_RPC_URL = "https://bsc-mainnet.public.blastapi.io";
 
 interface IBitallxSC {
     function BitallxPayOut(
