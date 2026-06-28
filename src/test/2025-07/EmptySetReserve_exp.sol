@@ -4,6 +4,24 @@ pragma solidity ^0.8.15;
 import "../basetest.sol";
 import "../interface.sol";
 
+// @KeyInfo - Total Lost : $1,509.78
+// Attacker : 0xdDEB9e72fbecCa668fFD47314565954347ade522
+// Attack Contract : 0x17E2c0844AE7CfE9D0B04cA923017F4892824E15
+// Vulnerable Contract : 0xD05aCe63789cCb35B9cE71d01e4d632a0486Da4B
+// Attack Tx : https://etherscan.io/tx/0x240e9573e6c59cfe025c311c176c351bb07a86ae994aaaff58ec3f7f84dab372
+//
+// @Info
+// Vulnerable Contract Code : https://etherscan.io/address/0xD05aCe63789cCb35B9cE71d01e4d632a0486Da4B#code
+// Vulnerable Implementation : https://etherscan.io/address/0x363aF3acFfEd0B7181C2E3c56C00922E142100a8#code
+//
+// @Analysis
+// Telegram Alert : https://t.me/defimon_alerts/1532
+//
+// Attack summary: The attacker used Uniswap v4 flash accounting to source USDC, DSU, and ESS, then bought COMP from
+// Empty Set Reserve through its stale COMP/ESS fixed order and sold the COMP through Uniswap liquidity for ETH profit.
+// Root cause: Empty Set Reserve exposed a stale/favorable fixed maker/taker order through swap(), allowing a public
+// caller to buy the reserve's COMP inventory below market and extract the spread.
+
 interface IPoolManager {
     function unlock(
         bytes calldata data
