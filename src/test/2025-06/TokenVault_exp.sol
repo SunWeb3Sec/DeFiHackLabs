@@ -15,6 +15,7 @@ import "../interface.sol";
 //
 // @Analysis
 // Telegram Alert : https://t.me/defimon_alerts/1325
+// Related BUSD incident : https://bscscan.com/tx/0x00e5c8e39eece020ad21d965402d2f9248f0a6ab62030830b12f9823c2b6d763
 //
 // Attack summary: the attacker deployed initcode that borrowed WBNB from the Pancake WBNB/USDT pair,
 // donated WBNB into the TokenVault drip pool, deposited WBNB into the vault, resolved the fresh shares,
