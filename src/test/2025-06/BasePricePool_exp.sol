@@ -24,14 +24,14 @@ import "../interface.sol";
 // QCD denominator derived from manipulable token/pair balances, allowing an attacker to redeem newly
 // purchased QCD for more GOUT value than the QCD cost.
 
-address constant ATTACKER = address(uint160(0x00d9a34af0b97f13871287c317ea0e1e8c00be0630));
-address constant HISTORICAL_ATTACK_CONTRACT = address(uint160(0x0099e9ee61cac90715fdedbb07d8786535964bf47b));
-address constant DODO_USDT_POOL = address(uint160(0x006098a5638d8d7e9ed2f952d35b2b67c34ec6b476));
-address constant BASE_PRICE_POOL = address(uint160(0x0053fef7d598a2db0920b2a9fdf27e5c401dc9ff85));
-address constant PANCAKE_ROUTER = address(uint160(0x0010ed43c718714eb63d5aa57b78b54704e256024e));
-address constant USDT_TOKEN = address(uint160(0x0055d398326f99059ff775485246999027b3197955));
-address constant QCD_TOKEN = address(uint160(0x0050d5c6cbe5b5d4ae048f8aa3cdcdc5a2f10d5f78));
-address constant GOUT_TOKEN = address(uint160(0x00f86af2fbcf6a0479b21b1d3a4af3893f63207fe7));
+address constant ATTACKER = 0xd9A34AF0b97f13871287C317ea0e1E8C00BE0630;
+address constant HISTORICAL_ATTACK_CONTRACT = 0x99e9eE61CaC90715fDEDBB07d8786535964bF47b;
+address constant DODO_USDT_POOL = 0x6098A5638d8D7e9Ed2f952d35B2b67c34EC6B476;
+address constant BASE_PRICE_POOL = 0x53FeF7d598A2Db0920b2A9fDF27E5C401DC9Ff85;
+address constant PANCAKE_ROUTER = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
+address constant USDT_TOKEN = 0x55d398326f99059fF775485246999027B3197955;
+address constant QCD_TOKEN = 0x50D5C6cbe5B5d4ae048F8AA3cdcdc5A2f10d5F78;
+address constant GOUT_TOKEN = 0xF86AF2FBcf6A0479B21b1d3a4Af3893F63207FE7;
 
 uint256 constant FLASH_USDT_AMOUNT = 1_900 ether;
 
