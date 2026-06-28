@@ -4,6 +4,24 @@ pragma solidity ^0.8.15;
 import "../basetest.sol";
 import "../interface.sol";
 
+// @KeyInfo - Total Lost : $47,461.35
+// Attacker : 0x8b88A3b92433638324E5f429bEe52b1fd84E7c5a
+// Attack Contract : 0xd73c37d235b6032b21ADAF7F6dE73BDbc31667B2
+// Vulnerable Contract : 0x32c87193C2cC9961F2283FcA3ca11A483d8E426B
+// Attack Tx : https://etherscan.io/tx/0x2154dd30d2bdd53b233d862ecd665c3a69c7a849cb498b724f622d9cb42771fc
+//
+// @Info
+// WhereIsMyDragon : https://etherscan.io/address/0x87AD9009C4Fd0AAa7bFE74f7E00845B3f09aD0CE#code
+// WhereIsMyDragonTreasure : https://etherscan.io/address/0x32c87193C2cC9961F2283FcA3ca11A483d8E426B#code
+//
+// @Analysis
+// Telegram Alert : https://t.me/defimon_alerts/1537
+//
+// Attack summary: The attacker used EthItem recipe redemptions to mint one legendary card wrapper, then sent it to
+// WhereIsMyDragonTreasure to redeem the configured fixed ETH reward.
+// Root cause: WhereIsMyDragonTreasure paid a fixed `_singleReward` for each received legendary card, allowing the
+// attacker to convert existing recipe wrapper balances into a full reward payout.
+
 interface IEthItemERC1155 {
     function safeBatchTransferFrom(
         address from,
