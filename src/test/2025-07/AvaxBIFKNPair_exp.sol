@@ -78,7 +78,7 @@ contract ContractTest is BaseTestWithBalanceLog {
     uint256 private constant NET_AVAX_PROFIT = 91_148_601_593_744_546_787;
 
     function setUp() public {
-        vm.createSelectFork(vm.envOr("AVALANCHE_RPC_URL", string("avalanche")), FORK_BLOCK);
+        vm.createSelectFork("avalanche", FORK_BLOCK);
 
         fundingToken = address(0);
         attacker = ATTACKER;
