@@ -273,6 +273,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250729 AnyswapWETHPermit](past/2025/README.md#20250729-anyswapwethpermit---permit-validation-bypass)
 
+
 [20250728 SuperRare](past/2025/README.md#20250728-superrare---access-control)
 
 [20250726 MulticallWithETH](past/2025/README.md#20250726-multicallwitheth---arbitrary-call)
