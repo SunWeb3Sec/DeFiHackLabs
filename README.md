@@ -245,6 +245,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250820 0x8d2e](past/2025/README.md#20250820-0x8d2e---access-control)
 
+[20250819 PresaleV5](past/2025/README.md#20250819-presalev5---price-manipulation)
+
 [20250816 d3xai](past/2025/README.md#20250816-d3xai---price-manipulation)
 
 [20250815 PDZ](past/2025/README.md#20250815-pdz---price-manipulation)

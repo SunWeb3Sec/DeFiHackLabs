@@ -271,6 +271,24 @@ https://x.com/TenArmorAlert/status/1958354933247590450
 
 ---
 
+### 20250819 PresaleV5 - Price Manipulation
+
+### Lost: 9,769.23 USD
+
+```sh
+forge test --contracts ./src/test/2025-08/PresaleV5_exp.sol -vv --evm-version cancun
+```
+
+#### Contract
+
+[PresaleV5_exp.sol](../../src/test/2025-08/PresaleV5_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1688
+
+---
+
 ### 20250816 d3xai - Price Manipulation
 
 ### Lost: 190 BNB
