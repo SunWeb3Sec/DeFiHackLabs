@@ -1359,6 +1359,22 @@ https://www.chaincatcher.com/en/article/2167296
 
 ---
 
+### 20250211 Scorch - Price Oracle Manipulation
+
+### Lost: 0.14 ETH
+
+
+```sh
+forge test --contracts ./src/test/2025-02/Scorch_exp.sol -vvv
+```
+#### Contract
+[Scorch_exp.sol](../../src/test/2025-02/Scorch_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/451
+
+---
+
 ### 20250211 LimitOrderProtocol - Access Control
 
 ### Lost: 2800000 BRAINS
