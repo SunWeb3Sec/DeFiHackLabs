@@ -81,7 +81,7 @@ interface IWBNBLike {
 
 contract ContractTest is BaseTestWithBalanceLog {
     function setUp() public {
-        vm.createSelectFork(vm.envOr("BSC_RPC_URL", DEFAULT_BSC_RPC_URL), 49_186_830);
+        vm.createSelectFork("bsc", 49_186_830);
 
         fundingToken = WBNB_TOKEN;
         attacker = address(this);
