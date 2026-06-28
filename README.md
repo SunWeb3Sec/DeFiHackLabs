@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-767 incidents included.
+768 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -352,6 +352,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250307 UNI](past/2025/README.md#20250307-uni---logic-flaw)
 
 [20250307 SBRToken](past/2025/README.md#20250307-sbr-token---price-manipulation)
+
+[20250306 PTM](past/2025/README.md#20250306-ptm---business-logic-flaw)
 
 [20250305 1inch Fusion V1 Settlement](past/2025/README.md#20250305-1inch-fusionv1-settlement---arbitrary-yul-calldata)
 

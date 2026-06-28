@@ -1183,6 +1183,22 @@ https://x.com/TenArmorAlert/status/1897826817429442652
 
 ---
 
+### 20250306 PTM - Business Logic Flaw
+
+### Lost: 552.63 USDT
+
+
+```sh
+forge test --contracts ./src/test/2025-03/PTM_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[PTM_exp.sol](../../src/test/2025-03/PTM_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/556
+
+---
+
 ### 20250305 1inch FusionV1 Settlement - Arbitrary Yul Calldata
 
 ### Lost: 4.5M
