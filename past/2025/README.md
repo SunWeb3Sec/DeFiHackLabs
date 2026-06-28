@@ -995,6 +995,23 @@ https://x.com/TenArmorAlert/status/1909814943290884596
 
 ---
 
+### 20250407 AmpKashi - AMP Collateral Borrow Price Manipulation
+
+### Lost: $572.31
+
+```sh
+forge test --contracts ./src/test/2025-04/AmpKashi_exp.sol -vvv --evm-version cancun
+```
+
+#### Contract
+[AmpKashi_exp.sol](../../src/test/2025-04/AmpKashi_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/773
+
+---
+
 ### 20250404 AIRWA - Access Control
 
 ### Lost: $33.6K
