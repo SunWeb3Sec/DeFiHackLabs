@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-777 incidents included.
+778 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -362,6 +362,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250307 UNI](past/2025/README.md#20250307-uni---logic-flaw)
 
 [20250307 SBRToken](past/2025/README.md#20250307-sbr-token---price-manipulation)
+
+[20250306 unverified](past/2025/README.md#20250306-unverified---business-logic-flaw)
 
 [20250306 RnsPay](past/2025/README.md#20250306-rnspay---arbitrary-external-call)
 

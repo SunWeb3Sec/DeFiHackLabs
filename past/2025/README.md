@@ -1267,6 +1267,22 @@ https://x.com/TenArmorAlert/status/1897826817429442652
 
 ---
 
+### 20250306 unverified - Business Logic Flaw
+
+### Lost: 980.32 USDC
+
+
+```sh
+forge test --contracts ./src/test/2025-03/unverified_de7c_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[unverified_de7c_exp.sol](../../src/test/2025-03/unverified_de7c_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/560
+
+---
+
 ### 20250306 RnsPay - Arbitrary External Call
 
 ### Lost: 1050 USDC
