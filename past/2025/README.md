@@ -454,6 +454,22 @@ https://x.com/TenArmorAlert/status/1954774967481962832
 
 ---
 
+### 20250808 ArbitrumBaseSwapper - Business Logic Flaw
+
+### Lost: 1,847.33 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-08/ArbitrumBaseSwapper_exp.sol -vvv
+```
+#### Contract
+[ArbitrumBaseSwapper_exp.sol](../../src/test/2025-08/ArbitrumBaseSwapper_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1638
+
+---
+
 ### 20250805 MyCoinMaster - Business Logic Flaw
 
 ### Lost: 653.49 USD
