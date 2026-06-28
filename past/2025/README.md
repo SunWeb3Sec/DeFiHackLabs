@@ -701,6 +701,22 @@ https://x.com/peckshield/status/1934895187102454206
 
 ---
 
+### 20250614 TSAggregatorGeneric - Business Logic Flaw
+
+### Lost: 1300 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/TSAggregatorGeneric_exp.sol -vvv
+```
+#### Contract
+[TSAggregatorGeneric_exp.sol](../../src/test/2025-06/TSAggregatorGeneric_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1278
+
+---
+
 ### 20250612 AAVEBoost - Logic Flaw
 
 ### Lost: 14.8K USD

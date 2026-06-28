@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-778 incidents included.
+779 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -294,6 +294,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250619 BankrollNetwork](past/2025/README.md#20250619-bankrollnetwork---incorrect-dividends-calculation)
 
 [20250617 MetaPool](past/2025/README.md#20250617-metapool---access-control)
+
+[20250614 TSAggregatorGeneric](past/2025/README.md#20250614-tsaggregatorgeneric---business-logic-flaw)
 
 [20250612 AAVEBoost](past/2025/README.md#20250612-aaveboost---logic-flaw)
 
