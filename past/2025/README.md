@@ -595,7 +595,7 @@ https://x.com/SlowMist_Team/status/1949770231733530682
 ### Lost: 2.4K USD
 
 ```sh
-AVALANCHE_RPC_URL=https://avalanche.api.onfinality.io/public/ext/bc/C/rpc forge test --contracts ./src/test/2025-07/AvaxBIFKNPair_exp.sol -vvv
+forge test --contracts ./src/test/2025-07/AvaxBIFKNPair_exp.sol -vvv
 ```
 #### Contract
 [AvaxBIFKNPair_exp.sol](../../src/test/2025-07/AvaxBIFKNPair_exp.sol)
