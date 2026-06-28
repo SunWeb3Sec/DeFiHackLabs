@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-763 incidents included.
+764 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -372,6 +372,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250211 FourMeme](past/2025/README.md#20250211-fourmeme---logic-flaw)
 
 [20250208 Peapods Finance](past/2025/README.md#20250208-peapods-finance---price-manipulation)
+
+[20250128 MCAI](past/2025/README.md#20250128-mcai---tax-wallet-allowance-bypass)
 
 [20250126 AIXBTForcedSwap](past/2025/README.md#20250126-aixbtforcedswap---hardcoded-auth-key)
 
