@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-764 incidents included.
+778 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -317,6 +317,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250509 Nalakuvara_LotteryTicket50](past/2025/README.md#20250509-nalakuvara_lotteryticket50---price-manipulation)
 
+[20250427 AventaRewardClaim](past/2025/README.md#20250427-aventarewardclaim---claim-accounting)
+
 [20250426 Lifeprotocol](past/2025/README.md#20250426-lifeprotocol---price-manipulation)
 
 [20250426 ImpermaxV3](past/2025/README.md#20250426-impermaxv3---flashloan-price-oracle-manipulation)
@@ -324,6 +326,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250416 Roar](past/2025/README.md#20250416-roar---rug-pull)
 
 [20250408 Laundromat](past/2025/README.md#20250408-laundromat---logic-flaw)
+
+[20250407 AmpKashi](past/2025/README.md#20250407-ampkashi---amp-collateral-borrow-price-manipulation)
 
 [20250404 AIRWA](past/2025/README.md#20250404-airwa---access-control)
 
@@ -343,11 +347,17 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250318 DCFToken](past/2025/README.md#20250318-dcftoken---lack-of-slippage-protection)
 
+[20250318 unverified](past/2025/README.md#20250318-unverified---business-logic-flaw)
+
 [20250316 wKeyDAO](past/2025/README.md#20250316-wkeydao---unprotected-function)
 
 [20250314 H2O](past/2025/README.md#20250314-h2o---weak-random-mint)
 
+[20250311 ZeroExSettler](past/2025/README.md#20250311-zeroexsettler---arbitrary-external-call)
+
 [20250311 DUCKVADER](past/2025/README.md#20250311-duckvader---free-mint-bug)
+
+[20250307 StackMarket](past/2025/README.md#20250307-stackmarket---business-logic-flaw)
 
 [20250307 UNI](past/2025/README.md#20250307-uni---logic-flaw)
 
@@ -355,11 +365,19 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250306 unverified](past/2025/README.md#20250306-unverified---business-logic-flaw)
 
+[20250306 RnsPay](past/2025/README.md#20250306-rnspay---arbitrary-external-call)
+
+[20250306 PTM](past/2025/README.md#20250306-ptm---business-logic-flaw)
+
 [20250305 1inch Fusion V1 Settlement](past/2025/README.md#20250305-1inch-fusionv1-settlement---arbitrary-yul-calldata)
 
 [20250304 Pump](past/2025/README.md#20250304-pump---not-slippage-protection)
 
 [20250227 Venus_ZKSync](past/2025/README.md#20250227-venus_zksync---donation-attack)
+
+[20250226 HenloKart](past/2025/README.md#20250226-henlokart---fake-native-deposit-and-immediate-cancel)
+
+[20250224 INVISTECH](past/2025/README.md#20250224-invistech---pair-tax-price-manipulation)
 
 [20250223 HegicOptions](past/2025/README.md#20250223-hegicoptions---business-logic-flaw)
 
@@ -371,9 +389,17 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250215 unverified_d4f1](past/2025/README.md#20250215-unverified_d4f1---access-control)
 
+[20250211 Scorch](past/2025/README.md#20250211-scorch---price-oracle-manipulation)
+[20250211 LimitOrderProtocol](past/2025/README.md#20250211-limitorderprotocol---access-control)
 [20250211 FourMeme](past/2025/README.md#20250211-fourmeme---logic-flaw)
 
+[20250208 GMT7](past/2025/README.md#20250208-gmt7---access-control)
+
 [20250208 Peapods Finance](past/2025/README.md#20250208-peapods-finance---price-manipulation)
+
+[20250201 GoldReserve](past/2025/README.md#20250201-goldreserve---business-logic-flaw)
+
+[20250128 MCAI](past/2025/README.md#20250128-mcai---tax-wallet-allowance-bypass)
 
 [20250126 AIXBTForcedSwap](past/2025/README.md#20250126-aixbtforcedswap---hardcoded-auth-key)
 

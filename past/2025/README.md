@@ -881,6 +881,23 @@ https://x.com/TenArmorAlert/status/1920816516653617318
 
 ---
 
+### 20250427 AventaRewardClaim - Claim Accounting
+
+### Lost: 16,019,528 AVENTA
+
+```sh
+forge test --contracts ./src/test/2025-04/AventaRewardClaim_exp.sol -vvv --evm-version cancun
+```
+
+#### Contract
+[AventaRewardClaim_exp.sol](../../src/test/2025-04/AventaRewardClaim_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/927
+
+---
+
 ### 20250426 Lifeprotocol - Price Manipulation
 
 ### Lost: 15114 BUSD
@@ -995,6 +1012,23 @@ https://x.com/TenArmorAlert/status/1909814943290884596
 
 ---
 
+### 20250407 AmpKashi - AMP Collateral Borrow Price Manipulation
+
+### Lost: $572.31
+
+```sh
+forge test --contracts ./src/test/2025-04/AmpKashi_exp.sol -vvv --evm-version cancun
+```
+
+#### Contract
+[AmpKashi_exp.sol](../../src/test/2025-04/AmpKashi_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/773
+
+---
+
 ### 20250404 AIRWA - Access Control
 
 ### Lost: $33.6K
@@ -1101,6 +1135,23 @@ https://x.com/Phalcon_xyz/status/1860890801909190664
 
 ---
 
+### 20250318 unverified - Business Logic Flaw
+
+### Lost: 0.40 WAVAX
+
+```sh
+forge test --contracts ./src/test/2025-03/unverified_3f27_exp.sol -vvv
+```
+
+#### Contract
+[unverified_3f27_exp.sol](../../src/test/2025-03/unverified_3f27_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/624
+
+---
+
 ### 20250316 wKeyDAO - unprotected function
 
 ### Lost: 737,000
@@ -1134,6 +1185,23 @@ https://x.com/TenArmorAlert/status/1900525198157205692
 
 ---
 
+### 20250311 ZeroExSettler - Arbitrary External Call
+
+### Lost: 3,008 USDT
+
+```sh
+forge test --contracts ./src/test/2025-03/ZeroExSettler_exp.sol -vvv --evm-version cancun
+```
+
+#### Contract
+[ZeroExSettler_exp.sol](../../src/test/2025-03/ZeroExSettler_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/599
+
+---
+
 ### 20250311 DUCKVADER - Free Mint Bug
 
 ### Lost: ~ $9.6K
@@ -1148,6 +1216,22 @@ forge test --contracts ./src/test/2025-03/DUCKVADER_exp.sol -vvv
 ### Link reference
 
 https://x.com/TenArmorAlert/status/1899378096056201414
+
+---
+
+### 20250307 StackMarket - Business Logic Flaw
+
+### Lost: 0.56 WETH
+
+
+```sh
+forge test --contracts ./src/test/2025-03/StackMarket_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[StackMarket_exp.sol](../../src/test/2025-03/StackMarket_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/575
 
 ---
 
@@ -1199,6 +1283,37 @@ https://t.me/defimon_alerts/560
 
 ---
 
+### 20250306 RnsPay - Arbitrary External Call
+
+### Lost: 1050 USDC
+
+```sh
+forge test --contracts ./src/test/2025-03/RnsPay_exp.sol -vvv
+```
+#### Contract
+[RnsPay_exp.sol](../../src/test/2025-03/RnsPay_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/562
+
+---
+
+### 20250306 PTM - Business Logic Flaw
+
+### Lost: 552.63 USDT
+
+
+```sh
+forge test --contracts ./src/test/2025-03/PTM_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[PTM_exp.sol](../../src/test/2025-03/PTM_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/556
+
+---
+
 ### 20250305 1inch FusionV1 Settlement - Arbitrary Yul Calldata
 
 ### Lost: 4.5M
@@ -1247,6 +1362,36 @@ forge test --zksync -vvv --match-test testSimplifiedAttackFlow --contracts ./src
 https://explorer.zksync.io/tx/0x35a0172fb6bd450ceb29aa67dc85221826dfd0b7528375400b4ccf15c1eed0d8
 
 https://community.venus.io/t/post-mortem-wusdm-donation-attack-on-venus-zksync/5004
+
+---
+
+### 20250226 HenloKart - Fake Native Deposit And Immediate Cancel
+
+### Lost: 0.59 ETH
+
+```sh
+forge test --contracts ./src/test/2025-02/HenloKart_exp.sol -vvv
+```
+#### Contract
+[HenloKart_exp.sol](../../src/test/2025-02/HenloKart_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/518
+
+---
+
+### 20250224 INVISTECH - Pair Tax Price Manipulation
+
+### Lost: 5.14 WBNB
+
+```sh
+forge test --contracts ./src/test/2025-02/INVISTECH_exp.sol -vvv
+```
+#### Contract
+[INVISTECH_exp.sol](../../src/test/2025-02/INVISTECH_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/515
 
 ---
 
@@ -1359,6 +1504,38 @@ https://www.chaincatcher.com/en/article/2167296
 
 ---
 
+### 20250211 Scorch - Price Oracle Manipulation
+
+### Lost: 0.14 ETH
+
+
+```sh
+forge test --contracts ./src/test/2025-02/Scorch_exp.sol -vvv
+```
+#### Contract
+[Scorch_exp.sol](../../src/test/2025-02/Scorch_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/451
+
+---
+
+### 20250211 LimitOrderProtocol - Access Control
+
+### Lost: 2800000 BRAINS
+
+
+```sh
+forge test --contracts ./src/test/2025-02/LimitOrderProtocol_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[LimitOrderProtocol_exp.sol](../../src/test/2025-02/LimitOrderProtocol_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/447
+
+---
+
 ### 20250208 Peapods Finance - Price Manipulation
 
 ### Lost: ~ $3,500
@@ -1373,6 +1550,56 @@ forge test --contracts ./src/test/2025-02/PeapodsFinance_exp.sol -vvv
 ### Link reference
 
 https://blog.solidityscan.com/peapods-finance-hack-analysis-bdc5432107a5
+
+---
+
+### 20250208 GMT7 - Access Control
+
+### Lost: 16.75 BNB
+
+```sh
+forge test --contracts ./src/test/2025-02/GMT7_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+[GMT7_exp.sol](../../src/test/2025-02/GMT7_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/443
+
+---
+
+### 20250201 GoldReserve - Business Logic Flaw
+
+### Lost: 12.74 BNB
+
+```sh
+forge test --contracts ./src/test/2025-02/GoldReserve_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+[GoldReserve_exp.sol](../../src/test/2025-02/GoldReserve_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/434
+
+---
+
+### 20250128 MCAI - Tax wallet allowance bypass
+
+### Lost: 12.03 WETH
+
+
+```sh
+forge test --contracts ./src/test/2025-01/MCAI_exp.sol -vvv
+```
+#### Contract
+[MCAI_exp.sol](../../src/test/2025-01/MCAI_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/409
 
 ---
 
