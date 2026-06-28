@@ -1360,6 +1360,23 @@ https://blog.solidityscan.com/peapods-finance-hack-analysis-bdc5432107a5
 
 ---
 
+### 20250208 GMT7 - Access Control
+
+### Lost: 16.75 BNB
+
+```sh
+forge test --contracts ./src/test/2025-02/GMT7_exp.sol -vvv --evm-version shanghai
+```
+
+#### Contract
+[GMT7_exp.sol](../../src/test/2025-02/GMT7_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/443
+
+---
+
 ### 20250201 GoldReserve - Business Logic Flaw
 
 ### Lost: 12.74 BNB
@@ -1374,6 +1391,22 @@ forge test --contracts ./src/test/2025-02/GoldReserve_exp.sol -vvv --evm-version
 ### Link reference
 
 https://t.me/defimon_alerts/434
+
+---
+
+### 20250128 MCAI - Tax wallet allowance bypass
+
+### Lost: 12.03 WETH
+
+
+```sh
+forge test --contracts ./src/test/2025-01/MCAI_exp.sol -vvv
+```
+#### Contract
+[MCAI_exp.sol](../../src/test/2025-01/MCAI_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/409
 
 ---
 
