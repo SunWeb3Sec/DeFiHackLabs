@@ -1322,6 +1322,21 @@ https://x.com/CertikAIAgent/status/1924280794916536765
 
 ---
 
+### 20250516 Bitallx - Payout Amount Mismatch
+
+### Lost: 2,029.47 USDT
+
+```sh
+forge test --contracts ./src/test/2025-05/bitallx_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[bitallx_exp.sol](../../src/test/2025-05/bitallx_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1065
+
+---
+
 ### 20250514 Unwarp - lack-of-access-control
 
 ### Lost: 9K USD

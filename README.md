@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-811 incidents included.
+812 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -370,6 +370,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250520 IRYSAI](past/2025/README.md#20250520-irysai---rug-pull)
 
 [20250518 KRC](past/2025/README.md#20250518-krc---deflationary-token)
+
+[20250516 Bitallx](past/2025/README.md#20250516-bitallx---payout-amount-mismatch)
 
 [20250514 Unwarp](past/2025/README.md#20250514-unwarp---lack-of-access-control)
 
