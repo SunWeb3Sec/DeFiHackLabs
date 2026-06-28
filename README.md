@@ -263,6 +263,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250728 SuperRare](past/2025/README.md#20250728-superrare---access-control)
 
+[20250726 Unverified670471](past/2025/README.md#20250726-unverified670471---unchecked-flash-loan-callback)
+
 [20250726 MulticallWithETH](past/2025/README.md#20250726-multicallwitheth---arbitrary-call)
 
 [20250724 SWAPPStaking](past/2025/README.md#20250724-swappstaking---incorrect-reward-calculation)
