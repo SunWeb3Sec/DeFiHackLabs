@@ -423,6 +423,21 @@ https://x.com/SlowMist_Team/status/1949770231733530682
 
 ---
 
+### 20250726 Unverified6883 - Fake Uniswap Callback
+
+### Lost: $1,006.89
+
+```sh
+forge test --contracts ./src/test/2025-07/Unverified6883_exp.sol -vvv
+```
+#### Contract
+[Unverified6883_exp.sol](../../src/test/2025-07/Unverified6883_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1544
+
+---
+
 ### 20250726 MulticallWithETH - arbitrary-call
 
 ### Lost: 10K USD
