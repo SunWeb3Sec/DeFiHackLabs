@@ -881,6 +881,23 @@ https://x.com/TenArmorAlert/status/1920816516653617318
 
 ---
 
+### 20250427 AventaRewardClaim - Claim Accounting
+
+### Lost: 16,019,528 AVENTA
+
+```sh
+forge test --contracts ./src/test/2025-04/AventaRewardClaim_exp.sol -vvv --evm-version cancun
+```
+
+#### Contract
+[AventaRewardClaim_exp.sol](../../src/test/2025-04/AventaRewardClaim_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/927
+
+---
+
 ### 20250426 Lifeprotocol - Price Manipulation
 
 ### Lost: 15114 BUSD
