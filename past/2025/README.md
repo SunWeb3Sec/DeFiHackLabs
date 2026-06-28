@@ -799,6 +799,22 @@ https://x.com/peckshield/status/1934895187102454206
 
 ---
 
+### 20250615 FixedTokenBSwap - Price Oracle Manipulation
+
+### Lost: 2.2K USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/FixedTokenBSwap_exp.sol -vvv
+```
+#### Contract
+[FixedTokenBSwap_exp.sol](../../src/test/2025-06/FixedTokenBSwap_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1280
+
+---
+
 ### 20250614 TSAggregatorGeneric - Business Logic Flaw
 
 ### Lost: 1300 USD
