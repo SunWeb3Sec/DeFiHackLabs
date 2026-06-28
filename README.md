@@ -283,6 +283,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250728 SuperRare](past/2025/README.md#20250728-superrare---access-control)
 
+[20250728 AvaxBIFKNPair](past/2025/README.md#20250728-avaxbifknpair---flash-swap-accounting)
+
 [20250726 MulticallWithETH](past/2025/README.md#20250726-multicallwitheth---arbitrary-call)
 
 [20250725 WhereIsMyDragonTreasure](past/2025/README.md#20250725-whereismydragontreasure---fixed-reward-redemption)
