@@ -23,15 +23,15 @@ import "../interface.sol";
 // manipulable HS/WBNB/USDT route. A temporary reserve change lets cheap HS satisfy 2,000 USDT stake
 // accounting, while referral rewards are later paid from the staking contract in HS.
 
-address constant ATTACKER = address(uint160(0x000a4125690753b6cc82cadbca0f0899eb2025acb0));
-address constant HISTORICAL_ATTACK_CONTRACT = address(uint160(0x008b6dc9db598ecc3aa36d3eddebe9a9dd36e2bd7d));
-address constant DODO_WBNB_POOL = address(uint160(0x00172fcd41e0913e95784454622d1c3724f546f849));
-address constant HOLD_SAFE_STAKING = address(uint160(0x002496b87189d5ae18d4d83b8a7039b0c8a07d98d4));
-address constant HS_WBNB_PAIR = address(uint160(0x008720862a4fb7e1cbacfb42cb32c9eb4f5e84e403));
-address constant PANCAKE_ROUTER = address(uint160(0x0010ed43c718714eb63d5aa57b78b54704e256024e));
-address constant HS_TOKEN = address(uint160(0x00f83aa05d3d7a6ca2dce8a5329f7d1be879b215f0));
-address constant WBNB_TOKEN = address(uint160(0x00bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c));
-address constant USDT_TOKEN = address(uint160(0x0055d398326f99059ff775485246999027b3197955));
+address constant ATTACKER = 0x0a4125690753b6cc82CADbCa0f0899eB2025ACB0;
+address constant HISTORICAL_ATTACK_CONTRACT = 0x8b6dc9db598eCc3aa36d3EdDEbE9a9dd36e2bd7d;
+address constant DODO_WBNB_POOL = 0x172fcD41E0913e95784454622d1c3724f546f849;
+address constant HOLD_SAFE_STAKING = 0x2496B87189D5Ae18d4d83b8a7039b0c8A07D98D4;
+address constant HS_WBNB_PAIR = 0x8720862A4fB7e1CBAcfb42Cb32C9EB4F5E84e403;
+address constant PANCAKE_ROUTER = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
+address constant HS_TOKEN = 0xf83Aa05D3D7A6CA2DcE8a5329F7D1BE879b215F0;
+address constant WBNB_TOKEN = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
+address constant USDT_TOKEN = 0x55d398326f99059fF775485246999027B3197955;
 
 uint256 constant FLASH_WBNB_AMOUNT = 224 ether;
 uint256 constant FLASH_WBNB_REPAY = 224_022_400_000_000_000_000;
