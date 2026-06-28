@@ -33,7 +33,6 @@ address constant BUSD_TOKEN = 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56;
 uint256 constant FLASH_LOAN_AMOUNT = 100 ether;
 uint256 constant CHILD_DEPOSITS = 70;
 uint256 constant FIRST_BETA_SALE = 7000 ether;
-string constant DEFAULT_BSC_RPC_URL = "https://bsc-mainnet.public.blastapi.io";
 
 interface ITokenLike {
     function balanceOf(
