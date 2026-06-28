@@ -307,6 +307,23 @@ https://x.com/TenArmorAlert/status/1958354933247590450
 
 ---
 
+### 20250817 AutoPooledTradingBot - Business Logic Flaw
+
+### Lost: 0.15198 ETH
+
+```sh
+forge test --contracts ./src/test/2025-08/AutoPooledTradingBot_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+
+[AutoPooledTradingBot_exp.sol](../../src/test/2025-08/AutoPooledTradingBot_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1676
+
+---
+
 ### 20250816 d3xai - Price Manipulation
 
 ### Lost: 190 BNB
