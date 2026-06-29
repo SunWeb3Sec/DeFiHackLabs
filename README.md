@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-817 incidents included.
+818 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -394,6 +394,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250428 tcdp](past/2025/README.md#20250428-tcdp---broken-transferfrom-allowance-check)
 
 [20250427 bitdog](past/2025/README.md#20250427-bitdog---access-control)
+
+[20250427 multitransferswap](past/2025/README.md#20250427-multitransferswap---business-logic-flaw)
 
 [20250427 AventaRewardClaim](past/2025/README.md#20250427-aventarewardclaim---claim-accounting)
 
