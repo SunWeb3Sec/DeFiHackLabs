@@ -1387,6 +1387,22 @@ https://x.com/TenArmorAlert/status/1925012844052975776
 
 ---
 
+### 20250519 BetaPresale - Access Control
+
+### Lost: 1.921686798824852706 WBNB and 46.474821659738262175 BUSD
+
+
+```sh
+forge test --contracts ./src/test/2025-05/BetaPresale_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[BetaPresale_exp.sol](../../src/test/2025-05/BetaPresale_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1092
+
+---
+
 ### 20250518 KRC - deflationary token
 
 ### Lost: 7k USD
