@@ -1257,6 +1257,22 @@ https://t.me/defimon_alerts/1243
 
 ---
 
+### 20250608 TokenFactory - Business Logic Flaw
+
+### Lost: 657.17 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/TokenFactory_exp.sol -vvv
+```
+#### Contract
+[TokenFactory_exp.sol](../../src/test/2025-06/TokenFactory_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1242
+
+---
+
 ### 20250603 PegaBall - Business Logic Flaw
 
 ### Lost: 1512.85 USD
