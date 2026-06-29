@@ -368,6 +368,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250509 Nalakuvara_LotteryTicket50](past/2025/README.md#20250509-nalakuvara_lotteryticket50---price-manipulation)
 
+[20250427 bitdog](past/2025/README.md#20250427-bitdog---access-control)
+
 [20250427 AventaRewardClaim](past/2025/README.md#20250427-aventarewardclaim---claim-accounting)
 
 [20250426 Lifeprotocol](past/2025/README.md#20250426-lifeprotocol---price-manipulation)
