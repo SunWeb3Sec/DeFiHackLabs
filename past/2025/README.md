@@ -833,6 +833,22 @@ https://x.com/SlowMist_Team/status/1945672192471302645
 
 ---
 
+### 20250713 UPENG - Incorrect Burn Logic
+
+### Lost: $1,035.06
+
+```sh
+forge test --contracts ./src/test/2025-07/UPENGBurnSync_exp.sol -vvv
+```
+#### Contract
+[UPENGBurnSync_exp.sol](../../src/test/2025-07/UPENGBurnSync_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1470
+
+---
+
 ### 20250709 GMX - Share price manipulation
 
 ### Lost: 41M USD
