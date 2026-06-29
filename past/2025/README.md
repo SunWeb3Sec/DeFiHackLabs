@@ -1189,6 +1189,22 @@ https://x.com/TenArmorAlert/status/1926587721885040686
 
 ---
 
+### 20250525 Unverified_0000 - Access Control
+
+### Lost: 5,658.46 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-05/unverified_0000_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[unverified_0000_exp.sol](../../src/test/2025-05/unverified_0000_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1184
+
+---
+
 ### 20250524 RICE - Lack of Access Control
 
 ### Lost: ~ $88.1K
