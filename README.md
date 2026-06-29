@@ -239,6 +239,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250827 0xf340](past/2025/README.md#20250827-0xf340---access-control)
 
+[20250823 EquilibriaEPendle](past/2025/README.md#20250823-equilibriaependle---reward-accounting-flaw)
+
 [20250823 ABCCApp](past/2025/README.md#20250823-abccapp---lack-of-access-control)
 
 [20250820 MulticallWithXera](past/2025/README.md#20250820-multicallwithxera---access-control)

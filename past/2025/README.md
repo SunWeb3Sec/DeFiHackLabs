@@ -218,6 +218,24 @@ https://t.me/defimon_alerts/1733
 
 ---
 
+### 20250823 EquilibriaEPendle - Reward Accounting Flaw
+
+### Lost: 62,661.57 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-08/EquilibriaEPendle_exp.sol -vvv
+```
+#### Contract
+[EquilibriaEPendle_exp.sol](../../src/test/2025-08/EquilibriaEPendle_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1712
+
+Related tx: https://etherscan.io/tx/0x0a60d7fb1d459ebee1ddcd62d1a8fcb8faa9aa1ebbb3203f90bea7dd888af8aa
+
+---
+
 ### 20250823 ABCCApp - Lack of Access Control
 
 ### Lost: ~ $10.1K
