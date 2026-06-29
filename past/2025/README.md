@@ -439,6 +439,24 @@ https://x.com/TenArmorAlert/status/1954774967481962832
 
 ---
 
+### 20250804 BscInitcodeToken - Business Logic Flaw
+
+### Lost: 700.32 USD
+
+```sh
+forge test --contracts ./src/test/2025-08/BscInitcodeToken_exp.sol -vvv
+```
+
+#### Contract
+
+[BscInitcodeToken_exp.sol](../../src/test/2025-08/BscInitcodeToken_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1619
+
+---
+
 ### 20250729 AnyswapWETHPermit - Permit Validation Bypass
 
 ### Lost: 200 WETH
