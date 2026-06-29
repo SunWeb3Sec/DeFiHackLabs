@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-821 incidents included.
+822 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -361,9 +361,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250610 unverified_8490](past/2025/README.md#20250610-unverified_8490---access-control)
 
+<<<<<<< HEAD
 [20250603 PegaBall](past/2025/README.md#20250603-pegaball---business-logic-flaw)
 
 [20250531 DogeAlliance](past/2025/README.md#20250531-dogealliance---price-manipulation)
+=======
+[20250609 BitCrown](past/2025/README.md#20250609-bitcrown---access-control)
+>>>>>>> 174b5182 (Add BitCrown PoC. Jun 9. 7939.27 USD)
 
 [20250528 Corkprotocol](past/2025/README.md#20250528-corkprotocol---access-control)
 
