@@ -247,6 +247,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250816 d3xai](past/2025/README.md#20250816-d3xai---price-manipulation)
 
+[20250815 SizeFlashLoanLooping](past/2025/README.md#20250815-sizeflashloanlooping---arbitrary-external-call)
+
 [20250815 PDZ](past/2025/README.md#20250815-pdz---price-manipulation)
 
 [20250815 SizeCredit](past/2025/README.md#20250815-sizecredit---access-control)

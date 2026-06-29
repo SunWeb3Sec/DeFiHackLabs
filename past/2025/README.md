@@ -288,6 +288,21 @@ https://x.com/suplabsyi/status/1956695597546893598
 
 ---
 
+### 20250815 SizeFlashLoanLooping - Arbitrary External Call
+
+### Lost: 533.05 USD
+
+```sh
+forge test --contracts ./src/test/2025-08/SizeFlashLoanLooping_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[SizeFlashLoanLooping_exp.sol](../../src/test/2025-08/SizeFlashLoanLooping_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1669
+
+---
+
 ### 20250815 PDZ - Price Manipulation
 
 ### Lost: 3.3 BNB
