@@ -289,6 +289,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250629 Stead](past/2025/README.md#20250629-stead---access-control)
 
+[20250628 InitcodeFactoryFees](past/2025/README.md#20250628-initcodefactoryfees---access-control)
+
 [20250626 ResupplyFi](past/2025/README.md#20250626-resupplyfi---share-price-manipulation)
 
 [20250625 Unverified_b5cb](past/2025/README.md#20250625-unverified_b5cb---access-control)
