@@ -454,6 +454,22 @@ https://x.com/deeberiroz/status/1947213692220710950
 
 ---
 
+### 20250724 EmptySetReserve - Fixed Order Swap
+
+### Lost: $1,509.78
+
+
+```sh
+forge test --contracts ./src/test/2025-07/EmptySetReserve_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[EmptySetReserve_exp.sol](../../src/test/2025-07/EmptySetReserve_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1532
+
+---
+
 ### 20250721 BoJLeverageMarket - Liquidity Index Manipulation
 
 ### Lost: $7,227.59 USD
