@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-810 incidents included.
+811 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -378,6 +378,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250509 Nalakuvara_LotteryTicket50](past/2025/README.md#20250509-nalakuvara_lotteryticket50---price-manipulation)
 
 [20250429 FlyLong](past/2025/README.md#20250429-flylong---balance-forgery)
+
+[20250428 tcdp](past/2025/README.md#20250428-tcdp---broken-transferfrom-allowance-check)
 
 [20250427 bitdog](past/2025/README.md#20250427-bitdog---access-control)
 
