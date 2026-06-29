@@ -54,7 +54,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20250427 multitransferswap](past/2025/README.md#20250427-multitransferswap---business-logic-flaw)
 [20260625 LixirPermitDrain](#20260625-lixirpermitdrain---broken-signature-verification)
 [20260625 OceanBPoolSideStaking](#20260625-oceanbpoolsidestaking---bpool-single-sided-joinexit-math-with-sidestaking-gulp-accounting)
 [20260624 DLMC](#20260624-dlmc---reserve-derived-liveprice-manipulation)
@@ -317,6 +316,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250511 MBUToken](past/2025/README.md#20250511-mbutoken---price-manipulation-not-confirmed)
 
 [20250509 Nalakuvara_LotteryTicket50](past/2025/README.md#20250509-nalakuvara_lotteryticket50---price-manipulation)
+
+[20250427 multitransferswap](past/2025/README.md#20250427-multitransferswap---business-logic-flaw)
 
 [20250427 AventaRewardClaim](past/2025/README.md#20250427-aventarewardclaim---claim-accounting)
 
