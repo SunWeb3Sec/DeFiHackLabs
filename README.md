@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-819 incidents included.
+820 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -391,6 +391,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250509 Nalakuvara_LotteryTicket50](past/2025/README.md#20250509-nalakuvara_lotteryticket50---price-manipulation)
 
+<<<<<<< HEAD
 [20250429 FlyLong](past/2025/README.md#20250429-flylong---balance-forgery)
 
 [20250428 tcdp](past/2025/README.md#20250428-tcdp---broken-transferfrom-allowance-check)
@@ -398,6 +399,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250427 bitdog](past/2025/README.md#20250427-bitdog---access-control)
 
 [20250427 multitransferswap](past/2025/README.md#20250427-multitransferswap---business-logic-flaw)
+=======
+[20250506 Crosswise](past/2025/README.md#20250506-crosswise---trusted-forwarder-spoof)
+>>>>>>> b6566827 (Add Crosswise PoC. May 6. 4.16 WBNB)
 
 [20250427 AventaRewardClaim](past/2025/README.md#20250427-aventarewardclaim---claim-accounting)
 
