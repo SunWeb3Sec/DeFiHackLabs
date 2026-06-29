@@ -254,6 +254,24 @@ https://x.com/TenArmorAlert/status/1959457212914352530
 
 ---
 
+### 20250822 Unverified_6f7a - Access Control
+
+### Lost: 7,630.46 USD
+
+```sh
+forge test --contracts ./src/test/2025-08/unverified_6f7a_exp.sol -vv --evm-version cancun
+```
+
+#### Contract
+
+[unverified_6f7a_exp.sol](../../src/test/2025-08/unverified_6f7a_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1706
+
+---
+
 ### 20250820 MulticallWithXera - Access Control
 
 ### Lost: 17k USD
