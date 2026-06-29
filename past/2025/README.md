@@ -375,6 +375,22 @@ https://x.com/MetaTrustAlert/status/1955967862276829375
 
 ---
 
+### 20250812 BaseBebopSettlement - Arbitrary External Call
+
+### Lost: 3,875.46 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-08/BaseBebopSettlement_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[BaseBebopSettlement_exp.sol](../../src/test/2025-08/BaseBebopSettlement_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1660
+
+---
+
 ### 20250812 Bebop - Arbitrary user input
 
 ### Lost: 21k USD

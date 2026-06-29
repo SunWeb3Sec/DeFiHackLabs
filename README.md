@@ -257,6 +257,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250813 Grizzifi](past/2025/README.md#20250813-grizzifi---logic-flaw)
 
+[20250812 BaseBebopSettlement](past/2025/README.md#20250812-basebebopsettlement---arbitrary-external-call)
+
 [20250812 Bebop](past/2025/README.md#20250812-bebop---arbitrary-user-input)
 
 [20250811 WXC](past/2025/README.md#20250811-wxc---incorrect-token-burn-mechanism)
