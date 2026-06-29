@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-828 incidents included.
+829 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260629 Vault4626](#20260629-vault4626---business-logic-flaw)
 [20260628 AIDC](#20260628-aidc---business-logic-flaw)
 [20260625 LixirPermitDrain](#20260625-lixirpermitdrain---broken-signature-verification)
 [20260625 OceanBPoolSideStaking](#20260625-oceanbpoolsidestaking---bpool-single-sided-joinexit-math-with-sidestaking-gulp-accounting)
@@ -1741,6 +1742,22 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+
+### 20260629 Vault4626 - Business Logic Flaw
+
+### Lost: 13.53 WETH
+
+
+```sh
+forge test --contracts ./src/test/2026-06/Vault4626_exp.sol --evm-version shanghai -vvv
+```
+#### Contract
+[Vault4626_exp.sol](src/test/2026-06/Vault4626_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2071495744071086510
+
+---
 
 ### 20260628 AIDC - Business Logic Flaw
 
