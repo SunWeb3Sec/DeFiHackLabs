@@ -706,6 +706,22 @@ https://t.me/defimon_alerts/1339
 
 ---
 
+### 20250620 HoldSafe - Price Manipulation
+
+### Lost: 4,824.96 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/HoldSafe_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[HoldSafe_exp.sol](../../src/test/2025-06/HoldSafe_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1320
+
+---
+
 ### 20250620 Gangsterfinance - Incorrect dividends
 
 ### Lost: 16.5k USD

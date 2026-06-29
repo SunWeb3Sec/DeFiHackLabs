@@ -295,6 +295,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250623 GradientMakerPool](past/2025/README.md#20250623-gradientmakerpool---price-oracle-manipulation)
 
+[20250620 HoldSafe](past/2025/README.md#20250620-holdsafe---price-manipulation)
+
 [20250620 Gangsterfinance](past/2025/README.md#20250620-gangsterfinance---incorrect-dividends)
 
 [20250619 BasePricePool](past/2025/README.md#20250619-basepricepool---price-manipulation)
