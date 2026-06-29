@@ -281,6 +281,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250702 FPC](past/2025/README.md#20250702-fpc---logic-flaw)
 
+[20250702 ActivePoolUrgentRedemption](past/2025/README.md#20250702-activepoolurgentredemption---urgent-redemption)
+
 [20250629 Stead](past/2025/README.md#20250629-stead---access-control)
 
 [20250626 ResupplyFi](past/2025/README.md#20250626-resupplyfi---share-price-manipulation)

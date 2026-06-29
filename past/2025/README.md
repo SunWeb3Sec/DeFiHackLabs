@@ -587,6 +587,24 @@ https://x.com/TenArmorAlert/status/1940423393880244327
 
 ---
 
+### 20250702 ActivePoolUrgentRedemption - Urgent Redemption
+
+### Lost: 2,696.49 USD
+
+```sh
+forge test --contracts ./src/test/2025-07/ActivePoolUrgentRedemption_exp.sol -vvv
+```
+
+#### Contract
+
+[ActivePoolUrgentRedemption_exp.sol](../../src/test/2025-07/ActivePoolUrgentRedemption_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1379
+
+---
+
 ### 20250629 Stead - Access Control
 
 ### Lost: 14.5k USD
