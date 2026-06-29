@@ -719,6 +719,22 @@ https://x.com/TenArmorAlert/status/1935618109802459464
 
 ---
 
+### 20250618 BankrollStackPlus - Incorrect dividends calculation
+
+### Lost: 12,234.48 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/BankrollStackPlus_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[BankrollStackPlus_exp.sol](../../src/test/2025-06/BankrollStackPlus_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1301
+
+---
+
 ### 20250617 MetaPool - Access Control
 
 ### Lost: 25k USD
