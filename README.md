@@ -251,6 +251,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250815 SizeCredit](past/2025/README.md#20250815-sizecredit---access-control)
 
+[20250813 BeefyZapRouter](past/2025/README.md#20250813-beefyzaprouter---arbitrary-external-call)
+
 [20250813 YuliAI](past/2025/README.md#20250813-yuliai---price-manipulation)
 
 [20250813 coinbase](past/2025/README.md#20250813-coinbase---misconfiguration)

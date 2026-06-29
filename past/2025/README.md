@@ -324,6 +324,21 @@ https://x.com/SuplabsYi/status/1956306748073230785
 
 ---
 
+### 20250813 BeefyZapRouter - Arbitrary External Call
+
+### Lost: 6,584.95 USD
+
+```sh
+forge test --contracts ./src/test/2025-08/BeefyZapRouter_exp.sol -vvv
+```
+#### Contract
+[BeefyZapRouter_exp.sol](../../src/test/2025-08/BeefyZapRouter_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1664
+
+---
+
 ### 20250813 YuliAI - Price Manipulation
 
 ### Lost: 78k USDT
