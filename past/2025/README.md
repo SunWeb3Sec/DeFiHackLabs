@@ -1157,6 +1157,22 @@ https://x.com/SlowMist_Team/status/1928100756156194955
 
 ---
 
+### 20250528 Unverified_91a1 - Access Control
+
+### Lost: 551.22 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-05/unverified_91a1_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[unverified_91a1_exp.sol](../../src/test/2025-05/unverified_91a1_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1197
+
+---
+
 ### 20250527 UsualMoney - Arbitrage
 
 ### Lost: 43k USD
