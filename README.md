@@ -307,6 +307,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250617 MetaPool](past/2025/README.md#20250617-metapool---access-control)
 
+[20250615 FixedTokenBSwap](past/2025/README.md#20250615-fixedtokenbswap---price-oracle-manipulation)
+
 [20250614 TSAggregatorGeneric](past/2025/README.md#20250614-tsaggregatorgeneric---business-logic-flaw)
 
 [20250612 AAVEBoost](past/2025/README.md#20250612-aaveboost---logic-flaw)
