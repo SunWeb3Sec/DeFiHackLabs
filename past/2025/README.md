@@ -232,6 +232,8 @@ forge test --contracts ./src/test/2025-08/EquilibriaEPendle_exp.sol -vvv
 
 https://t.me/defimon_alerts/1712
 
+Related tx: https://etherscan.io/tx/0x0a60d7fb1d459ebee1ddcd62d1a8fcb8faa9aa1ebbb3203f90bea7dd888af8aa
+
 ---
 
 ### 20250823 ABCCApp - Lack of Access Control
