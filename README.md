@@ -273,6 +273,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250720 Stepp2p](past/2025/README.md#20250720-stepp2p---logic-flaw)
 
+[20250716 StrategyLlamaLendConvex](past/2025/README.md#20250716-strategyllamalendconvex---share-price-manipulation)
+
 [20250716 VDS](past/2025/README.md#20250716-vds---logic-flaw)
 
 [20250709 GMX](past/2025/README.md#20250709-gmx---share-price-manipulation)
