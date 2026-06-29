@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-820 incidents included.
+821 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -375,6 +375,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250525 Unverified_0000](past/2025/README.md#20250525-unverified_0000---access-control)
 
+[20250525 Dumbo](past/2025/README.md#20250525-dumbo---business-logic-flaw)
+
 [20250524 RICE](past/2025/README.md#20250524-rice---lack-of-access-control)
 
 [20250520 IRYSAI](past/2025/README.md#20250520-irysai---rug-pull)
@@ -391,7 +393,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250509 Nalakuvara_LotteryTicket50](past/2025/README.md#20250509-nalakuvara_lotteryticket50---price-manipulation)
 
-<<<<<<< HEAD
+[20250506 Crosswise](past/2025/README.md#20250506-crosswise---trusted-forwarder-spoof)
+
 [20250429 FlyLong](past/2025/README.md#20250429-flylong---balance-forgery)
 
 [20250428 tcdp](past/2025/README.md#20250428-tcdp---broken-transferfrom-allowance-check)
@@ -399,9 +402,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250427 bitdog](past/2025/README.md#20250427-bitdog---access-control)
 
 [20250427 multitransferswap](past/2025/README.md#20250427-multitransferswap---business-logic-flaw)
-=======
-[20250506 Crosswise](past/2025/README.md#20250506-crosswise---trusted-forwarder-spoof)
->>>>>>> b6566827 (Add Crosswise PoC. May 6. 4.16 WBNB)
 
 [20250427 AventaRewardClaim](past/2025/README.md#20250427-aventarewardclaim---claim-accounting)
 
