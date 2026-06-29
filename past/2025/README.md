@@ -639,6 +639,21 @@ https://t.me/defimon_alerts/1559
 
 ---
 
+### 20250726 Unverified670471 - Unchecked Flash Loan Callback
+
+### Lost: $1,818.33
+
+```sh
+forge test --contracts ./src/test/2025-07/Unverified670471_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[Unverified670471_exp.sol](../../src/test/2025-07/Unverified670471_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1549
+
+---
+
 ### 20250726 MulticallWithETH - arbitrary-call
 
 ### Lost: 10K USD
