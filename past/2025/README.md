@@ -1192,6 +1192,22 @@ https://x.com/TenArmorAlert/status/1932309011564781774
 
 ---
 
+### 20250531 DogeAlliance - Price Manipulation
+
+### Lost: 990.33 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-05/DogeAlliance_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[DogeAlliance_exp.sol](../../src/test/2025-05/DogeAlliance_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1215
+
+---
+
 ### 20250528 Corkprotocol - Access Control
 
 ### Lost: 12M USD
