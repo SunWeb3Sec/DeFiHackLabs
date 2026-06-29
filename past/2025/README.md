@@ -439,6 +439,24 @@ https://x.com/TenArmorAlert/status/1954774967481962832
 
 ---
 
+### 20250805 MyCoinMaster - Business Logic Flaw
+
+### Lost: 653.49 USD
+
+```sh
+forge test --contracts ./src/test/2025-08/MyCoinMaster_exp.sol -vvv
+```
+
+#### Contract
+
+[MyCoinMaster_exp.sol](../../src/test/2025-08/MyCoinMaster_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1628
+
+---
+
 ### 20250804 BscInitcodeToken - Business Logic Flaw
 
 ### Lost: 700.32 USD
