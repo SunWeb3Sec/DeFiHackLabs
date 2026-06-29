@@ -475,6 +475,22 @@ https://t.me/defimon_alerts/1619
 
 ---
 
+### 20250801 PendleReflector - Business Logic Flaw
+
+### Lost: 2304.18 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-08/PendleReflector_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[PendleReflector_exp.sol](../../src/test/2025-08/PendleReflector_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1596
+
+---
+
 ### 20250729 AnyswapWETHPermit - Permit Validation Bypass
 
 ### Lost: 200 WETH
