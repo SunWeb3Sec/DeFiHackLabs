@@ -786,6 +786,22 @@ https://t.me/defimon_alerts/1323
 
 ---
 
+### 20250619 SinstakeZombie - Incorrect dividends calculation
+
+### Lost: 705.13 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/SinstakeZombie_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[SinstakeZombie_exp.sol](../../src/test/2025-06/SinstakeZombie_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1319
+
+---
+
 ### 20250619 BasePricePool - Price Manipulation
 
 ### Lost: 802.57 USD
