@@ -438,6 +438,22 @@ forge test --contracts ./src/test/2025-07/MulticallWithETH_exp.sol -vvv
 
 ---
 
+### 20250725 WhereIsMyDragonTreasure - Fixed Reward Redemption
+
+### Lost: $47,461.35
+
+
+```sh
+forge test --contracts ./src/test/2025-07/WhereIsMyDragonTreasure_exp.sol -vvv
+```
+#### Contract
+[WhereIsMyDragonTreasure_exp.sol](../../src/test/2025-07/WhereIsMyDragonTreasure_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1537
+
+---
+
 ### 20250724 SWAPPStaking - Incorrect Reward calculation
 
 ### Lost: $32,196.28

@@ -265,6 +265,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250726 MulticallWithETH](past/2025/README.md#20250726-multicallwitheth---arbitrary-call)
 
+[20250725 WhereIsMyDragonTreasure](past/2025/README.md#20250725-whereismydragontreasure---fixed-reward-redemption)
+
 [20250724 SWAPPStaking](past/2025/README.md#20250724-swappstaking---incorrect-reward-calculation)
 
 [20250724 EmptySetReserve](past/2025/README.md#20250724-emptysetreserve---fixed-order-swap)
