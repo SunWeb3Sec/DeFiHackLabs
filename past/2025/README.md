@@ -690,6 +690,22 @@ https://t.me/defimon_alerts/1323
 
 ---
 
+### 20250619 BasePricePool - Price Manipulation
+
+### Lost: 802.57 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-06/BasePricePool_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[BasePricePool_exp.sol](../../src/test/2025-06/BasePricePool_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1306
+
+---
+
 ### 20250619 BankrollStack - Incorrect dividends calculation
 
 ### Lost: 5k USD

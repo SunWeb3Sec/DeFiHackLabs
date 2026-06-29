@@ -293,6 +293,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250620 Gangsterfinance](past/2025/README.md#20250620-gangsterfinance---incorrect-dividends)
 
+[20250619 BasePricePool](past/2025/README.md#20250619-basepricepool---price-manipulation)
+
 [20250619 BankrollStack](past/2025/README.md#20250619-bankrollstack---incorrect-dividends-calculation)
 
 [20250619 BankrollNetwork](past/2025/README.md#20250619-bankrollnetwork---incorrect-dividends-calculation)
