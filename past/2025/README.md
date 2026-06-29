@@ -1372,6 +1372,21 @@ https://x.com/TenArmorAlert/status/1920816516653617318
 
 ---
 
+### 20250429 FlyLong - Balance Forgery
+
+### Lost: 1.73 BNB
+
+```sh
+forge test --contracts ./src/test/2025-04/flylong_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[flylong_exp.sol](../../src/test/2025-04/flylong_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/968
+
+---
+
 ### 20250427 bitdog - Access Control
 
 ### Lost: 2.10 BNB
