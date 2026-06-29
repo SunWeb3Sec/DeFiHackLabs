@@ -56,6 +56,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ## List of Past DeFi Incidents
 [20260629 Vault4626](#20260629-vault4626---business-logic-flaw)
 [20260628 AIDC](#20260628-aidc---business-logic-flaw)
+[20260627 CookFinanceIssuance](#20260627-cookfinanceissuance---price-oracle-manipulation)
 [20260625 LixirPermitDrain](#20260625-lixirpermitdrain---broken-signature-verification)
 [20260625 OceanBPoolSideStaking](#20260625-oceanbpoolsidestaking---bpool-single-sided-joinexit-math-with-sidestaking-gulp-accounting)
 [20260624 DLMC](#20260624-dlmc---reserve-derived-liveprice-manipulation)
@@ -1772,6 +1773,22 @@ forge test --contracts ./src/test/2026-06/AIDC_exp.sol -vvv --evm-version shangh
 ### Link reference
 
 https://x.com/TenArmorAlert/status/2071415914948685892
+
+---
+
+### 20260627 CookFinanceIssuance - Price Oracle Manipulation
+
+### Lost: ~$50K
+
+
+```sh
+forge test --contracts ./src/test/2026-06/CookFinanceIssuance_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[CookFinanceIssuance_exp.sol](src/test/2026-06/CookFinanceIssuance_exp.sol)
+### Link reference
+
+https://x.com/DefimonAlerts/status/2071497001443770684
 
 ---
 
