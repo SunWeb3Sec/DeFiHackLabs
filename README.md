@@ -54,7 +54,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20250525 Dumbo](past/2025/README.md#20250525-dumbo---business-logic-flaw)
 [20260625 LixirPermitDrain](#20260625-lixirpermitdrain---broken-signature-verification)
 [20260625 OceanBPoolSideStaking](#20260625-oceanbpoolsidestaking---bpool-single-sided-joinexit-math-with-sidestaking-gulp-accounting)
 [20260624 DLMC](#20260624-dlmc---reserve-derived-liveprice-manipulation)
@@ -305,6 +304,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250527 UsualMoney](past/2025/README.md#20250527-usualmoney---arbitrage)
 
 [20250526 YDT](past/2025/README.md#20250526-ydt---logic-flaw)
+
+[20250525 Dumbo](past/2025/README.md#20250525-dumbo---business-logic-flaw)
 
 [20250524 RICE](past/2025/README.md#20250524-rice---lack-of-access-control)
 
