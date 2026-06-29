@@ -454,6 +454,22 @@ https://x.com/deeberiroz/status/1947213692220710950
 
 ---
 
+### 20250721 BoJLeverageMarket - Liquidity Index Manipulation
+
+### Lost: $7,227.59 USD
+
+
+```sh
+forge test --contracts ./src/test/2025-07/BoJLeverageMarket_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[BoJLeverageMarket_exp.sol](../../src/test/2025-07/BoJLeverageMarket_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1521
+
+---
+
 ### 20250720 Stepp2p - Logic Flaw
 
 ### Lost: 43k USD
