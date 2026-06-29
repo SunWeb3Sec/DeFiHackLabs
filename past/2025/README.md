@@ -590,6 +590,21 @@ https://x.com/SlowMist_Team/status/1949770231733530682
 
 ---
 
+### 20250728 AvaxBIFKNPair - Flash Swap Accounting
+
+### Lost: 2.4K USD
+
+```sh
+forge test --contracts ./src/test/2025-07/AvaxBIFKNPair_exp.sol -vvv
+```
+#### Contract
+[AvaxBIFKNPair_exp.sol](../../src/test/2025-07/AvaxBIFKNPair_exp.sol)
+### Link reference
+
+https://t.me/defimon_alerts/1559
+
+---
+
 ### 20250726 MulticallWithETH - arbitrary-call
 
 ### Lost: 10K USD

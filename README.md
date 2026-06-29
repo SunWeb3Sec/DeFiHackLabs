@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-814 incidents included.
+815 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -282,6 +282,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250729 AnyswapWETHPermit](past/2025/README.md#20250729-anyswapwethpermit---permit-validation-bypass)
 
 [20250728 SuperRare](past/2025/README.md#20250728-superrare---access-control)
+
+[20250728 AvaxBIFKNPair](past/2025/README.md#20250728-avaxbifknpair---flash-swap-accounting)
 
 [20250726 MulticallWithETH](past/2025/README.md#20250726-multicallwitheth---arbitrary-call)
 
