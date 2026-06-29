@@ -521,6 +521,22 @@ https://x.com/GMX_IO/status/1943336664102756471
 
 ---
 
+### 20250705 ActivePoolScrvUsd - Urgent Redemption
+
+### Lost: $4,204.55
+
+```sh
+forge test --contracts ./src/test/2025-07/ActivePoolScrvUsdUrgentRedemption_exp.sol -vvv
+```
+#### Contract
+[ActivePoolScrvUsdUrgentRedemption_exp.sol](../../src/test/2025-07/ActivePoolScrvUsdUrgentRedemption_exp.sol)
+
+### Link reference
+
+https://t.me/defimon_alerts/1415
+
+---
+
 ### 20250705 Unverified - Access Control
 
 ### Lost: ~ $285.7K

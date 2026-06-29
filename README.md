@@ -273,6 +273,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250709 GMX](past/2025/README.md#20250709-gmx---share-price-manipulation)
 
+[20250705 ActivePoolScrvUsd](past/2025/README.md#20250705-activepoolscrvusd---urgent-redemption)
+
 [20250705 Unverified_54cd](past/2025/README.md#20250705-unverified---access-control)
 
 [20250705 RANT](past/2025/README.md#20250705-rant---logic-flaw)
