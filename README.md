@@ -1889,10 +1889,10 @@ https://x.com/TenArmorAlert/status/2069596801725002121
 ### 20260622 Aztec Escape Hatch - proof_id Accounting Bypass (whitehat reproduction)
 ### Lost: N/A (purely educational; worst-case impact would have been ~$2M, matching the separate vulnerability that actually drained the contracts)
 ```sh
-forge test --contracts src/test/2026-06/AztecEscapeHatch_exp.sol -vvv
+forge test --contracts src/test/2026-06/AztecEscapeHatch_exp2.sol -vvv
 ```
 #### Contract
-[AztecEscapeHatch_exp.sol](src/test/2026-06/AztecEscapeHatch_exp.sol)
+[AztecEscapeHatch_exp.sol](src/test/2026-06/AztecEscapeHatch_exp2.sol)
 
 ### Link reference
 
