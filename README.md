@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-832 incidents included.
+833 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -1746,6 +1746,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20260714 Lumi Finance - ERC-4337 Validation-Phase Paymaster Approval
+### Lost: ~264,000 USD
+```sh
+forge test --contracts ./src/test/2026-07/LumiFinance_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[LumiFinance_exp.sol](src/test/2026-07/LumiFinance_exp.sol)
 ### 20260701 edel-xstock - Price Oracle Manipulation
 
 ### Lost: 204,215.57 USDC
