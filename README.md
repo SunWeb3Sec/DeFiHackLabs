@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260714 Lumi Finance](#20260714-lumi-finance---erc-4337-validation-phase-paymaster-approval)
 [20260701 edel-xstock](#20260701-edel-xstock---price-oracle-manipulation)
 [20260629 Vault4626](#20260629-vault4626---business-logic-flaw)
 [20260706 SummerFi](#20260706-summerfi---fleetcommander-nav-inflation-via-depegged-xusd)
