@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-832 incidents included.
+833 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260714 Lumi Finance](#20260714-lumi-finance---erc-4337-validation-phase-paymaster-approval)
 [20260701 edel-xstock](#20260701-edel-xstock---price-oracle-manipulation)
 [20260629 Vault4626](#20260629-vault4626---business-logic-flaw)
 [20260706 SummerFi](#20260706-summerfi---fleetcommander-nav-inflation-via-depegged-xusd)
@@ -1746,6 +1747,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20260714 Lumi Finance - ERC-4337 Validation-Phase Paymaster Approval
+### Lost: ~264,000 USD
+```sh
+forge test --contracts ./src/test/2026-07/LumiFinance_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[LumiFinance_exp.sol](src/test/2026-07/LumiFinance_exp.sol)
 ### 20260701 edel-xstock - Price Oracle Manipulation
 
 ### Lost: 204,215.57 USDC
