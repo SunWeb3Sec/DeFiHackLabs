@@ -3072,7 +3072,7 @@ https://x.com/nn0b0dyyy/status/2010638145155661942?s=20
 ### Lost: 433K USD
 
 ```sh
-forge test -vvv --contracts ./src/test/2026-01/futureswap_exp.sol.sol
+forge test -vvv --contracts ./src/test/2026-01/futureswap_exp.sol
 ```
 #### Contract
 [futureswap_exp.sol](src/test/2026-01/futureswap_exp.sol)
