@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-835 incidents included.
+836 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -55,6 +55,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20260716 CompoundProvider](#20260716-compoundprovider---allowance-sweep--missing-access-control)
+[20260716 CrowdRingCircle](#20260716-crowdringcircle---reserve-manipulation-via-burn-from-pair--sync)
 [20260714 Lumi Finance](#20260714-lumi-finance---erc-4337-validation-phase-paymaster-approval)
 [20260712 Sodium](#20260712-sodium---erc-4337-session-key-validation-bypass)
 [20260701 edel-xstock](#20260701-edel-xstock---price-oracle-manipulation)
@@ -1756,6 +1757,13 @@ forge test --contracts ./src/test/2026-07/CompoundProvider_exp.sol -vvv
 ```
 #### Contract
 [CompoundProvider_exp.sol](src/test/2026-07/CompoundProvider_exp.sol)
+### 20260716 CrowdRingCircle - Reserve Manipulation via burn-from-pair + sync
+### Lost: ~201,359 USDT
+```sh
+forge test --contracts ./src/test/2026-07/CrowdRingCircle_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[CrowdRingCircle_exp.sol](src/test/2026-07/CrowdRingCircle_exp.sol)
 ### 20260714 Lumi Finance - ERC-4337 Validation-Phase Paymaster Approval
 ### Lost: ~264,000 USD
 ```sh
