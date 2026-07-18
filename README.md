@@ -54,7 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20260716 CompoundProvider](#20260716-compoundprovider---allowance-sweep-missing-access-control)
+[20260716 CompoundProvider](#20260716-compoundprovider---allowance-sweep--missing-access-control)
 [20260714 Lumi Finance](#20260714-lumi-finance---erc-4337-validation-phase-paymaster-approval)
 [20260712 Sodium](#20260712-sodium---erc-4337-session-key-validation-bypass)
 [20260701 edel-xstock](#20260701-edel-xstock---price-oracle-manipulation)
