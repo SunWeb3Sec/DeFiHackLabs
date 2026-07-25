@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-839 incidents included.
+840 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -55,6 +55,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
+[20260724 Lien Finance](#20260724-lien-finance---permissionless-bond-registration--payoff-mispricing)
 [20260719 NFT Auction Marketplace](#20260719-nft-auction-marketplace---double-settlement--delist-refund)
 
 [20260719 RWT Token](#20260719-rwt-token---deflationary-burn-from-pair-price-manipulation)
@@ -1768,6 +1769,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20260724 Lien Finance - Permissionless bond registration / payoff mispricing
+### Lost: ~542,144 USDC
+```sh
+forge test --contracts ./src/test/2026-07/LienFinance_exp.sol -vvv
+```
+#### Contract
+[LienFinance_exp.sol](src/test/2026-07/LienFinance_exp.sol)
 ### 20260719 NFT Auction Marketplace - Double-settlement / delist refund
 ### Lost: ~2.2 BNB
 ```sh
