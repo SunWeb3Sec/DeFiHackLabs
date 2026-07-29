@@ -56,8 +56,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ## List of Past DeFi Incidents
 
 [20260725 Pro Token](#20260725-pro-token---reward-on-transfer-self-dealing-winner-drain)
+
 [20260725 Projekt Reward Vault](#20260725-projekt-reward-vault---permissionless-purchase-tracking-self-dealing)
+
 [20260724 Lien Finance](#20260724-lien-finance---permissionless-bond-registration--payoff-mispricing)
+
 [20260719 NFT Auction Marketplace](#20260719-nft-auction-marketplace---double-settlement--delist-refund)
 
 [20260719 RWT Token](#20260719-rwt-token---deflationary-burn-from-pair-price-manipulation)
@@ -72,11 +75,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260712 Sodium](#20260712-sodium---erc-4337-session-key-validation-bypass)
 
+[20260706 SummerFi](#20260706-summerfi---fleetcommander-nav-inflation-via-depegged-xusd)
+
 [20260701 edel-xstock](#20260701-edel-xstock---price-oracle-manipulation)
 
 [20260629 Vault4626](#20260629-vault4626---business-logic-flaw)
-
-[20260706 SummerFi](#20260706-summerfi---fleetcommander-nav-inflation-via-depegged-xusd)
 
 [20260628 AIDC](#20260628-aidc---business-logic-flaw)
 
@@ -85,6 +88,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260625 LixirPermitDrain](#20260625-lixirpermitdrain---broken-signature-verification)
 
 [20260625 OceanBPoolSideStaking](#20260625-oceanbpoolsidestaking---bpool-single-sided-joinexit-math-with-sidestaking-gulp-accounting)
+
 [20260624 DLMC](#20260624-dlmc---reserve-derived-liveprice-manipulation)
 
 [20260623 RoyalRoyalties](#20260623-royalroyalties---zero-amount-erc1155-batch-transfer-inflated-royal-lda-tier-balance)
@@ -100,6 +104,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260617 WHALE](#20260617-whale---transfer-accounting-reserve-desync)
 
 [20260617 LBP](#20260617-lbp---lbp-balanceof-reward-accounting)
+
 [20260617 Aztec V1](#20260617-aztec-v1---escapehatch-proof-forgery-permissionless-rollupprocessor-exit)
 
 [20260616 DIP](#20260616-dip---fee-on-transfer-reserve-manipulation)
@@ -128,7 +133,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260529 YSDAO](#20260529-ysdao---price-manipulation-and-tax-bypass)
 
-[20260528 LegendaryMoneyMonNft](#20260528-legendarymoneymon---ecrecover-address0-signature-bypass)
+[20260528 LegendaryMoneyMonNft](#20260528-legendarymoneymonnft---ecrecover-address0-signature-bypass)
 
 [20260528 DxSale](#20260528-dxsale---ownership-override-attack)
 
@@ -142,7 +147,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260525 New Market Trading](#20260525-new-market-trading---squidroutermodule-missing-caller-check)
 
-[20260525 WUSD.fi](#20260525-wusdfi---englove-sybil-incentive-abuse)
+[20260525 WUSD.fi](#20260525-wusdfi---_englove-sybil-incentive-abuse)
 
 [20260522 FractalProtocol](#20260522-fractalprotocol---business-logic-flaw)
 
@@ -163,6 +168,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260512 SQTokenStaking](#20260512-sqtokenstaking---access-control)
 
 [20260511 INKFinance](#20260511-inkfinance---business-logic-flaw)
+
 [20260511 HumaFinance](#20260511-humafinance---credit-approval-bypass)
 
 [20260510 Renegade](#20260510-renegade---uninitialized-proxy)
@@ -206,6 +212,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260331 WhalebitOracleManipulation](#20260331-whalebitoraclemanipulation---algebra-spot-price-oracle-manipulation)
 
 [20260328 VTSwapHook](#20260328-vtswaphook---pricing-error-in-uniswapv4-hook)
+
 [20260327 EST Token](#20260327-est-token---incorrect-token-burn-mechanism)
 
 [20260324 XocolatlLiquidator](#20260324-xocolatlliquidator---access-control--input-validation)
@@ -217,10 +224,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260319 ATMBlindBox](#20260319-atmblindbox---weak-randomness--predictable-rng)
 
 [20260319 Revamp](#20260319-revamp---reward-accounting-drain)
+
 [20260316 unverified](#20260316-unverified---checkoutpool-old-boc-missing-access-control)
+
 [20260315 Venus THE](#20260315-venus-the---borrowbehalf--donation-attack)
 
 [20260315 StakeOnMe](#20260315-stakeonme---owner-privileged-jake-burn-reserve-drain)
+
 [20260310 AlkemiEarn](#20260310-alkemiearn---business-logic)
 
 [20260302 Curve LlamaLend](#20260302-curve-llamalend---share-price-manipulation)
@@ -241,7 +251,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260109 TRU](#20260109-truebit---overflow)
 
-[20260101 PRXVT](#20260101-PRXVT---bussiness-logic-flaw)
+[20260101 PRXVT](#20260101-prxvt---bussiness-logic-flaw)
 
 <details> <summary> 2025 </summary>
 
@@ -263,9 +273,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250913 Kame](past/2025/README.md#20250913-kame---arbitary-external-call)
 
-[20250830 EverValueCoin](past/2025/README.md#20250830-evervaluecoin---arbitrage)
-
 [20250831 Hexotic](past/2025/README.md#20250831-hexotic---incorrect-input-validation)
+
+[20250830 EverValueCoin](past/2025/README.md#20250830-evervaluecoin---arbitrage)
 
 [20250827 0xf340](past/2025/README.md#20250827-0xf340---access-control)
 
@@ -338,6 +348,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250720 Stepp2p](past/2025/README.md#20250720-stepp2p---logic-flaw)
 
 [20250717 unverified](past/2025/README.md#20250717-unverified---signature-verification)
+
+[20250717 WETC](past/2025/README.md#20250717-wetc---incorrect-burn-logic)
 
 [20250716 StrategyLlamaLendConvex](past/2025/README.md#20250716-strategyllamalendconvex---share-price-manipulation)
 
@@ -451,19 +463,19 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20250426 ImpermaxV3](past/2025/README.md#20250426-impermaxv3---flashloan-price-oracle-manipulation)
 
+[20250418 BTNFT](past/2025/README.md#20250418-btnft---claim-rewards-without-protection)
+
 [20250416 Roar](past/2025/README.md#20250416-roar---rug-pull)
+
+[20250416 YVToken](past/2025/README.md#20250416-yvtoken---not-slippage-protection)
+
+[20250411 Unverified 0x6077](past/2025/README.md#20250411-unverified-0x6077---lack-of-access-control)
 
 [20250408 Laundromat](past/2025/README.md#20250408-laundromat---logic-flaw)
 
 [20250407 AmpKashi](past/2025/README.md#20250407-ampkashi---amp-collateral-borrow-price-manipulation)
 
 [20250404 AIRWA](past/2025/README.md#20250404-airwa---access-control)
-
-[20250418 BTNFT](past/2025/README.md#20250418-btnft---claim-rewards-without-protection)
-
-[20250416 YVToken](past/2025/README.md#20250416-yvtoken---not-slippage-protection)
-
-[20250411 Unverified 0x6077](past/2025/README.md#20250411-unverified-0x6077---lack-of-access-control)
 
 [20250330 LeverageSIR](past/2025/README.md#20250330-leveragesir---storage-slot1-collision)
 
@@ -518,7 +530,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20250215 unverified_d4f1](past/2025/README.md#20250215-unverified_d4f1---access-control)
 
 [20250211 Scorch](past/2025/README.md#20250211-scorch---price-oracle-manipulation)
+
 [20250211 LimitOrderProtocol](past/2025/README.md#20250211-limitorderprotocol---access-control)
+
 [20250211 FourMeme](past/2025/README.md#20250211-fourmeme---logic-flaw)
 
 [20250208 GMT7](past/2025/README.md#20250208-gmt7---access-control)
@@ -699,8 +713,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240723 MEVbot_0xdd7c](past/2024/README.md#20240723-mevbot_0xdd7c---incorrect-input-validation)
 
-[20250717 WETC](#20250717-wetc---incorrect-burn-logic)
-
 [20240716 Lifiprotocol](past/2024/README.md#20240716-lifiprotocol---incorrect-input-validation)
 
 [20240714 Minterest](past/2024/README.md#20240714-minterest---Reentrancy)
@@ -841,7 +853,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240325 ZongZi](past/2024/README.md#20240325-zongzi---price-manipulation)
 
-[20240314 ARK](past/2024/README.md#20240324-ark---business-logic-flaw)
+[20240324 ARK](past/2024/README.md#20240324-ark---business-logic-flaw)
 
 [20240323 CGT](past/2024/README.md#20240323-cgt---incorrect-access-control)
 
@@ -1741,9 +1753,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20180424 SmartMesh](past/2021/README.md#20180424-smartmesh---overflow)
 
-[20180422 Beauty Chain](past/2021/README.md##20180422-beauty-chain---integer-overflow)
+[20180422 Beauty Chain](past/2021/README.md#20180422-beauty-chain---integer-overflow)
 
-[20171106 Parity - 'Accidentally Killed It'](past/2021/README.md##20171106-parity---accidentally-killed-it)
+[20171106 Parity - 'Accidentally Killed It'](past/2021/README.md#20171106-parity---accidentally-killed-it)
 
 [20170719 Parity Multisig](past/2021/README.md#20170719-parity-multisig---delegatecall-to-unprotected-initwallet)
 
@@ -1841,6 +1853,18 @@ forge test --contracts ./src/test/2026-07/Sodium_exp.sol -vvv --evm-version canc
 ```
 #### Contract
 [Sodium_exp.sol](src/test/2026-07/Sodium_exp.sol)
+### 20260706 SummerFi - FleetCommander NAV Inflation via Depegged xUSD
+### Lost: ~$6M (DAI + LVUSDC shares)
+```sh
+forge test --contracts ./src/test/2026-07/SummerFi_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[SummerFi_exp.sol](src/test/2026-07/SummerFi_exp.sol)
+### Link reference
+https://etherscan.io/tx/0x0db528c44f23fc7fa4544684a2fab81096450a14aae8bc89f42cd0592d43da12
+
+---
+
 ### 20260701 edel-xstock - Price Oracle Manipulation
 
 ### Lost: 204,215.57 USDC
@@ -1870,18 +1894,6 @@ forge test --contracts ./src/test/2026-06/Vault4626_exp.sol --evm-version shangh
 ### Link reference
 
 https://x.com/DefimonAlerts/status/2071495744071086510
-
----
-
-### 20260706 SummerFi - FleetCommander NAV Inflation via Depegged xUSD
-### Lost: ~$6M (DAI + LVUSDC shares)
-```sh
-forge test --contracts ./src/test/2026-07/SummerFi_exp.sol -vvv --evm-version cancun
-```
-#### Contract
-[SummerFi_exp.sol](src/test/2026-07/SummerFi_exp.sol)
-### Link reference
-https://etherscan.io/tx/0x0db528c44f23fc7fa4544684a2fab81096450a14aae8bc89f42cd0592d43da12
 
 ---
 
@@ -2316,6 +2328,38 @@ forge test --contracts src/test/2026-05/JoeAgent_exp.sol -vvv
 https://x.com/SlowMist_Team/status/2059887450663551352
 
 ---
+### 20260526 SKP Token - Owner Backdoor LP Burn + Price Manipulation
+### Lost: ~$212K USD
+```sh
+forge test --contracts src/test/2026-05/SKP_exp.sol -vvv
+```
+#### Contract
+[SKP_exp.sol](src/test/2026-05/SKP_exp.sol)
+### Link reference
+https://www.cryptotimes.io/2026/05/27/skp-liquidity-exploit-drains-212k-across-bnb-chain-defi-protocols/
+
+---
+
+### 20260526 SKP Token - Deliberately Engineered Drain (Insider Exploit / Rug Pull)
+
+### Lost ~$212,195 USDT
+
+**Classification: Premeditated insider exploit — NOT a conventional external hack.**
+
+```sh
+forge test --contracts src/test/2026-05/SKP_exp2.sol -vvv
+```
+
+#### Contract
+[SKP_exp.sol](src/test/2026-05/SKP_exp2.sol)
+
+### Link reference
+- https://bscscan.com/tx/0xbc01ea37bd2ff8f6aa6afcfbe0406114ff27a01e9aa56102bfa4ad8a0c2f25ee
+- https://bscscan.com/tx/0xadf1b6ff02a917043c816bc8bd1ed67038d64a19d06544b09ceeb872518fda37
+- https://www.bitget.com/amp/news/detail/12560605230076
+
+---
+
 ### 20260525 SquidRouterModule - Missing caller check
 
 ### Lost: 0.25 WBTC + 0.29 wTAO + 0.02 WETH
@@ -2344,37 +2388,6 @@ https://rekt.news/newmarkettrading-rekt
 
 ---
 
-### 20260526 SKP Token - Owner Backdoor LP Burn + Price Manipulation
-### Lost: ~$212K USD
-```sh
-forge test --contracts src/test/2026-05/SKP_exp.sol -vvv
-```
-#### Contract
-[SKP_exp.sol](src/test/2026-05/SKP_exp.sol)
-### Link reference
-https://www.cryptotimes.io/2026/05/27/skp-liquidity-exploit-drains-212k-across-bnb-chain-defi-protocols/
-
-## 20260526 SKP Token - Deliberately Engineered Drain (Insider Exploit / Rug Pull)
-
-### Lost ~$212,195 USDT
-
-**Classification: Premeditated insider exploit — NOT a conventional external hack.**
-
-```sh
-forge test --contracts src/test/2026-05/SKP_exp2.sol -vvv
-```
-
-#### Contract
-[SKP_exp.sol](src/test/2026-05/SKP_exp2.sol)
-
-### Link reference
-- https://bscscan.com/tx/0xbc01ea37bd2ff8f6aa6afcfbe0406114ff27a01e9aa56102bfa4ad8a0c2f25ee
-- https://bscscan.com/tx/0xadf1b6ff02a917043c816bc8bd1ed67038d64a19d06544b09ceeb872518fda37
-- https://www.bitget.com/amp/news/detail/12560605230076
-
----
-
----
 ### 20260525 WUSD.fi - _englove Sybil Incentive Abuse
 ### Lost: ~$200K USD (GLOVE emissions + LP drain)
 ```sh
@@ -2750,7 +2763,7 @@ https://x.com/DefimonAlerts/status/2044709964091187660
 
 ---
 
-## 20260414 MONA LisaVault - reward-farming / BurnAddress accounting exploit!
+### 20260414 MONA LisaVault - reward-farming / BurnAddress accounting exploit!
 
 ### Lost  ~60.95K USDT
 
