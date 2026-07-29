@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-840 incidents included.
+841 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -55,6 +55,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
+[20260725 Projekt Reward Vault](#20260725-projekt-reward-vault---permissionless-purchase-tracking-self-dealing)
 [20260724 Lien Finance](#20260724-lien-finance---permissionless-bond-registration--payoff-mispricing)
 [20260719 NFT Auction Marketplace](#20260719-nft-auction-marketplace---double-settlement--delist-refund)
 
@@ -1769,6 +1770,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20260725 Projekt Reward Vault - Permissionless purchase-tracking self-dealing
+### Lost: ~301.7 ETH
+```sh
+forge test --contracts ./src/test/2026-07/ProjektRewardVault_exp.sol -vvv --evm-version cancun
+```
+#### Contract
+[ProjektRewardVault_exp.sol](src/test/2026-07/ProjektRewardVault_exp.sol)
 ### 20260724 Lien Finance - Permissionless bond registration / payoff mispricing
 ### Lost: ~542,144 USDC
 ```sh
