@@ -1783,6 +1783,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ### List of DeFi Hacks & POCs
 
+### 20260730 ExchangeIssuance (Index Coop) - TOCTOU positionMultiplier inflation via malicious pre-issue hook
+### Lost: ~9.6K USD (~$8,174 recovered value on-chain)
+```sh
+forge test --contracts ./src/test/2026-07/ExchangeIssuance_exp.sol -vvv
+```
+#### Contract
+[ExchangeIssuance_exp.sol](src/test/2026-07/ExchangeIssuance_exp.sol)
 ### 20260725 Pro Token - Reward-on-transfer self-dealing winner drain
 ### Lost: ~605K USDT (single tx; ~$8.2M cumulative across ~13 txs)
 ```sh
