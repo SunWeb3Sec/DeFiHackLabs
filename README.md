@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-846 incidents included.
+847 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260802 MOKE](#20260802-moke---unprotected-claim-eip-7702-self-delegation-drain)
 [20260802 LpdFi (LOOPSDAO)](#20260802-lpdfi-loopsdao---spot-price-manipulation--issue-boundary-interest-exploit)
 [20260730 UnprotectedArbBot](#20260730-unprotectedarbbot---unprotected-arbitrary-call-forwarder-drained-via-pre-granted-weth-allowance)
 [20260730 ExchangeIssuance (Index Coop)](#20260730-exchangeissuance-index-coop---toctou-positionmultiplier-inflation-via-malicious-pre-issue-hook)
@@ -1786,6 +1787,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260802 MOKE - Unprotected claim() drained via EIP-7702 self-delegation
+### Lost: ~1546.44 BNB (~$907.7K)
+```sh
+forge test --contracts src/test/2026-07/MOKE_exp.sol --evm-version prague -vvv
+```
+#### Contract
+[MOKE_exp.sol](src/test/2026-07/MOKE_exp.sol)
 ### 20260802 LpdFi (LOOPSDAO) - Spot-price manipulation + issue-boundary interest exploit
 ### Lost: ~573,034.79 USDC net attacker gain (LpdFi paid out ~700,535 USDC + 4,059,427 LPD, burned 1,678,049 Cake-LP)
 ```sh
