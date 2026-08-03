@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-844 incidents included.
+845 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260730 UnprotectedArbBot](#20260730-unprotectedarbbot---unprotected-arbitrary-call-forwarder-drained-via-pre-granted-weth-allowance)
 [20260730 ExchangeIssuance (Index Coop)](#20260730-exchangeissuance-index-coop---toctou-positionmultiplier-inflation-via-malicious-pre-issue-hook)
 
 [20260726 LULA](#20260726-lula---reward-recycle-deflation-manipulation-via-flash-loan)
@@ -1784,6 +1785,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260730 UnprotectedArbBot - Unprotected arbitrary-call forwarder drained via pre-granted WETH allowance
+### Lost: ~16.623 WETH (~$31.7K)
+```sh
+forge test --contracts src/test/2026-07/UnprotectedArbBot_exp.sol -vvv
+```
+#### Contract
+[UnprotectedArbBot_exp.sol](src/test/2026-07/UnprotectedArbBot_exp.sol)
 
 ### 20260730 ExchangeIssuance (Index Coop) - TOCTOU positionMultiplier inflation via malicious pre-issue hook
 ### Lost: ~9.6K USD (~$8,174 recovered value on-chain)
