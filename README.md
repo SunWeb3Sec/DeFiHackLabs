@@ -54,7 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20260802 MOKE](#20260802-moke---unprotected-claim-eip-7702-self-delegation-drain)
+[20260802 MOKE](#20260802-moke---unprotected-claim-drained-via-eip-7702-self-delegation)
 [20260802 LpdFi (LOOPSDAO)](#20260802-lpdfi-loopsdao---spot-price-manipulation--issue-boundary-interest-exploit)
 [20260730 UnprotectedArbBot](#20260730-unprotectedarbbot---unprotected-arbitrary-call-forwarder-drained-via-pre-granted-weth-allowance)
 [20260730 ExchangeIssuance (Index Coop)](#20260730-exchangeissuance-index-coop---toctou-positionmultiplier-inflation-via-malicious-pre-issue-hook)
