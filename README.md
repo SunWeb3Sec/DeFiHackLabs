@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-848 incidents included.
+849 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260805 StrongBlock](#20260805-strongblock---governance-takeover-of-abandoned-governor)
 [20260803 AIC](#20260803-aic---pair-skim--reserve-mismatch-exploit-flash-swap-leveraged)
 [20260802 MOKE](#20260802-moke---unprotected-claim-drained-via-eip-7702-self-delegation)
 [20260802 LpdFi (LOOPSDAO)](#20260802-lpdfi-loopsdao---spot-price-manipulation--issue-boundary-interest-exploit)
@@ -1788,6 +1789,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260805 StrongBlock - Governance takeover of abandoned Governor
+### Lost: 32,695.76 STRONG + 383,447.17 STRNGR (~$72K)
+```sh
+forge test --contracts src/test/2026-08/StrongBlock_exp.sol -vvv
+```
+#### Contract
+[StrongBlock_exp.sol](src/test/2026-08/StrongBlock_exp.sol)
 ### 20260803 AIC - Pair skim / reserve-mismatch exploit (flash-swap leveraged)
 ### Lost: ~32.36 BNB (~$21.5K)
 ```sh
