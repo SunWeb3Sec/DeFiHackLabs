@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-850 incidents included.
+851 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -55,6 +55,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20260806 UnistreetLaunchpad](#20260806-unistreetlaunchpad---arbitrary-call-injection-via-unvalidated-launch-forwarding)
+[20260806 PantherBase](#20260806-pantherbase---realityeth-governance-timeout-exploit-pre-production-base-deployment-no-user-funds)
 [20260805 StrongBlock](#20260805-strongblock---governance-takeover-of-abandoned-governor)
 [20260803 AIC](#20260803-aic---pair-skim--reserve-mismatch-exploit-flash-swap-leveraged)
 [20260802 MOKE](#20260802-moke---unprotected-claim-drained-via-eip-7702-self-delegation)
@@ -1797,6 +1798,13 @@ FOUNDRY_EVM_VERSION=cancun forge test --contracts src/test/2026-08/UnistreetLaun
 ```
 #### Contract
 [UnistreetLaunchpad_exp.sol](src/test/2026-08/UnistreetLaunchpad_exp.sol)
+### 20260806 PantherBase - Reality.eth governance timeout exploit (pre-production Base deployment, no user funds)
+### Lost: 5,124,773.63 ZKP + 0.1233 ETH (Panther Base pre-launch deployment, not live user funds)
+```sh
+forge test --contracts src/test/2026-08/PantherBase_exp.sol -vvv
+```
+#### Contract
+[PantherBase_exp.sol](src/test/2026-08/PantherBase_exp.sol)
 ### 20260805 StrongBlock - Governance takeover of abandoned Governor
 ### Lost: 32,695.76 STRONG + 383,447.17 STRNGR (~$72K)
 ```sh
