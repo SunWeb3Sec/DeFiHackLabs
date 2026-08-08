@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260807 Atomic](#20260807-atomic---flash-loan-price-oracle-manipulation-of-lending-collateral-valuation)
 [20260806 UnistreetLaunchpad](#20260806-unistreetlaunchpad---arbitrary-call-injection-via-unvalidated-launch-forwarding)
 [20260806 PantherBase](#20260806-pantherbase---realityeth-governance-timeout-exploit-pre-production-base-deployment-no-user-funds)
 [20260805 StrongBlock](#20260805-strongblock---governance-takeover-of-abandoned-governor)
@@ -1791,6 +1792,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260807 Atomic - Flash-loan price oracle manipulation of lending collateral valuation
+### Lost: ~29,984.27 USDC
+```sh
+forge test --contracts src/test/2026-08/Atomic_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[Atomic_exp.sol](src/test/2026-08/Atomic_exp.sol)
 ### 20260806 UnistreetLaunchpad - Arbitrary call injection via unvalidated launch forwarding
 ### Lost: ~$17,743.91 USDC + ~0.0072 WETH (plus 9 illiquid launch memecoin positions)
 ```sh
