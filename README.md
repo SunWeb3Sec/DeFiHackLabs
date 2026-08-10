@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-852 incidents included.
+853 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260809 USM](#20260809-usm---defund-price-split-invariance-rounding-exploit)
 [20260807 Atomic](#20260807-atomic---flash-loan-price-oracle-manipulation-of-lending-collateral-valuation)
 [20260806 UnistreetLaunchpad](#20260806-unistreetlaunchpad---arbitrary-call-injection-via-unvalidated-launch-forwarding)
 [20260806 PantherBase](#20260806-pantherbase---realityeth-governance-timeout-exploit-pre-production-base-deployment-no-user-funds)
@@ -1792,6 +1793,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260809 USM - defund() price split-invariance rounding exploit
+### Lost: ~70.83 ETH
+```sh
+forge test --contracts src/test/2026-08/USM_exp.sol -vvv
+```
+#### Contract
+[USM_exp.sol](src/test/2026-08/USM_exp.sol)
 ### 20260807 Atomic - Flash-loan price oracle manipulation of lending collateral valuation
 ### Lost: ~29,984.27 USDC
 ```sh
