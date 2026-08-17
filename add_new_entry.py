@@ -3,7 +3,7 @@
 DeFi Hack Manager - A tool for documenting and managing DeFi hack POCs
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 import argparse
 import re
 import os
@@ -14,6 +14,15 @@ from typing import Optional, Dict, List, Any, Tuple
 import sys
 import unittest
 from unittest import mock
+
+def utc_now() -> datetime:
+    """Current UTC wall clock as a naive datetime.
+
+    Hack dates are recorded in UTC, so the fallback "current time" must not
+    depend on the timezone of the machine running this script.
+    """
+    return datetime.now(timezone.utc).replace(tzinfo=None)
+
 
 ######################
 # CONSTANTS
@@ -443,13 +452,13 @@ class TransactionManager:
     def get_timestamp_from_str(self, timestampstr: str) -> datetime:
         """Convert timestamp string to datetime object"""
         if not timestampstr:
-            return datetime.now()
+            return utc_now()
         try:
             return datetime.strptime(timestampstr, "%b-%d-%Y %I:%M:%S %p")
         except ValueError:
             print("Invalid timestamp format. Please use 'Mon-DD-YYYY HH:MM:SS AM/PM' (e.g., Mar-21-2024 02:51:33 PM).")
             print("Using current timestamp instead.")
-            return datetime.now()
+            return utc_now()
     
     def get_timestamp_from_tx_hash(self, tx_hash: str, rpc_url: str, auto_confirm: bool = False) -> str:
         """Get timestamp from transaction hash.
@@ -485,7 +494,9 @@ class TransactionManager:
                                 else:
                                     unix_timestamp = int(unix_timestamp_any)
                                 
-                                dt_object = datetime.fromtimestamp(unix_timestamp)
+                                # Block timestamps are UTC; render them as UTC so the
+                                # generated date does not depend on the runner's timezone.
+                                dt_object = datetime.fromtimestamp(unix_timestamp, tz=timezone.utc)
                                 suggested_timestamp_str = dt_object.strftime("%b-%d-%Y %I:%M:%S %p")
                                 print(f"Suggested timestamp: {suggested_timestamp_str}")
                                 if auto_confirm or input("Use suggested timestamp? (yes/no): ").lower() == 'yes':
@@ -655,7 +666,7 @@ class PocManager:
                                 hacking_god_url: str, selected_network: str, timestamp_str: str):
         """Create a new Solidity POC file from template"""
         # Parse timestamp and format date for path
-        timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p") if timestamp_str else datetime.now()
+        timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p") if timestamp_str else utc_now()
         formatted_date_for_path = timestamp.strftime("%Y-%m")
         
         # Ensure file name has proper extension
