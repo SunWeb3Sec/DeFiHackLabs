@@ -55,18 +55,29 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20260815 FoxLpBondsPool](#20260815-foxlpbondspool---stale-_stakeamount-from-manipulable-amm-spot-quote)
+
 [20260809 USM](#20260809-usm---defund-price-split-invariance-rounding-exploit)
+
 [20260807 Atomic](#20260807-atomic---flash-loan-price-oracle-manipulation-of-lending-collateral-valuation)
+
 [20260806 UnistreetLaunchpad](#20260806-unistreetlaunchpad---arbitrary-call-injection-via-unvalidated-launch-forwarding)
+
 [20260806 PantherBase](#20260806-pantherbase---realityeth-governance-timeout-exploit-pre-production-base-deployment-no-user-funds)
+
 [20260805 StrongBlock](#20260805-strongblock---governance-takeover-of-abandoned-governor)
+
 [20260803 AIC](#20260803-aic---pair-skim--reserve-mismatch-exploit-flash-swap-leveraged)
+
 [20260802 MOKE](#20260802-moke---unprotected-claim-drained-via-eip-7702-self-delegation)
+
 [20260802 LpdFi (LOOPSDAO)](#20260802-lpdfi-loopsdao---spot-price-manipulation--issue-boundary-interest-exploit)
+
 [20260730 UnprotectedArbBot](#20260730-unprotectedarbbot---unprotected-arbitrary-call-forwarder-drained-via-pre-granted-weth-allowance)
+
 [20260730 ExchangeIssuance (Index Coop)](#20260730-exchangeissuance-index-coop---toctou-positionmultiplier-inflation-via-malicious-pre-issue-hook)
 
 [20260726 LULA](#20260726-lula---reward-recycle-deflation-manipulation-via-flash-loan)
+
 [20260725 Pro Token](#20260725-pro-token---reward-on-transfer-self-dealing-winner-drain)
 
 [20260725 Projekt Reward Vault](#20260725-projekt-reward-vault---permissionless-purchase-tracking-self-dealing)
