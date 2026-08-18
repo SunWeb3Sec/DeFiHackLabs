@@ -54,7 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20260815 FoxLpBondsPool](#20260815-foxlpbondspool---stale-stakeamount-from-manipulable-amm-spot-quote)
+[20260815 FoxLpBondsPool](#20260815-foxlpbondspool---stale-_stakeamount-from-manipulable-amm-spot-quote)
 [20260809 USM](#20260809-usm---defund-price-split-invariance-rounding-exploit)
 [20260807 Atomic](#20260807-atomic---flash-loan-price-oracle-manipulation-of-lending-collateral-valuation)
 [20260806 UnistreetLaunchpad](#20260806-unistreetlaunchpad---arbitrary-call-injection-via-unvalidated-launch-forwarding)
