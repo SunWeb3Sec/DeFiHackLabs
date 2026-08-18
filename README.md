@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-853 incidents included.
+854 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260815 FoxLpBondsPool](#20260815-foxlpbondspool---stale-_stakeamount-from-manipulable-amm-spot-quote)
 [20260809 USM](#20260809-usm---defund-price-split-invariance-rounding-exploit)
 [20260807 Atomic](#20260807-atomic---flash-loan-price-oracle-manipulation-of-lending-collateral-valuation)
 [20260806 UnistreetLaunchpad](#20260806-unistreetlaunchpad---arbitrary-call-injection-via-unvalidated-launch-forwarding)
@@ -1793,6 +1794,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260815 FoxLpBondsPool - Stale _stakeAmount from manipulable AMM spot quote
+### Lost: ~112,976.12 USDC (~$118.7K reported)
+```sh
+forge test --contracts src/test/2026-08/FoxLpBondsPool_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[FoxLpBondsPool_exp.sol](src/test/2026-08/FoxLpBondsPool_exp.sol)
 ### 20260809 USM - defund() price split-invariance rounding exploit
 ### Lost: ~70.83 ETH
 ```sh
