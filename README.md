@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-854 incidents included.
+855 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260819 AllbridgeCCTP](#20260819-allbridgecctp---phantom-cctp-deposit-via-unverified-message-attestation)
 [20260815 FoxLpBondsPool](#20260815-foxlpbondspool---stale-_stakeamount-from-manipulable-amm-spot-quote)
 
 [20260809 USM](#20260809-usm---defund-price-split-invariance-rounding-exploit)
@@ -1805,6 +1806,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260819 AllbridgeCCTP - Phantom CCTP deposit via unverified message attestation
+### Lost: ~190,155.98 USDC drained (net attacker profit ~189,751.55 USDC after flash-loan premium; router retained its 1,000 USDC fee)
+```sh
+forge test --contracts src/test/2026-08/AllbridgeCCTP_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[AllbridgeCCTP_exp.sol](src/test/2026-08/AllbridgeCCTP_exp.sol)
 ### 20260815 FoxLpBondsPool - Stale _stakeAmount from manipulable AMM spot quote
 ### Lost: ~112,976.12 USDC (~$118.7K reported)
 ```sh
