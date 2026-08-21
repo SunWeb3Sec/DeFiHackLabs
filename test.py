@@ -378,7 +378,7 @@ class TestTransactionManager(unittest.TestCase):
         
         # Mock successful transaction data fetch
         tx_data = {"blockNumber": 12345}
-        block_data = {"timestamp": 1647888693}  # Tue Mar 22 2022 02:51:33 GMT+0000
+        block_data = {"timestamp": 1647888693}  # Mon Mar 21 2022 18:51:33 GMT+0000
         
         with mock.patch.object(self.tx_manager, "_run_cast_command") as mock_run_cast:
             mock_run_cast.side_effect = [tx_data, block_data]
@@ -386,9 +386,9 @@ class TestTransactionManager(unittest.TestCase):
             
             result = self.tx_manager.get_timestamp_from_tx_hash(tx_hash, rpc_url)
             
-            # Assert the function returns formatted timestamp
-            # The exact format will depend on the locale, so we check for key parts
-            self.assertIn("Mar-22-2022", result)
+            # Block timestamps are UTC, so the result must not depend on the
+            # timezone of the machine running the tests.
+            self.assertEqual(result, "Mar-21-2022 06:51:33 PM")
             mock_run_cast.assert_any_call(
                 ["tx", tx_hash, "--json"],
                 rpc_url,
