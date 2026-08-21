@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-855 incidents included.
+856 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260820 FlashstakeV2](#20260820-flashstakev2---mispriced-reward-pool-instant-upfront-reward-extraction)
 [20260819 AllbridgeCCTP](#20260819-allbridgecctp---phantom-cctp-deposit-via-unverified-message-attestation)
 [20260815 FoxLpBondsPool](#20260815-foxlpbondspool---stale-_stakeamount-from-manipulable-amm-spot-quote)
 
@@ -1806,6 +1807,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260820 FlashstakeV2 - Mispriced reward pool, instant upfront reward extraction
+### Lost: ~0.5453 WETH drained (28.25% of reward pool reserve); attacker net profit ~0.4285 ETH
+```sh
+forge test --contracts src/test/2026-08/FlashstakeV2_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[FlashstakeV2_exp.sol](src/test/2026-08/FlashstakeV2_exp.sol)
 ### 20260819 AllbridgeCCTP - Phantom CCTP deposit via unverified message attestation
 ### Lost: ~190,155.98 USDC drained (net attacker profit ~189,751.55 USDC after flash-loan premium; router retained its 1,000 USDC fee)
 ```sh
