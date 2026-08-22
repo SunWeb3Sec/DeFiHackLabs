@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-856 incidents included.
+857 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260822 SandboxOFT](#20260822-sandboxoft---layerzero-delegate-hijack-via-approveandcall)
 [20260820 FlashstakeV2](#20260820-flashstakev2---mispriced-reward-pool-instant-upfront-reward-extraction)
 [20260819 AllbridgeCCTP](#20260819-allbridgecctp---phantom-cctp-deposit-via-unverified-message-attestation)
 [20260815 FoxLpBondsPool](#20260815-foxlpbondspool---stale-_stakeamount-from-manipulable-amm-spot-quote)
@@ -1807,6 +1808,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260822 SandboxOFT - LayerZero delegate hijack via approveAndCall
+### Lost: 10,000,000 SAND minted unbacked (~$517,170 face value, one of 400+ repeated txs in an ongoing campaign)
+```sh
+forge test --contracts src/test/2026-08/SandboxOFT_exp.sol -vvv
+```
+#### Contract
+[SandboxOFT_exp.sol](src/test/2026-08/SandboxOFT_exp.sol)
 ### 20260820 FlashstakeV2 - Mispriced reward pool, instant upfront reward extraction
 ### Lost: ~0.5453 WETH drained (28.25% of reward pool reserve); attacker net profit ~0.4285 ETH
 ```sh
