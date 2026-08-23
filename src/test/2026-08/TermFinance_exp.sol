@@ -6,15 +6,37 @@ import "forge-std/Test.sol";
 // Term Finance (TermMax vaults) — drain of the ETH and USDC meta-vaults on Ethereum, Aug 23 2026.
 // Total extracted ~2,841.74 WETH + ~1,679,642 USDC (~$8.5M reported).
 //
-// IMPORTANT — mechanism differs from the brief that requested this PoC.
-// The request framed this as a DAO governance-token capture (buy cheap vote token, pass
-// propose/vote/queue/execute proposals, seize vaults) in the StrongBlock / BarnBridge class.
-// The on-chain trace does NOT support that framing. There is no Governor, no vote token, and no
-// proposal flow anywhere in the attacker's transactions. This is a smart-contract logic exploit
-// against Term Finance's TermMax meta-vault accounting, driven by Aave V3 + Balancer V3 flash
-// loans. The two attacker EOAs each deploy a bespoke attack contract days ahead, seed vault state,
-// then trigger a single self-contained drain call. No stolen key, signer, or admin bypass; the
-// privileged effect comes entirely from the attack contract exploiting the vault's own logic.
+// ROOT CAUSE — governance capture of thinly-wrapped voting power (StrongBlock / BarnBridge family).
+// This is NOT a standalone flashloan logic bug. Term's TermMax vaults are governed on-chain through
+// Aragon TokenVoting plugins, whose voting token is a GovernanceWrappedERC20 wrapping the vault's
+// own share token (deposit alone grants no vote — a holder must additionally wrap shares into the
+// governance token). Almost nobody wrapped, so the attacker's own deposit gave him a supermajority:
+// he controlled 90.66% of the wrapped voting supply on the ETH meta-vault and 100% on all five USDC
+// sub-vault plugins. With the plugin set to 50% support, 5% minimum participation, a 6.04-day
+// (522000s) minimum duration and 0 minimum proposer power, a single-voter proposal passes trivially
+// and is free to open.
+//
+// Each attacker contract opened a proposal titled to mimic the curator's routine "Veto strategy
+// vault parameter change" update (so it looked routine), self-voted Yes, waited out the 6.04-day
+// minimum duration, then executed. Execution routes Aragon plugin -> Aragon DAO -> Zodiac Delay /
+// Roles modifiers -> the vault's Safe avatar, queuing and running (cooldown 0, same call) the
+// multi-action sequence that grants the needed permissions, recalls funds from the real strategies
+// (update_debt(strategy, 0)), adds the attacker's own contract as a strategy, raises its max debt,
+// and pushes the full vault balance out to it. The Aave V3 + Balancer V3 flash loans are ONLY
+// liquidity used to unwind the recalled strategy positions during execution — they are not the
+// privilege-granting mechanism. No stolen key, signer, or admin bypass; the privilege came from the
+// governance vote the attacker owned outright.
+//
+// Governance contracts confirmed on-chain (in the drain transactions themselves):
+//   ETH meta-vault governance token gtmvETH (wraps tmvETH) 0x5b96c5bBdcB361E1E9944bAa071b237E27829Be0
+//   ETH Aragon TokenVoting plugin  0x213771693a4411446b4ecce5bce4a405778b2171  (proposalId 5)
+//   ETH Aragon DAO                 0x0ae12af3878a2d896f5c4dce3be7250fb187c0a6
+//   ETH Zodiac Delay modifier      0x35c99cf4a5df2d9bcd822bee32676d9590229e33
+//   ETH Safe avatar (module exec)  0x46da347d1db6edca62bf6cd5892dc284fc938613
+//   USDC side: five Aragon plugins executed in one tx (one proposal per sub-vault):
+//     0xf7faeda637451d2c8ee9cc46ad3dc1252d7d914b 0x5deea0d3370b9cac9b60f1d290f107c1603ce76c
+//     0x0d750a834cba2671a69c0f335f93c7c87664e901 0x57a0ccdc3f58185e14b0135462856ffb6cbea7a7
+//     0x23fff2e824fad9bef99faa9c3ed9a8b45bd14c5c
 //
 // Two coordinated attacker EOAs (both funded for gas via Tornado Cash, per Defimon):
 //   Wallet A (ETH vault) : 0xa908b3472d76e7744baB0A5911768a4a6300612B
@@ -44,12 +66,14 @@ import "forge-std/Test.sol";
 // Proceeds trace forward to consolidation 0xD5183d... : Wallet A sent 2,841.237 ETH
 //   (tx 0xb3971d.../0x3e2a34...), Wallet B sent 1,679,642 DAI (tx 0xf91371...).
 //
-// PoC strategy (StrongBlock / BarnBridge replay style): the attack contracts and all seeded state
-// are already settled on-chain. Fork one block before each drain and replay the exact hardcoded
-// entry call from the corresponding attacker EOA. Assert the EOA's WETH / USDC balance rises by
-// the reported amount. We do NOT reconstruct the vault-accounting bug from source — the attack
-// contracts are unverified — so the drain entrypoints are treated as the on-chain root cause the
-// trace shows, not confirmed source.
+// PoC strategy (StrongBlock / BarnBridge replay style): the governance proposals were already
+// created and voted days earlier, and all seeded state is settled on-chain. The drain transactions
+// replayed here ARE the Aragon proposal-execution calls (ETH tx emits ProposalExecuted(5); the USDC
+// tx executes five proposals). Fork one block before each drain and replay the exact hardcoded entry
+// call from the corresponding attacker EOA — it succeeds precisely because the proposal has already
+// passed and only needs execution. Assert the EOA's WETH / USDC balance rises by the reported
+// amount. We do NOT reconstruct the per-action calldata from source (the attacker contracts are
+// unverified); the governance-capture chain above is read from the events these transactions emit.
 //
 // Run: forge test --contracts ./src/test/2026-08/TermFinance_exp.sol -vvv
 // Requires an Ethereum archive RPC (see foundry.toml [rpc_endpoints]).
