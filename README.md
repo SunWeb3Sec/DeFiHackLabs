@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-857 incidents included.
+858 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260823 TermFinance](#20260823-termfinance---termmax-meta-vault-flashloan-logic-exploit)
 [20260822 SandboxOFT](#20260822-sandboxoft---layerzero-delegate-hijack-via-approveandcall)
 [20260820 FlashstakeV2](#20260820-flashstakev2---mispriced-reward-pool-instant-upfront-reward-extraction)
 [20260819 AllbridgeCCTP](#20260819-allbridgecctp---phantom-cctp-deposit-via-unverified-message-attestation)
@@ -1808,6 +1809,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260823 TermFinance - TermMax meta-vault flashloan logic exploit
+### Lost: ~2,841.74 WETH + ~1,679,639 USDC (~$8.5M combined, two independent flashloan-funded drains)
+```sh
+forge test --contracts src/test/2026-08/TermFinance_exp.sol -vvv
+```
+#### Contract
+[TermFinance_exp.sol](src/test/2026-08/TermFinance_exp.sol)
 ### 20260822 SandboxOFT - LayerZero delegate hijack via approveAndCall
 ### Lost: 10,000,000 SAND minted unbacked (~$517,170 face value, one of 400+ repeated txs in an ongoing campaign)
 ```sh
