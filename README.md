@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-859 incidents included.
+860 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260825 EnjinCryptoItems](#20260825-enjincryptoitems---unprotected-registry-reinitialization-manager-takeover)
 [20260823 TermFinance](#20260823-termfinance---termmax-meta-vault-flashloan-logic-exploit)
 [20260823 ArrakisGUNI](#20260823-arrakisguni---uniswap-v3-spot-price-manipulation-of-vault-mintburn)
 [20260822 SandboxOFT](#20260822-sandboxoft---layerzero-delegate-hijack-via-approveandcall)
@@ -1810,6 +1811,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ---
 
 ### List of DeFi Hacks & POCs
+### 20260825 EnjinCryptoItems - Unprotected registry reinitialization -> manager takeover
+### Lost: ~5.24M ENJ (attacker +5,231,353 ENJ, reserve -5,238,353 ENJ)
+```sh
+forge test --contracts src/test/2026-08/EnjinCryptoItems_exp.sol -vvv
+```
+#### Contract
+[EnjinCryptoItems_exp.sol](src/test/2026-08/EnjinCryptoItems_exp.sol)
 ### 20260823 TermFinance - TermMax meta-vault flashloan logic exploit
 ### Lost: ~2,841.74 WETH + ~1,679,639 USDC (~$8.5M combined, two independent flashloan-funded drains)
 ```sh
