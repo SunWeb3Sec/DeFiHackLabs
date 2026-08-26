@@ -54,7 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20260825 EnjinCryptoItems](#20260825-enjincryptoitems---unprotected-registry-reinitialization-manager-takeover)
+[20260825 EnjinCryptoItems](#20260825-enjincryptoitems---unprotected-registry-reinitialization---manager-takeover)
 [20260823 TermFinance](#20260823-termfinance---termmax-meta-vault-flashloan-logic-exploit)
 [20260823 ArrakisGUNI](#20260823-arrakisguni---uniswap-v3-spot-price-manipulation-of-vault-mintburn)
 [20260822 SandboxOFT](#20260822-sandboxoft---layerzero-delegate-hijack-via-approveandcall)
