@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260827 MoonwellMAMO](#20260827-moonwellmamo---chainlink-oracle-source-price-manipulation-of-mamo-collateral)
 [20260825 EnjinCryptoItems](#20260825-enjincryptoitems---unprotected-registry-reinitialization---manager-takeover)
 [20260825 FHToken](#20260825-fhtoken---sell-tax-reserve-mismatch-via-premature-sync)
 [20260823 TermFinance](#20260823-termfinance---termmax-meta-vault-flashloan-logic-exploit)
@@ -1811,6 +1812,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260827 MoonwellMAMO - Chainlink oracle-source price manipulation of MAMO collateral
+### Lost: ~71.36 cbBTC total across 12 repeated borrows (~$5.7M); this PoC reproduces the largest single instance, ~14.34 cbBTC (~$1.15M)
+```sh
+forge test --contracts src/test/2026-08/MoonwellMAMO_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[MoonwellMAMO_exp.sol](src/test/2026-08/MoonwellMAMO_exp.sol)
 ### 20260825 EnjinCryptoItems - Unprotected registry reinitialization -> manager takeover
 ### Lost: ~5.24M ENJ (attacker +5,231,353 ENJ, reserve -5,238,353 ENJ)
 ```sh
