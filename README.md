@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-862 incidents included.
+863 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -55,6 +55,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20260827 MoonwellMAMO](#20260827-moonwellmamo---chainlink-oracle-source-price-manipulation-of-mamo-collateral)
+[20260827 CashCowCoin](#20260827-cashcowcoin---privileged-burn--sync-drains-pair-reserve-via-iterative-sells)
 [20260825 EnjinCryptoItems](#20260825-enjincryptoitems---unprotected-registry-reinitialization---manager-takeover)
 [20260825 FHToken](#20260825-fhtoken---sell-tax-reserve-mismatch-via-premature-sync)
 [20260823 TermFinance](#20260823-termfinance---termmax-meta-vault-flashloan-logic-exploit)
@@ -1819,6 +1820,13 @@ forge test --contracts src/test/2026-08/MoonwellMAMO_exp.sol --evm-version cancu
 ```
 #### Contract
 [MoonwellMAMO_exp.sol](src/test/2026-08/MoonwellMAMO_exp.sol)
+### 20260827 CashCowCoin - Privileged burn + sync() drains pair reserve via iterative sells
+### Lost: ~165.47 WBNB (~$117.4K, drained across 80 iterative sell cycles in one tx)
+```sh
+forge test --contracts src/test/2026-08/CashCowCoin_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[CashCowCoin_exp.sol](src/test/2026-08/CashCowCoin_exp.sol)
 ### 20260825 EnjinCryptoItems - Unprotected registry reinitialization -> manager takeover
 ### Lost: ~5.24M ENJ (attacker +5,231,353 ENJ, reserve -5,238,353 ENJ)
 ```sh
