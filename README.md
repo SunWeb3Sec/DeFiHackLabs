@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-863 incidents included.
+864 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260828 AjnaFinance](#20260828-ajnafinance---liquidation-accounting-manipulation-via-self-controlled-auction)
 [20260827 MoonwellMAMO](#20260827-moonwellmamo---chainlink-oracle-source-price-manipulation-of-mamo-collateral)
 [20260827 CashCowCoin](#20260827-cashcowcoin---privileged-burn--sync-drains-pair-reserve-via-iterative-sells)
 [20260825 EnjinCryptoItems](#20260825-enjincryptoitems---unprotected-registry-reinitialization---manager-takeover)
@@ -1813,6 +1814,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260828 AjnaFinance - Liquidation accounting manipulation via self-controlled auction
+### Lost: ~$775K across 7 pools total; this PoC reproduces the cbETH pool instance (~43.75 cbETH + ~1.5 WETH, ~$124.8K)
+```sh
+forge test --contracts src/test/2026-08/AjnaFinance_exp.sol -vvv
+```
+#### Contract
+[AjnaFinance_exp.sol](src/test/2026-08/AjnaFinance_exp.sol)
 ### 20260827 MoonwellMAMO - Chainlink oracle-source price manipulation of MAMO collateral
 ### Lost: ~71.36 cbBTC total across 12 repeated borrows (~$5.7M); this PoC reproduces the largest single instance, ~14.34 cbBTC (~$1.15M)
 ```sh
