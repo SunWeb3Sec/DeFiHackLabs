@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-864 incidents included.
+865 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260830 TectonicTONIC](#20260830-tectonictonic---mango-markets-style-collateral-price-manipulation-of-tonic)
 [20260828 AjnaFinance](#20260828-ajnafinance---liquidation-accounting-manipulation-via-self-controlled-auction)
 [20260827 MoonwellMAMO](#20260827-moonwellmamo---chainlink-oracle-source-price-manipulation-of-mamo-collateral)
 [20260827 CashCowCoin](#20260827-cashcowcoin---privileged-burn--sync-drains-pair-reserve-via-iterative-sells)
@@ -1814,6 +1815,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260830 TectonicTONIC - Mango Markets-style collateral price manipulation of TONIC
+### Lost: ~$66-75M reported, every liquid Tectonic market drained in one tx (USDC $55.24M, USDT $45.65M, WBTC 98, CDCBTC 32.9, WETH 1895, CDCETH 379.7, XRP 270.6K, LCRO 26.2M) — Cronos EVM chain halted in response
+```sh
+forge test --contracts src/test/2026-08/TectonicTONIC_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[TectonicTONIC_exp.sol](src/test/2026-08/TectonicTONIC_exp.sol)
 ### 20260828 AjnaFinance - Liquidation accounting manipulation via self-controlled auction
 ### Lost: ~$775K across 7 pools total; this PoC reproduces the cbETH pool instance (~43.75 cbETH + ~1.5 WETH, ~$124.8K)
 ```sh
