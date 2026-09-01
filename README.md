@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260901 ReflexerGEB](#20260901-reflexergeb---sharedproxyactions-library-registered-as-safe-owner)
 [20260831 BalancerV1BPool](#20260831-balancerv1bpool---joinswappoolamountout-rounding-drain-across-5-pools)
 [20260831 FloatProtocol](#20260831-floatprotocol---uniswap-v3-spot-price-manipulation-of-hypervisor-lp-shares)
 [20260830 TectonicTONIC](#20260830-tectonictonic---mango-markets-style-collateral-price-manipulation-of-tonic)
@@ -1817,6 +1818,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260901 ReflexerGEB - Shared GebProxyActions library registered as SAFE owner
+### Lost: ~5.9436 ETH (~$14K, drained from 4 SAFEs in one tx: IDs 3, 5, 8, 18)
+```sh
+forge test --contracts src/test/2026-08/ReflexerGEB_exp.sol -vvv
+```
+#### Contract
+[ReflexerGEB_exp.sol](src/test/2026-08/ReflexerGEB_exp.sol)
 ### 20260831 BalancerV1BPool - joinswapPoolAmountOut rounding drain across 5 pools
 ### Lost: ~$234K reported aggregate across 5 separate Balancer V1 pools, one drain per tx; this PoC reproduces the DPI/USDC/WETH/WBTC pool instance (~$110,839, exact)
 ```sh
