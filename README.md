@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-866 incidents included.
+867 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -55,6 +55,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20260831 BalancerV1BPool](#20260831-balancerv1bpool---joinswappoolamountout-rounding-drain-across-5-pools)
+[20260831 FloatProtocol](#20260831-floatprotocol---uniswap-v3-spot-price-manipulation-of-hypervisor-lp-shares)
 [20260830 TectonicTONIC](#20260830-tectonictonic---mango-markets-style-collateral-price-manipulation-of-tonic)
 [20260828 AjnaFinance](#20260828-ajnafinance---liquidation-accounting-manipulation-via-self-controlled-auction)
 [20260827 MoonwellMAMO](#20260827-moonwellmamo---chainlink-oracle-source-price-manipulation-of-mamo-collateral)
@@ -1823,6 +1824,13 @@ forge test --contracts src/test/2026-08/BalancerV1BPool_exp.sol -vvv
 ```
 #### Contract
 [BalancerV1BPool_exp.sol](src/test/2026-08/BalancerV1BPool_exp.sol)
+### 20260831 FloatProtocol - Uniswap V3 spot-price manipulation of Hypervisor LP shares
+### Lost: ~10.7066 ETH (~$28K)
+```sh
+forge test --contracts src/test/2026-08/FloatProtocol_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[FloatProtocol_exp.sol](src/test/2026-08/FloatProtocol_exp.sol)
 ### 20260830 TectonicTONIC - Mango Markets-style collateral price manipulation of TONIC
 ### Lost: ~$66-75M reported, every liquid Tectonic market drained in one tx (USDC $55.24M, USDT $45.65M, WBTC 98, CDCBTC 32.9, WETH 1895, CDCETH 379.7, XRP 270.6K, LCRO 26.2M) — Cronos EVM chain halted in response
 ```sh
