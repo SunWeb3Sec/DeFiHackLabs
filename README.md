@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-867 incidents included.
+868 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,7 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20260901 ReflexerGEB](#20260901-reflexergeb---sharedproxyactions-library-registered-as-safe-owner)
+[20260901 ReflexerGEB](#20260901-reflexergeb---shared-gebproxyactions-library-registered-as-safe-owner)
 [20260831 BalancerV1BPool](#20260831-balancerv1bpool---joinswappoolamountout-rounding-drain-across-5-pools)
 [20260831 FloatProtocol](#20260831-floatprotocol---uniswap-v3-spot-price-manipulation-of-hypervisor-lp-shares)
 [20260830 TectonicTONIC](#20260830-tectonictonic---mango-markets-style-collateral-price-manipulation-of-tonic)
