@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-869 incidents included.
+870 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260905 DHC - repeatable claim due to missing claimed-flag](#20260905-dhc---repeatable-claim-due-to-missing-claimed-flag)
 [20260903 NotionalFinance](#20260903-notionalfinance---erc1155-fcash-mint-overflow-drains-escrow)
 [20260901 ReflexerGEB](#20260901-reflexergeb---shared-gebproxyactions-library-registered-as-safe-owner)
 [20260831 BalancerV1BPool](#20260831-balancerv1bpool---joinswappoolamountout-rounding-drain-across-5-pools)
@@ -287,7 +288,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260110 FutureSwap](#20260110-futureswap---unit-mismatch)
 
-[20260109 TRU](#20260109-truebit---overflow)
+[20260109 Truebit](#20260109-truebit---overflow)
 
 [20260101 PRXVT](#20260101-prxvt---bussiness-logic-flaw)
 
@@ -633,7 +634,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20241203 Pledge](past/2024/README.md#20241203-pledge---access-control)
 
-[20241126 NFTG](past/2024/README.md#20241126-NFTG---access-control)
+[20241126 NFTG](past/2024/README.md#20241126-nftg---access-control)
 
 [20241124 Proxy_b7e1](past/2024/README.md#20241124-proxy_b7e1---logic-flaw)
 
@@ -651,17 +652,17 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20241111 DeltaPrime](past/2024/README.md#20241111-deltaprime---reentrancy)
 
-[20241109 X319](past/2024/README.md#20241109-X319---access-control)
+[20241109 X319](past/2024/README.md#20241109-x319---access-control)
 
-[20241107 ChiSale](past/2024/README.md#20241107-ChiSale---logic-flaw)
+[20241107 ChiSale](past/2024/README.md#20241107-chisale---logic-flaw)
 
-[20241107 CoW](past/2024/README.md#20241107-CoW---access-control)
+[20241107 CoW](past/2024/README.md#20241107-cow---access-control)
 
 [20241107 UniV2](past/2024/README.md#20241107-UniV2---rug-pull)
 
 [20241105 RPP](past/2024/README.md#20241105-rpp---logic-flaw)
 
-[20241029 BUBAI](past/2024/README.md#20241029-BUBAI---rug-pull)
+[20241029 BUBAI](past/2024/README.md#20241029-bubai---rug-pull)
 
 [20241026 CompoundFork](past/2024/README.md#20241026-compoundfork---flashloan-attack)
 
@@ -677,53 +678,53 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20241006 SASHAToken](past/2024/README.md#20241006-sashatoken---price-manipulation)
 
-[20241005 AIZPTToken](past/2024/README.md#20241005-AIZPTToken---wrong-price-calculation)
+[20241005 AIZPTToken](past/2024/README.md#20241005-aizpttoken---wrong-price-calculation)
 
-[20241002 LavaLending](past/2024/README.md#20241002-LavaLending---price-manipulation)
+[20241002 LavaLending](past/2024/README.md#20241002-lavalending---price-manipulation)
 
 [20241001 FireToken](past/2024/README.md#20241001-firetoken---pair-manipulation-with-transfer-function)
 
-[20240926 OnyxDAO](past/2024/README.md#20240926-OnyxDAO---fake-market)
+[20240926 OnyxDAO](past/2024/README.md#20240926-onyxdao---fake-market)
 
 [20240926 Bedrock_DeFi](past/2024/README.md#20240926-Bedrock_DeFi---swap-eth/btc-1/1-in-mint-function)
 
-[20240924 MARA](past/2024/README.md#20240924-MARA---price-manipulation)
+[20240924 MARA](past/2024/README.md#20240924-mara---price-manipulation)
 
-[20240923 PestoToken](past/2024/README.md#20240923-PestoToken---price-manipulation)
+[20240923 PestoToken](past/2024/README.md#20240923-pestotoken---price-manipulation)
 
-[20240923 Bankroll_Network](past/2024/README.md#20240923-Bankroll_Network---incorrect-input-validation)
+[20240923 Bankroll_Network](past/2024/README.md#20240923-bankroll_network---incorrect-input-validation)
 
-[20240920 DOGGO](past/2024/README.md#20240920-DOGGO---logic-flaw)
+[20240920 DOGGO](past/2024/README.md#20240920-doggo---logic-flaw)
 
 [20240920 Shezmu](past/2024/README.md#20240920-shezmu---access-control)
 
 [20240918 Unverified_766a](past/2024/README.md#20240918-unverified_766a---access-control)
 
-[20240915 WXETA](past/2024/README.md#20240915-WXETA---Logic-Flaw)
+[20240915 WXETA](past/2024/README.md#20240915-wxeta---logic-flaw)
 
 [20240913 Unverified_5697](past/2024/README.md#20240913-unverified_5697---access-control)
 
-[20240913 OTSeaStaking](past/2024/README.md#20240913-OTSeaStaking---Logic-Flaw)
+[20240913 OTSeaStaking](past/2024/README.md#20240913-otseastaking---logic-flaw)
 
-[20240912 Unverified_03f9](past/2024/README.md#20240912-Unverified_03f9---access-control)
+[20240912 Unverified_03f9](past/2024/README.md#20240912-unverified_03f9---access-control)
 
-[20240911 INUMI](past/2024/README.md#20240911-INUMI---access-control)
+[20240911 INUMI](past/2024/README.md#20240911-inumi---access-control)
 
-[20240911 INUMI_db27](past/2024/README.md#20240911-INUMI_db27---access-control)
+[20240911 INUMI_db27](past/2024/README.md#20240911-inumi_db27---access-control)
 
 [20240911 AIRBTC](past/2024/README.md#20240911-AIRBTC---access-control)
 
-[20240910 Caterpillar_Coin_CUT](past/2024/README.md#20240910-Caterpillar_Coin_CUT---price-manipulation)
+[20240910 Caterpillar_Coin_CUT](past/2024/README.md#20240910-caterpillar_coin_cut---price-manipulation)
 
 [20240905 Unverified_a89f](past/2024/README.md#20240905-unverified_a89f---access-control)
 
-[20240905 PLN](past/2024/README.md#20240905-PLN---access-control)
+[20240905 PLN](past/2024/README.md#20240905-pln---access-control)
 
-[20240905 HANAToken](past/2024/README.md#20240905-HANAToken---price-manipulation)
+[20240905 HANAToken](past/2024/README.md#20240905-hanatoken---price-manipulation)
 
 [20240904 Unverified_16d0](past/2024/README.md#20240904-unverified_16d0---access-control)
 
-[20240903 Penpiexyz_io](past/2024/README.md#20240903-Penpiexyz_io---reentrancy-and-reward-manipulation)
+[20240903 Penpiexyz_io](past/2024/README.md#20240903-penpiexyz_io---reentrancy-and-reward-manipulation)
 
 [20240902 Pythia](past/2024/README.md#20240902-pythia---logic-flaw)
 
@@ -733,7 +734,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240820 COCO](past/2024/README.md#20240820-coco---logic-flaw)
 
-[20240816 Zenterest](past/2024/README.md#20240816-Zenterest---price-out-of-date)
+[20240816 Zenterest](past/2024/README.md#20240816-zenterest---price-out-of-date)
 
 [20240816 OMPxContract](past/2024/README.md#20240816-ompx-contract---flashloan)
 
@@ -741,11 +742,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240813 VOW](past/2024/README.md#20240813-vow---misconfiguration)
 
-[20240812 iVest](past/2024/README.md#20240812-iVest---business-logic-flaw)
+[20240812 iVest](past/2024/README.md#20240812-ivest---business-logic-flaw)
 
-[20240806 Novax](past/2024/README.md#20240806-Novax---price-manipulation)
+[20240806 Novax](past/2024/README.md#20240806-novax---price-manipulation)
 
-[20240801 Convergence](past/2024/README.md#20240801-Convergence---incorrect-input-validation)
+[20240801 Convergence](past/2024/README.md#20240801-convergence---incorrect-input-validation)
 
 [20240724 Spectra_finance](past/2024/README.md#20240724-spectra_finance---incorrect-input-validation)
 
@@ -753,67 +754,67 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240716 Lifiprotocol](past/2024/README.md#20240716-lifiprotocol---incorrect-input-validation)
 
-[20240714 Minterest](past/2024/README.md#20240714-minterest---Reentrancy)
+[20240714 Minterest](past/2024/README.md#20240714-minterest---reentrancy)
 
 [20240712 DoughFina](past/2024/README.md#20240712-doughfina---incorrect-input-validation)
 
 [20240711 SBT](past/2024/README.md#20240711-sbt---business-logic-flaw)
 
-[20240711 GAX](past/2024/README.md#20240711-GAX---lack-of-access-control)
+[20240711 GAX](past/2024/README.md#20240711-gax---lack-of-access-control)
 
-[20240708 LW](past/2024/README.md#20240708-Lw---integer-underflow)
+[20240708 LW](past/2024/README.md#20240708-lw---integer-underflow)
 
 [20240705 DeFiPlaza](past/2024/README.md#20240705-defiplaza---loss-of-precision)
 
-[20240703 UnverifiedContr_0x452E25](past/2024/README.md#20240703-UnverifiedContr_0x452E25---lack-of-access-control)
+[20240703 UnverifiedContr_0x452E25](past/2024/README.md#20240703-unverifiedcontr_0x452e25---lack-of-access-control)
 
 [20240702 MRP](past/2024/README.md#20240702-mrp---reentrancy)
 
-[20240628 Will](past/2024/README.md#20240628-Will---business-logic-flaw)
+[20240628 Will](past/2024/README.md#20240628-will---business-logic-flaw)
 
-[20240627 APEMAGA](past/2024/README.md#20240627-APEMAGA---business-logic-flaw)
+[20240627 APEMAGA](past/2024/README.md#20240627-apemaga---business-logic-flaw)
 
 [20240618 INcufi](past/2024/README.md#20240618-incufi---business-logic-flaw)
 
 [20240617 Dyson_money](past/2024/README.md#20240617-dyson_money---business-logic-flaw)
 
-[20240616 WIFCOIN_ETH](past/2024/README.md#20240616-WIFCOIN_ETH---business-logic-flaw)
+[20240616 WIFCOIN_ETH](past/2024/README.md#20240616-wifcoin_eth---business-logic-flaw)
 
-[20240611 Crb2](past/2024/README.md#20240616-Crb2---business-logic-flaw)
+[20240611 Crb2](past/2024/README.md#20240616-crb2---business-logic-flaw)
 
-[20240611 JokInTheBox](past/2024/README.md#20240611-JokInTheBox---business-logic-flaw)
+[20240611 JokInTheBox](past/2024/README.md#20240611-jokinthebox---business-logic-flaw)
 
-[20240610 UwuLend - Price Manipulation](past/2024/README.md#20240610-UwuLend---Price-Manipulation)
+[20240610 UwuLend - Price Manipulation](past/2024/README.md#20240610-uwulend---price-manipulation)
 
 [20240610 Bazaar](past/2024/README.md#20240610-bazaar---insufficient-permission-check)
 
-[20240608 YYStoken](past/2024/README.md#20240608-YYStoken---business-logic-flaw)
+[20240608 YYStoken](past/2024/README.md#20240608-yystoken---business-logic-flaw)
 
 [20240606 SteamSwap](past/2024/README.md#20240606-steamswap---logic-flaw)
 
-[20240606 MineSTM](past/2024/README.md#20240606-MineSTM---business-logic-flaw)
+[20240606 MineSTM](past/2024/README.md#20240606-minestm---business-logic-flaw)
 
-[20240604 NCD](past/2024/README.md#20240604-NCD---business-logic-flaw)
+[20240604 NCD](past/2024/README.md#20240604-ncd---business-logic-flaw)
 
-[20240601 VeloCore](past/2024/README.md#20240601-VeloCore---lack-of-access-control)
+[20240601 VeloCore](past/2024/README.md#20240601-velocore---lack-of-access-control)
 
 [20240531 Liquiditytokens](past/2024/README.md#20240531-liquiditytokens---business-logic-flaw)
 
-[20240531 MixedSwapRouter](past/2024/README.md#20240531-MixedSwapRouter---arbitrary-call)
+[20240531 MixedSwapRouter](past/2024/README.md#20240531-mixedswaprouter---arbitrary-call)
 
-[20240529 SCROLL](past/2024/README.md#20240529-SCROLL---integer-underflow)
+[20240529 SCROLL](past/2024/README.md#20240529-scroll---integer-underflow)
 
 [20240529 MetaDragon](past/2024/README.md#20240529-metadragon---lack-of-access-control)
 
-[20240528 Tradeonorion](past/2024/README.md#20240528-Tradeonorion---business-logic-flaw)
+[20240528 Tradeonorion](past/2024/README.md#20240528-tradeonorion---business-logic-flaw)
 
-[20240528 EXcommunity](past/2024/README.md#20240528-EXcommunity---business-logic-flaw)
+[20240528 EXcommunity](past/2024/README.md#20240528-excommunity---business-logic-flaw)
 
 [20240527 RedKeysCoin](past/2024/README.md#20240527-redkeyscoin---weak-rng)
 
 [20240526 NORMIE](past/2024/README.md#20240526-normie---business-logic-flaw)
 
-[20240522 Burner](past/2024/README.md#20240522-Burner---sandwich-ack)
+[20240522 Burner](past/2024/README.md#20240522-burner---sandwich-ack)
 
 [20240516 TCH](past/2024/README.md#20240516-tch---signature-malleability-vulnerability)
 
@@ -827,7 +828,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240510 TSURU](past/2024/README.md#20240510-tsuru---insufficient-validation)
 
-[20240508 GPU](past/2024/README.md#20240508-GPU---self-transfer)
+[20240508 GPU](past/2024/README.md#20240508-gpu---self-transfer)
 
 [20240507 SATURN](past/2024/README.md#20240507-saturn---price-manipulation)
 
@@ -851,7 +852,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240419 HedgeyFinance](past/2024/README.md#20240419-hedgeyfinance---logic-flaw)
 
-[20240417 UnverifiedContr_0x00C409](past/2024/README.md#20240417-UnverifiedContr_0x00C409---unverified-external-call)
+[20240417 UnverifiedContr_0x00C409](past/2024/README.md#20240417-unverifiedcontr_0x00c409---unverified-external-call)
 
 [20240416 SATX](past/2024/README.md#20240416-satx---logic-flaw)
 
@@ -859,13 +860,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240415 GFA](past/2024/README.md#20240415-gfa---business-logic-flaw)
 
-[20240415 ChaingeFinance](past/2024/README.md#20240415-chaingeFinance---arbitrary-external-call)
+[20240415 ChaingeFinance](past/2024/README.md#20240415-chaingefinance---arbitrary-external-call)
 
 [20240414 Hackathon](past/2024/README.md#20240414-hackathon---business-logic-flaw)
 
 [20240412 FIL314](past/2024/README.md#20240412-fil314---insufficient-validation-and-price-manipulation)
 
-[20240412 SumerMoney](past/2024/README.md#20240412-sumermoney---Reentrancy)
+[20240412 SumerMoney](past/2024/README.md#20240412-sumermoney---reentrancy)
 
 [20240412 GROKD](past/2024/README.md#20240412-grokd---lack-of-access-control)
 
@@ -885,7 +886,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240329 ETHFIN](past/2024/README.md#20240329-ethfin---lack-of-access-control)
 
-[20240329 PrismaFi](past/2024/README.md#20240329-prismaFi---insufficient-validation)
+[20240329 PrismaFi](past/2024/README.md#20240329-prismafi---insufficient-validation)
 
 [20240328 LavaLending](past/2024/README.md#20240328-lavalending---business-logic-flaw)
 
@@ -905,7 +906,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240312 BBT](past/2024/README.md#20240312-bbt---business-logic-flaw)
 
-[20240311 Binemon](past/2024/README.md#20240311-Binemon---precission-loss)
+[20240311 Binemon](past/2024/README.md#20240311-binemon---precission-loss)
 
 [20240309 Juice](past/2024/README.md#20240309-juice---business-logic-flaw)
 
@@ -925,27 +926,27 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240223 Zoomer](past/2024/README.md#20240223-zoomer---business-logic-flaw)
 
-[20240223 CompoundUni](past/2024/README.md#20240223-CompoundUni---Oracle-bad-price)
+[20240223 CompoundUni](past/2024/README.md#20240223-compounduni---oracle-bad-price)
 
-[20240223 BlueberryProtocol](past/2024/README.md#20240223-BlueberryProtocol---logic-flaw)
+[20240223 BlueberryProtocol](past/2024/README.md#20240223-blueberryprotocol---logic-flaw)
 
-[20240222 SwarmMarkets](past/2024/README.md#20240222-SwarmMarkets---lack-of-validation)
+[20240222 SwarmMarkets](past/2024/README.md#20240222-swarmmarkets---lack-of-validation)
 
 [20240221 DeezNutz404](past/2024/README.md#20240221-deeznutz-404---lack-of-validation)
 
-[20240221 GAIN](past/2024/README.md#20240221-GAIN---bad-function-implementation)
+[20240221 GAIN](past/2024/README.md#20240221-gain---bad-function-implementation)
 
-[20240220 EGGX](past/2024/README.md#20240220-EGGX---reentrancy)
+[20240220 EGGX](past/2024/README.md#20240220-eggx---reentrancy)
 
-[20240219 RuggedArt](past/2024/README.md#20240219-RuggedArt---reentrancy)
+[20240219 RuggedArt](past/2024/README.md#20240219-ruggedart---reentrancy)
 
-[20240216 ParticleTrade](past/2024/README.md#20240216-ParticleTrade---lack-of-validation-data)
+[20240216 ParticleTrade](past/2024/README.md#20240216-particletrade---lack-of-validation-data)
 
-[20240215 DualPools](past/2024/README.md#20240215-DualPools---precision-truncation)
+[20240215 DualPools](past/2024/README.md#20240215-dualpools---precision-truncation)
 
-[20240215 Babyloogn](past/2024/README.md#20240215-Babyloogn---lack-of-validation)
+[20240215 Babyloogn](past/2024/README.md#20240215-babyloogn---lack-of-validation)
 
-[20240215 Miner](past/2024/README.md#20240215-Miner---lack-of-validation-dst-address)
+[20240215 Miner](past/2024/README.md#20240215-miner---lack-of-validation-dst-address)
 
 [20240213 MINER BSC](past/2024/README.md#20240213-miner---price-manipulation)
 
@@ -959,7 +960,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240202 ADC](past/2024/README.md#20240202-adc---incorrect-access-control)
 
-[20240201 AffineDeFi](past/2024/README.md#20240201-affinedefi---lack-of-validation-userData)
+[20240201 AffineDeFi](past/2024/README.md#20240201-affinedefi---lack-of-validation-userdata)
 
 [20240130 XSIJ](past/2024/README.md#20240130-xsij---business-logic-flaw)
 
@@ -979,11 +980,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20240117 SocketGateway](past/2024/README.md#20240112-socketgateway---lack-of-calldata-validation)
 
-[20240115 Shell_MEV_0xa898](past/2024/README.md#20240115-Shell_MEV_0xa898---lack-of-access-control)
+[20240115 Shell_MEV_0xa898](past/2024/README.md#20240115-shell_mev_0xa898---lack-of-access-control)
 
 [20240112 WiseLending](past/2024/README.md#20240112-wiselending---bad-healthfactor-check)
 
-[20240110 Freedom](past/2024/README.md#20240110-Freedom---lack-of-access-control)
+[20240110 Freedom](past/2024/README.md#20240110-freedom---lack-of-access-control)
 
 [20240110 LQDX Alert](past/2024/README.md#20240110-lqdx---unauthorized-transferfrom)
 
@@ -1023,7 +1024,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231216 NFTTrader](past/2023/README.md#20231216-nfttrader---reentrancy)
 
-[20231214 PHIL](past/2023/README.md#20231214-PHIL---business-logic-flaw)
+[20231214 PHIL](past/2023/README.md#20231214-phil---business-logic-flaw)
 
 [20231213 HYPR](past/2023/README.md#20231213-hypr---business-logic-flaw)
 
@@ -1031,7 +1032,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231209 BCT](past/2023/README.md#20231209-bct---price-manipulation)
 
-[20231207 HNet](past/2023/README.md#20231207-HNet---business-logic-flaw)
+[20231207 HNet](past/2023/README.md#20231207-hnet---business-logic-flaw)
 
 [20231206 TIME](past/2023/README.md#20231206-time---arbitrary-address-spoofing-attack)
 
@@ -1053,7 +1054,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231129 AIS](past/2023/README.md#20231129-ais---access-control)
 
-[20231128 FiberRouter](past/2023/README.md#20231128-FiberRouter---input-validation)
+[20231128 FiberRouter](past/2023/README.md#20231128-fiberrouter---input-validation)
 
 [20231125 MetaLend](past/2023/README.md#20231125-metalend---compoundv2-inflation-attack)
 
@@ -1073,7 +1074,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231115 LinkDAO](past/2023/README.md#20231115-linkdao---bad-k-value-verification)
 
-[20231114 OKC Project](past/2023/README.md#20231114-OKC-Project---Instant-Rewards-Unlocked)
+[20231114 OKC Project](past/2023/README.md#20231114-okc-project---instant-rewards-unlocked)
 
 [20231112 MEV_0x8c2d](past/2023/README.md#20231112-mevbot_0x8c2d---lack-of-access-control)
 
@@ -1103,11 +1104,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231101 OnyxProtocol](past/2023/README.md#20231101-onyxprotocol---precission-loss-vulnerability)
 
-[20231031 UniBotRouter](past/2023/README.md#20231031-UniBotRouter---arbitrary-external-call)
+[20231031 UniBotRouter](past/2023/README.md#20231031-unibotrouter---arbitrary-external-call)
 
 [20231030 LaEeb](past/2023/README.md#20231030-laeeb---lack-slippage-protection)
 
-[20231028 AstridProtocol](past/2023/README.md#20231028-AstridProtocol---business-logic-flaw)
+[20231028 AstridProtocol](past/2023/README.md#20231028-astridprotocol---business-logic-flaw)
 
 [20231024 MaestroRouter2](past/2023/README.md#20231024-maestrorouter2---arbitrary-external-call)
 
@@ -1135,11 +1136,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20231005 DePayRouter](past/2023/README.md#20231005-depayrouter---business-logic-flaw)
 
-[20230930 FireBirdPair](past/2023/README.md#20230930-FireBirdPair---lack-slippage-protection)
+[20230930 FireBirdPair](past/2023/README.md#20230930-firebirdpair---lack-slippage-protection)
 
 [20230929 DEXRouter](past/2023/README.md#20230929-dexrouter---arbitrary-external-call)
 
-[20230926 XSDWETHpool](past/2023/README.md#20230926-XSDWETHpool---reentrancy)
+[20230926 XSDWETHpool](past/2023/README.md#20230926-xsdwethpool---reentrancy)
 
 [20230924 KubSplit](past/2023/README.md#20230924-kubsplit---pool-manipulation)
 
@@ -1157,9 +1158,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230905 QuantumWN](past/2023/README.md#20230905-quantumwn---rebasing-logic-issue)
 
-[20230905 JumpFarm](past/2023/README.md#20230905-JumpFarm---rebasing-logic-issue)
+[20230905 JumpFarm](past/2023/README.md#20230905-jumpfarm---rebasing-logic-issue)
 
-[20230905 HeavensGate](past/2023/README.md#20230905-HeavensGate---rebasing-logic-issue)
+[20230905 HeavensGate](past/2023/README.md#20230905-heavensgate---rebasing-logic-issue)
 
 [20230905 FloorDAO](past/2023/README.md#20230905-floordao---rebasing-logic-issue)
 
@@ -1233,7 +1234,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230708 Civfund](past/2023/README.md#20230708-civfund---lack-of-access-control)
 
-[20230707 LUSD](past/2023/README.md#20230707-LUSD---price-manipulation-attack)
+[20230707 LUSD](past/2023/README.md#20230707-lusd---price-manipulation-attack)
 
 [20230704 BambooIA](past/2023/README.md#20230704-bambooia---price-manipulation-attack)
 
@@ -1273,7 +1274,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230612 Sturdy Finance](past/2023/README.md#20230612-sturdy-finance---read-only-reentrancy)
 
-[20230611 SellToken04](past/2023/README.md#20230611-sellToken04---Price-Manipulation)
+[20230611 SellToken04](past/2023/README.md#20230611-selltoken04---price-manipulation)
 
 [20230607 CompounderFinance](past/2023/README.md#20230607-compounderfinance---manipulation-of-funds-through-fluctuations-in-the-amount-of-exchangeable-assets)
 
@@ -1305,7 +1306,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230523 LFI](past/2023/README.md#20230523-lfi-token---business-logic-flaw)
 
-[20230514 landNFT](past/2023/README.md#20230514-landNFT---lack-of-permission-control)
+[20230514 landNFT](past/2023/README.md#20230514-landnft---lack-of-permission-control)
 
 [20230514 SellToken03](past/2023/README.md#20230514-selltoken03---unchecked-user-input)
 
@@ -1327,29 +1328,29 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230505 DEI](past/2023/README.md#20230505-dei---wrong-implemention)
 
-[20230503 NeverFall](past/2023/README.md#20230503-NeverFall---price-manipulation)
+[20230503 NeverFall](past/2023/README.md#20230503-neverfall---price-manipulation)
 
 [20230502 Level](past/2023/README.md#20230502-level---business-logic-flaw)
 
 [20230428 0vix](past/2023/README.md#20230428-0vix---flashloan-price-manipulation)
 
-[20230427 SiloFinance](past/2023/README.md#20230427-Silo-finance---Business-Logic-Flaw)
+[20230427 SiloFinance](past/2023/README.md#20230427-silo-finance---business-logic-flaw)
 
-[20230424 Axioma](past/2023/README.md#20230424-Axioma---business-logic-flaw)
+[20230424 Axioma](past/2023/README.md#20230424-axioma---business-logic-flaw)
 
-[20230419 OLIFE](past/2023/README.md#20230419-OLIFE---Reflection-token)
+[20230419 OLIFE](past/2023/README.md#20230419-olife---reflection-token)
 
 [20230416 Swapos V2](past/2023/README.md#20230416-swapos-v2---error-k-value-attack)
 
 [20230415 HundredFinance](past/2023/README.md#20230415-hundredfinance---donate-inflation-exchangerate--rounding-error)
 
-[20230413 yearnFinance](past/2023/README.md#20230413-yearnFinance---misconfiguration)
+[20230413 yearnFinance](past/2023/README.md#20230413-yearnfinance---misconfiguration)
 
-[20230412 MetaPoint](past/2023/README.md#20230412-metapoint---Unrestricted-Approval)
+[20230412 MetaPoint](past/2023/README.md#20230412-metapoint---unrestricted-approval)
 
 [20230411 Paribus](past/2023/README.md#20230411-paribus---reentrancy)
 
-[20230409 SushiSwap](past/2023/README.md#20230409-SushiSwap---Unchecked-User-Input)
+[20230409 SushiSwap](past/2023/README.md#20230409-sushiswap---unchecked-user-input)
 
 [20230405 Sentiment](past/2023/README.md#20230405-sentiment---read-only-reentrancy)
 
@@ -1401,7 +1402,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230203 Spherax USDs](past/2023/README.md#20230203---spherax-usds---balance-recalculation-bug)
 
-[20230202 BonqDAO](past/2023/README.md#20230202---BonqDAO---price-oracle-manipulation)
+[20230202 BonqDAO](past/2023/README.md#20230202---bonqdao---price-oracle-manipulation)
 
 [20230130 BEVO](past/2023/README.md#20230130---bevo---reflection-token)
 
@@ -1415,7 +1416,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20230118 UPS Token](past/2023/README.md#20230118---upstoken---business-logic-flaw)
 
-[20230117 OmniEstate](past/2023/README.md#20230117---OmniEstate---no-input-parameter-check)
+[20230117 OmniEstate](past/2023/README.md#20230117---omniestate---no-input-parameter-check)
 
 [20230116 MidasCapital](past/2023/README.md#20230116---midascapital---read-only-reentrancy)
 
@@ -1449,7 +1450,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20221211 Lodestar](past/2022/README.md#20221211---lodestar---flashloan-price-manipulation)
 
-[20221211 MEVbot_0x28d9](past/2022/README.md#20221211---MEVbot_0x28d9---insufficient-validation)
+[20221211 MEVbot_0x28d9](past/2022/README.md#20221211---mevbot_0x28d9---insufficient-validation)
 
 [20221210 MUMUG](past/2022/README.md#20221210---mumug---flashloan-price-manipulation)
 
@@ -1537,13 +1538,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20221009 Xave Finance](past/2022/README.md#20221009-xave-finance---malicious-proposal-mint--transfer-ownership)
 
-[20221006 RES-Token](past/2022/README.md#20221006-RES-Token---pair-manipulate)
+[20221006 RES-Token](past/2022/README.md#20221006-res-token---pair-manipulate)
 
 [20221002 Transit Swap](past/2022/README.md#20221002-transit-swap---incorrect-owner-address-validation)
 
 [20221001 BabySwap](past/2022/README.md#20221001-babyswap---parameter-access-control)
 
-[20221001 RL](past/2022/README.md#20221001-RL-Token---Incorrect-Reward-calculation)
+[20221001 RL](past/2022/README.md#20221001-rl-token---incorrect-reward-calculation)
 
 [20221001 Thunder Brawl](past/2022/README.md#20221001-thunder-brawl---reentrancy)
 
@@ -1551,19 +1552,19 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20220928 MEVBOT Badc0de](past/2022/README.md#20220928-MEVBOT---Badc0de)
 
-[20220923 RADT-DAO](past/2022/README.md#20220923-RADT-DAO---pair-manipulate)
+[20220923 RADT-DAO](past/2022/README.md#20220923-radt-dao---pair-manipulate)
 
 [20220913 MevBot Private TX](past/2022/README.md#20220913-mevbot-private-tx)
 
-[20220909 DPC](past/2022/README.md#20220909-dpc---Incorrect-Reward-calculation)
+[20220909 DPC](past/2022/README.md#20220909-dpc---incorrect-reward-calculation)
 
-[20220908 YYDS](past/2022/README.md#20220908-YYDS---pair-manipulate)
+[20220908 YYDS](past/2022/README.md#20220908-yyds---pair-manipulate)
 
 [20220908 NewFreeDAO](past/2022/README.md#20220908-newfreedao---flashloans-attack)
 
 [20220908 Ragnarok Online Invasion](past/2022/README.md#20220908-ragnarok-online-invasion---broken-access-control)
 
-[20220906 NXUSD](past/2022/README.md#20220906-NXUSD---flashloan-price-oracle-manipulation)
+[20220906 NXUSD](past/2022/README.md#20220906-nxusd---flashloan-price-oracle-manipulation)
 
 [20220905 ZoomproFinance](past/2022/README.md#20220905-zoomprofinance---flashloans--price-manipulation)
 
@@ -1621,7 +1622,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20220529 NOVO Protocol](past/2022/README.md#20220529-novo-protocol---flashloan--price-oracle-manipulation)
 
-[20220524 HackDao](past/2022/README.md#20220524-HackDao---Skim-token-balance)
+[20220524 HackDao](past/2022/README.md#20220524-hackdao---skim-token-balance)
 
 [20220517 ApeCoin](past/2022/README.md#20220517-apecoin-ape---flashloan)
 
@@ -1649,7 +1650,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20220409 GYMNetwork](past/2022/README.md#20220409-gymnetwork---flashloan--token-migrate-flaw)
 
-[20220329 Ronin Network](past/2022/README.md#20220329-ronin-network---Bridge)
+[20220329 Ronin Network](past/2022/README.md#20220329-ronin-network---bridge)
 
 [20220329 Redacted Cartel](past/2022/README.md#20220329-redacted-cartel---custom-approval-logic)
 
@@ -1661,7 +1662,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20220321 OneRing Finance](past/2022/README.md#20220321-onering-finance---flashloan--price-oracle-manipulation)
 
-[20220320 LI.FI](past/2022/README.md#20220320-LiFi---bridges)
+[20220320 LI.FI](past/2022/README.md#20220320-lifi---bridges)
 
 [20220320 Umbrella Network](past/2022/README.md#20220320-umbrella-network---underflow)
 
@@ -1683,7 +1684,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20220205 Meter](past/2022/README.md#20220205-Meter---bridge)
 
-[20220204 TecraSpace](past/2022/README.md#20220204-TecraSpace---Any-token-is-destroyed)
+[20220204 TecraSpace](past/2022/README.md#20220204-tecraspace---any-token-is-destroyed)
 
 [20220128 Qubit Finance](past/2022/README.md#20220128-qubit-finance---bridge-address0safetransferfrom-does-not-revert)
 
@@ -1712,7 +1713,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20210915 NowSwap Platform](past/2021/README.md#20210915-nowswap-platform)
 
-[20210912 ZABU Finance](past/2021/README.md#20210912-ZABU-Finance---Deflationary-token-uncompatible)
+[20210912 ZABU Finance](past/2021/README.md#20210912-zabu-finance---deflationary-token-uncompatible)
 
 [20210903 DAO Maker](past/2021/README.md#20210903-dao-maker---bad-access-controal)
 
@@ -1762,7 +1763,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20210305 Paid Network](past/2021/README.md#20210305-paid-network---private-key-compromised)
 
-[20210204 Yearn YDai](past/2021/README.md#20210204-yearn-ydai---Slippage-proection-absent)
+[20210204 Yearn YDai](past/2021/README.md#20210204-yearn-ydai---slippage-proection-absent)
 
 [20210125 Sushi Badger Digg](past/2021/README.md#20210125-sushi-badger-digg---sandwich-attack)
 
@@ -1777,7 +1778,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20200912 bzx](past/2021/README.md#20200912-bzx---incorrect-transfer)
 
-[20200804 Opyn Protocol](past/2021/README.md#20200804-opyn-protocol---msgValue-in-loop)
+[20200804 Opyn Protocol](past/2021/README.md#20200804-opyn-protocol---msgvalue-in-loop)
 
 [20200628 Balancer Protocol](past/2021/README.md#20200628-balancer-protocol---token-incompatible)
 
@@ -1819,6 +1820,14 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260905 DHC - repeatable claim due to missing claimed-flag
+### Lost: ~$71.8K USDT
+```sh
+forge test --contracts src/test/2026-09/DHC_exp.sol -vvv
+```
+#### Contract
+[DHC_exp.sol](src/test/2026-09/DHC_exp.sol)
+
 ### 20260903 NotionalFinance - ERC1155 fCash mint overflow drains escrow
 ### Lost: ~69,257.37 DAI + ~1,658,524.86 USDC (~$1.73M)
 ```sh
@@ -2225,7 +2234,7 @@ https://x.com/TenArmorAlert/status/2069596801725002121
 forge test --contracts src/test/2026-06/AztecEscapeHatch_exp2.sol -vvv
 ```
 #### Contract
-[AztecEscapeHatch_exp.sol](src/test/2026-06/AztecEscapeHatch_exp2.sol)
+[AztecEscapeHatch_exp2.sol](src/test/2026-06/AztecEscapeHatch_exp2.sol)
 
 ### Link reference
 
@@ -2577,7 +2586,7 @@ forge test --contracts src/test/2026-05/SKP_exp2.sol -vvv
 ```
 
 #### Contract
-[SKP_exp.sol](src/test/2026-05/SKP_exp2.sol)
+[SKP_exp2.sol](src/test/2026-05/SKP_exp2.sol)
 
 ### Link reference
 - https://bscscan.com/tx/0xbc01ea37bd2ff8f6aa6afcfbe0406114ff27a01e9aa56102bfa4ad8a0c2f25ee
