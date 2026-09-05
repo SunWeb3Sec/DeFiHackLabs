@@ -1209,7 +1209,7 @@ https://t.me/defimon_alerts/1301
 
 ---
 
-### 20250617 MetaPool - Access Control
+### 20250617 MetaPool - Infinite Mint via unvalidated ERC4626 mint
 
 ### Lost: 25k USD
 
