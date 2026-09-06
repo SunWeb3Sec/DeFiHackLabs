@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-858 incidents included.
+835 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,44 +54,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20260903 NotionalFinance](#20260903-notionalfinance---erc1155-fcash-mint-overflow-drains-escrow)
 [20260901 ReflexerGEB](#20260901-reflexergeb---shared-gebproxyactions-library-registered-as-safe-owner)
-[20260831 AnkrMORE](#20260831-ankrmore---certificate-over-mint-via-bond-ratio-staking-drained-through-more-e-mode)
-[20260830 TectonicTONIC](#20260830-tectonictonic---mango-markets-style-collateral-price-manipulation-of-tonic)
-[20260828 AjnaFinance](#20260828-ajnafinance---liquidation-accounting-manipulation-via-self-controlled-auction)
-[20260827 MoonwellMAMO](#20260827-moonwellmamo---chainlink-oracle-source-price-manipulation-of-mamo-collateral)
-[20260827 CashCowCoin](#20260827-cashcowcoin---privileged-burn--sync-drains-pair-reserve-via-iterative-sells)
-[20260825 EnjinCryptoItems](#20260825-enjincryptoitems---unprotected-registry-reinitialization---manager-takeover)
-[20260825 FHToken](#20260825-fhtoken---sell-tax-reserve-mismatch-via-premature-sync)
-[20260823 TermFinance](#20260823-termfinance---termmax-meta-vault-flashloan-logic-exploit)
 [20260822 SandboxOFT](#20260822-sandboxoft---layerzero-delegate-hijack-via-approveandcall)
-[20260820 FlashstakeV2](#20260820-flashstakev2---mispriced-reward-pool-instant-upfront-reward-extraction)
-[20260819 AllbridgeCCTP](#20260819-allbridgecctp---phantom-cctp-deposit-via-unverified-message-attestation)
-[20260815 FoxLpBondsPool](#20260815-foxlpbondspool---stale-_stakeamount-from-manipulable-amm-spot-quote)
-
 [20260809 USM](#20260809-usm---defund-price-split-invariance-rounding-exploit)
-
-[20260807 Atomic](#20260807-atomic---flash-loan-price-oracle-manipulation-of-lending-collateral-valuation)
-
-[20260806 PantherBase](#20260806-pantherbase---realityeth-governance-timeout-exploit-pre-production-base-deployment-no-user-funds)
-
-[20260805 StrongBlock](#20260805-strongblock---governance-takeover-of-abandoned-governor)
-
-[20260802 MOKE](#20260802-moke---unprotected-claim-drained-via-eip-7702-self-delegation)
-
-[20260802 LpdFi (LOOPSDAO)](#20260802-lpdfi-loopsdao---spot-price-manipulation--issue-boundary-interest-exploit)
-
-[20260730 UnprotectedArbBot](#20260730-unprotectedarbbot---unprotected-arbitrary-call-forwarder-drained-via-pre-granted-weth-allowance)
-
-[20260730 ExchangeIssuance (Index Coop)](#20260730-exchangeissuance-index-coop---toctou-positionmultiplier-inflation-via-malicious-pre-issue-hook)
-
-[20260726 LULA](#20260726-lula---reward-recycle-deflation-manipulation-via-flash-loan)
-
-[20260725 Pro Token](#20260725-pro-token---reward-on-transfer-self-dealing-winner-drain)
-
-[20260719 RWT Token](#20260719-rwt-token---deflationary-burn-from-pair-price-manipulation)
-
-[20260716 Perpetual Protocol](#20260716-perpetual-protocol---access-control--missing-permission-check)
 
 [20260706 SummerFi](#20260706-summerfi---fleetcommander-nav-inflation-via-depegged-xusd)
 
@@ -1799,13 +1764,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
-### 20260903 NotionalFinance - ERC1155 fCash mint overflow drains escrow
-### Lost: ~69,257.37 DAI + ~1,658,524.86 USDC (~$1.73M)
-```sh
-forge test --contracts src/test/2026-09/NotionalFinance_exp.sol -vvv
-```
-#### Contract
-[NotionalFinance_exp.sol](src/test/2026-09/NotionalFinance_exp.sol)
 ### 20260901 ReflexerGEB - Shared GebProxyActions library registered as SAFE owner
 ### Lost: ~5.9436 ETH (~$14K, drained from 4 SAFEs in one tx: IDs 3, 5, 8, 18)
 ```sh
@@ -1813,62 +1771,6 @@ forge test --contracts src/test/2026-08/ReflexerGEB_exp.sol -vvv
 ```
 #### Contract
 [ReflexerGEB_exp.sol](src/test/2026-08/ReflexerGEB_exp.sol)
-### 20260831 AnkrMORE - Certificate over-mint via bond-ratio staking drained through MORE E-mode
-### Lost: ~15,488,124 WFLOW drained from the MORE Markets reserve (~$410K); attack contract kept ~9,819,641 FLOW
-```sh
-forge test --contracts src/test/2026-08/AnkrMORE_exp.sol --evm-version cancun -vvv
-```
-#### Contract
-[AnkrMORE_exp.sol](src/test/2026-08/AnkrMORE_exp.sol)
-### 20260830 TectonicTONIC - Mango Markets-style collateral price manipulation of TONIC
-### Lost: ~$66-75M reported, every liquid Tectonic market drained in one tx (USDC $55.24M, USDT $45.65M, WBTC 98, CDCBTC 32.9, WETH 1895, CDCETH 379.7, XRP 270.6K, LCRO 26.2M) — Cronos EVM chain halted in response
-```sh
-forge test --contracts src/test/2026-08/TectonicTONIC_exp.sol --evm-version cancun -vvv
-```
-#### Contract
-[TectonicTONIC_exp.sol](src/test/2026-08/TectonicTONIC_exp.sol)
-### 20260828 AjnaFinance - Liquidation accounting manipulation via self-controlled auction
-### Lost: ~$775K across 7 pools total; this PoC reproduces the cbETH pool instance (~43.75 cbETH + ~1.5 WETH, ~$124.8K)
-```sh
-forge test --contracts src/test/2026-08/AjnaFinance_exp.sol -vvv
-```
-#### Contract
-[AjnaFinance_exp.sol](src/test/2026-08/AjnaFinance_exp.sol)
-### 20260827 MoonwellMAMO - Chainlink oracle-source price manipulation of MAMO collateral
-### Lost: ~71.36 cbBTC total across 12 repeated borrows (~$5.7M); this PoC reproduces the largest single instance, ~14.34 cbBTC (~$1.15M)
-```sh
-forge test --contracts src/test/2026-08/MoonwellMAMO_exp.sol --evm-version cancun -vvv
-```
-#### Contract
-[MoonwellMAMO_exp.sol](src/test/2026-08/MoonwellMAMO_exp.sol)
-### 20260827 CashCowCoin - Privileged burn + sync() drains pair reserve via iterative sells
-### Lost: ~165.47 WBNB (~$117.4K, drained across 80 iterative sell cycles in one tx)
-```sh
-forge test --contracts src/test/2026-08/CashCowCoin_exp.sol --evm-version cancun -vvv
-```
-#### Contract
-[CashCowCoin_exp.sol](src/test/2026-08/CashCowCoin_exp.sol)
-### 20260825 EnjinCryptoItems - Unprotected registry reinitialization -> manager takeover
-### Lost: ~5.24M ENJ (attacker +5,231,353 ENJ, reserve -5,238,353 ENJ)
-```sh
-forge test --contracts src/test/2026-08/EnjinCryptoItems_exp.sol -vvv
-```
-#### Contract
-[EnjinCryptoItems_exp.sol](src/test/2026-08/EnjinCryptoItems_exp.sol)
-### 20260825 FHToken - Sell-tax reserve mismatch via premature sync()
-### Lost: ~19,999.02 USDT (~$20K)
-```sh
-forge test --contracts src/test/2026-08/FHToken_exp.sol -vvv
-```
-#### Contract
-[FHToken_exp.sol](src/test/2026-08/FHToken_exp.sol)
-### 20260823 TermFinance - TermMax meta-vault flashloan logic exploit
-### Lost: ~2,841.74 WETH + ~1,679,639 USDC (~$8.5M combined, two independent flashloan-funded drains)
-```sh
-forge test --contracts src/test/2026-08/TermFinance_exp.sol -vvv
-```
-#### Contract
-[TermFinance_exp.sol](src/test/2026-08/TermFinance_exp.sol)
 ### 20260822 SandboxOFT - LayerZero delegate hijack via approveAndCall
 ### Lost: 10,000,000 SAND minted unbacked (~$517,170 face value, one of 400+ repeated txs in an ongoing campaign)
 ```sh
@@ -1876,27 +1778,6 @@ forge test --contracts src/test/2026-08/SandboxOFT_exp.sol -vvv
 ```
 #### Contract
 [SandboxOFT_exp.sol](src/test/2026-08/SandboxOFT_exp.sol)
-### 20260820 FlashstakeV2 - Mispriced reward pool, instant upfront reward extraction
-### Lost: ~0.5453 WETH drained (28.25% of reward pool reserve); attacker net profit ~0.4285 ETH
-```sh
-forge test --contracts src/test/2026-08/FlashstakeV2_exp.sol --evm-version cancun -vvv
-```
-#### Contract
-[FlashstakeV2_exp.sol](src/test/2026-08/FlashstakeV2_exp.sol)
-### 20260819 AllbridgeCCTP - Phantom CCTP deposit via unverified message attestation
-### Lost: ~190,155.98 USDC drained (net attacker profit ~189,751.55 USDC after flash-loan premium; router retained its 1,000 USDC fee)
-```sh
-forge test --contracts src/test/2026-08/AllbridgeCCTP_exp.sol --evm-version cancun -vvv
-```
-#### Contract
-[AllbridgeCCTP_exp.sol](src/test/2026-08/AllbridgeCCTP_exp.sol)
-### 20260815 FoxLpBondsPool - Stale _stakeAmount from manipulable AMM spot quote
-### Lost: ~112,976.12 USDC (~$118.7K reported)
-```sh
-forge test --contracts src/test/2026-08/FoxLpBondsPool_exp.sol --evm-version cancun -vvv
-```
-#### Contract
-[FoxLpBondsPool_exp.sol](src/test/2026-08/FoxLpBondsPool_exp.sol)
 ### 20260809 USM - defund() price split-invariance rounding exploit
 ### Lost: ~70.83 ETH
 ```sh
@@ -1904,84 +1785,6 @@ forge test --contracts src/test/2026-08/USM_exp.sol -vvv
 ```
 #### Contract
 [USM_exp.sol](src/test/2026-08/USM_exp.sol)
-### 20260807 Atomic - Flash-loan price oracle manipulation of lending collateral valuation
-### Lost: ~29,984.27 USDC
-```sh
-forge test --contracts src/test/2026-08/Atomic_exp.sol --evm-version cancun -vvv
-```
-#### Contract
-[Atomic_exp.sol](src/test/2026-08/Atomic_exp.sol)
-### 20260806 PantherBase - Reality.eth governance timeout exploit (pre-production Base deployment, no user funds)
-### Lost: 5,124,773.63 ZKP + 0.1233 ETH (Panther Base pre-launch deployment, not live user funds)
-```sh
-forge test --contracts src/test/2026-08/PantherBase_exp.sol -vvv
-```
-#### Contract
-[PantherBase_exp.sol](src/test/2026-08/PantherBase_exp.sol)
-### 20260805 StrongBlock - Governance takeover of abandoned Governor
-### Lost: 32,695.76 STRONG + 383,447.17 STRNGR (~$72K)
-```sh
-forge test --contracts src/test/2026-08/StrongBlock_exp.sol -vvv
-```
-#### Contract
-[StrongBlock_exp.sol](src/test/2026-08/StrongBlock_exp.sol)
-### 20260802 MOKE - Unprotected claim() drained via EIP-7702 self-delegation
-### Lost: ~1546.44 BNB (~$907.7K)
-```sh
-forge test --contracts src/test/2026-07/MOKE_exp.sol --evm-version prague -vvv
-```
-#### Contract
-[MOKE_exp.sol](src/test/2026-07/MOKE_exp.sol)
-### 20260802 LpdFi (LOOPSDAO) - Spot-price manipulation + issue-boundary interest exploit
-### Lost: ~573,034.79 USDC net attacker gain (LpdFi paid out ~700,535 USDC + 4,059,427 LPD, burned 1,678,049 Cake-LP)
-```sh
-forge test --contracts src/test/2026-08/LpdFi_exp.sol --evm-version cancun -vvv
-```
-#### Contract
-[LpdFi_exp.sol](src/test/2026-08/LpdFi_exp.sol)
-### 20260730 UnprotectedArbBot - Unprotected arbitrary-call forwarder drained via pre-granted WETH allowance
-### Lost: ~16.623 WETH (~$31.7K)
-```sh
-forge test --contracts src/test/2026-07/UnprotectedArbBot_exp.sol -vvv
-```
-#### Contract
-[UnprotectedArbBot_exp.sol](src/test/2026-07/UnprotectedArbBot_exp.sol)
-
-### 20260730 ExchangeIssuance (Index Coop) - TOCTOU positionMultiplier inflation via malicious pre-issue hook
-### Lost: ~9.6K USD (~$8,174 recovered value on-chain)
-```sh
-forge test --contracts ./src/test/2026-07/ExchangeIssuance_exp.sol -vvv
-```
-#### Contract
-[ExchangeIssuance_exp.sol](src/test/2026-07/ExchangeIssuance_exp.sol)
-### 20260726 LULA - Reward recycle deflation manipulation via flash loan
-### Lost: ~578K USDT
-```sh
-forge test --contracts ./src/test/2026-07/LULA_exp.sol -vvv --evm-version cancun
-```
-#### Contract
-[LULA_exp.sol](src/test/2026-07/LULA_exp.sol)
-### 20260725 Pro Token - Reward-on-transfer self-dealing winner drain
-### Lost: ~605K USDT (single tx; ~$8.2M cumulative across ~13 txs)
-```sh
-forge test --contracts ./src/test/2026-07/ProToken_exp.sol -vvv
-```
-#### Contract
-[ProToken_exp.sol](src/test/2026-07/ProToken_exp.sol)
-### 20260719 RWT Token - Deflationary burn-from-pair price manipulation
-### Lost: ~118,000 USDT
-```sh
-forge test --contracts ./src/test/2026-07/RWT_exp.sol -vvv
-```
-#### Contract
-[RWT_exp.sol](src/test/2026-07/RWT_exp.sol)
-### 20260716 Perpetual Protocol - Access Control / Missing Permission Check
-### Lost: ~3,062 USDC
-```sh
-forge test --contracts ./src/test/2026-07/PerpetualProtocol_exp.sol -vvv
-```
-#### Contract
-[PerpetualProtocol_exp.sol](src/test/2026-07/PerpetualProtocol_exp.sol)
 ### 20260706 SummerFi - FleetCommander NAV Inflation via Depegged xUSD
 ### Lost: ~$6M (DAI + LVUSDC shares)
 ```sh
