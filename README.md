@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260907 RouterDrain - permissionless swap entry lets a fake V3 pool abuse router allowances](#20260907-routerdrain---permissionless-swap-entry-lets-a-fake-v3-pool-abuse-router-allowances)
+
 [20260907 CozyFinance - unverified UMA Optimistic Oracle trigger enables unbacked protection-token redemption](#20260907-cozyfinance---unverified-uma-optimistic-oracle-trigger-enables-unbacked-protection-token-redemption)
 
 [20260905 DHC - repeatable claim due to missing claimed-flag](#20260905-dhc---repeatable-claim-due-to-missing-claimed-flag)
@@ -1778,6 +1780,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260907 RouterDrain - permissionless swap entry lets a fake V3 pool abuse router allowances
+### Lost: ~62.28 WBNB across 29 victims (3 reconstructed here: OCEAN, Kandura, SATURN)
+```sh
+forge test --contracts src/test/2026-09/RouterDrain_exp.sol -vvv
+```
+#### Contract
+[RouterDrain_exp.sol](src/test/2026-09/RouterDrain_exp.sol)
 ### 20260907 CozyFinance - unverified UMA Optimistic Oracle trigger enables unbacked protection-token redemption
 ### Lost: ~160,776 USDC.e (~$160K)
 ```sh
