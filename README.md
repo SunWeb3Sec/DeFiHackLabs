@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-837 incidents included.
+838 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -57,6 +57,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260905 DHC - repeatable claim due to missing claimed-flag](#20260905-dhc---repeatable-claim-due-to-missing-claimed-flag)
 
 [20260905 Reddio - cross-share-class balance double-count via permissionless registerErc20](#20260905-reddio---cross-share-class-balance-double-count-via-permissionless-registererc20)
+
+[20260905 SecuredFi - same-block self-trade manipulates getMarketUnitPrice to fabricate collateral](#20260905-securedfi---same-block-self-trade-manipulates-getmarketunitprice-to-fabricate-collateral)
 
 [20260901 ReflexerGEB](#20260901-reflexergeb---shared-gebproxyactions-library-registered-as-safe-owner)
 
@@ -1785,6 +1787,13 @@ forge test --contracts src/test/2026-09/Reddio_exp.sol -vvv
 ```
 #### Contract
 [Reddio_exp.sol](src/test/2026-09/Reddio_exp.sol)
+### 20260905 SecuredFi - same-block self-trade manipulates getMarketUnitPrice to fabricate collateral
+### Lost: ~0.9 WBTC (~$72K single-drain; ~$104K across all actors exploiting the same public bug)
+```sh
+forge test --contracts src/test/2026-09/SecuredFi_exp.sol -vvv
+```
+#### Contract
+[SecuredFi_exp.sol](src/test/2026-09/SecuredFi_exp.sol)
 ### 20260901 ReflexerGEB - Shared GebProxyActions library registered as SAFE owner
 ### Lost: ~5.9436 ETH (~$14K, drained from 4 SAFEs in one tx: IDs 3, 5, 8, 18)
 ```sh
