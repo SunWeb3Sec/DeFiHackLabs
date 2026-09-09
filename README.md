@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-842 incidents included.
+843 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -71,6 +71,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260831 FloatProtocol - Uniswap V3 spot price manipulation of Hypervisor LP shares](#20260831-floatprotocol---uniswap-v3-spot-price-manipulation-of-hypervisor-lp-shares)
 
 [20260822 SandboxOFT](#20260822-sandboxoft---layerzero-delegate-hijack-via-approveandcall)
+
+[20260803 AIC - pair skim / reserve-mismatch exploit, flash-swap leveraged](#20260803-aic---pair-skim--reserve-mismatch-exploit-flash-swap-leveraged)
 
 [20260809 USM](#20260809-usm---defund-price-split-invariance-rounding-exploit)
 
@@ -1844,6 +1846,13 @@ forge test --contracts src/test/2026-08/SandboxOFT_exp.sol -vvv
 ```
 #### Contract
 [SandboxOFT_exp.sol](src/test/2026-08/SandboxOFT_exp.sol)
+### 20260803 AIC - pair skim / reserve-mismatch exploit, flash-swap leveraged
+### Lost: ~32.36 BNB (~$21.5K)
+```sh
+forge test --contracts src/test/2026-08/AIC_exp.sol -vvv
+```
+#### Contract
+[AIC_exp.sol](src/test/2026-08/AIC_exp.sol)
 ### 20260809 USM - defund() price split-invariance rounding exploit
 ### Lost: ~70.83 ETH
 ```sh
