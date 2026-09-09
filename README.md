@@ -61,6 +61,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260905 Reddio - cross-share-class balance double-count via permissionless registerErc20](#20260905-reddio---cross-share-class-balance-double-count-via-permissionless-registererc20)
 
 [20260905 SecuredFi - same-block self-trade manipulates getMarketUnitPrice to fabricate collateral](#20260905-securedfi---same-block-self-trade-manipulates-getmarketunitprice-to-fabricate-collateral)
+
 [20260903 NotionalFinance - ERC1155 fCash mint overflow drains escrow](#20260903-notionalfinance---erc1155-fcash-mint-overflow-drains-escrow)
 
 [20260901 ReflexerGEB](#20260901-reflexergeb---shared-gebproxyactions-library-registered-as-safe-owner)
