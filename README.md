@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-841 incidents included.
+843 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,11 +54,15 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260907 RouterDrain - permissionless swap entry lets a fake V3 pool abuse router allowances](#20260907-routerdrain---permissionless-swap-entry-lets-a-fake-v3-pool-abuse-router-allowances)
+
 [20260907 CozyFinance - unverified UMA Optimistic Oracle trigger enables unbacked protection-token redemption](#20260907-cozyfinance---unverified-uma-optimistic-oracle-trigger-enables-unbacked-protection-token-redemption)
 
 [20260905 DHC - repeatable claim due to missing claimed-flag](#20260905-dhc---repeatable-claim-due-to-missing-claimed-flag)
 
 [20260905 Reddio - cross-share-class balance double-count via permissionless registerErc20](#20260905-reddio---cross-share-class-balance-double-count-via-permissionless-registererc20)
+
+[20260905 SecuredFi - same-block self-trade manipulates getMarketUnitPrice to fabricate collateral](#20260905-securedfi---same-block-self-trade-manipulates-getmarketunitprice-to-fabricate-collateral)
 
 [20260903 NotionalFinance - ERC1155 fCash mint overflow drains escrow](#20260903-notionalfinance---erc1155-fcash-mint-overflow-drains-escrow)
 
@@ -1778,6 +1782,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260907 RouterDrain - permissionless swap entry lets a fake V3 pool abuse router allowances
+### Lost: ~62.28 WBNB across 29 victims (3 reconstructed here: OCEAN, Kandura, SATURN)
+```sh
+forge test --contracts src/test/2026-09/RouterDrain_exp.sol -vvv
+```
+#### Contract
+[RouterDrain_exp.sol](src/test/2026-09/RouterDrain_exp.sol)
 ### 20260907 CozyFinance - unverified UMA Optimistic Oracle trigger enables unbacked protection-token redemption
 ### Lost: ~160,776 USDC.e (~$160K)
 ```sh
@@ -1800,6 +1811,13 @@ forge test --contracts src/test/2026-09/Reddio_exp.sol -vvv
 ```
 #### Contract
 [Reddio_exp.sol](src/test/2026-09/Reddio_exp.sol)
+### 20260905 SecuredFi - same-block self-trade manipulates getMarketUnitPrice to fabricate collateral
+### Lost: ~0.9 WBTC (~$72K single-drain; ~$104K across all actors exploiting the same public bug)
+```sh
+forge test --contracts src/test/2026-09/SecuredFi_exp.sol -vvv
+```
+#### Contract
+[SecuredFi_exp.sol](src/test/2026-09/SecuredFi_exp.sol)
 ### 20260903 NotionalFinance - ERC1155 fCash mint overflow drains escrow
 ### Lost: ~69,257.37 DAI + ~1,658,524.86 USDC (~$1.73M)
 ```sh
