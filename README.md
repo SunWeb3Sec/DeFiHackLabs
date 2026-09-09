@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-842 incidents included.
+843 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -69,6 +69,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260901 ReflexerGEB](#20260901-reflexergeb---shared-gebproxyactions-library-registered-as-safe-owner)
 
 [20260831 FloatProtocol - Uniswap V3 spot price manipulation of Hypervisor LP shares](#20260831-floatprotocol---uniswap-v3-spot-price-manipulation-of-hypervisor-lp-shares)
+
+[20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn](#20260823-arrakisguni---uniswap-v3-spot-price-manipulation-of-vault-mintburn)
 
 [20260822 SandboxOFT](#20260822-sandboxoft---layerzero-delegate-hijack-via-approveandcall)
 
@@ -1837,6 +1839,13 @@ forge test --contracts src/test/2026-08/FloatProtocol_exp.sol -vvv
 ```
 #### Contract
 [FloatProtocol_exp.sol](src/test/2026-08/FloatProtocol_exp.sol)
+### 20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn
+### Lost: ~2.9414 ETH net attacker surplus (Arrakis V1 / G-UNI ENS-WETH vault)
+```sh
+forge test --contracts src/test/2026-08/ArrakisGUNI_exp.sol -vvv
+```
+#### Contract
+[ArrakisGUNI_exp.sol](src/test/2026-08/ArrakisGUNI_exp.sol)
 ### 20260822 SandboxOFT - LayerZero delegate hijack via approveAndCall
 ### Lost: 10,000,000 SAND minted unbacked (~$517,170 face value, one of 400+ repeated txs in an ongoing campaign)
 ```sh
