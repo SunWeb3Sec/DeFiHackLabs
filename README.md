@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-843 incidents included.
+848 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260909 EnsoFinance - short-window Uniswap V3 TWAP oracle enables ~9x overvalued strategy deposit](#20260909-ensofinance---short-window-uniswap-v3-twap-oracle-enables-9x-overvalued-strategy-deposit)
+
+[20260908 OrderFactory - missing access control on createOrderForBuyer drains buyer accounts](#20260908-orderfactory---missing-access-control-on-createorderforbuyer-drains-buyer-accounts)
+
 [20260907 RouterDrain - permissionless swap entry lets a fake V3 pool abuse router allowances](#20260907-routerdrain---permissionless-swap-entry-lets-a-fake-v3-pool-abuse-router-allowances)
 
 [20260907 CozyFinance - unverified UMA Optimistic Oracle trigger enables unbacked protection-token redemption](#20260907-cozyfinance---unverified-uma-optimistic-oracle-trigger-enables-unbacked-protection-token-redemption)
@@ -70,11 +74,17 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260831 FloatProtocol - Uniswap V3 spot price manipulation of Hypervisor LP shares](#20260831-floatprotocol---uniswap-v3-spot-price-manipulation-of-hypervisor-lp-shares)
 
+[20260831 BalancerV1BPool - joinswapPoolAmountOut rounding drain across 5 pools](#20260831-balancerv1bpool---joinswappoolamountout-rounding-drain-across-5-pools)
+
+[20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn](#20260823-arrakisguni---uniswap-v3-spot-price-manipulation-of-vault-mintburn)
+
 [20260822 SandboxOFT](#20260822-sandboxoft---layerzero-delegate-hijack-via-approveandcall)
+
+[20260809 USM](#20260809-usm---defund-price-split-invariance-rounding-exploit)
 
 [20260806 UnistreetLaunchpad - arbitrary call injection via unvalidated launch forwarding](#20260806-unistreetlaunchpad---arbitrary-call-injection-via-unvalidated-launch-forwarding)
 
-[20260809 USM](#20260809-usm---defund-price-split-invariance-rounding-exploit)
+[20260803 AIC - pair skim / reserve-mismatch exploit, flash-swap leveraged](#20260803-aic---pair-skim--reserve-mismatch-exploit-flash-swap-leveraged)
 
 [20260706 SummerFi](#20260706-summerfi---fleetcommander-nav-inflation-via-depegged-xusd)
 
@@ -1782,6 +1792,20 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260909 EnsoFinance - short-window Uniswap V3 TWAP oracle enables ~9x overvalued strategy deposit
+### Lost: ~5.6 ETH (5.277 ETH realized in this PoC after slippage selling looted UNI/AAVE/MKR back to WETH)
+```sh
+forge test --contracts src/test/2026-09/EnsoFinance_exp.sol -vvv
+```
+#### Contract
+[EnsoFinance_exp.sol](src/test/2026-09/EnsoFinance_exp.sol)
+### 20260908 OrderFactory - missing access control on createOrderForBuyer drains buyer accounts
+### Lost: ~20.247 ETH this tx (5 buyers drained; reported incident total ~24.7 ETH)
+```sh
+forge test --contracts src/test/2026-09/OrderFactory_exp.sol -vvv
+```
+#### Contract
+[OrderFactory_exp.sol](src/test/2026-09/OrderFactory_exp.sol)
 ### 20260907 RouterDrain - permissionless swap entry lets a fake V3 pool abuse router allowances
 ### Lost: ~62.28 WBNB across 29 victims (3 reconstructed here: OCEAN, Kandura, SATURN)
 ```sh
@@ -1839,6 +1863,20 @@ forge test --contracts src/test/2026-08/FloatProtocol_exp.sol -vvv
 ```
 #### Contract
 [FloatProtocol_exp.sol](src/test/2026-08/FloatProtocol_exp.sol)
+### 20260831 BalancerV1BPool - joinswapPoolAmountOut rounding drain across 5 pools
+### Lost: ~$110,839 for this DPI/USDC/WETH/WBTC pool (~$234K aggregate across all 5 vulnerable pools)
+```sh
+forge test --contracts src/test/2026-08/BalancerV1BPool_exp.sol -vvv
+```
+#### Contract
+[BalancerV1BPool_exp.sol](src/test/2026-08/BalancerV1BPool_exp.sol)
+### 20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn
+### Lost: ~2.9414 ETH net attacker surplus (Arrakis V1 / G-UNI ENS-WETH vault)
+```sh
+forge test --contracts src/test/2026-08/ArrakisGUNI_exp.sol -vvv
+```
+#### Contract
+[ArrakisGUNI_exp.sol](src/test/2026-08/ArrakisGUNI_exp.sol)
 ### 20260822 SandboxOFT - LayerZero delegate hijack via approveAndCall
 ### Lost: 10,000,000 SAND minted unbacked (~$517,170 face value, one of 400+ repeated txs in an ongoing campaign)
 ```sh
@@ -1846,13 +1884,6 @@ forge test --contracts src/test/2026-08/SandboxOFT_exp.sol -vvv
 ```
 #### Contract
 [SandboxOFT_exp.sol](src/test/2026-08/SandboxOFT_exp.sol)
-### 20260806 UnistreetLaunchpad - arbitrary call injection via unvalidated launch forwarding
-### Lost: ~17,743.91 USDC + ~0.0072 WETH (~$17.75K)
-```sh
-forge test --contracts src/test/2026-08/UnistreetLaunchpad_exp.sol -vvv
-```
-#### Contract
-[UnistreetLaunchpad_exp.sol](src/test/2026-08/UnistreetLaunchpad_exp.sol)
 ### 20260809 USM - defund() price split-invariance rounding exploit
 ### Lost: ~70.83 ETH
 ```sh
@@ -1860,6 +1891,20 @@ forge test --contracts src/test/2026-08/USM_exp.sol -vvv
 ```
 #### Contract
 [USM_exp.sol](src/test/2026-08/USM_exp.sol)
+### 20260806 UnistreetLaunchpad - arbitrary call injection via unvalidated launch forwarding
+### Lost: ~17,743.91 USDC + ~0.0072 WETH (~$17.75K)
+```sh
+forge test --contracts src/test/2026-08/UnistreetLaunchpad_exp.sol -vvv
+```
+#### Contract
+[UnistreetLaunchpad_exp.sol](src/test/2026-08/UnistreetLaunchpad_exp.sol)
+### 20260803 AIC - pair skim / reserve-mismatch exploit, flash-swap leveraged
+### Lost: ~32.36 BNB (~$21.5K)
+```sh
+forge test --contracts src/test/2026-08/AIC_exp.sol -vvv
+```
+#### Contract
+[AIC_exp.sol](src/test/2026-08/AIC_exp.sol)
 ### 20260706 SummerFi - FleetCommander NAV Inflation via Depegged xUSD
 ### Lost: ~$6M (DAI + LVUSDC shares)
 ```sh
