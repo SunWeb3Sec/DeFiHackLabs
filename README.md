@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-843 incidents included.
+845 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260908 OrderFactory - missing access control on createOrderForBuyer drains buyer accounts](#20260908-orderfactory---missing-access-control-on-createorderforbuyer-drains-buyer-accounts)
+
 [20260907 RouterDrain - permissionless swap entry lets a fake V3 pool abuse router allowances](#20260907-routerdrain---permissionless-swap-entry-lets-a-fake-v3-pool-abuse-router-allowances)
 
 [20260907 CozyFinance - unverified UMA Optimistic Oracle trigger enables unbacked protection-token redemption](#20260907-cozyfinance---unverified-uma-optimistic-oracle-trigger-enables-unbacked-protection-token-redemption)
@@ -69,6 +71,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260901 ReflexerGEB](#20260901-reflexergeb---shared-gebproxyactions-library-registered-as-safe-owner)
 
 [20260831 FloatProtocol - Uniswap V3 spot price manipulation of Hypervisor LP shares](#20260831-floatprotocol---uniswap-v3-spot-price-manipulation-of-hypervisor-lp-shares)
+
+[20260831 BalancerV1BPool - joinswapPoolAmountOut rounding drain across 5 pools](#20260831-balancerv1bpool---joinswappoolamountout-rounding-drain-across-5-pools)
 
 [20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn](#20260823-arrakisguni---uniswap-v3-spot-price-manipulation-of-vault-mintburn)
 
@@ -1782,6 +1786,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260908 OrderFactory - missing access control on createOrderForBuyer drains buyer accounts
+### Lost: ~20.247 ETH this tx (5 buyers drained; reported incident total ~24.7 ETH)
+```sh
+forge test --contracts src/test/2026-09/OrderFactory_exp.sol -vvv
+```
+#### Contract
+[OrderFactory_exp.sol](src/test/2026-09/OrderFactory_exp.sol)
 ### 20260907 RouterDrain - permissionless swap entry lets a fake V3 pool abuse router allowances
 ### Lost: ~62.28 WBNB across 29 victims (3 reconstructed here: OCEAN, Kandura, SATURN)
 ```sh
@@ -1839,6 +1850,13 @@ forge test --contracts src/test/2026-08/FloatProtocol_exp.sol -vvv
 ```
 #### Contract
 [FloatProtocol_exp.sol](src/test/2026-08/FloatProtocol_exp.sol)
+### 20260831 BalancerV1BPool - joinswapPoolAmountOut rounding drain across 5 pools
+### Lost: ~$110,839 for this DPI/USDC/WETH/WBTC pool (~$234K aggregate across all 5 vulnerable pools)
+```sh
+forge test --contracts src/test/2026-08/BalancerV1BPool_exp.sol -vvv
+```
+#### Contract
+[BalancerV1BPool_exp.sol](src/test/2026-08/BalancerV1BPool_exp.sol)
 ### 20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn
 ### Lost: ~2.9414 ETH net attacker surplus (Arrakis V1 / G-UNI ENS-WETH vault)
 ```sh
