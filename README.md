@@ -76,11 +76,11 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260831 BalancerV1BPool - joinswapPoolAmountOut rounding drain across 5 pools](#20260831-balancerv1bpool---joinswappoolamountout-rounding-drain-across-5-pools)
 
+[20260828 AjnaFinance - liquidation accounting manipulation via self-controlled auction](#20260828-ajnafinance---liquidation-accounting-manipulation-via-self-controlled-auction)
+
 [20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn](#20260823-arrakisguni---uniswap-v3-spot-price-manipulation-of-vault-mintburn)
 
 [20260822 SandboxOFT](#20260822-sandboxoft---layerzero-delegate-hijack-via-approveandcall)
-
-[20260828 AjnaFinance - liquidation accounting manipulation via self-controlled auction](#20260828-ajnafinance---liquidation-accounting-manipulation-via-self-controlled-auction)
 
 [20260809 USM](#20260809-usm---defund-price-split-invariance-rounding-exploit)
 
@@ -1872,6 +1872,13 @@ forge test --contracts src/test/2026-08/BalancerV1BPool_exp.sol -vvv
 ```
 #### Contract
 [BalancerV1BPool_exp.sol](src/test/2026-08/BalancerV1BPool_exp.sol)
+### 20260828 AjnaFinance - liquidation accounting manipulation via self-controlled auction
+### Lost: ~$124.8K for this cbETH pool (1 of 7 pools hit by the same bug the same day, ~$775K aggregate)
+```sh
+forge test --contracts src/test/2026-08/AjnaFinance_exp.sol -vvv
+```
+#### Contract
+[AjnaFinance_exp.sol](src/test/2026-08/AjnaFinance_exp.sol)
 ### 20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn
 ### Lost: ~2.9414 ETH net attacker surplus (Arrakis V1 / G-UNI ENS-WETH vault)
 ```sh
@@ -1886,13 +1893,6 @@ forge test --contracts src/test/2026-08/SandboxOFT_exp.sol -vvv
 ```
 #### Contract
 [SandboxOFT_exp.sol](src/test/2026-08/SandboxOFT_exp.sol)
-### 20260828 AjnaFinance - liquidation accounting manipulation via self-controlled auction
-### Lost: ~$124.8K for this cbETH pool (1 of 7 pools hit by the same bug the same day, ~$775K aggregate)
-```sh
-forge test --contracts src/test/2026-08/AjnaFinance_exp.sol -vvv
-```
-#### Contract
-[AjnaFinance_exp.sol](src/test/2026-08/AjnaFinance_exp.sol)
 ### 20260809 USM - defund() price split-invariance rounding exploit
 ### Lost: ~70.83 ETH
 ```sh
