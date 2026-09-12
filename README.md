@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-850 incidents included.
+849 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -77,8 +77,6 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260831 BalancerV1BPool - joinswapPoolAmountOut rounding drain across 5 pools](#20260831-balancerv1bpool---joinswappoolamountout-rounding-drain-across-5-pools)
 
 [20260828 AjnaFinance - liquidation accounting manipulation via self-controlled auction](#20260828-ajnafinance---liquidation-accounting-manipulation-via-self-controlled-auction)
-
-[20260827 MoonwellMAMO - Chainlink oracle-source price manipulation of MAMO collateral](#20260827-moonwellmamo---chainlink-oracle-source-price-manipulation-of-mamo-collateral)
 
 [20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn](#20260823-arrakisguni---uniswap-v3-spot-price-manipulation-of-vault-mintburn)
 
@@ -1881,13 +1879,6 @@ forge test --contracts src/test/2026-08/AjnaFinance_exp.sol -vvv
 ```
 #### Contract
 [AjnaFinance_exp.sol](src/test/2026-08/AjnaFinance_exp.sol)
-### 20260827 MoonwellMAMO - Chainlink oracle-source price manipulation of MAMO collateral
-### Lost: ~14.34 cbBTC (~$1.15M) for this borrow (1 of 12 against the same inflated collateral, ~71.36 cbBTC/~$5.7M total)
-```sh
-forge test --contracts src/test/2026-08/MoonwellMAMO_exp.sol --evm-version cancun -vvv
-```
-#### Contract
-[MoonwellMAMO_exp.sol](src/test/2026-08/MoonwellMAMO_exp.sol)
 ### 20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn
 ### Lost: ~2.9414 ETH net attacker surplus (Arrakis V1 / G-UNI ENS-WETH vault)
 ```sh
