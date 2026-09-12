@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-851 incidents included.
+850 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,43 +54,41 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
-[20260909 BeatXswap - slot0 spot-price oracle with no TWAP guard drains vesting BTX reserves](#20260909-beatxswap---slot0-spot-price-oracle-with-no-twap-guard-drains-vesting-btx-reserves)
+[20260909 BeatXswap](#20260909-beatxswap---slot0-spot-price-oracle-with-no-twap-guard-drains-vesting-btx-reserves)
 
-[20260909 EnsoFinance - short-window Uniswap V3 TWAP oracle enables ~9x overvalued strategy deposit](#20260909-ensofinance---short-window-uniswap-v3-twap-oracle-enables-9x-overvalued-strategy-deposit)
+[20260909 EnsoFinance](#20260909-ensofinance---short-window-uniswap-v3-twap-oracle-enables-9x-overvalued-strategy-deposit)
 
-[20260908 OrderFactory - missing access control on createOrderForBuyer drains buyer accounts](#20260908-orderfactory---missing-access-control-on-createorderforbuyer-drains-buyer-accounts)
+[20260908 OrderFactory](#20260908-orderfactory---missing-access-control-on-createorderforbuyer-drains-buyer-accounts)
 
-[20260907 RouterDrain - permissionless swap entry lets a fake V3 pool abuse router allowances](#20260907-routerdrain---permissionless-swap-entry-lets-a-fake-v3-pool-abuse-router-allowances)
+[20260907 RouterDrain](#20260907-routerdrain---permissionless-swap-entry-lets-a-fake-v3-pool-abuse-router-allowances)
 
-[20260907 CozyFinance - unverified UMA Optimistic Oracle trigger enables unbacked protection-token redemption](#20260907-cozyfinance---unverified-uma-optimistic-oracle-trigger-enables-unbacked-protection-token-redemption)
+[20260907 CozyFinance](#20260907-cozyfinance---unverified-uma-optimistic-oracle-trigger-enables-unbacked-protection-token-redemption)
 
-[20260905 DHC - repeatable claim due to missing claimed-flag](#20260905-dhc---repeatable-claim-due-to-missing-claimed-flag)
+[20260905 DHC](#20260905-dhc---repeatable-claim-due-to-missing-claimed-flag)
 
-[20260905 Reddio - cross-share-class balance double-count via permissionless registerErc20](#20260905-reddio---cross-share-class-balance-double-count-via-permissionless-registererc20)
+[20260905 Reddio](#20260905-reddio---cross-share-class-balance-double-count-via-permissionless-registererc20)
 
-[20260905 SecuredFi - same-block self-trade manipulates getMarketUnitPrice to fabricate collateral](#20260905-securedfi---same-block-self-trade-manipulates-getmarketunitprice-to-fabricate-collateral)
+[20260905 SecuredFi](#20260905-securedfi---same-block-self-trade-manipulates-getmarketunitprice-to-fabricate-collateral)
 
-[20260903 NotionalFinance - ERC1155 fCash mint overflow drains escrow](#20260903-notionalfinance---erc1155-fcash-mint-overflow-drains-escrow)
+[20260903 NotionalFinance](#20260903-notionalfinance---erc1155-fcash-mint-overflow-drains-escrow)
 
 [20260901 ReflexerGEB](#20260901-reflexergeb---shared-gebproxyactions-library-registered-as-safe-owner)
 
-[20260831 FloatProtocol - Uniswap V3 spot price manipulation of Hypervisor LP shares](#20260831-floatprotocol---uniswap-v3-spot-price-manipulation-of-hypervisor-lp-shares)
+[20260831 FloatProtocol](#20260831-floatprotocol---uniswap-v3-spot-price-manipulation-of-hypervisor-lp-shares)
 
-[20260831 BalancerV1BPool - joinswapPoolAmountOut rounding drain across 5 pools](#20260831-balancerv1bpool---joinswappoolamountout-rounding-drain-across-5-pools)
+[20260831 BalancerV1BPool](#20260831-balancerv1bpool---joinswappoolamountout-rounding-drain-across-5-pools)
 
-[20260828 AjnaFinance - liquidation accounting manipulation via self-controlled auction](#20260828-ajnafinance---liquidation-accounting-manipulation-via-self-controlled-auction)
+[20260828 AjnaFinance](#20260828-ajnafinance---liquidation-accounting-manipulation-via-self-controlled-auction)
 
-[20260827 MoonwellMAMO - Chainlink oracle-source price manipulation of MAMO collateral](#20260827-moonwellmamo---chainlink-oracle-source-price-manipulation-of-mamo-collateral)
-
-[20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn](#20260823-arrakisguni---uniswap-v3-spot-price-manipulation-of-vault-mintburn)
+[20260823 ArrakisGUNI](#20260823-arrakisguni---uniswap-v3-spot-price-manipulation-of-vault-mintburn)
 
 [20260822 SandboxOFT](#20260822-sandboxoft---layerzero-delegate-hijack-via-approveandcall)
 
 [20260809 USM](#20260809-usm---defund-price-split-invariance-rounding-exploit)
 
-[20260806 UnistreetLaunchpad - arbitrary call injection via unvalidated launch forwarding](#20260806-unistreetlaunchpad---arbitrary-call-injection-via-unvalidated-launch-forwarding)
+[20260806 UnistreetLaunchpad](#20260806-unistreetlaunchpad---arbitrary-call-injection-via-unvalidated-launch-forwarding)
 
-[20260803 AIC - pair skim / reserve-mismatch exploit, flash-swap leveraged](#20260803-aic---pair-skim--reserve-mismatch-exploit-flash-swap-leveraged)
+[20260803 AIC](#20260803-aic---pair-skim--reserve-mismatch-exploit-flash-swap-leveraged)
 
 [20260706 SummerFi](#20260706-summerfi---fleetcommander-nav-inflation-via-depegged-xusd)
 
@@ -1890,13 +1888,6 @@ forge test --contracts src/test/2026-08/AjnaFinance_exp.sol -vvv
 ```
 #### Contract
 [AjnaFinance_exp.sol](src/test/2026-08/AjnaFinance_exp.sol)
-### 20260827 MoonwellMAMO - Chainlink oracle-source price manipulation of MAMO collateral
-### Lost: ~14.34 cbBTC (~$1.15M) for this borrow (1 of 12 against the same inflated collateral, ~71.36 cbBTC/~$5.7M total)
-```sh
-forge test --contracts src/test/2026-08/MoonwellMAMO_exp.sol --evm-version cancun -vvv
-```
-#### Contract
-[MoonwellMAMO_exp.sol](src/test/2026-08/MoonwellMAMO_exp.sol)
 ### 20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn
 ### Lost: ~2.9414 ETH net attacker surplus (Arrakis V1 / G-UNI ENS-WETH vault)
 ```sh
