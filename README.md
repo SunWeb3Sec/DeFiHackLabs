@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-850 incidents included.
+851 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260909 UnifiProtocol - unregistered caller-supplied pool trusted for reward eligibility and math](#20260909-unifiprotocol---unregistered-caller-supplied-pool-trusted-for-reward-eligibility-and-math)
+
 [20260909 EnsoFinance - short-window Uniswap V3 TWAP oracle enables ~9x overvalued strategy deposit](#20260909-ensofinance---short-window-uniswap-v3-twap-oracle-enables-9x-overvalued-strategy-deposit)
 
 [20260908 OrderFactory - missing access control on createOrderForBuyer drains buyer accounts](#20260908-orderfactory---missing-access-control-on-createorderforbuyer-drains-buyer-accounts)
@@ -1796,6 +1798,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260909 UnifiProtocol - unregistered caller-supplied pool trusted for reward eligibility and math
+### Lost: ~5.86 BNB (treasury still holds ~9.17 BNB, contract unpaused — bug remains re-exploitable)
+```sh
+forge test --contracts src/test/2026-09/UnifiProtocol_exp.sol -vvv
+```
+#### Contract
+[UnifiProtocol_exp.sol](src/test/2026-09/UnifiProtocol_exp.sol)
 ### 20260909 EnsoFinance - short-window Uniswap V3 TWAP oracle enables ~9x overvalued strategy deposit
 ### Lost: ~5.6 ETH (5.277 ETH realized in this PoC after slippage selling looted UNI/AAVE/MKR back to WETH)
 ```sh
