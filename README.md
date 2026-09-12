@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-852 incidents included.
+853 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260909 EtherFiAtomicQueue](#20260909-etherfiatomicqueue---missing-solver-access-control-drains-victim-allowances)
+
 [20260909 OMNI404](#20260909-omni404---erc-404-dual-idamount-transfer-interpretation-drains-pool-weth)
 
 [20260909 UnifiProtocol](#20260909-unifiprotocol---unregistered-caller-supplied-pool-trusted-for-reward-eligibility-and-math)
@@ -1800,6 +1802,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260909 EtherFiAtomicQueue - missing solver access control drains victim allowances
+### Lost: ~15.45 ETH (9 real victims' standing liquidETH allowances drained)
+```sh
+forge test --contracts src/test/2026-09/EtherFiAtomicQueue_exp.sol -vvv
+```
+#### Contract
+[EtherFiAtomicQueue_exp.sol](src/test/2026-09/EtherFiAtomicQueue_exp.sol)
 ### 20260909 OMNI404 - ERC-404 dual ID/amount transfer interpretation drains pool WETH
 ### Lost: 2.427 WETH (run() leg reproduced here; ~3.02 ETH across the full 4-tx block)
 ```sh
