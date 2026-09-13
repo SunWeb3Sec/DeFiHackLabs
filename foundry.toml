@@ -24,6 +24,7 @@ linea = "https://linea.drpc.org"
 mantle = "https://rpc.mantle.xyz"
 sei = "wss://sei.drpc.org"
 cronos = "https://cronos.drpc.org"
+citrea = "https://rpc.mainnet.citrea.xyz"
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/.config
 
