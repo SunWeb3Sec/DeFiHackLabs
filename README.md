@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-855 incidents included.
+856 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260912 YamFinance](#20260912-yamfinance---dormant-dao-quorum-governance-takeover-drains-legacy-uma-farming-contracts)
+
 [20260911 ORB](#20260911-orb---leveraged-pool-buyout--refund-before-sell-reentrancy-drains-burnlp-depleted-reserve)
 
 [20260911 GDC](#20260911-gdc---chained-eoa-bypass-liquidity-misclassification-burn-mismatch-and-reentrant-tax-free-exit)
@@ -1806,6 +1808,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260912 YamFinance - dormant-DAO quorum governance takeover drains legacy UMA farming contracts
+### Lost: ~$121K (48.085 WETH + 763.101 UMA)
+```sh
+forge test --contracts src/test/2026-09/YamFinance_exp.sol -vvv
+```
+#### Contract
+[YamFinance_exp.sol](src/test/2026-09/YamFinance_exp.sol)
 ### 20260911 ORB - leveraged pool buyout + refund-before-sell reentrancy drains burnLP-depleted reserve
 ### Lost: ~44.9-45 BNB (~$32,610.72)
 ```sh
