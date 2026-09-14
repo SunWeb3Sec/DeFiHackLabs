@@ -1807,7 +1807,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ### 20260911 ORB - leveraged pool buyout + refund-before-sell reentrancy drains burnLP-depleted reserve
 ### Lost: ~44.9-45 BNB (~$32,610.72)
 ```sh
-forge test --contracts src/test/2026-09/ORB_exp.sol -vvv
+forge test --contracts src/test/2026-09/ORB_exp.sol -vvv --evm-version cancun
 ```
 #### Contract
 [ORB_exp.sol](src/test/2026-09/ORB_exp.sol)
