@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-854 incidents included.
+855 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -55,6 +55,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20260911 ORB](#20260911-orb---leveraged-pool-buyout--refund-before-sell-reentrancy-drains-burnlp-depleted-reserve)
+
+[20260911 GDC](#20260911-gdc---chained-eoa-bypass-liquidity-misclassification-burn-mismatch-and-reentrant-tax-free-exit)
 
 [20260909 EtherFiAtomicQueue](#20260909-etherfiatomicqueue---missing-solver-access-control-drains-victim-allowances)
 
@@ -1811,6 +1813,13 @@ forge test --contracts src/test/2026-09/ORB_exp.sol -vvv --evm-version cancun
 ```
 #### Contract
 [ORB_exp.sol](src/test/2026-09/ORB_exp.sol)
+### 20260911 GDC - chained EOA bypass, liquidity misclassification, burn mismatch, and reentrant tax-free exit
+### Lost: ~35.34 BNB (35.337151495976986490 BNB reproduced exact to the wei)
+```sh
+forge test --contracts src/test/2026-09/GDC_exp.sol -vvv
+```
+#### Contract
+[GDC_exp.sol](src/test/2026-09/GDC_exp.sol)
 ### 20260909 EtherFiAtomicQueue - missing solver access control drains victim allowances
 ### Lost: ~15.45 ETH (9 real victims' standing liquidETH allowances drained)
 ```sh
