@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-856 incidents included.
+857 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260912 SpiralHookV2](#20260912-spiralhookv2---uniswap-v4-spot-price-borrow-plus-txorigin-keyed-same-block-guard-bypass)
+
 [20260912 YamFinance](#20260912-yamfinance---dormant-dao-quorum-governance-takeover-drains-legacy-uma-farming-contracts)
 
 [20260911 ORB](#20260911-orb---leveraged-pool-buyout--refund-before-sell-reentrancy-drains-burnlp-depleted-reserve)
@@ -1808,6 +1810,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260912 SpiralHookV2 - Uniswap V4 spot-price borrow plus tx.origin-keyed same-block guard bypass
+### Lost: ~10.70728 ETH (reproduced exact to the wei)
+```sh
+forge test --contracts src/test/2026-09/SpiralHookV2_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[SpiralHookV2_exp.sol](src/test/2026-09/SpiralHookV2_exp.sol)
 ### 20260912 YamFinance - dormant-DAO quorum governance takeover drains legacy UMA farming contracts
 ### Lost: ~$121K (48.085 WETH + 763.101 UMA)
 ```sh
