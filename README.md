@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260915 rsETH Safe](#20260915-rseth-safe---module-authorization-bypass-via-router-multicall-mev-front-run)
+
 [20260912 YamFinance](#20260912-yamfinance---dormant-dao-quorum-governance-takeover-drains-legacy-uma-farming-contracts)
 
 [20260911 ORB](#20260911-orb---leveraged-pool-buyout--refund-before-sell-reentrancy-drains-burnlp-depleted-reserve)
@@ -1808,6 +1810,24 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260915 rsETH Safe - module authorization bypass via router multicall, MEV front-run
+### Lost: ~$7.73M (2,900 aEthrsETH → 2,882.37 rsETH)
+
+Testing
+```sh
+forge test --contracts src/test/2026-09/rsETHSafe_exp.sol -vvv --fork-url https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY
+```
+#### Contract
+[rsETHSafe_exp.sol](src/test/2026-09/rsETHSafe_exp.sol)
+
+#### Link reference
+https://x.com/SlowMist_Team/status/2099779127662493875
+
+https://x.com/blockaid_/status/2099732957803999342
+
+https://x.com/KelpDAO/status/2099740756865159562
+
+---
 ### 20260912 YamFinance - dormant-DAO quorum governance takeover drains legacy UMA farming contracts
 ### Lost: ~$121K (48.085 WETH + 763.101 UMA)
 ```sh
