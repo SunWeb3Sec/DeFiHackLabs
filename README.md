@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-859 incidents included.
+860 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -75,6 +75,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260909 BeatXswap](#20260909-beatxswap---slot0-spot-price-oracle-with-no-twap-guard-drains-vesting-btx-reserves)
 
 [20260909 EnsoFinance](#20260909-ensofinance---short-window-uniswap-v3-twap-oracle-enables-9x-overvalued-strategy-deposit)
+
+[20260909 ZentraFinance](#20260909-zentrafinance---atoken-burn-safeguard-clamps-to-zero-repaywithatokens-clears-debt-without-burning)
 
 [20260908 OrderFactory](#20260908-orderfactory---missing-access-control-on-createorderforbuyer-drains-buyer-accounts)
 
@@ -1891,6 +1893,13 @@ forge test --contracts src/test/2026-09/EnsoFinance_exp.sol -vvv
 ```
 #### Contract
 [EnsoFinance_exp.sol](src/test/2026-09/EnsoFinance_exp.sol)
+### 20260909 ZentraFinance - aToken burn safeguard clamps to zero, repayWithATokens clears debt without burning
+### Lost: ~140,000 ctUSD + 30 USDC.e (~$143K)
+```sh
+forge test --contracts src/test/2026-09/ZentraFinance_exp.sol -vvv
+```
+#### Contract
+[ZentraFinance_exp.sol](src/test/2026-09/ZentraFinance_exp.sol)
 ### 20260908 OrderFactory - missing access control on createOrderForBuyer drains buyer accounts
 ### Lost: ~20.247 ETH this tx (5 buyers drained; reported incident total ~24.7 ETH)
 ```sh
