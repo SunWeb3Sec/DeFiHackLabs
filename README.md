@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-858 incidents included.
+859 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260915 RsETHSafeModule](#20260915-rsethsafemodule---nested-self-referential-multicall-authorization-bypass-drains-gnosis-safe-via-delegatecall)
+
 [20260915 BonfireSwap](#20260915-bonfireswap---missing-caller-authorization-lets-anyone-force-sell-any-approved-holders-tokens)
 
 [20260912 SpiralHookV2](#20260912-spiralhookv2---uniswap-v4-spot-price-borrow-plus-txorigin-keyed-same-block-guard-bypass)
@@ -1812,6 +1814,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260915 RsETHSafeModule - nested self-referential multicall authorization bypass drains Gnosis Safe via DELEGATECALL
+### Lost: 2,900 aEthrsETH (~$7.8M gross; 2,882.37 rsETH / ~$7.73M net to the MEV frontrunner)
+```sh
+forge test --contracts src/test/2026-09/RsETHSafeModule_exp.sol -vvv
+```
+#### Contract
+[RsETHSafeModule_exp.sol](src/test/2026-09/RsETHSafeModule_exp.sol)
 ### 20260915 BonfireSwap - missing caller authorization lets anyone force-sell any approved holder's tokens
 ### Lost: ~66 BNB (~$47-50K); 58.78 BNB reproduced from a 5-victim subset (~98.7% of tokens drained)
 ```sh
