@@ -134,6 +134,7 @@ contract RsETHSafeModule_exp is Test {
         attacker = new RsETHSafeModuleAttacker();
     }
 
+    /// forge-config: default.evm_version = "cancun"
     function testExploit() public {
         // Pre-state: the module the attack rides on is enabled, and the whale's collateral is present.
         assertTrue(ISafe(SAFE).isModuleEnabled(MODULE), "module must be enabled on victim safe");
