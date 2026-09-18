@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-860 incidents included.
+861 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260916 Flamincome](#20260916-flamincome---permissionless-convex-stakefor-inflates-strategy-nav-and-lets-vaultyusdt-overpay-on-withdrawall)
+
 [20260915 RsETHSafeModule](#20260915-rsethsafemodule---nested-self-referential-multicall-authorization-bypass-drains-gnosis-safe-via-delegatecall)
 
 [20260915 BonfireSwap](#20260915-bonfireswap---missing-caller-authorization-lets-anyone-force-sell-any-approved-holders-tokens)
@@ -1816,6 +1818,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260916 Flamincome - permissionless Convex stakeFor inflates Strategy NAV and lets VaultYUSDT overpay on withdrawAll
+### Lost: ~$345.9K USDT net attacker profit (gross Strategy loss ~$595K in aUSDT+USDT)
+```sh
+forge test --contracts src/test/2026-09/Flamincome_exp.sol -vvv
+```
+#### Contract
+[Flamincome_exp.sol](src/test/2026-09/Flamincome_exp.sol)
 ### 20260915 RsETHSafeModule - nested self-referential multicall authorization bypass drains Gnosis Safe via DELEGATECALL
 ### Lost: 2,900 aEthrsETH (~$7.8M gross; 2,882.37 rsETH / ~$7.73M net to the MEV frontrunner)
 ```sh
