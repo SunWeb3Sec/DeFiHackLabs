@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-862 incidents included.
+863 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260918 Likwid](#20260918-likwid---missing-pairdelta-update-in-leverage0-margin-borrow-freezes-amm-quote)
+
 [20260916 Flamincome](#20260916-flamincome---permissionless-convex-stakefor-inflates-strategy-nav-and-lets-vaultyusdt-overpay-on-withdrawall)
 
 [20260916 PrimeFinance](#20260916-primefinance---permissionless-stale-signed-oracle-report-overwrite-drains-lending-pool)
@@ -1820,6 +1822,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260918 Likwid - missing pairDelta update in leverage=0 margin borrow freezes AMM quote
+### Lost: 74.31 BNB (reproduced to within 3 wei)
+```sh
+BSC_RPC=https://bsc-mainnet.public.blastapi.io forge test --contracts src/test/2026-09/Likwid_exp.sol -vvv
+```
+#### Contract
+[Likwid_exp.sol](src/test/2026-09/Likwid_exp.sol)
 ### 20260916 Flamincome - permissionless Convex stakeFor inflates Strategy NAV and lets VaultYUSDT overpay on withdrawAll
 ### Lost: ~$345.9K USDT net attacker profit (gross Strategy loss ~$595K in aUSDT+USDT)
 ```sh
