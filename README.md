@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-864 incidents included.
+865 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -55,6 +55,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20260918 Likwid](#20260918-likwid---missing-pairdelta-update-in-leverage0-margin-borrow-freezes-amm-quote)
+
+[20260916 Startale](#20260916-startale---transient-storage-init-flag-outlives-the-constructor-and-lets-anyone-reinitialize-an-erc7579-account-and-drain-it)
 
 [20260916 Flamincome](#20260916-flamincome---permissionless-convex-stakefor-inflates-strategy-nav-and-lets-vaultyusdt-overpay-on-withdrawall)
 
@@ -1831,6 +1833,13 @@ BSC_RPC=https://bsc-mainnet.public.blastapi.io forge test --contracts src/test/2
 ```
 #### Contract
 [Likwid_exp.sol](src/test/2026-09/Likwid_exp.sol)
+### 20260916 Startale - transient storage init flag outlives the constructor and lets anyone reinitialize an ERC7579 account and drain it
+### Lost: 427.551160 USDC drained in this batch tx (32.555561 USDC reproduced across 3 of 23 victim accounts; ~$2,876 USDC+USDT aggregate across 41 known batches)
+```sh
+forge test --contracts src/test/2026-09/Startale_exp.sol -vvv
+```
+#### Contract
+[Startale_exp.sol](src/test/2026-09/Startale_exp.sol)
 ### 20260916 Flamincome - permissionless Convex stakeFor inflates Strategy NAV and lets VaultYUSDT overpay on withdrawAll
 ### Lost: ~$345.9K USDT net attacker profit (gross Strategy loss ~$595K in aUSDT+USDT)
 ```sh
