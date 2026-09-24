@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-865 incidents included.
+866 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260921 InternetToken](#20260921-internettoken---permissionless-swapv3-with-caller-supplied-pool-lets-a-fake-callback-mint-int-arbitrarily)
+
 [20260918 Likwid](#20260918-likwid---missing-pairdelta-update-in-leverage0-margin-borrow-freezes-amm-quote)
 
 [20260916 Startale](#20260916-startale---transient-storage-init-flag-outlives-the-constructor-and-lets-anyone-reinitialize-an-erc7579-account-and-drain-it)
@@ -1826,6 +1828,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260921 InternetToken - permissionless swapV3 with caller-supplied pool lets a fake callback mint INT arbitrarily
+### Lost: 764,145,702 INT + 5.846988 WETH (attacker minted 925.41M INT total, dumped 161.27M into the real INT/WETH pool for the WETH, reproduced to the wei)
+```sh
+forge test --contracts src/test/2026-09/InternetToken_exp.sol -vvv
+```
+#### Contract
+[InternetToken_exp.sol](src/test/2026-09/InternetToken_exp.sol)
 ### 20260918 Likwid - missing pairDelta update in leverage=0 margin borrow freezes AMM quote
 ### Lost: 74.31 BNB (reproduced to within 3 wei)
 ```sh
