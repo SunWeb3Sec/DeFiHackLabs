@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-869 incidents included.
+870 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -121,6 +121,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260823 ArrakisGUNI](#20260823-arrakisguni---uniswap-v3-spot-price-manipulation-of-vault-mintburn)
 
 [20260822 SandboxOFT](#20260822-sandboxoft---layerzero-delegate-hijack-via-approveandcall)
+
+[20260819 AllbridgeCCTP](#20260819-allbridgecctp---phantom-deposit-via-unverified-message-attestation)
 
 [20260809 USM](#20260809-usm---defund-price-split-invariance-rounding-exploit)
 
@@ -2073,6 +2075,13 @@ forge test --contracts src/test/2026-08/SandboxOFT_exp.sol -vvv
 ```
 #### Contract
 [SandboxOFT_exp.sol](src/test/2026-08/SandboxOFT_exp.sol)
+### 20260819 AllbridgeCCTP - Phantom deposit via unverified message attestation
+### Lost: ~189,751.554381 USDC
+```sh
+forge test --contracts src/test/2026-08/AllbridgeCCTP_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[AllbridgeCCTP_exp.sol](src/test/2026-08/AllbridgeCCTP_exp.sol)
 ### 20260809 USM - defund() price split-invariance rounding exploit
 ### Lost: ~70.83 ETH
 ```sh
