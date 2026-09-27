@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-871 incidents included.
+872 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -119,6 +119,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260828 AjnaFinance](#20260828-ajnafinance---liquidation-accounting-manipulation-via-self-controlled-auction)
 
 [20260827 CashCowCoin](#20260827-cashcowcoin---privileged-burn--premature-sync-drains-pancakeswap-pair)
+
+[20260826 EnjinCryptoItems](#20260826-enjincryptoitems---unprotected-registry-reinitialization-manager-takeover)
 
 [20260823 ArrakisGUNI](#20260823-arrakisguni---uniswap-v3-spot-price-manipulation-of-vault-mintburn)
 
@@ -2070,6 +2072,13 @@ forge test --contracts src/test/2026-08/CashCowCoin_exp.sol --evm-version cancun
 ```
 #### Contract
 [CashCowCoin_exp.sol](src/test/2026-08/CashCowCoin_exp.sol)
+### 20260826 EnjinCryptoItems - unprotected registry reinitialization, manager takeover
+### Lost: 5,231,353 ENJ (~$142K)
+```sh
+forge test --contracts src/test/2026-08/EnjinCryptoItems_exp.sol -vvv
+```
+#### Contract
+[EnjinCryptoItems_exp.sol](src/test/2026-08/EnjinCryptoItems_exp.sol)
 ### 20260823 ArrakisGUNI - Uniswap V3 spot-price manipulation of vault mint/burn
 ### Lost: ~2.9414 ETH net attacker surplus (Arrakis V1 / G-UNI ENS-WETH vault)
 ```sh
