@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-868 incidents included.
+869 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260926 DAOstack](#20260926-daostack---permissionless-neworganization-lets-an-attacker-hijack-an-existing-reputation-contract-and-drain-the-avatar)
+
 [20260921 DoinGud](#20260921-doingud---acceptoffer-replay-via-missing-offer-cleanup-on-the-amount0-path)
 
 [20260921 GaslessReservoirEnabler](#20260921-gaslessreservoirenabler---erc20withtransfersandexecute-lets-a-whitelisted-module-run-unvalidated-transferfrom-calldata)
@@ -1832,6 +1834,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260926 DAOstack - permissionless newOrganization lets an attacker hijack an existing Reputation contract and drain the Avatar
+### Lost: 4.025 ETH (full Genesis Alpha treasury); attacker minted 20,000 REP against the victim's real Reputation contract (supply 9,738.6 to 29,738.6, ~67% majority after a 200 REP GenesisProtocol vote-cost burn) and used it to self-install as a full-permission scheme
+```sh
+forge test --contracts src/test/2026-09/DAOstack_exp.sol -vvv
+```
+#### Contract
+[DAOstack_exp.sol](src/test/2026-09/DAOstack_exp.sol)
 ### 20260921 DoinGud - acceptOffer replay via missing offer cleanup on the amount=0 path
 ### Lost: 35,380.154566 USDC net (two byte-identical acceptOffer calls each paid out 35,486.935717 USDC from escrow; funded via a UniV2 flash swap, repaid 35,593.716868 USDC)
 ```sh
