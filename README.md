@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-872 incidents included.
+873 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -123,6 +123,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260826 EnjinCryptoItems](#20260826-enjincryptoitems---unprotected-registry-reinitialization-manager-takeover)
 
 [20260823 ArrakisGUNI](#20260823-arrakisguni---uniswap-v3-spot-price-manipulation-of-vault-mintburn)
+
+[20260823 TermFinance](#20260823-termfinance---governance-capture-via-thinly-wrapped-aragon-voting-power)
 
 [20260822 SandboxOFT](#20260822-sandboxoft---layerzero-delegate-hijack-via-approveandcall)
 
@@ -2086,6 +2088,13 @@ forge test --contracts src/test/2026-08/ArrakisGUNI_exp.sol -vvv
 ```
 #### Contract
 [ArrakisGUNI_exp.sol](src/test/2026-08/ArrakisGUNI_exp.sol)
+### 20260823 TermFinance - Governance capture via thinly-wrapped Aragon voting power
+### Lost: 2,841.743535791961701401 WETH (attacker net gain, ETH meta-vault)
+```sh
+forge test --contracts src/test/2026-08/TermFinance_exp.sol -vvv
+```
+#### Contract
+[TermFinance_exp.sol](src/test/2026-08/TermFinance_exp.sol)
 ### 20260822 SandboxOFT - LayerZero delegate hijack via approveAndCall
 ### Lost: 10,000,000 SAND minted unbacked (~$517,170 face value, one of 400+ repeated txs in an ongoing campaign)
 ```sh
