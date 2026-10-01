@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-877 incidents included.
+878 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260930 PositionManager](#20260930-positionmanager---deposit-values-the-vaults-existing-usdt-at-the-manipulable-pancakeswap-v3-spot-price-so-crashing-the-spot-before-depositing-mints-inflated-shares-that-withdraw-redeems-in-the-same-transaction)
+
 [20260930 MUS](#20260930-mus---deposit-refunds-a-first-deposit-bonus-and-also-credits-it-as-withdrawable-allocation-so-a-single-deposit-withdraw-from-a-fresh-address-returns-more-eth-than-deposited)
 
 [20260929 LPBonus](#20260929-lpbonus---reserve-inconsistency-between-reward-accrual-and-lp-withdrawal-lets-a-manipulated-msn-reserve-inflate-an-lp-reward-claim)
@@ -1850,6 +1852,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260930 PositionManager - deposit values the vault's existing USDT at the manipulable PancakeSwap V3 spot price, so crashing the spot before depositing mints inflated shares that withdraw redeems in the same transaction
+### Lost: 32,080.604282 USDT (exactly reproduced) on BNB Chain; one atomic tx crashed the USDT/BTCB spot with an 8,000,000 USDT swap, then ran 24 deposit(1,000,000 USDT)/withdraw cycles to drain the vault's own PancakeSwap V3 position, the pool losing 32,096.098596 USDT
+```sh
+forge test --contracts src/test/2026-09/PositionManager_exp.sol -vvv
+```
+#### Contract
+[PositionManager_exp.sol](src/test/2026-09/PositionManager_exp.sol)
 ### 20260930 MUS - deposit refunds a first-deposit bonus and also credits it as withdrawable allocation, so a single deposit-withdraw from a fresh address returns more ETH than deposited
 ### Lost: ~0.400168 ETH per deposit-withdraw cycle (exactly reproduced) on Ethereum; the MUS pool's standing 5.335 ETH was drained to 0 across the attack block, reported campaign total ~$36.9k across many fresh addresses
 ```sh
