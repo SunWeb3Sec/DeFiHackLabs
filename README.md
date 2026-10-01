@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-878 incidents included.
+879 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260930 SKYDAO](#20260930-skydao---sell-path-controller-burns-the-pairs-skydao-and-syncs-before-the-net-sell-is-credited-latching-a-near-zero-reserve-that-a-direct-pairswap-drains-for-the-pairs-entire-usdt)
+
 [20260930 PositionManager](#20260930-positionmanager---deposit-values-the-vaults-existing-usdt-at-the-manipulable-pancakeswap-v3-spot-price-so-crashing-the-spot-before-depositing-mints-inflated-shares-that-withdraw-redeems-in-the-same-transaction)
 
 [20260930 MUS](#20260930-mus---deposit-refunds-a-first-deposit-bonus-and-also-credits-it-as-withdrawable-allocation-so-a-single-deposit-withdraw-from-a-fresh-address-returns-more-eth-than-deposited)
@@ -1852,6 +1854,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20260930 SKYDAO - sell-path controller burns the pair's SKYDAO and syncs before the net sell is credited, latching a near-zero reserve that a direct pair.swap drains for the pair's entire USDT
+### Lost: 59,914.12 USDT net to the attacker (exactly reproduced) on BNB Chain; the SKYDAO/USDT PancakeSwap V2 pair lost its entire 183,482.88 USDT reserve, drained by a direct pair.swap against the reserve the sell-path burn+sync latched to ~0
+```sh
+forge test --contracts src/test/2026-09/SKYDAO_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[SKYDAO_exp.sol](src/test/2026-09/SKYDAO_exp.sol)
 ### 20260930 PositionManager - deposit values the vault's existing USDT at the manipulable PancakeSwap V3 spot price, so crashing the spot before depositing mints inflated shares that withdraw redeems in the same transaction
 ### Lost: 32,080.604282 USDT (exactly reproduced) on BNB Chain; one atomic tx crashed the USDT/BTCB spot with an 8,000,000 USDT swap, then ran 24 deposit(1,000,000 USDT)/withdraw cycles to drain the vault's own PancakeSwap V3 position, the pool losing 32,096.098596 USDT
 ```sh
