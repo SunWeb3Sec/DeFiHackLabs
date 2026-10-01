@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-876 incidents included.
+877 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20260930 MUS](#20260930-mus---deposit-refunds-a-first-deposit-bonus-and-also-credits-it-as-withdrawable-allocation-so-a-single-deposit-withdraw-from-a-fresh-address-returns-more-eth-than-deposited)
+
+[20260929 LPBonus](#20260929-lpbonus---reserve-inconsistency-between-reward-accrual-and-lp-withdrawal-lets-a-manipulated-msn-reserve-inflate-an-lp-reward-claim)
+
 [20260926 DAOstack](#20260926-daostack---permissionless-neworganization-lets-an-attacker-hijack-an-existing-reputation-contract-and-drain-the-avatar)
 [20260923 PancakeV3SwapHelper](#20260923-pancakev3swaphelper---signed-swap-delta-accounting-error)
 
@@ -1847,7 +1851,20 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
-
+### 20260930 MUS - deposit refunds a first-deposit bonus and also credits it as withdrawable allocation, so a single deposit-withdraw from a fresh address returns more ETH than deposited
+### Lost: ~0.400168 ETH per deposit-withdraw cycle (exactly reproduced) on Ethereum; the MUS pool's standing 5.335 ETH was drained to 0 across the attack block, reported campaign total ~$36.9k across many fresh addresses
+```sh
+forge test --contracts src/test/2026-09/MUS_exp.sol -vvv
+```
+#### Contract
+[MUS_exp.sol](src/test/2026-09/MUS_exp.sol)
+### 20260929 LPBonus - reserve inconsistency between reward accrual and LP withdrawal lets a manipulated MSN reserve inflate an LP reward claim
+### Lost: ~92,607 USDT (~$92.6k) on BNB Chain; one LP position claimed 1,442,165.713011 FIST against an accrual that funded ~940,041.612768 FIST, extracted by flash-swapping the MSN reserve down at accrual and back up at withdrawal
+```sh
+forge test --contracts src/test/2026-09/LPBonus_exp.sol -vvv
+```
+#### Contract
+[LPBonus_exp.sol](src/test/2026-09/LPBonus_exp.sol)
 ### 20260926 DAOstack - permissionless newOrganization lets an attacker hijack an existing Reputation contract and drain the Avatar
 ### Lost: 4.025 ETH (full Genesis Alpha treasury); attacker minted 20,000 REP against the victim's real Reputation contract (supply 9,738.6 to 29,738.6, ~67% majority after a 200 REP GenesisProtocol vote-cost burn) and used it to self-install as a full-permission scheme
 ```sh
