@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-879 incidents included.
+880 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -63,6 +63,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260929 LPBonus](#20260929-lpbonus---reserve-inconsistency-between-reward-accrual-and-lp-withdrawal-lets-a-manipulated-msn-reserve-inflate-an-lp-reward-claim)
 
 [20260926 DAOstack](#20260926-daostack---permissionless-neworganization-lets-an-attacker-hijack-an-existing-reputation-contract-and-drain-the-avatar)
+
 [20260923 PancakeV3SwapHelper](#20260923-pancakev3swaphelper---signed-swap-delta-accounting-error)
 
 [20260921 DoinGud](#20260921-doingud---acceptoffer-replay-via-missing-offer-cleanup-on-the-amount0-path)

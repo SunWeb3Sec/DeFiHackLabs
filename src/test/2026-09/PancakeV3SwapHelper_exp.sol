@@ -94,7 +94,7 @@ contract PancakeV3SwapHelperExploitTest is BaseTestWithBalanceLog {
     PancakeV3SwapHelperAttack private attackContract;
 
     function setUp() public {
-        vm.createSelectFork(vm.envString("RPC_URL"), ATTACK_TX);
+        vm.createSelectFork("bsc", ATTACK_TX);
         fundingToken = address(0);
         attackContract = new PancakeV3SwapHelperAttack();
         attacker = ATTACKER;
