@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-880 incidents included.
+881 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -1907,7 +1907,7 @@ forge test --contracts src/test/2026-09/DAOstack_exp.sol -vvv
 
 
 ```sh
-forge test --contracts ./src/test/2026-09/PancakeV3SwapHelper_exp.sol -vvv --evm-version shanghai
+BSC_RPC=https://bsc-mainnet.public.blastapi.io forge test --contracts ./src/test/2026-09/PancakeV3SwapHelper_exp.sol -vvv --evm-version shanghai
 ```
 #### Contract
 [PancakeV3SwapHelper_exp.sol](src/test/2026-09/PancakeV3SwapHelper_exp.sol)
