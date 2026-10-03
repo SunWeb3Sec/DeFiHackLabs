@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20261001 FlashLoopAdapter](#20261001-flashloopadapter---a-safe-module-authenticates-its-caller-by-asking-that-caller-whether-the-module-is-enabled-self-attestation-and-then-makes-an-unconstrained-call-to-a-caller-supplied-router-letting-a-fake-safe-drive-the-adapter-into-draining-real-safes-that-enabled-it)
+
 [20260930 SKYDAO](#20260930-skydao---sell-path-controller-burns-the-pairs-skydao-and-syncs-before-the-net-sell-is-credited-latching-a-near-zero-reserve-that-a-direct-pairswap-drains-for-the-pairs-entire-usdt)
 
 [20260930 PositionManager](#20260930-positionmanager---deposit-values-the-vaults-existing-usdt-at-the-manipulable-pancakeswap-v3-spot-price-so-crashing-the-spot-before-depositing-mints-inflated-shares-that-withdraw-redeems-in-the-same-transaction)
@@ -1856,6 +1858,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261001 FlashLoopAdapter - a Safe module authenticates its caller by asking that caller whether the module is enabled (self-attestation) and then makes an unconstrained call to a caller-supplied router, letting a fake Safe drive the adapter into draining real Safes that enabled it
+### Lost: 114.096151 WETH (~$305k, exactly reproduced) on Ethereum; two Safes that enabled the module as a victim were emptied - Safe #1 lost 1306.48 weETH of Aave collateral once its 1335.26 WETH debt was repaid, Safe #2 lost 6.426 weETH, all swapped to WETH via ODOS for the attacker's net
+```sh
+forge test --contracts src/test/2026-10/FlashLoopAdapter_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[FlashLoopAdapter_exp.sol](src/test/2026-10/FlashLoopAdapter_exp.sol)
 ### 20260930 SKYDAO - sell-path controller burns the pair's SKYDAO and syncs before the net sell is credited, latching a near-zero reserve that a direct pair.swap drains for the pair's entire USDT
 ### Lost: 59,914.12 USDT net to the attacker (exactly reproduced) on BNB Chain; the SKYDAO/USDT PancakeSwap V2 pair lost its entire 183,482.88 USDT reserve, drained by a direct pair.swap against the reserve the sell-path burn+sync latched to ~0
 ```sh
