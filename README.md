@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-881 incidents included.
+882 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20261002 GoldPesa](#20261002-goldpesa---the-gpx-v4-hook-rebalances-protocol-liquidity-inside-beforeswap-via-a-burn-and-take_pair-that-run-in-the-attackers-own-open-poolmanager-unlock-and-never-checks-the-positionmanager-deltas-are-settled-first-so-an-unsettled-mint-debt-parked-in-the-same-unlock-nets-against-the-hooks-burn-credit-and-the-attacker-walks-the-freed-usdc-out)
+
 [20261001 FlashLoopAdapter](#20261001-flashloopadapter---a-safe-module-authenticates-its-caller-by-asking-that-caller-whether-the-module-is-enabled-self-attestation-and-then-makes-an-unconstrained-call-to-a-caller-supplied-router-letting-a-fake-safe-drive-the-adapter-into-draining-real-safes-that-enabled-it)
 
 [20260930 SKYDAO](#20260930-skydao---sell-path-controller-burns-the-pairs-skydao-and-syncs-before-the-net-sell-is-credited-latching-a-near-zero-reserve-that-a-direct-pairswap-drains-for-the-pairs-entire-usdt)
@@ -1858,6 +1860,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261002 GoldPesa - the GPX V4 hook rebalances protocol liquidity inside beforeSwap via a burn and TAKE_PAIR that run in the attacker's own open PoolManager unlock, and never checks the PositionManager deltas are settled first, so an unsettled mint debt parked in the same unlock nets against the hook's burn credit and the attacker walks the freed USDC out
+### Lost: 114,999.999186 USDC (exactly reproduced) on Base; the GPX/USDC V4 pool's protocol liquidity was burned by the hook's own hourly rebalance, and its 148,868.602188 USDC burn credit was split by the shared-unlock delta bug - 33,868.603002 USDC reached the hook while 114,999.999186 USDC paid off the attacker's unsettled mint debt and then exited to the attacker, funded by a 175,000 USDC Morpho flash loan repaid in the same tx
+```sh
+forge test --contracts src/test/2026-10/GoldPesa_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[GoldPesa_exp.sol](src/test/2026-10/GoldPesa_exp.sol)
 ### 20261001 FlashLoopAdapter - a Safe module authenticates its caller by asking that caller whether the module is enabled (self-attestation) and then makes an unconstrained call to a caller-supplied router, letting a fake Safe drive the adapter into draining real Safes that enabled it
 ### Lost: 114.096151 WETH (~$305k, exactly reproduced) on Ethereum; two Safes that enabled the module as a victim were emptied - Safe #1 lost 1306.48 weETH of Aave collateral once its 1335.26 WETH debt was repaid, Safe #2 lost 6.426 weETH, all swapped to WETH via ODOS for the attacker's net
 ```sh
