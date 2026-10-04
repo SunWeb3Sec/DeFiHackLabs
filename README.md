@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-880 incidents included.
+881 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -65,6 +65,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260929 LPBonus](#20260929-lpbonus---reserve-inconsistency-between-reward-accrual-and-lp-withdrawal-lets-a-manipulated-msn-reserve-inflate-an-lp-reward-claim)
 
 [20260926 DAOstack](#20260926-daostack---permissionless-neworganization-lets-an-attacker-hijack-an-existing-reputation-contract-and-drain-the-avatar)
+
+[20260923 PancakeV3SwapHelper](#20260923-pancakev3swaphelper---signed-swap-delta-accounting-error)
 
 [20260921 DoinGud](#20260921-doingud---acceptoffer-replay-via-missing-offer-cleanup-on-the-amount0-path)
 
@@ -1898,6 +1900,23 @@ forge test --contracts src/test/2026-09/DAOstack_exp.sol -vvv
 ```
 #### Contract
 [DAOstack_exp.sol](src/test/2026-09/DAOstack_exp.sol)
+
+### 20260923 PancakeV3SwapHelper - Signed Swap Delta Accounting Error
+
+### Lost: ~1.6488688845 BNB (~$1.3K)
+
+
+```sh
+BSC_RPC=https://bsc-mainnet.public.blastapi.io forge test --contracts ./src/test/2026-09/PancakeV3SwapHelper_exp.sol -vvv --evm-version shanghai
+```
+#### Contract
+[PancakeV3SwapHelper_exp.sol](src/test/2026-09/PancakeV3SwapHelper_exp.sol)
+### Link reference
+
+https://bscscan.com/tx/0x70bc4ff8439f74d26d454a53e9a135ac3659a958aa3462218d0db7ed55cf5104
+
+---
+
 ### 20260921 DoinGud - acceptOffer replay via missing offer cleanup on the amount=0 path
 ### Lost: 35,380.154566 USDC net (two byte-identical acceptOffer calls each paid out 35,486.935717 USDC from escrow; funded via a UniV2 flash swap, repaid 35,593.716868 USDC)
 ```sh
