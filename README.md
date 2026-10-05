@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-884 incidents included.
+885 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -155,6 +155,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260805 StrongBlock](#20260805-strongblock---governance-takeover-of-an-abandoned-governor)
 
 [20260803 AIC](#20260803-aic---pair-skim--reserve-mismatch-exploit-flash-swap-leveraged)
+
+[20260802 MOKE](#20260802-moke---settle-txorigin-check-lets-any-eoa-latch-a-manipulated-mokeusdt-price-then-claim-mints-inflated-moke-against-it)
 
 [20260716 CrowdRingCircle](#20260716-crowdringcircle---sell-destroy-path-burns-crc-out-of-the-pair-on-any-non-exempt-sell-collapsing-the-reserve-so-a-follow-up-swap-drains-the-pools-usdt)
 
@@ -2232,6 +2234,13 @@ forge test --contracts src/test/2026-08/AIC_exp.sol -vvv
 ```
 #### Contract
 [AIC_exp.sol](src/test/2026-08/AIC_exp.sol)
+### 20260802 MOKE - settle() tx.origin check lets any EOA latch a manipulated MOKE/USDT price, then claim() mints inflated MOKE against it
+### Lost: ~1546.54 BNB (~41.68M MOKE over-minted)
+```sh
+forge test --contracts src/test/2026-10/MOKE_exp.sol --evm-version prague -vvv
+```
+#### Contract
+[MOKE_exp.sol](src/test/2026-10/MOKE_exp.sol)
 ### 20260716 CrowdRingCircle - sell-destroy path burns CRC out of the pair on any non-exempt sell, collapsing the reserve so a follow-up swap drains the pool's USDT
 ### Lost: ~201.36K USDT
 ```sh
