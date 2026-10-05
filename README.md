@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-883 incidents included.
+884 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -155,6 +155,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260805 StrongBlock](#20260805-strongblock---governance-takeover-of-an-abandoned-governor)
 
 [20260803 AIC](#20260803-aic---pair-skim--reserve-mismatch-exploit-flash-swap-leveraged)
+
+[20260716 CrowdRingCircle](#20260716-crowdringcircle---sell-destroy-path-burns-crc-out-of-the-pair-on-any-non-exempt-sell-collapsing-the-reserve-so-a-follow-up-swap-drains-the-pools-usdt)
 
 [20260706 SummerFi](#20260706-summerfi---fleetcommander-nav-inflation-via-depegged-xusd)
 
@@ -2230,6 +2232,13 @@ forge test --contracts src/test/2026-08/AIC_exp.sol -vvv
 ```
 #### Contract
 [AIC_exp.sol](src/test/2026-08/AIC_exp.sol)
+### 20260716 CrowdRingCircle - sell-destroy path burns CRC out of the pair on any non-exempt sell, collapsing the reserve so a follow-up swap drains the pool's USDT
+### Lost: ~201.36K USDT
+```sh
+forge test --contracts src/test/2026-10/CrowdRingCircle_exp.sol -vvv
+```
+#### Contract
+[CrowdRingCircle_exp.sol](src/test/2026-10/CrowdRingCircle_exp.sol)
 ### 20260706 SummerFi - FleetCommander NAV Inflation via Depegged xUSD
 ### Lost: ~$6M (DAI + LVUSDC shares)
 ```sh
