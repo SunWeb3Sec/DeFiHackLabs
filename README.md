@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-882 incidents included.
+883 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+[20261003 MALT](#20261003-malt---the-maltdai-slp-runs-its-below-peg-price-recovery-inside-swap-before-sending-the-output-pulling-dai-from-the-capital-source-treasury-into-the-pool-then-checks-its-constant-product-invariant-against-the-final-balances-without-separating-the-injected-treasury-dai-from-the-callers-own-input-so-a-negligible-1-dai-swap-is-credited-with-thousands-of-injected-dai-and-releases-a-disproportionate-malt-output)
+
 [20261002 GoldPesa](#20261002-goldpesa---the-gpx-v4-hook-rebalances-protocol-liquidity-inside-beforeswap-via-a-burn-and-take_pair-that-run-in-the-attackers-own-open-poolmanager-unlock-and-never-checks-the-positionmanager-deltas-are-settled-first-so-an-unsettled-mint-debt-parked-in-the-same-unlock-nets-against-the-hooks-burn-credit-and-the-attacker-walks-the-freed-usdc-out)
 
 [20261001 FlashLoopAdapter](#20261001-flashloopadapter---a-safe-module-authenticates-its-caller-by-asking-that-caller-whether-the-module-is-enabled-self-attestation-and-then-makes-an-unconstrained-call-to-a-caller-supplied-router-letting-a-fake-safe-drive-the-adapter-into-draining-real-safes-that-enabled-it)
@@ -1860,6 +1862,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261003 MALT - the MALT/DAI sLP runs its below-peg price recovery inside swap() before sending the output, pulling DAI from the Capital Source treasury into the pool, then checks its constant-product invariant against the final balances without separating the injected treasury DAI from the caller's own input, so a negligible 1 DAI swap is credited with thousands of injected DAI and releases a disproportionate MALT output
+### Lost: 13,440.581562307921517594 DAI net profit to the attacker (exactly reproduced) on Polygon; the Capital Source treasury was drained of 12,744.644506590589136718 DAI across two below-peg rebalance injections, the attacker paying just 1 DAI per exploit swap and arbitraging the extracted MALT out on QuickSwap - the ~$72K figure in the original alert does not match the on-chain reconstruction
+```sh
+forge test --contracts src/test/2026-10/MALT_exp.sol -vvv
+```
+#### Contract
+[MALT_exp.sol](src/test/2026-10/MALT_exp.sol)
 ### 20261002 GoldPesa - the GPX V4 hook rebalances protocol liquidity inside beforeSwap via a burn and TAKE_PAIR that run in the attacker's own open PoolManager unlock, and never checks the PositionManager deltas are settled first, so an unsettled mint debt parked in the same unlock nets against the hook's burn credit and the attacker walks the freed USDC out
 ### Lost: 114,999.999186 USDC (exactly reproduced) on Base; the GPX/USDC V4 pool's protocol liquidity was burned by the hook's own hourly rebalance, and its 148,868.602188 USDC burn credit was split by the shared-unlock delta bug - 33,868.603002 USDC reached the hook while 114,999.999186 USDC paid off the attacker's unsettled mint debt and then exited to the attacker, funded by a 175,000 USDC Morpho flash loan repaid in the same tx
 ```sh
