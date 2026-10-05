@@ -2,7 +2,11 @@ name: PRAutoTest
 on:
   pull_request:
     paths:
+      # In GitHub's path filters `*` does not match `/`, so the first pattern only
+      # matches PoC files sitting directly in src/test/. Every current PoC lives in
+      # src/test/YYYY-MM/, which needs `**` to match the extra path segment.
       - 'src/test/*_exp.sol'
+      - 'src/test/**/*_exp.sol'
 
 env:
   FOUNDRY_PROFILE: ci
