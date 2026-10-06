@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-885 incidents included.
+886 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -159,6 +159,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260802 MOKE](#20260802-moke---settle-txorigin-check-lets-any-eoa-latch-a-manipulated-mokeusdt-price-then-claim-mints-inflated-moke-against-it)
 
 [20260716 CrowdRingCircle](#20260716-crowdringcircle---sell-destroy-path-burns-crc-out-of-the-pair-on-any-non-exempt-sell-collapsing-the-reserve-so-a-follow-up-swap-drains-the-pools-usdt)
+
+[20260716 PerpetualProtocol](#20260716-perpetualprotocol---v2-curie-unguarded-orderbook-funding-growth-update-lets-anyone-poison-cached-funding-draining-the-vault)
 
 [20260706 SummerFi](#20260706-summerfi---fleetcommander-nav-inflation-via-depegged-xusd)
 
@@ -2248,6 +2250,13 @@ forge test --contracts src/test/2026-10/CrowdRingCircle_exp.sol -vvv
 ```
 #### Contract
 [CrowdRingCircle_exp.sol](src/test/2026-10/CrowdRingCircle_exp.sol)
+### 20260716 PerpetualProtocol - v2 (Curie) unguarded OrderBook funding-growth update lets anyone poison cached funding, draining the Vault
+### Lost: ~3,062.21 USDC
+```sh
+forge test --contracts src/test/2026-10/PerpetualProtocol_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[PerpetualProtocol_exp.sol](src/test/2026-10/PerpetualProtocol_exp.sol)
 ### 20260706 SummerFi - FleetCommander NAV Inflation via Depegged xUSD
 ### Lost: ~$6M (DAI + LVUSDC shares)
 ```sh
