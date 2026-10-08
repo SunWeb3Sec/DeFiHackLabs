@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-887 incidents included.
+888 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -55,6 +55,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 [20261006 SetProtocol](#20261006-setprotocol---actualizefee-is-permissionless-and-recomputes-unitshares-with-a-divceil-even-when-it-mints-zero-fee-rounding-the-backing-collateral-per-share-up-by-one-with-no-fee-actually-taken-so-issuing-the-rebalancing-set-before-the-bump-and-redeeming-the-same-quantity-after-returns-more-collateral-than-was-deposited-the-25044-eth-issueredeem-size-supplied-fee-free-by-a-uniswap-v4-native-eth-flash-accounting-loan)
+
+[20261006 MakerDAOFlipKeeper](#20261006-makerdaoflipkeeper---the-dormant-eth-a-flip-keeper-proxys-drain-selector-has-no-ds-auth-check-so-anyone-can-call-it-to-make-the-keeper-vathope-a-caller-supplied-worker-and-then-deal-its-four-undealt-2020-eth-a-auctions-and-fluxexit-the-freed-200-weth-of-collateral-out)
 
 [20261003 MALT](#20261003-malt---the-maltdai-slp-runs-its-below-peg-price-recovery-inside-swap-before-sending-the-output-pulling-dai-from-the-capital-source-treasury-into-the-pool-then-checks-its-constant-product-invariant-against-the-final-balances-without-separating-the-injected-treasury-dai-from-the-callers-own-input-so-a-negligible-1-dai-swap-is-credited-with-thousands-of-injected-dai-and-releases-a-disproportionate-malt-output)
 
@@ -1877,6 +1879,13 @@ forge test --contracts src/test/2026-10/SetProtocol_exp.sol --evm-version cancun
 ```
 #### Contract
 [SetProtocol_exp.sol](src/test/2026-10/SetProtocol_exp.sol)
+### 20261006 MakerDAOFlipKeeper - the dormant ETH-A flip-keeper proxy's drain selector has no ds-auth check, so anyone can call it to make the keeper vat.hope() a caller-supplied worker and then deal its four undealt 2020 ETH-A auctions and flux/exit the freed 200 WETH of collateral out
+### Lost: exactly 200 ETH (200.000000000000000000 WETH, 0xad78ebc5ac6200000 wei, reproduced with zero variance) to a fresh attacker on Ethereum; the dormant keeper proxy's unprotected drain settled its four undealt 2020 ETH-A liquidation auctions (#1457-1460, 50 WETH each) and swept the freed collateral out - not a MakerDAO core bug, the keeper impl's drain selector simply omits the ds-auth modifier that the contract's other functions carry
+```sh
+forge test --contracts src/test/2026-10/MakerDAOFlipKeeper_exp.sol -vvv
+```
+#### Contract
+[MakerDAOFlipKeeper_exp.sol](src/test/2026-10/MakerDAOFlipKeeper_exp.sol)
 ### 20261003 MALT - the MALT/DAI sLP runs its below-peg price recovery inside swap() before sending the output, pulling DAI from the Capital Source treasury into the pool, then checks its constant-product invariant against the final balances without separating the injected treasury DAI from the caller's own input, so a negligible 1 DAI swap is credited with thousands of injected DAI and releases a disproportionate MALT output
 ### Lost: 13,440.581562307921517594 DAI net profit to the attacker (exactly reproduced) on Polygon; the Capital Source treasury was drained of 12,744.644506590589136718 DAI across two below-peg rebalance injections, the attacker paying just 1 DAI per exploit swap and arbitraging the extracted MALT out on QuickSwap - the ~$72K figure in the original alert does not match the on-chain reconstruction
 ```sh
