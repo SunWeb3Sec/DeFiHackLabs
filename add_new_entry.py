@@ -290,6 +290,10 @@ class DefiHackLibrary:
         interactive "process existing files" path, the selected network is
         passed through to the README run command, so chain-specific flags such
         as `--evm-version shanghai` are emitted correctly.
+
+        Returns 0 only when every requested artifact was actually produced;
+        any step that fails returns 1 so a CI job sees a real failure instead
+        of a green run with missing output.
         """
         rpc_endpoints = self.config_manager.parse_foundry_toml()
 
@@ -300,7 +304,10 @@ class DefiHackLibrary:
                       f"Pass --rpc-url to add it.")
                 return 1
             rpc_endpoints[args.network] = args.rpc_url
-            self.config_manager.update_foundry_toml(rpc_endpoints)
+            if not self.config_manager.update_foundry_toml(rpc_endpoints):
+                print("Error: could not register the network in "
+                      f"{self.constants.FOUNDRY_TOML_PATH}. Aborting.")
+                return 1
 
         # Resolve the timestamp: explicit value wins, else derive from the tx hash.
         timestamp_str = args.timestamp or ""
@@ -314,14 +321,19 @@ class DefiHackLibrary:
 
         # Optionally generate the Solidity PoC from the template.
         if args.create_poc:
-            self.poc_manager.create_poc_solidity_file(
-                args.file, args.lost_amount, args.attacker or "", args.attack_contract or "",
-                args.vulnerable or "", args.tx_hash or "", args.post_mortem or "",
-                args.twitter or "", args.hacking_god or "", args.network,
-                timestamp.strftime("%b-%d-%Y %I:%M:%S %p"))
+            if not self.poc_manager.create_poc_solidity_file(
+                    args.file, args.lost_amount, args.attacker or "", args.attack_contract or "",
+                    args.vulnerable or "", args.tx_hash or "", args.post_mortem or "",
+                    args.twitter or "", args.hacking_god or "", args.network,
+                    timestamp.strftime("%b-%d-%Y %I:%M:%S %p")):
+                print("Error: POC file was not created. Aborting.")
+                return 1
 
-        self.readme_manager.update_readme(formatted_date, name, args.details,
-                                        args.lost_amount, args.file, args.link, args.network)
+        if not self.readme_manager.update_readme(formatted_date, name, args.details,
+                                                args.lost_amount, args.file, args.link, args.network):
+            print("Error: README.md was not updated. Aborting.")
+            return 1
+
         print("\nNon-interactive entry complete.")
         return 0
 
@@ -346,26 +358,34 @@ class ConfigManager:
             print(f"Error: Could not decode {self.constants.FOUNDRY_TOML_PATH}. Please check its format.")
             return {}
     
-    def update_foundry_toml(self, rpc_endpoints: dict):
-        """Update foundry.toml with new RPC endpoints"""
+    def update_foundry_toml(self, rpc_endpoints: dict) -> bool:
+        """Update foundry.toml with new RPC endpoints.
+
+        Returns True when the file was written, False on any failure. Callers
+        running unattended (see DefiHackLibrary.add_entry_cli) must check the
+        return value instead of assuming the update succeeded.
+        """
         try:
             with open(self.constants.FOUNDRY_TOML_PATH, "r") as toml_file:
                 config = toml.load(toml_file)
         except FileNotFoundError:
             print(f"Error: {self.constants.FOUNDRY_TOML_PATH} not found. Cannot update RPC endpoints.")
-            return
+            return False
         except toml.TomlDecodeError:
             print(f"Error: Could not decode {self.constants.FOUNDRY_TOML_PATH}. Cannot update RPC endpoints.")
-            return
-        
+            return False
+
         config["rpc_endpoints"] = rpc_endpoints
-        
+
         try:
             with open(self.constants.FOUNDRY_TOML_PATH, "w") as toml_file:
                 toml.dump(config, toml_file)
-            print(f"{self.constants.FOUNDRY_TOML_PATH} updated successfully.")
-        except IOError:
-            print(f"Error: Could not write to {self.constants.FOUNDRY_TOML_PATH}.")
+        except OSError as e:
+            print(f"Error: Could not write to {self.constants.FOUNDRY_TOML_PATH}: {e}")
+            return False
+
+        print(f"{self.constants.FOUNDRY_TOML_PATH} updated successfully.")
+        return True
     
     def select_network(self) -> Tuple[Optional[str], Dict[str, str]]:
         """Select a network from available RPC endpoints or add a new one"""
@@ -549,24 +569,36 @@ class ReadmeManager:
         self.constants = constants
     
     def update_readme(self, formatted_date: str, name: str, additional_details: str, 
-                     lost_amount: str, file_name: str, link_reference: str, selected_network: str):
-        """Update README.md with a new entry"""
+                     lost_amount: str, file_name: str, link_reference: str, selected_network: str) -> bool:
+        """Update README.md with a new entry.
+
+        Returns True when the entry was written, False when the README is
+        missing or unwritable. Callers running unattended (see
+        DefiHackLibrary.add_entry_cli) must check the return value instead of
+        assuming the entry landed.
+        """
         try:
             with open(self.constants.README_PATH, "r") as file:
                 content = file.read()
         except FileNotFoundError:
             print(f"Error: {self.constants.README_PATH} not found. Please ensure the file exists in the current directory.")
             print("Aborting README.md update.")
-            return
+            return False
         
         updated_content = self._update_readme_contents(content, formatted_date, name, 
                                                     additional_details, lost_amount, 
                                                     file_name, link_reference, selected_network)
         
-        with open(self.constants.README_PATH, "w") as file:
-            file.write(updated_content)
+        try:
+            with open(self.constants.README_PATH, "w") as file:
+                file.write(updated_content)
+        except OSError as e:
+            print(f"Error: Could not write to {self.constants.README_PATH}: {e}")
+            print("Aborting README.md update.")
+            return False
         
         print(f"Updated {self.constants.README_PATH} with new entry: {formatted_date} {name}")
+        return True
     
     def _update_readme_contents(self, content: str, formatted_date: str, name: str, 
                               additional_details: str, lost_amount: str, file_name: str, 
@@ -663,8 +695,14 @@ class PocManager:
     def create_poc_solidity_file(self, file_name: str, lost_amount: str, attacker_address: str, 
                                 attack_contract_address: str, vulnerable_contract_address: str, 
                                 attack_tx_hash: str, post_mortem_url: str, twitter_guy_url: str, 
-                                hacking_god_url: str, selected_network: str, timestamp_str: str):
-        """Create a new Solidity POC file from template"""
+                                hacking_god_url: str, selected_network: str, timestamp_str: str) -> bool:
+        """Create a new Solidity POC file from template.
+
+        Returns True when the file was written, False when the template is
+        missing or the output path is not writable. Callers running unattended
+        (see DefiHackLibrary.add_entry_cli) must check the return value instead
+        of assuming the PoC exists.
+        """
         # Parse timestamp and format date for path
         timestamp = datetime.strptime(timestamp_str, "%b-%d-%Y %I:%M:%S %p") if timestamp_str else utc_now()
         formatted_date_for_path = timestamp.strftime("%Y-%m")
@@ -674,7 +712,11 @@ class PocManager:
         new_file_path = os.path.join(self.constants.SRC_TEST_DIR, formatted_date_for_path, new_file_name)
         
         # Create directory if it doesn't exist
-        os.makedirs(os.path.dirname(new_file_path), exist_ok=True)
+        try:
+            os.makedirs(os.path.dirname(new_file_path), exist_ok=True)
+        except OSError as e:
+            print(f"Error: Could not create directory {os.path.dirname(new_file_path)}: {e}")
+            return False
         
         # Read template
         try:
@@ -682,7 +724,7 @@ class PocManager:
                 template_content = template_file.read()
         except FileNotFoundError:
             print(f"Error: {self.constants.POC_TEMPLATE_PATH} not found. Cannot create POC file.")
-            return
+            return False
         
         # Get explorer URL for selected network
         explorer_url = self.constants.EXPLORER_URLS.get(selected_network, "")
@@ -711,10 +753,15 @@ class PocManager:
         modified_content = modified_content.replace("function exploit()", "function testExploit()")
         
         # Write to new file
-        with open(new_file_path, "w") as new_file:
-            new_file.write(modified_content)
+        try:
+            with open(new_file_path, "w") as new_file:
+                new_file.write(modified_content)
+        except OSError as e:
+            print(f"Error: Could not write POC file {new_file_path}: {e}")
+            return False
         
         print(f"Created POC file: {new_file_path}")
+        return True
     
     def _replace_placeholders(self, content: str, replacements: dict) -> str:
         """Replace placeholders in template content"""

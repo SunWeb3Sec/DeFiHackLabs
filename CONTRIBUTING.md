@@ -113,6 +113,8 @@ Useful options:
 
 Unlike the interactive "process existing files" path, non-interactive mode threads the selected network into the generated `forge` command, so chain-specific flags such as `--evm-version shanghai` (Base/optimism/bsc) are emitted automatically. Running with no flags keeps the original interactive behavior.
 
+The command exits with a **non-zero status** when any step fails — unknown network without `--rpc-url`, a `foundry.toml` that cannot be updated, a missing PoC template with `--create-poc`, or a `README.md` that is missing/unwritable — so a CI job never sees a green run whose artifacts were never produced.
+
 ### Step 2: Automatic Updates
 The script automatically handles:
 1. **README.md Updates**: Adds new incident entry to the "List of DeFi Hacks & POCs" section

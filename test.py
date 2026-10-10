@@ -15,6 +15,7 @@ import toml
 import subprocess
 from datetime import datetime
 import tempfile
+import shutil
 from contextlib import redirect_stdout
 
 # Import the module to test - adjust the import if you've named the file differently
@@ -169,8 +170,19 @@ arbitrum = "https://arbitrum.example.com"
         mock_open.side_effect = FileNotFoundError("File not found")
         
         with mock.patch("builtins.print") as mock_print:
-            self.config_manager.update_foundry_toml({})
+            result = self.config_manager.update_foundry_toml({})
             mock_print.assert_called_with(f"Error: {self.constants.FOUNDRY_TOML_PATH} not found. Cannot update RPC endpoints.")
+            self.assertFalse(result)
+    
+    @mock.patch("builtins.open", new_callable=mock.mock_open)
+    def test_update_foundry_toml_write_failure_returns_false(self, mock_open):
+        """A failed write is reported to the caller instead of being swallowed"""
+        mock_open.return_value.__enter__.return_value.read.return_value = self.sample_toml
+
+        with mock.patch("toml.load", return_value={"rpc_endpoints": {}}):
+            with mock.patch("toml.dump", side_effect=OSError("read-only file system")):
+                result = self.config_manager.update_foundry_toml({"mainnet": "https://mainnet"})
+        self.assertFalse(result)
     
     @mock.patch("builtins.input")
     def test_select_network_choose_existing(self, mock_input):
@@ -503,12 +515,25 @@ example.com
         mock_open.side_effect = FileNotFoundError("File not found")
         
         with mock.patch("builtins.print") as mock_print:
-            self.readme_manager.update_readme(
+            result = self.readme_manager.update_readme(
                 "20240520", "Test", "Flash Loan", "5M USD", "Test_exp.sol", "test.com", "mainnet"
             )
             
             # Assert the function prints error message
             mock_print.assert_called_with("Aborting README.md update.")
+            self.assertFalse(result)
+    
+    @mock.patch("builtins.open", new_callable=mock.mock_open)
+    def test_update_readme_write_failure_returns_false(self, mock_open):
+        """A failed README write is reported to the caller instead of being swallowed"""
+        mock_open.return_value.__enter__.return_value.read.return_value = self.sample_readme
+        mock_open.return_value.__enter__.return_value.write.side_effect = OSError("read-only file system")
+
+        with mock.patch.object(self.readme_manager, "_update_readme_contents", return_value="Updated README"):
+            result = self.readme_manager.update_readme(
+                "20240520", "Test", "Flash Loan", "5M USD", "Test_exp.sol", "test.com", "mainnet"
+            )
+        self.assertFalse(result)
     
     def test_generate_new_entry(self):
         """Test generating new README entry"""
@@ -709,7 +734,7 @@ contract ExploitScript is BaseTest {
         mock_open.side_effect = FileNotFoundError("File not found")
         
         with mock.patch("builtins.print") as mock_print:
-            self.poc_manager.create_poc_solidity_file(
+            result = self.poc_manager.create_poc_solidity_file(
                 "Test_exp.sol", "5M USD", "0xattacker", "0xattack",
                 "0xvulnerable", "0xabcdef", "https://example.com",
                 "https://twitter.com", "https://example.com",
@@ -718,6 +743,22 @@ contract ExploitScript is BaseTest {
             
             # Assert the function prints error message
             mock_print.assert_called_with(f"Error: {self.constants.POC_TEMPLATE_PATH} not found. Cannot create POC file.")
+            self.assertFalse(result)
+    
+    @mock.patch("os.makedirs")
+    @mock.patch("builtins.open", new_callable=mock.mock_open)
+    def test_create_poc_solidity_file_write_failure_returns_false(self, mock_open, mock_makedirs):
+        """A failed POC write is reported to the caller instead of being swallowed"""
+        mock_open.return_value.__enter__.return_value.read.return_value = self.sample_template
+        mock_open.return_value.__enter__.return_value.write.side_effect = OSError("no space left on device")
+
+        result = self.poc_manager.create_poc_solidity_file(
+            "Test_exp.sol", "5M USD", "0xattacker", "0xattack",
+            "0xvulnerable", "0xabcdef", "https://example.com",
+            "https://twitter.com", "https://example.com",
+            "mainnet", "Mar-21-2024 02:51:33 PM"
+        )
+        self.assertFalse(result)
     
     def test_replace_placeholders(self):
         """Test replacing placeholders in template"""
@@ -1016,6 +1057,73 @@ class TestCliArgs(unittest.TestCase):
                     rc = library.add_entry_cli(args)
         self.assertEqual(rc, 0)
         mock_poc.assert_called_once()
+
+    def _temp_library(self, with_readme=True, with_template=True, with_foundry=True):
+        """Build a library whose README/foundry.toml/template live in a temp dir"""
+        tmpdir = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, tmpdir, ignore_errors=True)
+
+        readme_path = os.path.join(tmpdir, "README.md")
+        if with_readme:
+            with open(readme_path, "w") as readme_file:
+                readme_file.write("## List of Past DeFi Incidents\n\n"
+                                  "### List of DeFi Hacks & POCs\n\n"
+                                  "1 incidents included.\n")
+
+        toml_path = os.path.join(tmpdir, "foundry.toml")
+        if with_foundry:
+            with open(toml_path, "w") as toml_file:
+                toml_file.write('[rpc_endpoints]\nbsc = "https://bsc.example.com"\n')
+
+        template_path = os.path.join(tmpdir, "Exploit-template_new.sol")
+        if with_template:
+            with open(template_path, "w") as template_file:
+                template_file.write("contract ExploitScript { function exploit() {} }")
+
+        library = DefiHackLibrary(
+            config_path=toml_path,
+            readme_path=readme_path,
+            template_path=template_path,
+            src_test_dir=os.path.join(tmpdir, "src", "test"),
+        )
+        return library, readme_path
+
+    def test_add_entry_cli_fails_when_readme_missing(self):
+        """A missing README.md is a hard failure, not a silent success"""
+        library, _ = self._temp_library(with_readme=False)
+        args = self._cli_args(["--timestamp", "Jun-24-2026 11:15:10 AM"])
+        with mock.patch("builtins.print") as mock_print:
+            rc = library.add_entry_cli(args)
+        self.assertEqual(rc, 1)
+        printed = " ".join(str(call) for call in mock_print.call_args_list)
+        self.assertNotIn("Non-interactive entry complete.", printed)
+
+    def test_add_entry_cli_fails_when_poc_template_missing(self):
+        """--create-poc with a missing template aborts before the README is touched"""
+        library, readme_path = self._temp_library(with_template=False)
+        args = self._cli_args(["--timestamp", "Jun-24-2026 11:15:10 AM", "--create-poc",
+                               "--attacker", "0xatk", "--vulnerable", "0xvuln"])
+        with open(readme_path) as readme_file:
+            before = readme_file.read()
+
+        rc = library.add_entry_cli(args)
+
+        with open(readme_path) as readme_file:
+            self.assertEqual(readme_file.read(), before)
+        self.assertEqual(rc, 1)
+
+    def test_add_entry_cli_fails_when_foundry_toml_update_fails(self):
+        """A network that cannot be registered aborts before the README is touched"""
+        library, readme_path = self._temp_library(with_foundry=False)
+        args = self._cli_args(["--timestamp", "Jun-24-2026 11:15:10 AM", "--rpc-url", "https://bsc.new"])
+        with open(readme_path) as readme_file:
+            before = readme_file.read()
+
+        rc = library.add_entry_cli(args)
+
+        with open(readme_path) as readme_file:
+            self.assertEqual(readme_file.read(), before)
+        self.assertEqual(rc, 1)
 
     def test_get_timestamp_auto_confirm_skips_prompt(self):
         """auto_confirm returns the derived timestamp without prompting"""
