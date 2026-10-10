@@ -54,6 +54,9 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261006 SetProtocol ETHMACOAPY](#20261006-setprotocol---a-second-rebalancingsettokenv3-vault-ethmacoapy-hit-by-the-same-permissionless-actualizefee-divceil-rounding-the-attacker-issues-the-rebalancing-set-then-donates-the-residual-base-set-into-the-vault-own-backing-so-the-zero-fee-recompute-bumps-unitshares-from-12253-to-12264-then-redeems-the-same-quantity-for-more-collateral-than-was-deposited-the-116000-weth-issueredeem-size-supplied-fee-free-by-an-aave-v3-fork-flash-loan)
+
 [20261006 SetProtocol](#20261006-setprotocol---actualizefee-is-permissionless-and-recomputes-unitshares-with-a-divceil-even-when-it-mints-zero-fee-rounding-the-backing-collateral-per-share-up-by-one-with-no-fee-actually-taken-so-issuing-the-rebalancing-set-before-the-bump-and-redeeming-the-same-quantity-after-returns-more-collateral-than-was-deposited-the-25044-eth-issueredeem-size-supplied-fee-free-by-a-uniswap-v4-native-eth-flash-accounting-loan)
 
 [20261006 MakerDAOFlipKeeper](#20261006-makerdaoflipkeeper---the-dormant-eth-a-flip-keeper-proxys-drain-selector-has-no-ds-auth-check-so-anyone-can-call-it-to-make-the-keeper-vathope-a-caller-supplied-worker-and-then-deal-its-four-undealt-2020-eth-a-auctions-and-fluxexit-the-freed-200-weth-of-collateral-out)
@@ -1872,6 +1875,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261006 SetProtocol - a second RebalancingSetTokenV3 vault (ETHMACOAPY) hit by the same permissionless actualizeFee() divCeil rounding, the attacker issues the rebalancing set then donates the residual base set into the vault own backing so the zero-fee recompute bumps unitShares from 12253 to 12264, then redeems the same quantity for more collateral than was deposited, the ~116,000 WETH issue/redeem size supplied fee-free by an Aave-v3-fork flash loan
+### Lost: 4.047988247781965824 WETH to the attacker in the first tx (reproduced to the wei) on Ethereum; two independent EOAs drained the ETHMACOAPY rebalancing set across two txs two blocks apart for ~8.11 WETH total, this PoC reconstructs the first tx (0xb54c77dae4c5ff8664779bacfb56d75242f39005b0b7778109d2f9033b9e8fc2) only, the ~116,000 WETH working capital borrowed and repaid in the same tx via a zero-premium Aave-v3-fork flash loan
+```sh
+forge test --contracts src/test/2026-10/SetProtocolETHMACOAPY_exp.sol -vvv
+```
+#### Contract
+[SetProtocolETHMACOAPY_exp.sol](src/test/2026-10/SetProtocolETHMACOAPY_exp.sol)
 ### 20261006 SetProtocol - actualizeFee() is permissionless and recomputes unitShares with a divCeil even when it mints zero fee, rounding the backing collateral per share up by one with no fee actually taken, so issuing the rebalancing set before the bump and redeeming the same quantity after returns more collateral than was deposited, the ~25,044 ETH issue/redeem size supplied fee-free by a Uniswap v4 native-ETH flash-accounting loan
 ### Lost: 5.083725683631735476 ETH to the attacker (reconstructed, 0.011% over the 5.083148662083682304 ETH taken on-chain) on Ethereum; the collateral backing Set Protocol's RebalancingSetTokenV3 was skimmed through the per-share rounding surplus, the ~25,044 ETH issue/redeem working capital borrowed and repaid in the same tx via Uniswap v4 zero-fee flash accounting
 ```sh
