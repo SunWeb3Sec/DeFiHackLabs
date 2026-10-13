@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-889 incidents included.
+890 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261008 X7Finance](#20261008-x7finance---x7pioneers-claimrewards-adds-the-unaccounted-eth-balance-delta-into-totalrewards-on-every-call-but-only-refreshes-lastethbalance-when-claimable-is-non-zero-so-calling-it-with-an-empty-tokenids-array-re-counts-the-same-donated-delta-each-time-and-inflates-the-per-token-reward-until-a-single-owned-nft-drains-the-whole-pool-the-2696-eth-donation-supplied-by-a-flash-loan-and-repaid-from-the-drain)
 
 [20261006 SetProtocol ETHMACOAPY](#20261006-setprotocol---a-second-rebalancingsettokenv3-vault-ethmacoapy-hit-by-the-same-permissionless-actualizefee-divceil-rounding-the-attacker-issues-the-rebalancing-set-then-donates-the-residual-base-set-into-the-vault-own-backing-so-the-zero-fee-recompute-bumps-unitshares-from-12253-to-12264-then-redeems-the-same-quantity-for-more-collateral-than-was-deposited-the-116000-weth-issueredeem-size-supplied-fee-free-by-an-aave-v3-fork-flash-loan)
 
@@ -1875,6 +1877,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261008 X7Finance - X7Pioneer's claimRewards() adds the unaccounted ETH balance delta into totalRewards on every call but only refreshes lastETHBalance when claimable is non-zero, so calling it with an empty tokenIds array re-counts the same donated delta each time and inflates the per-token reward until a single owned NFT drains the whole pool, the ~26.96 ETH donation supplied by a flash loan and repaid from the drain
+### Lost: ~6.78 ETH to the attacker on Ethereum (attacker EOA balance rose 6.777538 ETH; this reconstruction nets 6.793749214542107991 ETH, the difference being the on-chain Aave flash-loan premium and gas, neither modeled); the single draining claimRewards([300]) pays 33.756919822234785023 ETH, matching the on-chain RewardsClaimed to the wei, with the ~26.96 ETH donation capital returned
+```sh
+forge test --contracts src/test/2026-10/X7Finance_exp.sol -vvv
+```
+#### Contract
+[X7Finance_exp.sol](src/test/2026-10/X7Finance_exp.sol)
 ### 20261006 SetProtocol - a second RebalancingSetTokenV3 vault (ETHMACOAPY) hit by the same permissionless actualizeFee() divCeil rounding, the attacker issues the rebalancing set then donates the residual base set into the vault own backing so the zero-fee recompute bumps unitShares from 12253 to 12264, then redeems the same quantity for more collateral than was deposited, the ~116,000 WETH issue/redeem size supplied fee-free by an Aave-v3-fork flash loan
 ### Lost: 4.047988247781965824 WETH to the attacker in the first tx (reproduced to the wei) on Ethereum; two independent EOAs drained the ETHMACOAPY rebalancing set across two txs two blocks apart for ~8.11 WETH total, this PoC reconstructs the first tx (0xb54c77dae4c5ff8664779bacfb56d75242f39005b0b7778109d2f9033b9e8fc2) only, the ~116,000 WETH working capital borrowed and repaid in the same tx via a zero-premium Aave-v3-fork flash loan
 ```sh
