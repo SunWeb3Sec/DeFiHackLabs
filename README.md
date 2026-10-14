@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-891 incidents included.
+892 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261009 BitBay](#20261009-bitbay---the-usdcdaiv4vault-_withdraw-liquidity0-branch-pays-the-vault-entire-dai-and-usdc-balance-to-the-caller-with-no-share-weighted-cap-and-reposition-is-permissionless-once-the-tick-is-outside-the-narrow-lp-range-so-the-attacker-deposits-one-wei-for-a-single-share-swaps-the-uniswap-v4-pool-to-push-the-tick-onto-tickupper-calls-reposition-to-recompute-a-position-whose-liquidity-rounds-to-zero-and-leaves-the-pooled-funds-as-raw-balance-then-redeems-that-one-share-to-sweep-the-whole-14838-dai-pool)
 
 [20261008 X7Finance](#20261008-x7finance---x7pioneers-claimrewards-adds-the-unaccounted-eth-balance-delta-into-totalrewards-on-every-call-but-only-refreshes-lastethbalance-when-claimable-is-non-zero-so-calling-it-with-an-empty-tokenids-array-re-counts-the-same-donated-delta-each-time-and-inflates-the-per-token-reward-until-a-single-owned-nft-drains-the-whole-pool-the-2696-eth-donation-supplied-by-a-flash-loan-and-repaid-from-the-drain)
 
@@ -1879,6 +1881,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261009 BitBay - the UsdcDaiV4Vault _withdraw liquidity==0 branch pays the vault entire DAI and USDC balance to the caller with no share-weighted cap, and reposition() is permissionless once the tick is outside the narrow LP range, so the attacker deposits one wei for a single share, swaps the Uniswap v4 pool to push the tick onto tickUpper, calls reposition to recompute a position whose liquidity rounds to zero and leaves the pooled funds as raw balance, then redeems that one share to sweep the whole 14838 DAI pool
+### Lost: 14838.466608989135865711 DAI swept from the vault by a single 1-wei share on Polygon (reproduced to the wei against the on-chain Withdrawn amount), the attacker then unwound the drained DAI plus flash-loaned capital to a net ~14,813 USDC profit
+```sh
+forge test --contracts src/test/2026-10/BitBay_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[BitBay_exp.sol](src/test/2026-10/BitBay_exp.sol)
 ### 20261008 X7Finance - X7Pioneer's claimRewards() adds the unaccounted ETH balance delta into totalRewards on every call but only refreshes lastETHBalance when claimable is non-zero, so calling it with an empty tokenIds array re-counts the same donated delta each time and inflates the per-token reward until a single owned NFT drains the whole pool, the ~26.96 ETH donation supplied by a flash loan and repaid from the drain
 ### Lost: ~6.78 ETH to the attacker on Ethereum (attacker EOA balance rose 6.777538 ETH; this reconstruction nets 6.793749214542107991 ETH, the difference being the on-chain Aave flash-loan premium and gas, neither modeled); the single draining claimRewards([300]) pays 33.756919822234785023 ETH, matching the on-chain RewardsClaimed to the wei, with the ~26.96 ETH donation capital returned
 ```sh
