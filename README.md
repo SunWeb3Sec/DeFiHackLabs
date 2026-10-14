@@ -81,6 +81,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260923 PancakeV3SwapHelper](#20260923-pancakev3swaphelper---signed-swap-delta-accounting-error)
 
+[20260921 TheRedVillage](#20260921-theredvillage---ungated-polygontrvrouter-forwardrequest-relays-an-attacker-supplied-upgradeto-through-the-routers-_authorizeupgrade-role-on-the-seasonservice-uups-proxy-installing-a-malicious-implementation-that-uses-the-proxys-trvzookeeper-roles-to-pull-every-players-approved-weth-and-sweep-the-vault)
+
 [20260921 DoinGud](#20260921-doingud---acceptoffer-replay-via-missing-offer-cleanup-on-the-amount0-path)
 
 [20260921 GaslessReservoirEnabler](#20260921-gaslessreservoirenabler---erc20withtransfersandexecute-lets-a-whitelisted-module-run-unvalidated-transferfrom-calldata)
@@ -1978,6 +1980,13 @@ https://bscscan.com/tx/0x70bc4ff8439f74d26d454a53e9a135ac3659a958aa3462218d0db7e
 
 ---
 
+### 20260921 TheRedVillage - ungated PolygonTRVRouter forwardRequest relays an attacker-supplied upgradeTo through the router's _authorizeUpgrade role on the SeasonService UUPS proxy, installing a malicious implementation that uses the proxy's TRVZooKeeper roles to pull every player's approved WETH and sweep the vault
+### Lost: 31.426018474517367982 WETH (~$80.7K) swept from TRVZooKeeper on Polygon; 299 players with standing WETH approvals were pulled for 31.350379502001368 WETH and the vault's pre-existing 0.075638972516 WETH was swept with them, reproduced to the wei
+```sh
+forge test --contracts src/test/2026-09/TheRedVillage_exp.sol -vvv
+```
+#### Contract
+[TheRedVillage_exp.sol](src/test/2026-09/TheRedVillage_exp.sol)
 ### 20260921 DoinGud - acceptOffer replay via missing offer cleanup on the amount=0 path
 ### Lost: 35,380.154566 USDC net (two byte-identical acceptOffer calls each paid out 35,486.935717 USDC from escrow; funded via a UniV2 flash swap, repaid 35,593.716868 USDC)
 ```sh
