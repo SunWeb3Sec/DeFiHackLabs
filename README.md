@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-892 incidents included.
+893 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261015 KolanHook](#20261015-kolanhook---kolanhook-settles-its-escrowed-eth-buy-windows-at-the-same-uniswap-v4-pools-instantaneous-spot-price-with-no-twap-or-bound-and-accept-is-ungated-once-a-window-has-expired-so-the-attacker-flash-borrows-67-weth-from-balancer-swaps-it-to-move-the-kln-spot-then-calls-accept-on-two-expired-windows-it-does-not-own-so-_closewindow-mispositions-their-escrowed-eth-as-single-sided-liquidity-around-the-manipulated-price-and-runs-an-unbounded-buyback-and-reverses-the-swap-back-through-that-freshly-placed-eth-liquidity-before-repaying-the-loan-for-a-1279453-eth-net-gain)
 
 [20261009 BitBay](#20261009-bitbay---the-usdcdaiv4vault-_withdraw-liquidity0-branch-pays-the-vault-entire-dai-and-usdc-balance-to-the-caller-with-no-share-weighted-cap-and-reposition-is-permissionless-once-the-tick-is-outside-the-narrow-lp-range-so-the-attacker-deposits-one-wei-for-a-single-share-swaps-the-uniswap-v4-pool-to-push-the-tick-onto-tickupper-calls-reposition-to-recompute-a-position-whose-liquidity-rounds-to-zero-and-leaves-the-pooled-funds-as-raw-balance-then-redeems-that-one-share-to-sweep-the-whole-14838-dai-pool)
 
@@ -1881,6 +1883,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261015 KolanHook - KolanHook settles its escrowed ETH buy-windows at the same Uniswap v4 pool's instantaneous spot price with no TWAP or bound and accept() is ungated once a window has expired, so the attacker flash-borrows 6.7 WETH from Balancer, swaps it to move the KLN spot, then calls accept() on two expired windows it does not own so _closeWindow() mispositions their escrowed ETH as single-sided liquidity around the manipulated price and runs an unbounded buyback, and reverses the swap back through that freshly placed ETH liquidity before repaying the loan for a 1.279453 ETH net gain
+### Lost: 1.279453 ETH net to the attacker EOA on Ethereum (surplus 1.279914429958618589 ETH after the 6.7 WETH Balancer flash loan is repaid, minus ~0.00046 ETH gas), draining KolanHook's full 2.309861 ETH of escrowed window funds
+```sh
+forge test --contracts src/test/2026-10/KolanHook_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[KolanHook_exp.sol](src/test/2026-10/KolanHook_exp.sol)
 ### 20261009 BitBay - the UsdcDaiV4Vault _withdraw liquidity==0 branch pays the vault entire DAI and USDC balance to the caller with no share-weighted cap, and reposition() is permissionless once the tick is outside the narrow LP range, so the attacker deposits one wei for a single share, swaps the Uniswap v4 pool to push the tick onto tickUpper, calls reposition to recompute a position whose liquidity rounds to zero and leaves the pooled funds as raw balance, then redeems that one share to sweep the whole 14838 DAI pool
 ### Lost: 14838.466608989135865711 DAI swept from the vault by a single 1-wei share on Polygon (reproduced to the wei against the on-chain Withdrawn amount), the attacker then unwound the drained DAI plus flash-loaned capital to a net ~14,813 USDC profit
 ```sh
