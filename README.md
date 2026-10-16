@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-893 incidents included.
+894 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -56,6 +56,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ## List of Past DeFi Incidents
 
 [20261015 KolanHook](#20261015-kolanhook---kolanhook-settles-its-escrowed-eth-buy-windows-at-the-same-uniswap-v4-pools-instantaneous-spot-price-with-no-twap-or-bound-and-accept-is-ungated-once-a-window-has-expired-so-the-attacker-flash-borrows-67-weth-from-balancer-swaps-it-to-move-the-kln-spot-then-calls-accept-on-two-expired-windows-it-does-not-own-so-_closewindow-mispositions-their-escrowed-eth-as-single-sided-liquidity-around-the-manipulated-price-and-runs-an-unbounded-buyback-and-reverses-the-swap-back-through-that-freshly-placed-eth-liquidity-before-repaying-the-loan-for-a-1279453-eth-net-gain)
+
+[20261014 UNCXSmartTokenVesting](#20261014-uncxsmarttokenvesting---vestingmanager-pools-every-deposit-of-a-given-token-in-one-contract-and-release-pays-a-slice-of-the-full-contract-balance-over-a-global-share-count-release-debits-that-global-count-but-leaves-the-positions-deposited-shares-in-place-and-cancel-then-debits-the-same-shares-a-second-time-so-the-attacker-flash-borrows-each-token-creates-self-owned-vestings-whose-tranches-are-already-elapsed-and-so-instantly-releasable-releases-and-cancels-soft-helper-vestings-to-shrink-the-share-denominator-while-donating-token-straight-into-the-pool-to-raise-the-balance-then-releases-a-payout-vesting-against-the-corrupted-denominator-and-inflated-balance-to-over-withdraw-the-other-vesters-backing-tokens-across-five-erc-20s)
 
 [20261009 BitBay](#20261009-bitbay---the-usdcdaiv4vault-_withdraw-liquidity0-branch-pays-the-vault-entire-dai-and-usdc-balance-to-the-caller-with-no-share-weighted-cap-and-reposition-is-permissionless-once-the-tick-is-outside-the-narrow-lp-range-so-the-attacker-deposits-one-wei-for-a-single-share-swaps-the-uniswap-v4-pool-to-push-the-tick-onto-tickupper-calls-reposition-to-recompute-a-position-whose-liquidity-rounds-to-zero-and-leaves-the-pooled-funds-as-raw-balance-then-redeems-that-one-share-to-sweep-the-whole-14838-dai-pool)
 
@@ -1890,6 +1892,13 @@ forge test --contracts src/test/2026-10/KolanHook_exp.sol --evm-version cancun -
 ```
 #### Contract
 [KolanHook_exp.sol](src/test/2026-10/KolanHook_exp.sol)
+### 20261014 UNCXSmartTokenVesting - VestingManager pools every deposit of a given token in one contract and release() pays a slice of the full contract balance over a global share count, release() debits that global count but leaves the position's deposited shares in place and cancel() then debits the same shares a second time, so the attacker flash-borrows each token, creates self-owned vestings whose tranches are already elapsed and so instantly releasable, releases and cancels soft helper vestings to shrink the share denominator while donating token straight into the pool to raise the balance, then releases a payout vesting against the corrupted denominator and inflated balance to over-withdraw the other vesters backing tokens across five ERC-20s
+### Lost: ~88-89K USD across five ERC-20s on Ethereum, retained after the per-token flash loans are repaid and each reproduced to the wei against the tx transfer logs (EDGEN 55,601,598.708417972560603048, ZC 9,055,847.637887682268154756, pepecoin 40,155.284285661160205717, LO0P 65,372.217059159993437512, PAAL 113,657.766933968), the working capital flash-borrowed per token from Uniswap V3 (EDGEN), Uniswap V2 (pepecoin, PAAL) and Uniswap V4 (ZC, LO0P) and repaid in the same leg
+```sh
+forge test --contracts src/test/2026-10/UNCXSmartTokenVesting_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[UNCXSmartTokenVesting_exp.sol](src/test/2026-10/UNCXSmartTokenVesting_exp.sol)
 ### 20261009 BitBay - the UsdcDaiV4Vault _withdraw liquidity==0 branch pays the vault entire DAI and USDC balance to the caller with no share-weighted cap, and reposition() is permissionless once the tick is outside the narrow LP range, so the attacker deposits one wei for a single share, swaps the Uniswap v4 pool to push the tick onto tickUpper, calls reposition to recompute a position whose liquidity rounds to zero and leaves the pooled funds as raw balance, then redeems that one share to sweep the whole 14838 DAI pool
 ### Lost: 14838.466608989135865711 DAI swept from the vault by a single 1-wei share on Polygon (reproduced to the wei against the on-chain Withdrawn amount), the attacker then unwound the drained DAI plus flash-loaned capital to a net ~14,813 USDC profit
 ```sh
