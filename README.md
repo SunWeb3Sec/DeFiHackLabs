@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-893 incidents included.
+894 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261015 KolanHook](#20261015-kolanhook---kolanhook-settles-its-escrowed-eth-buy-windows-at-the-same-uniswap-v4-pools-instantaneous-spot-price-with-no-twap-or-bound-and-accept-is-ungated-once-a-window-has-expired-so-the-attacker-flash-borrows-67-weth-from-balancer-swaps-it-to-move-the-kln-spot-then-calls-accept-on-two-expired-windows-it-does-not-own-so-_closewindow-mispositions-their-escrowed-eth-as-single-sided-liquidity-around-the-manipulated-price-and-runs-an-unbounded-buyback-and-reverses-the-swap-back-through-that-freshly-placed-eth-liquidity-before-repaying-the-loan-for-a-1279453-eth-net-gain)
 
 [20261014 UNCXSmartTokenVesting](#20261014-uncxsmarttokenvesting---vestingmanager-pools-every-deposit-of-a-given-token-in-one-contract-and-release-pays-a-slice-of-the-full-contract-balance-over-a-global-share-count-release-debits-that-global-count-but-leaves-the-positions-deposited-shares-in-place-and-cancel-then-debits-the-same-shares-a-second-time-so-the-attacker-flash-borrows-each-token-creates-self-owned-vestings-whose-tranches-are-already-elapsed-and-so-instantly-releasable-releases-and-cancels-soft-helper-vestings-to-shrink-the-share-denominator-while-donating-token-straight-into-the-pool-to-raise-the-balance-then-releases-a-payout-vesting-against-the-corrupted-denominator-and-inflated-balance-to-over-withdraw-the-other-vesters-backing-tokens-across-five-erc-20s)
 
@@ -1883,6 +1885,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261015 KolanHook - KolanHook settles its escrowed ETH buy-windows at the same Uniswap v4 pool's instantaneous spot price with no TWAP or bound and accept() is ungated once a window has expired, so the attacker flash-borrows 6.7 WETH from Balancer, swaps it to move the KLN spot, then calls accept() on two expired windows it does not own so _closeWindow() mispositions their escrowed ETH as single-sided liquidity around the manipulated price and runs an unbounded buyback, and reverses the swap back through that freshly placed ETH liquidity before repaying the loan for a 1.279453 ETH net gain
+### Lost: 1.279453 ETH net to the attacker EOA on Ethereum (surplus 1.279914429958618589 ETH after the 6.7 WETH Balancer flash loan is repaid, minus ~0.00046 ETH gas), draining KolanHook's full 2.309861 ETH of escrowed window funds
+```sh
+forge test --contracts src/test/2026-10/KolanHook_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[KolanHook_exp.sol](src/test/2026-10/KolanHook_exp.sol)
 ### 20261014 UNCXSmartTokenVesting - VestingManager pools every deposit of a given token in one contract and release() pays a slice of the full contract balance over a global share count, release() debits that global count but leaves the position's deposited shares in place and cancel() then debits the same shares a second time, so the attacker flash-borrows each token, creates self-owned vestings whose tranches are already elapsed and so instantly releasable, releases and cancels soft helper vestings to shrink the share denominator while donating token straight into the pool to raise the balance, then releases a payout vesting against the corrupted denominator and inflated balance to over-withdraw the other vesters backing tokens across five ERC-20s
 ### Lost: ~88-89K USD across five ERC-20s on Ethereum, retained after the per-token flash loans are repaid and each reproduced to the wei against the tx transfer logs (EDGEN 55,601,598.708417972560603048, ZC 9,055,847.637887682268154756, pepecoin 40,155.284285661160205717, LO0P 65,372.217059159993437512, PAAL 113,657.766933968), the working capital flash-borrowed per token from Uniswap V3 (EDGEN), Uniswap V2 (pepecoin, PAAL) and Uniswap V4 (ZC, LO0P) and repaid in the same leg
 ```sh
