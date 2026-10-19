@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-894 incidents included.
+895 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261017 TIPMine](#20261017-tipmine---tipminemine-is-permissionless-its-only-guards-are-a-supply-flag-and-a-once-per-day-timer-that-is-already-open-at-lastminetime-0-and-it-burns-and-pushes-2-of-the-tip-supply-straight-out-of-the-live-tipsol-pancake-pair-through-the-tip-tokens-burnfrompool-and-distributefrompool-each-of-which-force-syncs-the-pair-so-the-pairs-tip-reserve-collapses-while-its-sol-reserve-is-untouched-and-tip-reprices-108x-letting-anyone-holding-tip-sell-it-back-into-the-pool-and-take-the-sol-side-so-the-attacker-deals-in-36k-sol-of-flash-capital-buys-a-little-tip-then-dumps-35121-sol-to-move-most-of-the-pools-tip-onto-its-own-side-calls-the-ungated-mine-to-burn-the-pools-remaining-tip-down-and-sells-the-held-tip-back-for-almost-the-entire-sol-reserve)
 
 [20261015 KolanHook](#20261015-kolanhook---kolanhook-settles-its-escrowed-eth-buy-windows-at-the-same-uniswap-v4-pools-instantaneous-spot-price-with-no-twap-or-bound-and-accept-is-ungated-once-a-window-has-expired-so-the-attacker-flash-borrows-67-weth-from-balancer-swaps-it-to-move-the-kln-spot-then-calls-accept-on-two-expired-windows-it-does-not-own-so-_closewindow-mispositions-their-escrowed-eth-as-single-sided-liquidity-around-the-manipulated-price-and-runs-an-unbounded-buyback-and-reverses-the-swap-back-through-that-freshly-placed-eth-liquidity-before-repaying-the-loan-for-a-1279453-eth-net-gain)
 
@@ -1885,6 +1887,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261017 TIPMine - TIPMine.mine() is permissionless (its only guards are a supply flag and a once-per-day timer that is already open at lastMineTime 0), and it burns and pushes 2% of the TIP supply straight out of the live TIP/SOL Pancake pair through the TIP token's burnFromPool and distributeFromPool, each of which force-syncs the pair, so the pair's TIP reserve collapses while its SOL reserve is untouched and TIP reprices ~10^8x, letting anyone holding TIP sell it back into the pool and take the SOL side, so the attacker deals in ~36k SOL of flash capital, buys a little TIP then dumps 35,121 SOL to move most of the pool's TIP onto its own side, calls the ungated mine() to burn the pool's remaining TIP down, and sells the held TIP back for almost the entire SOL reserve
+### Lost: ~667 SOL drained from the TIP/SOL pool on BNB Chain, taken to the attacker EOA as 667.228863551156127021 SOL (SOL Transfer, log index 182); the PoC reconstructs 706.253909658913182860 SOL, the pool's full ~715 SOL reserve, with the ~39 SOL difference being the real multi-source flash-sourcing cost (a Venus-fork SOL borrow plus 13 ecosystem-pool flash loans) that the deal()-modelled, fee-free capital does not incur
+```sh
+forge test --contracts src/test/2026-10/TIPMine_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[TIPMine_exp.sol](src/test/2026-10/TIPMine_exp.sol)
 ### 20261015 KolanHook - KolanHook settles its escrowed ETH buy-windows at the same Uniswap v4 pool's instantaneous spot price with no TWAP or bound and accept() is ungated once a window has expired, so the attacker flash-borrows 6.7 WETH from Balancer, swaps it to move the KLN spot, then calls accept() on two expired windows it does not own so _closeWindow() mispositions their escrowed ETH as single-sided liquidity around the manipulated price and runs an unbounded buyback, and reverses the swap back through that freshly placed ETH liquidity before repaying the loan for a 1.279453 ETH net gain
 ### Lost: 1.279453 ETH net to the attacker EOA on Ethereum (surplus 1.279914429958618589 ETH after the 6.7 WETH Balancer flash loan is repaid, minus ~0.00046 ETH gas), draining KolanHook's full 2.309861 ETH of escrowed window funds
 ```sh
