@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-895 incidents included.
+898 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -56,6 +56,10 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ## List of Past DeFi Incidents
 
 [20261018 AlpsCon](#20261018-alpscon---alpscon-ai-trade-hub-still-trusts-the-canonical-hardhat-default-account-0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266-on-its-onlyverified-whitelist-and-that-accounts-private-key-is-public-so-the-attacker-uses-an-eip-7702-authorization-signed-with-the-known-key-to-delegate-the-account-to-exploit-code-and-pass-every-reward-gate-and-because-each-reward-hub-version-imports-the-previous-versions-balances-through-migrate-and-then-pays-claimserviceresults-against-the-versions-already-accumulated-profitpershare-while-the-fresh-deposits-entryprofitpershare-is-still-zero-a-brand-new-flash-funded-alps-stake-in-the-still-open-v6-hub-is-credited-the-full-historical-reward-history-so-the-attacker-flash-borrows-1027990-usdc-from-aave-buys-and-stakes-alps-imports-the-stake-forward-over-claims-the-rewards-out-of-v7v8v9-unstakes-and-sells-back-and-repays-the-loan-for-a-1522953625-usdc-net-gain)
+
+[20261017 TIPMine](#20261017-tipmine---tipminemine-is-permissionless-its-only-guards-are-a-supply-flag-and-a-once-per-day-timer-that-is-already-open-at-lastminetime-0-and-it-burns-and-pushes-2-of-the-tip-supply-straight-out-of-the-live-tipsol-pancake-pair-through-the-tip-tokens-burnfrompool-and-distributefrompool-each-of-which-force-syncs-the-pair-so-the-pairs-tip-reserve-collapses-while-its-sol-reserve-is-untouched-and-tip-reprices-108x-letting-anyone-holding-tip-sell-it-back-into-the-pool-and-take-the-sol-side-so-the-attacker-deals-in-36k-sol-of-flash-capital-buys-a-little-tip-then-dumps-35121-sol-to-move-most-of-the-pools-tip-onto-its-own-side-calls-the-ungated-mine-to-burn-the-pools-remaining-tip-down-and-sells-the-held-tip-back-for-almost-the-entire-sol-reserve)
+
+[20261017 BiFi](#20261017-bifi---the-idle-bifi-usdt-market-freezes-its-per-block-exchange-rate-and-stores-the-entire-264059-block-inactive-gap-on-the-first-action-then-the-interest-model-charges-that-full-36-day-gap-of-deposit-interest-on-every-later-action-in-the-same-block-at-a-utilization-rate-the-attacker-sets-through-permissionless-deposit-and-borrow-so-the-attacker-flash-borrows-405m-usdt-from-morpho-deposits-it-to-seed-the-frozen-gap-borrows-to-spike-utilization-runs-a-repay-and-withdraw-loop-twice-to-cash-out-the-inflated-deposit-interest-then-repays-the-loan-and-swaps-the-165574-usdt-surplus-to-680572-weth)
 
 [20261015 KolanHook](#20261015-kolanhook---kolanhook-settles-its-escrowed-eth-buy-windows-at-the-same-uniswap-v4-pools-instantaneous-spot-price-with-no-twap-or-bound-and-accept-is-ungated-once-a-window-has-expired-so-the-attacker-flash-borrows-67-weth-from-balancer-swaps-it-to-move-the-kln-spot-then-calls-accept-on-two-expired-windows-it-does-not-own-so-_closewindow-mispositions-their-escrowed-eth-as-single-sided-liquidity-around-the-manipulated-price-and-runs-an-unbounded-buyback-and-reverses-the-swap-back-through-that-freshly-placed-eth-liquidity-before-repaying-the-loan-for-a-1279453-eth-net-gain)
 
@@ -176,6 +180,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20260803 AIC](#20260803-aic---pair-skim--reserve-mismatch-exploit-flash-swap-leveraged)
 
 [20260802 MOKE](#20260802-moke---settle-txorigin-check-lets-any-eoa-latch-a-manipulated-mokeusdt-price-then-claim-mints-inflated-moke-against-it)
+
+[20260728 LULA](#20260728-lula---rental-reward-claims-call-lularecycle-which-moves-up-to-a-third-of-the-pairs-lula-to-rental-and-syncs-with-no-usdt-leaving-so-after-a-buy-routed-to-the-fee-excluded-owner-bypasses-buyenabled-the-claims-drain-the-pairs-lula-reserve-and-4999-lula-buys-back-the-pushed-usdt-plus-the-pools-liquidity)
 
 [20260716 CrowdRingCircle](#20260716-crowdringcircle---sell-destroy-path-burns-crc-out-of-the-pair-on-any-non-exempt-sell-collapsing-the-reserve-so-a-follow-up-swap-drains-the-pools-usdt)
 
@@ -1894,6 +1900,20 @@ forge test --contracts src/test/2026-10/AlpsCon_exp.sol --evm-version prague -vv
 ```
 #### Contract
 [AlpsCon_exp.sol](src/test/2026-10/AlpsCon_exp.sol)
+### 20261017 TIPMine - TIPMine.mine() is permissionless (its only guards are a supply flag and a once-per-day timer that is already open at lastMineTime 0), and it burns and pushes 2% of the TIP supply straight out of the live TIP/SOL Pancake pair through the TIP token's burnFromPool and distributeFromPool, each of which force-syncs the pair, so the pair's TIP reserve collapses while its SOL reserve is untouched and TIP reprices ~10^8x, letting anyone holding TIP sell it back into the pool and take the SOL side, so the attacker deals in ~36k SOL of flash capital, buys a little TIP then dumps 35,121 SOL to move most of the pool's TIP onto its own side, calls the ungated mine() to burn the pool's remaining TIP down, and sells the held TIP back for almost the entire SOL reserve
+### Lost: ~667 SOL drained from the TIP/SOL pool on BNB Chain, taken to the attacker EOA as 667.228863551156127021 SOL (SOL Transfer, log index 182); the PoC reconstructs 706.253909658913182860 SOL, the pool's full ~715 SOL reserve, with the ~39 SOL difference being the real multi-source flash-sourcing cost (a Venus-fork SOL borrow plus 13 ecosystem-pool flash loans) that the deal()-modelled, fee-free capital does not incur
+```sh
+forge test --contracts src/test/2026-10/TIPMine_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[TIPMine_exp.sol](src/test/2026-10/TIPMine_exp.sol)
+### 20261017 BiFi - the idle BiFi USDT market freezes its per-block exchange rate and stores the entire 264,059-block inactive gap on the first action, then the interest model charges that full ~36 day gap of deposit interest on every later action in the same block at a utilization rate the attacker sets through permissionless deposit and borrow, so the attacker flash-borrows 40.5M USDT from Morpho, deposits it to seed the frozen gap, borrows to spike utilization, runs a repay and withdraw loop twice to cash out the inflated deposit interest, then repays the loan and swaps the 165,574 USDT surplus to 68.0572 WETH
+### Lost: ~165,574 USDT drained from the BiFi USDT market on Ethereum, swapped to 68.057203111718789216 WETH (the PoC reproduces the surplus to 68.057464 WETH, a sub-0.0003 WETH intra-block drift from the parent-block fork point); the profit was taken one block after the exploit contract was deployed by the MEV bot c0ffeebabe front-running the same permissionless mechanism
+```sh
+forge test --contracts src/test/2026-10/BiFi_exp.sol -vvv
+```
+#### Contract
+[BiFi_exp.sol](src/test/2026-10/BiFi_exp.sol)
 ### 20261015 KolanHook - KolanHook settles its escrowed ETH buy-windows at the same Uniswap v4 pool's instantaneous spot price with no TWAP or bound and accept() is ungated once a window has expired, so the attacker flash-borrows 6.7 WETH from Balancer, swaps it to move the KLN spot, then calls accept() on two expired windows it does not own so _closeWindow() mispositions their escrowed ETH as single-sided liquidity around the manipulated price and runs an unbounded buyback, and reverses the swap back through that freshly placed ETH liquidity before repaying the loan for a 1.279453 ETH net gain
 ### Lost: 1.279453 ETH net to the attacker EOA on Ethereum (surplus 1.279914429958618589 ETH after the 6.7 WETH Balancer flash loan is repaid, minus ~0.00046 ETH gas), draining KolanHook's full 2.309861 ETH of escrowed window funds
 ```sh
@@ -2325,6 +2345,16 @@ forge test --contracts src/test/2026-10/MOKE_exp.sol --evm-version prague -vvv
 ```
 #### Contract
 [MOKE_exp.sol](src/test/2026-10/MOKE_exp.sol)
+### 20260728 LULA - Rental reward claims call LULA.recycle(), which moves up to a third of the pair's LULA to Rental and sync()s with no USDT leaving, so after a buy routed to the fee-excluded owner bypasses buyEnabled, the claims drain the pair's LULA reserve and 4,999 LULA buys back the pushed USDT plus the pool's liquidity
+### Lost: ~578.3K USDT
+```sh
+forge test --contracts src/test/2026-07/LULA_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[LULA_exp.sol](src/test/2026-07/LULA_exp.sol)
+### Link reference
+https://www.cryptotimes.io/2026/07/29/lula-token-on-bsc-exploited-for-578k-in-reserve-manipulation-attack/
+
 ### 20260716 CrowdRingCircle - sell-destroy path burns CRC out of the pair on any non-exempt sell, collapsing the reserve so a follow-up swap drains the pool's USDT
 ### Lost: ~201.36K USDT
 ```sh
