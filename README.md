@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-895 incidents included.
+896 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261017 BiFi](#20261017-bifi---the-idle-bifi-usdt-market-freezes-its-per-block-exchange-rate-and-stores-the-entire-264059-block-inactive-gap-on-the-first-action-then-the-interest-model-charges-that-full-36-day-gap-of-deposit-interest-on-every-later-action-in-the-same-block-at-a-utilization-rate-the-attacker-sets-through-permissionless-deposit-and-borrow-so-the-attacker-flash-borrows-405m-usdt-from-morpho-deposits-it-to-seed-the-frozen-gap-borrows-to-spike-utilization-runs-a-repay-and-withdraw-loop-twice-to-cash-out-the-inflated-deposit-interest-then-repays-the-loan-and-swaps-the-165574-usdt-surplus-to-680572-weth)
 
 [20261015 KolanHook](#20261015-kolanhook---kolanhook-settles-its-escrowed-eth-buy-windows-at-the-same-uniswap-v4-pools-instantaneous-spot-price-with-no-twap-or-bound-and-accept-is-ungated-once-a-window-has-expired-so-the-attacker-flash-borrows-67-weth-from-balancer-swaps-it-to-move-the-kln-spot-then-calls-accept-on-two-expired-windows-it-does-not-own-so-_closewindow-mispositions-their-escrowed-eth-as-single-sided-liquidity-around-the-manipulated-price-and-runs-an-unbounded-buyback-and-reverses-the-swap-back-through-that-freshly-placed-eth-liquidity-before-repaying-the-loan-for-a-1279453-eth-net-gain)
 
@@ -1887,6 +1889,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261017 BiFi - the idle BiFi USDT market freezes its per-block exchange rate and stores the entire 264,059-block inactive gap on the first action, then the interest model charges that full ~36 day gap of deposit interest on every later action in the same block at a utilization rate the attacker sets through permissionless deposit and borrow, so the attacker flash-borrows 40.5M USDT from Morpho, deposits it to seed the frozen gap, borrows to spike utilization, runs a repay and withdraw loop twice to cash out the inflated deposit interest, then repays the loan and swaps the 165,574 USDT surplus to 68.0572 WETH
+### Lost: ~165,574 USDT drained from the BiFi USDT market on Ethereum, swapped to 68.057203111718789216 WETH (the PoC reproduces the surplus to 68.057464 WETH, a sub-0.0003 WETH intra-block drift from the parent-block fork point); the profit was taken one block after the exploit contract was deployed by the MEV bot c0ffeebabe front-running the same permissionless mechanism
+```sh
+forge test --contracts src/test/2026-10/BiFi_exp.sol -vvv
+```
+#### Contract
+[BiFi_exp.sol](src/test/2026-10/BiFi_exp.sol)
 ### 20261015 KolanHook - KolanHook settles its escrowed ETH buy-windows at the same Uniswap v4 pool's instantaneous spot price with no TWAP or bound and accept() is ungated once a window has expired, so the attacker flash-borrows 6.7 WETH from Balancer, swaps it to move the KLN spot, then calls accept() on two expired windows it does not own so _closeWindow() mispositions their escrowed ETH as single-sided liquidity around the manipulated price and runs an unbounded buyback, and reverses the swap back through that freshly placed ETH liquidity before repaying the loan for a 1.279453 ETH net gain
 ### Lost: 1.279453 ETH net to the attacker EOA on Ethereum (surplus 1.279914429958618589 ETH after the 6.7 WETH Balancer flash loan is repaid, minus ~0.00046 ETH gas), draining KolanHook's full 2.309861 ETH of escrowed window funds
 ```sh
