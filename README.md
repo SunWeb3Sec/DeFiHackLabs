@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-897 incidents included.
+898 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261018 AlpsCon](#20261018-alpscon---alpscon-ai-trade-hub-still-trusts-the-canonical-hardhat-default-account-0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266-on-its-onlyverified-whitelist-and-that-accounts-private-key-is-public-so-the-attacker-uses-an-eip-7702-authorization-signed-with-the-known-key-to-delegate-the-account-to-exploit-code-and-pass-every-reward-gate-and-because-each-reward-hub-version-imports-the-previous-versions-balances-through-migrate-and-then-pays-claimserviceresults-against-the-versions-already-accumulated-profitpershare-while-the-fresh-deposits-entryprofitpershare-is-still-zero-a-brand-new-flash-funded-alps-stake-in-the-still-open-v6-hub-is-credited-the-full-historical-reward-history-so-the-attacker-flash-borrows-1027990-usdc-from-aave-buys-and-stakes-alps-imports-the-stake-forward-over-claims-the-rewards-out-of-v7v8v9-unstakes-and-sells-back-and-repays-the-loan-for-a-1522953625-usdc-net-gain)
 
 [20261017 TIPMine](#20261017-tipmine---tipminemine-is-permissionless-its-only-guards-are-a-supply-flag-and-a-once-per-day-timer-that-is-already-open-at-lastminetime-0-and-it-burns-and-pushes-2-of-the-tip-supply-straight-out-of-the-live-tipsol-pancake-pair-through-the-tip-tokens-burnfrompool-and-distributefrompool-each-of-which-force-syncs-the-pair-so-the-pairs-tip-reserve-collapses-while-its-sol-reserve-is-untouched-and-tip-reprices-108x-letting-anyone-holding-tip-sell-it-back-into-the-pool-and-take-the-sol-side-so-the-attacker-deals-in-36k-sol-of-flash-capital-buys-a-little-tip-then-dumps-35121-sol-to-move-most-of-the-pools-tip-onto-its-own-side-calls-the-ungated-mine-to-burn-the-pools-remaining-tip-down-and-sells-the-held-tip-back-for-almost-the-entire-sol-reserve)
 
@@ -1891,6 +1893,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261018 AlpsCon - AlpsCon AI Trade Hub still trusts the canonical Hardhat default account 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 on its onlyVerified whitelist, and that account's private key is public, so the attacker uses an EIP-7702 authorization signed with the known key to delegate the account to exploit code and pass every reward gate, and because each reward hub version imports the previous version's balances through migrate() and then pays claimServiceResults() against the version's already-accumulated profitPerShare while the fresh deposit's entryProfitPerShare is still zero, a brand-new flash-funded ALPS stake in the still-open V6 hub is credited the full historical reward history, so the attacker flash-borrows 1,027,990 USDC from Aave, buys and stakes ALPS, imports the stake forward, over-claims the rewards out of V7/V8/V9, unstakes and sells back, and repays the loan for a 152,295.3625 USDC net gain
+### Lost: ~152.8K USDC drained from the AlpsCon AI Trade Hub reward pools on BNB Chain; the attacker EOA received 152,295.3625 USDC before gas, with the Aave flash loan of 1,027,990 USDC repaid in full at 1,028,503.995 USDC. This PoC reconstructs the dominant V9 over-claim leg at a 129,775.6074 USDC net; the remaining 22,519.75 USDC is the V7/V8 cascade inside the real single claimServiceResults() call, which an equivalent standalone call does not reproduce
+```sh
+forge test --contracts src/test/2026-10/AlpsCon_exp.sol --evm-version prague -vvv
+```
+#### Contract
+[AlpsCon_exp.sol](src/test/2026-10/AlpsCon_exp.sol)
 ### 20261017 TIPMine - TIPMine.mine() is permissionless (its only guards are a supply flag and a once-per-day timer that is already open at lastMineTime 0), and it burns and pushes 2% of the TIP supply straight out of the live TIP/SOL Pancake pair through the TIP token's burnFromPool and distributeFromPool, each of which force-syncs the pair, so the pair's TIP reserve collapses while its SOL reserve is untouched and TIP reprices ~10^8x, letting anyone holding TIP sell it back into the pool and take the SOL side, so the attacker deals in ~36k SOL of flash capital, buys a little TIP then dumps 35,121 SOL to move most of the pool's TIP onto its own side, calls the ungated mine() to burn the pool's remaining TIP down, and sells the held TIP back for almost the entire SOL reserve
 ### Lost: ~667 SOL drained from the TIP/SOL pool on BNB Chain, taken to the attacker EOA as 667.228863551156127021 SOL (SOL Transfer, log index 182); the PoC reconstructs 706.253909658913182860 SOL, the pool's full ~715 SOL reserve, with the ~39 SOL difference being the real multi-source flash-sourcing cost (a Venus-fork SOL borrow plus 13 ecosystem-pool flash loans) that the deal()-modelled, fee-free capital does not incur
 ```sh
