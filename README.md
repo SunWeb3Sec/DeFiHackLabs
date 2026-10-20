@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-896 incidents included.
+897 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261017 TIPMine](#20261017-tipmine---tipminemine-is-permissionless-its-only-guards-are-a-supply-flag-and-a-once-per-day-timer-that-is-already-open-at-lastminetime-0-and-it-burns-and-pushes-2-of-the-tip-supply-straight-out-of-the-live-tipsol-pancake-pair-through-the-tip-tokens-burnfrompool-and-distributefrompool-each-of-which-force-syncs-the-pair-so-the-pairs-tip-reserve-collapses-while-its-sol-reserve-is-untouched-and-tip-reprices-108x-letting-anyone-holding-tip-sell-it-back-into-the-pool-and-take-the-sol-side-so-the-attacker-deals-in-36k-sol-of-flash-capital-buys-a-little-tip-then-dumps-35121-sol-to-move-most-of-the-pools-tip-onto-its-own-side-calls-the-ungated-mine-to-burn-the-pools-remaining-tip-down-and-sells-the-held-tip-back-for-almost-the-entire-sol-reserve)
 
 [20261017 BiFi](#20261017-bifi---the-idle-bifi-usdt-market-freezes-its-per-block-exchange-rate-and-stores-the-entire-264059-block-inactive-gap-on-the-first-action-then-the-interest-model-charges-that-full-36-day-gap-of-deposit-interest-on-every-later-action-in-the-same-block-at-a-utilization-rate-the-attacker-sets-through-permissionless-deposit-and-borrow-so-the-attacker-flash-borrows-405m-usdt-from-morpho-deposits-it-to-seed-the-frozen-gap-borrows-to-spike-utilization-runs-a-repay-and-withdraw-loop-twice-to-cash-out-the-inflated-deposit-interest-then-repays-the-loan-and-swaps-the-165574-usdt-surplus-to-680572-weth)
 
@@ -1889,6 +1891,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261017 TIPMine - TIPMine.mine() is permissionless (its only guards are a supply flag and a once-per-day timer that is already open at lastMineTime 0), and it burns and pushes 2% of the TIP supply straight out of the live TIP/SOL Pancake pair through the TIP token's burnFromPool and distributeFromPool, each of which force-syncs the pair, so the pair's TIP reserve collapses while its SOL reserve is untouched and TIP reprices ~10^8x, letting anyone holding TIP sell it back into the pool and take the SOL side, so the attacker deals in ~36k SOL of flash capital, buys a little TIP then dumps 35,121 SOL to move most of the pool's TIP onto its own side, calls the ungated mine() to burn the pool's remaining TIP down, and sells the held TIP back for almost the entire SOL reserve
+### Lost: ~667 SOL drained from the TIP/SOL pool on BNB Chain, taken to the attacker EOA as 667.228863551156127021 SOL (SOL Transfer, log index 182); the PoC reconstructs 706.253909658913182860 SOL, the pool's full ~715 SOL reserve, with the ~39 SOL difference being the real multi-source flash-sourcing cost (a Venus-fork SOL borrow plus 13 ecosystem-pool flash loans) that the deal()-modelled, fee-free capital does not incur
+```sh
+forge test --contracts src/test/2026-10/TIPMine_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[TIPMine_exp.sol](src/test/2026-10/TIPMine_exp.sol)
 ### 20261017 BiFi - the idle BiFi USDT market freezes its per-block exchange rate and stores the entire 264,059-block inactive gap on the first action, then the interest model charges that full ~36 day gap of deposit interest on every later action in the same block at a utilization rate the attacker sets through permissionless deposit and borrow, so the attacker flash-borrows 40.5M USDT from Morpho, deposits it to seed the frozen gap, borrows to spike utilization, runs a repay and withdraw loop twice to cash out the inflated deposit interest, then repays the loan and swaps the 165,574 USDT surplus to 68.0572 WETH
 ### Lost: ~165,574 USDT drained from the BiFi USDT market on Ethereum, swapped to 68.057203111718789216 WETH (the PoC reproduces the surplus to 68.057464 WETH, a sub-0.0003 WETH intra-block drift from the parent-block fork point); the profit was taken one block after the exploit contract was deployed by the MEV bot c0ffeebabe front-running the same permissionless mechanism
 ```sh
