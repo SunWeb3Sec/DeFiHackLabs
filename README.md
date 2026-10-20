@@ -177,6 +177,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260802 MOKE](#20260802-moke---settle-txorigin-check-lets-any-eoa-latch-a-manipulated-mokeusdt-price-then-claim-mints-inflated-moke-against-it)
 
+[20260728 LULA](#20260728-lula---rental-reward-claims-call-lularecycle-which-moves-up-to-a-third-of-the-pairs-lula-to-rental-and-syncs-with-no-usdt-leaving-so-after-a-buy-routed-to-the-fee-excluded-owner-bypasses-buyenabled-the-claims-drain-the-pairs-lula-reserve-and-4999-lula-buys-back-the-pushed-usdt-plus-the-pools-liquidity)
+
 [20260716 CrowdRingCircle](#20260716-crowdringcircle---sell-destroy-path-burns-crc-out-of-the-pair-on-any-non-exempt-sell-collapsing-the-reserve-so-a-follow-up-swap-drains-the-pools-usdt)
 
 [20260716 PerpetualProtocol](#20260716-perpetualprotocol---v2-curie-unguarded-orderbook-funding-growth-update-lets-anyone-poison-cached-funding-draining-the-vault)
@@ -2325,6 +2327,16 @@ forge test --contracts src/test/2026-10/MOKE_exp.sol --evm-version prague -vvv
 ```
 #### Contract
 [MOKE_exp.sol](src/test/2026-10/MOKE_exp.sol)
+### 20260728 LULA - Rental reward claims call LULA.recycle(), which moves up to a third of the pair's LULA to Rental and sync()s with no USDT leaving, so after a buy routed to the fee-excluded owner bypasses buyEnabled, the claims drain the pair's LULA reserve and 4,999 LULA buys back the pushed USDT plus the pool's liquidity
+### Lost: ~578.3K USDT
+```sh
+forge test --contracts src/test/2026-07/LULA_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[LULA_exp.sol](src/test/2026-07/LULA_exp.sol)
+### Link reference
+https://www.cryptotimes.io/2026/07/29/lula-token-on-bsc-exploited-for-578k-in-reserve-manipulation-attack/
+
 ### 20260716 CrowdRingCircle - sell-destroy path burns CRC out of the pair on any non-exempt sell, collapsing the reserve so a follow-up swap drains the pool's USDT
 ### Lost: ~201.36K USDT
 ```sh
