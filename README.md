@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-898 incidents included.
+899 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261020 SliceFundsModule](#20261020-slicefundsmodule---slices-fundsmodule-exposes-one-permissionless-entry-point-selector-0x9d2edfac-that-takes-a-caller-supplied-list-of-source-contracts-and-for-each-one-trusts-the-eth-or-usdc-amount-the-source-returns-as-a-deposit-credit-without-ever-checking-the-modules-own-balance-actually-rose-by-it-then-when-the-boolean-flag-is-set-pays-that-credited-amount-out-of-the-pooled-reserves-to-the-caller-so-the-attacker-first-calls-it-with-flag-false-against-the-real-slice-product-contracts-to-pool-other-users-funds-into-the-module-and-then-calls-it-with-flag-true-against-two-self-deployed-source-contracts-that-return-a-non-zero-amount-while-transferring-nothing-withdrawing-8716935563284127414-eth-and-19820734002-usdc-from-the-pool)
 
 [20261018 AlpsCon](#20261018-alpscon---alpscon-ai-trade-hub-still-trusts-the-canonical-hardhat-default-account-0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266-on-its-onlyverified-whitelist-and-that-accounts-private-key-is-public-so-the-attacker-uses-an-eip-7702-authorization-signed-with-the-known-key-to-delegate-the-account-to-exploit-code-and-pass-every-reward-gate-and-because-each-reward-hub-version-imports-the-previous-versions-balances-through-migrate-and-then-pays-claimserviceresults-against-the-versions-already-accumulated-profitpershare-while-the-fresh-deposits-entryprofitpershare-is-still-zero-a-brand-new-flash-funded-alps-stake-in-the-still-open-v6-hub-is-credited-the-full-historical-reward-history-so-the-attacker-flash-borrows-1027990-usdc-from-aave-buys-and-stakes-alps-imports-the-stake-forward-over-claims-the-rewards-out-of-v7v8v9-unstakes-and-sells-back-and-repays-the-loan-for-a-1522953625-usdc-net-gain)
 
@@ -1893,6 +1895,12 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261020 SliceFundsModule - Slice's FundsModule exposes one permissionless entry point (selector 0x9d2edfac) that takes a caller-supplied list of source contracts and for each one trusts the ETH or USDC amount the source returns as a deposit credit without ever checking the module's own balance actually rose by it, then when the boolean flag is set pays that credited amount out of the pooled reserves to the caller, so the attacker first calls it with flag false against the real Slice product contracts to pool other users' funds into the module and then calls it with flag true against two self-deployed source contracts that return a non-zero amount while transferring nothing, withdrawing 8.716935563284127414 ETH and 19,820.734002 USDC from the pool
+```sh
+forge test --contracts src/test/2026-10/SliceFundsModule_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[SliceFundsModule_exp.sol](src/test/2026-10/SliceFundsModule_exp.sol)
 ### 20261018 AlpsCon - AlpsCon AI Trade Hub still trusts the canonical Hardhat default account 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 on its onlyVerified whitelist, and that account's private key is public, so the attacker uses an EIP-7702 authorization signed with the known key to delegate the account to exploit code and pass every reward gate, and because each reward hub version imports the previous version's balances through migrate() and then pays claimServiceResults() against the version's already-accumulated profitPerShare while the fresh deposit's entryProfitPerShare is still zero, a brand-new flash-funded ALPS stake in the still-open V6 hub is credited the full historical reward history, so the attacker flash-borrows 1,027,990 USDC from Aave, buys and stakes ALPS, imports the stake forward, over-claims the rewards out of V7/V8/V9, unstakes and sells back, and repays the loan for a 152,295.3625 USDC net gain
 ### Lost: ~152.8K USDC drained from the AlpsCon AI Trade Hub reward pools on BNB Chain; the attacker EOA received 152,295.3625 USDC before gas, with the Aave flash loan of 1,027,990 USDC repaid in full at 1,028,503.995 USDC. This PoC reconstructs the dominant V9 over-claim leg at a 129,775.6074 USDC net; the remaining 22,519.75 USDC is the V7/V8 cascade inside the real single claimServiceResults() call, which an equivalent standalone call does not reproduce
 ```sh
