@@ -86,7 +86,7 @@ contract SliceFundsModuleExploit is Test {
     FakeSource internal usdcSource;
 
     function setUp() public {
-        vm.createSelectFork("https://base.gateway.tenderly.co", ATTACK_BLOCK - 1);
+        vm.createSelectFork("base", ATTACK_BLOCK - 1);
         vm.label(FUNDS_MODULE, "FundsModule");
         vm.label(address(USDC), "USDC");
     }
