@@ -394,7 +394,7 @@ contract X100SenateExploit is Test {
 
     function setUp() public {
         // Fork at the PARENT of the attack block; the whole capture is rebuilt live, nothing inherited.
-        vm.createSelectFork("https://eth-pokt.nodies.app", 26263021);
+        vm.createSelectFork("mainnet", 26263021);
         vm.warp(1792851107); // attack block timestamp, 2026-10-24 14:11:47 UTC
     }
 
