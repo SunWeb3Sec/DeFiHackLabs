@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-899 incidents included.
+900 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261024 X100Senate](#20261024-x100senate---the-x100-senate-treasury-has-no-snapshot-and-no-timelock-so-applyforsenate-is-permissionless-and-propose-vote-and-execute-run-in-one-block-so-the-attacker-flash-borrows-1942457-usdt-from-aave-buys-38200-x-and-freezes-it-across-two-helper-contracts-to-seize-2-of-3-senate-seats-then-passes-a-dextreasury-v3swap-that-dumps-400000-treasury-x-into-an-attacker-created-pancakev3-pool-at-a-manipulated-price-and-resells-it-on-the-deep-uniswap-pool-repaying-the-flash-loan-for-a-474972603-usdt-net-gain)
 
 [20261020 SliceFundsModule](#20261020-slicefundsmodule---permissionless-entry-point-0x9d2edfac-credits-each-caller-supplied-sources-returned-amount-as-a-deposit-without-verifying-the-modules-balance-rose-then-pays-it-out-of-pooled-reserves-when-the-flag-is-set)
 
@@ -1895,6 +1897,13 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261024 X100Senate - the X100 Senate treasury has no snapshot and no timelock, so applyForSenate() is permissionless and propose, vote and execute run in one block, so the attacker flash-borrows 1,942,457 USDT from Aave, buys 38,200 X and freezes it across two helper contracts to seize 2 of 3 senate seats, then passes a DexTreasury v3Swap that dumps 400,000 treasury X into an attacker-created PancakeV3 pool at a manipulated price and resells it on the deep Uniswap pool, repaying the flash loan for a 4,749,726.03 USDT net gain
+### Lost: ~4.75M USDT drained from the X100 treasury on Ethereum in a single atomic tx; the attacker netted 4,749,726.10 USDT. This PoC rebuilds the full capture on a fork at the parent block and lands at 4,749,726.037865 USDT, a 0.06 USDT drift from fork re-ordering
+```sh
+forge test --contracts src/test/2026-10/X100Senate_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[X100Senate_exp.sol](src/test/2026-10/X100Senate_exp.sol)
 ### 20261020 SliceFundsModule - permissionless entry point (0x9d2edfac) credits each caller-supplied source's returned amount as a deposit without verifying the module's balance rose, then pays it out of pooled reserves when the flag is set
 ### Lost: ~$41K drained from Slice's FundsModule on Base: 8.716935563284127414 ETH and 19,820.734002 USDC to the attacker EOA. The attacker first calls 0x9d2edfac with flag false against the real Slice product contracts to pool other users' funds into the module, then with flag true against two self-deployed source contracts that return a non-zero amount while transferring nothing, paying the pooled reserves out to itself. The PoC reconstructs all 8 ETH legs and 55 of 66 USDC legs; the 11 reverting legs send to recipients that are themselves slicers and do not feed the drainable balance, matching the on-chain loss to within the module's 1-unit payout rounding
 ```sh
