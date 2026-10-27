@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-900 incidents included.
+901 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -58,6 +58,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20261024 X100Senate](#20261024-x100senate---the-x100-senate-treasury-has-no-snapshot-and-no-timelock-so-applyforsenate-is-permissionless-and-propose-vote-and-execute-run-in-one-block-so-the-attacker-flash-borrows-1942457-usdt-from-aave-buys-38200-x-and-freezes-it-across-two-helper-contracts-to-seize-2-of-3-senate-seats-then-passes-a-dextreasury-v3swap-that-dumps-400000-treasury-x-into-an-attacker-created-pancakev3-pool-at-a-manipulated-price-and-resells-it-on-the-deep-uniswap-pool-repaying-the-flash-loan-for-a-474972603-usdt-net-gain)
 
 [20261020 SliceFundsModule](#20261020-slicefundsmodule---permissionless-entry-point-0x9d2edfac-credits-each-caller-supplied-sources-returned-amount-as-a-deposit-without-verifying-the-modules-balance-rose-then-pays-it-out-of-pooled-reserves-when-the-flag-is-set)
+
+[20261019 Argent](#20261019-argent---an-argent-style-smart-wallet-relays-owner-and-guardian-signatures-through-an-execution-module-that-never-consumes-a-nonce-or-records-the-signed-message-hash-and-whose-signed-deadline-is-unchecked-and-overflows-so-two-signatures-that-authorized-wallet-0xe545-in-2020-and-2021-still-pass-today-and-can-be-resubmitted-by-anyone-and-a-recovery-deadline-setter-whose-attacker-supplied-period-wraps-the-deadline-into-the-past-forces-an-immediate-same-transaction-owner-change-so-the-attacker-flash-borrows-weth-from-balancer-replays-the-old-signatures-to-drive-the-wallets-to-buy-mark-in-a-thin-markweth-pool-while-trading-around-them-and-repeats-across-the-e545-and-5a79-wallets-for-5065592-usdc)
 
 [20261018 AlpsCon](#20261018-alpscon---alpscon-ai-trade-hub-still-trusts-the-canonical-hardhat-default-account-0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266-on-its-onlyverified-whitelist-and-that-accounts-private-key-is-public-so-the-attacker-uses-an-eip-7702-authorization-signed-with-the-known-key-to-delegate-the-account-to-exploit-code-and-pass-every-reward-gate-and-because-each-reward-hub-version-imports-the-previous-versions-balances-through-migrate-and-then-pays-claimserviceresults-against-the-versions-already-accumulated-profitpershare-while-the-fresh-deposits-entryprofitpershare-is-still-zero-a-brand-new-flash-funded-alps-stake-in-the-still-open-v6-hub-is-credited-the-full-historical-reward-history-so-the-attacker-flash-borrows-1027990-usdc-from-aave-buys-and-stakes-alps-imports-the-stake-forward-over-claims-the-rewards-out-of-v7v8v9-unstakes-and-sells-back-and-repays-the-loan-for-a-1522953625-usdc-net-gain)
 
@@ -1914,6 +1916,19 @@ forge test --contracts src/test/2026-10/SliceFundsModule_exp.sol --evm-version c
 ### Link reference
 
 https://basescan.org/tx/0x02b039a6345348d984e4a0b70dd233127772206e61ce82c390c4709c0b8d790a
+
+---
+
+### 20261019 Argent - an Argent-style smart wallet relays owner and guardian signatures through an execution module that never consumes a nonce or records the signed-message hash, and whose signed deadline is unchecked and overflows, so two signatures that authorized wallet 0xe545 in 2020 and 2021 still pass today and can be resubmitted by anyone, and a recovery-deadline setter whose attacker-supplied period wraps the deadline into the past forces an immediate same-transaction owner change, so the attacker flash-borrows WETH from Balancer, replays the old signatures to drive the wallets to buy MARK in a thin MARK/WETH pool while trading around them, and repeats across the e545 and 5a79 wallets for 50,655.92 USDC
+### Lost: ~$59.8K reported by SlowMist, ~50,655.92 USDC measured on-chain (48,778.499253 from the e545 wallet and 1,877.419234 from the 5a79 wallet). The attacker lifts two owner and guardian signatures that were valid on the e545 wallet at blocks 11266059 (2020-11-16) and 11948627 (2021-02-28) and resubmits them through the execution module, which has no nonce or used-hash check and does not enforce the signed deadline, after a recovery-deadline overflow flips the wallet owner in the same transaction. The PoC forks each leg at the parent of its attack tx, redeploys the attacker's own creation bytecode from a fresh address, and reproduces both legs to the unit
+```sh
+forge test --contracts src/test/2026-10/Argent_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[Argent_exp.sol](src/test/2026-10/Argent_exp.sol)
+### Link reference
+
+https://etherscan.io/tx/0xbfed8d33561ed5f9cbd0f4e62a5bbd20187a64f3e22180148dcb58ed6ebaa795
 
 ---
 
