@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-901 incidents included.
+902 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261025 Yapeswap](#20261025-yapeswap---yapeswaps-workersunion-dao-carries-a-zero-quorum-minimumvotes-and-minimumvotesforproposing-are-both-0-and-factoryfeetosetter-held-by-the-dao-timelock-can-re-point-the-factorys-yearn-registry-and-operator-while-each-yapepair-farms-its-reserves-into-whatever-vault-registrylatestvaulttoken-returns-and-credits-every-token-it-ships-out-back-to-farmingtoken-so-its-keepbalance-invariant-erc20-balance--farming-still-holds-after-the-real-tokens-have-left-so-anyone-can-buy-a-dust-amount-of-the-freely-traded-yape-lock-it-for-sqrt-weighted-voting-power-pass-a-proposal-that-moves-feetosetter-to-themselves-through-real-voting-and-the-timelock-swap-in-a-registry-pointing-at-a-vault-they-own-and-force-a-100-rebalance-that-ships-every-pairs-reserves-straight-to-the-attacker)
 
 [20261024 X100Senate](#20261024-x100senate---the-x100-senate-treasury-has-no-snapshot-and-no-timelock-so-applyforsenate-is-permissionless-and-propose-vote-and-execute-run-in-one-block-so-the-attacker-flash-borrows-1942457-usdt-from-aave-buys-38200-x-and-freezes-it-across-two-helper-contracts-to-seize-2-of-3-senate-seats-then-passes-a-dextreasury-v3swap-that-dumps-400000-treasury-x-into-an-attacker-created-pancakev3-pool-at-a-manipulated-price-and-resells-it-on-the-deep-uniswap-pool-repaying-the-flash-loan-for-a-474972603-usdt-net-gain)
 
@@ -1899,6 +1901,16 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261025 Yapeswap - Yapeswap's WorkersUnion DAO carries a zero quorum (minimumVotes and minimumVotesForProposing are both 0) and factory.feeToSetter, held by the DAO timelock, can re-point the factory's Yearn registry and operator, while each YapePair farms its reserves into whatever vault registry.latestVault(token) returns and credits every token it ships out back to farming[token] so its keepBalance invariant (erc20 balance + farming) still holds after the real tokens have left, so anyone can buy a dust amount of the freely-traded YAPE, lock it for sqrt-weighted voting power, pass a proposal that moves feeToSetter to themselves through real voting and the timelock, swap in a registry pointing at a vault they own, and force a 100% rebalance that ships every pair's reserves straight to the attacker
+### Lost: ~$21.9K drained from six Yapeswap pairs on Ethereum; the attacker contract received DAI 1,691.8, USDC 2,286.2, USDT 8,386.3, WETH 10.516 and WBTC 0.0316. This PoC runs the full governance capture end to end on a pre-execution fork (buy YAPE, lock for voting power, propose, vote, schedule, execute so factory.feeToSetter moves to the attacker through the real DAO and timelock, with no prank and no storage write) and drains the directly-liquid reserves through the malicious registry for a measured 2,254.32 USD; the larger on-chain figure additionally pulled each pair's Yearn-farmed balance back first via setFarmingRatio(0,0)+rebalance, a Yearn v3 allocator withdrawal that is not replayable in pinned pre-execution fork state
+```sh
+forge test --contracts src/test/2026-10/Yapeswap_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[Yapeswap_exp.sol](src/test/2026-10/Yapeswap_exp.sol)
+
+---
+
 ### 20261024 X100Senate - the X100 Senate treasury has no snapshot and no timelock, so applyForSenate() is permissionless and propose, vote and execute run in one block, so the attacker flash-borrows 1,942,457 USDT from Aave, buys 38,200 X and freezes it across two helper contracts to seize 2 of 3 senate seats, then passes a DexTreasury v3Swap that dumps 400,000 treasury X into an attacker-created PancakeV3 pool at a manipulated price and resells it on the deep Uniswap pool, repaying the flash loan for a 4,749,726.03 USDT net gain
 ### Lost: ~4.75M USDT drained from the X100 treasury on Ethereum in a single atomic tx; the attacker netted 4,749,726.10 USDT. This PoC rebuilds the full capture on a fork at the parent block and lands at 4,749,726.037865 USDT, a 0.06 USDT drift from fork re-ordering
 ```sh
