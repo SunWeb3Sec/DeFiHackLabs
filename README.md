@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-898 incidents included.
+902 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,14 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261025 Yapeswap](#20261025-yapeswap---yapeswaps-workersunion-dao-carries-a-zero-quorum-minimumvotes-and-minimumvotesforproposing-are-both-0-and-factoryfeetosetter-held-by-the-dao-timelock-can-re-point-the-factorys-yearn-registry-and-operator-while-each-yapepair-farms-its-reserves-into-whatever-vault-registrylatestvaulttoken-returns-and-credits-every-token-it-ships-out-back-to-farmingtoken-so-its-keepbalance-invariant-erc20-balance--farming-still-holds-after-the-real-tokens-have-left-so-anyone-can-buy-a-dust-amount-of-the-freely-traded-yape-lock-it-for-sqrt-weighted-voting-power-pass-a-proposal-that-moves-feetosetter-to-themselves-through-real-voting-and-the-timelock-swap-in-a-registry-pointing-at-a-vault-they-own-and-force-a-100-rebalance-that-ships-every-pairs-reserves-straight-to-the-attacker)
+
+[20261024 X100Senate](#20261024-x100senate---the-x100-senate-treasury-has-no-snapshot-and-no-timelock-so-applyforsenate-is-permissionless-and-propose-vote-and-execute-run-in-one-block-so-the-attacker-flash-borrows-1942457-usdt-from-aave-buys-38200-x-and-freezes-it-across-two-helper-contracts-to-seize-2-of-3-senate-seats-then-passes-a-dextreasury-v3swap-that-dumps-400000-treasury-x-into-an-attacker-created-pancakev3-pool-at-a-manipulated-price-and-resells-it-on-the-deep-uniswap-pool-repaying-the-flash-loan-for-a-474972603-usdt-net-gain)
+
+[20261020 SliceFundsModule](#20261020-slicefundsmodule---permissionless-entry-point-0x9d2edfac-credits-each-caller-supplied-sources-returned-amount-as-a-deposit-without-verifying-the-modules-balance-rose-then-pays-it-out-of-pooled-reserves-when-the-flag-is-set)
+
+[20261019 Argent](#20261019-argent---an-argent-style-smart-wallet-relays-owner-and-guardian-signatures-through-an-execution-module-that-never-consumes-a-nonce-or-records-the-signed-message-hash-and-whose-signed-deadline-is-unchecked-and-overflows-so-two-signatures-that-authorized-wallet-0xe545-in-2020-and-2021-still-pass-today-and-can-be-resubmitted-by-anyone-and-a-recovery-deadline-setter-whose-attacker-supplied-period-wraps-the-deadline-into-the-past-forces-an-immediate-same-transaction-owner-change-so-the-attacker-flash-borrows-weth-from-balancer-replays-the-old-signatures-to-drive-the-wallets-to-buy-mark-in-a-thin-markweth-pool-while-trading-around-them-and-repeats-across-the-e545-and-5a79-wallets-for-5065592-usdc)
 
 [20261018 AlpsCon](#20261018-alpscon---alpscon-ai-trade-hub-still-trusts-the-canonical-hardhat-default-account-0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266-on-its-onlyverified-whitelist-and-that-accounts-private-key-is-public-so-the-attacker-uses-an-eip-7702-authorization-signed-with-the-known-key-to-delegate-the-account-to-exploit-code-and-pass-every-reward-gate-and-because-each-reward-hub-version-imports-the-previous-versions-balances-through-migrate-and-then-pays-claimserviceresults-against-the-versions-already-accumulated-profitpershare-while-the-fresh-deposits-entryprofitpershare-is-still-zero-a-brand-new-flash-funded-alps-stake-in-the-still-open-v6-hub-is-credited-the-full-historical-reward-history-so-the-attacker-flash-borrows-1027990-usdc-from-aave-buys-and-stakes-alps-imports-the-stake-forward-over-claims-the-rewards-out-of-v7v8v9-unstakes-and-sells-back-and-repays-the-loan-for-a-1522953625-usdc-net-gain)
 
@@ -1895,6 +1903,49 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261025 Yapeswap - Yapeswap's WorkersUnion DAO carries a zero quorum (minimumVotes and minimumVotesForProposing are both 0) and factory.feeToSetter, held by the DAO timelock, can re-point the factory's Yearn registry and operator, while each YapePair farms its reserves into whatever vault registry.latestVault(token) returns and credits every token it ships out back to farming[token] so its keepBalance invariant (erc20 balance + farming) still holds after the real tokens have left, so anyone can buy a dust amount of the freely-traded YAPE, lock it for sqrt-weighted voting power, pass a proposal that moves feeToSetter to themselves through real voting and the timelock, swap in a registry pointing at a vault they own, and force a 100% rebalance that ships every pair's reserves straight to the attacker
+### Lost: ~$21.9K drained from six Yapeswap pairs on Ethereum; the attacker contract received DAI 1,691.8, USDC 2,286.2, USDT 8,386.3, WETH 10.516 and WBTC 0.0316. This PoC runs the full governance capture end to end on a pre-execution fork (buy YAPE, lock for voting power, propose, vote, schedule, execute so factory.feeToSetter moves to the attacker through the real DAO and timelock, with no prank and no storage write) and drains the directly-liquid reserves through the malicious registry for a measured 2,254.32 USD; the larger on-chain figure additionally pulled each pair's Yearn-farmed balance back first via setFarmingRatio(0,0)+rebalance, a Yearn v3 allocator withdrawal that is not replayable in pinned pre-execution fork state
+```sh
+forge test --contracts src/test/2026-10/Yapeswap_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[Yapeswap_exp.sol](src/test/2026-10/Yapeswap_exp.sol)
+
+---
+
+### 20261024 X100Senate - the X100 Senate treasury has no snapshot and no timelock, so applyForSenate() is permissionless and propose, vote and execute run in one block, so the attacker flash-borrows 1,942,457 USDT from Aave, buys 38,200 X and freezes it across two helper contracts to seize 2 of 3 senate seats, then passes a DexTreasury v3Swap that dumps 400,000 treasury X into an attacker-created PancakeV3 pool at a manipulated price and resells it on the deep Uniswap pool, repaying the flash loan for a 4,749,726.03 USDT net gain
+### Lost: ~4.75M USDT drained from the X100 treasury on Ethereum in a single atomic tx; the attacker netted 4,749,726.10 USDT. This PoC rebuilds the full capture on a fork at the parent block and lands at 4,749,726.037865 USDT, a 0.06 USDT drift from fork re-ordering
+```sh
+forge test --contracts src/test/2026-10/X100Senate_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[X100Senate_exp.sol](src/test/2026-10/X100Senate_exp.sol)
+### 20261020 SliceFundsModule - permissionless entry point (0x9d2edfac) credits each caller-supplied source's returned amount as a deposit without verifying the module's balance rose, then pays it out of pooled reserves when the flag is set
+### Lost: ~$41K drained from Slice's FundsModule on Base: 8.716935563284127414 ETH and 19,820.734002 USDC to the attacker EOA. The attacker first calls 0x9d2edfac with flag false against the real Slice product contracts to pool other users' funds into the module, then with flag true against two self-deployed source contracts that return a non-zero amount while transferring nothing, paying the pooled reserves out to itself. The PoC reconstructs all 8 ETH legs and 55 of 66 USDC legs; the 11 reverting legs send to recipients that are themselves slicers and do not feed the drainable balance, matching the on-chain loss to within the module's 1-unit payout rounding
+```sh
+forge test --contracts src/test/2026-10/SliceFundsModule_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[SliceFundsModule_exp.sol](src/test/2026-10/SliceFundsModule_exp.sol)
+### Link reference
+
+https://basescan.org/tx/0x02b039a6345348d984e4a0b70dd233127772206e61ce82c390c4709c0b8d790a
+
+---
+
+### 20261019 Argent - an Argent-style smart wallet relays owner and guardian signatures through an execution module that never consumes a nonce or records the signed-message hash, and whose signed deadline is unchecked and overflows, so two signatures that authorized wallet 0xe545 in 2020 and 2021 still pass today and can be resubmitted by anyone, and a recovery-deadline setter whose attacker-supplied period wraps the deadline into the past forces an immediate same-transaction owner change, so the attacker flash-borrows WETH from Balancer, replays the old signatures to drive the wallets to buy MARK in a thin MARK/WETH pool while trading around them, and repeats across the e545 and 5a79 wallets for 50,655.92 USDC
+### Lost: ~$59.8K reported by SlowMist, ~50,655.92 USDC measured on-chain (48,778.499253 from the e545 wallet and 1,877.419234 from the 5a79 wallet). The attacker lifts two owner and guardian signatures that were valid on the e545 wallet at blocks 11266059 (2020-11-16) and 11948627 (2021-02-28) and resubmits them through the execution module, which has no nonce or used-hash check and does not enforce the signed deadline, after a recovery-deadline overflow flips the wallet owner in the same transaction. The PoC forks each leg at the parent of its attack tx, redeploys the attacker's own creation bytecode from a fresh address, and reproduces both legs to the unit
+```sh
+forge test --contracts src/test/2026-10/Argent_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[Argent_exp.sol](src/test/2026-10/Argent_exp.sol)
+### Link reference
+
+https://etherscan.io/tx/0xbfed8d33561ed5f9cbd0f4e62a5bbd20187a64f3e22180148dcb58ed6ebaa795
+
+---
+
 ### 20261018 AlpsCon - AlpsCon AI Trade Hub still trusts the canonical Hardhat default account 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 on its onlyVerified whitelist, and that account's private key is public, so the attacker uses an EIP-7702 authorization signed with the known key to delegate the account to exploit code and pass every reward gate, and because each reward hub version imports the previous version's balances through migrate() and then pays claimServiceResults() against the version's already-accumulated profitPerShare while the fresh deposit's entryProfitPerShare is still zero, a brand-new flash-funded ALPS stake in the still-open V6 hub is credited the full historical reward history, so the attacker flash-borrows 1,027,990 USDC from Aave, buys and stakes ALPS, imports the stake forward, over-claims the rewards out of V7/V8/V9, unstakes and sells back, and repays the loan for a 152,295.3625 USDC net gain
 ### Lost: ~152.8K USDC drained from the AlpsCon AI Trade Hub reward pools on BNB Chain; the attacker EOA received 152,295.3625 USDC before gas, with the Aave flash loan of 1,027,990 USDC repaid in full at 1,028,503.995 USDC. This PoC reconstructs the dominant V9 over-claim leg at a 129,775.6074 USDC net; the remaining 22,519.75 USDC is the V7/V8 cascade inside the real single claimServiceResults() call, which an equivalent standalone call does not reproduce
 ```sh
