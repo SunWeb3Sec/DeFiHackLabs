@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-903 incidents included.
+904 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261026 SafeApprovalSquat](#20261026-safeapprovalsquat---the-safe-held-standing-unlimited-erc20-approvals-usdc-wavax-wethe-btcb-set-2026-03-07-and-never-revoked-to-a-counterfactual-address-that-was-empty-on-avalanche-that-address-is-the-13th-create-output-of-a-safe-createcall-instance-which-is-itself-the-deterministic-create2-output-of-the-safe-singleton-factory-salt-0-fixed-initcode-an-erc20-approval-is-granted-to-an-address-not-to-a-specific-caller-so-any-fresh-eoa-can-reproduce-the-same-create2-then-create-math-occupy-the-address-and-call-transferfrom-to-spend-the-approvals-with-no-safe-key-signature-or-role)
 
 [20261025 Yapeswap](#20261025-yapeswap---yapeswaps-workersunion-dao-carries-a-zero-quorum-minimumvotes-and-minimumvotesforproposing-are-both-0-and-factoryfeetosetter-held-by-the-dao-timelock-can-re-point-the-factorys-yearn-registry-and-operator-while-each-yapepair-farms-its-reserves-into-whatever-vault-registrylatestvaulttoken-returns-and-credits-every-token-it-ships-out-back-to-farmingtoken-so-its-keepbalance-invariant-erc20-balance--farming-still-holds-after-the-real-tokens-have-left-so-anyone-can-buy-a-dust-amount-of-the-freely-traded-yape-lock-it-for-sqrt-weighted-voting-power-pass-a-proposal-that-moves-feetosetter-to-themselves-through-real-voting-and-the-timelock-swap-in-a-registry-pointing-at-a-vault-they-own-and-force-a-100-rebalance-that-ships-every-pairs-reserves-straight-to-the-attacker)
 
@@ -1903,6 +1905,16 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261026 SafeApprovalSquat - the Safe held standing unlimited ERC20 approvals (USDC, WAVAX, WETH.e, BTC.b) set 2026-03-07 and never revoked to a counterfactual address that was empty on Avalanche. That address is the 13th CREATE output of a Safe CreateCall instance which is itself the deterministic CREATE2 output of the Safe Singleton Factory (salt 0, fixed initcode). An ERC20 approval is granted to an address, not to a specific caller, so any fresh EOA can reproduce the same CREATE2-then-CREATE math, occupy the address and call transferFrom to spend the approvals, with no Safe key, signature or role
+### Lost: ~$7.45M drained from a 2-of-7 Safe on Avalanche C-Chain: 3,078,123.681646 USDC, 351,374.076087 WAVAX, 183.747433 WETH.e and 10.773856 BTC.b. The original attacker tx was reverted after an MEV bot front-ran it and landed the identical drain. This PoC forks before the drain and reconstructs the attacker side with no etch and no pre-positioned contracts: it deploys the CreateCall instance through the Safe Singleton Factory, burns 12 throwaway deployments to advance its nonce, deploys the sweeper as the 13th CREATE so it lands at exactly the pre-approved address, verifies the address, then sweeps the four standing approvals out of the Safe for the measured basket above
+```sh
+forge test --contracts src/test/2026-10/SafeApprovalSquat_exp.sol -vvv
+```
+#### Contract
+[SafeApprovalSquat_exp.sol](src/test/2026-10/SafeApprovalSquat_exp.sol)
+
+---
+
 ### 20261025 Yapeswap - Yapeswap's WorkersUnion DAO carries a zero quorum (minimumVotes and minimumVotesForProposing are both 0) and factory.feeToSetter, held by the DAO timelock, can re-point the factory's Yearn registry and operator, while each YapePair farms its reserves into whatever vault registry.latestVault(token) returns and credits every token it ships out back to farming[token] so its keepBalance invariant (erc20 balance + farming) still holds after the real tokens have left, so anyone can buy a dust amount of the freely-traded YAPE, lock it for sqrt-weighted voting power, pass a proposal that moves feeToSetter to themselves through real voting and the timelock, swap in a registry pointing at a vault they own, and force a 100% rebalance that ships every pair's reserves straight to the attacker
 ### Lost: ~$21.9K drained from six Yapeswap pairs on Ethereum; the attacker contract received DAI 1,691.8, USDC 2,286.2, USDT 8,386.3, WETH 10.516 and WBTC 0.0316. This PoC runs the full governance capture end to end on a pre-execution fork (buy YAPE, lock for voting power, propose, vote, schedule, execute so factory.feeToSetter moves to the attacker through the real DAO and timelock, with no prank and no storage write) and drains the directly-liquid reserves through the malicious registry for a measured 2,254.32 USD; the larger on-chain figure additionally pulled each pair's Yearn-farmed balance back first via setFarmingRatio(0,0)+rebalance, a Yearn v3 allocator withdrawal that is not replayable in pinned pre-execution fork state
 ```sh
