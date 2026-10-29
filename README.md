@@ -347,6 +347,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 [20260319 Revamp](#20260319-revamp---reward-accounting-drain)
 
+[20260317 dTRINITY dLEND](#20260317-dtrinity-dlend---empty-market-liquidityindex-inflation)
+
 [20260316 unverified](#20260316-unverified---checkoutpool-old-boc-missing-access-control)
 
 [20260315 Venus THE](#20260315-venus-the---borrowbehalf--donation-attack)
@@ -3553,6 +3555,24 @@ forge test --contracts ./src/test/2026-03/Revamp_exp.sol -vvv --evm-version canc
 ### Link reference
 
 https://x.com/DefimonAlerts/status/2034532544239088053
+
+---
+
+### 20260317 dTRINITY dLEND - Empty-market liquidityIndex inflation
+
+### Lost: ~257K USD
+
+```sh
+forge test --contracts ./src/test/2026-03/dTRINITYdLEND_exp.sol -vvv
+```
+
+#### Contract
+
+[dTRINITYdLEND_exp.sol](src/test/2026-03/dTRINITYdLEND_exp.sol)
+
+### Link reference
+
+https://blog.verichains.io/p/deep-dive-into-the-dtribity-cbbtc
 
 ---
 
