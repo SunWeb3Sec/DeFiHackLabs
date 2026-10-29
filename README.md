@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-904 incidents included.
+905 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261028 ZkLinkNova](#20261028-zklinknova---zklink-novas-l1-arbitrator-authenticates-a-cross-chain-claim-with-a-transient-finalizemessagehash-that-claimmessage-never-clears-and-never-re-checks-per-call-and-the-syncl2txhashrelayer-that-feeds-it-is-public-with-no-role-so-an-attacker-populates-a-valid-transient-hash-with-one-relay-call-then-reuses-it-in-a-second-call-that-points-the-claim-target-at-ethereumgatewaysendmessage-which-runs-zklinksyncbatchroot-under-the-gateway-identity-and-installs-an-attacker-chosen-l2logsroothash-for-a-batch-after-which-withdrawals-finalize-against-forged-proofs-that-the-real-on-chain-verifier-accepts)
 
 [20261026 SafeApprovalSquat](#20261026-safeapprovalsquat---the-safe-held-standing-unlimited-erc20-approvals-usdc-wavax-wethe-btcb-set-2026-03-07-and-never-revoked-to-a-counterfactual-address-that-was-empty-on-avalanche-that-address-is-the-13th-create-output-of-a-safe-createcall-instance-which-is-itself-the-deterministic-create2-output-of-the-safe-singleton-factory-salt-0-fixed-initcode-an-erc20-approval-is-granted-to-an-address-not-to-a-specific-caller-so-any-fresh-eoa-can-reproduce-the-same-create2-then-create-math-occupy-the-address-and-call-transferfrom-to-spend-the-approvals-with-no-safe-key-signature-or-role)
 
@@ -1905,6 +1907,16 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261028 ZkLinkNova - zkLink Nova's L1 Arbitrator authenticates a cross-chain claim with a transient finalizeMessageHash that claimMessage never clears and never re-checks per call, and the SyncL2TxHashRelayer that feeds it is public with no role, so an attacker populates a valid transient hash with one relay call then reuses it in a second call that points the claim target at EthereumGateway.sendMessage, which runs ZkLink.syncBatchRoot under the gateway identity and installs an attacker-chosen l2LogsRootHash for a batch, after which withdrawals finalize against forged proofs that the real on-chain verifier accepts
+### Lost: ~$783K reported across the two exploit txs. This PoC reconstructs the first tx, draining 22.431294525563808989 ETH plus 11 ERC20 balances (including 18,113.448053 USDC, 3,360.898152 USDT and 0.17360197 WBTC) from the L1 escrow and the ERC20 bridge to the attacker. A fresh attacker contract drives the real public relayer, Arbitrator, EthereumGateway and ZkLink in one transaction with no vm.mock, no vm.store and no vm.prank of any protocol identity; the attacker-chosen root and every Merkle proof are the real on-chain values, and proveL2MessageInclusion accepts them live because the root is installed through the legitimate syncBatchRoot path. A negative control confirms the first withdrawal reverts when the root install step is skipped
+```sh
+forge test --contracts src/test/2026-10/ZkLinkNovaBridge_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[ZkLinkNovaBridge_exp.sol](src/test/2026-10/ZkLinkNovaBridge_exp.sol)
+
+---
+
 ### 20261026 SafeApprovalSquat - the Safe held standing unlimited ERC20 approvals (USDC, WAVAX, WETH.e, BTC.b) set 2026-03-07 and never revoked to a counterfactual address that was empty on Avalanche. That address is the 13th CREATE output of a Safe CreateCall instance which is itself the deterministic CREATE2 output of the Safe Singleton Factory (salt 0, fixed initcode). An ERC20 approval is granted to an address, not to a specific caller, so any fresh EOA can reproduce the same CREATE2-then-CREATE math, occupy the address and call transferFrom to spend the approvals, with no Safe key, signature or role
 ### Lost: ~$7.45M drained from a 2-of-7 Safe on Avalanche C-Chain: 3,078,123.681646 USDC, 351,374.076087 WAVAX, 183.747433 WETH.e and 10.773856 BTC.b. The original attacker tx was reverted after an MEV bot front-ran it and landed the identical drain. This PoC forks before the drain and reconstructs the attacker side with no etch and no pre-positioned contracts: it deploys the CreateCall instance through the Safe Singleton Factory, burns 12 throwaway deployments to advance its nonce, deploys the sweeper as the 13th CREATE so it lands at exactly the pre-approved address, verifies the address, then sweeps the four standing approvals out of the Safe for the measured basket above
 ```sh
