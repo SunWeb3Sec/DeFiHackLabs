@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-905 incidents included.
+906 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -56,6 +56,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ## List of Past DeFi Incidents
 
 [20261028 ZkLinkNova](#20261028-zklinknova---zklink-novas-l1-arbitrator-authenticates-a-cross-chain-claim-with-a-transient-finalizemessagehash-that-claimmessage-never-clears-and-never-re-checks-per-call-and-the-syncl2txhashrelayer-that-feeds-it-is-public-with-no-role-so-an-attacker-populates-a-valid-transient-hash-with-one-relay-call-then-reuses-it-in-a-second-call-that-points-the-claim-target-at-ethereumgatewaysendmessage-which-runs-zklinksyncbatchroot-under-the-gateway-identity-and-installs-an-attacker-chosen-l2logsroothash-for-a-batch-after-which-withdrawals-finalize-against-forged-proofs-that-the-real-on-chain-verifier-accepts)
+
+[20261027 FenceTranchePool](#20261027-fencetranchepool---a-valinor-digital-tranche-pool-on-avalanche-settles-each-utc-day-by-subtracting-a-scheduled-principal-payment-from-the-borrowers-outstanding-principal-with-no-usdc-actually-repaid-and-draw-checks-the-requested-amount-against-funded-principal-minus-outstanding-principal-so-at-the-day-rollover-the-phantom-reduction-restores-draw-capacity-that-was-already-spent-the-borrower-side-is-permissionless-so-a-fresh-contract-opens-a-facility-naming-itself-as-borrower-funds-the-principal-with-an-aave-flash-loan-and-draws-it-straight-back-out-then-one-utc-day-later-replays-the-identical-draw-calldata-to-pull-the-pools-own-standing-liquidity)
 
 [20261026 SafeApprovalSquat](#20261026-safeapprovalsquat---the-safe-held-standing-unlimited-erc20-approvals-usdc-wavax-wethe-btcb-set-2026-03-07-and-never-revoked-to-a-counterfactual-address-that-was-empty-on-avalanche-that-address-is-the-13th-create-output-of-a-safe-createcall-instance-which-is-itself-the-deterministic-create2-output-of-the-safe-singleton-factory-salt-0-fixed-initcode-an-erc20-approval-is-granted-to-an-address-not-to-a-specific-caller-so-any-fresh-eoa-can-reproduce-the-same-create2-then-create-math-occupy-the-address-and-call-transferfrom-to-spend-the-approvals-with-no-safe-key-signature-or-role)
 
@@ -1914,6 +1916,16 @@ forge test --contracts src/test/2026-10/ZkLinkNovaBridge_exp.sol --evm-version c
 ```
 #### Contract
 [ZkLinkNovaBridge_exp.sol](src/test/2026-10/ZkLinkNovaBridge_exp.sol)
+
+---
+
+### 20261027 FenceTranchePool - a Valinor Digital tranche pool on Avalanche settles each UTC day by subtracting a scheduled principal payment from the borrower's outstanding principal with no USDC actually repaid, and draw() checks the requested amount against funded principal minus outstanding principal, so at the day rollover the phantom reduction restores draw capacity that was already spent; the borrower side is permissionless, so a fresh contract opens a facility naming itself as borrower, funds the principal with an Aave flash loan and draws it straight back out, then one UTC day later replays the identical draw() calldata to pull the pool's own standing liquidity
+### Lost: ~$1.013M (1,013,353.611686 USDC) drained from the pool on Avalanche. This PoC forks one block before the first draw, deploys a fresh borrower from a new EOA with no role or whitelist, flash-loans the setup principal from Aave V3, opens the facility and draws once so the flash loan is repaid in the same call (net zero), warps across the UTC midnight boundary (day index 20753 to 20754) so the phantom settlement credits the scheduled principal, and replays the identical draw() to drain the pool's own liquidity to zero. The only value injected is the Aave premium (~506.68 USDC, the attacker's own capital, which the on-chain helper was pre-funded with), sourced from a forked USDC holder rather than minted. A negative check confirms the second draw reverts without the day rollover. The pool source is not verified on Snowtrace, so the behaviour is established from the two on-chain traces, not from source
+```sh
+forge test --contracts src/test/2026-10/FenceTranchePool_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[FenceTranchePool_exp.sol](src/test/2026-10/FenceTranchePool_exp.sol)
 
 ---
 
