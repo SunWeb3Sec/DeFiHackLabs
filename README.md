@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-905 incidents included.
+906 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261028 ZkLinkNova](#20261028-zklinknova---zklink-novas-l1-arbitrator-authenticates-a-cross-chain-claim-with-a-transient-finalizemessagehash-that-claimmessage-never-clears-and-never-re-checks-per-call-and-the-syncl2txhashrelayer-that-feeds-it-is-public-with-no-role-so-an-attacker-populates-a-valid-transient-hash-with-one-relay-call-then-reuses-it-in-a-second-call-that-points-the-claim-target-at-ethereumgatewaysendmessage-which-runs-zklinksyncbatchroot-under-the-gateway-identity-and-installs-an-attacker-chosen-l2logsroothash-for-a-batch-after-which-withdrawals-finalize-against-forged-proofs-that-the-real-on-chain-verifier-accepts)
 
 [20261027 FenceTranchePool](#20261027-fencetranchepool---a-valinor-digital-tranche-pool-on-avalanche-settles-each-utc-day-by-subtracting-a-scheduled-principal-payment-from-the-borrowers-outstanding-principal-with-no-usdc-actually-repaid-and-draw-checks-the-requested-amount-against-funded-principal-minus-outstanding-principal-so-at-the-day-rollover-the-phantom-reduction-restores-draw-capacity-that-was-already-spent-the-borrower-side-is-permissionless-so-a-fresh-contract-opens-a-facility-naming-itself-as-borrower-funds-the-principal-with-an-aave-flash-loan-and-draws-it-straight-back-out-then-one-utc-day-later-replays-the-identical-draw-calldata-to-pull-the-pools-own-standing-liquidity)
 
@@ -1907,6 +1909,16 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261028 ZkLinkNova - zkLink Nova's L1 Arbitrator authenticates a cross-chain claim with a transient finalizeMessageHash that claimMessage never clears and never re-checks per call, and the SyncL2TxHashRelayer that feeds it is public with no role, so an attacker populates a valid transient hash with one relay call then reuses it in a second call that points the claim target at EthereumGateway.sendMessage, which runs ZkLink.syncBatchRoot under the gateway identity and installs an attacker-chosen l2LogsRootHash for a batch, after which withdrawals finalize against forged proofs that the real on-chain verifier accepts
+### Lost: ~$783K reported across the two exploit txs. This PoC reconstructs the first tx, draining 22.431294525563808989 ETH plus 11 ERC20 balances (including 18,113.448053 USDC, 3,360.898152 USDT and 0.17360197 WBTC) from the L1 escrow and the ERC20 bridge to the attacker. A fresh attacker contract drives the real public relayer, Arbitrator, EthereumGateway and ZkLink in one transaction with no vm.mock, no vm.store and no vm.prank of any protocol identity; the attacker-chosen root and every Merkle proof are the real on-chain values, and proveL2MessageInclusion accepts them live because the root is installed through the legitimate syncBatchRoot path. A negative control confirms the first withdrawal reverts when the root install step is skipped
+```sh
+forge test --contracts src/test/2026-10/ZkLinkNovaBridge_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[ZkLinkNovaBridge_exp.sol](src/test/2026-10/ZkLinkNovaBridge_exp.sol)
+
+---
+
 ### 20261027 FenceTranchePool - a Valinor Digital tranche pool on Avalanche settles each UTC day by subtracting a scheduled principal payment from the borrower's outstanding principal with no USDC actually repaid, and draw() checks the requested amount against funded principal minus outstanding principal, so at the day rollover the phantom reduction restores draw capacity that was already spent; the borrower side is permissionless, so a fresh contract opens a facility naming itself as borrower, funds the principal with an Aave flash loan and draws it straight back out, then one UTC day later replays the identical draw() calldata to pull the pool's own standing liquidity
 ### Lost: ~$1.013M (1,013,353.611686 USDC) drained from the pool on Avalanche. This PoC forks one block before the first draw, deploys a fresh borrower from a new EOA with no role or whitelist, flash-loans the setup principal from Aave V3, opens the facility and draws once so the flash loan is repaid in the same call (net zero), warps across the UTC midnight boundary (day index 20753 to 20754) so the phantom settlement credits the scheduled principal, and replays the identical draw() to drain the pool's own liquidity to zero. The only value injected is the Aave premium (~506.68 USDC, the attacker's own capital, which the on-chain helper was pre-funded with), sourced from a forked USDC holder rather than minted. A negative check confirms the second draw reverts without the day rollover. The pool source is not verified on Snowtrace, so the behaviour is established from the two on-chain traces, not from source
 ```sh
