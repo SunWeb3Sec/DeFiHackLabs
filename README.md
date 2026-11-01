@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-906 incidents included.
+907 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -55,6 +55,7 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ## List of Past DeFi Incidents
 
+[20261101 Premia](#20261101-premia---premia-v3-underwritervault-on-arbitrum-resolves-the-pool-it-underwrites-with-_getpooladdress-which-fixes-base-quote-and-oracle-to-the-vault-market-but-lets-the-caller-choose-strike-and-maturity-so-an-attacker-deployed-pool-for-that-market-is-accepted-deploypool-and-underwritervaulttrade-are-both-permissionless-external-nonreentrant-no-role-so-a-buy-forces-the-vault-to-writefrom-the-attacker-pool-posting-the-positions-full-collateral-as-the-short-underwriter-and-handing-the-caller-the-long-for-only-a-tiny-black-scholes-premium)
 [20261028 ZkLinkNova](#20261028-zklinknova---zklink-novas-l1-arbitrator-authenticates-a-cross-chain-claim-with-a-transient-finalizemessagehash-that-claimmessage-never-clears-and-never-re-checks-per-call-and-the-syncl2txhashrelayer-that-feeds-it-is-public-with-no-role-so-an-attacker-populates-a-valid-transient-hash-with-one-relay-call-then-reuses-it-in-a-second-call-that-points-the-claim-target-at-ethereumgatewaysendmessage-which-runs-zklinksyncbatchroot-under-the-gateway-identity-and-installs-an-attacker-chosen-l2logsroothash-for-a-batch-after-which-withdrawals-finalize-against-forged-proofs-that-the-real-on-chain-verifier-accepts)
 
 [20261027 FenceTranchePool](#20261027-fencetranchepool---a-valinor-digital-tranche-pool-on-avalanche-settles-each-utc-day-by-subtracting-a-scheduled-principal-payment-from-the-borrowers-outstanding-principal-with-no-usdc-actually-repaid-and-draw-checks-the-requested-amount-against-funded-principal-minus-outstanding-principal-so-at-the-day-rollover-the-phantom-reduction-restores-draw-capacity-that-was-already-spent-the-borrower-side-is-permissionless-so-a-fresh-contract-opens-a-facility-naming-itself-as-borrower-funds-the-principal-with-an-aave-flash-loan-and-draws-it-straight-back-out-then-one-utc-day-later-replays-the-identical-draw-calldata-to-pull-the-pools-own-standing-liquidity)
@@ -1909,6 +1910,15 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261101 Premia - Premia v3 UnderwriterVault on Arbitrum resolves the pool it underwrites with _getPoolAddress, which fixes base, quote and oracle to the vault market but lets the caller choose strike and maturity, so an attacker-deployed pool for that market is accepted; deployPool and UnderwriterVault.trade are both permissionless (external nonReentrant, no role), so a buy forces the vault to writeFrom the attacker pool, posting the position's full collateral as the short underwriter and handing the caller the long for only a tiny Black-Scholes premium
+### Lost: ~400.5K USD reported across the campaign (reported figure, not reproduced here). This PoC reproduces the forced-underwriting primitive only: one permissionless UnderwriterVault.trade(buy 3.75) on a fork routes 3.6441 WBTC, 97% of victim vault A's balance, into an attacker-deployed pool and mints the attacker the matching 3.75 long for a ~0.117 WBTC premium, with typed interface calls on the real verified contracts and no vm.mock, no vm.store and no vm.prank. It asserts the measured collateral routed within 1% of the on-chain figure. The extraction leg that turns this into a realized loss, the attacker netting the routed collateral out via a cross-transaction wash-trade price walk and a delayed LP withdrawal, is not reproduced; absent it the routed collateral returns to the vault at settlement, and reproducing it needs trace-level call data not available at build time.
+```sh
+forge test --contracts src/test/2026-11/Premia_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[Premia_exp.sol](src/test/2026-11/Premia_exp.sol)
+
+---
 ### 20261028 ZkLinkNova - zkLink Nova's L1 Arbitrator authenticates a cross-chain claim with a transient finalizeMessageHash that claimMessage never clears and never re-checks per call, and the SyncL2TxHashRelayer that feeds it is public with no role, so an attacker populates a valid transient hash with one relay call then reuses it in a second call that points the claim target at EthereumGateway.sendMessage, which runs ZkLink.syncBatchRoot under the gateway identity and installs an attacker-chosen l2LogsRootHash for a batch, after which withdrawals finalize against forged proofs that the real on-chain verifier accepts
 ### Lost: ~$783K reported across the two exploit txs. This PoC reconstructs the first tx, draining 22.431294525563808989 ETH plus 11 ERC20 balances (including 18,113.448053 USDC, 3,360.898152 USDT and 0.17360197 WBTC) from the L1 escrow and the ERC20 bridge to the attacker. A fresh attacker contract drives the real public relayer, Arbitrator, EthereumGateway and ZkLink in one transaction with no vm.mock, no vm.store and no vm.prank of any protocol identity; the attacker-chosen root and every Merkle proof are the real on-chain values, and proveL2MessageInclusion accepts them live because the root is installed through the legitimate syncBatchRoot path. A negative control confirms the first withdrawal reverts when the root install step is skipped
 ```sh
