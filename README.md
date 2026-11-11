@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-906 incidents included.
+907 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -1909,6 +1909,15 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261110 Unifund - Unifund lets a group swap its pooled funds along an arbitrary Uniswap V2 path, and the group swap facet accounts the WETH spent on the input leg and the WETH received on the output leg as two separate deltas against the same per-group ledger key instead of netting them, so a cyclic path WETH-A-B-WETH whose round trip nets about zero WETH is booked as a WETH gain; there is no guard against path[0] == path[last], and the whole flow (createTokenList, addTokensToList, lockTokenList, create, join, startFunding, the cyclic swap, finish, withdraw) is reachable by a fresh EOA with no role, so the attacker flash-borrows 12 WETH from the Balancer V2 Vault, deploys its own path tokens and seeds rigged WETH/A, A/B, B/WETH pools, creates and joins a group, swaps twice along the cyclic path to double-credit the group's WETH, then finish() and withdraw() pay the phantom balance out of the core's shared pool, taking funds that belong to other groups, with the flash loan repaid in the same callback
+### Lost: ~4.9941 WETH headline. This PoC reconstructs one of the five exploit txs and forks mainnet at the exploit block, driving the real contracts with a fresh attacker contract and typed interface calls, no vm.mock, no vm.store and no vm.prank of any protocol identity: it takes a real 12 WETH flash loan from the Balancer V2 Vault (no deal() for the borrowed WETH), deploys two scratch ERC20s as the attacker's own path tokens, seeds the rigged Uniswap V2 pools, buys iFUND with 0.1 WETH to create and join a group, joins with 1 ETH, then swaps twice along the cyclic path WETH-A-B-WETH so the facet double-credits the group's WETH ledger key, and finish() plus withdraw() realize the phantom out of the core. The core held 4.994488833099649474 WETH entering the tx and this single cyclic-swap group pulls 4.628136547384151187 WETH of it out, leaving 0.366352285715498287 WETH; the measured drain is asserted. A negative control runs the identical setup with the non-cyclic path WETH-A-B and the core is not drained, isolating the cyclic path as the cause. The attacker EOA's cross-tx net over its three txs was about 4.7555 ETH; this file asserts the single tx's measured victim drain rather than the cross-tx figure
+```sh
+forge test --contracts src/test/2026-11/Unifund_exp.sol -vvv
+```
+#### Contract
+[Unifund_exp.sol](src/test/2026-11/Unifund_exp.sol)
+
+---
 ### 20261028 ZkLinkNova - zkLink Nova's L1 Arbitrator authenticates a cross-chain claim with a transient finalizeMessageHash that claimMessage never clears and never re-checks per call, and the SyncL2TxHashRelayer that feeds it is public with no role, so an attacker populates a valid transient hash with one relay call then reuses it in a second call that points the claim target at EthereumGateway.sendMessage, which runs ZkLink.syncBatchRoot under the gateway identity and installs an attacker-chosen l2LogsRootHash for a batch, after which withdrawals finalize against forged proofs that the real on-chain verifier accepts
 ### Lost: ~$783K reported across the two exploit txs. This PoC reconstructs the first tx, draining 22.431294525563808989 ETH plus 11 ERC20 balances (including 18,113.448053 USDC, 3,360.898152 USDT and 0.17360197 WBTC) from the L1 escrow and the ERC20 bridge to the attacker. A fresh attacker contract drives the real public relayer, Arbitrator, EthereumGateway and ZkLink in one transaction with no vm.mock, no vm.store and no vm.prank of any protocol identity; the attacker-chosen root and every Merkle proof are the real on-chain values, and proveL2MessageInclusion accepts them live because the root is installed through the legitimate syncBatchRoot path. A negative control confirms the first withdrawal reverts when the root install step is skipped
 ```sh
