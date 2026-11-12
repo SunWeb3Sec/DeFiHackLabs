@@ -815,14 +815,15 @@ class GitManager:
             return []
     
     def get_recently_committed_sol_files(self) -> list:
-        """Get list of recently committed .sol files"""
+        """Get recently committed .sol files, excluding committed deletions"""
         if not self.is_git_command_available():
             print("Git command is not available. Skipping recently committed file retrieval.")
             return []
         
         try:
-            # Use argument list and specify the directory to restrict the diff
-            args = ["git", "diff", "--name-only", "HEAD~1", "HEAD", "--", self.constants.SRC_TEST_DIR]
+            # Exclude deleted paths so they are not processed for README entries.
+            args = ["git", "diff", "--name-only", "--diff-filter=ACMRT",
+                    "HEAD~1", "HEAD", "--", self.constants.SRC_TEST_DIR]
             output = subprocess.check_output(args, text=True)
             files = output.strip().split("\n")
             # Filter for .sol files

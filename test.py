@@ -853,21 +853,6 @@ class TestGitManager(unittest.TestCase):
                 self.assertEqual(result, [])
                 mock_print.assert_called_with("Git command is not available. Skipping uncommitted file retrieval.")
     
-    @mock.patch("subprocess.check_output")
-    def test_get_recently_committed_sol_files_success(self, mock_check_output):
-        """Test getting recently committed .sol files (successful)"""
-        # Mock git command output - now returning bytes, not string
-        mock_check_output.return_value = b"src/test/2024-05/Test3_exp.sol\nsrc/test/2024-05/Test4_exp.sol\n"
-        
-        with mock.patch.object(self.git_manager, "is_git_command_available", return_value=True):
-            # Need to update the library method to handle bytes output
-            with mock.patch.object(self.git_manager, "get_recently_committed_sol_files") as mock_get_files:
-                mock_get_files.return_value = ["src/test/2024-05/Test3_exp.sol", "src/test/2024-05/Test4_exp.sol"]
-                result = self.git_manager.get_recently_committed_sol_files()
-                
-                # Assert the function returns expected files
-                self.assertEqual(result, ["src/test/2024-05/Test3_exp.sol", "src/test/2024-05/Test4_exp.sol"])
-    
     def test_get_recently_committed_sol_files_git_not_available(self):
         """Test handling of git not available when getting recently committed files"""
         with mock.patch.object(self.git_manager, "is_git_command_available", return_value=False):
@@ -877,6 +862,84 @@ class TestGitManager(unittest.TestCase):
                 # Assert the function returns empty list and prints message
                 self.assertEqual(result, [])
                 mock_print.assert_called_with("Git command is not available. Skipping recently committed file retrieval.")
+
+
+@unittest.skipUnless(shutil.which("git"), "Git is required for repository tests")
+class TestGitManagerRecentCommits(unittest.TestCase):
+    """Exercise the real GitManager against commits in a temporary repository."""
+
+    def setUp(self):
+        repository = tempfile.TemporaryDirectory()
+        self.addCleanup(repository.cleanup)
+        original_cwd = os.getcwd()
+        self.addCleanup(os.chdir, original_cwd)
+        os.chdir(repository.name)
+
+        self._git("init", "--template=")
+        self._git("config", "user.name", "GitManager Tests")
+        self._git("config", "user.email", "git-manager@example.invalid")
+        self._git("config", "commit.gpgsign", "false")
+        self._git("config", "core.hooksPath", os.devnull)
+        self._git("config", "diff.renames", "true")
+        self._git("commit", "--allow-empty", "-m", "Initial commit")
+        self.git_manager = GitManager(Constants())
+        self.sol_path = "src/test/2024-05/Demo_exp.sol"
+
+    def _git(self, *args):
+        return subprocess.check_output(["git", *args], text=True, stderr=subprocess.PIPE)
+
+    def _write(self, path, content="contract Demo {}\n"):
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as file:
+            file.write(content)
+
+    def _commit(self):
+        self._git("add", "--all")
+        self._git("commit", "-m", "Update test files")
+
+    def test_added_sol_file(self):
+        self._write(self.sol_path)
+        self._write("src/test/2024-05/notes.txt", "Not Solidity\n")
+        self._write("outside/Other_exp.sol")
+        self._commit()
+
+        self.assertEqual(self.git_manager.get_recently_committed_sol_files(), [self.sol_path])
+
+    def test_modified_sol_file(self):
+        self._write(self.sol_path)
+        self._commit()
+        self._write(self.sol_path, "contract Demo { uint256 value; }\n")
+        self._commit()
+
+        self.assertEqual(self.git_manager.get_recently_committed_sol_files(), [self.sol_path])
+
+    def test_deleted_sol_file(self):
+        self._write(self.sol_path)
+        self._commit()
+        self._git("rm", self.sol_path)
+        self._commit()
+
+        self.assertEqual(self.git_manager.get_recently_committed_sol_files(), [])
+
+    def test_renamed_sol_file(self):
+        self._write(self.sol_path)
+        self._commit()
+        renamed_path = "src/test/2024-05/Renamed_exp.sol"
+        self._git("mv", self.sol_path, renamed_path)
+        self._commit()
+        self.assertTrue(self._git("diff", "--name-status", "HEAD~1", "HEAD").startswith("R100\t"))
+
+        self.assertEqual(self.git_manager.get_recently_committed_sol_files(), [renamed_path])
+
+    def test_mixed_addition_and_deletion(self):
+        self._write(self.sol_path)
+        self._commit()
+        self._git("rm", self.sol_path)
+        added_path = "src/test/2024-05/Added_exp.sol"
+        self._write(added_path, "contract Added { uint256 value; }\n")
+        self._commit()
+
+        self.assertEqual(self.git_manager.get_recently_committed_sol_files(), [added_path])
 
 
 class TestDefiHackLibrary(unittest.TestCase):
