@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-907 incidents included.
+908 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -54,6 +54,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 - [Giveth](https://giveth.io/donate/defihacklabs)
 
 ## List of Past DeFi Incidents
+
+[20261104 TENDRIL](#20261104-tendril---tendrils-_transfer-taxes-any-non-privileged-sell-into-its-usdt-pair-30-and-as-a-side-effect-of-that-same-transfer-calls-the-pool-controllers-selltoken-which-dumps-the-controllers-accumulated-tendril-into-the-pair-for-usdt-and-controlburns-the-pairs-tendril-reserve-by-about-twice-the-sell-amount-with-no-price-or-reserve-guard-the-flash-loan-the-swaps-and-the-tax-triggered-selltoken-path-are-all-reachable-by-a-fresh-contract-with-no-role-so-the-attacker-flash-borrows-306m-usdt-from-the-pancakeswap-infinity-vault-skews-the-pair-with-a-buy-that-the-token-forces-out-to-the-controller-then-one-taxed-sell-makes-the-controller-burn-the-pair-down-to-dust-so-the-untaxed-remainder-of-the-sell-swaps-against-a-near-zero-reserve-and-takes-the-pairs-whole-usdt-balance-flash-loan-repaid-in-the-same-lock)
 
 [20261028 ZkLinkNova](#20261028-zklinknova---zklink-novas-l1-arbitrator-authenticates-a-cross-chain-claim-with-a-transient-finalizemessagehash-that-claimmessage-never-clears-and-never-re-checks-per-call-and-the-syncl2txhashrelayer-that-feeds-it-is-public-with-no-role-so-an-attacker-populates-a-valid-transient-hash-with-one-relay-call-then-reuses-it-in-a-second-call-that-points-the-claim-target-at-ethereumgatewaysendmessage-which-runs-zklinksyncbatchroot-under-the-gateway-identity-and-installs-an-attacker-chosen-l2logsroothash-for-a-batch-after-which-withdrawals-finalize-against-forged-proofs-that-the-real-on-chain-verifier-accepts)
 
@@ -1911,6 +1913,15 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 
 ---
 ### List of DeFi Hacks & POCs
+### 20261104 TENDRIL - TENDRIL's _transfer taxes any non-privileged sell into its USDT pair 30% and, as a side effect of that same transfer, calls the pool controller's sellToken(), which dumps the controller's accumulated TENDRIL into the pair for USDT and controlburns the pair's TENDRIL reserve by about twice the sell amount with no price or reserve guard; the flash loan, the swaps and the tax-triggered sellToken path are all reachable by a fresh contract with no role, so the attacker flash-borrows 30.6M USDT from the PancakeSwap Infinity Vault, skews the pair with a buy that the token forces out to the controller, then one taxed sell makes the controller burn the pair down to dust so the untaxed remainder of the sell swaps against a near-zero reserve and takes the pair's whole USDT balance, flash loan repaid in the same lock
+### Lost: ~$555K drained from the pair / ~$541K payout reported (estimate). This PoC forks one block before the exploit tx and reconstructs the attacker side with a fresh contract and typed interface calls on the real verified contracts, no vm.mock, no vm.store and no vm.prank of any protocol identity (the single vm.prank relocates the attacker's own pre-held TENDRIL working capital from its holder contract into the fresh exploit contract, not a protocol account): it takes the real 30,641,402 USDT flash loan from the PancakeSwap Infinity Vault (no deal() for the borrowed USDT), buys TENDRIL ammo through the unrestricted USDT-FLAP-TENDRIL route, skews the pair with a 4,097,517 USDT buy, then sells back in one swap whose 30% tax auto-triggers the controller's sellToken and controlburn, draining the pair's USDT reserve from 555,670 to ~0 and repaying the loan in the same lock. Net profit 308,959.367543173232679069 USDT, matching the on-chain profit sweep to the wei; the attacker's net is below the full drained reserve because the controller routed part of it to its own fee recipients. The attacker's ~33.06B TENDRIL of pre-positioned working capital was accumulated permissionlessly, not from any privileged source: funding address 0xb87cf5 bought it across 57 ordinary USDT swaps from the unrestricted secondary USDT/TENDRIL pool 0xda0bc72c over ~11 days (net ~7.4K USDT), then moved it to the exploit contract in a setup tx ~147 blocks before the exploit. That secondary pool is depleted at the fork block, so the amount cannot be re-bought atomically on the fork; the PoC forks after the accumulation and relocates the real, already-held on-chain balance into the fresh exploit contract rather than deal()-minting it. It is ordinary attacker capital, not the flash-borrowed asset and not the exploited value
+```sh
+forge test --contracts src/test/2026-11/TENDRIL_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[TENDRIL_exp.sol](src/test/2026-11/TENDRIL_exp.sol)
+
+---
 ### 20261028 ZkLinkNova - zkLink Nova's L1 Arbitrator authenticates a cross-chain claim with a transient finalizeMessageHash that claimMessage never clears and never re-checks per call, and the SyncL2TxHashRelayer that feeds it is public with no role, so an attacker populates a valid transient hash with one relay call then reuses it in a second call that points the claim target at EthereumGateway.sendMessage, which runs ZkLink.syncBatchRoot under the gateway identity and installs an attacker-chosen l2LogsRootHash for a batch, after which withdrawals finalize against forged proofs that the real on-chain verifier accepts
 ### Lost: ~$783K reported across the two exploit txs. This PoC reconstructs the first tx, draining 22.431294525563808989 ETH plus 11 ERC20 balances (including 18,113.448053 USDC, 3,360.898152 USDT and 0.17360197 WBTC) from the L1 escrow and the ERC20 bridge to the attacker. A fresh attacker contract drives the real public relayer, Arbitrator, EthereumGateway and ZkLink in one transaction with no vm.mock, no vm.store and no vm.prank of any protocol identity; the attacker-chosen root and every Merkle proof are the real on-chain values, and proveL2MessageInclusion accepts them live because the root is installed through the legitimate syncBatchRoot path. A negative control confirms the first withdrawal reverts when the root install step is skipped
 ```sh
