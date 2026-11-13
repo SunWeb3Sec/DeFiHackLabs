@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-909 incidents included.
+910 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -56,6 +56,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 ## List of Past DeFi Incidents
 
 [20261110 Unifund](#20261110-unifund---unifund-lets-a-group-swap-its-pooled-funds-along-an-arbitrary-uniswap-v2-path-and-the-group-swap-facet-accounts-the-weth-spent-on-the-input-leg-and-the-weth-received-on-the-output-leg-as-two-separate-deltas-against-the-same-per-group-ledger-key-instead-of-netting-them-so-a-cyclic-path-weth-a-b-weth-whose-round-trip-nets-about-zero-weth-is-booked-as-a-weth-gain-there-is-no-guard-against-path0--pathlast-and-the-whole-flow-createtokenlist-addtokenstolist-locktokenlist-create-join-startfunding-the-cyclic-swap-finish-withdraw-is-reachable-by-a-fresh-eoa-with-no-role-so-the-attacker-flash-borrows-12-weth-from-the-balancer-v2-vault-deploys-its-own-path-tokens-and-seeds-rigged-wetha-ab-bweth-pools-creates-and-joins-a-group-swaps-twice-along-the-cyclic-path-to-double-credit-the-groups-weth-then-finish-and-withdraw-pay-the-phantom-balance-out-of-the-cores-shared-pool-taking-funds-that-belong-to-other-groups-with-the-flash-loan-repaid-in-the-same-callback)
+
+[20261109 GDC](#20261109-gdc---3464958-51225527454207054005-wbnb-gdcs-sell-into-its-pancake-v2-pair-forwards-70-and-then-calls-gdcmainonsellrewards-which-pays-untrusted-referral-accounts-in-bnb-before-the-reserve-floor-burn-syncs-two-referral-eoas-that-delegated-via-eip-7702-use-that-callback-to-push-wbnb-into-the-pair-and-swap-its-gdc-side-down-to-the-gross-sell-so-the-floor-burn-removes-the-gross-amount-and-the-unsynced-30-credit-is-excess-against-a-near-zero-gdc-reserve-and-the-deposited-wbnb-and-the-attacker-swaps-that-excess-for-the-pairs-wbnb-with-the-flash-loans-repaid-in-the-same-transaction)
 
 [20261104 TENDRIL](#20261104-tendril---tendrils-_transfer-taxes-any-non-privileged-sell-into-its-usdt-pair-30-and-as-a-side-effect-of-that-same-transfer-calls-the-pool-controllers-selltoken-which-dumps-the-controllers-accumulated-tendril-into-the-pair-for-usdt-and-controlburns-the-pairs-tendril-reserve-by-about-twice-the-sell-amount-with-no-price-or-reserve-guard-the-flash-loan-the-swaps-and-the-tax-triggered-selltoken-path-are-all-reachable-by-a-fresh-contract-with-no-role-so-the-attacker-flash-borrows-306m-usdt-from-the-pancakeswap-infinity-vault-skews-the-pair-with-a-buy-that-the-token-forces-out-to-the-controller-then-one-taxed-sell-makes-the-controller-burn-the-pair-down-to-dust-so-the-untaxed-remainder-of-the-sell-swaps-against-a-near-zero-reserve-and-takes-the-pairs-whole-usdt-balance-flash-loan-repaid-in-the-same-lock)
 
@@ -1922,6 +1924,15 @@ forge test --contracts src/test/2026-11/Unifund_exp.sol -vvv
 ```
 #### Contract
 [Unifund_exp.sol](src/test/2026-11/Unifund_exp.sol)
+
+---
+### 20261109 GDC - ~$34,649.58 (51.225527454207054005 WBNB). GDC's sell into its Pancake V2 pair forwards 70% and then calls GDCMain.onSellRewards, which pays untrusted referral accounts in BNB, before the reserve-floor burn syncs; two referral EOAs that delegated via EIP-7702 use that callback to push WBNB into the pair and swap its GDC side down to the gross sell, so the floor burn removes the gross amount and the unsynced 30% credit is excess against a near-zero GDC reserve and the deposited WBNB, and the attacker swaps that excess for the pair's WBNB, with the flash loans repaid in the same transaction
+### Lost: ~$34,649.58 (51.225527454207054005 WBNB) drained from the GDC/WBNB pair. This PoC forks one block before the exploit tx and reconstructs the attacker side with a fresh contract and typed interface calls, no vm.etch, no vm.mock, no vm.store and no deal() of borrowed capital (the single vm.prank is the attacker EOA deploying its own contract, approving its own pre-held GDC and calling attack): it takes Moolah's real WBNB and BTCB flash loans, InstaFlash route 12's Venus vWBNB and vBTC cash, and a Venus vBNB borrow of the collateralised BTCB, pins the pair to the 21,000,000 GDC reserve floor, funds the already-delegated referral account, sells 41,047.699284897040065420 of the EOA's real GDC so the referral callbacks rewrite the reserves before the floor burn, swaps the unsynced 30% credit for WBNB, and repays every loan in the same transaction. Measured pair loss 51.225608092426029855 WBNB and EOA profit 50.009077139317241499 BNB before gas. The exploit tx netted +50.008850 BNB after gas and reported a 51.225527 WBNB pair loss; this reconstruction leaves 65,648 wei of WBNB in the pair instead of that tx's dust. The GDC was the EOA's real balance, not minted. The token is not verified; the mechanism was established from the parent-block trace. The EIP-7702 delegations are already installed on the two referral accounts at the fork block
+```sh
+forge test --contracts src/test/2026-11/GDC_exp.sol --evm-version prague -vvv
+```
+#### Contract
+[GDC_exp.sol](src/test/2026-11/GDC_exp.sol)
 
 ---
 ### 20261104 TENDRIL - TENDRIL's _transfer taxes any non-privileged sell into its USDT pair 30% and, as a side effect of that same transfer, calls the pool controller's sellToken(), which dumps the controller's accumulated TENDRIL into the pair for USDT and controlburns the pair's TENDRIL reserve by about twice the sell amount with no price or reserve guard; the flash loan, the swaps and the tax-triggered sellToken path are all reachable by a fresh contract with no role, so the attacker flash-borrows 30.6M USDT from the PancakeSwap Infinity Vault, skews the pair with a buy that the token forces out to the controller, then one taxed sell makes the controller burn the pair down to dust so the untaxed remainder of the sell swaps against a near-zero reserve and takes the pair's whole USDT balance, flash loan repaid in the same lock
