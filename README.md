@@ -3,7 +3,7 @@
 **Reproduce DeFi hack incidents using Foundry.**
 
 
-906 incidents included.
+907 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -78,6 +78,8 @@ If you appreciate our work, please consider donating. Even a small amount helps 
 [20261015 KolanHook](#20261015-kolanhook---kolanhook-settles-its-escrowed-eth-buy-windows-at-the-same-uniswap-v4-pools-instantaneous-spot-price-with-no-twap-or-bound-and-accept-is-ungated-once-a-window-has-expired-so-the-attacker-flash-borrows-67-weth-from-balancer-swaps-it-to-move-the-kln-spot-then-calls-accept-on-two-expired-windows-it-does-not-own-so-_closewindow-mispositions-their-escrowed-eth-as-single-sided-liquidity-around-the-manipulated-price-and-runs-an-unbounded-buyback-and-reverses-the-swap-back-through-that-freshly-placed-eth-liquidity-before-repaying-the-loan-for-a-1279453-eth-net-gain)
 
 [20261014 UNCXSmartTokenVesting](#20261014-uncxsmarttokenvesting---vestingmanager-pools-every-deposit-of-a-given-token-in-one-contract-and-release-pays-a-slice-of-the-full-contract-balance-over-a-global-share-count-release-debits-that-global-count-but-leaves-the-positions-deposited-shares-in-place-and-cancel-then-debits-the-same-shares-a-second-time-so-the-attacker-flash-borrows-each-token-creates-self-owned-vestings-whose-tranches-are-already-elapsed-and-so-instantly-releasable-releases-and-cancels-soft-helper-vestings-to-shrink-the-share-denominator-while-donating-token-straight-into-the-pool-to-raise-the-balance-then-releases-a-payout-vesting-against-the-corrupted-denominator-and-inflated-balance-to-over-withdraw-the-other-vesters-backing-tokens-across-five-erc-20s)
+
+[20261009 EtherVista](#20261009-ethervista---ethervistapairswap-multiplies-its-two-uint112-reserves-inside-the-k-check-so-on-solidity-0516-the-product-wraps-modulo-2-to-the-112-and-the-check-passes-after-the-real-reserve-product-has-fallen-swap-accepts-only-factoryrouter-the-routersetter-had-just-pointed-that-router-at-the-attackers-contract-and-the-contract-paid-1-wei-of-vista-for-21365578479614736555-weth-then-after-a-permissionless-sync-swapped-4860669107788601981-weth-of-that-haul-for-43855902196275763910452-vista)
 
 [20261009 BitBay](#20261009-bitbay---the-usdcdaiv4vault-_withdraw-liquidity0-branch-pays-the-vault-entire-dai-and-usdc-balance-to-the-caller-with-no-share-weighted-cap-and-reposition-is-permissionless-once-the-tick-is-outside-the-narrow-lp-range-so-the-attacker-deposits-one-wei-for-a-single-share-swaps-the-uniswap-v4-pool-to-push-the-tick-onto-tickupper-calls-reposition-to-recompute-a-position-whose-liquidity-rounds-to-zero-and-leaves-the-pooled-funds-as-raw-balance-then-redeems-that-one-share-to-sweep-the-whole-14838-dai-pool)
 
@@ -2017,6 +2019,21 @@ forge test --contracts src/test/2026-10/UNCXSmartTokenVesting_exp.sol --evm-vers
 ```
 #### Contract
 [UNCXSmartTokenVesting_exp.sol](src/test/2026-10/UNCXSmartTokenVesting_exp.sol)
+### 20261009 EtherVista - EtherVistaPair.swap() multiplies its two uint112 reserves inside the K check, so on Solidity 0.5.16 the product wraps modulo 2 to the 112 and the check passes after the real reserve product has fallen. swap() accepts only factory.router(), the routerSetter had just pointed that router at the attacker's contract, and the contract paid 1 wei of VISTA for 21.365578479614736555 WETH, then after a permissionless sync swapped 4.860669107788601981 WETH of that haul for 43855.902196275763910452 VISTA
+### Lost: 7.477952467865157795 WETH and 43,855.902196275763910451 VISTA taken from the VISTA/WETH pair on Ethereum, both asserted to the wei on the attacker EOA and as the pair's loss. The attacker later sold 7.46802069 ETH for 18,590.71646 USDC, which is the reported ~$18.6K, and burned the VISTA; that sale is a later transaction and is not part of this PoC. The PoC forks at block 26152249, one block before setRouter, deploys a fresh router, and repeats the privileged call: routerSetter 0xCA90D843288E35beeADfCe14E5F906e3F1AFc7cB calls setRouter on that contract, the same call it sent to 0x469424b628a9d2036e41496e814Db500D683b120 in tx 0xc97ad886a4cbd022edc33deaa44656d66814fe3df1142d03802c96ce7632cc7a at block 26152250. The on-chain router is not impersonated, and the EOA's later VISTA approval of it is not used; the EOA transfers 1 wei of its own VISTA to the fresh router. That router then runs both swaps on the live pair. Swap 1 pulls 21.365578479614736555 WETH, the output the wrapped product allows, and the true uint256 product falls. The donation, sync, and second swap use the trace amounts.
+```sh
+forge test --contracts src/test/2026-10/EtherVista_exp.sol --evm-version cancun -vvv
+```
+#### Contract
+[EtherVista_exp.sol](src/test/2026-10/EtherVista_exp.sol)
+### Link reference
+
+https://x.com/SlowMist_Team/status/2108427455572918626
+
+https://etherscan.io/tx/0xb2c7332d9e1be6a86d9d37083aa4cc0d94b60eb95cc9b29494555a3c09764930
+
+---
+
 ### 20261009 BitBay - the UsdcDaiV4Vault _withdraw liquidity==0 branch pays the vault entire DAI and USDC balance to the caller with no share-weighted cap, and reposition() is permissionless once the tick is outside the narrow LP range, so the attacker deposits one wei for a single share, swaps the Uniswap v4 pool to push the tick onto tickUpper, calls reposition to recompute a position whose liquidity rounds to zero and leaves the pooled funds as raw balance, then redeems that one share to sweep the whole 14838 DAI pool
 ### Lost: 14838.466608989135865711 DAI swept from the vault by a single 1-wei share on Polygon (reproduced to the wei against the on-chain Withdrawn amount), the attacker then unwound the drained DAI plus flash-loaned capital to a net ~14,813 USDC profit
 ```sh
