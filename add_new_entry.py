@@ -12,6 +12,7 @@ import subprocess
 import json
 from typing import Optional, Dict, List, Any, Tuple
 import sys
+import tempfile
 import unittest
 from unittest import mock
 
@@ -684,15 +685,32 @@ class ReadmeManager:
         return basecommand
     
     def check_readme_entry(self, file_path: str) -> bool:
-        """Check if a README entry exists for a file"""
+        """Check if a README entry exists for a file.
+
+        Matches the repo-relative path (e.g. ``src/test/2026-02/Foo_exp.sol``)
+        rather than just the basename.  Several PoCs share the same filename
+        across different YYYY-MM directories (e.g. ``Moonwell_exp.sol`` exists
+        in both 2025-11 and 2026-02), so a basename-only check returns True for
+        a brand-new file whose name collides with an older entry, causing the
+        new entry to be silently skipped.
+
+        Both ``src/test/...`` and ``./src/test/...`` forms appear in the
+        README (the latter in ``forge test --contracts`` lines), so the leading
+        ``./`` is stripped before comparison.
+        """
         try:
             with open(self.constants.README_PATH, "r") as file:
                 content = file.read()
-            file_name = os.path.basename(file_path)
-            return file_name in content
         except FileNotFoundError:
             print(f"Error: {self.constants.README_PATH} not found. Cannot check for existing entries.")
             return False
+
+        normalized_content = content.replace("./src/test/", "src/test/")
+        normalized_path = file_path.replace("\\", "/")
+        if normalized_path.startswith("./"):
+            normalized_path = normalized_path[2:]
+
+        return normalized_path in normalized_content
 
 
 class PocManager:
@@ -918,6 +936,54 @@ def main(argv=None) -> int:
     if missing:
         parser.error(f"non-interactive mode (--network) requires: {', '.join(missing)}")
     return library.add_entry_cli(args)
+
+
+######################
+# UNIT TESTS
+######################
+
+class CheckReadmeEntryTests(unittest.TestCase):
+    """Tests for ReadmeManager.check_readme_entry.
+
+    These guard against a regression where the check used only the basename
+    and would falsely report True for a new PoC whose name collides with an
+    older entry in a different YYYY-MM directory.
+    """
+
+    def setUp(self):
+        self.constants = Constants()
+        # Redirect README to a temp file so tests do not touch the real one.
+        tmp = tempfile.NamedTemporaryFile(mode="w", suffix=".md", delete=False)
+        tmp.write(
+            "### List of DeFi Hacks & POCs\n"
+            "\n"
+            "```sh\n"
+            "forge test --contracts ./src/test/2026-02/Moonwell_exp.sol -vvv\n"
+            "```\n"
+            "#### Contract\n"
+            "[Moonwell_exp.sol](src/test/2026-02/Moonwell_exp.sol)\n"
+            "\n"
+            "---\n"
+        )
+        tmp.close()
+        self.addCleanup(os.unlink, tmp.name)
+        self.constants.README_PATH = tmp.name
+        self.manager = ReadmeManager(self.constants)
+
+    def test_existing_entry_is_found(self):
+        """The exact path that exists in README must be detected."""
+        self.assertTrue(self.manager.check_readme_entry("src/test/2026-02/Moonwell_exp.sol"))
+
+    def test_same_basename_different_month_is_not_found(self):
+        """A new PoC sharing a basename with an older entry must not be skipped."""
+        self.assertFalse(self.manager.check_readme_entry("src/test/2026-11/Moonwell_exp.sol"))
+
+    def test_dot_prefix_path_is_found(self):
+        """The ./ prefix used in forge test lines must be handled."""
+        self.assertTrue(self.manager.check_readme_entry("./src/test/2026-02/Moonwell_exp.sol"))
+
+    def test_genuinely_missing_file_is_not_found(self):
+        self.assertFalse(self.manager.check_readme_entry("src/test/2026-11/Novel_exp.sol"))
 
 
 if __name__ == "__main__":
