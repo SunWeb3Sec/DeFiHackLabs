@@ -816,19 +816,25 @@ class GitManager:
             return False
     
     def get_uncommitted_sol_files(self):
-        """Get list of uncommitted .sol files"""
+        """Get untracked, staged, and unstaged .sol files that still exist."""
         if not self.is_git_command_available():
             print("Git command is not available. Skipping uncommitted file retrieval.")
             return []
         
         try:
-            # Use argument list instead of shell=True for better robustness
-            args = ["git", "ls-files", "--others", "--exclude-standard", self.constants.SRC_TEST_DIR]
-            output = subprocess.check_output(args, text=True)
-            files = output.strip().split("\n")
-            # Filter for .sol files manually to avoid shell globbing issues
-            uncommitted_files = [f for f in files if f.endswith(".sol") and f]
-            return uncommitted_files
+            commands = [
+                ["git", "ls-files", "--others", "--exclude-standard", "--", self.constants.SRC_TEST_DIR],
+                ["git", "diff", "--cached", "--name-only", "--diff-filter=ACMRT", "--", self.constants.SRC_TEST_DIR],
+                ["git", "diff", "--name-only", "--diff-filter=ACMRT", "--", self.constants.SRC_TEST_DIR],
+            ]
+            files = []
+            seen = set()
+            for args in commands:
+                for path in subprocess.check_output(args, text=True).splitlines():
+                    if path.endswith(".sol") and os.path.isfile(path) and path not in seen:
+                        files.append(path)
+                        seen.add(path)
+            return files
         except subprocess.CalledProcessError:
             return []
     
