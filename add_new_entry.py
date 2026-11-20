@@ -694,23 +694,37 @@ class ReadmeManager:
         a brand-new file whose name collides with an older entry, causing the
         new entry to be silently skipped.
 
-        Both ``src/test/...`` and ``./src/test/...`` forms appear in the
-        README (the latter in ``forge test --contracts`` lines), so the leading
-        ``./`` is stripped before comparison.
+        Historical entries may live in ``past/YYYY/README.md`` instead of the
+        root README. Both ``./src/test/...`` and ``../../src/test/...`` links
+        contain the same repo-relative path after the leading ``./`` is removed.
         """
-        try:
-            with open(self.constants.README_PATH, "r") as file:
-                content = file.read()
-        except FileNotFoundError:
-            print(f"Error: {self.constants.README_PATH} not found. Cannot check for existing entries.")
-            return False
-
-        normalized_content = content.replace("./src/test/", "src/test/")
         normalized_path = file_path.replace("\\", "/")
         if normalized_path.startswith("./"):
             normalized_path = normalized_path[2:]
 
-        return normalized_path in normalized_content
+        src_test_dir = self.constants.SRC_TEST_DIR.replace("\\", "/").removeprefix("./").rstrip("/")
+        year_match = re.match(rf"^{re.escape(src_test_dir)}/(\d{{4}})-\d{{2}}/", normalized_path)
+        readme_paths = [self.constants.README_PATH]
+        if year_match:
+            readme_paths.append(os.path.join(
+                os.path.dirname(self.constants.README_PATH), "past", year_match.group(1), "README.md"
+            ))
+
+        for readme_path in readme_paths:
+            try:
+                with open(readme_path, "r") as file:
+                    content = file.read()
+            except FileNotFoundError:
+                if readme_path == self.constants.README_PATH:
+                    print(f"Error: {readme_path} not found. Cannot check for existing entries.")
+                    return False
+                continue
+
+            normalized_content = content.replace("./src/test/", "src/test/")
+            if normalized_path in normalized_content:
+                return True
+
+        return False
 
 
 class PocManager:
@@ -946,30 +960,33 @@ def main(argv=None) -> int:
 class CheckReadmeEntryTests(unittest.TestCase):
     """Tests for ReadmeManager.check_readme_entry.
 
-    These guard against a regression where the check used only the basename
-    and would falsely report True for a new PoC whose name collides with an
-    older entry in a different YYYY-MM directory.
+    Guard against basename collisions and entries missed after archival.
     """
 
     def setUp(self):
         self.constants = Constants()
-        # Redirect README to a temp file so tests do not touch the real one.
-        tmp = tempfile.NamedTemporaryFile(mode="w", suffix=".md", delete=False)
-        tmp.write(
-            "### List of DeFi Hacks & POCs\n"
-            "\n"
-            "```sh\n"
-            "forge test --contracts ./src/test/2026-02/Moonwell_exp.sol -vvv\n"
-            "```\n"
-            "#### Contract\n"
-            "[Moonwell_exp.sol](src/test/2026-02/Moonwell_exp.sol)\n"
-            "\n"
-            "---\n"
-        )
-        tmp.close()
-        self.addCleanup(os.unlink, tmp.name)
-        self.constants.README_PATH = tmp.name
+        tmp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp_dir.cleanup)
+        self.constants.README_PATH = os.path.join(tmp_dir.name, "README.md")
+        with open(self.constants.README_PATH, "w") as file:
+            file.write(
+                "### List of DeFi Hacks & POCs\n"
+                "\n"
+                "```sh\n"
+                "forge test --contracts ./src/test/2026-02/Moonwell_exp.sol -vvv\n"
+                "```\n"
+                "#### Contract\n"
+                "[Moonwell_exp.sol](src/test/2026-02/Moonwell_exp.sol)\n"
+                "\n"
+                "---\n"
+            )
         self.manager = ReadmeManager(self.constants)
+
+    def write_archive(self, year, content):
+        archive_dir = os.path.join(os.path.dirname(self.constants.README_PATH), "past", year)
+        os.makedirs(archive_dir, exist_ok=True)
+        with open(os.path.join(archive_dir, "README.md"), "w") as file:
+            file.write(content)
 
     def test_existing_entry_is_found(self):
         """The exact path that exists in README must be detected."""
@@ -985,6 +1002,18 @@ class CheckReadmeEntryTests(unittest.TestCase):
 
     def test_genuinely_missing_file_is_not_found(self):
         self.assertFalse(self.manager.check_readme_entry("src/test/2026-11/Novel_exp.sol"))
+
+    def test_archived_entry_is_found(self):
+        self.write_archive("2025", "[Moonwell_exp.sol](../../src/test/2025-11/Moonwell_exp.sol)\n")
+        self.assertTrue(self.manager.check_readme_entry("src/test/2025-11/Moonwell_exp.sol"))
+
+    def test_same_basename_different_archived_month_is_not_found(self):
+        self.write_archive("2025", "[Moonwell_exp.sol](../../src/test/2025-11/Moonwell_exp.sol)\n")
+        self.assertFalse(self.manager.check_readme_entry("src/test/2025-12/Moonwell_exp.sol"))
+
+    def test_archive_for_another_year_is_not_used(self):
+        self.write_archive("2024", "[Moonwell_exp.sol](../../src/test/2025-11/Moonwell_exp.sol)\n")
+        self.assertFalse(self.manager.check_readme_entry("src/test/2025-11/Moonwell_exp.sol"))
 
 
 if __name__ == "__main__":
