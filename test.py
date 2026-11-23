@@ -865,8 +865,8 @@ class TestGitManager(unittest.TestCase):
 
 
 @unittest.skipUnless(shutil.which("git"), "Git is required for repository tests")
-class TestGitManagerRecentCommits(unittest.TestCase):
-    """Exercise the real GitManager against commits in a temporary repository."""
+class TestGitManagerRepositoryChanges(unittest.TestCase):
+    """Exercise the real GitManager against changes in a temporary repository."""
 
     def setUp(self):
         repository = tempfile.TemporaryDirectory()
@@ -896,6 +896,50 @@ class TestGitManagerRecentCommits(unittest.TestCase):
     def _commit(self):
         self._git("add", "--all")
         self._git("commit", "-m", "Update test files")
+
+    def test_untracked_sol_file(self):
+        self._write(self.sol_path)
+        self._write("src/test/2024-05/notes.txt", "Not Solidity\n")
+        self._write("outside/Other_exp.sol")
+
+        self.assertEqual(self.git_manager.get_uncommitted_sol_files(), [self.sol_path])
+
+    def test_staged_sol_file(self):
+        self._write(self.sol_path)
+        self._git("add", self.sol_path)
+        self.assertEqual(self._git("ls-files", "--others", "--exclude-standard", "--", "src/test"), "")
+
+        self.assertEqual(self.git_manager.get_uncommitted_sol_files(), [self.sol_path])
+
+    def test_unstaged_tracked_sol_file(self):
+        self._write(self.sol_path)
+        self._commit()
+        self._write(self.sol_path, "contract Demo { uint256 value; }\n")
+
+        self.assertEqual(self.git_manager.get_uncommitted_sol_files(), [self.sol_path])
+
+    def test_staged_and_unstaged_changes_are_deduplicated(self):
+        self._write(self.sol_path)
+        self._git("add", self.sol_path)
+        self._write(self.sol_path, "contract Demo { uint256 value; }\n")
+
+        self.assertEqual(self.git_manager.get_uncommitted_sol_files(), [self.sol_path])
+
+    def test_deleted_sol_files_are_ignored(self):
+        self._write(self.sol_path)
+        self._commit()
+        os.remove(self.sol_path)
+        self.assertEqual(self.git_manager.get_uncommitted_sol_files(), [])
+
+        self._git("add", "--all")
+        self.assertEqual(self.git_manager.get_uncommitted_sol_files(), [])
+
+    def test_staged_sol_file_removed_from_worktree_is_ignored(self):
+        self._write(self.sol_path)
+        self._git("add", self.sol_path)
+        os.remove(self.sol_path)
+
+        self.assertEqual(self.git_manager.get_uncommitted_sol_files(), [])
 
     def test_added_sol_file(self):
         self._write(self.sol_path)
