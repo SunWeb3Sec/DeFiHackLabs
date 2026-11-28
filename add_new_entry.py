@@ -823,9 +823,9 @@ class GitManager:
         
         try:
             # Use argument list instead of shell=True for better robustness
-            args = ["git", "ls-files", "--others", "--exclude-standard", self.constants.SRC_TEST_DIR]
+            args = ["git", "ls-files", "-z", "--others", "--exclude-standard", self.constants.SRC_TEST_DIR]
             output = subprocess.check_output(args, text=True)
-            files = output.strip().split("\n")
+            files = output.split("\0")
             # Filter for .sol files manually to avoid shell globbing issues
             uncommitted_files = [f for f in files if f.endswith(".sol") and f]
             return uncommitted_files
@@ -840,10 +840,10 @@ class GitManager:
         
         try:
             # Exclude deleted paths so they are not processed for README entries.
-            args = ["git", "diff", "--name-only", "--diff-filter=ACMRT",
+            args = ["git", "diff", "-z", "--name-only", "--diff-filter=ACMRT",
                     "HEAD~1", "HEAD", "--", self.constants.SRC_TEST_DIR]
             output = subprocess.check_output(args, text=True)
-            files = output.strip().split("\n")
+            files = output.split("\0")
             # Filter for .sol files
             recently_committed_files = [f for f in files if f.endswith(".sol") and f]
             return recently_committed_files
